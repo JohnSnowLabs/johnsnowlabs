@@ -345,6 +345,7 @@ document.write(`
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../deid/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../deid/base_deidentification_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.base_deidentification_params</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../deid/deIdentification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.deIdentification</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../deid/deidentication_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.deidentication_params</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../deid/doccument_hashcoder/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.doccument_hashcoder</span></code></a></li>
@@ -379,6 +380,7 @@ document.write(`
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../matcher/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.matcher</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../matcher/text_matcher_internal/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.matcher.text_matcher_internal</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../matcher/text_matcher_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.matcher.text_matcher_params</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../medical_llm/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.medical_llm</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -467,6 +469,7 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="../../filtering_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.filtering_params</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../flattener/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.flattener</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../handle_exception_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.handle_exception_params</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../metadata_annotation_converter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.metadata_annotation_converter</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../multi_chunk2_doc/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.multi_chunk2_doc</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../resolution2_chunk/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.resolution2_chunk</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../router/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.router</span></code></a></li>
@@ -543,7 +546,7 @@ document.write(`
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.chunker.chunkmapper_filterer.ChunkMapperFilterer">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ChunkMapperFilterer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'com.johnsnowlabs.nlp.annotators.chunker.ChunkMapperFilterer'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">java_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunkmapper_filterer.ChunkMapperFilterer" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.common.AnnotatorModelInternal</span></code></p>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.common.AnnotatorModelInternal</span></code>, <a class="reference internal" href="../../white_black_list_params/index.html#sparknlp_jsl.annotator.white_black_list_params.WhiteBlackListParams" title="sparknlp_jsl.annotator.white_black_list_params.WhiteBlackListParams"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.white_black_list_params.WhiteBlackListParams</span></code></a></p>
 <p>Filters chunks mapped or not by ChunkMapper.</p>
 <p>Filters chunks based on whether the ChunkMapper annotator
 successfully mapped the chunk or not.</p>
@@ -561,11 +564,26 @@ successfully mapped the chunk or not.</p>
 </table>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>(</strong><strong>str</strong><strong>)</strong> (<em>returnCriteria</em>) – Has two possible values: “success” or “fail”.
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>(</strong><strong>str</strong><strong>)</strong> (<em>returnCriteria</em>) – Has two possible values: “success” or “fail”.
 If “fail” (default), returns the chunks that are not in the label dependencies;
-if “success”, returns the labels that were successfully mapped by the ChunkMapper annotator.</p>
+if “success”, returns the labels that were successfully mapped by the ChunkMapper annotator.</p></li>
+<li><p><strong>whiteList</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – If defined, list of entities to process.</p></li>
+<li><p><strong>blackList</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – If defined, list of entities to ignore.</p></li>
+<li><p><strong>caseSensitive</strong> (<em>bool</em>) – Determines whether the definitions of the white listed and black listed entities are case sensitive or not.</p></li>
+</ul>
 </dd>
 </dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.chunker.chunkmapper_filterer.ChunkMapperFilterer.blackList">
+<span class="sig-name descname"><span class="pre">blackList</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunkmapper_filterer.ChunkMapperFilterer.blackList" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.chunker.chunkmapper_filterer.ChunkMapperFilterer.caseSensitive">
+<span class="sig-name descname"><span class="pre">caseSensitive</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunkmapper_filterer.ChunkMapperFilterer.caseSensitive" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.chunker.chunkmapper_filterer.ChunkMapperFilterer.getter_attrs">
 <span class="sig-name descname"><span class="pre">getter_attrs</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunkmapper_filterer.ChunkMapperFilterer.getter_attrs" title="Permalink to this definition">#</a></dt>
@@ -619,6 +637,11 @@ if “success”, returns the labels that were successfully mapped by the ChunkM
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.chunker.chunkmapper_filterer.ChunkMapperFilterer.uid">
 <span class="sig-name descname"><span class="pre">uid</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">''</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunkmapper_filterer.ChunkMapperFilterer.uid" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.chunker.chunkmapper_filterer.ChunkMapperFilterer.whiteList">
+<span class="sig-name descname"><span class="pre">whiteList</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunkmapper_filterer.ChunkMapperFilterer.whiteList" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -784,6 +807,39 @@ a default value.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.chunker.chunkmapper_filterer.ChunkMapperFilterer.setBlackList">
+<span class="sig-name descname"><span class="pre">setBlackList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunkmapper_filterer.ChunkMapperFilterer.setBlackList" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets If defined, list of entities to ignore. The rest will be processed. Do not include IOB prefix on labels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – If defined, list of entities to ignore. The rest will be processed. Do not include IOB prefix on labels</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.chunker.chunkmapper_filterer.ChunkMapperFilterer.setCaseSensitive">
+<span class="sig-name descname"><span class="pre">setCaseSensitive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunkmapper_filterer.ChunkMapperFilterer.setCaseSensitive" title="Permalink to this definition">#</a></dt>
+<dd><p>Determines whether the definitions of the white listed and black listed entities are case sensitive or not.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether white listed and black listed entities are case sensitive or not. Default: True.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.chunker.chunkmapper_filterer.ChunkMapperFilterer.setDenyList">
+<span class="sig-name descname"><span class="pre">setDenyList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunkmapper_filterer.ChunkMapperFilterer.setDenyList" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets If defined, list of entities to ignore. The rest will be processed. Do not include IOB prefix on labels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – If defined, list of entities to ignore. The rest will be processed. Do not include IOB prefix on labels</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.chunker.chunkmapper_filterer.ChunkMapperFilterer.setForceInputTypeValidation">
 <span class="sig-name descname"><span class="pre">setForceInputTypeValidation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">etfm</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunkmapper_filterer.ChunkMapperFilterer.setForceInputTypeValidation" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -857,8 +913,19 @@ RecursivePipeline</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.chunker.chunkmapper_filterer.ChunkMapperFilterer.setWhiteList">
+<span class="sig-name descname"><span class="pre">setWhiteList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunkmapper_filterer.ChunkMapperFilterer.setWhiteList" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets If defined, list of entities to process. The rest will be ignored. Do not include IOB prefix on labels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – If defined, list of entities to process. The rest will be ignored. Do not include IOB prefix on labels</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.chunker.chunkmapper_filterer.ChunkMapperFilterer.transform">
-<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pyspark.ml._typing.ParamMap</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></span><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunkmapper_filterer.ChunkMapperFilterer.transform" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><span class="pre">pyspark.sql.dataframe.DataFrame</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pyspark.ml._typing.ParamMap</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><span class="pre">pyspark.sql.dataframe.DataFrame</span></a></span></span><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunkmapper_filterer.ChunkMapperFilterer.transform" title="Permalink to this definition">#</a></dt>
 <dd><p>Transforms the input dataset with optional parameters.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.3.0.</span></p>
@@ -920,6 +987,8 @@ RecursivePipeline</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.chunkmapper_filterer.ChunkMapperFilterer"><code class="docutils literal notranslate"><span class="pre">ChunkMapperFilterer</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.chunkmapper_filterer.ChunkMapperFilterer.blackList"><code class="docutils literal notranslate"><span class="pre">ChunkMapperFilterer.blackList</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.chunkmapper_filterer.ChunkMapperFilterer.caseSensitive"><code class="docutils literal notranslate"><span class="pre">ChunkMapperFilterer.caseSensitive</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.chunkmapper_filterer.ChunkMapperFilterer.getter_attrs"><code class="docutils literal notranslate"><span class="pre">ChunkMapperFilterer.getter_attrs</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.chunkmapper_filterer.ChunkMapperFilterer.inputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">ChunkMapperFilterer.inputAnnotatorTypes</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.chunkmapper_filterer.ChunkMapperFilterer.inputCols"><code class="docutils literal notranslate"><span class="pre">ChunkMapperFilterer.inputCols</span></code></a></li>
@@ -931,6 +1000,7 @@ RecursivePipeline</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.chunkmapper_filterer.ChunkMapperFilterer.returnCriteria"><code class="docutils literal notranslate"><span class="pre">ChunkMapperFilterer.returnCriteria</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.chunkmapper_filterer.ChunkMapperFilterer.skipLPInputColsValidation"><code class="docutils literal notranslate"><span class="pre">ChunkMapperFilterer.skipLPInputColsValidation</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.chunkmapper_filterer.ChunkMapperFilterer.uid"><code class="docutils literal notranslate"><span class="pre">ChunkMapperFilterer.uid</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.chunkmapper_filterer.ChunkMapperFilterer.whiteList"><code class="docutils literal notranslate"><span class="pre">ChunkMapperFilterer.whiteList</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.chunkmapper_filterer.ChunkMapperFilterer.clear"><code class="docutils literal notranslate"><span class="pre">ChunkMapperFilterer.clear()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.chunkmapper_filterer.ChunkMapperFilterer.copy"><code class="docutils literal notranslate"><span class="pre">ChunkMapperFilterer.copy()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.chunkmapper_filterer.ChunkMapperFilterer.explainParam"><code class="docutils literal notranslate"><span class="pre">ChunkMapperFilterer.explainParam()</span></code></a></li>
@@ -951,6 +1021,9 @@ RecursivePipeline</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.chunkmapper_filterer.ChunkMapperFilterer.read"><code class="docutils literal notranslate"><span class="pre">ChunkMapperFilterer.read()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.chunkmapper_filterer.ChunkMapperFilterer.save"><code class="docutils literal notranslate"><span class="pre">ChunkMapperFilterer.save()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.chunkmapper_filterer.ChunkMapperFilterer.set"><code class="docutils literal notranslate"><span class="pre">ChunkMapperFilterer.set()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.chunkmapper_filterer.ChunkMapperFilterer.setBlackList"><code class="docutils literal notranslate"><span class="pre">ChunkMapperFilterer.setBlackList()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.chunkmapper_filterer.ChunkMapperFilterer.setCaseSensitive"><code class="docutils literal notranslate"><span class="pre">ChunkMapperFilterer.setCaseSensitive()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.chunkmapper_filterer.ChunkMapperFilterer.setDenyList"><code class="docutils literal notranslate"><span class="pre">ChunkMapperFilterer.setDenyList()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.chunkmapper_filterer.ChunkMapperFilterer.setForceInputTypeValidation"><code class="docutils literal notranslate"><span class="pre">ChunkMapperFilterer.setForceInputTypeValidation()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.chunkmapper_filterer.ChunkMapperFilterer.setInputCols"><code class="docutils literal notranslate"><span class="pre">ChunkMapperFilterer.setInputCols()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.chunkmapper_filterer.ChunkMapperFilterer.setLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">ChunkMapperFilterer.setLazyAnnotator()</span></code></a></li>
@@ -958,6 +1031,7 @@ RecursivePipeline</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.chunkmapper_filterer.ChunkMapperFilterer.setParamValue"><code class="docutils literal notranslate"><span class="pre">ChunkMapperFilterer.setParamValue()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.chunkmapper_filterer.ChunkMapperFilterer.setParams"><code class="docutils literal notranslate"><span class="pre">ChunkMapperFilterer.setParams()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.chunkmapper_filterer.ChunkMapperFilterer.setReturnCriteria"><code class="docutils literal notranslate"><span class="pre">ChunkMapperFilterer.setReturnCriteria()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.chunkmapper_filterer.ChunkMapperFilterer.setWhiteList"><code class="docutils literal notranslate"><span class="pre">ChunkMapperFilterer.setWhiteList()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.chunkmapper_filterer.ChunkMapperFilterer.transform"><code class="docutils literal notranslate"><span class="pre">ChunkMapperFilterer.transform()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.chunkmapper_filterer.ChunkMapperFilterer.write"><code class="docutils literal notranslate"><span class="pre">ChunkMapperFilterer.write()</span></code></a></li>
 </ul>

@@ -588,6 +588,11 @@ Default: False.</p></li>
 </pre></div>
 </div>
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.additionalDateFormats">
+<span class="sig-name descname"><span class="pre">additionalDateFormats</span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.additionalDateFormats" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.ageRanges">
 <span class="sig-name descname"><span class="pre">ageRanges</span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.ageRanges" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -620,6 +625,16 @@ Default: False.</p></li>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.consistentObfuscation">
 <span class="sig-name descname"><span class="pre">consistentObfuscation</span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.consistentObfuscation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.countryObfuscation">
+<span class="sig-name descname"><span class="pre">countryObfuscation</span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.countryObfuscation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.dateEntities">
+<span class="sig-name descname"><span class="pre">dateEntities</span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.dateEntities" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -665,6 +680,11 @@ Default: False.</p></li>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.genderAwareness">
 <span class="sig-name descname"><span class="pre">genderAwareness</span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.genderAwareness" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.geoConsistency">
+<span class="sig-name descname"><span class="pre">geoConsistency</span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.geoConsistency" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -858,6 +878,11 @@ Default: False.</p></li>
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.staticObfuscationPairsResource">
+<span class="sig-name descname"><span class="pre">staticObfuscationPairsResource</span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.staticObfuscationPairsResource" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.uid">
 <span class="sig-name descname"><span class="pre">uid</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">''</span></em><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.uid" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -870,6 +895,11 @@ Default: False.</p></li>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.useShifDays">
 <span class="sig-name descname"><span class="pre">useShifDays</span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.useShifDays" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.useShiftDays">
+<span class="sig-name descname"><span class="pre">useShiftDays</span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.useShiftDays" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -941,9 +971,9 @@ user-supplied values &lt; extra.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.fit">
-<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pyspark.ml._typing.ParamMap</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">...</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">M</span></span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.fit" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><span class="pre">pyspark.sql.dataframe.DataFrame</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pyspark.ml._typing.ParamMap</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">...</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">M</span></span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.fit" title="Permalink to this definition">#</a></dt>
 <dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">pyspark.ml._typing.ParamMap</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">pyspark.ml._typing.ParamMap</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">M</span><span class="p"><span class="pre">]</span></span></span></span></dt>
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><span class="pre">pyspark.sql.dataframe.DataFrame</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">pyspark.ml._typing.ParamMap</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">pyspark.ml._typing.ParamMap</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">M</span><span class="p"><span class="pre">]</span></span></span></span></dt>
 <dd><p>Fits a model to the input dataset with optional parameters.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.3.0.</span></p>
@@ -968,7 +998,7 @@ models.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.fitMultiple">
-<span class="sig-name descname"><span class="pre">fitMultiple</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">paramMaps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">pyspark.ml._typing.ParamMap</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">M</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.fitMultiple" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">fitMultiple</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><span class="pre">pyspark.sql.dataframe.DataFrame</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">paramMaps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">pyspark.ml._typing.ParamMap</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">M</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.fitMultiple" title="Permalink to this definition">#</a></dt>
 <dd><p>Fits a model to the input dataset for each param map in <cite>paramMaps</cite>.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 2.3.0.</span></p>
@@ -989,12 +1019,6 @@ using <cite>paramMaps[index]</cite>. <cite>index</cite> values may not be sequen
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">_FitMultipleIterator</span></code></p>
 </dd>
 </dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.getBlackList">
-<span class="sig-name descname"><span class="pre">getBlackList</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.getBlackList" title="Permalink to this definition">#</a></dt>
-<dd><p>Gets the value of blackList or its default value.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -1049,9 +1073,9 @@ default value. Raises an error if neither is set.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.getSameLengthFormattedEntities">
-<span class="sig-name descname"><span class="pre">getSameLengthFormattedEntities</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.getSameLengthFormattedEntities" title="Permalink to this definition">#</a></dt>
-<dd><p>Returns the sameLengthFormattedEntities value.</p>
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.getSelectiveObfuscateRefSource">
+<span class="sig-name descname"><span class="pre">getSelectiveObfuscateRefSource</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.getSelectiveObfuscateRefSource" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the dictionary of entity names to their obfuscate ref sources.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -1116,6 +1140,18 @@ a default value.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setAdditionalDateFormats">
+<span class="sig-name descname"><span class="pre">setAdditionalDateFormats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">formats</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setAdditionalDateFormats" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets additional date formats to be considered during date obfuscation.
+This allows users to specify custom date formats in addition to the default date formats.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>formats</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of additional date formats to be considered during date obfuscation.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setAgeGroups">
 <span class="sig-name descname"><span class="pre">setAgeGroups</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setAgeGroups" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets a dictionary of age groups to obfuscate ages.
@@ -1147,11 +1183,11 @@ Default age groups are as follows in the English language:</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setAgeRanges">
-<span class="sig-name descname"><span class="pre">setAgeRanges</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setAgeRanges" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets list of integers specifying limits of the age groups to preserve during obfuscation</p>
+<span class="sig-name descname"><span class="pre">setAgeRanges</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setAgeRanges" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets list of integer specifying limits of the age groups to preserve during obfuscation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>s</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – </p>
+<dd class="field-odd"><p><strong>value</strong> (<em>List</em><em>[</em><em>int</em><em>]</em>) – List of integer specifying limits of the age groups to preserve during obfuscation.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1263,12 +1299,36 @@ The similarity is based on the Levenshtein Distance between the words.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setCountryObfuscation">
+<span class="sig-name descname"><span class="pre">setCountryObfuscation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setCountryObfuscation" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to obfuscate country entities or not.
+If True, country entities will be obfuscated.
+If False, country entities will not be obfuscated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to obfuscate country entities or not. Default: False.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setDateEntities">
+<span class="sig-name descname"><span class="pre">setDateEntities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entities</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setDateEntities" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets list of date entities. Default: [‘DATE’, ‘DOB’, ‘DOD’, ‘EFFDATE’, ‘FISCAL_YEAR’]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>entities</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of date entities.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setDateFormats">
-<span class="sig-name descname"><span class="pre">setDateFormats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setDateFormats" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">setDateFormats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">formats</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setDateFormats" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets list of date formats to automatically displace if parsed</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>s</strong> (<em>str</em>) – List of date formats to automatically displace if parsed</p>
+<dd class="field-odd"><p><strong>formats</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of date formats to automatically displace if parsed</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1297,11 +1357,12 @@ The similarity is based on the Levenshtein Distance between the words.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setDays">
-<span class="sig-name descname"><span class="pre">setDays</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setDays" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets number of days to obfuscate by displacement the dates.</p>
+<span class="sig-name descname"><span class="pre">setDays</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">day</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setDays" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets number of days to obfuscate by displacement the dates.
+If not provided a random integer between 1 and 60 will be used.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>d</strong> (<em>int</em>) – Number of days to obfuscate by displacement the dates.</p>
+<dd class="field-odd"><p><strong>day</strong> (<em>int</em>) – Number of days to obfuscate by displacement the dates.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1349,13 +1410,10 @@ Default: 3</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setFixedMaskLength">
 <span class="sig-name descname"><span class="pre">setFixedMaskLength</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">length</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setFixedMaskLength" title="Permalink to this definition">#</a></dt>
-<dd><p>Fixed mask length: this is the length of the masking sequence that will be used when the ‘fixed_length_chars’
-masking policy is selected.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>length</strong> (<em>int</em>) – The mask length</p>
-</dd>
-</dl>
+<dd><p>The length of the masking sequence in case of fixed_length_chars masking policy.
+Default: 7
+:param length: The length of the masking sequence in case of fixed_length_chars masking policy.
+:type length: int</p>
 </dd></dl>
 
 <dl class="py method">
@@ -1365,17 +1423,95 @@ masking policy is selected.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setGenderAwareness">
-<span class="sig-name descname"><span class="pre">setGenderAwareness</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">l</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setGenderAwareness" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">setGenderAwareness</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setGenderAwareness" title="Permalink to this definition">#</a></dt>
 <dd><p>Set whether to use gender-aware names or not during obfuscation.
 This param effects only names.
 If value is true, it might decrease performance.
 Default: False</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>l</strong> (<em>str</em>) – Whether to use gender-aware names or not during obfuscation. This param effects only names.
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – Whether to use gender-aware names or not during obfuscation. This param effects only names.
 If value is true, it might decrease performance. Default: False</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setGeoConsistency">
+<span class="sig-name descname"><span class="pre">setGeoConsistency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setGeoConsistency" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to enforce consistent obfuscation across geographical entities:
+state, city, street, zip and phone.</p>
+<section id="functionality-overview">
+<h4>Functionality Overview<a class="headerlink" href="#functionality-overview" title="Permalink to this heading">#</a></h4>
+<p>This parameter enables intelligent geographical entity obfuscation that maintains
+realistic relationships between different geographic components. When enabled,
+the system ensures that obfuscated addresses form coherent, valid combinations
+rather than random replacements.</p>
+</section>
+<section id="supported-entity-types">
+<h4>Supported Entity Types<a class="headerlink" href="#supported-entity-types" title="Permalink to this heading">#</a></h4>
+<p>The following geographical entities are processed with priority order:</p>
+<ul class="simple">
+<li><p><strong>state</strong> (Priority: 0) - US state names</p></li>
+<li><p><strong>city</strong> (Priority: 1) - City names</p></li>
+<li><p><strong>zip</strong> (Priority: 2) - Zip codes</p></li>
+<li><p><strong>street</strong> (Priority: 3) - Street addresses</p></li>
+<li><p><strong>phone</strong> (Priority: 4) - Phone numbers</p></li>
+</ul>
+</section>
+<section id="language-requirement">
+<h4>Language Requirement<a class="headerlink" href="#language-requirement" title="Permalink to this heading">#</a></h4>
+<p><strong>IMPORTANT</strong>: Geographic consistency is only applied when:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">geoConsistency</span></code> parameter is set to <code class="docutils literal notranslate"><span class="pre">True</span></code> AND</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">language</span></code> parameter is set to <code class="docutils literal notranslate"><span class="pre">&quot;en&quot;</span></code></p></li>
+</ul>
+<p>For non-English configurations, this feature is automatically disabled regardless
+of the parameter setting.</p>
+</section>
+<section id="consistency-algorithm">
+<h4>Consistency Algorithm<a class="headerlink" href="#consistency-algorithm" title="Permalink to this heading">#</a></h4>
+<p>When geographical entities comes from the chunk columns:</p>
+<ol class="arabic simple">
+<li><p><strong>Entity Grouping</strong>: All geographic entities are identified and grouped by type</p></li>
+<li><p><strong>Fake Address Selection</strong>: A consistent set of fake US addresses is selected
+using hash-based deterministic selection to ensure reproducibility</p></li>
+<li><p><strong>Priority-Based Mapping</strong>: Entities are mapped to fake addresses following
+the priority order (state → city → zip → street → phone)</p></li>
+<li><p><strong>Consistent Replacement</strong>: All entities of the same type within a document
+use the same fake address pool, maintaining geographical coherence</p></li>
+</ol>
+</section>
+<section id="parameter-interactions">
+<h4>Parameter Interactions<a class="headerlink" href="#parameter-interactions" title="Permalink to this heading">#</a></h4>
+<p><strong>IMPORTANT</strong>: Enabling this parameter automatically disables:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">keepTextSizeForObfuscation</span></code> - Text size preservation is not maintained</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">consistentObfuscation</span></code> - Standard consistency rules are overridden</p></li>
+<li><p>file-based fakers</p></li>
+</ul>
+<p>This is necessary because geographic consistency requires specific fake address
+selection that may not preserve original text lengths or follow standard
+obfuscation patterns.</p>
+<p class="rubric">Examples</p>
+<p>Basic usage:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp_jsl.annotator</span> <span class="kn">import</span> <span class="n">DeIdentification</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">deid</span> <span class="o">=</span> <span class="n">DeIdentification</span><span class="p">()</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;sentence&quot;</span><span class="p">,</span> <span class="s2">&quot;token&quot;</span><span class="p">,</span> <span class="s2">&quot;ner_chunk&quot;</span><span class="p">])</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;deidentified&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setGeoConsistency</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setLanguage</span><span class="p">(</span><span class="s2">&quot;en&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">param value<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Whether to enforce consistent obfuscation across geographical entities. Default is False.</p>
+</dd>
+<dt class="field-even">type value<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</section>
 </dd></dl>
 
 <dl class="py method">
@@ -1487,7 +1623,7 @@ The values are the following:
 Default:’en’</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>lang</strong> (<em>str</em>) – The language used to select the regex file and some faker entities.’en’(English), ‘de’(German), ‘es’(Spanish), ‘fr’(French), ‘ar’(Arabic) or ‘ro’(Romanian). Default:’en’.</p>
+<dd class="field-odd"><p><strong>lang</strong> (<em>str</em>) – The language used to select the regex file and some faker entities. Default:’en’.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1519,12 +1655,20 @@ RecursivePipeline</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setMaskingPolicy">
 <span class="sig-name descname"><span class="pre">setMaskingPolicy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setMaskingPolicy" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets the masking policy</p>
+<dd><dl>
+<dt>Sets the masking policy:</dt><dd><ul class="simple">
+<li><p>same_length_chars: Replace the obfuscated entity with a masking sequence composed of asterisks and surrounding squared brackets,</p></li>
+</ul>
+<p>being the total length of the masking sequence of the same length as the original sequence. Example, Smith -&gt; [<a href="#id5"><span class="problematic" id="id6">**</span></a><a href="#id7"><span class="problematic" id="id8">*</span></a>].
+If the entity is less than 3 chars (like Jo, or 5), asterisks without brackets will be returned.</p>
 <ul class="simple">
-<li><p>same_length_chars: Replace the obfuscated entity with a masking sequence composed of asterisks and surrounding squared brackets, being the total length of the masking sequence of the same length as the original sequence. Example, Smith -&gt; [<a href="#id5"><span class="problematic" id="id6">**</span></a><a href="#id7"><span class="problematic" id="id8">*</span></a>]. If the entity is less than 3 chars (like Jo, or 5), asterisks without brackets will be returned.</p></li>
 <li><p>entity_labels: Replace the values with the corresponding entity labels.</p></li>
 <li><p>fixed_length_chars: Replace the obfuscated entity with a masking sequence composed of a fixed number of asterisks.</p></li>
+<li><p>entity_labels_without_brackets: Replace the values with the entity value without brackets.</p></li>
+<li><p>same_length_chars_without_brackets: Replace the name with the asterisks with same length without brackets.</p></li>
 </ul>
+</dd>
+</dl>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>mask</strong> (<em>str</em>) – The masking policy</p>
@@ -1542,6 +1686,8 @@ Select the following masking policy if you want to return mask form in the metad
 <li><p>‘entity_labels’: Replace the values with the entity value.</p></li>
 <li><p>‘same_length_chars’: Replace the name with the asterix with same length minus two plus brackets on both end.If the entity is less than 3 chars (like Jo, or 5), we can just use asterix without brackets.</p></li>
 <li><p>‘fixed_length_chars’: Replace the obfuscated entity with a masking sequence composed of a fixed number of asterisk.</p></li>
+<li><p>‘same_length_chars_without_brackets’: Replace the name with the asterix with same length without brackets.</p></li>
+<li><p>‘entity_labels_without_brackets’: Replace the values with the entity value without brackets.</p></li>
 <li><p>Default: “”</p></li>
 </ul>
 <dl class="field-list simple">
@@ -1588,15 +1734,15 @@ When <cite>False</cite>, the age ranges specified in the <code class="docutils l
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setObfuscateDate">
-<span class="sig-name descname"><span class="pre">setObfuscateDate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setObfuscateDate" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">setObfuscateDate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setObfuscateDate" title="Permalink to this definition">#</a></dt>
 <dd><p>When mode==’obfuscate’ whether to obfuscate dates or not. This param helps in consistency to make dateFormats more visible.
-When setting to <code class="docutils literal notranslate"><span class="pre">true</span></code>, make sure dateFormats param fits the needs.
-If the value is <code class="docutils literal notranslate"><span class="pre">true</span></code> and obfuscation is failed, then unnormalizedDateMode param will be activated.
-When setting to <code class="docutils literal notranslate"><span class="pre">false</span></code>, then the date will be masked to &lt;DATE&gt;
-Default: false</p>
+When setting to <code class="docutils literal notranslate"><span class="pre">True</span></code>, make sure dateFormats param fits the needs.
+If the value is <code class="docutils literal notranslate"><span class="pre">True</span></code> and obfuscation is failed, then unnormalizedDateMode param will be activated.
+When setting to <code class="docutils literal notranslate"><span class="pre">False</span></code>, then the date will be masked to &lt;DATE&gt;.
+Default: False</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – When mode==’obfuscate’ whether to obfuscate dates or not. Default: false</p>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – When mode==’obfuscate’ whether to obfuscate dates or not. Default: False.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1614,11 +1760,17 @@ Default: false</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setObfuscateRefSource">
-<span class="sig-name descname"><span class="pre">setObfuscateRefSource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setObfuscateRefSource" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets mode for select obfuscate source [‘both’|’faker’| ‘file]</p>
+<span class="sig-name descname"><span class="pre">setObfuscateRefSource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setObfuscateRefSource" title="Permalink to this definition">#</a></dt>
+<dd><p>The source of obfuscation to obfuscate the entities. For dates entities, This property is invalid.
+The values ar the following:</p>
+<blockquote>
+<div><p>custom: Takes the entities from the setCustomFakers function.
+faker: Takes the entities from the Faker module
+both : Takes the entities from the setCustomFakers function and the faker module randomly.</p>
+</div></blockquote>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>s</strong> (<em>str</em>) – Mode for select obfuscate source [‘both’|’faker’| ‘file]</p>
+<dd class="field-odd"><p><strong>source</strong> (<em>str</em>) – The source of obfuscation to obfuscate the entities. Default: faker.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1738,7 +1890,7 @@ The default value is false.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setRegion">
-<span class="sig-name descname"><span class="pre">setRegion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setRegion" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">setRegion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setRegion" title="Permalink to this definition">#</a></dt>
 <dd><p>With this property, you can select particular dateFormats. This property is especially used when obfuscating dates.
 For example:
 Decide whether the first part of 11/11/2023 is a day or the second part is a day when obfuscating dates.
@@ -1748,7 +1900,7 @@ The values are following:
 Default: ‘eu’</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>s</strong> (<em>str</em>) – The region to use select date formats. Options: ‘eu’ for European Union, ‘us’ for the USA, Default: ‘eu’</p>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – The region to use select date formats. Options: ‘eu’ for European Union, ‘us’ for the USA, Default: ‘eu’</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1777,12 +1929,12 @@ Default: ‘eu’</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setSameLengthFormattedEntities">
-<span class="sig-name descname"><span class="pre">setSameLengthFormattedEntities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setSameLengthFormattedEntities" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">setSameLengthFormattedEntities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setSameLengthFormattedEntities" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets list of formatted entities to generate the same length outputs as original ones during obfuscation</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>s</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – </p></li>
+<li><p><strong>value</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – </p></li>
 <li><p><strong>are</strong> (<em>The supported and default formatted entities</em>) – </p></li>
 </ul>
 </dd>
@@ -1802,6 +1954,34 @@ you can reply to an execution several times with the same output.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setSelectiveObfuscateRefSource">
+<span class="sig-name descname"><span class="pre">setSelectiveObfuscateRefSource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setSelectiveObfuscateRefSource" title="Permalink to this definition">#</a></dt>
+<dd><p>A dictionary of entity names to their obfuscation modes.
+This is used to selectively apply different obfuscation methods to specific entities.
+The keys are entity names and the values are the obfuscation sources.
+If an entity is not specified in this map, the <cite>obfuscateRefSource</cite> param is used to determine the obfuscation source.</p>
+<section id="example">
+<h4>Example:<a class="headerlink" href="#example" title="Permalink to this heading">#</a></h4>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">selective_sources</span> <span class="o">=</span> <span class="p">{</span>
+<span class="gp">... </span><span class="s1">&#39;PHONE&#39;</span><span class="p">:</span> <span class="s1">&#39;file&#39;</span><span class="p">,</span>
+<span class="gp">... </span><span class="s1">&#39;ADDRESS&#39;</span><span class="p">:</span> <span class="s1">&#39;both&#39;</span>
+<span class="gp">... </span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">deid</span><span class="o">.</span><span class="n">setObfuscateRefSource</span><span class="p">(</span><span class="s1">&#39;faker&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">setSelectiveObfuscateRefSource</span><span class="p">(</span><span class="n">selective_sources</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">param source<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A dictionary of entity names to their obfuscation modes.
+The keys are entity names and the values are the obfuscation sources.</p>
+</dd>
+<dt class="field-even">type source<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict[str, str]</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setSelectiveObfuscationModes">
 <span class="sig-name descname"><span class="pre">setSelectiveObfuscationModes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setSelectiveObfuscationModes" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets a Json path which has a dictionary of modes to enable multi-mode deIdentification.</p>
@@ -1809,6 +1989,8 @@ you can reply to an execution several times with the same output.</p>
 ‘mask_same_length_chars’: Replace the name with the asterisks with same length minus two plus brackets on both end.
 ‘mask_entity_labels’: Replace the values with the entity value.
 ‘mask_fixed_length_chars’: Replace the name with the asterisks with fixed length. You can also invoke “setFixedMaskLength()”
+‘mask_entity_labels_without_brackets’: Replace the values with the entity value without brackets.
+‘mask_same_length_chars_without_brackets’: Replace the name with the asterisks with same length without brackets.
 ‘skip’: Skip the values (intact)</p>
 <p>The entities which have not been given in dictionary will deidentify according to setMode().</p>
 <dl class="field-list simple">
@@ -1819,12 +2001,58 @@ you can reply to an execution several times with the same output.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setUnnormalizedDateMode">
-<span class="sig-name descname"><span class="pre">setUnnormalizedDateMode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setUnnormalizedDateMode" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets the mode to use if the date is not formatted.</p>
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setStaticObfuscationPairs">
+<span class="sig-name descname"><span class="pre">setStaticObfuscationPairs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pairs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setStaticObfuscationPairs" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the static obfuscation pairs
+This method is used to set static obfuscation pairs that will be used for de-identification.
+Each pair should contain three elements: original, entity type, and fake.
+The pairs must have exactly 3 elements: [original, entityType, fake].</p>
+<section id="id9">
+<h4>Example:<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h4>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pairs</span> <span class="o">=</span> <span class="p">[</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="s2">&quot;John Doe&quot;</span><span class="p">,</span> <span class="s2">&quot;PERSON&quot;</span><span class="p">,</span> <span class="s2">&quot;Jane Smith&quot;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="s2">&quot;Los Angeles&quot;</span><span class="p">,</span> <span class="s2">&quot;LOCATION&quot;</span><span class="p">,</span> <span class="s2">&quot;New York City&quot;</span><span class="p">],</span>
+<span class="gp">... </span>  <span class="p">]</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">param pairs<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List of static obfuscation pairs. Each pair should contain three elements: [original, entityType, fake].
+The pairs must have exactly 3 elements: [original, entityType, fake].</p>
+</dd>
+<dt class="field-even">type pairs<span class="colon">:</span></dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setStaticObfuscationPairsResource">
+<span class="sig-name descname"><span class="pre">setStaticObfuscationPairsResource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">read_as</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">ReadAs.TEXT</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setStaticObfuscationPairsResource" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets file with static obfuscation pairs
+The pairs must have exactly 3 elements: [original, entityType, fake].
+The first element is the original value, the second is the entity type, and the third is the fake value.
+A delimiter is used to separate the elements in each line. You can specify the delimiter in the options parameter.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>s</strong> (<em>str</em>) – The mode to use if the date is not formatted. [mask, obfuscate, skip] Default: obfuscate</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em>) – Path to the external resource</p></li>
+<li><p><strong>read_as</strong> (<em>str</em><em>, </em><em>optional</em>) – How to read the resource, by default ReadAs.TEXT</p></li>
+<li><p><strong>options</strong> (<em>dict</em><em>, </em><em>optional</em>) – Options for reading the resource, by default {“format”: “text”}</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setUnnormalizedDateMode">
+<span class="sig-name descname"><span class="pre">setUnnormalizedDateMode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setUnnormalizedDateMode" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the mode to use if the date is not formatted.
+Options: [mask, obfuscate, skip]. Default: obfuscate.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mode</strong> (<em>str</em>) – The mode to use if the date is not formatted.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1916,7 +2144,7 @@ The default value is false.</p></li>
 <li><p><strong>blackList</strong> – List of entities ignored for masking or obfuscation.The default values are: “SSN”,”PASSPORT”,”DLN”,”NPI”,”C_CARD”,”IBAN”,”DEA”</p></li>
 <li><p><strong>regexEntities</strong> – Keep the regex entities used in the regexPatternDictionary</p></li>
 <li><p><strong>maskingPolicy</strong> – Select the masking policy:
-- same_length_chars: Replace the obfuscated entity with a masking sequence composed of asterisks and surrounding squared brackets, being the total length of the masking sequence of the same length as the original sequence. Example, Smith -&gt; [<a href="#id9"><span class="problematic" id="id10">**</span></a><a href="#id11"><span class="problematic" id="id12">*</span></a>]. If the entity is less than 3 chars (like Jo, or 5), asterisks without brackets will be returned.
+- same_length_chars: Replace the obfuscated entity with a masking sequence composed of asterisks and surrounding squared brackets, being the total length of the masking sequence of the same length as the original sequence. Example, Smith -&gt; [<a href="#id10"><span class="problematic" id="id11">**</span></a><a href="#id12"><span class="problematic" id="id13">*</span></a>]. If the entity is less than 3 chars (like Jo, or 5), asterisks without brackets will be returned.
 - entity_labels: Replace the values with the corresponding entity labels.
 - fixed_length_chars: Replace the obfuscated entity with a masking sequence composed of a fixed number of asterisks.</p></li>
 <li><p><strong>fixedMaskLength</strong> (<em>this is the length</em><em> of </em><em>the masking sequence that will be used when the 'fixed_length_chars' masking policy is selected.</em>) – </p></li>
@@ -2004,6 +2232,11 @@ Default: False.</p></li>
 </pre></div>
 </div>
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.additionalDateFormats">
+<span class="sig-name descname"><span class="pre">additionalDateFormats</span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.additionalDateFormats" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.ageRanges">
 <span class="sig-name descname"><span class="pre">ageRanges</span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.ageRanges" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -2034,6 +2267,16 @@ Default: False.</p></li>
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.countryObfuscation">
+<span class="sig-name descname"><span class="pre">countryObfuscation</span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.countryObfuscation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.dateEntities">
+<span class="sig-name descname"><span class="pre">dateEntities</span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.dateEntities" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.dateFormats">
 <span class="sig-name descname"><span class="pre">dateFormats</span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.dateFormats" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -2054,11 +2297,6 @@ Default: False.</p></li>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.doExceptionHandling">
-<span class="sig-name descname"><span class="pre">doExceptionHandling</span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.doExceptionHandling" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.fakerLengthOffset">
 <span class="sig-name descname"><span class="pre">fakerLengthOffset</span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.fakerLengthOffset" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -2071,6 +2309,11 @@ Default: False.</p></li>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.genderAwareness">
 <span class="sig-name descname"><span class="pre">genderAwareness</span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.genderAwareness" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.geoConsistency">
+<span class="sig-name descname"><span class="pre">geoConsistency</span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.geoConsistency" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -2254,6 +2497,11 @@ Default: False.</p></li>
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.useShiftDays">
+<span class="sig-name descname"><span class="pre">useShiftDays</span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.useShiftDays" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.zipCodeTag">
 <span class="sig-name descname"><span class="pre">zipCodeTag</span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.zipCodeTag" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -2321,12 +2569,6 @@ user-supplied values &lt; extra.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.getBlackList">
-<span class="sig-name descname"><span class="pre">getBlackList</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.getBlackList" title="Permalink to this definition">#</a></dt>
-<dd><p>Gets the value of blackList or its default value.</p>
-</dd></dl>
-
-<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.getChunkMatching">
 <span class="sig-name descname"><span class="pre">getChunkMatching</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.getChunkMatching" title="Permalink to this definition">#</a></dt>
 <dd><p>Gets the value of chunkMatching or its default value.</p>
@@ -2384,9 +2626,9 @@ default value. Raises an error if neither is set.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.getSameLengthFormattedEntities">
-<span class="sig-name descname"><span class="pre">getSameLengthFormattedEntities</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.getSameLengthFormattedEntities" title="Permalink to this definition">#</a></dt>
-<dd><p>Returns the sameLengthFormattedEntities value.</p>
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.getSelectiveObfuscateRefSource">
+<span class="sig-name descname"><span class="pre">getSelectiveObfuscateRefSource</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.getSelectiveObfuscateRefSource" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the dictionary of entity names to their obfuscate ref sources.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -2474,6 +2716,18 @@ open-source location. Other values are “clinical/models”,
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setAdditionalDateFormats">
+<span class="sig-name descname"><span class="pre">setAdditionalDateFormats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">formats</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setAdditionalDateFormats" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets additional date formats to be considered during date obfuscation.
+This allows users to specify custom date formats in addition to the default date formats.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>formats</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of additional date formats to be considered during date obfuscation.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setAgeGroups">
 <span class="sig-name descname"><span class="pre">setAgeGroups</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setAgeGroups" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets a dictionary of age groups to obfuscate ages.
@@ -2482,8 +2736,8 @@ If the given <code class="docutils literal notranslate"><span class="pre">ageGro
 The dictionary should contain the age group name as the key and an list of two integers as the value.
 The first integer is the lower bound of the age group, and the second integer is the upper bound of the age group.
 Default age groups are as follows in the English language:</p>
-<section id="id13">
-<h4>Default and example dictionary<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h4>
+<section id="id14">
+<h4>Default and example dictionary<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h4>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span> <span class="s2">&quot;baby&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
 <span class="gp">... </span>  <span class="s2">&quot;toddler&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
 <span class="gp">... </span>  <span class="s2">&quot;child&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">13</span><span class="p">],</span>
@@ -2505,11 +2759,11 @@ Default age groups are as follows in the English language:</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setAgeRanges">
-<span class="sig-name descname"><span class="pre">setAgeRanges</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setAgeRanges" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets list of integers specifying limits of the age groups to preserve during obfuscation</p>
+<span class="sig-name descname"><span class="pre">setAgeRanges</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setAgeRanges" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets list of integer specifying limits of the age groups to preserve during obfuscation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>s</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – </p>
+<dd class="field-odd"><p><strong>value</strong> (<em>List</em><em>[</em><em>int</em><em>]</em>) – List of integer specifying limits of the age groups to preserve during obfuscation.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2607,12 +2861,36 @@ The similarity is based on the Levenshtein Distance between the words.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setCountryObfuscation">
+<span class="sig-name descname"><span class="pre">setCountryObfuscation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setCountryObfuscation" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to obfuscate country entities or not.
+If True, country entities will be obfuscated.
+If False, country entities will not be obfuscated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to obfuscate country entities or not. Default: False.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setDateEntities">
+<span class="sig-name descname"><span class="pre">setDateEntities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entities</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setDateEntities" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets list of date entities. Default: [‘DATE’, ‘DOB’, ‘DOD’, ‘EFFDATE’, ‘FISCAL_YEAR’]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>entities</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of date entities.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setDateFormats">
-<span class="sig-name descname"><span class="pre">setDateFormats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setDateFormats" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">setDateFormats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">formats</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setDateFormats" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets list of date formats to automatically displace if parsed</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>s</strong> (<em>str</em>) – List of date formats to automatically displace if parsed</p>
+<dd class="field-odd"><p><strong>formats</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of date formats to automatically displace if parsed</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2641,24 +2919,12 @@ The similarity is based on the Levenshtein Distance between the words.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setDays">
-<span class="sig-name descname"><span class="pre">setDays</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setDays" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets number of days to obfuscate by displacement the dates.</p>
+<span class="sig-name descname"><span class="pre">setDays</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">day</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setDays" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets number of days to obfuscate by displacement the dates.
+If not provided a random integer between 1 and 60 will be used.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>d</strong> (<em>int</em>) – Number of days to obfuscate by displacement the dates.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setDoExceptionHandling">
-<span class="sig-name descname"><span class="pre">setDoExceptionHandling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setDoExceptionHandling" title="Permalink to this definition">#</a></dt>
-<dd><p>If True, exceptions are handled.
-If exception causing data is passed to the model, a error annotation is emitted which has the exception message.
-Processing continues with the next one. This comes with a performance penalty.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – If True, exceptions are handled.</p>
+<dd class="field-odd"><p><strong>day</strong> (<em>int</em>) – Number of days to obfuscate by displacement the dates.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2678,13 +2944,10 @@ Default: 3</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setFixedMaskLength">
 <span class="sig-name descname"><span class="pre">setFixedMaskLength</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">length</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setFixedMaskLength" title="Permalink to this definition">#</a></dt>
-<dd><p>Fixed mask length: this is the length of the masking sequence that will be used when the ‘fixed_length_chars’
-masking policy is selected.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>length</strong> (<em>int</em>) – The mask length</p>
-</dd>
-</dl>
+<dd><p>The length of the masking sequence in case of fixed_length_chars masking policy.
+Default: 7
+:param length: The length of the masking sequence in case of fixed_length_chars masking policy.
+:type length: int</p>
 </dd></dl>
 
 <dl class="py method">
@@ -2694,17 +2957,95 @@ masking policy is selected.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setGenderAwareness">
-<span class="sig-name descname"><span class="pre">setGenderAwareness</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">l</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setGenderAwareness" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">setGenderAwareness</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setGenderAwareness" title="Permalink to this definition">#</a></dt>
 <dd><p>Set whether to use gender-aware names or not during obfuscation.
 This param effects only names.
 If value is true, it might decrease performance.
 Default: False</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>l</strong> (<em>str</em>) – Whether to use gender-aware names or not during obfuscation. This param effects only names.
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – Whether to use gender-aware names or not during obfuscation. This param effects only names.
 If value is true, it might decrease performance. Default: False</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setGeoConsistency">
+<span class="sig-name descname"><span class="pre">setGeoConsistency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setGeoConsistency" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to enforce consistent obfuscation across geographical entities:
+state, city, street, zip and phone.</p>
+<section id="id15">
+<h4>Functionality Overview<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h4>
+<p>This parameter enables intelligent geographical entity obfuscation that maintains
+realistic relationships between different geographic components. When enabled,
+the system ensures that obfuscated addresses form coherent, valid combinations
+rather than random replacements.</p>
+</section>
+<section id="id16">
+<h4>Supported Entity Types<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h4>
+<p>The following geographical entities are processed with priority order:</p>
+<ul class="simple">
+<li><p><strong>state</strong> (Priority: 0) - US state names</p></li>
+<li><p><strong>city</strong> (Priority: 1) - City names</p></li>
+<li><p><strong>zip</strong> (Priority: 2) - Zip codes</p></li>
+<li><p><strong>street</strong> (Priority: 3) - Street addresses</p></li>
+<li><p><strong>phone</strong> (Priority: 4) - Phone numbers</p></li>
+</ul>
+</section>
+<section id="id17">
+<h4>Language Requirement<a class="headerlink" href="#id17" title="Permalink to this heading">#</a></h4>
+<p><strong>IMPORTANT</strong>: Geographic consistency is only applied when:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">geoConsistency</span></code> parameter is set to <code class="docutils literal notranslate"><span class="pre">True</span></code> AND</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">language</span></code> parameter is set to <code class="docutils literal notranslate"><span class="pre">&quot;en&quot;</span></code></p></li>
+</ul>
+<p>For non-English configurations, this feature is automatically disabled regardless
+of the parameter setting.</p>
+</section>
+<section id="id18">
+<h4>Consistency Algorithm<a class="headerlink" href="#id18" title="Permalink to this heading">#</a></h4>
+<p>When geographical entities comes from the chunk columns:</p>
+<ol class="arabic simple">
+<li><p><strong>Entity Grouping</strong>: All geographic entities are identified and grouped by type</p></li>
+<li><p><strong>Fake Address Selection</strong>: A consistent set of fake US addresses is selected
+using hash-based deterministic selection to ensure reproducibility</p></li>
+<li><p><strong>Priority-Based Mapping</strong>: Entities are mapped to fake addresses following
+the priority order (state → city → zip → street → phone)</p></li>
+<li><p><strong>Consistent Replacement</strong>: All entities of the same type within a document
+use the same fake address pool, maintaining geographical coherence</p></li>
+</ol>
+</section>
+<section id="id19">
+<h4>Parameter Interactions<a class="headerlink" href="#id19" title="Permalink to this heading">#</a></h4>
+<p><strong>IMPORTANT</strong>: Enabling this parameter automatically disables:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">keepTextSizeForObfuscation</span></code> - Text size preservation is not maintained</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">consistentObfuscation</span></code> - Standard consistency rules are overridden</p></li>
+<li><p>file-based fakers</p></li>
+</ul>
+<p>This is necessary because geographic consistency requires specific fake address
+selection that may not preserve original text lengths or follow standard
+obfuscation patterns.</p>
+<p class="rubric">Examples</p>
+<p>Basic usage:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp_jsl.annotator</span> <span class="kn">import</span> <span class="n">DeIdentification</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">deid</span> <span class="o">=</span> <span class="n">DeIdentification</span><span class="p">()</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;sentence&quot;</span><span class="p">,</span> <span class="s2">&quot;token&quot;</span><span class="p">,</span> <span class="s2">&quot;ner_chunk&quot;</span><span class="p">])</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;deidentified&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setGeoConsistency</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setLanguage</span><span class="p">(</span><span class="s2">&quot;en&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">param value<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Whether to enforce consistent obfuscation across geographical entities. Default is False.</p>
+</dd>
+<dt class="field-even">type value<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</section>
 </dd></dl>
 
 <dl class="py method">
@@ -2816,7 +3157,7 @@ The values are the following:
 Default:’en’</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>lang</strong> (<em>str</em>) – The language used to select the regex file and some faker entities.’en’(English), ‘de’(German), ‘es’(Spanish), ‘fr’(French), ‘ar’(Arabic) or ‘ro’(Romanian). Default:’en’.</p>
+<dd class="field-odd"><p><strong>lang</strong> (<em>str</em>) – The language used to select the regex file and some faker entities. Default:’en’.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2848,12 +3189,20 @@ RecursivePipeline</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setMaskingPolicy">
 <span class="sig-name descname"><span class="pre">setMaskingPolicy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setMaskingPolicy" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets the masking policy</p>
+<dd><dl>
+<dt>Sets the masking policy:</dt><dd><ul class="simple">
+<li><p>same_length_chars: Replace the obfuscated entity with a masking sequence composed of asterisks and surrounding squared brackets,</p></li>
+</ul>
+<p>being the total length of the masking sequence of the same length as the original sequence. Example, Smith -&gt; [<a href="#id20"><span class="problematic" id="id21">**</span></a><a href="#id22"><span class="problematic" id="id23">*</span></a>].
+If the entity is less than 3 chars (like Jo, or 5), asterisks without brackets will be returned.</p>
 <ul class="simple">
-<li><p>same_length_chars: Replace the obfuscated entity with a masking sequence composed of asterisks and surrounding squared brackets, being the total length of the masking sequence of the same length as the original sequence. Example, Smith -&gt; [<a href="#id14"><span class="problematic" id="id15">**</span></a><a href="#id16"><span class="problematic" id="id17">*</span></a>]. If the entity is less than 3 chars (like Jo, or 5), asterisks without brackets will be returned.</p></li>
 <li><p>entity_labels: Replace the values with the corresponding entity labels.</p></li>
 <li><p>fixed_length_chars: Replace the obfuscated entity with a masking sequence composed of a fixed number of asterisks.</p></li>
+<li><p>entity_labels_without_brackets: Replace the values with the entity value without brackets.</p></li>
+<li><p>same_length_chars_without_brackets: Replace the name with the asterisks with same length without brackets.</p></li>
 </ul>
+</dd>
+</dl>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>mask</strong> (<em>str</em>) – The masking policy</p>
@@ -2871,6 +3220,8 @@ Select the following masking policy if you want to return mask form in the metad
 <li><p>‘entity_labels’: Replace the values with the entity value.</p></li>
 <li><p>‘same_length_chars’: Replace the name with the asterix with same length minus two plus brackets on both end.If the entity is less than 3 chars (like Jo, or 5), we can just use asterix without brackets.</p></li>
 <li><p>‘fixed_length_chars’: Replace the obfuscated entity with a masking sequence composed of a fixed number of asterisk.</p></li>
+<li><p>‘same_length_chars_without_brackets’: Replace the name with the asterix with same length without brackets.</p></li>
+<li><p>‘entity_labels_without_brackets’: Replace the values with the entity value without brackets.</p></li>
 <li><p>Default: “”</p></li>
 </ul>
 <dl class="field-list simple">
@@ -2917,26 +3268,32 @@ When <cite>False</cite>, the age ranges specified in the <code class="docutils l
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setObfuscateDate">
-<span class="sig-name descname"><span class="pre">setObfuscateDate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setObfuscateDate" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">setObfuscateDate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setObfuscateDate" title="Permalink to this definition">#</a></dt>
 <dd><p>When mode==’obfuscate’ whether to obfuscate dates or not. This param helps in consistency to make dateFormats more visible.
-When setting to <code class="docutils literal notranslate"><span class="pre">true</span></code>, make sure dateFormats param fits the needs.
-If the value is <code class="docutils literal notranslate"><span class="pre">true</span></code> and obfuscation is failed, then unnormalizedDateMode param will be activated.
-When setting to <code class="docutils literal notranslate"><span class="pre">false</span></code>, then the date will be masked to &lt;DATE&gt;
-Default: false</p>
+When setting to <code class="docutils literal notranslate"><span class="pre">True</span></code>, make sure dateFormats param fits the needs.
+If the value is <code class="docutils literal notranslate"><span class="pre">True</span></code> and obfuscation is failed, then unnormalizedDateMode param will be activated.
+When setting to <code class="docutils literal notranslate"><span class="pre">False</span></code>, then the date will be masked to &lt;DATE&gt;.
+Default: False</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – When mode==’obfuscate’ whether to obfuscate dates or not. Default: false</p>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – When mode==’obfuscate’ whether to obfuscate dates or not. Default: False.</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setObfuscateRefSource">
-<span class="sig-name descname"><span class="pre">setObfuscateRefSource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setObfuscateRefSource" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets mode for select obfuscate source [‘both’|’faker’| ‘file]</p>
+<span class="sig-name descname"><span class="pre">setObfuscateRefSource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setObfuscateRefSource" title="Permalink to this definition">#</a></dt>
+<dd><p>The source of obfuscation to obfuscate the entities. For dates entities, This property is invalid.
+The values ar the following:</p>
+<blockquote>
+<div><p>custom: Takes the entities from the setCustomFakers function.
+faker: Takes the entities from the Faker module
+both : Takes the entities from the setCustomFakers function and the faker module randomly.</p>
+</div></blockquote>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>s</strong> (<em>str</em>) – Mode for select obfuscate source [‘both’|’faker’| ‘file]</p>
+<dd class="field-odd"><p><strong>source</strong> (<em>str</em>) – The source of obfuscation to obfuscate the entities. Default: faker.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -3013,7 +3370,7 @@ The default value is false.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setRegion">
-<span class="sig-name descname"><span class="pre">setRegion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setRegion" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">setRegion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setRegion" title="Permalink to this definition">#</a></dt>
 <dd><p>With this property, you can select particular dateFormats. This property is especially used when obfuscating dates.
 For example:
 Decide whether the first part of 11/11/2023 is a day or the second part is a day when obfuscating dates.
@@ -3023,7 +3380,7 @@ The values are following:
 Default: ‘eu’</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>s</strong> (<em>str</em>) – The region to use select date formats. Options: ‘eu’ for European Union, ‘us’ for the USA, Default: ‘eu’</p>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – The region to use select date formats. Options: ‘eu’ for European Union, ‘us’ for the USA, Default: ‘eu’</p>
 </dd>
 </dl>
 </dd></dl>
@@ -3052,12 +3409,12 @@ Default: ‘eu’</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setSameLengthFormattedEntities">
-<span class="sig-name descname"><span class="pre">setSameLengthFormattedEntities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setSameLengthFormattedEntities" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">setSameLengthFormattedEntities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setSameLengthFormattedEntities" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets list of formatted entities to generate the same length outputs as original ones during obfuscation</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>s</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – </p></li>
+<li><p><strong>value</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – </p></li>
 <li><p><strong>are</strong> (<em>The supported and default formatted entities</em>) – </p></li>
 </ul>
 </dd>
@@ -3077,12 +3434,68 @@ you can reply to an execution several times with the same output.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setSelectiveObfuscateRefSource">
+<span class="sig-name descname"><span class="pre">setSelectiveObfuscateRefSource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setSelectiveObfuscateRefSource" title="Permalink to this definition">#</a></dt>
+<dd><p>A dictionary of entity names to their obfuscation modes.
+This is used to selectively apply different obfuscation methods to specific entities.
+The keys are entity names and the values are the obfuscation sources.
+If an entity is not specified in this map, the <cite>obfuscateRefSource</cite> param is used to determine the obfuscation source.</p>
+<section id="id24">
+<h4>Example:<a class="headerlink" href="#id24" title="Permalink to this heading">#</a></h4>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">selective_sources</span> <span class="o">=</span> <span class="p">{</span>
+<span class="gp">... </span><span class="s1">&#39;PHONE&#39;</span><span class="p">:</span> <span class="s1">&#39;file&#39;</span><span class="p">,</span>
+<span class="gp">... </span><span class="s1">&#39;ADDRESS&#39;</span><span class="p">:</span> <span class="s1">&#39;both&#39;</span>
+<span class="gp">... </span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">deid</span><span class="o">.</span><span class="n">setObfuscateRefSource</span><span class="p">(</span><span class="s1">&#39;faker&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">setSelectiveObfuscateRefSource</span><span class="p">(</span><span class="n">selective_sources</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">param source<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A dictionary of entity names to their obfuscation modes.
+The keys are entity names and the values are the obfuscation sources.</p>
+</dd>
+<dt class="field-even">type source<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict[str, str]</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setStaticObfuscationPairs">
+<span class="sig-name descname"><span class="pre">setStaticObfuscationPairs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pairs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setStaticObfuscationPairs" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the static obfuscation pairs
+This method is used to set static obfuscation pairs that will be used for de-identification.
+Each pair should contain three elements: original, entity type, and fake.
+The pairs must have exactly 3 elements: [original, entityType, fake].</p>
+<section id="id25">
+<h4>Example:<a class="headerlink" href="#id25" title="Permalink to this heading">#</a></h4>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pairs</span> <span class="o">=</span> <span class="p">[</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="s2">&quot;John Doe&quot;</span><span class="p">,</span> <span class="s2">&quot;PERSON&quot;</span><span class="p">,</span> <span class="s2">&quot;Jane Smith&quot;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="s2">&quot;Los Angeles&quot;</span><span class="p">,</span> <span class="s2">&quot;LOCATION&quot;</span><span class="p">,</span> <span class="s2">&quot;New York City&quot;</span><span class="p">],</span>
+<span class="gp">... </span>  <span class="p">]</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">param pairs<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List of static obfuscation pairs. Each pair should contain three elements: [original, entityType, fake].
+The pairs must have exactly 3 elements: [original, entityType, fake].</p>
+</dd>
+<dt class="field-even">type pairs<span class="colon">:</span></dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setUnnormalizedDateMode">
-<span class="sig-name descname"><span class="pre">setUnnormalizedDateMode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setUnnormalizedDateMode" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets the mode to use if the date is not formatted.</p>
+<span class="sig-name descname"><span class="pre">setUnnormalizedDateMode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setUnnormalizedDateMode" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the mode to use if the date is not formatted.
+Options: [mask, obfuscate, skip]. Default: obfuscate.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>s</strong> (<em>str</em>) – The mode to use if the date is not formatted. [mask, obfuscate, skip] Default: obfuscate</p>
+<dd class="field-odd"><p><strong>mode</strong> (<em>str</em>) – The mode to use if the date is not formatted.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -3116,7 +3529,7 @@ you can reply to an execution several times with the same output.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.transform">
-<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pyspark.ml._typing.ParamMap</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.transform" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><span class="pre">pyspark.sql.dataframe.DataFrame</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pyspark.ml._typing.ParamMap</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><span class="pre">pyspark.sql.dataframe.DataFrame</span></a></span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.transform" title="Permalink to this definition">#</a></dt>
 <dd><p>Transforms the input dataset with optional parameters.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.3.0.</span></p>
@@ -3178,6 +3591,7 @@ you can reply to an execution several times with the same output.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification"><code class="docutils literal notranslate"><span class="pre">DeIdentification</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.additionalDateFormats"><code class="docutils literal notranslate"><span class="pre">DeIdentification.additionalDateFormats</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.ageRanges"><code class="docutils literal notranslate"><span class="pre">DeIdentification.ageRanges</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.ageRangesByHipaa"><code class="docutils literal notranslate"><span class="pre">DeIdentification.ageRangesByHipaa</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.blackList"><code class="docutils literal notranslate"><span class="pre">DeIdentification.blackList</span></code></a></li>
@@ -3185,6 +3599,8 @@ you can reply to an execution several times with the same output.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.combineRegexPatterns"><code class="docutils literal notranslate"><span class="pre">DeIdentification.combineRegexPatterns</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.consistentAcrossNameParts"><code class="docutils literal notranslate"><span class="pre">DeIdentification.consistentAcrossNameParts</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.consistentObfuscation"><code class="docutils literal notranslate"><span class="pre">DeIdentification.consistentObfuscation</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.countryObfuscation"><code class="docutils literal notranslate"><span class="pre">DeIdentification.countryObfuscation</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.dateEntities"><code class="docutils literal notranslate"><span class="pre">DeIdentification.dateEntities</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.dateFormats"><code class="docutils literal notranslate"><span class="pre">DeIdentification.dateFormats</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.dateTag"><code class="docutils literal notranslate"><span class="pre">DeIdentification.dateTag</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.dateToYear"><code class="docutils literal notranslate"><span class="pre">DeIdentification.dateToYear</span></code></a></li>
@@ -3194,6 +3610,7 @@ you can reply to an execution several times with the same output.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.fakerLengthOffset"><code class="docutils literal notranslate"><span class="pre">DeIdentification.fakerLengthOffset</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.fixedMaskLength"><code class="docutils literal notranslate"><span class="pre">DeIdentification.fixedMaskLength</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.genderAwareness"><code class="docutils literal notranslate"><span class="pre">DeIdentification.genderAwareness</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.geoConsistency"><code class="docutils literal notranslate"><span class="pre">DeIdentification.geoConsistency</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.getter_attrs"><code class="docutils literal notranslate"><span class="pre">DeIdentification.getter_attrs</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.groupByCol"><code class="docutils literal notranslate"><span class="pre">DeIdentification.groupByCol</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.ignoreRegex"><code class="docutils literal notranslate"><span class="pre">DeIdentification.ignoreRegex</span></code></a></li>
@@ -3232,9 +3649,11 @@ you can reply to an execution several times with the same output.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.seed"><code class="docutils literal notranslate"><span class="pre">DeIdentification.seed</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.selectiveObfuscationModesPath"><code class="docutils literal notranslate"><span class="pre">DeIdentification.selectiveObfuscationModesPath</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.skipLPInputColsValidation"><code class="docutils literal notranslate"><span class="pre">DeIdentification.skipLPInputColsValidation</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.staticObfuscationPairsResource"><code class="docutils literal notranslate"><span class="pre">DeIdentification.staticObfuscationPairsResource</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.uid"><code class="docutils literal notranslate"><span class="pre">DeIdentification.uid</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.unnormalizedDateMode"><code class="docutils literal notranslate"><span class="pre">DeIdentification.unnormalizedDateMode</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.useShifDays"><code class="docutils literal notranslate"><span class="pre">DeIdentification.useShifDays</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.useShiftDays"><code class="docutils literal notranslate"><span class="pre">DeIdentification.useShiftDays</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.zipCodeTag"><code class="docutils literal notranslate"><span class="pre">DeIdentification.zipCodeTag</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.clear"><code class="docutils literal notranslate"><span class="pre">DeIdentification.clear()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.copy"><code class="docutils literal notranslate"><span class="pre">DeIdentification.copy()</span></code></a></li>
@@ -3243,7 +3662,6 @@ you can reply to an execution several times with the same output.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.extractParamMap"><code class="docutils literal notranslate"><span class="pre">DeIdentification.extractParamMap()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.fit"><code class="docutils literal notranslate"><span class="pre">DeIdentification.fit()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.fitMultiple"><code class="docutils literal notranslate"><span class="pre">DeIdentification.fitMultiple()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.getBlackList"><code class="docutils literal notranslate"><span class="pre">DeIdentification.getBlackList()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.getChunkMatching"><code class="docutils literal notranslate"><span class="pre">DeIdentification.getChunkMatching()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.getInputCols"><code class="docutils literal notranslate"><span class="pre">DeIdentification.getInputCols()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.getLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">DeIdentification.getLazyAnnotator()</span></code></a></li>
@@ -3251,7 +3669,7 @@ you can reply to an execution several times with the same output.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.getOutputCol"><code class="docutils literal notranslate"><span class="pre">DeIdentification.getOutputCol()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.getParam"><code class="docutils literal notranslate"><span class="pre">DeIdentification.getParam()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.getParamValue"><code class="docutils literal notranslate"><span class="pre">DeIdentification.getParamValue()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.getSameLengthFormattedEntities"><code class="docutils literal notranslate"><span class="pre">DeIdentification.getSameLengthFormattedEntities()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.getSelectiveObfuscateRefSource"><code class="docutils literal notranslate"><span class="pre">DeIdentification.getSelectiveObfuscateRefSource()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.getUseShiftDays"><code class="docutils literal notranslate"><span class="pre">DeIdentification.getUseShiftDays()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.hasDefault"><code class="docutils literal notranslate"><span class="pre">DeIdentification.hasDefault()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.hasParam"><code class="docutils literal notranslate"><span class="pre">DeIdentification.hasParam()</span></code></a></li>
@@ -3262,6 +3680,7 @@ you can reply to an execution several times with the same output.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.read"><code class="docutils literal notranslate"><span class="pre">DeIdentification.read()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.save"><code class="docutils literal notranslate"><span class="pre">DeIdentification.save()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.set"><code class="docutils literal notranslate"><span class="pre">DeIdentification.set()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setAdditionalDateFormats"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setAdditionalDateFormats()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setAgeGroups"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setAgeGroups()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setAgeRanges"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setAgeRanges()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setAgeRangesByHipaa"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setAgeRangesByHipaa()</span></code></a></li>
@@ -3271,6 +3690,8 @@ you can reply to an execution several times with the same output.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setCombineRegexPatterns"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setCombineRegexPatterns()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setConsistentAcrossNameParts"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setConsistentAcrossNameParts()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setConsistentObfuscation"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setConsistentObfuscation()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setCountryObfuscation"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setCountryObfuscation()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setDateEntities"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setDateEntities()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setDateFormats"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setDateFormats()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setDateTag"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setDateTag()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setDateToYear"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setDateToYear()</span></code></a></li>
@@ -3281,6 +3702,7 @@ you can reply to an execution several times with the same output.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setFixedMaskLength"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setFixedMaskLength()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setForceInputTypeValidation"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setForceInputTypeValidation()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setGenderAwareness"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setGenderAwareness()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setGeoConsistency"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setGeoConsistency()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setGroupByCol"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setGroupByCol()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setIgnoreRegex"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setIgnoreRegex()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setInputCols"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setInputCols()</span></code></a></li>
@@ -3313,7 +3735,10 @@ you can reply to an execution several times with the same output.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setSameEntityThreshold"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setSameEntityThreshold()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setSameLengthFormattedEntities"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setSameLengthFormattedEntities()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setSeed"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setSeed()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setSelectiveObfuscateRefSource"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setSelectiveObfuscateRefSource()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setSelectiveObfuscationModes"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setSelectiveObfuscationModes()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setStaticObfuscationPairs"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setStaticObfuscationPairs()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setStaticObfuscationPairsResource"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setStaticObfuscationPairsResource()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setUnnormalizedDateMode"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setUnnormalizedDateMode()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setUseShifDays"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setUseShifDays()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setUseShiftDays"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setUseShiftDays()</span></code></a></li>
@@ -3322,20 +3747,23 @@ you can reply to an execution several times with the same output.</p>
 </ul>
 </li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.additionalDateFormats"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.additionalDateFormats</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.ageRanges"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.ageRanges</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.ageRangesByHipaa"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.ageRangesByHipaa</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.blackList"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.blackList</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.blackListEntities"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.blackListEntities</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.consistentAcrossNameParts"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.consistentAcrossNameParts</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.consistentObfuscation"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.consistentObfuscation</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.countryObfuscation"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.countryObfuscation</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.dateEntities"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.dateEntities</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.dateFormats"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.dateFormats</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.dateTag"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.dateTag</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.dateToYear"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.dateToYear</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.days"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.days</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.doExceptionHandling"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.doExceptionHandling</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.fakerLengthOffset"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.fakerLengthOffset</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.fixedMaskLength"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.fixedMaskLength</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.genderAwareness"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.genderAwareness</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.geoConsistency"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.geoConsistency</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.getter_attrs"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.getter_attrs</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.groupByCol"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.groupByCol</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.ignoreRegex"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.ignoreRegex</span></code></a></li>
@@ -3372,13 +3800,13 @@ you can reply to an execution several times with the same output.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.uid"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.uid</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.unnormalizedDateMode"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.unnormalizedDateMode</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.useShifDays"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.useShifDays</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.useShiftDays"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.useShiftDays</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.zipCodeTag"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.zipCodeTag</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.clear"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.clear()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.copy"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.copy()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.explainParam"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.explainParam()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.explainParams"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.explainParams()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.extractParamMap"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.extractParamMap()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.getBlackList"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.getBlackList()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.getChunkMatching"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.getChunkMatching()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.getInputCols"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.getInputCols()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.getLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.getLazyAnnotator()</span></code></a></li>
@@ -3387,7 +3815,7 @@ you can reply to an execution several times with the same output.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.getParam"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.getParam()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.getParamValue"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.getParamValue()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.getRegexEntities"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.getRegexEntities()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.getSameLengthFormattedEntities"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.getSameLengthFormattedEntities()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.getSelectiveObfuscateRefSource"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.getSelectiveObfuscateRefSource()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.getUseShiftDays"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.getUseShiftDays()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.hasDefault"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.hasDefault()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.hasParam"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.hasParam()</span></code></a></li>
@@ -3399,6 +3827,7 @@ you can reply to an execution several times with the same output.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.read"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.read()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.save"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.save()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.set"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.set()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setAdditionalDateFormats"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setAdditionalDateFormats()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setAgeGroups"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setAgeGroups()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setAgeRanges"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setAgeRanges()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setAgeRangesByHipaa"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setAgeRangesByHipaa()</span></code></a></li>
@@ -3407,15 +3836,17 @@ you can reply to an execution several times with the same output.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setChunkMatching"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setChunkMatching()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setConsistentAcrossNameParts"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setConsistentAcrossNameParts()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setConsistentObfuscation"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setConsistentObfuscation()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setCountryObfuscation"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setCountryObfuscation()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setDateEntities"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setDateEntities()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setDateFormats"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setDateFormats()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setDateTag"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setDateTag()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setDateToYear"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setDateToYear()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setDays"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setDays()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setDoExceptionHandling"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setDoExceptionHandling()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setFakerLengthOffset"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setFakerLengthOffset()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setFixedMaskLength"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setFixedMaskLength()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setForceInputTypeValidation"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setForceInputTypeValidation()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setGenderAwareness"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setGenderAwareness()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setGeoConsistency"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setGeoConsistency()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setGroupByCol"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setGroupByCol()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setIgnoreRegex"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setIgnoreRegex()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setInputCols"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setInputCols()</span></code></a></li>
@@ -3444,6 +3875,8 @@ you can reply to an execution several times with the same output.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setSameEntityThreshold"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setSameEntityThreshold()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setSameLengthFormattedEntities"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setSameLengthFormattedEntities()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setSeed"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setSeed()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setSelectiveObfuscateRefSource"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setSelectiveObfuscateRefSource()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setStaticObfuscationPairs"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setStaticObfuscationPairs()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setUnnormalizedDateMode"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setUnnormalizedDateMode()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setUseShifDays"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setUseShifDays()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setUseShiftDays"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setUseShiftDays()</span></code></a></li>
