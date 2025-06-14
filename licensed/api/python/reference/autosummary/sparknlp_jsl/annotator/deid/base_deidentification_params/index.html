@@ -1,0 +1,1390 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>sparknlp_jsl.annotator.deid.base_deidentification_params &#8212; Spark NLP  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../../static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../../../../static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../../../../static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../../../../../static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../../static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../static/css/custom.css?v=e1fb877f" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../../static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../../../../../static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../../../../../static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../../../../../" id="documentation_options" src="../../../../../../static/documentation_options.js?v=b3ba4146"></script>
+    <script src="../../../../../../static/doctools.js?v=888ff710"></script>
+    <script src="../../../../../../static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../../../../../static/toggleprompt.js?v=670350bf"></script>
+    <script src="../../../../../../static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../../../static/copybutton.js?v=6dbb43f8"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'reference/autosummary/sparknlp_jsl/annotator/deid/base_deidentification_params/index';</script>
+    <link rel="icon" href="../../../../../../static/fav.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the annotators, functions, and more..."
+         aria-label="Search the annotators, functions, and more..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../../../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../../../static/logo.png" class="logo__image only-light" alt="Spark NLP  documentation - Home"/>
+    <script>document.write(`<img src="../../../../../../static/logo.png" class="logo__image only-dark" alt="Spark NLP  documentation - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../getting_started/index.html">
+                        Getting Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../index.html">
+                        API Reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../autosummary/sparknlp_jsl.html">
+                        sparknlp_jsl
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../getting_started/index.html">
+                        Getting Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../index.html">
+                        API Reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../autosummary/sparknlp_jsl.html">
+                        sparknlp_jsl
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../assertion/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../assertion/assertionDL/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertionDL</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../assertion/assertion_chunk_converter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_chunk_converter</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../assertion/assertion_dl_reg/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_dl_reg</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../assertion/assertion_merger/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_merger</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../assertion/bert_for_assertion_classification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.bert_for_assertion_classification</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../assertion/contextual_assertion/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.contextual_assertion</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../assertion/fewshot_assertion_sentence_converter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.fewshot_assertion_sentence_converter</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../chunker/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunker</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../chunker/assertion_filterer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunker.assertion_filterer</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../chunker/chunk_converter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunker.chunk_converter</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../chunker/chunk_key_phrase_extraction/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunker.chunk_key_phrase_extraction</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../chunker/chunk_sentence_splitter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunker.chunk_sentence_splitter</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../chunker/chunker_filterer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunker.chunker_filterer</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../chunker/chunkmapper/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunker.chunkmapper</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../chunker/chunkmapper_filterer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunker.chunkmapper_filterer</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../chunker/docmapper/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunker.docmapper</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../chunker/mapper2_chunk/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunker.mapper2_chunk</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../classification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.classification</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../classification/document_log_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.classification.document_log_classifier</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../classification/document_ml_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.classification.document_ml_classifier</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../classification/few_shot_assertion_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.classification.few_shot_assertion_classifier</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../classification/few_shot_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.classification.few_shot_classifier</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../classification/generic_log_reg_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.classification.generic_log_reg_classifier</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../classification/generic_svm_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.classification.generic_svm_classifier</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../classification/large_few_shot_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.classification.large_few_shot_classifier</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../classification/medical_bert_for_sequence_classification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.classification.medical_bert_for_sequence_classification</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../classification/medical_bert_for_token_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.classification.medical_bert_for_token_classifier</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../classification/medical_distilbert_for_sequence_classification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.classification.medical_distilbert_for_sequence_classification</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../context/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.context</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../context/contextual_entity_filterer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.context.contextual_entity_filterer</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../context/contextual_entity_ruler/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.context.contextual_entity_ruler</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../context/contextual_parser/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.context.contextual_parser</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid</span></code></a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.base_deidentification_params</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deIdentification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.deIdentification</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deidentication_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.deidentication_params</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../doccument_hashcoder/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.doccument_hashcoder</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../light_deIdentification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.light_deIdentification</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../name_obfuscator/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.name_obfuscator</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reIdentification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.reIdentification</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../replacer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.replacer</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../disambiguation/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.disambiguation</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../disambiguation/ner_disambiguator/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.disambiguation.ner_disambiguator</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../embeddings/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.embeddings</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../embeddings/average_embeddings/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.embeddings.average_embeddings</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../embeddings/bert_sentence_embeddings/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../embeddings/entity_chunk_embeddings/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../embeddings/extractive_summarization/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.embeddings.extractive_summarization</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../er/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.er</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../er/entity_ruler_internal/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.er.entity_ruler_internal</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../fhir/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.fhir</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../fhir/fhir_deIdentification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.fhir.fhir_deIdentification</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../generic_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.generic_classifier</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../generic_classifier/generic_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.generic_classifier.generic_classifier</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../matcher/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.matcher</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../matcher/text_matcher_internal/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.matcher.text_matcher_internal</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../matcher/text_matcher_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.matcher.text_matcher_params</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../medical_llm/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.medical_llm</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../medical_llm/medical_llm/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.medical_llm.medical_llm</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../merge/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.merge</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../merge/chunk_merge/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.merge.chunk_merge</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../merge/re_chunk_merger/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.merge.re_chunk_merger</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../ner/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../ner/iob_tagger/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.iob_tagger</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ner/medical_ner/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.medical_ner</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ner/ner_chunker/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.ner_chunker</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ner/ner_converter_internal/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.ner_converter_internal</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ner/ner_template_render/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.ner_template_render</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ner/pretrained_zero_shot_ner/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.pretrained_zero_shot_ner</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ner/zero_shot_ner/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.zero_shot_ner</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../normalizer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.normalizer</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../normalizer/date_normalizer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.normalizer.date_normalizer</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../normalizer/drug_normalizer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.normalizer.drug_normalizer</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.params</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../params/reset_sentence_indices_param/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.params.reset_sentence_indices_param</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../parser/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.parser</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-17"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../parser/structured_json_converter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.parser.structured_json_converter</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../qa/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.qa</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-18"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../qa/beam_search_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.qa.beam_search_params</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../qa/medical_qa/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.qa.medical_qa</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../qa/qa_ner_generator/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.qa.qa_ner_generator</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../rag/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.rag</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../rag/context_split_assembler/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.rag.context_split_assembler</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rag/vectordb_post_processor/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.rag.vectordb_post_processor</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../re/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.re</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../re/relation_extraction/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.re.relation_extraction</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../re/relation_extraction_dl/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.re.relation_extraction_dl</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../re/relation_ner_chunk_filter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.re.relation_ner_chunk_filter</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../re/zero_shot_relation_extraction/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.re.zero_shot_relation_extraction</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../regex/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.regex</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-21"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../regex/regex_matcher/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.regex.regex_matcher</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../resolution/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.resolution</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-22"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../resolution/resolver_merger/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.resolution.resolver_merger</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../resolution/sentence_entity_resolver/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.resolution.sentence_entity_resolver</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../seq2seq/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.seq2seq</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-23"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../seq2seq/medical_encoder_decoder/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../seq2seq/medical_summarizer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.seq2seq.medical_summarizer</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../seq2seq/medical_text_generator/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.seq2seq.medical_text_generator</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../seq2seq/text2sql/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.seq2seq.text2sql</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../splitter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.splitter</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-24"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../splitter/internal_document_splitter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.splitter.internal_document_splitter</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../windowed/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.windowed</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-25"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../windowed/windowed_sentence/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.windowed.windowed_sentence</span></code></a></li>
+</ul>
+</li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../annotation_converter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.annotation_converter</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../annotation_merger/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.annotation_merger</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../chunk2_token/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunk2_token</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../doc2_chunk_internal/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.doc2_chunk_internal</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../document_filterer_by_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.document_filterer_by_classifier</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../document_filterer_by_ner/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.document_filterer_by_ner</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../feature_assembler/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.feature_assembler</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../filtering_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.filtering_params</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../flattener/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.flattener</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../handle_exception_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.handle_exception_params</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../metadata_annotation_converter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.metadata_annotation_converter</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../multi_chunk2_doc/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.multi_chunk2_doc</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resolution2_chunk/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.resolution2_chunk</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../router/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.router</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source_tracking_metadata_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.source_tracking_metadata_params</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tf_graph_builder/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.tf_graph_builder</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../white_black_list_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.white_black_list_params</span></code></a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><code...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="module-sparknlp_jsl.annotator.deid.base_deidentification_params">
+<span id="sparknlp-jsl-annotator-deid-base-deidentification-params"></span><h1><a class="reference internal" href="#module-sparknlp_jsl.annotator.deid.base_deidentification_params" title="sparknlp_jsl.annotator.deid.base_deidentification_params"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.base_deidentification_params</span></code></a><a class="headerlink" href="#module-sparknlp_jsl.annotator.deid.base_deidentification_params" title="Permalink to this heading">#</a></h1>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this heading">#</a></h2>
+<section id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">#</a></h3>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams" title="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BaseDeIdentificationParams</span></code></a></p></td>
+<td><p>Base parameters for DeIdentification annotators.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">BaseDeIdentificationParams</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams" title="Permalink to this definition">#</a></dt>
+<dd><p>Base parameters for DeIdentification annotators.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mode</strong> (<em>str</em>) – Mode for Anonimizer [‘mask’|’obfuscate’]</p></li>
+<li><p><strong>dateEntities</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of date entities. Default: [‘DATE’, ‘DOB’, ‘DOD’, ‘EFFDATE’, ‘FISCAL_YEAR’]</p></li>
+<li><p><strong>obfuscateDate</strong> (<em>bool</em>) – When mode==’obfuscate’ whether to obfuscate dates or not. This param helps in consistency to make dateFormats more visible.
+When setting to <code class="docutils literal notranslate"><span class="pre">True</span></code>, make sure dateFormats param fits the needs.
+If the value is True and obfuscation is failed, then unnormalizedDateMode param will be activated.
+When setting to ‘False’, then the date will be masked to &lt;DATE&gt;.
+Default: False</p></li>
+<li><p><strong>unnormalizedDateMode</strong> (<em>str</em>) – The mode to use if the date is not formatted. Options: [mask, obfuscate, skip]. Default: obfuscate.</p></li>
+<li><p><strong>days</strong> (<em>int</em>) – A number of days to obfuscate the dates by displacement. If not provided a random integer between 1 and 60 will be used.</p></li>
+<li><p><strong>useShiftDays</strong> (<em>bool</em>) – Whether to use the random shift day when the document has this in its metadata. Default: False</p></li>
+<li><p><strong>dateFormats</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of date formats to automatically displace if parsed.</p></li>
+<li><p><strong>additionalDateFormats</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – Additional date formats to be considered during date obfuscation.
+This allows users to specify custom date formats in addition to the default date formats. Default: [].</p></li>
+<li><p><strong>region</strong> (<em>str</em>) – The region to use for date parsing. This property is especially used when obfuscating dates.
+You can decide whether the first part of 11/11/2023 is a day or the second part is a day when obfuscating dates.
+Options: ‘eu’ for European Union, ‘us’ for the USA, Default: ‘eu’</p></li>
+<li><p><strong>keepYear</strong> (<em>bool</em>) – Whether to keep the year intact when obfuscating date entities.
+If True, the year will remain unchanged during the obfuscation process.
+If False, the year will be modified along with the month and day.
+Default: False.</p></li>
+<li><p><strong>keepMonth</strong> (<em>bool</em>) – Whether to keep the month intact when obfuscating date entities.
+If True, the month will remain unchanged during the obfuscation process.
+If False, the month will be modified along with the year and day.
+Default: False.</p></li>
+<li><p><strong>obfuscateRefSource</strong> (<em>str</em>) – The source of obfuscation of to obfuscate the entities. For dates entities, This property is invalid.
+The values ar the following:
+‘custom’ or ‘file’: Takes the fakers from the setCustomFakers function or from the file.
+faker: Takes the fakers from the Faker module
+both : Takes the fakers from the setCustomFakers function and the faker module.</p></li>
+<li><p><strong>selectiveObfuscateRefSource</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>str</em><em>]</em>) – A dictionary of entity names to their obfuscation modes.
+This is used to selectively apply different obfuscation methods to specific entities.
+The keys are entity names and the values are the obfuscation sources.
+If an entity is not specified in this map, the <cite>obfuscateRefSource</cite> param is used to determine the obfuscation source.
+Possible values in dict for the obfuscation source are: ‘custom’, ‘faker’, ‘both’, ‘file’.</p></li>
+<li><p><strong>language</strong> (<em>str</em>) – The language used to select the regex file and some faker entities.
+The values are the following:
+‘en’(English), ‘de’(German), ‘es’(Spanish), ‘fr’(French), ‘ar’(Arabic) or ‘ro’(Romanian). Default:’en’.</p></li>
+<li><p><strong>seed</strong> (<em>int</em>) – It is the seed to select the entities on obfuscate mode. With the seed,
+you can reply to an execution several times with the same output.</p></li>
+<li><p><strong>maskingPolicy</strong> (<em>str</em>) – <dl class="simple">
+<dt>Select the masking policy:</dt><dd><p>same_length_chars: Replace the obfuscated entity with a masking sequence composed of asterisks and surrounding squared brackets, being the total length of the masking sequence of the same length as the original sequence.
+Example, Smith -&gt; [<a href="#id1"><span class="problematic" id="id2">**</span></a><a href="#id3"><span class="problematic" id="id4">*</span></a>].
+If the entity is less than 3 chars (like Jo, or 5), asterisks without brackets will be returned.
+entity_labels: Replace the values with the corresponding entity labels.
+fixed_length_chars: Replace the obfuscated entity with a masking sequence composed of a fixed number of asterisk.
+entity_labels_without_brackets: Replace the values with the entity value without brackets.
+same_length_chars_without_brackets: Replace the name with the asterix with same length without brackets.</p>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>fixedMaskLength</strong> (<em>int</em>) – The length of the masking sequence in case of fixed_length_chars masking policy.</p></li>
+<li><p><strong>sameLengthFormattedEntities</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of formatted entities to generate the same length outputs as original ones during obfuscation.
+The supported and default formatted entities are: PHONE, FAX, ID, IDNUM, BIOID, MEDICALRECORD, ZIP, VIN, SSN, DLN, LICENSE, PLATE.</p></li>
+<li><p><strong>genderAwareness</strong> (<em>bool</em>) – Whether to use gender-aware names or not during obfuscation. This param effects only names.
+If the value is true, it might decrease performance. Default: False</p></li>
+<li><p><strong>ageRanges</strong> (<em>list</em><em>[</em><em>int</em><em>]</em>) – list of integer specifying limits of the age groups to preserve during obfuscation.</p></li>
+<li><p><strong>ageRangesByHipaa</strong> – Whether to obfuscate ages based on HIPAA (Health Insurance Portability and Accountability Act) Privacy Rule.
+The HIPAA Privacy Rule mandates that ages from patients older than 90 years must be obfuscated,
+while age for patients 90 years or younger can remain unchanged.
+If True, age entities larger than 90 will be obfuscated as per HIPAA Privacy Rule, the others will remain unchanged.
+If False, <cite>ageRanges</cite> parameter is valid. Default: False.</p></li>
+<li><p><strong>consistentAcrossNameParts</strong> (<em>bool</em>) – <p>Param that indicates whether consistency should be enforced across different parts of a name
+(e.g., first name, middle name, last name).</p>
+<p>When set to <cite>True</cite>, the same transformation or obfuscation will be applied consistently to all parts
+of the same name entity, even if those parts appear separately.</p>
+<dl class="simple">
+<dt>For example, if “John Smith” is obfuscated as “Liam Brown”, then:</dt><dd><ul>
+<li><p>When the full name “John Smith” appears, it will be replaced with “Liam Brown”</p></li>
+<li><p>When “John” or “Smith” appear individually, they will still be obfuscated as “Liam” and “Brown” respectively,
+ensuring consistency in name transformation.  Default: True</p></li>
+</ul>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>keepTextSizeForObfuscation</strong> (<em>bool</em>) – Used to specify that the required obfuscated text length should be same as input length.
+Default: False.</p></li>
+<li><p><strong>fakerLengthOffset</strong> (<em>int</em>) – Used to specify how much length deviation is accepted in obfuscation output.
+keepTextSizeForObfuscation param should be enabled. Must be greater than 0. Default is 3.</p></li>
+<li><p><strong>geoConsistency</strong> (<em>bool</em>) – Sets whether to enforce consistent obfuscation across geographical entities:
+state, city, street, zip and phone.
+This parameter enables intelligent geographical entity obfuscation that maintains
+realistic relationships between different geographic components.
+When enabled, the system ensures that obfuscated addresses form coherent, valid combinations
+rather than random replacements.
+Default: False</p></li>
+<li><p><strong>countryObfuscation</strong> (<em>bool</em>) – Whether to obfuscate country entities or not. If True, the country entities will be obfuscated. Default: False.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.additionalDateFormats">
+<span class="sig-name descname"><span class="pre">additionalDateFormats</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.additionalDateFormats" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.ageRanges">
+<span class="sig-name descname"><span class="pre">ageRanges</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.ageRanges" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.ageRangesByHipaa">
+<span class="sig-name descname"><span class="pre">ageRangesByHipaa</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.ageRangesByHipaa" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.consistentAcrossNameParts">
+<span class="sig-name descname"><span class="pre">consistentAcrossNameParts</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.consistentAcrossNameParts" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.countryObfuscation">
+<span class="sig-name descname"><span class="pre">countryObfuscation</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.countryObfuscation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.dateEntities">
+<span class="sig-name descname"><span class="pre">dateEntities</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.dateEntities" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.dateFormats">
+<span class="sig-name descname"><span class="pre">dateFormats</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.dateFormats" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.days">
+<span class="sig-name descname"><span class="pre">days</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.days" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.fakerLengthOffset">
+<span class="sig-name descname"><span class="pre">fakerLengthOffset</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.fakerLengthOffset" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.fixedMaskLength">
+<span class="sig-name descname"><span class="pre">fixedMaskLength</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.fixedMaskLength" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.genderAwareness">
+<span class="sig-name descname"><span class="pre">genderAwareness</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.genderAwareness" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.geoConsistency">
+<span class="sig-name descname"><span class="pre">geoConsistency</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.geoConsistency" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.keepMonth">
+<span class="sig-name descname"><span class="pre">keepMonth</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.keepMonth" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.keepTextSizeForObfuscation">
+<span class="sig-name descname"><span class="pre">keepTextSizeForObfuscation</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.keepTextSizeForObfuscation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.keepYear">
+<span class="sig-name descname"><span class="pre">keepYear</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.keepYear" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.language">
+<span class="sig-name descname"><span class="pre">language</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.language" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.maskingPolicy">
+<span class="sig-name descname"><span class="pre">maskingPolicy</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.maskingPolicy" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.mode">
+<span class="sig-name descname"><span class="pre">mode</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.mode" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.obfuscateDate">
+<span class="sig-name descname"><span class="pre">obfuscateDate</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.obfuscateDate" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.obfuscateRefSource">
+<span class="sig-name descname"><span class="pre">obfuscateRefSource</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.obfuscateRefSource" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.region">
+<span class="sig-name descname"><span class="pre">region</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.region" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.sameLengthFormattedEntities">
+<span class="sig-name descname"><span class="pre">sameLengthFormattedEntities</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.sameLengthFormattedEntities" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.seed">
+<span class="sig-name descname"><span class="pre">seed</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.seed" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.unnormalizedDateMode">
+<span class="sig-name descname"><span class="pre">unnormalizedDateMode</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.unnormalizedDateMode" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.useShiftDays">
+<span class="sig-name descname"><span class="pre">useShiftDays</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.useShiftDays" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.getSelectiveObfuscateRefSource">
+<span class="sig-name descname"><span class="pre">getSelectiveObfuscateRefSource</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.getSelectiveObfuscateRefSource" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the dictionary of entity names to their obfuscate ref sources.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setAdditionalDateFormats">
+<span class="sig-name descname"><span class="pre">setAdditionalDateFormats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">formats</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setAdditionalDateFormats" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets additional date formats to be considered during date obfuscation.
+This allows users to specify custom date formats in addition to the default date formats.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>formats</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of additional date formats to be considered during date obfuscation.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setAgeRanges">
+<span class="sig-name descname"><span class="pre">setAgeRanges</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setAgeRanges" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets list of integer specifying limits of the age groups to preserve during obfuscation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>List</em><em>[</em><em>int</em><em>]</em>) – List of integer specifying limits of the age groups to preserve during obfuscation.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setAgeRangesByHipaa">
+<span class="sig-name descname"><span class="pre">setAgeRangesByHipaa</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setAgeRangesByHipaa" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to obfuscate ages based on HIPAA (Health Insurance Portability and Accountability Act) Privacy Rule.</p>
+<p>The HIPAA Privacy Rule mandates that ages from patients older than 90 years must be obfuscated,
+while age for patients 90 years or younger can remain unchanged.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – If True, age entities larger than 90 will be obfuscated as per HIPAA Privacy Rule, the others will remain unchanged.
+If False, <cite>ageRanges</cite> parameter is valid. Default: False.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setConsistentAcrossNameParts">
+<span class="sig-name descname"><span class="pre">setConsistentAcrossNameParts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setConsistentAcrossNameParts" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to enforce consistent obfuscation across name parts, even when they appear separately.
+When set to <cite>True</cite>, the same transformation or obfuscation will be applied consistently to all parts
+of the same name entity, even if those parts appear separately.</p>
+<dl class="simple">
+<dt>For example, if “John Smith” is obfuscated as “Liam Brown”, then:</dt><dd><ul class="simple">
+<li><p>When the full name “John Smith” appears, it will be replaced with “Liam Brown”</p></li>
+<li><p>When “John” or “Smith” appear individually, they will still be obfuscated as “Liam” and “Brown” respectively,
+ensuring consistency in name transformation.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Default: True</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to enforce consistent obfuscation across name parts.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setCountryObfuscation">
+<span class="sig-name descname"><span class="pre">setCountryObfuscation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setCountryObfuscation" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to obfuscate country entities or not.
+If True, country entities will be obfuscated.
+If False, country entities will not be obfuscated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to obfuscate country entities or not. Default: False.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setDateEntities">
+<span class="sig-name descname"><span class="pre">setDateEntities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entities</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setDateEntities" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets list of date entities. Default: [‘DATE’, ‘DOB’, ‘DOD’, ‘EFFDATE’, ‘FISCAL_YEAR’]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>entities</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of date entities.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setDateFormats">
+<span class="sig-name descname"><span class="pre">setDateFormats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">formats</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setDateFormats" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets list of date formats to automatically displace if parsed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>formats</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of date formats to automatically displace if parsed</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setDays">
+<span class="sig-name descname"><span class="pre">setDays</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">day</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setDays" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets number of days to obfuscate by displacement the dates.
+If not provided a random integer between 1 and 60 will be used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>day</strong> (<em>int</em>) – Number of days to obfuscate by displacement the dates.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setFakerLengthOffset">
+<span class="sig-name descname"><span class="pre">setFakerLengthOffset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setFakerLengthOffset" title="Permalink to this definition">#</a></dt>
+<dd><p>It specifies how much length deviation is accepted in obfuscation, with keepTextSizeForObfuscation enabled. Must be greater than 0.
+Default: 3</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>int</em>) – Integer value to specify length deviation.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setFixedMaskLength">
+<span class="sig-name descname"><span class="pre">setFixedMaskLength</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">length</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setFixedMaskLength" title="Permalink to this definition">#</a></dt>
+<dd><p>The length of the masking sequence in case of fixed_length_chars masking policy.
+Default: 7
+:param length: The length of the masking sequence in case of fixed_length_chars masking policy.
+:type length: int</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setGenderAwareness">
+<span class="sig-name descname"><span class="pre">setGenderAwareness</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setGenderAwareness" title="Permalink to this definition">#</a></dt>
+<dd><p>Set whether to use gender-aware names or not during obfuscation.
+This param effects only names.
+If value is true, it might decrease performance.
+Default: False</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – Whether to use gender-aware names or not during obfuscation. This param effects only names.
+If value is true, it might decrease performance. Default: False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setGeoConsistency">
+<span class="sig-name descname"><span class="pre">setGeoConsistency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setGeoConsistency" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to enforce consistent obfuscation across geographical entities:
+state, city, street, zip and phone.</p>
+<section id="functionality-overview">
+<h4>Functionality Overview<a class="headerlink" href="#functionality-overview" title="Permalink to this heading">#</a></h4>
+<p>This parameter enables intelligent geographical entity obfuscation that maintains
+realistic relationships between different geographic components. When enabled,
+the system ensures that obfuscated addresses form coherent, valid combinations
+rather than random replacements.</p>
+</section>
+<section id="supported-entity-types">
+<h4>Supported Entity Types<a class="headerlink" href="#supported-entity-types" title="Permalink to this heading">#</a></h4>
+<p>The following geographical entities are processed with priority order:</p>
+<ul class="simple">
+<li><p><strong>state</strong> (Priority: 0) - US state names</p></li>
+<li><p><strong>city</strong> (Priority: 1) - City names</p></li>
+<li><p><strong>zip</strong> (Priority: 2) - Zip codes</p></li>
+<li><p><strong>street</strong> (Priority: 3) - Street addresses</p></li>
+<li><p><strong>phone</strong> (Priority: 4) - Phone numbers</p></li>
+</ul>
+</section>
+<section id="language-requirement">
+<h4>Language Requirement<a class="headerlink" href="#language-requirement" title="Permalink to this heading">#</a></h4>
+<p><strong>IMPORTANT</strong>: Geographic consistency is only applied when:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">geoConsistency</span></code> parameter is set to <code class="docutils literal notranslate"><span class="pre">True</span></code> AND</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">language</span></code> parameter is set to <code class="docutils literal notranslate"><span class="pre">&quot;en&quot;</span></code></p></li>
+</ul>
+<p>For non-English configurations, this feature is automatically disabled regardless
+of the parameter setting.</p>
+</section>
+<section id="consistency-algorithm">
+<h4>Consistency Algorithm<a class="headerlink" href="#consistency-algorithm" title="Permalink to this heading">#</a></h4>
+<p>When geographical entities comes from the chunk columns:</p>
+<ol class="arabic simple">
+<li><p><strong>Entity Grouping</strong>: All geographic entities are identified and grouped by type</p></li>
+<li><p><strong>Fake Address Selection</strong>: A consistent set of fake US addresses is selected
+using hash-based deterministic selection to ensure reproducibility</p></li>
+<li><p><strong>Priority-Based Mapping</strong>: Entities are mapped to fake addresses following
+the priority order (state → city → zip → street → phone)</p></li>
+<li><p><strong>Consistent Replacement</strong>: All entities of the same type within a document
+use the same fake address pool, maintaining geographical coherence</p></li>
+</ol>
+</section>
+<section id="parameter-interactions">
+<h4>Parameter Interactions<a class="headerlink" href="#parameter-interactions" title="Permalink to this heading">#</a></h4>
+<p><strong>IMPORTANT</strong>: Enabling this parameter automatically disables:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">keepTextSizeForObfuscation</span></code> - Text size preservation is not maintained</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">consistentObfuscation</span></code> - Standard consistency rules are overridden</p></li>
+<li><p>file-based fakers</p></li>
+</ul>
+<p>This is necessary because geographic consistency requires specific fake address
+selection that may not preserve original text lengths or follow standard
+obfuscation patterns.</p>
+<p class="rubric">Examples</p>
+<p>Basic usage:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp_jsl.annotator</span> <span class="kn">import</span> <span class="n">DeIdentification</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">deid</span> <span class="o">=</span> <span class="n">DeIdentification</span><span class="p">()</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;sentence&quot;</span><span class="p">,</span> <span class="s2">&quot;token&quot;</span><span class="p">,</span> <span class="s2">&quot;ner_chunk&quot;</span><span class="p">])</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;deidentified&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setGeoConsistency</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setLanguage</span><span class="p">(</span><span class="s2">&quot;en&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">param value<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Whether to enforce consistent obfuscation across geographical entities. Default is False.</p>
+</dd>
+<dt class="field-even">type value<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setKeepMonth">
+<span class="sig-name descname"><span class="pre">setKeepMonth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setKeepMonth" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to keep the month intact when obfuscating date entities.
+If True, the month will remain unchanged during the obfuscation process.
+If False, the month will be modified along with the year and day.
+Default: False.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to keep the month intact when obfuscating date entities.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setKeepTextSizeForObfuscation">
+<span class="sig-name descname"><span class="pre">setKeepTextSizeForObfuscation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setKeepTextSizeForObfuscation" title="Permalink to this definition">#</a></dt>
+<dd><p>It specifies whether the output should maintain the same character length as the input text.
+If True, the output text will remain the same if same length is available, else length might vary.
+If False, the output will be completely random.
+Default: False</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to keep the text length same obfuscating entities.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setKeepYear">
+<span class="sig-name descname"><span class="pre">setKeepYear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setKeepYear" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to keep the year intact when obfuscating date entities.
+If True, the year will remain unchanged during the obfuscation process.
+If False, the year will be modified along with the month and day.
+Default: False.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to keep the year intact when obfuscating date entities.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setLanguage">
+<span class="sig-name descname"><span class="pre">setLanguage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setLanguage" title="Permalink to this definition">#</a></dt>
+<dd><p>The language used to select the regex file and some faker entities.
+The values are the following:
+‘en’(English), ‘de’(German), ‘es’(Spanish), ‘fr’(French), ‘ar’(Arabic) or ‘ro’(Romanian).
+Default:’en’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>lang</strong> (<em>str</em>) – The language used to select the regex file and some faker entities. Default:’en’.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setMaskingPolicy">
+<span class="sig-name descname"><span class="pre">setMaskingPolicy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setMaskingPolicy" title="Permalink to this definition">#</a></dt>
+<dd><dl>
+<dt>Sets the masking policy:</dt><dd><ul class="simple">
+<li><p>same_length_chars: Replace the obfuscated entity with a masking sequence composed of asterisks and surrounding squared brackets,</p></li>
+</ul>
+<p>being the total length of the masking sequence of the same length as the original sequence. Example, Smith -&gt; [<a href="#id5"><span class="problematic" id="id6">**</span></a><a href="#id7"><span class="problematic" id="id8">*</span></a>].
+If the entity is less than 3 chars (like Jo, or 5), asterisks without brackets will be returned.</p>
+<ul class="simple">
+<li><p>entity_labels: Replace the values with the corresponding entity labels.</p></li>
+<li><p>fixed_length_chars: Replace the obfuscated entity with a masking sequence composed of a fixed number of asterisks.</p></li>
+<li><p>entity_labels_without_brackets: Replace the values with the entity value without brackets.</p></li>
+<li><p>same_length_chars_without_brackets: Replace the name with the asterisks with same length without brackets.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mask</strong> (<em>str</em>) – The masking policy</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setMode">
+<span class="sig-name descname"><span class="pre">setMode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setMode" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets mode for Anonymizer [‘mask’|’obfuscate’]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mode</strong> (<em>str</em>) – Mode for Anonymizer [‘mask’|’obfuscate’]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setObfuscateDate">
+<span class="sig-name descname"><span class="pre">setObfuscateDate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setObfuscateDate" title="Permalink to this definition">#</a></dt>
+<dd><p>When mode==’obfuscate’ whether to obfuscate dates or not. This param helps in consistency to make dateFormats more visible.
+When setting to <code class="docutils literal notranslate"><span class="pre">True</span></code>, make sure dateFormats param fits the needs.
+If the value is <code class="docutils literal notranslate"><span class="pre">True</span></code> and obfuscation is failed, then unnormalizedDateMode param will be activated.
+When setting to <code class="docutils literal notranslate"><span class="pre">False</span></code>, then the date will be masked to &lt;DATE&gt;.
+Default: False</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – When mode==’obfuscate’ whether to obfuscate dates or not. Default: False.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setObfuscateRefSource">
+<span class="sig-name descname"><span class="pre">setObfuscateRefSource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setObfuscateRefSource" title="Permalink to this definition">#</a></dt>
+<dd><p>The source of obfuscation to obfuscate the entities. For dates entities, This property is invalid.
+The values ar the following:</p>
+<blockquote>
+<div><p>custom: Takes the entities from the setCustomFakers function.
+faker: Takes the entities from the Faker module
+both : Takes the entities from the setCustomFakers function and the faker module randomly.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>source</strong> (<em>str</em>) – The source of obfuscation to obfuscate the entities. Default: faker.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setRegion">
+<span class="sig-name descname"><span class="pre">setRegion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setRegion" title="Permalink to this definition">#</a></dt>
+<dd><p>With this property, you can select particular dateFormats. This property is especially used when obfuscating dates.
+For example:
+Decide whether the first part of 11/11/2023 is a day or the second part is a day when obfuscating dates.
+The values are following:
+‘eu’ for European Union
+‘us’ for the USA
+Default: ‘eu’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – The region to use select date formats. Options: ‘eu’ for European Union, ‘us’ for the USA, Default: ‘eu’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setSameLengthFormattedEntities">
+<span class="sig-name descname"><span class="pre">setSameLengthFormattedEntities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setSameLengthFormattedEntities" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets list of formatted entities to generate the same length outputs as original ones during obfuscation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – </p></li>
+<li><p><strong>are</strong> (<em>The supported and default formatted entities</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setSeed">
+<span class="sig-name descname"><span class="pre">setSeed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setSeed" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the seed to select the entities on obfuscate mode. With the seed,
+you can reply to an execution several times with the same output.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>s</strong> (<em>int</em>) – The seed to select the entities on obfuscate mode.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setSelectiveObfuscateRefSource">
+<span class="sig-name descname"><span class="pre">setSelectiveObfuscateRefSource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setSelectiveObfuscateRefSource" title="Permalink to this definition">#</a></dt>
+<dd><p>A dictionary of entity names to their obfuscation modes.
+This is used to selectively apply different obfuscation methods to specific entities.
+The keys are entity names and the values are the obfuscation sources.
+If an entity is not specified in this map, the <cite>obfuscateRefSource</cite> param is used to determine the obfuscation source.</p>
+<section id="example">
+<h4>Example:<a class="headerlink" href="#example" title="Permalink to this heading">#</a></h4>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">selective_sources</span> <span class="o">=</span> <span class="p">{</span>
+<span class="gp">... </span><span class="s1">&#39;PHONE&#39;</span><span class="p">:</span> <span class="s1">&#39;file&#39;</span><span class="p">,</span>
+<span class="gp">... </span><span class="s1">&#39;ADDRESS&#39;</span><span class="p">:</span> <span class="s1">&#39;both&#39;</span>
+<span class="gp">... </span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">deid</span><span class="o">.</span><span class="n">setObfuscateRefSource</span><span class="p">(</span><span class="s1">&#39;faker&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">setSelectiveObfuscateRefSource</span><span class="p">(</span><span class="n">selective_sources</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">param source<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A dictionary of entity names to their obfuscation modes.
+The keys are entity names and the values are the obfuscation sources.</p>
+</dd>
+<dt class="field-even">type source<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict[str, str]</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setStaticObfuscationPairs">
+<span class="sig-name descname"><span class="pre">setStaticObfuscationPairs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pairs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setStaticObfuscationPairs" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the static obfuscation pairs
+This method is used to set static obfuscation pairs that will be used for de-identification.
+Each pair should contain three elements: original, entity type, and fake.
+The pairs must have exactly 3 elements: [original, entityType, fake].</p>
+<section id="id9">
+<h4>Example:<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h4>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pairs</span> <span class="o">=</span> <span class="p">[</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="s2">&quot;John Doe&quot;</span><span class="p">,</span> <span class="s2">&quot;PERSON&quot;</span><span class="p">,</span> <span class="s2">&quot;Jane Smith&quot;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="s2">&quot;Los Angeles&quot;</span><span class="p">,</span> <span class="s2">&quot;LOCATION&quot;</span><span class="p">,</span> <span class="s2">&quot;New York City&quot;</span><span class="p">],</span>
+<span class="gp">... </span>  <span class="p">]</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">param pairs<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List of static obfuscation pairs. Each pair should contain three elements: [original, entityType, fake].
+The pairs must have exactly 3 elements: [original, entityType, fake].</p>
+</dd>
+<dt class="field-even">type pairs<span class="colon">:</span></dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setUnnormalizedDateMode">
+<span class="sig-name descname"><span class="pre">setUnnormalizedDateMode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setUnnormalizedDateMode" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the mode to use if the date is not formatted.
+Options: [mask, obfuscate, skip]. Default: obfuscate.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mode</strong> (<em>str</em>) – The mode to use if the date is not formatted.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setUseShiftDays">
+<span class="sig-name descname"><span class="pre">setUseShiftDays</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setUseShiftDays" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets if you want to use the random shift day when the document has this in its metadata. Default: False</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to use the random shift day when the document has this in its metadata. Default: False</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.additionalDateFormats"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.additionalDateFormats</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.ageRanges"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.ageRanges</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.ageRangesByHipaa"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.ageRangesByHipaa</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.consistentAcrossNameParts"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.consistentAcrossNameParts</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.countryObfuscation"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.countryObfuscation</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.dateEntities"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.dateEntities</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.dateFormats"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.dateFormats</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.days"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.days</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.fakerLengthOffset"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.fakerLengthOffset</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.fixedMaskLength"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.fixedMaskLength</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.genderAwareness"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.genderAwareness</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.geoConsistency"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.geoConsistency</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.keepMonth"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.keepMonth</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.keepTextSizeForObfuscation"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.keepTextSizeForObfuscation</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.keepYear"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.keepYear</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.language"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.language</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.maskingPolicy"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.maskingPolicy</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.mode"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.mode</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.obfuscateDate"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.obfuscateDate</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.obfuscateRefSource"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.obfuscateRefSource</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.region"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.region</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.sameLengthFormattedEntities"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.sameLengthFormattedEntities</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.seed"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.seed</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.unnormalizedDateMode"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.unnormalizedDateMode</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.useShiftDays"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.useShiftDays</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.getSelectiveObfuscateRefSource"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.getSelectiveObfuscateRefSource()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setAdditionalDateFormats"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.setAdditionalDateFormats()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setAgeRanges"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.setAgeRanges()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setAgeRangesByHipaa"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.setAgeRangesByHipaa()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setConsistentAcrossNameParts"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.setConsistentAcrossNameParts()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setCountryObfuscation"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.setCountryObfuscation()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setDateEntities"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.setDateEntities()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setDateFormats"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.setDateFormats()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setDays"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.setDays()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setFakerLengthOffset"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.setFakerLengthOffset()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setFixedMaskLength"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.setFixedMaskLength()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setGenderAwareness"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.setGenderAwareness()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setGeoConsistency"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.setGeoConsistency()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setKeepMonth"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.setKeepMonth()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setKeepTextSizeForObfuscation"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.setKeepTextSizeForObfuscation()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setKeepYear"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.setKeepYear()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setLanguage"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.setLanguage()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setMaskingPolicy"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.setMaskingPolicy()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setMode"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.setMode()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setObfuscateDate"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.setObfuscateDate()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setObfuscateRefSource"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.setObfuscateRefSource()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setRegion"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.setRegion()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setSameLengthFormattedEntities"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.setSameLengthFormattedEntities()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setSeed"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.setSeed()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setSelectiveObfuscateRefSource"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.setSelectiveObfuscateRefSource()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setStaticObfuscationPairs"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.setStaticObfuscationPairs()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setUnnormalizedDateMode"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.setUnnormalizedDateMode()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setUseShiftDays"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.setUseShiftDays()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../../../static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../../../../../static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2022, John Snow Labs.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.1.2.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.14.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
