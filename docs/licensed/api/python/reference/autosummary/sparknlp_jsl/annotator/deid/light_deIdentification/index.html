@@ -345,6 +345,7 @@ document.write(`
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid</span></code></a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../base_deidentification_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.base_deidentification_params</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../deIdentification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.deIdentification</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../deidentication_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.deidentication_params</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../doccument_hashcoder/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.doccument_hashcoder</span></code></a></li>
@@ -379,6 +380,7 @@ document.write(`
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../matcher/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.matcher</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../matcher/text_matcher_internal/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.matcher.text_matcher_internal</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../matcher/text_matcher_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.matcher.text_matcher_params</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../medical_llm/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.medical_llm</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -467,6 +469,7 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="../../filtering_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.filtering_params</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../flattener/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.flattener</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../handle_exception_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.handle_exception_params</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../metadata_annotation_converter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.metadata_annotation_converter</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../multi_chunk2_doc/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.multi_chunk2_doc</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../resolution2_chunk/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.resolution2_chunk</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../router/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.router</span></code></a></li>
@@ -543,7 +546,7 @@ document.write(`
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">LightDeIdentification</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'com.johnsnowlabs.nlp.annotators.deid.LightDeIdentification'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">java_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.common.AnnotatorModelInternal</span></code></p>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.common.AnnotatorModelInternal</span></code>, <a class="reference internal" href="../base_deidentification_params/index.html#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams" title="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams</span></code></a></p>
 <p>Light DeIdentification is a light version of DeIdentification. It replaces sensitive information
 in a text with obfuscated or masked fakers. It is designed to work with healthcare data,
 and it can be used to de-identify patient names, dates, and other sensitive information.
@@ -568,88 +571,46 @@ And it supports multi-mode de-Identification with setSelectiveObfuscationModes f
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>mode</strong> (<em>str</em>) – Mode for Anonimizer [‘mask’|’obfuscate’]</p></li>
-<li><p><strong>dateEntities</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of date entities. Default: [‘DATE’, ‘DOB’, ‘DOD’]</p></li>
-<li><p><strong>obfuscateDate</strong> (<em>bool</em>) – When mode==’obfuscate’ whether to obfuscate dates or not. This param helps in consistency to make dateFormats more visible.
-When setting to <code class="docutils literal notranslate"><span class="pre">True</span></code>, make sure dateFormats param fits the needs.
-If the value is True and obfuscation is failed, then unnormalizedDateMode param will be activated.
-When setting to ‘False’, then the date will be masked to &lt;DATE&gt;.
-Default: False</p></li>
-<li><p><strong>unnormalizedDateMode</strong> (<em>str</em>) – The mode to use if the date is not formatted. Options: [mask, obfuscate, skip]. Default: obfuscate.</p></li>
-<li><p><strong>days</strong> (<em>int</em>) – A number of days to obfuscate the dates by displacement. If not provided a random integer between 1 and 60 will be used.</p></li>
-<li><p><strong>useShiftDays</strong> (<em>bool</em>) – Whether to use the random shift day when the document has this in its metadata. Default: False</p></li>
-<li><p><strong>dateFormats</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of date formats to automatically displace if parsed.</p></li>
-<li><p><strong>region</strong> (<em>str</em>) – The region to use for date parsing. This property is especially used when obfuscating dates.
-You can decide whether the first part of 11/11/2023 is a day or the second part is a day when obfuscating dates.
-Options: ‘eu’ for European Union, ‘us’ for the USA, Default: ‘eu’</p></li>
-<li><p><strong>obfuscateRefSource</strong> (<em>str</em>) – The source of obfuscation of to obfuscate the entities. For dates entities, This property is invalid.
-The values ar the following:
-custom: Takes the entities from the setCustomFakers function.
-faker: Takes the entities from the Faker module
-both : Takes the entities from the setCustomFakers function and the faker module randomly.</p></li>
-<li><p><strong>language</strong> (<em>str</em>) – The language used to select the regex file and some faker entities.
-The values are the following:
-‘en’(English), ‘de’(German), ‘es’(Spanish), ‘fr’(French), ‘ar’(Arabic) or ‘ro’(Romanian). Default:’en’.</p></li>
-<li><p><strong>seed</strong> (<em>int</em>) – It is the seed to select the entities on obfuscate mode. With the seed,
-you can reply to an execution several times with the same output.</p></li>
-<li><p><strong>maskingPolicy</strong> (<em>str</em>) – <dl class="simple">
-<dt>Select the masking policy:</dt><dd><p>same_length_chars: Replace the obfuscated entity with a masking sequence composed of asterisks and surrounding squared brackets, being the total length of the masking sequence of the same length as the original sequence.
-Example, Smith -&gt; [<a href="#id1"><span class="problematic" id="id2">**</span></a><a href="#id3"><span class="problematic" id="id4">*</span></a>].
-If the entity is less than 3 chars (like Jo, or 5), asterisks without brackets will be returned.
-entity_labels: Replace the values with the corresponding entity labels.
-fixed_length_chars: Replace the obfuscated entity with a masking sequence composed of a fixed number of asterisk.</p>
-</dd>
-</dl>
-</p></li>
-<li><p><strong>fixedMaskLength</strong> (<em>int</em>) – The length of the masking sequence in case of fixed_length_chars masking policy.</p></li>
-<li><p><strong>sameLengthFormattedEntities</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of formatted entities to generate the same length outputs as original ones during obfuscation.
-The supported and default formatted entities are: PHONE, FAX, ID, IDNUM, BIOID, MEDICALRECORD, ZIP, VIN, SSN, DLN, LICENSE, PLATE.</p></li>
-<li><p><strong>genderAwareness</strong> (<em>bool</em>) – Whether to use gender-aware names or not during obfuscation. This param effects only names.
-If the value is true, it might decrease performance. Default: False</p></li>
-<li><p><strong>ageRanges</strong> (<em>list</em><em>[</em><em>int</em><em>]</em>) – list of integer specifying limits of the age groups to preserve during obfuscation.</p></li>
 <li><p><strong>selectiveObfuscationModes</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>list</em><em>[</em><em>str</em><em>]</em><em>]</em>) – <dl class="simple">
 <dt>The dictionary of modes to enable multi-mode deIdentification.</dt><dd><p>’obfuscate’: Replace the values with random values.
 ‘mask_same_length_chars’: Replace the name with the asterisks with same length minus two plus brackets on both end.
 ‘mask_entity_labels’: Replace the values with the entity value.
 ‘mask_fixed_length_chars’: Replace the name with the asterisks with fixed length. You can also invoke “setFixedMaskLength()”
+‘mask_entity_labels_without_brackets’: Replace the values with the entity value without brackets.
+‘mask_same_length_chars_without_brackets’: Replace the name with the asterix with same length without brackets.
 ‘skip’: Skip the values (intact)</p>
 </dd>
 </dl>
-<p>The entities which have not been given in dictionary will deidentify according to <a href="#id5"><span class="problematic" id="id6">:param:`mode`</span></a></p>
+<p>The entities which have not been given in dictionary will deidentify according to <cite>mode</cite> parameter.</p>
 </p></li>
 <li><p><strong>customFakers</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>list</em><em>[</em><em>str</em><em>]</em><em>]</em>) – The dictionary of custom fakers to specify the obfuscation terms for the entities.
 You can specify the entity and the terms to be used for obfuscation.</p></li>
-<li><p><strong>keepYear</strong> (<em>bool</em>) – Whether to keep the year intact when obfuscating date entities.
-If True, the year will remain unchanged during the obfuscation process.
-If False, the year will be modified along with the month and day.
-Default: False.</p></li>
-<li><p><strong>keepMonth</strong> (<em>bool</em>) – <dl>
-<dt>Whether to keep the month intact when obfuscating date entities.</dt><dd><p>If True, the month will remain unchanged during the obfuscation process.
-If False, the month will be modified along with the year and day.
-Default: False.</p>
-</dd>
-<dt>consistentAcrossNameParts: bool</dt><dd><p>Param that indicates whether consistency should be enforced across different parts of a name
-(e.g., first name, middle name, last name).</p>
-<p>When set to <cite>True</cite>, the same transformation or obfuscation will be applied consistently to all parts
-of the same name entity, even if those parts appear separately.</p>
-<dl class="simple">
-<dt>For example, if “John Smith” is obfuscated as “Liam Brown”, then:</dt><dd><ul>
-<li><p>When the full name “John Smith” appears, it will be replaced with “Liam Brown”</p></li>
-<li><p>When “John” or “Smith” appear individually, they will still be obfuscated as “Liam” and “Brown” respectively,
-ensuring consistency in name transformation.</p></li>
-</ul>
-</dd>
-</dl>
-<p>Default: True</p>
-</dd>
-</dl>
-</p></li>
 </ul>
 </dd>
 </dl>
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.additionalDateFormats">
+<span class="sig-name descname"><span class="pre">additionalDateFormats</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.additionalDateFormats" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.ageRanges">
 <span class="sig-name descname"><span class="pre">ageRanges</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.ageRanges" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.ageRangesByHipaa">
+<span class="sig-name descname"><span class="pre">ageRangesByHipaa</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.ageRangesByHipaa" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.consistentAcrossNameParts">
+<span class="sig-name descname"><span class="pre">consistentAcrossNameParts</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.consistentAcrossNameParts" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.countryObfuscation">
+<span class="sig-name descname"><span class="pre">countryObfuscation</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.countryObfuscation" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -668,6 +629,11 @@ ensuring consistency in name transformation.</p></li>
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.fakerLengthOffset">
+<span class="sig-name descname"><span class="pre">fakerLengthOffset</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.fakerLengthOffset" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.fixedMaskLength">
 <span class="sig-name descname"><span class="pre">fixedMaskLength</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.fixedMaskLength" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -675,6 +641,11 @@ ensuring consistency in name transformation.</p></li>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.genderAwareness">
 <span class="sig-name descname"><span class="pre">genderAwareness</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.genderAwareness" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.geoConsistency">
+<span class="sig-name descname"><span class="pre">geoConsistency</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.geoConsistency" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -695,6 +666,11 @@ ensuring consistency in name transformation.</p></li>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.keepMonth">
 <span class="sig-name descname"><span class="pre">keepMonth</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.keepMonth" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.keepTextSizeForObfuscation">
+<span class="sig-name descname"><span class="pre">keepTextSizeForObfuscation</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.keepTextSizeForObfuscation" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -895,6 +871,12 @@ default value. Raises an error if neither is set.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.getSelectiveObfuscateRefSource">
+<span class="sig-name descname"><span class="pre">getSelectiveObfuscateRefSource</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.getSelectiveObfuscateRefSource" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the dictionary of entity names to their obfuscate ref sources.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.hasDefault">
 <span class="sig-name descname"><span class="pre">hasDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Param</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.hasDefault" title="Permalink to this definition">#</a></dt>
 <dd><p>Checks whether a param has a default value.</p>
@@ -950,12 +932,38 @@ a default value.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setAdditionalDateFormats">
+<span class="sig-name descname"><span class="pre">setAdditionalDateFormats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">formats</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setAdditionalDateFormats" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets additional date formats to be considered during date obfuscation.
+This allows users to specify custom date formats in addition to the default date formats.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>formats</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of additional date formats to be considered during date obfuscation.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setAgeRanges">
 <span class="sig-name descname"><span class="pre">setAgeRanges</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setAgeRanges" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets list of integer specifying limits of the age groups to preserve during obfuscation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>value</strong> (<em>List</em><em>[</em><em>int</em><em>]</em>) – List of integer specifying limits of the age groups to preserve during obfuscation.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setAgeRangesByHipaa">
+<span class="sig-name descname"><span class="pre">setAgeRangesByHipaa</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setAgeRangesByHipaa" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to obfuscate ages based on HIPAA (Health Insurance Portability and Accountability Act) Privacy Rule.</p>
+<p>The HIPAA Privacy Rule mandates that ages from patients older than 90 years must be obfuscated,
+while age for patients 90 years or younger can remain unchanged.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – If True, age entities larger than 90 will be obfuscated as per HIPAA Privacy Rule, the others will remain unchanged.
+If False, <cite>ageRanges</cite> parameter is valid. Default: False.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -978,6 +986,19 @@ ensuring consistency in name transformation.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to enforce consistent obfuscation across name parts.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setCountryObfuscation">
+<span class="sig-name descname"><span class="pre">setCountryObfuscation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setCountryObfuscation" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to obfuscate country entities or not.
+If True, country entities will be obfuscated.
+If False, country entities will not be obfuscated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to obfuscate country entities or not. Default: False.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1010,7 +1031,7 @@ You can specify the entity and the terms to be used for obfuscation.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setDateEntities">
 <span class="sig-name descname"><span class="pre">setDateEntities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entities</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setDateEntities" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets list of date entities. Default: [‘DATE’, ‘DOB’, ‘DOD’]</p>
+<dd><p>Sets list of date entities. Default: [‘DATE’, ‘DOB’, ‘DOD’, ‘EFFDATE’, ‘FISCAL_YEAR’]</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>entities</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of date entities.</p>
@@ -1037,6 +1058,18 @@ If not provided a random integer between 1 and 60 will be used.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>day</strong> (<em>int</em>) – Number of days to obfuscate by displacement the dates.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setFakerLengthOffset">
+<span class="sig-name descname"><span class="pre">setFakerLengthOffset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setFakerLengthOffset" title="Permalink to this definition">#</a></dt>
+<dd><p>It specifies how much length deviation is accepted in obfuscation, with keepTextSizeForObfuscation enabled. Must be greater than 0.
+Default: 3</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>int</em>) – Integer value to specify length deviation.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1071,6 +1104,84 @@ If value is true, it might decrease performance. Default: False</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setGeoConsistency">
+<span class="sig-name descname"><span class="pre">setGeoConsistency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setGeoConsistency" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to enforce consistent obfuscation across geographical entities:
+state, city, street, zip and phone.</p>
+<section id="functionality-overview">
+<h4>Functionality Overview<a class="headerlink" href="#functionality-overview" title="Permalink to this heading">#</a></h4>
+<p>This parameter enables intelligent geographical entity obfuscation that maintains
+realistic relationships between different geographic components. When enabled,
+the system ensures that obfuscated addresses form coherent, valid combinations
+rather than random replacements.</p>
+</section>
+<section id="supported-entity-types">
+<h4>Supported Entity Types<a class="headerlink" href="#supported-entity-types" title="Permalink to this heading">#</a></h4>
+<p>The following geographical entities are processed with priority order:</p>
+<ul class="simple">
+<li><p><strong>state</strong> (Priority: 0) - US state names</p></li>
+<li><p><strong>city</strong> (Priority: 1) - City names</p></li>
+<li><p><strong>zip</strong> (Priority: 2) - Zip codes</p></li>
+<li><p><strong>street</strong> (Priority: 3) - Street addresses</p></li>
+<li><p><strong>phone</strong> (Priority: 4) - Phone numbers</p></li>
+</ul>
+</section>
+<section id="language-requirement">
+<h4>Language Requirement<a class="headerlink" href="#language-requirement" title="Permalink to this heading">#</a></h4>
+<p><strong>IMPORTANT</strong>: Geographic consistency is only applied when:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">geoConsistency</span></code> parameter is set to <code class="docutils literal notranslate"><span class="pre">True</span></code> AND</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">language</span></code> parameter is set to <code class="docutils literal notranslate"><span class="pre">&quot;en&quot;</span></code></p></li>
+</ul>
+<p>For non-English configurations, this feature is automatically disabled regardless
+of the parameter setting.</p>
+</section>
+<section id="consistency-algorithm">
+<h4>Consistency Algorithm<a class="headerlink" href="#consistency-algorithm" title="Permalink to this heading">#</a></h4>
+<p>When geographical entities comes from the chunk columns:</p>
+<ol class="arabic simple">
+<li><p><strong>Entity Grouping</strong>: All geographic entities are identified and grouped by type</p></li>
+<li><p><strong>Fake Address Selection</strong>: A consistent set of fake US addresses is selected
+using hash-based deterministic selection to ensure reproducibility</p></li>
+<li><p><strong>Priority-Based Mapping</strong>: Entities are mapped to fake addresses following
+the priority order (state → city → zip → street → phone)</p></li>
+<li><p><strong>Consistent Replacement</strong>: All entities of the same type within a document
+use the same fake address pool, maintaining geographical coherence</p></li>
+</ol>
+</section>
+<section id="parameter-interactions">
+<h4>Parameter Interactions<a class="headerlink" href="#parameter-interactions" title="Permalink to this heading">#</a></h4>
+<p><strong>IMPORTANT</strong>: Enabling this parameter automatically disables:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">keepTextSizeForObfuscation</span></code> - Text size preservation is not maintained</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">consistentObfuscation</span></code> - Standard consistency rules are overridden</p></li>
+<li><p>file-based fakers</p></li>
+</ul>
+<p>This is necessary because geographic consistency requires specific fake address
+selection that may not preserve original text lengths or follow standard
+obfuscation patterns.</p>
+<p class="rubric">Examples</p>
+<p>Basic usage:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp_jsl.annotator</span> <span class="kn">import</span> <span class="n">DeIdentification</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">deid</span> <span class="o">=</span> <span class="n">DeIdentification</span><span class="p">()</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;sentence&quot;</span><span class="p">,</span> <span class="s2">&quot;token&quot;</span><span class="p">,</span> <span class="s2">&quot;ner_chunk&quot;</span><span class="p">])</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;deidentified&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setGeoConsistency</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setLanguage</span><span class="p">(</span><span class="s2">&quot;en&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">param value<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Whether to enforce consistent obfuscation across geographical entities. Default is False.</p>
+</dd>
+<dt class="field-even">type value<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setInputCols">
 <span class="sig-name descname"><span class="pre">setInputCols</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setInputCols" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets column names of input annotations.</p>
@@ -1091,6 +1202,20 @@ Default: False.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to keep the month intact when obfuscating date entities.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setKeepTextSizeForObfuscation">
+<span class="sig-name descname"><span class="pre">setKeepTextSizeForObfuscation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setKeepTextSizeForObfuscation" title="Permalink to this definition">#</a></dt>
+<dd><p>It specifies whether the output should maintain the same character length as the input text.
+If True, the output text will remain the same if same length is available, else length might vary.
+If False, the output will be completely random.
+Default: False</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to keep the text length same obfuscating entities.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1143,11 +1268,13 @@ RecursivePipeline</p>
 <dt>Sets the masking policy:</dt><dd><ul class="simple">
 <li><p>same_length_chars: Replace the obfuscated entity with a masking sequence composed of asterisks and surrounding squared brackets,</p></li>
 </ul>
-<p>being the total length of the masking sequence of the same length as the original sequence. Example, Smith -&gt; [<a href="#id7"><span class="problematic" id="id8">**</span></a><a href="#id9"><span class="problematic" id="id10">*</span></a>].
+<p>being the total length of the masking sequence of the same length as the original sequence. Example, Smith -&gt; [<a href="#id1"><span class="problematic" id="id2">**</span></a><a href="#id3"><span class="problematic" id="id4">*</span></a>].
 If the entity is less than 3 chars (like Jo, or 5), asterisks without brackets will be returned.</p>
 <ul class="simple">
 <li><p>entity_labels: Replace the values with the corresponding entity labels.</p></li>
 <li><p>fixed_length_chars: Replace the obfuscated entity with a masking sequence composed of a fixed number of asterisks.</p></li>
+<li><p>entity_labels_without_brackets: Replace the values with the entity value without brackets.</p></li>
+<li><p>same_length_chars_without_brackets: Replace the name with the asterisks with same length without brackets.</p></li>
 </ul>
 </dd>
 </dl>
@@ -1272,6 +1399,34 @@ you can reply to an execution several times with the same output.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setSelectiveObfuscateRefSource">
+<span class="sig-name descname"><span class="pre">setSelectiveObfuscateRefSource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setSelectiveObfuscateRefSource" title="Permalink to this definition">#</a></dt>
+<dd><p>A dictionary of entity names to their obfuscation modes.
+This is used to selectively apply different obfuscation methods to specific entities.
+The keys are entity names and the values are the obfuscation sources.
+If an entity is not specified in this map, the <cite>obfuscateRefSource</cite> param is used to determine the obfuscation source.</p>
+<section id="id5">
+<h4>Example:<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h4>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">selective_sources</span> <span class="o">=</span> <span class="p">{</span>
+<span class="gp">... </span><span class="s1">&#39;PHONE&#39;</span><span class="p">:</span> <span class="s1">&#39;file&#39;</span><span class="p">,</span>
+<span class="gp">... </span><span class="s1">&#39;ADDRESS&#39;</span><span class="p">:</span> <span class="s1">&#39;both&#39;</span>
+<span class="gp">... </span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">deid</span><span class="o">.</span><span class="n">setObfuscateRefSource</span><span class="p">(</span><span class="s1">&#39;faker&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">setSelectiveObfuscateRefSource</span><span class="p">(</span><span class="n">selective_sources</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">param source<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A dictionary of entity names to their obfuscation modes.
+The keys are entity names and the values are the obfuscation sources.</p>
+</dd>
+<dt class="field-even">type source<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict[str, str]</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setSelectiveObfuscationModes">
 <span class="sig-name descname"><span class="pre">setSelectiveObfuscationModes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setSelectiveObfuscationModes" title="Permalink to this definition">#</a></dt>
 <dd><dl class="simple">
@@ -1280,13 +1435,15 @@ you can reply to an execution several times with the same output.</p>
 <li><p>‘mask_same_length_chars’: Replace the name with the asterisks with same length minus two plus brackets on both end.</p></li>
 <li><p>‘mask_entity_labels’: Replace the values with the entity value.</p></li>
 <li><p>‘mask_fixed_length_chars’: Replace the name with the asterisks with fixed length. You can also invoke “setFixedMaskLength()”</p></li>
+<li><p>‘mask_entity_labels_without_brackets’: Replace the values with the entity value without brackets.</p></li>
+<li><p>‘mask_same_length_chars_without_brackets’: Replace the name with the asterix with same length without brackets.</p></li>
 <li><p>‘skip’: Skip the values (intact)</p></li>
 </ul>
 </dd>
 </dl>
-<p>The entities which have not been given in dictionary will deidentify according to <a href="#id11"><span class="problematic" id="id12">:param:`mode`</span></a></p>
-<section id="id13">
-<h4>Example:<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h4>
+<p>The entities which have not been given in dictionary will deidentify according to <a href="#id6"><span class="problematic" id="id7">:param:`mode`</span></a></p>
+<section id="id8">
+<h4>Example:<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h4>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">LightDeIdentification</span><span class="p">()</span> \
 <span class="gp">&gt;&gt;&gt; </span>    <span class="o">.</span><span class="n">setMode</span><span class="p">(</span><span class="s1">&#39;mask&#39;</span><span class="p">)</span> \
 <span class="gp">&gt;&gt;&gt; </span>    <span class="o">.</span><span class="n">setSelectiveObfuscationModes</span><span class="p">({</span><span class="s1">&#39;obfuscate&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;PHONE&#39;</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">],</span>
@@ -1300,6 +1457,33 @@ you can reply to an execution several times with the same output.</p>
 </dd>
 <dt class="field-even">type value<span class="colon">:</span></dt>
 <dd class="field-even"><p>dict[str, list[str]]</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setStaticObfuscationPairs">
+<span class="sig-name descname"><span class="pre">setStaticObfuscationPairs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pairs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setStaticObfuscationPairs" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the static obfuscation pairs
+This method is used to set static obfuscation pairs that will be used for de-identification.
+Each pair should contain three elements: original, entity type, and fake.
+The pairs must have exactly 3 elements: [original, entityType, fake].</p>
+<section id="id9">
+<h4>Example:<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h4>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pairs</span> <span class="o">=</span> <span class="p">[</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="s2">&quot;John Doe&quot;</span><span class="p">,</span> <span class="s2">&quot;PERSON&quot;</span><span class="p">,</span> <span class="s2">&quot;Jane Smith&quot;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="s2">&quot;Los Angeles&quot;</span><span class="p">,</span> <span class="s2">&quot;LOCATION&quot;</span><span class="p">,</span> <span class="s2">&quot;New York City&quot;</span><span class="p">],</span>
+<span class="gp">... </span>  <span class="p">]</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">param pairs<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List of static obfuscation pairs. Each pair should contain three elements: [original, entityType, fake].
+The pairs must have exactly 3 elements: [original, entityType, fake].</p>
+</dd>
+<dt class="field-even">type pairs<span class="colon">:</span></dt>
+<dd class="field-even"><p>list</p>
 </dd>
 </dl>
 </section>
@@ -1330,7 +1514,7 @@ Options: [mask, obfuscate, skip]. Default: obfuscate.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.transform">
-<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pyspark.ml._typing.ParamMap</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.transform" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><span class="pre">pyspark.sql.dataframe.DataFrame</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pyspark.ml._typing.ParamMap</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><span class="pre">pyspark.sql.dataframe.DataFrame</span></a></span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.transform" title="Permalink to this definition">#</a></dt>
 <dd><p>Transforms the input dataset with optional parameters.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.3.0.</span></p>
@@ -1392,16 +1576,23 @@ Options: [mask, obfuscate, skip]. Default: obfuscate.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.additionalDateFormats"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.additionalDateFormats</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.ageRanges"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.ageRanges</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.ageRangesByHipaa"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.ageRangesByHipaa</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.consistentAcrossNameParts"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.consistentAcrossNameParts</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.countryObfuscation"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.countryObfuscation</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.dateEntities"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.dateEntities</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.dateFormats"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.dateFormats</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.days"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.days</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.fakerLengthOffset"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.fakerLengthOffset</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.fixedMaskLength"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.fixedMaskLength</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.genderAwareness"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.genderAwareness</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.geoConsistency"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.geoConsistency</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.getter_attrs"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.getter_attrs</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.inputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.inputAnnotatorTypes</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.inputCols"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.inputCols</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.keepMonth"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.keepMonth</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.keepTextSizeForObfuscation"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.keepTextSizeForObfuscation</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.keepYear"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.keepYear</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.language"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.language</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.lazyAnnotator"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.lazyAnnotator</span></code></a></li>
@@ -1431,6 +1622,7 @@ Options: [mask, obfuscate, skip]. Default: obfuscate.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.getOutputCol"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.getOutputCol()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.getParam"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.getParam()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.getParamValue"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.getParamValue()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.getSelectiveObfuscateRefSource"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.getSelectiveObfuscateRefSource()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.hasDefault"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.hasDefault()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.hasParam"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.hasParam()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.inputColsValidation"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.inputColsValidation()</span></code></a></li>
@@ -1440,17 +1632,23 @@ Options: [mask, obfuscate, skip]. Default: obfuscate.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.read"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.read()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.save"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.save()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.set"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.set()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setAdditionalDateFormats"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setAdditionalDateFormats()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setAgeRanges"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setAgeRanges()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setAgeRangesByHipaa"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setAgeRangesByHipaa()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setConsistentAcrossNameParts"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setConsistentAcrossNameParts()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setCountryObfuscation"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setCountryObfuscation()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setCustomFakers"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setCustomFakers()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setDateEntities"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setDateEntities()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setDateFormats"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setDateFormats()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setDays"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setDays()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setFakerLengthOffset"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setFakerLengthOffset()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setFixedMaskLength"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setFixedMaskLength()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setForceInputTypeValidation"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setForceInputTypeValidation()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setGenderAwareness"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setGenderAwareness()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setGeoConsistency"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setGeoConsistency()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setInputCols"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setInputCols()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setKeepMonth"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setKeepMonth()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setKeepTextSizeForObfuscation"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setKeepTextSizeForObfuscation()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setKeepYear"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setKeepYear()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setLanguage"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setLanguage()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setLazyAnnotator()</span></code></a></li>
@@ -1464,7 +1662,9 @@ Options: [mask, obfuscate, skip]. Default: obfuscate.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setRegion"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setRegion()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setSameLengthFormattedEntities"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setSameLengthFormattedEntities()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setSeed"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setSeed()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setSelectiveObfuscateRefSource"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setSelectiveObfuscateRefSource()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setSelectiveObfuscationModes"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setSelectiveObfuscationModes()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setStaticObfuscationPairs"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setStaticObfuscationPairs()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setUnnormalizedDateMode"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setUnnormalizedDateMode()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setUseShiftDays"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setUseShiftDays()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.transform"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.transform()</span></code></a></li>
