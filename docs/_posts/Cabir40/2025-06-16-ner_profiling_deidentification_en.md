@@ -35,6 +35,7 @@ The following models are included in this pipeline:
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
