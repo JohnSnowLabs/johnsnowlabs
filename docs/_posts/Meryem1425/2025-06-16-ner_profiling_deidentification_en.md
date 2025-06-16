@@ -23,6 +23,10 @@ This pipeline is designed for profiling and benchmarking various de-identificati
 The following models are included in this pipeline:
 `ner_deid_enriched`, `ner_deid_sd`, `ner_deid_subentity_augmented_langtest`, `ner_deid_generic_augmented_allUpperCased_langtest`, `ner_deid_subentity_augmented_v2`, `ner_deid_subentity_augmented`, `ner_deid_enriched_langtest`, `ner_deid_subentity_augmented_i2b2`, `ner_deid_subentity_augmented_docwise`, `ner_deid_large`, `ner_deid_large_langtest`, `ner_deid_augmented`, `ner_deid_generic_docwise`, `ner_deid_subentity_docwise`, `ner_deid_synthetic`, `ner_deidentify_dl`, `ner_deid_aipii`, `ner_deid_generic_augmented_langtest`, `ner_deid_generic_augmented`, `ner_deid_sd_large`, `plate_parser`, `date_of_death_parser`, `date_of_birth_parser`, `vin_parser`, `account_parser`, `ssn_parser`, `phone_parser`, `medical_record_parser`, `zip_parser`, `license_parser`, `age_parser`, `drug_parser`, `dln_parser`, `url_matcher`, `date_matcher`, `phone_matcher`, `state_matcher`, `zip_matcher`, `ip_matcher`, `email_matcher`, `country_matcher`, `zeroshot_ner_deid_subentity_merged_medium`
 
+## Predicted Entities
+
+`ACCOUNT`, `AGE`, `BIOID`, `CITY`, `CONTACT`, `COUNTRY`, `DATE`, `DEVICE`, `DLN`, `DOCTOR`, `EMAIL`, `FAX`, `HEALTHPLAN`, `HOSPITAL`, `ID`, `IDNUM`, `LICENSE`, `LOCATION`, `LOCATION_OTHER`, `MEDICALRECORD`, `NAME`, `ORGANIZATION`, `PATIENT`, `PHONE`, `PROFESSION`, `SSN`, `STATE`, `STREET`, `URL`, `USERNAME`, `ZIP`
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
@@ -35,6 +39,7 @@ The following models are included in this pipeline:
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
