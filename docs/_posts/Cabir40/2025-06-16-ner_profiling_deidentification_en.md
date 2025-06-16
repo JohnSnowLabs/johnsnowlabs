@@ -41,7 +41,6 @@ The following models are included in this pipeline:
 {% include programmingLanguageSelectScalaPythonNLU.html %}
   
 ```python
-
 from sparknlp.pretrained import PretrainedPipeline
 
 ner_profiling_pipeline = PretrainedPipeline("ner_profiling_deidentification", "en", "clinical/models")
@@ -49,8 +48,6 @@ ner_profiling_pipeline = PretrainedPipeline("ner_profiling_deidentification", "e
 text = """Name : Hendrickson, Ora, Record date: 2093-01-13, Age: 25, # 719435. Dr. John Green, ID: 1231511863, IP 203.120.223.13. He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93. Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no:A334455B. Phone (302) 786-5227, 0295 Keats Street, San Francisco."""
 
 ner_profiling_pipeline_result = ner_profiling_pipeline.fullAnnotate(text)[0]
-
-
 ```
 
 {:.jsl-block}
@@ -61,12 +58,9 @@ ner_profiling_pipeline = nlp.PretrainedPipeline("ner_profiling_deidentification"
 text = """Name : Hendrickson, Ora, Record date: 2093-01-13, Age: 25, # 719435. Dr. John Green, ID: 1231511863, IP 203.120.223.13. He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93. Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no:A334455B. Phone (302) 786-5227, 0295 Keats Street, San Francisco."""
 
 ner_profiling_pipeline_result = ner_profiling_pipeline.fullAnnotate(text)[0]
-
-
-
 ```
-```scala
 
+```scala
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val ner_profiling_pipeline = PretrainedPipeline("ner_profiling_deidentification", "en", "clinical/models")
@@ -74,8 +68,6 @@ val ner_profiling_pipeline = PretrainedPipeline("ner_profiling_deidentification"
 val text = """Name : Hendrickson, Ora, Record date: 2093-01-13, Age: 25, # 719435. Dr. John Green, ID: 1231511863, IP 203.120.223.13. He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93. Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no:A334455B. Phone (302) 786-5227, 0295 Keats Street, San Francisco."""
 
 val ner_profiling_pipeline_result = ner_profiling_pipeline.fullAnnotate(text)[0]
-
-
 ```
 </div>
 
