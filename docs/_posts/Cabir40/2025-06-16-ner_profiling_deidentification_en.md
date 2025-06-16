@@ -32,6 +32,7 @@ This pipeline is designed for deidentification in clinical texts, leveraging a r
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
