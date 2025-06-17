@@ -2,7 +2,7 @@
 layout: model
 title: SVS DEID Pipeline
 author: John Snow Labs
-name: svs_pipe
+name: svs_deid_pipe
 date: 2025-06-16
 tags: [svs, dicom_wsi, en, licensed]
 task: De-identification
