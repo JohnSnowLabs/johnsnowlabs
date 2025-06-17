@@ -7,7 +7,7 @@ date: 2025-06-16
 tags: [svs, dicom_wsi, en, licensed]
 task: De-identification
 language: en
-edition: Healthcare NLP 5.5.0
+edition: Visual NLP 5.5.0
 spark_version: 3.4
 supported: true
 annotator: PipelineModel
