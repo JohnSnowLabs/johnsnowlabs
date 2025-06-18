@@ -21,5 +21,10 @@ Visit the [product page on AWS Marketplace](https://aws.amazon.com/marketplace/p
 **Steps to get started:**
 - Subscribe to the product on the AWS Marketplace
 - Deploy it on a new machine
-- Wait for the services to be active. This might take few minutes for the initial boot.
-- Access the terminology server on http://INSTANCE_IP
+- Wait for the services to be active. This might take few minutes for the initial boot. 
+<br/>
+    To check the status, login to the instance and run this command
+<br/>
+`sudo systemctl status terminology.service`
+
+- Once all the status is active, access the terminology server on http://INSTANCE_IP
