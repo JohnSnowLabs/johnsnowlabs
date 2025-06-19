@@ -25,6 +25,8 @@ Visit the [product page on AWS Marketplace](https://aws.amazon.com/marketplace/p
 <br/>
     To check the status, login to the instance and run this command
 <br/>
-`sudo systemctl status terminology.service`
+`sudo systemctl status terminology-server.service`
 
+
+    ![Terminology Service Staus](/assets/images/term_server/terminology_service_status.png)
 - Once all the status is active, access the terminology server on http://INSTANCE_IP
