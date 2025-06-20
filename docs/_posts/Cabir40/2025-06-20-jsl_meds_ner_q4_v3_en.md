@@ -33,8 +33,8 @@ This LLM model is trained to extract and link entities in a document. Users need
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
-
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
     .setOutputCol("document")
@@ -79,17 +79,32 @@ data = spark.createDataFrame([[med_ner_prompt]]).toDF("text")
 results = pipeline.fit(data).transform(data)
 
 results.select("completions").show(truncate=False)
-
 ```
 
 {:.jsl-block}
+
 ```python
+from johnsnowlabs import nlp, medical
+document_assembler = nlp.DocumentAssembler()\
+    .setInputCol("text")\
+    .setOutputCol("document")
 
-from sparknlp.pretrained import PretrainedPipeline
+medical_llm = medical.AutoGGUFModel.pretrained("jsl_meds_ner_q4_v3", "en", "clinical/models")\
+    .setInputCols("document")\
+    .setOutputCol("completions")\
+    .setBatchSize(1)\
+    .setNPredict(100)\
+    .setUseChatTemplate(True)\
+    .setTemperature(0)
 
-deid_pipeline = nlp.PretrainedPipeline("jsl_meds_ner_q4_v3", "en", "clinical/models")
 
-text = """
+pipeline = nlp.Pipeline(
+    stages = [
+        document_assembler,
+        medical_llm
+])
+
+med_ner_prompt = """
 ### Template:
 {
     "drugs": [
@@ -105,13 +120,10 @@ I 've been on Arthrotec 50 for over 10 years on and off , only taking it when I 
 Due to my arthritis getting progressively worse , to the point where I am in tears with the agony.
 Gp 's started me on 75 twice a day and I have to take it every day for the next month to see how I get on , here goes .
 So far its been very good , pains almost gone , but I feel a bit weird , did n't have that when on 50.
-"""
-
-deid_result = deid_pipeline.fullAnnotate(text)
 
 ```
-```scala
 
+```scala
 val document_assembler = new DocumentAssembler()
     .setInputCol("text")
     .setOutputCol("document")
@@ -146,7 +158,6 @@ I 've been on Arthrotec 50 for over 10 years on and off , only taking it when I 
 Due to my arthritis getting progressively worse , to the point where I am in tears with the agony.
 Gp 's started me on 75 twice a day and I have to take it every day for the next month to see how I get on , here goes .
 So far its been very good , pains almost gone , but I feel a bit weird , did n't have that when on 50.
-
 """
 
 val data = Seq(med_ner_prompt).toDF("text")
@@ -154,14 +165,12 @@ val data = Seq(med_ner_prompt).toDF("text")
 val results = pipeline.fit(data).transform(data)
 
 results.select("completions").show(truncate=False)
-
 ```
 </div>
 
 ## Results
 
 ```bash
-
 {
     "drugs": [
         {
@@ -179,8 +188,6 @@ results.select("completions").show(truncate=False)
         }
     ]
 }
-
-
 ```
 
 {:.model-param}
