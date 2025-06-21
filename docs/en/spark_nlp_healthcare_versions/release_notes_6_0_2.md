@@ -17,8 +17,6 @@ sidebar:
 
 #### Highlights
 
-#### Highlights
-
 We are delighted to announce remarkable enhancements in our latest release of Healthcare NLP. **This release comes with improvements to the De-Identification module, including advanced masking strategies, geographic consistency for address obfuscation, customizable date formats, case-sensitive fake data generation for PHI obfuscation, and fine-grained control over obfuscation sources and replacement rules. Alongside these, the release also includes a new Metadata Annotation Converter annotator, expanded phrase matching capabilities in Text Matcher, enhanced entity filtering in ChunkMapper Filterer, and several new and updated clinical pretrained models and pipelines.**
 
 + Geographic consistency support and country obfuscation control in `De-Identification` module
