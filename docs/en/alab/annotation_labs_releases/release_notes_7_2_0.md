@@ -72,10 +72,13 @@ For **LLM Evaluation Comparison** projects, follow the same steps, but associate
 ### Sample Import Format for LLM Evaluation
 
 To start working with prompts:
-1. Go to the **Tasks** page and click **Import**.
-2. Upload your prompts in either .json or .zip format. Following is a Sample JSON Format to import prompt:
 
-#### Sample JSON for LLM Evaluation Project
+
+1.Go to the **Tasks** page and click **Import**.
+
+2.Upload your prompts in either .json or .zip format. Following is a Sample JSON Format to import prompt:
+
+**Sample JSON for LLM Evaluation Project**
 ```json
 {
   "data": {
@@ -88,7 +91,7 @@ To start working with prompts:
   }
 }
 ```
-#### Sample JSON for LLM Evaluation Comparision Project
+**Sample JSON for LLM Evaluation Comparision Project**
 ```json
 {
   "data": {
@@ -103,7 +106,7 @@ To start working with prompts:
   }
 }
 ```
-3. Once the prompts are imported as tasks, click the **Generate Response** button to generate LLM responses.
+3.Once the prompts are imported as tasks, click the **Generate Response** button to generate LLM responses.
 
 ![720image](/assets/images/annotation_lab/7.2.0/3.gif)
 
