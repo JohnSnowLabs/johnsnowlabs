@@ -6,7 +6,7 @@ seotitle: Release Notes | John Snow Labs
 title: Release Notes
 permalink: /docs/en/alab/release_notes
 key: docs-training
-modify_date: "2024-03-27"
+modify_date: "2025-06-23"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
@@ -15,246 +15,237 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-## Generative AI Lab 7.1: Enhanced Auditability and Workflow Efficiency
-<p style="text-align:center;">Release date: 04-29-2024</p>
+## Native LLM Evaluation Workflow with Multi-Provider Integration Generative AI Lab 7.2.0
+<p style="text-align:center;">Release date: 06-23-2025</p>
 
-Generative AI Lab 7.1 introduces several new features and improvements focused on enhancing observability, task management, data governance, and annotation workflows. It includes support for real-time log indexing for audit and compliance needs, automatic bulk task assignment for annotators, as well as improved project setup and annotation flows. These updates aim to improve system usability, transparency, and operational efficiency.
+Generative AI Lab 7.2.0 introduces native LLM evaluation capabilities, enabling complete end-to-end workflows for importing prompts, generating responses via external providers (OpenAI, Azure OpenAI, Amazon SageMaker), and collecting human feedback within a unified interface. The new LLM Evaluation and LLM Evaluation Comparison project types support both single-model assessment and side-by-side comparative analysis, with dedicated analytics dashboards providing statistical insights and visual summaries of evaluation results.
 
-## Advanced Audit Logging and Monitoring 
-Generative AI Lab now supports real-time, high-performance audit logging. This feature enhances traceability and compliance readiness without compromising security or performance. 
+New annotation capabilities include support for CPT code lookup for medical and clinical text processing, enabling direct mapping of labeled entities to standardized terminology systems.  
 
-### Key Capabilities 
+The release also delivers performance improvements through background import processing that reduces large dataset import times by 50% (from 20 minutes to under 10 minutes for 5000+ files) using dedicated 2-CPU, 5GB memory clusters.  
 
-- **Real-Time Indexing:** Captures user activities and system events, including project lifecycle actions, configuration changes, model hub events, and administrative operations. 
+Furthermore, annotation workflows now benefit from streamlined NER interfaces that eliminate visual clutter while preserving complete data integrity in JSON exports. Also, the system now enforces strict resource compatibility validation during project configuration, preventing misconfigurations between models, rules, and prompts.  
 
-- **Configurable Deployment:** Elastic Search can be deployed internally or connected to an external cluster for complete data ownership. 
+Additionally, 20+ bug fixes address critical issues, including sample task import failures, PDF annotation stability, and annotator access permissions. 
 
-- **Privacy First:** Metadata such as user ID, API method, timestamp, and context are logged without exposing sensitive payloads. 
+Whether you're tuning model performance, running human-in-the-loop evaluations, or scaling annotation tasks, Generative AI Lab 7.2.0 provides the tools to do it faster, smarter, and more accurately.
 
-- **Log Management:** Supports backup to S3, configurable retention policies, and restores for robust governance. 
+## New Features
+## LLM Evaluation Project Types with Multi-Provider Integration
 
-- **User Benefit:** Enables organizations to achieve secure, tamper-proof auditability critical for compliance and operational transparency. 
+Two new project types enable systematic evaluation of large language model outputs:
 
-**Steps to enable Audit Logs on your Generative AI Lab instance:**
+Two new project types enable the systematic evaluation of large language model outputs:
+• **LLM Evaluation:** Assess single model responses against custom criteria
+• **LLM Evaluation Comparison:** Side-by-side evaluation of responses from two different
+models
 
-This feature can be enabled if needed for environments that require advanced auditing or compliance tracking. For maximum control and security, administrators can configure Generative AI Lab to use an externally hosted Elastic Search cluster. 
+Supported Providers:
+- **OpenAI**
+- **Azure OpenAI**
+- **Amazon SageMaker**
 
-To install Elastic Search locally in Gen AI Lab, add the following parameter to the installer or updater script and then run the installation or update: 
+#### Service Configuration Process
+1. Navigate to **Settings → System Settings → Integration**.
+2. Click **Add** and enter your provider credentials.
+3. Save the configuration.
 
-```bash
---set installElasticsearch=true
+![720image](/assets/images/annotation_lab/7.2.0/1.gif)
+
+### LLM Evaluation Project Creation
+
+1. Navigate to the Projects page and click New.
+2. After filling in the project details and assigning to the project team, proceed to the
+Configuration page.
+3. Under the Text tab on step 1 - Content Type, select LLM Evaluation task and click on
+Next.
+4. On the Select LLM Providers page, you can either:
+   - Click Add button to create an external provider specific to the project (this provider will only be used within this project), or
+   - Click Go to External Service Page to be redirected to Integration page, associate
+the project with one of the supported external LLM providers, and return
+to Project → Configuration → Select LLM Response Provider,
+5. Choose the provider you want to use, save the configuration and click on Next.
+6. Customize labels and choices as needed in the Customize Labels section, and save the configuration.
+
+![720image](/assets/images/annotation_lab/7.2.0/2.gif)
+
+For **LLM Evaluation Comparison** projects, follow the same steps, but associate the project with **two** different external providers and select both on the **LLM Response Provider** page.
+
+### Sample Import Format for LLM Evaluation
+
+To start working with prompts:
+
+1.Go to the **Tasks** page and click **Import**.
+
+2.Upload your prompts in either .json or .zip format. Following is a Sample JSON Format to import prompt:
+
+**Sample JSON for LLM Evaluation Project**
+```json
+{
+  "data": {
+    "prompt": "Give me a diet plan for a diabetic 35 year old with reference links",
+    "response1": "",
+    "llm_details": [
+      { "synthetic_tasks_service_provider_id": 2, "response_key": "response1" }
+    ],
+    "title": "DietPlan"
+  }
+}
 ```
-
-Once installed, enable Elastic Search by adding the following parameter to the installer or updater script and then run the installation or update: 
-
-```bash
---set global.elasticsearch.enable=true
+**Sample JSON for LLM Evaluation Comparision Project**
+```json
+{
+  "data": {
+    "prompt": "Give me a diet plan for a diabetic 35 year old with reference links",
+    "response1": "",
+    "response2": "",
+    "llm_details": [
+      { "synthetic_tasks_service_provider_id": 2, "response_key": "response1" },
+       { "synthetic_tasks_service_provider_id": 2, "response_key": "response2" }
+    ],
+    "title": "DietPlan"
+  }
+}
 ```
+3.Once the prompts are imported as tasks, click the **Generate Response** button to generate LLM responses.
 
-One can disable Elastic Search as well. To disable it, add the following parameter to the installer or updater script and then run the installation or update:
+![720image](/assets/images/annotation_lab/7.2.0/3.gif)
 
-```bash
---set global.elasticsearch.enable=false
-```
+After responses are generated, users can begin evaluating them directly within the task interface.
 
-To include user logs in Elastic Search, add the following parameters to the installer or updater script and then run the installation or update: 
+### Analytics Dashboard for LLM Evaluation Projects
 
-```bash
---set global.elasticsearch.includeKeycloak=true \
---set global.azure.images.keycloak.tag=keycloak-<GenAI Lab Version> \
---set global.azure.images.keycloak.image=annotationlab \
---set global.azure.images.keycloak.registry=docker.io/johnsnowlabs
-```
-**Note:** Replace GenAI Lab Version with the appropriate Generative AI Lab version that you want to install or upgrade to. 
+A dedicated analytics tab provides quantitative insights for LLM evaluation projects:
 
-Once the features are enabled, the system starts real-time indexing of user and system activity while ensuring privacy and performance. All logs include metadata like user ID, API method and path, timestamp, and event context, without exposing sensitive payloads such as passwords, PHI, and PII.  
+- Bar graphs for each evaluation label and choice option
+- Statistical summaries derived from submitted completions
+- Multi-annotator scenarios prioritize submissions from highest-priority users
+- Analytics calculations exclude draft completions (submitted tasks only)
 
-![710image](/assets/images/annotation_lab/7.1.0/1.png)
+![720image](/assets/images/annotation_lab/7.2.0/4.gif)
 
-### What Gets Indexed
-- **Project Lifecycle**: Creation and deletion of projects.
-- **Configuration Changes**: Updates to teams, model assignments, external integrations, and label settings.
-- **Import/Export Activities**: Logs for task imports/exports.
-- **Models Hub Events**: Events such as model import/export and model downloads.
-- **Administrative Actions**: Logs related to user creation, updates, deletions, license upload and deletion, enabling/disabling local export toggles, analytics approval, and system backups.
+The general workflow for these projects aligns with the existing annotation flow in Generative AI Lab. The key difference lies in the integration with external LLM providers and the ability to generate model responses directly within the application for evaluation.
 
-### Log Management Features
-- **Backup & Restore**: Schedule automatic dumps of indexed logs directly to S3 buckets for backup and recovery.
-- **Retention Policies**: Configure automated deletion of old logs to optimize storage and comply with data governance policies.
-- **External Elastic Support**: Connect to your company's existing ES logging infrastructure to unify and enhance your organization's knowledge base with integrated log data.
+These new project types provide teams with a structured approach to assess and compare LLM outputs efficiently, whether for performance tuning, QA validation, or human-in-the-loop benchmarking.
 
-This new feature enhances Generative AI Lab with secure, tamper-proof logging and flexible log data management, offering robust observability without disrupting workflows. It’s an essential addition for teams focused on security, compliance, and operational transparency.
+## CPT Lookup Dataset Integration for Annotation Extraction
+NER projects now support CPT codes lookup for standardized entity mapping. Setting up lookup datasets is simple and can be done via the Customize Labels page in the project configuration wizard.
 
-## Smarter Task Distribution: Bulk Assignment at Scale
-Generative AI Lab now offers bulk task assignment capabilities, allowing up to 200 unassigned tasks to be allocated simultaneously to selected annotators. 
+#### Use Cases:
+- Map clinical text to CPT codes
+- Link entities to normalized terminology systems
+- Enhance downstream processing with standardized metadata
 
-### Key Capabilities
-- Sequential or Random Assignment: Tasks can be distributed in order or randomly from the unassigned pool. 
-- Efficient Scaling: Reduces manual effort in large-scale projects, optimizing resource utilization. 
+#### Configuration:
+1. Navigate to Customize Labels during project setup
+2. Click on the label you want to enrich
+3. Select your desired Lookup Dataset from the dropdown list
+4. Go to the Task Page to start annotating — lookup information can now be attached to the labeled texts
 
-**User Benefit:** Accelerates task distribution, improving operational efficiency and annotation throughput. 
-
-### Bulk Assignment Process:
-- Click on the "Assign Task" button.
-- Select the annotators to whom you wish to assign tasks.
-- Specify the number of tasks to assign to each annotator.
-- Define any required criteria for task selection.
-- Click on "Assign" to complete the process.​
-
-![710image](/assets/images/annotation_lab/7.1.0/2.gif)
-
-**Notes**
-_- The maximum number of tasks that can be assigned at once is 200._
-_- If the total number of unassigned tasks is less than the selected task count, all unassigned tasks will be assigned to the first selected annotator._
-
-![710image](/assets/images/annotation_lab/7.1.0/3.gif)
+![720image](/assets/images/annotation_lab/7.2.0/5.png)
 
 ## Improvements
+## Redesigned Annotation Interface for NER Projects
+The annotation widget interface has been streamlined for Text and Visual NER project types. This update focuses on enhancing clarity, reducing visual clutter, and improving overall usability, without altering the core workflow. All previously available data remains intact in the exported JSON, even if not shown in the UI. 
 
-### Only What You Need: Resource Filtering by Project Type
-Generative AI Lab enhances the Reuse Resource interface by displaying only compatible models, prompts, and rules based on the selected project type.
+### Enhancements in Name Entity Recognition and Visual NER Labeling Project Types
+- Removed redundant or non-essential data from the annotation view.
+- Grouped the Meta section visually to distinguish it clearly and associate the delete button specifically with metadata entries.
+- Default confidence scores display (1.00) with green highlighting.
+   Hover functionality on labeled text reveals text ID.
 
-**Context-Aware Resource Display:** When a project type is selected, the Reuse Resource page now filters and displays only those models, prompts, and rules that are compatible with that specific project type.​
+![720image](/assets/images/annotation_lab/7.2.0/6.png)
 
-Example – Visual NER projects, for example, will only show supported text NER models and skip unsupported resource types. Resources such as assertion models, Classification models, and OpenAI prompts, which are not supported, will not be shown. 
+#### Visual NER Specific Updates
+- **X-position** data relocated to detailed section
+- **Recognized text** is now placed at the top of the widget for improved readability.
+- Maintained data integrity in JSON exports despite UI simplification
 
-For Visual NER project:
+![720image](/assets/images/annotation_lab/7.2.0/7.png)
 
-![710image](/assets/images/annotation_lab/7.1.0/4.gif)
+These enhancements contribute to a cleaner, more intuitive user interface, helping users focus on relevant information during annotation without losing access to critical data in exports.
 
+### Optimized Import Processing for Large Datasets
+The background processing architecture now handles large-scale imports without UI disruption through intelligent format detection and dynamic resource allocation. When users upload tasks as a ZIP file or through a cloud source, Generative AI Lab automatically detects the format and uses the import server to handle the data in the background — ensuring smooth and efficient processing, even for large volumes. 
 
-For Checkbox Detection project:
+For smaller, individual files — whether selected manually or added via drag-and-drop — imports are handled directly without background processing, allowing for quick and immediate task creation.
 
+**Note:** Background import is applied only for ZIP and cloud-based imports.
 
-![710image](/assets/images/annotation_lab/7.1.0/5.gif)
+**Automatic Processing Mode Selection:**
+- ZIP files and cloud-based imports: Automatically routed to background processing via dedicated import server
+-  Individual files (manual selection or drag-and-drop): Processed directly for immediate task creation
+- The system dynamically determines optimal processing path based on import source and volume
 
-**User Benefit**: Simplifies resource selection, eliminates validation errors, and accelerates project setup. 
+![720image](/assets/images/annotation_lab/7.2.0/8.png)
 
-### Effortless Project Resets: Bulk Task Deletion
-Generative AI Lab now introduces a one-click bulk deletion option for project tasks. This enhancement eliminates the need to remove tasks individually, facilitating more efficient project management, especially during large-scale cleanups.​ 
+**Technical Architecture:**
+- Dedicated import cluster with auto-provisioning: 2 CPUs, 5GB memory (non-configurable)
+- Cluster spins up automatically during ZIP and cloud imports
+- Automatic deallocation upon completion to optimize resource utilization
+- Sequential file processing methodology reduces system load and improves reliability
+- Import status is tracked and visible on the Import page, allowing users to easily monitor
+progress and confirm successful uploads.
 
-**Feature Details:** 
-- User Interface Integration: Accessible directly from the project task page. 
-- Cautionary Control:** Deletion is irreversible, ensuring that users proceed with clarity and intent. 
+![720image](/assets/images/annotation_lab/7.2.0/9.png)
 
-**User Benefit:** Facilitates efficient large-scale project resets and cleanups. 
+**Performance Improvements:**
+- Large dataset imports (5000+ files): Previously 20+ minutes, now less than 10 minutes
+- Elimination of UI freezing during bulk operations
+- Improved system stability under high-volume import loads
 
-![710image](/assets/images/annotation_lab/7.1.0/6.gif)
+***Note: Import server created during task import is counted as an active server.***
 
-Note: _Irreversible Action: Please note that deleting tasks in bulk is irreversible. Ensure that all necessary data is backed up or no longer needed before proceeding with this action._
+### Refined Resource Compatibility Validation
+In previous versions, while validation mechanisms were in place to prevent users from combining incompatible model types, rules, and prompts, the application still allowed access to unsupported resources. This occasionally led to confusion, as the Reuse Resource page displayed models or components not applicable to the selected project type. With version 7.2.0, the project configuration enforces strict compatibility between models, rules, and prompts:
+- Reuse Resource page hidden for unsupported project types
+- Configuration interface displays only compatible resources for selected project type
 
-### More Control, More Confidence: Split Actions for PHI De-Identification 
-The de-identification process has been redesigned into two discrete steps: identification and removal of sensitive data, giving users better control over the workflow.
+![720image](/assets/images/annotation_lab/7.2.0/10.gif)
 
-**New Workflow:**
+These updates ensure a smoother project setup experience and prevent misconfigurations by guiding users more effectively through supported options.
 
-- Step 1: Identify PHI/PII within documents. 
-- Step 2: Review, adjust if necessary, then finalize de-identification. 
+### Bug Fixes
+**Sample Task Import **Resolution****
+- **Issue:** Sample task import failures in HTML projects with NER labels
+- **Resolution**: Sample tasks now import successfully into HTML projects containing NER labels
 
-**User Benefit:** Provides greater transparency, enabling careful review before sensitive information is permanently removed. 
+**PDF Annotation Stability**
+- **Issue:** PDF page refreshes when adding lookup codes in Side-by-Side projects
+- **Resolution**: PDF viewport maintains position during lookup data entry
 
-![710image](/assets/images/annotation_lab/7.1.0/7.png)
+**Lang Test Model Versioning**
+- **Issue:** Test execution errors for v1-generated test cases after model retraining to v2
+- **Resolution**: Previously generated test cases execute successfully across model versions
 
-By splitting identification and de-identification into separate steps, the new process provides greater transparency and allows annotators to review and confirm all changes before finalizing the output.
+**Relation Tag Display Logic**
+- **Issue:** Relations with "O" tag inappropriately displayed in UI
+- **Resolution**: "O" tagged relations properly excluded from UI display
 
-### Stay Focused: Pre-Annotation Defaults to Current Page 
-Pre-annotation now defaults to tasks on the current page instead of the entire project. Previously, users had to manually select this option; now, it is the default behavior. 
+**License Banner Event Handling**
+- **Issue:** license_banner_dismiss event triggered on page refresh
+- **Resolution**: Event triggers only on explicit user dismissal
 
-**Change Impact:** 
-- **Error Prevention:** Reduces the risk of accidentally pre-annotating full projects. 
-- **Faster Processing:** Localizes the workload for quicker completions. 
+**Task Selection Interface Stability**
+- **Issue:** Assignee button resizing and task-per-page selection failures when all tasks selected
+- **Resolution**: UI elements maintain consistent sizing during bulk operations
 
-**User Benefit:** Speeds up workflow and minimizes unintentional system load. 
+**Demo Project Access Control**
+- **Issue:** Admin users automatically added to Demo De-identification projects
+- **Resolution**: Admin users no longer added by default to demo projects
 
-![710image](/assets/images/annotation_lab/7.1.0/8.png)
+**Annotator Access Permissions**
+- **Issue:** "User doesn't have permission" errors for assigned annotators in de-identification projects
+- **Resolution**: Annotators with task assignments can access task pages without permission errors
 
-### Seamless Zoom: Persistent PDF Zoom Levels 
-
-Zoom levels in PDF tasks are now preserved across navigation actions within the same task session. The zoom setting remains consistent during annotation, saving, and page navigation, and only resets if the page is manually refreshed. 
-
-Previously, the zoom level would reset after each action, which could disrupt the annotation workflow. This update ensures a more consistent and uninterrupted experience when working with PDF documents. 
-
-**User Benefit:** Enhances user comfort and consistency when working through multi-page PDF annotations. 
-
-![710image](/assets/images/annotation_lab/7.1.0/9.gif)
-
-### Color-Coded Clarity: Random Colors for Visual Builder Labels 
-When adding multiple labels in the Visual Builder, each label is now assigned a random color by default. While users could previously add multiple labels at once using the Visual Builder, all labels were assigned the same default color, making it harder to visually distinguish them during annotation, and users had to manually update the colors for each label.
-
-![710image](/assets/images/annotation_lab/7.1.0/10.gif)
-
-**User Benefit:** Saves setup time and improves usability during annotation tasks. 
-
-### Find It Fast: Auto-Expanded Labels in Page-Wise Annotation View 
-For HCC Coding projects, annotations are now organized page-by-page, with clicked labels auto-expanded in the sidebar. 
-
-**Enhanced Navigation with Label Spotlighting:** Clicking a labeled text highlights and expands the corresponding annotation entry. 
-
-**User Benefit:** Streamlines navigation, improves editing accuracy and simplifies the review of complex multi-page documents. 
-
-![710image](/assets/images/annotation_lab/7.1.0/11.gif)
-
-
-## Bug Fixes
-
-- **License server is not deployed in AMI**
-
-	Previously, the license server failed to deploy in the AMI environment. This issue has now been fixed, and the license server deploys successfully without errors for AMI.
-
-- **User can add licensed healthcare models to project and save configurations without any error**
-
-	Users were previously able to add licensed healthcare models to a project without a valid license if the models were already downloaded. The issue has been fixed, and now, licensed models cannot be used in a project without a valid license, even if they are already present in the instance.
-
-- **Model Finner_header cannot be used along with other models due to missing embedding**
-
-	Previously, the Finner_Header model could not be used alongside other models due to missing embeddings. This issue has been fixed, and the required embeddings are now downloaded automatically, allowing users to use the model without any problems.
-
-- **"Last Training Succeeded" status is shown even when training was aborted**
-
-	The "Last Training Succeeded" status was shown even after the training was aborted (i.e., when the server was deleted from the cluster page). This has been fixed, and the correct "Aborted" message is now displayed, even after refreshing the page.
-
-- **Users cannot import external Prompts**
-
-	When attempting to import an external prompt, users would encounter an error dialog even with a valid prompt file. This issue has been fixed, and users can now import external prompts successfully without any errors.
-
-- **Validation error is observed when user tries to update the project configuration (remove labels) even when there are no tasks**
-
-	A validation error occurred when users tried to update the project configuration by removing an existing model and adding a new one, even when no tasks were present. This issue has been resolved, and users can now update the project configuration seamlessly when no tasks are present.
-
-- **Sometimes the UI crashes while clicking/dragging in PDF file in VisualNER project**
-
-	The UI would occasionally crash when interacting with the image section of PDF files, particularly during clicking or dragging actions in VisualNER projects. It has now been fixed, ensuring that the UI remains stable and responsive during all interactions.
-
-- **Deployed De-identification server abruptly stopped in AMI instance**
-
-	Previously, the deployed De-identification server would stop suddenly on the cluster page after a few minutes in the AMI instance. This issue has been fixed, and the server now remains idle unless manually stopped by the user.
-
-- **Hotkey Tooltip Overflow in Region Section Buttons**
-
-	Hotkey tooltips for the Region section buttons were not displayed properly, with some overlapping onto button text and others being partially hidden. This issue has been fixed, and the tooltips are now clearly visible and correctly positioned.
-
-- **Training fails with 'Out Of Memory' when training large dataset with sampling**
-
-	Previously, training would fail when using a dataset with large sampling. This issue has been fixed, and training now completes successfully even with larger datasets.
-
-- **Unable to Manually Enter Color Code in Edit Label**
-
-	While editing a label in the Customize Labels section, entering a valid hex color code did not reflect the correct color in the color picker. This issue has been fixed, and the color picker now accurately displays the corresponding color when a valid hex code is entered.
-
-- **UI Freeze and 404 Error During LangTest Execution**
-
-	Previously, running a LangTest would freeze the UI and result in a 404 error, despite the test completing successfully. This issue has now been resolved, and the LangTest runs smoothly without causing any UI freezes.
-
-- **User navigates to something went wrong page while selecting external prompt or rules for side-by-side project**
-
-	Users were redirected to a "Something went wrong" page when attempting to select external prompts or rules in side-by-side projects. This issue has been fixed, and users can now select prompts and rules without errors.
 
 ## Versions
 
 </div>
 
 <ul class="pagination owl-carousel pagination_big">
-    <li class="active"><a href="annotation_labs_releases/release_notes_7_1_0">7.1.0</a></li>
+    <li class="active"><a href="annotation_labs_releases/release_notes_7_2_0">7.2.0</a></li>
+    <li><a href="annotation_labs_releases/release_notes_7_1_0">7.1.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_7_0_1">7.0.1</a></li>
     <li><a href="annotation_labs_releases/release_notes_7_0_0">7.0.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_11_3">6.11.3</a></li>
@@ -263,45 +254,4 @@ For HCC Coding projects, annotations are now organized page-by-page, with clicke
     <li><a href="annotation_labs_releases/release_notes_6_11_0">6.11.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_10_1">6.10.1</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_10_0">6.10.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_6_9_1">6.9.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_6_9_0">6.9.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_6_8_1">6.8.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_6_8_0">6.8.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_6_7_2">6.7.2</a></li>
-    <li><a href="annotation_labs_releases/release_notes_6_7_0">6.7.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_6_6_0">6.6.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_6_5_1">6.5.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_6_5_0">6.5.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_6_4_1">6.4.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_6_4_0">6.4.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_6_3_2">6.3.2</a></li> 
-    <li><a href="annotation_labs_releases/release_notes_6_3_0">6.3.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_6_2_1">6.2.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_6_2_0">6.2.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_6_1_2">6.1.2</a></li>
-    <li><a href="annotation_labs_releases/release_notes_6_1_1">6.1.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_6_1_0">6.1.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_6_0_2">6.0.2</a></li>
-    <li><a href="annotation_labs_releases/release_notes_6_0_0">6.0.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_9_3">5.9.3</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_9_2">5.9.2</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_9_1">5.9.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_9_0">5.9.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_8_1">5.8.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_8_0">5.8.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_7_1">5.7.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_7_0">5.7.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_6_2">5.6.2</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_6_1">5.6.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_6_0">5.6.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_5_3">5.5.3</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_5_2">5.5.2</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_5_1">5.5.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_5_0">5.5.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_4_1">5.4.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_3_2">5.3.2</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_2_3">5.2.3</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_2_2">5.2.2</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_1_1">5.1.1</a></li> 
-    <li><a href="annotation_labs_releases/release_notes_5_1_0">5.1.0</a></li> 
 </ul>

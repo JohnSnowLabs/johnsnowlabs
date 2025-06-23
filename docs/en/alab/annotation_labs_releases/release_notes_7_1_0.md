@@ -15,7 +15,8 @@ sidebar:
 
 
 ## Generative AI Lab 7.1: Enhanced Auditability and Workflow Efficiency
-Release date: 04-29-2024
+<p style="text-align:center;">Release date: 04-29-2025</p>
+
 
 Generative AI Lab 7.1 introduces several new features and improvements focused on enhancing observability, task management, data governance, and annotation workflows. It includes support for real-time log indexing for audit and compliance needs, automatic bulk task assignment for annotators, as well as improved project setup and annotation flows. These updates aim to improve system usability, transparency, and operational efficiency.
 

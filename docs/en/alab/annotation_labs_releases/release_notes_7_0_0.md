@@ -16,6 +16,7 @@ sidebar:
 ## 7.0.0
 
 ## Generative AI Lab 7: Accelerating Clinical Annotation with HCC Coding
+<p style="text-align:center;">Release date: 04-04-2025</p>
 
 Generative AI Lab 7 brings many improvements that directly support real-world healthcare annotation and coding use cases. Most notably, it introduces support for Hierarchical Condition Category (HCC) coding—enabling users to streamline clinical risk adjustment workflows by automatically linking ICD codes to HCC categories, prioritizing high-value tasks, and validating codes more efficiently. The release also enables HTML-based projects to leverage Inter-Annotator Agreement (IAA) analytics for quality assurance, simplifies licensing across the suite of John Snow Labs products, and improves training scalability with dataset sampling. Enhancements to the annotation interface—including bulk label management and more precise zoom controls—further increase speed and usability. Combined with a robust set of stability and performance fixes, these capabilities give medical coders, clinicians, and data scientists the tools they need to annotate faster, train better models, and ensure higher data accuracy across large-scale projects.
 

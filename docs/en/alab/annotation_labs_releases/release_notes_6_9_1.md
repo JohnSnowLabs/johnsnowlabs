@@ -14,8 +14,7 @@ sidebar:
 <div class="h3-box" markdown="1">
 
 ## 6.9.1
-
-Release date: **12-18-2024**
+<p style="text-align:center;">Release date: 12-18-2024</p>
 
 This hotfix addresses critical bugs and improves functionality for a smoother user experience.
 
