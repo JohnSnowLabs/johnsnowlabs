@@ -1,16 +1,14 @@
 ---
 layout: docs
-comment: no
 header: true
-seotitle: Release Notes | John Snow Labs
-title: Release Notes
-permalink: /docs/en/alab/release_notes
-key: docs-training
-modify_date: "2025-06-23"
-use_language_switcher: "Python-Scala"
+seotitle: Generative AI Lab | John Snow Labs
+title: Generative AI Lab 7.1
+permalink: /docs/en/alab/annotation_labs_releases/release_notes_7_1_0
+key: docs-licensed-release-notes
+modify_date: 2025-04-29
 show_nav: true
 sidebar:
-  nav: annotation-lab
+    nav: annotation-lab
 ---
 
 <div class="h3-box" markdown="1">
@@ -280,6 +278,7 @@ errors
 - [ALAB-6387] Update the URL for open-source models.json
 - [ALAB-6390] Fix issue with active learning build due to apt repository
 
+</div><div class="prev_ver h3-box" markdown="1">
 
 ## Versions
 
