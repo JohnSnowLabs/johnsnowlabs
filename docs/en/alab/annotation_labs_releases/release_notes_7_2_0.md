@@ -48,7 +48,7 @@ Supported Providers:
 2. Click **Add** and enter your provider credentials.
 3. Save the configuration.
 
-![IntegrateExternalProvider](https://github.com/user-attachments/assets/6992c45d-edcd-413e-89d0-36f2d3ed2ee9)
+![720image](/assets/images/annotation_lab/7.2.0/1.gif)
 
 ### LLM Evaluation Project Creation
 
@@ -65,7 +65,7 @@ to Project → Configuration → Select LLM Response Provider,
 5. Choose the provider you want to use, save the configuration and click on Next.
 6. Customize labels and choices as needed in the Customize Labels section, and save the configuration.
 
-![Configure-LLMEvaluation](https://github.com/user-attachments/assets/59288e56-22e2-495c-9bd4-b1a77a7fd453)
+![720image](/assets/images/annotation_lab/7.2.0/2.gif)
 
 For **LLM Evaluation Comparison** projects, follow the same steps, but associate the project with **two** different external providers and select both on the **LLM Response Provider** page.
 
@@ -105,7 +105,7 @@ To start working with prompts:
 ```
 3. Once the prompts are imported as tasks, click the **Generate Response** button to generate LLM responses.
 
-![ImportAndGenerateRespone](https://github.com/user-attachments/assets/3057814a-f480-423c-9020-102965430c18)
+![720image](/assets/images/annotation_lab/7.2.0/3.gif)
 
 After responses are generated, users can begin evaluating them directly within the task interface.
 
@@ -118,7 +118,7 @@ A dedicated analytics tab provides quantitative insights for LLM evaluation proj
 - Multi-annotator scenarios prioritize submissions from highest-priority users
 - Analytics calculations exclude draft completions (submitted tasks only)
 
-![Analytics-LLM](https://github.com/user-attachments/assets/fe03702d-85cb-4d53-b423-3d3ca200d330)
+![720image](/assets/images/annotation_lab/7.2.0/4.gif)
 
 The general workflow for these projects aligns with the existing annotation flow in Generative AI Lab. The key difference lies in the integration with external LLM providers and the ability to generate model responses directly within the application for evaluation.
 
@@ -138,7 +138,7 @@ NER projects now support CPT codes lookup for standardized entity mapping. Setti
 3. Select your desired Lookup Dataset from the dropdown list
 4. Go to the Task Page to start annotating — lookup information can now be attached to the labeled texts
 
-<img width="1302" alt="Screenshot 2025-06-10 at 10 55 50 AM" src="https://github.com/user-attachments/assets/03a55c5a-3737-4d56-911f-12d656637b2b" />
+![720image](/assets/images/annotation_lab/7.2.0/5.png)
 
 ## Improvements
 ## Redesigned Annotation Interface for NER Projects
@@ -150,14 +150,14 @@ The annotation widget interface has been streamlined for Text and Visual NER pro
 - Default confidence scores display (1.00) with green highlighting.
    Hover functionality on labeled text reveals text ID.
 
-![NER-Project-Annotation](https://github.com/user-attachments/assets/e822e21b-3d08-4df7-85c0-59ba65e0daff)
+![720image](/assets/images/annotation_lab/7.2.0/6.png)
 
 #### Visual NER Specific Updates
 - **X-position** data relocated to detailed section
 - **Recognized text** is now placed at the top of the widget for improved readability.
 - Maintained data integrity in JSON exports despite UI simplification
 
-![VisualNER-Annotation](https://github.com/user-attachments/assets/7875878c-2f6e-4b94-94d3-46e1b5c6c752)
+![720image](/assets/images/annotation_lab/7.2.0/7.png)
 
 These enhancements contribute to a cleaner, more intuitive user interface, helping users focus on relevant information during annotation without losing access to critical data in exports.
 
@@ -173,7 +173,7 @@ For smaller, individual files — whether selected manually or added via drag-an
 -  Individual files (manual selection or drag-and-drop): Processed directly for immediate task creation
 - The system dynamically determines optimal processing path based on import source and volume
 
-<img width="1540" alt="Screenshot 2025-06-03 at 8 44 27 PM" src="https://github.com/user-attachments/assets/e3ef153a-1e38-42f6-b482-a94fbc696fbc" />
+![720image](/assets/images/annotation_lab/7.2.0/8.png)
 
 **Technical Architecture:**
 - Dedicated import cluster with auto-provisioning: 2 CPUs, 5GB memory (non-configurable)
@@ -183,7 +183,7 @@ For smaller, individual files — whether selected manually or added via drag-an
 - Import status is tracked and visible on the Import page, allowing users to easily monitor
 progress and confirm successful uploads.
 
-<img width="898" alt="Screenshot 2025-06-03 at 8 41 48 PM" src="https://github.com/user-attachments/assets/6e505c44-e8af-4d82-b8db-e64c06866ca4" />
+![720image](/assets/images/annotation_lab/7.2.0/9.png)
 
 **Performance Improvements:**
 - Large dataset imports (5000+ files): Previously 20+ minutes, now less than 10 minutes
@@ -197,7 +197,7 @@ In previous versions, while validation mechanisms were in place to prevent users
 - Reuse Resource page hidden for unsupported project types
 - Configuration interface displays only compatible resources for selected project type
 
-![FilterModels](https://github.com/user-attachments/assets/fba83d42-4c37-4a34-a9bb-002974bbe7b0)
+![720image](/assets/images/annotation_lab/7.2.0/10.gif)
 
 These updates ensure a smoother project setup experience and prevent misconfigurations by guiding users more effectively through supported options.
 
@@ -231,52 +231,8 @@ These updates ensure a smoother project setup experience and prevent misconfigur
 - **Resolution**: Admin users no longer added by default to demo projects
 
 **Annotator Access Permissions**
-- **Issue:** "User doesn't have permission" errors for assigned annotators in de-identification
-projects
-- **Resolution**: Annotators with task assignments can access task pages without permission
-errors
-
-### Features
-- [ALAB-6326] Add feature to Import Questions, Generate LLM Responses, and Analyze Annotator Feedback 
-- [ALAB-6170] Label Widget Makeover: Streamlined UI for Better Usability
-
-### Improvements
-- [ALAB-5901] Implement background processing service to support large-scale task imports
-- [ALAB-6368] Add CPT lookup table
-- [ALAB-6019] Maintain consistency while showing validation error message in Re-use resource page
-
-### Bug Fixes
-- [ALAB-5932] ZIP file is not imported
-- [ALAB-6076] Sample task is not imported into the HTML projects with NER labels
-- [ALAB-6195] Clicking on the arrow to add lookup code refreshes the PDF
-- [ALAB-6318] Lang Test Error When Running Test
-- [ALAB-6323] Relations with tag 0 are shown on the UI
-- [ALAB-6346] license_banner_dismiss Triggered on Refresh Without User Dismissal of Banner
-- [ALAB-6352] Assignee Button Resizes and Task Per Page Selection Fails When All Tasks Are Selected
-- [ALAB-6353] Admin user is added to Demo De-identification project by default
-- [ALAB-6354] Error while the user annotates the Prompt Section and tries to save the task in LLM Response Comparison 
-- [ALAB-6355] Unused/missing imports causing annotationlab container to crash in Docker
-- [ALAB-6362] "User doesn't have permission to access the resource" error when annotator navigates to the task page
-- [ALAB-6363] Loading button missing and task page is not auto refreshing during task import
-- [ALAB-6364] Import Server is not automatically deleted from the Cluster Page after task import is complete
-- [ALAB-6369] Pre-annotation fails when using External Prompt and NER Model in a single project
-- [ALAB-6378] Validation fails even when correct credentials are used while integrating external provider
-- [ALAB-6380] Users cannot integrate and save the external provider for Sagemaker
-- [ALAB-6381] Users cannot validate external prompt created using Sagemaker
-- [ALAB-6383] Synthetic tasks aren't generated with valid credentials
-- [ALAB-6385] Regions are not visible in Visual NER Project
-- [ALAB-6386] "Select LLM Response Provider" page cannot be used if user deletes external service provider from Integration Page
-- [ALAB-6388] "Something went wrong" when users navigate to Rules Page
-- [ALAB-6391] Users cannot create "LLM Evaluation" and LLM Evaluation Comparison" projects
-- [ALAB-6392] Data not populated in Inter Annotator Agreement tab in Analytics Page
-
-### Tasks
-- [ALAB-6301] Fetch AWS credentials for floating/payg license using LV instead of using license server
-- [ALAB-6333] Track import task status while importing tasks from import_tasks server
-- [ALAB-6339] Update import_tasks script to read one file at a time
-- [ALAB-6358] UI: LLM question pre-annotation comparison 
-- [ALAB-6387] Update the URL for open-source models.json
-- [ALAB-6390] Fix issue with active learning build due to apt repository
+- **Issue:** "User doesn't have permission" errors for assigned annotators in de-identification projects
+- **Resolution**: Annotators with task assignments can access task pages without permission errors
 
 </div><div class="prev_ver h3-box" markdown="1">
 
