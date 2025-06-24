@@ -626,7 +626,29 @@ function wrapWordInSpan(data, wordToWrap) {
             <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Terminology Server"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
-<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="coming-soon">Coming soon!</h2>
+<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="aws-marketplace">AWS Marketplace</h2>
+
+<p>One of the most straight forward method to start using Terminology Server is using the AWS Marketplace. Using AWS Marketplace, the Terminology Server will be deployed on your AWS EC2 instance with just a few clicks. There is a Software Price and AWS Infrastructure price associated this with this installation method (Details are in the product page in AWS Marketplac)</p>
+
+<p>Visit the <a href="https://aws.amazon.com/marketplace/pp/prodview-3hta3hebivvrk">product page on AWS Marketplace</a> and follow the instructions to subscribe and deploy</p>
+
+<p><strong>Steps to get started:</strong></p>
+<ul>
+  <li>Subscribe to the product on the AWS Marketplace.
+  <img src="/assets/images/term_server/subscribe.png" alt="Terminology Service Subscription" /></li>
+  <li>Once subscribed, deploy it on a new machine
+  <img src="/assets/images/term_server/launch.png" alt="Terminology Service Launch" /></li>
+  <li>
+    <p>Wait for the services to be active. This might take few minutes for the initial boot. 
+<br />
+  To check the status, login to the instance and run this command
+<br />
+<code class="language-plaintext highlighter-rouge">sudo systemctl status terminology-server.service</code></p>
+
+    <p><img src="/assets/images/term_server/terminology_service_status.png" alt="Terminology Service Staus" /></p>
+  </li>
+  <li>Once all the status is active, access the terminology server on http://INSTANCE_IP</li>
+</ul>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
       <time itemprop="dateModified" datetime="2025-04-01T00:00:00+00:00">Apr 01, 2025</time>
     </span><!-- start custom article footer snippet -->
