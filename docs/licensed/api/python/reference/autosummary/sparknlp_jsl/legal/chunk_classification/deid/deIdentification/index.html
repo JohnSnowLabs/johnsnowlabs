@@ -663,6 +663,11 @@ Default: False.</p></li>
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.enableDefaultObfuscationEquivalents">
+<span class="sig-name descname"><span class="pre">enableDefaultObfuscationEquivalents</span></span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.enableDefaultObfuscationEquivalents" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.entityCasingModesPath">
 <span class="sig-name descname"><span class="pre">entityCasingModesPath</span></span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.entityCasingModesPath" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -790,6 +795,11 @@ Default: False.</p></li>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.obfuscateRefSource">
 <span class="sig-name descname"><span class="pre">obfuscateRefSource</span></span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.obfuscateRefSource" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.obfuscationEquivalentsResource">
+<span class="sig-name descname"><span class="pre">obfuscationEquivalentsResource</span></span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.obfuscationEquivalentsResource" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -1025,6 +1035,12 @@ using <cite>paramMaps[index]</cite>. <cite>index</cite> values may not be sequen
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.getChunkMatching">
 <span class="sig-name descname"><span class="pre">getChunkMatching</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.getChunkMatching" title="Permalink to this definition">#</a></dt>
 <dd><p>Gets the value of chunkMatching or its default value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.getDefaultObfuscationEquivalents">
+<span class="sig-name descname"><span class="pre">getDefaultObfuscationEquivalents</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.getDefaultObfuscationEquivalents" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the default obfuscation equivalents for common entities.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -1376,6 +1392,20 @@ Processing continues with the next one. This comes with a performance penalty.</
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – If True, exceptions are handled.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setEnableDefaultObfuscationEquivalents">
+<span class="sig-name descname"><span class="pre">setEnableDefaultObfuscationEquivalents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setEnableDefaultObfuscationEquivalents" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to enable default obfuscation equivalents for common entities.
+This parameter allows the system to automatically include a set of predefined common English name equivalents.
+Default is False.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to enable default obfuscation equivalents for common entities.
+Default is False.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1776,6 +1806,92 @@ both : Takes the entities from the setCustomFakers function and the faker module
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setObfuscationEquivalents">
+<span class="sig-name descname"><span class="pre">setObfuscationEquivalents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">equivalents</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setObfuscationEquivalents" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets variant-to-canonical entity mappings to ensure consistent obfuscation.</p>
+<p>This function allows you to define equivalence rules for entity variants that should be
+obfuscated the same way. For example, the names “Alex” and “Alexander” will always be
+mapped to the same obfuscated value if they are linked to the same canonical form.</p>
+<dl class="simple">
+<dt>It accepts a list of string triplets, where each triplet defines:</dt><dd><ul class="simple">
+<li><p>variant:      A non-standard, short, or alternative form of a value (e.g., “Alex”)</p></li>
+<li><p>entityType:   The type of the entity (e.g., “NAME”, “STATE”, “COUNTRY”)</p></li>
+<li><p>canonical:    The standardized form all variants map to (e.g., “Alexander”)</p></li>
+</ul>
+</dd>
+</dl>
+<p>This is especially useful in de-identification tasks to ensure consistent replacement
+of semantically identical values. It also allows cross-variant normalization across
+different occurrences of sensitive data.
+Notes:
+——
+Both <cite>variant</cite> and <cite>entityType</cite> comparisons are case-insensitive. For example,
+“alex”, “Alex”, and “ALEX” are treated as the same variant.</p>
+<section id="example">
+<h4>Example:<a class="headerlink" href="#example" title="Permalink to this heading">#</a></h4>
+<dl class="simple">
+<dt>equivalents = [</dt><dd><p>[“Alex”, “NAME”, “Alexander”],
+[“Rob”, “NAME”, “Robert”],
+[“CA”, “STATE”, “California”],
+[“Calif.”, “STATE”, “California”]</p>
+</dd>
+</dl>
+<p>]</p>
+<p>my_deid_transformer.setObfuscationEquivalents(equivalents)</p>
+<dl class="field-list simple">
+<dt class="field-odd">param equivalents<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list of [variant, entityType, canonical] triplets</p>
+</dd>
+<dt class="field-even">raises ValueError<span class="colon">:</span></dt>
+<dd class="field-even"><p>if any entry does not have exactly 3 elements</p>
+</dd>
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>self</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setObfuscationEquivalentsResource">
+<span class="sig-name descname"><span class="pre">setObfuscationEquivalentsResource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">read_as</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">ReadAs.TEXT</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setObfuscationEquivalentsResource" title="Permalink to this definition">#</a></dt>
+<dd><p>Loads variant-to-canonical entity mappings from an external resource file.</p>
+<p>This method provides an alternative way to set obfuscation equivalents by reading them
+from an external file (e.g., CSV or plain text). Each line in the file should contain
+a triplet in the form:</p>
+<blockquote>
+<div><p>variant,entityType,canonical</p>
+</div></blockquote>
+<dl class="simple">
+<dt>For example:</dt><dd><p>Rob,NAME,Robert
+CA,STATE,California
+Calif.,STATE,California</p>
+</dd>
+</dl>
+<p>This is useful when managing large lists of mappings outside of Python code.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em>) – Path to the external resource file containing the mappings.</p></li>
+<li><p><strong>read_as</strong> (<em>str</em><em>, </em><em>optional</em>) – Reading mode for the resource (e.g., ReadAs.TEXT or ReadAs.SPARK), by default ReadAs.TEXT.</p></li>
+<li><p><strong>options</strong> (<em>dict</em><em>, </em><em>optional</em>) – Options for reading the resource. For CSV files, set {“delimiter”: “,”}. Default is {“delimiter”: “,”}.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>This transformer instance with the obfuscationEquivalentsResource parameter set.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>self</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>The resource file must have one mapping per line.</p></li>
+<li><p><cite>variant</cite> and <cite>entityType</cite> comparisons are case-insensitive during processing.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setObfuscationStrategyOnException">
 <span class="sig-name descname"><span class="pre">setObfuscationStrategyOnException</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setObfuscationStrategyOnException" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets the obfuscation strategy to be applied when an exception occurs.
@@ -1960,8 +2076,8 @@ you can reply to an execution several times with the same output.</p>
 This is used to selectively apply different obfuscation methods to specific entities.
 The keys are entity names and the values are the obfuscation sources.
 If an entity is not specified in this map, the <cite>obfuscateRefSource</cite> param is used to determine the obfuscation source.</p>
-<section id="example">
-<h4>Example:<a class="headerlink" href="#example" title="Permalink to this heading">#</a></h4>
+<section id="id9">
+<h4>Example:<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h4>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">selective_sources</span> <span class="o">=</span> <span class="p">{</span>
 <span class="gp">... </span><span class="s1">&#39;PHONE&#39;</span><span class="p">:</span> <span class="s1">&#39;file&#39;</span><span class="p">,</span>
 <span class="gp">... </span><span class="s1">&#39;ADDRESS&#39;</span><span class="p">:</span> <span class="s1">&#39;both&#39;</span>
@@ -1984,7 +2100,7 @@ The keys are entity names and the values are the obfuscation sources.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setSelectiveObfuscationModes">
 <span class="sig-name descname"><span class="pre">setSelectiveObfuscationModes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setSelectiveObfuscationModes" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets a Json path which has a dictionary of modes to enable multi-mode deIdentification.</p>
+<dd><p>Sets a Json path or dict directly which has a dictionary of modes to enable multi-mode deIdentification.</p>
 <p>‘obfuscate’: Replace the values with random values.
 ‘mask_same_length_chars’: Replace the name with the asterisks with same length minus two plus brackets on both end.
 ‘mask_entity_labels’: Replace the values with the entity value.
@@ -1995,7 +2111,14 @@ The keys are entity names and the values are the obfuscation sources.</p>
 <p>The entities which have not been given in dictionary will deidentify according to setMode().</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – Dictionary path where is the json that contains the selective obfuscation modes</p>
+<dd class="field-odd"><p><strong>path</strong> (<em>dict</em><em> or </em><em>str</em>) – <ul class="simple">
+<li><p>If dict: direct mapping of obfuscation modes to entity type lists, e.g., {“obfuscate”: [“NAME”, “STATE”]}</p></li>
+<li><p>If str: path to an external file containing the mappings</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError if the input is not a dictionary</strong><strong> or </strong><strong>string.</strong> – </p>
 </dd>
 </dl>
 </dd></dl>
@@ -2007,8 +2130,8 @@ The keys are entity names and the values are the obfuscation sources.</p>
 This method is used to set static obfuscation pairs that will be used for de-identification.
 Each pair should contain three elements: original, entity type, and fake.
 The pairs must have exactly 3 elements: [original, entityType, fake].</p>
-<section id="id9">
-<h4>Example:<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h4>
+<section id="id10">
+<h4>Example:<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h4>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pairs</span> <span class="o">=</span> <span class="p">[</span>
 <span class="gp">... </span>    <span class="p">[</span><span class="s2">&quot;John Doe&quot;</span><span class="p">,</span> <span class="s2">&quot;PERSON&quot;</span><span class="p">,</span> <span class="s2">&quot;Jane Smith&quot;</span><span class="p">],</span>
 <span class="gp">... </span>    <span class="p">[</span><span class="s2">&quot;Los Angeles&quot;</span><span class="p">,</span> <span class="s2">&quot;LOCATION&quot;</span><span class="p">,</span> <span class="s2">&quot;New York City&quot;</span><span class="p">],</span>
@@ -2144,7 +2267,7 @@ The default value is false.</p></li>
 <li><p><strong>blackList</strong> – List of entities ignored for masking or obfuscation.The default values are: “SSN”,”PASSPORT”,”DLN”,”NPI”,”C_CARD”,”IBAN”,”DEA”</p></li>
 <li><p><strong>regexEntities</strong> – Keep the regex entities used in the regexPatternDictionary</p></li>
 <li><p><strong>maskingPolicy</strong> – Select the masking policy:
-- same_length_chars: Replace the obfuscated entity with a masking sequence composed of asterisks and surrounding squared brackets, being the total length of the masking sequence of the same length as the original sequence. Example, Smith -&gt; [<a href="#id10"><span class="problematic" id="id11">**</span></a><a href="#id12"><span class="problematic" id="id13">*</span></a>]. If the entity is less than 3 chars (like Jo, or 5), asterisks without brackets will be returned.
+- same_length_chars: Replace the obfuscated entity with a masking sequence composed of asterisks and surrounding squared brackets, being the total length of the masking sequence of the same length as the original sequence. Example, Smith -&gt; [<a href="#id11"><span class="problematic" id="id12">**</span></a><a href="#id13"><span class="problematic" id="id14">*</span></a>]. If the entity is less than 3 chars (like Jo, or 5), asterisks without brackets will be returned.
 - entity_labels: Replace the values with the corresponding entity labels.
 - fixed_length_chars: Replace the obfuscated entity with a masking sequence composed of a fixed number of asterisks.</p></li>
 <li><p><strong>fixedMaskLength</strong> – This is the length of the masking sequence that will be used when the ‘fixed_length_chars’ masking policy is selected.</p></li>
@@ -2294,6 +2417,11 @@ Default: False.</p></li>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.days">
 <span class="sig-name descname"><span class="pre">days</span></span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.days" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.enableDefaultObfuscationEquivalents">
+<span class="sig-name descname"><span class="pre">enableDefaultObfuscationEquivalents</span></span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.enableDefaultObfuscationEquivalents" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -2575,6 +2703,12 @@ user-supplied values &lt; extra.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.getDefaultObfuscationEquivalents">
+<span class="sig-name descname"><span class="pre">getDefaultObfuscationEquivalents</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.getDefaultObfuscationEquivalents" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the default obfuscation equivalents for common entities.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.getInputCols">
 <span class="sig-name descname"><span class="pre">getInputCols</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.getInputCols" title="Permalink to this definition">#</a></dt>
 <dd><p>Gets current column names of input annotations.</p>
@@ -2735,8 +2869,8 @@ If the given <code class="docutils literal notranslate"><span class="pre">ageGro
 The dictionary should contain the age group name as the key and an list of two integers as the value.
 The first integer is the lower bound of the age group, and the second integer is the upper bound of the age group.
 Default age groups are as follows in the English language:</p>
-<section id="id14">
-<h4>Default and example dictionary<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h4>
+<section id="id15">
+<h4>Default and example dictionary<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h4>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span> <span class="s2">&quot;baby&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
 <span class="gp">... </span>  <span class="s2">&quot;toddler&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
 <span class="gp">... </span>  <span class="s2">&quot;child&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">13</span><span class="p">],</span>
@@ -2929,6 +3063,20 @@ If not provided a random integer between 1 and 60 will be used.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setEnableDefaultObfuscationEquivalents">
+<span class="sig-name descname"><span class="pre">setEnableDefaultObfuscationEquivalents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setEnableDefaultObfuscationEquivalents" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to enable default obfuscation equivalents for common entities.
+This parameter allows the system to automatically include a set of predefined common English name equivalents.
+Default is False.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to enable default obfuscation equivalents for common entities.
+Default is False.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setFakerLengthOffset">
 <span class="sig-name descname"><span class="pre">setFakerLengthOffset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setFakerLengthOffset" title="Permalink to this definition">#</a></dt>
 <dd><p>It specifies how much length deviation is accepted in obfuscation, with keepTextSizeForObfuscation enabled. Must be greater than 0.
@@ -2974,15 +3122,15 @@ If value is true, it might decrease performance. Default: False</p>
 <span class="sig-name descname"><span class="pre">setGeoConsistency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setGeoConsistency" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets whether to enforce consistent obfuscation across geographical entities:
 state, city, street, zip and phone.</p>
-<section id="id15">
-<h4>Functionality Overview<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h4>
+<section id="id16">
+<h4>Functionality Overview<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h4>
 <p>This parameter enables intelligent geographical entity obfuscation that maintains
 realistic relationships between different geographic components. When enabled,
 the system ensures that obfuscated addresses form coherent, valid combinations
 rather than random replacements.</p>
 </section>
-<section id="id16">
-<h4>Supported Entity Types<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h4>
+<section id="id17">
+<h4>Supported Entity Types<a class="headerlink" href="#id17" title="Permalink to this heading">#</a></h4>
 <p>The following geographical entities are processed with priority order:</p>
 <ul class="simple">
 <li><p><strong>state</strong> (Priority: 0) - US state names</p></li>
@@ -2992,8 +3140,8 @@ rather than random replacements.</p>
 <li><p><strong>phone</strong> (Priority: 4) - Phone numbers</p></li>
 </ul>
 </section>
-<section id="id17">
-<h4>Language Requirement<a class="headerlink" href="#id17" title="Permalink to this heading">#</a></h4>
+<section id="id18">
+<h4>Language Requirement<a class="headerlink" href="#id18" title="Permalink to this heading">#</a></h4>
 <p><strong>IMPORTANT</strong>: Geographic consistency is only applied when:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">geoConsistency</span></code> parameter is set to <code class="docutils literal notranslate"><span class="pre">True</span></code> AND</p></li>
@@ -3002,8 +3150,8 @@ rather than random replacements.</p>
 <p>For non-English configurations, this feature is automatically disabled regardless
 of the parameter setting.</p>
 </section>
-<section id="id18">
-<h4>Consistency Algorithm<a class="headerlink" href="#id18" title="Permalink to this heading">#</a></h4>
+<section id="id19">
+<h4>Consistency Algorithm<a class="headerlink" href="#id19" title="Permalink to this heading">#</a></h4>
 <p>When geographical entities comes from the chunk columns:</p>
 <ol class="arabic simple">
 <li><p><strong>Entity Grouping</strong>: All geographic entities are identified and grouped by type</p></li>
@@ -3015,8 +3163,8 @@ the priority order (state → city → zip → street → phone)</p></li>
 use the same fake address pool, maintaining geographical coherence</p></li>
 </ol>
 </section>
-<section id="id19">
-<h4>Parameter Interactions<a class="headerlink" href="#id19" title="Permalink to this heading">#</a></h4>
+<section id="id20">
+<h4>Parameter Interactions<a class="headerlink" href="#id20" title="Permalink to this heading">#</a></h4>
 <p><strong>IMPORTANT</strong>: Enabling this parameter automatically disables:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">keepTextSizeForObfuscation</span></code> - Text size preservation is not maintained</p></li>
@@ -3192,7 +3340,7 @@ RecursivePipeline</p>
 <dt>Sets the masking policy:</dt><dd><ul class="simple">
 <li><p>same_length_chars: Replace the obfuscated entity with a masking sequence composed of asterisks and surrounding squared brackets,</p></li>
 </ul>
-<p>being the total length of the masking sequence of the same length as the original sequence. Example, Smith -&gt; [<a href="#id20"><span class="problematic" id="id21">**</span></a><a href="#id22"><span class="problematic" id="id23">*</span></a>].
+<p>being the total length of the masking sequence of the same length as the original sequence. Example, Smith -&gt; [<a href="#id21"><span class="problematic" id="id22">**</span></a><a href="#id23"><span class="problematic" id="id24">*</span></a>].
 If the entity is less than 3 chars (like Jo, or 5), asterisks without brackets will be returned.</p>
 <ul class="simple">
 <li><p>entity_labels: Replace the values with the corresponding entity labels.</p></li>
@@ -3295,6 +3443,53 @@ both : Takes the entities from the setCustomFakers function and the faker module
 <dd class="field-odd"><p><strong>source</strong> (<em>str</em>) – The source of obfuscation to obfuscate the entities. Default: faker.</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setObfuscationEquivalents">
+<span class="sig-name descname"><span class="pre">setObfuscationEquivalents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">equivalents</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setObfuscationEquivalents" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets variant-to-canonical entity mappings to ensure consistent obfuscation.</p>
+<p>This function allows you to define equivalence rules for entity variants that should be
+obfuscated the same way. For example, the names “Alex” and “Alexander” will always be
+mapped to the same obfuscated value if they are linked to the same canonical form.</p>
+<dl class="simple">
+<dt>It accepts a list of string triplets, where each triplet defines:</dt><dd><ul class="simple">
+<li><p>variant:      A non-standard, short, or alternative form of a value (e.g., “Alex”)</p></li>
+<li><p>entityType:   The type of the entity (e.g., “NAME”, “STATE”, “COUNTRY”)</p></li>
+<li><p>canonical:    The standardized form all variants map to (e.g., “Alexander”)</p></li>
+</ul>
+</dd>
+</dl>
+<p>This is especially useful in de-identification tasks to ensure consistent replacement
+of semantically identical values. It also allows cross-variant normalization across
+different occurrences of sensitive data.
+Notes:
+——
+Both <cite>variant</cite> and <cite>entityType</cite> comparisons are case-insensitive. For example,
+“alex”, “Alex”, and “ALEX” are treated as the same variant.</p>
+<section id="id25">
+<h4>Example:<a class="headerlink" href="#id25" title="Permalink to this heading">#</a></h4>
+<dl class="simple">
+<dt>equivalents = [</dt><dd><p>[“Alex”, “NAME”, “Alexander”],
+[“Rob”, “NAME”, “Robert”],
+[“CA”, “STATE”, “California”],
+[“Calif.”, “STATE”, “California”]</p>
+</dd>
+</dl>
+<p>]</p>
+<p>my_deid_transformer.setObfuscationEquivalents(equivalents)</p>
+<dl class="field-list simple">
+<dt class="field-odd">param equivalents<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list of [variant, entityType, canonical] triplets</p>
+</dd>
+<dt class="field-even">raises ValueError<span class="colon">:</span></dt>
+<dd class="field-even"><p>if any entry does not have exactly 3 elements</p>
+</dd>
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>self</p>
+</dd>
+</dl>
+</section>
 </dd></dl>
 
 <dl class="py method">
@@ -3439,8 +3634,8 @@ you can reply to an execution several times with the same output.</p>
 This is used to selectively apply different obfuscation methods to specific entities.
 The keys are entity names and the values are the obfuscation sources.
 If an entity is not specified in this map, the <cite>obfuscateRefSource</cite> param is used to determine the obfuscation source.</p>
-<section id="id24">
-<h4>Example:<a class="headerlink" href="#id24" title="Permalink to this heading">#</a></h4>
+<section id="id26">
+<h4>Example:<a class="headerlink" href="#id26" title="Permalink to this heading">#</a></h4>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">selective_sources</span> <span class="o">=</span> <span class="p">{</span>
 <span class="gp">... </span><span class="s1">&#39;PHONE&#39;</span><span class="p">:</span> <span class="s1">&#39;file&#39;</span><span class="p">,</span>
 <span class="gp">... </span><span class="s1">&#39;ADDRESS&#39;</span><span class="p">:</span> <span class="s1">&#39;both&#39;</span>
@@ -3461,14 +3656,50 @@ The keys are entity names and the values are the obfuscation sources.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setSelectiveObfuscationModes">
+<span class="sig-name descname"><span class="pre">setSelectiveObfuscationModes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setSelectiveObfuscationModes" title="Permalink to this definition">#</a></dt>
+<dd><dl class="simple">
+<dt>Sets the dictionary of modes to enable multi-mode deIdentification.</dt><dd><ul class="simple">
+<li><p>‘obfuscate’: Replace the values with random values.</p></li>
+<li><p>‘mask_same_length_chars’: Replace the name with the asterisks with same length minus two plus brackets on both end.</p></li>
+<li><p>‘mask_entity_labels’: Replace the values with the entity value.</p></li>
+<li><p>‘mask_fixed_length_chars’: Replace the name with the asterisks with fixed length. You can also invoke “setFixedMaskLength()”</p></li>
+<li><p>‘mask_entity_labels_without_brackets’: Replace the values with the entity value without brackets.</p></li>
+<li><p>‘mask_same_length_chars_without_brackets’: Replace the name with the asterix with same length without brackets.</p></li>
+<li><p>‘skip’: Skip the values (intact)</p></li>
+</ul>
+</dd>
+</dl>
+<p>The entities which have not been given in dictionary will deidentify according to <cite>mode</cite> parameter.</p>
+<section id="id27">
+<h4>Example:<a class="headerlink" href="#id27" title="Permalink to this heading">#</a></h4>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">DeidAnnotator</span><span class="p">()</span> \
+<span class="gp">&gt;&gt;&gt; </span>    <span class="o">.</span><span class="n">setMode</span><span class="p">(</span><span class="s1">&#39;mask&#39;</span><span class="p">)</span> \
+<span class="gp">&gt;&gt;&gt; </span>    <span class="o">.</span><span class="n">setSelectiveObfuscationModes</span><span class="p">({</span><span class="s1">&#39;obfuscate&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;PHONE&#39;</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">],</span>
+<span class="gp">&gt;&gt;&gt; </span>                                  <span class="s1">&#39;mask_entity_labels&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;NAME&#39;</span><span class="p">,</span> <span class="s1">&#39;CITY&#39;</span><span class="p">],</span>
+<span class="gp">&gt;&gt;&gt; </span>                                  <span class="s1">&#39;skip&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]})</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">param value<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The dictionary of modes to enable multi-mode deIdentification.</p>
+</dd>
+<dt class="field-even">type value<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict[str, list[str]]</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setStaticObfuscationPairs">
 <span class="sig-name descname"><span class="pre">setStaticObfuscationPairs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pairs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setStaticObfuscationPairs" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets the static obfuscation pairs
 This method is used to set static obfuscation pairs that will be used for de-identification.
 Each pair should contain three elements: original, entity type, and fake.
 The pairs must have exactly 3 elements: [original, entityType, fake].</p>
-<section id="id25">
-<h4>Example:<a class="headerlink" href="#id25" title="Permalink to this heading">#</a></h4>
+<section id="id28">
+<h4>Example:<a class="headerlink" href="#id28" title="Permalink to this heading">#</a></h4>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pairs</span> <span class="o">=</span> <span class="p">[</span>
 <span class="gp">... </span>    <span class="p">[</span><span class="s2">&quot;John Doe&quot;</span><span class="p">,</span> <span class="s2">&quot;PERSON&quot;</span><span class="p">,</span> <span class="s2">&quot;Jane Smith&quot;</span><span class="p">],</span>
 <span class="gp">... </span>    <span class="p">[</span><span class="s2">&quot;Los Angeles&quot;</span><span class="p">,</span> <span class="s2">&quot;LOCATION&quot;</span><span class="p">,</span> <span class="s2">&quot;New York City&quot;</span><span class="p">],</span>
@@ -3605,6 +3836,7 @@ Options: [mask, obfuscate, skip]. Default: obfuscate.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.dateToYear"><code class="docutils literal notranslate"><span class="pre">DeIdentification.dateToYear</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.days"><code class="docutils literal notranslate"><span class="pre">DeIdentification.days</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.doExceptionHandling"><code class="docutils literal notranslate"><span class="pre">DeIdentification.doExceptionHandling</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.enableDefaultObfuscationEquivalents"><code class="docutils literal notranslate"><span class="pre">DeIdentification.enableDefaultObfuscationEquivalents</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.entityCasingModesPath"><code class="docutils literal notranslate"><span class="pre">DeIdentification.entityCasingModesPath</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.fakerLengthOffset"><code class="docutils literal notranslate"><span class="pre">DeIdentification.fakerLengthOffset</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.fixedMaskLength"><code class="docutils literal notranslate"><span class="pre">DeIdentification.fixedMaskLength</span></code></a></li>
@@ -3631,6 +3863,7 @@ Options: [mask, obfuscate, skip]. Default: obfuscate.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.obfuscateDate"><code class="docutils literal notranslate"><span class="pre">DeIdentification.obfuscateDate</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.obfuscateRefFile"><code class="docutils literal notranslate"><span class="pre">DeIdentification.obfuscateRefFile</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.obfuscateRefSource"><code class="docutils literal notranslate"><span class="pre">DeIdentification.obfuscateRefSource</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.obfuscationEquivalentsResource"><code class="docutils literal notranslate"><span class="pre">DeIdentification.obfuscationEquivalentsResource</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.obfuscationStrategyOnException"><code class="docutils literal notranslate"><span class="pre">DeIdentification.obfuscationStrategyOnException</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.optionalInputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">DeIdentification.optionalInputAnnotatorTypes</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.outputAnnotatorType"><code class="docutils literal notranslate"><span class="pre">DeIdentification.outputAnnotatorType</span></code></a></li>
@@ -3662,6 +3895,7 @@ Options: [mask, obfuscate, skip]. Default: obfuscate.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.fit"><code class="docutils literal notranslate"><span class="pre">DeIdentification.fit()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.fitMultiple"><code class="docutils literal notranslate"><span class="pre">DeIdentification.fitMultiple()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.getChunkMatching"><code class="docutils literal notranslate"><span class="pre">DeIdentification.getChunkMatching()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.getDefaultObfuscationEquivalents"><code class="docutils literal notranslate"><span class="pre">DeIdentification.getDefaultObfuscationEquivalents()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.getInputCols"><code class="docutils literal notranslate"><span class="pre">DeIdentification.getInputCols()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.getLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">DeIdentification.getLazyAnnotator()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.getOrDefault"><code class="docutils literal notranslate"><span class="pre">DeIdentification.getOrDefault()</span></code></a></li>
@@ -3696,6 +3930,7 @@ Options: [mask, obfuscate, skip]. Default: obfuscate.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setDateToYear"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setDateToYear()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setDays"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setDays()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setDoExceptionHandling"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setDoExceptionHandling()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setEnableDefaultObfuscationEquivalents"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setEnableDefaultObfuscationEquivalents()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setEntityCasingModes"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setEntityCasingModes()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setFakerLengthOffset"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setFakerLengthOffset()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setFixedMaskLength"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setFixedMaskLength()</span></code></a></li>
@@ -3720,6 +3955,8 @@ Options: [mask, obfuscate, skip]. Default: obfuscate.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setObfuscateDate"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setObfuscateDate()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setObfuscateRefFile"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setObfuscateRefFile()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setObfuscateRefSource"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setObfuscateRefSource()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setObfuscationEquivalents"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setObfuscationEquivalents()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setObfuscationEquivalentsResource"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setObfuscationEquivalentsResource()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setObfuscationStrategyOnException"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setObfuscationStrategyOnException()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setOutputAsDocument"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setOutputAsDocument()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.setOutputCol"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setOutputCol()</span></code></a></li>
@@ -3759,6 +3996,7 @@ Options: [mask, obfuscate, skip]. Default: obfuscate.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.dateTag"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.dateTag</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.dateToYear"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.dateToYear</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.days"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.days</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.enableDefaultObfuscationEquivalents"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.enableDefaultObfuscationEquivalents</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.fakerLengthOffset"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.fakerLengthOffset</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.fixedMaskLength"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.fixedMaskLength</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.genderAwareness"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.genderAwareness</span></code></a></li>
@@ -3807,6 +4045,7 @@ Options: [mask, obfuscate, skip]. Default: obfuscate.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.explainParams"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.explainParams()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.extractParamMap"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.extractParamMap()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.getChunkMatching"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.getChunkMatching()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.getDefaultObfuscationEquivalents"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.getDefaultObfuscationEquivalents()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.getInputCols"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.getInputCols()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.getLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.getLazyAnnotator()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.getOrDefault"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.getOrDefault()</span></code></a></li>
@@ -3841,6 +4080,7 @@ Options: [mask, obfuscate, skip]. Default: obfuscate.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setDateTag"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setDateTag()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setDateToYear"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setDateToYear()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setDays"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setDays()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setEnableDefaultObfuscationEquivalents"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setEnableDefaultObfuscationEquivalents()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setFakerLengthOffset"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setFakerLengthOffset()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setFixedMaskLength"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setFixedMaskLength()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setForceInputTypeValidation"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setForceInputTypeValidation()</span></code></a></li>
@@ -3863,6 +4103,7 @@ Options: [mask, obfuscate, skip]. Default: obfuscate.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setObfuscateByAgeGroups"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setObfuscateByAgeGroups()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setObfuscateDate"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setObfuscateDate()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setObfuscateRefSource"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setObfuscateRefSource()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setObfuscationEquivalents"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setObfuscationEquivalents()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setObfuscationStrategyOnException"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setObfuscationStrategyOnException()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setOutputAsDocument"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setOutputAsDocument()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setOutputCol"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setOutputCol()</span></code></a></li>
@@ -3875,6 +4116,7 @@ Options: [mask, obfuscate, skip]. Default: obfuscate.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setSameLengthFormattedEntities"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setSameLengthFormattedEntities()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setSeed"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setSeed()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setSelectiveObfuscateRefSource"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setSelectiveObfuscateRefSource()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setSelectiveObfuscationModes"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setSelectiveObfuscationModes()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setStaticObfuscationPairs"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setStaticObfuscationPairs()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setUnnormalizedDateMode"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setUnnormalizedDateMode()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.setUseShifDays"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setUseShifDays()</span></code></a></li>

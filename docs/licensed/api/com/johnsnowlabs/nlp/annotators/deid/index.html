@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 6.0.2 ScalaDoc  - com.johnsnowlabs.nlp.annotators.deid</title>
-          <meta name="description" content="Spark NLP 6.0.2 ScalaDoc - com.johnsnowlabs.nlp.annotators.deid" />
-          <meta name="keywords" content="Spark NLP 6.0.2 ScalaDoc com.johnsnowlabs.nlp.annotators.deid" />
+          <title>Spark NLP 6.0.3 ScalaDoc  - com.johnsnowlabs.nlp.annotators.deid</title>
+          <meta name="description" content="Spark NLP 6.0.3 ScalaDoc - com.johnsnowlabs.nlp.annotators.deid" />
+          <meta name="keywords" content="Spark NLP 6.0.3 ScalaDoc com.johnsnowlabs.nlp.annotators.deid" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 6.0.2 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 6.0.3 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -269,6 +269,10 @@
                         <span class="separator"></span>
                         <a class="class" href="DateChunkObfuscator.html" title=""></a>
                         <a href="DateChunkObfuscator.html" title="">DateChunkObfuscator</a>
+                      </li><li class="current-entities indented5">
+                        <span class="separator"></span>
+                        <a class="class" href="DateShiftFiller.html" title="Utility class to fill missing or empty shift values in a DataFrame column using deterministic, ID-based pseudo-random values."></a>
+                        <a href="DateShiftFiller.html" title="Utility class to fill missing or empty shift values in a DataFrame column using deterministic, ID-based pseudo-random values.">DateShiftFiller</a>
                       </li><li class="current-entities indented5">
                         <a class="object" href="DeIdentification$.html" title=""></a>
                         <a class="class" href="DeIdentification.html" title="Contains all the methods for training a DeIdentificationModel model."></a>
@@ -792,6 +796,28 @@ in DeIdentificationParams and ObfuscatorParams.
       </span>
       
       
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.DateShiftFiller" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="DateShiftFillerextendsSerializable"></a><a id="DateShiftFiller:DateShiftFiller"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DateShiftFiller.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a title="Utility class to fill missing or empty shift values in a DataFrame column using deterministic, ID-based pseudo-random values." href="DateShiftFiller.html"><span class="name">DateShiftFiller</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Utility class to fill missing or empty shift values in a DataFrame column
+using deterministic, ID-based pseudo-random values.</p><div class="fullcomment"><div class="comment cmt"><p>Utility class to fill missing or empty shift values in a DataFrame column
+using deterministic, ID-based pseudo-random values.</p><p>This is particularly useful in de-identification tasks where date shift values must be:
+- Consistent across all rows with the same identifier
+- Present even when the original shift value is missing or empty</p><h5> Logic </h5><p>For each row:</p><ul><li>If another row with the same ID has a known (non-empty) shift value, reuse it.</li><li>If not, generate a fallback shift value deterministically using the ID and a seed.
+   The generated value will always fall in the range [1, maxShiftDays].</li></ul><h5> Example usage </h5><pre><span class="kw">val</span> filler = <span class="kw">new</span> DateShiftFiller(spark, seed = <span class="num">42</span>, maxShiftDays = <span class="num">60</span>)
+<span class="kw">val</span> resultDf = filler.fillMissingShifts(df, <span class="lit">"note_id"</span>, <span class="lit">"date_shift"</span>, <span class="lit">"_filled"</span>)</pre></div></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentification" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="DeIdentificationextendsAnnotatorApproach[com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel]withDeIdentificationParamswithDeidApproachParamswithHandleExceptionParamswithCheckLicense"></a><a id="DeIdentification:DeIdentification"></a>
       <span class="permalink">
@@ -997,7 +1023,7 @@ and it can be used to de-identify patient names, dates, and other sensitive info
 It can also be used to obfuscate or mask any other type of sensitive information, such as doctor names, hospital
 names, and other types of sensitive information.</p><p>Additionally, it supports millions of embedded fakers
 and If desired, custom external fakers can be set with <a href="LightDeIdentificationParams.html#setCustomFakers(value:java.util.HashMap[String,java.util.List[String]]):com.johnsnowlabs.nlp.&lt;refinement&gt;.type" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.LightDeIdentificationParams#setCustomFakers">LightDeIdentificationParams.setCustomFakers</a> .</p><p>It also supports multiple languages such as English, Spanish, French, German, and Arabic.
-And it supports multi-mode de-identification with <a href="LightDeIdentificationParams.html#setSelectiveObfuscationModes(value:java.util.HashMap[String,java.util.List[String]]):com.johnsnowlabs.nlp.&lt;refinement&gt;.type" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.LightDeIdentificationParams#setSelectiveObfuscationModes">LightDeIdentificationParams.setSelectiveObfuscationModes</a> at the same time.</p><p>Example:</p><pre><span class="kw">val</span> documentAssembler = <span class="kw">new</span> DocumentAssembler()
+And it supports multi-mode de-identification with <a href="LightDeIdentificationParams.html#setSelectiveObfuscationModes(value:java.util.HashMap[String,java.util.List[String]]):BaseDeidParams.this.type" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.LightDeIdentificationParams#setSelectiveObfuscationModes">LightDeIdentificationParams.setSelectiveObfuscationModes</a> at the same time.</p><p>Example:</p><pre><span class="kw">val</span> documentAssembler = <span class="kw">new</span> DocumentAssembler()
   .setInputCol(<span class="lit">"text"</span>).setOutputCol(<span class="lit">"document"</span>)
 
 <span class="kw">val</span> sentenceDetector = <span class="kw">new</span> SentenceDetector()
