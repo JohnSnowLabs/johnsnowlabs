@@ -601,7 +601,7 @@ obfuscator_df.show(truncate=False)
 
 ```
 
-## Result
+#### Result
 
 ```
 +---------------+----------+---+--------------+--------------+------------------+--------------+
@@ -614,6 +614,91 @@ obfuscator_df.show(truncate=False)
 |Calista Wise   |20/08/1942|76 |(492) 709-6392|19/10/1942    |Arne Langdon      |(250) 385-4950|
 +---------------+----------+---+--------------+--------------+------------------+--------------+
 
+```
+
+</div><div class="h3-box" markdown="1">
+
+### Apply Date Shift Filler
+
+`DateShiftFiller` is a helper class that fills missing or empty values in a date shift column using a deterministic, ID-based fallback approach.
+
+This is especially useful in de-identification pipelines where:
+
+- Shift values must be consistent for the same ID.
+- Some rows may be missing or have null shift values.
+
+#### Logic:
+
+- If another row with the same ID has a non-empty shift value, reuse it.
+- Otherwise, compute a fallback shift using a deterministic hash function based on ID and seed.
+- Fallback values are always in the range `[1, maxShiftDays]`.
+
+#### Parameters
+
+- `spark`: The active `SparkSession`.
+- `seed`: Seed value used for deterministic fallback hashing. Default is `42`.
+- `max_shift_days`: The maximum number of days to shift when generating fallback values. Default is `60`.
+
+#### Functions
+
+- **`fill_missing_shifts(df, id_col, shift_col, suffix)`**  
+  Applies shift-filling logic to the given DataFrame.
+
+  - `df`: The input DataFrame containing the shift column and ID.
+  - `id_col`: The name of the column containing the grouping ID.
+  - `shift_col`: The name of the date shift column to process.
+  - `suffix`: The suffix to append to the output column (e.g., `_filled`).
+
+---
+
+#### Example
+
+```python
+import pandas as pd
+from sparknlp_jsl.utils import DateShiftFiller
+
+data = pd.DataFrame(
+  {
+    "patientID": ["A001", "A002", "A001", "A002", "A003", "A003"],
+    "text": [
+      "Chris Brown was discharged on 10/02/2022",
+      "Mark White was discharged on 03/01/2020",
+      "Chris Brown was born on 05/10/1982",
+      "Mark White was born on 10/04/2000",
+      "John was discharged on 03/15/2022",
+      "John Moore was born on 12/31/2002",
+    ],
+    "dateshift": ["10", "-2", None, None, None, 5],
+  }
+)
+
+input_df = spark.createDataFrame(data)
+
+filler = DateShiftFiller(spark, seed=42, max_shift_days=60)
+result_df = filler.fill_missing_shifts(
+  input_df,
+  id_col="patientID",
+  shift_col="dateshift",
+  suffix="_filled"
+)
+
+result_df.show(truncate=False)
+```
+
+
+#### Result
+
+```
++---------+----------------------------------------+---------+------------------+
+|patientID|text                                    |dateshift|dateshift_filled  |
++---------+----------------------------------------+---------+------------------+
+|A002     |Mark White was discharged on 03/01/2020 |-2       |-2                |
+|A001     |Chris Brown was discharged on 10/02/2022|10       |10                |
+|A001     |Chris Brown was born on 05/10/1982      |NULL     |10                |
+|A003     |John was discharged on 03/15/2022       |NULL     |5                 |
+|A003     |John Moore was born on 12/31/2002       |5        |5                 |
+|A002     |Mark White was born on 10/04/2000       |NULL     |-2                |
++---------+----------------------------------------+---------+------------------+
 ```
 
 </div><div class="h3-box" markdown="1">
