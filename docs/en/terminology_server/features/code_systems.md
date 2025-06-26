@@ -51,3 +51,5 @@ Terminology Server application solves this problem by:
 * Showing mappings—links between equivalent or related codes across systems.
 
 This means users can see how E11 in ICD10 (Type 2 diabetes) maps to 10067585 in MEDDRA_PT( standardized, single medical concepts used to represent a symptom, sign, disease, diagnosis, etc) and how to E11 in ICD10CM (coding diseases, conditions, and injuries for statistical and billing purposes) maps to C0011847 in UMLS.
+
+![Terminology Service by John Snow Labs](/assets/images/code_to_code_search.png)
