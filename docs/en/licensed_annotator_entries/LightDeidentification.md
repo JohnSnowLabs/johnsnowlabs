@@ -137,8 +137,7 @@ rather than random replacements. Default: False
   This parameter allows the system to automatically include a set of predefined common English name equivalents.
   Default is False.
 
-- `obfuscationEquivalentsResource` : Allows loading obfuscation equivalents from an external file (e.g., CSV).  
-  Supports custom delimiter through the `options` parameter.
+
 
 
 {%- endcapture -%}
