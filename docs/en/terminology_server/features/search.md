@@ -32,6 +32,13 @@ This means users can see how, for example E11 in ICD10 (Type 2 diabetes) maps to
 
 ![Terminology Service by John Snow Labs](/assets/images/term_server/code_to_code_search_table.png)
 
+A single medical code in a Source Code System can map to one or more medical codes in multiple Target Code Systems.
+The **Concept Maps** tree struture in the left panel represents Medical Coding Systems in which the searched code exists. The children under a given **Concept Map** are Medical Systems in which a mapping code is found.
+
+Filter down the search results to on or more Code Maps, by selecting one child node under a parent Concept Map node.
+
+![Terminology Service by John Snow Labs](/assets/images/term_server/MapCodes_MainPage.png)
+
 ## Concept Search
 
 Terminology Server **concept search** capability excels by leveraging associated synonyms, accounting for **misspellings**, and employing both **string matching** and **semantic search** when seeking **similarity searches** results and when the system returns the best matching concept from the terminology embedding database.
@@ -54,6 +61,10 @@ Terminology Server performs term-level mapping: searching a term will return the
 ![Terminology Service by John Snow Labs](/assets/images/term_server/filter_panel.png)
 
 
+## Additional Filters 
+
+Improve your search outcomes by utilizing a variety of additional filters:
+
 It is posible to improve your search outcomes by utilizing a variety of additional filters:
 * Domain: Specifies the general topic area of a concept (e.g., Condition/Device, Condition/Meas, Drug, Gender).
 
@@ -65,3 +76,9 @@ Choose from one of the available options to apply this filter using **one or mor
 * Include Only Valid Concepts: Filters out concepts that have been invalidated due to deletion or being superseded.
 * Filter by Confidence Score: Allows refining results based on their confidence score.
 
+## Spell Checker
+
+When searching for a medical term, the Terminology Server will present a prommpt if it notice a spelling mistake was done. The option is to accept the correction or ignore it. The results will reflect the choice to go with the system's suggestion or original input:
+
+![Terminology Service by John Snow Labs](/assets/images/term_server/Spellchecker.png)
+  
