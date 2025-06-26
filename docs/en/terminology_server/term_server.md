@@ -13,6 +13,7 @@ sidebar:
 
 The Medical Terminology Server offers users the ability to look up standard medical codes from text phrases. It uses both string matching and embeddings to efficiently search for concepts across multiple vocabularies, with filters that can constrain results to meet your specific needs. 
 
+
 The Medical Terminology Server combines up-to-date editions of a wide range of terminologies with extensive supplementary datasets of synonyms, common misspellings, and colloquialisms to provide code mappings for input text, whether it is from the clinical record, patient statements, or other sources of written information about health. In addition to being to select from many standard vocabularies, the Medical Terminology Server is also aware of OMOP CDM conventions. It can also be constrained to only return codes that are OMOP Standard concepts and is able to check any concept for current validity. Batch transaction support makes efficient use of network calls.
 
 
