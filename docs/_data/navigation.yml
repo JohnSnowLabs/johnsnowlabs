@@ -123,12 +123,10 @@ term-server:
             url: /docs/en/terminology_server/features/search
           - title: Code Systems
             url: /docs/en/terminology_server/features/code_systems
-          - title: Value Sets
-            url: /docs/en/terminology_server/features/value_sets
           - title: Concept Maps
             url: /docs/en/terminology_server/features/concept_maps
-          - title: Custom Value Sets
-            url: /docs/en/terminology_server/features/custom_value_sets
+            - title: Value Sets
+            url: /docs/en/terminology_server/features/value_sets
       - subtitle: APIs
         children:
           - title: API Service Access
