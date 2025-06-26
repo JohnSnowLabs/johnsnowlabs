@@ -129,6 +129,16 @@ rather than random replacements. Default: False
   Each pair should contain three elements: original, entity type, and fake.
   The pairs must have exactly 3 elements: [original, entityType, fake].
 
+- `obfuscationEquivalents` : used to define variant-to-canonical mappings to ensure consistent obfuscation.  
+  Each pair should contain three elements: variant, entity type, and canonical.  
+  The pairs must have exactly 3 elements: `[variant, entityType, canonical]`.
+
+- `enableDefaultObfuscationEquivalents` : whether to enable default obfuscation equivalents for common entities.
+  This parameter allows the system to automatically include a set of predefined common English name equivalents.
+  Default is False.
+
+
+
 
 {%- endcapture -%}
 

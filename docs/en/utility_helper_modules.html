@@ -1223,7 +1223,7 @@ Obfuscate the columns of a dataframe.</p>
 
 </code></pre></div>  </div>
 
-  <h2 id="result">Result</h2>
+  <h4 id="result">Result</h4>
 
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+---------------+----------+---+--------------+--------------+------------------+--------------+
 |PATIENT        |DOB       |AGE|TEL           |DOB_obfuscated|PATIENT_obfuscated|TEL_obfuscated|
@@ -1235,6 +1235,99 @@ Obfuscate the columns of a dataframe.</p>
 |Calista Wise   |20/08/1942|76 |(492) 709-6392|19/10/1942    |Arne Langdon      |(250) 385-4950|
 +---------------+----------+---+--------------+--------------+------------------+--------------+
 
+</code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
+
+  <h3 id="apply-date-shift-filler">Apply Date Shift Filler</h3>
+
+  <p><code class="language-plaintext highlighter-rouge">DateShiftFiller</code> is a helper class that fills missing or empty values in a date shift column using a deterministic, ID-based fallback approach.</p>
+
+  <p>This is especially useful in de-identification pipelines where:</p>
+
+  <ul>
+    <li>Shift values must be consistent for the same ID.</li>
+    <li>Some rows may be missing or have null shift values.</li>
+  </ul>
+
+  <h4 id="logic">Logic:</h4>
+
+  <ul>
+    <li>If another row with the same ID has a non-empty shift value, reuse it.</li>
+    <li>Otherwise, compute a fallback shift using a deterministic hash function based on ID and seed.</li>
+    <li>Fallback values are always in the range <code class="language-plaintext highlighter-rouge">[1, maxShiftDays]</code>.</li>
+  </ul>
+
+  <h4 id="parameters">Parameters</h4>
+
+  <ul>
+    <li><code class="language-plaintext highlighter-rouge">spark</code>: The active <code class="language-plaintext highlighter-rouge">SparkSession</code>.</li>
+    <li><code class="language-plaintext highlighter-rouge">seed</code>: Seed value used for deterministic fallback hashing. Default is <code class="language-plaintext highlighter-rouge">42</code>.</li>
+    <li><code class="language-plaintext highlighter-rouge">max_shift_days</code>: The maximum number of days to shift when generating fallback values. Default is <code class="language-plaintext highlighter-rouge">60</code>.</li>
+  </ul>
+
+  <h4 id="functions">Functions</h4>
+
+  <ul>
+    <li>
+      <p><strong><code class="language-plaintext highlighter-rouge">fill_missing_shifts(df, id_col, shift_col, suffix)</code></strong><br />
+Applies shift-filling logic to the given DataFrame.</p>
+
+      <ul>
+        <li><code class="language-plaintext highlighter-rouge">df</code>: The input DataFrame containing the shift column and ID.</li>
+        <li><code class="language-plaintext highlighter-rouge">id_col</code>: The name of the column containing the grouping ID.</li>
+        <li><code class="language-plaintext highlighter-rouge">shift_col</code>: The name of the date shift column to process.</li>
+        <li><code class="language-plaintext highlighter-rouge">suffix</code>: The suffix to append to the output column (e.g., <code class="language-plaintext highlighter-rouge">_filled</code>).</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h4 id="example">Example</h4>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">from</span> <span class="nn">sparknlp_jsl.utils</span> <span class="kn">import</span> <span class="n">DateShiftFiller</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span>
+  <span class="p">{</span>
+    <span class="s">"patientID"</span><span class="p">:</span> <span class="p">[</span><span class="s">"A001"</span><span class="p">,</span> <span class="s">"A002"</span><span class="p">,</span> <span class="s">"A001"</span><span class="p">,</span> <span class="s">"A002"</span><span class="p">,</span> <span class="s">"A003"</span><span class="p">,</span> <span class="s">"A003"</span><span class="p">],</span>
+    <span class="s">"text"</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s">"Chris Brown was discharged on 10/02/2022"</span><span class="p">,</span>
+      <span class="s">"Mark White was discharged on 03/01/2020"</span><span class="p">,</span>
+      <span class="s">"Chris Brown was born on 05/10/1982"</span><span class="p">,</span>
+      <span class="s">"Mark White was born on 10/04/2000"</span><span class="p">,</span>
+      <span class="s">"John was discharged on 03/15/2022"</span><span class="p">,</span>
+      <span class="s">"John Moore was born on 12/31/2002"</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="s">"dateshift"</span><span class="p">:</span> <span class="p">[</span><span class="s">"10"</span><span class="p">,</span> <span class="s">"-2"</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">input_df</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="n">filler</span> <span class="o">=</span> <span class="n">DateShiftFiller</span><span class="p">(</span><span class="n">spark</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">max_shift_days</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+<span class="n">result_df</span> <span class="o">=</span> <span class="n">filler</span><span class="p">.</span><span class="n">fill_missing_shifts</span><span class="p">(</span>
+  <span class="n">input_df</span><span class="p">,</span>
+  <span class="n">id_col</span><span class="o">=</span><span class="s">"patientID"</span><span class="p">,</span>
+  <span class="n">shift_col</span><span class="o">=</span><span class="s">"dateshift"</span><span class="p">,</span>
+  <span class="n">suffix</span><span class="o">=</span><span class="s">"_filled"</span>
+<span class="p">)</span>
+
+<span class="n">result_df</span><span class="p">.</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div>  </div>
+
+  <h4 id="result-1">Result</h4>
+
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+---------+----------------------------------------+---------+------------------+
+|patientID|text                                    |dateshift|dateshift_filled  |
++---------+----------------------------------------+---------+------------------+
+|A002     |Mark White was discharged on 03/01/2020 |-2       |-2                |
+|A001     |Chris Brown was discharged on 10/02/2022|10       |10                |
+|A001     |Chris Brown was born on 05/10/1982      |NULL     |10                |
+|A003     |John was discharged on 03/15/2022       |NULL     |5                 |
+|A003     |John Moore was born on 12/31/2002       |5        |5                 |
+|A002     |Mark White was born on 10/04/2000       |NULL     |-2                |
++---------+----------------------------------------+---------+------------------+
 </code></pre></div>  </div>
 
 </div>
