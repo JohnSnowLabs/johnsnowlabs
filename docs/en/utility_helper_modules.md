@@ -649,7 +649,6 @@ This is especially useful in de-identification pipelines where:
   - `shift_col`: The name of the date shift column to process.
   - `suffix`: The suffix to append to the output column (e.g., `_filled`).
 
----
 
 #### Example
 
