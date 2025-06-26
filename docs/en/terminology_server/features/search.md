@@ -50,14 +50,18 @@ Terminology Server performs term-level mapping: searching a term will return the
  2. Select the search type from the options from the Filters panel
  3. Exit the Filters panel by clicking anywhere outside
 
+
+![Terminology Service by John Snow Labs](/assets/images/term_server/filter_panel.png)
+
+
 It is posible to improve your search outcomes by utilizing a variety of additional filters:
-* Domain: Specifies the general topic area of a concept (e.g., Condition/Device, Condition/Meas, Drug, Gender). The available options for this filter are pre-populated in the dropdown list.
+* Domain: Specifies the general topic area of a concept (e.g., Condition/Device, Condition/Meas, Drug, Gender).
+
+Choose from one of the available options to apply this filter using **one or more** pre-populated options in the dropdown list:
 
 ![Terminology Service by John Snow Labs](/assets/images/term_server/filter_panel_domains.png)
 
 * OMOP Standards Concepts Only: Limits the search results to concepts that are flagged as “Standard” in the OMOP CDM.
 * Include Only Valid Concepts: Filters out concepts that have been invalidated due to deletion or being superseded.
 * Filter by Confidence Score: Allows refining results based on their confidence score.
-
-![Terminology Service by John Snow Labs](/assets/images/term_server/filter_panel.png)
 
