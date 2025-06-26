@@ -109,12 +109,34 @@ medical-llm:
 term-server:
   - title: Terminology Server
     children:
-      - title: Home
+      - title: Getting Started
         url: /docs/en/terminology_server/term_server
-      - title: Deploy on Premise
-        url: /docs/en/terminology_server/on_prem_deploy
-      - title: Deploy on AWS
-        url: /docs/en/terminology_server/on_aws
+      - subtitle: Installation
+        children:
+        - title: Deploy on Premise
+          url: /docs/en/terminology_server/on_prem_deploy
+        - title: Deploy on AWS
+          url: /docs/en/terminology_server/on_aws
+      - subtitle: Features
+        children:
+          - title: Concept Search
+            url: /docs/en/terminology_server/features/concept_search
+          - title: Semantic Search
+            url: /docs/en/terminology_server/features/semantic_search
+          - title: Code Systems
+            url: /docs/en/terminology_server/features/code_systems
+          - title: Value Sets
+            url: /docs/en/terminology_server/features/value_sets
+          - title: Concept Maps
+            url: /docs/en/terminology_server/features/concept_maps
+          - title: Custom Value Sets
+            url: /docs/en/terminology_server/features/custom_value_sets
+      - subtitle: APIs
+        children:
+          - title: API Service Access
+            url: /docs/en/terminology_server/api_service
+          - title: API Documentation
+            url: /docs/en/terminology_server/api_docs
       - title: Support
         url: /docs/en/terminology_server/support
       - title: Release Notes
