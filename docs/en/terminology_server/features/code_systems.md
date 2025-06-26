@@ -35,6 +35,7 @@ Different healthcare roles and use cases require different systems:
 This diversity improves accuracy and efficiency within each domain—but it also creates fragmentation.
 
 ⚠️ The Challenge
+
 When data is spread across different coding systems, it becomes difficult to:
 
 * Exchange information across systems or institutions.
