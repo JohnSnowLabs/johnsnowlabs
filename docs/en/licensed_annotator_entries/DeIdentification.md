@@ -181,6 +181,17 @@ The pairs must have exactly 3 elements: [original, entityType, fake].
 
 - `staticObfuscationPairsResource`: allows loading obfuscation triplets from an external file (e.g., CSV). Supports custom delimiter through the options parameter.
 
+- `obfuscationEquivalents` : used to define variant-to-canonical mappings to ensure consistent obfuscation.  
+  Each pair should contain three elements: variant, entity type, and canonical.  
+  The pairs must have exactly 3 elements: `[variant, entityType, canonical]`.
+
+- `enableDefaultObfuscationEquivalents` : whether to enable default obfuscation equivalents for common entities.
+  This parameter allows the system to automatically include a set of predefined common English name equivalents.
+  Default is False.
+
+- `obfuscationEquivalentsResource` : Allows loading obfuscation equivalents from an external file (e.g., CSV).  
+  Supports custom delimiter through the `options` parameter.
+
 
 
 
