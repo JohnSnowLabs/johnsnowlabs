@@ -44,8 +44,12 @@ The LLMs listed below are available on Azure.
     To check the status, login to the instance and run this command
 <br/>
 `sudo systemctl status med-llm.service`
+    ![azure_product_status](/assets/images/med_llms/azure_status.png)
 4. Once all the status is active, access the model api docs from http://INSTANCE_IP/docs
 
+
+5. Open WebUI hosted on port 3000. You can also interact with the model from here.
+    ![azure_open_web_ui](/assets/images/med_llms/azure_open_web.png)
 
 ## Model Interactions
 Once deployed, the container exposes a RESTful API for model interactions.
