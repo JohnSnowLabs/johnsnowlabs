@@ -119,10 +119,8 @@ term-server:
           url: /docs/en/terminology_server/on_aws
       - subtitle: Features
         children:
-          - title: Concept Search
-            url: /docs/en/terminology_server/features/concept_search
-          - title: Semantic Search
-            url: /docs/en/terminology_server/features/semantic_search
+          - title: Search
+            url: /docs/en/terminology_server/features/search
           - title: Code Systems
             url: /docs/en/terminology_server/features/code_systems
           - title: Value Sets
