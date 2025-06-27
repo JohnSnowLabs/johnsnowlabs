@@ -92,7 +92,8 @@ When searching for a medical term, the Terminology Server will present a prommpt
 ![Terminology Service by John Snow Labs](/assets/images/term_server/Spellchecker.png)
 
 ## Context Based Search
-Context-Based Search is a powerful feature that enhances the accuracy and relevance of search results by allowing users to include additional context when searching for medical terms.
+
+Context-aware search that considers surrounding text to find more accurate medical codes by analyzing the clinical context in which terms appear.It is a powerful feature that enhances the accuracy and relevance of search results by allowing users to include additional context when searching for medical terms.
 
 Instead of relying solely on the keyword or phrase entered, this feature enables users to specify additional information like intended domain, clinical setting, diagnosis, procedure, medication, etc. By incorporating this context, the system can intelligently prioritize and rank results that are most relevant to the user's specific intent.
 
@@ -106,6 +107,20 @@ Context-Based Search is ideal for clinicians, coders, and researchers who need t
 Narrow the search results by filtering by **Term Weight** and/or **Scope**:
 
 ![Terminology Service by John Snow Labs](/assets/images/term_server/context_resolution_search.png)
+
+
+💡 **Tips for Effective Use**
+
+* Use higher term weights when you're confident in your terminology
+* Use lower term weights when context is critical for disambiguation
+* Adjust scope based on how much surrounding context affects meaning
+* Combine with vocabulary filters for more precise results
+
+![Terminology Service by John Snow Labs](/assets/images/term_server/ContextBasedSearch.png)
+
+💡 **Examples**
+
+![Terminology Service by John Snow Labs](/assets/images/term_server/ContextBasedSearchSamples.png)
 
 
 **Boolean Search**
