@@ -121,18 +121,18 @@ Narrow the search results by filtering by **Term Weight** and/or **Scope**:
 ![Terminology Service by John Snow Labs](/assets/images/term_server/ContextBasedSearchSamples.png)
 
 
-**Boolean Search**
+## Boolean Search
   
-When selecting the **Exact Text Search** option in the Filter panel, the query will allow the use of AND and OR operators to refine results:
+When selecting the **Exact Text Search** option in the Filter panel, the query will allow the use of ```AND``` and ```OR``` operators to refine results:
 
-**Using the AND operator**:
+**Using the ```AND``` operator**:
 
 * Returns results where the document field contains all specified keywords, regardless of their order or position within the text.
-* More than two terms can be inculded, for example: "leg AND tendons AND muscle" will return results that contain all three terms.
+* More than two terms can be inculded, for example: "leg ```AND``` tendons ```AND``` muscle" will return results that contain all three terms.
 
-**Using the OR operator**:
+**Using the ```OR``` operator**:
 
 * Returns results that contain any one or more of the specified keywords.
-* The query supports multiple terms, for example: "diclofenac OR Eliquis OR clopidogrel" will return results containing any of the listed medications.
+* The query supports multiple terms, for example: "diclofenac ```OR``` Eliquis ```OR``` clopidogrel" will return results containing any of the listed medications.
 
 ![Terminology Service by John Snow Labs](/assets/images/term_server/OR_operator.png)
