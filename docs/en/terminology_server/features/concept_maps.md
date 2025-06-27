@@ -42,8 +42,10 @@ The following table shows the list of all Vocabuaries, Datasets and Versions use
 | MESH    | Trained on 01 December 2021 MeSH dataset.     | 01 December 2021 MeSH dataset     |
 | ICD10    |      | 2021 Release     |
 
+
+
 The figure below shows the code to code mapping results and their respective source and target coresponding vocabularies:
 
-
+![Terminology Service by John Snow Labs](/assets/images/term_server/mappings.png)
 
 
