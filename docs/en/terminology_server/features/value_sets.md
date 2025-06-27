@@ -64,8 +64,9 @@ Uploading a custom Value Set is simple and intuitive:
 When performing a **medical term search in Terminology Server**, you can apply **custom Value Sets** to filter and refine your results.
 
 Example: 
-1. Search for the term "cancer" - ![Terminology Service by John Snow Labs](/assets/images/term_server/SearchResultsForVSFilter.png)
-2. In the left navigation panel, check the box next to the Value Set you want to use as a filter.
-For example, if **Histology Carcinoma **is a previously uploaded Value Set, select it here. ![Terminology Service by John Snow Labs](/assets/images/term_server/HistoryOfCarcinomaVS.png)
-3. After applying the filter, the results table will display a new column labeled **"ValueSet"**. ![Terminology Service by John Snow Labs](/assets/images/term_server/SearchResultsForVSFilter.png)
+1. Search for the term "cancer".Observe the toprecord in the result, with **Concept Code LA10524-9** 
+![Terminology Service by John Snow Labs](/assets/images/term_server/SearchResultsForVSFilter.png)
+2. Assume the for example **Histology Carcinoma** as a previously uploaded Value Set. ![Terminology Service by John Snow Labs](/assets/images/term_server/HistoryOfCarcinomaVS.png)  
+3. In the left navigation panel, check the box next to the Value Set you want to use as a filterin our case the **Version 1** under **Histology Carcinoma**. 
+4. After applying the filter, the results table will display a new column labeled **"ValueSet"**. ![Terminology Service by John Snow Labs](/assets/images/term_server/FilteredResultsByVS.png)
 This column indicates which search results are included in the selected Value Set by cross-referencing the **concept codes** from your search with those defined in the Value Set vocabulary.    
