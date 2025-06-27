@@ -103,5 +103,10 @@ This functionality is especially useful when dealing with ambiguous or multi-use
 
 Context-Based Search is ideal for clinicians, coders, and researchers who need to retrieve highly specific coding information tailored to their unique healthcare scenarios.
 
+Narrow the search results by filtering by **Term Weight** and/or **Scope**:
+
+![Terminology Service by John Snow Labs](/assets/images/term_server/context_resolution_search.png)
+
+
 **Boolean Search**
   
