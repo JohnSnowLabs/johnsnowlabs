@@ -72,6 +72,9 @@ dbfs_py_dir = f"{dbfs_home_dir}/py_installs"
 db_py_jobs_dir = f"{dbfs_home_dir}/py_jobs"
 db_py_notebook_dir = f"{dbfs_home_dir}/py_notebook_jobs"
 db_jar_jobs_dir = f"{dbfs_home_dir}/jar_jobs"
+dbfs_license_path = f"{dbfs_home_dir}/licenses"
+dbfs_info_path = f"{dbfs_home_dir}/info.json"
+
 
 db_cluster_name = "John-Snow-Labs-Databricks-Auto-Cluster🚀"
 db_driver_node_type = "i3.xlarge"
@@ -82,7 +85,6 @@ db_spark_version = "10.5.x-scala2.12"
 
 db_job_name = "John-Snow-Labs-Job {job} 🚀"
 db_run_name = "John-Snow-Labs-Run 🚀"
-db_driver_node_type = "i3.xlarge"
 
 # emr settings
 emr_cluster_name = "John-Snow-Labs-EMR-Auto-Cluster🚀"
