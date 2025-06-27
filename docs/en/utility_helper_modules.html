@@ -1251,7 +1251,7 @@ Obfuscate the columns of a dataframe.</p>
     <li>Some rows may be missing or have null shift values.</li>
   </ul>
 
-  <h4 id="logic">Logic:</h4>
+  <p>Logic:</p>
 
   <ul>
     <li>If another row with the same ID has a non-empty shift value, reuse it.</li>
@@ -1259,7 +1259,7 @@ Obfuscate the columns of a dataframe.</p>
     <li>Fallback values are always in the range <code class="language-plaintext highlighter-rouge">[1, maxShiftDays]</code>.</li>
   </ul>
 
-  <h4 id="parameters">Parameters</h4>
+  <p>Parameters</p>
 
   <ul>
     <li><code class="language-plaintext highlighter-rouge">spark</code>: The active <code class="language-plaintext highlighter-rouge">SparkSession</code>.</li>
@@ -1267,7 +1267,7 @@ Obfuscate the columns of a dataframe.</p>
     <li><code class="language-plaintext highlighter-rouge">max_shift_days</code>: The maximum number of days to shift when generating fallback values. Default is <code class="language-plaintext highlighter-rouge">60</code>.</li>
   </ul>
 
-  <h4 id="functions">Functions</h4>
+  <p>Functions</p>
 
   <ul>
     <li>
@@ -1282,8 +1282,6 @@ Applies shift-filling logic to the given DataFrame.</p>
       </ul>
     </li>
   </ul>
-
-  <h4 id="example">Example</h4>
 
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
 <span class="kn">from</span> <span class="nn">sparknlp_jsl.utils</span> <span class="kn">import</span> <span class="n">DateShiftFiller</span>
@@ -1315,8 +1313,7 @@ Applies shift-filling logic to the given DataFrame.</p>
 
 <span class="n">result_df</span><span class="p">.</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 </code></pre></div>  </div>
-
-  <h4 id="result-1">Result</h4>
+  <p>Result</p>
 
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+---------+----------------------------------------+---------+------------------+
 |patientID|text                                    |dateshift|dateshift_filled  |

@@ -106,14 +106,14 @@ For example, if "John Smith" is obfuscated as "Liam Brown", then:
 
 Default: True
 
--`geoConsistency`: (BooleanParam) Sets whether to enforce consistent obfuscation across geographical entities:
+- `geoConsistency`: (BooleanParam) Sets whether to enforce consistent obfuscation across geographical entities:
 state, city, street, zip and phone.
 This parameter enables intelligent geographical entity obfuscation that maintains
 realistic relationships between different geographic components.
 When enabled, the system ensures that obfuscated addresses form coherent, valid combinations
 rather than random replacements. Default: False
 
--`countryObfuscation`: (BooleanParam) Whether to obfuscate country entities or not. If True, the country entities will be obfuscated. Default: False.
+- `countryObfuscation`: (BooleanParam) Whether to obfuscate country entities or not. If True, the country entities will be obfuscated. Default: False.
 
 - `additionalDateFormats`: (Param[String]) Additional date formats to be considered during date obfuscation.
   This allows users to specify custom date formats in addition to the default date formats. Default: [].
