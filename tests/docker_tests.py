@@ -1,3 +1,4 @@
+from johnsnowlabs import medical, nlp
 import time
 from typing import List
 
@@ -14,10 +15,10 @@ from johnsnowlabs.auto_install.docker.work_utils import (
 )
 from johnsnowlabs.utils.py_process import run_cmd_and_check_succ
 
-
-
 import requests
 import pandas as pd
+
+license_path = '/home/ckl/Documents/freelance/freelance/johnsnowlabs_MASTER/tests/utilsz/lic_airgap.json'
 
 visual_model_to_data = {
     "pdf2text": "https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/tests/datasets/ocr/pdf/haiku.pdf",
@@ -28,15 +29,66 @@ visual_model_to_data = {
     "doc2table": "https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/tests/datasets/ocr/docx_with_table/doc2.docx",
     "ppt2table": "https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/tests/datasets/ocr/table_PPT/54111.ppt", }
 
-def check_build_serve_query(nlu_ref, port, json_license_path=None, destroy_container=True, destroy_image=True,
-                            visual=False, file_url=None):
+
+def get_pipe():
+    spark = nlp.start()
+
+    # passcode = input('Give new Passcode')
+    documentAssembler = nlp.DocumentAssembler() \
+        .setInputCol("text") \
+        .setOutputCol("document")
+
+    sentenceDetector = nlp.SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare", "en",
+                                                              "clinical/models") \
+        .setInputCols(["document"]) \
+        .setOutputCol("sentence")
+
+    tokenizer = nlp.Tokenizer() \
+        .setInputCols(["sentence"]) \
+        .setOutputCol("token")
+
+    word_embeddings = nlp.WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models") \
+        .setInputCols(["sentence", "token"]) \
+        .setOutputCol("embeddings")
+
+    ner = medical.NerModel.pretrained("ner_jsl", "en", "clinical/models") \
+        .setInputCols(["sentence", "token", "embeddings"]) \
+        .setOutputCol("ner") \
+        .setLabelCasing("upper")
+
+    ner_converter = medical.NerConverter() \
+        .setInputCols(["sentence", "token", "ner"]) \
+        .setOutputCol("ner_chunk")
+
+    ner_pipeline = nlp.Pipeline(stages=[
+        documentAssembler,
+        sentenceDetector,
+        tokenizer,
+        word_embeddings,
+        ner,
+        ner_converter])
+
+    empty_data = spark.createDataFrame([[""]]).toDF("text")
+    ner_model = ner_pipeline.fit(empty_data)
+    return ner_model
+
+
+def check_build_serve_query(pipe_name=None, pipe_lang='en', pipe_bucket=None, port=None, json_license_path=None,
+                            destroy_container=True,
+                            destroy_image=True,
+                            visual=False, file_url=None, custom_pipe=None
+
+                            ):
     # build if missing
-    container_name = f"{nlu_ref}_container"
-    image_name = f"{nlu_ref}_img"
+    container_name = f"{pipe_name}_container"
+    image_name = f"{pipe_name}_img"
 
     nlp.build_image(
-        nlu_ref,
-        f"{nlu_ref}_img",
+        pipeline_name=pipe_name,
+        pipeline_language=pipe_lang,
+        pipeline_bucket=pipe_bucket,
+        custom_pipeline=custom_pipe,
+        image_name=image_name,
         rebuild=True,
         use_cache=False,
         visual=visual,
@@ -75,29 +127,6 @@ def check_build_serve_query(nlu_ref, port, json_license_path=None, destroy_conta
         _destroy_image(image_name)
 
 
-def test_docker():
-    print(is_docker_installed())
-
-
-def test_build_image():
-    nlp.build_image(rebuild=True, use_cache=False, preloaded_model="tokenize")
-    nlp.build_image(rebuild=True, use_cache=True, preloaded_model="tokenize")
-    _destroy_image()
-
-
-def test_serve_container_open_source():
-    nlu_ref = "tokenize"
-    port = 8541
-    check_build_serve_query(nlu_ref, port, json_license_path=None)
-
-
-def test_serve_container_medical():
-    nlu_ref = "en.med_ner.cancer_genetics.pipeline"
-    port = 8549
-    p = '/home/ckl/Documents/freelance/jsl/endpoints/endpoints/creds/license_airgap.json'
-    check_build_serve_query(nlu_ref, port, json_license_path=p)
-
-
 def send_invoke(port, data, output_level='document'):
     url = f"http://localhost:{port}/invoke"
     data_to_send = {'data': []}
@@ -118,39 +147,111 @@ def send_invoke(port, data, output_level='document'):
         ValueError(f"Failed to get a successful response, status code: {response.status_code}")
 
 
-def test_invoke():
-    data = ['First piece of text', 'second piece of text. With two sentences']
-    print(send_invoke(8000, data, 'document'))
-    print(send_invoke(8000, data, 'sentence'))
-    print(send_invoke(8000, data, 'token'))
+def test_docker():
+    print(is_docker_installed())
 
 
-@pytest.mark.parametrize("model,url", list(visual_model_to_data.items()))
-def test_serve_and_query_container_ocr(model, url):
-    # pdf2text, iamg2 text ok! doc2text wierd output?
-    #x2table crash. classifyimage crash!
-    port = 8541
-    p = '/home/ckl/Documents/freelance/jsl/endpoints/endpoints/creds/license_airgap.json'
-    print(f'{"#" * 50} Testing Model={model} for data={url} {"#" * 50}')
-    check_build_serve_query(
-        model,
-        port,
-        file_url=url,
-        json_license_path=p,
-        visual=True, )
+def test_build_image():
+    nlp.build_image(rebuild=True, use_cache=False, pipeline_name="movies_sentiment_analysis")
+    nlp.build_image(rebuild=True, use_cache=True, pipeline_name="movies_sentiment_analysis")
+    _destroy_image()
 
 
 def test_serve_container_open_source():
-    nlu_ref = "tokenize"
-    port = 8513
-    check_build_serve_query(nlu_ref, port, None, False, False)
+    check_build_serve_query(
+        pipe_name='lora_ner_pipeline',
+        pipe_lang='en',
+        pipe_bucket=None,
+        port=8513,
+        json_license_path=None,
+        destroy_container=True,
+        visual=False)
 
 
-def test_query_server():
-    port = 8548  # tokenizerz
-    port = 8549  # en.med_ner.cancer_genetics.pipeline
-    # Send request to the container
-    check_local_endpoint_health(port)
+def test_serve_container_medical():
+    check_build_serve_query(pipe_name='ner_bionlp_pipeline',
+                            pipe_lang='en',
+                            pipe_bucket='clinical/models',
+                            port=8549,
+                            json_license_path=license_path)
+def test_ocr_pipe():
+    check_build_serve_query(pipe_name='pdf_printed_transformer_extraction',
+                            pipe_bucket='clinical/ocr',
+                            visual=True,
+                            file_url = 'https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/tests/datasets/ocr/pdf/haiku.pdf',
+                            port=8599,
+                            destroy_image=False,
+                            json_license_path=license_path)
+
+
+def test_dicom_deid_pipe():
+
+
+    check_build_serve_query(pipe_name='dicom_deid_generic_augmented_minimal',
+                            pipe_bucket='clinical/ocr',
+                            visual=True,
+                            file_url = 'https://github.com/JohnSnowLabs/visual-nlp-workshop/raw/refs/heads/master/jupyter/data/dicom/deidentify-medical-1.dcm',
+                            port=8599,
+                            json_license_path=license_path)
+
+def test_nlu_ocr_pipe():
+    nlp.start(visual=True)
+    pipe = nlp.load('pdf2text')
+    try:
+        pipe.predict('')
+    except:
+        pass
+    pipe = pipe.vanilla_transformer_pipe
+
+    check_build_serve_query(pipe_name='ocr_pipe',
+                            custom_pipe = pipe,
+                            visual=True,
+                            file_url = 'https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/tests/datasets/ocr/pdf/haiku.pdf',
+                            port=8589,
+                            json_license_path=license_path)
+
+
+
+def test_invoke():
+    data = ["The patient has no cancer in the left leg. Administrating morphium caused a 2 day rash on the neck"]
+    print(send_invoke(6645, data, 'document'))
+    # print(send_invoke(8000, data, 'sentence'))
+    # print(send_invoke(8000, data, 'token'))
+
+
+@pytest.mark.parametrize("model_nlu_ref,url", list(visual_model_to_data.items()))
+def test_serve_and_query_container_ocr(model_nlu_ref, url):
+    # pdf2text, iamg2 text ok! doc2text wierd output?
+    # x2table crash. classifyimage crash!
+    print(f'{"#" * 50} Testing Model={model_nlu_ref} for data={url} {"#" * 50}')
+    nlp.start(visual=True)
+    pipe = nlp.load(model_nlu_ref)
+    try:
+        # init pipe, it may fail which is fine but we need it so vanilla_transformer_pipe is set
+        # it is the fitted pipe which we deploy as a custom pipe
+        pipe.predict('')
+    except:
+        pass
+
+    pipe = pipe.vanilla_transformer_pipe
+
+    check_build_serve_query(
+        # We re-use nlu ref as name so we have unique container names
+        pipe_name=model_nlu_ref,
+        custom_pipe=pipe,
+        port=8541,
+        file_url=url,
+        json_license_path=license_path,
+        visual=True, )
+
+
+def test_serve_custom_nlp_pipe():
+    check_build_serve_query(
+        pipe_name='custom_pipe',
+        custom_pipe=get_pipe(),
+        port=8423,
+        json_license_path=None,
+        visual=False)
 
 
 def test_run_container():

@@ -26,8 +26,10 @@ RUN chmod +x /usr/local/bin/tini
 RUN mkdir /app
 RUN mkdir /app/model_cache
 
+# <OPTIONAL MODEL COPY PLACEHOLDER>
+
 # Install Johnsnowlabs libraries
-RUN pip install johnsnowlabs  fastapi uvicorn python-multipart nbformat
+RUN pip install johnsnowlabs  fastapi uvicorn python-multipart nbformat packaging
 COPY installer.py /app/installer.py
 RUN python3 /app/installer.py
 
