@@ -35,9 +35,27 @@ John Snow Labs' Terminology Server supports the use of custom Value Sets, offeri
 * View, create new versions, delete
 * Filter search results based on the codes included in a selected Value Set.
 
-Uploading a Custom Value Set into Terminology Server is straight forward: 
-1. In the left navigation bar, click on **Value Sets** node
-2. Drag or choose "Browse Files" then click Upload your file representinng the custom Value set
+📤 **Uploading a Custom Value Set in Terminology Server**
 
-3. 
+Uploading a custom Value Set is simple and intuitive:
+1. In the **left navigation panel**, click on the **Value Sets** node.
+2. Use the "**Browse Files**" button or drag your Excel/CSV file into the upload area, then click **Upload** to import your custom Value Set.
 
+![Terminology Service by John Snow Labs](/assets/images/term_server/Upload_VS_firsttime.png)
+
+3. Once uploaded, the new Value Set will appear in the **left panel** under the Value Sets section..
+
+![Terminology Service by John Snow Labs](/assets/images/term_server/Upload_VS_consecutive.png)
+
+4. To **create a new Value Set** or **add a new version** to an existing one, click the **"Upload"** link on the right-hand side.
+
+![Terminology Service by John Snow Labs](/assets/images/term_server/Upload_VS_consecutive_newVersion.png)
+
+5. Each **new version** will appear as a child node under the corresponding Value Set.   
+
+![Terminology Service by John Snow Labs](/assets/images/term_server/VS_Versions.png)
+
+6. To **view**, **download**, or **delete** a version, use the icons next to it.
+🔴 Note: Deleting the last remaining version will remove the entire Value Set from the system.
+
+**Filter search results using Value Sets**
