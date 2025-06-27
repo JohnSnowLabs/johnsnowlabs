@@ -1,5 +1,6 @@
 import json
 import time
+from typing import Optional
 
 from johnsnowlabs import nlp
 from johnsnowlabs.auto_install.docker.work_utils import check_local_endpoint_health, _destroy_container, _destroy_image
@@ -10,11 +11,11 @@ def is_snowflake_installed():
     try:
         import snowflake.connector
     except:
-        ImportError('Run `pip install snowflake-connector-python` to use Snowflake utilities! ')
+        raise ImportError('Run `pip install snowflake-connector-python` to use Snowflake utilities! ')
     return True
 
 
-def get_client(user, password, account, warehouse, database, schema, role):
+def get_client(user, password, account, warehouse=None, database=None, schema=None, role=None, passcode=None,):
     is_snowflake_installed()
     import snowflake.connector
     conn = snowflake.connector.connect(
@@ -25,6 +26,7 @@ def get_client(user, password, account, warehouse, database, schema, role):
         database=database,
         schema=schema,
         role=role,
+        passcode=passcode,
     )
     return conn
 
@@ -67,17 +69,6 @@ def get_service_create_cmd(service_name, compute_pool_name, image_path, role, da
     """
 
 
-def build_snowflake_image(nlu_ref, image_name, license_path):
-    # check_build_serve_query
-    nlp.build_image(
-        nlu_ref,
-        image_name,
-        rebuild=True,
-        use_cache=True,
-        json_license_path=license_path,
-    )
-
-
 def test_snowflake_image_local(image_name, container_name, port):
     # Serve container, destroy if already running. After test destroy local container
     nlp.serve_container(
@@ -87,7 +78,7 @@ def test_snowflake_image_local(image_name, container_name, port):
         host_port=port,
     )
     # todo expo backoff for big models N times maybe
-    time.sleep(30)
+    time.sleep(60)
     check_local_endpoint_health(port)
     _destroy_container(container_name)
 
@@ -99,14 +90,15 @@ def push_snowflake_image(remote_repo, image_name):
     )
 
 
-def wait_until_service_created(client, service, timeout=60*20):
+def wait_until_service_created(client, service, timeout=60 * 20):
     cur = client.cursor()
     start_time = time.time()  # Start time tracking
 
     while True:
         elapsed_time = time.time() - start_time  # Calculate elapsed time
         if elapsed_time > timeout:
-            raise TimeoutError(f"Timeout reached: Service {service} did not reach RUNNING state within {timeout} seconds.")
+            raise TimeoutError(
+                f"Timeout reached: Service {service} did not reach RUNNING state within {timeout} seconds.")
 
         res = cur.execute(f'DESCRIBE SERVICE {service};').fetchone()
         state = res[1]
@@ -120,7 +112,6 @@ def wait_until_service_created(client, service, timeout=60*20):
 
         print(f"State of {service} is {state}. Waiting for service creation...")
         time.sleep(60)
-
 
 
 def create_service(client, service_name, compute_pool_name, image_path, role, database, warehouse, schema):
@@ -175,12 +166,25 @@ def tag_image(image_name, remote_repo):
     )
 
 
-def build_test_and_push_image(nlu_ref, license_path, image_name, local_test_container_name, local_test_port,
-                              remote_repo, user, password, destroy_image=False):
+def build_test_and_push_image(pipeline_name, license_path, image_name, local_test_container_name, local_test_port,
+                              remote_repo, user, password, destroy_image=False,
+                              pipeline_bucket: Optional[str] = None,
+                              pipeline_language: Optional[str] = 'en',
+                              custom_pipeline: Optional[str] = None
+                              ):
     login_cmd = f"echo {password} | docker login {remote_repo} -u {user} --password-stdin"
 
     # 1. build image,
-    build_snowflake_image(nlu_ref, image_name, license_path)
+    nlp.build_image(
+        pipeline_name=pipeline_name,
+        pipeline_bucket=pipeline_bucket,
+        pipeline_language=pipeline_language,
+        custom_pipeline=custom_pipeline,
+        image_name=image_name,
+        rebuild=True,
+        use_cache=True,
+        json_license_path=license_path,
+    )
 
     # 2. test it locally
     test_snowflake_image_local(image_name, local_test_container_name, local_test_port)
@@ -224,6 +228,10 @@ def snowflake_common_setup(snowflake_user, snowflake_account, snowflake_password
                            db_name='tutorial_db',
                            warehouse_name='tutorial_warehouse',
                            compute_pool_name='tutorial_compute_pool',
+                           passcode=None,
+                           compute_pool_min_nodes=1,
+                           compute_pool_max_nodes=1,
+                           compute_pool_instance_family='CPU_X64_XS',
                            ):
     """do commmon setup for Snowflake Container Services.
     Creates Warehouse, Database, Schema, Compute-Pool, Repository and Role to use for Johnsnowlabs Based container services.
@@ -246,9 +254,9 @@ GRANT USAGE ON WAREHOUSE {warehouse_name} TO ROLE {role_name};
 GRANT BIND SERVICE ENDPOINT ON ACCOUNT TO ROLE {role_name};
 
 CREATE COMPUTE POOL IF NOT EXISTS {compute_pool_name} 
-  MIN_NODES = 1
-  MAX_NODES = 1
-  INSTANCE_FAMILY = CPU_X64_XS;
+  MIN_NODES = {compute_pool_min_nodes}
+  MAX_NODES = {compute_pool_max_nodes}
+  INSTANCE_FAMILY = {compute_pool_instance_family};
   
 GRANT USAGE, MONITOR ON COMPUTE POOL {compute_pool_name} TO ROLE {role_name};
 
@@ -257,8 +265,8 @@ GRANT ROLE {role_name} TO USER {snowflake_user};
     """
 
     is_snowflake_installed()
-    import snowflake.connector
-    c = snowflake.connector.connect(user=snowflake_user, password=snowflake_password, account=snowflake_account, role='ACCOUNTADMIN')
+    c = get_client(user=snowflake_user, password=snowflake_password, account=snowflake_account, passcode=passcode,
+                   role='ACCOUNTADMIN')
     cur = c.cursor()
 
     r = cur.execute(base_cmd, num_statements=base_cmd.count(';'))
@@ -317,7 +325,7 @@ USE WAREHOUSE {warehouse_name};
     return role_name, db_name, warehouse_name, schema_name, compute_pool_name, repo_url
 
 
-def deploy_as_snowflake_udf(nlu_ref,
+def deploy_as_snowflake_udf(
                             repo_url,
                             role_name,
                             database_name,
@@ -327,34 +335,59 @@ def deploy_as_snowflake_udf(nlu_ref,
                             snowflake_user,
                             snowflake_password,
                             snowflake_account,
+                            pipeline_name:Optional[str] = None,
+                            pipeline_bucket: Optional[str] = None,
+                            pipeline_language: Optional[str] = 'en',
                             license_path=None,
                             udf_name=None,
                             service_name=None,
-                            service_creation_timeout = 60*20,
+                            service_creation_timeout=60 * 20,
                             destroy_image=False,
+                            passcode=None,
+                            custom_pipeline=None,
                             ):
+
+
     client = get_client(snowflake_user, snowflake_password, snowflake_account, warehouse_name, database_name,
-                        schema_name, role_name)
+                        schema_name, role_name, passcode)
+
+    if custom_pipeline and not udf_name:
+        raise ValueError('If you provide a custom pipeline, you must also provide a udf_name!')
 
     # Local container setup
-    clean_nlu_ref = nlu_ref.replace('.', '-').replace('_', '-')
+    if udf_name:
+        base_name_prefix = udf_name.replace('.', '-').replace('_', '-')
+    else:
+        base_name_prefix = pipeline_name.replace('.', '-').replace('_', '-')
 
     port = 6645
-    container_name = f"{clean_nlu_ref}_container"
-    image_name = f"{clean_nlu_ref}-img"
+    container_name = f"{base_name_prefix}_container"
+    image_name = f"{base_name_prefix}-img"
 
     remote_image = f'{repo_url}/{image_name}:latest'
 
     if not service_name:
-        service_name = f'{clean_nlu_ref}_service'.replace('-', '_')
+        service_name = f'{base_name_prefix}_service'.replace('-', '_')
     if not udf_name:
-        udf_name = f'{clean_nlu_ref}_udf'.replace('-', '_')
+        udf_name = f'{base_name_prefix}_udf'.replace('-', '_')
 
     # r = get_service_logs(snowflake_user, snowflake_password, snowflake_account, warehouse_name, database_name,
     #              schema_name, role_name, service_name)
     # print(r)
     # 2.  Local Docker Setup, Tests and Push to Snowflake
-    build_test_and_push_image(nlu_ref, license_path, image_name, container_name, port, repo_url, snowflake_user, snowflake_password, destroy_image)
+    build_test_and_push_image(pipeline_name=pipeline_name,
+                              license_path=license_path,
+                              image_name=image_name,
+                              local_test_container_name=container_name,
+                              local_test_port=port,
+                              remote_repo=repo_url,
+                              user=snowflake_user,
+                              password=snowflake_password,
+                              destroy_image=destroy_image,
+                              pipeline_bucket=pipeline_bucket,
+                              pipeline_language=pipeline_language,
+                              custom_pipeline=custom_pipeline,
+                              )
 
     # 3. Snowflake: Create service, create udf and test udf
     print(f'Starting Snowflake Procedure')
@@ -362,8 +395,9 @@ def deploy_as_snowflake_udf(nlu_ref,
                    schema_name)
     print(f'Created Service {service_name}')
     wait_until_service_created(client, service_name, service_creation_timeout)
-    # time.sleep(1 * 60)  # wait ~ n seconds for container sto spin up, expo backup..!
+
     create_udf(client, service_name, udf_name, role_name, database_name, warehouse_name, schema_name)
+    time.sleep(10 * 60)  # wait ~ n seconds for container sto spin up, expo backup..!
     print(f'Created UDF {udf_name}')
 
     print('testing UDF...')

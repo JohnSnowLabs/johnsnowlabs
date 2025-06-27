@@ -20,46 +20,80 @@ This enables you to package any johnsnowlabs model into a docker image and serve
 
 ## Image creation
 With `nlp.build_image` you can create a docker image with any johnsnowlabs model pre-packed and ready to serve.
-You just need to specify the [nlu reference to the model](https://nlp.johnsnowlabs.com/docs/en/jsl/namespace) and the **name of the output image**
-Additionally, you can set the `hardware_target` to `cpu`, `gpu`, `apple_silicon` or `aarch` to package with Jar's optimized for specific hardware.
+You can set the `hardware_platform` to `cpu`, `gpu`, `apple_silicon` or `aarch` to package with Jar's optimized for specific hardware.
+You can either specify `pipeline_name`, `pipeline_language` and `pipeline_bucket` to create an image with a specific pipeline.
+Alternatively you can deploy a custom model by specifying `custom_pipeline`
+
 
 </div><div class="h3-box" markdown="1">
 
+
+
 ### Create Spark-NLP Image 
-Create a spark-nlp bert image
+Create an image with a **Spark-NLP Pretrained Pipeline**
 ```python
 from johnsnowlabs import nlp
-nlp.build_image(preloaded_model='bert',image_name='bert_img')
+nlp.build_image(pipeline_name='explain_document_lg', pipeline_language= 'fr', image_name='bert_img')
 ```
 
-Create an image with GPU optimized builds
+Create an image with **GPU optimized builds**
 ```python
 from johnsnowlabs import nlp
-nlp.build_image(preloaded_model='bert',image_name='bert_gpu_img',hardware_target='gpu')
+nlp.build_image(pipeline_name='recognize_entities_bert',hardware_platform='gpu',image_name='bert_gpu_img')
 ```
 
 </div><div class="h3-box" markdown="1">
 
 ### Create Medical NLP Image 
-To create an image with a **Medical NLP model** you must provide a license in one of the ways described by the [Authorization Flows Overview](https://nlp.johnsnowlabs.com/docs/en/jsl/install_advanced#authorization-flows-overview).
+To create an image with a **Medical NLP Pretrained Pipeline** you must provide a license in one of the ways described by the [Authorization Flows Overview](https://nlp.johnsnowlabs.com/docs/en/jsl/install_advanced#authorization-flows-overview).
 It will be stored in the container and used to pre-download licensed models & dependencies during the build proces.
 ```python
 from johnsnowlabs import nlp
 # In this example with authorize via a license.json file, but there are many other ways.
-nlp.build_image(preloaded_model='en.med_ner.cancer_genetics.pipeline',image_name='cancer_img', json_license_path='path/to/my/license.json')
+nlp.build_image(pipeline_name='ner_bionlp_pipeline', 
+                pipeline_bucket='clinical/models',
+                json_license_path='path/to/my/license.json',
+                image_name='cancer_img'
+                )
 ```
 
 </div><div class="h3-box" markdown="1">
 
 ### Create Licensed Visual NLP Image
-To create an image with a **Visual NLP model** you must provide a license in one of the ways described by the [Authorization Flows Overview](https://nlp.johnsnowlabs.com/docs/en/jsl/install_advanced#authorization-flows-overview).
+To create an image with a **Visual NLP Pretrained Pipeline** you must provide a license in one of the ways described by the [Authorization Flows Overview](https://nlp.johnsnowlabs.com/docs/en/jsl/install_advanced#authorization-flows-overview).
 It will be stored in the container and used to pre-download licensed models & dependencies during the build proces.
 ```python
 from johnsnowlabs import nlp
-nlp.build_image(preloaded_model='pdf2text',image_name="pdf2text_img",visual=True)
+nlp.build_image(pipeline_name='pdf_printed_transformer_extraction',
+                pipeline_bucket='clinical/ocr',
+                image_name="pdf2text_img",visual=True)
 ```
 
 </div><div class="h3-box" markdown="1">
+
+### Create Image with custom pipeline
+To create an image with a **custom pipeline** provide a fitted Spark Pipeline object as `custom_pipeline`.
+If you use licensed annotators, provide a license in one of the ways described by the [Authorization Flows Overview](https://nlp.johnsnowlabs.com/docs/en/jsl/install_advanced#authorization-flows-overview).
+```python
+from johnsnowlabs import nlp
+pipe = ... # your custom pipeline which is already fitted
+nlp.build_image(custom_pipeline=pipe,image_name="my_custom_img",visual=True)
+```
+</div><div class="h3-box" markdown="1">
+
+
+### Create Image with NLU pipeline
+To create an image with a **NLU Pipeline** provide a fitted Spark Pipeline object as `custom_pipeline`.
+If you use a licensed pipeline, provide a license in one of the ways described by the [Authorization Flows Overview](https://nlp.johnsnowlabs.com/docs/en/jsl/install_advanced#authorization-flows-overview).
+```python
+from johnsnowlabs import nlp
+pipe = nlp.load('bert')
+pipe.predict('Init the pipe')
+nlp.build_image(custom_pipeline=pipe.vanilla_transformer_pipe,image_name="bert_img",visual=True)
+```
+
+</div><div class="h3-box" markdown="1">
+
 
 ## Serve model image as container
 With `nlp.serve_container` you can serve the image you created via `nlp.build_image` as a REST API.
