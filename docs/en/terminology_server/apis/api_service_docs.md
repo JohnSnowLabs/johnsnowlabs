@@ -15,7 +15,7 @@ sidebar:
 
 The API service allows **seamless integration** with your applications, enabling you to leverage our platform’s capabilities.
 
-After deploying the Terminology Server in your environment, you can access the API right away as described in the [API Service Access](/api_service) page.
+After deploying the Terminology Server in your environment, you can access the API right away as described in the **API Service Access** page.
 
 Below are code examples of how to invoke the API for Basic Search , Exact Match Search, Semantic Search and Code to Code Mapping with Filter by source and/or target code system.
 
