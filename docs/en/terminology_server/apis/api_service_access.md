@@ -12,3 +12,117 @@ sidebar:
 ---
 
 ## API Service Access
+
+John Snow Labs' **Terminology Server** provides a **comprehensive API**, enabling full access to all functionality available through the user interface. This allows for **seamless integration** with your applications and the implementation of custom workflows, empowering you to fully leverage the platform's capabilities within your own systems.
+
+Once the installation of the **Terminology Server** is over, start the application and **access the API** by switching to the **API Service** tab in the left navigation panel; click on the **API Service Access** section. 
+![Terminology Service by John Snow Labs](/assets/images/term_server/APIaccess.png)
+
+In the right-hand pane, click the **API Documentation** link to open the API interface **hosted on your server**, where you can explore and **test the endpoints in real time**.  
+![Terminology Service by John Snow Labs](/assets/images/term_server/APIMethodsScreenShot.png)
+
+
+Below are few examples of how to invoke the API, for the full documentation including respose sampls, visit our public online [Terminology Server API Code Sample Documentation](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/products/term_server/terminology_api.ipynb).
+
+**Search API sample usage**
+```
+import requests
+import json
+
+def search(chunks, 
+            search_type=None, 
+            vocabulary_id=[], 
+            validity=None,
+            topk=20,
+            standard_concept=[], 
+            domain_id=[], 
+            source=[], 
+            concept_class_id=[], 
+            filter_by_valueset=False,
+            valueset_metadata_ids=[], 
+            source_vocabulary=None,
+            target_vocabulary=None):
+    url = f"{base_url}/search"
+    headers = {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+    }
+    payload = {
+        "chunks": chunks,
+        "search_type": search_type,
+        "vocabulary_id": vocabulary_id,
+        "validity": validity,
+        "topk": topk,
+        "standard_concept": standard_concept,
+        "domain_id": domain_id,
+        "source": source,
+        "concept_class_id": concept_class_id,
+        "filter_by_valueset": filter_by_valueset,
+        "valueset_metadata_ids": valueset_metadata_ids,
+        "source_vocabulary": source_vocabulary,
+        "target_vocabulary": target_vocabulary
+    }
+    response = requests.post(url, headers=headers, json=payload)
+    return response.json()
+```
+**Basic Search Example**
+```
+search(chunks=["diabetes"])
+```
+
+**Exact match search**
+```
+search(chunks=["viral hepatitis"], 
+        topk=10, 
+        search_type="exact",
+        validity="true",
+        domain_id=["Condition", "Observation"],
+        vocabulary_id=["ICD10", "ICD9"],
+        )
+```
+
+**Semantic Search**
+```
+search(chunks=["viral hepatitis"], 
+        topk=10, 
+        search_type="semantic",
+        validity="true",
+        domain_id=["Condition", "Observation"],
+        vocabulary_id=["ICD10", "ICD9"],
+        )
+```
+
+**Code to Code Mapping**
+
+Provides mapping from one code system (source) to another code system (target).
+
+```
+import requests
+
+def map_one_code_to_another(source_codes, source_vocabulary=None, target_vocabulary=None):
+    url = f"{base_url}/code_map"
+    headers = {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+    }
+    payload = {
+        "concept_codes": source_codes,
+        "source_vocabulary": source_vocabulary,
+        "target_vocabulary": target_vocabulary
+    }
+    response = requests.post(url, headers=headers, json=payload)
+    return response.json()
+```
+User can provide single or multiple codes as per their need.
+```
+source_codes = ["E11", "E14"]
+map_one_code_to_another(source_codes=source_codes)
+```
+Filter by source and/or target code system
+```
+source_codes = ["E11", "E14"]
+source_vocabulary = "ICD10"
+
+map_one_code_to_another(source_codes=source_codes, source_vocabulary=source_vocabulary)
+```
+
