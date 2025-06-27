@@ -30,7 +30,7 @@ In Terminology Server Tools, custom Value Sets can often be:
 * Versioned and updated
 * Used in conjunction with concept search, validation, and filtering features
 
-John Snow Labs' Terminology Server supports the use of custom Value Sets, offering the following capabilities:
+**John Snow Labs' Terminology Server** supports the use of custom Value Sets, offering the following capabilities:
 * Upload custom Value Sets created externally in Excel or CSV format using the built-in Upload feature.
 * View, create new versions, delete
 * Filter search results based on the codes included in a selected Value Set.
@@ -67,6 +67,8 @@ Example:
 1. Search for the term "cancer". Notice the top record in the results, having **LOINC** Concept Code **LA10524-9** 
 ![Terminology Service by John Snow Labs](/assets/images/term_server/SearchResultsForVSFilter.png)
 2. Assume the for example **Histology Carcinoma** as a previously uploaded Value Set. In this example, the Value Set contains 2 records with the Concept Code **LA10524-9** mapped to two custom codes: **M85306** and **M85307** ![Terminology Service by John Snow Labs](/assets/images/term_server/HistoryOfCarcinomaVS.png)  
-3. In the left navigation panel, check the box next to the Value Set you want to use as a filterin our case the **Version 1** under **Histology Carcinoma**. The name of the Value Set and the selected version are now displayed as applied filter.  
+3. In the left navigation panel, check the box next to the Value Set you want to use as a filter, in our case the **Version 1** under **Histology Carcinoma**. The name of the Value Set and the selected version are now displayed as applied filter.  
 4. After applying the filter, the results table will display a new column labeled **"ValueSet"**. ![Terminology Service by John Snow Labs](/assets/images/term_server/FilteredResultsByVS.png)
-This column indicates which search results are included in the selected Value Set by cross-referencing the **concept codes** from your search with those defined in the Value Set vocabulary.    
+
+This column indicates which search results are included in the selected Value Set by cross-referencing the **concept codes** from your search with those defined in the Value Set vocabulary.
+The information in this column is derived from the specific version of the selected Value Set file.     
