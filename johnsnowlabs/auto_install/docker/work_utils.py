@@ -5,6 +5,7 @@ from pathlib import Path
 from typing import Optional
 
 import requests
+from pyspark.ml import PipelineModel
 
 from johnsnowlabs import settings
 from johnsnowlabs.py_models.jsl_secrets import JslSecrets
@@ -36,9 +37,9 @@ def _destroy_container(container_name: str = None):
         stop_cmd = f"docker container stop {container_name}"
         rm_cmd = f"docker container rm -f {container_name}"
         run_cmd_and_check_succ(
-            [stop_cmd], shell=True, raise_on_fail=False, use_code=True,log_outputs=False
+            [stop_cmd], shell=True, raise_on_fail=False, use_code=True, log_outputs=False
         )
-        run_cmd_and_check_succ([rm_cmd], shell=True, raise_on_fail=False, use_code=True,log_outputs=False)
+        run_cmd_and_check_succ([rm_cmd], shell=True, raise_on_fail=False, use_code=True, log_outputs=False)
         print(f"Container '{container_name}' destroyed.")
     else:
         print(f"Container '{container_name}' does not exist.")
@@ -82,27 +83,39 @@ def is_docker_installed():
 
 def generate_dockerfile(
         # Install parameters
-        model: str,
+        pipeline_name: str,
         secrets: JslSecrets,
         visual: bool = False,
         nlp: bool = True,
         hardware_platform: str = JvmHardwareTarget.cpu.value,
+        pipeline_bucket: Optional[str] = 'clinical/models',
+        pipeline_language: Optional[str] = 'en',
+        custom_pipeline: Optional[PipelineModel] = None,
 ):
     """
     Generate a Dockerfile for a specific model and configuration.
 
-    :param model: NLU Reference to the model to be used.
+    :param pipeline_name: Name of pipeline to be used.
+    :param pipeline_bucket: Bucket where the model is stored.
+    :param pipeline_language: Language of the model.
+    :param custom_pipeline: Optional custom PipelineModel to be used instead of loading a pre-trained model.
     :param secrets: JslSecrets object
     :param visual: Flag to include visual features.
     :param nlp: Flag to include medical NLP features.
     :param hardware_platform: Target hardware platform (e.g., 'cpu').
     """
-    if not model:
-        raise Exception("model may not me None", model)
 
+    if not pipeline_name and not custom_pipeline:
+        raise Exception("model may not me None", pipeline_name)
+
+    # Define all paths
     build_folder = os.path.join(get_folder_of_func(_destroy_container), "build")
+    custom_pipeline_path = os.path.join(build_folder, "custom_pipeline")
     base_docker_file_path = os.path.join(build_folder, "base_dockerfile")
     generated_docker_file_path = os.path.join(build_folder, "generated_dockerfile")
+
+    if custom_pipeline:
+        custom_pipeline.write().overwrite().save(custom_pipeline_path)
 
     provided_license = None
     if secrets.OCR_LICENSE:
@@ -113,11 +126,14 @@ def generate_dockerfile(
 
     env_vars = [
         f'ENV HARDWARE_TARGET="{JvmHardwareTarget(hardware_platform).value}"',
-        f'ENV MODEL_TO_LOAD="{model}"',
     ]
+    if not custom_pipeline:
+        # If no custom pipeline is provided, we set a model which will be downloaded in installer.py during build
+        env_vars.append(f'ENV MODEL_TO_LOAD="{pipeline_name}"')
+        env_vars.append(f'ENV MODEL_LANGUAGE="{pipeline_language}"')
 
-    if provided_license:
-        env_vars.append(f'ENV JOHNSNOWLABS_LICENSE="{provided_license}"')
+    if pipeline_bucket:
+        env_vars.append(f'ENV MODEL_BUCKET="{pipeline_bucket}"')
 
     if provided_license:
         env_vars.append(f'ENV JOHNSNOWLABS_LICENSE="{provided_license}"')
@@ -138,6 +154,12 @@ def generate_dockerfile(
         docker_code = file.read()
 
     docker_code = insert_strings(3, env_vars, docker_code)
+
+    if custom_pipeline:
+        docker_code = docker_code.replace(
+            '# <OPTIONAL MODEL COPY PLACEHOLDER>',
+            f'COPY custom_pipeline /app/model',
+        )
 
     with open(generated_docker_file_path, "w", encoding="utf-8") as file:
         file.write(docker_code)
@@ -161,7 +183,11 @@ def insert_strings(index, inserts, start_string):
 
 
 def build_image(
-        preloaded_model: str,  # nlu ref, nlp_ref or lcoally stored model
+        pipeline_name: Optional[str] = None,
+        pipeline_bucket: Optional[str] = None,
+        pipeline_language: Optional[str] = 'en',
+        custom_pipeline: Optional["PipelineModel"] = None,
+
         image_name=None,
         rebuild=False,
         use_cache=True,
@@ -191,11 +217,15 @@ def build_image(
         store_in_jsl_home: bool = True,
         # Install File Types
         hardware_platform: str = JvmHardwareTarget.cpu.value,
+
 ):
     """
     Build a Docker image with specified parameters.
 
-    :param preloaded_model: Reference to the preloaded model.
+    :param pipeline_name: Reference to the preloaded model.
+    :param pipeline_bucket: Bucket where the model is stored.
+    :param pipeline_language: Language of the model.
+    :param custom_pipeline: Optional custom PipelineModel to be used instead of loading a pre-trained model.
     :param image_name: Name of the Docker image. If None, uses default from settings.
     :param rebuild: Flag to destroy existing image and rebuild
     :param use_cache: Flag to use cache during the build.
@@ -233,7 +263,10 @@ def build_image(
     )
 
     generate_dockerfile(
-        model=preloaded_model,
+        pipeline_name=pipeline_name,
+        pipeline_bucket=pipeline_bucket,
+        pipeline_language=pipeline_language,
+        custom_pipeline=custom_pipeline,
         secrets=secrets,
         visual=visual,
         nlp=nlp,
@@ -272,7 +305,7 @@ def serve_container(
 
     :param container_name: Name of the Docker container. If None, uses default from settings.
     :param image_name: Name of the Docker image. If None, uses default from settings.
-    :param destroy_container: Flag to destroy the container before serving.
+    :param destroy_container: Flag to destroy the container before serving if it exists.
     :param host_port: Host port to bind the container's service port.
     """
     image_name = settings.docker_image_name if image_name is None else image_name
@@ -327,6 +360,7 @@ def health_check_ocr_container(port, file_url):
         response = send_file_to_server(file_url, port)
     else:
         raise ValueError(f'Invalid path {file_url}')
+    print("VISUAL PREDICTION RESPONSE:")
     print(response)
     return True
 
@@ -352,12 +386,6 @@ def check_local_endpoint_health(port):
 
     params = {
         "text": "Your text that you want to predict with the model goes here",
-        "output_level": "document",
-        "positions": "false",
-        "metadata": "false",
-        "drop_irrelevant_cols": "false",
-        "get_embeddings": "false",
-        "keep_stranger_features": "true",
     }
     response = requests.get(url, params=params, headers={"accept": "application/json"})
     response.raise_for_status()

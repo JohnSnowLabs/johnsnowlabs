@@ -44,6 +44,7 @@ This will create the following resources:
 - compute_pool_name=`tutorial_compute_pool`
 
 You can specify a custom name for any resource by specifying it as a key-word argument. 
+Additionally, you can specify compute pool parameters with values defined in the [Snowflake Documentation](https://docs.snowflake.com/en/sql-reference/sql/create-compute-pool#required-parameters).
 
 ```python
 role_name, db_name, warehouse_name, schema_name, compute_pool_name, repo_url = nlp.snowflake_common_setup(
@@ -56,24 +57,34 @@ role_name, db_name, warehouse_name, schema_name, compute_pool_name, repo_url = n
     stage_name='my_tutorial_stage',
     db_name='my_tutorial_db',
     warehouse_name='my_tutorial_warehouse',
-    compute_pool_name='tutorial_compute_pool'
+    compute_pool_name='tutorial_compute_pool',
+    
+    # Specify compute pool parameters
+    compute_pool_min_nodes=1,
+    compute_pool_max_nodes=1,
+    compute_pool_instance_family='CPU_X64_XS',
 )
 
 ```
 
 </div><div class="h3-box" markdown="1">
 
-## Deploy Model as Snowflake Container Services UDF
+## Deploy Pretrained Pipeline as Snowflake Container Services UDF
 
 `nlp.deploy_model_as_snowflake_udf()` will build, tag & push a John Snow Labs model server to your 
 Snowflake image repository and finally create a service & udf from the model and test it.
-Role, Database, Warehouse, Schema, Compute Pool and Image Repository muss be created beforehand and passwed as arguments. 
+Role, Database, Warehouse, Schema, Compute Pool and Image Repository muss be created beforehand and passed as arguments.
+
 ```python
 # Either run `nlp.snowflake_common_setup` or manually create&specify these resources
 from johnsnowlabs import nlp
+
 role_name, db_name, warehouse_name, schema_name, compute_pool_name, repo_url = ...
 nlp.deploy_as_snowflake_udf(
-    nlu_ref='en.de_identify.clinical_pipeline',
+    pipeline_name='explain_clinical_doc_oncology',
+    pipeline_bucket='clinical/models',
+    pipeline_language='en',
+    
     snowflake_user='my_snowflake_user',
     snowflake_account='my_snowflake_account',
     snowflake_password='my_snowflake_password',
@@ -90,13 +101,18 @@ nlp.deploy_as_snowflake_udf(
 
 `nlp.deploy_model_as_snowflake_udf()` will build, tag & push a John Snow Labs model server to your
 Snowflake image repository and finally create a service & udf from the model and test it.
-Role, Database, Warehouse, Schema, Compute Pool and Image Repository muss be created beforehand and passwed as arguments.
+Role, Database, Warehouse, Schema, Compute Pool and Image Repository muss be created beforehand and passed as arguments.
+
 ```python
 # Either run `nlp.snowflake_common_setup` or manually create&specify these resources
 from johnsnowlabs import nlp
+
 role_name, db_name, warehouse_name, schema_name, compute_pool_name, repo_url = ...
 nlp.deploy_as_snowflake_udf(
-    nlu_ref='en.de_identify.clinical_pipeline',
+    pipeline_name='explain_clinical_doc_oncology',
+    pipeline_bucket='clinical/models',
+    pipeline_language='en',
+    
     snowflake_user='my_snowflake_user',
     snowflake_account='my_snowflake_account',
     snowflake_password='my_snowflake_password',
@@ -111,14 +127,18 @@ nlp.deploy_as_snowflake_udf(
 
 ```
 
-You can also optionally specify the name of the created service & UDF 
+You can also optionally specify the name of the created service & UDF
 
 ```python
 # Either run `nlp.snowflake_common_setup` or manually create&specify these resources
 from johnsnowlabs import nlp
+
 role_name, db_name, warehouse_name, schema_name, compute_pool_name, repo_url = ...
 nlp.deploy_as_snowflake_udf(
-    nlu_ref='en.de_identify.clinical_pipeline',
+    pipeline_name='explain_clinical_doc_oncology',
+    pipeline_bucket='clinical/models',
+    pipeline_language='en',
+    
     snowflake_user='my_snowflake_user',
     snowflake_account='my_snowflake_account',
     snowflake_password='my_snowflake_password',
@@ -138,7 +158,7 @@ You can now use the `en_de_identify_clinical_pipeline_udf()` function within you
 when using the created role, database, warehouse, schema.
 
 
-You can run the following commands in Snowflake to get he status of the service and query the UDF 
+You can run the following commands in Snowflake to get the status of the service and query the UDF 
 ```sql
 -- Set context 
 USE ROLE test_role;
@@ -163,17 +183,34 @@ CALL SYSTEM$GET_SERVICE_LOGS('en_de_identify_clinical_pipeline_service', '0', 'j
 SELECT en_de_identify_clinical_pipeline_udf('The patient was prescribed Amlodopine Vallarta 10-320mg, Eviplera. The other patient is given Lescol 40 MG and Everolimus 1.5 mg tablet.');
 ```
 
+You can also query the UDF with Python like this 
+
+```python
+import json 
+def query_udf(client, udf_name, data):
+    cmd_query_udf = """SELECT {udf_name}('{data}')"""
+    cur = client.cursor()
+    cur.execute(cmd_query_udf.format(udf_name=udf_name, data=data))
+    for row in cur:
+        data = json.loads(row[0])
+        print(data)
+    cur.close()
+    return data
+
+```
+
+
 </div><div class="h3-box" markdown="1">
 
 ## Streamlit Example with Snowpark services
 
-Once you created an UDF in Snowflake you can access it within Streamlit Apps. 
+Once you created a UDF in Snowflake you can access it within Streamlit Apps. 
 Make sure to select the same resources to host your Streamlit app as used for hosting the UDF
 
 This is a small example of a simple streamlit app you can now build: 
 1. Go to the Streamlit Section in `Projects` within you Snowflake account
 3. In the bottom left click on your username and then on switch role and select the role we just created. The default value is `test_role`
-3. In the side-bar, click on Streamlit and then on the `+ Streamlit App` button. Specify a Database, Schema and Warehouse. The defaults are `TUTORIAL_DB`, `DATA_SCHEMA`, `TUTORIAL_WAREHOUSE`.
+3. In the sidebar, click on Streamlit and then on the `+ Streamlit App` button. Specify a Database, Schema and Warehouse. The defaults are `TUTORIAL_DB`, `DATA_SCHEMA`, `TUTORIAL_WAREHOUSE`.
 Copy and paste the following script into your streamlit app and run it 
 ```python
 import streamlit as st
@@ -185,5 +222,36 @@ st.write(udf_response.collect()[0].as_dict())
 ```
 
 For a more advanced streamlit example, see [here](https://github.com/JohnSnowLabs/johnsnowlabs/blob/main/streamlits/advanced_snowflake.py)
+
+
+## Deploying Custom Pipeline as Snowflake Container Services UDF
+To deploy a custom pipeline, simply provide a fitted Spark Pipeline object as `custom_pipeline`.
+
+```python
+# Either run `nlp.snowflake_common_setup` or manually create&specify these resources
+from johnsnowlabs import nlp
+
+role_name, db_name, warehouse_name, schema_name, compute_pool_name, repo_url = ...
+my_custom_pipeline = ... # your custom pipeline which is already fitted
+
+nlp.deploy_as_snowflake_udf(
+    custom_pipeline=my_custom_pipeline,
+    snowflake_user='my_snowflake_user',
+    snowflake_account='my_snowflake_account',
+    snowflake_password='my_snowflake_password',
+    license_path='path/to/my/jsl_license.json',
+    repo_url=repo_url,
+    role_name=role_name,
+    database_name=db_name,
+    warehouse_name=warehouse_name,
+    schema_name=schema_name,
+    compute_pool_name=compute_pool_name,
+    udf_name='my_udf',
+    service_name='my_service'
+)
+```
+
+</div><div class="h3-box" markdown="1">
+
 
 </div></div>
