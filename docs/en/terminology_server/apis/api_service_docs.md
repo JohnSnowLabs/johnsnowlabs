@@ -17,7 +17,8 @@ The API service allows **seamless integration** with your applications, enabling
 
 After deploying the Terminology Server in your environment, you can access the API right away as described in the [API Service Access](api_service_access.md) 
 
-Below are few examples of how to invoke the API, for the full documentation including respose sampls, visit the public online [Terminology Server API Code Sample Documentation](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/products/term_server/terminology_api.ipynb).
+Below are code examples of how to invoke the API for Basic Search , Exact Match Search, Semantic Search and Code to Code Mapping with Filter by source and/or target code system.
+
 
 **Search API sample usage**
 ```
@@ -120,3 +121,5 @@ source_vocabulary = "ICD10"
 
 map_one_code_to_another(source_codes=source_codes, source_vocabulary=source_vocabulary)
 ```
+
+For the full documentation including respose samples, visit the public online [Terminology Server API Code Sample Documentation](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/products/term_server/terminology_api.ipynb).
