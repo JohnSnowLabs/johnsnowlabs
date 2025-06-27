@@ -638,42 +638,71 @@ This enables you to package any johnsnowlabs model into a docker image and serve
 
     <h2 id="image-creation">Image creation</h2>
     <p>With <code class="language-plaintext highlighter-rouge">nlp.build_image</code> you can create a docker image with any johnsnowlabs model pre-packed and ready to serve.
-You just need to specify the <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/namespace">nlu reference to the model</a> and the <strong>name of the output image</strong>
-Additionally, you can set the <code class="language-plaintext highlighter-rouge">hardware_target</code> to <code class="language-plaintext highlighter-rouge">cpu</code>, <code class="language-plaintext highlighter-rouge">gpu</code>, <code class="language-plaintext highlighter-rouge">apple_silicon</code> or <code class="language-plaintext highlighter-rouge">aarch</code> to package with Jar’s optimized for specific hardware.</p>
+You can set the <code class="language-plaintext highlighter-rouge">hardware_platform</code> to <code class="language-plaintext highlighter-rouge">cpu</code>, <code class="language-plaintext highlighter-rouge">gpu</code>, <code class="language-plaintext highlighter-rouge">apple_silicon</code> or <code class="language-plaintext highlighter-rouge">aarch</code> to package with Jar’s optimized for specific hardware.
+You can either specify <code class="language-plaintext highlighter-rouge">pipeline_name</code>, <code class="language-plaintext highlighter-rouge">pipeline_language</code> and <code class="language-plaintext highlighter-rouge">pipeline_bucket</code> to create an image with a specific pipeline.
+Alternatively you can deploy a custom model by specifying <code class="language-plaintext highlighter-rouge">custom_pipeline</code></p>
 
   </div>
   <div class="h3-box">
 
     <h3 id="create-spark-nlp-image">Create Spark-NLP Image</h3>
-    <p>Create a spark-nlp bert image</p>
+    <p>Create an image with a <strong>Spark-NLP Pretrained Pipeline</strong></p>
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span>
-<span class="n">nlp</span><span class="p">.</span><span class="n">build_image</span><span class="p">(</span><span class="n">preloaded_model</span><span class="o">=</span><span class="s">'bert'</span><span class="p">,</span><span class="n">image_name</span><span class="o">=</span><span class="s">'bert_img'</span><span class="p">)</span>
+<span class="n">nlp</span><span class="p">.</span><span class="n">build_image</span><span class="p">(</span><span class="n">pipeline_name</span><span class="o">=</span><span class="s">'explain_document_lg'</span><span class="p">,</span> <span class="n">pipeline_language</span><span class="o">=</span> <span class="s">'fr'</span><span class="p">,</span> <span class="n">image_name</span><span class="o">=</span><span class="s">'bert_img'</span><span class="p">)</span>
 </code></pre></div>    </div>
 
-    <p>Create an image with GPU optimized builds</p>
+    <p>Create an image with <strong>GPU optimized builds</strong></p>
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span>
-<span class="n">nlp</span><span class="p">.</span><span class="n">build_image</span><span class="p">(</span><span class="n">preloaded_model</span><span class="o">=</span><span class="s">'bert'</span><span class="p">,</span><span class="n">image_name</span><span class="o">=</span><span class="s">'bert_gpu_img'</span><span class="p">,</span><span class="n">hardware_target</span><span class="o">=</span><span class="s">'gpu'</span><span class="p">)</span>
+<span class="n">nlp</span><span class="p">.</span><span class="n">build_image</span><span class="p">(</span><span class="n">pipeline_name</span><span class="o">=</span><span class="s">'recognize_entities_bert'</span><span class="p">,</span><span class="n">hardware_platform</span><span class="o">=</span><span class="s">'gpu'</span><span class="p">,</span><span class="n">image_name</span><span class="o">=</span><span class="s">'bert_gpu_img'</span><span class="p">)</span>
 </code></pre></div>    </div>
 
   </div>
   <div class="h3-box">
 
     <h3 id="create-medical-nlp-image">Create Medical NLP Image</h3>
-    <p>To create an image with a <strong>Medical NLP model</strong> you must provide a license in one of the ways described by the <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/install_advanced#authorization-flows-overview">Authorization Flows Overview</a>.
+    <p>To create an image with a <strong>Medical NLP Pretrained Pipeline</strong> you must provide a license in one of the ways described by the <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/install_advanced#authorization-flows-overview">Authorization Flows Overview</a>.
 It will be stored in the container and used to pre-download licensed models &amp; dependencies during the build proces.</p>
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span>
 <span class="c1"># In this example with authorize via a license.json file, but there are many other ways.
-</span><span class="n">nlp</span><span class="p">.</span><span class="n">build_image</span><span class="p">(</span><span class="n">preloaded_model</span><span class="o">=</span><span class="s">'en.med_ner.cancer_genetics.pipeline'</span><span class="p">,</span><span class="n">image_name</span><span class="o">=</span><span class="s">'cancer_img'</span><span class="p">,</span> <span class="n">json_license_path</span><span class="o">=</span><span class="s">'path/to/my/license.json'</span><span class="p">)</span>
+</span><span class="n">nlp</span><span class="p">.</span><span class="n">build_image</span><span class="p">(</span><span class="n">pipeline_name</span><span class="o">=</span><span class="s">'ner_bionlp_pipeline'</span><span class="p">,</span> 
+                <span class="n">pipeline_bucket</span><span class="o">=</span><span class="s">'clinical/models'</span><span class="p">,</span>
+                <span class="n">json_license_path</span><span class="o">=</span><span class="s">'path/to/my/license.json'</span><span class="p">,</span>
+                <span class="n">image_name</span><span class="o">=</span><span class="s">'cancer_img'</span>
+                <span class="p">)</span>
 </code></pre></div>    </div>
 
   </div>
   <div class="h3-box">
 
     <h3 id="create-licensed-visual-nlp-image">Create Licensed Visual NLP Image</h3>
-    <p>To create an image with a <strong>Visual NLP model</strong> you must provide a license in one of the ways described by the <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/install_advanced#authorization-flows-overview">Authorization Flows Overview</a>.
+    <p>To create an image with a <strong>Visual NLP Pretrained Pipeline</strong> you must provide a license in one of the ways described by the <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/install_advanced#authorization-flows-overview">Authorization Flows Overview</a>.
 It will be stored in the container and used to pre-download licensed models &amp; dependencies during the build proces.</p>
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span>
-<span class="n">nlp</span><span class="p">.</span><span class="n">build_image</span><span class="p">(</span><span class="n">preloaded_model</span><span class="o">=</span><span class="s">'pdf2text'</span><span class="p">,</span><span class="n">image_name</span><span class="o">=</span><span class="s">"pdf2text_img"</span><span class="p">,</span><span class="n">visual</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">nlp</span><span class="p">.</span><span class="n">build_image</span><span class="p">(</span><span class="n">pipeline_name</span><span class="o">=</span><span class="s">'pdf_printed_transformer_extraction'</span><span class="p">,</span>
+                <span class="n">pipeline_bucket</span><span class="o">=</span><span class="s">'clinical/ocr'</span><span class="p">,</span>
+                <span class="n">image_name</span><span class="o">=</span><span class="s">"pdf2text_img"</span><span class="p">,</span><span class="n">visual</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div>    </div>
+
+  </div>
+  <div class="h3-box">
+
+    <h3 id="create-image-with-custom-pipeline">Create Image with custom pipeline</h3>
+    <p>To create an image with a <strong>custom pipeline</strong> provide a fitted Spark Pipeline object as <code class="language-plaintext highlighter-rouge">custom_pipeline</code>.
+If you use licensed annotators, provide a license in one of the ways described by the <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/install_advanced#authorization-flows-overview">Authorization Flows Overview</a>.</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span>
+<span class="n">pipe</span> <span class="o">=</span> <span class="p">...</span> <span class="c1"># your custom pipeline which is already fitted
+</span><span class="n">nlp</span><span class="p">.</span><span class="n">build_image</span><span class="p">(</span><span class="n">custom_pipeline</span><span class="o">=</span><span class="n">pipe</span><span class="p">,</span><span class="n">image_name</span><span class="o">=</span><span class="s">"my_custom_img"</span><span class="p">,</span><span class="n">visual</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div>    </div>
+  </div>
+  <div class="h3-box">
+
+    <h3 id="create-image-with-nlu-pipeline">Create Image with NLU pipeline</h3>
+    <p>To create an image with a <strong>NLU Pipeline</strong> provide a fitted Spark Pipeline object as <code class="language-plaintext highlighter-rouge">custom_pipeline</code>.
+If you use a licensed pipeline, provide a license in one of the ways described by the <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/install_advanced#authorization-flows-overview">Authorization Flows Overview</a>.</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span>
+<span class="n">pipe</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'bert'</span><span class="p">)</span>
+<span class="n">pipe</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="s">'Init the pipe'</span><span class="p">)</span>
+<span class="n">nlp</span><span class="p">.</span><span class="n">build_image</span><span class="p">(</span><span class="n">custom_pipeline</span><span class="o">=</span><span class="n">pipe</span><span class="p">.</span><span class="n">vanilla_transformer_pipe</span><span class="p">,</span><span class="n">image_name</span><span class="o">=</span><span class="s">"bert_img"</span><span class="p">,</span><span class="n">visual</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </code></pre></div>    </div>
 
   </div>

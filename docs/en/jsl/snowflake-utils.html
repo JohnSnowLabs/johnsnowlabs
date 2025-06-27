@@ -661,7 +661,8 @@ with the same resource-names as in the tutorial.</p>
       <li>compute_pool_name=<code class="language-plaintext highlighter-rouge">tutorial_compute_pool</code></li>
     </ul>
 
-    <p>You can specify a custom name for any resource by specifying it as a key-word argument.</p>
+    <p>You can specify a custom name for any resource by specifying it as a key-word argument. 
+Additionally, you can specify compute pool parameters with values defined in the <a href="https://docs.snowflake.com/en/sql-reference/sql/create-compute-pool#required-parameters">Snowflake Documentation</a>.</p>
 
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">role_name</span><span class="p">,</span> <span class="n">db_name</span><span class="p">,</span> <span class="n">warehouse_name</span><span class="p">,</span> <span class="n">schema_name</span><span class="p">,</span> <span class="n">compute_pool_name</span><span class="p">,</span> <span class="n">repo_url</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">snowflake_common_setup</span><span class="p">(</span>
     <span class="n">snowflake_user</span><span class="o">=</span><span class="s">'my_snowflake_user'</span><span class="p">,</span>
@@ -673,7 +674,12 @@ with the same resource-names as in the tutorial.</p>
     <span class="n">stage_name</span><span class="o">=</span><span class="s">'my_tutorial_stage'</span><span class="p">,</span>
     <span class="n">db_name</span><span class="o">=</span><span class="s">'my_tutorial_db'</span><span class="p">,</span>
     <span class="n">warehouse_name</span><span class="o">=</span><span class="s">'my_tutorial_warehouse'</span><span class="p">,</span>
-    <span class="n">compute_pool_name</span><span class="o">=</span><span class="s">'tutorial_compute_pool'</span>
+    <span class="n">compute_pool_name</span><span class="o">=</span><span class="s">'tutorial_compute_pool'</span><span class="p">,</span>
+    
+    <span class="c1"># Specify compute pool parameters
+</span>    <span class="n">compute_pool_min_nodes</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">compute_pool_max_nodes</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">compute_pool_instance_family</span><span class="o">=</span><span class="s">'CPU_X64_XS'</span><span class="p">,</span>
 <span class="p">)</span>
 
 </code></pre></div>    </div>
@@ -681,16 +687,21 @@ with the same resource-names as in the tutorial.</p>
   </div>
   <div class="h3-box">
 
-    <h2 id="deploy-model-as-snowflake-container-services-udf">Deploy Model as Snowflake Container Services UDF</h2>
+    <h2 id="deploy-pretrained-pipeline-as-snowflake-container-services-udf">Deploy Pretrained Pipeline as Snowflake Container Services UDF</h2>
 
     <p><code class="language-plaintext highlighter-rouge">nlp.deploy_model_as_snowflake_udf()</code> will build, tag &amp; push a John Snow Labs model server to your 
 Snowflake image repository and finally create a service &amp; udf from the model and test it.
-Role, Database, Warehouse, Schema, Compute Pool and Image Repository muss be created beforehand and passwed as arguments.</p>
+Role, Database, Warehouse, Schema, Compute Pool and Image Repository muss be created beforehand and passed as arguments.</p>
+
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Either run `nlp.snowflake_common_setup` or manually create&amp;specify these resources
 </span><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span>
+
 <span class="n">role_name</span><span class="p">,</span> <span class="n">db_name</span><span class="p">,</span> <span class="n">warehouse_name</span><span class="p">,</span> <span class="n">schema_name</span><span class="p">,</span> <span class="n">compute_pool_name</span><span class="p">,</span> <span class="n">repo_url</span> <span class="o">=</span> <span class="p">...</span>
 <span class="n">nlp</span><span class="p">.</span><span class="n">deploy_as_snowflake_udf</span><span class="p">(</span>
-    <span class="n">nlu_ref</span><span class="o">=</span><span class="s">'en.de_identify.clinical_pipeline'</span><span class="p">,</span>
+    <span class="n">pipeline_name</span><span class="o">=</span><span class="s">'explain_clinical_doc_oncology'</span><span class="p">,</span>
+    <span class="n">pipeline_bucket</span><span class="o">=</span><span class="s">'clinical/models'</span><span class="p">,</span>
+    <span class="n">pipeline_language</span><span class="o">=</span><span class="s">'en'</span><span class="p">,</span>
+    
     <span class="n">snowflake_user</span><span class="o">=</span><span class="s">'my_snowflake_user'</span><span class="p">,</span>
     <span class="n">snowflake_account</span><span class="o">=</span><span class="s">'my_snowflake_account'</span><span class="p">,</span>
     <span class="n">snowflake_password</span><span class="o">=</span><span class="s">'my_snowflake_password'</span><span class="p">,</span>
@@ -707,12 +718,17 @@ Role, Database, Warehouse, Schema, Compute Pool and Image Repository muss be cre
 
     <p><code class="language-plaintext highlighter-rouge">nlp.deploy_model_as_snowflake_udf()</code> will build, tag &amp; push a John Snow Labs model server to your
 Snowflake image repository and finally create a service &amp; udf from the model and test it.
-Role, Database, Warehouse, Schema, Compute Pool and Image Repository muss be created beforehand and passwed as arguments.</p>
+Role, Database, Warehouse, Schema, Compute Pool and Image Repository muss be created beforehand and passed as arguments.</p>
+
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Either run `nlp.snowflake_common_setup` or manually create&amp;specify these resources
 </span><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span>
+
 <span class="n">role_name</span><span class="p">,</span> <span class="n">db_name</span><span class="p">,</span> <span class="n">warehouse_name</span><span class="p">,</span> <span class="n">schema_name</span><span class="p">,</span> <span class="n">compute_pool_name</span><span class="p">,</span> <span class="n">repo_url</span> <span class="o">=</span> <span class="p">...</span>
 <span class="n">nlp</span><span class="p">.</span><span class="n">deploy_as_snowflake_udf</span><span class="p">(</span>
-    <span class="n">nlu_ref</span><span class="o">=</span><span class="s">'en.de_identify.clinical_pipeline'</span><span class="p">,</span>
+    <span class="n">pipeline_name</span><span class="o">=</span><span class="s">'explain_clinical_doc_oncology'</span><span class="p">,</span>
+    <span class="n">pipeline_bucket</span><span class="o">=</span><span class="s">'clinical/models'</span><span class="p">,</span>
+    <span class="n">pipeline_language</span><span class="o">=</span><span class="s">'en'</span><span class="p">,</span>
+    
     <span class="n">snowflake_user</span><span class="o">=</span><span class="s">'my_snowflake_user'</span><span class="p">,</span>
     <span class="n">snowflake_account</span><span class="o">=</span><span class="s">'my_snowflake_account'</span><span class="p">,</span>
     <span class="n">snowflake_password</span><span class="o">=</span><span class="s">'my_snowflake_password'</span><span class="p">,</span>
@@ -731,9 +747,13 @@ Role, Database, Warehouse, Schema, Compute Pool and Image Repository muss be cre
 
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Either run `nlp.snowflake_common_setup` or manually create&amp;specify these resources
 </span><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span>
+
 <span class="n">role_name</span><span class="p">,</span> <span class="n">db_name</span><span class="p">,</span> <span class="n">warehouse_name</span><span class="p">,</span> <span class="n">schema_name</span><span class="p">,</span> <span class="n">compute_pool_name</span><span class="p">,</span> <span class="n">repo_url</span> <span class="o">=</span> <span class="p">...</span>
 <span class="n">nlp</span><span class="p">.</span><span class="n">deploy_as_snowflake_udf</span><span class="p">(</span>
-    <span class="n">nlu_ref</span><span class="o">=</span><span class="s">'en.de_identify.clinical_pipeline'</span><span class="p">,</span>
+    <span class="n">pipeline_name</span><span class="o">=</span><span class="s">'explain_clinical_doc_oncology'</span><span class="p">,</span>
+    <span class="n">pipeline_bucket</span><span class="o">=</span><span class="s">'clinical/models'</span><span class="p">,</span>
+    <span class="n">pipeline_language</span><span class="o">=</span><span class="s">'en'</span><span class="p">,</span>
+    
     <span class="n">snowflake_user</span><span class="o">=</span><span class="s">'my_snowflake_user'</span><span class="p">,</span>
     <span class="n">snowflake_account</span><span class="o">=</span><span class="s">'my_snowflake_account'</span><span class="p">,</span>
     <span class="n">snowflake_password</span><span class="o">=</span><span class="s">'my_snowflake_password'</span><span class="p">,</span>
@@ -752,7 +772,7 @@ Role, Database, Warehouse, Schema, Compute Pool and Image Repository muss be cre
     <p>You can now use the <code class="language-plaintext highlighter-rouge">en_de_identify_clinical_pipeline_udf()</code> function within your Snowflake SQL and Python Worksheets
 when using the created role, database, warehouse, schema.</p>
 
-    <p>You can run the following commands in Snowflake to get he status of the service and query the UDF</p>
+    <p>You can run the following commands in Snowflake to get the status of the service and query the UDF</p>
     <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- Set context </span>
 <span class="n">USE</span> <span class="k">ROLE</span> <span class="n">test_role</span><span class="p">;</span>
 <span class="n">USE</span> <span class="k">DATABASE</span> <span class="n">tutorial_db</span><span class="p">;</span>
@@ -776,19 +796,34 @@ when using the created role, database, warehouse, schema.</p>
 <span class="k">SELECT</span> <span class="n">en_de_identify_clinical_pipeline_udf</span><span class="p">(</span><span class="s1">'The patient was prescribed Amlodopine Vallarta 10-320mg, Eviplera. The other patient is given Lescol 40 MG and Everolimus 1.5 mg tablet.'</span><span class="p">);</span>
 </code></pre></div>    </div>
 
+    <p>You can also query the UDF with Python like this</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">json</span> 
+<span class="k">def</span> <span class="nf">query_udf</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">udf_name</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+    <span class="n">cmd_query_udf</span> <span class="o">=</span> <span class="s">"""SELECT {udf_name}('{data}')"""</span>
+    <span class="n">cur</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">cursor</span><span class="p">()</span>
+    <span class="n">cur</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="n">cmd_query_udf</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">udf_name</span><span class="o">=</span><span class="n">udf_name</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">cur</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">loads</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">cur</span><span class="p">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">data</span>
+
+</code></pre></div>    </div>
+
   </div>
   <div class="h3-box">
 
     <h2 id="streamlit-example-with-snowpark-services">Streamlit Example with Snowpark services</h2>
 
-    <p>Once you created an UDF in Snowflake you can access it within Streamlit Apps. 
+    <p>Once you created a UDF in Snowflake you can access it within Streamlit Apps. 
 Make sure to select the same resources to host your Streamlit app as used for hosting the UDF</p>
 
     <p>This is a small example of a simple streamlit app you can now build:</p>
     <ol>
       <li>Go to the Streamlit Section in <code class="language-plaintext highlighter-rouge">Projects</code> within you Snowflake account</li>
       <li>In the bottom left click on your username and then on switch role and select the role we just created. The default value is <code class="language-plaintext highlighter-rouge">test_role</code></li>
-      <li>In the side-bar, click on Streamlit and then on the <code class="language-plaintext highlighter-rouge">+ Streamlit App</code> button. Specify a Database, Schema and Warehouse. The defaults are <code class="language-plaintext highlighter-rouge">TUTORIAL_DB</code>, <code class="language-plaintext highlighter-rouge">DATA_SCHEMA</code>, <code class="language-plaintext highlighter-rouge">TUTORIAL_WAREHOUSE</code>.
+      <li>In the sidebar, click on Streamlit and then on the <code class="language-plaintext highlighter-rouge">+ Streamlit App</code> button. Specify a Database, Schema and Warehouse. The defaults are <code class="language-plaintext highlighter-rouge">TUTORIAL_DB</code>, <code class="language-plaintext highlighter-rouge">DATA_SCHEMA</code>, <code class="language-plaintext highlighter-rouge">TUTORIAL_WAREHOUSE</code>.
 Copy and paste the following script into your streamlit app and run it
         <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">streamlit</span> <span class="k">as</span> <span class="n">st</span>
 <span class="kn">from</span> <span class="nn">snowflake.snowpark.context</span> <span class="kn">import</span> <span class="n">get_active_session</span>
@@ -801,6 +836,35 @@ Copy and paste the following script into your streamlit app and run it
     </ol>
 
     <p>For a more advanced streamlit example, see <a href="https://github.com/JohnSnowLabs/johnsnowlabs/blob/main/streamlits/advanced_snowflake.py">here</a></p>
+
+    <h2 id="deploying-custom-pipeline-as-snowflake-container-services-udf">Deploying Custom Pipeline as Snowflake Container Services UDF</h2>
+    <p>To deploy a custom pipeline, simply provide a fitted Spark Pipeline object as <code class="language-plaintext highlighter-rouge">custom_pipeline</code>.</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Either run `nlp.snowflake_common_setup` or manually create&amp;specify these resources
+</span><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span>
+
+<span class="n">role_name</span><span class="p">,</span> <span class="n">db_name</span><span class="p">,</span> <span class="n">warehouse_name</span><span class="p">,</span> <span class="n">schema_name</span><span class="p">,</span> <span class="n">compute_pool_name</span><span class="p">,</span> <span class="n">repo_url</span> <span class="o">=</span> <span class="p">...</span>
+<span class="n">my_custom_pipeline</span> <span class="o">=</span> <span class="p">...</span> <span class="c1"># your custom pipeline which is already fitted
+</span>
+<span class="n">nlp</span><span class="p">.</span><span class="n">deploy_as_snowflake_udf</span><span class="p">(</span>
+    <span class="n">custom_pipeline</span><span class="o">=</span><span class="n">my_custom_pipeline</span><span class="p">,</span>
+    <span class="n">snowflake_user</span><span class="o">=</span><span class="s">'my_snowflake_user'</span><span class="p">,</span>
+    <span class="n">snowflake_account</span><span class="o">=</span><span class="s">'my_snowflake_account'</span><span class="p">,</span>
+    <span class="n">snowflake_password</span><span class="o">=</span><span class="s">'my_snowflake_password'</span><span class="p">,</span>
+    <span class="n">license_path</span><span class="o">=</span><span class="s">'path/to/my/jsl_license.json'</span><span class="p">,</span>
+    <span class="n">repo_url</span><span class="o">=</span><span class="n">repo_url</span><span class="p">,</span>
+    <span class="n">role_name</span><span class="o">=</span><span class="n">role_name</span><span class="p">,</span>
+    <span class="n">database_name</span><span class="o">=</span><span class="n">db_name</span><span class="p">,</span>
+    <span class="n">warehouse_name</span><span class="o">=</span><span class="n">warehouse_name</span><span class="p">,</span>
+    <span class="n">schema_name</span><span class="o">=</span><span class="n">schema_name</span><span class="p">,</span>
+    <span class="n">compute_pool_name</span><span class="o">=</span><span class="n">compute_pool_name</span><span class="p">,</span>
+    <span class="n">udf_name</span><span class="o">=</span><span class="s">'my_udf'</span><span class="p">,</span>
+    <span class="n">service_name</span><span class="o">=</span><span class="s">'my_service'</span>
+<span class="p">)</span>
+</code></pre></div>    </div>
+
+  </div>
+  <div class="h3-box">
 
   </div>
 </div>
