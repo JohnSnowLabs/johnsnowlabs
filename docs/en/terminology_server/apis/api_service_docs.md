@@ -11,12 +11,11 @@ sidebar:
     nav: term-server
 ---
 
-## API Service Docs
-## API Usage
+## API Usage and Dcumentation
 
-The API service allows seamless integration with your applications, enabling you to leverage our platform’s capabilities.
+The API service allows **seamless integration** with your applications, enabling you to leverage our platform’s capabilities.
 
-After deploying the Terminology Server in your environment, you can access the API right away. 
+After deploying the Terminology Server in your environment, you can access the API right away as described in the [API Service Access](api_service_access.md) 
 
 Below are few examples of how to invoke the API, for the full documentation including respose sampls, visit the public online [Terminology Server API Code Sample Documentation](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/products/term_server/terminology_api.ipynb).
 
