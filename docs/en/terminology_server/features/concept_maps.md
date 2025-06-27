@@ -15,7 +15,7 @@ sidebar:
 
 In the context of John Snow Labs Terminology Server, Concept Maps represent the logical relationships between codes across different medical coding system vocabularies. These mappings are curated and maintained by John Snow Labs and are integral to the functionality of the Terminology Server.
 
-The following table shows the list of all Vocabuaries, Datasets and Versions used by Terminology Server: 
+The following table shows the list of all Vocabuaries, Datasets and Versions used by Terminology Server for term search and code to code mapping search : 
 
 | VOCABULARY | DATASET | DATASET VERSION |
 |----------|----------|----------|
@@ -41,6 +41,8 @@ The following table shows the list of all Vocabuaries, Datasets and Versions use
 | ICD9CM    |      | 2014 Release     |
 | MESH    | Trained on 01 December 2021 MeSH dataset.     | 01 December 2021 MeSH dataset     |
 | ICD10    |      | 2021 Release     |
+
+The figure below shows the code to code mapping results and their respective source and target coresponding vocabularies:
 
 
 
