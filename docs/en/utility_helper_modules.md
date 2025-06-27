@@ -627,19 +627,19 @@ This is especially useful in de-identification pipelines where:
 - Shift values must be consistent for the same ID.
 - Some rows may be missing or have null shift values.
 
-#### Logic:
+Logic:
 
 - If another row with the same ID has a non-empty shift value, reuse it.
 - Otherwise, compute a fallback shift using a deterministic hash function based on ID and seed.
 - Fallback values are always in the range `[1, maxShiftDays]`.
 
-#### Parameters
+Parameters
 
 - `spark`: The active `SparkSession`.
 - `seed`: Seed value used for deterministic fallback hashing. Default is `42`.
 - `max_shift_days`: The maximum number of days to shift when generating fallback values. Default is `60`.
 
-#### Functions
+Functions
 
 - **`fill_missing_shifts(df, id_col, shift_col, suffix)`**  
   Applies shift-filling logic to the given DataFrame.
@@ -649,9 +649,7 @@ This is especially useful in de-identification pipelines where:
   - `shift_col`: The name of the date shift column to process.
   - `suffix`: The suffix to append to the output column (e.g., `_filled`).
 
-
-#### Example
-
+  
 ```python
 import pandas as pd
 from sparknlp_jsl.utils import DateShiftFiller
@@ -683,9 +681,7 @@ result_df = filler.fill_missing_shifts(
 
 result_df.show(truncate=False)
 ```
-
-
-#### Result
+Result
 
 ```
 +---------+----------------------------------------+---------+------------------+
