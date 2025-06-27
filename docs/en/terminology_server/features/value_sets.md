@@ -35,7 +35,7 @@ John Snow Labs' Terminology Server supports the use of custom Value Sets, offeri
 * View, create new versions, delete
 * Filter search results based on the codes included in a selected Value Set.
 
-# Uploading a Custom Value Set
+## Uploading a Custom Value Set
 
 Uploading a custom Value Set is simple and intuitive:
 * In the **left navigation panel**, click on the **Value Sets** node.
@@ -59,4 +59,13 @@ Uploading a custom Value Set is simple and intuitive:
 
 🔴 Note: Deleting the last remaining version will remove the entire Value Set from the system.
 
-# Filter search results using Value Sets
+## Filtering Search Results with Value Sets
+
+When performing a **medical term search in Terminology Server**, you can apply **custom Value Sets** to filter and refine your results.
+
+Example: 
+1. Search for the term "cancer" - ![Terminology Service by John Snow Labs](/assets/images/term_server/SearchResultsForVSFilter.png)
+2. In the left navigation panel, check the box next to the Value Set you want to use as a filter.
+For example, if **Histology Carcinoma **is a previously uploaded Value Set, select it here. ![Terminology Service by John Snow Labs](/assets/images/term_server/HistoryOfCarcinomaVS.png)
+3. After applying the filter, the results table will display a new column labeled **"ValueSet"**. ![Terminology Service by John Snow Labs](/assets/images/term_server/SearchResultsForVSFilter.png)
+This column indicates which search results are included in the selected Value Set by cross-referencing the **concept codes** from your search with those defined in the Value Set vocabulary.    
