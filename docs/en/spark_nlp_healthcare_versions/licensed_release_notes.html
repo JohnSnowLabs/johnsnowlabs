@@ -628,640 +628,307 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <h2 id="section">6.0.2</h2>
+  <h2 id="section">6.0.3</h2>
 
   <h4 id="highlights">Highlights</h4>
 
-  <p>We are delighted to announce remarkable enhancements in our latest release of Healthcare NLP. <strong>This release comes with improvements to the De-Identification module, including advanced masking strategies, geographic consistency for address obfuscation, customizable date formats, case-sensitive fake data generation for PHI obfuscation, and fine-grained control over obfuscation sources and replacement rules. Alongside these, the release also includes a new Metadata Annotation Converter annotator, expanded phrase matching capabilities in Text Matcher, enhanced entity filtering in ChunkMapper Filterer, and several new and updated clinical pretrained models and pipelines.</strong></p>
+  <p>We are delighted to announce the release of our latest enhancements and updates for Healthcare NLP.</p>
 
   <ul>
-    <li>Geographic consistency support and country obfuscation control in <code class="language-plaintext highlighter-rouge">De-Identification</code> module</li>
-    <li>New masking policies for entity redaction in <code class="language-plaintext highlighter-rouge">De-Identification</code> to control how masked entities look like afterwards</li>
-    <li>Custom date format support for date obfuscation for normalizing and shifting dates in uncommon formats</li>
-    <li>Improved case sensitivity for fake data generation in <code class="language-plaintext highlighter-rouge">De-Identification</code> to ensure the casing of each token and chars intact for certain entities after PHI obfuscation</li>
-    <li>Selective obfuscation source configuration in <code class="language-plaintext highlighter-rouge">De-Identification</code> to allow more flexibility while using custom fake data sources vs embedded ones</li>
-    <li>Static and file-based obfuscation entity vs chunk pair support in <code class="language-plaintext highlighter-rouge">De-Identification</code> for a better treatment of VIP entities</li>
-    <li>Enhanced phrase matching in <code class="language-plaintext highlighter-rouge">TextMatcher</code>: Lemmatization, Stemming, Stopword Handling &amp; Token Shuffling in both source text and target keywords while matching</li>
-    <li>Introducing a new annotator <code class="language-plaintext highlighter-rouge">MetadataAnnotationConverter</code> to utilise metadata information within the pipeline</li>
-    <li>Enhanced entity filtering in <code class="language-plaintext highlighter-rouge">ChunkMapperFilterer</code> with whitelist and blacklist support</li>
-    <li>Updated notebooks and demonstrations for making Healthcare NLP easier to navigate and understand
+    <li>Support for obfuscation equivalents to normalize entity variants in DeIdentification (e.g. Robert vs Rob will be treated same)</li>
+    <li>Deterministic fallback for missing Date shifts in DeIdentification</li>
+    <li>Dictionary support for <code class="language-plaintext highlighter-rouge">Deidentification</code> with <code class="language-plaintext highlighter-rouge">setSelectiveObfuscationModes</code> parameter</li>
+    <li>New MedS-NER LLM for structured medical entity extraction via small LLMs</li>
+    <li>Memory optimisation for pretrained zero shot NER models to extract custom entities from out-of-distribution datasets</li>
+    <li>Enhanced phenotype entity mapping pipeline with HPO standardization and advanced entity extraction</li>
+    <li>Optimized clinical De-Identification pipelines for secure and compliant healthcare data processing with one liner</li>
+    <li>Various core improvements, bug fixes, enhanced overall robustness, and reliability of Spark NLP for Healthcare
       <ul>
-        <li>New <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/40.1.Text_Matcher_Internal.ipynb">TextMatcherInternal</a> Notebook</li>
+        <li>Improved incorrect multi-letter replacements for single-letter names in obfuscation</li>
+        <li>Substring logic crash fix in <code class="language-plaintext highlighter-rouge">TextMatcherInternal</code> for safer token handling</li>
+        <li>Memory optimization for <code class="language-plaintext highlighter-rouge">PretrainedZeroShotNER</code> to reduce memory usage during inference</li>
       </ul>
     </li>
-    <li>The addition and update of numerous new clinical models and pipelines continue to reinforce our offering in the healthcare domain</li>
-  </ul>
-
-  <p>These enhancements will elevate your experience with Spark NLP for Healthcare, enabling more efficient, accurate, and streamlined analysis of healthcare-related natural language data.</p>
-
-</div>
-<div class="h3-box">
-
-  <h4 id="geographic-consistency-support-and-country-obfuscation-control-in-de-identification">Geographic Consistency Support and Country Obfuscation Control in <code class="language-plaintext highlighter-rouge">De-Identification</code></h4>
-
-  <p>A new parameter <code class="language-plaintext highlighter-rouge">setGeoConsistency(True)</code> has been introduced in the <code class="language-plaintext highlighter-rouge">DeIdentification</code> annotator to ensure <strong>realistic and coherent obfuscation of geographic entities</strong>. This feature guarantees that obfuscated addresses make sense by maintaining valid combinations between: 
-    - <code class="language-plaintext highlighter-rouge">state</code>
-    - <code class="language-plaintext highlighter-rouge">city</code>
-    - <code class="language-plaintext highlighter-rouge">zip</code>
-    - <code class="language-plaintext highlighter-rouge">street</code>
-    - <code class="language-plaintext highlighter-rouge">phone</code></p>
-
-  <p>When enabled, the system intelligently selects related fake address components from a unified pool using a deterministic algorithm. This prevents nonsensical combinations like <code class="language-plaintext highlighter-rouge">"New York City, California, ZIP 98006"</code> by enforcing priority-based mapping across geographic types.</p>
-
-  <ul>
-    <li>Priority Order for Consistent Mapping
-      <ol>
-        <li><strong>State</strong> (highest priority)</li>
-        <li><strong>City</strong></li>
-        <li><strong>Zip code</strong></li>
-        <li><strong>Street</strong></li>
-        <li><strong>Phone</strong> (lowest priority)</li>
-      </ol>
-    </li>
-    <li>Language Requirement
-This feature is available only when:
+    <li>New and updated notebooks and demonstrations
       <ul>
-        <li><code class="language-plaintext highlighter-rouge">setGeoConsistency(True)</code> <strong>is enabled</strong></li>
-        <li><code class="language-plaintext highlighter-rouge">setLanguage("en")</code> <strong>is set</strong></li>
+        <li>Updated <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/40.1.Text_Matcher_Internal.ipynb">Text Matcher Internal</a> Notebook</li>
       </ul>
     </li>
   </ul>
 
-  <p>For all non-English languages, the feature is ignored (for now).</p>
-
-  <ul>
-    <li>Interaction with Other Parameters
-Enabling <code class="language-plaintext highlighter-rouge">geoConsistency</code> will automatically override:
-      <ul>
-        <li><code class="language-plaintext highlighter-rouge">keepTextSizeForObfuscation</code></li>
-        <li><code class="language-plaintext highlighter-rouge">consistentObfuscation</code> on some address entities</li>
-        <li>any file-based faker settings</li>
-      </ul>
-    </li>
-  </ul>
-
-  <p>This ensures full control over the address pool for geographic coherence and we plan to improve this feature further with user feedbacks for a seamless experience.</p>
-
-  <ul>
-    <li><strong>Country Obfuscation Control</strong></li>
-  </ul>
-
-  <p>Previously, country entities were <strong>always obfuscated</strong> by default in <code class="language-plaintext highlighter-rouge">DeIdentification</code>.<br />
-Now, country obfuscation is <strong>explicitly controlled</strong> via the new parameter:</p>
-
-  <p>If set to True, country names will be obfuscated.<br />
-If set to False (default), country names will be preserved.</p>
-
-  <p><em>Example:</em></p>
-
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">deid_with_geo_consistency</span> <span class="o">=</span> <span class="n">DeIdentification</span><span class="p">()</span> \
-            <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"ner_chunk"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"document"</span><span class="p">])</span> \
-            <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"deid_with_geo_consistency"</span><span class="p">)</span> \
-            <span class="p">.</span><span class="n">setMode</span><span class="p">(</span><span class="s">"obfuscate"</span><span class="p">)</span> \
-            <span class="p">.</span><span class="n">setGeoConsistency</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span> \
-            <span class="p">.</span><span class="n">setCountryObfuscation</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span> \
-            <span class="p">.</span><span class="n">setSeed</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-
-<span class="n">deid_without_geo_consistency</span> <span class="o">=</span> <span class="n">DeIdentification</span><span class="p">()</span> \
-            <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"ner_chunk"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"document"</span><span class="p">])</span> \
-            <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"deid_without_geo_consistency"</span><span class="p">)</span> \
-            <span class="p">.</span><span class="n">setMode</span><span class="p">(</span><span class="s">"obfuscate"</span><span class="p">)</span> \
-            <span class="p">.</span><span class="n">setGeoConsistency</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span> \
-            <span class="p">.</span><span class="n">setCountryObfuscation</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span> \
-            <span class="p">.</span><span class="n">setSeed</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-
-<span class="n">text</span> <span class="o">=</span> <span class="s">"""
-        Patient Medical Record
-        Patient Name: Sarah Johnson
-
-        Patient Demographics and Contact Information
-        Primary Address:
-        1247 Maple Street
-        Austin, Texas 78701
-        USA
-        Contact Information:
-        Primary Phone: (512) 555-0198
-        """</span>
-
-<span class="n">text_df</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="n">text</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
-</code></pre></div>  </div>
-
-  <p><em>Result</em>:</p>
-
-  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Orginal text:
-        Patient Medical Record
-        Patient Name: Sarah Johnson
-
-        Patient Demographics and Contact Information
-        Primary Address:
-        1247 Maple Street
-        Austin, Texas 78701
-        USA
-        Contact Information:
-        Primary Phone: <span class="o">(</span>512<span class="o">)</span> 555-0198
-
-<span class="nt">--------------------------------------------------------</span>
-With Geo Consistency:
-
-        Patient Medical Record
-        Patient Name: Amanda Shilling
-
-        Patient Demographics and Contact Information
-        Primary Address:
-        3600 Constitution Blvd
-        West Valley City, UT 84119
-        USA
-        Contact Information:
-        Primary Phone: <span class="o">(</span>801<span class="o">)</span> 555-0222
-
-<span class="nt">---------------------------------------------------------</span>
-Without Geo Consistency:
-
-        Patient Medical Record
-        Patient Name: Amanda Shilling
-
-        Patient Demographics and Contact Information
-        Primary Address:
-        800 West Leslie
-        Hart, Texas 41452
-        USA
-        Contact Information:
-        Primary Phone: <span class="o">(</span>029<span class="o">)</span> 000-5281
-
-</code></pre></div>  </div>
+  <p>These enhancements will elevate your experience with Healthcare NLP, enabling more efficient, accurate, and streamlined analysis of healthcare-related natural language data.</p>
 
 </div>
 <div class="h3-box">
 
-  <h4 id="new-masking-policies-for-entity-redaction-in-de-identification">New Masking Policies for Entity Redaction in <code class="language-plaintext highlighter-rouge">De-Identification</code></h4>
+  <h4 id="new-feature-support-for-obfuscation-equivalents-to-normalize-entity-variants">New Feature: Support for Obfuscation Equivalents to Normalize Entity Variants</h4>
 
+  <p>A new <strong>feature</strong> has been added to support defining <em>obfuscation equivalents</em> — enabling consistent replacement of variant forms of the same entity during de-identification.</p>
+
+  <p><strong>Use case examples:</strong></p>
   <ul>
-    <li>Introduced <code class="language-plaintext highlighter-rouge">same_length_chars_without_brackets</code> masking policy: masks entities with asterisks of the same length <strong>without square brackets</strong>.</li>
-    <li>Introduced <code class="language-plaintext highlighter-rouge">entity_labels_without_brackets</code> masking policy: replaces entities with their label <strong>without square brackets</strong>.</li>
+    <li><code class="language-plaintext highlighter-rouge">"Alex"</code> and <code class="language-plaintext highlighter-rouge">"Alexander"</code> → always mapped to the same obfuscated value under <code class="language-plaintext highlighter-rouge">"NAME"</code></li>
+    <li><code class="language-plaintext highlighter-rouge">"CA"</code> and <code class="language-plaintext highlighter-rouge">"Calif."</code> → normalized to <code class="language-plaintext highlighter-rouge">"California"</code> under <code class="language-plaintext highlighter-rouge">"STATE"</code></li>
   </ul>
 
-  <p><em>Example:</em></p>
-
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">deid_entity_labels</span> <span class="o">=</span> <span class="n">DeIdentification</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner_chunk"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"deid_entity_label"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setMode</span><span class="p">(</span><span class="s">"mask"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setReturnEntityMappings</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setMaskingPolicy</span><span class="p">(</span><span class="s">"entity_labels_without_brackets"</span><span class="p">)</span>
-
-<span class="n">deid_same_length</span> <span class="o">=</span> <span class="n">DeIdentification</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner_chunk"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"deid_same_length"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setMode</span><span class="p">(</span><span class="s">"mask"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setReturnEntityMappings</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setMaskingPolicy</span><span class="p">(</span><span class="s">"same_length_chars_without_brackets"</span><span class="p">)</span>
-
-<span class="n">deid_fixed_length</span> <span class="o">=</span> <span class="n">DeIdentification</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner_chunk"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"deid_fixed_length"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setMode</span><span class="p">(</span><span class="s">"mask"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setReturnEntityMappings</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setMaskingPolicy</span><span class="p">(</span><span class="s">"fixed_length_chars"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setFixedMaskLength</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-</code></pre></div>  </div>
-
-  <p><em>Result</em>:</p>
-
-  <table class="table-model-big">
-    <thead>
-      <tr>
-        <th>Sentence</th>
-        <th><code class="language-plaintext highlighter-rouge">deid_entity_label</code></th>
-        <th><code class="language-plaintext highlighter-rouge">deid_same_length</code></th>
-        <th><code class="language-plaintext highlighter-rouge">deid_fixed_length</code></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Record date : 2093-01-13 , David Hale , M.D .</td>
-        <td>Record date : DATE , NAME , M.D .</td>
-        <td>Record date : ********** , ********** , M.D .</td>
-        <td>Record date : **** , **** , M.D .</td>
-      </tr>
-      <tr>
-        <td>, Name : Hendrickson Ora , MR # 7194334 Date : 01/13/93 .</td>
-        <td>, Name : NAME , MR # ID Date : DATE .</td>
-        <td>, Name : *************** , MR # ******* Date : ******** .</td>
-        <td>, Name : **** , MR # **** Date : **** .</td>
-      </tr>
-      <tr>
-        <td>PCP : Oliveira , 25 years-old , Record date : 01/13/93 .</td>
-        <td>PCP : NAME , AGE years-old , Record date : DATE .</td>
-        <td>PCP : ******** , ** years-old , Record date : ******** .</td>
-        <td>PCP : **** , **** years-old , Record date : **** .</td>
-      </tr>
-      <tr>
-        <td>Cocke County Baptist Hospital , 0295 Keats Street , Phone 800-555-5555 .</td>
-        <td>LOCATION , LOCATION , Phone CONTACT .</td>
-        <td>***************************** , ************** , Phone ************ .</td>
-        <td>**** , **** , Phone **** .</td>
-      </tr>
-    </tbody>
-  </table>
-
-</div>
-<div class="h3-box">
-
-  <h4 id="custom-date-format-support-for-date-obfuscation">Custom Date Format Support for Date Obfuscation</h4>
-
+  <p><strong>How it works:</strong></p>
   <ul>
-    <li><strong>Added</strong> support for <code class="language-plaintext highlighter-rouge">additionalDateFormats</code> parameter to allow specifying custom date formats in addition to the built-in <code class="language-plaintext highlighter-rouge">dateFormats</code>.</li>
-  </ul>
-
-  <p>This enables more flexible parsing and obfuscation of non-standard or region-specific date patterns.</p>
-
-  <p><em>Example:</em></p>
-
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">de_identification_mask</span> <span class="o">=</span> <span class="n">DeIdentification</span><span class="p">()</span> \
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"ner_chunk"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"document2"</span><span class="p">])</span> \
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"deid_text_mask"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setMode</span><span class="p">(</span><span class="s">"masked"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setObfuscateDate</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setLanguage</span><span class="p">(</span><span class="s">"en"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setObfuscateRefSource</span><span class="p">(</span><span class="s">'faker'</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setAdditionalDateFormats</span><span class="p">([</span><span class="s">"dd MMMyyyy"</span><span class="p">,</span> <span class="s">"dd/MMM-yyyy"</span><span class="p">])</span> \ <span class="c1"># new parameter
-</span>    <span class="p">.</span><span class="n">setUseShiftDays</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setRegion</span><span class="p">(</span><span class="s">'us'</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setUnnormalizedDateMode</span><span class="p">(</span><span class="s">"skip"</span><span class="p">)</span>
-
-<span class="n">de_identification_obf</span> <span class="o">=</span> <span class="n">DeIdentification</span><span class="p">()</span> \
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"ner_chunk"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"document2"</span><span class="p">])</span> \
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"deid_text_obs"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setMode</span><span class="p">(</span><span class="s">"obfuscate"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setObfuscateDate</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setLanguage</span><span class="p">(</span><span class="s">"en"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setObfuscateRefSource</span><span class="p">(</span><span class="s">'faker'</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setAdditionalDateFormats</span><span class="p">([</span><span class="s">"dd MMMyyyy"</span><span class="p">,</span> <span class="s">"dd/MMM-yyyy"</span><span class="p">])</span> \ <span class="c1"># new parameter
-</span>    <span class="p">.</span><span class="n">setUseShifDays</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setRegion</span><span class="p">(</span><span class="s">'us'</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setUnnormalizedDateMode</span><span class="p">(</span><span class="s">"skip"</span><span class="p">)</span>
-</code></pre></div>  </div>
-
-  <p><em>Result</em>:</p>
-
-  <table class="table-model-big">
-    <thead>
-      <tr>
-        <th>Original Text</th>
-        <th>Date Shift</th>
-        <th>Masked Result</th>
-        <th>Obfuscated Result</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Chris Brown was discharged on 10/02/2022</td>
-        <td>-5</td>
-        <td>&lt;PATIENT&gt; was discharged on &lt;DATE&gt;</td>
-        <td>Larwance Engels was discharged on 09/27/2022</td>
-      </tr>
-      <tr>
-        <td>John was discharged on 03 Apr2022</td>
-        <td>10</td>
-        <td>&lt;PATIENT&gt; was discharged on &lt;DATE&gt;</td>
-        <td>Vonda was discharged on 13 Apr2022</td>
-      </tr>
-      <tr>
-        <td>John Moore was discharged on 11/May-2025</td>
-        <td>20</td>
-        <td>&lt;PATIENT&gt; was discharged on &lt;DATE&gt;</td>
-        <td>Vonda Seals was discharged on 31/May-2025</td>
-      </tr>
-    </tbody>
-  </table>
-
-</div>
-<div class="h3-box">
-
-  <h4 id="improved-case-sensitivity-for-fake-data-generation-in-de-identification">Improved Case Sensitivity for Fake Data Generation in <code class="language-plaintext highlighter-rouge">De-Identification</code></h4>
-
-  <ul>
-    <li><strong>Enhancement:</strong> Fake values generated during obfuscation now respect the original text’s casing by default.</li>
-    <li>This ensures that fake data matches the case style (lowercase, uppercase, mixed case) of the input entities for more natural and consistent masking results.</li>
+    <li>Accepts a list of string triplets: <code class="language-plaintext highlighter-rouge">[variant, entityType, canonical]</code></li>
+    <li>Both <code class="language-plaintext highlighter-rouge">variant</code> and <code class="language-plaintext highlighter-rouge">entityType</code> are <strong>case-insensitive</strong></li>
+    <li>Ensures consistent and semantically aligned obfuscation across documents</li>
   </ul>
 
   <p><em>Example</em>:</p>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">obfuscation</span> <span class="o">=</span> <span class="n">DeIdentification</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner_subentity_chunk"</span><span class="p">])</span> \
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"deidentified"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setMode</span><span class="p">(</span><span class="s">"obfuscate"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setObfuscateDate</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setObfuscateRefSource</span><span class="p">(</span><span class="s">"faker"</span><span class="p">)</span>
-
-<span class="n">text</span> <span class="o">=</span> <span class="s">'''
-Record date : 2093-01-13 , david hale , M.D . , Name : MARIA , Ora MR # 7194334 Date : 01/13/93 . Patient : Oliveira, 25 years-old , Record date : 2079-11-09 .
-'''</span>
-</code></pre></div>  </div>
-
-  <p><em>Result</em>:</p>
-
-  <table class="table-model-big">
-    <thead>
-      <tr>
-        <th>sentence</th>
-        <th>deidentified</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Record date : 2093-01-13 , david hale , M.D .</td>
-        <td>Record date : 2093-03-13 , paula favia , M.D .</td>
-      </tr>
-      <tr>
-        <td>, Name : MARIA , Ora MR # 7194334 Date : 01/13/93 .</td>
-        <td>, Name : MARYAGNES Liberty MR # 2805665 Date : …</td>
-      </tr>
-      <tr>
-        <td>Patient : Oliveira, 25 years-old , Record date : …</td>
-        <td>Patient : Johann, 27 years-old , Record date : …</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <h4 id="selective-obfuscation-source-configuration-in-de-identification">Selective Obfuscation Source Configuration in <code class="language-plaintext highlighter-rouge">De-Identification</code></h4>
-
-  <p>Introduced the <code class="language-plaintext highlighter-rouge">setSelectiveObfuscateRefSource()</code> method to allow <strong>per-entity customization</strong> of obfuscation sources.<br />
-This enables users to specify different obfuscation strategies (e.g., <code class="language-plaintext highlighter-rouge">'faker'</code>, <code class="language-plaintext highlighter-rouge">'custom'</code>, <code class="language-plaintext highlighter-rouge">'file'</code>, <code class="language-plaintext highlighter-rouge">'both'</code>) for different entity types.<br />
-If an entity is not explicitly configured in this dictionary, the global <code class="language-plaintext highlighter-rouge">obfuscateRefSource</code> setting will be used as a fallback.</p>
-
-  <p><em>Example</em>:</p>
-
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">selective_obfuscate_ref_source</span> <span class="o">=</span> <span class="p">{</span><span class="s">"Drug"</span><span class="p">:</span> <span class="s">"file"</span><span class="p">,</span> <span class="s">"state"</span><span class="p">:</span> <span class="s">"both"</span><span class="p">}</span>
-
-<span class="n">de_identification</span> <span class="o">=</span> <span class="n">DeIdentification</span><span class="p">()</span> \
-            <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"token"</span><span class="p">,</span> <span class="s">"sentence"</span><span class="p">,</span><span class="s">"ner_chunk"</span><span class="p">])</span> \
-            <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"obfuscated"</span><span class="p">)</span> \
-            <span class="p">.</span><span class="n">setObfuscateRefSource</span><span class="p">(</span><span class="s">"faker"</span><span class="p">)</span> \
-            <span class="p">.</span><span class="n">setMode</span><span class="p">(</span><span class="s">"obfuscate"</span><span class="p">)</span> \
-            <span class="p">.</span><span class="n">setSelectiveObfuscateRefSource</span><span class="p">(</span><span class="n">selective_obfuscate_ref_source</span><span class="p">)</span> \
-
-</code></pre></div>  </div>
-
-</div>
-<div class="h3-box">
-
-  <h4 id="static-and-file-based-obfuscation-pair-support-in-de-identification">Static and File-Based Obfuscation Pair Support in <code class="language-plaintext highlighter-rouge">De-Identification</code></h4>
-
-  <ul>
-    <li><strong>Added</strong> <code class="language-plaintext highlighter-rouge">setStaticObfuscationPairs</code>: allows users to define static <code class="language-plaintext highlighter-rouge">[original, entityType, fake]</code> triplets directly in code for deterministic obfuscation.</li>
-    <li><strong>Added</strong> <code class="language-plaintext highlighter-rouge">setStaticObfuscationPairsResource</code>: allows loading obfuscation triplets from an external file (e.g., CSV). Supports custom delimiter through the <code class="language-plaintext highlighter-rouge">options</code> parameter.</li>
-  </ul>
-
-  <p>This feature is especially useful in <strong>VIP or high-profile patient</strong> scenarios, where specific sensitive names or locations must always be replaced in a controlled and reproducible way.</p>
-
-  <p><em>Example:</em></p>
-
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">text</span> <span class="o">=</span> <span class="s">"""John Smith visited Los Angeles. He was admitted to the emergency department at St. Mary's Hospital after experiencing chest pain. His mother worked as a Nurse  """</span>
-
-
-<span class="c1"># Define pairs in code
-</span><span class="n">pairs</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">[</span><span class="s">"John Smith"</span><span class="p">,</span> <span class="s">"PATIENT"</span><span class="p">,</span> <span class="s">"Andrew Snow"</span><span class="p">],</span>
-    <span class="p">[</span><span class="s">"Los Angeles"</span><span class="p">,</span> <span class="s">"CITY"</span><span class="p">,</span> <span class="s">"New York City"</span><span class="p">],</span>
-    <span class="p">[</span><span class="s">"St. Mary's Hospital"</span><span class="p">,</span> <span class="s">"HOSPITAL"</span><span class="p">,</span> <span class="s">"Johns Hopkins Hospital"</span><span class="p">],</span>
-    <span class="p">[</span><span class="s">"Nurse"</span><span class="p">,</span> <span class="s">"PROFESSION"</span><span class="p">,</span> <span class="s">"Cardiologist"</span><span class="p">]</span>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span><span class="p">,</span> <span class="n">medical</span>
+<span class="n">equvalent_list</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="s">"Alex"</span><span class="p">,</span> <span class="s">"NAME"</span><span class="p">,</span> <span class="s">"Alexander"</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">"Jenny"</span><span class="p">,</span> <span class="s">"NAME"</span><span class="p">,</span> <span class="s">"Jennifer"</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">"Liz"</span><span class="p">,</span> <span class="s">"NAME"</span><span class="p">,</span> <span class="s">"Elizabeth"</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">"CA"</span><span class="p">,</span> <span class="s">"LOCATION"</span><span class="p">,</span> <span class="s">"California"</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">"NY"</span><span class="p">,</span> <span class="s">"CITY"</span><span class="p">,</span> <span class="s">"New York"</span><span class="p">]</span>
 <span class="p">]</span>
-
-<span class="n">deid</span> <span class="o">=</span> <span class="n">DeIdentification</span><span class="p">()</span> \
+<span class="n">obfuscation</span> <span class="o">=</span> <span class="n">DeIdentification</span><span class="p">()</span>\
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner_chunk"</span><span class="p">])</span> \
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"deidentified"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setMode</span><span class="p">(</span><span class="s">"obfuscate"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setStaticObfuscationPairs</span><span class="p">(</span><span class="n">pairs</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setMode</span><span class="p">(</span><span class="s">"obfuscate"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setObfuscationEquivalents</span><span class="p">(</span><span class="n">equvalent_list</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setSeed</span><span class="p">(</span><span class="mi">103</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setGenderAwareness</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="n">text</span> <span class="o">=</span><span class="s">'''
+Record date: 2023-03-08. The patient, Jennifer Thompson, is 63 years old.
+Dr. Elizabeth Carter, from Downtown Health Center in New York, NY, 10027, Phone: 212-123-4567.
+Dr. Liz discharged Jenny on 2023-03-08. Her medical record number is 77881234.
+'''</span>
 
 </code></pre></div>  </div>
 
   <p><em>Result</em>:</p>
 
-  <table class="table-model-big">
-    <thead>
-      <tr>
-        <th>index</th>
-        <th>sentence</th>
-        <th>deidentified</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>0</td>
-        <td>John Smith visited Los Angeles.</td>
-        <td><DOCTOR> visited New York City.</DOCTOR></td>
-      </tr>
-      <tr>
-        <td>1</td>
-        <td>He was admitted to the emergency department at St. Mary’s Hospital after experiencing chest pain.</td>
-        <td>He was admitted to the emergency department at Johns Hopkins Hospital after experiencing chest pain.</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>His mother worked as a Nurse</td>
-        <td>His mother worked as a Cardiologist</td>
-      </tr>
-    </tbody>
-  </table>
-
-</div>
-<div class="h3-box">
-
-  <h4 id="enhanced-phrase-matching-in-textmatcherinternal-lemmatization-stemming-stopword-handling--token-shuffling-for-smarter-nlp">Enhanced Phrase Matching in TextMatcherInternal: Lemmatization, Stemming, Stopword Handling &amp; Token Shuffling for Smarter NLP</h4>
-
-  <p>This release introduces <strong>powerful new features</strong> to the <code class="language-plaintext highlighter-rouge">TextMatcherInternal</code> annotator, enabling more <strong>flexible</strong>, <strong>accurate</strong>, and <strong>linguistically aware</strong> phrase matching in clinical or general NLP pipelines. The additions include support for <strong>lemmatization</strong>, <strong>stemming</strong>, <strong>token permutations</strong>, <strong>stopword control</strong>, and <strong>customizable matching behavior</strong>.</p>
-
-  <p>Below are the new parameters and their descriptions in TextMatcherInternal:</p>
-
-  <table class="table-model-big">
-    <thead>
-      <tr>
-        <th>Parameter</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><code class="language-plaintext highlighter-rouge">setEnableLemmatizer(&lt;True/False&gt;)</code></td>
-        <td>Enable lemmatizer</td>
-      </tr>
-      <tr>
-        <td><code class="language-plaintext highlighter-rouge">setEnableStemmer(&lt;True/False&gt;)</code></td>
-        <td>Enable stemmer</td>
-      </tr>
-      <tr>
-        <td><code class="language-plaintext highlighter-rouge">setStopWords(["&lt;word1&gt;", "&lt;word2&gt;", "..."])</code></td>
-        <td>Custom stop word list</td>
-      </tr>
-      <tr>
-        <td><code class="language-plaintext highlighter-rouge">setCleanStopWords(&lt;True/False&gt;)</code></td>
-        <td>Remove stop words from input</td>
-      </tr>
-      <tr>
-        <td><code class="language-plaintext highlighter-rouge">setShuffleEntitySubTokens(&lt;True/False&gt;)</code></td>
-        <td>Use permutations of entity phrase tokens</td>
-      </tr>
-      <tr>
-        <td><code class="language-plaintext highlighter-rouge">setSafeKeywords(["&lt;keyword1&gt;", "&lt;keyword2&gt;", "..."])</code></td>
-        <td>Preserve critical terms, even if stop words</td>
-      </tr>
-      <tr>
-        <td><code class="language-plaintext highlighter-rouge">setExcludePunctuation(&lt;True/False&gt;)</code></td>
-        <td>Remove all punctuation during matching</td>
-      </tr>
-      <tr>
-        <td><code class="language-plaintext highlighter-rouge">setCleanKeywords(["&lt;noise1&gt;", "&lt;noise2&gt;", "..."])</code></td>
-        <td>Extra domain-specific noise words to remove</td>
-      </tr>
-      <tr>
-        <td><code class="language-plaintext highlighter-rouge">setExcludeRegexPatterns(["&lt;regex_pattern1&gt;", "&lt;regex_pattern2&gt;"])</code></td>
-        <td>Drop matched chunks matching regex</td>
-      </tr>
-      <tr>
-        <td><code class="language-plaintext highlighter-rouge">setReturnChunks("&lt;original/matched&gt;")</code></td>
-        <td>Return stemmed/lemmatized matched phrases</td>
-      </tr>
-      <tr>
-        <td><code class="language-plaintext highlighter-rouge">setSkipMatcherAugmentation(&lt;True/False&gt;)</code></td>
-        <td>Disable matcher-side augmentation</td>
-      </tr>
-      <tr>
-        <td><code class="language-plaintext highlighter-rouge">setSkipSourceTextAugmentation(&lt;True/False&gt;)</code></td>
-        <td>Disable source-side augmentation</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Record <span class="nb">date</span>: 2023-04-10. The patient, Maryl Gallant, is 75 years old.                                                       
+Dr. Rosanne Grand, from Doctors Specialty Hospital <span class="k">in </span>Watonga, Watonga, 01194, Phone: 909-098-7654.
+Dr. Rosanne discharged Maryl on 2023-04-10. Her medical record number is 44330987.                                                             
+</code></pre></div>  </div>
 
   <ul>
-    <li>Lemmatization &amp; Stemming Support</li>
+    <li>Also supports loading equivalence rules from external files via <code class="language-plaintext highlighter-rouge">.setObfuscationEquivalentsResource</code>.</li>
   </ul>
-
-  <p>You can now enable both <strong>lemmatization</strong> and <strong>stemming</strong> to increase recall by matching different inflections of the same word.</p>
-
-  <p>Example for Lemmatization and Stemming:<br />
-    - .setEnableLemmatizer(True):  Enables lemmatization to reduce words to their base (dictionary) form<br />
-    - .setEnableStemmer(True): Enables stemming to reduce words to their root form by stripping suffixes</p>
-
-  <p><code class="language-plaintext highlighter-rouge">"talking"</code> will match <code class="language-plaintext highlighter-rouge">"talk"</code><br />
-<code class="language-plaintext highlighter-rouge">"lives"</code> will match <code class="language-plaintext highlighter-rouge">"life"</code><br />
-<code class="language-plaintext highlighter-rouge">"running"</code> → <code class="language-plaintext highlighter-rouge">"run"</code><br />
-<code class="language-plaintext highlighter-rouge">"studies"</code> → <code class="language-plaintext highlighter-rouge">"study"</code></p>
-
-  <p>This is useful for matching core meanings even when word forms vary.</p>
-
-  <ul>
-    <li>Shuffiling Support</li>
-  </ul>
-
-  <p>Example for Shuffiling Subtoken Entities:
-    - <code class="language-plaintext highlighter-rouge">.setShuffleEntitySubTokens(True)</code>: the matcher will consider <strong>all possible token orderings</strong> for each phrase. For example:</p>
-
-  <p><strong>Entity phrase:</strong> <code class="language-plaintext highlighter-rouge">"sleep difficulty"</code><br />
-Will match:<br />
-    - <code class="language-plaintext highlighter-rouge">"sleep difficulty"</code><br />
-    - <code class="language-plaintext highlighter-rouge">"difficulty sleep"</code></p>
-
-  <p>Disabling this option restricts the match to the original order only.</p>
-
-  <p>Only available in <code class="language-plaintext highlighter-rouge">TextMatcherInternal</code>, <strong>not</strong> in <code class="language-plaintext highlighter-rouge">TextMatcherInternalModel</code>.</p>
-
-  <ul>
-    <li>Stop Word Removal for Cleaner Matching</li>
-  </ul>
-
-  <p>Example for Cleaning StopWords:
-    - <code class="language-plaintext highlighter-rouge">.setCleanStopWords(True)</code>: the matcher will remove common stop words (like <code class="language-plaintext highlighter-rouge">"and"</code>, <code class="language-plaintext highlighter-rouge">"the"</code>, <code class="language-plaintext highlighter-rouge">"about"</code>) from <strong>both the input</strong> and the <strong>entity phrases</strong> before matching. This reduces false negatives caused by unimportant words.</p>
-
-  <p>Example for StopWords:
-Optional Customization  to set
-    - <code class="language-plaintext highlighter-rouge">.setStopWords(["and", "of", "about"])</code>: # Custom stop words<br />
-    - <code class="language-plaintext highlighter-rouge">.setSafeKeywords(["about"])</code>: Don’t remove important stop words</p>
-
-  <ul>
-    <li>Advanced Cleaning with <code class="language-plaintext highlighter-rouge">safeKeywords</code>, <code class="language-plaintext highlighter-rouge">cleanKeywords</code>, <code class="language-plaintext highlighter-rouge">excludePunctuation</code></li>
-  </ul>
-
-  <p>You now have full control over text cleaning:</p>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Parameter</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><code class="language-plaintext highlighter-rouge">setStopWords([...])</code></td>
-        <td>Custom stop word list</td>
-      </tr>
-      <tr>
-        <td><code class="language-plaintext highlighter-rouge">setCleanKeywords([...])</code></td>
-        <td>Extra domain-specific noise words to remove</td>
-      </tr>
-      <tr>
-        <td><code class="language-plaintext highlighter-rouge">setSafeKeywords([...])</code></td>
-        <td>Preserve critical terms, even if they are stop words</td>
-      </tr>
-      <tr>
-        <td><code class="language-plaintext highlighter-rouge">setExcludePunctuation(True)</code></td>
-        <td>Remove all punctuation during matching</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p>These controls allow more precise preprocessing in noisy or informal text environments.</p>
-
-  <ul>
-    <li>Augmentation Controls</li>
-  </ul>
-
-  <p>Control how much automatic variation the matcher considers:<br />
-     - <code class="language-plaintext highlighter-rouge">.setSkipMatcherAugmentation(True)</code>:  Disable matcher phrase variations   <br />
-     - <code class="language-plaintext highlighter-rouge">.setSkipSourceTextAugmentation(True)</code>:  Disable variations on input text</p>
-
-  <p>Disable both for <strong>strict, high-precision</strong> matching. Leave enabled for <strong>broad, high-recall</strong> matching.</p>
-
-  <ul>
-    <li>Controling Match Output Format:
-      <ul>
-        <li>.setReturnChunks(“original”)  # Return chunk as it appears in input</li>
-        <li>.setReturnChunks(“matched”)   # Return normalized form (e.g., stemmed or lemmatized)</li>
-      </ul>
-    </li>
-  </ul>
-
-  <p>Regardless of format, <code class="language-plaintext highlighter-rouge">begin</code> and <code class="language-plaintext highlighter-rouge">end</code> positions refer to the <strong>original text</strong>.</p>
 
   <p><em>Example</em>:</p>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="n">test_phrases</span> <span class="o">=</span> <span class="s">"""
-stressor
-evaluation psychiatric state
-sleep difficulty
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">obfuscation</span><span class="p">.</span><span class="n">setObfuscationEquivalentsResource</span><span class="p">(</span><span class="s">"path/to/equivalents.csv"</span><span class="p">)</span>
+</code></pre></div>  </div>
+
+  <ul>
+    <li><code class="language-plaintext highlighter-rouge">getDefaultObfuscationEquivalents</code>: Returns the default obfuscation equivalents for common entities</li>
+  </ul>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span>
+    <span class="p">[</span><span class="s">'Alex'</span><span class="p">,</span> <span class="s">'FIRST_NAME'</span><span class="p">,</span> <span class="s">'Alexander'</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">'Rob'</span><span class="p">,</span> <span class="s">'FIRST_NAME'</span><span class="p">,</span> <span class="s">'Robert'</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">'Bob'</span><span class="p">,</span> <span class="s">'FIRST_NAME'</span><span class="p">,</span> <span class="s">'Robert'</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">'Bobby'</span><span class="p">,</span> <span class="s">'FIRST_NAME'</span><span class="p">,</span> <span class="s">'Robert'</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">'Liz'</span><span class="p">,</span> <span class="s">'FIRST_NAME'</span><span class="p">,</span> <span class="s">'Elizabeth'</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">'Beth'</span><span class="p">,</span> <span class="s">'FIRST_NAME'</span><span class="p">,</span> <span class="s">'Elizabeth'</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">'Lizzy'</span><span class="p">,</span> <span class="s">'FIRST_NAME'</span><span class="p">,</span> <span class="s">'Elizabeth'</span><span class="p">],</span>
+    <span class="p">.....</span>
+<span class="p">]</span>
+</code></pre></div>  </div>
+
+  <ul>
+    <li><code class="language-plaintext highlighter-rouge">setEnableDefaultObfuscationEquivalents</code>: Sets whether to enable default obfuscation equivalents for common entities.
+This parameter allows the system to automatically include a set of predefined common English name equivalents. The default is False.</li>
+  </ul>
+
+</div>
+<div class="h3-box">
+
+  <h4 id="new-feature-deterministic-fallback-for-missing-date-shifts-in-deidentification">New Feature: Deterministic Fallback for Missing Date Shifts in DeIdentification</h4>
+
+  <p>A new utility has been added to <strong>automatically fill missing or empty values</strong> in a date shift column using a <strong>deterministic, ID-based pseudo-random fallback</strong>.</p>
+
+  <p>This feature is especially useful in <strong>de-identification pipelines</strong> where:</p>
+
+  <ul>
+    <li>Date shifts must be <strong>consistent per ID</strong></li>
+    <li>Some rows have <strong>null or missing shift values</strong></li>
+  </ul>
+
+  <p><strong>Logic:</strong></p>
+
+  <ul>
+    <li>If another row with the same <code class="language-plaintext highlighter-rouge">ID</code> has a shift value, it is <strong>reused</strong></li>
+    <li>If no shift exists for that ID, a fallback shift is <strong>generated using a deterministic hash function</strong> based on the <code class="language-plaintext highlighter-rouge">ID</code> and a fixed seed</li>
+    <li>Fallback shifts are <strong>always within the range</strong> <code class="language-plaintext highlighter-rouge">[1, maxShiftDays]</code></li>
+  </ul>
+
+  <p><em>Example</em>:</p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span><span class="s">'patientID'</span> <span class="p">:</span> <span class="p">[</span><span class="s">'A001'</span><span class="p">,</span> <span class="s">'A002'</span><span class="p">,</span> <span class="s">'A001'</span><span class="p">,</span> <span class="s">'A002'</span><span class="p">,</span> <span class="s">'A003'</span><span class="p">,</span> <span class="s">'A003'</span><span class="p">],</span>
+     <span class="s">'text'</span> <span class="p">:</span> <span class="p">[</span>
+         <span class="s">'Chris Brown was discharged on 10/02/2022'</span><span class="p">,</span>
+          <span class="s">'Mark White was discharged on 03/01/2020'</span><span class="p">,</span>
+          <span class="s">'Chris Brown was born on 05/10/1982'</span><span class="p">,</span>
+          <span class="s">'Mark White was born on 10/04/2000'</span><span class="p">,</span>
+          <span class="s">'John was discharged on 03/15/2022'</span><span class="p">,</span>
+          <span class="s">'John Moore was born on 12/31/2002'</span>
+      <span class="p">],</span>
+     <span class="s">'dateshift'</span> <span class="p">:</span> <span class="p">[</span><span class="s">'10'</span><span class="p">,</span> <span class="s">'-2'</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+<span class="n">input_df</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">sparknlp_jsl.utils</span> <span class="kn">import</span> <span class="n">DateShiftFiller</span>
+<span class="n">filler</span> <span class="o">=</span> <span class="n">sparknlp_jsl</span><span class="p">.</span><span class="n">utils</span><span class="p">.</span><span class="n">DateShiftFiller</span><span class="p">(</span><span class="n">spark</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">max_shift_days</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+<span class="n">result_df</span> <span class="o">=</span> <span class="n">filler</span><span class="p">.</span><span class="n">fill_missing_shifts</span><span class="p">(</span><span class="n">input_df</span><span class="p">,</span> <span class="n">id_col</span><span class="o">=</span><span class="s">"patientID"</span><span class="p">,</span> 
+                                       <span class="n">shift_col</span><span class="o">=</span><span class="s">"dateshift"</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s">"_filled"</span><span class="p">)</span>
+</code></pre></div>  </div>
+
+  <p><em>Result</em>:</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>|patientID|text                                    |dateshift|dateshift_filled|
+|---------|----------------------------------------|---------|----------------|
+|A002     |Mark White was discharged on 03/01/2020 |-2       |-2              |
+|A001     |Chris Brown was discharged on 10/02/2022|10       |10              |
+|A001     |Chris Brown was discharged on 03/15/2022|NULL     |10              |
+|A003     |John was discharged on 03/15/2022       |NULL     |5               |
+|A003     |John Moore was discharged on 12/31/2022 |5        |5               |
+|A002     |Mark White discharged on 12/31/2022     |NULL     |-2              |
+</code></pre></div>  </div>
+
+  <h4 id="dictionary-support-for-deidentification-with-setselectiveobfuscationmodes-parameter">Dictionary Support for <code class="language-plaintext highlighter-rouge">Deidentification</code> with <code class="language-plaintext highlighter-rouge">setSelectiveObfuscationModes</code> Parameter</h4>
+
+  <p>Added support for <strong>dictionary input</strong> in the <code class="language-plaintext highlighter-rouge">setSelectiveObfuscationModes</code> method, allowing more flexible configuration of obfuscation modes for specific entities or contexts.</p>
+
+  <p><em>Example</em>:</p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span><span class="p">,</span> <span class="n">medical</span>
+
+<span class="n">sample_json</span> <span class="o">=</span> <span class="p">{</span>
+	<span class="s">"obfuscate"</span><span class="p">:</span> <span class="p">[</span><span class="s">"PHONE"</span><span class="p">]</span> <span class="p">,</span>
+	<span class="s">"mask_entity_labels"</span><span class="p">:</span> <span class="p">[</span><span class="s">"ID"</span><span class="p">,</span> <span class="s">"NAME"</span><span class="p">],</span>
+	<span class="s">"skip"</span><span class="p">:</span> <span class="p">[</span><span class="s">"DATE"</span><span class="p">],</span>
+	<span class="s">"mask_same_length_chars"</span><span class="p">:[</span><span class="s">"location"</span><span class="p">],</span>
+	<span class="s">"mask_fixed_length_chars"</span><span class="p">:[</span><span class="s">"zip"</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="n">deid_doc</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DeIdentification</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner_chunk"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"deidentified"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setMode</span><span class="p">(</span><span class="s">"mask"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setSameLengthFormattedEntities</span><span class="p">([</span><span class="s">"PHONE"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setFixedMaskLength</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setSelectiveObfuscationModes</span><span class="p">(</span><span class="n">sample_json</span><span class="p">)</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="s">"""Record date : 2023-01-13.                                                               
+The patient, Emma Wilson, is 50 years old.                                                 
+Dr. John Lee, from Royal Medical Clinic in Chicago, 0295 Keats Street , Phone 55-555-5555.
+Her phone number: 444-456-7890 and her medical record number is 56467890.                  
 """</span>
+</code></pre></div>  </div>
 
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">"test-phrases.txt"</span><span class="p">,</span> <span class="s">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="nb">file</span><span class="p">:</span>
-    <span class="nb">file</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">test_phrases</span><span class="p">)</span>
+  <p><em>Result</em>:</p>
 
-<span class="n">text_matcher</span> <span class="o">=</span> <span class="n">TextMatcherInternal</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span><span class="s">"token"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"matched_text"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setEntities</span><span class="p">(</span><span class="s">"./test-phrases.txt"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setEnableLemmatizer</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setEnableStemmer</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setCleanStopWords</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setBuildFromTokens</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setReturnChunks</span><span class="p">(</span><span class="s">"matched"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setShuffleEntitySubTokens</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setSkipMatcherAugmentation</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setSkipSourceTextAugmentation</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Record <span class="nb">date</span> : 2023-01-13.                                                                
+The patient, &lt;NAME&gt;, is &lt;AGE&gt; years old.                                                 
+Dr. &lt;NAME&gt;, from <span class="o">[</span><span class="k">******************</span><span class="o">]</span> <span class="k">in</span> <span class="o">[</span><span class="k">*****</span><span class="o">]</span>, <span class="o">[</span><span class="k">***************</span><span class="o">]</span> , Phone 66-666-6666.
+Her phone number: 777-765-4321 and her medical record number is &lt;ID&gt;.  
+</code></pre></div>  </div>
 
-<span class="n">text</span> <span class="o">=</span> <span class="s">"""
-Patient was able to talk briefly about recent life stressors during evaluation of psychiatric state.
-She reports difficulty sleeping and ongoing anxiety. Denies suicidal ideation.
+</div>
+<div class="h3-box">
+
+  <h4 id="new-meds-ner-model-for-structured-medical-entity-extraction">New MedS NER Model for Structured Medical Entity Extraction</h4>
+
+  <p>This LLM model is trained to extract and link entities in a document. Users need to define an input schema as explained in the example section. Drug is defined as a list that tells the model that there could be multiple drugs in the document, and it has to extract all of them. Each drug has properties like its name and reaction. Since “name” is only one, it is a string, but there could be multiple reactions, hence it is a list. Similarly, users can define any schema for any entity.</p>
+
+  <p><em>Example</em>:</p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span><span class="p">,</span> <span class="n">medical</span>
+<span class="n">medical_llm</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">AutoGGUFModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"jsl_meds_ner_q16_v3"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"completions"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setBatchSize</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setNPredict</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setUseChatTemplate</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setTemperature</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">med_ner_prompt</span> <span class="o">=</span> <span class="s">"""
+### Template:
+{
+    "drugs": [
+        {
+            "name": "",
+            "reactions": []
+        }
+    ]
+}
+### Text:
+I feel a bit drowsy &amp; have a little blurred vision , and some gastric problems .
+I 've been on Arthrotec 50 for over 10 years on and off , only taking it when I needed it .
+Due to my arthritis getting progressively worse , to the point where I am in tears with the agony.
+Gp 's started me on 75 twice a day and I have to take it every day for the next month to see how I get on , here goes .
+So far its been very good , pains almost gone , but I feel a bit weird , did n't have that when on 50.
+
+"""</span>
+</code></pre></div>  </div>
+
+  <p><em>Result</em>:</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">{</span>
+    <span class="s2">"drugs"</span>: <span class="o">[</span>
+        <span class="o">{</span>
+            <span class="s2">"name"</span>: <span class="s2">"Arthrotec"</span>,
+            <span class="s2">"reactions"</span>: <span class="o">[</span>
+                <span class="s2">"drowsy"</span>,
+                <span class="s2">"blurred vision"</span>,
+                <span class="s2">"gastric problems"</span>
+            <span class="o">]</span>
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">"name"</span>: <span class="s2">"75"</span>,
+            <span class="s2">"reactions"</span>: <span class="o">[</span>
+                <span class="s2">"weird"</span>
+            <span class="o">]</span>
+        <span class="o">}</span>
+    <span class="o">]</span>
+<span class="o">}</span>
+</code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
+
+  <h4 id="enhanced-phenotype-entity-mapping-pipeline-with-hpo-standardization-and-advanced-entity-extraction">Enhanced Phenotype Entity Mapping Pipeline with HPO Standardization and Advanced Entity Extraction</h4>
+
+  <p>This pipeline is designed to map extracted phenotype entities from clinical or biomedical text to their corresponding Human Phenotype Ontology (HPO) codes and assign their <strong>assertion status</strong> (e.g., present, absent, possible). It ensures that observed symptoms, signs, and clinical abnormalities are <strong>standardized</strong> using controlled HPO terminology, facilitating downstream tasks like cohort retrieval, diagnostics, and phenotype-based decision support.</p>
+
+  <p>New enhancements in <code class="language-plaintext highlighter-rouge">TextMatcherInternal</code>—notably <strong>lemmatization</strong> (<code class="language-plaintext highlighter-rouge">enableLemmatizer</code>) and <strong>stopword removal</strong> (<code class="language-plaintext highlighter-rouge">enableStopWordsRemoval</code>)—the matcher now captures a much wider variety of <strong>phrase variations</strong> that were previously missed due to strict string matching.</p>
+
+  <p><strong>Examples:</strong></p>
+  <ul>
+    <li><code class="language-plaintext highlighter-rouge">"apnea of prematurity"</code> matched to <code class="language-plaintext highlighter-rouge">"Apnea prematurity"</code> by ignoring stopwords like <em>“of”</em></li>
+    <li><code class="language-plaintext highlighter-rouge">"bidirectional shunting"</code> matched to <code class="language-plaintext highlighter-rouge">"bidirectional shunt"</code> through token normalization</li>
+  </ul>
+
+  <p>In addition, the <code class="language-plaintext highlighter-rouge">ChunkMapper</code> leverages <strong>fuzzy matching</strong>, enabling the system to link <strong>non-exact matches</strong> to the correct HPO codes. This makes the entire pipeline more <strong>robust and flexible</strong>, especially in noisy or highly variable clinical narratives.</p>
+
+  <p>These improvements significantly increase <strong>recall</strong> and <strong>semantic matching coverage</strong>, supporting more accurate and complete phenotype extraction from real-world medical text.</p>
+
+  <p><em>Example</em>:</p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span><span class="p">,</span> <span class="n">medical</span>
+
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"hpo_mapper_pipeline_v2"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
+
+<span class="n">text</span><span class="o">=</span> <span class="s">"""APNEA: Presumed apnea of prematurity since &lt; 34 wks gestation at birth.
+HYPERBILIRUBINEMIA: At risk for hyperbilirubinemia d/t prematurity.
+1/25-1/30: Received Amp/Gent while undergoing sepsis evaluation.
+Mother is A+, GBS unknown, and infant delivered
+for decreasing fetal movement and preeclampsia.
+Echo showed PFO with bidirectional shunting.
 """</span>
 </code></pre></div>  </div>
 
@@ -1270,200 +937,215 @@ She reports difficulty sleeping and ongoing anxiety. Denies suicidal ideation.
   <table class="table-model-big">
     <thead>
       <tr>
-        <th><code class="language-plaintext highlighter-rouge">matched_text</code></th>
-        <th><code class="language-plaintext highlighter-rouge">original</code></th>
-        <th>Explanation</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><code class="language-plaintext highlighter-rouge">evaluation psychiatric state</code></td>
-        <td><code class="language-plaintext highlighter-rouge">evaluation of psychiatric state</code></td>
-        <td><strong>Stop word removal</strong>: the word <strong>“of”</strong> was filtered out to enable a match</td>
-      </tr>
-      <tr>
-        <td><code class="language-plaintext highlighter-rouge">stressor</code></td>
-        <td><code class="language-plaintext highlighter-rouge">stressors</code></td>
-        <td><strong>Lemmatization</strong> reduced plural form to base word</td>
-      </tr>
-      <tr>
-        <td><code class="language-plaintext highlighter-rouge">sleep difficulty</code></td>
-        <td><code class="language-plaintext highlighter-rouge">difficulty sleeping</code></td>
-        <td><strong>Stemming + token shuffle</strong> allowed match despite different word order</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p>These examples show how stemming, lemmatization, stop word removal, and token shuffling <strong>combine to increase recall</strong> while still producing interpretable and aligned results.</p>
-
-  <p>Please check the <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/40.1.Text_Matcher_Internal.ipynb">TextMatcherInternal</a> notebook for more informations.</p>
-
-</div>
-<div class="h3-box">
-
-  <h4 id="introducing-a-new-annotator-metadataannotationconverter-for-custom-annotation-field-mapping">Introducing a New Annotator MetadataAnnotationConverter for Custom Annotation Field Mapping</h4>
-
-  <p><strong>Added</strong> <code class="language-plaintext highlighter-rouge">MetadataAnnotationConverter</code>: a new annotator that converts metadata fields in annotations into actual begin, end, or result values.</p>
-
-  <p><code class="language-plaintext highlighter-rouge">MetadataAnnotationConverter</code> enables users to override fields in Spark NLP annotations using values from their <code class="language-plaintext highlighter-rouge">metadata</code> dictionary. This is especially useful when metadata contains normalized values, corrected character offsets, or alternative representations of the entity or phrase.</p>
-
-  <p><em>Example:</em></p>
-
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">text_matcher</span> <span class="o">=</span> <span class="n">TextMatcherInternal</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"matched_text"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setEntities</span><span class="p">(</span><span class="s">"./test-phrases.txt"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setEnableLemmatizer</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setEnableStemmer</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setCleanStopWords</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setBuildFromTokens</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setReturnChunks</span><span class="p">(</span><span class="s">"original"</span><span class="p">)</span>
-
-<span class="n">metadata_annotation_converter</span> <span class="o">=</span> <span class="n">MetadataAnnotationConverter</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"matched_text"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setInputType</span><span class="p">(</span><span class="s">"chunk"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setBeginField</span><span class="p">(</span><span class="s">"begin"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setEndField</span><span class="p">(</span><span class="s">"end"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setResultField</span><span class="p">(</span><span class="s">"original_or_matched"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"new_chunk"</span><span class="p">)</span>
-</code></pre></div>  </div>
-
-  <p><em>Text Matcher Internal Output</em>:</p>
-
-  <table class="table-model-big">
-    <thead>
-      <tr>
-        <th>entity</th>
+        <th>hpo_code</th>
+        <th>matched_text</th>
+        <th>ner_chunk</th>
         <th>begin</th>
         <th>end</th>
         <th>result</th>
-        <th>matched</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>entity</td>
-        <td>69</td>
-        <td>99</td>
-        <td>evaluation of psychiatric state</td>
-        <td>evaluation psychiatric state</td>
+        <td>HP:0002104</td>
+        <td>apnea</td>
+        <td>apnea</td>
+        <td>16</td>
+        <td>20</td>
+        <td>possible</td>
       </tr>
       <tr>
-        <td>entity</td>
-        <td>52</td>
-        <td>60</td>
-        <td>stressors</td>
-        <td>stressor</td>
+        <td>HP:0034236</td>
+        <td>Apnea prematurity</td>
+        <td>apnea of prematurity</td>
+        <td>16</td>
+        <td>35</td>
+        <td>present</td>
       </tr>
       <tr>
-        <td>entity</td>
-        <td>114</td>
-        <td>132</td>
-        <td>difficulty sleeping</td>
-        <td>difficulty sleep</td>
+        <td>HP:0002904</td>
+        <td>Hyperbilirubinemia</td>
+        <td>hyperbilirubinemia</td>
+        <td>104</td>
+        <td>121</td>
+        <td>present</td>
+      </tr>
+      <tr>
+        <td>HP:0100806</td>
+        <td>sepsis</td>
+        <td>sepsis</td>
+        <td>186</td>
+        <td>191</td>
+        <td>present</td>
+      </tr>
+      <tr>
+        <td>HP:0100602</td>
+        <td>Preeclampsia</td>
+        <td>preeclampsia</td>
+        <td>287</td>
+        <td>298</td>
+        <td>present</td>
+      </tr>
+      <tr>
+        <td>HP:0012383</td>
+        <td>bidirectional shunt</td>
+        <td>bidirectional shunting</td>
+        <td>322</td>
+        <td>343</td>
+        <td>present</td>
+      </tr>
+      <tr>
+        <td>HP:0001558</td>
+        <td>decrease fetal movement</td>
+        <td>decreasing fetal movement</td>
+        <td>257</td>
+        <td>281</td>
+        <td>present</td>
       </tr>
     </tbody>
   </table>
 
-  <p><em>Metadata Annotation Converter Output</em>:</p>
+  <h4 id="optimized-clinical-de-identification-pipelines-for-secure-and-compliant-healthcare-data-processing">Optimized Clinical De-identification Pipelines for Secure and Compliant Healthcare Data Processing</h4>
+
+  <p>We’ve introduced a suite of optimized clinical de-identification pipelines to enhance the anonymization of sensitive healthcare data. These pipelines combine deep learning (NERDL), zero-shot models, and rule-based methods to perform accurate Named Entity Recognition (NER) across clinical documents. Each pipeline is tailored for performance, scalability, and compliance with privacy regulations, ensuring data integrity while supporting both benchmarking and real-world deployment.</p>
 
   <table class="table-model-big">
     <thead>
       <tr>
-        <th>Entity</th>
-        <th>Begin</th>
-        <th>End</th>
-        <th>Result</th>
+        <th>Pipeline Name</th>
+        <th>Stages</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>entity</td>
-        <td>69</td>
-        <td>99</td>
-        <td>evaluation psychiatric state</td>
+        <td><code class="language-plaintext highlighter-rouge">ner_profiling_deidentification</code></td>
+        <td>20 NERDL, 1 ZeroShot, 20 RuleBased NER</td>
       </tr>
       <tr>
-        <td>entity</td>
-        <td>52</td>
-        <td>60</td>
-        <td>stressor</td>
+        <td><code class="language-plaintext highlighter-rouge">ner_deid_docwise_benchmark_optimized</code></td>
+        <td>3 NERDL, 19 RuleBased NER</td>
       </tr>
       <tr>
-        <td>entity</td>
-        <td>114</td>
-        <td>132</td>
-        <td>difficulty sleep</td>
+        <td><code class="language-plaintext highlighter-rouge">ner_deid_docwise_benchmark_optimized_zeroshot_partial</code></td>
+        <td>1 ZeroShot</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">clinical_deidentification_docwise_benchmark_optimized</code></td>
+        <td>3 NERDL, 19 RuleBased NER</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">clinical_deidentification_docwise_benchmark_light</code></td>
+        <td>3 NERDL, 19 RuleBased NER</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">clinical_deidentification_docwise_benchmark_light_v2</code></td>
+        <td>1 NERDL, 1 ZeroShot, 19 RuleBased NER</td>
       </tr>
     </tbody>
   </table>
-
-</div>
-<div class="h3-box">
-
-  <h4 id="enhanced-entity-filtering-in-chunkmapperfilterer-with-whitelist-and-blacklist-support">Enhanced Entity Filtering in ChunkMapperFilterer with Whitelist and Blacklist Support</h4>
-
-  <p>The ChunkMapperFilterer annotator now supports fine-grained entity filtering through the introduction of three new parameters:</p>
-  <ul>
-    <li>whiteList: a list of entity types to explicitly include during filtering. Only entities in this list will be processed.</li>
-    <li>blackList: a list of entity types to exclude from filtering. Entities in this list will be ignored.</li>
-    <li>caseSensitive: a boolean flag indicating whether the entity matching in whiteList and blackList is case-sensitive.</li>
-  </ul>
 
   <p><em>Example</em>:</p>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">chunk_mapper_filterer</span> <span class="o">=</span> <span class="n">ChunkMapperFilterer</span><span class="p">()</span> \
-      <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"chunk"</span><span class="p">,</span> <span class="s">"RxNorm_Mapper"</span><span class="p">])</span> \
-      <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"chunks_success"</span><span class="p">)</span> \
-      <span class="p">.</span><span class="n">setReturnCriteria</span><span class="p">(</span><span class="s">"success"</span><span class="p">)</span>\
-      <span class="p">.</span><span class="n">setBlackList</span><span class="p">([</span><span class="s">"Tegretol"</span><span class="p">,</span> <span class="s">"ZYVOX"</span><span class="p">])</span>\
-      <span class="p">.</span><span class="n">setCaseSensitive</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span><span class="p">,</span> <span class="n">medical</span>
 
-<span class="n">samples</span> <span class="o">=</span> <span class="p">[[</span><span class="s">"The patient was given Avandia 4 mg, Tegretol"</span><span class="p">],</span>
-           <span class="p">[</span><span class="s">"The patient was previously prescribed Zyrtec for allergies, Zyvox for a bacterial infection, and Zytopic to manage a skin condition."</span><span class="p">]]</span>
+<span class="n">deid_pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"clinical_deidentification_docwise_benchmark_optimized"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
 
-<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">samples</span><span class="p">).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s">"""Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024.
+The patient’s medical record number is 56467890.
+The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 ."""</span>
+
+<span class="n">deid_result</span> <span class="o">=</span> <span class="n">deid_pipeline</span><span class="p">.</span><span class="n">fullAnnotate</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 </code></pre></div>  </div>
 
-  <p><em>Result without blacklist</em>:</p>
+  <p><em>Result</em>:</p>
 
-  <p class="table-model-big">Before:</p>
-  <p>|chunk                   |RxNorm_Mapper          |chunks_success          |
-|————————|———————–|————————|
-|[Avandia 4 mg, Tegretol]|[261242, 203029]       |[Avandia 4 mg, Tegretol]|
-|[Zyrtec, Zyvox, Zytopic]|[58930, 261710, 763297]|[Zyrtec, Zyvox, Zytopic]|</p>
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Masked with entity labels
+<span class="nt">------------------------------</span>
+Dr. &lt;DOCTOR&gt;, from &lt;HOSPITAL&gt; <span class="k">in</span> &lt;CITY&gt;, attended to the patient on &lt;DATE&gt;.
+The patient’s medical record number is &lt;ID&gt;.
+The patient, &lt;PATIENT&gt;, is &lt;AGE&gt;, her Contact number: &lt;PHONE&gt; <span class="nb">.</span>
 
-  <p><em>Result with blacklist</em>:</p>
-
-  <table class="table-model-big">
-    <thead>
-      <tr>
-        <th>chunk</th>
-        <th>RxNorm_Mapper</th>
-        <th>chunks_success</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>[Avandia 4 mg, Tegretol]</td>
-        <td>[261242, 203029]</td>
-        <td>[Avandia 4 mg]</td>
-      </tr>
-      <tr>
-        <td>[Zyrtec, Zyvox, Zytopic]</td>
-        <td>[58930, 261710, 763297]</td>
-        <td>[Zyrtec, Zytopic]</td>
-      </tr>
-    </tbody>
-  </table>
+Obfuscated
+<span class="nt">------------------------------</span>
+Dr. Valerie Aho, from Mercy Hospital Aurora <span class="k">in </span>Berea, attended to the patient on 30/05/2024.
+The patient’s medical record number is 78689012.
+The patient, Johnathon Bunde, is 55 years old, her Contact number: 666-678-9012 <span class="nb">.</span>
+</code></pre></div>  </div>
 
 </div>
 <div class="h3-box">
 
-  <h4 id="updated-notebooks-and-demonstrations-for-making-spark-nlp-for-healthcare-easier-to-navigate-and-understand">Updated Notebooks And Demonstrations For making Spark NLP For Healthcare Easier To Navigate And Understand</h4>
+  <h4 id="various-core-improvements-bug-fixes-and-overall-enhancements-to-the-robustness-of-spark-nlp-for-healthcare">Various core improvements, bug fixes, and overall enhancements to the robustness of Spark NLP for Healthcare</h4>
 
   <ul>
-    <li>New <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/40.1.Text_Matcher_Internal.ipynb">TextMatcherInternal</a> Notebook</li>
+    <li>
+      <p><strong>Improved incorrect multi-letter replacements for single-letter names in obfuscation</strong><br />
+Resolved an issue where single-letter initials (e.g., “R” in “William R”) were being obfuscated into multi-letter strings (e.g., “LU”).<br />
+Initials are now consistently replaced with a <strong>different single-letter initial</strong>, preserving length and format.</p>
+    </li>
+    <li>
+      <p><strong>Substring logic crash fix in <code class="language-plaintext highlighter-rouge">TextMatcherInternal</code> for safer token handling</strong><br />
+Enhanced reliability by adding safer token index handling and guarding substring extraction against unexpected errors.</p>
+    </li>
+    <li>
+      <p><strong>Memory optimization for <code class="language-plaintext highlighter-rouge">PretrainedZeroShotNER</code> to reduce memory usage during inference</strong>
+Reduced memory footprint during inference by optimizing the internal handling of zero-shot NER models, improving performance and scalability for large datasets.</p>
+    </li>
+  </ul>
+
+</div>
+<div class="h3-box">
+
+  <h4 id="updated-notebooks-and-demonstrations-for-making-spark-nlp-for-healthcare-easier-to-navigate-and-understand">Updated Notebooks and Demonstrations for making Spark NLP for Healthcare Easier To Navigate And Understand</h4>
+
+  <ul>
+    <li>Updated <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/40.1.Text_Matcher_Internal.ipynb">Text Matcher Internal</a> Notebook</li>
+  </ul>
+
+</div>
+<div class="h3-box">
+
+  <h4 id="we-have-added-and-updated-a-substantial-number-of-new-clinical-models-and-pipelines-further-solidifying-our-offering-in-the-healthcare-domain">We Have Added And Updated A Substantial Number Of New Clinical Models And Pipelines, Further Solidifying Our Offering In The Healthcare Domain.</h4>
+
+  <ul>
+    <li><code class="language-plaintext highlighter-rouge">jsl_meds_ner_q16_v3</code></li>
+    <li><code class="language-plaintext highlighter-rouge">jsl_meds_ner_q8_v3</code></li>
+    <li><code class="language-plaintext highlighter-rouge">jsl_meds_ner_q4_v3</code></li>
+    <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_umls_disease_syndrome</code></li>
+    <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_umls_findings</code></li>
+    <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_umls_clinical_drugs</code></li>
+    <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_umls_general_concepts</code></li>
+    <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_umls_major_concepts</code></li>
+    <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_umls_drug_substance</code></li>
+    <li><code class="language-plaintext highlighter-rouge">biolordresolve_umls_general_concepts</code></li>
+    <li><code class="language-plaintext highlighter-rouge">hpo_mapper_pipeline</code></li>
+    <li><code class="language-plaintext highlighter-rouge">meddra_llt_snomed_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">snomed_meddra_llt_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">explain_clinical_doc_sdoh</code></li>
+    <li><code class="language-plaintext highlighter-rouge">explain_clinical_doc_mental_health</code></li>
+    <li><code class="language-plaintext highlighter-rouge">ner_medication_generic_pipeline</code></li>
+    <li><code class="language-plaintext highlighter-rouge">ner_deid_context_augmented_pipeline</code></li>
+    <li><code class="language-plaintext highlighter-rouge">icd10cm_umls_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">loinc_umls_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">mesh_umls_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">rxnorm_umls_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">snomed_umls_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">umls_icd10cm_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">umls_loinc_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">umls_mesh_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">umls_rxnorm_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">umls_snomed_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">umls_clinical_drugs_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">umls_clinical_findings_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">umls_disease_syndrome_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">umls_drug_substance_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">umls_major_concepts_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">ner_profiling_deidentification</code></li>
+    <li><code class="language-plaintext highlighter-rouge">ner_deid_docwise_benchmark_optimized</code></li>
+    <li><code class="language-plaintext highlighter-rouge">ner_deid_docwise_benchmark_optimized_zeroshot_partial</code></li>
+    <li><code class="language-plaintext highlighter-rouge">clinical_deidentification_docwise_benchmark_optimized</code></li>
+    <li><code class="language-plaintext highlighter-rouge">clinical_deidentification_docwise_benchmark_light</code></li>
+    <li><code class="language-plaintext highlighter-rouge">clinical_deidentification_docwise_benchmark_light_v2</code></li>
   </ul>
 
 </div>
@@ -1489,6 +1171,7 @@ She reports difficulty sleeping and ongoing anxiety. Denies suicidal ideation.
     </li>
 </ul>
 <ul class="pagination owl-carousel pagination_big">
+    <li><a href="release_notes_6_0_3">6.0.3</a></li>
     <li><a href="release_notes_6_0_2">6.0.2</a></li>
     <li><a href="release_notes_6_0_1">6.0.1</a></li>
     <li><a href="release_notes_6_0_0">6.0.0</a></li>
@@ -1572,7 +1255,7 @@ She reports difficulty sleeping and ongoing anxiety. Denies suicidal ideation.
     <li><a href="release_notes_2_4_0">2.4.0</a></li>
 </ul>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2025-06-05T00:00:00+00:00">Jun 05, 2025</time>
+      <time itemprop="dateModified" datetime="2025-06-26T00:00:00+00:00">Jun 26, 2025</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>

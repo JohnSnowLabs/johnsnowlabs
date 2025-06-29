@@ -9,12 +9,12 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Healthcare NLP v2.7.6 Release Notes</title><meta property="og:title" content="Spark NLP for Healthcare | John Snow Labs"/>
+<!-- End Google Tag Manager --><title>Healthcare NLP v6.0.3 Release Notes</title><meta property="og:title" content="Spark NLP for Healthcare | John Snow Labs"/>
 
 <meta name="description" content="High Performance NLP with Apache Spark
 ">
-<!-- <link rel="canonical" href="/docs/en/spark_nlp_healthcare_versions/release_notes_2_7_6"> -->
-<link rel="canonical" href="/docs/en/spark_nlp_healthcare_versions/release_notes_2_7_6"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<!-- <link rel="canonical" href="/docs/en/spark_nlp_healthcare_versions/release_notes_6_0_3"> -->
+<link rel="canonical" href="/docs/en/spark_nlp_healthcare_versions/release_notes_6_0_3"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -616,339 +616,545 @@ function wrapWordInSpan(data, wordToWrap) {
 </script><div class="article__header"><div class="header-nav"><div class="main-docs">
   <ul class="breadcrambs">
     <li><a href="/docs">Documentation</a></li>
-    <li>Healthcare NLP v2.7.6 Release Notes</li>
+    <li>Healthcare NLP v6.0.3 Release Notes</li>
   </ul>
 </div></div><header class="main-docs have_subtitle">
-          <h1>Healthcare NLP v2.7.6 Release Notes</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
+          <h1>Healthcare NLP v6.0.3 Release Notes</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
-            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/spark_nlp_healthcare_versions/release_notes_2_7_6.md">
-            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Healthcare NLP v2.7.6 Release Notes"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
+            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/spark_nlp_healthcare_versions/release_notes_6_0_3.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Healthcare NLP v6.0.3 Release Notes"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
-<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="prev_ver h3-box">
+<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <h3 id="section">2.7.6</h3>
+  <h2 id="section">6.0.3</h2>
 
-  <p>We are glad to announce that Spark NLP for Healthcare 2.7.6 has been released!</p>
+  <h4 id="highlights">Highlights</h4>
+
+  <p>We are delighted to announce the release of our latest enhancements and updates for Healthcare NLP.</p>
+
+  <ul>
+    <li>Support for obfuscation equivalents to normalize entity variants in DeIdentification (e.g. Robert vs Rob will be treated same)</li>
+    <li>Deterministic fallback for missing Date shifts in DeIdentification</li>
+    <li>Dictionary support for <code class="language-plaintext highlighter-rouge">Deidentification</code> with <code class="language-plaintext highlighter-rouge">setSelectiveObfuscationModes</code> parameter</li>
+    <li>New MedS-NER LLM for structured medical entity extraction via small LLMs</li>
+    <li>Memory optimisation for pretrained zero shot NER models to extract custom entities from out-of-distribution datasets</li>
+    <li>Enhanced phenotype entity mapping pipeline with HPO standardization and advanced entity extraction</li>
+    <li>Optimized clinical De-Identification pipelines for secure and compliant healthcare data processing with one liner</li>
+    <li>Various core improvements, bug fixes, enhanced overall robustness, and reliability of Spark NLP for Healthcare
+      <ul>
+        <li>Improved incorrect multi-letter replacements for single-letter names in obfuscation</li>
+        <li>Substring logic crash fix in <code class="language-plaintext highlighter-rouge">TextMatcherInternal</code> for safer token handling</li>
+        <li>Memory optimization for <code class="language-plaintext highlighter-rouge">PretrainedZeroShotNER</code> to reduce memory usage during inference</li>
+      </ul>
+    </li>
+    <li>New and updated notebooks and demonstrations
+      <ul>
+        <li>Updated <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/40.1.Text_Matcher_Internal.ipynb">Text Matcher Internal</a> Notebook</li>
+      </ul>
+    </li>
+  </ul>
+
+  <p>These enhancements will elevate your experience with Healthcare NLP, enabling more efficient, accurate, and streamlined analysis of healthcare-related natural language data.</p>
 
 </div>
 <div class="h3-box">
 
-  <h4 id="highlights">Highlights:</h4>
+  <h4 id="new-feature-support-for-obfuscation-equivalents-to-normalize-entity-variants">New Feature: Support for Obfuscation Equivalents to Normalize Entity Variants</h4>
+
+  <p>A new <strong>feature</strong> has been added to support defining <em>obfuscation equivalents</em> — enabling consistent replacement of variant forms of the same entity during de-identification.</p>
+
+  <p><strong>Use case examples:</strong></p>
+  <ul>
+    <li><code class="language-plaintext highlighter-rouge">"Alex"</code> and <code class="language-plaintext highlighter-rouge">"Alexander"</code> → always mapped to the same obfuscated value under <code class="language-plaintext highlighter-rouge">"NAME"</code></li>
+    <li><code class="language-plaintext highlighter-rouge">"CA"</code> and <code class="language-plaintext highlighter-rouge">"Calif."</code> → normalized to <code class="language-plaintext highlighter-rouge">"California"</code> under <code class="language-plaintext highlighter-rouge">"STATE"</code></li>
+  </ul>
+
+  <p><strong>How it works:</strong></p>
+  <ul>
+    <li>Accepts a list of string triplets: <code class="language-plaintext highlighter-rouge">[variant, entityType, canonical]</code></li>
+    <li>Both <code class="language-plaintext highlighter-rouge">variant</code> and <code class="language-plaintext highlighter-rouge">entityType</code> are <strong>case-insensitive</strong></li>
+    <li>Ensures consistent and semantically aligned obfuscation across documents</li>
+  </ul>
+
+  <p><em>Example</em>:</p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span><span class="p">,</span> <span class="n">medical</span>
+<span class="n">equvalent_list</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="s">"Alex"</span><span class="p">,</span> <span class="s">"NAME"</span><span class="p">,</span> <span class="s">"Alexander"</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">"Jenny"</span><span class="p">,</span> <span class="s">"NAME"</span><span class="p">,</span> <span class="s">"Jennifer"</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">"Liz"</span><span class="p">,</span> <span class="s">"NAME"</span><span class="p">,</span> <span class="s">"Elizabeth"</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">"CA"</span><span class="p">,</span> <span class="s">"LOCATION"</span><span class="p">,</span> <span class="s">"California"</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">"NY"</span><span class="p">,</span> <span class="s">"CITY"</span><span class="p">,</span> <span class="s">"New York"</span><span class="p">]</span>
+<span class="p">]</span>
+<span class="n">obfuscation</span> <span class="o">=</span> <span class="n">DeIdentification</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner_chunk"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"deidentified"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setMode</span><span class="p">(</span><span class="s">"obfuscate"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setObfuscationEquivalents</span><span class="p">(</span><span class="n">equvalent_list</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setSeed</span><span class="p">(</span><span class="mi">103</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setGenderAwareness</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="n">text</span> <span class="o">=</span><span class="s">'''
+Record date: 2023-03-08. The patient, Jennifer Thompson, is 63 years old.
+Dr. Elizabeth Carter, from Downtown Health Center in New York, NY, 10027, Phone: 212-123-4567.
+Dr. Liz discharged Jenny on 2023-03-08. Her medical record number is 77881234.
+'''</span>
+
+</code></pre></div>  </div>
+
+  <p><em>Result</em>:</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Record <span class="nb">date</span>: 2023-04-10. The patient, Maryl Gallant, is 75 years old.                                                       
+Dr. Rosanne Grand, from Doctors Specialty Hospital <span class="k">in </span>Watonga, Watonga, 01194, Phone: 909-098-7654.
+Dr. Rosanne discharged Maryl on 2023-04-10. Her medical record number is 44330987.                                                             
+</code></pre></div>  </div>
+
+  <ul>
+    <li>Also supports loading equivalence rules from external files via <code class="language-plaintext highlighter-rouge">.setObfuscationEquivalentsResource</code>.</li>
+  </ul>
+
+  <p><em>Example</em>:</p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">obfuscation</span><span class="p">.</span><span class="n">setObfuscationEquivalentsResource</span><span class="p">(</span><span class="s">"path/to/equivalents.csv"</span><span class="p">)</span>
+</code></pre></div>  </div>
+
+  <ul>
+    <li><code class="language-plaintext highlighter-rouge">getDefaultObfuscationEquivalents</code>: Returns the default obfuscation equivalents for common entities</li>
+  </ul>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span>
+    <span class="p">[</span><span class="s">'Alex'</span><span class="p">,</span> <span class="s">'FIRST_NAME'</span><span class="p">,</span> <span class="s">'Alexander'</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">'Rob'</span><span class="p">,</span> <span class="s">'FIRST_NAME'</span><span class="p">,</span> <span class="s">'Robert'</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">'Bob'</span><span class="p">,</span> <span class="s">'FIRST_NAME'</span><span class="p">,</span> <span class="s">'Robert'</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">'Bobby'</span><span class="p">,</span> <span class="s">'FIRST_NAME'</span><span class="p">,</span> <span class="s">'Robert'</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">'Liz'</span><span class="p">,</span> <span class="s">'FIRST_NAME'</span><span class="p">,</span> <span class="s">'Elizabeth'</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">'Beth'</span><span class="p">,</span> <span class="s">'FIRST_NAME'</span><span class="p">,</span> <span class="s">'Elizabeth'</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">'Lizzy'</span><span class="p">,</span> <span class="s">'FIRST_NAME'</span><span class="p">,</span> <span class="s">'Elizabeth'</span><span class="p">],</span>
+    <span class="p">.....</span>
+<span class="p">]</span>
+</code></pre></div>  </div>
+
+  <ul>
+    <li><code class="language-plaintext highlighter-rouge">setEnableDefaultObfuscationEquivalents</code>: Sets whether to enable default obfuscation equivalents for common entities.
+This parameter allows the system to automatically include a set of predefined common English name equivalents. The default is False.</li>
+  </ul>
+
+</div>
+<div class="h3-box">
+
+  <h4 id="new-feature-deterministic-fallback-for-missing-date-shifts-in-deidentification">New Feature: Deterministic Fallback for Missing Date Shifts in DeIdentification</h4>
+
+  <p>A new utility has been added to <strong>automatically fill missing or empty values</strong> in a date shift column using a <strong>deterministic, ID-based pseudo-random fallback</strong>.</p>
+
+  <p>This feature is especially useful in <strong>de-identification pipelines</strong> where:</p>
+
+  <ul>
+    <li>Date shifts must be <strong>consistent per ID</strong></li>
+    <li>Some rows have <strong>null or missing shift values</strong></li>
+  </ul>
+
+  <p><strong>Logic:</strong></p>
+
+  <ul>
+    <li>If another row with the same <code class="language-plaintext highlighter-rouge">ID</code> has a shift value, it is <strong>reused</strong></li>
+    <li>If no shift exists for that ID, a fallback shift is <strong>generated using a deterministic hash function</strong> based on the <code class="language-plaintext highlighter-rouge">ID</code> and a fixed seed</li>
+    <li>Fallback shifts are <strong>always within the range</strong> <code class="language-plaintext highlighter-rouge">[1, maxShiftDays]</code></li>
+  </ul>
+
+  <p><em>Example</em>:</p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span><span class="s">'patientID'</span> <span class="p">:</span> <span class="p">[</span><span class="s">'A001'</span><span class="p">,</span> <span class="s">'A002'</span><span class="p">,</span> <span class="s">'A001'</span><span class="p">,</span> <span class="s">'A002'</span><span class="p">,</span> <span class="s">'A003'</span><span class="p">,</span> <span class="s">'A003'</span><span class="p">],</span>
+     <span class="s">'text'</span> <span class="p">:</span> <span class="p">[</span>
+         <span class="s">'Chris Brown was discharged on 10/02/2022'</span><span class="p">,</span>
+          <span class="s">'Mark White was discharged on 03/01/2020'</span><span class="p">,</span>
+          <span class="s">'Chris Brown was born on 05/10/1982'</span><span class="p">,</span>
+          <span class="s">'Mark White was born on 10/04/2000'</span><span class="p">,</span>
+          <span class="s">'John was discharged on 03/15/2022'</span><span class="p">,</span>
+          <span class="s">'John Moore was born on 12/31/2002'</span>
+      <span class="p">],</span>
+     <span class="s">'dateshift'</span> <span class="p">:</span> <span class="p">[</span><span class="s">'10'</span><span class="p">,</span> <span class="s">'-2'</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+<span class="n">input_df</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">sparknlp_jsl.utils</span> <span class="kn">import</span> <span class="n">DateShiftFiller</span>
+<span class="n">filler</span> <span class="o">=</span> <span class="n">sparknlp_jsl</span><span class="p">.</span><span class="n">utils</span><span class="p">.</span><span class="n">DateShiftFiller</span><span class="p">(</span><span class="n">spark</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">max_shift_days</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+<span class="n">result_df</span> <span class="o">=</span> <span class="n">filler</span><span class="p">.</span><span class="n">fill_missing_shifts</span><span class="p">(</span><span class="n">input_df</span><span class="p">,</span> <span class="n">id_col</span><span class="o">=</span><span class="s">"patientID"</span><span class="p">,</span> 
+                                       <span class="n">shift_col</span><span class="o">=</span><span class="s">"dateshift"</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s">"_filled"</span><span class="p">)</span>
+</code></pre></div>  </div>
+
+  <p><em>Result</em>:</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>|patientID|text                                    |dateshift|dateshift_filled|
+|---------|----------------------------------------|---------|----------------|
+|A002     |Mark White was discharged on 03/01/2020 |-2       |-2              |
+|A001     |Chris Brown was discharged on 10/02/2022|10       |10              |
+|A001     |Chris Brown was discharged on 03/15/2022|NULL     |10              |
+|A003     |John was discharged on 03/15/2022       |NULL     |5               |
+|A003     |John Moore was discharged on 12/31/2022 |5        |5               |
+|A002     |Mark White discharged on 12/31/2022     |NULL     |-2              |
+</code></pre></div>  </div>
+
+  <h4 id="dictionary-support-for-deidentification-with-setselectiveobfuscationmodes-parameter">Dictionary Support for <code class="language-plaintext highlighter-rouge">Deidentification</code> with <code class="language-plaintext highlighter-rouge">setSelectiveObfuscationModes</code> Parameter</h4>
+
+  <p>Added support for <strong>dictionary input</strong> in the <code class="language-plaintext highlighter-rouge">setSelectiveObfuscationModes</code> method, allowing more flexible configuration of obfuscation modes for specific entities or contexts.</p>
+
+  <p><em>Example</em>:</p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span><span class="p">,</span> <span class="n">medical</span>
+
+<span class="n">sample_json</span> <span class="o">=</span> <span class="p">{</span>
+	<span class="s">"obfuscate"</span><span class="p">:</span> <span class="p">[</span><span class="s">"PHONE"</span><span class="p">]</span> <span class="p">,</span>
+	<span class="s">"mask_entity_labels"</span><span class="p">:</span> <span class="p">[</span><span class="s">"ID"</span><span class="p">,</span> <span class="s">"NAME"</span><span class="p">],</span>
+	<span class="s">"skip"</span><span class="p">:</span> <span class="p">[</span><span class="s">"DATE"</span><span class="p">],</span>
+	<span class="s">"mask_same_length_chars"</span><span class="p">:[</span><span class="s">"location"</span><span class="p">],</span>
+	<span class="s">"mask_fixed_length_chars"</span><span class="p">:[</span><span class="s">"zip"</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="n">deid_doc</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DeIdentification</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner_chunk"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"deidentified"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setMode</span><span class="p">(</span><span class="s">"mask"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setSameLengthFormattedEntities</span><span class="p">([</span><span class="s">"PHONE"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setFixedMaskLength</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setSelectiveObfuscationModes</span><span class="p">(</span><span class="n">sample_json</span><span class="p">)</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="s">"""Record date : 2023-01-13.                                                               
+The patient, Emma Wilson, is 50 years old.                                                 
+Dr. John Lee, from Royal Medical Clinic in Chicago, 0295 Keats Street , Phone 55-555-5555.
+Her phone number: 444-456-7890 and her medical record number is 56467890.                  
+"""</span>
+</code></pre></div>  </div>
+
+  <p><em>Result</em>:</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Record <span class="nb">date</span> : 2023-01-13.                                                                
+The patient, &lt;NAME&gt;, is &lt;AGE&gt; years old.                                                 
+Dr. &lt;NAME&gt;, from <span class="o">[</span><span class="k">******************</span><span class="o">]</span> <span class="k">in</span> <span class="o">[</span><span class="k">*****</span><span class="o">]</span>, <span class="o">[</span><span class="k">***************</span><span class="o">]</span> , Phone 66-666-6666.
+Her phone number: 777-765-4321 and her medical record number is &lt;ID&gt;.  
+</code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
+
+  <h4 id="new-meds-ner-model-for-structured-medical-entity-extraction">New MedS NER Model for Structured Medical Entity Extraction</h4>
+
+  <p>This LLM model is trained to extract and link entities in a document. Users need to define an input schema as explained in the example section. Drug is defined as a list that tells the model that there could be multiple drugs in the document, and it has to extract all of them. Each drug has properties like its name and reaction. Since “name” is only one, it is a string, but there could be multiple reactions, hence it is a list. Similarly, users can define any schema for any entity.</p>
+
+  <p><em>Example</em>:</p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span><span class="p">,</span> <span class="n">medical</span>
+<span class="n">medical_llm</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">AutoGGUFModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"jsl_meds_ner_q16_v3"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"completions"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setBatchSize</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setNPredict</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setUseChatTemplate</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setTemperature</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">med_ner_prompt</span> <span class="o">=</span> <span class="s">"""
+### Template:
+{
+    "drugs": [
+        {
+            "name": "",
+            "reactions": []
+        }
+    ]
+}
+### Text:
+I feel a bit drowsy &amp; have a little blurred vision , and some gastric problems .
+I 've been on Arthrotec 50 for over 10 years on and off , only taking it when I needed it .
+Due to my arthritis getting progressively worse , to the point where I am in tears with the agony.
+Gp 's started me on 75 twice a day and I have to take it every day for the next month to see how I get on , here goes .
+So far its been very good , pains almost gone , but I feel a bit weird , did n't have that when on 50.
+
+"""</span>
+</code></pre></div>  </div>
+
+  <p><em>Result</em>:</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">{</span>
+    <span class="s2">"drugs"</span>: <span class="o">[</span>
+        <span class="o">{</span>
+            <span class="s2">"name"</span>: <span class="s2">"Arthrotec"</span>,
+            <span class="s2">"reactions"</span>: <span class="o">[</span>
+                <span class="s2">"drowsy"</span>,
+                <span class="s2">"blurred vision"</span>,
+                <span class="s2">"gastric problems"</span>
+            <span class="o">]</span>
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">"name"</span>: <span class="s2">"75"</span>,
+            <span class="s2">"reactions"</span>: <span class="o">[</span>
+                <span class="s2">"weird"</span>
+            <span class="o">]</span>
+        <span class="o">}</span>
+    <span class="o">]</span>
+<span class="o">}</span>
+</code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
+
+  <h4 id="enhanced-phenotype-entity-mapping-pipeline-with-hpo-standardization-and-advanced-entity-extraction">Enhanced Phenotype Entity Mapping Pipeline with HPO Standardization and Advanced Entity Extraction</h4>
+
+  <p>This pipeline is designed to map extracted phenotype entities from clinical or biomedical text to their corresponding Human Phenotype Ontology (HPO) codes and assign their <strong>assertion status</strong> (e.g., present, absent, possible). It ensures that observed symptoms, signs, and clinical abnormalities are <strong>standardized</strong> using controlled HPO terminology, facilitating downstream tasks like cohort retrieval, diagnostics, and phenotype-based decision support.</p>
+
+  <p>New enhancements in <code class="language-plaintext highlighter-rouge">TextMatcherInternal</code>—notably <strong>lemmatization</strong> (<code class="language-plaintext highlighter-rouge">enableLemmatizer</code>) and <strong>stopword removal</strong> (<code class="language-plaintext highlighter-rouge">enableStopWordsRemoval</code>)—the matcher now captures a much wider variety of <strong>phrase variations</strong> that were previously missed due to strict string matching.</p>
+
+  <p><strong>Examples:</strong></p>
+  <ul>
+    <li><code class="language-plaintext highlighter-rouge">"apnea of prematurity"</code> matched to <code class="language-plaintext highlighter-rouge">"Apnea prematurity"</code> by ignoring stopwords like <em>“of”</em></li>
+    <li><code class="language-plaintext highlighter-rouge">"bidirectional shunting"</code> matched to <code class="language-plaintext highlighter-rouge">"bidirectional shunt"</code> through token normalization</li>
+  </ul>
+
+  <p>In addition, the <code class="language-plaintext highlighter-rouge">ChunkMapper</code> leverages <strong>fuzzy matching</strong>, enabling the system to link <strong>non-exact matches</strong> to the correct HPO codes. This makes the entire pipeline more <strong>robust and flexible</strong>, especially in noisy or highly variable clinical narratives.</p>
+
+  <p>These improvements significantly increase <strong>recall</strong> and <strong>semantic matching coverage</strong>, supporting more accurate and complete phenotype extraction from real-world medical text.</p>
+
+  <p><em>Example</em>:</p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span><span class="p">,</span> <span class="n">medical</span>
+
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"hpo_mapper_pipeline_v2"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
+
+<span class="n">text</span><span class="o">=</span> <span class="s">"""APNEA: Presumed apnea of prematurity since &lt; 34 wks gestation at birth.
+HYPERBILIRUBINEMIA: At risk for hyperbilirubinemia d/t prematurity.
+1/25-1/30: Received Amp/Gent while undergoing sepsis evaluation.
+Mother is A+, GBS unknown, and infant delivered
+for decreasing fetal movement and preeclampsia.
+Echo showed PFO with bidirectional shunting.
+"""</span>
+</code></pre></div>  </div>
+
+  <p><em>Result</em>:</p>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>hpo_code</th>
+        <th>matched_text</th>
+        <th>ner_chunk</th>
+        <th>begin</th>
+        <th>end</th>
+        <th>result</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>HP:0002104</td>
+        <td>apnea</td>
+        <td>apnea</td>
+        <td>16</td>
+        <td>20</td>
+        <td>possible</td>
+      </tr>
+      <tr>
+        <td>HP:0034236</td>
+        <td>Apnea prematurity</td>
+        <td>apnea of prematurity</td>
+        <td>16</td>
+        <td>35</td>
+        <td>present</td>
+      </tr>
+      <tr>
+        <td>HP:0002904</td>
+        <td>Hyperbilirubinemia</td>
+        <td>hyperbilirubinemia</td>
+        <td>104</td>
+        <td>121</td>
+        <td>present</td>
+      </tr>
+      <tr>
+        <td>HP:0100806</td>
+        <td>sepsis</td>
+        <td>sepsis</td>
+        <td>186</td>
+        <td>191</td>
+        <td>present</td>
+      </tr>
+      <tr>
+        <td>HP:0100602</td>
+        <td>Preeclampsia</td>
+        <td>preeclampsia</td>
+        <td>287</td>
+        <td>298</td>
+        <td>present</td>
+      </tr>
+      <tr>
+        <td>HP:0012383</td>
+        <td>bidirectional shunt</td>
+        <td>bidirectional shunting</td>
+        <td>322</td>
+        <td>343</td>
+        <td>present</td>
+      </tr>
+      <tr>
+        <td>HP:0001558</td>
+        <td>decrease fetal movement</td>
+        <td>decreasing fetal movement</td>
+        <td>257</td>
+        <td>281</td>
+        <td>present</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h4 id="optimized-clinical-de-identification-pipelines-for-secure-and-compliant-healthcare-data-processing">Optimized Clinical De-identification Pipelines for Secure and Compliant Healthcare Data Processing</h4>
+
+  <p>We’ve introduced a suite of optimized clinical de-identification pipelines to enhance the anonymization of sensitive healthcare data. These pipelines combine deep learning (NERDL), zero-shot models, and rule-based methods to perform accurate Named Entity Recognition (NER) across clinical documents. Each pipeline is tailored for performance, scalability, and compliance with privacy regulations, ensuring data integrity while supporting both benchmarking and real-world deployment.</p>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Pipeline Name</th>
+        <th>Stages</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">ner_profiling_deidentification</code></td>
+        <td>20 NERDL, 1 ZeroShot, 20 RuleBased NER</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">ner_deid_docwise_benchmark_optimized</code></td>
+        <td>3 NERDL, 19 RuleBased NER</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">ner_deid_docwise_benchmark_optimized_zeroshot_partial</code></td>
+        <td>1 ZeroShot</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">clinical_deidentification_docwise_benchmark_optimized</code></td>
+        <td>3 NERDL, 19 RuleBased NER</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">clinical_deidentification_docwise_benchmark_light</code></td>
+        <td>3 NERDL, 19 RuleBased NER</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">clinical_deidentification_docwise_benchmark_light_v2</code></td>
+        <td>1 NERDL, 1 ZeroShot, 19 RuleBased NER</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><em>Example</em>:</p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span><span class="p">,</span> <span class="n">medical</span>
+
+<span class="n">deid_pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"clinical_deidentification_docwise_benchmark_optimized"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="s">"""Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024.
+The patient’s medical record number is 56467890.
+The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 ."""</span>
+
+<span class="n">deid_result</span> <span class="o">=</span> <span class="n">deid_pipeline</span><span class="p">.</span><span class="n">fullAnnotate</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</code></pre></div>  </div>
+
+  <p><em>Result</em>:</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Masked with entity labels
+<span class="nt">------------------------------</span>
+Dr. &lt;DOCTOR&gt;, from &lt;HOSPITAL&gt; <span class="k">in</span> &lt;CITY&gt;, attended to the patient on &lt;DATE&gt;.
+The patient’s medical record number is &lt;ID&gt;.
+The patient, &lt;PATIENT&gt;, is &lt;AGE&gt;, her Contact number: &lt;PHONE&gt; <span class="nb">.</span>
+
+Obfuscated
+<span class="nt">------------------------------</span>
+Dr. Valerie Aho, from Mercy Hospital Aurora <span class="k">in </span>Berea, attended to the patient on 30/05/2024.
+The patient’s medical record number is 78689012.
+The patient, Johnathon Bunde, is 55 years old, her Contact number: 666-678-9012 <span class="nb">.</span>
+</code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
+
+  <h4 id="various-core-improvements-bug-fixes-and-overall-enhancements-to-the-robustness-of-spark-nlp-for-healthcare">Various core improvements, bug fixes, and overall enhancements to the robustness of Spark NLP for Healthcare</h4>
 
   <ul>
     <li>
-      <p>New pretrained <strong>Radiology Assertion Status</strong> model to assign <code class="language-plaintext highlighter-rouge">Confirmed</code>, <code class="language-plaintext highlighter-rouge">Suspected</code>, <code class="language-plaintext highlighter-rouge">Negative</code> assertion scopes to imaging findings or any clinical tests.</p>
+      <p><strong>Improved incorrect multi-letter replacements for single-letter names in obfuscation</strong><br />
+Resolved an issue where single-letter initials (e.g., “R” in “William R”) were being obfuscated into multi-letter strings (e.g., “LU”).<br />
+Initials are now consistently replaced with a <strong>different single-letter initial</strong>, preserving length and format.</p>
     </li>
     <li>
-      <p><strong>Obfuscating</strong> the same sensitive information (patient or doctor name) with the same fake names across the same clinical note.</p>
+      <p><strong>Substring logic crash fix in <code class="language-plaintext highlighter-rouge">TextMatcherInternal</code> for safer token handling</strong><br />
+Enhanced reliability by adding safer token index handling and guarding substring extraction against unexpected errors.</p>
     </li>
     <li>
-      <p>Version compatibility checker for the pretrained clinical models and builds to keep up with the latest development efforts in production.</p>
-    </li>
-    <li>
-      <p>Adding more English names to faker module in <strong>Deidentification</strong>.</p>
-    </li>
-    <li>
-      <p>Updated &amp; improved clinical <strong>SentenceDetectorDL</strong> model.</p>
-    </li>
-    <li>
-      <p>New upgrades on <code class="language-plaintext highlighter-rouge">ner_deid_large</code> and <code class="language-plaintext highlighter-rouge">ner_deid_enriched</code> NER models to cover more use cases with better resolutions.</p>
-    </li>
-    <li>
-      <p>Adding more <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/scala/healthcare">examples</a> to workshop repo for <em>Scala</em> users to practice more on healthcare annotators.</p>
-    </li>
-    <li>
-      <p>Bug fixes &amp; general improvements.</p>
+      <p><strong>Memory optimization for <code class="language-plaintext highlighter-rouge">PretrainedZeroShotNER</code> to reduce memory usage during inference</strong>
+Reduced memory footprint during inference by optimizing the internal handling of zero-shot NER models, improving performance and scalability for large datasets.</p>
     </li>
   </ul>
 
 </div>
 <div class="h3-box">
 
-  <h4 id="radiology-assertion-status-model">1. Radiology Assertion Status Model</h4>
-
-  <p>We trained a new assertion model to assign <code class="language-plaintext highlighter-rouge">Confirmed</code>, <code class="language-plaintext highlighter-rouge">Suspected</code>, <code class="language-plaintext highlighter-rouge">Negative</code> assertion scopes to imaging findings or any clinical tests. It will try to assign these statuses to any named entity you would feed to the assertion annotater in the same pipeline.</p>
-
-  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> radiology_assertion = AssertionDLModel.pretrained("assertion_dl_radiology", "en", "clinical/models")\
- .setInputCols(["sentence", "ner_chunk", "embeddings"])\
- .setOutputCol("assertion")
-</code></pre></div>  </div>
-
-  <p><code class="language-plaintext highlighter-rouge">text = Blunting of the left costophrenic angle on the lateral view posteriorly suggests a small left pleural effusion. No right-sided pleural effusion or pneumothorax is definitively seen. There are mildly displaced fractures of the left lateral 8th and likely 9th ribs.</code></p>
-
-  <table class="table-model-big">
-    <thead>
-      <tr>
-        <th style="text-align: right">sentences</th>
-        <th style="text-align: center">chunk</th>
-        <th style="text-align: center">ner_label</th>
-        <th style="text-align: center">sent_id</th>
-        <th style="text-align: left">assertion</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td style="text-align: right">Blunting of the left costophrenic angle on the lateral view posteriorly suggests a small left pleural effusion.</td>
-        <td style="text-align: center">Blunting</td>
-        <td style="text-align: center">ImagingFindings</td>
-        <td style="text-align: center">0</td>
-        <td style="text-align: left">Confirmed</td>
-      </tr>
-      <tr>
-        <td style="text-align: right">Blunting of the left costophrenic angle on the lateral view posteriorly suggests a small left pleural effusion.</td>
-        <td style="text-align: center">effusion</td>
-        <td style="text-align: center">ImagingFindings</td>
-        <td style="text-align: center">0</td>
-        <td style="text-align: left">Suspected</td>
-      </tr>
-      <tr>
-        <td style="text-align: right">No right-sided pleural effusion or pneumothorax is definitively seen.</td>
-        <td style="text-align: center">effusion</td>
-        <td style="text-align: center">ImagingFindings</td>
-        <td style="text-align: center">1</td>
-        <td style="text-align: left">Negative</td>
-      </tr>
-      <tr>
-        <td style="text-align: right">No right-sided pleural effusion or pneumothorax is definitively seen.</td>
-        <td style="text-align: center">pneumothorax</td>
-        <td style="text-align: center">ImagingFindings</td>
-        <td style="text-align: center">1</td>
-        <td style="text-align: left">Negative</td>
-      </tr>
-      <tr>
-        <td style="text-align: right">There are mildly displaced fractures of the left lateral 8th and likely 9th ribs.</td>
-        <td style="text-align: center">displaced fractures</td>
-        <td style="text-align: center">ImagingFindings</td>
-        <td style="text-align: center">2</td>
-        <td style="text-align: left">Confirmed</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p>You can also use this with <code class="language-plaintext highlighter-rouge">AssertionFilterer</code> to return clinical findings from a note only when it is i.e. <code class="language-plaintext highlighter-rouge">confirmed</code> or <code class="language-plaintext highlighter-rouge">suspected</code>.</p>
-
-  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> assertion_filterer = AssertionFilterer()\
- .setInputCols("sentence","ner_chunk","assertion")\
- .setOutputCol("assertion_filtered")\
- .setWhiteList(["confirmed","suspected"])
-
- &gt;&gt; ["displaced fractures", "effusion"]
-</code></pre></div>  </div>
-
-</div>
-<div class="h3-box">
-
-  <h4 id="obfuscating-with-the-same-fake-name-across-the-same-note">2. <strong>Obfuscating</strong> with the same fake name across the same note:</h4>
-
-  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> obfuscation = DeIdentification()\
-  .setInputCols(["sentence", "token", "ner_chunk"]) \
-  .setOutputCol("deidentified") \
-  .setMode("obfuscate")\
-  .setObfuscateDate(True)\
-  .setSameEntityThreshold(0.8)\
-  .setObfuscateRefSource("faker")
-
-
-text =''' Provider: David Hale, M.D.
-          Pt: Jessica Parker
-          David told  Jessica that she will need to visit the clinic next month.'''
-</code></pre></div>  </div>
-
-  <table class="table-model-big">
-    <thead>
-      <tr>
-        <th style="text-align: right"> </th>
-        <th style="text-align: left">sentence</th>
-        <th style="text-align: left">obfuscated</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td style="text-align: right">0</td>
-        <td style="text-align: left">Provider: <code class="language-plaintext highlighter-rouge">David Hale</code>, M.D.</td>
-        <td style="text-align: left">Provider: <code class="language-plaintext highlighter-rouge">Dennis Perez</code>, M.D.</td>
-      </tr>
-      <tr>
-        <td style="text-align: right">1</td>
-        <td style="text-align: left">Pt: <code class="language-plaintext highlighter-rouge">Jessica Parker</code></td>
-        <td style="text-align: left">Pt: <code class="language-plaintext highlighter-rouge">Gerth Bayer</code></td>
-      </tr>
-      <tr>
-        <td style="text-align: right">2</td>
-        <td style="text-align: left"><code class="language-plaintext highlighter-rouge">David</code> told  <code class="language-plaintext highlighter-rouge">Jessica</code> that she will need to visit the clinic next month.</td>
-        <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Dennis</code> told  <code class="language-plaintext highlighter-rouge">Gerth</code> that she will need to visit the clinic next month.</td>
-      </tr>
-    </tbody>
-  </table>
-
-</div>
-<div class="h3-box">
-
-  <h4 id="library-version-compatibility-table-">3. Library Version Compatibility Table :</h4>
-
-  <p>We are releasing the version compatibility table to help users get to see which Spark NLP licensed version is built against which core (open source) version. We are going to release a detailed one after running some tests across the jars from each library.</p>
-
-  <table class="table-model-big">
-    <thead>
-      <tr>
-        <th>Healthcare</th>
-        <th>Public</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>2.7.6</td>
-        <td>2.7.4</td>
-      </tr>
-      <tr>
-        <td>2.7.5</td>
-        <td>2.7.4</td>
-      </tr>
-      <tr>
-        <td>2.7.4</td>
-        <td>2.7.3</td>
-      </tr>
-      <tr>
-        <td>2.7.3</td>
-        <td>2.7.3</td>
-      </tr>
-      <tr>
-        <td>2.7.2</td>
-        <td>2.6.5</td>
-      </tr>
-      <tr>
-        <td>2.7.1</td>
-        <td>2.6.4</td>
-      </tr>
-      <tr>
-        <td>2.7.0</td>
-        <td>2.6.3</td>
-      </tr>
-      <tr>
-        <td>2.6.2</td>
-        <td>2.6.2</td>
-      </tr>
-      <tr>
-        <td>2.6.0</td>
-        <td>2.6.0</td>
-      </tr>
-      <tr>
-        <td>2.5.5</td>
-        <td>2.5.5</td>
-      </tr>
-      <tr>
-        <td>2.5.3</td>
-        <td>2.5.3</td>
-      </tr>
-      <tr>
-        <td>2.5.2</td>
-        <td>2.5.2</td>
-      </tr>
-      <tr>
-        <td>2.5.0</td>
-        <td>2.5.0</td>
-      </tr>
-      <tr>
-        <td>2.4.7</td>
-        <td>2.4.5</td>
-      </tr>
-      <tr>
-        <td>2.4.6</td>
-        <td>2.4.5</td>
-      </tr>
-      <tr>
-        <td>2.4.5</td>
-        <td>2.4.5</td>
-      </tr>
-      <tr>
-        <td>2.4.2</td>
-        <td>2.4.2</td>
-      </tr>
-      <tr>
-        <td>2.4.1</td>
-        <td>2.4.1</td>
-      </tr>
-      <tr>
-        <td>2.4.0</td>
-        <td>2.4.0</td>
-      </tr>
-      <tr>
-        <td>2.3.6</td>
-        <td>2.3.6</td>
-      </tr>
-      <tr>
-        <td>2.3.5</td>
-        <td>2.3.5</td>
-      </tr>
-      <tr>
-        <td>2.3.4</td>
-        <td>2.3.4</td>
-      </tr>
-    </tbody>
-  </table>
-
-</div>
-<div class="h3-box">
-
-  <h4 id="pretrained-models-version-control-">4. Pretrained Models Version Control :</h4>
-
-  <p>Due to active release cycle, we are adding &amp; training new pretrained models at each release and it might be tricky to maintain the backward compatibility or keep up with the latest models, especially for the users using our models locally in air-gapped networks.</p>
-
-  <p>We are releasing a new utility class to help you check your local &amp; existing models with the latest version of everything we have up to date. This is an highly experimental feature of which we plan to improve and add more capability later on.</p>
-
-  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from sparknlp_jsl.check_compatibility import Compatibility
-
- checker = sparknlp_jsl.Compatibility()
-
- result = checker.find_version(aws_access_key_id=license_keys['AWS_ACCESS_KEY_ID'],
-                        aws_secret_access_key=license_keys['AWS_SECRET_ACCESS_KEY'],
-                        metadata_path=None,
-                        model = 'all' , # or a specific model name
-                        target_version='all',
-                        cache_pretrained_path='/home/ubuntu/cache_pretrained')
-
- &gt;&gt; result['outdated_models']
-
-  [{'model_name': 'clinical_ner_assertion',
-    'current_version': '2.4.0',
-    'latest_version': '2.6.4'},
-   {'model_name': 'jsl_rd_ner_wip_greedy_clinical',
-    'current_version': '2.6.1',
-    'latest_version': '2.6.2'},
-   {'model_name': 'ner_anatomy',
-    'current_version': '2.4.2',
-    'latest_version': '2.6.4'},
-   {'model_name': 'ner_aspect_based_sentiment',
-    'current_version': '2.6.2',
-    'latest_version': '2.7.2'},
-   {'model_name': 'ner_bionlp',
-    'current_version': '2.4.0',
-    'latest_version': '2.7.0'},
-   {'model_name': 'ner_cellular',
-    'current_version': '2.4.2',
-    'latest_version': '2.5.0'}]
-
-  &gt;&gt; result['version_comparison_dict']
-
-  [{'clinical_ner_assertion': {'current_version': '2.4.0', 'latest_version': '2.6.4'}}, {'jsl_ner_wip_clinical': {'current_version': '2.6.5', 'latest_version': '2.6.1'}}, {'jsl_ner_wip_greedy_clinical': {'current_version': '2.6.5', 'latest_version': '2.6.5'}}, {'jsl_ner_wip_modifier_clinical': {'current_version': '2.6.4', 'latest_version': '2.6.4'}}, {'jsl_rd_ner_wip_greedy_clinical': {'current_version': '2.6.1','latest_version': '2.6.2'}}]
-</code></pre></div>  </div>
-
-</div>
-<div class="h3-box">
-
-  <h4 id="updated-pretrained-models">5. Updated Pretrained Models:</h4>
-
-  <p>(requires fresh <code class="language-plaintext highlighter-rouge">.pretraned()</code>)</p>
+  <h4 id="updated-notebooks-and-demonstrations-for-making-spark-nlp-for-healthcare-easier-to-navigate-and-understand">Updated Notebooks and Demonstrations for making Spark NLP for Healthcare Easier To Navigate And Understand</h4>
 
   <ul>
-    <li>ner_deid_large</li>
-    <li>ner_deid_enriched</li>
+    <li>Updated <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/40.1.Text_Matcher_Internal.ipynb">Text Matcher Internal</a> Notebook</li>
   </ul>
 
 </div>
-<div class="prev_ver h3-box">
+<div class="h3-box">
+
+  <h4 id="we-have-added-and-updated-a-substantial-number-of-new-clinical-models-and-pipelines-further-solidifying-our-offering-in-the-healthcare-domain">We Have Added And Updated A Substantial Number Of New Clinical Models And Pipelines, Further Solidifying Our Offering In The Healthcare Domain.</h4>
+
+  <ul>
+    <li><code class="language-plaintext highlighter-rouge">jsl_meds_ner_q16_v3</code></li>
+    <li><code class="language-plaintext highlighter-rouge">jsl_meds_ner_q8_v3</code></li>
+    <li><code class="language-plaintext highlighter-rouge">jsl_meds_ner_q4_v3</code></li>
+    <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_umls_disease_syndrome</code></li>
+    <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_umls_findings</code></li>
+    <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_umls_clinical_drugs</code></li>
+    <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_umls_general_concepts</code></li>
+    <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_umls_major_concepts</code></li>
+    <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_umls_drug_substance</code></li>
+    <li><code class="language-plaintext highlighter-rouge">biolordresolve_umls_general_concepts</code></li>
+    <li><code class="language-plaintext highlighter-rouge">hpo_mapper_pipeline</code></li>
+    <li><code class="language-plaintext highlighter-rouge">meddra_llt_snomed_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">snomed_meddra_llt_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">explain_clinical_doc_sdoh</code></li>
+    <li><code class="language-plaintext highlighter-rouge">explain_clinical_doc_mental_health</code></li>
+    <li><code class="language-plaintext highlighter-rouge">ner_medication_generic_pipeline</code></li>
+    <li><code class="language-plaintext highlighter-rouge">ner_deid_context_augmented_pipeline</code></li>
+    <li><code class="language-plaintext highlighter-rouge">icd10cm_umls_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">loinc_umls_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">mesh_umls_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">rxnorm_umls_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">snomed_umls_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">umls_icd10cm_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">umls_loinc_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">umls_mesh_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">umls_rxnorm_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">umls_snomed_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">umls_clinical_drugs_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">umls_clinical_findings_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">umls_disease_syndrome_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">umls_drug_substance_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">umls_major_concepts_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">ner_profiling_deidentification</code></li>
+    <li><code class="language-plaintext highlighter-rouge">ner_deid_docwise_benchmark_optimized</code></li>
+    <li><code class="language-plaintext highlighter-rouge">ner_deid_docwise_benchmark_optimized_zeroshot_partial</code></li>
+    <li><code class="language-plaintext highlighter-rouge">clinical_deidentification_docwise_benchmark_optimized</code></li>
+    <li><code class="language-plaintext highlighter-rouge">clinical_deidentification_docwise_benchmark_light</code></li>
+    <li><code class="language-plaintext highlighter-rouge">clinical_deidentification_docwise_benchmark_light_v2</code></li>
+  </ul>
+
+</div>
+<div class="h3-box">
+
+  <p>For all Spark NLP for Healthcare models, please check <a href="https://nlp.johnsnowlabs.com/models?edition=Healthcare+NLP">Models Hub Page</a></p>
+
+</div>
+<div class="h3-box">
 
   <h2 id="versions">Versions</h2>
 
@@ -1049,7 +1255,7 @@ text =''' Provider: David Hale, M.D.
     <li><a href="release_notes_2_4_0">2.4.0</a></li>
 </ul>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2021-07-14T00:00:00+00:00">Jul 14, 2021</time>
+      <time itemprop="dateModified" datetime="2025-06-26T00:00:00+00:00">Jun 26, 2025</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
