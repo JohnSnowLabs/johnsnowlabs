@@ -73,7 +73,6 @@ For **LLM Evaluation Comparison** projects, follow the same steps, but associate
 
 To start working with prompts:
 
-
 1.Go to the **Tasks** page and click **Import**.
 
 2.Upload your prompts in either .json or .zip format. Following is a Sample JSON Format to import prompt:
@@ -84,24 +83,17 @@ To start working with prompts:
   "data": {
     "prompt": "Give me a diet plan for a diabetic 35 year old with reference links",
     "response1": "",
-    "llm_details": [
-      { "synthetic_tasks_service_provider_id": 2, "response_key": "response1" }
-    ],
     "title": "DietPlan"
   }
 }
 ```
-**Sample JSON for LLM Evaluation Comparision Project**
+**Sample JSON for LLM Evaluation Comparison Project**
 ```json
 {
   "data": {
     "prompt": "Give me a diet plan for a diabetic 35 year old with reference links",
     "response1": "",
     "response2": "",
-    "llm_details": [
-      { "synthetic_tasks_service_provider_id": 2, "response_key": "response1" },
-       { "synthetic_tasks_service_provider_id": 2, "response_key": "response2" }
-    ],
     "title": "DietPlan"
   }
 }
@@ -111,6 +103,45 @@ To start working with prompts:
 ![720image](/assets/images/annotation_lab/7.2.0/3.gif)
 
 After responses are generated, users can begin evaluating them directly within the task interface.
+
+### Sample Import Format for LLM Evaluation with Response
+Users can also import prompts and LLM-generated responses using a structured JSON format. This feature supports both LLM Evaluation and LLM Evaluation Comparison project types.
+
+Below are example JSON formats:
+
+- **LLM Evaluation:** Includes a prompt and one LLM response mapped to a provider.
+- **LLM Evaluation Comparison:** Supports multiple LLM responses to the same prompt, allowing side-by-side evaluation.
+
+**Sample JSON for LLM Evaluation Project with Response**
+
+```json
+{
+  "data": {
+    "prompt": "Give me a diet plan for a diabetic 35 year old with reference links",
+    "response1": "Prompt Respons1 Here",
+    "llm_details": [
+      { "synthetic_tasks_service_provider_id": 1, "response_key": "response1" }
+    ],
+    "title": "DietPlan"
+  }
+}
+```
+**Sample JSON for LLM Evaluation Comparision Project with Response**
+```json
+{
+  "data": {
+    "prompt": "Give me a diet plan for a diabetic 35 year old with reference links",
+    "response1": "Prompt Respons1 Here",
+    "response2": "Prompt Respons2 Here",
+    "llm_details": [
+      { "synthetic_tasks_service_provider_id": 1, "response_key": "response1" },
+       { "synthetic_tasks_service_provider_id": 2, "response_key": "response2" }
+    ],
+    "title": "DietPlan"
+  }
+}
+```
+
 
 ### Analytics Dashboard for LLM Evaluation Projects
 
@@ -236,6 +267,7 @@ These updates ensure a smoother project setup experience and prevent misconfigur
 **Annotator Access Permissions**
 - **Issue:** "User doesn't have permission" errors for assigned annotators in de-identification projects
 - **Resolution**: Annotators with task assignments can access task pages without permission errors
+
 
 </div><div class="prev_ver h3-box" markdown="1">
 
