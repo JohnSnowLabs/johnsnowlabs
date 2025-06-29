@@ -2,8 +2,8 @@
 layout: docs
 header: true
 seotitle: Spark NLP for Healthcare | John Snow Labs
-title: Healthcare NLP Release Notes
-permalink: /docs/en/spark_nlp_healthcare_versions/licensed_release_notes
+title: Healthcare NLP v6.0.3 Release Notes
+permalink: /docs/en/spark_nlp_healthcare_versions/release_notes_6_0_3
 key: docs-licensed-release-notes
 modify_date: 2025-06-26
 show_nav: true
@@ -447,8 +447,6 @@ Reduced memory footprint during inference by optimizing the internal handling of
 + `clinical_deidentification_docwise_benchmark_light_v2`
 
 
-
-
 </div><div class="h3-box" markdown="1">
 
 For all Spark NLP for Healthcare models, please check [Models Hub Page](https://nlp.johnsnowlabs.com/models?edition=Healthcare+NLP)
@@ -456,9 +454,7 @@ For all Spark NLP for Healthcare models, please check [Models Hub Page](https://
 
 </div><div class="h3-box" markdown="1">
 
-
-
-## Previous versions
+## Versions
 
 </div>
 {%- include docs-healthcare-pagination.html -%}
