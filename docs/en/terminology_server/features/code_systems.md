@@ -13,6 +13,10 @@ sidebar:
 
 ## Code Systems
 
+
+![Terminology Service by John Snow Labs](/assets/images/term_server/code_to_code_search.png)
+
+
 In healthcare, **medical coding systems** are standardized sets of codes used to classify diseases, treatments, medications, lab results, and clinical concepts.
 Each system serves a specific purpose:
 * ICD10: Classifies diseases and health conditions.
@@ -51,6 +55,4 @@ Terminology Server application solves this problem by:
 * Returning the corresponding codes in each system.
 * Showing mappings—links between equivalent or related codes across systems.
 
-This means users can see how E11 in ICD10 (Type 2 diabetes) maps to 10067585 in MEDDRA_PT( standardized, single medical concepts used to represent a symptom, sign, disease, diagnosis, etc) and how to E11 in ICD10CM (coding diseases, conditions, and injuries for statistical and billing purposes) maps to C0011847 in UMLS.
-
-![Terminology Service by John Snow Labs](/assets/images/term_server/code_to_code_search.png)
+This means users can see - as exemplified in the top image, how **E11 in ICD10** (Type 2 diabetes) **maps to 10067585 in MEDDRA_PT**( standardized, single medical concepts used to represent a symptom, sign, disease, diagnosis, etc) and how to **E11 in ICD10CM** (coding diseases, conditions, and injuries for statistical and billing purposes) **maps to C0011847 in UMLS**.
