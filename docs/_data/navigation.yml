@@ -125,7 +125,7 @@ term-server:
             url: /docs/en/terminology_server/features/code_systems
           - title: Concept Maps
             url: /docs/en/terminology_server/features/concept_maps
-          - title: Custom Value Sets
+          - title: Value Sets
             url: /docs/en/terminology_server/features/value_sets
       - subtitle: APIs
         children:
