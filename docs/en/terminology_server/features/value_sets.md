@@ -71,5 +71,4 @@ Example:
 3. In the left navigation panel, check the box next to the Value Set and a particular version you want to use as a filter, in our case the **Version 1** under **Histology Carcinoma**. The name of the Value Set and the selected version are now displayed as applied filter (figure below).  
 4. After applying the filter, the results table will display a new column labeled **"ValueSet"**. ![Terminology Service by John Snow Labs](/assets/images/term_server/FilteredResultsByVS.png)
 
-Thw **ValueSet** column in the search results table above, indicates which search results are included in the selected **Version1 of Histology Carcinoma** (as shown in the figure) by cross-referencing the **concept codes** from in the search results with those defined in the **Version1 of Histology Carcinoma** vocabulary in this example.
-The information in this column is derived from the specific version of the selected Value Set file.     
+Thw **ValueSet** column in the search results table above, indicates which search results are included in the selected **Version1 of Histology Carcinoma** (as shown in the figure) by cross-referencing the **concept codes** in the search results with those defined in the **Version1 of Histology Carcinoma** vocabulary in this example.
