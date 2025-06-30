@@ -49,7 +49,7 @@ This filtering helps streamline the results, allowing you to focus only on the c
 
 ![Terminology Service by John Snow Labs](/assets/images/term_server/MapCodes_MainPage.png)
 
-## Concept Search (semantic seaarch & exact search)
+## Concept Search (Semantic search & Exact match search)
 
 Terminology Server **concept search** capability excels by leveraging associated synonyms, accounting for **misspellings**, and employing both **string matching** and **semantic search** when seeking **similarity searches** results and when the system returns the best matching concept from the terminology embedding database.
 
