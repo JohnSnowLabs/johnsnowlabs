@@ -16,7 +16,7 @@ sidebar:
 Terminology Server provides two distinct search modes:
 
 * **Code Search** – Enables users to locate a specific medical code within the Terminology Server's curated set of medical coding systems.
-* **Concept Search** – Allows users to search for medical terms or concepts using a combination of exact text matching and semantic search techniques to return similar or related concepts, as described in the section below.
+* **Concept Search** – Allows users to search for medical terms or concepts using a combination of <ins>**exact text**</ins> matching and <ins>**semantic search**</ins> techniques to return similar or related concepts, as described in the section below.
 
 
 ## Code Search (code to code mapping)
@@ -51,7 +51,7 @@ This filtering helps streamline the results, allowing you to focus only on the c
 
 ## Concept Search (Semantic search & Exact match search)
 
-Terminology Server **concept search** capability excels by leveraging associated synonyms, accounting for **misspellings**, and employing both **string matching** and **semantic search** when seeking **similarity searches** results and when the system returns the best matching concept from the terminology embedding database.
+Terminology Server **concept search** capability excels by leveraging associated synonyms, accounting for **misspellings**, and employing both <ins>**string matching**</ins> and <ins>**semantic search**</ins> when seeking **similarity searches** results and when the system returns the best matching concept from the terminology embedding database.
 
 The user can opt for either of the search types, or utilize both in tandem — this is the default setting.
 Terminology Server offers stable and deterministic results. The same term(concept) will always return the same code, thanks to its **reliance on official terminology datasets and carefully curated in-house augmentations**.
@@ -73,7 +73,7 @@ Terminology Server performs term-level mapping: searching a term will return the
 
 ## Context Based Search
 
-Context-aware search that considers surrounding text to find more accurate medical codes by analyzing the clinical context in which terms appear.It is a powerful feature that enhances the accuracy and relevance of search results by allowing users to include additional context when searching for medical terms.
+THis search modality employs **context-aware search** that **considers surrounding text** to find more accurate medical codes by **analyzing the clinical context in which terms appear**. It is a powerful feature that enhances the accuracy and relevance of search results by allowing users to include additional context when searching for medical terms.
 
 Instead of relying solely on the keyword or phrase entered, this feature enables users to specify additional information like intended domain, clinical setting, diagnosis, procedure, medication, etc. By incorporating this context, the system can intelligently prioritize and rank results that are most relevant to the user's specific intent.
 
@@ -82,9 +82,9 @@ This functionality is especially useful when dealing with ambiguous or multi-use
 * Improve precision for specialized domains
 * Streamline workflows by surfacing the most applicable codes faster
 
-Context-Based Search is ideal for clinicians, coders, and researchers who need to retrieve highly specific coding information tailored to their unique healthcare scenarios.
+**Context-Based Search** is ideal for clinicians, coders, and researchers who need to retrieve highly specific coding information tailored to their unique healthcare scenarios.
 
-Narrow the search results by filtering by **Term Weight** and/or **Scope**:
+Narrow the search results by filtering by **Term Weight** and/or **Scope** using the User Interface tools as shown in the figure below.
 
 ![Terminology Service by John Snow Labs](/assets/images/term_server/context_resolution_search.png)
 
@@ -120,7 +120,8 @@ When selecting the **Exact Text Search** option in the Filter panel, the query w
 
 ## Spell Checker
 
-When searching for a medical term, the Terminology Server will present a prommpt if it notice a spelling mistake was done. The option is to accept the correction or ignore it. The results will reflect the choice to go with the system's suggestion or original input:
+When searching for a medical term, the Terminology Server will present a prommpt if it notice a potential spelling mistake. The user has the option  to accept the suggestion/correction or ignore it. 
+The search results will reflect the choice, retreiving results using the system's suggestion or the original user's input:
 
 ![Terminology Service by John Snow Labs](/assets/images/term_server/Spellchecker.png)
 
