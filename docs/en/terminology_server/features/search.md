@@ -19,7 +19,7 @@ Terminology Server provides two distinct search modes:
 * **Concept Search** – Allows users to search for medical terms or concepts using a combination of exact text matching and semantic search techniques to return similar or related concepts, as described in the section below.
 
 
-## Code Search
+## Code Search (code to code mapping)
 
 Searching for a specific medical code is simple:
 Just enter the code you want to find and press Enter. 
@@ -49,7 +49,7 @@ This filtering helps streamline the results, allowing you to focus only on the c
 
 ![Terminology Service by John Snow Labs](/assets/images/term_server/MapCodes_MainPage.png)
 
-## Concept Search
+## Concept Search (semantic seaarch & exact search)
 
 Terminology Server **concept search** capability excels by leveraging associated synonyms, accounting for **misspellings**, and employing both **string matching** and **semantic search** when seeking **similarity searches** results and when the system returns the best matching concept from the terminology embedding database.
 
