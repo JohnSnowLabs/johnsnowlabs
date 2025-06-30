@@ -13,8 +13,8 @@
 
 <meta name="description" content="High Performance NLP with Apache Spark
 ">
-<!-- <link rel="canonical" href="/docs/en/terminology_server/on_prem_deploy"> -->
-<link rel="canonical" href="/docs/en/terminology_server/on_prem_deploy"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<!-- <link rel="canonical" href="/docs/en/terminology_server/features/search"> -->
+<link rel="canonical" href="/docs/en/terminology_server/features/search"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -398,7 +398,7 @@ connect-src 'self' data: api.github.com sparknlp.org search.modelshub.johnsnowla
 <path d="M20.2658 26.412H8.38867V26.5781H20.2658V26.412Z" fill="#9EDEFA"/>
 </svg>
 -->
-</a><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">Terminology Server</li><li class="toc-h2"><a href="/docs/en/terminology_server/term_server">Getting Started</a></li><li class="toc-subtitle">Installation</li><li class="toc-h2 subtitle_item active"><a href="/docs/en/terminology_server/on_prem_deploy">Deploy on Premise</a></li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/on_aws">Deploy on AWS</a></li><li class="toc-subtitle">Features</li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/features/search">Search</a></li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/features/code_systems">Code Systems</a></li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/features/concept_maps">Concept Maps</a></li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/features/value_sets">Value Sets</a></li><li class="toc-subtitle">APIs</li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/api_service">API Service Access</a></li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/api_docs">API Documentation</a></li><li class="toc-h2"><a href="/docs/en/terminology_server/support">Support</a></li><li class="toc-h2"><a href="/docs/en/terminology_server/release_notes">Release Notes</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
+</a><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">Terminology Server</li><li class="toc-h2"><a href="/docs/en/terminology_server/term_server">Getting Started</a></li><li class="toc-subtitle">Installation</li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/on_prem_deploy">Deploy on Premise</a></li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/on_aws">Deploy on AWS</a></li><li class="toc-subtitle">Features</li><li class="toc-h2 subtitle_item active"><a href="/docs/en/terminology_server/features/search">Search</a></li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/features/code_systems">Code Systems</a></li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/features/concept_maps">Concept Maps</a></li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/features/value_sets">Value Sets</a></li><li class="toc-subtitle">APIs</li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/api_service">API Service Access</a></li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/api_docs">API Documentation</a></li><li class="toc-h2"><a href="/docs/en/terminology_server/support">Support</a></li><li class="toc-h2"><a href="/docs/en/terminology_server/release_notes">Release Notes</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
 
       <div class="page__main-inner"><div class="page__header d-print-none"><!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-59JLR64"
@@ -622,67 +622,271 @@ function wrapWordInSpan(data, wordToWrap) {
           <h1>Terminology Server</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
-            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/terminology_server/on_premise.md">
+            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/terminology_server/features/search.md">
             <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Terminology Server"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
-<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="on-prem-installation-guide"><strong>On-Prem Installation Guide</strong></h2>
+<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="search">Search</h2>
 
-<p><strong>Prerequisites:</strong></p>
-
-<ul>
-  <li>Docker</li>
-  <li>awscli (AWS command-line interface)</li>
-  <li>jq (lightweight command-line JSON processor)</li>
-</ul>
-
-<p><strong>Step 1: Get your license file or license key</strong></p>
-
-<p>If license file is provided, place your license file in a local path. If license key is provided, you can directly use it in next step.</p>
-
-<p><strong>Step 2: Run the Installation/Upgrade Command</strong></p>
+<p>Terminology Server provides two distinct search modes:</p>
 
 <ul>
-  <li>Install <code class="language-plaintext highlighter-rouge">latest</code> version using your license file path or license key:</li>
+  <li><strong>Code Search</strong> – Enables users to locate a specific medical code within the Terminology Server’s curated set of medical coding systems.</li>
+  <li><strong>Concept Search</strong> – Allows users to search for medical terms or concepts using a combination of <ins><strong>exact text</strong></ins> matching and <ins><strong>semantic search</strong></ins> techniques to return similar or related concepts, as described in the section below.</li>
 </ul>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-sSL</span> https://s3.us-east-1.amazonaws.com/artifacts.terminologyservice.johnsnowlabs.com/install.sh | bash <span class="nt">-s</span> <span class="s2">"YOUR_LICENSE_FILE_PATH_OR_LICENSE_KEY"</span>
-</code></pre></div></div>
+<h2 id="code-search-code-to-code-mapping">Code Search (code to code mapping)</h2>
 
-<blockquote>
-  <p><strong><em>NOTE:</em></strong> The initial setup may take a little longer if you’re running it for the first time, as databases and images are downloaded and services are created. We appreciate your patience! For more information regarding installation of Terminology Server on a dedicated server please contact us at <a href="mailto:support@johnsnowlabs.com">support@johnsnowlabs.com</a>.</p>
-</blockquote>
+<p>Searching for a specific medical code is simple:
+Just enter the code you want to find and press Enter.</p>
 
-<h2 id="recommended-configurations">Recommended Configurations</h2>
+<p>The results are displayed in a clear table format, which includes:</p>
 
-<table class="table2">
-  <tr>
-    <th>System requirements</th>
-    <td>You can install Terminology Server on a Ubuntu 20+ machine.</td>
-  </tr>
-  <tr>
-    <th>Port requirements</th>
-    <td>The service uses port <bl>8000</bl>. So it expects the port to be unused.</td>
-  </tr>
-  <tr>
-    <th>Server requirements</th>
-    <td>The minimal required configuration is <bl>16GB RAM, 8 Core CPU, 300GB+ Storage</bl>.
-        <br /><br />
-    The ideal configuration for a smooth performance is <bl>32 GB RAM and 16 Core CPU</bl>.
-    </td>
-  </tr>
-  <tr>
-    <th>Web browser support</th>
-    <td>Terminology Server is tested with the latest version of Google Chrome and is expected to work in the latest versions of:
-      <ul>
-      <li>Google Chrome</li>
-      <li>Apple Safari</li>
-      <li>Mozilla Firefox</li>
-      </ul>
-    </td>
-  </tr>
-</table>
+<ul>
+  <li>Source Code System - The coding system where the searched code originates</li>
+  <li>Source Code - The original code entered by the user</li>
+  <li>Target Code System -  The coding system(s) where the source code is mapped</li>
+  <li>Target Codes - The equivalent or related codes in the target system(s)</li>
+</ul>
 
+<p>This means users can see how, for example E11 in ICD10 (Type 2 diabetes) maps to 10067585 in MEDDRA_PT( standardized, single medical concepts used to represent a symptom, sign, disease, diagnosis, etc) and how to E11 in ICD10CM (coding diseases, conditions, and injuries for statistical and billing purposes) maps to C0011847 in UMLS.</p>
+
+<p><img src="/assets/images/term_server/code_to_code_search_table.png" alt="Terminology Service by John Snow Labs" /></p>
+
+<p>A single medical code from a <strong>Source Code System</strong> may be mapped to one or more codes across multiple <strong>Target Code Systems</strong>.
+In the left panel, the <strong>Concept Maps</strong> tree structure visually represents the medical coding systems where the searched code is present. Each <strong>Concept Map</strong> node displays child nodes corresponding to the target systems where mapped codes have been identified</p>
+
+<p>To narrow down the search results to one or more Code Maps (Code Systems), follow these steps:</p>
+
+<ol>
+  <li>Locate the Concept Maps panel on the left side of the screen.</li>
+  <li>Identify the parent node that represents the source medical coding system where your searched code exists.</li>
+  <li>Under this parent node, you will see one or more child nodes—each representing a target coding system where mapped codes are available.</li>
+  <li>Click on a child node to filter the search results and display only the mappings between the source code and that specific target system.</li>
+</ol>
+
+<p>This filtering helps streamline the results, allowing you to focus only on the coding systems relevant to your task.</p>
+
+<p><img src="/assets/images/term_server/MapCodes_MainPage.png" alt="Terminology Service by John Snow Labs" /></p>
+
+<h2 id="concept-search-semantic-search--exact-match-search">Concept Search (Semantic search &amp; Exact match search)</h2>
+
+<p>Terminology Server <strong>concept search</strong> capability excels by leveraging associated synonyms, accounting for <strong>misspellings</strong>, and employing both <ins><strong>string matching</strong></ins> and <ins><strong>semantic search</strong></ins> when seeking <strong>similarity searches</strong> results and when the system returns the best matching concept from the terminology embedding database.</p>
+
+<p>The user can opt for either of the search types, or utilize both in tandem — this is the default setting.
+Terminology Server offers stable and deterministic results. The same term(concept) will always return the same code, thanks to its <strong>reliance on official terminology datasets and carefully curated in-house augmentations</strong>.</p>
+
+<p>Terminology Server performs term-level mapping: searching a term will return the best matching concept from the terminology database.</p>
+
+<ul>
+  <li>It does not infer additional context or concepts beyond the input</li>
+  <li>It does not perform document-level analysis.</li>
+  <li>Providing an entire document as search input might lead to the embeddings becoming diluted, and potential nonsensical results.</li>
+</ul>
+
+<p>It is straight forward to choose between the type of search:</p>
+<ol>
+  <li>Click on the Filters icon in the top right corner of the application</li>
+  <li>Select the search type from the options from the Filters panel</li>
+  <li>Exit the Filters panel by clicking anywhere outside</li>
+</ol>
+
+<p><img src="/assets/images/term_server/filter_panel.png" alt="Terminology Service by John Snow Labs" /></p>
+
+<h2 id="context-based-search">Context Based Search</h2>
+
+<p>THis search modality employs <strong>context-aware search</strong> that <strong>considers surrounding text</strong> to find more accurate medical codes by <strong>analyzing the clinical context in which terms appear</strong>. It is a powerful feature that enhances the accuracy and relevance of search results by allowing users to include additional context when searching for medical terms.</p>
+
+<p>Instead of relying solely on the keyword or phrase entered, this feature enables users to specify additional information like intended domain, clinical setting, diagnosis, procedure, medication, etc. By incorporating this context, the system can intelligently prioritize and rank results that are most relevant to the user’s specific intent.</p>
+
+<p>This functionality is especially useful when dealing with ambiguous or multi-use terms, helping to</p>
+<ul>
+  <li>Reduce irrelevant results</li>
+  <li>Improve precision for specialized domains</li>
+  <li>Streamline workflows by surfacing the most applicable codes faster</li>
+</ul>
+
+<p><strong>Context-Based Search</strong> is ideal for clinicians, coders, and researchers who need to retrieve highly specific coding information tailored to their unique healthcare scenarios.</p>
+
+<p>Narrow the search results by filtering by <strong>Term Weight</strong> and/or <strong>Scope</strong> using the User Interface tools as shown in the figure below.</p>
+
+<p><img src="/assets/images/term_server/context_resolution_search.png" alt="Terminology Service by John Snow Labs" /></p>
+
+<p>💡 <strong>Tips for Effective Use</strong></p>
+
+<ul>
+  <li>Use higher term weights when you’re confident in your terminology</li>
+  <li>Use lower term weights when context is critical for disambiguation</li>
+  <li>Adjust scope based on how much surrounding context affects meaning</li>
+  <li>Combine with vocabulary filters for more precise results</li>
+</ul>
+
+<p><img src="/assets/images/term_server/ContextBasedSearch.png" alt="Terminology Service by John Snow Labs" /></p>
+
+<p><img src="/assets/images/term_server/ContextBasedSearchSamples.png" alt="Terminology Service by John Snow Labs" /></p>
+
+<h2 id="boolean-search">Boolean Search</h2>
+
+<p>When selecting the <strong>Exact Text Search</strong> option in the Filter panel, the query will allow the use of <code class="language-plaintext highlighter-rouge">AND</code> and <code class="language-plaintext highlighter-rouge">OR</code> operators to refine results:</p>
+
+<p><strong>Using the <code class="language-plaintext highlighter-rouge">AND</code> operator</strong>:</p>
+
+<ul>
+  <li>Returns results where the document field contains all specified keywords, regardless of their order or position within the text.</li>
+  <li>More than two terms can be inculded, for example: “leg <code class="language-plaintext highlighter-rouge">AND</code> tendons <code class="language-plaintext highlighter-rouge">AND</code> muscle” will return results that contain all three terms.</li>
+</ul>
+
+<p><strong>Using the <code class="language-plaintext highlighter-rouge">OR</code> operator</strong>:</p>
+
+<ul>
+  <li>Returns results that contain any one or more of the specified keywords.</li>
+  <li>The query supports multiple terms, for example: “diclofenac <code class="language-plaintext highlighter-rouge">OR</code> Eliquis <code class="language-plaintext highlighter-rouge">OR</code> clopidogrel” will return results containing any of the listed medications.</li>
+</ul>
+
+<p><img src="/assets/images/term_server/OR_operator.png" alt="Terminology Service by John Snow Labs" /></p>
+
+<h2 id="spell-checker">Spell Checker</h2>
+
+<p>When searching for a medical term, the Terminology Server will present a prommpt if it notice a potential spelling mistake. The user has the option  to accept the suggestion/correction or ignore it. 
+The search results will reflect the choice, retreiving results using the system’s suggestion or the original user’s input:</p>
+
+<p><img src="/assets/images/term_server/Spellchecker.png" alt="Terminology Service by John Snow Labs" /></p>
+
+<h2 id="additional-filters">Additional Filters</h2>
+
+<p>Improve your search outcomes by utilizing additional available filters:</p>
+
+<ul>
+  <li>Domain: Specifies the general topic area of a concept (e.g., Condition/Device, Condition/Meas, Drug, Gender).</li>
+</ul>
+
+<p>Choose from one of the available options to apply this filter using <strong>one or more</strong> pre-populated options in the dropdown list:</p>
+
+<p><img src="/assets/images/term_server/filter_panel_domains.png" alt="Terminology Service by John Snow Labs" /></p>
+
+<ul>
+  <li>OMOP Standards Concepts Only: Limits the search results to concepts that are flagged as “Standard” in the OMOP CDM.</li>
+  <li>Include Only Valid Concepts: Filters out concepts that have been invalidated due to deletion or being superseded.</li>
+  <li>Filter by Confidence Score: Allows refining results based on their confidence score.</li>
+</ul>
+
+<h2 id="core-capabilities-strengths-and-limitations">Core capabilities, strengths, and limitations</h2>
+
+<p>The following section compares the core capabilities, strengths, and limitations of John Snow Labs’ <strong>Medical Terminology Server</strong> (TS) with OpenAI’s large language models (LLMs) with , focusing on terminology mapping use cases in healthcare and life sciences.</p>
+
+<ol>
+  <li><strong>Deterministic Output vs. Generative Variability:</strong>
+    <ul>
+      <li>TS offers stable and deterministic results. The same term will always return the same code, thanks to its reliance on official terminology datasets and carefully curated in-house augmentations.</li>
+      <li>OpenAI LLMs, such as GPT-4, are non-deterministic by design. The same prompt may yield different outputs across calls. Since LLMs do not have direct access to up-to-date, structured medical terminologies like SNOMED, ICD-10, RxNorm, etc., their accuracy is typically lower in structured terminology mapping. For a comparative benchmark, see our blog post: State-of-the-Art RxNorm Code Mapping with NLP, where we evaluated JSL’s resolver models against GPT-4 and Amazon for RxNorm mapping.</li>
+    </ul>
+  </li>
+  <li><strong>Pricing and Licensing</strong>
+    <ul>
+      <li>TS operates on a fixed licensing model. There are no usage-based charges or unexpected costs regardless of query volume.</li>
+      <li>OpenAI LLMs are priced per token, which can become expensive with large-scale usage or high-frequency requests.</li>
+    </ul>
+  </li>
+  <li><strong>Deployment and Security</strong>
+    <ul>
+      <li>TS can be deployed on-premises or in air-gapped environments with no internet connection, making it fully compliant with strict data privacy regulations (e.g., HIPAA, GDPR).</li>
+      <li>OpenAI LLMs can only be accessed via cloud APIs, which introduces compliance and security concerns in regulated environments.</li>
+    </ul>
+  </li>
+  <li><strong>Interface and Integration</strong>
+    <ul>
+      <li>TS comes with a user-friendly UI and a remote-accessible API, making it easy to use both as a standalone tool or as an embedded service in other systems.</li>
+      <li>OpenAI models are accessible only via API, with no native UI for terminology mapping use cases.</li>
+    </ul>
+  </li>
+  <li><strong>Terminology Coverage and Customization</strong>
+    <ul>
+      <li>TS supports:
+        <ul>
+          <li><strong>Value set mapping</strong> (predefined or user-defined collections of concepts),</li>
+          <li>
+            <ul>
+              <li><strong>Concept mapping across vocabularies</strong> (e.g., mapping SNOMED terms to ICD-10),</li>
+            </ul>
+          </li>
+          <li><strong>Hierarchy navigation</strong> within and across terminologies.</li>
+          <li>OpenAI <strong>LLMs offer no native support</strong> for value sets, concept hierarchies, or controlled vocabularies.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Up-to-Date Terminologies</strong>
+    <ul>
+      <li>TS ensures that its terminology databases are continuously updated in sync with changes made by official regulatory bodies (e.g., WHO, UMLS).</li>
+      <li>OpenAI LLMs are trained on static datasets and may take months or years to reflect terminology updates.</li>
+    </ul>
+  </li>
+  <li><strong>Rate Limiting and Performance</strong>
+    <ul>
+      <li>TS has no rate limitations. Users can process as many terms as needed under an active license.</li>
+      <li>OpenAI LLMs may impose rate limits depending on the subscription plan and system load</li>
+    </ul>
+  </li>
+  <li><strong>Document-Level Understanding vs. Term-Level Mapping</strong></li>
+</ol>
+
+<p>This is a <strong>critical distinction</strong> and often the source of confusion when comparing TS and LLMs.</p>
+
+<ul>
+  <li>TS performs term-level mapping: You input a term, and it returns the best matching concept from the terminology database.
+    <ul>
+      <li>It does not infer additional context or concepts beyond the input</li>
+      <li>It does not perform document-level analysis.</li>
+      <li>If a user inputs an entire document, the embeddings become diluted, and results may be nonsensical.</li>
+    </ul>
+  </li>
+  <li>OpenAI LLMs excel at document-level analysis:
+    <ul>
+      <li>They can extract key clinical findings, inferred diagnoses, and primary/secondary conditions by analyzing the full context of a clinical note or discharge summary.</li>
+      <li>LLMs can assign ICD-10 or SNOMED codes based on this inferred context—mimicking human coders.</li>
+      <li>This behavior makes LLMs appealing for use cases where document-level abstraction and coding are required.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Example</strong>:</p>
+
+<p>Uploading a discharge summary to GPT-4 and prompting it to extract ICD-10 codes may result in:</p>
+
+<ul>
+  <li>Primary diagnosis</li>
+  <li>Secondary diagnoses</li>
+  <li>Procedures</li>
+  <li>Medications</li>
+  <li>… all inferred from context.</li>
+</ul>
+
+<p>In contrast, submitting the same text to TS:</p>
+
+<ul>
+  <li>Will treat the whole input as a single term.</li>
+  <li>Return a single code based on embedding similarity, which may be inaccurate if the document is lengthy or complex.</li>
+</ul>
+
+<ol>
+  <li><strong>Flexibility and Future Integration</strong>
+    <ul>
+      <li>While TS is not designed for document-level LLM-style coding, it is possible to embed JSL’s proprietary small LLMs within TS to enable such capabilities—if there is demand.</li>
+      <li>This hybrid approach could provide the best of both worlds: deterministic, terminology-backed mapping with optional contextual inference.</li>
+    </ul>
+  </li>
+</ol>
+
+<p>🚦Recommendation</p>
+
+<p>Before choosing between TS and OpenAI LLMs for terminology mapping, clearly define your goal:</p>
+
+<ul>
+  <li>If you need accurate, up-to-date, and secure mapping for individual terms or structured applications—TS is the better choice.</li>
+  <li>If you want AI-driven abstraction from unstructured clinical text (e.g., coding a discharge summary)—LLMs might be more appropriate, though at the cost of accuracy and explainability.</li>
+</ul>
+
+<p>For hybrid use cases, John Snow Labs offers modular and extensible solutions to support both deterministic terminology mapping and generative document understanding, as needed</p>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
       <time itemprop="dateModified" datetime="2025-04-01T00:00:00+00:00">Apr 01, 2025</time>
     </span><!-- start custom article footer snippet -->

@@ -13,8 +13,8 @@
 
 <meta name="description" content="High Performance NLP with Apache Spark
 ">
-<!-- <link rel="canonical" href="/docs/en/terminology_server/on_prem_deploy"> -->
-<link rel="canonical" href="/docs/en/terminology_server/on_prem_deploy"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<!-- <link rel="canonical" href="/docs/en/terminology_server/features/concept_maps"> -->
+<link rel="canonical" href="/docs/en/terminology_server/features/concept_maps"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -398,7 +398,7 @@ connect-src 'self' data: api.github.com sparknlp.org search.modelshub.johnsnowla
 <path d="M20.2658 26.412H8.38867V26.5781H20.2658V26.412Z" fill="#9EDEFA"/>
 </svg>
 -->
-</a><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">Terminology Server</li><li class="toc-h2"><a href="/docs/en/terminology_server/term_server">Getting Started</a></li><li class="toc-subtitle">Installation</li><li class="toc-h2 subtitle_item active"><a href="/docs/en/terminology_server/on_prem_deploy">Deploy on Premise</a></li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/on_aws">Deploy on AWS</a></li><li class="toc-subtitle">Features</li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/features/search">Search</a></li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/features/code_systems">Code Systems</a></li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/features/concept_maps">Concept Maps</a></li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/features/value_sets">Value Sets</a></li><li class="toc-subtitle">APIs</li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/api_service">API Service Access</a></li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/api_docs">API Documentation</a></li><li class="toc-h2"><a href="/docs/en/terminology_server/support">Support</a></li><li class="toc-h2"><a href="/docs/en/terminology_server/release_notes">Release Notes</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
+</a><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">Terminology Server</li><li class="toc-h2"><a href="/docs/en/terminology_server/term_server">Getting Started</a></li><li class="toc-subtitle">Installation</li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/on_prem_deploy">Deploy on Premise</a></li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/on_aws">Deploy on AWS</a></li><li class="toc-subtitle">Features</li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/features/search">Search</a></li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/features/code_systems">Code Systems</a></li><li class="toc-h2 subtitle_item active"><a href="/docs/en/terminology_server/features/concept_maps">Concept Maps</a></li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/features/value_sets">Value Sets</a></li><li class="toc-subtitle">APIs</li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/api_service">API Service Access</a></li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/api_docs">API Documentation</a></li><li class="toc-h2"><a href="/docs/en/terminology_server/support">Support</a></li><li class="toc-h2"><a href="/docs/en/terminology_server/release_notes">Release Notes</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
 
       <div class="page__main-inner"><div class="page__header d-print-none"><!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-59JLR64"
@@ -622,66 +622,141 @@ function wrapWordInSpan(data, wordToWrap) {
           <h1>Terminology Server</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
-            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/terminology_server/on_premise.md">
+            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/terminology_server/features/concept_maps.md">
             <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Terminology Server"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
-<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="on-prem-installation-guide"><strong>On-Prem Installation Guide</strong></h2>
+<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="concept-maps">Concept Maps</h2>
 
-<p><strong>Prerequisites:</strong></p>
+<p>In the context of John Snow Labs Terminology Server, Concept Maps represent the logical relationships between codes across different medical coding system vocabularies. These mappings are curated and maintained by John Snow Labs and are integral to the functionality of the Terminology Server.</p>
 
-<ul>
-  <li>Docker</li>
-  <li>awscli (AWS command-line interface)</li>
-  <li>jq (lightweight command-line JSON processor)</li>
-</ul>
+<p>The following table shows the list of all Vocabuaries, Datasets and Versions used by Terminology Server for term search and code to code mapping search :</p>
 
-<p><strong>Step 1: Get your license file or license key</strong></p>
-
-<p>If license file is provided, place your license file in a local path. If license key is provided, you can directly use it in next step.</p>
-
-<p><strong>Step 2: Run the Installation/Upgrade Command</strong></p>
-
-<ul>
-  <li>Install <code class="language-plaintext highlighter-rouge">latest</code> version using your license file path or license key:</li>
-</ul>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-sSL</span> https://s3.us-east-1.amazonaws.com/artifacts.terminologyservice.johnsnowlabs.com/install.sh | bash <span class="nt">-s</span> <span class="s2">"YOUR_LICENSE_FILE_PATH_OR_LICENSE_KEY"</span>
-</code></pre></div></div>
-
-<blockquote>
-  <p><strong><em>NOTE:</em></strong> The initial setup may take a little longer if you’re running it for the first time, as databases and images are downloaded and services are created. We appreciate your patience! For more information regarding installation of Terminology Server on a dedicated server please contact us at <a href="mailto:support@johnsnowlabs.com">support@johnsnowlabs.com</a>.</p>
-</blockquote>
-
-<h2 id="recommended-configurations">Recommended Configurations</h2>
-
-<table class="table2">
-  <tr>
-    <th>System requirements</th>
-    <td>You can install Terminology Server on a Ubuntu 20+ machine.</td>
-  </tr>
-  <tr>
-    <th>Port requirements</th>
-    <td>The service uses port <bl>8000</bl>. So it expects the port to be unused.</td>
-  </tr>
-  <tr>
-    <th>Server requirements</th>
-    <td>The minimal required configuration is <bl>16GB RAM, 8 Core CPU, 300GB+ Storage</bl>.
-        <br /><br />
-    The ideal configuration for a smooth performance is <bl>32 GB RAM and 16 Core CPU</bl>.
-    </td>
-  </tr>
-  <tr>
-    <th>Web browser support</th>
-    <td>Terminology Server is tested with the latest version of Google Chrome and is expected to work in the latest versions of:
-      <ul>
-      <li>Google Chrome</li>
-      <li>Apple Safari</li>
-      <li>Mozilla Firefox</li>
-      </ul>
-    </td>
-  </tr>
+<table>
+  <thead>
+    <tr>
+      <th>VOCABULARY</th>
+      <th>DATASET</th>
+      <th>DATASET VERSION</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ATC</td>
+      <td>Trained on ATC 2022 Codes dataset</td>
+      <td>ATC 2022 Codes</td>
+    </tr>
+    <tr>
+      <td>RxNorm</td>
+      <td> </td>
+      <td>RxNorm version 5.0</td>
+    </tr>
+    <tr>
+      <td>ICD03</td>
+      <td>Trained on ICD-O Histology Behaviour dataset with sbiobert_base_cased_mli sentence embeddings.</td>
+      <td>International Classification of Diseases for Oncology-3rd Edition</td>
+    </tr>
+    <tr>
+      <td>ICD10CM</td>
+      <td> </td>
+      <td>2025 version of ICD-10-CM Dataset</td>
+    </tr>
+    <tr>
+      <td>SNOMED</td>
+      <td>This model is trained with the augmented version of NIH September 2023 SNOMED CT United States (US) Edition.</td>
+      <td>NIH September 2023 SNOMED CT United States (US) Edition</td>
+    </tr>
+    <tr>
+      <td>CPT4</td>
+      <td>Trained on Current Procedural Terminology dataset with mpnet_embeddings_biolord_2023_c sentence embeddings.</td>
+      <td>2023 release</td>
+    </tr>
+    <tr>
+      <td>ICD10PCS</td>
+      <td>Trained on ICD-10 Procedure Coding System dataset with sbiobert_base_cased_mli sentence embeddings.</td>
+      <td>2024 release</td>
+    </tr>
+    <tr>
+      <td>ATC</td>
+      <td>Trained on ATC 2022 Codes dataset</td>
+      <td>ATC 2022 Codes</td>
+    </tr>
+    <tr>
+      <td>LOINC</td>
+      <td>Trained with augmented version of the LOINC v2.78 dataset released in 2024-08-06.</td>
+      <td>LOINC v2.78 dataset released in 2024-08-06.</td>
+    </tr>
+    <tr>
+      <td>HCPCS</td>
+      <td> </td>
+      <td>2024 release</td>
+    </tr>
+    <tr>
+      <td>MEDDRA PT</td>
+      <td>Trained with the September 2024 (v27.1) release of MedDRA dataset.</td>
+      <td>(v27.1) release of MedDRA dataset.</td>
+    </tr>
+    <tr>
+      <td>MEDDRA LLT</td>
+      <td>Trained with the September 2024 (v27.1) release of MedDRA dataset.</td>
+      <td>(v27.1) release of MedDRA dataset.</td>
+    </tr>
+    <tr>
+      <td>HPO</td>
+      <td>T</td>
+      <td>April 2024 HPO release</td>
+    </tr>
+    <tr>
+      <td>UMLS</td>
+      <td>Trained on concepts from clinical findings for the 2024AB release of the Unified Medical Language System® (UMLS) Knowledge Sources</td>
+      <td>2024AB release of the Unified Medical Language System (UMLS)</td>
+    </tr>
+    <tr>
+      <td>NCIT</td>
+      <td> </td>
+      <td>National Cancer Institute 2023 release</td>
+    </tr>
+    <tr>
+      <td>NDC</td>
+      <td>Trained trained on U.S. FDA 2024-NDC Codes dataset</td>
+      <td>U.S. FDA 2024-NDC Codes</td>
+    </tr>
+    <tr>
+      <td>HGNC</td>
+      <td> </td>
+      <td>2020 release</td>
+    </tr>
+    <tr>
+      <td>CVX</td>
+      <td> </td>
+      <td>CDC Vaccine Administered CVX (NCIRD) - 2022 release</td>
+    </tr>
+    <tr>
+      <td>RXCUI</td>
+      <td>Trained on November 2020 RxNorm Clinical Drugs ontology graph with sbiobert_base_cased_mli embeddings.</td>
+      <td>RxNorm November 2020 Release</td>
+    </tr>
+    <tr>
+      <td>ICD9CM</td>
+      <td> </td>
+      <td>2014 Release</td>
+    </tr>
+    <tr>
+      <td>MESH</td>
+      <td>Trained on 01 December 2021 MeSH dataset.</td>
+      <td>01 December 2021 MeSH dataset</td>
+    </tr>
+    <tr>
+      <td>ICD10</td>
+      <td> </td>
+      <td>2021 Release</td>
+    </tr>
+  </tbody>
 </table>
+
+<p>The figure below shows the code to code mapping results and their respective source and target coresponding vocabularies:</p>
+
+<p><img src="/assets/images/term_server/mappings.png" alt="Terminology Service by John Snow Labs" /></p>
 
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
       <time itemprop="dateModified" datetime="2025-04-01T00:00:00+00:00">Apr 01, 2025</time>

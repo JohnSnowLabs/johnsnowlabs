@@ -13,8 +13,8 @@
 
 <meta name="description" content="High Performance NLP with Apache Spark
 ">
-<!-- <link rel="canonical" href="/docs/en/terminology_server/on_prem_deploy"> -->
-<link rel="canonical" href="/docs/en/terminology_server/on_prem_deploy"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<!-- <link rel="canonical" href="/docs/en/terminology_server/features/value_sets"> -->
+<link rel="canonical" href="/docs/en/terminology_server/features/value_sets"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -398,7 +398,7 @@ connect-src 'self' data: api.github.com sparknlp.org search.modelshub.johnsnowla
 <path d="M20.2658 26.412H8.38867V26.5781H20.2658V26.412Z" fill="#9EDEFA"/>
 </svg>
 -->
-</a><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">Terminology Server</li><li class="toc-h2"><a href="/docs/en/terminology_server/term_server">Getting Started</a></li><li class="toc-subtitle">Installation</li><li class="toc-h2 subtitle_item active"><a href="/docs/en/terminology_server/on_prem_deploy">Deploy on Premise</a></li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/on_aws">Deploy on AWS</a></li><li class="toc-subtitle">Features</li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/features/search">Search</a></li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/features/code_systems">Code Systems</a></li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/features/concept_maps">Concept Maps</a></li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/features/value_sets">Value Sets</a></li><li class="toc-subtitle">APIs</li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/api_service">API Service Access</a></li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/api_docs">API Documentation</a></li><li class="toc-h2"><a href="/docs/en/terminology_server/support">Support</a></li><li class="toc-h2"><a href="/docs/en/terminology_server/release_notes">Release Notes</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
+</a><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">Terminology Server</li><li class="toc-h2"><a href="/docs/en/terminology_server/term_server">Getting Started</a></li><li class="toc-subtitle">Installation</li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/on_prem_deploy">Deploy on Premise</a></li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/on_aws">Deploy on AWS</a></li><li class="toc-subtitle">Features</li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/features/search">Search</a></li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/features/code_systems">Code Systems</a></li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/features/concept_maps">Concept Maps</a></li><li class="toc-h2 subtitle_item active"><a href="/docs/en/terminology_server/features/value_sets">Value Sets</a></li><li class="toc-subtitle">APIs</li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/api_service">API Service Access</a></li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/api_docs">API Documentation</a></li><li class="toc-h2"><a href="/docs/en/terminology_server/support">Support</a></li><li class="toc-h2"><a href="/docs/en/terminology_server/release_notes">Release Notes</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
 
       <div class="page__main-inner"><div class="page__header d-print-none"><!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-59JLR64"
@@ -622,67 +622,99 @@ function wrapWordInSpan(data, wordToWrap) {
           <h1>Terminology Server</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
-            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/terminology_server/on_premise.md">
+            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/terminology_server/features/value_sets.md">
             <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Terminology Server"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
-<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="on-prem-installation-guide"><strong>On-Prem Installation Guide</strong></h2>
+<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="custom-value-sets">Custom Value Sets</h2>
 
-<p><strong>Prerequisites:</strong></p>
+<p>A custom Value Set in the context of medical terminology is a user-defined collection of medical codes and terms selected from one or more standard coding systems (such as SNOMED CT, ICD-10, LOINC, RxNorm, etc.), created to meet a specific need, use case, or organizational requirement.</p>
 
+<p><strong>Key Characteristics of Custom Value Sets</strong>:</p>
 <ul>
-  <li>Docker</li>
-  <li>awscli (AWS command-line interface)</li>
-  <li>jq (lightweight command-line JSON processor)</li>
+  <li>Tailored: Designed to include only the codes relevant to a specific clinical, research, or operational goal</li>
+  <li>Flexible: May draw from multiple coding systems and be modified over time.</li>
+  <li>Not standardized: Unlike predefined or published Value Sets from regulatory bodies, custom Value Sets are not universally agreed upon and are typically used internally or within a specific application or workflow.</li>
 </ul>
 
-<p><strong>Step 1: Get your license file or license key</strong></p>
-
-<p>If license file is provided, place your license file in a local path. If license key is provided, you can directly use it in next step.</p>
-
-<p><strong>Step 2: Run the Installation/Upgrade Command</strong></p>
-
+<p><strong>Common Use Cases:</strong></p>
 <ul>
-  <li>Install <code class="language-plaintext highlighter-rouge">latest</code> version using your license file path or license key:</li>
+  <li>A hospital may define a custom Value Set for “medications used in cardiology”.</li>
+  <li>A research team may create one for “cancer-related diagnoses” using a mix of SNOMED and ICD-10 codes.</li>
+  <li>A public health agency may define a custom Value Set for “reportable diseases” specific to its jurisdiction.</li>
 </ul>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-sSL</span> https://s3.us-east-1.amazonaws.com/artifacts.terminologyservice.johnsnowlabs.com/install.sh | bash <span class="nt">-s</span> <span class="s2">"YOUR_LICENSE_FILE_PATH_OR_LICENSE_KEY"</span>
-</code></pre></div></div>
+<p>In Terminology Server Tools, custom Value Sets can often be:</p>
+<ul>
+  <li>Created manually or programmatically</li>
+  <li>Versioned and updated</li>
+  <li>Used in conjunction with concept search, validation, and filtering features</li>
+</ul>
 
-<blockquote>
-  <p><strong><em>NOTE:</em></strong> The initial setup may take a little longer if you’re running it for the first time, as databases and images are downloaded and services are created. We appreciate your patience! For more information regarding installation of Terminology Server on a dedicated server please contact us at <a href="mailto:support@johnsnowlabs.com">support@johnsnowlabs.com</a>.</p>
-</blockquote>
+<p><strong>John Snow Labs’ Terminology Server</strong> supports the use of custom Value Sets, offering the following capabilities:</p>
+<ul>
+  <li>Upload custom Value Sets created externally in Excel or CSV format using the built-in Upload feature.</li>
+  <li>View, create new versions, delete</li>
+  <li>Filter search results based on the codes included in a selected Value Set.</li>
+</ul>
 
-<h2 id="recommended-configurations">Recommended Configurations</h2>
+<h2 id="creating-a-new-custom-value-set">Creating a new Custom Value Set</h2>
 
-<table class="table2">
-  <tr>
-    <th>System requirements</th>
-    <td>You can install Terminology Server on a Ubuntu 20+ machine.</td>
-  </tr>
-  <tr>
-    <th>Port requirements</th>
-    <td>The service uses port <bl>8000</bl>. So it expects the port to be unused.</td>
-  </tr>
-  <tr>
-    <th>Server requirements</th>
-    <td>The minimal required configuration is <bl>16GB RAM, 8 Core CPU, 300GB+ Storage</bl>.
-        <br /><br />
-    The ideal configuration for a smooth performance is <bl>32 GB RAM and 16 Core CPU</bl>.
-    </td>
-  </tr>
-  <tr>
-    <th>Web browser support</th>
-    <td>Terminology Server is tested with the latest version of Google Chrome and is expected to work in the latest versions of:
-      <ul>
-      <li>Google Chrome</li>
-      <li>Apple Safari</li>
-      <li>Mozilla Firefox</li>
-      </ul>
-    </td>
-  </tr>
-</table>
+<p>Uploading a custom Value Set is <strong>simple and intuitive</strong>:</p>
+<ul>
+  <li>In the <strong>left navigation panel</strong>, click on the <strong>Value Sets</strong> node.</li>
+  <li>Use the “<strong>Browse Files</strong>” button or drag your Excel/CSV file into the upload area, then click <strong>Upload</strong> to import your custom Value Set.</li>
+</ul>
 
+<p><img src="/assets/images/term_server/Upload_VS_firsttime.png" alt="Terminology Service by John Snow Labs" /></p>
+
+<ul>
+  <li>Once uploaded, the new Value Set will appear in the <strong>left panel</strong> under the Value Sets section..</li>
+</ul>
+
+<p><img src="/assets/images/term_server/Upload_VS_consecutive.png" alt="Terminology Service by John Snow Labs" /></p>
+
+<ul>
+  <li>To <strong>create a new Value Set</strong> or <strong>add a new version</strong> to an existing one, click the <strong>“Upload”</strong> link on the right-hand side.</li>
+</ul>
+
+<p><img src="/assets/images/term_server/NewValueSet.png" alt="Terminology Service by John Snow Labs" /></p>
+
+<h2 id="value-set---versioning">Value Set - Versioning</h2>
+
+<ul>
+  <li>To <strong>add a new version</strong> to an existing Value Set, click the <strong>“Upload”</strong> link on the right-hand side, choose <strong>“Existing Value Sets”</strong> option then select the name of the desired Value Set.</li>
+</ul>
+
+<p><img src="/assets/images/term_server/Upload_VS_consecutive_newVersion.png" alt="Terminology Service by John Snow Labs" /></p>
+
+<ul>
+  <li>Each <strong>new version</strong> will appear as a child node under the corresponding Value Set.</li>
+</ul>
+
+<p><img src="/assets/images/term_server/VS_Versions.png" alt="Terminology Service by John Snow Labs" /></p>
+
+<ul>
+  <li>To <strong>view</strong>, <strong>download</strong>, or <strong>delete</strong> a version, use the icons next to it.</li>
+</ul>
+
+<p>🔴 Note: Deleting the last remaining version will remove the entire Value Set from the system.</p>
+
+<h2 id="filtering-search-results-with-value-sets">Filtering Search Results with Value Sets</h2>
+
+<p>When performing a <strong>medical term search in Terminology Server</strong>, you can apply <strong>custom Value Sets</strong> to filter and refine your results.</p>
+
+<p>Example:</p>
+<ol>
+  <li>Search for the term “cancer”. Notice the top record in the result table, with <strong>LOINC</strong> as the Code System and Concept Code <strong>LA10524-9</strong> 
+<img src="/assets/images/term_server/SearchResultsForVSFilter.png" alt="Terminology Service by John Snow Labs" /></li>
+  <li>Assume for this example the <strong>Histology Carcinoma</strong> as the previously uploaded Value Set (figure below). In this example, the Value Set contains 2 records with the Concept Code <strong>LA10524-9</strong> mapped to two custom codes: <strong>M85306</strong> and <strong>M85307</strong> :
+<img src="/assets/images/term_server/HistoryOfCarcinomaVS.png" alt="Terminology Service by John Snow Labs" /></li>
+  <li>In the left navigation panel, check the box next to the Value Set and a particular version you want to use as a filter, in our case the <strong>Version 1</strong> under <strong>Histology Carcinoma</strong>. The name of the Value Set and the selected version are now displayed as applied filter (figure below).</li>
+  <li>After applying the filter, the results table will display a new column labeled <strong>“ValueSet”</strong>. <img src="/assets/images/term_server/FilteredResultsByVS.png" alt="Terminology Service by John Snow Labs" /></li>
+</ol>
+
+<p>Thw <strong>ValueSet</strong> column in the search results table above, indicates which search results are included in the selected <strong>Version1 of Histology Carcinoma</strong> (as shown in the figure) by cross-referencing the <strong>concept codes</strong> in the search results with those defined in the <strong>Version1 of Histology Carcinoma</strong> vocabulary in this example.</p>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
       <time itemprop="dateModified" datetime="2025-04-01T00:00:00+00:00">Apr 01, 2025</time>
     </span><!-- start custom article footer snippet -->

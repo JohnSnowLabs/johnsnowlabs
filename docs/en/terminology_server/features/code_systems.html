@@ -13,8 +13,8 @@
 
 <meta name="description" content="High Performance NLP with Apache Spark
 ">
-<!-- <link rel="canonical" href="/docs/en/terminology_server/on_prem_deploy"> -->
-<link rel="canonical" href="/docs/en/terminology_server/on_prem_deploy"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<!-- <link rel="canonical" href="/docs/en/terminology_server/features/code_systems"> -->
+<link rel="canonical" href="/docs/en/terminology_server/features/code_systems"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -398,7 +398,7 @@ connect-src 'self' data: api.github.com sparknlp.org search.modelshub.johnsnowla
 <path d="M20.2658 26.412H8.38867V26.5781H20.2658V26.412Z" fill="#9EDEFA"/>
 </svg>
 -->
-</a><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">Terminology Server</li><li class="toc-h2"><a href="/docs/en/terminology_server/term_server">Getting Started</a></li><li class="toc-subtitle">Installation</li><li class="toc-h2 subtitle_item active"><a href="/docs/en/terminology_server/on_prem_deploy">Deploy on Premise</a></li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/on_aws">Deploy on AWS</a></li><li class="toc-subtitle">Features</li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/features/search">Search</a></li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/features/code_systems">Code Systems</a></li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/features/concept_maps">Concept Maps</a></li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/features/value_sets">Value Sets</a></li><li class="toc-subtitle">APIs</li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/api_service">API Service Access</a></li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/api_docs">API Documentation</a></li><li class="toc-h2"><a href="/docs/en/terminology_server/support">Support</a></li><li class="toc-h2"><a href="/docs/en/terminology_server/release_notes">Release Notes</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
+</a><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">Terminology Server</li><li class="toc-h2"><a href="/docs/en/terminology_server/term_server">Getting Started</a></li><li class="toc-subtitle">Installation</li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/on_prem_deploy">Deploy on Premise</a></li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/on_aws">Deploy on AWS</a></li><li class="toc-subtitle">Features</li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/features/search">Search</a></li><li class="toc-h2 subtitle_item active"><a href="/docs/en/terminology_server/features/code_systems">Code Systems</a></li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/features/concept_maps">Concept Maps</a></li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/features/value_sets">Value Sets</a></li><li class="toc-subtitle">APIs</li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/api_service">API Service Access</a></li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/api_docs">API Documentation</a></li><li class="toc-h2"><a href="/docs/en/terminology_server/support">Support</a></li><li class="toc-h2"><a href="/docs/en/terminology_server/release_notes">Release Notes</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
 
       <div class="page__main-inner"><div class="page__header d-print-none"><!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-59JLR64"
@@ -622,67 +622,61 @@ function wrapWordInSpan(data, wordToWrap) {
           <h1>Terminology Server</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
-            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/terminology_server/on_premise.md">
+            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/terminology_server/features/code_systems.md">
             <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Terminology Server"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
-<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="on-prem-installation-guide"><strong>On-Prem Installation Guide</strong></h2>
+<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="code-systems">Code Systems</h2>
 
-<p><strong>Prerequisites:</strong></p>
+<p><img src="/assets/images/term_server/code_to_code_search.png" alt="Terminology Service by John Snow Labs" /></p>
 
+<p>In healthcare, <strong>medical coding systems</strong> are standardized sets of codes used to classify diseases, treatments, medications, lab results, and clinical concepts.
+Each system serves a specific purpose:</p>
 <ul>
-  <li>Docker</li>
-  <li>awscli (AWS command-line interface)</li>
-  <li>jq (lightweight command-line JSON processor)</li>
+  <li>ICD10: Classifies diseases and health conditions.</li>
+  <li>CPT4: Used to describe medical procedures and services.</li>
+  <li>LOINC: Codes for lab tests and clinical measurements.</li>
+  <li>RxNorm: Normalized names for drugs and medications.</li>
+  <li>SNOMED CT: A comprehensive system for clinical terms used in electronic health records.</li>
+  <li>UMLS: A unifying system that connects terms across multiple vocabularies.</li>
+  <li>MeSH: Medical subject headings used in biomedical literature indexing.</li>
 </ul>
 
-<p><strong>Step 1: Get your license file or license key</strong></p>
+<p>Each system uses codes (e.g., E11 for Type 2 Diabetes in ICD10) to represent a specific medical concept.</p>
 
-<p>If license file is provided, place your license file in a local path. If license key is provided, you can directly use it in next step.</p>
-
-<p><strong>Step 2: Run the Installation/Upgrade Command</strong></p>
+<p>Different healthcare roles and use cases require different systems:</p>
 
 <ul>
-  <li>Install <code class="language-plaintext highlighter-rouge">latest</code> version using your license file path or license key:</li>
+  <li>A physician documents diagnoses using ICD10.</li>
+  <li>A lab uses LOINC to record test results.</li>
+  <li>A pharmacist references RxNorm to prescribe medications.</li>
+  <li>A clinical researcher might use MeSH to search publications.</li>
 </ul>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-sSL</span> https://s3.us-east-1.amazonaws.com/artifacts.terminologyservice.johnsnowlabs.com/install.sh | bash <span class="nt">-s</span> <span class="s2">"YOUR_LICENSE_FILE_PATH_OR_LICENSE_KEY"</span>
-</code></pre></div></div>
+<p>This diversity improves accuracy and efficiency within each domain—but it also creates fragmentation.</p>
 
-<blockquote>
-  <p><strong><em>NOTE:</em></strong> The initial setup may take a little longer if you’re running it for the first time, as databases and images are downloaded and services are created. We appreciate your patience! For more information regarding installation of Terminology Server on a dedicated server please contact us at <a href="mailto:support@johnsnowlabs.com">support@johnsnowlabs.com</a>.</p>
-</blockquote>
+<p>⚠️ The Challenge</p>
 
-<h2 id="recommended-configurations">Recommended Configurations</h2>
+<p>When data is spread across different coding systems, it becomes difficult to:</p>
 
-<table class="table2">
-  <tr>
-    <th>System requirements</th>
-    <td>You can install Terminology Server on a Ubuntu 20+ machine.</td>
-  </tr>
-  <tr>
-    <th>Port requirements</th>
-    <td>The service uses port <bl>8000</bl>. So it expects the port to be unused.</td>
-  </tr>
-  <tr>
-    <th>Server requirements</th>
-    <td>The minimal required configuration is <bl>16GB RAM, 8 Core CPU, 300GB+ Storage</bl>.
-        <br /><br />
-    The ideal configuration for a smooth performance is <bl>32 GB RAM and 16 Core CPU</bl>.
-    </td>
-  </tr>
-  <tr>
-    <th>Web browser support</th>
-    <td>Terminology Server is tested with the latest version of Google Chrome and is expected to work in the latest versions of:
-      <ul>
-      <li>Google Chrome</li>
-      <li>Apple Safari</li>
-      <li>Mozilla Firefox</li>
-      </ul>
-    </td>
-  </tr>
-</table>
+<ul>
+  <li>Exchange information across systems or institutions.</li>
+  <li>Analyze data uniformly.</li>
+  <li>Integrate clinical and administrative workflows.</li>
+</ul>
 
+<p>For example, one system may document a condition as “Essential Hypertension” (SNOMED), while another uses the ICD10 code I10.</p>
+
+<p>✅ The Solution: Search and Map Across Systems
+Terminology Server application solves this problem by:</p>
+
+<ul>
+  <li>Letting users search for medical concepts (e.g., “diabetes,” “hypertension”) across multiple systems at once.</li>
+  <li>Returning the corresponding codes in each system.</li>
+  <li>Showing mappings—links between equivalent or related codes across systems.</li>
+</ul>
+
+<p>This means users can see - as exemplified in the top image, how <strong>E11 in ICD10</strong> (Type 2 diabetes) <strong>maps to 10067585 in MEDDRA_PT</strong>( standardized, single medical concepts used to represent a symptom, sign, disease, diagnosis, etc) and how to <strong>E11 in ICD10CM</strong> (coding diseases, conditions, and injuries for statistical and billing purposes) <strong>maps to C0011847 in UMLS</strong>.</p>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
       <time itemprop="dateModified" datetime="2025-04-01T00:00:00+00:00">Apr 01, 2025</time>
     </span><!-- start custom article footer snippet -->
