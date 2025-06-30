@@ -1,18 +1,6 @@
 ---
 layout: model
-title: "Extracts Age, Age Groups, ADE, MedDRA codes, Laboratory Tests and Results, Medical History, and Administory information.
-
-Pipeline Description: 
-This pipeline is designed to process clinical text and extract a variety of entities, including:
-- Age and Age Groups: Identifies mentions of patient age and categorizes them into age groups.
-- ADE (Adverse Drug Events): Extracts mentions of adverse drug events.
-- MedDRA Codes: Maps extracted medical terms to MedDRA (Medical Dictionary for Regulatory Activities) Lowest Level Terms (LLTs).
-- Posology: Extracts information related to drug dosage, frequency, route, strength, and duration.
-- Laboratory Test and Result: Identifies laboratory tests and their corresponding results.
-- Medical History: Extracts information about the patient's medical history.
-- Administory: Extracts administrative information.
-
-The pipeline utilizes a combination of rule-based and deep learning models for robust entity recognition and mapping."
+title: Extracts Age Groups, ADE, MedDRA, Tests, Medical History
 author: John Snow Labs
 name: ner_ade_age_meddra_test_pipeline
 date: 2025-06-29
@@ -30,7 +18,19 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-Extracts Age Groups, ADE, MedDRA, Tests, Medical History
+Extracts Age, Age Groups, ADE, MedDRA codes, Laboratory Tests and Results, Medical History, and Administory information.
+
+Pipeline Description: 
+This pipeline is designed to process clinical text and extract a variety of entities, including:
+- Age and Age Groups: Identifies mentions of patient age and categorizes them into age groups.
+- ADE (Adverse Drug Events): Extracts mentions of adverse drug events.
+- MedDRA Codes: Maps extracted medical terms to MedDRA (Medical Dictionary for Regulatory Activities) Lowest Level Terms (LLTs).
+- Posology: Extracts information related to drug dosage, frequency, route, strength, and duration.
+- Laboratory Test and Result: Identifies laboratory tests and their corresponding results.
+- Medical History: Extracts information about the patient's medical history.
+- Administory: Extracts administrative information.
+
+The pipeline utilizes a combination of rule-based and deep learning models for robust entity recognition and mapping.
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
