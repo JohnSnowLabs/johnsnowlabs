@@ -15,6 +15,8 @@ The **Medical Terminology Server** offers users the ability to look up standard 
 
 The Medical Terminology Server combines **up-to-date editions of a wide range of terminologies** with extensive supplementary datasets of synonyms, common misspellings, and colloquialisms to provide code mappings for input text, whether it is from the clinical record, patient statements, or other sources of written information about health. 
 
+![Terminology Service by John Snow Labs](/assets/images/term_server/Splash.png)
+
 In addition to being to select from many standard vocabularies, the Medical Terminology Server is also **aware of OMOP CDM conventions**. It can also be constrained to only return codes that are OMOP Standard concepts and is able to check any concept for current validity. Batch transaction support makes efficient use of network calls.
 
 
