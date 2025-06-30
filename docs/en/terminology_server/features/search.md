@@ -71,26 +71,6 @@ Terminology Server performs term-level mapping: searching a term will return the
 ![Terminology Service by John Snow Labs](/assets/images/term_server/filter_panel.png)
 
 
-## Additional Filters 
-
-Improve your search outcomes by utilizing additional available filters:
-
-* Domain: Specifies the general topic area of a concept (e.g., Condition/Device, Condition/Meas, Drug, Gender).
-
-Choose from one of the available options to apply this filter using **one or more** pre-populated options in the dropdown list:
-
-![Terminology Service by John Snow Labs](/assets/images/term_server/filter_panel_domains.png)
-
-* OMOP Standards Concepts Only: Limits the search results to concepts that are flagged as “Standard” in the OMOP CDM.
-* Include Only Valid Concepts: Filters out concepts that have been invalidated due to deletion or being superseded.
-* Filter by Confidence Score: Allows refining results based on their confidence score.
-
-## Spell Checker
-
-When searching for a medical term, the Terminology Server will present a prommpt if it notice a spelling mistake was done. The option is to accept the correction or ignore it. The results will reflect the choice to go with the system's suggestion or original input:
-
-![Terminology Service by John Snow Labs](/assets/images/term_server/Spellchecker.png)
-
 ## Context Based Search
 
 Context-aware search that considers surrounding text to find more accurate medical codes by analyzing the clinical context in which terms appear.It is a powerful feature that enhances the accuracy and relevance of search results by allowing users to include additional context when searching for medical terms.
@@ -136,3 +116,26 @@ When selecting the **Exact Text Search** option in the Filter panel, the query w
 * The query supports multiple terms, for example: "diclofenac ```OR``` Eliquis ```OR``` clopidogrel" will return results containing any of the listed medications.
 
 ![Terminology Service by John Snow Labs](/assets/images/term_server/OR_operator.png)
+
+
+## Spell Checker
+
+When searching for a medical term, the Terminology Server will present a prommpt if it notice a spelling mistake was done. The option is to accept the correction or ignore it. The results will reflect the choice to go with the system's suggestion or original input:
+
+![Terminology Service by John Snow Labs](/assets/images/term_server/Spellchecker.png)
+
+
+## Additional Filters 
+
+Improve your search outcomes by utilizing additional available filters:
+
+* Domain: Specifies the general topic area of a concept (e.g., Condition/Device, Condition/Meas, Drug, Gender).
+
+Choose from one of the available options to apply this filter using **one or more** pre-populated options in the dropdown list:
+
+![Terminology Service by John Snow Labs](/assets/images/term_server/filter_panel_domains.png)
+
+* OMOP Standards Concepts Only: Limits the search results to concepts that are flagged as “Standard” in the OMOP CDM.
+* Include Only Valid Concepts: Filters out concepts that have been invalidated due to deletion or being superseded.
+* Filter by Confidence Score: Allows refining results based on their confidence score.
+
