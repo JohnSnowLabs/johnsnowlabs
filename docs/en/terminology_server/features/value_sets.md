@@ -35,9 +35,9 @@ In Terminology Server Tools, custom Value Sets can often be:
 * View, create new versions, delete
 * Filter search results based on the codes included in a selected Value Set.
 
-## Uploading a Custom Value Set
+## Creating a new Custom Value Set
 
-Uploading a custom Value Set is simple and intuitive:
+Uploading a custom Value Set is **simple and intuitive**:
 * In the **left navigation panel**, click on the **Value Sets** node.
 * Use the "**Browse Files**" button or drag your Excel/CSV file into the upload area, then click **Upload** to import your custom Value Set.
 
@@ -48,6 +48,13 @@ Uploading a custom Value Set is simple and intuitive:
 ![Terminology Service by John Snow Labs](/assets/images/term_server/Upload_VS_consecutive.png)
 
 * To **create a new Value Set** or **add a new version** to an existing one, click the **"Upload"** link on the right-hand side.
+
+![Terminology Service by John Snow Labs](/assets/images/term_server/NewValueSet.png)
+
+
+## Value Set - Versioning
+
+* To **add a new version** to an existing Value Set, click the **"Upload"** link on the right-hand side, choose **"Existing Value Sets"** option then select the name of the desired Value Set. 
 
 ![Terminology Service by John Snow Labs](/assets/images/term_server/Upload_VS_consecutive_newVersion.png)
 
