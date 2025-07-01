@@ -17,6 +17,7 @@ In the context of John Snow Labs Terminology Server, Concept Maps represent the 
 
 The following table shows the list of all Vocabuaries, Datasets and Versions used by Terminology Server for term search and code to code mapping search : 
 
+{:.table-model-big}
 | VOCABULARY | DATASET | DATASET VERSION |
 |----------|----------|----------|
 | ATC    | Trained on ATC 2022 Codes dataset     | ATC 2022 Codes     |
@@ -47,5 +48,3 @@ The following table shows the list of all Vocabuaries, Datasets and Versions use
 The figure below shows the code to code mapping results and their respective source and target coresponding vocabularies:
 
 ![Terminology Service by John Snow Labs](/assets/images/term_server/mappings.png)
-
-
