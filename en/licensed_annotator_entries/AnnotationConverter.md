@@ -26,6 +26,35 @@ Parameters:
 - `outputAnnotatorType`: (Param[String]) Type of the output annotations (e.g., "token").
 
 
+**Result**
+
+```
+
++--------------------+--------+-----+
+|        result      |  begin | end |
++--------------------+--------+-----+
+|                 I  |    0   |  0  |
+|              like  |    2   |  5  |
+|             Spark  |    7   | 11  |
+|               NLP  |   12   | 14  |
+|        annotators  |   16   | 25  |
+|              such  |   27   | 30  |
+|                as  |   32   | 33  |
+|           Medical  |   35   | 41  |
+|              Bert  |   42   | 45  |
+|               For  |   46   | 48  |
+|          Sequence  |   49   | 56  |
+|    Classification  |   57   | 70  |
+|               and  |   72   | 74  |
+|              Bert  |   76   | 79  |
+|               For  |   80   | 82  |
+|         Assertion  |   83   | 91  |
+|    Classification  |   92   |105  |
+|                 .  |  106   |106  |
++--------------------+--------+-----+
+
+```
+
 {%- endcapture -%}
 
 
@@ -81,34 +110,6 @@ pipeline = Pipeline(stages=[document_assembler, tokenizer, camel_case_tokenizer]
 model = pipeline.fit(test_data)
 df = model.transform(test_data)
 df.selectExpr("explode(camel_case_token) as tokens").show(truncate=False)    
-
-
-
-# result
-
-+--------------+-----+---+
-|        result|begin|end|
-+--------------+-----+---+
-|             I|    0|  0|
-|          like|    2|  5|
-|         Spark|    7| 11|
-|           NLP|   12| 14|
-|    annotators|   16| 25|
-|          such|   27| 30|
-|            as|   32| 33|
-|       Medical|   35| 41|
-|          Bert|   42| 45|
-|           For|   46| 48|
-|      Sequence|   49| 56|
-|Classification|   57| 70|
-|           and|   72| 74|
-|          Bert|   76| 79|
-|           For|   80| 82|
-|     Assertion|   83| 91|
-|Classification|   92|105|
-|             .|  106|106|
-+--------------+-----+---+
-
 
 {%- endcapture -%}
 

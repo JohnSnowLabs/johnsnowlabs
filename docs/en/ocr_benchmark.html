@@ -691,12 +691,15 @@ function wrapWordInSpan(data, wordToWrap) {
     </tbody>
   </table>
 
+</div>
+<div class="h3-box">
+
   <h3 id="dicom-de-identification-benchmark">Dicom De-identification Benchmark</h3>
   <p>This section contains benchmarks for de-ideintification of dicom files, both for GPU and CPU. 
 Note: file sizes are included as reference, but <em>they are not</em> the best proxy for estimating running time, as the final figures will depend on image size than in turn depends on the actual compression that is being used in the file.
 The numbers reported are average <em>time per file</em>.</p>
 
-  <table>
+  <table class="table-model-big">
     <thead>
       <tr>
         <th><strong>Model</strong></th>
@@ -738,12 +741,18 @@ The numbers reported are average <em>time per file</em>.</p>
     </tbody>
   </table>
 
+</div>
+<div class="h3-box">
+
   <ul>
     <li><strong>Google Colab GPU</strong>: Utilized a single A100 GPU (40 GB) – 7.62 Credits/hr.</li>
     <li><strong>Databricks Standalone GPU</strong>: DB Standalone Driver (64 GB, Single GPU, g4dn.4xLarge [T4]) – 2.85 DBU/h.</li>
     <li><strong>Google Colab CPU</strong>: HIGH RAM [8 Cores] instance – 0.18 Credits/hr.</li>
     <li><strong>Databricks Standalone CPU</strong>: Driver with 64 GB [16 Cores] (m4.4xlarge) – 3 DBU/h.</li>
   </ul>
+
+</div>
+<div class="h3-box">
 
   <h4 id="how-to-use-this-data">How to use this data</h4>
   <h5 id="gpu-vs-cpu">GPU vs. CPU</h5>
@@ -763,6 +772,9 @@ The numbers reported are average <em>time per file</em>.</p>
 
   <p>Here we see that for this workload the cheaper option is to go with GPU.</p>
 
+</div>
+<div class="h3-box">
+
   <h4 id="using-the-data-as-a-proxy-for-estimation">Using the data as a proxy for estimation</h4>
   <p>What governs the processing time is image size. Let’s take a look at some figures for this dataset,</p>
   <ul>
@@ -778,13 +790,22 @@ The numbers reported are average <em>time per file</em>.</p>
 
   <p>Note: don’t forget to count multi-frame images.</p>
 
+</div>
+<div class="h3-box">
+
   <h4 id="i-dont-know-the-dimensions-of-my-images">I don’t know the dimensions of my images</h4>
   <p>If you don’t know the dimensions, but you know that your images are also uncompressed, you can use file size as proxy. 
 <em>Keep in mind that if you actually have compressed images you will be underestimating the processing time</em>.</p>
 
+</div>
+<div class="h3-box">
+
   <h4 id="why-the-numbers-are-related-to-uncompressed-images">Why the numbers are related to uncompressed images</h4>
   <p>The variation of the effective compression levels in real datasets makes it impractical to use such a metric in an estimation. Some datasets with low density of information can get compression levels up to 30X, while some others can have lower compressions, so picking a reference dataset is very difficult for the general case. &lt;/br&gt;
 But not all hope is lost, you can work with frames!.</p>
+
+</div>
+<div class="h3-box">
 
   <h4 id="using-total-frame-count-as-a-proxy-for-estimation">Using total frame count as a proxy for estimation</h4>
   <p>If you don’t know the size of the images, or the compression, you can estimate the number of frames and use the time it takes for a single frame(like the numbers we’ve shared in this document) as a proxy. 
