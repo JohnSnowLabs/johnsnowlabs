@@ -18,8 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pipeline is designed to extract `ADE` and `DRUG` entities,
- and establish relations between the extracted `DRUG` and `ADE` results from the clinical documents.
+This pipeline is designed to extract `ADE` and `DRUG` entities, and establish relations between the extracted `DRUG` and `ADE` results from the clinical documents.
 
 2 NER models and a text matcher are used to accomplish the designated tasks.
 
