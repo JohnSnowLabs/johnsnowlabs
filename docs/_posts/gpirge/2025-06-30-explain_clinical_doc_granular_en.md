@@ -2,7 +2,7 @@
 layout: model
 title: Explain Clinical Document Granular - Light
 author: John Snow Labs
-name: explain_clinical_doc_granular
+name: explain_clinical_doc_granular_light
 date: 2025-06-30
 tags: [licensed, en, clinical, pipeline, ner, relations]
 task: [Pipeline Healthcare, Named Entity Recognition, Relation Extraction]
@@ -23,8 +23,8 @@ This pipeline is designed to extract clinical entities and establish relations b
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_granular_en_6.0.2_3.4_1751293267057.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_granular_en_6.0.2_3.4_1751293267057.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_granular_light_en_6.0.2_3.4_1751293267057.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_granular_light_en_6.0.2_3.4_1751293267057.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -36,7 +36,7 @@ This pipeline is designed to extract clinical entities and establish relations b
 
 from sparknlp.pretrained import PretrainedPipeline
 
-ner_pipeline = PretrainedPipeline("explain_clinical_doc_granular", "en", "clinical/models")
+ner_pipeline = PretrainedPipeline("explain_clinical_doc_granular_light", "en", "clinical/models")
 
 result = ner_pipeline.annotate("""The patient admitted for gastrointestinal pathology, under working treatment.
 History of prior heart murmur with echocardiogram findings as above on March 1998.
@@ -48,7 +48,7 @@ Based on the above findings, we will treat her medically with ACE inhibitors 10 
 
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
-val ner_pipeline = PretrainedPipeline("explain_clinical_doc_granular", "en", "clinical/models")
+val ner_pipeline = PretrainedPipeline("explain_clinical_doc_granular_light", "en", "clinical/models")
 
 val result = ner_pipeline.annotate("""The patient admitted for gastrointestinal pathology, under working treatment.
 History of prior heart murmur with echocardiogram findings as above on March 1998.
@@ -118,7 +118,7 @@ Based on the above findings, we will treat her medically with ACE inhibitors 10 
 
 {:.table-model}
 |---|---|
-|Model Name:|explain_clinical_doc_granular|
+|Model Name:|explain_clinical_doc_granular_light|
 |Type:|pipeline|
 |Compatibility:|Healthcare NLP 6.0.2+|
 |License:|Licensed|
