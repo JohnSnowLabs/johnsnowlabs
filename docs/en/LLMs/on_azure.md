@@ -11,9 +11,9 @@ sidebar:
     nav: medical-llm
 ---
 
-The LLMs listed below are available on Azure.
+The list below shows John Snow Labs' Medical LLM models available on Azure marketplace.
 
-**All LLMs on AWS Sagemaker are Open AI compatible.**
+**All LLMs on Azure are Open AI compatible.**
 
 [Medical LLM Medium](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.medical_llm_medium?tab=Overview)
 
