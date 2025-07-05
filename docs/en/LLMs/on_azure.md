@@ -15,19 +15,19 @@ The LLMs listed below are available on Azure.
 
 **All LLMs on AWS Sagemaker are Open AI compatible.**
 
-[Medical LLM Medium]()
+[Medical LLM Medium](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.medical_llm_medium?tab=Overview)
 
-[Medical LLM Small]()
+[Medical LLM Small](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.medical_llm_small?tab=Overview)
 
-[Medical LLM - 14B]()
+[Medical LLM - 14B](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.medical_llm_14b?tab=Overview)
 
-[Medical LLM - 10B]()
+[Medical LLM - 10B](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.medical_llm_10b?tab=Overview)
 
-[Medical LLM- 7B]()
+[Medical LLM- 7B](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.medical_llm_7b?tab=Overview)
 
-[Medical Reasoning LLM - 14B]()
+[Medical Reasoning LLM - 14B](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.medical_reasoning_llm_14b?tab=Overview)
 
-[Medical Reasoning LLM - 32B]()
+[Medical Reasoning LLM - 32B](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.medical_reasoning_llm_32b?tab=Overview)
 
 
 ## Deployment Instructions
