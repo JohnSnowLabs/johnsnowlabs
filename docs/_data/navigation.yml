@@ -99,6 +99,8 @@ medical-llm:
         url: /docs/en/LLMs/on_prem_deploy
       - title: Deploy on AWS
         url: /docs/en/LLMs/on_aws
+      - title: Deploy on Azure
+        url: /docs/en/LLMs/on_azure
       - title: Deploy on Snowflake
         url: /docs/en/LLMs/on_snowflake
       - title: Support
