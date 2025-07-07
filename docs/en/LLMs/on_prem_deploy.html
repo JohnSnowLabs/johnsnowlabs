@@ -398,7 +398,7 @@ connect-src 'self' data: api.github.com sparknlp.org search.modelshub.johnsnowla
 <path d="M20.2658 26.412H8.38867V26.5781H20.2658V26.412Z" fill="#9EDEFA"/>
 </svg>
 -->
-</a><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">Medical LLMs</li><li class="toc-h2"><a href="/docs/en/LLMs/medical_llm">Home</a></li><li class="toc-h2 active"><a href="/docs/en/LLMs/on_prem_deploy">Deploy on Premise</a></li><li class="toc-h2"><a href="/docs/en/LLMs/on_aws">Deploy on AWS</a></li><li class="toc-h2"><a href="/docs/en/LLMs/on_snowflake">Deploy on Snowflake</a></li><li class="toc-h2"><a href="/docs/en/LLMs/support">Support</a></li><li class="toc-h2"><a href="/docs/en/LLMs/releases/release_notes">Release Notes</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
+</a><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">Medical LLMs</li><li class="toc-h2"><a href="/docs/en/LLMs/medical_llm">Home</a></li><li class="toc-h2 active"><a href="/docs/en/LLMs/on_prem_deploy">Deploy on Premise</a></li><li class="toc-h2"><a href="/docs/en/LLMs/on_aws">Deploy on AWS</a></li><li class="toc-h2"><a href="/docs/en/LLMs/on_azure">Deploy on Azure</a></li><li class="toc-h2"><a href="/docs/en/LLMs/on_snowflake">Deploy on Snowflake</a></li><li class="toc-h2"><a href="/docs/en/LLMs/support">Support</a></li><li class="toc-h2"><a href="/docs/en/LLMs/releases/release_notes">Release Notes</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
 
       <div class="page__main-inner"><div class="page__header d-print-none"><!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-59JLR64"
@@ -769,7 +769,13 @@ johnsnowlabs/jsl-llms <span class="se">\</span>
     </tbody>
   </table>
 
-  <p><em>Note: All memory calculations are based on half-precision (fp16/bf16) weights. Recommended GPU Memory considers the model size and the maximum key-value cache at the model’s maximum sequence length. These calculations follow the guidelines from <a href="https://docs.djl.ai/master/docs/serving/serving/docs/lmi/deployment_guide/instance-type-selection.html">DJL’s LMI Deployment Guide.</a></em></p>
+  <blockquote>
+    <p><strong>Important Notes</strong></p>
+
+    <p><strong>Memory Calculations:</strong> All memory calculations are based on half-precision (fp16/bf16) weights. Recommended GPU Memory considers the model size and the maximum key-value cache at the model’s maximum sequence length. These calculations follow the guidelines from <a href="https://docs.djl.ai/master/docs/serving/serving/docs/lmi/deployment_guide/instance-type-selection.html">DJL’s LMI Deployment Guide.</a></p>
+
+    <p><strong>Vision Language Model Limitations:</strong> Medical-VLM-24B and Spanish-Medical-LLM-24B currently <strong>only support text inference</strong> for on-premise deployment. For full vision-language capabilities (both text and image processing), please use these models through <a href="/docs/en/LLMs/on_aws">AWS SageMaker Marketplace</a> where these models support complete multimodal functionality.</p>
+  </blockquote>
 
 </div>
 
@@ -822,7 +828,7 @@ johnsnowlabs/jsl-llms <span class="se">\</span>
 </ul>
 
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2025-05-19T00:00:00+00:00">May 19, 2025</time>
+      <time itemprop="dateModified" datetime="2025-07-01T00:00:00+00:00">Jul 01, 2025</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
