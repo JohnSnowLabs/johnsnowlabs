@@ -276,6 +276,8 @@ These updates ensure a smoother project setup experience and prevent misconfigur
 </div>
 
 <ul class="pagination owl-carousel pagination_big">
+    <li><a href="annotation_labs_releases/release_notes_7_2_2">7.2.2</a></li>
+    <li><a href="annotation_labs_releases/release_notes_7_2_1">7.2.1</a></li>
     <li class="active"><a href="annotation_labs_releases/release_notes_7_2_0">7.2.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_7_1_0">7.1.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_7_0_1">7.0.1</a></li>
