@@ -319,6 +319,8 @@ curl -sSL https://s3.us-east-1.amazonaws.com/artifacts.genailab.johnsnowlabs.com
 curl -sSL https://s3.us-east-1.amazonaws.com/artifacts.genailab.johnsnowlabs.com/upgrade.sh | bash -s 7.0.0
 ```
 
+<div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item">{%- include extensions/youtube.html id='pG3Ft1DmiLY' -%}<div class="video-descr">Deploy Generative AI Lab On-Prem Installation </div></div></div>
+
 For more information regarding installation of Generative AI Lab on a dedicated server please contact us at [support@johnsnowlabs.com](mailto:support@johnsnowlabs.com).
 
 
