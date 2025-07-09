@@ -127,6 +127,36 @@ The team is assessing whether the patient's symptoms are due to a flare in her a
 |Language:|en|
 |Size:|1.7 GB|
 
+
+## Benchmarking
+
+```bash
+
+                  label  precision    recall  f1-score   support
+
+      Adaptive_Immunity       0.96      0.98      0.97       659
+                    Age       0.87      0.91      0.89       379
+           Bac_Vir_Comb       0.94      0.97      0.96        66
+          Bacterial_Vax       0.94      0.73      0.82       129
+             Cancer_Vax       0.92      0.96      0.94       112
+                   Date       0.93      0.92      0.92        99
+            Inactivated       0.93      0.78      0.85        32
+     Infectious_Disease       0.96      0.98      0.97       772
+ Other_Disease_Disorder       0.87      0.90      0.89       441
+              Other_Vax       0.77      1.00      0.87        17
+           Sign_Symptom       0.87      0.86      0.87       197
+                 Toxoid       0.94      1.00      0.97        15
+               Vax_Dose       0.78      0.95      0.86       169
+              Viral_Vax       0.94      0.94      0.94       186
+            
+
+              micro_avg       0.92      0.93      0.92      3273
+              macro avg       0.90      0.92      0.91      3273
+           weighted avg       0.92      0.93      0.92      3273
+
+```
+
+
 ## Included Models
 
 - DocumentAssembler
