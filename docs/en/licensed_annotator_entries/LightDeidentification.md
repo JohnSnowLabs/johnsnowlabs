@@ -106,14 +106,14 @@ For example, if "John Smith" is obfuscated as "Liam Brown", then:
 
 Default: True
 
--`geoConsistency`: (BooleanParam) Sets whether to enforce consistent obfuscation across geographical entities:
+- `geoConsistency`: (BooleanParam) Sets whether to enforce consistent obfuscation across geographical entities:
 state, city, street, zip and phone.
 This parameter enables intelligent geographical entity obfuscation that maintains
 realistic relationships between different geographic components.
 When enabled, the system ensures that obfuscated addresses form coherent, valid combinations
 rather than random replacements. Default: False
 
--`countryObfuscation`: (BooleanParam) Whether to obfuscate country entities or not. If True, the country entities will be obfuscated. Default: False.
+- `countryObfuscation`: (BooleanParam) Whether to obfuscate country entities or not. If True, the country entities will be obfuscated. Default: False.
 
 - `additionalDateFormats`: (Param[String]) Additional date formats to be considered during date obfuscation.
   This allows users to specify custom date formats in addition to the default date formats. Default: [].
@@ -128,6 +128,16 @@ rather than random replacements. Default: False
 - `staticObfuscationPairs`: static obfuscation pairs is used to set static obfuscation pairs that will be used for de-identification.
   Each pair should contain three elements: original, entity type, and fake.
   The pairs must have exactly 3 elements: [original, entityType, fake].
+
+- `obfuscationEquivalents` : used to define variant-to-canonical mappings to ensure consistent obfuscation.  
+  Each pair should contain three elements: variant, entity type, and canonical.  
+  The pairs must have exactly 3 elements: `[variant, entityType, canonical]`.
+
+- `enableDefaultObfuscationEquivalents` : whether to enable default obfuscation equivalents for common entities.
+  This parameter allows the system to automatically include a set of predefined common English name equivalents.
+  Default is False.
+
+
 
 
 {%- endcapture -%}

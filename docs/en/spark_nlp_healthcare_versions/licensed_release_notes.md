@@ -5,7 +5,7 @@ seotitle: Spark NLP for Healthcare | John Snow Labs
 title: Healthcare NLP Release Notes
 permalink: /docs/en/spark_nlp_healthcare_versions/licensed_release_notes
 key: docs-licensed-release-notes
-modify_date: 2025-06-05
+modify_date: 2025-06-26
 show_nav: true
 sidebar:
     nav: sparknlp-healthcare
@@ -13,591 +13,439 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-## 6.0.2
+## 6.0.3
 
 #### Highlights
 
-We are delighted to announce remarkable enhancements in our latest release of Healthcare NLP. **This release comes with improvements to the De-Identification module, including advanced masking strategies, geographic consistency for address obfuscation, customizable date formats, case-sensitive fake data generation for PHI obfuscation, and fine-grained control over obfuscation sources and replacement rules. Alongside these, the release also includes a new Metadata Annotation Converter annotator, expanded phrase matching capabilities in Text Matcher, enhanced entity filtering in ChunkMapper Filterer, and several new and updated clinical pretrained models and pipelines.**
+We are delighted to announce the release of our latest enhancements and updates for Healthcare NLP.
 
-+ Geographic consistency support and country obfuscation control in `De-Identification` module
-+ New masking policies for entity redaction in `De-Identification` to control how masked entities look like afterwards
-+ Custom date format support for date obfuscation for normalizing and shifting dates in uncommon formats
-+ Improved case sensitivity for fake data generation in `De-Identification` to ensure the casing of each token and chars intact for certain entities after PHI obfuscation
-+ Selective obfuscation source configuration in `De-Identification` to allow more flexibility while using custom fake data sources vs embedded ones
-+ Static and file-based obfuscation entity vs chunk pair support in `De-Identification` for a better treatment of VIP entities 
-+ Enhanced phrase matching in `TextMatcher`: Lemmatization, Stemming, Stopword Handling & Token Shuffling in both source text and target keywords while matching
-+ Introducing a new annotator `MetadataAnnotationConverter` to utilise metadata information within the pipeline
-+ Enhanced entity filtering in `ChunkMapperFilterer` with whitelist and blacklist support
-+ Updated notebooks and demonstrations for making Healthcare NLP easier to navigate and understand
-    - New [TextMatcherInternal](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/40.1.Text_Matcher_Internal.ipynb) Notebook
-+ The addition and update of numerous new clinical models and pipelines continue to reinforce our offering in the healthcare domain
++ Support for obfuscation equivalents to normalize entity variants in DeIdentification (e.g. Robert vs Rob will be treated same)
++ Deterministic fallback for missing Date shifts in DeIdentification
++ Dictionary support for `Deidentification` with `setSelectiveObfuscationModes` parameter
++ New MedS-NER LLM for structured medical entity extraction via small LLMs
++ Memory optimisation for pretrained zero shot NER models to extract custom entities from out-of-distribution datasets
++ Enhanced phenotype entity mapping pipeline with HPO standardization and advanced entity extraction
++ Optimized clinical De-Identification pipelines for secure and compliant healthcare data processing with one liner
++ Various core improvements, bug fixes, enhanced overall robustness, and reliability of Spark NLP for Healthcare
+    - Improved incorrect multi-letter replacements for single-letter names in obfuscation
+    - Substring logic crash fix in `TextMatcherInternal` for safer token handling
+    - Memory optimization for `PretrainedZeroShotNER` to reduce memory usage during inference
++ New and updated notebooks and demonstrations
+    - Updated [Text Matcher Internal](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/40.1.Text_Matcher_Internal.ipynb) Notebook
 
-These enhancements will elevate your experience with Spark NLP for Healthcare, enabling more efficient, accurate, and streamlined analysis of healthcare-related natural language data.
+These enhancements will elevate your experience with Healthcare NLP, enabling more efficient, accurate, and streamlined analysis of healthcare-related natural language data.
 
 
 </div><div class="h3-box" markdown="1">
+    
+#### New Feature: Support for Obfuscation Equivalents to Normalize Entity Variants
 
-#### Geographic Consistency Support and Country Obfuscation Control in `De-Identification`
+A new **feature** has been added to support defining *obfuscation equivalents* — enabling consistent replacement of variant forms of the same entity during de-identification.
 
-A new parameter `setGeoConsistency(True)` has been introduced in the `DeIdentification` annotator to ensure **realistic and coherent obfuscation of geographic entities**. This feature guarantees that obfuscated addresses make sense by maintaining valid combinations between: 
-    - `state`
-    - `city`
-    - `zip`
-    - `street`
-    - `phone`
+**Use case examples:**
+- `"Alex"` and `"Alexander"` → always mapped to the same obfuscated value under `"NAME"`
+- `"CA"` and `"Calif."` → normalized to `"California"` under `"STATE"`
 
-When enabled, the system intelligently selects related fake address components from a unified pool using a deterministic algorithm. This prevents nonsensical combinations like `"New York City, California, ZIP 98006"` by enforcing priority-based mapping across geographic types.
+**How it works:**
+- Accepts a list of string triplets: `[variant, entityType, canonical]`
+- Both `variant` and `entityType` are **case-insensitive**
+- Ensures consistent and semantically aligned obfuscation across documents
 
-- Priority Order for Consistent Mapping
-    1. **State** (highest priority)
-    2. **City**
-    3. **Zip code**
-    4. **Street**
-    5. **Phone** (lowest priority)
 
-- Language Requirement
-This feature is available only when:
-    - `setGeoConsistency(True)` **is enabled**
-    - `setLanguage("en")` **is set**
 
-For all non-English languages, the feature is ignored (for now).
-
-- Interaction with Other Parameters
-Enabling `geoConsistency` will automatically override:
-    - `keepTextSizeForObfuscation`
-    - `consistentObfuscation` on some address entities
-    - any file-based faker settings
-
-This ensures full control over the address pool for geographic coherence and we plan to improve this feature further with user feedbacks for a seamless experience.
-
-- **Country Obfuscation Control**
-
-Previously, country entities were **always obfuscated** by default in `DeIdentification`.  
-Now, country obfuscation is **explicitly controlled** via the new parameter:
-
-If set to True, country names will be obfuscated.  
-If set to False (default), country names will be preserved.
-
-*Example:*
+*Example*:
 
 ```python
-deid_with_geo_consistency = DeIdentification() \
-            .setInputCols(["ner_chunk", "token", "document"]) \
-            .setOutputCol("deid_with_geo_consistency") \
-            .setMode("obfuscate") \
-            .setGeoConsistency(True) \
-            .setCountryObfuscation(False) \
-            .setSeed(10)
+from johnsnowlabs import nlp, medical
+equvalent_list = [
+    ["Alex", "NAME", "Alexander"],
+    ["Jenny", "NAME", "Jennifer"],
+    ["Liz", "NAME", "Elizabeth"],
+    ["CA", "LOCATION", "California"],
+    ["NY", "CITY", "New York"]
+]
+obfuscation = DeIdentification()\
+    .setInputCols(["sentence", "token", "ner_chunk"]) \
+    .setOutputCol("deidentified") \
+    .setMode("obfuscate")\
+    .setObfuscationEquivalents(equvalent_list)\
+    .setSeed(103)\
+    .setGenderAwareness(True)
 
-deid_without_geo_consistency = DeIdentification() \
-            .setInputCols(["ner_chunk", "token", "document"]) \
-            .setOutputCol("deid_without_geo_consistency") \
-            .setMode("obfuscate") \
-            .setGeoConsistency(False) \
-            .setCountryObfuscation(False) \
-            .setSeed(10)
+text ='''
+Record date: 2023-03-08. The patient, Jennifer Thompson, is 63 years old.
+Dr. Elizabeth Carter, from Downtown Health Center in New York, NY, 10027, Phone: 212-123-4567.
+Dr. Liz discharged Jenny on 2023-03-08. Her medical record number is 77881234.
+'''
 
-text = """
-        Patient Medical Record
-        Patient Name: Sarah Johnson
-
-        Patient Demographics and Contact Information
-        Primary Address:
-        1247 Maple Street
-        Austin, Texas 78701
-        USA
-        Contact Information:
-        Primary Phone: (512) 555-0198
-        """
-
-text_df = self.spark.createDataFrame([[text]]).toDF("text")
 ```
-
 
 *Result*:
 
 ```bash
-Orginal text:
-        Patient Medical Record
-        Patient Name: Sarah Johnson
-
-        Patient Demographics and Contact Information
-        Primary Address:
-        1247 Maple Street
-        Austin, Texas 78701
-        USA
-        Contact Information:
-        Primary Phone: (512) 555-0198
-
---------------------------------------------------------
-With Geo Consistency:
-
-        Patient Medical Record
-        Patient Name: Amanda Shilling
-
-        Patient Demographics and Contact Information
-        Primary Address:
-        3600 Constitution Blvd
-        West Valley City, UT 84119
-        USA
-        Contact Information:
-        Primary Phone: (801) 555-0222
-
----------------------------------------------------------
-Without Geo Consistency:
-
-        Patient Medical Record
-        Patient Name: Amanda Shilling
-
-        Patient Demographics and Contact Information
-        Primary Address:
-        800 West Leslie
-        Hart, Texas 41452
-        USA
-        Contact Information:
-        Primary Phone: (029) 000-5281
-
+Record date: 2023-04-10. The patient, Maryl Gallant, is 75 years old.                                                       
+Dr. Rosanne Grand, from Doctors Specialty Hospital in Watonga, Watonga, 01194, Phone: 909-098-7654.
+Dr. Rosanne discharged Maryl on 2023-04-10. Her medical record number is 44330987.                                                             
 ```
 
-
-
-</div><div class="h3-box" markdown="1">
-
-#### New Masking Policies for Entity Redaction in `De-Identification`
-
-- Introduced `same_length_chars_without_brackets` masking policy: masks entities with asterisks of the same length **without square brackets**.
-- Introduced `entity_labels_without_brackets` masking policy: replaces entities with their label **without square brackets**.
-
-*Example:*
-
-```python
-deid_entity_labels = DeIdentification()\
-    .setInputCols(["sentence", "token", "ner_chunk"])\
-    .setOutputCol("deid_entity_label")\
-    .setMode("mask")\
-    .setReturnEntityMappings(True)\
-    .setMaskingPolicy("entity_labels_without_brackets")
-
-deid_same_length = DeIdentification()\
-    .setInputCols(["sentence", "token", "ner_chunk"])\
-    .setOutputCol("deid_same_length")\
-    .setMode("mask")\
-    .setReturnEntityMappings(True)\
-    .setMaskingPolicy("same_length_chars_without_brackets")
-
-deid_fixed_length = DeIdentification()\
-    .setInputCols(["sentence", "token", "ner_chunk"])\
-    .setOutputCol("deid_fixed_length")\
-    .setMode("mask")\
-    .setReturnEntityMappings(True)\
-    .setMaskingPolicy("fixed_length_chars")\
-    .setFixedMaskLength(4)
-```    
-
-*Result*:
-
-{:.table-model-big}
-|Sentence | `deid_entity_label` | `deid_same_length` | `deid_fixed_length` |
-|---------|---------------------| -------------------| --------------------|
-| Record date : 2093-01-13 , David Hale , M.D . | Record date : DATE , NAME , M.D .                 | Record date : \*\*\*\*\*\*\*\*\*\* , \*\*\*\*\*\*\*\*\*\* , M.D . | Record date : \*\*\*\* , \*\*\*\* , M.D . |
-| , Name : Hendrickson Ora , MR # 7194334 Date : 01/13/93 . | , Name : NAME , MR # ID Date : DATE . | , Name : \*\*\*\*\*\*\*\*\*\*\*\*\*\*\* , MR # \*\*\*\*\*\*\* Date : \*\*\*\*\*\*\*\* . | , Name : \*\*\*\* , MR # \*\*\*\* Date : \*\*\*\* . |
-| PCP : Oliveira , 25 years-old , Record date : 01/13/93 . | PCP : NAME , AGE years-old , Record date : DATE . | PCP : \*\*\*\*\*\*\*\* , \*\* years-old , Record date : \*\*\*\*\*\*\*\* . | PCP : \*\*\*\* , \*\*\*\* years-old , Record date : \*\*\*\* . |
-| Cocke County Baptist Hospital , 0295 Keats Street , Phone 800-555-5555 . | LOCATION , LOCATION , Phone CONTACT . | \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\* , \*\*\*\*\*\*\*\*\*\*\*\*\*\* , Phone \*\*\*\*\*\*\*\*\*\*\*\* . | \*\*\*\* , \*\*\*\* , Phone \*\*\*\* . |
-
-
-</div><div class="h3-box" markdown="1">
-
-#### Custom Date Format Support for Date Obfuscation
-
-- **Added** support for `additionalDateFormats` parameter to allow specifying custom date formats in addition to the built-in `dateFormats`.
-
-This enables more flexible parsing and obfuscation of non-standard or region-specific date patterns.
-
-*Example:*
-
-```python
-de_identification_mask = DeIdentification() \
-    .setInputCols(["ner_chunk", "token", "document2"]) \
-    .setOutputCol("deid_text_mask") \
-    .setMode("masked") \
-    .setObfuscateDate(True) \
-    .setLanguage("en") \
-    .setObfuscateRefSource('faker') \
-    .setAdditionalDateFormats(["dd MMMyyyy", "dd/MMM-yyyy"]) \ # new parameter
-    .setUseShiftDays(True) \
-    .setRegion('us') \
-    .setUnnormalizedDateMode("skip")
-
-de_identification_obf = DeIdentification() \
-    .setInputCols(["ner_chunk", "token", "document2"]) \
-    .setOutputCol("deid_text_obs") \
-    .setMode("obfuscate") \
-    .setObfuscateDate(True) \
-    .setLanguage("en") \
-    .setObfuscateRefSource('faker') \
-    .setAdditionalDateFormats(["dd MMMyyyy", "dd/MMM-yyyy"]) \ # new parameter
-    .setUseShifDays(True) \
-    .setRegion('us') \
-    .setUnnormalizedDateMode("skip")
-```
-
-
-*Result*:
-
-{:.table-model-big}
-| Original Text | Date Shift | Masked Result | Obfuscated Result |
-|---------------| ---------- |---------------|-------------------|
-| Chris Brown was discharged on 10/02/2022 | -5         | \<PATIENT> was discharged on \<DATE> | Larwance Engels was discharged on 09/27/2022 |
-| John was discharged on 03 Apr2022        | 10         | \<PATIENT> was discharged on \<DATE> | Vonda was discharged on 13 Apr2022          |
-| John Moore was discharged on 11/May-2025 | 20         | \<PATIENT> was discharged on \<DATE> | Vonda Seals was discharged on 31/May-2025    |
-
-
-
-</div><div class="h3-box" markdown="1">
-
-#### Improved Case Sensitivity for Fake Data Generation in `De-Identification`
-
-- **Enhancement:** Fake values generated during obfuscation now respect the original text's casing by default.
-- This ensures that fake data matches the case style (lowercase, uppercase, mixed case) of the input entities for more natural and consistent masking results.
+- Also supports loading equivalence rules from external files via `.setObfuscationEquivalentsResource`.
 
 *Example*:
 
 ```python
-obfuscation = DeIdentification()\
-    .setInputCols(["sentence", "token", "ner_subentity_chunk"]) \
-    .setOutputCol("deidentified") \
-    .setMode("obfuscate")\
-    .setObfuscateDate(True)\
-    .setObfuscateRefSource("faker")
-
-text = '''
-Record date : 2093-01-13 , david hale , M.D . , Name : MARIA , Ora MR # 7194334 Date : 01/13/93 . Patient : Oliveira, 25 years-old , Record date : 2079-11-09 .
-'''
+obfuscation.setObfuscationEquivalentsResource("path/to/equivalents.csv")
 ```
 
-
-*Result*:
-
-{:.table-model-big}
-| sentence | deidentified |
-|----------|--------------|
-| Record date : 2093-01-13 , david hale , M.D .        | Record date : 2093-03-13 , paula favia , M.D .     |
-| , Name : MARIA , Ora MR # 7194334 Date : 01/13/93 .  | , Name : MARYAGNES Liberty MR # 2805665 Date : ... |
-| Patient : Oliveira, 25 years-old , Record date : ... | Patient : Johann, 27 years-old , Record date : ... |
-    
-
-#### Selective Obfuscation Source Configuration in `De-Identification`
- 
-Introduced the `setSelectiveObfuscateRefSource()` method to allow **per-entity customization** of obfuscation sources.  
-This enables users to specify different obfuscation strategies (e.g., `'faker'`, `'custom'`, `'file'`, `'both'`) for different entity types.  
-If an entity is not explicitly configured in this dictionary, the global `obfuscateRefSource` setting will be used as a fallback.
-
-*Example*:
+- `getDefaultObfuscationEquivalents`: Returns the default obfuscation equivalents for common entities
 
 ```python
-selective_obfuscate_ref_source = {"Drug": "file", "state": "both"}
-
-de_identification = DeIdentification() \
-            .setInputCols(["token", "sentence","ner_chunk"]) \
-            .setOutputCol("obfuscated") \
-            .setObfuscateRefSource("faker") \
-            .setMode("obfuscate") \
-            .setSelectiveObfuscateRefSource(selective_obfuscate_ref_source) \
-
-```
-
-</div><div class="h3-box" markdown="1">
-
-#### Static and File-Based Obfuscation Pair Support in `De-Identification`
-
-- **Added** `setStaticObfuscationPairs`: allows users to define static `[original, entityType, fake]` triplets directly in code for deterministic obfuscation.
-- **Added** `setStaticObfuscationPairsResource`: allows loading obfuscation triplets from an external file (e.g., CSV). Supports custom delimiter through the `options` parameter.
-
-This feature is especially useful in **VIP or high-profile patient** scenarios, where specific sensitive names or locations must always be replaced in a controlled and reproducible way.  
-
-*Example:*
-
-```python
-text = """John Smith visited Los Angeles. He was admitted to the emergency department at St. Mary's Hospital after experiencing chest pain. His mother worked as a Nurse  """
-
-
-# Define pairs in code
-pairs = [
-    ["John Smith", "PATIENT", "Andrew Snow"],
-    ["Los Angeles", "CITY", "New York City"],
-    ["St. Mary's Hospital", "HOSPITAL", "Johns Hopkins Hospital"],
-    ["Nurse", "PROFESSION", "Cardiologist"]
+[
+    ['Alex', 'FIRST_NAME', 'Alexander'],
+    ['Rob', 'FIRST_NAME', 'Robert'],
+    ['Bob', 'FIRST_NAME', 'Robert'],
+    ['Bobby', 'FIRST_NAME', 'Robert'],
+    ['Liz', 'FIRST_NAME', 'Elizabeth'],
+    ['Beth', 'FIRST_NAME', 'Elizabeth'],
+    ['Lizzy', 'FIRST_NAME', 'Elizabeth'],
+    .....
 ]
+```
 
-deid = DeIdentification() \
+
+- `setEnableDefaultObfuscationEquivalents`: Sets whether to enable default obfuscation equivalents for common entities.
+This parameter allows the system to automatically include a set of predefined common English name equivalents. The default is False.
+
+
+</div><div class="h3-box" markdown="1">
+
+
+#### New Feature: Deterministic Fallback for Missing Date Shifts in DeIdentification
+
+A new utility has been added to **automatically fill missing or empty values** in a date shift column using a **deterministic, ID-based pseudo-random fallback**.
+
+This feature is especially useful in **de-identification pipelines** where:
+
+- Date shifts must be **consistent per ID**
+- Some rows have **null or missing shift values**
+
+**Logic:**
+
+- If another row with the same `ID` has a shift value, it is **reused**
+- If no shift exists for that ID, a fallback shift is **generated using a deterministic hash function** based on the `ID` and a fixed seed
+- Fallback shifts are **always within the range** `[1, maxShiftDays]`
+
+
+*Example*:
+
+```python
+import pandas as pd
+data = pd.DataFrame(
+    {'patientID' : ['A001', 'A002', 'A001', 'A002', 'A003', 'A003'],
+     'text' : [
+         'Chris Brown was discharged on 10/02/2022',
+          'Mark White was discharged on 03/01/2020',
+          'Chris Brown was born on 05/10/1982',
+          'Mark White was born on 10/04/2000',
+          'John was discharged on 03/15/2022',
+          'John Moore was born on 12/31/2002'
+      ],
+     'dateshift' : ['10', '-2', None, None, None, 5]
+    }
+)
+input_df = spark.createDataFrame(data)
+
+from sparknlp_jsl.utils import DateShiftFiller
+filler = sparknlp_jsl.utils.DateShiftFiller(spark, seed=42, max_shift_days=60)
+result_df = filler.fill_missing_shifts(input_df, id_col="patientID", 
+                                       shift_col="dateshift", suffix="_filled")
+```
+
+*Result*:
+
+```bash
+|patientID|text                                    |dateshift|dateshift_filled|
+|---------|----------------------------------------|---------|----------------|
+|A002     |Mark White was discharged on 03/01/2020 |-2       |-2              |
+|A001     |Chris Brown was discharged on 10/02/2022|10       |10              |
+|A001     |Chris Brown was discharged on 03/15/2022|NULL     |10              |
+|A003     |John was discharged on 03/15/2022       |NULL     |5               |
+|A003     |John Moore was discharged on 12/31/2022 |5        |5               |
+|A002     |Mark White discharged on 12/31/2022     |NULL     |-2              |
+```
+
+
+
+#### Dictionary Support for `Deidentification` with `setSelectiveObfuscationModes` Parameter
+
+Added support for **dictionary input** in the `setSelectiveObfuscationModes` method, allowing more flexible configuration of obfuscation modes for specific entities or contexts.
+
+*Example*:
+
+```python
+from johnsnowlabs import nlp, medical
+
+sample_json = {
+	"obfuscate": ["PHONE"] ,
+	"mask_entity_labels": ["ID", "NAME"],
+	"skip": ["DATE"],
+	"mask_same_length_chars":["location"],
+	"mask_fixed_length_chars":["zip"]
+}
+
+deid_doc = nlp.DeIdentification() \
     .setInputCols(["sentence", "token", "ner_chunk"]) \
     .setOutputCol("deidentified") \
-    .setMode("obfuscate") \
-    .setStaticObfuscationPairs(pairs)
+    .setMode("mask")\
+    .setSameLengthFormattedEntities(["PHONE"])\
+    .setFixedMaskLength(2)\
+    .setSelectiveObfuscationModes(sample_json)
 
+text = """Record date : 2023-01-13.                                                               
+The patient, Emma Wilson, is 50 years old.                                                 
+Dr. John Lee, from Royal Medical Clinic in Chicago, 0295 Keats Street , Phone 55-555-5555.
+Her phone number: 444-456-7890 and her medical record number is 56467890.                  
+"""
 ```
 
 *Result*:
 
-{:.table-model-big}
-| index | sentence                                                                 | deidentified                                                                 |
-|-------|--------------------------------------------------------------------------|------------------------------------------------------------------------------|
-| 0     | John Smith visited Los Angeles.                                          | <DOCTOR> visited New York City.                                              |
-| 1     | He was admitted to the emergency department at St. Mary's Hospital after experiencing chest pain. | He was admitted to the emergency department at Johns Hopkins Hospital after experiencing chest pain. |
-| 2     | His mother worked as a Nurse                                             | His mother worked as a Cardiologist                                          |
-
+```bash
+Record date : 2023-01-13.                                                                
+The patient, <NAME>, is <AGE> years old.                                                 
+Dr. <NAME>, from [******************] in [*****], [***************] , Phone 66-666-6666.
+Her phone number: 777-765-4321 and her medical record number is <ID>.  
+```
 
 
 
 </div><div class="h3-box" markdown="1">
+    
+#### New MedS NER Model for Structured Medical Entity Extraction
 
-#### Enhanced Phrase Matching in TextMatcherInternal: Lemmatization, Stemming, Stopword Handling & Token Shuffling for Smarter NLP
+This LLM model is trained to extract and link entities in a document. Users need to define an input schema as explained in the example section. Drug is defined as a list that tells the model that there could be multiple drugs in the document, and it has to extract all of them. Each drug has properties like its name and reaction. Since “name” is only one, it is a string, but there could be multiple reactions, hence it is a list. Similarly, users can define any schema for any entity.
 
-This release introduces **powerful new features** to the `TextMatcherInternal` annotator, enabling more **flexible**, **accurate**, and **linguistically aware** phrase matching in clinical or general NLP pipelines. The additions include support for **lemmatization**, **stemming**, **token permutations**, **stopword control**, and **customizable matching behavior**.
+*Example*:
 
+```python
+from johnsnowlabs import nlp, medical
+medical_llm = medical.AutoGGUFModel.pretrained("jsl_meds_ner_q16_v3", "en", "clinical/models")\
+    .setInputCols("document")\
+    .setOutputCol("completions")\
+    .setBatchSize(1)\
+    .setNPredict(100)\
+    .setUseChatTemplate(True)\
+    .setTemperature(0)
 
-Below are the new parameters and their descriptions in TextMatcherInternal:
+med_ner_prompt = """
+### Template:
+{
+    "drugs": [
+        {
+            "name": "",
+            "reactions": []
+        }
+    ]
+}
+### Text:
+I feel a bit drowsy & have a little blurred vision , and some gastric problems .
+I 've been on Arthrotec 50 for over 10 years on and off , only taking it when I needed it .
+Due to my arthritis getting progressively worse , to the point where I am in tears with the agony.
+Gp 's started me on 75 twice a day and I have to take it every day for the next month to see how I get on , here goes .
+So far its been very good , pains almost gone , but I feel a bit weird , did n't have that when on 50.
 
-{:.table-model-big}
-| Parameter | Description |
-|-----------|-------------|
-| `setEnableLemmatizer(<True/False>)` | Enable lemmatizer                           |
-| `setEnableStemmer(<True/False>)`    | Enable stemmer                              |
-| `setStopWords(["<word1>", "<word2>", "..."])` | Custom stop word list             |
-| `setCleanStopWords(<True/False>)`   | Remove stop words from input                |
-| `setShuffleEntitySubTokens(<True/False>)` | Use permutations of entity phrase tokens |
-| `setSafeKeywords(["<keyword1>", "<keyword2>", "..."])` | Preserve critical terms, even if stop words |
-| `setExcludePunctuation(<True/False>)` | Remove all punctuation during matching      |
-| `setCleanKeywords(["<noise1>", "<noise2>", "..."])` | Extra domain-specific noise words to remove |
-| `setExcludeRegexPatterns(["<regex_pattern1>", "<regex_pattern2>"])` | Drop matched chunks matching regex          |
-| `setReturnChunks("<original/matched>")` | Return stemmed/lemmatized matched phrases   |
-| `setSkipMatcherAugmentation(<True/False>)` | Disable matcher-side augmentation        |
-| `setSkipSourceTextAugmentation(<True/False>)` | Disable source-side augmentation      |
+"""
+```
 
+*Result*:
 
-- Lemmatization & Stemming Support
-
-You can now enable both **lemmatization** and **stemming** to increase recall by matching different inflections of the same word.
-
-Example for Lemmatization and Stemming:  
-    - .setEnableLemmatizer(True):  Enables lemmatization to reduce words to their base (dictionary) form  
-    - .setEnableStemmer(True): Enables stemming to reduce words to their root form by stripping suffixes
-
-`"talking"` will match `"talk"`  
-`"lives"` will match `"life"`  
-`"running"` → `"run"`  
-`"studies"` → `"study"`  
-
-This is useful for matching core meanings even when word forms vary.
-
-- Shuffiling Support
-
-Example for Shuffiling Subtoken Entities:
-    - `.setShuffleEntitySubTokens(True)`: the matcher will consider **all possible token orderings** for each phrase. For example:
-
-**Entity phrase:** `"sleep difficulty"`  
-Will match:  
-    - `"sleep difficulty"`  
-    - `"difficulty sleep"` 
-
-Disabling this option restricts the match to the original order only.
-
-Only available in `TextMatcherInternal`, **not** in `TextMatcherInternalModel`.
-
-
-
-- Stop Word Removal for Cleaner Matching
-
-Example for Cleaning StopWords:
-    - `.setCleanStopWords(True)`: the matcher will remove common stop words (like `"and"`, `"the"`, `"about"`) from **both the input** and the **entity phrases** before matching. This reduces false negatives caused by unimportant words.
-
-Example for StopWords:
-Optional Customization  to set
-    - `.setStopWords(["and", "of", "about"])`: # Custom stop words  
-    - `.setSafeKeywords(["about"])`: Don't remove important stop words  
+```bash
+{
+    "drugs": [
+        {
+            "name": "Arthrotec",
+            "reactions": [
+                "drowsy",
+                "blurred vision",
+                "gastric problems"
+            ]
+        },
+        {
+            "name": "75",
+            "reactions": [
+                "weird"
+            ]
+        }
+    ]
+}
+```
 
 
-- Advanced Cleaning with `safeKeywords`, `cleanKeywords`, `excludePunctuation`
 
-You now have full control over text cleaning:
+</div><div class="h3-box" markdown="1">
+    
+#### Enhanced Phenotype Entity Mapping Pipeline with HPO Standardization and Advanced Entity Extraction
 
-| Parameter                     | Description |
-|-------------------------------|-------------|
-| `setStopWords([...])`         | Custom stop word list |
-| `setCleanKeywords([...])`     | Extra domain-specific noise words to remove |
-| `setSafeKeywords([...])`      | Preserve critical terms, even if they are stop words |
-| `setExcludePunctuation(True)` | Remove all punctuation during matching |
+This pipeline is designed to map extracted phenotype entities from clinical or biomedical text to their corresponding Human Phenotype Ontology (HPO) codes and assign their **assertion status** (e.g., present, absent, possible). It ensures that observed symptoms, signs, and clinical abnormalities are **standardized** using controlled HPO terminology, facilitating downstream tasks like cohort retrieval, diagnostics, and phenotype-based decision support.
 
-These controls allow more precise preprocessing in noisy or informal text environments.
+New enhancements in `TextMatcherInternal`—notably **lemmatization** (`enableLemmatizer`) and **stopword removal** (`enableStopWordsRemoval`)—the matcher now captures a much wider variety of **phrase variations** that were previously missed due to strict string matching.
 
+**Examples:**
+- `"apnea of prematurity"` matched to `"Apnea prematurity"` by ignoring stopwords like *"of"*  
+- `"bidirectional shunting"` matched to `"bidirectional shunt"` through token normalization
 
-- Augmentation Controls
+In addition, the `ChunkMapper` leverages **fuzzy matching**, enabling the system to link **non-exact matches** to the correct HPO codes. This makes the entire pipeline more **robust and flexible**, especially in noisy or highly variable clinical narratives.
 
-Control how much automatic variation the matcher considers:  
-     - `.setSkipMatcherAugmentation(True)`:  Disable matcher phrase variations     
-     - `.setSkipSourceTextAugmentation(True)`:  Disable variations on input text 
-      
-Disable both for **strict, high-precision** matching. Leave enabled for **broad, high-recall** matching.
-
-
--  Controling Match Output Format:
-    - .setReturnChunks("original")  # Return chunk as it appears in input  
-    - .setReturnChunks("matched")   # Return normalized form (e.g., stemmed or lemmatized)
-
-Regardless of format, `begin` and `end` positions refer to the **original text**.
+These improvements significantly increase **recall** and **semantic matching coverage**, supporting more accurate and complete phenotype extraction from real-world medical text.
 
 
 *Example*:
 
 ```python
+from johnsnowlabs import nlp, medical
 
-test_phrases = """
-stressor
-evaluation psychiatric state
-sleep difficulty
-"""
+pipeline = nlp.PretrainedPipeline("hpo_mapper_pipeline_v2", "en", "clinical/models")
 
-with open("test-phrases.txt", "w") as file:
-    file.write(test_phrases)
-
-text_matcher = TextMatcherInternal()\
-    .setInputCols(["sentence","token"])\
-    .setOutputCol("matched_text")\
-    .setEntities("./test-phrases.txt")\
-    .setEnableLemmatizer(True)\
-    .setEnableStemmer(True)\
-    .setCleanStopWords(True)\
-    .setBuildFromTokens(True)\
-    .setReturnChunks("matched")\
-    .setShuffleEntitySubTokens(True)\
-    .setSkipMatcherAugmentation(False)\
-    .setSkipSourceTextAugmentation(False)
-
-text = """
-Patient was able to talk briefly about recent life stressors during evaluation of psychiatric state.
-She reports difficulty sleeping and ongoing anxiety. Denies suicidal ideation.
+text= """APNEA: Presumed apnea of prematurity since < 34 wks gestation at birth.
+HYPERBILIRUBINEMIA: At risk for hyperbilirubinemia d/t prematurity.
+1/25-1/30: Received Amp/Gent while undergoing sepsis evaluation.
+Mother is A+, GBS unknown, and infant delivered
+for decreasing fetal movement and preeclampsia.
+Echo showed PFO with bidirectional shunting.
 """
 ```
 
 *Result*:
 
 {:.table-model-big}
-| `matched_text`        | `original` | Explanation |
-|-----------------------|------------|-------------|
-| `evaluation psychiatric state`| `evaluation of psychiatric state`| **Stop word removal**: the word **"of"** was filtered out to enable a match |
-| `stressor`                   | `stressors`                      | **Lemmatization** reduced plural form to base word                          |
-| `sleep difficulty`           | `difficulty sleeping`            | **Stemming + token shuffle** allowed match despite different word order     |
-
-These examples show how stemming, lemmatization, stop word removal, and token shuffling **combine to increase recall** while still producing interpretable and aligned results.
-
-
-Please check the [TextMatcherInternal](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/40.1.Text_Matcher_Internal.ipynb) notebook for more informations.
-
-
-</div><div class="h3-box" markdown="1">
-
-#### Introducing a New Annotator MetadataAnnotationConverter for Custom Annotation Field Mapping
-
-**Added** `MetadataAnnotationConverter`: a new annotator that converts metadata fields in annotations into actual begin, end, or result values.
-
-`MetadataAnnotationConverter` enables users to override fields in Spark NLP annotations using values from their `metadata` dictionary. This is especially useful when metadata contains normalized values, corrected character offsets, or alternative representations of the entity or phrase.
+| hpo_code   | matched_text            | ner_chunk                | begin | end | result   |
+|------------|-------------------------|--------------------------|--------|-----|----------|
+| HP:0002104 | apnea                   | apnea                    | 16     | 20  | possible |
+| HP:0034236 | Apnea prematurity       | apnea of prematurity     | 16     | 35  | present  |
+| HP:0002904 | Hyperbilirubinemia      | hyperbilirubinemia       | 104    | 121 | present  |
+| HP:0100806 | sepsis                  | sepsis                   | 186    | 191 | present  |
+| HP:0100602 | Preeclampsia            | preeclampsia             | 287    | 298 | present  |
+| HP:0012383 | bidirectional shunt     | bidirectional shunting   | 322    | 343 | present  |
+| HP:0001558 | decrease fetal movement | decreasing fetal movement| 257    | 281 | present  |
 
 
-*Example:*
 
-```python
-text_matcher = TextMatcherInternal()\
-    .setInputCols(["sentence", "token"])\
-    .setOutputCol("matched_text")\
-    .setEntities("./test-phrases.txt")\
-    .setEnableLemmatizer(True) \
-    .setEnableStemmer(True) \
-    .setCleanStopWords(True) \
-    .setBuildFromTokens(False)\
-    .setReturnChunks("original")
+#### Optimized Clinical De-identification Pipelines for Secure and Compliant Healthcare Data Processing
 
-metadata_annotation_converter = MetadataAnnotationConverter()\
-    .setInputCols(["matched_text"])\
-    .setInputType("chunk") \
-    .setBeginField("begin") \
-    .setEndField("end") \
-    .setResultField("original_or_matched") \
-    .setOutputCol("new_chunk")
-```
+We’ve introduced a suite of optimized clinical de-identification pipelines to enhance the anonymization of sensitive healthcare data. These pipelines combine deep learning (NERDL), zero-shot models, and rule-based methods to perform accurate Named Entity Recognition (NER) across clinical documents. Each pipeline is tailored for performance, scalability, and compliance with privacy regulations, ensuring data integrity while supporting both benchmarking and real-world deployment.
 
-*Text Matcher Internal Output*:
 
 {:.table-model-big}
-| entity | begin | end | result                          | matched                      |
-| ------ | ----- | --- | ------------------------------- | ---------------------------- |
-| entity | 69    | 99  | evaluation of psychiatric state | evaluation psychiatric state |
-| entity | 52    | 60  | stressors                       | stressor                     |
-| entity | 114   | 132 | difficulty sleeping             | difficulty sleep             |
+|    Pipeline Name                                      | Stages |
+|-------------------------------------------------------|---------------------------------------|
+|`ner_profiling_deidentification`                       |20 NERDL, 1 ZeroShot, 20 RuleBased NER |
+|`ner_deid_docwise_benchmark_optimized`                 | 3 NERDL, 19 RuleBased NER             |
+|`ner_deid_docwise_benchmark_optimized_zeroshot_partial`| 1 ZeroShot                            |
+|`clinical_deidentification_docwise_benchmark_optimized`| 3 NERDL, 19 RuleBased NER             |
+|`clinical_deidentification_docwise_benchmark_light`    | 3 NERDL, 19 RuleBased NER             |
+|`clinical_deidentification_docwise_benchmark_light_v2` | 1 NERDL, 1 ZeroShot, 19 RuleBased NER |
 
 
-
-*Metadata Annotation Converter Output*:
-
-{:.table-model-big}
-| Entity | Begin | End | Result                      |
-|--------|-------|-----|-----------------------------|
-| entity | 69    | 99  | evaluation psychiatric state|
-| entity | 52    | 60  | stressor                    |
-| entity | 114   | 132 | difficulty sleep            |
-
-
-</div><div class="h3-box" markdown="1">
-
-#### Enhanced Entity Filtering in ChunkMapperFilterer with Whitelist and Blacklist Support
-
-The ChunkMapperFilterer annotator now supports fine-grained entity filtering through the introduction of three new parameters:
-- whiteList: a list of entity types to explicitly include during filtering. Only entities in this list will be processed.
-- blackList: a list of entity types to exclude from filtering. Entities in this list will be ignored.
-- caseSensitive: a boolean flag indicating whether the entity matching in whiteList and blackList is case-sensitive.
 
 *Example*:
 
 ```python
-chunk_mapper_filterer = ChunkMapperFilterer() \
-      .setInputCols(["chunk", "RxNorm_Mapper"]) \
-      .setOutputCol("chunks_success") \
-      .setReturnCriteria("success")\
-      .setBlackList(["Tegretol", "ZYVOX"])\
-      .setCaseSensitive(False)
+from johnsnowlabs import nlp, medical
 
-samples = [["The patient was given Avandia 4 mg, Tegretol"],
-           ["The patient was previously prescribed Zyrtec for allergies, Zyvox for a bacterial infection, and Zytopic to manage a skin condition."]]
+deid_pipeline = nlp.PretrainedPipeline("clinical_deidentification_docwise_benchmark_optimized", "en", "clinical/models")
 
-data = spark.createDataFrame(samples).toDF("text")
+text = """Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024.
+The patient’s medical record number is 56467890.
+The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 ."""
+
+deid_result = deid_pipeline.fullAnnotate(text)
+```
+
+*Result*:
+
+```bash
+Masked with entity labels
+------------------------------
+Dr. <DOCTOR>, from <HOSPITAL> in <CITY>, attended to the patient on <DATE>.
+The patient’s medical record number is <ID>.
+The patient, <PATIENT>, is <AGE>, her Contact number: <PHONE> .
+
+Obfuscated
+------------------------------
+Dr. Valerie Aho, from Mercy Hospital Aurora in Berea, attended to the patient on 30/05/2024.
+The patient’s medical record number is 78689012.
+The patient, Johnathon Bunde, is 55 years old, her Contact number: 666-678-9012 .
 ```
 
 
-*Result without blacklist*:
 
-Before:
-{:.table-model-big}
-|chunk                   |RxNorm_Mapper          |chunks_success          |
-|------------------------|-----------------------|------------------------|
-|[Avandia 4 mg, Tegretol]|[261242, 203029]       |[Avandia 4 mg, Tegretol]|
-|[Zyrtec, Zyvox, Zytopic]|[58930, 261710, 763297]|[Zyrtec, Zyvox, Zytopic]|
+</div><div class="h3-box" markdown="1">
+    
+#### Various core improvements, bug fixes, and overall enhancements to the robustness of Spark NLP for Healthcare
 
+- **Improved incorrect multi-letter replacements for single-letter names in obfuscation**  
+Resolved an issue where single-letter initials (e.g., "R" in "William R") were being obfuscated into multi-letter strings (e.g., "LU").  
+Initials are now consistently replaced with a **different single-letter initial**, preserving length and format.
 
-*Result with blacklist*:
+- **Substring logic crash fix in `TextMatcherInternal` for safer token handling**  
+Enhanced reliability by adding safer token index handling and guarding substring extraction against unexpected errors.
 
-{:.table-model-big}
-|chunk                   |RxNorm_Mapper          |chunks_success   |
-|------------------------|-----------------------|-----------------|
-|[Avandia 4 mg, Tegretol]|[261242, 203029]       |[Avandia 4 mg]   |
-|[Zyrtec, Zyvox, Zytopic]|[58930, 261710, 763297]|[Zyrtec, Zytopic]|
-
+- **Memory optimization for `PretrainedZeroShotNER` to reduce memory usage during inference**
+Reduced memory footprint during inference by optimizing the internal handling of zero-shot NER models, improving performance and scalability for large datasets.
 
 
 
 </div><div class="h3-box" markdown="1">
 
-#### Updated Notebooks And Demonstrations For making Spark NLP For Healthcare Easier To Navigate And Understand
+#### Updated Notebooks and Demonstrations for making Spark NLP for Healthcare Easier To Navigate And Understand
 
-- New [TextMatcherInternal](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/40.1.Text_Matcher_Internal.ipynb) Notebook
+- Updated [Text Matcher Internal](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/40.1.Text_Matcher_Internal.ipynb) Notebook
+
+
+
+</div><div class="h3-box" markdown="1">
+
+#### We Have Added And Updated A Substantial Number Of New Clinical Models And Pipelines, Further Solidifying Our Offering In The Healthcare Domain.
+
+
++ `jsl_meds_ner_q16_v3`
++ `jsl_meds_ner_q8_v3`
++ `jsl_meds_ner_q4_v3`
++ `sbiobertresolve_umls_disease_syndrome`
++ `sbiobertresolve_umls_findings`
++ `sbiobertresolve_umls_clinical_drugs`
++ `sbiobertresolve_umls_general_concepts`
++ `sbiobertresolve_umls_major_concepts`
++ `sbiobertresolve_umls_drug_substance`
++ `biolordresolve_umls_general_concepts`
++ `hpo_mapper_pipeline`
++ `meddra_llt_snomed_mapper`            
++ `snomed_meddra_llt_mapper`             
++ `explain_clinical_doc_sdoh`            
++ `explain_clinical_doc_mental_health`   
++ `ner_medication_generic_pipeline`      
++ `ner_deid_context_augmented_pipeline`  
++ `icd10cm_umls_mapper`
++ `loinc_umls_mapper`
++ `mesh_umls_mapper`
++ `rxnorm_umls_mapper`
++ `snomed_umls_mapper`
++ `umls_icd10cm_mapper`
++ `umls_loinc_mapper`
++ `umls_mesh_mapper`
++ `umls_rxnorm_mapper`
++ `umls_snomed_mapper`
++ `umls_clinical_drugs_mapper`
++ `umls_clinical_findings_mapper`
++ `umls_disease_syndrome_mapper`
++ `umls_drug_substance_mapper`
++ `umls_major_concepts_mapper`
++ `ner_profiling_deidentification`
++ `ner_deid_docwise_benchmark_optimized`
++ `ner_deid_docwise_benchmark_optimized_zeroshot_partial`
++ `clinical_deidentification_docwise_benchmark_optimized`
++ `clinical_deidentification_docwise_benchmark_light`
++ `clinical_deidentification_docwise_benchmark_light_v2`
+
 
 
 

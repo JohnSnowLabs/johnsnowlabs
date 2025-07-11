@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 6.0.2 ScalaDoc  - com.johnsnowlabs.nlp.annotators.deid.DeIdentification</title>
-          <meta name="description" content="Spark NLP 6.0.2 ScalaDoc - com.johnsnowlabs.nlp.annotators.deid.DeIdentification" />
-          <meta name="keywords" content="Spark NLP 6.0.2 ScalaDoc com.johnsnowlabs.nlp.annotators.deid.DeIdentification" />
+          <title>Spark NLP 6.0.3 ScalaDoc  - com.johnsnowlabs.nlp.annotators.deid.DeIdentification</title>
+          <meta name="description" content="Spark NLP 6.0.3 ScalaDoc - com.johnsnowlabs.nlp.annotators.deid.DeIdentification" />
+          <meta name="keywords" content="Spark NLP 6.0.3 ScalaDoc com.johnsnowlabs.nlp.annotators.deid.DeIdentification" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 6.0.2 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 6.0.3 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -189,6 +189,10 @@
                         <span class="separator"></span>
                         <a class="class" href="DateChunkObfuscator.html" title=""></a>
                         <a href="DateChunkObfuscator.html" title="">DateChunkObfuscator</a>
+                      </li><li class="current-entities indented5">
+                        <span class="separator"></span>
+                        <a class="class" href="DateShiftFiller.html" title="Utility class to fill missing or empty shift values in a DataFrame column using deterministic, ID-based pseudo-random values."></a>
+                        <a href="DateShiftFiller.html" title="Utility class to fill missing or empty shift values in a DataFrame column using deterministic, ID-based pseudo-random values.">DateShiftFiller</a>
                       </li><li class="current-entities indented5">
                         <a class="object" href="DeIdentification$.html" title=""></a>
                         <a class="class" href="" title="Contains all the methods for training a DeIdentificationModel model."></a>
@@ -1213,6 +1217,25 @@ Default: false
 If exception causing data is passed to the model, a error annotation is emitted which has the exception message. Processing continues with the next one.
 This comes with a performance penalty.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../params/HandleExceptionParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.params.HandleExceptionParams">HandleExceptionParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#enableDefaultObfuscationEquivalents" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
+      <a id="enableDefaultObfuscationEquivalents:org.apache.spark.ml.param.BooleanParam"></a><a id="enableDefaultObfuscationEquivalents:BooleanParam"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeIdentification.html#enableDefaultObfuscationEquivalents:org.apache.spark.ml.param.BooleanParam" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">enableDefaultObfuscationEquivalents</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.BooleanParam">BooleanParam</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Whether to enable default obfuscation equivalents for common entities.</p><div class="fullcomment"><div class="comment cmt"><p>Whether to enable default obfuscation equivalents for common entities.
+This parameter allows the system to automatically include a set of predefined common English name equivalents.
+Default: false
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentification#entityCasingModesPath" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
       <a id="entityCasingModesPath:org.apache.spark.ml.param.Param[String]"></a><a id="entityCasingModesPath:Param[String]"></a>
       <span class="permalink">
@@ -1920,6 +1943,55 @@ obfuscation patterns.</p><p>default: false
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Params</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#getDefaultObfuscationEquivalents" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getDefaultObfuscationEquivalents:Array[com.johnsnowlabs.nlp.annotators.deid.faker.StaticObfuscationEntity]"></a><a id="getDefaultObfuscationEquivalents:Array[StaticObfuscationEntity]"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeIdentification.html#getDefaultObfuscationEquivalents:Array[com.johnsnowlabs.nlp.annotators.deid.faker.StaticObfuscationEntity]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getDefaultObfuscationEquivalents</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<a href="faker/StaticObfuscationEntity.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.faker.StaticObfuscationEntity">StaticObfuscationEntity</a>]</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#getDefaultObfuscationEquivalentsAsJava" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getDefaultObfuscationEquivalentsAsJava:Array[java.util.ArrayList[String]]"></a><a id="getDefaultObfuscationEquivalentsAsJava:Array[ArrayList[String]]"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeIdentification.html#getDefaultObfuscationEquivalentsAsJava:Array[java.util.ArrayList[String]]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getDefaultObfuscationEquivalentsAsJava</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="java.util.ArrayList">ArrayList</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#getEnableDefaultObfuscationEquivalents" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getEnableDefaultObfuscationEquivalents:Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeIdentification.html#getEnableDefaultObfuscationEquivalents:Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getEnableDefaultObfuscationEquivalents</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Gets the value of <a href="BaseDeidParams.html#enableDefaultObfuscationEquivalents:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#enableDefaultObfuscationEquivalents">enableDefaultObfuscationEquivalents</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Gets the value of <a href="BaseDeidParams.html#enableDefaultObfuscationEquivalents:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#enableDefaultObfuscationEquivalents">enableDefaultObfuscationEquivalents</a>.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#getEntityBasedObfuscationRefSource" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getEntityBasedObfuscationRefSource(entityClass:String):String"></a><a id="getEntityBasedObfuscationRefSource(String):String"></a>
       <span class="permalink">
@@ -2288,6 +2360,39 @@ obfuscation patterns.</p><p>default: false
       
       <p class="shortcomment cmt">Gets <a href="BaseDeidParams.html#obfuscateRefSource:org.apache.spark.ml.param.Param[String]" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#obfuscateRefSource">obfuscateRefSource</a> param.</p><div class="fullcomment"><div class="comment cmt"><p>Gets <a href="BaseDeidParams.html#obfuscateRefSource:org.apache.spark.ml.param.Param[String]" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#obfuscateRefSource">obfuscateRefSource</a> param.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#getObfuscationEquivalents" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="getParam">
+      <a id="getObfuscationEquivalents:Option[Array[com.johnsnowlabs.nlp.annotators.deid.faker.StaticObfuscationEntity]]"></a><a id="getObfuscationEquivalents:Option[Array[StaticObfuscationEntity]]"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeIdentification.html#getObfuscationEquivalents:Option[Array[com.johnsnowlabs.nlp.annotators.deid.faker.StaticObfuscationEntity]]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getObfuscationEquivalents</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Array">Array</span>[<a href="faker/StaticObfuscationEntity.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.faker.StaticObfuscationEntity">StaticObfuscationEntity</a>]]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Gets the value of <a href="BaseDeidParams.html#obfuscationEquivalents:com.johnsnowlabs.nlp.serialization.StructFeature[Array[com.johnsnowlabs.nlp.annotators.deid.faker.StaticObfuscationEntity]]" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#obfuscationEquivalents">obfuscationEquivalents</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Gets the value of <a href="BaseDeidParams.html#obfuscationEquivalents:com.johnsnowlabs.nlp.serialization.StructFeature[Array[com.johnsnowlabs.nlp.annotators.deid.faker.StaticObfuscationEntity]]" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#obfuscationEquivalents">obfuscationEquivalents</a>.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentification#getObfuscationEquivalentsResource" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="getObfuscationEquivalentsResource:com.johnsnowlabs.nlp.util.io.ExternalResource"></a><a id="getObfuscationEquivalentsResource:ExternalResource"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeIdentification.html#getObfuscationEquivalentsResource:com.johnsnowlabs.nlp.util.io.ExternalResource" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getObfuscationEquivalentsResource</span><span class="result">: <span class="extype" name="com.johnsnowlabs.nlp.util.io.ExternalResource">ExternalResource</span></span>
+      </span>
+      
+      
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams#getObfuscationStrategyOnException" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getObfuscationStrategyOnException:String"></a>
       <span class="permalink">
@@ -2498,6 +2603,22 @@ obfuscation patterns.</p><p>default: false
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#getSelectiveObfuscationModes" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="getParam">
+      <a id="getSelectiveObfuscationModes:Option[Map[String,Array[String]]]"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeIdentification.html#getSelectiveObfuscationModes:Option[Map[String,Array[String]]]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getSelectiveObfuscationModes</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]]]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Gets <a href="BaseDeidParams.html#selectiveObfuscationModes:com.johnsnowlabs.nlp.serialization.StructFeature[Map[String,Array[String]]]" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#selectiveObfuscationModes">selectiveObfuscationModes</a> param.</p><div class="fullcomment"><div class="comment cmt"><p>Gets <a href="BaseDeidParams.html#selectiveObfuscationModes:com.johnsnowlabs.nlp.serialization.StructFeature[Map[String,Array[String]]]" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#selectiveObfuscationModes">selectiveObfuscationModes</a> param.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#getStaticObfuscationPairs" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getStaticObfuscationPairs:Option[Array[com.johnsnowlabs.nlp.annotators.deid.faker.StaticObfuscationEntity]]"></a><a id="getStaticObfuscationPairs:Option[Array[StaticObfuscationEntity]]"></a>
       <span class="permalink">
@@ -2944,10 +3065,10 @@ Default:'en'
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>CanBeLazy</dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeidApproachParams#loadStaticObfuscationPairsResource" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="loadStaticObfuscationPairsResource():Array[com.johnsnowlabs.nlp.annotators.deid.faker.StaticObfuscationEntity]"></a><a id="loadStaticObfuscationPairsResource():Array[StaticObfuscationEntity]"></a>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeidApproachParams#loadThreeInputResource" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="loadThreeInputResource(er:com.johnsnowlabs.nlp.util.io.ExternalResource):Array[com.johnsnowlabs.nlp.annotators.deid.faker.StaticObfuscationEntity]"></a><a id="loadThreeInputResource(ExternalResource):Array[StaticObfuscationEntity]"></a>
       <span class="permalink">
-      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeIdentification.html#loadStaticObfuscationPairsResource():Array[com.johnsnowlabs.nlp.annotators.deid.faker.StaticObfuscationEntity]" title="Permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeIdentification.html#loadThreeInputResource(er:com.johnsnowlabs.nlp.util.io.ExternalResource):Array[com.johnsnowlabs.nlp.annotators.deid.faker.StaticObfuscationEntity]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -2956,7 +3077,7 @@ Default:'en'
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">loadStaticObfuscationPairsResource</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<a href="faker/StaticObfuscationEntity.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.faker.StaticObfuscationEntity">StaticObfuscationEntity</a>]</span>
+        <span class="name">loadThreeInputResource</span><span class="params">(<span name="er">er: <span class="extype" name="com.johnsnowlabs.nlp.util.io.ExternalResource">ExternalResource</span></span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<a href="faker/StaticObfuscationEntity.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.faker.StaticObfuscationEntity">StaticObfuscationEntity</a>]</span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="DeidApproachParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeidApproachParams">DeidApproachParams</a></dd></dl></div>
@@ -3458,6 +3579,48 @@ The values ar the following:
 'faker': Takes the entities from the Faker module
 'both': Takes the entities from the obfuscatorRefFile and the faker module randomly.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#obfuscationEquivalents" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
+      <a id="obfuscationEquivalents:com.johnsnowlabs.nlp.serialization.StructFeature[Array[com.johnsnowlabs.nlp.annotators.deid.faker.StaticObfuscationEntity]]"></a><a id="obfuscationEquivalents:StructFeature[Array[StaticObfuscationEntity]]"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeIdentification.html#obfuscationEquivalents:com.johnsnowlabs.nlp.serialization.StructFeature[Array[com.johnsnowlabs.nlp.annotators.deid.faker.StaticObfuscationEntity]]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">obfuscationEquivalents</span><span class="result">: <span class="extype" name="com.johnsnowlabs.nlp.serialization.StructFeature">StructFeature</span>[<span class="extype" name="scala.Array">Array</span>[<a href="faker/StaticObfuscationEntity.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.faker.StaticObfuscationEntity">StaticObfuscationEntity</a>]]</span>
+      </span>
+      
+      <p class="shortcomment cmt">variant-to-canonical entity mappings to ensure consistent obfuscation.</p><div class="fullcomment"><div class="comment cmt"><p>variant-to-canonical entity mappings to ensure consistent obfuscation.</p><p>This method allows you to define equivalence rules for entity variants that should be
+obfuscated the same way. For example, the names &quot;Alex&quot; and &quot;Alexander&quot; will always be
+mapped to the same obfuscated value if they are linked to the same canonical form.</p><p>It accepts an array of string triplets, where each triplet defines:</p><ul><li>variant:      A non-standard, short, or alternative form of a value (e.g., &quot;Alex&quot;)</li><li>entityType:   The type of the entity (e.g., &quot;NAME&quot;, &quot;STATE&quot;, &quot;COUNTRY&quot;)</li><li>canonical:    The standardized form all variants map to (e.g., &quot;Alexander&quot;)</li></ul><p><code>variant</code> and <code>entityType</code> comparisons are case-insensitive during processing.</p><p>This is especially useful in de-identification tasks to ensure consistent replacement
+of semantically identical values. It also allows cross-variant normalization across
+different occurrences of sensitive data.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentification#obfuscationEquivalentsResource" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
+      <a id="obfuscationEquivalentsResource:com.johnsnowlabs.nlp.annotators.param.ExternalResourceParam"></a><a id="obfuscationEquivalentsResource:ExternalResourceParam"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeIdentification.html#obfuscationEquivalentsResource:com.johnsnowlabs.nlp.annotators.param.ExternalResourceParam" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">obfuscationEquivalentsResource</span><span class="result">: <span class="extype" name="com.johnsnowlabs.nlp.annotators.param.ExternalResourceParam">ExternalResourceParam</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">variant-to-canonical entity mappings to ensure consistent obfuscation.</p><div class="fullcomment"><div class="comment cmt"><p>variant-to-canonical entity mappings to ensure consistent obfuscation.</p><p>This method allows you to define equivalence rules for entity variants that should be
+obfuscated the same way. For example, the names &quot;Alex&quot; and &quot;Alexander&quot; will always be
+mapped to the same obfuscated value if they are linked to the same canonical form.</p><p>It accepts an array of string triplets, where each triplet defines:</p><ul><li>variant:      A non-standard, short, or alternative form of a value (e.g., &quot;Alex&quot;)</li><li>entityType:   The type of the entity (e.g., &quot;NAME&quot;, &quot;STATE&quot;, &quot;COUNTRY&quot;)</li><li>canonical:    The standardized form all variants map to (e.g., &quot;Alexander&quot;)</li></ul><p>This is especially useful in de-identification tasks to ensure consistent replacement
+of semantically identical values. It also allows cross-variant normalization across
+different occurrences of sensitive data.
+</p></div></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams#obfuscationStrategyOnException" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
       <a id="obfuscationStrategyOnException:org.apache.spark.ml.param.Param[String]"></a><a id="obfuscationStrategyOnException:Param[String]"></a>
       <span class="permalink">
@@ -3826,6 +3989,25 @@ If an entity is not specified in this map, the <a href="BaseDeidParams.html#obfu
  <span class="lit">"ADDRESS"</span> -&gt; <span class="lit">"both"</span>
  )</pre></li></ol>
             </div></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#selectiveObfuscationModes" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
+      <a id="selectiveObfuscationModes:com.johnsnowlabs.nlp.serialization.StructFeature[Map[String,Array[String]]]"></a><a id="selectiveObfuscationModes:StructFeature[Map[String,Array[String]]]"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeIdentification.html#selectiveObfuscationModes:com.johnsnowlabs.nlp.serialization.StructFeature[Map[String,Array[String]]]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">selectiveObfuscationModes</span><span class="result">: <span class="extype" name="com.johnsnowlabs.nlp.serialization.StructFeature">StructFeature</span>[<span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]]]</span>
+      </span>
+      
+      <p class="shortcomment cmt">The dictionary of modes to enable multi-mode deidentification.</p><div class="fullcomment"><div class="comment cmt"><p>The dictionary of modes to enable multi-mode deidentification.</p><ul><li>'obfuscate': Replace the values with random values.</li><li>'mask_same_length_chars': Replace the name with the asterix with same length minus two
+    plus brackets on both end.</li><li>'mask_entity_labels': Replace the values with the entity value.</li><li>'mask_fixed_length_chars': Replace the name with the asterix with fixed length. You can
+    also invoke &quot;setFixedMaskLength()&quot;</li><li>'mask_entity_labels_without_brackets': Replace the values with the entity value without brackets.</li><li>'mask_same_length_chars_without_brackets': Replace the name with the asterix with same length without brackets.</li><li>'skip': Skip the entities (intact)</li></ul><p>The entities which have not been given in dictionary will deidentify according to setMode()
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentification#selectiveObfuscationModesPath" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="param">
       <a id="selectiveObfuscationModesPath:org.apache.spark.ml.param.Param[String]"></a><a id="selectiveObfuscationModesPath:Param[String]"></a>
       <span class="permalink">
@@ -4407,6 +4589,25 @@ Default: false
 If exception causing data is passed to the model, a error annotation is emitted which has the exception message. Processing continues with the next one.
 This comes with a performance penalty.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../params/HandleExceptionParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.params.HandleExceptionParams">HandleExceptionParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#setEnableDefaultObfuscationEquivalents" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setEnableDefaultObfuscationEquivalents(value:Boolean):BaseDeidParams.this.type"></a><a id="setEnableDefaultObfuscationEquivalents(Boolean):DeIdentification.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeIdentification.html#setEnableDefaultObfuscationEquivalents(value:Boolean):BaseDeidParams.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setEnableDefaultObfuscationEquivalents</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentification">DeIdentification</a>.this.type</span>
+      </span>
+      
+      <p class="shortcomment cmt">Sets whether to enable default obfuscation equivalents for common entities.</p><div class="fullcomment"><div class="comment cmt"><p>Sets whether to enable default obfuscation equivalents for common entities.
+This parameter allows the system to automatically include a set of predefined common English name equivalents.
+Default: false
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentification#setEntityCasingModesPath" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
       <a id="setEntityCasingModesPath(path:String):DeIdentification.this.type"></a><a id="setEntityCasingModesPath(String):DeIdentification.this.type"></a>
       <span class="permalink">
@@ -4858,6 +5059,104 @@ The values are the following:
 'faker': Takes the fakes from the Faker module
 'both': Takes the fakes from the obfuscatorRefFile and the faker module randomly.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#setObfuscationEquivalents" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setObfuscationEquivalents(equivalents:java.util.ArrayList[java.util.ArrayList[String]]):BaseDeidParams.this.type"></a><a id="setObfuscationEquivalents(ArrayList[ArrayList[String]]):DeIdentification.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeIdentification.html#setObfuscationEquivalents(equivalents:java.util.ArrayList[java.util.ArrayList[String]]):BaseDeidParams.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setObfuscationEquivalents</span><span class="params">(<span name="equivalents">equivalents: <span class="extype" name="java.util.ArrayList">ArrayList</span>[<span class="extype" name="java.util.ArrayList">ArrayList</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentification">DeIdentification</a>.this.type</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#setObfuscationEquivalents" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setObfuscationEquivalents(equivalents:Array[Array[String]]):BaseDeidParams.this.type"></a><a id="setObfuscationEquivalents(Array[Array[String]]):DeIdentification.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeIdentification.html#setObfuscationEquivalents(equivalents:Array[Array[String]]):BaseDeidParams.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setObfuscationEquivalents</span><span class="params">(<span name="equivalents">equivalents: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentification">DeIdentification</a>.this.type</span>
+      </span>
+      
+      <p class="shortcomment cmt">Sets variant-to-canonical entity mappings to ensure consistent obfuscation.</p><div class="fullcomment"><div class="comment cmt"><p>Sets variant-to-canonical entity mappings to ensure consistent obfuscation.</p><p>This method allows you to define equivalence rules for entity variants that should be
+obfuscated the same way. For example, the names &quot;Alex&quot; and &quot;Alexander&quot; will always be
+mapped to the same obfuscated value if they are linked to the same canonical form.</p><p>It accepts an array of string triplets, where each triplet defines:</p><ul><li>variant:      A non-standard, short, or alternative form of a value (e.g., &quot;Alex&quot;)</li><li>entityType:   The type of the entity (e.g., &quot;NAME&quot;, &quot;STATE&quot;, &quot;COUNTRY&quot;)</li><li>canonical:    The standardized form all variants map to (e.g., &quot;Alexander&quot;)</li></ul><p><code>variant</code> and <code>entityType</code> comparisons are case-insensitive during processing.</p><p>This is especially useful in de-identification tasks to ensure consistent replacement
+of semantically identical values. It also allows cross-variant normalization across
+different occurrences of sensitive data.</p><h5> Example </h5><pre><span class="kw">val</span> equivalents = <span class="std">Array</span>(
+  <span class="std">Array</span>(<span class="lit">"Alex"</span>, <span class="lit">"NAME"</span>, <span class="lit">"Alexander"</span>),
+  <span class="std">Array</span>(<span class="lit">"Rob"</span>, <span class="lit">"NAME"</span>, <span class="lit">"Robert"</span>),
+  <span class="std">Array</span>(<span class="lit">"CA"</span>, <span class="lit">"STATE"</span>, <span class="lit">"California"</span>),
+  <span class="std">Array</span>(<span class="lit">"Calif."</span>, <span class="lit">"STATE"</span>, <span class="lit">"California"</span>)
+)
+
+myDeidTransformer.setObfuscationEquivalents(equivalents)</pre></div><dl class="paramcmts block"><dt class="param">equivalents</dt><dd class="cmt"><p>Array of [variant, entityType, canonical] entries.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd><dt>Exceptions thrown</dt><dd><span class="cmt"><p><span class="extype" name="IllegalArgumentException"><code>IllegalArgumentException</code></span> if any entry does not have exactly 3 elements.</p></span></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#setObfuscationEquivalents" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setObfuscationEquivalents(equivalents:Array[com.johnsnowlabs.nlp.annotators.deid.faker.StaticObfuscationEntity]):BaseDeidParams.this.type"></a><a id="setObfuscationEquivalents(Array[StaticObfuscationEntity]):DeIdentification.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeIdentification.html#setObfuscationEquivalents(equivalents:Array[com.johnsnowlabs.nlp.annotators.deid.faker.StaticObfuscationEntity]):BaseDeidParams.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setObfuscationEquivalents</span><span class="params">(<span name="equivalents">equivalents: <span class="extype" name="scala.Array">Array</span>[<a href="faker/StaticObfuscationEntity.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.faker.StaticObfuscationEntity">StaticObfuscationEntity</a>]</span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentification">DeIdentification</a>.this.type</span>
+      </span>
+      
+      <p class="shortcomment cmt">Sets <a href="BaseDeidParams.html#obfuscationEquivalents:com.johnsnowlabs.nlp.serialization.StructFeature[Array[com.johnsnowlabs.nlp.annotators.deid.faker.StaticObfuscationEntity]]" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#obfuscationEquivalents">obfuscationEquivalents</a> param.</p><div class="fullcomment"><div class="comment cmt"><p>Sets <a href="BaseDeidParams.html#obfuscationEquivalents:com.johnsnowlabs.nlp.serialization.StructFeature[Array[com.johnsnowlabs.nlp.annotators.deid.faker.StaticObfuscationEntity]]" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#obfuscationEquivalents">obfuscationEquivalents</a> param.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentification#setObfuscationEquivalentsResource" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setObfuscationEquivalentsResource(path:String,readAs:com.johnsnowlabs.nlp.util.io.ReadAs.Format,options:Map[String,String]):DeIdentification.this.type"></a><a id="setObfuscationEquivalentsResource(String,Format,Map[String,String]):DeIdentification.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeIdentification.html#setObfuscationEquivalentsResource(path:String,readAs:com.johnsnowlabs.nlp.util.io.ReadAs.Format,options:Map[String,String]):DeIdentification.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setObfuscationEquivalentsResource</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="readAs">readAs: <span class="extype" name="com.johnsnowlabs.nlp.util.io.ReadAs.Format">Format</span></span>, <span name="options">options: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>] = <span class="defval" name='<span class="name"><a href="../../../../../scala/index.html">Map(&quot;format&quot; -&gt; &quot;text&quot;, &quot;delimeter&quot; -&gt; &quot;,&quot;)</a></span>'>...</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentification">DeIdentification</a>.this.type</span>
+      </span>
+      
+      <p class="shortcomment cmt">Sets the static obfuscation pairs resource using a path and readAs format.</p><div class="fullcomment"><div class="comment cmt"><p>Sets the static obfuscation pairs resource using a path and readAs format.
+The resource should contain three columns: variant, entityType, and canonical.
+The delimiter for the columns can be specified in the options.</p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>The path to the resource.</p></dd><dt class="param">readAs</dt><dd class="cmt"><p>The format to read the resource (e.g., TEXT, SPARK).</p></dd><dt class="param">options</dt><dd class="cmt"><p>Additional options for reading the resource, such as &quot;format&quot; and &quot;delimiter&quot;.
+'delimiter' and 'format' are required options.</p></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentification#setObfuscationEquivalentsResource" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setObfuscationEquivalentsResource(value:com.johnsnowlabs.nlp.util.io.ExternalResource):DeIdentification.this.type"></a><a id="setObfuscationEquivalentsResource(ExternalResource):DeIdentification.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeIdentification.html#setObfuscationEquivalentsResource(value:com.johnsnowlabs.nlp.util.io.ExternalResource):DeIdentification.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setObfuscationEquivalentsResource</span><span class="params">(<span name="value">value: <span class="extype" name="com.johnsnowlabs.nlp.util.io.ExternalResource">ExternalResource</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentification">DeIdentification</a>.this.type</span>
+      </span>
+      
+      <p class="shortcomment cmt">Sets the obfuscation equivalents resource.</p><div class="fullcomment"><div class="comment cmt"><p>Sets the obfuscation equivalents resource.
+The resource should contain three columns: variant, entityType, and canonical.
+The delimiter for the columns can be specified in the options.
+</p></div></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams#setObfuscationStrategyOnException" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
       <a id="setObfuscationStrategyOnException(value:String):DeIdentificationParams.this.type"></a><a id="setObfuscationStrategyOnException(String):DeIdentification.this.type"></a>
       <span class="permalink">
@@ -5159,6 +5458,50 @@ The values can be:
  <span class="lit">"ADDRESS"</span> -&gt; <span class="lit">"both"</span>
  )</pre></li></ol>
             </div></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#setSelectiveObfuscationModes" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setSelectiveObfuscationModes(value:java.util.HashMap[String,java.util.List[String]]):BaseDeidParams.this.type"></a><a id="setSelectiveObfuscationModes(HashMap[String,List[String]]):DeIdentification.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeIdentification.html#setSelectiveObfuscationModes(value:java.util.HashMap[String,java.util.List[String]]):BaseDeidParams.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setSelectiveObfuscationModes</span><span class="params">(<span name="value">value: <span class="extype" name="java.util.HashMap">HashMap</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="java.util.List">List</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentification">DeIdentification</a>.this.type</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#setSelectiveObfuscationModes" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setSelectiveObfuscationModes(value:Map[String,Array[String]]):BaseDeidParams.this.type"></a><a id="setSelectiveObfuscationModes(Map[String,Array[String]]):DeIdentification.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeIdentification.html#setSelectiveObfuscationModes(value:Map[String,Array[String]]):BaseDeidParams.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setSelectiveObfuscationModes</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentification">DeIdentification</a>.this.type</span>
+      </span>
+      
+      <p class="shortcomment cmt">Sets the value of <a href="BaseDeidParams.html#selectiveObfuscationModes:com.johnsnowlabs.nlp.serialization.StructFeature[Map[String,Array[String]]]" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#selectiveObfuscationModes">selectiveObfuscationModes</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Sets the value of <a href="BaseDeidParams.html#selectiveObfuscationModes:com.johnsnowlabs.nlp.serialization.StructFeature[Map[String,Array[String]]]" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#selectiveObfuscationModes">selectiveObfuscationModes</a>. The dictionary of modes to enable
+multi-mode deidentification.</p><ul><li>'obfuscate': Replace the values with random values.</li><li>'mask_same_length_chars': Replace the name with the asterix with same length minus two
+    plus brackets on both end.</li><li>'mask_entity_labels': Replace the values with the entity value.</li><li>'mask_fixed_length_chars': Replace the name with the asterix with fixed length. You
+    should also invoke &quot;setFixedMaskLength()&quot;</li><li>'mask_entity_labels_without_brackets': Replace the values with the entity value without brackets.</li><li>'mask_same_length_chars_without_brackets': Replace the name with the asterix with same length without brackets.</li><li>'skip': Skip the entities (intact)</li></ul><p>The entities which have not been given in dictionary will deidentify according to setMode()</p><p>Example:</p><pre>deidAnnotator
+.setMode(<span class="lit">"mask"</span>)
+.setSelectiveObfuscationModes(<span class="std">Map</span>(
+    <span class="lit">"OBFUSCATE"</span> -&gt; <span class="std">Array</span>(<span class="lit">"PHONE"</span>, <span class="lit">"email"</span>),
+    <span class="lit">"mask_entity_labels"</span> -&gt; <span class="std">Array</span>(<span class="lit">"NAME"</span>, <span class="lit">"CITY"</span>),
+    <span class="lit">"skip"</span> -&gt; <span class="std">Array</span>(<span class="lit">"id"</span>, <span class="lit">"idnum"</span>),
+    <span class="lit">"mask_same_length_chars"</span> -&gt; <span class="std">Array</span>(<span class="lit">"fax"</span>),
+    <span class="lit">"mask_fixed_length_chars"</span> -&gt; <span class="std">Array</span>(<span class="lit">"zip"</span>)
+))
+.setFixedMaskLength(<span class="num">4</span>)</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentification#setSelectiveObfuscationModesPath" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="setParam">
       <a id="setSelectiveObfuscationModesPath(path:String):DeIdentification.this.type"></a><a id="setSelectiveObfuscationModesPath(String):DeIdentification.this.type"></a>
       <span class="permalink">

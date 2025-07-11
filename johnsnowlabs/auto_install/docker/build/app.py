@@ -23,11 +23,11 @@ nlp_license = os.environ.get("JOHNSNOWLABS_LICENSE", None)
 visual_secret = os.environ.get("VISUAL_SECRET", None)
 
 # jars loaded from jsl-home
-nlp.start(model_cache_folder="/app/model_cache", aws_access_key=aws_secret_access_key, aws_key_id=aws_access_key_id,
+nlp.start(aws_access_key=aws_secret_access_key, aws_key_id=aws_access_key_id,
           hc_license=nlp_license, enterprise_nlp_secret=nlp_secret, visual_secret=visual_secret,
           visual=True if visual_secret else False, )
 
-model = nlp.load(path="/app/model/served_model", verbose=True)
+model = nlp.load(path="/app/model", verbose=True)
 if visual_enabled:
     # TODO this needs to be set by NLU
     model.contains_ocr_components = True

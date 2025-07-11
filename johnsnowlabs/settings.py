@@ -10,9 +10,9 @@ from johnsnowlabs.utils.env_utils import (
 
 # These versions are used for auto-installs and version  checks
 
-raw_version_jsl_lib = "6.0.2"
+raw_version_jsl_lib = "6.0.3"
 
-raw_version_nlp = "6.0.1"
+raw_version_nlp = "6.0.3"
 
 raw_version_nlu = "5.4.1"
 
@@ -20,8 +20,8 @@ raw_version_nlu = "5.4.1"
 raw_version_pyspark = "3.4.0"
 raw_version_nlp_display = "5.0"
 
-raw_version_medical = "6.0.2"
-raw_version_secret_medical = "6.0.2"
+raw_version_medical = "6.0.3"
+raw_version_secret_medical = "6.0.3"
 
 raw_version_secret_ocr = "6.0.0"
 raw_version_ocr = "6.0.0"
@@ -72,6 +72,9 @@ dbfs_py_dir = f"{dbfs_home_dir}/py_installs"
 db_py_jobs_dir = f"{dbfs_home_dir}/py_jobs"
 db_py_notebook_dir = f"{dbfs_home_dir}/py_notebook_jobs"
 db_jar_jobs_dir = f"{dbfs_home_dir}/jar_jobs"
+dbfs_license_path = f"{dbfs_home_dir}/licenses"
+dbfs_info_path = f"{dbfs_home_dir}/info.json"
+
 
 db_cluster_name = "John-Snow-Labs-Databricks-Auto-Cluster🚀"
 db_driver_node_type = "i3.xlarge"
@@ -82,7 +85,6 @@ db_spark_version = "10.5.x-scala2.12"
 
 db_job_name = "John-Snow-Labs-Job {job} 🚀"
 db_run_name = "John-Snow-Labs-Run 🚀"
-db_driver_node_type = "i3.xlarge"
 
 # emr settings
 emr_cluster_name = "John-Snow-Labs-EMR-Auto-Cluster🚀"

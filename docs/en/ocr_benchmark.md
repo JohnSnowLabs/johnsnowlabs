@@ -40,12 +40,15 @@ sidebar:
 | m5n.8xlarge   | 128 GB | 32    | 1000              | 32            | 0.15            | 2.5 mins|
 
 
+</div><div class="h3-box" markdown="1">
+
 ### Dicom De-identification Benchmark
 This section contains benchmarks for de-ideintification of dicom files, both for GPU and CPU. 
 Note: file sizes are included as reference, but *they are not* the best proxy for estimating running time, as the final figures will depend on image size than in turn depends on the actual compression that is being used in the file.
 The numbers reported are average *time per file*.
 
 
+{:.table-model-big}
 | **Model**                                                   | **Google Colab GPU** | **Databricks Standalone GPU** | **Google Colab CPU** | **Databricks Standalone CPU** |
 |------------------------------------------------------------|----------------------|------------------------------|----------------------|------------------------------|
 | **ImageTextDetector - MemOpt (Scala) + ImageToTextV2 - Base (Scala)**  | **3.63**            | **4.66**                     | **11.87**            | **6.11**                     |
@@ -55,12 +58,15 @@ The numbers reported are average *time per file*.
 
 
 
+</div><div class="h3-box" markdown="1">
 
 * **Google Colab GPU**: Utilized a single A100 GPU (40 GB) – 7.62 Credits/hr.
 * **Databricks Standalone GPU**: DB Standalone Driver (64 GB, Single GPU, g4dn.4xLarge [T4]) – 2.85 DBU/h.
 * **Google Colab CPU**: HIGH RAM [8 Cores] instance – 0.18 Credits/hr.
 * **Databricks Standalone CPU**: Driver with 64 GB [16 Cores] (m4.4xlarge) – 3 DBU/h.
 
+
+</div><div class="h3-box" markdown="1">
 
 #### How to use this data
 ##### GPU vs. CPU
@@ -79,6 +85,9 @@ Don't be confused by the average times between GPU and CPU, for example for Data
 
 Here we see that for this workload the cheaper option is to go with GPU.
 
+
+</div><div class="h3-box" markdown="1">
+
 #### Using the data as a proxy for estimation
 What governs the processing time is image size. Let's take a look at some figures for this dataset,
 * *Transfer Syntax:* 1.2.840.10008.1.2.1(Uncompressed).
@@ -92,14 +101,22 @@ _Your linear projections should be based on that value_.
 
 Note: don't forget to count multi-frame images.
 
+
+</div><div class="h3-box" markdown="1">
+
 #### I don't know the dimensions of my images
 If you don't know the dimensions, but you know that your images are also uncompressed, you can use file size as proxy. 
 _Keep in mind that if you actually have compressed images you will be underestimating the processing time_.
+
+
+</div><div class="h3-box" markdown="1">
 
 #### Why the numbers are related to uncompressed images
 The variation of the effective compression levels in real datasets makes it impractical to use such a metric in an estimation. Some datasets with low density of information can get compression levels up to 30X, while some others can have lower compressions, so picking a reference dataset is very difficult for the general case. </br>
 But not all hope is lost, you can work with frames!.
 
+
+</div><div class="h3-box" markdown="1">
 
 #### Using total frame count as a proxy for estimation
 If you don't know the size of the images, or the compression, you can estimate the number of frames and use the time it takes for a single frame(like the numbers we've shared in this document) as a proxy. 
@@ -108,6 +125,5 @@ Reasons for doing this:
 * You can compute frame count and sizes very efficiently using Visual NLP.
 * Even if not all frames are of the same dimensions, you can resize them prior to feeding them to the ML models in the pipeline.
 * This way, each frame will have a fixed size processing time.
-
 
 </div>
