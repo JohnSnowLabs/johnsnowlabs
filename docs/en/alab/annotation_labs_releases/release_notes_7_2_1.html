@@ -9,12 +9,12 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Generative AI Lab Release Notes 6.4.1</title><meta property="og:title" content="Generative AI Lab | John Snow Labs"/>
+<!-- End Google Tag Manager --><title>Generative AI Lab 7.0.1</title><meta property="og:title" content="Generative AI Lab | John Snow Labs"/>
 
 <meta name="description" content="High Performance NLP with Apache Spark
 ">
-<!-- <link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_6_4_1"> -->
-<link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_6_4_1"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<!-- <link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_7_2_1"> -->
+<link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_7_2_1"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -616,32 +616,41 @@ function wrapWordInSpan(data, wordToWrap) {
 </script><div class="article__header"><div class="header-nav"><div class="main-docs">
   <ul class="breadcrambs">
     <li><a href="/docs">Documentation</a></li>
-    <li>Generative AI Lab Release Notes 6.4.1</li>
+    <li>Generative AI Lab 7.0.1</li>
   </ul>
 </div></div><header class="main-docs have_subtitle">
-          <h1>Generative AI Lab Release Notes 6.4.1</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
+          <h1>Generative AI Lab 7.0.1</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
-            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/alab/annotation_labs_releases/release_notes_6_4_1.md">
-            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Generative AI Lab Release Notes 6.4.1"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
+            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/alab/annotation_labs_releases/release_notes_7_2_1.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Generative AI Lab 7.0.1"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <h2 id="section">6.4.1</h2>
+  <h2 id="section">7.2.1</h2>
 
-  <p>Release date: <strong>08-01-2024</strong></p>
+  <p style="text-align:center;">Release date: 07-01-2025</p>
 
   <h3 id="improvements">Improvements</h3>
   <ul>
-    <li>License page UI crashes when empty license is given by the license server for AMI/Azure deployment</li>
-    <li>Support CPU based marketplace offering for Azure</li>
-    <li>Add validation in project_groups API</li>
+    <li>Added re-initialization logic for the application license to handle validation failures gracefully, ensuring smoother application startup and reliability.</li>
   </ul>
 
-  <h3 id="task">Task</h3>
+  <h3 id="bug-fixes">Bug Fixes</h3>
   <ul>
-    <li>Add a checkbox in Azure UI Definition Page to optionally install/uninstall GPU Drivers</li>
+    <li>Fixed an issue where elements added from the Customize Label Page were only applied to the first response in LLM Evaluation Comparison Projects.</li>
+    <li>Resolved a bug where the first Adhoc LLM Provider was not visible when added to LLM Evaluation Comparison Project Types.</li>
+    <li>Added missing pagination to the task list view in both LLM Evaluation and LLM Evaluation Comparison Projects.</li>
+    <li>Fixed an issue where analytics were not populated for LLM Evaluation Projects configured with Adhoc External Service Providers.</li>
+    <li>Fixed UI inconsistencies for SageMaker credentials – added show/hide logic and enabled saving without a session token.</li>
+    <li>Addressed discrepancies in input fields during SageMaker external provider integration.</li>
+  </ul>
+
+  <h3 id="tasks">Tasks</h3>
+  <ul>
+    <li>Updated LLM Evaluation Analytics to only include ground truth (GT) when “No Choice Selected” is configured.</li>
+    <li>Minor improvements and optimizations in the SageMaker integration flow.</li>
   </ul>
 
 </div>
@@ -717,7 +726,7 @@ function wrapWordInSpan(data, wordToWrap) {
   <li><a href="release_notes_5_1_0">5.1.0</a></li>
 </ul>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2024-06-21T00:00:00+00:00">Jun 21, 2024</time>
+      <time itemprop="dateModified" datetime="2025-04-09T00:00:00+00:00">Apr 09, 2025</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
