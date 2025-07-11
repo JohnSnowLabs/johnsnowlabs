@@ -85,24 +85,17 @@ To start working with prompts:
   "data": {
     "prompt": "Give me a diet plan for a diabetic 35 year old with reference links",
     "response1": "",
-    "llm_details": [
-      { "synthetic_tasks_service_provider_id": 2, "response_key": "response1" }
-    ],
     "title": "DietPlan"
   }
 }
 ```
-**Sample JSON for LLM Evaluation Comparision Project**
+**Sample JSON for LLM Evaluation Comparison Project**
 ```json
 {
   "data": {
     "prompt": "Give me a diet plan for a diabetic 35 year old with reference links",
     "response1": "",
     "response2": "",
-    "llm_details": [
-      { "synthetic_tasks_service_provider_id": 2, "response_key": "response1" },
-       { "synthetic_tasks_service_provider_id": 2, "response_key": "response2" }
-    ],
     "title": "DietPlan"
   }
 }
@@ -112,6 +105,45 @@ To start working with prompts:
 ![720image](/assets/images/annotation_lab/7.2.0/3.gif)
 
 After responses are generated, users can begin evaluating them directly within the task interface.
+
+### Sample Import Format for LLM Evaluation with Response
+Users can also import prompts and LLM-generated responses using a structured JSON format. This feature supports both LLM Evaluation and LLM Evaluation Comparison project types.
+
+Below are example JSON formats:
+
+- **LLM Evaluation:** Includes a prompt and one LLM response mapped to a provider.
+- **LLM Evaluation Comparison:** Supports multiple LLM responses to the same prompt, allowing side-by-side evaluation.
+
+**Sample JSON for LLM Evaluation Project with Response**
+
+```json
+{
+  "data": {
+    "prompt": "Give me a diet plan for a diabetic 35 year old with reference links",
+    "response1": "Prompt Respons1 Here",
+    "llm_details": [
+      { "synthetic_tasks_service_provider_id": 1, "response_key": "response1" }
+    ],
+    "title": "DietPlan"
+  }
+}
+```
+**Sample JSON for LLM Evaluation Comparision Project with Response**
+```json
+{
+  "data": {
+    "prompt": "Give me a diet plan for a diabetic 35 year old with reference links",
+    "response1": "Prompt Respons1 Here",
+    "response2": "Prompt Respons2 Here",
+    "llm_details": [
+      { "synthetic_tasks_service_provider_id": 1, "response_key": "response1" },
+       { "synthetic_tasks_service_provider_id": 2, "response_key": "response2" }
+    ],
+    "title": "DietPlan"
+  }
+}
+```
+
 
 ### Analytics Dashboard for LLM Evaluation Projects
 
@@ -244,6 +276,8 @@ These updates ensure a smoother project setup experience and prevent misconfigur
 </div>
 
 <ul class="pagination owl-carousel pagination_big">
+    <li><a href="annotation_labs_releases/release_notes_7_2_2">7.2.2</a></li>
+    <li><a href="annotation_labs_releases/release_notes_7_2_1">7.2.1</a></li>
     <li class="active"><a href="annotation_labs_releases/release_notes_7_2_0">7.2.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_7_1_0">7.1.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_7_0_1">7.0.1</a></li>
