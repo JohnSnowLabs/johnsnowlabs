@@ -33,6 +33,7 @@ This model is trained to generate contextual sentence embeddings of input senten
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 from pyspark.ml import Pipeline
 from sparknlp.annotator import Tokenizer
@@ -46,8 +47,8 @@ tokenizer = Tokenizer()\
     .setInputCols(["document"])\
     .setOutputCol("token")
 
-bert_loaded = BertEmbeddings.load("sbluebert_base_uncased_mli_openvino")\
-    .setInputCols(["document",'token'])\
+bert_loaded = BertEmbeddings.pretrained("sbluebert_base_uncased_mli_openvino", "en", "clinical/models")\
+    .setInputCols(["document", "token"])\
     .setOutputCol("bert")\
 
 pipeline = Pipeline(
@@ -58,7 +59,7 @@ pipeline = Pipeline(
   ])
 
 data = spark.createDataFrame([
-    ['William Henry Gates III (born October 28, 1955) is an American business magnate, software developer, investor,and philanthropist.']
+    ['William Henry Gates III (born October 28, 1955) is an American business magnate, software developer, investor, and philanthropist.']
 ]).toDF("text")
 
 model = pipeline.fit(data)
@@ -81,7 +82,7 @@ val tokenizer = new Tokenizer()
   .setInputCols("document")
   .setOutputCol("token")
 
-val bertEmbeddings = BertEmbeddings.load("sbluebert_base_uncased_mli_openvino")
+val bertEmbeddings = BertEmbeddings.load("sbluebert_base_uncased_mli_openvino", "en", "clinical/models")
   .setInputCols("document", "token")
   .setOutputCol("bert")
 
@@ -91,7 +92,7 @@ val pipeline = new Pipeline().setStages(Array(
   bertEmbeddings
 ))
 
-val data = Seq("William Henry Gates III (born October 28, 1955) is an American business magnate, software developer, investor,and philanthropist.")
+val data = Seq("William Henry Gates III (born October 28, 1955) is an American business magnate, software developer, investor, and philanthropist.")
   .toDF("text")
 
 val model = pipeline.fit(data)
