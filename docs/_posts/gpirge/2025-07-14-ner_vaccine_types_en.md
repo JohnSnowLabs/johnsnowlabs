@@ -40,6 +40,7 @@ Services, under Contract No. 75N93024C00010.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
@@ -53,17 +54,17 @@ tokenizer = Tokenizer()\
     .setInputCols(["sentence"])\
     .setOutputCol("token")
 
-clinical_embeddings = WordEmbeddingsModel.pretrained('embeddings_clinical', "en", "clinical/models")\
+clinical_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")\
     .setInputCols(["sentence", "token"])\
     .setOutputCol("embeddings")
 
-ner_model = MedicalNerModel.pretrained('ner_vaccine_types', "en", "clinical/models")\
+ner_model = MedicalNerModel.pretrained("ner_vaccine_types", "en", "clinical/models")\
     .setInputCols(["sentence", "token","embeddings"])\
     .setOutputCol("ner")
 
 ner_converter = NerConverterInternal()\
-    .setInputCols(['sentence', 'token', 'ner'])\
-    .setOutputCol('ner_chunk')
+    .setInputCols(["sentence", "token", "ner"])\
+    .setOutputCol("ner_chunk")
 
 pipeline = Pipeline(stages=[
     document_assembler, 
@@ -228,6 +229,7 @@ val result = pipeline.fit(sample_texts).transform(sample_texts)
 |6          |vaccine             |716  |722|Adaptive_Immunity     |
 |6          |tumors              |750  |755|Other_Disease_Disorder|
 |7          |vaccine             |876  |882|Adaptive_Immunity     |
++-----------+--------------------+-----+---+----------------------+
 ```
 
 {:.model-param}
@@ -252,7 +254,6 @@ In-house annotated real case reports.
 
 ```bash
                   label  precision    recall  f1-score   support
-
       Adaptive_Immunity       0.96      0.98      0.97       659
                     Age       0.87      0.91      0.89       379
            Bac_Vir_Comb       0.94      0.97      0.96        66
@@ -267,9 +268,7 @@ In-house annotated real case reports.
                  Toxoid       0.94      1.00      0.97        15
                Vax_Dose       0.78      0.95      0.86       169
               Viral_Vax       0.94      0.94      0.94       186
-
-
-              micro_avg       0.92      0.93      0.92      3273
-              macro avg       0.90      0.92      0.91      3273
-           weighted avg       0.92      0.93      0.92      3273
+              micro-avg       0.92      0.93      0.92      3273
+              macro-avg       0.90      0.92      0.91      3273
+           weighted-avg       0.92      0.93      0.92      3273
 ```
