@@ -22,8 +22,8 @@ This pipeline is designed to extract types of vaccines and related disease/sympt
 
 Predicted entities are:
 
-
 `Bacterial_Vax`, `Viral_Vax`, `Cancer_Vax`, `Bac_Vir_Comb`, `Other_Vax`, `Vax_Dose`, `Infectious_Disease`, `Other_Disease_Disorder`, `Sign_Symptom`, `Toxoid`, `Adaptive_Immunity`, `Inactivated`, `Date`, `Age`
+
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
@@ -37,8 +37,8 @@ Predicted entities are:
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
-
 from sparknlp.pretrained import PretrainedPipeline
 
 ner_pipeline = PretrainedPipeline("ner_vaccine_types_pipeline", "en", "clinical/models")
@@ -52,10 +52,24 @@ The patient reported receiving the DTaP vaccine (a toxoid vaccine) as a child. S
 In 2022, she was enrolled in a clinical trial for Stimuvax, a cancer vaccine targeting MUC1-expressing tumors.
 The team is assessing whether the patient's symptoms are due to a flare in her autoimmune disease or a delayed viral vaccine reaction.
 """)
-
 ```
-```scala
 
+{:.jsl-block}
+```python
+ner_pipeline = nlp.PretrainedPipeline("ner_vaccine_types_pipeline", "en", "clinical/models")
+
+result = ner_pipeline.annotate("""
+On May 14, 2023, a 57-year-old female presented with fever, joint pain, and fatigue three days after receiving her third dose of the Shingrix vaccine.
+Her history includes rheumatoid arthritis, managed with immunosuppressants, and prior breast cancer in remission.
+She previously received Gardasil 9, an HPV vaccine, and the hepatitis B recombinant vaccine series in 2020.
+Notably, she developed mild aches following her annual influenza shot, which is an inactivated vaccine.
+The patient reported receiving the DTaP vaccine (a toxoid vaccine) as a child. She also had tuberculosis as a teenager and had COVID-19 twice during the pandemic.
+In 2022, she was enrolled in a clinical trial for Stimuvax, a cancer vaccine targeting MUC1-expressing tumors.
+The team is assessing whether the patient's symptoms are due to a flare in her autoimmune disease or a delayed viral vaccine reaction.
+""")
+```
+
+```scala
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val ner_pipeline = PretrainedPipeline("ner_vaccine_types_pipeline", "en", "clinical/models")
@@ -69,7 +83,6 @@ The patient reported receiving the DTaP vaccine (a toxoid vaccine) as a child. S
 In 2022, she was enrolled in a clinical trial for Stimuvax, a cancer vaccine targeting MUC1-expressing tumors.
 The team is assessing whether the patient's symptoms are due to a flare in her autoimmune disease or a delayed viral vaccine reaction.
 """)
-
 ```
 </div>
 
@@ -131,9 +144,7 @@ The team is assessing whether the patient's symptoms are due to a flare in her a
 ## Benchmarking
 
 ```bash
-
                   label  precision    recall  f1-score   support
-
       Adaptive_Immunity       0.96      0.98      0.97       659
                     Age       0.87      0.91      0.89       379
            Bac_Vir_Comb       0.94      0.97      0.96        66
@@ -148,11 +159,9 @@ The team is assessing whether the patient's symptoms are due to a flare in her a
                  Toxoid       0.94      1.00      0.97        15
                Vax_Dose       0.78      0.95      0.86       169
               Viral_Vax       0.94      0.94      0.94       186
-
-
-              micro_avg       0.92      0.93      0.92      3273
-              macro avg       0.90      0.92      0.91      3273
-           weighted avg       0.92      0.93      0.92      3273
+              micro-avg       0.92      0.93      0.92      3273
+              macro-avg       0.90      0.92      0.91      3273
+           weighted-avg       0.92      0.93      0.92      3273
 
 ```
 
