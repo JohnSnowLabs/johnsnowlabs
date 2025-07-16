@@ -636,18 +636,22 @@ function wrapWordInSpan(data, wordToWrap) {
 <ul>
   <li>Subscribe to the product on the AWS Marketplace.
   <img src="/assets/images/term_server/subscribe.png" alt="Terminology Service Subscription" /></li>
-  <li>Once subscribed, deploy it on a new machine
-  <img src="/assets/images/term_server/launch.png" alt="Terminology Service Launch" /></li>
   <li>
-    <p>Wait for the services to be active. This might take few minutes for the initial boot. 
-<br />
-  To check the status, login to the instance and run this command
-<br />
-<code class="language-plaintext highlighter-rouge">sudo systemctl status terminology-server.service</code></p>
+    <p>Once subscribed, deploy it on a new machine</p>
 
-    <p><img src="/assets/images/term_server/terminology_service_status.png" alt="Terminology Service Staus" /></p>
+    <p><img src="/assets/images/term_server/launch.png" alt="Terminology Service Launch" /></p>
   </li>
-  <li>Once all the status is active, access the terminology server on http://INSTANCE_IP</li>
+  <li>
+    <p>After deployment, the application will be accessible on http://INSTANCE_IP.</p>
+
+    <p><b> It takes around 20 minutes (depending upon your region) for the services to be up and running. You will see a loading screen while the services are being configure.</b></p>
+
+    <p><img src="/assets/images/term_server/loading.png" alt="Terminology Service Loading" /></p>
+
+    <p><b>Once the services are up, you will be automatically redirected to the Terminology Server UI where you can start using it.</b></p>
+
+    <p><img src="/assets/images/term_server/ui.png" alt="Terminology Service UI" /></p>
+  </li>
 </ul>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
       <time itemprop="dateModified" datetime="2025-04-01T00:00:00+00:00">Apr 01, 2025</time>
