@@ -22,13 +22,15 @@ Visit the [product page on AWS Marketplace](https://aws.amazon.com/marketplace/p
 - Subscribe to the product on the AWS Marketplace.
     ![Terminology Service Subscription](/assets/images/term_server/subscribe.png)
 - Once subscribed, deploy it on a new machine
+
     ![Terminology Service Launch](/assets/images/term_server/launch.png)
-- Wait for the services to be active. This might take few minutes for the initial boot. 
-<br/>
-    To check the status, login to the instance and run this command
-<br/>
-`sudo systemctl status terminology-server.service`
 
+- After deployment, the application will be accessible on http://INSTANCE_IP.
 
-    ![Terminology Service Staus](/assets/images/term_server/terminology_service_status.png)
-- Once all the status is active, access the terminology server on http://INSTANCE_IP
+  <b> It takes around 20 minutes (depending upon your region) for the services to be up and running. You will see a loading screen while the services are being configure.</b>
+
+  ![Terminology Service Loading](/assets/images/term_server/loading.png)
+
+  <b>Once the services are up, you will be automatically redirected to the Terminology Server UI where you can start using it.</b>
+
+  ![Terminology Service UI](/assets/images/term_server/ui.png)
