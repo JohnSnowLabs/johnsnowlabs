@@ -25,7 +25,7 @@ The LLMs listed below are available as AWS Sagemaker Endpoints.
 
 [Medical LLM - 10B](https://aws.amazon.com/marketplace/pp/prodview-x3uprn5edkwdq)
 
-[Medical LLM- 7B](https://aws.amazon.com/marketplace/pp/prodview-dn7ktdl2sg7bi)
+[Medical LLM- 8B](https://aws.amazon.com/marketplace/pp/prodview-dn7ktdl2sg7bi)
 
 [Medical Reasoning LLM - 14B](https://aws.amazon.com/marketplace/pp/prodview-6uqc7fr4rrpti)
 
