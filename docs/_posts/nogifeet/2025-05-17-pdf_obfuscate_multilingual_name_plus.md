@@ -17,30 +17,17 @@ use_language_switcher: "Python-Scala-Java"
 ---
 
 ## Description
-The Clinical Obfuscation for PDF Pipeline is a powerful solution for transforming sensitive PDF documents into safe, shareable assets. It enables organizations to unlock the value of clinical data while ensuring strict compliance with HIPAA, GDPR, and institutional privacy standards.
-The pipeline is designed to obfuscate Personally Identifiable Information (PII) in input PDF documents, while preserving readability and format integrity. Its key features include:
+The Clinical Obfuscation for PDF Pipeline helps turn sensitive PDF documents into safe, shareable files. It finds personal information like names, dates, and IDs, and replaces them with fake but realistic alternatives. The replacements match the look and size of the original text, so the layout stays the same. Each piece of information is replaced the same way every time it appears. The final PDF looks like the original, but without exposing any real personal data.
 
-### Entity-Level Obfuscation
-Detected entities (e.g., names, dates, IDs) are individually replaced with synthetic but realistic alternatives, ensuring sensitive information is protected.
-
-### Layout-Aware Replacement
-Replacement entities are carefully chosen to match the visual space of the originals, avoiding issues like text overflow or underfitting.
-
-### Supported Entity Types
-The pipeline can obfuscate the following types of information:
-HOSPITAL, NAME, PATIENT, ID, MEDICALRECORD, IDNUM, COUNTRY, LOCATION, STREET, STATE, ZIP, CONTACT, PHONE, DATE.
-
-### Preserved Document Appearance
-The output is a PDF document visually similar to the original, with obfuscated text rendered on top of the original positions of sensitive entities.
-
-### Document-Wide Consistency
-Replacement is consistent across the document. For example, if "Lilian Clarke" is replaced by "Nelly Huffman" on page 1, all subsequent instances of "Lilian Clarke" are replaced with the same synthetic name throughout the document.
+## Predicted Entities
+``HOSPITAL``, ``NAME``, ``PATIENT``, ``ID``, ``MEDICALRECORD``, ``IDNUM``, ``COUNTRY``, ``LOCATION``, ``STREET``, ``STATE``, ``ZIP``, ``CONTACT``, ``PHONE``, ``DATE``.
 
 {:.btn-box}
-<button class="button button-orange" disabled>Live Demo</button>
-<button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/pdf_obfuscate_multilingual_name_plus_en_6.0.0_3.0_1747131526000.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/ocr/pdf_obfuscate_multilingual_name_plus_en_6.0.0_3.0_1747131526000.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+
+[Live Demo](https://demo.johnsnowlabs.com/ocr/PP_PDF_DEIDENTIFICATION/){:.button.button-orange.button-orange-trans.co.button-icon}
+[Open in Colab](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrPdfDeIdentificationPipelines.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/pdf_obfuscate_multilingual_name_plus_en_6.0.0_3.0_1747131526000.zip){:.button.button-orange.button-orange-trans.arr.button-icon}
+
 
 ## How to use
 
@@ -49,14 +36,20 @@ Replacement is consistent across the document. For example, if "Lilian Clarke" i
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 deid_pipeline = PretrainedPipeline("pdf_obfuscate_multilingual_name_plus", "en", "clinical/ocr")
-
-deid_pipeline.transform(input_pdfs)
-
 ```
 
 </div>
 
 {:.model-param}
+
+## Example
+
+### Input:
+![Screenshot](/assets/images/examples_ocr/PDF3_Deid_Deidentification_3_page-0002.jpg)
+
+### Output:
+![Screenshot](/assets/images/examples_ocr/pipeline6_pdf3_im2.png)
+
 ## Model Information
 
 {:.table-model}
