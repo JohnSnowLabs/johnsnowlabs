@@ -18,14 +18,19 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pipeline can be used to mask PHI information in PDFs. Masked entities include 'AGE', 'CITY', 'COUNTRY', 'DATE', 'DOCTOR', 'EMAIL', 'HOSPITAL', 'IDNUM', 'ORGANIZATION', 'PATIENT', 'PHONE', 'PROFESSION', 'STATE', 'STREET', 'USERNAME', 'ZIP'.
+This pipeline can be used to mask PHI information in PDFs.
 The output is a PDF document, similar to the one at the input, but with black bounding boxes on top of the targeted entities, also includes removing signatures.
 
+## Predicted Entities
+
+``AGE``, ``CITY``, ``COUNTRY``, ``DATE``, ``DOCTOR``, ``EMAIL``, ``HOSPITAL``, ``IDNUM``, ``ORGANIZATION``, ``PATIENT``, ``PHONE``, ``PROFESSION``, ``STATE``, ``STREET``, ``USERNAME``, ``ZIP``, ``SIGNATURE``.
+
+
 {:.btn-box}
-<button class="button button-orange" disabled>Live Demo</button>
-<button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/pdf_deid_multi_model_context_signature_aware_pipeline_en_6.0.0_3.0_1747909126000.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/ocr/pdf_deid_multi_model_context_signature_aware_pipeline_en_6.0.0_3.0_1747909126000.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Live Demo](https://demo.johnsnowlabs.com/ocr/PP_PDF_DEIDENTIFICATION/){:.button.button-orange.button-orange-trans.co.button-icon}
+[Open in Colab](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrPdfDeIdentificationPipelines.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/pdf_deid_multi_model_context_signature_aware_pipeline_en_6.0.0_3.0_1747909126000.zip){:.button.button-orange.button-orange-trans.arr.button-icon}
+
 
 ## How to use
 
@@ -39,6 +44,15 @@ deid_pipeline = PretrainedPipeline("pdf_deid_multi_model_context_signature_aware
 </div>
 
 {:.model-param}
+
+## Example
+
+### Input:
+![Screenshot](/assets/images/examples_ocr/PDF2_Deid_Deidentification_2_page-0002.jpg)
+
+### Output:
+![Screenshot](/assets/images/examples_ocr/pipeline2_pdf2_im2.png)
+
 ## Model Information
 
 {:.table-model}

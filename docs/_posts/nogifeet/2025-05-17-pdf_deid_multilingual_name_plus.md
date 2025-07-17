@@ -18,14 +18,18 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pipeline can be used to mask PHI information in PDFs. Masked entities include 'HOSPITAL', 'NAME', 'PATIENT', 'ID','MEDICALRECORD', 'IDNUM', 'COUNTRY', 'LOCATION', 'STREET', 'STATE', 'ZIP', 'CONTACT', 'PHONE', 'DATE'.
+This pipeline can be used to mask PHI information in PDFs. 
 The output is a PDF document, similar to the one at the input, but with black bounding boxes on top of the targeted entities.
 
+## Predicted Entities
+
+``HOSPITAL``, ``NAME``, ``PATIENT``, ``ID``,``MEDICALRECORD``, ``IDNUM``, ``COUNTRY``, ``LOCATION``, ``STREET``, ``STATE``, ``ZIP``, ``CONTACT``, ``PHONE``, ``DATE``.
+
 {:.btn-box}
-<button class="button button-orange" disabled>Live Demo</button>
-<button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/pdf_deid_multilingual_name_plus_en_6.0.0_3.0_1747131526000.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/ocr/pdf_deid_multilingual_name_plus_en_6.0.0_3.0_1747131526000.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Live Demo](https://demo.johnsnowlabs.com/ocr/PP_PDF_DEIDENTIFICATION/){:.button.button-orange.button-orange-trans.co.button-icon}
+[Open in Colab](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrPdfDeIdentificationPipelines.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/pdf_deid_multilingual_name_plus_en_6.0.0_3.0_1747131526000.zip){:.button.button-orange.button-orange-trans.arr.button-icon}
+
 
 ## How to use
 
@@ -39,6 +43,15 @@ deid_pipeline = PretrainedPipeline("pdf_deid_multilingual_name_plus", "en", "cli
 </div>
 
 {:.model-param}
+
+## Example
+
+### Input:
+![Screenshot](/assets/images/examples_ocr/PDF1_Deid_Deidentification_1_page-0002.jpg)
+
+### Output:
+![Screenshot](/assets/images/examples_ocr/pipeline4_pdf1_im2.png)
+
 ## Model Information
 
 {:.table-model}
