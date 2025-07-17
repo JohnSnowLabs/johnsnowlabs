@@ -11,7 +11,7 @@
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
 <!-- End Google Tag Manager --><title>PDF Obfuscate Multilingual Name Plus | pdf_obfuscate_multilingual_name_plus | Healthcare NLP 6.0.0</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThe Clinical Obfuscation for PDF Pipeline is a powerful solution for transforming sensitive PDF documents into safe, shareable assets. It enables organizations to unlock the value of clinical data while ensuring strict compliance with HIPAA, GDPR, and institutional privacy standards.The pipeline is design...">
+<meta name="description" content="DescriptionThe Clinical Obfuscation for PDF Pipeline helps turn sensitive PDF documents into safe, shareable files. It finds personal information like names, dates, and IDs, and replaces them with fake but realistic alternatives. The replacements match the look and size of the original text, so the layout stays the ...">
 <!-- <link rel="canonical" href="/2025/05/17/pdf_obfuscate_multilingual_name_plus.html"> -->
 <link rel="canonical" href="/2025/05/17/pdf_obfuscate_multilingual_name_plus.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
@@ -513,29 +513,14 @@ function wrapWordInSpan(data, wordToWrap) {
     <meta itemprop="keywords" content="en,licensed"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
-<p>The Clinical Obfuscation for PDF Pipeline is a powerful solution for transforming sensitive PDF documents into safe, shareable assets. It enables organizations to unlock the value of clinical data while ensuring strict compliance with HIPAA, GDPR, and institutional privacy standards.
-The pipeline is designed to obfuscate Personally Identifiable Information (PII) in input PDF documents, while preserving readability and format integrity. Its key features include:</p>
+<p>The Clinical Obfuscation for PDF Pipeline helps turn sensitive PDF documents into safe, shareable files. It finds personal information like names, dates, and IDs, and replaces them with fake but realistic alternatives. The replacements match the look and size of the original text, so the layout stays the same. Each piece of information is replaced the same way every time it appears. The final PDF looks like the original, but without exposing any real personal data.</p>
 
-<h3 id="entity-level-obfuscation">Entity-Level Obfuscation</h3>
-<p>Detected entities (e.g., names, dates, IDs) are individually replaced with synthetic but realistic alternatives, ensuring sensitive information is protected.</p>
+<h2 id="predicted-entities">Predicted Entities</h2>
+<p><code class="language-plaintext highlighter-rouge">HOSPITAL</code>, <code class="language-plaintext highlighter-rouge">NAME</code>, <code class="language-plaintext highlighter-rouge">PATIENT</code>, <code class="language-plaintext highlighter-rouge">ID</code>, <code class="language-plaintext highlighter-rouge">MEDICALRECORD</code>, <code class="language-plaintext highlighter-rouge">IDNUM</code>, <code class="language-plaintext highlighter-rouge">COUNTRY</code>, <code class="language-plaintext highlighter-rouge">LOCATION</code>, <code class="language-plaintext highlighter-rouge">STREET</code>, <code class="language-plaintext highlighter-rouge">STATE</code>, <code class="language-plaintext highlighter-rouge">ZIP</code>, <code class="language-plaintext highlighter-rouge">CONTACT</code>, <code class="language-plaintext highlighter-rouge">PHONE</code>, <code class="language-plaintext highlighter-rouge">DATE</code>.</p>
 
-<h3 id="layout-aware-replacement">Layout-Aware Replacement</h3>
-<p>Replacement entities are carefully chosen to match the visual space of the originals, avoiding issues like text overflow or underfitting.</p>
-
-<h3 id="supported-entity-types">Supported Entity Types</h3>
-<p>The pipeline can obfuscate the following types of information:
-HOSPITAL, NAME, PATIENT, ID, MEDICALRECORD, IDNUM, COUNTRY, LOCATION, STREET, STATE, ZIP, CONTACT, PHONE, DATE.</p>
-
-<h3 id="preserved-document-appearance">Preserved Document Appearance</h3>
-<p>The output is a PDF document visually similar to the original, with obfuscated text rendered on top of the original positions of sensitive entities.</p>
-
-<h3 id="document-wide-consistency">Document-Wide Consistency</h3>
-<p>Replacement is consistent across the document. For example, if “Lilian Clarke” is replaced by “Nelly Huffman” on page 1, all subsequent instances of “Lilian Clarke” are replaced with the same synthetic name throughout the document.</p>
-
-<p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
-<button class="button button-orange" disabled="">Open in Colab</button>
-<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/pdf_obfuscate_multilingual_name_plus_en_6.0.0_3.0_1747131526000.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
-<a href="s3://auxdata.johnsnowlabs.com/clinical/ocr/pdf_obfuscate_multilingual_name_plus_en_6.0.0_3.0_1747131526000.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
+<p class="btn-box"><a href="https://demo.johnsnowlabs.com/ocr/PP_PDF_DEIDENTIFICATION/" class="button button-orange button-orange-trans co button-icon">Live Demo</a>
+<a href="https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrPdfDeIdentificationPipelines.ipynb" class="button button-orange button-orange-trans co button-icon">Open in Colab</a>
+<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/pdf_obfuscate_multilingual_name_plus_en_6.0.0_3.0_1747131526000.zip" class="button button-orange button-orange-trans arr button-icon">Download</a></p>
 
 <h2 id="how-to-use">How to use</h2>
 
@@ -543,14 +528,19 @@ HOSPITAL, NAME, PATIENT, ID, MEDICALRECORD, IDNUM, COUNTRY, LOCATION, STREET, ST
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python<strong>Healthcare NLP</strong></button><button class="tab-li-model-aproach tab-li-jsl">Python<strong>JohnSnowLabs</strong></button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach tab-li-nlu">NLU</button></div>
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
 <span class="n">deid_pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"pdf_obfuscate_multilingual_name_plus"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/ocr"</span><span class="p">)</span>
-
-<span class="n">deid_pipeline</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">input_pdfs</span><span class="p">)</span>
-
 </code></pre></div>  </div>
 
 </div>
 
-<h2 class="model-param" id="model-information">Model Information</h2>
+<h2 class="model-param" id="example">Example</h2>
+
+<h3 id="input">Input:</h3>
+<p><img src="/assets/images/examples_ocr/PDF3_Deid_Deidentification_3_page-0002.jpg" alt="Screenshot" /></p>
+
+<h3 id="output">Output:</h3>
+<p><img src="/assets/images/examples_ocr/pipeline6_pdf3_im2.png" alt="Screenshot" /></p>
+
+<h2 id="model-information">Model Information</h2>
 
 <table class="table-model">
   <tbody>

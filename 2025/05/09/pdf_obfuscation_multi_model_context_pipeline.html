@@ -11,7 +11,7 @@
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
 <!-- End Google Tag Manager --><title>PDF Obfuscation Multi Model Context | pdf_obfuscation_multi_model_context_pipeline | Healthcare NLP 6.0.0</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis pipeline can be used to mask PHI information in PDFs. Masked entities include ‘AGE’, ‘CITY’, ‘COUNTRY’, ‘DATE’, ‘DOCTOR’, ‘EMAIL’, ‘HOSPITAL’, ‘IDNUM’, ‘ORGANIZATION’, ‘PATIENT’, ‘PHONE’, ‘PROFESSION’, ‘STATE’, ‘STREET’, ‘USERNAME’, ‘ZIP’.The output is a PDF document, similar to the one at the input,...">
+<meta name="description" content="DescriptionThis pipeline can be used to mask PHI information in PDFs. The output is a PDF document, similar to the one at the input, but with fake obfuscated text on top of the targeted entities.Predicted EntitiesAGE, CITY, COUNTRY, DATE, DOCTOR, EMAIL, HOSPITAL, IDNUM, ORGANIZATION, PATIENT, PHONE, PROFESSION, STAT...">
 <!-- <link rel="canonical" href="/2025/05/09/pdf_obfuscation_multi_model_context_pipeline.html"> -->
 <link rel="canonical" href="/2025/05/09/pdf_obfuscation_multi_model_context_pipeline.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
@@ -514,13 +514,16 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>This pipeline can be used to mask PHI information in PDFs. Masked entities include ‘AGE’, ‘CITY’, ‘COUNTRY’, ‘DATE’, ‘DOCTOR’, ‘EMAIL’, ‘HOSPITAL’, ‘IDNUM’, ‘ORGANIZATION’, ‘PATIENT’, ‘PHONE’, ‘PROFESSION’, ‘STATE’, ‘STREET’, ‘USERNAME’, ‘ZIP’.
+<p>This pipeline can be used to mask PHI information in PDFs. 
 The output is a PDF document, similar to the one at the input, but with fake obfuscated text on top of the targeted entities.</p>
 
-<p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
-<button class="button button-orange" disabled="">Open in Colab</button>
-<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/pdf_obfuscation_multi_model_context_pipeline_en_6.0.0_3.0_1746699526000.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
-<a href="s3://auxdata.johnsnowlabs.com/clinical/ocr/pdf_obfuscation_multi_model_context_pipeline_en_6.0.0_3.0_1746699526000.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
+<h2 id="predicted-entities">Predicted Entities</h2>
+
+<p><code class="language-plaintext highlighter-rouge">AGE</code>, <code class="language-plaintext highlighter-rouge">CITY</code>, <code class="language-plaintext highlighter-rouge">COUNTRY</code>, <code class="language-plaintext highlighter-rouge">DATE</code>, <code class="language-plaintext highlighter-rouge">DOCTOR</code>, <code class="language-plaintext highlighter-rouge">EMAIL</code>, <code class="language-plaintext highlighter-rouge">HOSPITAL</code>, <code class="language-plaintext highlighter-rouge">IDNUM</code>, <code class="language-plaintext highlighter-rouge">ORGANIZATION</code>, <code class="language-plaintext highlighter-rouge">PATIENT</code>, <code class="language-plaintext highlighter-rouge">PHONE</code>, <code class="language-plaintext highlighter-rouge">PROFESSION</code>, <code class="language-plaintext highlighter-rouge">STATE</code>, <code class="language-plaintext highlighter-rouge">STREET</code>, <code class="language-plaintext highlighter-rouge">USERNAME</code>, <code class="language-plaintext highlighter-rouge">ZIP</code>.</p>
+
+<p class="btn-box"><a href="https://demo.johnsnowlabs.com/ocr/PP_PDF_DEIDENTIFICATION/" class="button button-orange button-orange-trans co button-icon">Live Demo</a>
+<a href="https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrPdfDeIdentificationPipelines.ipynb" class="button button-orange button-orange-trans co button-icon">Open in Colab</a>
+<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/pdf_obfuscation_multi_model_context_pipeline_en_6.0.0_3.0_1746699526000.zip" class="button button-orange button-orange-trans arr button-icon">Download</a></p>
 
 <h2 id="how-to-use">How to use</h2>
 
@@ -532,7 +535,15 @@ The output is a PDF document, similar to the one at the input, but with fake obf
 
 </div>
 
-<h2 class="model-param" id="model-information">Model Information</h2>
+<h2 class="model-param" id="example">Example</h2>
+
+<h3 id="input">Input:</h3>
+<p><img src="/assets/images/examples_ocr/PDF3_Deid_Deidentification_3_page-0001.jpg" alt="Screenshot" /></p>
+
+<h3 id="output">Output:</h3>
+<p><img src="/assets/images/examples_ocr/pipeline3_pdf3_im1.png" alt="Screenshot" /></p>
+
+<h2 id="model-information">Model Information</h2>
 
 <table class="table-model">
   <tbody>
