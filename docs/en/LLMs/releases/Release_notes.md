@@ -5,13 +5,33 @@ seotitle: Medical LLMs | John Snow Labs
 title: Release Notes
 permalink: /docs/en/LLMs/releases/release_notes
 key: docs-medical-llm
-modify_date: "2025-05-19"
+modify_date: "2025-07-17"
 show_nav: true
 sidebar:
     nav: medical-llm
 ---
 
 <div class="h3-box" markdown="1">
+
+## 07-17-2025
+
+### Model Updates
+
+We are excited to announce significant updates to our Medical LLM lineup with enhanced models and a new addition.
+
+- **Medical-LLM-8B**: A new 8B parameter model that delivers enhanced clinical reasoning capabilities while maintaining deployment efficiency. This model introduces dedicated reasoning mode with multi-step clinical logic and improved performance in differential diagnosis and care planning.
+
+- **Medical-LLM-14B**: Updated with advanced reasoning capabilities and expanded medical knowledge processing. The enhanced model now features improved chain-of-thought supervision and better performance in complex medical case analysis.
+
+- **Medical-Reasoning-LLM-32B**: Significantly enhanced with focus on clinical reasoning and diagnostic decision support. The updated model provides transparent decision pathways, considers multiple hypotheses, and offers structured reasoning patterns aligned with clinical guidelines.
+
+#### Specifications
+
+| **Model Name**             | **Parameters** | **Recommended GPU Memory** | **Max Sequence Length** | **Model Size** | **Max KV-Cache** | **Tensor Parallel Sizes** |
+|---------------------------|--------------|------------------|-------------------|-------------|----------------|------------------------|
+| Medical-LLM-8B            | 8B          | ~38 GB           | 40K               | 15 GB       | 23 GB          | 1, 2, 4, 8            |
+| Medical-LLM-14B           | 14B         | ~59 GB           | 40K               | 28 GB       | 31 GB          | 1, 2, 4, 8            |
+| Medical-Reasoning-LLM-32B | 32B         | ~111 GB          | 40K               | 61 GB       | 50 GB          | 2, 4, 8               |
 
 ## 05-19-2025
 
