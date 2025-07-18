@@ -19,15 +19,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This LLM model is trained to extract and link entities in a document. 
-Users need to define an input schema as explained in the example section.
-
-For example:
-- "Drug" is defined as a list, so the model extracts multiple drugs from text.
-- Each drug has properties like "name" and "reaction".
-- Since “name” is usually one, it's a string. But there could be multiple reactions, hence it's a list.
-
-Users can define custom schemas for any entity type.
+This LLM model is trained to extract and link entities in a document. Users needs to define an input schema as explained in the example section. Drug is defined as a list which tells the model that there could be multiple drugs in the document and it has to extract all of them. Each drug has properties like name and reaction. Since “name” is only one, it is a string, but there could be multiple reactions, hence it is a list. Similarly, users can define any schema for any type of entity.
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
@@ -170,7 +162,6 @@ val results = pipeline.fit(data).transform(data)
 ## Results
 
 ```bash
-
 {
   "drugs": [
     {
