@@ -44,7 +44,7 @@ docker run -d \
 -p 8080:8080 \
 --ipc=host \
 johnsnowlabs/jsl-llms \
---model Medical-LLM-7B \
+--model Medical-LLM-10B \
 --port 8080
 ```
 
@@ -52,7 +52,6 @@ The following models are currently available for on-premise deployments:
 
 | **Model Name** | **Parameters** | **Recommended GPU Memory** | **Max Sequence Length** | **Model Size** | **Max KV-Cache** | **Tensor Parallel Sizes** |
 |----------------------------|------------|--------------|---------------------|------------|--------------|----------------------|
-| Medical-LLM-7B             | 7B         | ~25 GB       | 32K                 | 14 GB      | 11 GB        | 1, 2, 4              |
 | Medical-LLM-8B             | 8B         | ~38 GB       | 40K                 | 15 GB      | 23 GB        | 1, 2, 4, 8           |
 | Medical-LLM-10B            | 10B        | ~35 GB       | 32K                 | 19 GB      | 15 GB        | 1, 2, 4              |
 | Medical-LLM-14B            | 14B        | ~59 GB       | 40K                 | 28 GB      | 31 GB        | 1, 2, 4, 8           |
@@ -92,7 +91,7 @@ Use this endpoint for multi-turn conversational interactions (e.g., clinical ass
 
 ```python
 payload = {
-    "model": "Medical-LLM-7B",
+    "model": "Medical-LLM-10B",
     "messages": [
         {"role": "system", "content": "You are a professional medical assistant"},
         {"role": "user", "content": "Explain symptoms of chronic fatigue syndrome"}
@@ -110,7 +109,7 @@ Use this endpoint for single-turn prompts or generating long-form medical text.
 - **Example Request**:
 ```python
 payload = {
-    "model": "Medical-LLM-7B",
+    "model": "Medical-LLM-10B",
     "prompt": "Provide a detailed explanation of rheumatoid arthritis treatment",
     "temperature": 0.7,
     "max_tokens": 4096
