@@ -20,7 +20,6 @@ Our models are designed to deliver best-in-class performance across a wide range
 
 | **Model Name** | **Parameters** | **Recommended GPU Memory** | **Max Sequence Length** | **Model Size** | **Max KV-Cache** | **Tensor Parallel Sizes** |
 |----------------------------|------------|--------------|---------------------|------------|--------------|----------------------|
-| Medical-LLM-7B             | 7B         | ~25 GB       | 32K                 | 14 GB      | 11 GB        | 1, 2, 4              |
 | Medical-LLM-8B             | 8B         | ~38 GB       | 40K                 | 15 GB      | 23 GB        | 1, 2, 4, 8           |
 | Medical-LLM-10B            | 10B        | ~35 GB       | 32K                 | 19 GB      | 15 GB        | 1, 2, 4              |
 | Medical-LLM-14B            | 14B        | ~59 GB       | 40K                 | 28 GB      | 31 GB        | 1, 2, 4, 8           |
@@ -124,7 +123,7 @@ One of the standout features of John Snow Labs' Medical LLMs is their efficiency
 
 - Designed to run efficiently on a range of GPU configurations
 
-- Available in multiple sizes (7B, 10B, 14B, 24B, 70B) to suit different deployment needs
+- Available in multiple sizes (8B, 10B, 14B, 24B, 32B, 70B) to suit different deployment needs
 
 - Optimized for both on-premise and private cloud deployments
 
@@ -140,11 +139,11 @@ One of the standout features of John Snow Labs' Medical LLMs is their efficiency
 
 
 **Medical-LLM – 14B**
- - Achieves 81.42% average score vs GPT-4’s 82.85% and Med-PaLM-2’s 84.08%
- - Clinical knowledge score of 92.36% vs Med-PaLM-2’s 88.3%
- - Medical reasoning at 90% matches Med-PaLM-2’s performance
- - Higher accuracy than Meditron-70B while using 5x less parameters
- - Suitable for deployment scenarios with compute constraints
+ - Achieves 81.42% average, competing with GPT-4 (82.85%)
+ - Outstanding clinical comprehension (93.40%), exceeding Med-PaLM-2's 88.3%
+ - Superior medical reasoning (90%) comparable to top-tier models
+ - Outperforms Meditron-70B despite being 5x smaller
+ - State-of-the-art performance in medical tasks while maintaining deployment efficiency
 
 **Medical-LLM – 10B**
 
@@ -154,13 +153,13 @@ One of the standout features of John Snow Labs' Medical LLMs is their efficiency
  - Comparable performance to models requiring 7x more parameters
  - Balanced option for resource-conscious implementations
 
-**Medical-LLM – 7B**
+**Medical-LLM – 8B**
 
-- Clinical reasoning score of 86.81% vs Med-PaLM-1’s 83.8%
-- Average score of 71.70% on OpenMed benchmark suite
-- PubMedQA score of 75.6%, higher than other 7B models
-- Matches GPT-4’s accuracy on medical QA with 100x fewer parameters
-- Efficient choice for high-throughput clinical applications
+- Outperforms Med-PaLM-1 in clinical reasoning (86.81% vs 83.8%)
+- Achieves 75.30% average across OpenMed benchmarks, comparable to larger models
+- Superior performance in PubMedQA (76.6%) vs similar-sized models
+- Matches GPT-4's accuracy in medical QA tasks while being 100x smaller
+- Ideal for cost-efficient clinical deployments that require both deep reasoning and fast inference
 
 ## Performance-to-Size Comparison
 ![Medical LLM by John Snow Labs](/assets/images/perftosize_llm_model_comparison.png)
