@@ -1,6 +1,6 @@
 ---
 layout: model
-title: JSL_MedS_VLM (vlm - q16 - v1)
+title: JSL_MedS_VLM (vlm - 2B - q16 - v1)
 author: John Snow Labs
 name: jsl_meds_vlm_2b_q16_v1
 date: 2025-07-18
@@ -33,6 +33,7 @@ This LLM model is trained to extract and link entities in a document. Users need
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
@@ -46,7 +47,6 @@ medical_llm = MedicalLLM.pretrained("jsl_meds_vlm_2b_q16_v1", "en", "clinical/mo
     .setUseChatTemplate(True)\
     .setTemperature(0)
 
-
 pipeline = Pipeline(
     stages = [
         document_assembler,
@@ -54,7 +54,6 @@ pipeline = Pipeline(
 ])
 
 med_ner_prompt = """
-
 ### Template:
 {
     "drugs": [
@@ -70,7 +69,6 @@ I 've been on Arthrotec 50 for over 10 years on and off , only taking it when I 
 Due to my arthritis getting progressively worse , to the point where I am in tears with the agony.
 Gp 's started me on 75 twice a day and I have to take it every day for the next month to see how I get on , here goes .
 So far its been very good , pains almost gone , but I feel a bit weird , did n't have that when on 50.
-
 """
 
 data = spark.createDataFrame([[med_ner_prompt]]).toDF("text")
@@ -172,7 +170,6 @@ val results = pipeline.fit(data).transform(data)
 ## Results
 
 ```bash
-
 {'drugs': [
     {
         'name': 'Arthrotec 50',
@@ -190,7 +187,6 @@ val results = pipeline.fit(data).transform(data)
         ]
     }]    
 }
-
 ```
 
 {:.model-param}
