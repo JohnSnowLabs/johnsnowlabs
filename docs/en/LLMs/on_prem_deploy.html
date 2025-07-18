@@ -657,7 +657,7 @@ Before you begin, make sure the following are in place:</p>
 <span class="nt">-p</span> 8080:8080 <span class="se">\</span>
 <span class="nt">--ipc</span><span class="o">=</span>host <span class="se">\</span>
 johnsnowlabs/jsl-llms <span class="se">\</span>
-<span class="nt">--model</span> Medical-LLM-7B <span class="se">\</span>
+<span class="nt">--model</span> Medical-LLM-10B <span class="se">\</span>
 <span class="nt">--port</span> 8080
 </code></pre></div>  </div>
 
@@ -676,15 +676,6 @@ johnsnowlabs/jsl-llms <span class="se">\</span>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>Medical-LLM-7B</td>
-        <td>7B</td>
-        <td>~25 GB</td>
-        <td>32K</td>
-        <td>14 GB</td>
-        <td>11 GB</td>
-        <td>1, 2, 4</td>
-      </tr>
       <tr>
         <td>Medical-LLM-8B</td>
         <td>8B</td>
@@ -809,7 +800,7 @@ johnsnowlabs/jsl-llms <span class="se">\</span>
 </ul>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">"model"</span><span class="p">:</span> <span class="s">"Medical-LLM-7B"</span><span class="p">,</span>
+    <span class="s">"model"</span><span class="p">:</span> <span class="s">"Medical-LLM-10B"</span><span class="p">,</span>
     <span class="s">"messages"</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span><span class="s">"role"</span><span class="p">:</span> <span class="s">"system"</span><span class="p">,</span> <span class="s">"content"</span><span class="p">:</span> <span class="s">"You are a professional medical assistant"</span><span class="p">},</span>
         <span class="p">{</span><span class="s">"role"</span><span class="p">:</span> <span class="s">"user"</span><span class="p">,</span> <span class="s">"content"</span><span class="p">:</span> <span class="s">"Explain symptoms of chronic fatigue syndrome"</span><span class="p">}</span>
@@ -827,7 +818,7 @@ johnsnowlabs/jsl-llms <span class="se">\</span>
   <li><strong>Method</strong>: POST</li>
   <li><strong>Example Request</strong>:
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s">"model"</span><span class="p">:</span> <span class="s">"Medical-LLM-7B"</span><span class="p">,</span>
+  <span class="s">"model"</span><span class="p">:</span> <span class="s">"Medical-LLM-10B"</span><span class="p">,</span>
   <span class="s">"prompt"</span><span class="p">:</span> <span class="s">"Provide a detailed explanation of rheumatoid arthritis treatment"</span><span class="p">,</span>
   <span class="s">"temperature"</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">,</span>
   <span class="s">"max_tokens"</span><span class="p">:</span> <span class="mi">4096</span>

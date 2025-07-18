@@ -646,15 +646,6 @@ function wrapWordInSpan(data, wordToWrap) {
   </thead>
   <tbody>
     <tr>
-      <td>Medical-LLM-7B</td>
-      <td>7B</td>
-      <td>~25 GB</td>
-      <td>32K</td>
-      <td>14 GB</td>
-      <td>11 GB</td>
-      <td>1, 2, 4</td>
-    </tr>
-    <tr>
       <td>Medical-LLM-8B</td>
       <td>8B</td>
       <td>~38 GB</td>
@@ -896,7 +887,7 @@ function wrapWordInSpan(data, wordToWrap) {
     <p>Designed to run efficiently on a range of GPU configurations</p>
   </li>
   <li>
-    <p>Available in multiple sizes (7B, 10B, 14B, 24B, 70B) to suit different deployment needs</p>
+    <p>Available in multiple sizes (8B, 10B, 14B, 24B, 32B, 70B) to suit different deployment needs</p>
   </li>
   <li>
     <p>Optimized for both on-premise and private cloud deployments</p>
@@ -915,11 +906,11 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <p><strong>Medical-LLM – 14B</strong></p>
 <ul>
-  <li>Achieves 81.42% average score vs GPT-4’s 82.85% and Med-PaLM-2’s 84.08%</li>
-  <li>Clinical knowledge score of 92.36% vs Med-PaLM-2’s 88.3%</li>
-  <li>Medical reasoning at 90% matches Med-PaLM-2’s performance</li>
-  <li>Higher accuracy than Meditron-70B while using 5x less parameters</li>
-  <li>Suitable for deployment scenarios with compute constraints</li>
+  <li>Achieves 81.42% average, competing with GPT-4 (82.85%)</li>
+  <li>Outstanding clinical comprehension (93.40%), exceeding Med-PaLM-2’s 88.3%</li>
+  <li>Superior medical reasoning (90%) comparable to top-tier models</li>
+  <li>Outperforms Meditron-70B despite being 5x smaller</li>
+  <li>State-of-the-art performance in medical tasks while maintaining deployment efficiency</li>
 </ul>
 
 <p><strong>Medical-LLM – 10B</strong></p>
@@ -932,14 +923,14 @@ function wrapWordInSpan(data, wordToWrap) {
   <li>Balanced option for resource-conscious implementations</li>
 </ul>
 
-<p><strong>Medical-LLM – 7B</strong></p>
+<p><strong>Medical-LLM – 8B</strong></p>
 
 <ul>
-  <li>Clinical reasoning score of 86.81% vs Med-PaLM-1’s 83.8%</li>
-  <li>Average score of 71.70% on OpenMed benchmark suite</li>
-  <li>PubMedQA score of 75.6%, higher than other 7B models</li>
-  <li>Matches GPT-4’s accuracy on medical QA with 100x fewer parameters</li>
-  <li>Efficient choice for high-throughput clinical applications</li>
+  <li>Outperforms Med-PaLM-1 in clinical reasoning (86.81% vs 83.8%)</li>
+  <li>Achieves 75.30% average across OpenMed benchmarks, comparable to larger models</li>
+  <li>Superior performance in PubMedQA (76.6%) vs similar-sized models</li>
+  <li>Matches GPT-4’s accuracy in medical QA tasks while being 100x smaller</li>
+  <li>Ideal for cost-efficient clinical deployments that require both deep reasoning and fast inference</li>
 </ul>
 
 <h2 id="performance-to-size-comparison">Performance-to-Size Comparison</h2>
