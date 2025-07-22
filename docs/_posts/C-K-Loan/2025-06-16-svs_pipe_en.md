@@ -53,7 +53,7 @@ process_folder(raw_svs_path, output_tiles_path, NUM_WORKERS)
 image_df = spark.read.format("binaryFile").load(output_tiles_path).cache()
 
 # 4. Get Pipe and process it
-pipe = PretrainedPipeline("dicom_deid_generic_augmented_minimal", "en", "clinical/models")
+pipe = PretrainedPipeline("svs_pipe", "en", "clinical/models")
 result = pipe.transform(image_df).cache()
 
 # 5. Create the final SVS File with TAGs and Pixels DEID
