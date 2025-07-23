@@ -81,8 +81,8 @@ pipeline = Pipeline(stages=[
 ])
 
 # Generating example
-data = spark.createDataFrame(["he was begun on physical therapy but remained agitated .",
-                              "there were no meatal blood ."], StringType()).toDF("text")
+data = spark.createDataFrame(["MRI confirms the presence of a malignant brain tumor.",
+                              "Despite the patient’s history of smoking, there is no radiological or pathological evidence of lung cancer at this time."], StringType()).toDF("text")
                               
 result = pipeline.fit(data).transform(data)
 
@@ -134,8 +134,8 @@ pipeline = nlp.Pipeline(stages=[
     assertion_classifier
 ])
 # Generating example
-data = spark.createDataFrame(["he was begun on physical therapy but remained agitated .",
-                              "there were no meatal blood ."], StringType()).toDF("text")
+data = spark.createDataFrame(["MRI confirms the presence of a malignant brain tumor.",
+                              "Despite the patient’s history of smoking, there is no radiological or pathological evidence of lung cancer at this time."], StringType()).toDF("text")
                               
 result = pipeline.fit(data).transform(data)
 ```
@@ -183,8 +183,8 @@ val pipeline = new Pipeline().setStages(
         assertion_classifier
 ))
 
-val data = Seq(Array("he was begun on physical therapy but remained agitated .",
-                    "there were no meatal blood .")).toDF("text")
+val data = Seq(Array("MRI confirms the presence of a malignant brain tumor.",
+                     "Despite the patient’s history of smoking, there is no radiological or pathological evidence of lung cancer at this time.")).toDF("text")
 
 val result = pipeline.fit(data).transform(data)
 ```
@@ -194,12 +194,12 @@ val result = pipeline.fit(data).transform(data)
 
 ```bash
 
-+----------------------------------------------------------------+-------+
-|text                                                            |result |
-+----------------------------------------------------------------+-------+
-|he was begun on physical therapy but remained agitated  .       |present|
-|there were no meatal blood .                                    |absent |
-+----------------------------------------------------------------+-------+
++------------------------------------------------------------------------------------------------------------------------+---------+
+|text                                                                                                                    | result  |
++------------------------------------------------------------------------------------------------------------------------+---------+
+|MRI confirms the presence of a malignant brain tumor.                                                                   | Present |
+|Despite the patient’s history of smoking, there is no radiological or pathological evidence of lung cancer at this time.| Absent  |
++------------------------------------------------------------------------------------------------------------------------+---------+
 
 ```
 
