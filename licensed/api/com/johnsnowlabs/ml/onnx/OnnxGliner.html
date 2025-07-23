@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 6.0.3 ScalaDoc  - com.johnsnowlabs.ml.onnx.OnnxGliner</title>
-          <meta name="description" content="Spark NLP 6.0.3 ScalaDoc - com.johnsnowlabs.ml.onnx.OnnxGliner" />
-          <meta name="keywords" content="Spark NLP 6.0.3 ScalaDoc com.johnsnowlabs.ml.onnx.OnnxGliner" />
+          <title>Spark NLP 6.0.4 ScalaDoc  - com.johnsnowlabs.ml.onnx.OnnxGliner</title>
+          <meta name="description" content="Spark NLP 6.0.4 ScalaDoc - com.johnsnowlabs.ml.onnx.OnnxGliner" />
+          <meta name="keywords" content="Spark NLP 6.0.4 ScalaDoc com.johnsnowlabs.ml.onnx.OnnxGliner" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 6.0.3 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 6.0.4 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -196,7 +196,7 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <span class="name">OnnxGliner</span><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <span class="name">OnnxGliner</span><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span> with <a href="../../nlp/annotators/ner/GlinerModel.html" class="extype" name="com.johnsnowlabs.nlp.annotators.ner.GlinerModel">GlinerModel</a></span>
       </span>
       </h4>
 
@@ -205,7 +205,7 @@
           <span class="toggle">
             Linear Supertypes
           </span>
-          <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <a href="../../../../scala/index.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="../../nlp/annotators/ner/GlinerModel.html" class="extype" name="com.johnsnowlabs.nlp.annotators.ner.GlinerModel">GlinerModel</a>, <span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <a href="../../../../scala/index.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -231,7 +231,7 @@
                   <span class="filtertype">Inherited<br />
                   </span>
                   <ol id="linearization">
-                    <li class="in" name="com.johnsnowlabs.ml.onnx.OnnxGliner"><span>OnnxGliner</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                    <li class="in" name="com.johnsnowlabs.ml.onnx.OnnxGliner"><span>OnnxGliner</span></li><li class="in" name="com.johnsnowlabs.nlp.annotators.ner.GlinerModel"><span>GlinerModel</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                   </ol>
                 </div><div class="ancestors">
               <span class="filtertype"></span>
@@ -559,10 +559,10 @@
       </span>
       
       
-    </li><li name="com.johnsnowlabs.ml.onnx.OnnxGliner#predict" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="predict(annotations:Seq[com.johnsnowlabs.nlp.Annotation],labels:Array[String],threshold:Float):Seq[Seq[(String,Int,Int,Float,List[String])]]"></a><a id="predict(Seq[Annotation],Array[String],Float):Seq[Seq[(String,Int,Int,Float,List[String])]]"></a>
+    </li><li name="com.johnsnowlabs.ml.onnx.OnnxGliner#padToMaxLength" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="padToMaxLength(glinerData:Array[com.johnsnowlabs.nlp.annotators.ner.GlinerData]):(Array[Array[Long]],Array[Array[Long]],Array[Array[Long]],Array[Array[Array[Long]]],Array[Array[Boolean]],Array[Array[Long]])"></a><a id="padToMaxLength(Array[GlinerData]):(Array[Array[Long]],Array[Array[Long]],Array[Array[Long]],Array[Array[Array[Long]]],Array[Array[Boolean]],Array[Array[Long]])"></a>
       <span class="permalink">
-      <a href="../../../../com/johnsnowlabs/ml/onnx/OnnxGliner.html#predict(annotations:Seq[com.johnsnowlabs.nlp.Annotation],labels:Array[String],threshold:Float):Seq[Seq[(String,Int,Int,Float,List[String])]]" title="Permalink">
+      <a href="../../../../com/johnsnowlabs/ml/onnx/OnnxGliner.html#padToMaxLength(glinerData:Array[com.johnsnowlabs.nlp.annotators.ner.GlinerData]):(Array[Array[Long]],Array[Array[Long]],Array[Array[Long]],Array[Array[Array[Long]]],Array[Array[Boolean]],Array[Array[Long]])" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -571,10 +571,26 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">predict</span><span class="params">(<span name="annotations">annotations: <a href="../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="com.johnsnowlabs.nlp.Annotation">Annotation</span>]</span>, <span name="labels">labels: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="threshold">threshold: <span class="extype" name="scala.Float">Float</span></span>)</span><span class="result">: <a href="../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<a href="../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[(<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Int">Int</span>, <span class="extype" name="scala.Int">Int</span>, <span class="extype" name="scala.Float">Float</span>, <a href="../../../../scala/index.html#List[+A]=List[A]" class="extmbr" name="scala.List">List</a>[<span class="extype" name="scala.Predef.String">String</span>])]]</span>
+        <span class="name">padToMaxLength</span><span class="params">(<span name="glinerData">glinerData: <span class="extype" name="scala.Array">Array</span>[<a href="../../nlp/annotators/ner/GlinerData.html" class="extype" name="com.johnsnowlabs.nlp.annotators.ner.GlinerData">GlinerData</a>]</span>)</span><span class="result">: (<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Long">Long</span>]], <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Long">Long</span>]], <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Long">Long</span>]], <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Long">Long</span>]]], <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Boolean">Boolean</span>]], <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Long">Long</span>]])</span>
       </span>
       
       
+    </li><li name="com.johnsnowlabs.ml.onnx.OnnxGliner#predict" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="predict(annotations:Seq[com.johnsnowlabs.nlp.Annotation],labels:Array[String],threshold:Float):Seq[Seq[com.johnsnowlabs.nlp.annotators.ner.GlinerResult]]"></a><a id="predict(Seq[Annotation],Array[String],Float):Seq[Seq[GlinerResult]]"></a>
+      <span class="permalink">
+      <a href="../../../../com/johnsnowlabs/ml/onnx/OnnxGliner.html#predict(annotations:Seq[com.johnsnowlabs.nlp.Annotation],labels:Array[String],threshold:Float):Seq[Seq[com.johnsnowlabs.nlp.annotators.ner.GlinerResult]]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">predict</span><span class="params">(<span name="annotations">annotations: <a href="../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="com.johnsnowlabs.nlp.Annotation">Annotation</span>]</span>, <span name="labels">labels: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="threshold">threshold: <span class="extype" name="scala.Float">Float</span></span>)</span><span class="result">: <a href="../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<a href="../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<a href="../../nlp/annotators/ner/GlinerResult.html" class="extype" name="com.johnsnowlabs.nlp.annotators.ner.GlinerResult">GlinerResult</a>]]</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.johnsnowlabs.ml.onnx.OnnxGliner">OnnxGliner</a> → <a href="../../nlp/annotators/ner/GlinerModel.html" class="extype" name="com.johnsnowlabs.nlp.annotators.ner.GlinerModel">GlinerModel</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.ml.onnx.OnnxGliner#spp" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="spp:com.johnsnowlabs.ml.tensorflow.sentencepiece.SentencePieceWrapper"></a><a id="spp:SentencePieceWrapper"></a>
       <span class="permalink">
@@ -701,7 +717,9 @@
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="scala.Serializable">
+        <div class="parent" name="com.johnsnowlabs.nlp.annotators.ner.GlinerModel">
+              <h3>Inherited from <a href="../../nlp/annotators/ner/GlinerModel.html" class="extype" name="com.johnsnowlabs.nlp.annotators.ner.GlinerModel">GlinerModel</a></h3>
+            </div><div class="parent" name="scala.Serializable">
               <h3>Inherited from <span class="extype" name="scala.Serializable">Serializable</span></h3>
             </div><div class="parent" name="java.io.Serializable">
               <h3>Inherited from <span class="extype" name="java.io.Serializable">Serializable</span></h3>
