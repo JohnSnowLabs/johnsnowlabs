@@ -17,6 +17,8 @@ Parameters:
 
 - `labels`:  A list of labels descriving the entities. For example: ["person", "location"]
 - `predictionThreshold`:   Minimal confidence score to encode an entity (Default: 0.01f)
+- `setBatchSize`: Sets the number of inputs processed together in a single batch during inference. A higher batch size can improve throughput and reduce overall inference time on supported hardware, but may increase memory usage. (Default: `8`).
+
 
   
 {%- endcapture -%}
