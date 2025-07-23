@@ -36,8 +36,6 @@ Parameters:
 - `classificationCaseSensitive`: Whether to use case sensitive classification. Default is True.
 - `setBatchSize`: Sets the number of inputs processed together in a single batch during inference. A higher batch size can improve throughput and reduce overall inference time on supported hardware, but may increase memory usage. (Default: `8`).
 
-       
-
   {%- endcapture -%}
 
 
