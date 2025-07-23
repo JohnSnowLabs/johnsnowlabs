@@ -546,7 +546,7 @@ document.write(`
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.ner.pretrained_zero_shot_ner.PretrainedZeroShotNER">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">PretrainedZeroShotNER</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'com.johnsnowlabs.nlp.annotators.ner.PretrainedZeroShotNER'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">java_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.ner.pretrained_zero_shot_ner.PretrainedZeroShotNER" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.common.AnnotatorModelInternal</span></code></p>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.common.AnnotatorModelInternal</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.common.HasBatchedAnnotate</span></code></p>
 <p>Zero shot named entity recognition based on RoBertaForQuestionAnswering.</p>
 <table class="table">
 <thead>
@@ -608,6 +608,11 @@ document.write(`
 <span class="go">    +-----------------------------------------------------------------+--------+--------+----------+</span>
 </pre></div>
 </div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.ner.pretrained_zero_shot_ner.PretrainedZeroShotNER.batchSize">
+<span class="sig-name descname"><span class="pre">batchSize</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.ner.pretrained_zero_shot_ner.PretrainedZeroShotNER.batchSize" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.ner.pretrained_zero_shot_ner.PretrainedZeroShotNER.getter_attrs">
 <span class="sig-name descname"><span class="pre">getter_attrs</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.ner.pretrained_zero_shot_ner.PretrainedZeroShotNER.getter_attrs" title="Permalink to this definition">#</a></dt>
@@ -726,6 +731,20 @@ user-supplied values &lt; extra.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.ner.pretrained_zero_shot_ner.PretrainedZeroShotNER.getBatchSize">
+<span class="sig-name descname"><span class="pre">getBatchSize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.ner.pretrained_zero_shot_ner.PretrainedZeroShotNER.getBatchSize" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets current batch size.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Current batch size</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
 </dd>
 </dl>
 </dd></dl>
@@ -880,6 +899,17 @@ open-source location. Other values are “clinical/models”,
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.ner.pretrained_zero_shot_ner.PretrainedZeroShotNER.setBatchSize">
+<span class="sig-name descname"><span class="pre">setBatchSize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.ner.pretrained_zero_shot_ner.PretrainedZeroShotNER.setBatchSize" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets batch size.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>v</strong> (<em>int</em>) – Batch size</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.ner.pretrained_zero_shot_ner.PretrainedZeroShotNER.setForceInputTypeValidation">
 <span class="sig-name descname"><span class="pre">setForceInputTypeValidation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">etfm</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.ner.pretrained_zero_shot_ner.PretrainedZeroShotNER.setForceInputTypeValidation" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -1021,6 +1051,7 @@ RecursivePipeline</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.ner.pretrained_zero_shot_ner.PretrainedZeroShotNER"><code class="docutils literal notranslate"><span class="pre">PretrainedZeroShotNER</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.ner.pretrained_zero_shot_ner.PretrainedZeroShotNER.batchSize"><code class="docutils literal notranslate"><span class="pre">PretrainedZeroShotNER.batchSize</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.ner.pretrained_zero_shot_ner.PretrainedZeroShotNER.getter_attrs"><code class="docutils literal notranslate"><span class="pre">PretrainedZeroShotNER.getter_attrs</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.ner.pretrained_zero_shot_ner.PretrainedZeroShotNER.inputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">PretrainedZeroShotNER.inputAnnotatorTypes</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.ner.pretrained_zero_shot_ner.PretrainedZeroShotNER.inputCols"><code class="docutils literal notranslate"><span class="pre">PretrainedZeroShotNER.inputCols</span></code></a></li>
@@ -1038,6 +1069,7 @@ RecursivePipeline</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.ner.pretrained_zero_shot_ner.PretrainedZeroShotNER.explainParam"><code class="docutils literal notranslate"><span class="pre">PretrainedZeroShotNER.explainParam()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.ner.pretrained_zero_shot_ner.PretrainedZeroShotNER.explainParams"><code class="docutils literal notranslate"><span class="pre">PretrainedZeroShotNER.explainParams()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.ner.pretrained_zero_shot_ner.PretrainedZeroShotNER.extractParamMap"><code class="docutils literal notranslate"><span class="pre">PretrainedZeroShotNER.extractParamMap()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.ner.pretrained_zero_shot_ner.PretrainedZeroShotNER.getBatchSize"><code class="docutils literal notranslate"><span class="pre">PretrainedZeroShotNER.getBatchSize()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.ner.pretrained_zero_shot_ner.PretrainedZeroShotNER.getInputCols"><code class="docutils literal notranslate"><span class="pre">PretrainedZeroShotNER.getInputCols()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.ner.pretrained_zero_shot_ner.PretrainedZeroShotNER.getLabels"><code class="docutils literal notranslate"><span class="pre">PretrainedZeroShotNER.getLabels()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.ner.pretrained_zero_shot_ner.PretrainedZeroShotNER.getLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">PretrainedZeroShotNER.getLazyAnnotator()</span></code></a></li>
@@ -1056,6 +1088,7 @@ RecursivePipeline</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.ner.pretrained_zero_shot_ner.PretrainedZeroShotNER.read"><code class="docutils literal notranslate"><span class="pre">PretrainedZeroShotNER.read()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.ner.pretrained_zero_shot_ner.PretrainedZeroShotNER.save"><code class="docutils literal notranslate"><span class="pre">PretrainedZeroShotNER.save()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.ner.pretrained_zero_shot_ner.PretrainedZeroShotNER.set"><code class="docutils literal notranslate"><span class="pre">PretrainedZeroShotNER.set()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.ner.pretrained_zero_shot_ner.PretrainedZeroShotNER.setBatchSize"><code class="docutils literal notranslate"><span class="pre">PretrainedZeroShotNER.setBatchSize()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.ner.pretrained_zero_shot_ner.PretrainedZeroShotNER.setForceInputTypeValidation"><code class="docutils literal notranslate"><span class="pre">PretrainedZeroShotNER.setForceInputTypeValidation()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.ner.pretrained_zero_shot_ner.PretrainedZeroShotNER.setInputCols"><code class="docutils literal notranslate"><span class="pre">PretrainedZeroShotNER.setInputCols()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.ner.pretrained_zero_shot_ner.PretrainedZeroShotNER.setLabels"><code class="docutils literal notranslate"><span class="pre">PretrainedZeroShotNER.setLabels()</span></code></a></li>
