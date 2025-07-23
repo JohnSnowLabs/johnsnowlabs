@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 6.0.3 ScalaDoc  - com.johnsnowlabs.nlp.annotators.assertion.BertForAssertionClassification</title>
-          <meta name="description" content="Spark NLP 6.0.3 ScalaDoc - com.johnsnowlabs.nlp.annotators.assertion.BertForAssertionClassification" />
-          <meta name="keywords" content="Spark NLP 6.0.3 ScalaDoc com.johnsnowlabs.nlp.annotators.assertion.BertForAssertionClassification" />
+          <title>Spark NLP 6.0.4 ScalaDoc  - com.johnsnowlabs.nlp.annotators.assertion.BertForAssertionClassification</title>
+          <meta name="description" content="Spark NLP 6.0.4 ScalaDoc - com.johnsnowlabs.nlp.annotators.assertion.BertForAssertionClassification" />
+          <meta name="keywords" content="Spark NLP 6.0.4 ScalaDoc com.johnsnowlabs.nlp.annotators.assertion.BertForAssertionClassification" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 6.0.3 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 6.0.4 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -262,20 +262,27 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <span class="name">BertForAssertionClassification</span><span class="result"> extends <span class="extype" name="com.johnsnowlabs.nlp.AnnotatorModel">AnnotatorModel</span>[<a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.assertion.BertForAssertionClassification">BertForAssertionClassification</a>] with <span class="extype" name="com.johnsnowlabs.nlp.HasSimpleAnnotate">HasSimpleAnnotate</span>[<a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.assertion.BertForAssertionClassification">BertForAssertionClassification</a>] with <a href="../params/WhiteAndBlackListParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.params.WhiteAndBlackListParams">WhiteAndBlackListParams</a> with <span class="extype" name="com.johnsnowlabs.nlp.HasEngine">HasEngine</span> with <span class="extype" name="com.johnsnowlabs.ml.tensorflow.WriteTensorflowModel">WriteTensorflowModel</span> with <span class="extype" name="com.johnsnowlabs.ml.onnx.WriteOnnxModel">WriteOnnxModel</span> with <span class="extype" name="com.johnsnowlabs.nlp.HasFeatures">HasFeatures</span> with <span class="extype" name="com.johnsnowlabs.license.CheckLicense">CheckLicense</span></span>
+        <span class="name">BertForAssertionClassification</span><span class="result"> extends <span class="extype" name="com.johnsnowlabs.nlp.AnnotatorModel">AnnotatorModel</span>[<a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.assertion.BertForAssertionClassification">BertForAssertionClassification</a>] with <span class="extype" name="com.johnsnowlabs.nlp.HasBatchedAnnotate">HasBatchedAnnotate</span>[<a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.assertion.BertForAssertionClassification">BertForAssertionClassification</a>] with <a href="../params/WhiteAndBlackListParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.params.WhiteAndBlackListParams">WhiteAndBlackListParams</a> with <span class="extype" name="com.johnsnowlabs.nlp.HasEngine">HasEngine</span> with <span class="extype" name="com.johnsnowlabs.ml.tensorflow.WriteTensorflowModel">WriteTensorflowModel</span> with <span class="extype" name="com.johnsnowlabs.ml.onnx.WriteOnnxModel">WriteOnnxModel</span> with <span class="extype" name="com.johnsnowlabs.nlp.HasFeatures">HasFeatures</span> with <span class="extype" name="com.johnsnowlabs.license.CheckLicense">CheckLicense</span></span>
       </span>
       </h4>
 
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>BertForAssertionClassification extracts the assertion status from text by analyzing both the extracted entities and their surrounding context.</p><p>This classifier leverages pre-trained BERT models fine-tuned on biomedical text (e.g., BioBERT) and applies a
-sequence classification/regression head (a linear layer on the pooled output) to support multi-class document classification.</p><p><b>Key features:</b></p><ul><li>Accepts DOCUMENT and CHUNK type inputs and produces ASSERTION type annotations.</li><li>Emphasizes entity context by marking target entities with special tokens (e.g., [entity]), allowing the model to better focus on them.</li><li>Utilizes a transformer-based architecture (BERT for Sequence Classification) to achieve accurate assertion status prediction.</li></ul><p><b>Input Example:</b>
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>BertForAssertionClassification extracts the assertion status from text by analyzing both the
+extracted entities and their surrounding context.</p><p>This classifier leverages pre-trained BERT models fine-tuned on biomedical text (e.g.,
+BioBERT) and applies a sequence classification/regression head (a linear layer on the pooled
+output) to support multi-class document classification.</p><p><b>Key features:</b></p><ul><li>Accepts DOCUMENT and CHUNK type inputs and produces ASSERTION
+type annotations.</li><li>Emphasizes entity context by marking target entities with special
+tokens (e.g., [entity]), allowing the model to better focus on them.</li><li>Utilizes a
+transformer-based architecture (BERT for Sequence Classification) to achieve accurate
+assertion status prediction.</li></ul><p><b>Input Example:</b> 
 <pre>
-This annotator preprocesses the input text to emphasize the target entities as follows:
-   [CLS] Patient with [entity] severe fever [entity].
+ This annotator preprocesses the input text to emphasize the
+target entities as follows: [CLS] Patient with [entity] severe fever [entity]. 
 </pre></p><p>Pretrained models can be loaded with <code>pretrained</code> of the companion object:</p><pre><span class="kw">val</span> assertion = BertForAssertionClassification.pretrained()
   .setInputCols(<span class="lit">"sentence"</span>, <span class="lit">"chunk"</span>)
-  .setOutputCol(<span class="lit">"assertion"</span>)</pre><p>Models from the HuggingFace 🤗 Transformers library are also compatible with Spark NLP 🚀. The Spark NLP Workshop
-example shows how to import them <a href="https://github.com/JohnSnowLabs/spark-nlp/discussions/5669" target="_blank">https://github.com/JohnSnowLabs/spark-nlp/discussions/5669</a>.</p><h4>Example</h4><pre><span class="kw">val</span> documentAssembler = <span class="kw">new</span> DocumentAssembler()
+  .setOutputCol(<span class="lit">"assertion"</span>)</pre><p>Models from the HuggingFace 🤗 Transformers library are also compatible with Spark NLP 🚀. The
+Spark NLP Workshop example shows how to import them
+<a href="https://github.com/JohnSnowLabs/spark-nlp/discussions/5669" target="_blank">https://github.com/JohnSnowLabs/spark-nlp/discussions/5669</a>.</p><h4>Example</h4><pre><span class="kw">val</span> documentAssembler = <span class="kw">new</span> DocumentAssembler()
   .setInputCol(<span class="lit">"text"</span>)
   .setOutputCol(<span class="lit">"document"</span>)
 
@@ -325,11 +332,16 @@ result.selectExpr(<span class="lit">"explode(assertion) as assertion"</span>).sh
 |{assertion, <span class="num">199</span>, <span class="num">200</span>, present, {assertion_source -&gt; assertion, chunk -&gt; <span class="num">7</span>, ner_chunk -&gt; CT, confidence -&gt; <span class="num">0.9996158</span>, ner_label -&gt; TEST, sentence -&gt; <span class="num">3</span>}, []}                |
 |{assertion, <span class="num">203</span>, <span class="num">212</span>, present, {assertion_source -&gt; assertion, chunk -&gt; <span class="num">8</span>, ner_chunk -&gt; lung tumor, confidence -&gt; <span class="num">0.9997308</span>, ner_label -&gt; PROBLEM, sentence -&gt; <span class="num">3</span>}, []}     |
 |{assertion, <span class="num">260</span>, <span class="num">268</span>, present, {assertion_source -&gt; assertion, chunk -&gt; <span class="num">9</span>, ner_chunk -&gt; Alzheimer, confidence -&gt; <span class="num">0.98367596</span>, ner_label -&gt; PROBLEM, sentence -&gt; <span class="num">4</span>}, []}     |
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+</pre></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.assertion.BertForAssertionClassification">BertForAssertionClassification</a></p></span><span class="cmt"><p><a href="dl/AssertionDLModel.html" class="extype" name="com.johnsnowlabs.nlp.annotators.assertion.dl.AssertionDLModel">com.johnsnowlabs.nlp.annotators.assertion.dl.AssertionDLModel</a></p></span><span class="cmt"><p><span class="extype" name="MedicalBertForSequenceClassification">MedicalBertForSequenceClassification</span></p></span><span class="cmt"><p><a href="https://nlp.johnsnowlabs.com/docs/en/annotators" target="_blank">Annotators Main Page</a> for a list of transformer based classifiers and assertion annotators</p></span></dd></dl><div class="toggleContainer block">
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+</pre></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p>
+  <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.assertion.BertForAssertionClassification">BertForAssertionClassification</a></p></span><span class="cmt"><p>
+  <a href="dl/AssertionDLModel.html" class="extype" name="com.johnsnowlabs.nlp.annotators.assertion.dl.AssertionDLModel">com.johnsnowlabs.nlp.annotators.assertion.dl.AssertionDLModel</a></p></span><span class="cmt"><p>
+  <span class="extype" name="MedicalBertForSequenceClassification">MedicalBertForSequenceClassification</span></p></span><span class="cmt"><p>
+  <a href="https://nlp.johnsnowlabs.com/docs/en/annotators" target="_blank">Annotators Main Page</a> for a list of
+  transformer based classifiers and assertion annotators</p></span></dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
-          <div class="superTypes hiddenContent"><span class="extype" name="com.johnsnowlabs.license.CheckLicense">CheckLicense</span>, <span class="extype" name="com.johnsnowlabs.ml.onnx.WriteOnnxModel">WriteOnnxModel</span>, <span class="extype" name="com.johnsnowlabs.ml.tensorflow.WriteTensorflowModel">WriteTensorflowModel</span>, <span class="extype" name="com.johnsnowlabs.nlp.HasEngine">HasEngine</span>, <a href="../params/WhiteAndBlackListParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.params.WhiteAndBlackListParams">WhiteAndBlackListParams</a>, <span class="extype" name="com.johnsnowlabs.nlp.HasSimpleAnnotate">HasSimpleAnnotate</span>[<a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.assertion.BertForAssertionClassification">BertForAssertionClassification</a>], <span class="extype" name="com.johnsnowlabs.nlp.AnnotatorModel">AnnotatorModel</span>[<a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.assertion.BertForAssertionClassification">BertForAssertionClassification</a>], <span class="extype" name="com.johnsnowlabs.nlp.CanBeLazy">CanBeLazy</span>, <span class="extype" name="com.johnsnowlabs.nlp.RawAnnotator">RawAnnotator</span>[<a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.assertion.BertForAssertionClassification">BertForAssertionClassification</a>], <span class="extype" name="com.johnsnowlabs.nlp.HasOutputAnnotationCol">HasOutputAnnotationCol</span>, <span class="extype" name="com.johnsnowlabs.nlp.HasInputAnnotationCols">HasInputAnnotationCols</span>, <span class="extype" name="com.johnsnowlabs.nlp.HasOutputAnnotatorType">HasOutputAnnotatorType</span>, <span class="extype" name="com.johnsnowlabs.nlp.ParamsAndFeaturesWritable">ParamsAndFeaturesWritable</span>, <span class="extype" name="com.johnsnowlabs.nlp.HasFeatures">HasFeatures</span>, <span class="extype" name="org.apache.spark.ml.util.DefaultParamsWritable">DefaultParamsWritable</span>, <span class="extype" name="org.apache.spark.ml.util.MLWritable">MLWritable</span>, <span class="extype" name="org.apache.spark.ml.Model">Model</span>[<a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.assertion.BertForAssertionClassification">BertForAssertionClassification</a>], <span class="extype" name="org.apache.spark.ml.Transformer">Transformer</span>, <span class="extype" name="org.apache.spark.ml.PipelineStage">PipelineStage</span>, <span class="extype" name="org.apache.spark.internal.Logging">Logging</span>, <span class="extype" name="org.apache.spark.ml.param.Params">Params</span>, <span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="org.apache.spark.ml.util.Identifiable">Identifiable</span>, <a href="../../../../../scala/index.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><span class="extype" name="com.johnsnowlabs.license.CheckLicense">CheckLicense</span>, <span class="extype" name="com.johnsnowlabs.ml.onnx.WriteOnnxModel">WriteOnnxModel</span>, <span class="extype" name="com.johnsnowlabs.ml.tensorflow.WriteTensorflowModel">WriteTensorflowModel</span>, <span class="extype" name="com.johnsnowlabs.nlp.HasEngine">HasEngine</span>, <a href="../params/WhiteAndBlackListParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.params.WhiteAndBlackListParams">WhiteAndBlackListParams</a>, <span class="extype" name="com.johnsnowlabs.nlp.HasBatchedAnnotate">HasBatchedAnnotate</span>[<a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.assertion.BertForAssertionClassification">BertForAssertionClassification</a>], <span class="extype" name="com.johnsnowlabs.nlp.AnnotatorModel">AnnotatorModel</span>[<a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.assertion.BertForAssertionClassification">BertForAssertionClassification</a>], <span class="extype" name="com.johnsnowlabs.nlp.CanBeLazy">CanBeLazy</span>, <span class="extype" name="com.johnsnowlabs.nlp.RawAnnotator">RawAnnotator</span>[<a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.assertion.BertForAssertionClassification">BertForAssertionClassification</a>], <span class="extype" name="com.johnsnowlabs.nlp.HasOutputAnnotationCol">HasOutputAnnotationCol</span>, <span class="extype" name="com.johnsnowlabs.nlp.HasInputAnnotationCols">HasInputAnnotationCols</span>, <span class="extype" name="com.johnsnowlabs.nlp.HasOutputAnnotatorType">HasOutputAnnotatorType</span>, <span class="extype" name="com.johnsnowlabs.nlp.ParamsAndFeaturesWritable">ParamsAndFeaturesWritable</span>, <span class="extype" name="com.johnsnowlabs.nlp.HasFeatures">HasFeatures</span>, <span class="extype" name="org.apache.spark.ml.util.DefaultParamsWritable">DefaultParamsWritable</span>, <span class="extype" name="org.apache.spark.ml.util.MLWritable">MLWritable</span>, <span class="extype" name="org.apache.spark.ml.Model">Model</span>[<a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.assertion.BertForAssertionClassification">BertForAssertionClassification</a>], <span class="extype" name="org.apache.spark.ml.Transformer">Transformer</span>, <span class="extype" name="org.apache.spark.ml.PipelineStage">PipelineStage</span>, <span class="extype" name="org.apache.spark.internal.Logging">Logging</span>, <span class="extype" name="org.apache.spark.ml.param.Params">Params</span>, <span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="org.apache.spark.ml.util.Identifiable">Identifiable</span>, <a href="../../../../../scala/index.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -355,7 +367,7 @@ result.selectExpr(<span class="lit">"explode(assertion) as assertion"</span>).sh
                   <span class="filtertype">Inherited<br />
                   </span>
                   <ol id="linearization">
-                    <li class="in" name="com.johnsnowlabs.nlp.annotators.assertion.BertForAssertionClassification"><span>BertForAssertionClassification</span></li><li class="in" name="com.johnsnowlabs.license.CheckLicense"><span>CheckLicense</span></li><li class="in" name="com.johnsnowlabs.ml.onnx.WriteOnnxModel"><span>WriteOnnxModel</span></li><li class="in" name="com.johnsnowlabs.ml.tensorflow.WriteTensorflowModel"><span>WriteTensorflowModel</span></li><li class="in" name="com.johnsnowlabs.nlp.HasEngine"><span>HasEngine</span></li><li class="in" name="com.johnsnowlabs.nlp.annotators.params.WhiteAndBlackListParams"><span>WhiteAndBlackListParams</span></li><li class="in" name="com.johnsnowlabs.nlp.HasSimpleAnnotate"><span>HasSimpleAnnotate</span></li><li class="in" name="com.johnsnowlabs.nlp.AnnotatorModel"><span>AnnotatorModel</span></li><li class="in" name="com.johnsnowlabs.nlp.CanBeLazy"><span>CanBeLazy</span></li><li class="in" name="com.johnsnowlabs.nlp.RawAnnotator"><span>RawAnnotator</span></li><li class="in" name="com.johnsnowlabs.nlp.HasOutputAnnotationCol"><span>HasOutputAnnotationCol</span></li><li class="in" name="com.johnsnowlabs.nlp.HasInputAnnotationCols"><span>HasInputAnnotationCols</span></li><li class="in" name="com.johnsnowlabs.nlp.HasOutputAnnotatorType"><span>HasOutputAnnotatorType</span></li><li class="in" name="com.johnsnowlabs.nlp.ParamsAndFeaturesWritable"><span>ParamsAndFeaturesWritable</span></li><li class="in" name="com.johnsnowlabs.nlp.HasFeatures"><span>HasFeatures</span></li><li class="in" name="org.apache.spark.ml.util.DefaultParamsWritable"><span>DefaultParamsWritable</span></li><li class="in" name="org.apache.spark.ml.util.MLWritable"><span>MLWritable</span></li><li class="in" name="org.apache.spark.ml.Model"><span>Model</span></li><li class="in" name="org.apache.spark.ml.Transformer"><span>Transformer</span></li><li class="in" name="org.apache.spark.ml.PipelineStage"><span>PipelineStage</span></li><li class="in" name="org.apache.spark.internal.Logging"><span>Logging</span></li><li class="in" name="org.apache.spark.ml.param.Params"><span>Params</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="org.apache.spark.ml.util.Identifiable"><span>Identifiable</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                    <li class="in" name="com.johnsnowlabs.nlp.annotators.assertion.BertForAssertionClassification"><span>BertForAssertionClassification</span></li><li class="in" name="com.johnsnowlabs.license.CheckLicense"><span>CheckLicense</span></li><li class="in" name="com.johnsnowlabs.ml.onnx.WriteOnnxModel"><span>WriteOnnxModel</span></li><li class="in" name="com.johnsnowlabs.ml.tensorflow.WriteTensorflowModel"><span>WriteTensorflowModel</span></li><li class="in" name="com.johnsnowlabs.nlp.HasEngine"><span>HasEngine</span></li><li class="in" name="com.johnsnowlabs.nlp.annotators.params.WhiteAndBlackListParams"><span>WhiteAndBlackListParams</span></li><li class="in" name="com.johnsnowlabs.nlp.HasBatchedAnnotate"><span>HasBatchedAnnotate</span></li><li class="in" name="com.johnsnowlabs.nlp.AnnotatorModel"><span>AnnotatorModel</span></li><li class="in" name="com.johnsnowlabs.nlp.CanBeLazy"><span>CanBeLazy</span></li><li class="in" name="com.johnsnowlabs.nlp.RawAnnotator"><span>RawAnnotator</span></li><li class="in" name="com.johnsnowlabs.nlp.HasOutputAnnotationCol"><span>HasOutputAnnotationCol</span></li><li class="in" name="com.johnsnowlabs.nlp.HasInputAnnotationCols"><span>HasInputAnnotationCols</span></li><li class="in" name="com.johnsnowlabs.nlp.HasOutputAnnotatorType"><span>HasOutputAnnotatorType</span></li><li class="in" name="com.johnsnowlabs.nlp.ParamsAndFeaturesWritable"><span>ParamsAndFeaturesWritable</span></li><li class="in" name="com.johnsnowlabs.nlp.HasFeatures"><span>HasFeatures</span></li><li class="in" name="org.apache.spark.ml.util.DefaultParamsWritable"><span>DefaultParamsWritable</span></li><li class="in" name="org.apache.spark.ml.util.MLWritable"><span>MLWritable</span></li><li class="in" name="org.apache.spark.ml.Model"><span>Model</span></li><li class="in" name="org.apache.spark.ml.Transformer"><span>Transformer</span></li><li class="in" name="org.apache.spark.ml.PipelineStage"><span>PipelineStage</span></li><li class="in" name="org.apache.spark.internal.Logging"><span>Logging</span></li><li class="in" name="org.apache.spark.ml.param.Params"><span>Params</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="org.apache.spark.ml.util.Identifiable"><span>Identifiable</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                   </ol>
                 </div><div class="ancestors">
               <span class="filtertype"></span>
@@ -406,7 +418,8 @@ result.selectExpr(<span class="lit">"explode(assertion) as assertion"</span>).sh
         <span class="name">BertForAssertionClassification</span><span class="params">(<span name="uid">uid: <span class="extype" name="scala.Predef.String">String</span></span>)</span>
       </span>
       
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">uid</dt><dd class="cmt"><p>required uid for storing annotator to disk</p></dd></dl></div>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">uid</dt><dd class="cmt"><p>
+  required uid for storing annotator to disk</p></dd></dl></div>
     </li></ol>
             </div>
 
@@ -612,22 +625,6 @@ result.selectExpr(<span class="lit">"explode(assertion) as assertion"</span>).sh
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>AnnotatorModel</dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.assertion.BertForAssertionClassification#annotate" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="annotate(annotations:Seq[com.johnsnowlabs.nlp.Annotation]):Seq[com.johnsnowlabs.nlp.Annotation]"></a><a id="annotate(Seq[Annotation]):Seq[Annotation]"></a>
-      <span class="permalink">
-      <a href="../../../../../com/johnsnowlabs/nlp/annotators/assertion/BertForAssertionClassification.html#annotate(annotations:Seq[com.johnsnowlabs.nlp.Annotation]):Seq[com.johnsnowlabs.nlp.Annotation]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">annotate</span><span class="params">(<span name="annotations">annotations: <a href="../../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="com.johnsnowlabs.nlp.Annotation">Annotation</span>]</span>)</span><span class="result">: <a href="../../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="com.johnsnowlabs.nlp.Annotation">Annotation</span>]</span>
-      </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.assertion.BertForAssertionClassification">BertForAssertionClassification</a> → HasSimpleAnnotate</dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <span class="permalink">
@@ -644,6 +641,60 @@ result.selectExpr(<span class="lit">"explode(assertion) as assertion"</span>).sh
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.assertion.BertForAssertionClassification#batchAnnotate" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="batchAnnotate(batchedAnnotations:Seq[Array[com.johnsnowlabs.nlp.Annotation]]):Seq[Seq[com.johnsnowlabs.nlp.Annotation]]"></a><a id="batchAnnotate(Seq[Array[Annotation]]):Seq[Seq[Annotation]]"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/assertion/BertForAssertionClassification.html#batchAnnotate(batchedAnnotations:Seq[Array[com.johnsnowlabs.nlp.Annotation]]):Seq[Seq[com.johnsnowlabs.nlp.Annotation]]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">batchAnnotate</span><span class="params">(<span name="batchedAnnotations">batchedAnnotations: <a href="../../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="com.johnsnowlabs.nlp.Annotation">Annotation</span>]]</span>)</span><span class="result">: <a href="../../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<a href="../../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="com.johnsnowlabs.nlp.Annotation">Annotation</span>]]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Highly optimized batch annotation method that minimizes preprocessing overhead.</p><div class="fullcomment"><div class="comment cmt"><p>Highly optimized batch annotation method that minimizes preprocessing overhead. This version
+focuses on reducing data transformations and memory allocations.
+</p></div><dl class="paramcmts block"><dt class="param">batchedAnnotations</dt><dd class="cmt"><p>
+  A sequence of arrays of annotations, where each inner array represents annotations for a
+  single original document.</p></dd><dt>returns</dt><dd class="cmt"><p>
+  A sequence of sequences of annotations, where each inner sequence corresponds to the
+  asserted annotations for an original document.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.assertion.BertForAssertionClassification">BertForAssertionClassification</a> → HasBatchedAnnotate</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.HasBatchedAnnotate#batchProcess" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="batchProcess(rows:Iterator[_]):Iterator[org.apache.spark.sql.Row]"></a><a id="batchProcess(Iterator[_]):Iterator[Row]"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/assertion/BertForAssertionClassification.html#batchProcess(rows:Iterator[_]):Iterator[org.apache.spark.sql.Row]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">batchProcess</span><span class="params">(<span name="rows">rows: <a href="../../../../../scala/index.html#Iterator[+A]=Iterator[A]" class="extmbr" name="scala.Iterator">Iterator</a>[_]</span>)</span><span class="result">: <a href="../../../../../scala/index.html#Iterator[+A]=Iterator[A]" class="extmbr" name="scala.Iterator">Iterator</a>[<span class="extype" name="org.apache.spark.sql.Row">Row</span>]</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HasBatchedAnnotate</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.HasBatchedAnnotate#batchSize" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="batchSize:org.apache.spark.ml.param.IntParam"></a><a id="batchSize:IntParam"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/assertion/BertForAssertionClassification.html#batchSize:org.apache.spark.ml.param.IntParam" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">batchSize</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.IntParam">IntParam</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HasBatchedAnnotate</dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.AnnotatorModel#beforeAnnotate" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="beforeAnnotate(dataset:org.apache.spark.sql.Dataset[_]):org.apache.spark.sql.Dataset[_]"></a><a id="beforeAnnotate(Dataset[_]):Dataset[_]"></a>
       <span class="permalink">
@@ -791,8 +842,7 @@ Default: true
         <span class="name">classificationCaseSensitive</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.BooleanParam">BooleanParam</span></span>
       </span>
       
-      <p class="shortcomment cmt">Whether to use case sensitive on classification process.</p><div class="fullcomment"><div class="comment cmt"><p>Whether to use case sensitive on classification process.
-Default: false.
+      <p class="shortcomment cmt">Whether to use case sensitive on classification process.</p><div class="fullcomment"><div class="comment cmt"><p>Whether to use case sensitive on classification process. Default: false.
 </p></div></div>
     </li><li name="org.apache.spark.ml.param.Params#clear" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clear(param:org.apache.spark.ml.param.Param[_]):Params.this.type"></a><a id="clear(Param[_]):BertForAssertionClassification.this.type"></a>
@@ -849,7 +899,8 @@ Default: false.
         <span class="name">configProtoBytes</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.IntArrayParam">IntArrayParam</span></span>
       </span>
       
-      <p class="shortcomment cmt">ConfigProto from tensorflow, serialized into byte array.</p><div class="fullcomment"><div class="comment cmt"><p>ConfigProto from tensorflow, serialized into byte array. Get with <code>config_proto.SerializeToString()</code>
+      <p class="shortcomment cmt">ConfigProto from tensorflow, serialized into byte array.</p><div class="fullcomment"><div class="comment cmt"><p>ConfigProto from tensorflow, serialized into byte array. Get with
+<code>config_proto.SerializeToString()</code>
 </p></div></div>
     </li><li name="com.johnsnowlabs.nlp.RawAnnotator#copy" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="copy(extra:org.apache.spark.ml.param.ParamMap):M"></a><a id="copy(ParamMap):BertForAssertionClassification"></a>
@@ -899,22 +950,6 @@ Default: false.
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Params</dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.HasSimpleAnnotate#dfAnnotate" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="dfAnnotate:org.apache.spark.sql.expressions.UserDefinedFunction"></a><a id="dfAnnotate:UserDefinedFunction"></a>
-      <span class="permalink">
-      <a href="../../../../../com/johnsnowlabs/nlp/annotators/assertion/BertForAssertionClassification.html#dfAnnotate:org.apache.spark.sql.expressions.UserDefinedFunction" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">dfAnnotate</span><span class="result">: <span class="extype" name="org.apache.spark.sql.expressions.UserDefinedFunction">UserDefinedFunction</span></span>
-      </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HasSimpleAnnotate</dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.HasEngine#engine" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="engine:org.apache.spark.ml.param.Param[String]"></a><a id="engine:Param[String]"></a>
       <span class="permalink">
@@ -1264,6 +1299,22 @@ It filters by annotation.result
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Params</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.HasBatchedAnnotate#getBatchSize" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getBatchSize:Int"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/assertion/BertForAssertionClassification.html#getBatchSize:Int" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getBatchSize</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HasBatchedAnnotate</dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.params.WhiteAndBlackListParams#getBlackList" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="getParam">
       <a id="getBlackList:Array[String]"></a>
       <span class="permalink">
@@ -1330,8 +1381,7 @@ It filters by annotation.result
         <span class="name">getClasses</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
       </span>
       
-      <p class="shortcomment cmt">Returns labels used to train this model
-</p>
+      <p class="shortcomment cmt">Returns labels used to train this model</p>
     </li><li name="com.johnsnowlabs.nlp.annotators.assertion.BertForAssertionClassification#getClassificationCaseSensitive" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="getParam">
       <a id="getClassificationCaseSensitive:Boolean"></a>
       <span class="permalink">
@@ -2349,6 +2399,22 @@ It filters by annotation.result
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../params/WhiteAndBlackListParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.params.WhiteAndBlackListParams">WhiteAndBlackListParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.HasBatchedAnnotate#setBatchSize" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setBatchSize(size:Int):com.johnsnowlabs.nlp.HasBatchedAnnotate.&lt;refinement&gt;.type"></a><a id="setBatchSize(Int):BertForAssertionClassification.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/assertion/BertForAssertionClassification.html#setBatchSize(size:Int):com.johnsnowlabs.nlp.HasBatchedAnnotate.&lt;refinement&gt;.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setBatchSize</span><span class="params">(<span name="size">size: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.assertion.BertForAssertionClassification">BertForAssertionClassification</a>.this.type</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HasBatchedAnnotate</dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.params.WhiteAndBlackListParams#setBlackList" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setBlackList(list:String*):WhiteAndBlackListParams.this.type"></a><a id="setBlackList(String*):BertForAssertionClassification.this.type"></a>
       <span class="permalink">
@@ -2416,8 +2482,7 @@ Default: true
         <span class="name">setClassificationCaseSensitive</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.assertion.BertForAssertionClassification">BertForAssertionClassification</a>.this.type</span>
       </span>
       
-      <p class="shortcomment cmt">Set whether to use case sensitive on classification process.</p><div class="fullcomment"><div class="comment cmt"><p>Set whether to use case sensitive on classification process.
-Default: false.
+      <p class="shortcomment cmt">Set whether to use case sensitive on classification process.</p><div class="fullcomment"><div class="comment cmt"><p>Set whether to use case sensitive on classification process. Default: false.
 </p></div></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.assertion.BertForAssertionClassification#setConfigProtoBytes" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="setParam">
       <a id="setConfigProtoBytes(bytes:Array[Int]):BertForAssertionClassification.this.type"></a><a id="setConfigProtoBytes(Array[Int]):BertForAssertionClassification.this.type"></a>
@@ -3185,8 +3250,8 @@ Default: <code>Array()</code>
               <h3>Inherited from <span class="extype" name="com.johnsnowlabs.nlp.HasEngine">HasEngine</span></h3>
             </div><div class="parent" name="com.johnsnowlabs.nlp.annotators.params.WhiteAndBlackListParams">
               <h3>Inherited from <a href="../params/WhiteAndBlackListParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.params.WhiteAndBlackListParams">WhiteAndBlackListParams</a></h3>
-            </div><div class="parent" name="com.johnsnowlabs.nlp.HasSimpleAnnotate">
-              <h3>Inherited from <span class="extype" name="com.johnsnowlabs.nlp.HasSimpleAnnotate">HasSimpleAnnotate</span>[<a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.assertion.BertForAssertionClassification">BertForAssertionClassification</a>]</h3>
+            </div><div class="parent" name="com.johnsnowlabs.nlp.HasBatchedAnnotate">
+              <h3>Inherited from <span class="extype" name="com.johnsnowlabs.nlp.HasBatchedAnnotate">HasBatchedAnnotate</span>[<a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.assertion.BertForAssertionClassification">BertForAssertionClassification</a>]</h3>
             </div><div class="parent" name="com.johnsnowlabs.nlp.AnnotatorModel">
               <h3>Inherited from <span class="extype" name="com.johnsnowlabs.nlp.AnnotatorModel">AnnotatorModel</span>[<a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.assertion.BertForAssertionClassification">BertForAssertionClassification</a>]</h3>
             </div><div class="parent" name="com.johnsnowlabs.nlp.CanBeLazy">
@@ -3234,10 +3299,13 @@ Default: <code>Array()</code>
         <div id="groupedMembers">
         <div class="group" name="param">
               <h3>Parameters</h3>
-              <div class="comment cmt"><p>A list of (hyper-)parameter keys this annotator can take. Users can set and get the parameter values through setters and getters, respectively.</p></div>
+              <div class="comment cmt"><p>
+  A list of (hyper-)parameter keys this annotator can take. Users can set and get the
+  parameter values through setters and getters, respectively.</p></div>
             </div><div class="group" name="anno">
               <h3>Annotator types</h3>
-              <div class="comment cmt"><p>Required input and expected output annotator types</p></div>
+              <div class="comment cmt"><p>
+  Required input and expected output annotator types</p></div>
             </div><div class="group" name="Ungrouped">
               <h3>Members</h3>
               
