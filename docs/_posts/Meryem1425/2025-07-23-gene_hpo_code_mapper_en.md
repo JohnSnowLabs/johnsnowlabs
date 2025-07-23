@@ -32,6 +32,7 @@ This pretrained model maps genes to their corresponding HPO codes. It also retur
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
