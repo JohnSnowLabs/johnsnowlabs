@@ -119,6 +119,8 @@ term-server:
           url: /docs/en/terminology_server/on_prem_deploy
         - title: Deploy on AWS
           url: /docs/en/terminology_server/on_aws
+        - title: Deploy on Azure
+          url: /docs/en/terminology_server/on_azure
       - subtitle: Features
         children:
           - title: Search

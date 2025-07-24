@@ -13,7 +13,7 @@ sidebar:
 
 ## AWS Marketplace
 
-One of the most straight forward method to start using Terminology Server is using the AWS Marketplace. Using AWS Marketplace, the Terminology Server will be deployed on your AWS EC2 instance with just a few clicks. There is a Software Price and AWS Infrastructure price associated this with this installation method (Details are in the product page in AWS Marketplac)
+One of the most straight forward method to start using Terminology Server is using the AWS Marketplace. Using AWS Marketplace, the Terminology Server will be deployed on your AWS EC2 instance with just a few clicks. There is a Software Price and AWS Infrastructure price associated this with this installation method (Details are in the product page in AWS Marketplace)
 
 
 Visit the [product page on AWS Marketplace](https://aws.amazon.com/marketplace/pp/prodview-3hta3hebivvrk) and follow the instructions to subscribe and deploy
