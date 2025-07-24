@@ -87,7 +87,7 @@ result = mapper_pipeline.fit(data).transform(data)
 ```
 ```scala
 
-val ocument_assembler = new DocumentAssembler()
+val document_assembler = new DocumentAssembler()
       .setInputCol("text")
       .setOutputCol("document")
 
