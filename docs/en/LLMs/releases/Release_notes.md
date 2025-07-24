@@ -21,7 +21,7 @@ We are excited to announce significant updates to our Medical LLM lineup with en
 
 - **Medical-LLM-8B**: A new 8B parameter model that delivers enhanced clinical reasoning capabilities while maintaining deployment efficiency. This model introduces dedicated reasoning mode with multi-step clinical logic and improved performance in differential diagnosis and care planning.
 
-- **Medical-LLM-14B**: Updated with advanced reasoning capabilities and expanded medical knowledge processing. The enhanced model now features improved chain-of-thought supervision and better performance in complex medical case analysis.
+- **Medical-LLM-Small**: Updated with advanced reasoning capabilities and expanded medical knowledge processing. The enhanced model now features improved chain-of-thought supervision and better performance in complex medical case analysis.
 
 - **Medical-Reasoning-LLM-32B**: Significantly enhanced with focus on clinical reasoning and diagnostic decision support. The updated model provides transparent decision pathways, considers multiple hypotheses, and offers structured reasoning patterns aligned with clinical guidelines.
 
@@ -30,7 +30,7 @@ We are excited to announce significant updates to our Medical LLM lineup with en
 | **Model Name**             | **Parameters** | **Recommended GPU Memory** | **Max Sequence Length** | **Model Size** | **Max KV-Cache** | **Tensor Parallel Sizes** |
 |---------------------------|--------------|------------------|-------------------|-------------|----------------|------------------------|
 | Medical-LLM-8B            | 8B          | ~38 GB           | 40K               | 15 GB       | 23 GB          | 1, 2, 4, 8            |
-| Medical-LLM-14B           | 14B         | ~59 GB           | 40K               | 28 GB       | 31 GB          | 1, 2, 4, 8            |
+| Medical-LLM-Small         | 14B         | ~59 GB           | 40K               | 28 GB       | 31 GB          | 1, 2, 4, 8            |
 | Medical-Reasoning-LLM-32B | 32B         | ~111 GB          | 40K               | 61 GB       | 50 GB          | 2, 4, 8               |
 
 ## 05-19-2025
