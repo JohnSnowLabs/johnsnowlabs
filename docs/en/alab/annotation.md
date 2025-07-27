@@ -190,6 +190,17 @@ The entire process is illustrated below:
 
 </div><div class="h3-box" markdown="1">
 
+## Redesigned Annotation Interface for NER Projects
+The annotation widget interface has been streamlined for Text and Visual NER project types. This update focuses on enhancing clarity, reducing visual clutter, and improving overall usability, without altering the core workflow. All previously available data remains intact in the exported JSON, even if not shown in the UI. 
+
+### Enhancements in Name Entity Recognition and Visual NER Labeling Project Types
+- Removed redundant or non-essential data from the annotation view.
+- Grouped the Meta section visually to distinguish it clearly and associate the delete button specifically with metadata entries.
+- Default confidence scores display (1.00) with green highlighting.
+   Hover functionality on labeled text reveals text ID.
+
+![720image](/assets/images/annotation_lab/7.2.0/6.png)
+
 ### Support for multi-page PDF documents
 
 When a valid Visual NLP license is available, Generative AI Lab offers support for multi-page PDF annotation. We can import, annotate, and export multi-page PDF files easily.

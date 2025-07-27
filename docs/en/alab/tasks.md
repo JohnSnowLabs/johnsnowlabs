@@ -184,4 +184,28 @@ Comments can be added to each task by any team member. This is done by clicking 
 
 ![Task Assignment](/assets/images/annotation_lab/4.1.0/task_comment.png "lit_shadow")
 
+## Smarter Task Distribution: Bulk Assignment at Scale
+Generative AI Lab now offers bulk task assignment capabilities, allowing up to 200 unassigned tasks to be allocated simultaneously to selected annotators. 
+
+### Key Capabilities
+- Sequential or Random Assignment: Tasks can be distributed in order or randomly from the unassigned pool. 
+- Efficient Scaling: Reduces manual effort in large-scale projects, optimizing resource utilization. 
+
+**User Benefit:** Accelerates task distribution, improving operational efficiency and annotation throughput. 
+
+### Bulk Assignment Process:
+- Click on the "Assign Task" button.
+- Select the annotators to whom you wish to assign tasks.
+- Specify the number of tasks to assign to each annotator.
+- Define any required criteria for task selection.
+- Click on "Assign" to complete the process.​
+
+![710image](/assets/images/annotation_lab/7.1.0/2.gif)
+
+**Notes**
+_- The maximum number of tasks that can be assigned at once is 200._
+_- If the total number of unassigned tasks is less than the selected task count, all unassigned tasks will be assigned to the first selected annotator._
+
+![710image](/assets/images/annotation_lab/7.1.0/3.gif)
+
 </div>

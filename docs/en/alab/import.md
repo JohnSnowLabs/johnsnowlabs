@@ -102,4 +102,126 @@ Generative AI Lab 4.3.0 offers support for importing tasks/documents stored on c
 - Enter the path to the Azure Blob file as Container/file.zip
 - Input Azure Account Name and Azure Account Secret Key
 - Click "Import"
+ 
   ![Import_azure](/assets/images/annotation_lab/5.9.0/16.gif)
+
+## Cloud Storage Credential Management
+**What's New:** Cloud storage credentials (AWS S3, Azure Blob Storage) can now be saved at the project level, eliminating repetitive credential entry while maintaining security isolation.
+
+**Technical Implementation:**
+- Credentials stored per-project, not globally
+- Automatic credential reuse for subsequent import/export operations within the same project
+- Dedicated UI controls for managing credentials during Import and Export
+- Credentials excluded from project ZIP exports for security compliance
+- Support for credential updates through explicit save actions
+
+![730image](/assets/images/annotation_lab/7.3.0/6.gif)
+
+**User Benefits:**
+- **Data Scientists:** Eliminates manual credential re-entry for frequent data operations, reducing setup time by 60-80% for iterative workflows
+- **Multi-Team Organizations:** Each project team can manage its cloud access without sharing credentials
+- **DevOps Teams:** Reduces credential management overhead while maintaining security boundaries
+
+![730image](/assets/images/annotation_lab/7.3.0/7.gif)
+
+**Note:-** Credentials, once saved, will remain associated with the project and will be auto-filled when revisiting the Import or Export pages—even if a different path or new credentials are used temporarily. To update them, users must explicitly choose to save new credentials.*
+
+**Note:-** If credentials are saved for a different cloud provider within the same project (e.g., switching from AWS to Azure), the previously stored credentials will be overwritten with the new set.
+
+**Example Use Case:** A medical coding organization can save their S3 credentials once to import daily batches of clinical documents for human-in-the-loop validation, while simultaneously maintaining separate Azure credentials for exporting coded results to their analytics platform—eliminating daily credential re-entry across both cloud providers.
+
+**Technical Implementation:**
+- Credentials stored per-project, not globally
+- Automatic credential reuse for subsequent import/export operations within the same project
+- Dedicated UI controls for managing credentials during Import and Export
+- Credentials excluded from project ZIP exports for security compliance
+- Support for credential updates through explicit save actions
+
+![730image](/assets/images/annotation_lab/7.3.0/6.gif)
+
+**User Benefits:**
+- **Data Scientists:** Eliminates manual credential re-entry for frequent data operations, reducing setup time by 60-80% for iterative workflows
+- **Multi-Team Organizations:** Each project team can manage its cloud access without sharing credentials
+- **DevOps Teams:** Reduces credential management overhead while maintaining security boundaries
+
+![730image](/assets/images/annotation_lab/7.3.0/7.gif)
+
+**Note:-** Credentials, once saved, will remain associated with the project and will be auto-filled when revisiting the Import or Export pages—even if a different path or new credentials are used temporarily. To update them, users must explicitly choose to save new credentials.*
+
+**Note:-** If credentials are saved for a different cloud provider within the same project (e.g., switching from AWS to Azure), the previously stored credentials will be overwritten with the new set.
+
+**Example Use Case:** A medical coding organization can save their S3 credentials once to import daily batches of clinical documents for human-in-the-loop validation, while simultaneously maintaining separate Azure credentials for exporting coded results to their analytics platform—eliminating daily credential re-entry across both cloud providers.## Cloud Storage Credential Management
+**What's New:** Cloud storage credentials (AWS S3, Azure Blob Storage) can now be saved at the project level, eliminating repetitive credential entry while maintaining security isolation.
+
+**Technical Implementation:**
+- Credentials stored per-project, not globally
+- Automatic credential reuse for subsequent import/export operations within the same project
+- Dedicated UI controls for managing credentials during Import and Export
+- Credentials excluded from project ZIP exports for security compliance
+- Support for credential updates through explicit save actions
+
+![730image](/assets/images/annotation_lab/7.3.0/6.gif)
+
+**User Benefits:**
+- **Data Scientists:** Eliminates manual credential re-entry for frequent data operations, reducing setup time by 60-80% for iterative workflows
+- **Multi-Team Organizations:** Each project team can manage its cloud access without sharing credentials
+- **DevOps Teams:** Reduces credential management overhead while maintaining security boundaries
+
+![730image](/assets/images/annotation_lab/7.3.0/7.gif)
+
+**Note:-** Credentials, once saved, will remain associated with the project and will be auto-filled when revisiting the Import or Export pages—even if a different path or new credentials are used temporarily. To update them, users must explicitly choose to save new credentials.*
+
+**Note:-** If credentials are saved for a different cloud provider within the same project (e.g., switching from AWS to Azure), the previously stored credentials will be overwritten with the new set.
+
+**Example Use Case:** A medical coding organization can save their S3 credentials once to import daily batches of clinical documents for human-in-the-loop validation, while simultaneously maintaining separate Azure credentials for exporting coded results to their analytics platform—eliminating daily credential re-entry across both cloud providers.
+
+### Import for Large Datasets
+The background processing architecture now handles large-scale imports without UI disruption through intelligent format detection and dynamic resource allocation. When users upload tasks as a ZIP file or through a cloud source, Generative AI Lab automatically detects the format and uses the import server to handle the data in the background — ensuring smooth and efficient processing, even for large volumes. 
+
+For smaller, individual files — whether selected manually or added via drag-and-drop — imports are handled directly without background processing, allowing for quick and immediate task creation.
+
+**Note:** Background import is applied only for ZIP and cloud-based imports.
+
+**Automatic Processing Mode Selection:**
+- ZIP files and cloud-based imports: Automatically routed to background processing via dedicated import server
+-  Individual files (manual selection or drag-and-drop): Processed directly for immediate task creation
+- The system dynamically determines optimal processing path based on import source and volume
+
+![720image](/assets/images/annotation_lab/7.2.0/8.png)
+
+**Technical Architecture:**
+- Dedicated import cluster with auto-provisioning: 2 CPUs, 5GB memory (non-configurable)
+- Cluster spins up automatically during ZIP and cloud imports
+- Automatic deallocation upon completion to optimize resource utilization
+- Sequential file processing methodology reduces system load and improves reliability
+- Import status is tracked and visible on the Import page, allowing users to easily monitor
+progress and confirm successful uploads.
+
+![720image](/assets/images/annotation_lab/7.2.0/9.png)
+
+**Performance Improvements:**
+- Large dataset imports (5000+ files): Previously 20+ minutes, now less than 10 minutes
+- Elimination of UI freezing during bulk operations
+- Improved system stability under high-volume import loads
+
+***Note: Import server created during task import is counted as an active server.***
+
+## Disabled Local Imports
+What's New: Administrators can now disable local file imports system-wide, complementing existing local export restrictions to create complete data flow control.
+
+**Technical Implementation:**
+- New "Disable Local Import" setting in System Settings → General tab
+- Project-level exceptions are available through the dedicated Exceptions widget
+- When this option is enabled, only cloud storage imports (Amazon S3, Azure Blob Storage) are permitted.
+- Setting applies globally across all projects unless explicitly exempted
+
+![730image](/assets/images/annotation_lab/7.3.0/1.png)
+
+**User Benefits:**
+- **Healthcare Organizations:** Ensures all patient data flows through auditable, encrypted cloud channels rather than local file systems.
+- **Enterprise Teams:** Eliminates the risk of sensitive data being imported from uncontrolled local sources.
+- **Compliance Officers:** Provides granular control over data ingress while maintaining operational flexibility for approved projects.
+
+![730image](/assets/images/annotation_lab/7.3.0/2.png)
+
+**Example Use Case:** A healthcare system can disable local imports for all PHI processing projects while maintaining exceptions for internal development projects that use synthetic data.

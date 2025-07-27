@@ -15,260 +15,224 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-## Native LLM Evaluation Workflow with Multi-Provider Integration Generative AI Lab 7.2.0
-<p style="text-align:center;">Release date: 06-23-2025</p>
+## Generative AI Lab 7.3 – Stronger Compliance, Expanded LLM Integrations, and Modernized Analytics
+<p style="text-align:center;">Release date: 07-25-2025</p>
 
-Generative AI Lab 7.2.0 introduces native LLM evaluation capabilities, enabling complete end-to-end workflows for importing prompts, generating responses via external providers (OpenAI, Azure OpenAI, Amazon SageMaker), and collecting human feedback within a unified interface. The new LLM Evaluation and LLM Evaluation Comparison project types support both single-model assessment and side-by-side comparative analysis, with dedicated analytics dashboards providing statistical insights and visual summaries of evaluation results.
-
-New annotation capabilities include support for CPT code lookup for medical and clinical text processing, enabling direct mapping of labeled entities to standardized terminology systems.  
-
-The release also delivers performance improvements through background import processing that reduces large dataset import times by 50% (from 20 minutes to under 10 minutes for 5000+ files) using dedicated 2-CPU, 5GB memory clusters.  
-
-Furthermore, annotation workflows now benefit from streamlined NER interfaces that eliminate visual clutter while preserving complete data integrity in JSON exports. Also, the system now enforces strict resource compatibility validation during project configuration, preventing misconfigurations between models, rules, and prompts.  
-
-Additionally, 20+ bug fixes address critical issues, including sample task import failures, PDF annotation stability, and annotator access permissions. 
-
-Whether you're tuning model performance, running human-in-the-loop evaluations, or scaling annotation tasks, Generative AI Lab 7.2.0 provides the tools to do it faster, smarter, and more accurately.
+Generative AI Lab 7.3.0 delivers significant enhancements in data governance, LLM integration capabilities, and user interface modernization. This release addresses enterprise compliance requirements while expanding model evaluation functionality and improving operational efficiency.
 
 ## New Features
-## LLM Evaluation Project Types with Multi-Provider Integration
+## Enhanced HIPAA Compliance: Disabled Local Import Capability
+What's New: Administrators can now disable local file imports system-wide, complementing existing local export restrictions to create complete data flow control.
 
-Two new project types enable systematic evaluation of large language model outputs:
+**Technical Implementation:**
+- New "Disable Local Import" setting in System Settings → General tab
+- Project-level exceptions are available through the dedicated Exceptions widget
+- When this option is enabled, only cloud storage imports (Amazon S3, Azure Blob Storage) are permitted.
+- Setting applies globally across all projects unless explicitly exempted
 
-Two new project types enable the systematic evaluation of large language model outputs:
-• **LLM Evaluation:** Assess single model responses against custom criteria
-• **LLM Evaluation Comparison:** Side-by-side evaluation of responses from two different
-models
+![730image](/assets/images/annotation_lab/7.3.0/1.png)
 
-Supported Providers:
-- **OpenAI**
-- **Azure OpenAI**
-- **Amazon SageMaker**
+**User Benefits:**
+- **Healthcare Organizations:** Ensures all patient data flows through auditable, encrypted cloud channels rather than local file systems.
+- **Enterprise Teams:** Eliminates the risk of sensitive data being imported from uncontrolled local sources.
+- **Compliance Officers:** Provides granular control over data ingress while maintaining operational flexibility for approved projects.
 
-#### Service Configuration Process
-1. Navigate to **Settings → System Settings → Integration**.
-2. Click **Add** and enter your provider credentials.
-3. Save the configuration.
+![730image](/assets/images/annotation_lab/7.3.0/2.png)
 
-![720image](/assets/images/annotation_lab/7.2.0/1.gif)
+**Example Use Case:** A healthcare system can disable local imports for all PHI processing projects while maintaining exceptions for internal development projects that use synthetic data.
 
-### LLM Evaluation Project Creation
+## Support for Claude in LLM Evaluation Projects
+**What's New:** Claude is now available as a supported provider in LLM Evaluation and LLM Evaluation Comparison projects, joining existing providers (OpenAI, Azure OpenAI, Amazon SageMaker).
 
-1. Navigate to the Projects page and click New.
-2. After filling in the project details and assigning to the project team, proceed to the
-Configuration page.
-3. Under the Text tab on step 1 - Content Type, select LLM Evaluation task and click on
-Next.
-4. On the Select LLM Providers page, you can either:
-   - Click Add button to create an external provider specific to the project (this provider will only be used within this project), or
-   - Click Go to External Service Page to be redirected to Integration page, associate
-the project with one of the supported external LLM providers, and return
-to Project → Configuration → Select LLM Response Provider,
-5. Choose the provider you want to use, save the configuration and click on Next.
-6. Customize labels and choices as needed in the Customize Labels section, and save the configuration.
+![730image](/assets/images/annotation_lab/7.3.0/3.gif)
 
-![720image](/assets/images/annotation_lab/7.2.0/2.gif)
+**Technical Implementation:**
+- Full integration with Anthropic's Claude API
+- Support for both single-model evaluation and comparative analysis workflows
+- Same evaluation metrics and prompt testing capabilities as other providers
 
-For **LLM Evaluation Comparison** projects, follow the same steps, but associate the project with **two** different external providers and select both on the **LLM Response Provider** page.
+**User Benefits:**
+- **AI Researchers:** Can now benchmark Claude's performance against other models using identical test datasets and evaluation criteria
+- **Safety-Critical Applications:** Leverage Claude's instruction-following capabilities and lower hallucination rates for regulated domains
+- **Model Selection Teams:** Access to a broader provider ecosystem enables more informed model selection decisions
 
-### Sample Import Format for LLM Evaluation
-
-To start working with prompts:
-
-1.Go to the **Tasks** page and click **Import**.
-
-2.Upload your prompts in either .json or .zip format. Following is a Sample JSON Format to import prompt:
-
-**Sample JSON for LLM Evaluation Project**
-```json
-{
-  "data": {
-    "prompt": "Give me a diet plan for a diabetic 35 year old with reference links",
-    "response1": "",
-    "title": "DietPlan"
-  }
-}
-```
-**Sample JSON for LLM Evaluation Comparison Project**
-```json
-{
-  "data": {
-    "prompt": "Give me a diet plan for a diabetic 35 year old with reference links",
-    "response1": "",
-    "response2": "",
-    "title": "DietPlan"
-  }
-}
-```
-3.Once the prompts are imported as tasks, click the **Generate Response** button to generate LLM responses.
-
-![720image](/assets/images/annotation_lab/7.2.0/3.gif)
-
-After responses are generated, users can begin evaluating them directly within the task interface.
-
-### Sample Import Format for LLM Evaluation with Response
-Users can also import prompts and LLM-generated responses using a structured JSON format. This feature supports both LLM Evaluation and LLM Evaluation Comparison project types.
-
-Below are example JSON formats:
-
-- **LLM Evaluation:** Includes a prompt and one LLM response mapped to a provider.
-- **LLM Evaluation Comparison:** Supports multiple LLM responses to the same prompt, allowing side-by-side evaluation.
-
-**Sample JSON for LLM Evaluation Project with Response**
-
-```json
-{
-  "data": {
-    "prompt": "Give me a diet plan for a diabetic 35 year old with reference links",
-    "response1": "Prompt Respons1 Here",
-    "llm_details": [
-      { "synthetic_tasks_service_provider_id": 1, "response_key": "response1" }
-    ],
-    "title": "DietPlan"
-  }
-}
-```
-**Sample JSON for LLM Evaluation Comparision Project with Response**
-```json
-{
-  "data": {
-    "prompt": "Give me a diet plan for a diabetic 35 year old with reference links",
-    "response1": "Prompt Respons1 Here",
-    "response2": "Prompt Respons2 Here",
-    "llm_details": [
-      { "synthetic_tasks_service_provider_id": 1, "response_key": "response1" },
-       { "synthetic_tasks_service_provider_id": 2, "response_key": "response2" }
-    ],
-    "title": "DietPlan"
-  }
-}
-```
+![730image](/assets/images/annotation_lab/7.3.0/4.gif)
+<p align="center">Figure 1 - LLM Evaluation</p>
 
 
-### Analytics Dashboard for LLM Evaluation Projects
+![730image](/assets/images/annotation_lab/7.3.0/5.gif)
+<p align="center">Figure 2 - LLM Comparison</p>
 
-A dedicated analytics tab provides quantitative insights for LLM evaluation projects:
 
-- Bar graphs for each evaluation label and choice option
-- Statistical summaries derived from submitted completions
-- Multi-annotator scenarios prioritize submissions from highest-priority users
-- Analytics calculations exclude draft completions (submitted tasks only)
+**Example Use Case:** A financial services team can compare Claude's performance against GPT-4 for regulatory document summarization, using consistent evaluation metrics to determine which model best maintains factual accuracy while avoiding hallucinations.
 
-![720image](/assets/images/annotation_lab/7.2.0/4.gif)
+## Cloud Storage Credential Management
+**What's New:** Cloud storage credentials (AWS S3, Azure Blob Storage) can now be saved at the project level, eliminating repetitive credential entry while maintaining security isolation.
 
-The general workflow for these projects aligns with the existing annotation flow in Generative AI Lab. The key difference lies in the integration with external LLM providers and the ability to generate model responses directly within the application for evaluation.
+**Technical Implementation:**
+- Credentials stored per-project, not globally
+- Automatic credential reuse for subsequent import/export operations within the same project
+- Dedicated UI controls for managing credentials during Import and Export
+- Credentials excluded from project ZIP exports for security compliance
+- Support for credential updates through explicit save actions
 
-These new project types provide teams with a structured approach to assess and compare LLM outputs efficiently, whether for performance tuning, QA validation, or human-in-the-loop benchmarking.
+![730image](/assets/images/annotation_lab/7.3.0/6.gif)
 
-## CPT Lookup Dataset Integration for Annotation Extraction
-NER projects now support CPT codes lookup for standardized entity mapping. Setting up lookup datasets is simple and can be done via the Customize Labels page in the project configuration wizard.
+**User Benefits:**
+- **Data Scientists:** Eliminates manual credential re-entry for frequent data operations, reducing setup time by 60-80% for iterative workflows
+- **Multi-Team Organizations:** Each project team can manage its cloud access without sharing credentials
+- **DevOps Teams:** Reduces credential management overhead while maintaining security boundaries
 
-#### Use Cases:
-- Map clinical text to CPT codes
-- Link entities to normalized terminology systems
-- Enhance downstream processing with standardized metadata
+![730image](/assets/images/annotation_lab/7.3.0/7.gif)
 
-#### Configuration:
-1. Navigate to Customize Labels during project setup
-2. Click on the label you want to enrich
-3. Select your desired Lookup Dataset from the dropdown list
-4. Go to the Task Page to start annotating — lookup information can now be attached to the labeled texts
+**Note:-** Credentials, once saved, will remain associated with the project and will be auto-filled when revisiting the Import or Export pages—even if a different path or new credentials are used temporarily. To update them, users must explicitly choose to save new credentials.*
 
-![720image](/assets/images/annotation_lab/7.2.0/5.png)
+**Note:-** If credentials are saved for a different cloud provider within the same project (e.g., switching from AWS to Azure), the previously stored credentials will be overwritten with the new set.
+
+**Example Use Case:** A medical coding organization can save their S3 credentials once to import daily batches of clinical documents for human-in-the-loop validation, while simultaneously maintaining separate Azure credentials for exporting coded results to their analytics platform—eliminating daily credential re-entry across both cloud providers.
+
+## Project Creation Restricted to Admin Users
+**What's New:** New setting restricts project creation to Admin users only, preventing unauthorized resource consumption and improving governance.
+
+**Technical Implementation:**
+- "Only Admins Can Create Projects" toggle in System Settings → General tab
+- Affects all user roles: Annotator and Supervisor roles lose project creation privileges when enabled
+- Existing projects remain accessible to all assigned users
+
+**User Benefits:**
+- **Resource Managers:** Prevents uncontrolled project proliferation and associated compute costs
+- **Data Governance Teams:** Ensures all projects go through proper approval workflows before resource allocation
+- **System Administrators:** Reduces support overhead from unauthorized or misconfigured projects
+
+**Example Use Case:** A research organization can ensure that only approved team leads (Admin users) can create new annotation projects, preventing individual researchers from accidentally spawning resource-intensive preannotation jobs without budget approval.es.
+
+![730image](/assets/images/annotation_lab/7.3.0/8.png)
 
 ## Improvements
-## Redesigned Annotation Interface for NER Projects
-The annotation widget interface has been streamlined for Text and Visual NER project types. This update focuses on enhancing clarity, reducing visual clutter, and improving overall usability, without altering the core workflow. All previously available data remains intact in the exported JSON, even if not shown in the UI. 
 
-### Enhancements in Name Entity Recognition and Visual NER Labeling Project Types
-- Removed redundant or non-essential data from the annotation view.
-- Grouped the Meta section visually to distinguish it clearly and associate the delete button specifically with metadata entries.
-- Default confidence scores display (1.00) with green highlighting.
-   Hover functionality on labeled text reveals text ID.
+### Modernized Analytics Dashboard
+**What's New:** Redesign of the Analytics page with modern chart types, improved visual clarity, and responsive layouts.
 
-![720image](/assets/images/annotation_lab/7.2.0/6.png)
+**Technical Improvements:**
+- Added scatter plots and line charts for enhanced data analysis
+- Responsive design adapts to various screen sizes
+- Improved color schemes and chart styling
+- Better layout flexibility for comparing multiple metrics
 
-#### Visual NER Specific Updates
-- **X-position** data relocated to detailed section
-- **Recognized text** is now placed at the top of the widget for improved readability.
-- Maintained data integrity in JSON exports despite UI simplification
+![730image](/assets/images/annotation_lab/7.3.0/9.gif)
 
-![720image](/assets/images/annotation_lab/7.2.0/7.png)
+**User Benefits:**
+- **Project Managers:** Faster identification of performance trends and anomalies through clearer visualizations
+- **Quality Assurance Teams:** More intuitive comparison of annotation quality metrics across different annotators
+- **Stakeholders:** Professional-grade reporting visuals suitable for executive presentations
 
-These enhancements contribute to a cleaner, more intuitive user interface, helping users focus on relevant information during annotation without losing access to critical data in exports.
+![730image](/assets/images/annotation_lab/7.3.0/10.gif)
 
-### Optimized Import Processing for Large Datasets
-The background processing architecture now handles large-scale imports without UI disruption through intelligent format detection and dynamic resource allocation. When users upload tasks as a ZIP file or through a cloud source, Generative AI Lab automatically detects the format and uses the import server to handle the data in the background — ensuring smooth and efficient processing, even for large volumes. 
+![730image](/assets/images/annotation_lab/7.3.0/11.png)
 
-For smaller, individual files — whether selected manually or added via drag-and-drop — imports are handled directly without background processing, allowing for quick and immediate task creation.
+### Added Hotkey Option in Visual Builder
+**What's New:** Users can now configure custom hotkeys for annotation actions in the Visual Builder interface.
 
-**Note:** Background import is applied only for ZIP and cloud-based imports.
+**Technical Implementation**  
+- Hotkey configuration available in **Setup → Configuration → Customize Labels**  
+- User-defined shortcuts for frequently used annotation actions  
+- Reserved system keys (`r`, `m`, `u`, `h`) remain protected  
+- Per-label hotkey assignment  
 
-**Automatic Processing Mode Selection:**
-- ZIP files and cloud-based imports: Automatically routed to background processing via dedicated import server
--  Individual files (manual selection or drag-and-drop): Processed directly for immediate task creation
-- The system dynamically determines optimal processing path based on import source and volume
+![730image](/assets/images/annotation_lab/7.3.0/12.gif)
 
-![720image](/assets/images/annotation_lab/7.2.0/8.png)
+**Note:** Certain keys—such as `r`, `m`, `u`, and `h`—are reserved for system-level functions and cannot be reassigned.
 
-**Technical Architecture:**
-- Dedicated import cluster with auto-provisioning: 2 CPUs, 5GB memory (non-configurable)
-- Cluster spins up automatically during ZIP and cloud imports
-- Automatic deallocation upon completion to optimize resource utilization
-- Sequential file processing methodology reduces system load and improves reliability
-- Import status is tracked and visible on the Import page, allowing users to easily monitor
-progress and confirm successful uploads.
+**User Benefits**  
+- **High-Volume Annotators:** Customizable shortcuts can improve annotation speed by 30–40% for repetitive tasks  
+- **Teams with Accessibility Needs:** Allows accommodation of different physical capabilities and preferences  
+- **Multi-Language Projects:** Enables hotkey assignment that matches users' keyboard layouts and language preferences  
 
-![720image](/assets/images/annotation_lab/7.2.0/9.png)
+### Interface Enhancements
+### Improved Efficiency of the Annotation Workflow
 
-**Performance Improvements:**
-- Large dataset imports (5000+ files): Previously 20+ minutes, now less than 10 minutes
-- Elimination of UI freezing during bulk operations
-- Improved system stability under high-volume import loads
+**Connected Words and Relations Tooltips**  
+- Hover tooltips display full text for truncated entity names and relations  
+- Eliminates the need to scroll back to the main annotation area for context  
+- Reduces annotation review time, especially for longer entity phrases
 
-***Note: Import server created during task import is counted as an active server.***
+![730image](/assets/images/annotation_lab/7.3.0/13.png)
 
-### Refined Resource Compatibility Validation
-In previous versions, while validation mechanisms were in place to prevent users from combining incompatible model types, rules, and prompts, the application still allowed access to unsupported resources. This occasionally led to confusion, as the Reuse Resource page displayed models or components not applicable to the selected project type. With version 7.2.0, the project configuration enforces strict compatibility between models, rules, and prompts:
-- Reuse Resource page hidden for unsupported project types
-- Configuration interface displays only compatible resources for selected project type
+**Page-Wise Relation Display**  
+- Relations are now displayed per-page instead of document-wide in multi-page documents  
+- Cleaner interface reduces cognitive load for complex document annotation  
+- Improves accuracy by focusing attention on relevant page-specific relationships  
 
-![720image](/assets/images/annotation_lab/7.2.0/10.gif)
+![730image](/assets/images/annotation_lab/7.3.0/14.gif)
 
-These updates ensure a smoother project setup experience and prevent misconfigurations by guiding users more effectively through supported options.
+**Streamlined Label Display**  
+- Removed redundant label displays in annotation widgets when sorted by label  
+- Cleaner interface reduces visual clutter during annotation review
+
+![730image](/assets/images/annotation_lab/7.3.0/15.png)
+
+### Support for Healthcare NLP 6.0
+**What's New:** Integration with John Snow Labs Spark NLP 6 libraries (Spark NLP 6.0.2, Healthcare NLP 6.0.2, Visual NLP 6.0.0).
+
+**Technical Improvements**  
+- Enhanced OCR accuracy for scanned documents  
+- Improved image-to-text extraction capabilities  
+- Access to the latest medical and visual NLP models via Online Models Hub  
+- Better support for privacy-preserving NLP workflows  
+
+**User Benefits**  
+- **Healthcare Teams:** Higher accuracy in processing medical documents and clinical notes  
+- **Document Processing Teams:** Improved extraction quality from scanned forms, contracts, and legacy documents  
+- **Compliance Teams:** Enhanced privacy-preserving capabilities for sensitive document processing  
 
 ### Bug Fixes
-**Sample Task Import **Resolution****
-- **Issue:** Sample task import failures in HTML projects with NER labels
-- **Resolution**: Sample tasks now import successfully into HTML projects containing NER labels
+- **No UI error when Project import fails due to missing or invalid application license**  
+  - *Issue:* No error message was shown when project import failed due to missing or invalid license.  
+  - *Resolution:* An error message now appears in a toast notification if the license is missing or invalid during project import.
 
-**PDF Annotation Stability**
-- **Issue:** PDF page refreshes when adding lookup codes in Side-by-Side projects
-- **Resolution**: PDF viewport maintains position during lookup data entry
+- **Rules tab missing in Re-use Resource page for de-identification Project**  
+  - *Issue:* Rules tab was not visible in Re-use Resource page for de-identification projects.  
+  - *Resolution:* Rules tab now appears as expected, and rules can be used to identify PII/PHI in de-identification projects.
 
-**Lang Test Model Versioning**
-- **Issue:** Test execution errors for v1-generated test cases after model retraining to v2
-- **Resolution**: Previously generated test cases execute successfully across model versions
+- **External Service Provider can be created without the required secret key**  
+  - *Issue:* External service providers could be created without providing a secret key.  
+  - *Resolution:* Secret key is now mandatory when creating external service providers.
 
-**Relation Tag Display Logic**
-- **Issue:** Relations with "O" tag inappropriately displayed in UI
-- **Resolution**: "O" tagged relations properly excluded from UI display
+- **Users are seeing "Generate Response" even when no service providers are configured in the project**  
+  - *Issue:* "Generate Response" button was shown even when no service providers were configured.  
+  - *Resolution:* A dialog now guides users to the LLM Configuration page if no provider is set.
 
-**License Banner Event Handling**
-- **Issue:** license_banner_dismiss event triggered on page refresh
-- **Resolution**: Event triggers only on explicit user dismissal
+- **Fix placement of radio button after text title**  
+  - *Issue:* Radio buttons were misaligned after text titles in LLM Evaluation and Comparison projects.  
+  - *Resolution:* Radio buttons are now properly aligned with their respective text titles.
 
-**Task Selection Interface Stability**
-- **Issue:** Assignee button resizing and task-per-page selection failures when all tasks selected
-- **Resolution**: UI elements maintain consistent sizing during bulk operations
+- **Users cannot assign groups to the project**  
+  - *Issue:* Users were unable to assign groups to projects.  
+  - *Resolution:* Users can now create, update, delete, and assign groups to projects without issues.
 
-**Demo Project Access Control**
-- **Issue:** Admin users automatically added to Demo De-identification projects
-- **Resolution**: Admin users no longer added by default to demo projects
+- **User is not able to edit LLM prompt**  
+  - *Issue:* External LLM prompts could not be edited.  
+  - *Resolution:* External LLM prompts can now be edited and updated seamlessly.
 
-**Annotator Access Permissions**
-- **Issue:** "User doesn't have permission" errors for assigned annotators in de-identification projects
-- **Resolution**: Annotators with task assignments can access task pages without permission errors
+- **Validation is successful even with an invalid Service Provider**  
+  - *Issue:* Validation passed even with invalid external service provider details.  
+  - *Resolution:* Endpoint URLs are now properly validated on the frontend during validation.
+
+- **Text Over Flow in Result Section for External prompt**  
+  - *Issue:* Large external prompt texts overflowed in the result section.  
+  - *Resolution:* Scroll functionality has been added to handle large prompt results without overflow.
+
+- **Unable to Click "No" Button on Configuration Navigation Confirmation Popup**  
+  - *Issue:* "No" button on the configuration navigation confirmation popup was unresponsive.  
+  - *Resolution:* The confirmation dialog now works correctly, and the "No" button is fully functional.
+
+- **Triple Dot Menu Not Accessible for Users Listed After Search**  
+  - *Issue:* The triple dot menu (⋮) was inaccessible for users listed after a search.  
+  - *Resolution:* The menu is now accessible, allowing edit and delete actions as expected.
+
+- **Error while changing user roles due to certain characters in a task**  
+  - *Issue:* Errors occurred when changing user roles if tasks contained certain unsupported characters (e.g. \u0000, \u007f, \u009f, \u0001).  
+  - *Resolution:* These characters are now handled properly, and user roles can be changed without issues.
 
 
 ## Versions
@@ -276,9 +240,10 @@ These updates ensure a smoother project setup experience and prevent misconfigur
 </div>
 
 <ul class="pagination owl-carousel pagination_big">
+    <li class="active"><a href="annotation_labs_releases/release_notes_7_3_0">7.3.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_7_2_2">7.2.2</a></li>
     <li><a href="annotation_labs_releases/release_notes_7_2_1">7.2.1</a></li>
-    <li class="active"><a href="annotation_labs_releases/release_notes_7_2_0">7.2.0</a></li>
+    <li><a href="annotation_labs_releases/release_notes_7_2_0">7.2.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_7_1_0">7.1.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_7_0_1">7.0.1</a></li>
     <li><a href="annotation_labs_releases/release_notes_7_0_0">7.0.0</a></li>

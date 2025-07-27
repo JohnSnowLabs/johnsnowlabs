@@ -207,6 +207,8 @@ annotation-lab:
             url: /docs/en/alab/resolvers 
           - title: De-Identification
             url: /docs/en/alab/de_identify
+          - title: LLM Evaluation & Comparision
+            url: /docs/en/alab/llm_eval
           - title: Audit Trail
             url: /docs/en/alab/audit_trail
           - title: Productivity
@@ -243,6 +245,8 @@ annotation-lab:
             url: /docs/en/alab/infrastructure
           - title: Cluster Management
             url: /docs/en/alab/cluster_management
+          - title: HIPAA Compliance
+            url: /docs/en/alab/hipaa_compliance
       - title: NLP Libraries Integration
         url: /docs/en/alab/healthcare
       - title: Spark Library Version
