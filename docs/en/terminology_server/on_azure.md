@@ -16,7 +16,7 @@ sidebar:
 One of the most straight forward method to start using Terminology Server is using the Azure Marketplace. Using Azure Marketplace, the Terminology Server will be deployed on your Azure Virtual machine with just a few clicks. There is a Software Price and Azure Infrastructure price associated this with this installation method (Details are in the product page in Azure Marketplace)
 
 
-Visit the [product page on Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.medical_terminology_server-preview?tab=Overview&flightCodes=3baee57c-6780-495f-892a-b4a6bbb9f0ce) and follow the instructions to subscribe and deploy
+Visit the [product page on Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.medical_terminology_server?tab=Overview) and follow the instructions to subscribe and deploy
 
 **Steps to get started:**
 - Subscribe to the product on the Azure Marketplace by using the `Get It Now` button.
