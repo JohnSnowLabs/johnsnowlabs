@@ -6,7 +6,7 @@ seotitle: Generative AI Lab | John Snow Labs
 title: Import Documents
 permalink: /docs/en/alab/import
 key: docs-training
-modify_date: "2020-11-18"
+modify_date: "2025-07-28"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
@@ -58,7 +58,7 @@ When importing tasks that already contain annotations (e.g. exported from anothe
 
 The support for pagination offered by earlier versions of the Generative AI Lab involved the use of the `<pagebreak>` tag. A document pre-processing step was necessary for adding/changing the page breaks and those involved extra effort from the part of the users.
 
-Generative AI Lab 2.8.0 introduces a paradigm change for pagination. Going forward, pagination is dynamic and can be configured according to the user’s needs and preferences from the Labeling page. Annotators or reviewers can now choose the number of words to include on a single page from a predefined list of values or can add the desired counts.
+Generative AI Lab 2.8 and above introduces a paradigm change for pagination. Pagination is dynamic and can be configured according to the user’s needs and preferences from the Labeling page. Annotators or reviewers can now choose the number of words to include on a single page from a predefined list of values or can add the desired counts.
 
 ![Dynamic Task Pagination](/assets/images/annotation_lab/4.2.0/pagination.gif "lit_shadow w_80")
 
@@ -67,46 +67,48 @@ A new settings option has been added to prevent splitting a sentence into two di
 ![Dynamic Task Pagination](/assets/images/annotation_lab/2.8.0/158552636-1b9f8814-5e05-4904-8ab4-401ea476d32e.png "lit_shadow w_60")
 
 ## Import from Cloud Storage
-Generative AI Lab 4.3.0 offers support for importing tasks/documents stored on cloud. In the `Import Page`, a new section was added which allows users to define S3 connection details (credentials, access keys, and S3 bucket path). All documents present in the specified path, are imported as tasks in the current Generative AI Lab project. With Version 5.9 of Generative AI Lab allows you to effortlessly import projects using S3 and Azure Blob.
+Generative AI Lab supports importing tasks and entire projects directly from cloud storage, including AWS S3 and Azure Blob Storage.
 
 
-Generative AI Lab 5.8 introduces a pivotal enhancement that expands task management capabilities by seamlessly integrating with Azure Blob storage, complementing the existing support for AWS S3. This integration empowers users to streamline task import and export processes, fostering greater efficiency and flexibility in their data handling workflows within the Generative AI Lab platform.
+### Task Import from AWS S3 and Azure Blob
 
-### Effortless Task Import from Azure Blob Storage:
+You can import individual documents (e.g., PDFs, images, videos, audio, plain text) as tasks into your project using the Import Page:
 
-Importing tasks from Azure storage containers is now as straightforward and intuitive as importing from AWS S3. Follow these simple steps to effortlessly integrate your Azure data into Generative AI Lab projects:
-- **Prepare the Azure Source:** Ensure the Azure storage container from which you intend to import tasks is readily accessible and the target files are available. Generative AI Lab can currently accommodate various document types such as text, PDF, images, videos, and sound files.
-- **In your Generative AI Lab project:** Navigate to the Task Import page of the project where you wish to import tasks.
-- **Select Azure Blob Storage:** Choose the "Azure BLOB" import option by clicking on the corresponding radio button on the Import page.
-- **Enter Azure Credentials:** Provide the Azure connection details: Azure Container Name, Azure Account Name, and Azure Account Secret Key.
-- **Initiate Import Process:**  Click the "Import" button to seamlessly transfer compatible documents from the specified Azure container into the current Generative AI Lab project.
+How to Import Tasks from Cloud:
+  - Go to the Import Page in your target project.
+  - Select your cloud provider:
+  - Choose AWS S3 or Azure Blob as the import source.
+  - Enter cloud connection details:
+   - For AWS S3: Bucket name, path, Access Key, Secret Key (and Session Token for MFA).
+   - For Azure Blob: Container name, Account name, and Account Secret Key.
+  - Click “Import” to fetch all files from the specified path and load them as tasks into your project.
+
+**Note:-** All compatible documents in the specified cloud path will be automatically converted into tasks in the current project.
 
 ![Effortless Task Import from Azure Blob Storage](/assets/images/annotation_lab/5.8.0/2.gif)
 
+
+
 ### Import Project from S3 and Blob
 
-Generative AI Lab 4.3.0 offers support for importing tasks/documents stored on cloud. In the `Import Page`, a new section was added which allows users to define S3 connection details (credentials, access keys, and S3 bucket path). All documents present in the specified path, are imported as tasks in the current Generative AI Lab project. With Version 5.9 of Generative AI Lab allows you to effortlessly import projects using S3 and Azure Blob.
+Starting from version 5.9, you can import a full project archive (including tasks, labels, configurations) stored as a .zip file in cloud storage.
 
-**Steps to import a project from S3:**
-- Navigate to "Import Project"
-- Choose "AWS S3"
-- Input the path to the S3 file as s3://bucket/folder/file.zip
-- Provide S3 Access Key, S3 Secret Key, and Session Token (Required for MFA Accounts)
-- Click "Import"
-  ![S3_import](/assets/images/annotation_lab/5.9.0/15.gif)
+How to Import a Project from AWS S3:
+  - Go to the Import Project section.
+  - Select AWS S3.
+  - Provide:
+   - File path (e.g., s3://bucket/folder/project.zip)
+   - Access Key, Secret Key, and Session Token (if required)
+  - Click “Import”.
 
+![S3_import](/assets/images/annotation_lab/5.9.0/15.gif)
 
-**Steps to import a project from Azure Bbob:**
-- Go to "Import Project"
-- Select "Azure Blob"
-- Enter the path to the Azure Blob file as Container/file.zip
-- Input Azure Account Name and Azure Account Secret Key
-- Click "Import"
+The same approach should be taken to import a project from Azure Blob. 
  
   ![Import_azure](/assets/images/annotation_lab/5.9.0/16.gif)
 
-## Cloud Storage Credential Management
-**What's New:** Cloud storage credentials (AWS S3, Azure Blob Storage) can now be saved at the project level, eliminating repetitive credential entry while maintaining security isolation.
+### Cloud Storage Credential Management
+Cloud storage credentials (AWS S3, Azure Blob Storage) can be saved at the project level, eliminating repetitive credential entry while maintaining security isolation.
 
 **Technical Implementation:**
 - Credentials stored per-project, not globally
@@ -115,59 +117,8 @@ Generative AI Lab 4.3.0 offers support for importing tasks/documents stored on c
 - Credentials excluded from project ZIP exports for security compliance
 - Support for credential updates through explicit save actions
 
-![730image](/assets/images/annotation_lab/7.3.0/6.gif)
-
-**User Benefits:**
-- **Data Scientists:** Eliminates manual credential re-entry for frequent data operations, reducing setup time by 60-80% for iterative workflows
-- **Multi-Team Organizations:** Each project team can manage its cloud access without sharing credentials
-- **DevOps Teams:** Reduces credential management overhead while maintaining security boundaries
-
 ![730image](/assets/images/annotation_lab/7.3.0/7.gif)
-
-**Note:-** Credentials, once saved, will remain associated with the project and will be auto-filled when revisiting the Import or Export pages—even if a different path or new credentials are used temporarily. To update them, users must explicitly choose to save new credentials.*
-
-**Note:-** If credentials are saved for a different cloud provider within the same project (e.g., switching from AWS to Azure), the previously stored credentials will be overwritten with the new set.
-
-**Example Use Case:** A medical coding organization can save their S3 credentials once to import daily batches of clinical documents for human-in-the-loop validation, while simultaneously maintaining separate Azure credentials for exporting coded results to their analytics platform—eliminating daily credential re-entry across both cloud providers.
-
-**Technical Implementation:**
-- Credentials stored per-project, not globally
-- Automatic credential reuse for subsequent import/export operations within the same project
-- Dedicated UI controls for managing credentials during Import and Export
-- Credentials excluded from project ZIP exports for security compliance
-- Support for credential updates through explicit save actions
-
-![730image](/assets/images/annotation_lab/7.3.0/6.gif)
-
-**User Benefits:**
-- **Data Scientists:** Eliminates manual credential re-entry for frequent data operations, reducing setup time by 60-80% for iterative workflows
-- **Multi-Team Organizations:** Each project team can manage its cloud access without sharing credentials
-- **DevOps Teams:** Reduces credential management overhead while maintaining security boundaries
-
-![730image](/assets/images/annotation_lab/7.3.0/7.gif)
-
-**Note:-** Credentials, once saved, will remain associated with the project and will be auto-filled when revisiting the Import or Export pages—even if a different path or new credentials are used temporarily. To update them, users must explicitly choose to save new credentials.*
-
-**Note:-** If credentials are saved for a different cloud provider within the same project (e.g., switching from AWS to Azure), the previously stored credentials will be overwritten with the new set.
-
-**Example Use Case:** A medical coding organization can save their S3 credentials once to import daily batches of clinical documents for human-in-the-loop validation, while simultaneously maintaining separate Azure credentials for exporting coded results to their analytics platform—eliminating daily credential re-entry across both cloud providers.## Cloud Storage Credential Management
-**What's New:** Cloud storage credentials (AWS S3, Azure Blob Storage) can now be saved at the project level, eliminating repetitive credential entry while maintaining security isolation.
-
-**Technical Implementation:**
-- Credentials stored per-project, not globally
-- Automatic credential reuse for subsequent import/export operations within the same project
-- Dedicated UI controls for managing credentials during Import and Export
-- Credentials excluded from project ZIP exports for security compliance
-- Support for credential updates through explicit save actions
-
-![730image](/assets/images/annotation_lab/7.3.0/6.gif)
-
-**User Benefits:**
-- **Data Scientists:** Eliminates manual credential re-entry for frequent data operations, reducing setup time by 60-80% for iterative workflows
-- **Multi-Team Organizations:** Each project team can manage its cloud access without sharing credentials
-- **DevOps Teams:** Reduces credential management overhead while maintaining security boundaries
-
-![730image](/assets/images/annotation_lab/7.3.0/7.gif)
+*Task Import from AWS S3 Storage*
 
 **Note:-** Credentials, once saved, will remain associated with the project and will be auto-filled when revisiting the Import or Export pages—even if a different path or new credentials are used temporarily. To update them, users must explicitly choose to save new credentials.*
 
@@ -184,7 +135,7 @@ For smaller, individual files — whether selected manually or added via drag-an
 
 **Automatic Processing Mode Selection:**
 - ZIP files and cloud-based imports: Automatically routed to background processing via dedicated import server
--  Individual files (manual selection or drag-and-drop): Processed directly for immediate task creation
+- Individual files (manual selection or drag-and-drop): Processed directly for immediate task creation
 - The system dynamically determines optimal processing path based on import source and volume
 
 ![720image](/assets/images/annotation_lab/7.2.0/8.png)
@@ -207,10 +158,10 @@ progress and confirm successful uploads.
 ***Note: Import server created during task import is counted as an active server.***
 
 ## Disabled Local Imports
-What's New: Administrators can now disable local file imports system-wide, complementing existing local export restrictions to create complete data flow control.
+Administrators can disable local file imports system-wide, complementing existing local export restrictions to create complete data flow control.
 
 **Technical Implementation:**
-- New "Disable Local Import" setting in System Settings → General tab
+- Control via the "Disable Local Import" setting in System Settings → General tab
 - Project-level exceptions are available through the dedicated Exceptions widget
 - When this option is enabled, only cloud storage imports (Amazon S3, Azure Blob Storage) are permitted.
 - Setting applies globally across all projects unless explicitly exempted
@@ -223,5 +174,3 @@ What's New: Administrators can now disable local file imports system-wide, compl
 - **Compliance Officers:** Provides granular control over data ingress while maintaining operational flexibility for approved projects.
 
 ![730image](/assets/images/annotation_lab/7.3.0/2.png)
-
-**Example Use Case:** A healthcare system can disable local imports for all PHI processing projects while maintaining exceptions for internal development projects that use synthetic data.

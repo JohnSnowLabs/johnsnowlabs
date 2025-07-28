@@ -6,7 +6,7 @@ seotitle: Generative AI Lab | John Snow Labs
 title: Tasks
 permalink: /docs/en/alab/tasks
 key: docs-training
-modify_date: "2023-06-09"
+modify_date: "2025-07-28"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
@@ -15,9 +15,7 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-The **Tasks** screen shows a list of all documents that have been imported into the current project.
-
-Under each task you can see meta data about the task: the time of import, the user who imported the task and the annotators and reviewers assigned to the task.
+The **Tasks** screen displays a list of all documents imported into the current project. Each task includes metadata such as import time, importing user, and the annotators and reviewers assignedk.
 
 ![Task Assignment](/assets/images/annotation_lab/4.2.0/tasks.png "lit_shadow")
 
@@ -25,15 +23,19 @@ Under each task you can see meta data about the task: the time of import, the us
 
 ## Task Assignment
 
-Project Owners/Managers can assign tasks to annotator(s) and reviewer(s) in order to better plan/distribute project work. Annotators and Reviewers can only view tasks that are assigned to them which means there is no chance of accidental work overlap.
+Project Owners and Managers can assign tasks to annotators and reviewers to manage workloads effectively. Annotators and reviewers only see the tasks assigned to them, preventing accidental overlap.
 
-For assigning a task to an annotator, from the task page select one or more tasks and from the `Assign` dropdown choose an annotator.
+To assign a task:
+
+1. Navigate to the task page.
+2. Select one or more tasks.
+3. Use the Assign dropdown to choose the annotator(s).
 
 ![Task Assignment](/assets/images/annotation_lab/4.1.0/task_assignment.gif "lit_shadow")
 
 You can only assign a task to annotators that have already been added to the project team. For adding an annotator to the project team, select your project and navigate to the `Setup > Team` menu item. On the `Add Team Member` page, search for the user you want to add, select the role you want to assign to him/her and click on `Add To Team` button.
 
-Project Owners can also be explicitly assigned as annotators and/or reviewers for tasks. It is useful when working in a small team and when the Project Owners are also involved in the annotation process. A new option `Only Assigned` checkbox is now available on the labeling page that allows Project Owners to filter the tasks explicitly assigned to them when clicking the `Next` button.
+Project Owners can also be explicitly assigned as annotators and/or reviewers for tasks. It is useful when working in a small team and when the Project Owners are also involved in the annotation process. A filter option `Only Assigned` checkbox is available on the labeling page that allows Project Owners to filter the tasks explicitly assigned to them when clicking the `Next` button.
 
 ![Task Assignment](https://user-images.githubusercontent.com/17021686/204805373-4e5a5a7b-a520-4e9f-ad08-452bec165ef8.gif "lit_shadow")
 
@@ -41,9 +43,9 @@ Project Owners can also be explicitly assigned as annotators and/or reviewers fo
 
 </div><div class="h3-box" markdown="1">
 
-## Task Status
+## Task Statuses
 
-At high level, each task can have one of the following statuses:
+Each task progresses through several statuses based on the work completed:
 
 - **Incomplete**, when none of the assigned annotators has started working on the task.
 - **In Progress**, when at least one of the assigned annotators has submitted at least one completion for this task.
@@ -94,15 +96,10 @@ When multiple Annotators are assigned to a task, the reviewer will see the task 
 
 </div><div class="h3-box" markdown="1">
 
-### Annotators Can View Completions Submitted by Reviewers
-In version 6.4, of the Generative AI Lab, a new feature has been added that allows annotators to view the completion submitted by the reviewer. This enhancement fosters better collaboration and quality control in the annotation process. Previously, reviewers could only provide feedback on annotations, but now they can clone annotator submissions, make corrections, and add comments directly within the text using meta information. The updated submissions are then visible to the original annotator, providing clear insights into the reviewer's expectations and suggestions.
+### Reviewer Feedback Visibility
+Annotators can now view corrections and comments added by reviewers, enhancing transparency and collaboration.
 
-**How to Enable**:
-- The project manager must enable the option **“Allow annotators to view completions from reviewers”** in the project settings.
-
-![GenaiImage](/assets/images/annotation_lab/6.4.0/6.png)>
-
-#### Workflow:
+#### How it works:
 1.	**Reviewer Clones Submission:** Reviewers can clone the annotator's submission and make necessary corrections or add comments directly in the text using the meta option for the annotated chunks.
 2.	**Submit Reviewed Completion:** The reviewer submits the cloned completion with corrections and comments.
 3.	**Annotator Reviews Feedback:** The annotator whose submission was reviewed can view the reviewer's cloned completion and see the comments and corrections made.
@@ -110,16 +107,20 @@ In version 6.4, of the Generative AI Lab, a new feature has been added that allo
    
 ![GenaiImage](/assets/images/annotation_lab/6.4.0/7.gif)
 
+**To Enable**:
+- The project manager must enable the option **“Allow annotators to view completions from reviewers”** in the project settings.
+
+![GenaiImage](/assets/images/annotation_lab/6.4.0/6.png)>
+
 **Benefits**:
 - **Enhanced Feedback**: Reviewers can now make precise corrections and add detailed comments on individual labels, helping annotators understand exactly what changes are needed.
 - **Improved Collaboration**: Annotators can better align their work with the reviewer’s expectations by viewing the reviewer's cloned submission.
 - **Quality Control**: This feature helps in maintaining a higher standard of annotations by ensuring that feedback is clear and actionable.
 
-This feature significantly enhances the annotation process, making it more transparent and collaborative, and ensuring that annotators have a clear understanding of the reviewer's feedback.
 
 ## Task Filters
 
-As normally annotation projects involve a large number of tasks, the Task page includes filtering and sorting options which will help the user identify the tasks he/she needs faster.
+As normally annotation projects involve a large number of tasks, the Task page includes filtering and sorting options which will help users identify the tasks he/she needs.
 Tasks can be sorted by time of import ascending or descending.
 
 ![Task Assignment](/assets/images/annotation_lab/4.1.0/task_sort.png "lit_shadow")
@@ -136,7 +137,7 @@ The number of tasks visible on the screeen is customizable by selecting the pred
 
 ![Task Assignment](/assets/images/annotation_lab/4.1.0/task_filters.gif "lit_shadow")
 
-From version 4.10 onwards, filtering tasks has been updated to allow users to select multiple tags from the Tags dropdown. This allows users to filter tasks based on multiple tags. Additionally, the same improved filter behaviour can be found in project page too. This provides users with increased flexibility and efficiency in filtering tasks based on multiple tags, thereby improving task and project management and facilitating a more streamlined workflow.
+Multiple tag filters can be selected to enhance filtering precision.
 
 ![filter](/assets/images/annotation_lab/4.10.0/7.gif)
 
@@ -184,21 +185,21 @@ Comments can be added to each task by any team member. This is done by clicking 
 
 ![Task Assignment](/assets/images/annotation_lab/4.1.0/task_comment.png "lit_shadow")
 
-## Smarter Task Distribution: Bulk Assignment at Scale
-Generative AI Lab now offers bulk task assignment capabilities, allowing up to 200 unassigned tasks to be allocated simultaneously to selected annotators. 
+## Bulk Task Assignment
+Bulk assignment allows up to 200 unassigned tasks to be distributed at once.
 
-### Key Capabilities
+**Key Capabilities**
 - Sequential or Random Assignment: Tasks can be distributed in order or randomly from the unassigned pool. 
 - Efficient Scaling: Reduces manual effort in large-scale projects, optimizing resource utilization. 
 
 **User Benefit:** Accelerates task distribution, improving operational efficiency and annotation throughput. 
 
-### Bulk Assignment Process:
+**Bulk Assignment Process**
 - Click on the "Assign Task" button.
 - Select the annotators to whom you wish to assign tasks.
 - Specify the number of tasks to assign to each annotator.
 - Define any required criteria for task selection.
-- Click on "Assign" to complete the process.​
+- Click on "Assign" to complete the process.
 
 ![710image](/assets/images/annotation_lab/7.1.0/2.gif)
 

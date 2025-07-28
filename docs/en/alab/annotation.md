@@ -6,7 +6,7 @@ seotitle: Generative AI Lab | John Snow Labs
 title: Manual Annotation
 permalink: /docs/en/alab/annotation
 key: docs-training
-modify_date: "2022-12-13"
+modify_date: "2025-07-28"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
@@ -15,17 +15,19 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-The Generative AI Lab keeps a human expert as productive as possible. It minimizes the number of mouse clicks, keystrokes, and eye movements in the main workflow. The continuous improvement in the UI and the UX is from iterative feedback from the users.
+Generative AI Lab is optimized to keep human experts productive, minimizing manual effort by streamlining the annotation interface. Features such as keyboard shortcuts, task auto-navigation, and visual clarity are all designed to support efficient annotation.
 
 Generative AI Lab supports keyboard shortcuts for all types of annotations. It enables having one hand on the keyboard, one hand on the mouse, and both eyes on the screen at all times. One-click completion and automatic switching to the next task keep experts in the loop.
 
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/annotation_main.png" style="width:100%;"/>
 
-On the header of the Labeling area, you can find the list of labels defined for the project. In the center, it displays the content of the task. On the right, there are several widgets categorized into different groups.
-
-- Annotations
-- Versions
-- Progress
+## Interface Overview
+- Top Panel: Displays all project-defined labels.
+- Center Panel: Shows the content of the current task.
+- Right Panel Widgets:
+  - Annotations
+  - Versions
+  - Progress
 
 </div><div class="h3-box" markdown="1">
 
@@ -61,7 +63,7 @@ To reuse a prediction to bootstrap the annotation process, users can copy it to 
 
 ### Confidence
 
-From version <bl>3.3.0</bl>, running pre-annotations on a text project provides one extra piece of information for the automatic annotations - the confidence score. This score shows the confidence the model has for each of the labeled chunks it predicts. It is calculated based on the benchmarking information of the model used to pre-annotate and the score of each prediction. The confidence score is available when working on <es>Named Entity Recognition</es>, <es>Relation Extraction</es>, <es>Assertion</es>, and <es>Classification</es> projects and is also generated when using [Rules](https://nlp.johnsnowlabs.com/docs/en/alab/rules).
+Each predicted annotation includes a confidence score, helping users assess reliability. This score shows the confidence the model has for each of the labeled chunks it predicts. It is calculated based on the benchmarking information of the model used to pre-annotate and the score of each prediction. The confidence score is available when working on <es>Named Entity Recognition</es>, <es>Relation Extraction</es>, <es>Assertion</es>, and <es>Classification</es> projects and is also generated when using [Rules](https://nlp.johnsnowlabs.com/docs/en/alab/rules).
 
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/confidence.png" style="width:100%;"/>
 
@@ -72,9 +74,7 @@ On the Labeling page, when selecting the <es>Prediction</es> widget, users can s
 ### Enable Bulk Hiding of Labels
 Users can hide multiple labels at once, significantly improving efficiency when working with large datasets.
 
-Previously, labels had to be hidden individually, making the process tedious and time-consuming. With this update, an eye icon has been added to the Annotations widget, enabling users to hide all labels within selected groups with a single click. To use this feature, users must switch from Region View to Labels View in the annotation widget.
-
-With this improvement, users can now manage labels more effectively, reducing manual effort and enhancing focus during the annotation process.
+The eye icon on the Annotations widget, enables users to hide all labels within selected groups with a single click. To use this feature, users must switch from Region View to Labels View in the annotation widget.
 
 ![700image](/assets/images/annotation_lab/7.0.0/10.gif)
 
@@ -88,7 +88,7 @@ The Annotations widget has two sections.
 
 </div><div class="h3-box" markdown="1">
 
-### Progress
+### Progress Tracking
 
 Annotator/Reviewer can see their overall work progress from within the labeling page. The status is calculated for their assigned work.
 
@@ -103,8 +103,7 @@ Annotator/Reviewer can see their overall work progress from within the labeling 
 </div><div class="h3-box" markdown="1">
 
 ### Enhanced Comparison View for Completion Differences
-In version 6.4, a new feature has been introduced in Generative AI Lab that allows annotators and project managers to easily compare the differences between two completions. This enhancement significantly simplifies the process of identifying discrepancies between annotations.
-Previously, differences between completions had to be manually validated, which could be a time-consuming and tedious process. With the new comparison feature, differences are automatically highlighted, making it easy for users to spot discrepancies in annotations.
+Annotators and managers can easily compare two completions side-by-side. This significantly simplifies the process of identifying differences between versions as they are automatically highlighted.
 
 **How to Use**:
 - **Step 1**: Click on the **Comparison View** button.
@@ -163,7 +162,7 @@ You can add a label to the relation, change its direction or delete it using the
 
 #### Cross page Annotation
 
-From version <bl>2.8.0</bl>, Generative AI Lab supports cross-page NER annotation for <es>Text</es> projects. It means that Annotators can annotate a chunk starting at the bottom of one page and finishing on the next page. This feature is also available for <es>Relations</es>. Previously, relations were created between chunks located on the same page. But now, relations can be created among tokens located on different pages. The way to do this is to first [change the pagination settings](/docs/en/alab/import#dynamic-task-pagination) to include the tokens to be linked on the same page, then create the relation annotation between the tokens and finally go back to the original pagination settings. The annotation is presented through connectors after updating the pagination.
+Generative AI Lab supports cross-page NER annotation for <es>Text</es> projects. It means that Annotators can annotate a chunk starting at the bottom of one page and finishing on the next page. This feature is also available for <es>Relations</es>. The way to do this is to first [change the pagination settings](/docs/en/alab/import#dynamic-task-pagination) to include the tokens to be linked on the same page, then create the relation annotation between the tokens and finally go back to the original pagination settings. The annotation is presented through connectors after updating the pagination.
 
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/crosspage_annotation-min.gif" style="width:100%;"/>
 
@@ -193,15 +192,15 @@ The entire process is illustrated below:
 ## Redesigned Annotation Interface for NER Projects
 The annotation widget interface has been streamlined for Text and Visual NER project types. This update focuses on enhancing clarity, reducing visual clutter, and improving overall usability, without altering the core workflow. All previously available data remains intact in the exported JSON, even if not shown in the UI. 
 
-### Enhancements in Name Entity Recognition and Visual NER Labeling Project Types
+**Cleaner interface layout**
 - Removed redundant or non-essential data from the annotation view.
 - Grouped the Meta section visually to distinguish it clearly and associate the delete button specifically with metadata entries.
 - Default confidence scores display (1.00) with green highlighting.
-   Hover functionality on labeled text reveals text ID.
+- Hover functionality on labeled text reveals text ID.
 
 ![720image](/assets/images/annotation_lab/7.2.0/6.png)
 
-### Support for multi-page PDF documents
+## Support for multi-page PDF documents
 
 When a valid Visual NLP license is available, Generative AI Lab offers support for multi-page PDF annotation. We can import, annotate, and export multi-page PDF files easily.
 
