@@ -38,11 +38,11 @@ We are excited to announce significant updates to our Medical LLM lineup with en
 | **Model Name**             | **Anatomy** | **Clinical Knowledge** | **College Biology** | **College Medicine** | **Medical Genetics** | **Professional Medicine** | **PubMedQA**  |
 |---------------------------|--------------|------------------|-------------------|-------------|----------------|------------------------|----|
 | Medical-LLM-8B  (Previous version)           | 65.19 | 73.21 | 86.81 | 64.74 | 77 | 72.43 | 75.6 |
-| Medical-LLM-8B (Current version)            | 74.07 | 79.62 | 86.81 | 74.57 | 82 | 79.78 | 76.6 |
+| Medical-LLM-8B (Latest version)            | 74.07 | 79.62 | 86.81 | 74.57 | 82 | 79.78 | 76.6 |
 | Medical-LLM-Small (Previous version)         | 77.04 | 83.02 | 90.28 | 76.30 | 90 | 85.29 | 79.0 |
-| Medical-LLM-Small (Current version)         | 83.74 | 83.40 | 93.40 | 78.03 | 84 | 85.66 | 77.4 |
+| Medical-LLM-Small (Latest version)         | 83.74 | 83.40 | 93.40 | 78.03 | 84 | 85.66 | 77.4 |
 | Medical-Reasoning-LLM-32B (Previous version) | 78.52 | 85.66 | 93.75 | 80.35 | 91 | 87.5 | 75.8 |
-| Medical-Reasoning-LLM-32 (Current version) | 78. 52 | 85.66 | 94.44 | 83.24 | 92 | 88.6 | 77.8 |
+| Medical-Reasoning-LLM-32 (Latest version) | 78. 52 | 85.66 | 94.44 | 83.24 | 92 | 88.6 | 77.8 |
 
 
 ## 05-19-2025
