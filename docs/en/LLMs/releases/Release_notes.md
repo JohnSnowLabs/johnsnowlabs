@@ -33,9 +33,9 @@ We're excited to announce that updated versions of our Medical-LLM-8B, Medical-L
 | Medical-LLM-Small         | 14B         | ~59 GB           | 40K               | 28 GB       | 31 GB          | 1, 2, 4, 8            |
 | Medical-Reasoning-LLM-32B | 32B         | ~111 GB          | 40K               | 61 GB       | 50 GB          | 2, 4, 8               |
 
-#### Benchmark Accuracy Comparison wiht previous versions
 
-**Detailed Accuracy Improvements Across Models**
+
+#### Benchmark Accuracy Comparison wiht previous versions
 
 * Medical-LLM-8B shows a notable boost in Anatomy (8.88 pts), Clinical Knowledge (6.41 pts), and College Medicine (9.83 pts).
 * Medical-LLM-Small delivers higher precision in Anatomy (6.7 pts), College Biology (3.12 pts), while maintaining top-tier performance in compact deployments
