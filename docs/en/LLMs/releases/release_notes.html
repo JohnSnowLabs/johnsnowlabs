@@ -632,14 +632,14 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <h3 id="model-updates">Model Updates</h3>
 
-  <p>We are excited to announce significant updates to our Medical LLM lineup with enhanced models and a new addition.</p>
+  <p>We’re excited to announce that updated versions of our Medical-LLM-8B, Medical-LLM-Small, and Medical-Reasoning-LLM-32B models are now available, delivering significant accuracy improvements across key medical benchmarks.</p>
 
   <ul>
     <li>
-      <p><strong>Medical-LLM-8B</strong>: A new 8B parameter model that delivers enhanced clinical reasoning capabilities while maintaining deployment efficiency. This model introduces dedicated reasoning mode with multi-step clinical logic and improved performance in differential diagnosis and care planning.</p>
+      <p><strong>Medical-LLM-8B</strong>: A new 8B parameter model that delivers enhanced clinical reasoning capabilities while maintaining deployment efficiency. This model introduces <strong>dedicated reasoning mode with multi-step clinical logic</strong> and improved performance in differential diagnosis and care planning.</p>
     </li>
     <li>
-      <p><strong>Medical-LLM-Small</strong>: Updated with advanced reasoning capabilities and expanded medical knowledge processing. The enhanced model now features improved chain-of-thought supervision and better performance in complex medical case analysis.</p>
+      <p><strong>Medical-LLM-Small</strong>: Updated with <strong>advanced reasoning capabilities</strong> and expanded medical knowledge processing. The enhanced model now features improved chain-of-thought supervision and better performance in complex medical case analysis.</p>
     </li>
     <li>
       <p><strong>Medical-Reasoning-LLM-32B</strong>: Significantly enhanced with focus on clinical reasoning and diagnostic decision support. The updated model provides transparent decision pathways, considers multiple hypotheses, and offers structured reasoning patterns aligned with clinical guidelines.</p>
@@ -687,6 +687,93 @@ function wrapWordInSpan(data, wordToWrap) {
         <td>61 GB</td>
         <td>50 GB</td>
         <td>2, 4, 8</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h4 id="benchmark-accuracy-comparison-wiht-previous-versions">Benchmark Accuracy Comparison wiht previous versions</h4>
+
+  <ul>
+    <li>Medical-LLM-8B shows a notable boost in Anatomy (8.88 pts), Clinical Knowledge (6.41 pts), and College Medicine (9.83 pts).</li>
+    <li>Medical-LLM-Small delivers higher precision in Anatomy (6.7 pts), College Biology (3.12 pts), while maintaining top-tier performance in compact deployments</li>
+    <li>Medical-Reasoning-LLM-32B  leads with refined gains in College Medicine (+2.89 pts), Professional Medicine (+1.1 pts), and PubMedQA (+2.0 pts).</li>
+  </ul>
+
+  <p>These models are optimized for clinical decision support, medical research, and education use cases, offering best-in-class accuracy with each new release.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th><strong>Model Name</strong></th>
+        <th><strong>Anatomy</strong></th>
+        <th><strong>Clinical Knowledge</strong></th>
+        <th><strong>College Biology</strong></th>
+        <th><strong>College Medicine</strong></th>
+        <th><strong>Medical Genetics</strong></th>
+        <th><strong>Professional Medicine</strong></th>
+        <th><strong>PubMedQA</strong></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Medical-LLM-8B  (Previous version)</td>
+        <td>65.19</td>
+        <td>73.21</td>
+        <td>86.81</td>
+        <td>64.74</td>
+        <td>77</td>
+        <td>72.43</td>
+        <td>75.6</td>
+      </tr>
+      <tr>
+        <td>Medical-LLM-8B (Latest version)</td>
+        <td>74.07</td>
+        <td>79.62</td>
+        <td>86.81</td>
+        <td>74.57</td>
+        <td>82</td>
+        <td>79.78</td>
+        <td>76.6</td>
+      </tr>
+      <tr>
+        <td>Medical-LLM-Small (Previous version)</td>
+        <td>77.04</td>
+        <td>83.02</td>
+        <td>90.28</td>
+        <td>76.30</td>
+        <td>90</td>
+        <td>85.29</td>
+        <td>79.0</td>
+      </tr>
+      <tr>
+        <td>Medical-LLM-Small (Latest version)</td>
+        <td>83.74</td>
+        <td>83.40</td>
+        <td>93.40</td>
+        <td>78.03</td>
+        <td>84</td>
+        <td>85.66</td>
+        <td>77.4</td>
+      </tr>
+      <tr>
+        <td>Medical-Reasoning-LLM-32B (Previous version)</td>
+        <td>78.52</td>
+        <td>85.66</td>
+        <td>93.75</td>
+        <td>80.35</td>
+        <td>91</td>
+        <td>87.5</td>
+        <td>75.8</td>
+      </tr>
+      <tr>
+        <td>Medical-Reasoning-LLM-32 (Latest version)</td>
+        <td>78. 52</td>
+        <td>85.66</td>
+        <td>94.44</td>
+        <td>83.24</td>
+        <td>92</td>
+        <td>88.6</td>
+        <td>77.8</td>
       </tr>
     </tbody>
   </table>
