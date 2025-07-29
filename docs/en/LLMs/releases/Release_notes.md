@@ -17,11 +17,11 @@ sidebar:
 
 ### Model Updates
 
-We are excited to announce significant updates to our Medical LLM lineup with enhanced models and a new addition.
+We're excited to announce that updated versions of our Medical-LLM-8B, Medical-LLM-Small, and Medical-Reasoning-LLM-32B models are now available, delivering significant accuracy improvements across key medical benchmarks.
 
-- **Medical-LLM-8B**: A new 8B parameter model that delivers enhanced clinical reasoning capabilities while maintaining deployment efficiency. This model introduces dedicated reasoning mode with multi-step clinical logic and improved performance in differential diagnosis and care planning.
+- **Medical-LLM-8B**: A new 8B parameter model that delivers enhanced clinical reasoning capabilities while maintaining deployment efficiency. This model introduces **dedicated reasoning mode with multi-step clinical logic** and improved performance in differential diagnosis and care planning.
 
-- **Medical-LLM-Small**: Updated with advanced reasoning capabilities and expanded medical knowledge processing. The enhanced model now features improved chain-of-thought supervision and better performance in complex medical case analysis.
+- **Medical-LLM-Small**: Updated with **advanced reasoning capabilities** and expanded medical knowledge processing. The enhanced model now features improved chain-of-thought supervision and better performance in complex medical case analysis.
 
 - **Medical-Reasoning-LLM-32B**: Significantly enhanced with focus on clinical reasoning and diagnostic decision support. The updated model provides transparent decision pathways, considers multiple hypotheses, and offers structured reasoning patterns aligned with clinical guidelines.
 
@@ -33,7 +33,15 @@ We are excited to announce significant updates to our Medical LLM lineup with en
 | Medical-LLM-Small         | 14B         | ~59 GB           | 40K               | 28 GB       | 31 GB          | 1, 2, 4, 8            |
 | Medical-Reasoning-LLM-32B | 32B         | ~111 GB          | 40K               | 61 GB       | 50 GB          | 2, 4, 8               |
 
-#### Benchmark Accuracy Comparison wiht previous version
+#### Benchmark Accuracy Comparison wiht previous versions
+
+**Detailed Accuracy Improvements Across Models**
+
+* Medical-LLM-8B shows a notable boost in Anatomy (8.88 pts), Clinical Knowledge (6.41 pts), and College Medicine (9.83 pts).
+* Medical-LLM-Small delivers higher precision in Anatomy (6.7 pts), College Biology (3.12 pts), while maintaining top-tier performance in compact deployments
+* Medical-Reasoning-LLM-32B  leads with refined gains in College Medicine (+2.89 pts), Professional Medicine (+1.1 pts), and PubMedQA (+2.0 pts).
+
+These models are optimized for clinical decision support, medical research, and education use cases, offering best-in-class accuracy with each new release.
 
 | **Model Name**             | **Anatomy** | **Clinical Knowledge** | **College Biology** | **College Medicine** | **Medical Genetics** | **Professional Medicine** | **PubMedQA**  |
 |---------------------------|--------------|------------------|-------------------|-------------|----------------|------------------------|----|
