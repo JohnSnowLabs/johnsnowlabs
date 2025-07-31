@@ -533,6 +533,7 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python<strong>Healthcare NLP</strong></button><button class="tab-li-model-aproach tab-li-jsl">Python<strong>JohnSnowLabs</strong></button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach tab-li-nlu">NLU</button></div>
+
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">ImageAssembler</span><span class="p">()</span> \
     <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"image"</span><span class="p">)</span> \
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"image_assembler"</span><span class="p">)</span>
@@ -557,6 +558,19 @@ function wrapWordInSpan(data, wordToWrap) {
 </code></pre></div>  </div>
 
 </div>
+
+<h2 id="example">Example</h2>
+
+<h3 id="input">Input:</h3>
+<p><img src="/assets/images/examples_ocr/dicom_example.png" alt="Screenshot" /></p>
+
+<h2 id="output-text">Output text</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+-------+
+|label  |
++-------+
+|image  |
++-------+
+</code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>
 

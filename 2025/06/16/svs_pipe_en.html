@@ -11,7 +11,7 @@
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
 <!-- End Google Tag Manager --><title>SVS DEID Pipeline | svs_deid_pipe | Visual NLP 5.5.0</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis pipeline can be used to deidentify SVS files. It removes Protected Health Information (PHI) from metadata tags and pixels. This requires healthcare nlp as well has visual nlp installed.Live DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonHealthcare NLPPythonJohnSnowLabsScalaNLU  from sparkocr.u...">
+<meta name="description" content="DescriptionThis pipeline can be used to deidentify SVS files. It removes Protected Health Information (PHI) from metadata tags and pixels. This requires healthcare nlp as well has visual nlp installed.Live DemoDownloadCopy S3 URIAvailable as Private API Endpoint                                                    Dep...">
 <!-- <link rel="canonical" href="/2025/06/16/svs_pipe_en.html"> -->
 <link rel="canonical" href="/2025/06/16/svs_pipe_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
@@ -516,47 +516,146 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <p>This pipeline can be used to deidentify SVS files. It removes Protected Health Information (PHI) from metadata tags and pixels. This requires healthcare nlp as well has visual nlp installed.</p>
 
-<p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
-<button class="button button-orange" disabled="">Open in Colab</button>
+<p class="btn-box"><a href="https://demo.johnsnowlabs.com/ocr/WSI_DEID/" class="button button-orange button-orange-trans co button-icon">Live Demo</a>
 <a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/svs_pipe_en_5.5.0_3.4_1750116076010.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
 <a href="s3://auxdata.johnsnowlabs.com/clinical/models/svs_pipe_en_5.5.0_3.4_1750116076010.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
+
+<h2 id="available-as-private-api-endpoint">Available as Private API Endpoint</h2>
+
+<div class="disp_platform_wrapper tac">
+    <div class="disp_platform_item">
+        <div class="dp_top df">
+            <figure><img src="/assets/images/posts_image/amazon.svg" alt="" /></figure>
+        </div>
+        <div class="dp_body">
+            <a target="_blank" rel="noopener" href="https://aws.amazon.com/marketplace/pp/prodview-kh7vsfj4pwxry" class="btn2">Deploy</a>
+        </div>
+    </div>
+    <div class="disp_platform_item">
+        <div class="dp_top df">
+            <figure><img src="/assets/images/posts_image/snowflake.svg" alt="" /></figure>
+        </div>
+        <div class="dp_body">
+            <a target="_blank" rel="noopener" disabled="" class="btn2">Deploy</a>
+        </div>
+    </div>
+    <div class="disp_platform_item">
+        <div class="dp_top df">
+            <figure><img src="/assets/images/posts_image/databr.svg" alt="" /></figure>
+        </div>
+        <div class="dp_body">
+            <a target="_blank" rel="noopener" disabled="" class="btn2">Deploy</a>
+        </div>
+    </div>
+</div>
+
+<h2 id="predicted-entities">Predicted Entities</h2>
+<p><code class="language-plaintext highlighter-rouge">AGE</code>, <code class="language-plaintext highlighter-rouge">CITY</code>, <code class="language-plaintext highlighter-rouge">COUNTRY</code>, <code class="language-plaintext highlighter-rouge">DATE</code>, <code class="language-plaintext highlighter-rouge">DOCTOR</code>, <code class="language-plaintext highlighter-rouge">EMAIL</code>, <code class="language-plaintext highlighter-rouge">HOSPITAL</code>, <code class="language-plaintext highlighter-rouge">IDNUM</code>, <code class="language-plaintext highlighter-rouge">ORGANIZATION</code>, <code class="language-plaintext highlighter-rouge">PATIENT</code>, <code class="language-plaintext highlighter-rouge">PHONE</code>, <code class="language-plaintext highlighter-rouge">PROFESSION</code>, <code class="language-plaintext highlighter-rouge">STATE</code>, <code class="language-plaintext highlighter-rouge">STREET</code>, <code class="language-plaintext highlighter-rouge">USERNAME</code>, <code class="language-plaintext highlighter-rouge">ZIP</code>, <code class="language-plaintext highlighter-rouge">SIGNATURE</code>.</p>
 
 <h2 id="how-to-use">How to use</h2>
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python<strong>Healthcare NLP</strong></button><button class="tab-li-model-aproach tab-li-jsl">Python<strong>JohnSnowLabs</strong></button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach tab-li-nlu">NLU</button></div>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="kn">from</span> <span class="nn">sparkocr.utils.svs.draw_bbox_on_tile</span> <span class="kn">import</span> <span class="n">deidentify_svs_tile</span>
-<span class="kn">from</span> <span class="nn">sparkocr.utils.svs.extract_tiles</span> <span class="kn">import</span> <span class="n">process_folder</span>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparkocr.utils.svs.phi_cleaning</span> <span class="kn">import</span> <span class="n">remove_phi</span>
+<span class="kn">from</span> <span class="nn">sparkocr.utils.svs.tile_extraction</span> <span class="kn">import</span> <span class="n">svs_to_tiles</span>
+<span class="kn">from</span> <span class="nn">sparkocr.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
+<span class="kn">from</span> <span class="nn">sparkocr.utils.svs.phi_redaction</span> <span class="kn">import</span> <span class="n">redact_phi_in_tiles</span>
 <span class="n">raw_svs_path</span> <span class="o">=</span> <span class="s">'./svs_input'</span>
 <span class="n">output_deid_tags_path</span> <span class="o">=</span> <span class="s">"./svs_output_deid_tags"</span>
 <span class="n">output_tiles_path</span> <span class="o">=</span> <span class="s">"./svs_output_tiles"</span>
 <span class="n">output_deid_tags_and_pixels_path</span> <span class="o">=</span> <span class="s">'./svs_output_deid_tags_and_pixels'</span>
 <span class="n">deid_tags</span> <span class="o">=</span> <span class="p">[</span><span class="s">'ImageDescription.ScanScope ID'</span><span class="p">,</span> <span class="s">'ImageDescription.Time Zone'</span><span class="p">,</span> <span class="s">'ImageDescription.ScannerType'</span><span class="p">]</span>
-<span class="n">NUM_WORKERS</span> <span class="o">=</span> <span class="mi">4</span>
 
 <span class="c1"># 1. Create new SVS file where Tags DEID
 </span><span class="n">remove_phi</span><span class="p">(</span><span class="n">raw_svs_path</span><span class="p">,</span> <span class="n">output_deid_tags_path</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">append_tags</span><span class="o">=</span><span class="n">deid_tags</span><span class="p">)</span>
 
 <span class="c1"># 2. Generate Frames from Raw SVS
-</span><span class="n">process_folder</span><span class="p">(</span><span class="n">raw_svs_path</span><span class="p">,</span> <span class="n">output_tiles_path</span><span class="p">,</span> <span class="n">NUM_WORKERS</span><span class="p">)</span>
+</span><span class="n">svs_to_tiles</span><span class="p">(</span><span class="n">raw_svs_path</span><span class="p">,</span> <span class="n">output_tiles_path</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="s">"auto"</span><span class="p">,</span> <span class="n">thumbnail</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
 
 <span class="c1"># 3. Load the Raw Frames as Spark DF
 </span><span class="n">image_df</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">read</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="s">"binaryFile"</span><span class="p">).</span><span class="n">load</span><span class="p">(</span><span class="n">output_tiles_path</span><span class="p">).</span><span class="n">cache</span><span class="p">()</span>
 
 <span class="c1"># 4. Get Pipe and process it
-</span><span class="n">pipe</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"dicom_deid_generic_augmented_minimal"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
+</span><span class="n">pipe</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"image_deid_multi_model_context_pipeline_cpu"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/ocr"</span><span class="p">)</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">pipe</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">image_df</span><span class="p">).</span><span class="n">cache</span><span class="p">()</span>
 
 <span class="c1"># 5. Create the final SVS File with TAGs and Pixels DEID
 </span><span class="n">deid_info</span> <span class="o">=</span> <span class="n">result</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">"path"</span><span class="p">,</span> <span class="s">"coordinates"</span><span class="p">).</span><span class="n">distinct</span><span class="p">()</span>
-<span class="n">deidentify_svs_tile</span><span class="p">(</span><span class="n">output_deid_tags_path</span><span class="p">,</span> <span class="n">deid_info</span><span class="p">,</span> <span class="n">output_svs_path</span><span class="o">=</span><span class="n">output_deid_tags_and_pixels_path</span><span class="p">,</span><span class="n">create_new_svs_file</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+<span class="n">redact_phi_in_tiles</span><span class="p">(</span><span class="n">output_deid_tags_path</span><span class="p">,</span> <span class="n">deid_info</span><span class="p">,</span> <span class="n">output_tiles_path</span><span class="p">,</span> <span class="n">output_svs_path</span><span class="o">=</span><span class="n">output_deid_tags_and_pixels_path</span><span class="p">,</span> <span class="n">create_new_svs_file</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+</code></pre></div>  </div>
 
+  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.ocr.utils.svs.phi_cleaning.remove_phi</span>
+<span class="k">import</span> <span class="nn">com.johnsnowlabs.ocr.utils.svs.tile_extraction.svs_to_tiles</span>
+<span class="k">import</span> <span class="nn">com.johnsnowlabs.ocr.pretrained.PretrainedPipeline</span>
+<span class="k">import</span> <span class="nn">com.johnsnowlabs.ocr.utils.svs.phi_redaction.redact_phi_in_tiles</span>
+<span class="k">import</span> <span class="nn">org.apache.spark.sql.SparkSession</span>
+
+<span class="c1">// Create Spark session</span>
+<span class="k">val</span> <span class="nv">spark</span> <span class="k">=</span> <span class="nv">SparkSession</span><span class="o">.</span><span class="py">builder</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">appName</span><span class="o">(</span><span class="s">"SVS De-identification"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">getOrCreate</span><span class="o">()</span>
+
+<span class="c1">// Paths</span>
+<span class="k">val</span> <span class="nv">rawSvsPath</span> <span class="k">=</span> <span class="s">"./svs_input"</span>
+<span class="k">val</span> <span class="nv">outputDeidTagsPath</span> <span class="k">=</span> <span class="s">"./svs_output_deid_tags"</span>
+<span class="k">val</span> <span class="nv">outputTilesPath</span> <span class="k">=</span> <span class="s">"./svs_output_tiles"</span>
+<span class="k">val</span> <span class="nv">outputDeidTagsAndPixelsPath</span> <span class="k">=</span> <span class="s">"./svs_output_deid_tags_and_pixels"</span>
+
+<span class="c1">// Tags to de-identify</span>
+<span class="k">val</span> <span class="nv">deidTags</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span>
+  <span class="s">"ImageDescription.ScanScope ID"</span><span class="o">,</span>
+  <span class="s">"ImageDescription.Time Zone"</span><span class="o">,</span>
+  <span class="s">"ImageDescription.ScannerType"</span>
+<span class="o">)</span>
+
+<span class="c1">// Step 1: Remove PHI from SVS tags</span>
+<span class="nf">remove_phi</span><span class="o">(</span>
+  <span class="n">rawSvsPath</span><span class="o">,</span>
+  <span class="n">outputDeidTagsPath</span><span class="o">,</span>
+  <span class="n">verbose</span> <span class="k">=</span> <span class="kc">true</span><span class="o">,</span>
+  <span class="n">append_tags</span> <span class="k">=</span> <span class="nc">Some</span><span class="o">(</span><span class="n">deidTags</span><span class="o">)</span>
+<span class="o">)</span>
+
+<span class="c1">// Step 2: Extract tiles from raw SVS</span>
+<span class="nf">svs_to_tiles</span><span class="o">(</span>
+  <span class="n">svs_path</span> <span class="k">=</span> <span class="n">rawSvsPath</span><span class="o">,</span>
+  <span class="n">output_path</span> <span class="k">=</span> <span class="n">outputTilesPath</span><span class="o">,</span>
+  <span class="n">level</span> <span class="k">=</span> <span class="s">"auto"</span><span class="o">,</span>
+  <span class="n">thumbnail</span> <span class="k">=</span> <span class="kc">true</span>
+<span class="o">)</span>
+
+<span class="c1">// Step 3: Read tiles as binary files</span>
+<span class="k">val</span> <span class="nv">imageDF</span> <span class="k">=</span> <span class="nv">spark</span><span class="o">.</span><span class="py">read</span><span class="o">.</span><span class="py">format</span><span class="o">(</span><span class="s">"binaryFile"</span><span class="o">).</span><span class="py">load</span><span class="o">(</span><span class="n">outputTilesPath</span><span class="o">).</span><span class="py">cache</span><span class="o">()</span>
+
+<span class="c1">// Step 4: Load de-identification pipeline and run</span>
+<span class="k">val</span> <span class="nv">pipe</span> <span class="k">=</span> <span class="nc">PretrainedPipeline</span><span class="o">(</span><span class="s">"image_deid_multi_model_context_pipeline_cpu"</span><span class="o">,</span> <span class="n">lang</span> <span class="k">=</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/ocr"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipe</span><span class="o">.</span><span class="py">transform</span><span class="o">(</span><span class="n">imageDF</span><span class="o">).</span><span class="py">cache</span><span class="o">()</span>
+
+<span class="c1">// Step 5: Redact PHI from image tiles using coordinates</span>
+<span class="k">val</span> <span class="nv">deidInfo</span> <span class="k">=</span> <span class="nv">result</span><span class="o">.</span><span class="py">select</span><span class="o">(</span><span class="s">"path"</span><span class="o">,</span> <span class="s">"coordinates"</span><span class="o">).</span><span class="py">distinct</span><span class="o">()</span>
+<span class="nf">redact_phi_in_tiles</span><span class="o">(</span>
+  <span class="n">inputSvsPath</span> <span class="k">=</span> <span class="n">outputDeidTagsPath</span><span class="o">,</span>
+  <span class="n">coordinates</span> <span class="k">=</span> <span class="n">deidInfo</span><span class="o">,</span>
+  <span class="n">tilesPath</span> <span class="k">=</span> <span class="n">outputTilesPath</span><span class="o">,</span>
+  <span class="n">output_svs_path</span> <span class="k">=</span> <span class="n">outputDeidTagsAndPixelsPath</span><span class="o">,</span>
+  <span class="n">create_new_svs_file</span> <span class="k">=</span> <span class="kc">true</span>
+<span class="o">)</span>
 </code></pre></div>  </div>
 
 </div>
 
-<h2 class="model-param" id="model-information">Model Information</h2>
+<h2 class="model-param" id="example">Example</h2>
+
+<p>The example below illustrates how protected health information (PHI) appears after de-identification on a tile extracted from an SVS image.</p>
+
+<h3 id="input">Input:</h3>
+<p><img src="/assets/images/examples_ocr/deid_manip_1.png" alt="Screenshot" /></p>
+
+<h3 id="output">Output:</h3>
+<p><img src="/assets/images/examples_ocr/deid_manip_2.png" alt="Screenshot" /></p>
+
+<h2 id="model-information">Model Information</h2>
 
 <table class="table-model">
   <tbody>
