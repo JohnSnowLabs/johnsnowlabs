@@ -4,7 +4,7 @@ title: Extract Text from Documents - Visual NLP Demos & Notebooks
 seotitle: 'Visual NLP: Extract Text from Documents - John Snow Labs'
 subtitle: Run 300+ live demos and notebooks
 full_width: true
-permalink: /visual_medical_document_processing
+permalink: /medical_files
 key: demo
 nav_key: demo
 article_header:
@@ -18,7 +18,7 @@ data:
     - secheader: yes
       secheader:
         - subtitle: Extract Text from Documents - Live Demos & Notebooks
-          activemenu: visual_medical_document_processing
+          activemenu: medical_files
       source: yes
       source: 
         - title: Dicom to Text
@@ -45,7 +45,7 @@ data:
           - text: Colab
             type: blue_btn
             url: https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/SparkOcrImageDeIdentification.ipynb
-        - title: Deidentification of Whole Slide Image 
+        - title: Deidentification of Whole Slide Image (WSI)
           id: wsi_deid  
           image: 
               src: /assets/images/De-Identify_DICOM_Images.svg
