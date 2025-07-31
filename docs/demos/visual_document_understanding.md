@@ -177,8 +177,7 @@ data:
           - text: Colab
             type: blue_btn
             url: https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/SparkOcrImageDeIdentification.ipynb
-
-   - title: Deidentify Images
+        - title: Deidentify Images
           id: deidentify_images
           image: 
               src: /assets/images/Deidentify_Images.svg
@@ -202,8 +201,6 @@ data:
           - text: Colab
             type: blue_btn
             url: https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/SparkOcrImageDeIdentification.ipynb
-        
-    
         - title: Pretrained Pipelines for Image Deidentification
           id: image_deid_multi_model_context_pipeline_cpu
           image: 
