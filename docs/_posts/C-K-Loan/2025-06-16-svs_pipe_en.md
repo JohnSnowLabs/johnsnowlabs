@@ -25,7 +25,7 @@ deploy:
 This pipeline can be used to deidentify SVS files. It removes Protected Health Information (PHI) from metadata tags and pixels. This requires healthcare nlp as well has visual nlp installed.
 
 {:.btn-box}
-[Live Demo](https://demo.johnsnowlabs.com/ocr/SVS_DEID/){:.button.button-orange.button-orange-trans.co.button-icon}
+[Live Demo](https://demo.johnsnowlabs.com/ocr/WSI_DEID/){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/svs_pipe_en_5.5.0_3.4_1750116076010.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/svs_pipe_en_5.5.0_3.4_1750116076010.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 

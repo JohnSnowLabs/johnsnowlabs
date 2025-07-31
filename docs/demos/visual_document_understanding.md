@@ -141,18 +141,6 @@ data:
           - text: Colab
             type: blue_btn
             url: https://colab.research.google.com/github/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrCheckBoxDetection.ipynb
-        - title: Deidentify DICOM documents
-          id: deidentify_dicom_documents_1
-          image: 
-              src: /assets/images/Deidentify_DICOM_documents_1.svg
-          excerpt: Deidentify DICOM documents by masking PHI information on the image and by either masking or obfuscating PHI from the metadata.
-          actions:
-          - text: Live Demo
-            type: normal
-            url: https://demo.johnsnowlabs.com/ocr/DEID_DICOM_IMAGE/
-          - text: Colab
-            type: blue_btn
-            url: https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/SparkOcrImageDeIdentification.ipynb
         - title: Deidentify Images
           id: deidentify_images
           image: 
@@ -189,6 +177,57 @@ data:
           - text: Colab
             type: blue_btn
             url: https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/SparkOcrImageDeIdentification.ipynb
+
+   - title: Deidentify Images
+          id: deidentify_images
+          image: 
+              src: /assets/images/Deidentify_Images.svg
+          excerpt: Deidentify images by masking sensitive information on the image and by either masking or obfuscating.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/ocr/DEID_IMAGE/
+          - text: Colab
+            type: blue_btn
+            url: https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/SparkOcrImageDeIdentification.ipynb
+        - title: De-identify PDF documents - GDPR Compliance
+          id: deidentify_pdf_documents_gdpr_compliance
+          image: 
+              src: /assets/images/De-identify_PDF_documents_GDPR_Compliance.svg
+          excerpt: Deidentify PDF documents using GDPR guidelines by anonymizing PHI information using out of the box Spark NLP models.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/ocr/DEID_PDF_GDPR/
+          - text: Colab
+            type: blue_btn
+            url: https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/SparkOcrImageDeIdentification.ipynb
+        
+    
+        - title: Pretrained Pipelines for Image Deidentification
+          id: image_deid_multi_model_context_pipeline_cpu
+          image: 
+              src: /assets/images/Deidentify_Images.svg
+          excerpt: Pretrained pipelines to de-identify images by masking sensitive information on the image and by either masking or obfuscating.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/ocr/PP_IMAGE_DEID/
+          - text: Colab
+            type: blue_btn
+            url: https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrImageDeIdentificationPipelines.ipynb
+        - title: Pretrained Pipelines for Image Deidentification
+          id: pp_deidentify_pdf_documents
+          image: 
+              src: /assets/images/Deidentify_PDF_documents.svg
+          excerpt: Pretrained pipelines to de-identify PDF documents, by masking or obfuscating PHI information and signatures.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/ocr/PP_PDF_DEIDENTIFICATION
+          - text: Colab
+            type: blue_btn
+            url: https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrPdfDeIdentificationPipelines.ipynb
         - title: Image Classifier in Document Images 
           id: image_classifier_document_images
           image: 
@@ -225,30 +264,6 @@ data:
           - text: Colab
             type: blue_btn
             url: https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/SparkOcrChartToTextLLM.ipynb
-        - title: HOCR Table Structure Recognition in Document Images
-          id: hocr_table_structure_recognition_document_images
-          image: 
-              src: /assets/images/HOCR_Table_Structure_Recognition_in_Document_Images.svg
-          excerpt: This model obtains the table structure of documents images using our HOCR pre-trained Spark OCR model.
-          actions:
-          - text: Live Demo
-            type: normal
-            url: https://demo.johnsnowlabs.com/ocr/PDF_TABLE_RECOGNITION_HOCR/
-          - text: Colab
-            type: blue_btn
-            url: https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/SparkOcrImageTableRecognitionWHOCR.ipynb
-        - title: Pretrained pipeline for table structure recognition 
-          id: pretrained_pipeline_table_structure_recognition
-          image: 
-              src: /assets/images/Pretrained_pipeline_for_table_structure_recognition.svg
-          excerpt: Pretrained pipeline for conducting Table Structure Extraction on mixed scanned and digital PDF documents. It ensures precise and efficient table structure extraction from PDFs of various origins and formats.
-          actions:
-          - text: Live Demo
-            type: normal
-            url: https://demo.johnsnowlabs.com/ocr/PP_BASIC_TABLE_EXTRACTOR/
-          - text: Colab
-            type: blue_btn
-            url: https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/Cards/SparkOcrPretrainedPipelinesBasicTableExtractor.ipynb
         - title: Relation Extraction 
           id: relation_extraction
           image: 

@@ -7,7 +7,8 @@ date: 2024-06-12
 tags: [en, licensed]
 task: De-identification
 language: en
-edition: Healthcare NLP 5.3.2
+nav_key: models
+edition: Visual NLP 5.5.0
 spark_version: 3.2
 supported: true
 annotator: PipelineModel
