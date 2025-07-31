@@ -1,7 +1,7 @@
 ---
 layout: demopagenew
-title: Extract Text from Documents - Visual NLP Demos & Notebooks
-seotitle: 'Visual NLP: Extract Text from Documents - John Snow Labs'
+title: Medical Files Processing - Visual NLP Demos & Notebooks
+seotitle: 'Visual NLP: Medical Files Processing - John Snow Labs'
 subtitle: Run 300+ live demos and notebooks
 full_width: true
 permalink: /medical_files
@@ -17,7 +17,7 @@ data:
   sections:  
     - secheader: yes
       secheader:
-        - subtitle: Extract Text from Documents - Live Demos & Notebooks
+        - subtitle: Medical Files Processing - Live Demos & Notebooks
           activemenu: medical_files
       source: yes
       source: 
@@ -58,7 +58,7 @@ data:
             type: blue_btn
             url: https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/SparkOcrWSIDeidentification.ipynb
         - title: Pretrained Pipelines for Dicom De-Identification 
-          id: wsi_deid  
+          id: pp_pdf_deidentification  
           image: 
               src: /assets/images/Deidentify_DICOM_documents.svg
           excerpt: De-identify DICOM files to mask or obfuscate PHI to preserve healthcare privacy.

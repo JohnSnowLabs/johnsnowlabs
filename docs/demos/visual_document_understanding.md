@@ -213,7 +213,7 @@ data:
           - text: Colab
             type: blue_btn
             url: https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrImageDeIdentificationPipelines.ipynb
-        - title: Pretrained Pipelines for Image Deidentification
+        - title: Pretrained Pipelines for PDF Deidentification
           id: pp_deidentify_pdf_documents
           image: 
               src: /assets/images/Deidentify_PDF_documents.svg
