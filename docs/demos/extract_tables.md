@@ -93,4 +93,28 @@ data:
           - text: Colab
             type: blue_btn
             url: https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/Cards/SparkOcrPretrainedPipelinesDigitalPdfTableExtractor.ipynb
+        - title: HOCR Table Structure Recognition in Document Images
+          id: hocr_table_structure_recognition_document_images
+          image: 
+              src: /assets/images/HOCR_Table_Structure_Recognition_in_Document_Images.svg
+          excerpt: This model obtains the table structure of documents images using our HOCR pre-trained Spark OCR model.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/ocr/PDF_TABLE_RECOGNITION_HOCR/
+          - text: Colab
+            type: blue_btn
+            url: https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/SparkOcrImageTableRecognitionWHOCR.ipynb
+        - title: Pretrained pipeline for table structure recognition 
+          id: pretrained_pipeline_table_structure_recognition
+          image: 
+              src: /assets/images/Pretrained_pipeline_for_table_structure_recognition.svg
+          excerpt: Pretrained pipeline for conducting Table Structure Extraction on mixed scanned and digital PDF documents. It ensures precise and efficient table structure extraction from PDFs of various origins and formats.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/ocr/PP_BASIC_TABLE_EXTRACTOR/
+          - text: Colab
+            type: blue_btn
+            url: https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/Cards/SparkOcrPretrainedPipelinesBasicTableExtractor.ipynb
 ---
