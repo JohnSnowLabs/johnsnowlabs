@@ -1,94 +1,112 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-07-31T21:17:18+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
-</subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">Image Deidentification Multi Model Context</title><link href="/2025/07/23/image_deid_multi_model_context_pipeline.html" rel="alternate" type="text/html" title="Image Deidentification Multi Model Context" /><published>2025-07-23T00:00:00+00:00</published><updated>2025-07-23T00:00:00+00:00</updated><id>/2025/07/23/image_deid_multi_model_context_pipeline</id><content type="html" xml:base="/2025/07/23/image_deid_multi_model_context_pipeline.html">## Description
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-08-01T01:08:11+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
+</subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">Image Deidentification Multi Model Context</title><link href="/2025/07/23/image_deid_multi_model_context_pipeline.html" rel="alternate" type="text/html" title="Image Deidentification Multi Model Context" /><published>2025-07-23T00:00:00+00:00</published><updated>2025-07-23T00:00:00+00:00</updated><id>/2025/07/23/image_deid_multi_model_context_pipeline</id><content type="html" xml:base="/2025/07/23/image_deid_multi_model_context_pipeline.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
 
-This pipeline can be used to mask PHI information in Images.
-The output is an Image, similar to the one at the input, but with black bounding boxes on top of the targeted entities.
+&lt;p&gt;This pipeline can be used to mask PHI information in Images.
+The output is an Image, similar to the one at the input, but with black bounding boxes on top of the targeted entities.&lt;/p&gt;
 
-## Predicted Entities
+&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
 
-``AGE``, ``CITY``, ``COUNTRY``, ``DATE``, ``DOCTOR``, ``EMAIL``, ``HOSPITAL``, ``IDNUM``, ``ORGANIZATION``, ``PATIENT``, ``PHONE``, ``PROFESSION``, ``STATE``, ``STREET``, ``USERNAME``, ``ZIP``, ``SIGNATURE``.
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;AGE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CITY&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;COUNTRY&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DATE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DOCTOR&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;EMAIL&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;HOSPITAL&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;IDNUM&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ORGANIZATION&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PATIENT&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PHONE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PROFESSION&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;STATE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;STREET&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;USERNAME&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ZIP&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SIGNATURE&lt;/code&gt;.&lt;/p&gt;
 
+&lt;p class=&quot;btn-box&quot;&gt;&lt;a href=&quot;https://demo.johnsnowlabs.com/ocr/PP_IMAGE_DEIDENTIFICATION/&quot; class=&quot;button button-orange button-orange-trans co button-icon&quot;&gt;Live Demo&lt;/a&gt;
+&lt;a href=&quot;https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrImageDeIdentificationPipelines.ipynb&quot; class=&quot;button button-orange button-orange-trans co button-icon&quot;&gt;Open in Colab&lt;/a&gt;
+&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/image_deid_multi_model_context_pipeline_cpu_en_6.0.0_3.0_1749464326000.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon&quot;&gt;Download&lt;/a&gt;&lt;/p&gt;
 
-{:.btn-box}
-[Live Demo](https://demo.johnsnowlabs.com/ocr/PP_IMAGE_DEIDENTIFICATION/){:.button.button-orange.button-orange-trans.co.button-icon}
-[Open in Colab](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrImageDeIdentificationPipelines.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/image_deid_multi_model_context_pipeline_cpu_en_6.0.0_3.0_1749464326000.zip){:.button.button-orange.button-orange-trans.arr.button-icon}
+&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
 
+&lt;div class=&quot;tabs-box&quot;&gt;
+  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;strong&gt;Healthcare NLP&lt;/strong&gt;&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;Python&lt;strong&gt;JohnSnowLabs&lt;/strong&gt;&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
 
-## How to use
+  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp.pretrained&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;deid_pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;image_deid_multi_model_context_pipeline_cpu&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/ocr&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
 
-&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-
-```python
-from sparknlp.pretrained import PretrainedPipeline
-deid_pipeline = PretrainedPipeline(&quot;image_deid_multi_model_context_pipeline_cpu&quot;, &quot;en&quot;, &quot;clinical/ocr&quot;)
-```
-
-```scala
-import com.johnsnowlabs.ocr.pretrained.PretrainedPipeline
-val deid_pipeline = PretrainedPipeline(&quot;image_deid_multi_model_context_pipeline_cpu&quot;, lang = &quot;en&quot;, &quot;clinical/ocr&quot;)
-```
+  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.ocr.pretrained.PretrainedPipeline&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;deid_pipeline&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;image_deid_multi_model_context_pipeline_cpu&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lang&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/ocr&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
 
 &lt;/div&gt;
 
-{:.model-param}
+&lt;h2 class=&quot;model-param&quot; id=&quot;example&quot;&gt;Example&lt;/h2&gt;
 
-## Example
+&lt;h3 id=&quot;input&quot;&gt;Input:&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/examples_ocr/deid_manip_1.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
 
-### Input:
-![Screenshot](/assets/images/examples_ocr/deid_manip_1.png)
+&lt;h3 id=&quot;output&quot;&gt;Output:&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/examples_ocr/deid_manip_2.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
 
-### Output:
-![Screenshot](/assets/images/examples_ocr/deid_manip_2.png)
+&lt;h2 id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
 
-## Model Information
+&lt;table class=&quot;table-model&quot;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Model Name:&lt;/td&gt;
+      &lt;td&gt;image_deid_multi_model_context_pipeline&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Type:&lt;/td&gt;
+      &lt;td&gt;pipeline&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Compatibility:&lt;/td&gt;
+      &lt;td&gt;Healthcare NLP 6.0.0+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;License:&lt;/td&gt;
+      &lt;td&gt;Licensed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Edition:&lt;/td&gt;
+      &lt;td&gt;Official&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Language:&lt;/td&gt;
+      &lt;td&gt;en&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Size:&lt;/td&gt;
+      &lt;td&gt;5.3 GB&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 
-{:.table-model}
-|---|---|
-|Model Name:|image_deid_multi_model_context_pipeline|
-|Type:|pipeline|
-|Compatibility:|Healthcare NLP 6.0.0+|
-|License:|Licensed|
-|Edition:|Official|
-|Language:|en|
-|Size:|5.3 GB|
+&lt;h2 id=&quot;included-models&quot;&gt;Included Models&lt;/h2&gt;
 
-## Included Models
-
-- ImageToText
-- DocumentAssembler
-- SentenceDetectorDLModel
-- Regex
-- WordEmbeddingsModel
-- MedicalNerModel
-- NerConverter
-- ContextualParserModel
-- ContextualParserModel
-- ContextualParserModel
-- ContextualParserModel
-- ContextualParserModel
-- ContextualParserModel
-- EntityExtractor
-- ContextualParserModel
-- RegexMatcher
-- ContextualParserModel
-- ContextualParserModel
-- ContextualParserModel
-- ContextualParserModel
-- RegexMatcher
-- ChunkMergeModel
-- ChunkMergeModel
-- XLMRobertaEmbeddings
-- MedicalNerModel
-- NerConverter 
-- PretrainedZeroShotNER
-- NerConverter
-- PretrainedZeroShotNER
-- NerConverter
-- ChunkMergeModel
-- PositionFinder
-- ImageDrawRegions</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><summary type="html">Description This pipeline can be used to mask PHI information in Images. The output is an Image, similar to the one at the input, but with black bounding boxes on top of the targeted entities. Predicted Entities AGE, CITY, COUNTRY, DATE, DOCTOR, EMAIL, HOSPITAL, IDNUM, ORGANIZATION, PATIENT, PHONE, PROFESSION, STATE, STREET, USERNAME, ZIP, SIGNATURE. Live Demo Open in Colab Download How to use PythonHealthcare NLPPythonJohnSnowLabsScalaNLU from sparknlp.pretrained import PretrainedPipeline deid_pipeline = PretrainedPipeline(&quot;image_deid_multi_model_context_pipeline_cpu&quot;, &quot;en&quot;, &quot;clinical/ocr&quot;) import com.johnsnowlabs.ocr.pretrained.PretrainedPipeline val deid_pipeline = PretrainedPipeline(&quot;image_deid_multi_model_context_pipeline_cpu&quot;, lang = &quot;en&quot;, &quot;clinical/ocr&quot;) Example Input: Output: Model Information Model Name: image_deid_multi_model_context_pipeline Type: pipeline Compatibility: Healthcare NLP 6.0.0+ License: Licensed Edition: Official Language: en Size: 5.3 GB Included Models ImageToText DocumentAssembler SentenceDetectorDLModel Regex WordEmbeddingsModel MedicalNerModel NerConverter ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel EntityExtractor ContextualParserModel RegexMatcher ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel RegexMatcher ChunkMergeModel ChunkMergeModel XLMRobertaEmbeddings MedicalNerModel NerConverter PretrainedZeroShotNER NerConverter PretrainedZeroShotNER NerConverter ChunkMergeModel PositionFinder ImageDrawRegions</summary></entry><entry><title type="html">Detect Assertion Status (assertion_bert_classification_clinical_onnx)</title><link href="/2025/07/15/assertion_bert_classification_clinical_onnx_en.html" rel="alternate" type="text/html" title="Detect Assertion Status (assertion_bert_classification_clinical_onnx)" /><published>2025-07-15T00:00:00+00:00</published><updated>2025-07-15T00:00:00+00:00</updated><id>/2025/07/15/assertion_bert_classification_clinical_onnx_en</id><content type="html" xml:base="/2025/07/15/assertion_bert_classification_clinical_onnx_en.html">## Description
+&lt;ul&gt;
+  &lt;li&gt;ImageToText&lt;/li&gt;
+  &lt;li&gt;DocumentAssembler&lt;/li&gt;
+  &lt;li&gt;SentenceDetectorDLModel&lt;/li&gt;
+  &lt;li&gt;Regex&lt;/li&gt;
+  &lt;li&gt;WordEmbeddingsModel&lt;/li&gt;
+  &lt;li&gt;MedicalNerModel&lt;/li&gt;
+  &lt;li&gt;NerConverter&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;EntityExtractor&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;RegexMatcher&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;ContextualParserModel&lt;/li&gt;
+  &lt;li&gt;RegexMatcher&lt;/li&gt;
+  &lt;li&gt;ChunkMergeModel&lt;/li&gt;
+  &lt;li&gt;ChunkMergeModel&lt;/li&gt;
+  &lt;li&gt;XLMRobertaEmbeddings&lt;/li&gt;
+  &lt;li&gt;MedicalNerModel&lt;/li&gt;
+  &lt;li&gt;NerConverter&lt;/li&gt;
+  &lt;li&gt;PretrainedZeroShotNER&lt;/li&gt;
+  &lt;li&gt;NerConverter&lt;/li&gt;
+  &lt;li&gt;PretrainedZeroShotNER&lt;/li&gt;
+  &lt;li&gt;NerConverter&lt;/li&gt;
+  &lt;li&gt;ChunkMergeModel&lt;/li&gt;
+  &lt;li&gt;PositionFinder&lt;/li&gt;
+  &lt;li&gt;ImageDrawRegions&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><summary type="html">Description This pipeline can be used to mask PHI information in Images. The output is an Image, similar to the one at the input, but with black bounding boxes on top of the targeted entities. Predicted Entities AGE, CITY, COUNTRY, DATE, DOCTOR, EMAIL, HOSPITAL, IDNUM, ORGANIZATION, PATIENT, PHONE, PROFESSION, STATE, STREET, USERNAME, ZIP, SIGNATURE. Live Demo Open in Colab Download How to use PythonHealthcare NLPPythonJohnSnowLabsScalaNLU from sparknlp.pretrained import PretrainedPipeline deid_pipeline = PretrainedPipeline(&quot;image_deid_multi_model_context_pipeline_cpu&quot;, &quot;en&quot;, &quot;clinical/ocr&quot;) import com.johnsnowlabs.ocr.pretrained.PretrainedPipeline val deid_pipeline = PretrainedPipeline(&quot;image_deid_multi_model_context_pipeline_cpu&quot;, lang = &quot;en&quot;, &quot;clinical/ocr&quot;) Example Input: Output: Model Information Model Name: image_deid_multi_model_context_pipeline Type: pipeline Compatibility: Healthcare NLP 6.0.0+ License: Licensed Edition: Official Language: en Size: 5.3 GB Included Models ImageToText DocumentAssembler SentenceDetectorDLModel Regex WordEmbeddingsModel MedicalNerModel NerConverter ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel EntityExtractor ContextualParserModel RegexMatcher ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel RegexMatcher ChunkMergeModel ChunkMergeModel XLMRobertaEmbeddings MedicalNerModel NerConverter PretrainedZeroShotNER NerConverter PretrainedZeroShotNER NerConverter ChunkMergeModel PositionFinder ImageDrawRegions</summary></entry><entry><title type="html">Detect Assertion Status (assertion_bert_classification_clinical_onnx)</title><link href="/2025/07/15/assertion_bert_classification_clinical_onnx_en.html" rel="alternate" type="text/html" title="Detect Assertion Status (assertion_bert_classification_clinical_onnx)" /><published>2025-07-15T00:00:00+00:00</published><updated>2025-07-15T00:00:00+00:00</updated><id>/2025/07/15/assertion_bert_classification_clinical_onnx_en</id><content type="html" xml:base="/2025/07/15/assertion_bert_classification_clinical_onnx_en.html">## Description
 
 Assign assertion status to clinical entities.
 
