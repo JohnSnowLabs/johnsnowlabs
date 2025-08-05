@@ -32,6 +32,7 @@ This pretrained model maps HPO codes to their associated genes and further maps 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
