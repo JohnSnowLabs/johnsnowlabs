@@ -4,10 +4,10 @@ title: JSL_MedSQL_T2SQL (t2sql - q16 - v1)
 author: John Snow Labs
 name: jsl_meds_text2sql_1b_q16_v1
 date: 2025-08-04
-tags: [medical, clinical, text2sql, q16, quantized, en, licensed, llamacpp]
+tags: [medical, clinical, text2sql, q16, en, licensed]
 task: Text Generation
 language: en
-edition: Healthcare NLP 6.0.0
+edition: Healthcare NLP 6.1.0
 spark_version: 3.0
 supported: true
 engine: llamacpp
@@ -24,8 +24,8 @@ This is a lightweight Text-to-SQL model fine-tuned by John Snow Labs, built spec
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/jsl_meds_text2sql_1b_q16_v1_en_6.0.0_3.0_1754331377777.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/jsl_meds_text2sql_1b_q16_v1_en_6.0.0_3.0_1754331377777.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/jsl_meds_text2sql_1b_q16_v1_en_6.1.0_3.0_1754331377777.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/jsl_meds_text2sql_1b_q16_v1_en_6.1.0_3.0_1754331377777.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -167,7 +167,7 @@ SELECT name FROM students WHERE grade = 'A';
 {:.table-model}
 |---|---|
 |Model Name:|jsl_meds_text2sql_1b_q16_v1|
-|Compatibility:|Healthcare NLP 6.0.0+|
+|Compatibility:|Healthcare NLP 6.1.0+|
 |License:|Licensed|
 |Edition:|Official|
 |Language:|en|
