@@ -1,6 +1,6 @@
 ---
 layout: model
-title: HPO Code To Gene To Disease Mapping
+title: HPO Code To Gene, Gene To Disease Mapping
 author: John Snow Labs
 name: hpo_code_gene_disease_mapper
 date: 2025-08-05
@@ -46,7 +46,7 @@ chunk_assembler = Doc2Chunk()\
 mapperModel = ChunkMapperModel.pretrained("hpo_code_gene_disease_mapper", "en", "clinical/models")\
     .setInputCols(["hpo_code"])\
     .setOutputCol("mappings")\
-    .setRels(["gene_disease"])
+    .setRels(["hpo_gene_disease"])
 
 mapper_pipeline = Pipeline(stages=[
     document_assembler,
@@ -74,7 +74,7 @@ chunk_assembler = nlp.Doc2Chunk()\
 mapperModel = medical.ChunkMapperModel.pretrained("hpo_code_gene_disease_mapper", "en", "clinical/models")\
     .setInputCols(["hpo_code"])\
     .setOutputCol("mappings")\
-    .setRels(["gene_disease"])
+    .setRels(["hpo_gene_disease"])
 
 mapper_pipeline = nlp.Pipeline(stages=[
     document_assembler,
@@ -100,7 +100,7 @@ val chunk_assembler = new Doc2Chunk()
 val mapperModel = ChunkMapperModel.pretrained("hpo_code_gene_disease_mapper", "en", "clinical/models")
     .setInputCols("hpo_code")
     .setOutputCol("mappings")
-    .setRels(Array("gene_disease"))
+    .setRels(Array("hpo_gene_disease"))
 
 val mapper_pipeline = new Pipeline().setStages(Array(
     document_assembler,
@@ -120,13 +120,13 @@ val result = mapper_pipeline.fit(data).transform(data)
 
 ```bash
 
-+------+-------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|  gene|                  disease|                                                                                                                                                                                       all_k_resolutions|
-+------+-------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|  CHN1|preaxial hand polydactyly|preaxial hand polydactyly:::brachydactyly:::marcus gunn jaw winking synkinesis:::triphalangeal thumb:::duane anomaly:::seizure:::global developmental delay:::irregular hyperpigmentation:::ectopic k...|
-|  MDH1|        hyperglutamatemia|hyperglutamatemia:::hypertonia:::seizure:::global developmental delay:::infra-orbital crease:::hypsarrhythmia:::partial agenesis of the corpus callosum:::autosomal recessive inheritance:::axial hyp...|
-|SNAP25|              poor speech|poor speech:::poor head control:::proximal muscle weakness:::motor delay:::gait disturbance:::bulbar palsy:::areflexia:::seizure:::hypotonia:::ataxia:::intellectual disability:::hyporeflexia:::dysa...|
-+------+-------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++----------+------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------+
+|  hpo_code|                                                                                                            gene_disease|                                                                                                       all_k_resolutions|
++----------+------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------+
+|HP:0000002|{"DUSP6": ["eunuchoid habitus", "gait disturbance", "seizure", "hypotonia", "ataxia", "dysarthria", "decreased testic...|{"DUSP6": ["eunuchoid habitus", "gait disturbance", "seizure", "hypotonia", "ataxia", "dysarthria", "decreased testic...|
+|HP:6001080|{"HSD11B1": ["autosomal dominant inheritance", "low tetrahydrocortisol (thf) plus 5-alpha-thf/tetrahydrocortisone (th...|{"HSD11B1": ["autosomal dominant inheritance", "low tetrahydrocortisol (thf) plus 5-alpha-thf/tetrahydrocortisone (th...|
+|HP:0009484|{"SHH": ["abnormal thumb morphology", "hand polydactyly", "poor speech", "expressive language delay", "limb dystonia"...|{"SHH": ["abnormal thumb morphology", "hand polydactyly", "poor speech", "expressive language delay", "limb dystonia"...|
++----------+------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------+
 
 ```
 
