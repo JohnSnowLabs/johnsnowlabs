@@ -21,11 +21,7 @@ The list below shows John Snow Labs' Medical LLM models available on Azure marke
 
 [Medical LLM - 14B](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.medical_llm_14b?tab=Overview)
 
-[Medical LLM - 10B](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.medical_llm_10b?tab=Overview)
-
 [Medical LLM - 8B](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.medical_llm_7b?tab=Overview)
-
-[Medical Reasoning LLM - 14B](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.medical_reasoning_llm_14b?tab=Overview)
 
 [Medical Reasoning LLM - 32B](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.medical_reasoning_llm_32b?tab=Overview)
 
