@@ -56,12 +56,16 @@ pipeline = Pipeline(stages=[
 ])
 
 medm_prompt = """### Instruction:
-Table: students  
-- id  
-- name  
-- grade  
+### Instruction:
+Table: CancerPatients
+- patient_id (INT)
+- name (VARCHAR)
+- age (INT)
+- gender (VARCHAR)
+- cancer_type (VARCHAR)
+- diagnosis_date (DATE)
 
-Write an SQL query to get the names of all students who got an A grade.
+List the names of patients diagnosed with breast cancer.
 
 ### Response:
 """
@@ -97,12 +101,16 @@ pipeline = nlp.Pipeline(stages=[
 ])
 
 medm_prompt = """### Instruction:
-Table: students  
-- id  
-- name  
-- grade  
+### Instruction:
+Table: CancerPatients
+- patient_id (INT)
+- name (VARCHAR)
+- age (INT)
+- gender (VARCHAR)
+- cancer_type (VARCHAR)
+- diagnosis_date (DATE)
 
-Write an SQL query to get the names of all students who got an A grade.
+List the names of patients diagnosed with breast cancer.
 
 ### Response:
 """
@@ -135,12 +143,16 @@ val pipeline = new Pipeline().setStages(Array(
 ))
 
 val medmPrompt = """### Instruction:
-Table: students  
-- id  
-- name  
-- grade  
+### Instruction:
+Table: CancerPatients
+- patient_id (INT)
+- name (VARCHAR)
+- age (INT)
+- gender (VARCHAR)
+- cancer_type (VARCHAR)
+- diagnosis_date (DATE)
 
-Write an SQL query to get the names of all students who got an A grade.
+List the names of patients diagnosed with breast cancer.
 
 ### Response:
 """
@@ -158,7 +170,7 @@ result.select("completions").show(false)
 ## Results
 
 ```bash
-SELECT name FROM students WHERE grade = 'A';
+SELECT name FROM CancerPatients WHERE cancer_type = 'breast cancer'
 ```
 
 {:.model-param}
