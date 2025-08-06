@@ -60,7 +60,9 @@ A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon ur
 Which of the following is the best treatment for this patient?
 A: Ampicillin
 B: Ceftriaxone
-C: Nitrofurantoin
+C: Ciprofloxacin
+D: Doxycycline
+E: Nitrofurantoin
 """
 
 data = spark.createDataFrame([[prompt]]).toDF("text")
@@ -98,7 +100,9 @@ A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon ur
 Which of the following is the best treatment for this patient?
 A: Ampicillin
 B: Ceftriaxone
-C: Nitrofurantoin
+C: Ciprofloxacin
+D: Doxycycline
+E: Nitrofurantoin
 """
 
 data = spark.createDataFrame([[prompt]]).toDF("text")
@@ -133,7 +137,9 @@ A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon ur
 Which of the following is the best treatment for this patient?
 A: Ampicillin
 B: Ceftriaxone
-C: Nitrofurantoin
+C: Ciprofloxacin
+D: Doxycycline
+E: Nitrofurantoin
 """
 
 val data = Seq(prompt).toDF("text")
