@@ -13,9 +13,9 @@ sidebar:
 
 The following LLMs are available as Snowflake Endpoints:
 
-[Medical LLM Medium](https://app.snowflake.com/marketplace/listing/GZTYZ4386LJCU/john-snow-labs-medical-llm-medium)
+[Medical LLM - Medium](https://app.snowflake.com/marketplace/listing/GZTYZ4386LJCU/john-snow-labs-medical-llm-medium)
 
-[Medical LLM Small](https://app.snowflake.com/marketplace/listing/GZTYZ4386LJ68/john-snow-labs-medical-llm-small)
+[Medical LLM - Small](https://app.snowflake.com/marketplace/listing/GZTYZ4386LJ68/john-snow-labs-medical-llm-small)
 
 [Medical LLM - 14B](https://app.snowflake.com/marketplace/listing/GZTYZ4386LJF5/john-snow-labs-medical-llm-14b)
 
