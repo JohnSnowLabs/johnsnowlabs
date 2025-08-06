@@ -15,11 +15,11 @@ The LLMs listed below are available as AWS Sagemaker Endpoints.
 
 **All LLMs on AWS Sagemaker are Open AI compatible.**
 
-[Medical LLM Medium](https://aws.amazon.com/marketplace/pp/prodview-z4jqmczvwgtby)
+[Medical LLM - Medium](https://aws.amazon.com/marketplace/pp/prodview-z4jqmczvwgtby)
 
-[Medical LLM Small](https://aws.amazon.com/marketplace/pp/prodview-yrajldynampw4)
+[Medical LLM - Small](https://aws.amazon.com/marketplace/pp/prodview-yrajldynampw4)
 
-[Medical VLM - 24B](https://aws.amazon.com/marketplace/pp/prodview-sagwxj5hcox4o)
+[Medical Visual LLM - 24B](https://aws.amazon.com/marketplace/pp/prodview-sagwxj5hcox4o)
 
 [Medical LLM - 14B](https://aws.amazon.com/marketplace/pp/prodview-u5vx4onx5kucy)
 
@@ -27,7 +27,7 @@ The LLMs listed below are available as AWS Sagemaker Endpoints.
 
 [Medical Reasoning LLM - 32B](https://aws.amazon.com/marketplace/pp/prodview-x5bfvnroddgfe)
 
-[Spanish Medical LLM - 24B](https://aws.amazon.com/marketplace/pp/prodview-5njzrglnfav6y)
+[Medical Spanish LLM - 24B](https://aws.amazon.com/marketplace/pp/prodview-5njzrglnfav6y)
 
 
 
