@@ -15,9 +15,9 @@ The list below shows John Snow Labs' Medical LLM models available on Azure marke
 
 **All LLMs on Azure are Open AI compatible.**
 
-[Medical LLM Medium](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.medical_llm_medium?tab=Overview)
+[Medical LLM - Medium](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.medical_llm_medium?tab=Overview)
 
-[Medical LLM Small](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.medical_llm_small?tab=Overview)
+[Medical LLM - Small](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.medical_llm_small?tab=Overview)
 
 [Medical LLM - 14B](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.medical_llm_14b?tab=Overview)
 
