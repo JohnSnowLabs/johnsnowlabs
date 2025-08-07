@@ -38,6 +38,7 @@ This pretrained pipeline enables deeper phenotypic and genomic insights directly
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
