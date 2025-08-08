@@ -33,65 +33,64 @@ This vision-language model is trained to understand medical images and extract k
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
-from sparknlp.base import DocumentAssembler,ImageAssembler
+from sparknlp.base import DocumentAssembler, ImageAssembler
 from sparknlp_jsl.annotator import MedicalVisionLLM
 from pyspark.sql.functions import lit
 from pyspark.ml import Pipeline
 
 !mkdir -p images
-
 !wget -O images/prescription_01.png   "https://raw.githubusercontent.com/JohnSnowLabs/spark-nlp-workshop/master/healthcare-nlp/data/ocr/prescription_01.png"
 !wget -O images/prescription_02.png   "https://raw.githubusercontent.com/JohnSnowLabs/spark-nlp-workshop/master/healthcare-nlp/data/ocr/prescription_02.png"
 
+from sparknlp_jsl.utils import *
+
 prompt = """Extract demografig, clinical disease and medication informations"""
 
-data = ImageAssembler.loadImagesAsBytes(spark, '/content/images')
-data = data.withColumn("caption", lit(prompt))
-
-document_assembler = (
-    DocumentAssembler()
-    .setInputCol("caption")
-    .setOutputCol("caption_document")
+input_df = vision_llm_preprocessor(
+    spark=spark,
+    images_path="./images",
+    prompt=prompt,
+    output_col_name="prompt"
 )
 
-image_assembler = (
-    ImageAssembler()
-    .setInputCol("image")
+document_assembler = DocumentAssembler()\
+    .setInputCol("prompt")\
+    .setOutputCol("document")
+
+image_assembler = ImageAssembler()\
+    .setInputCol("image")\
     .setOutputCol("image_assembler")
-)
 
-medicalVisionLLM = (
-    MedicalVisionLLM.pretrained("jsl_meds_vlm_3b_q4_v1", "en", "clinical/models")
-    .setInputCols(["caption_document", "image_assembler"])
-    .setOutputCol("completions")
-    .setChatTemplate("vicuna")
-    .setBatchSize(4)
-    .setNGpuLayers(99)
-    .setNCtx(4096)
-    .setMinKeep(0)
-    .setMinP(0.05)
-    .setNPredict(-1)
-    .setNProbs(0)
-    .setPenalizeNl(False)
-    .setRepeatLastN(256)
-    .setRepeatPenalty(1.18)
-    .setStopStrings(["</s>", "User:"])
-    .setTemperature(0.05)
-    .setTfsZ(1)
-    .setTypicalP(1)
-    .setTopK(40)
+medical_vision_llm = MedicalVisionLLM.pretrained("jsl_meds_vlm_3b_q4_v1", "en", "clinical/models")\
+    .setInputCols(["document", "image_assembler"])\
+    .setOutputCol("completions")\
+    .setChatTemplate("vicuna")\
+    .setBatchSize(4)\
+    .setNGpuLayers(99)\
+    .setNCtx(4096)\
+    .setMinKeep(0)\
+    .setMinP(0.05)\
+    .setNPredict(-1)\
+    .setNProbs(0)\
+    .setPenalizeNl(False)\
+    .setRepeatLastN(256)\
+    .setRepeatPenalty(1.18)\
+    .setStopStrings(["</s>", "User:"])\
+    .setTemperature(0.05)\
+    .setTfsZ(1)\
+    .setTypicalP(1)\
+    .setTopK(40)\
     .setTopP(0.95)
-)
 
 pipeline = Pipeline().setStages([
     document_assembler,
     image_assembler,
-    medicalVisionLLM
+    medical_vision_llm
 ])
 
-model = pipeline.fit(data)
-result = model.transform(data)
+result = pipeline.fit(input_df).transform(input_df)
 
 result.selectExpr(
     "reverse(split(image.origin, '/')) as image_name", "completions.result"
