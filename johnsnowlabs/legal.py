@@ -126,6 +126,10 @@ try:
             ContextualEntityRuler,
             PretrainedZeroShotNER,
             StructuredJsonConverter,
+            BertForAssertionClassification,
+            FhirDeIdentification,
+            AnnotationConverter,
+            MetadataAnnotationConverter
         )
         from sparknlp_jsl.modelTracer import ModelTracer
         from sparknlp_jsl.pipeline_tracer import PipelineTracer

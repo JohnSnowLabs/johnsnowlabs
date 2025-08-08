@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 5.5.3 ScalaDoc  - com.johnsnowlabs.annotator</title>
-          <meta name="description" content="Spark NLP 5.5.3 ScalaDoc - com.johnsnowlabs.annotator" />
-          <meta name="keywords" content="Spark NLP 5.5.3 ScalaDoc com.johnsnowlabs.annotator" />
+          <title>Spark NLP 6.0.4 ScalaDoc  - com.johnsnowlabs.annotator</title>
+          <meta name="description" content="Spark NLP 6.0.4 ScalaDoc - com.johnsnowlabs.annotator" />
+          <meta name="keywords" content="Spark NLP 6.0.4 ScalaDoc com.johnsnowlabs.annotator" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 5.5.3 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 6.0.4 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -118,6 +118,10 @@
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="com.johnsnowlabs">johnsnowlabs</a></dd></dl></div>
     </li><li class="current-entities indented3">
+                        <a class="object" href="AnnotationConverter$.html" title=""></a>
+                        <a class="class" href="AnnotationConverter.html" title=""></a>
+                        <a href="AnnotationConverter.html" title="">AnnotationConverter</a>
+                      </li><li class="current-entities indented3">
                         <a class="object" href="AnnotationMerger$.html" title=""></a>
                         <a class="class" href="AnnotationMerger.html" title="Merges Annotations from multiple columns."></a>
                         <a href="AnnotationMerger.html" title="Merges Annotations from multiple columns.">AnnotationMerger</a>
@@ -129,6 +133,10 @@
                         <a class="object" href="FeaturesAssembler$.html" title=""></a>
                         <a class="class" href="FeaturesAssembler.html" title="The FeaturesAssembler is used to collect features from different columns."></a>
                         <a href="FeaturesAssembler.html" title="The FeaturesAssembler is used to collect features from different columns.">FeaturesAssembler</a>
+                      </li><li class="current-entities indented3">
+                        <a class="object" href="MetadataAnnotationConverter$.html" title="This is the companion object of MetadataAnnotationConverter."></a>
+                        <a class="class" href="MetadataAnnotationConverter.html" title="Converts metadata fields in annotations into their respective result, begin, or end values."></a>
+                        <a href="MetadataAnnotationConverter.html" title="Converts metadata fields in annotations into their respective result, begin, or end values.">MetadataAnnotationConverter</a>
                       </li><li class="current-entities indented3">
                         <a class="object" href="Router$.html" title=""></a>
                         <a class="class" href="Router.html" title="This class allows to filter any annotation based on the medatata fields."></a>
@@ -292,7 +300,23 @@
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="com.johnsnowlabs.annotator.AnnotationMerger" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+              <ol><li name="com.johnsnowlabs.annotator.AnnotationConverter" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="AnnotationConverterextendsTransformerwithDefaultParamsWritablewithHasOutputAnnotationColwithHasInputCol"></a><a id="AnnotationConverter:AnnotationConverter"></a>
+      <span class="permalink">
+      <a href="../../../com/johnsnowlabs/annotator/AnnotationConverter.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="AnnotationConverter.html"><span class="name">AnnotationConverter</span></a><span class="result"> extends <span class="extype" name="org.apache.spark.ml.Transformer">Transformer</span> with <span class="extype" name="org.apache.spark.ml.util.DefaultParamsWritable">DefaultParamsWritable</span> with <span class="extype" name="com.johnsnowlabs.nlp.HasOutputAnnotationCol">HasOutputAnnotationCol</span> with <span class="extype" name="org.apache.spark.ml.param.shared.HasInputCol">HasInputCol</span></span>
+      </span>
+      
+      
+    </li><li name="com.johnsnowlabs.annotator.AnnotationMerger" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="AnnotationMergerextendsAnnotatorModel[com.johnsnowlabs.annotator.AnnotationMerger]withCheckLicensewithHasMultipleInputAnnotationColswithHasSimpleAnnotate[com.johnsnowlabs.annotator.AnnotationMerger]"></a><a id="AnnotationMerger:AnnotationMerger"></a>
       <span class="permalink">
       <a href="../../../com/johnsnowlabs/annotator/AnnotationMerger.html" title="Permalink">
@@ -357,6 +381,34 @@ SparkNLP annotations (if the annotation is an embedding, it takes the embedding,
 <code>result</code> field). The output of the transformer is a <code>FEATURE_VECTOR</code> annotation (the numeric vector is in the
 <code>embeddings</code> field).
 </p></div></div>
+    </li><li name="com.johnsnowlabs.annotator.MetadataAnnotationConverter" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="MetadataAnnotationConverterextendsAnnotatorModel[com.johnsnowlabs.annotator.MetadataAnnotationConverter]withHasSimpleAnnotate[com.johnsnowlabs.annotator.MetadataAnnotationConverter]"></a><a id="MetadataAnnotationConverter:MetadataAnnotationConverter"></a>
+      <span class="permalink">
+      <a href="../../../com/johnsnowlabs/annotator/MetadataAnnotationConverter.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a title="Converts metadata fields in annotations into their respective result, begin, or end values." href="MetadataAnnotationConverter.html"><span class="name">MetadataAnnotationConverter</span></a><span class="result"> extends <span class="extype" name="com.johnsnowlabs.nlp.AnnotatorModel">AnnotatorModel</span>[<a href="MetadataAnnotationConverter.html" class="extype" name="com.johnsnowlabs.annotator.MetadataAnnotationConverter">MetadataAnnotationConverter</a>] with <span class="extype" name="com.johnsnowlabs.nlp.HasSimpleAnnotate">HasSimpleAnnotate</span>[<a href="MetadataAnnotationConverter.html" class="extype" name="com.johnsnowlabs.annotator.MetadataAnnotationConverter">MetadataAnnotationConverter</a>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Converts metadata fields in annotations into their respective <code>result</code>, <code>begin</code>, or <code>end</code> values.</p><div class="fullcomment"><div class="comment cmt"><p>Converts metadata fields in annotations into their respective <code>result</code>, <code>begin</code>, or <code>end</code> values.</p><p>In certain pipelines, annotations carry rich metadata such as normalized values, custom offsets, or
+alternative representations. <code>MetadataAnnotationConverter</code> is a helper component that transforms these
+metadata fields into actual <code>Annotation</code> fields. This can be used to ensure consistency or to override
+noisy model predictions with more reliable metadata-derived information.</p><h4>Notes</h4><p>This annotator assumes that metadata fields like <code>begin_key</code>, <code>end_key</code>, or <code>result_key</code> contain
+values that can override the corresponding fields in the original annotation.
+If a metadata key is missing or invalid, the original annotation's values are used.</p><h4>Example</h4><p>Use the converter to override annotation fields from metadata:</p><pre><span class="kw">val</span> converter = <span class="kw">new</span> MetadataAnnotationConverter()
+  .setInputAnnotatorType(<span class="lit">"chunk"</span>)
+  .setResultField(<span class="lit">"normalized"</span>)
+  .setBeginField(<span class="lit">"char_start"</span>)
+  .setEndField(<span class="lit">"char_end"</span>)
+  .setInputCols(<span class="lit">"chunk"</span>)  <span class="cmt">// input should match inputAnnotatorType</span>
+  .setOutputCol(<span class="lit">"converted_chunk"</span>)</pre><p>After transformation, the annotation in <code>converted_chunk</code> will use metadata if available.
+</p></div></div>
     </li><li name="com.johnsnowlabs.annotator.Router" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="RouterextendsAnnotatorModel[com.johnsnowlabs.annotator.Router]withHasSimpleAnnotate[com.johnsnowlabs.annotator.Router]withParamsAndFeaturesWritablewithCheckLicense"></a><a id="Router:Router"></a>
       <span class="permalink">
@@ -418,7 +470,23 @@ SparkNLP annotations (if the annotation is an embedding, it takes the embedding,
         <div class="values members">
               <h3>Value Members</h3>
               <ol>
-                <li name="com.johnsnowlabs.annotator.AnnotationMerger" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+                <li name="com.johnsnowlabs.annotator.AnnotationConverter" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="AnnotationConverter"></a><a id="AnnotationConverter:AnnotationConverter"></a>
+      <span class="permalink">
+      <a href="../../../com/johnsnowlabs/annotator/AnnotationConverter$.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="AnnotationConverter$.html"><span class="name">AnnotationConverter</span></a><span class="result"> extends <span class="extype" name="org.apache.spark.ml.util.DefaultParamsReadable">DefaultParamsReadable</span>[<a href="AnnotationConverter.html" class="extype" name="com.johnsnowlabs.annotator.AnnotationConverter">AnnotationConverter</a>] with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      
+      
+    </li><li name="com.johnsnowlabs.annotator.AnnotationMerger" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="AnnotationMerger"></a><a id="AnnotationMerger:AnnotationMerger"></a>
       <span class="permalink">
       <a href="../../../com/johnsnowlabs/annotator/AnnotationMerger$.html" title="Permalink">
@@ -468,6 +536,24 @@ documentation.
       </span>
       
       
+    </li><li name="com.johnsnowlabs.annotator.MetadataAnnotationConverter" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="MetadataAnnotationConverter"></a><a id="MetadataAnnotationConverter:MetadataAnnotationConverter"></a>
+      <span class="permalink">
+      <a href="../../../com/johnsnowlabs/annotator/MetadataAnnotationConverter$.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a title="This is the companion object of MetadataAnnotationConverter." href="MetadataAnnotationConverter$.html"><span class="name">MetadataAnnotationConverter</span></a><span class="result"> extends <span class="extype" name="org.apache.spark.ml.util.DefaultParamsReadable">DefaultParamsReadable</span>[<a href="MetadataAnnotationConverter.html" class="extype" name="com.johnsnowlabs.annotator.MetadataAnnotationConverter">MetadataAnnotationConverter</a>] with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">This is the companion object of <a href="MetadataAnnotationConverter.html" class="extype" name="com.johnsnowlabs.annotator.MetadataAnnotationConverter">MetadataAnnotationConverter</a>.</p><div class="fullcomment"><div class="comment cmt"><p>This is the companion object of <a href="MetadataAnnotationConverter.html" class="extype" name="com.johnsnowlabs.annotator.MetadataAnnotationConverter">MetadataAnnotationConverter</a>. Please refer to that class for the
+documentation.
+</p></div></div>
     </li><li name="com.johnsnowlabs.annotator.Router" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Router"></a><a id="Router:Router"></a>
       <span class="permalink">

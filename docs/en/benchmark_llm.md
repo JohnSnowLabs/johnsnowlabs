@@ -10,6 +10,7 @@ show_nav: true
 sidebar:
     nav: sparknlp-healthcare
 ---
+
 <div class="h3-box" markdown="1">
 
 ##  Medical Benchmarks
@@ -35,8 +36,6 @@ We evaluated six Johnsnow Lab LLM models across ten task categories: MedMCQA, Me
 Each model's performance was measured based on accuracy, reflecting how well it handled medical reasoning, clinical knowledge, and biomedical question answering. 
 
 </div><div class="h3-box" markdown="1">
-
-<div class="h3-box" markdown="1">
 
 ##  JSL-MedS
 

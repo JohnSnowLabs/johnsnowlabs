@@ -20,7 +20,9 @@ use_language_switcher: "Python-Scala-Java"
 
 This pipeline is designed to extract types of vaccines and related disease/symptom entities from clinical/medical texts.
 
-Predicted entities are:
+This project has been funded in whole or in part with Federal funds from the National Institute of Allergy and Infectious Diseases, National Institutes of Health, Department of Health and Human Services, under Contract No. 75N93024C00010.
+
+## Predicted Entities
 
 `Bacterial_Vax`, `Viral_Vax`, `Cancer_Vax`, `Bac_Vir_Comb`, `Other_Vax`, `Vax_Dose`, `Infectious_Disease`, `Other_Disease_Disorder`, `Sign_Symptom`, `Toxoid`, `Adaptive_Immunity`, `Inactivated`, `Date`, `Age`
 

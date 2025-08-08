@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 5.5.3 ScalaDoc  - com.johnsnowlabs.nlp.jsl.functions</title>
-          <meta name="description" content="Spark NLP 5.5.3 ScalaDoc - com.johnsnowlabs.nlp.jsl.functions" />
-          <meta name="keywords" content="Spark NLP 5.5.3 ScalaDoc com.johnsnowlabs.nlp.jsl.functions" />
+          <title>Spark NLP 6.0.4 ScalaDoc  - com.johnsnowlabs.nlp.jsl.functions</title>
+          <meta name="description" content="Spark NLP 6.0.4 ScalaDoc - com.johnsnowlabs.nlp.jsl.functions" />
+          <meta name="keywords" content="Spark NLP 6.0.4 ScalaDoc com.johnsnowlabs.nlp.jsl.functions" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 5.5.3 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 6.0.4 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -528,9 +528,9 @@ Almost equivalent to nested for-loops iterating over the inner Traversables whil
       
       
     </li><li name="com.johnsnowlabs.nlp.jsl.functions#groupSortedOverlapping" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="groupSortedOverlapping(ans:Seq[com.johnsnowlabs.nlp.Annotation]):List[List[com.johnsnowlabs.nlp.Annotation]]"></a><a id="groupSortedOverlapping(Seq[Annotation]):List[List[Annotation]]"></a>
+      <a id="groupSortedOverlapping(ans:Seq[com.johnsnowlabs.nlp.Annotation]):Seq[List[com.johnsnowlabs.nlp.Annotation]]"></a><a id="groupSortedOverlapping(Seq[Annotation]):Seq[List[Annotation]]"></a>
       <span class="permalink">
-      <a href="../../../../com/johnsnowlabs/nlp/jsl/functions$.html#groupSortedOverlapping(ans:Seq[com.johnsnowlabs.nlp.Annotation]):List[List[com.johnsnowlabs.nlp.Annotation]]" title="Permalink">
+      <a href="../../../../com/johnsnowlabs/nlp/jsl/functions$.html#groupSortedOverlapping(ans:Seq[com.johnsnowlabs.nlp.Annotation]):Seq[List[com.johnsnowlabs.nlp.Annotation]]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -539,7 +539,7 @@ Almost equivalent to nested for-loops iterating over the inner Traversables whil
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">groupSortedOverlapping</span><span class="params">(<span name="ans">ans: <a href="../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="com.johnsnowlabs.nlp.Annotation">Annotation</span>]</span>)</span><span class="result">: <span class="extype" name="scala.collection.immutable.List">List</span>[<a href="../../../../scala/index.html#List[+A]=List[A]" class="extmbr" name="scala.List">List</a>[<span class="extype" name="com.johnsnowlabs.nlp.Annotation">Annotation</span>]]</span>
+        <span class="name">groupSortedOverlapping</span><span class="params">(<span name="ans">ans: <a href="../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="com.johnsnowlabs.nlp.Annotation">Annotation</span>]</span>)</span><span class="result">: <a href="../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<a href="../../../../scala/index.html#List[+A]=List[A]" class="extmbr" name="scala.List">List</a>[<span class="extype" name="com.johnsnowlabs.nlp.Annotation">Annotation</span>]]</span>
       </span>
       
       
@@ -596,6 +596,22 @@ when downgrading from chunk to ner
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.jsl.functions#isOverlap" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="isOverlap(an1:com.johnsnowlabs.nlp.Annotation,an2:com.johnsnowlabs.nlp.Annotation):Boolean"></a><a id="isOverlap(Annotation,Annotation):Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../com/johnsnowlabs/nlp/jsl/functions$.html#isOverlap(an1:com.johnsnowlabs.nlp.Annotation,an2:com.johnsnowlabs.nlp.Annotation):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isOverlap</span><span class="params">(<span name="an1">an1: <span class="extype" name="com.johnsnowlabs.nlp.Annotation">Annotation</span></span>, <span name="an2">an2: <span class="extype" name="com.johnsnowlabs.nlp.Annotation">Annotation</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      
     </li><li name="com.johnsnowlabs.nlp.jsl.functions#merge" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="merge(rs:List[(Int,Int)]):List[(Int,Int)]"></a><a id="merge(List[(Int,Int)]):List[(Int,Int)]"></a>
       <span class="permalink">
@@ -609,6 +625,22 @@ when downgrading from chunk to ner
       </span>
       <span class="symbol">
         <span class="name">merge</span><span class="params">(<span name="rs">rs: <a href="../../../../scala/index.html#List[+A]=List[A]" class="extmbr" name="scala.List">List</a>[(<span class="extype" name="scala.Int">Int</span>, <span class="extype" name="scala.Int">Int</span>)]</span>)</span><span class="result">: <a href="../../../../scala/index.html#List[+A]=List[A]" class="extmbr" name="scala.List">List</a>[(<span class="extype" name="scala.Int">Int</span>, <span class="extype" name="scala.Int">Int</span>)]</span>
+      </span>
+      
+      
+    </li><li name="com.johnsnowlabs.nlp.jsl.functions#mergeOverlap" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="mergeOverlap(annotations:Seq[com.johnsnowlabs.nlp.Annotation]):Seq[com.johnsnowlabs.nlp.Annotation]"></a><a id="mergeOverlap(Seq[Annotation]):Seq[Annotation]"></a>
+      <span class="permalink">
+      <a href="../../../../com/johnsnowlabs/nlp/jsl/functions$.html#mergeOverlap(annotations:Seq[com.johnsnowlabs.nlp.Annotation]):Seq[com.johnsnowlabs.nlp.Annotation]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">mergeOverlap</span><span class="params">(<span name="annotations">annotations: <a href="../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="com.johnsnowlabs.nlp.Annotation">Annotation</span>]</span>)</span><span class="result">: <a href="../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="com.johnsnowlabs.nlp.Annotation">Annotation</span>]</span>
       </span>
       
       
@@ -667,9 +699,9 @@ when downgrading from chunk to ner
               
         </dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.jsl.functions#resolveSortedOverlapping" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="resolveSortedOverlapping(possibleEntityFields:Array[String],mergeOverlapping:Boolean,selectionStrategy:String)(annotations:List[com.johnsnowlabs.nlp.Annotation]):scala.collection.AbstractSeq[com.johnsnowlabs.nlp.Annotation]withSerializable"></a><a id="resolveSortedOverlapping(Array[String],Boolean,String)(List[Annotation]):AbstractSeq[Annotation]withSerializable"></a>
+      <a id="resolveSortedOverlapping(possibleEntityFields:Array[String],mergeOverlapping:Boolean,selectionStrategy:String)(annotations:List[com.johnsnowlabs.nlp.Annotation]):Seq[com.johnsnowlabs.nlp.Annotation]"></a><a id="resolveSortedOverlapping(Array[String],Boolean,String)(List[Annotation]):Seq[Annotation]"></a>
       <span class="permalink">
-      <a href="../../../../com/johnsnowlabs/nlp/jsl/functions$.html#resolveSortedOverlapping(possibleEntityFields:Array[String],mergeOverlapping:Boolean,selectionStrategy:String)(annotations:List[com.johnsnowlabs.nlp.Annotation]):scala.collection.AbstractSeq[com.johnsnowlabs.nlp.Annotation]withSerializable" title="Permalink">
+      <a href="../../../../com/johnsnowlabs/nlp/jsl/functions$.html#resolveSortedOverlapping(possibleEntityFields:Array[String],mergeOverlapping:Boolean,selectionStrategy:String)(annotations:List[com.johnsnowlabs.nlp.Annotation]):Seq[com.johnsnowlabs.nlp.Annotation]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -678,7 +710,7 @@ when downgrading from chunk to ner
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">resolveSortedOverlapping</span><span class="params">(<span name="possibleEntityFields">possibleEntityFields: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol"><span class="name"><a href="../../../index.html">knownPossibleEntityFields</a></span></span></span>, <span name="mergeOverlapping">mergeOverlapping: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="selectionStrategy">selectionStrategy: <span class="extype" name="scala.Predef.String">String</span> = <span class="defval" name='<span class="name"><a href="../../../index.html">AvailableSelectionStrategies.SEQUENTIAL</a></span>'>...</span></span>)</span><span class="params">(<span name="annotations">annotations: <a href="../../../../scala/index.html#List[+A]=List[A]" class="extmbr" name="scala.List">List</a>[<span class="extype" name="com.johnsnowlabs.nlp.Annotation">Annotation</span>]</span>)</span><span class="result">: <span class="extype" name="scala.collection.AbstractSeq">AbstractSeq</span>[<span class="extype" name="com.johnsnowlabs.nlp.Annotation">Annotation</span>] with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <span class="name">resolveSortedOverlapping</span><span class="params">(<span name="possibleEntityFields">possibleEntityFields: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol"><span class="name"><a href="../../../index.html">knownPossibleEntityFields</a></span></span></span>, <span name="mergeOverlapping">mergeOverlapping: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="selectionStrategy">selectionStrategy: <span class="extype" name="scala.Predef.String">String</span> = <span class="defval" name='<span class="name"><a href="../../../index.html">AvailableSelectionStrategies.SEQUENTIAL</a></span>'>...</span></span>)</span><span class="params">(<span name="annotations">annotations: <a href="../../../../scala/index.html#List[+A]=List[A]" class="extmbr" name="scala.List">List</a>[<span class="extype" name="com.johnsnowlabs.nlp.Annotation">Annotation</span>]</span>)</span><span class="result">: <a href="../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="com.johnsnowlabs.nlp.Annotation">Annotation</span>]</span>
       </span>
       
       

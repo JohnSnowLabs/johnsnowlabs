@@ -7,7 +7,8 @@ date: 2024-06-12
 tags: [en, licensed]
 task: De-identification
 language: en
-edition: Healthcare NLP 5.3.2
+nav_key: models
+edition: Visual NLP 5.5.0
 spark_version: 3.2
 supported: true
 annotator: PipelineModel
@@ -18,15 +19,18 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-
-This pipeline can be used to mask PHI information in PDFs. Masked entities include AGE, BIOID, CITY, COUNTRY, DATE, DEVICE, DOCTOR, EMAIL, FAX, HEALTHPLAN, HOSPITAL, IDNUM, LOCATION, MEDICALRECORD, ORGANIZATION, PATIENT, PHONE, PROFESSION, STATE, STREET, URL, USERNAME, ZIP, ACCOUNT, LICENSE, VIN, SSN, DLN, PLATE, and IPADDR.
+This pipeline can be used to mask PHI information in PDFs.
 The output is a PDF document, similar to the one at the input, but with black bounding boxes on top of the targeted entities.
 
+## Predicted Entities
+
+``AGE``, ``BIOID``, ``CITY``, ``COUNTRY``, ``DATE``, ``DEVICE``, ``DOCTOR``, ``EMAIL``, ``FAX``, ``HEALTHPLAN``, ``HOSPITAL``, ``IDNUM``, ``LOCATION``, ``MEDICALRECORD``, ``ORGANIZATION``, ``PATIENT``, ``PHONE``, ``PROFESSION``, ``STATE``, ``STREET``, ``URL``, ``USERNAME``, ``ZIP``, ``ACCOUNT``, ``LICENSE``, ``VIN``, ``SSN``, ``DLN``, ``PLATE``, ``IPADDR``.
+
 {:.btn-box}
-<button class="button button-orange" disabled>Live Demo</button>
-<button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/pdf_deid_subentity_context_augmented_pipeline_en_5.3.2_3.2_1718175278007.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/pdf_deid_subentity_context_augmented_pipeline_en_5.3.2_3.2_1718175278007.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Live Demo](https://demo.johnsnowlabs.com/ocr/PP_PDF_DEIDENTIFICATION/){:.button.button-orange.button-orange-trans.co.button-icon}
+[Open in Colab](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrPdfDeIdentificationPipelines.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/pdf_deid_subentity_context_augmented_pipeline_en_5.3.2_3.2_1718175278007.zip){:.button.button-orange.button-orange-trans.arr.button-icon}
+
 
 ## How to use
 
@@ -35,13 +39,21 @@ The output is a PDF document, similar to the one at the input, but with black bo
 {% include programmingLanguageSelectScalaPythonNLU.html %}
 ```python
 from sparknlp.pretrained import PretrainedPipeline
-
 deid_pipeline = PretrainedPipeline("pdf_deid_subentity_context_augmented_pipeline", "en", "clinical/models")
 ```
 
 </div>
 
 {:.model-param}
+
+## Example
+
+### Input:
+![Screenshot](/assets/images/examples_ocr/PDF1_Deid_Deidentification_1_page-0001.jpg)
+
+### Output:
+![Screenshot](/assets/images/examples_ocr/pipeline7_pdf1_im1.png)
+
 ## Model Information
 
 {:.table-model}

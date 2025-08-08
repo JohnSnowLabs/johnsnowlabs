@@ -48,8 +48,8 @@ def install_license_to_cluster(install_suite: InstallSuite, db: DatabricksAPI, )
         "SPARK_OCR_LICENSE": install_suite.secrets.OCR_LICENSE,
     }
     lic = {k: v for k, v in lic.items() if v is not None}
-
-    put_file_on_dbfs(db, settings.dbfs_license_path, lic, overwrite=True)
+    # TODO license info-files and shit should be created! also folder!!
+    put_file_on_dbfs(db, f'{settings.dbfs_license_path}/license.json', lic, overwrite=True)
     return settings.dbfs_license_path
 
 

@@ -103,6 +103,10 @@ try:
             ContextualEntityRuler,
             PretrainedZeroShotNER,
             StructuredJsonConverter,
+            BertForAssertionClassification,
+            FhirDeIdentification,
+            AnnotationConverter,
+            MetadataAnnotationConverter
         )
         from sparknlp_jsl.structured_deidentification import StructuredDeidentification
         from sparknlp_jsl.text_to_documents_columns import TextToDocumentsColumns

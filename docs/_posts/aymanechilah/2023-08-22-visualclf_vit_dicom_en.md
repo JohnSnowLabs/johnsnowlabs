@@ -39,9 +39,9 @@ This model provides a comprehensive solution for tasks involving medical image c
 ## How to use
 
 
-
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 document_assembler = nlp.ImageAssembler() \
     .setInputCol("image") \
@@ -67,6 +67,21 @@ result.select("class.result").show(1, False)
 ```
 
 </div>
+
+## Example
+
+### Input:
+![Screenshot](/assets/images/examples_ocr/dicom_example.png)
+
+## Output text
+```bash
++-------+
+|label  |
++-------+
+|image  |
++-------+
+```
+
 
 {:.model-param}
 ## Model Information

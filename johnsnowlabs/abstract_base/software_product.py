@@ -3,7 +3,7 @@ import sys
 from abc import ABC
 from typing import List, Set, Optional
 
-import pkg_resources
+from importlib.metadata import version
 
 from johnsnowlabs import settings
 from johnsnowlabs.abstract_base.lib_resolver import Py4JJslLibDependencyResolverABC
@@ -93,17 +93,10 @@ class AbstractSoftwareProduct(ABC):
         ):
             return False
         try:
-            if (
-                pkg_resources.get_distribution(cls.pypi_name).version
-                == cls.latest_version.as_str()
-            ):
+            if version(cls.pypi_name) == cls.latest_version.as_str():
                 # print(f'👌 Installed version for {cls.logo + cls.name} is correct, no changes made.')
                 return True
             else:
-                # print(f'🤓 Installed version for {cls.logo + cls.name} is incorrect, '
-                #       f'should be {cls.latest_version.as_str()} but is {pkg_resources.get_distribution(cls.pypi_name).version} '
-                #       f'upgrading the package')
-
                 return False
         except Exception as err:
             v = get_pip_lib_version(lib=cls.pypi_name, py_exec=python_exec_path)
@@ -118,11 +111,11 @@ class AbstractSoftwareProduct(ABC):
         download_folder: str = None,
         prefer_pip=False,
         fallback_import=False,
-    ) -> bool:
+    ) -> str:
         # Only supported for current Py Exec Path, return True otherwise
         if not prefer_pip:
             try:
-                return pkg_resources.get_distribution(cls.pypi_name).version
+                return version(cls.pypi_name)
             except:
                 pass
         v = get_pip_lib_version(lib=cls.pypi_name, py_exec=python_exec_path)

@@ -15,6 +15,10 @@ sidebar:
 
 <div class="grid--container container-aside"><div class="grid">
 
+<div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item">{%- include extensions/youtube.html id='tBXM_2nTLwk' -%}<div class="video-descr">Generative AI Lab Installation on AWS. April, 2025</div></div></div>
+
+<div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item">{%- include extensions/youtube.html id='pG3Ft1DmiLY' -%}<div class="video-descr">Generative AI Lab Installation Tutorial. May, 2025</div></div></div>
+
 <div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item">{%- include extensions/youtube.html id='ycrJX_UMA6I' -%}<div class="video-descr">Programmatic labeling in Generative AI Lab. Suvrat Joshi - October, 2022</div></div></div>
 
 <div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item">{%- include extensions/youtube.html id='tzEwzT_HmXM' -%}<div class="video-descr">How to create a NER project in Generative AI Lab. Suvrat Joshi - September, 2022</div></div></div>

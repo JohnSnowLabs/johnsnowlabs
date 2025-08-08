@@ -99,6 +99,8 @@ medical-llm:
         url: /docs/en/LLMs/on_prem_deploy
       - title: Deploy on AWS
         url: /docs/en/LLMs/on_aws
+      - title: Deploy on Azure
+        url: /docs/en/LLMs/on_azure
       - title: Deploy on Snowflake
         url: /docs/en/LLMs/on_snowflake
       - title: Support
@@ -109,12 +111,32 @@ medical-llm:
 term-server:
   - title: Terminology Server
     children:
-      - title: Home
+      - title: Getting Started
         url: /docs/en/terminology_server/term_server
-      - title: Deploy on Premise
-        url: /docs/en/terminology_server/on_prem_deploy
-      - title: Deploy on AWS
-        url: /docs/en/terminology_server/on_aws
+      - subtitle: Installation
+        children:
+        - title: Deploy on Premise
+          url: /docs/en/terminology_server/on_prem_deploy
+        - title: Deploy on AWS
+          url: /docs/en/terminology_server/on_aws
+        - title: Deploy on Azure
+          url: /docs/en/terminology_server/on_azure
+      - subtitle: Features
+        children:
+          - title: Search
+            url: /docs/en/terminology_server/features/search
+          - title: Code Systems
+            url: /docs/en/terminology_server/features/code_systems
+          - title: Concept Maps
+            url: /docs/en/terminology_server/features/concept_maps
+          - title: Value Sets
+            url: /docs/en/terminology_server/features/value_sets
+      - subtitle: APIs
+        children:
+          - title: API Service Access
+            url: /docs/en/terminology_server/api_service
+          - title: API Documentation
+            url: /docs/en/terminology_server/api_docs
       - title: Support
         url: /docs/en/terminology_server/support
       - title: Release Notes
@@ -185,6 +207,8 @@ annotation-lab:
             url: /docs/en/alab/resolvers 
           - title: De-Identification
             url: /docs/en/alab/de_identify
+          - title: LLM Evaluation & Comparision
+            url: /docs/en/alab/llm_eval
           - title: Audit Trail
             url: /docs/en/alab/audit_trail
           - title: Productivity
@@ -201,6 +225,8 @@ annotation-lab:
             url: /docs/en/alab/active_learning
           - title: Transfer Learning
             url: /docs/en/alab/transfer_learning
+          - title: LangTest
+            url: /docs/en/alab/langtest
           - title: Test Project Configuration
             url: /docs/en/alab/test_project_configuration
       - subtitle: Administration
@@ -219,6 +245,8 @@ annotation-lab:
             url: /docs/en/alab/infrastructure
           - title: Cluster Management
             url: /docs/en/alab/cluster_management
+          - title: HIPAA Compliance
+            url: /docs/en/alab/hipaa_compliance
       - title: NLP Libraries Integration
         url: /docs/en/alab/healthcare
       - title: Spark Library Version
@@ -269,6 +297,8 @@ sparknlp-healthcare:
         url: /docs/en/best_practices_pretrained_models
       - title: Release Notes 
         url: /docs/en/spark_nlp_healthcare_versions/licensed_release_notes
+      - title: Interactive Healthcare NLP Wiki
+        url: /docs/en/interactive-healthcare-nlp-wiki
       - title: Healthcare Models
         url: /models?edition=Spark+NLP+for+Healthcare
       - title: Version Compatibility

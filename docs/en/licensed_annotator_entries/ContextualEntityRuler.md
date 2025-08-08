@@ -47,10 +47,6 @@ Parameters:
 
   {%- endcapture -%}
 
-{%- capture model_input_anno -%}
-
-
-{%- endcapture -%}
 
 {%- capture model_input_anno -%}
 DOCUMENT, TOKEN, CHUNK

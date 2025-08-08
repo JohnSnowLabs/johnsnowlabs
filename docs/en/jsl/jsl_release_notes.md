@@ -16,6 +16,99 @@ sidebar:
 See [Github Releases](https://github.com/JohnSnowLabs/johnsnowlabs/releases) for detailed information on Release History and Features
 
 
+## 6.0.4
+Release date: 7-26-2025
+
+The John Snow Labs 6.0.4 Library released with the following pre-installed and recommended dependencies
+
+{:.table-model-big}
+| Library                                                                                 | Version    |
+|-----------------------------------------------------------------------------------------|------------|
+| [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes) | `6.0.0`    |
+| [Enterprise NLP](https://nlp.johnsnowlabs.com/docs/en/licensed_annotators)              | `6.0.4`    |
+| [Finance NLP](https://nlp.johnsnowlabs.com/docs/en/financial_release_notes)             | `1.X.X`    |
+| [Legal NLP](https://nlp.johnsnowlabs.com/docs/en/legal_release_notes)                   | `1.X.X`    |
+| [NLU](https://github.com/JohnSnowLabs/nlu/releases)                                     | `5.4.1` |
+| [Spark-NLP-Display](https://sparknlp.org/docs/en/display)                               | `5.0`      |
+| [Spark-NLP](https://github.com/JohnSnowLabs/spark-nlp/releases/)                        | `6.0.4`    |
+| [Pyspark](https://spark.apache.org/docs/latest/api/python/)                             | `3.4.0`    |
+
+
+## 6.0.3
+Release date: 6-12-2025
+
+The John Snow Labs 6.0.3 Library released with the following pre-installed and recommended dependencies
+
+{:.table-model-big}
+| Library                                                                                 | Version    |
+|-----------------------------------------------------------------------------------------|------------|
+| [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes) | `6.0.0`    |
+| [Enterprise NLP](https://nlp.johnsnowlabs.com/docs/en/licensed_annotators)              | `6.0.3`    |
+| [Finance NLP](https://nlp.johnsnowlabs.com/docs/en/financial_release_notes)             | `1.X.X`    |
+| [Legal NLP](https://nlp.johnsnowlabs.com/docs/en/legal_release_notes)                   | `1.X.X`    |
+| [NLU](https://github.com/JohnSnowLabs/nlu/releases)                                     | `5.4.1` |
+| [Spark-NLP-Display](https://sparknlp.org/docs/en/display)                               | `5.0`      |
+| [Spark-NLP](https://github.com/JohnSnowLabs/spark-nlp/releases/)                        | `6.0.3`    |
+| [Pyspark](https://spark.apache.org/docs/latest/api/python/)                             | `3.4.0`    |
+
+
+
+## 6.0.2
+Release date: 6-6-2025
+
+The John Snow Labs 6.0.2 Library released with the following pre-installed and recommended dependencies
+
+{:.table-model-big}
+| Library                                                                                 | Version    |
+|-----------------------------------------------------------------------------------------|------------|
+| [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes) | `6.0.0`    |
+| [Enterprise NLP](https://nlp.johnsnowlabs.com/docs/en/licensed_annotators)              | `6.0.2`    |
+| [Finance NLP](https://nlp.johnsnowlabs.com/docs/en/financial_release_notes)             | `1.X.X`    |
+| [Legal NLP](https://nlp.johnsnowlabs.com/docs/en/legal_release_notes)                   | `1.X.X`    |
+| [NLU](https://github.com/JohnSnowLabs/nlu/releases)                                     | `5.4.1` |
+| [Spark-NLP-Display](https://sparknlp.org/docs/en/display)                               | `5.0`      |
+| [Spark-NLP](https://github.com/JohnSnowLabs/spark-nlp/releases/)                        | `6.0.1`    |
+| [Pyspark](https://spark.apache.org/docs/latest/api/python/)                             | `3.4.0`    |
+
+
+
+## 6.0.1
+Release date: 6-3-2025
+
+The John Snow Labs 6.0.1 Library released with the following pre-installed and recommended dependencies
+
+{:.table-model-big}
+| Library                                                                                 | Version    |
+|-----------------------------------------------------------------------------------------|------------|
+| [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes) | `6.0.0`    |
+| [Enterprise NLP](https://nlp.johnsnowlabs.com/docs/en/licensed_annotators)              | `6.0.1`    |
+| [Finance NLP](https://nlp.johnsnowlabs.com/docs/en/financial_release_notes)             | `1.X.X`    |
+| [Legal NLP](https://nlp.johnsnowlabs.com/docs/en/legal_release_notes)                   | `1.X.X`    |
+| [NLU](https://github.com/JohnSnowLabs/nlu/releases)                                     | `5.4.1` |
+| [Spark-NLP-Display](https://sparknlp.org/docs/en/display)                               | `5.0`      |
+| [Spark-NLP](https://github.com/JohnSnowLabs/spark-nlp/releases/)                        | `6.0.1`    |
+| [Pyspark](https://spark.apache.org/docs/latest/api/python/)                             | `3.4.0`    |
+
+
+
+## 6.0.0
+Release date: 5-4-2025
+
+The John Snow Labs 6.0.0 Library released with the following pre-installed and recommended dependencies
+
+{:.table-model-big}
+| Library                                                                                 | Version    |
+|-----------------------------------------------------------------------------------------|------------|
+| [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes) | `6.0.0`    |
+| [Enterprise NLP](https://nlp.johnsnowlabs.com/docs/en/licensed_annotators)              | `6.0.0`    |
+| [Finance NLP](https://nlp.johnsnowlabs.com/docs/en/financial_release_notes)             | `1.X.X`    |
+| [Legal NLP](https://nlp.johnsnowlabs.com/docs/en/legal_release_notes)                   | `1.X.X`    |
+| [NLU](https://github.com/JohnSnowLabs/nlu/releases)                                     | `5.4.1` |
+| [Spark-NLP-Display](https://sparknlp.org/docs/en/display)                               | `5.0`      |
+| [Spark-NLP](https://github.com/JohnSnowLabs/spark-nlp/releases/)                        | `6.0.0`    |
+| [Pyspark](https://spark.apache.org/docs/latest/api/python/)                             | `3.4.0`    |
+
+
 
 ## 5.5.5
 Release date: 3-14-2025

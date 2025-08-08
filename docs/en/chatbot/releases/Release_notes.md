@@ -5,7 +5,7 @@ seotitle: Medical Chatbot | John Snow Labs
 title: Release Notes
 permalink: /docs/en/chatbot/releases/release_notes
 key: docs-healthcare-gpt
-modify_date: "2025-03-24"
+modify_date: "2025-06-09"
 show_nav: true
 sidebar:
     nav: healthcare-gpt
@@ -13,9 +13,106 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
+## 06-06-2025 Improvements to Medical Conversations and Document QA
+
+This version brings a complete upgrade to the Document Q&A experience as well as significant enhancements to the Medical Research. It focuses on making conversations more context-aware, citations more relevant, and answers more reliable—all to better support clinical decision-making and evidence-based research.
+
+### Enhanced Agentic Document Q&A
+**More Accurate Medical Answers from Files**: Instead of just retrieving chunks of text, our new agentic flow actively reasons through the content. For example, when asked “What degenerative changes are noted across the three patients, and how do they differ in terms of location and severity?”, the agent now selects, summarizes, and explains the relevant sections from the different documents.
+
+<iframe width="850" height="450" src="https://www.youtube.com/embed/ptTTjDDj9bA?si=8PxakWEEAD7a-Qt2&hd=1" title="Agentic Doc QA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+**Smarter Document Processing**: Ingestion of uploaded documents is more precise, with better recognition of tables in PDF, docx or scanned medical reports, and with smarter document chunking. This ensures that questions such as “What are the EU-TIRADS categories with corresponding malignancy?” for which responses are available in tables, yield precise, section-specific answers.
+
+<iframe width="850" height="450" src="https://www.youtube.com/embed/qg7pRwx3NaY?si=o_-dyVB4YQ_u9sw8&hd=1" title="Smarter Document Processing" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+**Better Visual Highlighting**: Citations in image-based PDFs accurately match the referenced content, allowing users to quickly verify sources.
+
+#### User Benefits:
+Users can ask complex questions about clinical trials, guidelines, or reports and receive clear, well-organized responses tied to the most relevant sections. This dramatically reduces time spent reviewing documents and improves the accuracy of data extraction for research, audits, and clinical workflows.
+
+These improvements make Medical Chatbot more dependable in both research and clinical workflows—whether you’re reviewing trial data, comparing treatment guidelines, or preparing patient handouts.
+
+
+### Smarter Medical Research & Clinical Advice
+
+**More Relevant Research Citations**: The Medical Research agent now filters out low-value documents and highlights high-quality, relevant research. This helps researchers get to meaningful sources faster.
+
+**Improved Multi-turn Conversations**: The Medical Research agent now better understands and tracks context across messages. For example, if a patient asks about the common symptoms of hypothyroidism and then follows up with a question about the weight gain and fatigue which could be mistaken for depression in this case, the agent seamlessly connects both topics.
+
+<iframe width="850" height="450" src="https://www.youtube.com/embed/rmP5PV-m1Js?si=FlXLdt38J3VU4L_M&hd=1" title="Multi-turn conversations" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+**Clearer Boundaries for Agent Use**: If a user asks a non-research question (e.g. "What’s the weather in Boston?"), the Medical Research agent will now politely stop and redirect, ensuring it stays focused on medical literature and evidence synthesis.
+
+<div style="text-align: center;">
+<img src= "/assets/images/chatbot/MedicalResearch - refuses to answer unrelated questions.png" alt="Clearer Boundaries for Agent Use" style="border: 1px solid grey; width:100%">
+</div>
+
+
+#### User Benefit:
+These enhancements help clinicians and researchers interact more naturally with the system, trust the quality of citations, and save time by receiving tailored, relevant answers. Whether summarizing evidence or supporting a clinical decision, users now experience greater clarity, control, and reliability.
+
+
+## 13-05-2025 Introducing Semantic Scholar+
+
+We’re excited to announce the launch of Semantic Scholar+, that brings access to over 225+ million research articles spanning all scientific disciplines—now seamlessly integrated into the Medical Chatbot platform.
+
+The Semantic Scholar+ Knowledge Base consolidates biomedical research from trusted sources, including Semantic Scholar, PubMed, MDPI, and preprint servers like medRxiv and bioRxiv. This unified, searchable repository enables the chatbot to deliver broader, richer, and more current insights in response to your queries.
+<div style="text-align: center;">
+<img src= "/assets/images/chatbot/SemanticScholar+.png" alt="Composition of the Semantic Scholar + KB" style="border: 1px solid grey; width:80%">
+</div>
+To complement this expanded knowledge base, we’ve kept and improved the source-based filtering — a feature that lets you narrow your searches by specific publication sources. Whether you’re looking for peer-reviewed articles from PubMed or early findings from medRxiv, you can now customize your search scope with just a few clicks.
+
+These enhancements are fully integrated into both the Medical Research Agent (optimized for conversational medical queries) and the Literature Review Agent (designed for in-depth literature discovery), providing a consistent and efficient research experience across use cases.
+
+With daily updates, expanded content, and customizable filters, Semantic Scholar+ helps clinicians, researchers, and academics access the most relevant and recent studies—faster and more accurately than ever before.
+
+
+### Feature Details
+
+#### Semantic Scholar+ Knowledge Base Integration
+
+Semantic Scholar+ Knowledge Base (KB) is a newly integrated repository of medical research literature within the Medical Chatbot. It consolidates leading sources—including Semantic Scholar’s academic index, the full PubMed database, MDPI open-access journals, and preprint servers such as medRxiv and bioRxiv—into a single, searchable resource.
+
+This unified KB significantly broadens the chatbot’s scope, enabling its Medical Research and Literature Review Agents to access and retrieve insights from millions of peer-reviewed papers and preprints. These span clinical studies, trials, early-stage hypotheses, and emerging findings across medicine and life sciences.
+
+Updated daily, the Semantic Scholar+ KB ensures that even the most recent publications—whether a newly released PubMed article or the latest medRxiv preprint—are included. This continuous refresh keeps the chatbot aligned with the fast pace of medical research, eliminating the need for users to manually track multiple sources.
+
+When you ask a question or perform a literature search, the chatbot automatically leverages the KB, using intelligent ranking to surface the most relevant results. Each cited paper includes source attribution (e.g., PubMed, MDPI) and integrates seamlessly with features like Quality Indicators, displaying metrics such as citation counts and journal impact where available. This provides both transparency and a richer research experience.
+
+#### Source Indication on the Reference Popup
+Each article citation displayed by the chatbot includes a reference popup that visually indicates its source using distinct icons. These source-specific icons—representing platforms such as PubMed, Semantic Scholar, MDPI, medRxiv, and bioRxiv—are shown directly within the popup, making it easy to quickly identify where a cited study originated. This visual cue supports at-a-glance recognition of trusted sources and reinforces transparency in citation provenance.
+<div style="text-align: center;">
+<img src= "/assets/images/chatbot/Source Icon on the Reference Popup.png" alt="Composition of the Semantic Scholar + KB" style="border: 1px solid grey; width:60%;">
+</div>
+#### Source-Based Filtering for Article Searches
+
+The platform supports precise source-based filtering, allowing users to customize literature searches by selecting specific publication channels. Within the Literature Review Agent interface, you can include or exclude sources like Semantic Scholar, PubMed, MDPI, medRxiv, and bioRxiv to align results with the needs of your research.
+
+This filtering capability is consistent across both the Literature Review Agent and Medical Research Agent, offering full transparency into the origin of each citation. Every result clearly indicates its source, enabling you to assess both the content and its credibility with confidence.
+
+By default, the MedResearch agent in chat mode draws from all integrated sources, delivering comprehensive responses backed by the complete Semantic Scholar+ Knowledge Base. However, users can easily customize the scope by toggling specific sources on or off. Citations in each response distinguish between peer-reviewed publications and preprints, supporting informed decision-making in both clinical and academic settings.
+
+Through this combination of broad coverage and flexible filtering, the Medical Chatbot delivers a powerful, efficient research experience—whether you're conducting a wide-ranging literature review or exploring a focused topic in depth.
+
+### User Benefits
+
+**1. Comprehensive, Current Knowledge:** By aggregating multiple reputable databases and updating them daily, the chatbot ensures you are accessing a wide breadth of the latest medical research. This comprehensive coverage means important studies are less likely to be overlooked, and you can trust that your answers and literature reviews include the most up-to-date evidence available.
+
+**2. Precision and Control:** The ability to filter search results by source gives you fine-grained control to tailor the information to your needs. Whether you want to focus on established peer-reviewed articles for clinical decision support or include preliminary findings from preprints for research brainstorming, you can easily adjust the scope. This precision leads to more relevant results and allows different users (e.g., clinicians vs. academic researchers) to customize their experience for maximum relevance.
+
+**3. Increased Efficiency:** Combining multiple research sources into one platform streamlines your workflow. Rather than manually searching across PubMed, then checking preprint servers or publisher websites separately, you can obtain integrated results in a single query. Both the interactive chat and the literature review tool leverage the same comprehensive knowledge base, so you save time and effort. This efficiency enables faster literature reviews, quicker answers to pressing medical questions, and more time for analysis and decision-making instead of search logistics.
+
+**4. Enhanced Confidence in Results:** With sources clearly indicated and drawn from well-recognized academic and clinical repositories, you can have greater trust in the information provided by the Medical Chatbot. Knowing exactly where data is coming from (for example, a top-tier journal versus a preprint server) helps you gauge the reliability and context of the findings. This transparency and the inclusion of credible sources bolster the academic rigor of your research process and support evidence-based decisions, whether in patient care or scholarly work.
+
+Each of these benefits contributes to a more powerful and user-aligned experience. The Semantic Scholar+ integration and source filters were developed in response to the needs of research professionals, clinicians, and scholars who require both breadth and depth in information gathering. We believe these updates will significantly enhance your ability to discover relevant literature, stay current with new developments, and ultimately drive more informed outcomes in your work. Enjoy exploring the new features, and as always, we welcome feedback on how these improvements support your medical research and practice.
+
+
+
 ## 24-04-2025 New Features and Enhancements
 
-This release brings greater transparency, improved usability, and stronger academic rigor to your research experience. The Medical Chatbot now features **Quality Indicators** for research articles, offering key metrics such as citation count, journal impact, journal rank to help you quickly assess the credibility and impact of your sources.
+This release brings greater transparency, improved usability, and stronger academic rigor to your research experience. The Medical Chatbot now features **Quality Indicators** for research articles, offering key metrics such as citation count, journal impact, and journal rank to help you quickly assess the credibility and impact of your sources.
 
 To further enhance research clarity, we’ve introduced a **Numbered Reference Style**, making citation management more straightforward and improving the readability of your outputs.
 

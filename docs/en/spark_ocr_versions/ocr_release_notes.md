@@ -5,7 +5,7 @@ seotitle: Spark OCR | John Snow Labs
 title: Spark OCR release notes
 permalink: /docs/en/spark_ocr_versions/ocr_release_notes
 key: docs-ocr-release-notes
-modify_date: "2024-01-23"
+modify_date: "2025-05-09"
 show_nav: true
 sidebar:
     nav: sparknlp-healthcare
@@ -13,116 +13,138 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-## 5.5.0
+## 6.0.0
 
-Release date: 23-01-2024
+Release date: 09-05-2025
 
-## Visual NLP 5.5.0 Release Notes 🕶️
+## Visual NLP 6.0.0 Release Notes 🕶️
 
-**We are glad to announce that Visual NLP 5.5.0 has been released! This release comes with new Dicom pretrained pipelines, new features, and bug fixes. 📢📢📢**
-
-</div><div class="h3-box" markdown="1">
-
-## Highlights 🔴
-
-* New Obfuscation Features in ImageDrawRegions.
-* New obfuscation features in DicomMetadataDeidentifier.
-* New Dicom Pretrained Pipelines.
-* New VisualDocumentProcessor.
+**We are glad to announce that Visual NLP 6.0.0, has been released! 📢📢📢**
 
 </div><div class="h3-box" markdown="1">
 
-## New Obfuscation Features in ImageDrawRegions
-ImageDrawRegions' main purpose is to draw solid rectangles on top of regions that typically come from NER or some other similar model. Many times, it is interesting not to only draw solid rectangles on top of detected entities, but some other values, like obfuscated values. For example, with the purpose of protecting patient's privacy, you may want to replace a name with another name, or a date with a modified date.
+## Changes 🔴
 
-This feature, together with the Deidentification transformer from Spark NLP for Healthcare can be combined to create a 'rendering aware' obfuscation pipeline capable of rendering obfuscated values back to the source location where the original entities were present. The replacement must be 'rendering aware' because not every example of an entity requires the same space on the page to be rendered. So for example, 'Bob Smith' would be a good replacement for 'Rod Adams', but not for 'Alessandro Rocatagliata', simply because they render differently on the page. Let's take a look at a quick example,
-
-![New Obfuscation Features in ImageDrawRegions](/assets/images/ocr/obfuscation_impainting.png)
-
-to the left we see a portion of a document in which we want to apply obfuscation. We want to focus on the entities representing PHI, like patient name or phone number. On the right side, after applying the transformation, we have an image containing fake values.
-You can see that the PHI in the source document has been replaced by similar entities, and these entities not only are of a similar category, but are also of a similar length.
-
-</div><div class="h3-box" markdown="1">
-
-## New obfuscation features in DicomMetadataDeidentifier
-Now you can customize the way metadata is de-identified in DicomMetadataDeidentifier. Customization happens through a number of different actions you can apply to each tag, for example, replacing a specific tag with a literal, or shifting a date by a number of days randomly.
-In order to feed the configuration for each of these actions, you need to pass a CSV file to DicomMetadataDeidentifier, like this,
-
-```
-DicomMetadataDeidentifier()\
-setStrategyFile(path_to_your_csv_file)
-```
-
-The CSV you need to provide looks like this,
-```
-Tags,VR,Name,Status,Action,Options
-"(0002,0100)",UI,Private Information Creator UID,,hashId
-"(0002,0102)",OB,Private Information,,hashId
-```
-
-For example, the first line is an ID, and we are asking to hash the UID, and to replace the value in the output Dicom file with the new hash value.
-Here is a more exhaustive list of actions, datatypes and parameters, you can use,
-
-Key | Datatypes | Parameter examples
--- | -- | --
-remove | DA, OB, SH, PN, LT, DT, UI, AS, LO, CS, ST, SQ | 
-replaceWithLiteral | CS, PN | Susanita Smith, Chest
-hashId | OB, SH, UI, LO, CS, SQ | coherent
-shiftDateByRandomNbOfDays | DA, LO, AS, DT | coherent
-ShiftTimeByRandomNbOfSecs | DT | coherent
-replaceWithRandomName | PN, LO | coherent
-shiftDateByFixedNbOfDays | DA | 112
+* New SVS Image Deidentification capabilities.
+* New improvements for performance and memory consumption in Dicom pipelines.
+* New PDF de-identification and obfuscation pipelines.
+* New Reference dataset for De-identification.
+* New NerOutputCleaner transformer.
+* ImageDrawRegions: improved logic for processing coordinates that extend across multiple lines.
+* BinaryToImage: added support for multipage tif files.
 
 </div><div class="h3-box" markdown="1">
-
-### New Dicom Pretrained Pipelines
-We are releasing three new Dicom Pretrained Pipelines:
-* `dicom_deid_generic_augmented_minimal`: this pipeline will remove only PHI from images, and the minimal number of metadata tags.
-* `dicom_deid_full_anonymization`: this pipeline will remove all text from images(not only PHI), and most metadata tags. This is the most aggressive de-identification pipeline.
-* `dicom_deid_generic_augmented_pseudonym`: this pipeline will try to remove PHI from images, and will obfuscate most tags in metadata.
-
-Check notebook [here](https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/Dicom/SparkOcrDicomPretrainedPipelines.ipynb) for examples on how to use this.
+## New SVS Image Deidentification capabilities.
+Now you can redact metadata together with pixel data in Whole Slide Imaging(WSI) SVS files. For an example of all these capabilities in action, check [this notebook](https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/SparkOcrWSIDeidentification.ipynb).
 
 </div><div class="h3-box" markdown="1">
+## New improvements for performance and memory consumption in Dicom pipelines.
+The improvements in Dicom Processing are related to a number of different components:
+### DicomToImageV3 image compression
 
-### New Visual Document Processor
-New VisualDocumentProcessor that produces OCR text and tables on a single pass!,
-In plugs and play into any Visual NLP pipeline, it receives images, and it returns texts and tables following the same existing schemas for these datatypes,
+`DicomToImageV3` instead of returning the raw uncompressed dicom frames as images in the dataframe, it can now compress the image frames under the hood to reduce the memory overhead of dicom based pipelines. 
+
+You can use it at follows: 
+
+* `DicomToImageV3.setCompressionMode()`, either  `enabled`, `disabled` or `auto`,
+
+Example,</br>
+```python
+
+# Every file is compressed with compressionQuality
+dicom_to_image.setCompressionMode('enabled')
+
+# No file is compressed
+dicom_to_image.setCompressionMode('disabled')
+
+# files are compressed if Megapixel >= compressionThreshold
+dicom_to_image.setCompressionMode('auto')
+
 ```
-proc = VisualDocumentProcessor() \
-    .setInputCol("image") \
-    .setOutputCols(["text", "tables"]) \
-    .setFreeTextOnly(True) \
-    .setOcrEngine(VisualDocumentProcessorOcrEngines.EASYOCR)
-result = proc.transform(df)
-```
 
-Check this [sample notebook](https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/SparkOcrVisualDocumentProcessor.ipynb) for an example on how to use it.
+* `DicomToImageV3.setCompressionThreshold()`, Float or Integer which represents the number of mega-pixels in an image above which compression will be applied on the image, if compressionMode is set to `auto` otherwise no effect.</br>
+Mega-pixel metric is computed using this equation:</br>
+`Megapixel = image_height * image_width * image_frames / 1048576`
 
-</div><div class="h3-box" markdown="1">
-
-### Other Dicom Changes
-* DicomDrawRegions support for setting compression quality, now you can pick different compression qualities for each of the different compression algorithms supported. The API receives an array with each element specifying the compression type like a key/value,
 Example,
+```python
+# Set compression threshold to 1 Megapixel
+dicom_to_image.setCompressionThreshold(1)
 ```
-DicomDrawRegions()\
-.setCompressionQuality(["8Bit=90","LSNearLossless=2"])
+
+* `DicomToImageV3.setCompressionQuality()`, Integer between 1 and 95. This is the  JPG quality parameter used when compressing images.
+Example,
+```python
+dicom_to_image.setCompressionQuality(60)
+```
+
+
+### DicomPretrainedPipeline & DicomDrawRegions
+We are introducing a new class: `DicomPretrainedPipeline`. You can use this class to run Dicom pipelines optimizing for reduced memory consumption.
+The class will apply optimizations to avoid unnecessary copies of buffers, and execute stages in the most optimal way to avoid memory problems.
+
+You can construct a `DicomPretrainedPipeline()` in the same way you create a `PretrainedPipeline(name, lang, remote_loc, parse_embeddings, disk_location)`
+
+For example by providing name, language and bucketname,
+```python
+from sparkocr.pretrained import DicomPretrainedPipeline
+optimized_pipe = DicomPretrainedPipeline("dicom_deid_generic_augmented_minimal", "en", "clinical/ocr")
+processed_df = optimized_pipe.transform(df)
+processed_df.show()
+```
+
+Additionally, you can convert a custom pipeline by passing it as first argument to DicomPretrainedPipeline. Only requirement is that the pipeline must contain `DicomToImageV3`, `DicomDrawRegions` and `PositionFinder` stages
+
+```python
+pipe = PretrainedPipeline("dicom_deid_generic_augmented_minimal", "en", "clinical/ocr")
+optimized_pipe = DicomPretrainedPipeline(pipe)
+processed_df = optimized_pipe.transform(df)
 ```
 
 </div><div class="h3-box" markdown="1">
 
-### Enhancements & Bug Fixes
-* New parameter in SVS tool that specifies whether to rename output file or not,
-```
-from sparkocr.utils.svs.deidentifier import remove_phi
-remove_phi(input_path, output_path, rename=True)
-```
-* Improved memory management in ImageTextDetectorCraft.
-* Fixed a memory leak in ImageToTextV2.
-* Fixed a bug in VisualDocumentNerLilt that happened when saving the model after fine tuning.
- 
+## New PDF de-identification and obfuscation pipelines.
+We are shipping two new PDF de-identification pipelines, each of them using a mix of several models to achieve top level performance:
+* `pdf_deid_multi_model_context_pipeline`: this one will detect PHI entities from input PDF files, and return de-identified versions of the documents in which the entities have been masked with a black box.
+* `pdf_obfuscation_multi_model_context_pipeline`: this one is similar to the one mentioned above in terms of the set of entities it deals with, with the difference that it will perform obfuscation, that is, entity replacement from original entities to 'fake' versions. This process happens consistently across entities, and across pages of the same document.
+This means that if in page 1, Martha is replace by Janice, any other Martha in the same document will undergo the same transformation. The same for dates or any other entity.
 
-This release is compatible with Spark-NLP 5.5.2, and Spark NLP for Healthcare 5.5.2.
+These pipelines can achieve an F-score of .93 and .91 in our [standard reference dataset](https://github.com/JohnSnowLabs/pdf-deid-dataset). More about this on next section.
+
+</div><div class="h3-box" markdown="1">
+
+## New Reference dataset for De-identification
+The [PDF Deid Dataset](https://github.com/JohnSnowLabs/pdf-deid-dataset) is a fully synthetic collection of medical-style PDF documents created for de-identification tasks.
+We provide a collection of original PDF documents containing synthetized PHI elements,  annotations for the entities, metrics for pipelines, and sample result PDFs for the obfuscation case, this is actual documents in which the fake entities have injected.
+
+</div><div class="h3-box" markdown="1">
+
+## NerOutputCleaner
+NerOutputCleaner is a newly introduced stage that processes the auxiliary mapping generated by the DeIdentification stage. *This is important because the auxiliary mapping can contain useful entities that were created using text matching.* </br> 
+It creates unique NER entries with appropriate chunk_ids and metadata required by PositionFinder, enabling the generation of coordinates. This stage also produces a new auxiliary mapping that includes all necessary metadata required by the ImageDrawRegions stages. Additionally, it supports the use of both regex-based and dictionary-based sources for coordinate generation.
+As a result, applying this transformer will enable the creation of *very robust NER and De-identification pipelines*.
+Example,
+
+```python
+cleaner = NerOutputCleaner() \
+    .setInputCol("aux") \
+    .setOutputCol("new_aux") \
+    .setOutputNerCol("positions_ner")
+```
+
+</div><div class="h3-box" markdown="1">
+
+## ImageDrawRegions: improved logic for processing coordinates that extend across multiple lines.
+When ImageDrawRegions is used to render fake entities into the output PDFs, many times we need to replace entities that spawn across multiple lines, this adds to the complexity already present in the task in which we need to approximate the font size and  the general rendering dimensions of the replacement texts.
+This new version is capable of rendering the replacement fake entities across multiple lines to mimic the layout present in the original document.
+For example `Susan Frances Martin` at the top of the document is replaced by `Riccardo Chamberlain` that will spawn two separate lines.
+
+![Improved logic in multi-line.](/assets/images/multi-line_impainting.png)
+
+## BinaryToImage support of multi-page tiff files
+Now BinaryToImage transformer supports multi-page tiff files. For multi-page tiff files, multiple pages are splitted into separate images. No specific configurations are required.
+
+This release is compatible with Spark-NLP 6.0.0, and Spark NLP for Healthcare 6.0.0.
 
 </div><div class="h3-box" markdown="1">
 

@@ -35,6 +35,7 @@ Check out the [Spark NLP Annotators page](https://nlp.johnsnowlabs.com/docs/en/a
 {:.table-model-big}
 |Annotators|Description|
 |---|---|
+{% include templates/licensed_table_entry.md  name="AnnotationConverter" summary="A flexible converter for transforming annotations in a DataFrame using custom logic."%}
 {% include templates/licensed_table_entry.md  name="AnnotationMerger" summary="Merge annotations from different pipeline steps that have the same annotation type into a unified annotation."%}
 {% include templates/licensed_table_entry.md  name="AssertionChunkConverter" summary="AssertionChunkConverter annotator uses both begin and end indices of the tokens as input to add a more robust metadata to the chunk column in a way that improves the reliability of the indices and avoid loss of data."%}
 {% include templates/licensed_table_entry.md  name="AssertionDL" summary="AssertionDL is a deep Learning based approach used to extract Assertion Status from extracted entities and text."%}
@@ -42,6 +43,7 @@ Check out the [Spark NLP Annotators page](https://nlp.johnsnowlabs.com/docs/en/a
 {% include templates/licensed_table_entry.md  name="AssertionLogReg" summary="Logistic Regression is used to extract Assertion Status from extracted entities and text."%}
 {% include templates/licensed_table_entry.md  name="AssertionMerger" summary="Merges variety assertion columns coming from Assertion annotators"%}
 {% include templates/licensed_table_entry.md  name="AverageEmbeddings" summary="Computes the mean of vector embeddings for two sentences of equal size, producing a unified representation"%}
+{% include templates/licensed_table_entry.md  name="BertForAssertionClassification" summary="BertForAssertionClassification extracts the assertion status from text by analyzing both the extracted entities and their surrounding context."%}
 {% include templates/licensed_table_entry.md  name="BertForSequenceClassification" summary="Can load Bert Models with sequence classification/regression head on top (a linear layer on top of the pooled output) e.g. for multi-class document classification tasks."%}
 {% include templates/licensed_table_entry.md  name="BertForTokenClassifier" summary="Can load Bert Models with a token classification head on top (a linear layer on top of the hidden-states output) for Named-Entity-Recognition (NER) tasks."%}
 {% include templates/licensed_table_entry.md  name="BertSentenceChunkEmbeddings" summary="This annotator combines sentence and NER chunk embeddings to enhance resolution codes, leveraging contextual information in the embeddings for more precise results. It takes sentence context and NER chunks as input and produces embeddings for each chunk, facilitating input for the resolution model."%}
@@ -76,6 +78,7 @@ Check out the [Spark NLP Annotators page](https://nlp.johnsnowlabs.com/docs/en/a
 {% include templates/licensed_table_entry.md  name="FewShotClassifier" summary="This Annotator specifically target few-shot classification tasks, which involve training a model to make accurate predictions with limited labeled data."%}
 {% include templates/licensed_table_entry.md  name="FewShotAssertionClassifierModel" summary="assertion classification using large (LLMS based) few shot classifiers based on the SetFit approach."%}
 {% include templates/licensed_table_entry.md  name="FewShotAssertionSentenceClassifier" summary="It is a util annotator that is used in some datasets to train a new FewShotAssertionClassifierModel."%}
+{% include templates/licensed_table_entry.md  name="FhirDeIdentification" summary="A Spark Transformer for de-identifying FHIR resources according to configurable privacy rules."%}
 {% include templates/licensed_table_entry.md  name="Flattener" summary="`Flattener` annotator in Spark NLP converts annotation results into a simplified DataFrame format for easier analysis and interpretation."%}
 {% include templates/licensed_table_entry.md  name="GenericClassifier" summary="Creates a generic single-label classifier which uses pre-generated Tensorflow graphs."%}
 {% include templates/licensed_table_entry.md  name="GenericLogRegClassifier" summary="Is a derivative of GenericClassifier which implements a multinomial logistic regression."%}
@@ -87,6 +90,7 @@ Check out the [Spark NLP Annotators page](https://nlp.johnsnowlabs.com/docs/en/a
 {% include templates/licensed_table_entry.md  name="LLMLoader" summary="LLMLoader is designed to interact with a LLMs that are converted into gguf format. This module allows using John Snow Labs' licensed LLMs at various sizes that are finetuned on medical context for certain tasks."%}
 {% include templates/licensed_table_entry.md  name="Mapper2Chunk" summary="This annotator converts 'LABELED_DEPENDENCY' type annotations coming from ChunkMapper into 'CHUNK' type to create new chunk-type column"%}
 {% include templates/licensed_table_entry.md  name="MedicalLLM" summary="MedicalLLM was designed to load and run large language models (LLMs) in GGUF format with scalable performance."%}
+{% include templates/licensed_table_entry.md  name="MetadataAnnotationConverter" summary="Converts metadata fields in annotations into actual begin, end, or result values."%}
 {% include templates/licensed_table_entry.md  name="MultiChunk2Doc" summary="Merges a given chunks to create a document."%}
 {% include templates/licensed_table_entry.md  name="NameChunkObfuscator" summary="This annotator allows to transform a dataset with an Input Annotation of type CHUNK, into its obfuscated version of by obfuscating the given CHUNKS."%}
 {% include templates/licensed_table_entry.md  name="NerChunker" summary="Extracts phrases that fits into a known pattern using the NER tags."%}

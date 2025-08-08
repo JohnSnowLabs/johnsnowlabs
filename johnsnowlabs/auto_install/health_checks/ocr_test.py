@@ -53,11 +53,8 @@ def run_test():
         ]
     )
 
-    import pkg_resources
+    pdf_example = str(files("sparkocr").joinpath("resources/ocr/pdfs/tabular-pdf/data.pdf"))
 
-    pdf_example = pkg_resources.resource_filename(
-        "sparkocr", "resources/ocr/pdfs/tabular-pdf/data.pdf"
-    )
     pdf_example_df = spark.read.format("binaryFile").load(pdf_example).cache()
     pipeline.transform(pdf_example_df).show()
 

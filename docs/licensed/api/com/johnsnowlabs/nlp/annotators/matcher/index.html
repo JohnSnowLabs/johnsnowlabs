@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 5.5.3 ScalaDoc  - com.johnsnowlabs.nlp.annotators.matcher</title>
-          <meta name="description" content="Spark NLP 5.5.3 ScalaDoc - com.johnsnowlabs.nlp.annotators.matcher" />
-          <meta name="keywords" content="Spark NLP 5.5.3 ScalaDoc com.johnsnowlabs.nlp.annotators.matcher" />
+          <title>Spark NLP 6.0.4 ScalaDoc  - com.johnsnowlabs.nlp.annotators.matcher</title>
+          <meta name="description" content="Spark NLP 6.0.4 ScalaDoc - com.johnsnowlabs.nlp.annotators.matcher" />
+          <meta name="keywords" content="Spark NLP 6.0.4 ScalaDoc com.johnsnowlabs.nlp.annotators.matcher" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 5.5.3 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 6.0.4 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -314,6 +314,10 @@
                         <a class="trait" href="ReadablePretrainedTextMatcherInternal.html" title=""></a>
                         <a href="ReadablePretrainedTextMatcherInternal.html" title="">ReadablePretrainedTextMatcherInternal</a>
                       </li><li class="current-entities indented5">
+                        <a class="object" href="SearchTrieInternal$.html" title=""></a>
+                        <a class="class" href="SearchTrieInternal.html" title="Immutable Collection that used for fast substring search Implementation of Aho-Corasick algorithm https://en.wikipedia.org/wiki/Aho%E2%80%93Corasick_algorithm"></a>
+                        <a href="SearchTrieInternal.html" title="Immutable Collection that used for fast substring search Implementation of Aho-Corasick algorithm https://en.wikipedia.org/wiki/Aho%E2%80%93Corasick_algorithm">SearchTrieInternal</a>
+                      </li><li class="current-entities indented5">
                         <a class="object" href="TextMatcherInternal$.html" title="This is the companion object of TextMatcherInternal."></a>
                         <a class="class" href="TextMatcherInternal.html" title="Annotator to match exact phrases (by token) provided in a file against a Document."></a>
                         <a href="TextMatcherInternal.html" title="Annotator to match exact phrases (by token) provided in a file against a Document.">TextMatcherInternal</a>
@@ -321,6 +325,10 @@
                         <a class="object" href="TextMatcherInternalModel$.html" title="This is the companion object of TextMatcherInternalModel."></a>
                         <a class="class" href="TextMatcherInternalModel.html" title="Instantiated model of the TextMatcherInternal."></a>
                         <a href="TextMatcherInternalModel.html" title="Instantiated model of the TextMatcherInternal.">TextMatcherInternalModel</a>
+                      </li><li class="current-entities indented5">
+                        <span class="separator"></span>
+                        <a class="trait" href="TextMatcherInternalParams.html" title="Trait containing parameters and helper methods for the TextMatcherInternal and TextMatcherInternalModel components."></a>
+                        <a href="TextMatcherInternalParams.html" title="Trait containing parameters and helper methods for the TextMatcherInternal and TextMatcherInternalModel components.">TextMatcherInternalParams</a>
                       </li><li name="com.johnsnowlabs.nlp.annotators.merge" visbl="pub" class="indented5 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="merge"></a><a id="merge:merge"></a>
       <span class="permalink">
@@ -624,8 +632,27 @@
       </span>
       
       
+    </li><li name="com.johnsnowlabs.nlp.annotators.matcher.SearchTrieInternal" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SearchTrieInternalextendsSearchTrie"></a><a id="SearchTrieInternal:SearchTrieInternal"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/SearchTrieInternal.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a title="Immutable Collection that used for fast substring search Implementation of Aho-Corasick algorithm https://en.wikipedia.org/wiki/Aho%E2%80%93Corasick_algorithm" href="SearchTrieInternal.html"><span class="name">SearchTrieInternal</span></a><span class="result"> extends <span class="extype" name="com.johnsnowlabs.collections.SearchTrie">SearchTrie</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Immutable Collection that used for fast substring search
+Implementation of Aho-Corasick algorithm
+https://en.wikipedia.org/wiki/Aho%E2%80%93Corasick_algorithm
+</p>
     </li><li name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternal" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="TextMatcherInternalextendsAnnotatorApproach[com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel]withParamsAndFeaturesWritable"></a><a id="TextMatcherInternal:TextMatcherInternal"></a>
+      <a id="TextMatcherInternalextendsAnnotatorApproach[com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel]withTextMatcherInternalParamswithParamsAndFeaturesWritable"></a><a id="TextMatcherInternal:TextMatcherInternal"></a>
       <span class="permalink">
       <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternal.html" title="Permalink">
         <i class="material-icons"></i>
@@ -636,7 +663,7 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a title="Annotator to match exact phrases (by token) provided in a file against a Document." href="TextMatcherInternal.html"><span class="name">TextMatcherInternal</span></a><span class="result"> extends <span class="extype" name="com.johnsnowlabs.nlp.AnnotatorApproach">AnnotatorApproach</span>[<a href="TextMatcherInternalModel.html" class="extype" name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel">TextMatcherInternalModel</a>] with <span class="extype" name="com.johnsnowlabs.nlp.ParamsAndFeaturesWritable">ParamsAndFeaturesWritable</span></span>
+        <a title="Annotator to match exact phrases (by token) provided in a file against a Document." href="TextMatcherInternal.html"><span class="name">TextMatcherInternal</span></a><span class="result"> extends <span class="extype" name="com.johnsnowlabs.nlp.AnnotatorApproach">AnnotatorApproach</span>[<a href="TextMatcherInternalModel.html" class="extype" name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel">TextMatcherInternalModel</a>] with <a href="TextMatcherInternalParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalParams">TextMatcherInternalParams</a> with <span class="extype" name="com.johnsnowlabs.nlp.ParamsAndFeaturesWritable">ParamsAndFeaturesWritable</span></span>
       </span>
       
       <p class="shortcomment cmt">Annotator to match exact phrases (by token) provided in a file against a Document.</p><div class="fullcomment"><div class="comment cmt"><p>Annotator to match exact phrases (by token) provided in a file against a Document.</p><p>A text file of predefined phrases must be provided with <code>setEntities</code>. The text file can als
@@ -679,7 +706,7 @@ results.selectExpr(<span class="lit">"explode(entity) as result"</span>).show(<s
 |[chunk, <span class="num">53</span>, <span class="num">59</span>, laborum, [entity -&gt; entity, sentence -&gt; <span class="num">0</span>, chunk -&gt; <span class="num">2</span>], []]               |
 +------------------------------------------------------------------------------------------+</pre></div></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="TextMatcherInternalModelextendsAnnotatorModel[com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel]withHasSimpleAnnotate[com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel]withCheckLicense"></a><a id="TextMatcherInternalModel:TextMatcherInternalModel"></a>
+      <a id="TextMatcherInternalModelextendsAnnotatorModel[com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel]withHasSimpleAnnotate[com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel]withTextMatcherInternalParamswithCheckLicense"></a><a id="TextMatcherInternalModel:TextMatcherInternalModel"></a>
       <span class="permalink">
       <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html" title="Permalink">
         <i class="material-icons"></i>
@@ -690,12 +717,28 @@ results.selectExpr(<span class="lit">"explode(entity) as result"</span>).show(<s
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a title="Instantiated model of the TextMatcherInternal." href="TextMatcherInternalModel.html"><span class="name">TextMatcherInternalModel</span></a><span class="result"> extends <span class="extype" name="com.johnsnowlabs.nlp.AnnotatorModel">AnnotatorModel</span>[<a href="TextMatcherInternalModel.html" class="extype" name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel">TextMatcherInternalModel</a>] with <span class="extype" name="com.johnsnowlabs.nlp.HasSimpleAnnotate">HasSimpleAnnotate</span>[<a href="TextMatcherInternalModel.html" class="extype" name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel">TextMatcherInternalModel</a>] with <span class="extype" name="com.johnsnowlabs.license.CheckLicense">CheckLicense</span></span>
+        <a title="Instantiated model of the TextMatcherInternal." href="TextMatcherInternalModel.html"><span class="name">TextMatcherInternalModel</span></a><span class="result"> extends <span class="extype" name="com.johnsnowlabs.nlp.AnnotatorModel">AnnotatorModel</span>[<a href="TextMatcherInternalModel.html" class="extype" name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel">TextMatcherInternalModel</a>] with <span class="extype" name="com.johnsnowlabs.nlp.HasSimpleAnnotate">HasSimpleAnnotate</span>[<a href="TextMatcherInternalModel.html" class="extype" name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel">TextMatcherInternalModel</a>] with <a href="TextMatcherInternalParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalParams">TextMatcherInternalParams</a> with <span class="extype" name="com.johnsnowlabs.license.CheckLicense">CheckLicense</span></span>
       </span>
       
       <p class="shortcomment cmt">Instantiated model of the <a href="TextMatcherInternal.html" class="extype" name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternal">TextMatcherInternal</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Instantiated model of the <a href="TextMatcherInternal.html" class="extype" name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternal">TextMatcherInternal</a>. For usage and examples see the documentation of the
 main class.
 </p></div></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalParams" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="TextMatcherInternalParamsextendsParamswithHasFeatures"></a><a id="TextMatcherInternalParams:TextMatcherInternalParams"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalParams.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a title="Trait containing parameters and helper methods for the TextMatcherInternal and TextMatcherInternalModel components." href="TextMatcherInternalParams.html"><span class="name">TextMatcherInternalParams</span></a><span class="result"> extends <span class="extype" name="org.apache.spark.ml.param.Params">Params</span> with <span class="extype" name="com.johnsnowlabs.nlp.HasFeatures">HasFeatures</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Trait containing parameters and helper methods for the TextMatcherInternal and TextMatcherInternalModel components.</p>
     </li></ol>
             </div>
 
@@ -704,7 +747,23 @@ main class.
         <div class="values members">
               <h3>Value Members</h3>
               <ol>
-                <li name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternal" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+                <li name="com.johnsnowlabs.nlp.annotators.matcher.SearchTrieInternal" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SearchTrieInternal"></a><a id="SearchTrieInternal:SearchTrieInternal"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/SearchTrieInternal$.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="SearchTrieInternal$.html"><span class="name">SearchTrieInternal</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      
+      
+    </li><li name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternal" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="TextMatcherInternal"></a><a id="TextMatcherInternal:TextMatcherInternal"></a>
       <span class="permalink">
       <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternal$.html" title="Permalink">

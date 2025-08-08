@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 5.5.3 ScalaDoc  - com.johnsnowlabs.ml.gguf.LLMLoader</title>
-          <meta name="description" content="Spark NLP 5.5.3 ScalaDoc - com.johnsnowlabs.ml.gguf.LLMLoader" />
-          <meta name="keywords" content="Spark NLP 5.5.3 ScalaDoc com.johnsnowlabs.ml.gguf.LLMLoader" />
+          <title>Spark NLP 6.0.4 ScalaDoc  - com.johnsnowlabs.ml.gguf.LLMLoader</title>
+          <meta name="description" content="Spark NLP 6.0.4 ScalaDoc - com.johnsnowlabs.ml.gguf.LLMLoader" />
+          <meta name="keywords" content="Spark NLP 6.0.4 ScalaDoc com.johnsnowlabs.ml.gguf.LLMLoader" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 5.5.3 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 6.0.4 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -1194,8 +1194,8 @@
         <span class="name">setGrammar</span><span class="params">(<span name="grammar">grammar: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.ml.gguf.LLMLoader">LLMLoader</a></span>
       </span>
       
-      <p class="shortcomment cmt">Set BNF-like grammar to constrain generations (see samples in grammars/ dir)
-</p><div class="fullcomment"><div class="comment cmt"><p>Set BNF-like grammar to constrain generations (see samples in grammars/ dir)
+      <p class="shortcomment cmt">Set BNF-like grammar to constrain generations
+</p><div class="fullcomment"><div class="comment cmt"><p>Set BNF-like grammar to constrain generations
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="LLMLoaderInferenceParams.html" class="extype" name="com.johnsnowlabs.ml.gguf.LLMLoaderInferenceParams">LLMLoaderInferenceParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.ml.gguf.LLMLoaderInferenceParams#setIgnoreEos" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setIgnoreEos(ignoreEos:Boolean):T"></a><a id="setIgnoreEos(Boolean):LLMLoader"></a>
@@ -1428,7 +1428,6 @@
       <p class="shortcomment cmt">Override which tokens to penalize for repetition.</p><div class="fullcomment"><div class="comment cmt"><p>Override which tokens to penalize for repetition.
 E.g. if original prompt is &quot;Alice: Hello!&quot; and penaltyPrompt corresponds to the token ids of &quot;Hello!&quot;, only the
 latter will be penalized if repeated.
-See <a href="https://github.com/ggerganov/llama.cpp/pull/3727">pull request 3727</a> for more details.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="LLMLoaderInferenceParams.html" class="extype" name="com.johnsnowlabs.ml.gguf.LLMLoaderInferenceParams">LLMLoaderInferenceParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.ml.gguf.LLMLoaderInferenceParams#setPenaltyPrompt" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setPenaltyPrompt(penaltyPrompt:String):T"></a><a id="setPenaltyPrompt(String):LLMLoader"></a>
@@ -1446,8 +1445,6 @@ See <a href="https://github.com/ggerganov/llama.cpp/pull/3727">pull request 3727
       </span>
       
       <p class="shortcomment cmt">Override which part of the prompt is penalized for repetition.</p><div class="fullcomment"><div class="comment cmt"><p>Override which part of the prompt is penalized for repetition.
-E.g. if original prompt is &quot;Alice: Hello!&quot; and penaltyPrompt is &quot;Hello!&quot;, only the latter will be penalized if
-repeated. See <a href="https://github.com/ggerganov/llama.cpp/pull/3727">pull request 3727</a> for more details.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="LLMLoaderInferenceParams.html" class="extype" name="com.johnsnowlabs.ml.gguf.LLMLoaderInferenceParams">LLMLoaderInferenceParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.ml.gguf.LLMLoaderInferenceParams#setPresencePenalty" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setPresencePenalty(presencePenalty:Float):T"></a><a id="setPresencePenalty(Float):LLMLoader"></a>

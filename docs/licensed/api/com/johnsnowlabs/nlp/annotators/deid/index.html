@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 5.5.3 ScalaDoc  - com.johnsnowlabs.nlp.annotators.deid</title>
-          <meta name="description" content="Spark NLP 5.5.3 ScalaDoc - com.johnsnowlabs.nlp.annotators.deid" />
-          <meta name="keywords" content="Spark NLP 5.5.3 ScalaDoc com.johnsnowlabs.nlp.annotators.deid" />
+          <title>Spark NLP 6.0.4 ScalaDoc  - com.johnsnowlabs.nlp.annotators.deid</title>
+          <meta name="description" content="Spark NLP 6.0.4 ScalaDoc - com.johnsnowlabs.nlp.annotators.deid" />
+          <meta name="keywords" content="Spark NLP 6.0.4 ScalaDoc com.johnsnowlabs.nlp.annotators.deid" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 5.5.3 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 6.0.4 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -245,6 +245,22 @@
       </span>
       
       
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir" visbl="pub" class="indented6 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="fhir"></a><a id="fhir:fhir"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="fhir/index.html"><span class="name">fhir</span></a>
+      </span>
+      
+      
     </li><li class="current-entities indented5">
                         <span class="separator"></span>
                         <a class="trait" href="BaseDeidParams.html" title="A trait that contains all the params that are common in DeIdentificationParams and ObfuscatorParams."></a>
@@ -253,6 +269,10 @@
                         <span class="separator"></span>
                         <a class="class" href="DateChunkObfuscator.html" title=""></a>
                         <a href="DateChunkObfuscator.html" title="">DateChunkObfuscator</a>
+                      </li><li class="current-entities indented5">
+                        <span class="separator"></span>
+                        <a class="class" href="DateShiftFiller.html" title="Utility class to fill missing or empty shift values in a DataFrame column using deterministic, ID-based pseudo-random values."></a>
+                        <a href="DateShiftFiller.html" title="Utility class to fill missing or empty shift values in a DataFrame column using deterministic, ID-based pseudo-random values.">DateShiftFiller</a>
                       </li><li class="current-entities indented5">
                         <a class="object" href="DeIdentification$.html" title=""></a>
                         <a class="class" href="DeIdentification.html" title="Contains all the methods for training a DeIdentificationModel model."></a>
@@ -293,6 +313,10 @@
                         <span class="separator"></span>
                         <a class="trait" href="LightDeIdentificationParams.html" title="A trait that contains params that LightDeIdentification has."></a>
                         <a href="LightDeIdentificationParams.html" title="A trait that contains params that LightDeIdentification has.">LightDeIdentificationParams</a>
+                      </li><li class="current-entities indented5">
+                        <span class="separator"></span>
+                        <a class="trait" href="MaskingParams.html" title=""></a>
+                        <a href="MaskingParams.html" title="">MaskingParams</a>
                       </li><li class="current-entities indented5">
                         <span class="separator"></span>
                         <a class="class" href="MySentnece.html" title=""></a>
@@ -738,7 +762,7 @@
         <div id="types" class="types members">
               <h3>Type Members</h3>
               <ol><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams" visbl="pub" class="indented0 " data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="BaseDeidParamsextendsParams"></a><a id="BaseDeidParams:BaseDeidParams"></a>
+      <a id="BaseDeidParamsextendsParamswithHasFeatures"></a><a id="BaseDeidParams:BaseDeidParams"></a>
       <span class="permalink">
       <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/BaseDeidParams.html" title="Permalink">
         <i class="material-icons"></i>
@@ -749,7 +773,7 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a title="A trait that contains all the params that are common in DeIdentificationParams and ObfuscatorParams." href="BaseDeidParams.html"><span class="name">BaseDeidParams</span></a><span class="result"> extends <span class="extype" name="org.apache.spark.ml.param.Params">Params</span></span>
+        <a title="A trait that contains all the params that are common in DeIdentificationParams and ObfuscatorParams." href="BaseDeidParams.html"><span class="name">BaseDeidParams</span></a><span class="result"> extends <span class="extype" name="org.apache.spark.ml.param.Params">Params</span> with <span class="extype" name="com.johnsnowlabs.nlp.HasFeatures">HasFeatures</span></span>
       </span>
       
       <p class="shortcomment cmt">A trait that contains all the params that are common
@@ -772,6 +796,28 @@ in DeIdentificationParams and ObfuscatorParams.
       </span>
       
       
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.DateShiftFiller" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="DateShiftFillerextendsSerializable"></a><a id="DateShiftFiller:DateShiftFiller"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DateShiftFiller.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a title="Utility class to fill missing or empty shift values in a DataFrame column using deterministic, ID-based pseudo-random values." href="DateShiftFiller.html"><span class="name">DateShiftFiller</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Utility class to fill missing or empty shift values in a DataFrame column
+using deterministic, ID-based pseudo-random values.</p><div class="fullcomment"><div class="comment cmt"><p>Utility class to fill missing or empty shift values in a DataFrame column
+using deterministic, ID-based pseudo-random values.</p><p>This is particularly useful in de-identification tasks where date shift values must be:
+- Consistent across all rows with the same identifier
+- Present even when the original shift value is missing or empty</p><h5> Logic </h5><p>For each row:</p><ul><li>If another row with the same ID has a known (non-empty) shift value, reuse it.</li><li>If not, generate a fallback shift value deterministically using the ID and a seed.
+   The generated value will always fall in the range [1, maxShiftDays].</li></ul><h5> Example usage </h5><pre><span class="kw">val</span> filler = <span class="kw">new</span> DateShiftFiller(spark, seed = <span class="num">42</span>, maxShiftDays = <span class="num">60</span>)
+<span class="kw">val</span> resultDf = filler.fillMissingShifts(df, <span class="lit">"note_id"</span>, <span class="lit">"date_shift"</span>, <span class="lit">"_filled"</span>)</pre></div></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentification" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="DeIdentificationextendsAnnotatorApproach[com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel]withDeIdentificationParamswithDeidApproachParamswithHandleExceptionParamswithCheckLicense"></a><a id="DeIdentification:DeIdentification"></a>
       <span class="permalink">
@@ -886,7 +932,7 @@ of types DOCUMENT, TOKEN and CHUNK, into its DeIdentified version of by either
 masking or obfuscating the given CHUNKS.</p><p>To create an configured DeIdentificationModel, please see the example of <a href="DeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentification">DeIdentification</a>.
 </p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a> to see params</p></span><span class="cmt"><p><a href="DeIdentificationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams">DeIdentificationParams</a> to see params</p></span><span class="cmt"><p><a href="DeidModelParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams">DeidModelParams</a> to see params</p></span><span class="cmt"><p><a href="DeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentification">DeIdentification</a> to train your own model</p></span></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams" visbl="pub" class="indented0 " data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="DeIdentificationParamsextendsBaseDeidParamswithHasFeatures"></a><a id="DeIdentificationParams:DeIdentificationParams"></a>
+      <a id="DeIdentificationParamsextendsBaseDeidParamswithMaskingParamswithHasFeatures"></a><a id="DeIdentificationParams:DeIdentificationParams"></a>
       <span class="permalink">
       <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeIdentificationParams.html" title="Permalink">
         <i class="material-icons"></i>
@@ -897,7 +943,7 @@ masking or obfuscating the given CHUNKS.</p><p>To create an configured DeIdentif
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a title="A trait that contains all the params that are common between DeIdentificationModel and DeIdentification annotators." href="DeIdentificationParams.html"><span class="name">DeIdentificationParams</span></a><span class="result"> extends <a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a> with <span class="extype" name="com.johnsnowlabs.nlp.HasFeatures">HasFeatures</span></span>
+        <a title="A trait that contains all the params that are common between DeIdentificationModel and DeIdentification annotators." href="DeIdentificationParams.html"><span class="name">DeIdentificationParams</span></a><span class="result"> extends <a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a> with <a href="MaskingParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.MaskingParams">MaskingParams</a> with <span class="extype" name="com.johnsnowlabs.nlp.HasFeatures">HasFeatures</span></span>
       </span>
       
       <p class="shortcomment cmt">A trait that contains all the params that are common between DeIdentificationModel and DeIdentification annotators.</p><div class="fullcomment"><div class="comment cmt"><p>A trait that contains all the params that are common between DeIdentificationModel and DeIdentification annotators.
@@ -922,7 +968,7 @@ in DeIdentification and NameChunkObfuscatorApproach, and ObfuscatorAnnotatorAppr
 in DeIdentification and NameChunkObfuscatorApproach, and ObfuscatorAnnotatorApproach.
 </p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="DeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentification">DeIdentification</a></p></span><span class="cmt"><p><a href="ObfuscatorAnnotatorApproach.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.ObfuscatorAnnotatorApproach">ObfuscatorAnnotatorApproach</a></p></span><span class="cmt"><p><a href="NameChunkObfuscatorApproach.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.NameChunkObfuscatorApproach">NameChunkObfuscatorApproach</a></p></span></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams" visbl="pub" class="indented0 " data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="DeidModelParamsextendsBaseDeidParams"></a><a id="DeidModelParams:DeidModelParams"></a>
+      <a id="DeidModelParamsextendsAnyRef"></a><a id="DeidModelParams:DeidModelParams"></a>
       <span class="permalink">
       <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeidModelParams.html" title="Permalink">
         <i class="material-icons"></i>
@@ -933,13 +979,13 @@ in DeIdentification and NameChunkObfuscatorApproach, and ObfuscatorAnnotatorAppr
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a title="A trait that contains all the params that are common in DeIdentificationModel and ObfuscatorAnnotatorModel." href="DeidModelParams.html"><span class="name">DeidModelParams</span></a><span class="result"> extends <a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></span>
+        <a title="A trait that contains all the params that are common in DeIdentificationModel and ObfuscatorAnnotatorModel." href="DeidModelParams.html"><span class="name">DeidModelParams</span></a><span class="result"> extends <a href="../../../../../scala/index.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
       </span>
       
       <p class="shortcomment cmt">A trait that contains all the params that are common
 in DeIdentificationModel and ObfuscatorAnnotatorModel.</p><div class="fullcomment"><div class="comment cmt"><p>A trait that contains all the params that are common
 in DeIdentificationModel and ObfuscatorAnnotatorModel.
-</p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="DeIdentificationModel.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel">DeIdentificationModel</a></p></span><span class="cmt"><p><a href="ObfuscatorAnnotatorModel.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.ObfuscatorAnnotatorModel">ObfuscatorAnnotatorModel</a></p></span><span class="cmt"><p><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a> to see params</p></span></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="DeIdentificationModel.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel">DeIdentificationModel</a></p></span><span class="cmt"><p><a href="LightDeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.LightDeIdentification">LightDeIdentification</a></p></span><span class="cmt"><p><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a> to see params</p></span></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.DocumentHashCoder" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="DocumentHashCoderextendsModel[com.johnsnowlabs.nlp.annotators.deid.DocumentHashCoder]withRawAnnotator[com.johnsnowlabs.nlp.annotators.deid.DocumentHashCoder]"></a><a id="DocumentHashCoder:DocumentHashCoder"></a>
       <span class="permalink">
@@ -957,7 +1003,7 @@ in DeIdentificationModel and ObfuscatorAnnotatorModel.
       
       
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.LightDeIdentification" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="LightDeIdentificationextendsAnnotatorModel[com.johnsnowlabs.nlp.annotators.deid.LightDeIdentification]withHasSimpleAnnotate[com.johnsnowlabs.nlp.annotators.deid.LightDeIdentification]withDeidModelParamswithLightDeIdentificationParamswithCheckLicense"></a><a id="LightDeIdentification:LightDeIdentification"></a>
+      <a id="LightDeIdentificationextendsAnnotatorModel[com.johnsnowlabs.nlp.annotators.deid.LightDeIdentification]withHasSimpleAnnotate[com.johnsnowlabs.nlp.annotators.deid.LightDeIdentification]withLightDeIdentificationParamswithDeidModelParamswithCheckLicense"></a><a id="LightDeIdentification:LightDeIdentification"></a>
       <span class="permalink">
       <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/LightDeIdentification.html" title="Permalink">
         <i class="material-icons"></i>
@@ -968,7 +1014,7 @@ in DeIdentificationModel and ObfuscatorAnnotatorModel.
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a title="Light DeIdentification is a light version of DeIdentification." href="LightDeIdentification.html"><span class="name">LightDeIdentification</span></a><span class="result"> extends <span class="extype" name="com.johnsnowlabs.nlp.AnnotatorModel">AnnotatorModel</span>[<a href="LightDeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.LightDeIdentification">LightDeIdentification</a>] with <span class="extype" name="com.johnsnowlabs.nlp.HasSimpleAnnotate">HasSimpleAnnotate</span>[<a href="LightDeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.LightDeIdentification">LightDeIdentification</a>] with <a href="DeidModelParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams">DeidModelParams</a> with <a href="LightDeIdentificationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.LightDeIdentificationParams">LightDeIdentificationParams</a> with <span class="extype" name="com.johnsnowlabs.license.CheckLicense">CheckLicense</span></span>
+        <a title="Light DeIdentification is a light version of DeIdentification." href="LightDeIdentification.html"><span class="name">LightDeIdentification</span></a><span class="result"> extends <span class="extype" name="com.johnsnowlabs.nlp.AnnotatorModel">AnnotatorModel</span>[<a href="LightDeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.LightDeIdentification">LightDeIdentification</a>] with <span class="extype" name="com.johnsnowlabs.nlp.HasSimpleAnnotate">HasSimpleAnnotate</span>[<a href="LightDeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.LightDeIdentification">LightDeIdentification</a>] with <a href="LightDeIdentificationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.LightDeIdentificationParams">LightDeIdentificationParams</a> with <a href="DeidModelParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams">DeidModelParams</a> with <span class="extype" name="com.johnsnowlabs.license.CheckLicense">CheckLicense</span></span>
       </span>
       
       <p class="shortcomment cmt">Light DeIdentification is a light version of DeIdentification.</p><div class="fullcomment"><div class="comment cmt"><p>Light DeIdentification is a light version of DeIdentification. It replaces sensitive information
@@ -977,7 +1023,7 @@ and it can be used to de-identify patient names, dates, and other sensitive info
 It can also be used to obfuscate or mask any other type of sensitive information, such as doctor names, hospital
 names, and other types of sensitive information.</p><p>Additionally, it supports millions of embedded fakers
 and If desired, custom external fakers can be set with <a href="LightDeIdentificationParams.html#setCustomFakers(value:java.util.HashMap[String,java.util.List[String]]):com.johnsnowlabs.nlp.&lt;refinement&gt;.type" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.LightDeIdentificationParams#setCustomFakers">LightDeIdentificationParams.setCustomFakers</a> .</p><p>It also supports multiple languages such as English, Spanish, French, German, and Arabic.
-And it supports multi-mode de-identification with <a href="LightDeIdentificationParams.html#setSelectiveObfuscationModes(value:java.util.HashMap[String,java.util.List[String]]):com.johnsnowlabs.nlp.&lt;refinement&gt;.type" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.LightDeIdentificationParams#setSelectiveObfuscationModes">LightDeIdentificationParams.setSelectiveObfuscationModes</a> at the same time.</p><p>Example:</p><pre><span class="kw">val</span> documentAssembler = <span class="kw">new</span> DocumentAssembler()
+And it supports multi-mode de-identification with <a href="LightDeIdentificationParams.html#setSelectiveObfuscationModes(value:java.util.HashMap[String,java.util.List[String]]):BaseDeidParams.this.type" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.LightDeIdentificationParams#setSelectiveObfuscationModes">LightDeIdentificationParams.setSelectiveObfuscationModes</a> at the same time.</p><p>Example:</p><pre><span class="kw">val</span> documentAssembler = <span class="kw">new</span> DocumentAssembler()
   .setInputCol(<span class="lit">"text"</span>).setOutputCol(<span class="lit">"document"</span>)
 
 <span class="kw">val</span> sentenceDetector = <span class="kw">new</span> SentenceDetector()
@@ -1033,7 +1079,7 @@ See for more information and parameters <a href="DeidModelParams.html" class="ex
       <a href="https://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#SecureRandom" target="_blank">Number Generation Algorithm</a>.
       The default algorithm is 'SHA1PRNG'.</p></span></dd><dt>See also</dt><dd><span class="cmt"><p><a href="DeidModelParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams">DeidModelParams</a></p></span><span class="cmt"><p><a href="LightDeIdentificationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.LightDeIdentificationParams">LightDeIdentificationParams</a></p></span></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.LightDeIdentificationParams" visbl="pub" class="indented0 " data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="LightDeIdentificationParamsextendsParams"></a><a id="LightDeIdentificationParams:LightDeIdentificationParams"></a>
+      <a id="LightDeIdentificationParamsextendsBaseDeidParamswithMaskingParamswithParams"></a><a id="LightDeIdentificationParams:LightDeIdentificationParams"></a>
       <span class="permalink">
       <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/LightDeIdentificationParams.html" title="Permalink">
         <i class="material-icons"></i>
@@ -1044,10 +1090,26 @@ See for more information and parameters <a href="DeidModelParams.html" class="ex
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a title="A trait that contains params that LightDeIdentification has." href="LightDeIdentificationParams.html"><span class="name">LightDeIdentificationParams</span></a><span class="result"> extends <span class="extype" name="org.apache.spark.ml.param.Params">Params</span></span>
+        <a title="A trait that contains params that LightDeIdentification has." href="LightDeIdentificationParams.html"><span class="name">LightDeIdentificationParams</span></a><span class="result"> extends <a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a> with <a href="MaskingParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.MaskingParams">MaskingParams</a> with <span class="extype" name="org.apache.spark.ml.param.Params">Params</span></span>
       </span>
       
       <p class="shortcomment cmt"> A trait that contains params that <a href="LightDeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.LightDeIdentification">LightDeIdentification</a> has.</p><div class="fullcomment"><div class="comment cmt"><p> A trait that contains params that <a href="LightDeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.LightDeIdentification">LightDeIdentification</a> has.</p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="LightDeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.LightDeIdentification">LightDeIdentification</a></p></span></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.MaskingParams" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="MaskingParamsextendsParams"></a><a id="MaskingParams:MaskingParams"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/MaskingParams.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="MaskingParams.html"><span class="name">MaskingParams</span></a><span class="result"> extends <span class="extype" name="org.apache.spark.ml.param.Params">Params</span></span>
+      </span>
+      
+      
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.MySentnece" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="MySentneceextendsProductwithSerializable"></a><a id="MySentnece:MySentnece"></a>
       <span class="permalink">
@@ -1395,19 +1457,23 @@ Obfuscated text :  Fitzpatrick is a &lt;AGE&gt; y.o. patient admitted. Mr. Bowma
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a title="Utility class that helps to obfuscate tabular data." href="StructuredDeidentification.html"><span class="name">StructuredDeidentification</span></a><span class="params">(<span name="columnsMap">columnsMap: <span class="extype" name="java.util.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="seedMap">seedMap: <span class="extype" name="java.util.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Int">Int</span>] = <span class="symbol">Collections.emptyMap()</span></span>, <span name="obfuscateRefFile">obfuscateRefFile: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;&quot;</span></span>, <span name="obfuscateRefSource">obfuscateRefSource: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;both&quot;</span></span>, <span name="days">days: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">0</span></span>, <span name="useRandomDateDisplacement">useRandomDateDisplacement: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="dateFormats">dateFormats: <span class="extype" name="java.util.List">List</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="defval" name='<span class="name"><a href="Obfuscator$.html">Obfuscator.dateFormatsDefault.toList.asJava</a></span>'>...</span></span>, <span name="language">language: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol"><span class="name"><a href="Language$.html">Language.English</a></span></span></span>, <span name="idColumn">idColumn: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;&quot;</span></span>, <span name="region">region: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;&quot;</span></span>, <span name="keepYear">keepYear: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="keepMonth">keepMonth: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="unnormalizedDateMode">unnormalizedDateMode: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;obfuscate&quot;</span></span>, <span name="keepTextSizeForObfuscation">keepTextSizeForObfuscation: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="fakerLengthOffset">fakerLengthOffset: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">3</span></span>, <span name="genderAwareness">genderAwareness: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="ageRangesByHipaa">ageRangesByHipaa: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a title="Utility class that helps to obfuscate tabular data." href="StructuredDeidentification.html"><span class="name">StructuredDeidentification</span></a><span class="params">(<span name="columnsMap">columnsMap: <span class="extype" name="java.util.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="seedMap">seedMap: <span class="extype" name="java.util.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Int">Int</span>] = <span class="symbol">Collections.emptyMap()</span></span>, <span name="obfuscateRefFile">obfuscateRefFile: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;&quot;</span></span>, <span name="obfuscateRefSource">obfuscateRefSource: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;both&quot;</span></span>, <span name="days">days: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">0</span></span>, <span name="useRandomDateDisplacement">useRandomDateDisplacement: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="dateFormats">dateFormats: <span class="extype" name="java.util.List">List</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="defval" name='<span class="name"><a href="Obfuscator$.html">Obfuscator.dateFormatsDefault.toList.asJava</a></span>'>...</span></span>, <span name="language">language: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol"><span class="name"><a href="Language$.html">Language.English</a></span></span></span>, <span name="idColumn">idColumn: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;&quot;</span></span>, <span name="region">region: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;&quot;</span></span>, <span name="keepYear">keepYear: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="keepMonth">keepMonth: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="unnormalizedDateMode">unnormalizedDateMode: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;obfuscate&quot;</span></span>, <span name="keepTextSizeForObfuscation">keepTextSizeForObfuscation: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="fakerLengthOffset">fakerLengthOffset: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">3</span></span>, <span name="genderAwareness">genderAwareness: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="ageRangesByHipaa">ageRangesByHipaa: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="consistentAcrossNameParts">consistentAcrossNameParts: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="selectiveObfuscateRefSource">selectiveObfuscateRefSource: <span class="extype" name="java.util.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">Collections.emptyMap()</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       
       <p class="shortcomment cmt">Utility class that helps to obfuscate tabular data.</p><div class="fullcomment"><div class="comment cmt"><p>Utility class that helps to obfuscate tabular data.
 </p></div><dl class="paramcmts block"><dt class="param">columnsMap</dt><dd class="cmt"><p>It is a map that allows to select the name of the column with the entity.
                                  The key of the the map is the column in the dataframe and the value of the map is the entity for that column.
-                                 The default entities are:</p><ul><li>|Entity | description |</li><li>|location| A general location.|</li><li>|location-other| A location that is not country, street,hospital,city or state|</li><li>|street| A street|</li><li>|hospital| The name of a hospital.|</li><li>|city| A city|</li><li>|state|A state|</li><li>|zip| The zip code|</li><li>|country| A country|</li><li>|contact| The contact of one person|</li><li>|username|A username |</li><li>|phone| A number phone.|</li><li>|fax| The number fax|</li><li>|url| A url for internet|</li><li>|email| The email of one person|</li><li>|profession| A profession of one person|</li><li>|name| The name opf one person|</li><li>|doctor|The name of a doctor|</li><li>|patient| The name of the patient|</li><li>|id| A general Id number|</li><li>|bioid|Is a system to screen for protein interactions as they occur in living cells|</li><li>|age|The age of something or someone|</li><li>|organization| Name of one organization o company|</li><li>|healthplan| The id that identify the healthplan|</li><li>|medicalrecord| The identification of a medical record|</li><li>|device|The id that identified a device|</li><li>|date| A general date|</li><li>|ssn| A Social Security Number|</li><li>|ip| A Internet Protocol|</li><li>|passport| A random passport|</li><li>|dln| A Driver's License Number |</li><li>|npi| A National Provider Identifier|</li><li>|c_card| A credit card number|</li><li>|iban| A International Bank Account Number|</li><li>|dea| A Drug Enforcement Administration|
+                                 The default entities are:</p><ul><li>|Entity | description |</li><li>|location| A general location.|</li><li>|location-other| A location that is not country, street,hospital,city or state|</li><li>|street| A street|</li><li>|hospital| The name of a hospital.|</li><li>|city| A city|</li><li>|state|A state|</li><li>|zip| The zip code|</li><li>|country| A country|</li><li>|contact| The contact of one person|</li><li>|username|A username |</li><li>|phone| A number phone.|</li><li>|fax| The number fax|</li><li>|url| A url for internet|</li><li>|email| The email of one person|</li><li>|profession| A profession of one person|</li><li>|name| The name opf one person|</li><li>|doctor|The name of a doctor|</li><li>|patient| The name of the patient|</li><li>|first_name| The first name of one person|</li><li>|last_name| The last name of one person|</li><li>|id| A general Id number|</li><li>|bioid|Is a system to screen for protein interactions as they occur in living cells|</li><li>|age|The age of something or someone|</li><li>|organization| Name of one organization o company|</li><li>|healthplan| The id that identify the healthplan|</li><li>|medicalrecord| The identification of a medical record|</li><li>|device|The id that identified a device|</li><li>|date| A general date|</li><li>|ssn| A Social Security Number|</li><li>|ip| A Internet Protocol|</li><li>|passport| A random passport|</li><li>|dln| A Driver's License Number |</li><li>|npi| A National Provider Identifier|</li><li>|c_card| A credit card number|</li><li>|iban| A International Bank Account Number|</li><li>|dea| A Drug Enforcement Administration|
                                  If is not present will be masked.</li></ul></dd><dt class="param">seedMap</dt><dd class="cmt"><p>Allow to add a seed to the column that you want to obfuscate.
                                  The seed used to randomly select the entities used during obfuscation mode.
                                  By providing the same seed, you can replicate the same mapping multiple times.</p></dd><dt class="param">obfuscateRefFile</dt><dd class="cmt"><p>This is an optional parameter that allows to add your own terms to be used for obfuscation.
                                  The file contains as a key the entity and as the value the terms that will be used in the obfuscation.</p></dd><dt class="param">obfuscateRefSource</dt><dd class="cmt"><p>The source of obfuscation of to obfuscate the entities.For dates entities doesnt apply tha method.
                                  The allowed values are the following:</p><ul><li>'file': Takes the entities from the obfuscatorRefFile</li><li>'faker': Takes the entities from the Faker module</li><li>'both': Takes the entities from the obfuscatorRefFile and the faker module randomly.</li></ul></dd><dt class="param">days</dt><dd class="cmt"><p>Number of days to obfuscate the dates by displacement. If not provided a random integer between 1 and 60 will be used.</p></dd><dt class="param">useRandomDateDisplacement</dt><dd class="cmt"><p>Use a random displacement days in dates entities. If true, use random displacement days in dates entities, otherwise use the days parameter.</p></dd><dt class="param">dateFormats</dt><dd class="cmt"><p>Format of dates to displaceFormat of dates to displace.</p></dd><dt class="param">language</dt><dd class="cmt"><p>The language used to select faker entities. The values are the following:</p><ul><li>'en'(English),</li><li>'de'(German),</li><li>'es'(Spanish),</li><li>'fr'(French),</li><li>'ar'(Arabic)</li><li>'ro'(Romanian).
-                                 Default:'en'</li></ul></dd><dt class="param">idColumn</dt><dd class="cmt"><p>The column that contains the id of the row. If provided, data will obfuscate consistently by idColumn, especially date entities.</p></dd><dt class="param">region</dt><dd class="cmt"><p>With this property, you can select particular dateFormats. This property is especially used when obfuscating dates. The values are the following: 'eu' for European Union, 'us' for USA.</p></dd><dt class="param">keepYear</dt><dd class="cmt"><p>Whether to keep the year intact when obfuscating date entities. If true, the year will remain unchanged during the obfuscation process.</p></dd><dt class="param">keepMonth</dt><dd class="cmt"><p>Whether to keep the month intact when obfuscating date entities. If true, the month will remain unchanged during the obfuscation process.</p></dd><dt class="param">unnormalizedDateMode</dt><dd class="cmt"><p>The mode to use if the date is not formatted. The values are the following: 'mask', 'obfuscate', 'skip'. Default: obfuscate.</p></dd><dt class="param">keepTextSizeForObfuscation</dt><dd class="cmt"><p>Whether the output should maintain the same character length as the input text.</p></dd><dt class="param">fakerLengthOffset</dt><dd class="cmt"><p>It specifies how much length deviation is accepted in obfuscation, with keepTextSizeForObfuscation enabled. Value must be greater than 0. Default is 3.</p></dd><dt class="param">genderAwareness</dt><dd class="cmt"><p>Whether to use gender-aware names or not during obfuscation. This param effects only names. If value is true, it might decrease performance.</p></dd><dt class="param">ageRangesByHipaa</dt><dd class="cmt"><p>Whether to obfuscate ages based on HIPAA (Health Insurance Portability and Accountability Act) Privacy Rule.</p></dd></dl></div>
+                                 Default:'en'</li></ul></dd><dt class="param">idColumn</dt><dd class="cmt"><p>The column that contains the id of the row. If provided, data will obfuscate consistently by idColumn, especially date entities.</p></dd><dt class="param">region</dt><dd class="cmt"><p>With this property, you can select particular dateFormats. This property is especially used when obfuscating dates. The values are the following: 'eu' for European Union, 'us' for USA.</p></dd><dt class="param">keepYear</dt><dd class="cmt"><p>Whether to keep the year intact when obfuscating date entities. If true, the year will remain unchanged during the obfuscation process.</p></dd><dt class="param">keepMonth</dt><dd class="cmt"><p>Whether to keep the month intact when obfuscating date entities. If true, the month will remain unchanged during the obfuscation process.</p></dd><dt class="param">unnormalizedDateMode</dt><dd class="cmt"><p>The mode to use if the date is not formatted. The values are the following: 'mask', 'obfuscate', 'skip'. Default: obfuscate.</p></dd><dt class="param">keepTextSizeForObfuscation</dt><dd class="cmt"><p>Whether the output should maintain the same character length as the input text.</p></dd><dt class="param">fakerLengthOffset</dt><dd class="cmt"><p>It specifies how much length deviation is accepted in obfuscation, with keepTextSizeForObfuscation enabled. Value must be greater than 0. Default is 3.</p></dd><dt class="param">genderAwareness</dt><dd class="cmt"><p>Whether to use gender-aware names or not during obfuscation. This param effects only names. If value is true, it might decrease performance.</p></dd><dt class="param">ageRangesByHipaa</dt><dd class="cmt"><p>Whether to obfuscate ages based on HIPAA (Health Insurance Portability and Accountability Act) Privacy Rule.</p></dd><dt class="param">consistentAcrossNameParts</dt><dd class="cmt"><p>Whether to keep the same name across different parts of the name (e.g., first name, last name) when obfuscating names.</p></dd><dt class="param">selectiveObfuscateRefSource</dt><dd class="cmt"><p>A map that allows to select the source of obfuscation for each entity.
+                                   This is used to selectively apply different obfuscation methods to specific entities.
+                                   The keys are the entity names and the values are the obfuscation sources.
+                                   The allowed values are the following:</p><ul><li>'file': Takes the fakes from the obfuscatorRefFile</li><li>'faker': Takes the fakes from the Faker module</li><li>'both': Takes the fakes from the obfuscatorRefFile and the faker module.
+                                   If an entity is not specified in this map, the <a href="StructuredDeidentification.html#obfuscateRefSource:String" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.StructuredDeidentification#obfuscateRefSource">obfuscateRefSource</a> param is used to determine the obfuscation source.</li></ul></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.TextToDocumentColumns" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="TextToDocumentColumnsextendsProductwithSerializable"></a><a id="TextToDocumentColumns:TextToDocumentColumns"></a>
       <span class="permalink">

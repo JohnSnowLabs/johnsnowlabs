@@ -57,7 +57,7 @@ Visit the [product page on AWS Marketplace](https://aws.amazon.com/marketplace/p
   Username: admin
   Password: INSTANCE_ID
 
-<div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item">{%- include extensions/youtube.html id='ebaewU4BcQA' -%}<div class="video-descr">Deploy Generative AI Lab via AWS Marketplace</div></div></div>
+<div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item">{%- include extensions/youtube.html id='tBXM_2nTLwk' -%}<div class="video-descr">Deploy Generative AI Lab via AWS Marketplace</div></div></div>
 
 </div><div class="h3-box" markdown="1">
 
@@ -271,6 +271,8 @@ kubectl get pods
 ## Dedicated Server
 
 **On-Prem Installation Guide**
+
+<div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item">{%- include extensions/youtube.html id='pG3Ft1DmiLY' -%}<div class="video-descr">Deploy Generative AI Lab On-Prem Installation </div></div></div>
 
 **Prerequisites:** `curl` and `jq` tools must be installed.
 
