@@ -66,7 +66,7 @@ image_assembler = (
 )
 
 medicalVisionLLM = (
-    MedicalVisionLLM.pretrained("jsl_meds_vlm_3b_q4_v1", "en", "clinical/models")
+    MedicalVisionLLM.pretrained("jsl_meds_vlm_3b_q8_v1", "en", "clinical/models")
     .setInputCols(["caption_document", "image_assembler"])
     .setOutputCol("completions")
     .setChatTemplate("vicuna")
@@ -134,7 +134,7 @@ image_assembler = (
 )
 
 medicalVisionLLM = (
-    medical.MedicalVisionLLM.pretrained("jsl_meds_vlm_3b_q4_v1", "en", "clinical/models")
+    medical.MedicalVisionLLM.pretrained("jsl_meds_vlm_3b_q8_v1", "en", "clinical/models")
     .setInputCols(["caption_document", "image_assembler"])
     .setOutputCol("completions")
     .setChatTemplate("vicuna")
@@ -196,7 +196,7 @@ val imageAssembler = new ImageAssembler()
   .setOutputCol("image_assembler")
 
 val medicalVisionLLM = MedicalVisionLLM
-  .pretrained("jsl_meds_vlm_3b_q4_v1", "en", "clinical/models")
+  .pretrained("jsl_meds_vlm_3b_q8_v1", "en", "clinical/models")
   .setInputCols(Array("caption_document", "image_assembler"))
   .setOutputCol("completions")
   .setChatTemplate("vicuna")
