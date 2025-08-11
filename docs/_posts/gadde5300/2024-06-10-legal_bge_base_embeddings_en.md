@@ -10,6 +10,7 @@ language: en
 edition: Legal NLP 1.0.0
 spark_version: 3.2
 supported: true
+recommended: true
 engine: onnx
 annotator: BGEEmbeddings
 article_header:
