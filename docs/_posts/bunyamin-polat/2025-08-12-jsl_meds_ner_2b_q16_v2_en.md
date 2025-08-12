@@ -4,7 +4,7 @@ title: JSL_MedS_NER (2B - q16 - v2)
 author: John Snow Labs
 name: jsl_meds_ner_2b_q16_v2
 date: 2025-08-12
-tags: [medical, clinical, ner, q4, 2b, en, licensed, llamacpp]
+tags: [medical, clinical, ner, q16, 2b, en, licensed, llamacpp]
 task: Named Entity Recognition
 language: en
 edition: Healthcare NLP 6.1.0
