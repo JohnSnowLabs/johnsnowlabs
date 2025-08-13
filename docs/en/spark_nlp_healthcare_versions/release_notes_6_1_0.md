@@ -93,9 +93,8 @@ pipeline = Pipeline(
 ```
 
 input:
-<img width="1440" height="1716" alt="image" src="https://github.com/user-attachments/assets/d162c725-6e2c-4755-9808-f28c7407e847" />
 
-
+![Input of Medical Vision LLM](/assets/images/releases/6_1_0/medical_visual_llm.png)
 
 *Result*:
 
