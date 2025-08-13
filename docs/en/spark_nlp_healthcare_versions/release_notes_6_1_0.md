@@ -2,8 +2,8 @@
 layout: docs
 header: true
 seotitle: Spark NLP for Healthcare | John Snow Labs
-title: Healthcare NLP Release Notes
-permalink: /docs/en/spark_nlp_healthcare_versions/licensed_release_notes
+title: Healthcare NLP v6.1.0 Release Notes
+permalink: /docs/en/spark_nlp_healthcare_versions/release_notes_6_1_0
 key: docs-licensed-release-notes
 modify_date: 2025-08-13
 show_nav: true
@@ -95,8 +95,6 @@ pipeline = Pipeline(
 input:
 
 ![Input of Medical Vision LLM](/assets/images/releases/6_1_0/medical_visual_llm.png)
-
-
 
 *Result*:
 
@@ -487,7 +485,6 @@ he has a increased overbite expression.
 + `clinical_deidentification_docwise_benchmark_large`
 
 
-
 </div><div class="h3-box" markdown="1">
 
 For all Spark NLP for Healthcare models, please check: [Models Hub Page](https://nlp.johnsnowlabs.com/models?edition=Healthcare+NLP)
@@ -495,8 +492,7 @@ For all Spark NLP for Healthcare models, please check: [Models Hub Page](https:/
 
 </div><div class="h3-box" markdown="1">
 
-
-## Previous versions
+## Versions
 
 </div>
 {%- include docs-healthcare-pagination.html -%}
