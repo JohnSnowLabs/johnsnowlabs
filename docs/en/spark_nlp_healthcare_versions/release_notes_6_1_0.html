@@ -636,13 +636,13 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <ul>
     <li><strong>Medical Vision LLM module to run multiomodal LLMs</strong>: Advancing clinical AI with integrated visual language understanding via popular multimodal LLMs specifically finetuned for medical tasks</li>
-    <li><strong>Small size multimodal LLMs (VLMs) for text and visual entity extraction</strong> — 6 newly released lightweight Vision Language Models for efficient structured medical entity extraction from documents and images</li>
-    <li><strong>JSL Medical LLM Collection Expansion with recent popluar model families</strong> — Addition of v4 and v5 models in 4B and 8B parameter sizes, available in q4, q8, and q16 quantization formats for optimal deployment flexibility</li>
-    <li><strong>LLM Architecture Upgrade</strong> — Refined architecture built on llama.cpp, delivering improved inference efficiency, scalability, and accuracy to support the latest generation of LLM families enabling faster performance and broader model compatibility</li>
-    <li><strong>Continuous Performance Optimization &amp; Benchmarking for Healthcare Modules</strong> — Ongoing speed enhancements and comparative analysis of machine learning model architectures across CPU/GPU platforms</li>
-    <li><strong>Mapper Model Additions</strong> — 7 new medical terminology mapper models supporting HPO, gene, disease, and biomedical concept analysis</li>
-    <li><strong>Pretrained Clinical Pipelines</strong> — One-Liner, domain-specific pipelines for targeted clinical document analysis</li>
-    <li><strong>Various core improvements</strong> - Bug fixes, enhanced overall robustness and reliability of Healthcare NLP
+    <li><strong>Small size multimodal LLMs (VLMs) for text and visual entity extraction</strong>: 6 newly released lightweight Vision Language Models for efficient structured medical entity extraction from documents and images</li>
+    <li><strong>JSL Medical LLM Collection Expansion with recent popluar model families</strong>: Addition of v4 and v5 models in 4B and 8B parameter sizes, available in q4, q8, and q16 quantization formats for optimal deployment flexibility</li>
+    <li><strong>LLM Architecture Upgrade</strong>: Refined architecture built on llama.cpp, delivering improved inference efficiency, scalability, and accuracy to support the latest generation of LLM families enabling faster performance and broader model compatibility</li>
+    <li><strong>Continuous Performance Optimization &amp; Benchmarking for Healthcare Modules</strong>: Ongoing speed enhancements and comparative analysis of machine learning model architectures across CPU/GPU platforms</li>
+    <li><strong>Mapper Model Additions</strong>: 7 new medical terminology mapper models supporting HPO, gene, disease, and biomedical concept analysis</li>
+    <li><strong>Pretrained Clinical Pipelines</strong>: One-Liner, domain-specific pipelines for targeted clinical document analysis</li>
+    <li><strong>Various core improvements</strong>: Bug fixes, enhanced overall robustness and reliability of Healthcare NLP
       <ul>
         <li><strong>Model Size Display</strong>: Added the ability to display the model size when using <code class="language-plaintext highlighter-rouge">pretrained</code> functions, providing better insight into resource requirements before loading.</li>
         <li><strong>AssertionLogRegModel Enhancements</strong>: Introduced new metadata fields to <code class="language-plaintext highlighter-rouge">AssertionLogRegModel</code>, aligning it with other assertion annotators and enabling improved traceability of processed chunks.</li>
@@ -758,7 +758,7 @@ Leveraging the latest innovations in multimodal AI, MedicalVisionLLM can interpr
 </div>
 <div class="h3-box">
 
-  <h4 id="small-size-multimodal-llms-vlms-for-text-and-visual-entity-extraction--6-newly-released-lightweight-vision-language-models-for-efficient-structured-medical-entity-extraction-from-documents-and-images"><strong>Small Size Multimodal LLMs (VLMs) for Text and Visual Entity Extraction</strong> — 6 Newly Released Lightweight Vision Language Models for Efficient Structured Medical Entity Extraction from Documents and Images</h4>
+  <h4 id="small-size-multimodal-llms-vlms-for-text-and-visual-entity-extraction-6-newly-released-lightweight-vision-language-models-for-efficient-structured-medical-entity-extraction-from-documents-and-images"><strong>Small Size Multimodal LLMs (VLMs) for Text and Visual Entity Extraction</strong>: 6 Newly Released Lightweight Vision Language Models for Efficient Structured Medical Entity Extraction from Documents and Images</h4>
 
   <p>These small language models (LLMs) are trained to extract and link medical entities within a document. Users need to define an input schema, as explained in the example section. For instance, a drug field can be defined as a list to indicate that there may be multiple drugs in the document, and the model should extract all of them. Each drug has properties such as name and reaction. Since name contains only a single value, it is defined as a string, whereas reaction may include multiple values and is therefore defined as a list. Similarly, users can define any schema for any type of entity, allowing the model’s output to be structured according to specific requirements.</p>
 
@@ -933,7 +933,7 @@ E: Nitrofurantoin
 </div>
 <div class="h3-box">
 
-  <h4 id="llm-architecture-upgrade--refined-architecture-built-on-llamacpp-delivering-improved-inference-efficiency-scalability-and-accuracy-to-support-the-latest-generation-of-llm-families-enabling-faster-performance-and-broader-model-compatibility"><strong>LLM Architecture Upgrade</strong> — Refined Architecture Built on llama.cpp, Delivering Improved Inference Efficiency, Scalability, and Accuracy to Support the Latest Generation of LLM Families Enabling Faster Performance and Broader Model Compatibility</h4>
+  <h4 id="llm-architecture-upgrade-refined-architecture-built-on-llamacpp-delivering-improved-inference-efficiency-scalability-and-accuracy-to-support-the-latest-generation-of-llm-families-enabling-faster-performance-and-broader-model-compatibility"><strong>LLM Architecture Upgrade</strong>: Refined Architecture Built on llama.cpp, Delivering Improved Inference Efficiency, Scalability, and Accuracy to Support the Latest Generation of LLM Families Enabling Faster Performance and Broader Model Compatibility</h4>
 
   <p>The Large Language Model (LLM) architecture in Spark NLP for Healthcare has been upgraded to support the latest generation of LLM families, ensuring full compatibility with cutting-edge medical and general-purpose language models.</p>
 
@@ -952,7 +952,7 @@ These improvements ensure faster and more scalable deployment of LLM-based healt
 </div>
 <div class="h3-box">
 
-  <h4 id="continuous-performance-optimization--benchmarking-for-healthcare-modules--ongoing-speed-enhancements-and-comparative-analysis-of-machine-learning-model-architectures-across-cpugpu-platforms">- <strong>Continuous Performance Optimization &amp; Benchmarking for Healthcare Modules</strong> — Ongoing Speed Enhancements and Comparative Analysis of Machine Learning Model Architectures Across CPU/GPU Platforms</h4>
+  <h4 id="continuous-performance-optimization--benchmarking-for-healthcare-modules-ongoing-speed-enhancements-and-comparative-analysis-of-machine-learning-model-architectures-across-cpugpu-platforms"><strong>Continuous Performance Optimization &amp; Benchmarking for Healthcare Modules</strong>: Ongoing Speed Enhancements and Comparative Analysis of Machine Learning Model Architectures Across CPU/GPU Platforms</h4>
 
   <p>To evaluate the performance of different model architectures available in healthcare library, we benchmarked <strong>TensorFlow</strong>, <strong>ONNX</strong>, and <strong>OpenVINO</strong> implementations of the same model under identical conditions.<br />
 Tests were run on both <strong>CPU</strong> and <strong>GPU</strong> with the same input dataset and batch configurations to ensure a fair comparison.</p>
@@ -1043,7 +1043,7 @@ Our aim is to expand model coverage, add optimized pipelines, and ensure maximum
 </div>
 <div class="h3-box">
 
-  <h4 id="mapper-model-additions--7-new-medical-terminology-mapper-models-supporting-hpo-gene-disease-and-biomedical-concept-analysis"><strong>Mapper Model Additions</strong> — 7 New Medical Terminology Mapper Models Supporting HPO, Gene, Disease, and Biomedical Concept Analysis</h4>
+  <h4 id="mapper-model-additions-7-new-medical-terminology-mapper-models-supporting-hpo-gene-disease-and-biomedical-concept-analysis"><strong>Mapper Model Additions</strong>: 7 New Medical Terminology Mapper Models Supporting HPO, Gene, Disease, and Biomedical Concept Analysis</h4>
 
   <p>These 7 ChunkMapper models act as fast, lightweight lookup layers between key biomedical vocabularies—genes, diseases, Human Phenotype Ontology (HPO) terms, extra-ocular-movement (EOM) phenotypes, and UMLS concepts.</p>
 
@@ -1129,7 +1129,7 @@ Our aim is to expand model coverage, add optimized pipelines, and ensure maximum
 </div>
 <div class="h3-box">
 
-  <h4 id="pretrained-clinical-pipelines--one-liner-domain-specific-pipelines-for-targeted-clinical-document-analysis"><strong>Pretrained Clinical Pipelines</strong> — One Liner, Domain Specific Pipelines for Targeted Clinical Document Analysis</h4>
+  <h4 id="pretrained-clinical-pipelines-one-liner-domain-specific-pipelines-for-targeted-clinical-document-analysis"><strong>Pretrained Clinical Pipelines</strong>: One Liner, Domain Specific Pipelines for Targeted Clinical Document Analysis</h4>
 
   <p>This release introduces a suite of advanced, hybrid pretrained pipelines purpose-built to streamline clinical document analysis. Each pipeline integrates multiple state-of-the-art (SOTA) pretrained models, providing a ready-to-use solution for extracting key clinical information with minimal setup.</p>
 
@@ -1290,7 +1290,7 @@ he has a increased overbite expression.
 </div>
 <div class="h3-box">
 
-  <h4 id="various-core-improvements---bug-fixes-enhanced-overall-robustness-and-reliability-of-healthcare-nlp"><strong>Various core improvements</strong> - Bug fixes, enhanced overall robustness and reliability of Healthcare NLP</h4>
+  <h4 id="various-core-improvements-bug-fixes-enhanced-overall-robustness-and-reliability-of-healthcare-nlp"><strong>Various core improvements</strong>: Bug fixes, enhanced overall robustness and reliability of Healthcare NLP</h4>
 
   <ul>
     <li><strong>Model Size Display</strong>: Added the ability to display the model size when using <code class="language-plaintext highlighter-rouge">pretrained</code> functions, providing better insight into resource requirements before loading.</li>
