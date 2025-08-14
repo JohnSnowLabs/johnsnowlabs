@@ -20,13 +20,13 @@ sidebar:
 We are delighted to announce remarkable enhancements and updates in our latest release of Healthcare NLP. **This release comes with a brand new Medical multimodal LLMs,text-only small LLMs that could run on commodity hardware, speed and performance optimizations for popular healthcare NLP tools (NER, assertion, etc.) via Onnx, as well as 37 new and updated clinical pretrained models and pipelines**. 
 
 - **Medical Vision LLM module to run multiomodal LLMs**: Advancing clinical AI with integrated visual language understanding via popular multimodal LLMs specifically finetuned for medical tasks
-- **Small size multimodal LLMs (VLMs) for text and visual entity extraction** — 6 newly released lightweight Vision Language Models for efficient structured medical entity extraction from documents and images
-- **JSL Medical LLM Collection Expansion with recent popluar model families** — Addition of v4 and v5 models in 4B and 8B parameter sizes, available in q4, q8, and q16 quantization formats for optimal deployment flexibility
-- **LLM Architecture Upgrade** — Refined architecture built on llama.cpp, delivering improved inference efficiency, scalability, and accuracy to support the latest generation of LLM families enabling faster performance and broader model compatibility
-- **Continuous Performance Optimization & Benchmarking for Healthcare Modules** — Ongoing speed enhancements and comparative analysis of machine learning model architectures across CPU/GPU platforms
-- **Mapper Model Additions** — 7 new medical terminology mapper models supporting HPO, gene, disease, and biomedical concept analysis
-- **Pretrained Clinical Pipelines** — One-Liner, domain-specific pipelines for targeted clinical document analysis
-- **Various core improvements** - Bug fixes, enhanced overall robustness and reliability of Healthcare NLP
+- **Small size multimodal LLMs (VLMs) for text and visual entity extraction**: 6 newly released lightweight Vision Language Models for efficient structured medical entity extraction from documents and images
+- **JSL Medical LLM Collection Expansion with recent popluar model families**: Addition of v4 and v5 models in 4B and 8B parameter sizes, available in q4, q8, and q16 quantization formats for optimal deployment flexibility
+- **LLM Architecture Upgrade**: Refined architecture built on llama.cpp, delivering improved inference efficiency, scalability, and accuracy to support the latest generation of LLM families enabling faster performance and broader model compatibility
+- **Continuous Performance Optimization & Benchmarking for Healthcare Modules**: Ongoing speed enhancements and comparative analysis of machine learning model architectures across CPU/GPU platforms
+- **Mapper Model Additions**: 7 new medical terminology mapper models supporting HPO, gene, disease, and biomedical concept analysis
+- **Pretrained Clinical Pipelines**: One-Liner, domain-specific pipelines for targeted clinical document analysis
+- **Various core improvements**: Bug fixes, enhanced overall robustness and reliability of Healthcare NLP
   - **Model Size Display**: Added the ability to display the model size when using `pretrained` functions, providing better insight into resource requirements before loading.
   - **AssertionLogRegModel Enhancements**: Introduced new metadata fields to `AssertionLogRegModel`, aligning it with other assertion annotators and enabling improved traceability of processed chunks.
   - **DeIdentificationModel Save/Load Fix**: Resolved a persistence issue that affected saving and loading in `DeIdentificationModel`.
@@ -96,6 +96,8 @@ input:
 
 ![Input of Medical Vision LLM](/assets/images/releases/6_1_0/medical_visual_llm.png)
 
+
+
 *Result*:
 
 ```bash
@@ -121,7 +123,7 @@ Please check the [Multi Modal LLMs](https://github.com/JohnSnowLabs/spark-nlp-wo
 
 </div><div class="h3-box" markdown="1">
 
-####  **Small Size Multimodal LLMs (VLMs) for Text and Visual Entity Extraction** — 6 Newly Released Lightweight Vision Language Models for Efficient Structured Medical Entity Extraction from Documents and Images
+####  **Small Size Multimodal LLMs (VLMs) for Text and Visual Entity Extraction**: 6 Newly Released Lightweight Vision Language Models for Efficient Structured Medical Entity Extraction from Documents and Images
 
 These small language models (LLMs) are trained to extract and link medical entities within a document. Users need to define an input schema, as explained in the example section. For instance, a drug field can be defined as a list to indicate that there may be multiple drugs in the document, and the model should extract all of them. Each drug has properties such as name and reaction. Since name contains only a single value, it is defined as a string, whereas reaction may include multiple values and is therefore defined as a list. Similarly, users can define any schema for any type of entity, allowing the model’s output to be structured according to specific requirements.
 
@@ -271,7 +273,7 @@ The patient presents with symptoms suggestive of a urinary tract infection (UTI)
 
 </div><div class="h3-box" markdown="1">
 
-#### **LLM Architecture Upgrade** — Refined Architecture Built on llama.cpp, Delivering Improved Inference Efficiency, Scalability, and Accuracy to Support the Latest Generation of LLM Families Enabling Faster Performance and Broader Model Compatibility
+#### **LLM Architecture Upgrade**: Refined Architecture Built on llama.cpp, Delivering Improved Inference Efficiency, Scalability, and Accuracy to Support the Latest Generation of LLM Families Enabling Faster Performance and Broader Model Compatibility
 
 The Large Language Model (LLM) architecture in Spark NLP for Healthcare has been upgraded to support the latest generation of LLM families, ensuring full compatibility with cutting-edge medical and general-purpose language models.
 
@@ -287,7 +289,7 @@ These improvements ensure faster and more scalable deployment of LLM-based healt
 
 </div><div class="h3-box" markdown="1">
 
-#### - **Continuous Performance Optimization & Benchmarking for Healthcare Modules** — Ongoing Speed Enhancements and Comparative Analysis of Machine Learning Model Architectures Across CPU/GPU Platforms
+#### **Continuous Performance Optimization & Benchmarking for Healthcare Modules**: Ongoing Speed Enhancements and Comparative Analysis of Machine Learning Model Architectures Across CPU/GPU Platforms
 
 To evaluate the performance of different model architectures available in healthcare library, we benchmarked **TensorFlow**, **ONNX**, and **OpenVINO** implementations of the same model under identical conditions.  
 Tests were run on both **CPU** and **GPU** with the same input dataset and batch configurations to ensure a fair comparison.
@@ -333,7 +335,7 @@ Our aim is to expand model coverage, add optimized pipelines, and ensure maximum
 
 </div><div class="h3-box" markdown="1">
 
-####  **Mapper Model Additions** — 7 New Medical Terminology Mapper Models Supporting HPO, Gene, Disease, and Biomedical Concept Analysis
+####  **Mapper Model Additions**: 7 New Medical Terminology Mapper Models Supporting HPO, Gene, Disease, and Biomedical Concept Analysis
 
 These 7 ChunkMapper models act as fast, lightweight lookup layers between key biomedical vocabularies—genes, diseases, Human Phenotype Ontology (HPO) terms, extra-ocular-movement (EOM) phenotypes, and UMLS concepts. 
 
@@ -376,7 +378,7 @@ result = model.transform(spark.createDataFrame([["We will systematically examine
 
 </div><div class="h3-box" markdown="1">
 
-#### **Pretrained Clinical Pipelines** — One Liner, Domain Specific Pipelines for Targeted Clinical Document Analysis
+#### **Pretrained Clinical Pipelines**: One Liner, Domain Specific Pipelines for Targeted Clinical Document Analysis
 
 This release introduces a suite of advanced, hybrid pretrained pipelines purpose-built to streamline clinical document analysis. Each pipeline integrates multiple state-of-the-art (SOTA) pretrained models, providing a ready-to-use solution for extracting key clinical information with minimal setup.
 
@@ -426,7 +428,7 @@ he has a increased overbite expression.
 
 </div><div class="h3-box" markdown="1">
 
-#### **Various core improvements** - Bug fixes, enhanced overall robustness and reliability of Healthcare NLP
+#### **Various core improvements**: Bug fixes, enhanced overall robustness and reliability of Healthcare NLP
 
 - **Model Size Display**: Added the ability to display the model size when using `pretrained` functions, providing better insight into resource requirements before loading.
 - **AssertionLogRegModel Enhancements**: Introduced `ner_chunk`, `ner_label`, and `confidence` metadata fields  to `AssertionLogRegModel`, aligning it with other assertion annotators and enabling improved traceability of processed chunks.
@@ -483,6 +485,7 @@ he has a increased overbite expression.
 + `ner_docwise_benchmark_large`
 + `clinical_deidentification_docwise_benchmark_medium`
 + `clinical_deidentification_docwise_benchmark_large`
+
 
 
 </div><div class="h3-box" markdown="1">
