@@ -287,7 +287,7 @@ These improvements ensure faster and more scalable deployment of LLM-based healt
 
 </div><div class="h3-box" markdown="1">
 
-#### - **Continuous Performance Optimization & Benchmarking for Healthcare Modules** — Ongoing Speed Enhancements and Comparative Analysis of Machine Learning Model Architectures Across CPU/GPU Platforms
+#### **Continuous Performance Optimization & Benchmarking for Healthcare Modules** — Ongoing Speed Enhancements and Comparative Analysis of Machine Learning Model Architectures Across CPU/GPU Platforms
 
 To evaluate the performance of different model architectures available in healthcare library, we benchmarked **TensorFlow**, **ONNX**, and **OpenVINO** implementations of the same model under identical conditions.  
 Tests were run on both **CPU** and **GPU** with the same input dataset and batch configurations to ensure a fair comparison.
