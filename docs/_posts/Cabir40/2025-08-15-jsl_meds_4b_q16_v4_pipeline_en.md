@@ -32,6 +32,7 @@ This pretrained pipeline is built on the top of [jsl_meds_4b_q16_v4](https://nlp
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -49,6 +50,26 @@ E: Nitrofurantoin
 
 result = pipeline.fullAnnotate(text)
 ```
+
+{:.jsl-block}
+```python
+from johnsnowlabs import nlp, medical
+
+pipeline = nlp.PretrainedPipeline("jsl_meds_4b_q16_v4_pipeline", "en", "clinical/models")
+
+text = """<no_think></no_think>
+A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus.
+Which of the following is the best treatment for this patient?
+A: Ampicillin
+B: Ceftriaxone
+C: Ciprofloxacin
+D: Doxycycline
+E: Nitrofurantoin
+"""
+
+result = pipeline.fullAnnotate(text)
+```
+
 ```scala
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
