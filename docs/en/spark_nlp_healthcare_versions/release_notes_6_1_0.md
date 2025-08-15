@@ -278,9 +278,11 @@ The patient presents with symptoms suggestive of a urinary tract infection (UTI)
 The Large Language Model (LLM) architecture in Spark NLP for Healthcare has been upgraded to support the latest generation of LLM families, ensuring full compatibility with cutting-edge medical and general-purpose language models.
 
 ---
+
 **🚀Key Improvements**
 - **Optimized LLM Inference Performance** — Achieves approximately **~10% faster inference** on GPU for both `MedicalLLM` and `LLMLoader`, enhancing throughput in production environments.
 - **Extended LLM Compatibility** — Adds support for the **newest LLM architectures**, enabling seamless integration with state-of-the-art models for advanced healthcare NLP applications.
+
 ---
 
 **Impact:**  
@@ -295,12 +297,14 @@ To evaluate the performance of different model architectures available in health
 Tests were run on both **CPU** and **GPU** with the same input dataset and batch configurations to ensure a fair comparison.
 
 ---
+
 - Test Environment:
   + Instance Type:
     - CPU: Colab V6e-1 TPU, 173.0 GB RAM, 44 CPUs
     - GPU: Colab A100, 83.5 GB RAM, 40.0 GB GPU RAM, 12 Cores
   + Datasets:
     - 1000 rows MTSamples dataset (~500 tokens per row)
+
 ---
 
      🖥 CPU Performance
@@ -383,6 +387,13 @@ result = model.transform(spark.createDataFrame([["We will systematically examine
 This release introduces a suite of advanced, hybrid pretrained pipelines purpose-built to streamline clinical document analysis. Each pipeline integrates multiple state-of-the-art (SOTA) pretrained models, providing a ready-to-use solution for extracting key clinical information with minimal setup.
 
 A key advantage of these pipelines is the removal of the complexity traditionally involved in building and chaining models manually. Users no longer need to experiment with different model combinations or invest time in constructing intricate workflows from scratch. Instead, these one-liner pipelines offer a seamless, efficient, and reliable approach — enabling rapid deployment for targeted clinical tasks and concepts while maintaining high accuracy and performance.
+
+In our **hpo_mapper_pipeline_v3** pipeline, with the new **TextMatcher** features enabled, we observed the following improvements compared to the default mode:
+
+- **Exact match**: ↑ from **67.07%** to **86.47%** (**+19.4%**)
+- **Partial match**: ↓ from **4.54%** to **1.68%** (**−2.86%**)
+- **None match**: ↓ from **28.39%** to **11.85%** (**−16.54%**)
+
 
 {:.table-model-big}
 | Model Name                                                            |      Description            |
