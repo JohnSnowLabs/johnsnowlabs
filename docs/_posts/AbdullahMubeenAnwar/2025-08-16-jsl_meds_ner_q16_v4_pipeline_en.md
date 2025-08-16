@@ -4,8 +4,8 @@ title: Pipeline to JSL_MedS_NER (LLM - q16 - v4)
 author: John Snow Labs
 name: jsl_meds_ner_q16_v4_pipeline
 date: 2025-08-16
-tags: [licensed, en, clinical, meds, llm, ner, qa, summarization]
-task: [Summarization, Named Entity Recognition, Question Answering]
+tags: [licensed, en, clinical, meds, llm, ner]
+task: [Named Entity Recognition]
 language: en
 edition: Healthcare NLP 6.1.0
 spark_version: 3.4
