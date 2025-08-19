@@ -25,7 +25,7 @@ We’re excited to announce that an updated versions of our Medical-Reasoning-LL
 |---------------------------|--------------|------------------|-------------------|-------------|----------------|------------------------|
 | Medical-Reasoning-LLM-32B | 32B         | ~111 GB          | 40K               | 61 GB       | 50 GB          | 2, 4, 8               |
 
-#### Benchmark Accuracy Comparison wiht previous versions
+#### Benchmark Accuracy Comparison with previous versions
 
 Medical-Reasoning-LLM-32B leads with refined gains in:
 
