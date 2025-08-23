@@ -24,7 +24,7 @@ In this pipeline, 3 NER models and 2 text matchers are used to extract the relat
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
-<button class="button button-orange" disabled>Open in Colab</button>
+[Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/07.0.Pretrained_Clinical_Pipelines.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_risk_factors_light_en_6.0.2_3.4_1751052010831.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_risk_factors_light_en_6.0.2_3.4_1751052010831.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
