@@ -27,7 +27,7 @@ Additionally, this model returns concept classes of the drugs in the `all_k_aux_
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
-<button class="button button-orange" disabled>Open in Colab</button>
+[Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/05.0.Clinical_Entity_Resolvers.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/medembed_base_rxnorm_augmented_en_5.5.0_3.4_1732045925411.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/medembed_base_rxnorm_augmented_en_5.5.0_3.4_1732045925411.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
