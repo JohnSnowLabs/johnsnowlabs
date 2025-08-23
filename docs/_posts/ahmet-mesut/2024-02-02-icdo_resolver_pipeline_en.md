@@ -26,7 +26,7 @@ This pipeline extracts oncological entities from clinical texts and map them to 
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
-<button class="button button-orange" disabled>Open in Colab</button>
+[Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/07.0.Pretrained_Clinical_Pipelines.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/icdo_resolver_pipeline_en_5.2.1_3.2_1706884682556.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/icdo_resolver_pipeline_en_5.2.1_3.2_1706884682556.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
