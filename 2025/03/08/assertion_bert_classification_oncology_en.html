@@ -572,8 +572,8 @@ function wrapWordInSpan(data, wordToWrap) {
 <span class="p">])</span>
 
 <span class="c1"># Generating example
-</span><span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([</span><span class="s">"he was begun on physical therapy but remained agitated ."</span><span class="p">,</span>
-                              <span class="s">"there were no meatal blood ."</span><span class="p">],</span> <span class="n">StringType</span><span class="p">()).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+</span><span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([</span><span class="s">"MRI confirms the presence of a malignant brain tumor."</span><span class="p">,</span>
+                              <span class="s">"Despite the patient’s history of smoking, there is no radiological or pathological evidence of lung cancer at this time."</span><span class="p">],</span> <span class="n">StringType</span><span class="p">()).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
                               
 <span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
@@ -623,8 +623,8 @@ function wrapWordInSpan(data, wordToWrap) {
     <span class="n">assertion_classifier</span>
 <span class="p">])</span>
 <span class="c1"># Generating example
-</span><span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([</span><span class="s">"he was begun on physical therapy but remained agitated ."</span><span class="p">,</span>
-                              <span class="s">"there were no meatal blood ."</span><span class="p">],</span> <span class="n">StringType</span><span class="p">()).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+</span><span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([</span><span class="s">"MRI confirms the presence of a malignant brain tumor."</span><span class="p">,</span>
+                              <span class="s">"Despite the patient’s history of smoking, there is no radiological or pathological evidence of lung cancer at this time."</span><span class="p">],</span> <span class="n">StringType</span><span class="p">()).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
                               
 <span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </code></pre></div>  </div>
@@ -671,8 +671,8 @@ function wrapWordInSpan(data, wordToWrap) {
         <span class="n">assertion_classifier</span>
 <span class="o">))</span>
 
-<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"he was begun on physical therapy but remained agitated ."</span><span class="o">,</span>
-                    <span class="s">"there were no meatal blood ."</span><span class="o">)).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"MRI confirms the presence of a malignant brain tumor."</span><span class="o">,</span>
+                     <span class="s">"Despite the patient’s history of smoking, there is no radiological or pathological evidence of lung cancer at this time."</span><span class="o">)).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
 
 <span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
 </code></pre></div>  </div>
@@ -681,12 +681,12 @@ function wrapWordInSpan(data, wordToWrap) {
 <h2 id="results">Results</h2>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-+----------------------------------------------------------------+-------+
-|text                                                            |result |
-+----------------------------------------------------------------+-------+
-|he was begun on physical therapy but remained agitated  <span class="nb">.</span>       |present|
-|there were no meatal blood <span class="nb">.</span>                                    |absent |
-+----------------------------------------------------------------+-------+
++------------------------------------------------------------------------------------------------------------------------+---------+
+|text                                                                                                                    | result  |
++------------------------------------------------------------------------------------------------------------------------+---------+
+|MRI confirms the presence of a malignant brain tumor.                                                                   | Present |
+|Despite the patient’s <span class="nb">history </span>of smoking, there is no radiological or pathological evidence of lung cancer at this time.| Absent  |
++------------------------------------------------------------------------------------------------------------------------+---------+
 
 </code></pre></div></div>
 
