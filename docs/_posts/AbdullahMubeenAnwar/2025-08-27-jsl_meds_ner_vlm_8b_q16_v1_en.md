@@ -8,7 +8,7 @@ tags: [medical, clinical, vlm, q16, 8b, en, licensed, llamacpp]
 task: Named Entity Recognition
 language: en
 edition: Healthcare NLP 6.1.0
-spark_version: 3.4
+spark_version: 3.0
 supported: true
 engine: llamacpp
 annotator: MedicalVisionLLM
@@ -24,8 +24,8 @@ This vision-language model is trained to understand medical images and extract k
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/jsl_meds_ner_vlm_8b_q16_v1_en_6.1.0_3.4_1756305518082.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/jsl_meds_ner_vlm_8b_q16_v1_en_6.1.0_3.4_1756305518082.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/jsl_meds_ner_vlm_8b_q16_v1_en_6.1.0_3.0_1756305518082.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/jsl_meds_ner_vlm_8b_q16_v1_en_6.1.0_3.0_1756305518082.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
