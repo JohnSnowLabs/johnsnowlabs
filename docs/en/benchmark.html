@@ -1518,6 +1518,212 @@ nlpPipeline = Pipeline(stages=[
 </div>
 <div class="h3-box">
 
+  <h3 id="benchmarking-ml-model-architectures-tensorflow--onnx--openvino-across-cpu-and-gpu">Benchmarking ML Model Architectures (TensorFlow • ONNX • OpenVINO) Across CPU and GPU</h3>
+
+  <p>This benchmark evaluates the performance of Spark NLP for Healthcare models across three different architectures (TensorFlow, ONNX, OpenVINO) on both CPU and GPU hardware. 
+Key findings show ONNX consistently delivers superior performance on GPU environments, while OpenVINO excels in CPU-only scenarios for supported models.</p>
+
+  <ul>
+    <li><strong>Datasets:</strong>
+      <ul>
+        <li><strong>MTSamples Dataset:</strong> 1,000 clinical texts, ~500 tokens per text
+          <ul>
+            <li><em>Usage:</em> General NER and embedding benchmarks</li>
+          </ul>
+        </li>
+        <li><strong>Assertion Test Dataset:</strong> 7,570 labeled rows
+          <ul>
+            <li><em>Usage:</em> BertForAssertionClassification evaluation</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><strong>Versions:</strong>
+      <ul>
+        <li><strong>spark-nlp Version:</strong> v6.1.1</li>
+        <li><strong>spark-nlp-jsl Version :</strong> v6.1.0</li>
+        <li><strong>Spark Version :</strong> v3.5.1</li>
+      </ul>
+    </li>
+    <li><strong>Instance Types:</strong>
+      <ul>
+        <li><strong>CPU Machine:</strong> Colab V6e-1, 173.0 GB RAM, 44 vCPUs</li>
+        <li><strong>GPU Machine:</strong> Colab A100, 83.5 GB RAM, 40.0 GB GPU VRAM, 12 vCPUs</li>
+      </ul>
+    </li>
+    <li><strong>Models Tested:</strong>
+      <ul>
+        <li><strong>BertSentenceEmbeddings</strong> → <code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli</code></li>
+        <li><strong>MedicalBertForSequenceClassification</strong> → <code class="language-plaintext highlighter-rouge">bert_sequence_classifier_ade</code></li>
+        <li><strong>BertForAssertionClassification</strong> → <code class="language-plaintext highlighter-rouge">assertion_bert_classification_oncology</code></li>
+        <li><strong>MedicalBertForTokenClassifier</strong> → <code class="language-plaintext highlighter-rouge">bert_token_classifier_ner_clinical</code></li>
+        <li><strong>PretrainedZeroShotNER</strong> → <code class="language-plaintext highlighter-rouge">zeroshot_ner_deid_subentity_merged_medium</code></li>
+        <li><strong>WordEmbeddings + MedicalNerModel</strong> → <code class="language-plaintext highlighter-rouge">embeddings_clinical</code> + <code class="language-plaintext highlighter-rouge">ner_deid_subentity_augmented</code></li>
+        <li><strong>WordEmbeddings + 2 MedicalNerModel</strong> → <code class="language-plaintext highlighter-rouge">embeddings_clinical</code> + <code class="language-plaintext highlighter-rouge">ner_deid_subentity_augmented</code> + <code class="language-plaintext highlighter-rouge">ner_deid_generic_docwise</code></li>
+      </ul>
+    </li>
+    <li><strong>NOTES:</strong>
+      <ul>
+        <li>This benchmark compares Transformer architectures and ML models across CPU and GPU environments</li>
+        <li><strong>Hardware Context:</strong> CPU and GPU machines differ in cores and memory; comparisons should consider these hardware variations</li>
+        <li><strong>Preprocessing:</strong> DocumentAssembler, SentenceDetector, and Tokenizer stages were pre-processed; reported times reflect pure model execution</li>
+        <li><strong>Configuration:</strong> All models executed with default settings</li>
+        <li><strong>Timing Methodology:</strong>
+          <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">%%</span><span class="n">timeit</span> <span class="o">-</span><span class="n">n</span> <span class="mi">3</span> <span class="o">-</span><span class="n">r</span> <span class="mi">1</span>
+<span class="n">model</span><span class="p">.</span><span class="n">write</span><span class="p">.</span><span class="n">mode</span><span class="p">(</span><span class="s">"overwrite"</span><span class="p">).</span><span class="nb">format</span><span class="p">(</span><span class="s">"noop"</span><span class="p">).</span><span class="n">save</span><span class="p">()</span>
+</code></pre></div>          </div>
+        </li>
+        <li><strong>Results:</strong> Numbers represent average execution times across runs</li>
+      </ul>
+    </li>
+    <li><strong>Base Pipeline Configuration:</strong>
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">basePipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span>
+    <span class="n">stages</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">documentAssembler</span><span class="p">,</span>
+        <span class="n">sentenceDetector</span><span class="p">,</span>
+        <span class="n">tokenizer</span>
+    <span class="p">])</span>
+</code></pre></div>      </div>
+    </li>
+  </ul>
+
+</div>
+<div class="h3-box">
+
+  <h4 id="cpu-benchmarking">CPU Benchmarking</h4>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th style="text-align: left">Model</th>
+        <th style="text-align: right">TensorFlow</th>
+        <th style="text-align: right">ONNX</th>
+        <th style="text-align: right">OpenVINO</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: left">BertSentenceEmbeddings</td>
+        <td style="text-align: right">8 min 37 sec</td>
+        <td style="text-align: right">4 min 46 sec</td>
+        <td style="text-align: right">3 min 31 sec</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">MedicalBertForSequenceClassification</td>
+        <td style="text-align: right">3 min 30 sec</td>
+        <td style="text-align: right">2 min 47 sec</td>
+        <td style="text-align: right">N/A</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">BertForAssertionClassification</td>
+        <td style="text-align: right">57 sec</td>
+        <td style="text-align: right">33 sec</td>
+        <td style="text-align: right">N/A</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">MedicalBertForTokenClassifier</td>
+        <td style="text-align: right">3 min 29 sec</td>
+        <td style="text-align: right">2 min 46 sec</td>
+        <td style="text-align: right">N/A</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">PretrainedZeroShotNER</td>
+        <td style="text-align: right">N/A</td>
+        <td style="text-align: right">38 min 10 sec</td>
+        <td style="text-align: right">N/A</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">WordEmbeddings + MedicalNerModel</td>
+        <td style="text-align: right">25 sec</td>
+        <td style="text-align: right">N/A</td>
+        <td style="text-align: right">N/A</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">WordEmbeddings + 2 MedicalNerModel</td>
+        <td style="text-align: right">38 sec</td>
+        <td style="text-align: right">N/A</td>
+        <td style="text-align: right">N/A</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<div class="h3-box">
+
+  <h4 id="gpu-benchmarking">GPU Benchmarking</h4>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th style="text-align: left">Model</th>
+        <th style="text-align: right">TensorFlow</th>
+        <th style="text-align: right">ONNX</th>
+        <th style="text-align: right">OpenVINO</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: left">BertSentenceEmbeddings</td>
+        <td style="text-align: right">28 min 50 sec</td>
+        <td style="text-align: right">12 sec</td>
+        <td style="text-align: right">18 min 49 sec</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">MedicalBertForSequenceClassification</td>
+        <td style="text-align: right">11 min 45 sec</td>
+        <td style="text-align: right">28 sec</td>
+        <td style="text-align: right">N/A</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">BertForAssertionClassification</td>
+        <td style="text-align: right">3 min 24 sec</td>
+        <td style="text-align: right">8 sec</td>
+        <td style="text-align: right">N/A</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">MedicalBertForTokenClassifier</td>
+        <td style="text-align: right">11 min 47 sec</td>
+        <td style="text-align: right">26 sec</td>
+        <td style="text-align: right">N/A</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">PretrainedZeroShotNER</td>
+        <td style="text-align: right">N/A</td>
+        <td style="text-align: right">1 min 1 sec</td>
+        <td style="text-align: right">N/A</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">WordEmbeddings + MedicalNerModel</td>
+        <td style="text-align: right">2 min 24 sec</td>
+        <td style="text-align: right">N/A</td>
+        <td style="text-align: right">N/A</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">WordEmbeddings + 2 MedicalNerModel</td>
+        <td style="text-align: right">4 min 8 sec</td>
+        <td style="text-align: right">N/A</td>
+        <td style="text-align: right">N/A</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<div class="h3-box">
+
+  <h4 id="key-performance-insights">Key Performance Insights</h4>
+
+  <ul>
+    <li><strong>TensorFlow Baseline:</strong> Reference performance with full model support</li>
+    <li><strong>Model Support:</strong> TensorFlow provides the broadest model compatibility, while ONNX and OpenVINO have selective support</li>
+    <li><strong>ONNX Advantage:</strong> Consistently fastest on GPU across all supported models</li>
+    <li><strong>OpenVINO Efficiency:</strong> Best CPU performance for BertSentenceEmbeddings</li>
+    <li><strong>GPU vs CPU:</strong> ONNX shows dramatic GPU acceleration (e.g., BertSentenceEmbeddings: 28min → 12sec)</li>
+    <li><strong>Note:</strong> Benchmark results may vary based on hardware specifications, model versions, and system configurations. These results are specific to the tested environment and should be used as a relative performance guide.</li>
+  </ul>
+
+</div>
+<div class="h3-box">
+
   <h3 id="ner-speed-benchmarks-across-various-spark-nlp-and-pyspark-versions">NER speed benchmarks across various Spark NLP and PySpark versions</h3>
 
   <p>This experiment compares the ClinicalNER runtime for different versions of <code class="language-plaintext highlighter-rouge">PySpark</code> and <code class="language-plaintext highlighter-rouge">Spark NLP</code>. 
