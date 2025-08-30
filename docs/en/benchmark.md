@@ -307,6 +307,96 @@ nlpPipeline = Pipeline(stages=[
 
 </div><div class="h3-box" markdown="1">
 
+### Benchmarking ML Model Architectures (TensorFlow • ONNX • OpenVINO) Across CPU and GPU
+
+This benchmark evaluates the performance of Spark NLP for Healthcare models across three different architectures (TensorFlow, ONNX, OpenVINO) on both CPU and GPU hardware. 
+Key findings show ONNX consistently delivers superior performance on GPU environments, while OpenVINO excels in CPU-only scenarios for supported models.
+
+- **Datasets:**
+  - **MTSamples Dataset:** 1,000 clinical texts, ~500 tokens per text
+    - *Usage:* General NER and embedding benchmarks
+  - **Assertion Test Dataset:** 7,570 labeled rows
+    - *Usage:* BertForAssertionClassification evaluation
+- **Versions:**
+  - **spark-nlp Version:** v6.1.1
+  - **spark-nlp-jsl Version :** v6.1.0
+  - **Spark Version :** v3.5.1
+- **Instance Types:**
+  - **CPU Machine:** Colab V6e-1, 173.0 GB RAM, 44 vCPUs
+  - **GPU Machine:** Colab A100, 83.5 GB RAM, 40.0 GB GPU VRAM, 12 vCPUs
+- **Models Tested:**
+  - **BertSentenceEmbeddings** → `sbiobert_base_cased_mli`
+  - **MedicalBertForSequenceClassification** → `bert_sequence_classifier_ade`
+  - **BertForAssertionClassification** → `assertion_bert_classification_oncology`
+  - **MedicalBertForTokenClassifier** → `bert_token_classifier_ner_clinical`
+  - **PretrainedZeroShotNER** → `zeroshot_ner_deid_subentity_merged_medium`
+  - **WordEmbeddings + MedicalNerModel** → `embeddings_clinical` + `ner_deid_subentity_augmented`
+  - **WordEmbeddings + 2 MedicalNerModel** → `embeddings_clinical` + `ner_deid_subentity_augmented` + `ner_deid_generic_docwise`
+
+- **NOTES:**
+  - This benchmark compares Transformer architectures and ML models across CPU and GPU environments
+  - **Hardware Context:** CPU and GPU machines differ in cores and memory; comparisons should consider these hardware variations
+  - **Preprocessing:** DocumentAssembler, SentenceDetector, and Tokenizer stages were pre-processed; reported times reflect pure model execution
+  - **Configuration:** All models executed with default settings
+  - **Timing Methodology:**
+    ```python
+    %%timeit -n 3 -r 1
+    model.write.mode("overwrite").format("noop").save()
+    ```
+  - **Results:** Numbers represent average execution times across runs
+- **Base Pipeline Configuration:**
+  ```python
+  basePipeline = Pipeline(
+      stages=[
+          documentAssembler,
+          sentenceDetector,
+          tokenizer
+      ])
+  ```
+
+</div><div class="h3-box" markdown="1">
+
+#### CPU Benchmarking
+
+{:.table-model-big}
+| Model                                |TensorFlow         | ONNX             | OpenVINO         |
+|:-------------------------------------|------------------:|-----------------:|-----------------:|
+| BertSentenceEmbeddings               |      8 min 37 sec |     4 min 46 sec |     3 min 31 sec |
+| MedicalBertForSequenceClassification |      3 min 30 sec |     2 min 47 sec |              N/A |
+| BertForAssertionClassification       |            57 sec |           33 sec |              N/A |
+| MedicalBertForTokenClassifier        |      3 min 29 sec |     2 min 46 sec |              N/A |
+| PretrainedZeroShotNER                |               N/A |    38 min 10 sec |              N/A |
+| WordEmbeddings + MedicalNerModel     |            25 sec |              N/A |              N/A |
+| WordEmbeddings + 2 MedicalNerModel   |            38 sec |              N/A |              N/A |
+
+</div><div class="h3-box" markdown="1">
+
+#### GPU Benchmarking
+
+{:.table-model-big}
+| Model                                |TensorFlow         | ONNX             | OpenVINO         |
+|:-------------------------------------|------------------:|-----------------:|-----------------:|
+| BertSentenceEmbeddings               |     28 min 50 sec |           12 sec |    18 min 49 sec |
+| MedicalBertForSequenceClassification |     11 min 45 sec |           28 sec |              N/A |
+| BertForAssertionClassification       |      3 min 24 sec |            8 sec |              N/A |
+| MedicalBertForTokenClassifier        |     11 min 47 sec |           26 sec |              N/A |
+| PretrainedZeroShotNER                |               N/A |      1 min 1 sec |              N/A |
+| WordEmbeddings + MedicalNerModel     |      2 min 24 sec |              N/A |              N/A |
+| WordEmbeddings + 2 MedicalNerModel   |       4 min 8 sec |              N/A |              N/A |
+
+</div><div class="h3-box" markdown="1">
+
+#### Key Performance Insights
+
+- **TensorFlow Baseline:** Reference performance with full model support
+- **Model Support:** TensorFlow provides the broadest model compatibility, while ONNX and OpenVINO have selective support
+- **ONNX Advantage:** Consistently fastest on GPU across all supported models
+- **OpenVINO Efficiency:** Best CPU performance for BertSentenceEmbeddings
+- **GPU vs CPU:** ONNX shows dramatic GPU acceleration (e.g., BertSentenceEmbeddings: 28min → 12sec)
+- **Note:** Benchmark results may vary based on hardware specifications, model versions, and system configurations. These results are specific to the tested environment and should be used as a relative performance guide.
+
+</div><div class="h3-box" markdown="1">
+
 ### NER speed benchmarks across various Spark NLP and PySpark versions
 
 This experiment compares the ClinicalNER runtime for different versions of `PySpark` and `Spark NLP`. 
