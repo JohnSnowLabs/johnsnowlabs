@@ -2784,21 +2784,51 @@ As output generate column with tables and tables text chunks coordinates (rows/c
         <th>Param name</th>
         <th>Type</th>
         <th>Default</th>
-        <th>Column Data Description</th>
+        <th>Description</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>inputCols</td>
-        <td>list[string]</td>
-        <td>list[content]</td>
-        <td>Specifies the input columns. If the DICOM splitter is used upstream, provide both the DICOM path and frames; otherwise, provide either the file path or binary content.</td>
+        <td>keepInput</td>
+        <td>boolean</td>
+        <td>False</td>
+        <td>Indicates whether input columns should be retained in the resulting DataFrame</td>
       </tr>
       <tr>
-        <td>originCol</td>
+        <td>pageNumCol</td>
         <td>string</td>
         <td>-</td>
-        <td>Specifies the column containing the path of the original DICOM file.</td>
+        <td>Specifies the column containing the page number in the resulting DataFrame</td>
+      </tr>
+      <tr>
+        <td>scale</td>
+        <td>float</td>
+        <td>1</td>
+        <td>The scale factor by which the image will be rescaled. Default is ‘1’ (no scaling).</td>
+      </tr>
+      <tr>
+        <td>frameLimit</td>
+        <td>int</td>
+        <td>0</td>
+        <td>Limits the number of frames extracted; set to 0 to extract all frames.</td>
+      </tr>
+      <tr>
+        <td>compressionThreshold</td>
+        <td>int</td>
+        <td>1</td>
+        <td>File size threshold <strong>in MB</strong> that triggers compression when <code class="language-plaintext highlighter-rouge">compressionMode</code> is <code class="language-plaintext highlighter-rouge">"auto"</code>.</td>
+      </tr>
+      <tr>
+        <td>compressionMode</td>
+        <td>string (<code class="language-plaintext highlighter-rouge">"auto"</code> | <code class="language-plaintext highlighter-rouge">"enabled"</code> | <code class="language-plaintext highlighter-rouge">"disabled"</code>)</td>
+        <td>disabled</td>
+        <td>Compression behavior: <code class="language-plaintext highlighter-rouge">"enabled"</code> compresses every file using <code class="language-plaintext highlighter-rouge">compressionQuality</code>; <code class="language-plaintext highlighter-rouge">"disabled"</code> never compresses; <code class="language-plaintext highlighter-rouge">"auto"</code> compresses only if file size ≥ <code class="language-plaintext highlighter-rouge">compressionThreshold</code>.</td>
+      </tr>
+      <tr>
+        <td>compressionQuality</td>
+        <td>int (1–95)</td>
+        <td>85</td>
+        <td>JPEG quality used when compressing (higher = better quality/larger size).</td>
       </tr>
     </tbody>
   </table>
