@@ -10,65 +10,6 @@ show_nav: true
 sidebar:
     nav: sparknlp-healthcare
 ---
-
-<div class="h3-box" markdown="1">
-
-## AWS Marketplace
-The entire suite of John Snow Labs NLP and Visual NLP libraries are offered as a pay-as-you-go product on AWS Marketplace, pre-installed and ready to use. 30+ Notebooks are included in the AWS product to allow you to start experimenting on your own data right away. To subscribe to the pay-as-you-go product on AWS Marketplace navigate to the [product page](https://aws.amazon.com/marketplace/pp/prodview-kpac4xtqkxuqu?sr=0-1&ref_=beagle&applicationId=AWSMPContessa) and follow the instructions in the video below. 
-
-<div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item">{%- include extensions/youtube.html id='agbV1CwMt1g' -%}<div class="video-descr">Subscribe to John Snow Labs NLP Libraries via AWS Marketplace</div></div></div>
-
-**Note**: 30-day free trial are available for AWS and Azure subscriptions. 
-
-</div><div class="h3-box" markdown="1">
-
-## Azure Marketplace
-John Snow Labs NLP and Visual NLP libraries are also offered as a pay-as-you-go product on Azure Marketplace, pre-installed and ready to use. 30+ Notebooks are included in the Azure product to allow you to start experimenting on your own data right away. To subscribe to the pay-as-you-go product on Azure Marketplace navigate to the [product page](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.johnsnowlabs_nlp?tab=Overview) and follow the instructions in the video below. 
-
-<div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item">{%- include extensions/youtube.html id='8fwlPcYWME8' -%}<div class="video-descr">Subscribe to John Snow Labs NLP Libraries via Azure Marketplace</div></div></div>
-
-**Note**: 30-day free trial are available for AWS and Azure subscriptions. 
-
-</div><div class="h3-box" markdown="1">
-
-## Private Endpoints - SageMaker, Snowflake, Databricks 
-
-Some of the most popular Medical Language Models we offer are now available as private endpoints on platforms like AWS SageMaker, Snowflake, or Databricks, providing organizations with powerful tools to enhance their data capabilities while ensuring security and control.
-
-<img width="2944" alt="Advantaged of API endpoints" src="/assets/images/api_endpoints/Advantages of API Endpoints.png">
-
-Deploying these models as private endpoints offers several advantages. First, it allows for enhanced data privacy, as sensitive information remains within your own private network and infrastructure, reducing exposure to potential breaches. This  facilitates compliance with industry regulations by enabling organizations to manage their data according to specific governance policies. 
-
-Working with John Snow Labs API endpoints is straightforward. You get rapid access to advanced language models with minimal setup, while eliminating the limitations of relying on specific programming languages. This flexibility allows you to work across different platforms and languages, unlocking valuable insights, automating text processing tasks, and driving innovation—all while maintaining high standards of security and operational efficiency.
-
-Subscribing, deploying, and managing these API endpoints is also effortless.  You can easily adjust resources according to your processing needs. With just a few clicks, you can subscribe to the desired Language Models, deploy them as private endpoints on your preferred cloud platform, and easily scale or stop them as your workloads demand. This flexibility ensures optimal resource utilization while keeping costs in check, without the hassle of long-term commitments, complex configurations, and without compromising on speed or reliability.
-
-
-### AWS SageMaker
-
-You can discover the language models available on AWS SageMaker by visiting [this page](https://aws.amazon.com/marketplace/search?prevFilters=%257B%2522ref_%2522%3A%2522mp_nav_category_1498a805-6c11-461e-9424-d766aea336ca%2522%2C%2522category%2522%3A%25221498a805-6c11-461e-9424-d766aea336ca%2522%2C%2522FULFILLMENT_OPTION_TYPE%2522%3A%2522SAAS%2522%2C%2522filters%2522%3A%2522FULFILLMENT_OPTION_TYPE%2522%257D&searchTerms=john+snow+labs&FULFILLMENT_OPTION_TYPE=SAGEMAKER_MODEL&filters=FULFILLMENT_OPTION_TYPE). 
-
-The following video illustrates the steps to discover the language models available as API endpoints on AWS Sagemaker via the NLP Models Hub, how to subscribe to those, how to deploy them, how to query them and how to stop them.  
-
-<div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item">{%- include extensions/youtube.html id='i04iYe4U9C0' -%}<div class="video-descr">Deploy Medical Language Models as API Endpoints on AWS SageMaker</div></div></div>
-
-### Snowflake
-
-You can discover the language models available on Snowflake Marketplace by visiting [this page](https://app.snowflake.com/marketplace/providers/GZTYZJKDV8P/John%20Snow%20Labs). 
-
-The following video illustrates the steps to discover the language models available as API endpoints on Snowflake via the NLP Models Hub, how to subscribe to those, how to deploy them, how to query them and how to stop them.  
-
-
-<div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item">{%- include extensions/youtube.html id='DUcbvDxdk3M' -%}<div class="video-descr">Deploy Medical Language Models as API Endpoints on Snowflake Marketplace</div></div></div>
-
-### Databricks 
-
-You can discover the language models available on Databricks Marketplace by visiting [this page](https://marketplace.databricks.com/?asset=Models&provider=John%20Snow%20Labs&sortBy=date). 
-
-The following video illustrates the steps to discover the language models available as API endpoints on Databricks via the NLP Models Hub, how to subscribe to those, how to deploy them, how to query them and how to stop them.
-
-<div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item">{%- include extensions/youtube.html id='C3RMZWP5LFg' -%}<div class="video-descr">Deploy Medical Language Models as API Endpoints on Databricks Marketplace</div></div></div>
-
 </div><div class="h3-box" markdown="1">
 
 ## Installation with johnsnowlabs
@@ -1770,3 +1711,61 @@ You can also run the pipelines without using the `.load()` or `.from_disk()` met
 ![Run the pipeline with `.pretrained()` method](/assets/images/installation/Fabric_4.png)
 ![Run the pipeline with `.pretrained()` method](/assets/images/installation/Fabric_5.png)
 </div>
+
+<div class="h3-box" markdown="1">
+
+## AWS Marketplace
+The entire suite of John Snow Labs NLP and Visual NLP libraries are offered as a pay-as-you-go product on AWS Marketplace, pre-installed and ready to use. 30+ Notebooks are included in the AWS product to allow you to start experimenting on your own data right away. To subscribe to the pay-as-you-go product on AWS Marketplace navigate to the [product page](https://aws.amazon.com/marketplace/pp/prodview-kpac4xtqkxuqu?sr=0-1&ref_=beagle&applicationId=AWSMPContessa) and follow the instructions in the video below. 
+
+<div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item">{%- include extensions/youtube.html id='agbV1CwMt1g' -%}<div class="video-descr">Subscribe to John Snow Labs NLP Libraries via AWS Marketplace</div></div></div>
+
+**Note**: 30-day free trial are available for AWS and Azure subscriptions. 
+
+</div><div class="h3-box" markdown="1">
+
+## Azure Marketplace
+John Snow Labs NLP and Visual NLP libraries are also offered as a pay-as-you-go product on Azure Marketplace, pre-installed and ready to use. 30+ Notebooks are included in the Azure product to allow you to start experimenting on your own data right away. To subscribe to the pay-as-you-go product on Azure Marketplace navigate to the [product page](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.johnsnowlabs_nlp?tab=Overview) and follow the instructions in the video below. 
+
+<div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item">{%- include extensions/youtube.html id='8fwlPcYWME8' -%}<div class="video-descr">Subscribe to John Snow Labs NLP Libraries via Azure Marketplace</div></div></div>
+
+**Note**: 30-day free trial are available for AWS and Azure subscriptions. 
+
+</div><div class="h3-box" markdown="1">
+
+## Private Endpoints - SageMaker, Snowflake, Databricks 
+
+Some of the most popular Medical Language Models we offer are now available as private endpoints on platforms like AWS SageMaker, Snowflake, or Databricks, providing organizations with powerful tools to enhance their data capabilities while ensuring security and control.
+
+<img width="2944" alt="Advantaged of API endpoints" src="/assets/images/api_endpoints/Advantages of API Endpoints.png">
+
+Deploying these models as private endpoints offers several advantages. First, it allows for enhanced data privacy, as sensitive information remains within your own private network and infrastructure, reducing exposure to potential breaches. This  facilitates compliance with industry regulations by enabling organizations to manage their data according to specific governance policies. 
+
+Working with John Snow Labs API endpoints is straightforward. You get rapid access to advanced language models with minimal setup, while eliminating the limitations of relying on specific programming languages. This flexibility allows you to work across different platforms and languages, unlocking valuable insights, automating text processing tasks, and driving innovation—all while maintaining high standards of security and operational efficiency.
+
+Subscribing, deploying, and managing these API endpoints is also effortless.  You can easily adjust resources according to your processing needs. With just a few clicks, you can subscribe to the desired Language Models, deploy them as private endpoints on your preferred cloud platform, and easily scale or stop them as your workloads demand. This flexibility ensures optimal resource utilization while keeping costs in check, without the hassle of long-term commitments, complex configurations, and without compromising on speed or reliability.
+
+
+### AWS SageMaker
+
+You can discover the language models available on AWS SageMaker by visiting [this page](https://aws.amazon.com/marketplace/search?prevFilters=%257B%2522ref_%2522%3A%2522mp_nav_category_1498a805-6c11-461e-9424-d766aea336ca%2522%2C%2522category%2522%3A%25221498a805-6c11-461e-9424-d766aea336ca%2522%2C%2522FULFILLMENT_OPTION_TYPE%2522%3A%2522SAAS%2522%2C%2522filters%2522%3A%2522FULFILLMENT_OPTION_TYPE%2522%257D&searchTerms=john+snow+labs&FULFILLMENT_OPTION_TYPE=SAGEMAKER_MODEL&filters=FULFILLMENT_OPTION_TYPE). 
+
+The following video illustrates the steps to discover the language models available as API endpoints on AWS Sagemaker via the NLP Models Hub, how to subscribe to those, how to deploy them, how to query them and how to stop them.  
+
+<div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item">{%- include extensions/youtube.html id='i04iYe4U9C0' -%}<div class="video-descr">Deploy Medical Language Models as API Endpoints on AWS SageMaker</div></div></div>
+
+### Snowflake
+
+You can discover the language models available on Snowflake Marketplace by visiting [this page](https://app.snowflake.com/marketplace/providers/GZTYZJKDV8P/John%20Snow%20Labs). 
+
+The following video illustrates the steps to discover the language models available as API endpoints on Snowflake via the NLP Models Hub, how to subscribe to those, how to deploy them, how to query them and how to stop them.  
+
+
+<div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item">{%- include extensions/youtube.html id='DUcbvDxdk3M' -%}<div class="video-descr">Deploy Medical Language Models as API Endpoints on Snowflake Marketplace</div></div></div>
+
+### Databricks 
+
+You can discover the language models available on Databricks Marketplace by visiting [this page](https://marketplace.databricks.com/?asset=Models&provider=John%20Snow%20Labs&sortBy=date). 
+
+The following video illustrates the steps to discover the language models available as API endpoints on Databricks via the NLP Models Hub, how to subscribe to those, how to deploy them, how to query them and how to stop them.
+
+<div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item">{%- include extensions/youtube.html id='C3RMZWP5LFg' -%}<div class="video-descr">Deploy Medical Language Models as API Endpoints on Databricks Marketplace</div></div></div>
