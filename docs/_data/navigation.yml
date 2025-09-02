@@ -293,6 +293,8 @@ sparknlp-healthcare:
         url: /docs/en/benchmark   
       - title: Benchmarks LLM
         url: /docs/en/benchmark-llm 
+      - title: Medical Small LLMs
+        url: /docs/en/medical-small-llms
       - title: Best Practices Using Pretrained Models Together
         url: /docs/en/best_practices_pretrained_models
       - title: Release Notes 
