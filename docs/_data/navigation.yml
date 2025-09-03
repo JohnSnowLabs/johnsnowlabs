@@ -13,9 +13,9 @@ header:
   - title: Demo
     url: /demos
     key: demo
-  - title: '<span style="color: #FF8A00;"><i class = "fas fa-search fa-2x"></i></span>'
+  - title: '<span style="color:#FF8A00;"><i class = "fas fa-search fa-2x"></i></span>'
     url: /search
-  - title: '<span style="color: #FF8A00;"><i class = "fab fa-github fa-2x"></i></span>'
+  - title: '<span style="color:#FF8A00;"><i class = "fab fa-github fa-2x"></i></span>'
     url: https://github.com/JohnSnowLabs/spark-nlp
   - title: '<span style="color: #FF8A00;"><i class="fab fa-slack-hash fa-2x"></i></span>'
     url: https://join.slack.com/t/spark-nlp/shared_invite/zt-198dipu77-L3UWNe_AJ8xqDk0ivmih5Q
