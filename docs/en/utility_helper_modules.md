@@ -11,6 +11,7 @@ show_nav: true
 sidebar:
   nav: sparknlp-healthcare
 ---
+
 <div class="h3-box" markdown="1">
 
 ## NLP Lab (Annotation Lab) Interface Module
