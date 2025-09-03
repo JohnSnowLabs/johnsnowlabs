@@ -2352,6 +2352,7 @@ one of the methods with params:
 
 {:.table-model-big}
 | Method name | Params  | Description |
+| --- | --- | --- |
 |addScalingTransform| factor| Scale image by scaling factor. |
 |addOtsuTransform| | The automatic thresholder utilizes the Otsu threshold method. |
 |addHuangTransform| | The automatic thresholder utilizes the Huang threshold method. |

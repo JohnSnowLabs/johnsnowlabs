@@ -1744,6 +1744,7 @@ Working with John Snow Labs API endpoints is straightforward. You get rapid acce
 
 Subscribing, deploying, and managing these API endpoints is also effortless.  You can easily adjust resources according to your processing needs. With just a few clicks, you can subscribe to the desired Language Models, deploy them as private endpoints on your preferred cloud platform, and easily scale or stop them as your workloads demand. This flexibility ensures optimal resource utilization while keeping costs in check, without the hassle of long-term commitments, complex configurations, and without compromising on speed or reliability.
 
+</div><div class="h3-box" markdown="1">
 
 ### AWS SageMaker
 
@@ -1769,3 +1770,4 @@ You can discover the language models available on Databricks Marketplace by visi
 The following video illustrates the steps to discover the language models available as API endpoints on Databricks via the NLP Models Hub, how to subscribe to those, how to deploy them, how to query them and how to stop them.
 
 <div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item">{%- include extensions/youtube.html id='C3RMZWP5LFg' -%}<div class="video-descr">Deploy Medical Language Models as API Endpoints on Databricks Marketplace</div></div></div>
+</div>
