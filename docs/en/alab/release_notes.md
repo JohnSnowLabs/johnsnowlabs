@@ -240,6 +240,8 @@ What's New: Administrators can now disable local file imports system-wide, compl
 </div>
 
 <ul class="pagination owl-carousel pagination_big">
+    <li><a href="annotation_labs_releases/release_notes_7_3_3">7.3.3</a></li>
+    <li><a href="annotation_labs_releases/release_notes_7_3_1">7.3.1</a></li>
     <li class="active"><a href="annotation_labs_releases/release_notes_7_3_0">7.3.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_7_2_2">7.2.2</a></li>
     <li><a href="annotation_labs_releases/release_notes_7_2_1">7.2.1</a></li>
