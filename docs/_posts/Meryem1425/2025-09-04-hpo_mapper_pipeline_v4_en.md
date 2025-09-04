@@ -39,6 +39,7 @@ This pretrained pipeline enables deeper phenotypic and genomic insights directly
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
@@ -57,6 +58,7 @@ he has a increased overbite expression.
 ```
 
 {:.jsl-block}
+
 ```python
 
 pipeline = nlp.PretrainedPipeline("hpo_mapper_pipeline_v4", "en", "clinical/models")
