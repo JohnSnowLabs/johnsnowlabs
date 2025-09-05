@@ -648,259 +648,32 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <div class="h3-box">
 
-  <table class="table-model-big db">
-    <thead>
-      <tr>
-        <th>Model Name</th>
-        <th>Disk Size</th>
-        <th>Model Size</th>
-        <th>Modality</th>
-        <th>Available quantizations</th>
-        <th>Gpu memory required</th>
-        <th>Token/sec</th>
-        <th>Max Context Window <strong>*</strong></th>
-        <th>Tasks</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>JSL_MedM_v3</td>
-        <td>8.2G</td>
-        <td>14B</td>
-        <td>text-only</td>
-        <td><a href="https://nlp.johnsnowlabs.com/2024/10/06/jsl_medm_q4_v3_en.html">q4</a></td>
-        <td>24GB</td>
-        <td>79</td>
-        <td>32,768</td>
-        <td>Summarization, Q&amp;A, RAG, and Chat</td>
-      </tr>
-      <tr>
-        <td> </td>
-        <td>14G</td>
-        <td>14B</td>
-        <td>text-only</td>
-        <td><a href="https://nlp.johnsnowlabs.com/2024/10/08/jsl_medm_q8_v3_en.html">q8</a></td>
-        <td>24GB</td>
-        <td>84</td>
-        <td>32,768</td>
-        <td>Summarization, Q&amp;A, RAG, and Chat</td>
-      </tr>
-      <tr>
-        <td> </td>
-        <td>21.9G</td>
-        <td>14B</td>
-        <td>text-only</td>
-        <td><a href="https://nlp.johnsnowlabs.com/2024/10/23/jsl_medm_q16_v3_en.html">q16</a></td>
-        <td>24GB</td>
-        <td>253</td>
-        <td>32,768</td>
-        <td>Summarization, Q&amp;A, RAG, and Chat</td>
-      </tr>
-      <tr>
-        <td>JSL_MedS_v3</td>
-        <td>2.2G</td>
-        <td>3.5B</td>
-        <td>text-only</td>
-        <td><a href="https://nlp.johnsnowlabs.com/2024/10/05/jsl_meds_q4_v3_en.html">q4</a></td>
-        <td>10GB</td>
-        <td>28.5</td>
-        <td>131,072</td>
-        <td>Summarization, Q&amp;A, RAG</td>
-      </tr>
-      <tr>
-        <td> </td>
-        <td>3.7G</td>
-        <td>3.5B</td>
-        <td>text-only</td>
-        <td><a href="https://nlp.johnsnowlabs.com/2024/10/05/jsl_meds_q8_v3_en.html">q8</a></td>
-        <td>10GB</td>
-        <td>18.7</td>
-        <td>131,072</td>
-        <td>Summarization, Q&amp;A, RAG</td>
-      </tr>
-      <tr>
-        <td> </td>
-        <td>5.6G</td>
-        <td>3.5B</td>
-        <td>text-only</td>
-        <td><a href="https://nlp.johnsnowlabs.com/2024/10/05/jsl_meds_q16_v3_en.html">q16</a></td>
-        <td>10GB</td>
-        <td>50.2</td>
-        <td>131,072</td>
-        <td>Summarization, Q&amp;A, RAG</td>
-      </tr>
-      <tr>
-        <td>JSL_MedS_8B_v4</td>
-        <td>4.6G</td>
-        <td>8B</td>
-        <td>text-only</td>
-        <td><a href="https://nlp.johnsnowlabs.com/2025/08/05/jsl_meds_8b_q4_v4_en.html">q4</a></td>
-        <td>16GB</td>
-        <td>83</td>
-        <td>32,768</td>
-        <td>Summarization, Q&amp;A, RAG</td>
-      </tr>
-      <tr>
-        <td> </td>
-        <td>7.8G</td>
-        <td>8B</td>
-        <td>text-only</td>
-        <td><a href="https://nlp.johnsnowlabs.com/2025/08/05/jsl_meds_8b_q8_v4_en.html">q8</a></td>
-        <td>16GB</td>
-        <td>84</td>
-        <td>32,768</td>
-        <td>Summarization, Q&amp;A, RAG</td>
-      </tr>
-      <tr>
-        <td> </td>
-        <td>12.2G</td>
-        <td>8B</td>
-        <td>text-only</td>
-        <td><a href="https://nlp.johnsnowlabs.com/2025/08/05/jsl_meds_8b_q16_v4_en.html">q16</a></td>
-        <td>16GB</td>
-        <td>272</td>
-        <td>32,768</td>
-        <td>Summarization, Q&amp;A, RAG</td>
-      </tr>
-      <tr>
-        <td>JSL_MedS_NER_v4</td>
-        <td>2.2G</td>
-        <td>3.5B</td>
-        <td>text-only</td>
-        <td><a href="https://nlp.johnsnowlabs.com/2025/07/01/jsl_meds_ner_q4_v4_en.html">q4</a></td>
-        <td>10GB</td>
-        <td>28.5</td>
-        <td>131,072</td>
-        <td>Extract and link medical named entities</td>
-      </tr>
-      <tr>
-        <td> </td>
-        <td>3.7G</td>
-        <td>3.5B</td>
-        <td>text-only</td>
-        <td><a href="https://nlp.johnsnowlabs.com/2025/07/01/jsl_meds_ner_q8_v4_en.html">q8</a></td>
-        <td>10GB</td>
-        <td>18.7</td>
-        <td>131,072</td>
-        <td>Extract and link medical named entities</td>
-      </tr>
-      <tr>
-        <td>JSL_MedS_RAG_v1</td>
-        <td>2.2G</td>
-        <td>3B</td>
-        <td>text-only</td>
-        <td><a href="https://nlp.johnsnowlabs.com/2024/10/05/jsl_meds_rag_q4_v1_en.html">q4</a></td>
-        <td>10GB</td>
-        <td>30</td>
-        <td>32,768</td>
-        <td>LLM component of Retrieval Augmented Generation (RAG)</td>
-      </tr>
-      <tr>
-        <td> </td>
-        <td>3.7G</td>
-        <td>3B</td>
-        <td>text-only</td>
-        <td><a href="https://nlp.johnsnowlabs.com/2024/10/05/jsl_meds_rag_q8_v1_en.html">q8</a></td>
-        <td>10GB</td>
-        <td>20</td>
-        <td>32,768</td>
-        <td>LLM component of Retrieval Augmented Generation (RAG)</td>
-      </tr>
-      <tr>
-        <td> </td>
-        <td>5.6G</td>
-        <td>3B</td>
-        <td>text-only</td>
-        <td><a href="https://nlp.johnsnowlabs.com/2024/10/05/jsl_meds_rag_q16_v1_en.html">q16</a></td>
-        <td>10GB</td>
-        <td>53</td>
-        <td>32,768</td>
-        <td>LLM component of Retrieval Augmented Generation (RAG)</td>
-      </tr>
-      <tr>
-        <td>JSL_MedS_Text2SOAP_v1</td>
-        <td>2.2G</td>
-        <td>3B</td>
-        <td>text-only</td>
-        <td><a href="https://nlp.johnsnowlabs.com/2025/04/09/jsl_meds_text2soap_v1_en.html">base</a></td>
-        <td>10GB</td>
-        <td>53</td>
-        <td>32,768</td>
-        <td>Generate structured SOAP (Subjective, Objective, Assessment, Plan) summaries</td>
-      </tr>
-      <tr>
-        <td>JSL_MedS_VLM_3B_v1</td>
-        <td>2.5G</td>
-        <td>3B</td>
-        <td>multimodal</td>
-        <td><a href="https://nlp.johnsnowlabs.com/2025/08/08/jsl_meds_vlm_3b_q4_v1_en.html">q4</a></td>
-        <td>10GB</td>
-        <td>8</td>
-        <td>128,000</td>
-        <td>Extract and link structured medical named entities</td>
-      </tr>
-      <tr>
-        <td> </td>
-        <td>3.6G</td>
-        <td>3B</td>
-        <td>multimodal</td>
-        <td><a href="https://nlp.johnsnowlabs.com/2025/08/08/jsl_meds_vlm_3b_q8_v1_en.html">q8</a></td>
-        <td>10GB</td>
-        <td>11</td>
-        <td>128,000</td>
-        <td>Extract and link structured medical named entities</td>
-      </tr>
-      <tr>
-        <td> </td>
-        <td>5.6G</td>
-        <td>3B</td>
-        <td>multimodal</td>
-        <td><a href="https://nlp.johnsnowlabs.com/2025/08/08/jsl_meds_vlm_3b_q16_v1_en.html">q16</a></td>
-        <td>10GB</td>
-        <td>40.1</td>
-        <td>128,000</td>
-        <td>Extract and link structured medical named entities</td>
-      </tr>
-      <tr>
-        <td>JSL_MedS_NER_VLM_2B_v2</td>
-        <td>1.5G</td>
-        <td>2B</td>
-        <td>multimodal</td>
-        <td><a href="https://nlp.johnsnowlabs.com/2025/08/10/jsl_meds_ner_vlm_2b_q4_v2_en.html">q4</a></td>
-        <td>10GB</td>
-        <td>25.5</td>
-        <td>32,768</td>
-        <td>Extract and link structured medical named entities</td>
-      </tr>
-      <tr>
-        <td> </td>
-        <td>2.1G</td>
-        <td>2B</td>
-        <td>multimodal</td>
-        <td><a href="https://nlp.johnsnowlabs.com/2025/08/10/jsl_meds_ner_vlm_2b_q8_v2_en.html">q8</a></td>
-        <td>10GB</td>
-        <td>13.7</td>
-        <td>32,768</td>
-        <td>Extract and link structured medical named entities</td>
-      </tr>
-      <tr>
-        <td> </td>
-        <td>3.3G</td>
-        <td>2B</td>
-        <td>multimodal</td>
-        <td><a href="https://nlp.johnsnowlabs.com/2025/08/10/jsl_meds_ner_vlm_2b_q16_v2_en.html">q16</a></td>
-        <td>10GB</td>
-        <td>48.9</td>
-        <td>32,768</td>
-        <td>Extract and link structured medical named entities</td>
-      </tr>
-    </tbody>
-  </table>
-
+  <p>| Model Name              | Disk Size | Model Size | Modality   | Available quantizations                                                                 | GPU Memory Required | Token/sec | Max Context Window * | Tasks                                                     |
+|————————–|———–|————|————|——————————————————————————————|———————-|———–|——————–|———————————————————–|
+| <strong>JSL_MedM_v3</strong>          | 8.2G      | 14B        | text-only  | <a href="https://nlp.johnsnowlabs.com/2024/10/06/jsl_medm_q4_v3_en.html">q4</a>                     | 24GB                 | 79        | 32,768             | Summarization, Q&amp;A, RAG, and Chat                         |
+|                          | 14G       | 14B        | text-only  | <a href="https://nlp.johnsnowlabs.com/2024/10/08/jsl_medm_q8_v3_en.html">q8</a>                     | 24GB                 | 84        | 32,768             | Summarization, Q&amp;A, RAG, and Chat                         |
+|                          | 21.9G     | 14B        | text-only  | <a href="https://nlp.johnsnowlabs.com/2024/10/23/jsl_medm_q16_v3_en.html">q16</a>                   | 24GB                 | 253       | 32,768             | Summarization, Q&amp;A, RAG, and Chat                         |
+| <strong>JSL_MedS_v3</strong>          | 2.2G      | 3.5B       | text-only  | <a href="https://nlp.johnsnowlabs.com/2024/10/05/jsl_meds_q4_v3_en.html">q4</a>                     | 10GB                 | 28.5      | 131,072            | Summarization, Q&amp;A, RAG                                   |
+|                          | 3.7G      | 3.5B       | text-only  | <a href="https://nlp.johnsnowlabs.com/2024/10/05/jsl_meds_q8_v3_en.html">q8</a>                     | 10GB                 | 18.7      | 131,072            | Summarization, Q&amp;A, RAG                                   |
+|                          | 5.6G      | 3.5B       | text-only  | <a href="https://nlp.johnsnowlabs.com/2024/10/05/jsl_meds_q16_v3_en.html">q16</a>                   | 10GB                 | 50.2      | 131,072            | Summarization, Q&amp;A, RAG                                   |
+| <strong>JSL_MedS_8B_v4</strong>       | 4.6G      | 8B         | text-only  | <a href="https://nlp.johnsnowlabs.com/2025/08/05/jsl_meds_8b_q4_v4_en.html">q4</a>                  | 16GB                 | 83        | 32,768             | Summarization, Q&amp;A, RAG                                   |
+|                          | 7.8G      | 8B         | text-only  | <a href="https://nlp.johnsnowlabs.com/2025/08/05/jsl_meds_8b_q8_v4_en.html">q8</a>                  | 16GB                 | 84        | 32,768             | Summarization, Q&amp;A, RAG                                   |
+|                          | 12.2G     | 8B         | text-only  | <a href="https://nlp.johnsnowlabs.com/2025/08/05/jsl_meds_8b_q16_v4_en.html">q16</a>                | 16GB                 | 272       | 32,768             | Summarization, Q&amp;A, RAG                                   |
+| <strong>JSL_MedS_NER_v4</strong>      | 2.2G      | 3.5B       | text-only  | <a href="https://nlp.johnsnowlabs.com/2025/07/01/jsl_meds_ner_q4_v4_en.html">q4</a>                 | 10GB                 | 28.5      | 131,072            | Extract and link medical named entities                   |
+|                          | 3.7G      | 3.5B       | text-only  | <a href="https://nlp.johnsnowlabs.com/2025/07/01/jsl_meds_ner_q8_v4_en.html">q8</a>                 | 10GB                 | 18.7      | 131,072            | Extract and link medical named entities                   |
+| <strong>JSL_MedS_RAG_v1</strong>      | 2.2G      | 3B         | text-only  | <a href="https://nlp.johnsnowlabs.com/2024/10/05/jsl_meds_rag_q4_v1_en.html">q4</a>                 | 10GB                 | 30        | 32,768             | LLM component of Retrieval Augmented Generation (RAG)     |
+|                          | 3.7G      | 3B         | text-only  | <a href="https://nlp.johnsnowlabs.com/2024/10/05/jsl_meds_rag_q8_v1_en.html">q8</a>                 | 10GB                 | 20        | 32,768             | LLM component of Retrieval Augmented Generation (RAG)     |
+|                          | 5.6G      | 3B         | text-only  | <a href="https://nlp.johnsnowlabs.com/2024/10/05/jsl_meds_rag_q16_v1_en.html">q16</a>               | 10GB                 | 53        | 32,768             | LLM component of Retrieval Augmented Generation (RAG)     |
+| <strong>JSL_MedS_Text2SOAP_v1</strong>| 2.2G      | 3B         | text-only  | <a href="https://nlp.johnsnowlabs.com/2025/04/09/jsl_meds_text2soap_v1_en.html">base</a>            | 10GB                 | 53        | 32,768             | Generate structured SOAP (Subjective, Objective, Assessment, Plan) summaries |
+| <strong>JSL_MedS_VLM_3B_v1</strong>   | 2.5G      | 3B         | multimodal | <a href="https://nlp.johnsnowlabs.com/2025/08/08/jsl_meds_vlm_3b_q4_v1_en.html">q4</a>              | 10GB                 | 8         | 128,000            | Extract and link structured medical named entities        |
+|                          | 3.6G      | 3B         | multimodal | <a href="https://nlp.johnsnowlabs.com/2025/08/08/jsl_meds_vlm_3b_q8_v1_en.html">q8</a>              | 10GB                 | 11        | 128,000            | Extract and link structured medical named entities        |
+|                          | 5.6G      | 3B         | multimodal | <a href="https://nlp.johnsnowlabs.com/2025/08/08/jsl_meds_vlm_3b_q16_v1_en.html">q16</a>            | 10GB                 | 40.1      | 128,000            | Extract and link structured medical named entities        |
+| <strong>JSL_MedS_NER_VLM_2B_v2</strong>| 1.5G     | 2B         | multimodal | <a href="https://nlp.johnsnowlabs.com/2025/08/10/jsl_meds_ner_vlm_2b_q4_v2_en.html">q4</a>          | 10GB                 | 25.5      | 32,768             | Extract and link structured medical named entities        |
+|                          | 2.1G      | 2B         | multimodal | <a href="https://nlp.johnsnowlabs.com/2025/08/10/jsl_meds_ner_vlm_2b_q8_v2_en.html">q8</a>          | 10GB                 | 13.7      | 32,768             | Extract and link structured medical named entities        |
+|                          | 3.3G      | 2B         | multimodal | <a href="https://nlp.johnsnowlabs.com/2025/08/10/jsl_meds_ner_vlm_2b_q16_v2_en.html">q16</a>        | 10GB                 | 48.9      | 32,768             | Extract and link structured medical named entities        |</p>
   <blockquote>
     <p><strong>*</strong> Larger context window requires larger GPU Memory</p>
   </blockquote>
-
 </div>
 
 <h2 id="medical-small-llms-benchmarking">Medical Small LLMs Benchmarking</h2>
@@ -909,21 +682,21 @@ function wrapWordInSpan(data, wordToWrap) {
   <thead>
     <tr>
       <th>Model</th>
-      <th>Avarega</th>
+      <th>Average</th>
       <th>MedMCQA</th>
       <th>MedQA</th>
-      <th>MMLU <br />anotomy</th>
-      <th>MMLU<br />clinical<br />knowledge</th>
-      <th>MMLU<br />college<br />biology</th>
-      <th>MMLU<br />college<br />medicine</th>
-      <th>MMLU<br />medical<br />genetics</th>
-      <th>MMLU<br />professional<br />medicine</th>
+      <th>MMLU <br /> Anatomy</th>
+      <th>MMLU <br /> Clinical Knowledge</th>
+      <th>MMLU <br /> College Biology</th>
+      <th>MMLU <br /> College Medicine</th>
+      <th>MMLU <br /> Medical Genetics</th>
+      <th>MMLU <br /> Professional Medicine</th>
       <th>PubMedQA</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>jsl_medm_q4_v3</td>
+      <td><strong>jsl_medm_q4_v3</strong></td>
       <td>0.6884</td>
       <td>0.6421</td>
       <td>0.6889</td>
@@ -936,7 +709,7 @@ function wrapWordInSpan(data, wordToWrap) {
       <td>0.782</td>
     </tr>
     <tr>
-      <td>jsl_medm_q8_v3</td>
+      <td><strong>jsl_medm_q8_v3</strong></td>
       <td>0.6947</td>
       <td>0.6416</td>
       <td>0.707</td>
@@ -949,7 +722,7 @@ function wrapWordInSpan(data, wordToWrap) {
       <td>0.79</td>
     </tr>
     <tr>
-      <td>jsl_medm_q16_v3</td>
+      <td><strong>jsl_medm_q16_v3</strong></td>
       <td>0.6964</td>
       <td>0.6436</td>
       <td>0.7117</td>
@@ -962,7 +735,7 @@ function wrapWordInSpan(data, wordToWrap) {
       <td>0.794</td>
     </tr>
     <tr>
-      <td>jsl_meds_q4_v3</td>
+      <td><strong>jsl_meds_q4_v3</strong></td>
       <td>0.5522</td>
       <td>0.5104</td>
       <td>0.48</td>
@@ -975,7 +748,7 @@ function wrapWordInSpan(data, wordToWrap) {
       <td>0.752</td>
     </tr>
     <tr>
-      <td>jsl_meds_q8_v3</td>
+      <td><strong>jsl_meds_q8_v3</strong></td>
       <td>0.5727</td>
       <td>0.53</td>
       <td>0.4933</td>
@@ -988,7 +761,7 @@ function wrapWordInSpan(data, wordToWrap) {
       <td>0.762</td>
     </tr>
     <tr>
-      <td>jsl_meds_q16_v3</td>
+      <td><strong>jsl_meds_q16_v3</strong></td>
       <td>0.5793</td>
       <td>0.5482</td>
       <td>0.4839</td>
@@ -1003,23 +776,27 @@ function wrapWordInSpan(data, wordToWrap) {
   </tbody>
 </table>
 
-<p>&lt;/div&gt;&lt;div class="h3-box" markdown="1"&gt;</p>
+<p>&lt;/div&gt;</p>
 
-<h3 id="benchmark-summary">Benchmark Summary</h3>
+<div class="h3-box">
 
-<p>We evaluated six Johnsnow Lab LLM models across ten task categories: MedMCQA, MedQA, MMLU Anatomy, MMLU Clinical Knowledge, MMLU College Biology, MMLU College Medicine, MMLU Medical Genetics, MMLU Professional Medicine, and PubMedQA.</p>
+  <h3 id="benchmark-summary">Benchmark Summary</h3>
 
-<p>Each model’s performance was measured based on accuracy, reflecting how well it handled medical reasoning, clinical knowledge, and biomedical question answering.</p>
+  <p>We evaluated six Johnsnow Lab LLM models across ten task categories: MedMCQA, MedQA, MMLU Anatomy, MMLU Clinical Knowledge, MMLU College Biology, MMLU College Medicine, MMLU Medical Genetics, MMLU Professional Medicine, and PubMedQA.</p>
 
-<p>&lt;/div&gt;&lt;div class="h3-box" markdown="1"&gt;</p>
+  <p>Each model’s performance was measured based on accuracy, reflecting how well it handled medical reasoning, clinical knowledge, and biomedical question answering.</p>
 
-<h2 id="jsl-meds">JSL-MedS</h2>
+</div>
 
-<h3 id="benchmarking">Benchmarking</h3>
+<div class="h3-box">
 
-<p>We have generated a total of 400 questions, 100 from each category. These questions were labeled and reviewed by 3 physician annotators. <code class="language-plaintext highlighter-rouge">%</code> indicates the preference rate</p>
+  <h2 id="jsl-meds">JSL-MedS</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">## Overall</span>
+  <h3 id="benchmarking">Benchmarking</h3>
+
+  <p>We have generated a total of 400 questions, 100 from each category. These questions were labeled and reviewed by 3 physician annotators. <code class="language-plaintext highlighter-rouge">%</code> indicates the preference rate</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">## Overall</span>
 | Model      | Factuality % | Clinical Relevancy % | Conciseness % |
 |------------|--------------|----------------------|---------------|
 | JSL-MedS   | 0.24         | 0.25                 | 0.38          |
@@ -1028,7 +805,7 @@ function wrapWordInSpan(data, wordToWrap) {
 | None       | 0.14         | 0.13                 | 0.17          |
 | Total      | 1.00         | 1.00                 | 1.00          |
 
-<span class="c">## Summary </span>
+<span class="c">## Summary</span>
 | Model      | Factuality % | Clinical Relevancy % | Conciseness % |
 |------------|--------------|----------------------|---------------|
 | JSL-MedS   | 0.47         | 0.48                 | 0.42          |
@@ -1063,54 +840,63 @@ function wrapWordInSpan(data, wordToWrap) {
 | Neutral    | 0.19         | 0.20                 | 0.02          |
 | None       | 0.17         | 0.17                 | 0.19          |
 | Total      | 1.00         | 1.00                 | 1.00          |
-</code></pre></div></div>
+</code></pre></div>  </div>
+</div>
 
-<p>&lt;/div&gt;&lt;div class="h3-box" markdown="1"&gt;</p>
+<div class="h3-box">
 
-<h3 id="benchmark-summary-1">Benchmark Summary</h3>
+  <h3 id="benchmark-summary-1">Benchmark Summary</h3>
 
-<p>We evaluated two models, JSL-MedS and GPT4o, across four task categories: Summary, QA, Biomedical, and Open-Ended. Each model’s preference rate represents the percentage of cases where it was preferred over the other or over a neutral/no-preference choice. These metrics reflect how often each model was favored based on Factuality, Clinical Relevance, and Conciseness.</p>
+  <p>We evaluated two models, JSL-MedS and GPT4o, across four task categories: Summary, QA, Biomedical, and Open-Ended. Each model’s preference rate represents the percentage of cases where it was preferred over the other or over a neutral/no-preference choice. These metrics reflect how often each model was favored based on Factuality, Clinical Relevance, and Conciseness.</p>
 
-<p>&lt;/div&gt;&lt;div class="h3-box" markdown="1"&gt;</p>
+</div>
 
-<h4 id="overall-performance-analysis">Overall Performance Analysis:</h4>
-<p>Across all the categories, JSL-MedS overall outperforms the GPT4o in two out of three metrics: factuality by 26% (0.24 vs 0.19) and conciseness by 41% (0.38 vs 0.27). However, GPT4o edges out JSL-MedS in clinical relevance by a slight 4% (0.26 vs 0.25). The “neutral” and “none” responses are quite high for these models, indicating that the participants often found no clear preference between the two models.</p>
+<div class="h3-box">
 
-<p>&lt;/div&gt;&lt;div class="h3-box" markdown="1"&gt;</p>
+  <h4 id="overall-performance-analysis">Overall Performance Analysis:</h4>
 
-<h4 id="category-wise-insights">Category-Wise Insights</h4>
+  <p>Across all the categories, JSL-MedS overall outperforms the GPT4o in two out of three metrics: factuality by 26% (0.24 vs 0.19) and conciseness by 41% (0.38 vs 0.27). However, GPT4o edges out JSL-MedS in clinical relevance by a slight 4% (0.26 vs 0.25). The “neutral” and “none” responses are quite high for these models, indicating that the participants often found no clear preference between the two models.</p>
 
-<ol>
-  <li>
-    <p>Summary Tasks:
+</div>
+
+<div class="h3-box">
+
+  <h4 id="category-wise-insights">Category-Wise Insights</h4>
+
+  <ol>
+    <li>
+      <p>Summary Tasks:
 JSL-MedS has a clear advantage over GPT4o in all three metrics of summary tasks. It is preferred about 88% more for Factuality and Clinical Relevance, with scores of 0.47 and 0.48 respectively compared to GPT4o with scores of 0.25 for both. For the metric of Conciseness, JSL-MedS still is ahead of GPT4o by 68%. The Neutral responses are about 22-25% and “None” responses are lower, which proves unanimously that JSL-MedS is superior for summarizing tasks.</p>
-  </li>
-  <li>
-    <p>QA Tasks:
+    </li>
+    <li>
+      <p>QA Tasks:
 In QA task, the lead of JSL-MedS is less severe compared to summary tasks but still clear. It outperforms GPT4o in Factuality by 46% (0.35 vs 0.24), Clinical Relevance by 50% (0.36 vs 0.24), and in Conciseness by 45% (0.42 vs 0.29). Similar to the summary tasks, high neutral and lower “None” responses indicate JSL-MedS is more preferred for QA tasks.</p>
-  </li>
-  <li>
-    <p>Biomedical Tasks:
+    </li>
+    <li>
+      <p>Biomedical Tasks:
 JSL-MedS outperforms GPT4o significantly in Biomedical tasks. It leads in Factuality by 175% (0.33 vs 0.12). The same is true for Clinical Relevance where it surpasses GPT4o by 200% (0.24 vs 0.08). In terms of Conciseness, JSL-MedS is preferred 3.56 times (or 256%) more than GPT4o (0.57 vs 0.16). The high “Neutral” responses indicate room for improvement for both models in biomedical tasks.</p>
-  </li>
-  <li>
-    <p>Open-Ended Tasks:
+    </li>
+    <li>
+      <p>Open-Ended Tasks:
 For open-ended tasks, the two models are more evenly matched. JSL-MedS barely exceeds GPT4o in Factuality by 17% (0.35 vs 0.30), and is less preferred than GPT4o in Clinical Relevance by 10% (0.33 vs 0.30). On the other hand, GPT4o is marginally more preferred in Conciseness, leading JSL-MedS by 5% (0.41 vs 0.39).</p>
-  </li>
-</ol>
+    </li>
+  </ol>
 
-<h4 id="conclusion">Conclusion:</h4>
-<p>JSL-MedS shows superior performance in the categories of summary, QA, and Biomedical tasks for all three metrics: Factuality, Clinical Relevance, and Conciseness. Only in the open-ended tasks category does GPT4o show a slightly better result than JSL-MedS in Clinical Relevance and Conciseness. This indicates JSL-MedS to be an overall more robust model, especially in tasks needing precise and concise responses. GPT4o, while falling behind in most areas, exhibits stronger performance in open-ended tasks, which may indicate a better ability to tackle more abstract or diverse problems. High neutral responses across all tasks and categories suggest that there are significant opportunities for either model to improve.</p>
+  <h4 id="conclusion">Conclusion:</h4>
 
-<p>&lt;/div&gt;&lt;div class="h3-box" markdown="1"&gt;</p>
+  <p>JSL-MedS shows superior performance in the categories of summary, QA, and Biomedical tasks for all three metrics: Factuality, Clinical Relevance, and Conciseness. Only in the open-ended tasks category does GPT4o show a slightly better result than JSL-MedS in Clinical Relevance and Conciseness. This indicates JSL-MedS to be an overall more robust model, especially in tasks needing precise and concise responses. GPT4o, while falling behind in most areas, exhibits stronger performance in open-ended tasks, which may indicate a better ability to tackle more abstract or diverse problems. High neutral responses across all tasks and categories suggest that there are significant opportunities for either model to improve.</p>
 
-<h2 id="jsl-medm">JSL-MedM</h2>
+</div>
 
-<h3 id="benchmarking-1">Benchmarking</h3>
+<div class="h3-box">
 
-<p>We have generated a total of 400 questions, 100 from each category. These questions were labeled and reviewed by 3 physician annotators. <code class="language-plaintext highlighter-rouge">%</code> indicates the preference rate</p>
+  <h2 id="jsl-medm">JSL-MedM</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">## Overall</span>
+  <h3 id="benchmarking-1">Benchmarking</h3>
+
+  <p>We have generated a total of 400 questions, 100 from each category. These questions were labeled and reviewed by 3 physician annotators. <code class="language-plaintext highlighter-rouge">%</code> indicates the preference rate</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">## Overall</span>
 | Model    | Factuality % | Clinical Relevancy % | Conciseness % |
 |----------|--------------|----------------------|---------------|
 | JSL-MedM | 0.29         | 0.25                 | 0.50          |
@@ -1119,7 +905,7 @@ For open-ended tasks, the two models are more evenly matched. JSL-MedS barely ex
 | None     | 0.07         | 0.07                 | 0.08          |
 | total    | 1.00         | 1.00                 | 1.00          |
 
-<span class="c">## Summary </span>
+<span class="c">## Summary</span>
 | Model    | Factuality % | Clinical Relevancy % | Conciseness % |
 |----------|--------------|----------------------|---------------|
 | JSL-MedM | 0.42         | 0.42                 | 0.50          |
@@ -1155,68 +941,78 @@ For open-ended tasks, the two models are more evenly matched. JSL-MedS barely ex
 | None     | 0.05         | 0.05                 | 0.06          |
 | Total    | 1.00         | 1.00                 | 1.00          |
 
-</code></pre></div></div>
+</code></pre></div>  </div>
 
-<p>&lt;/div&gt;&lt;div class="h3-box" markdown="1"&gt;</p>
+</div>
 
-<h3 id="benchmark-summary-2">Benchmark Summary</h3>
-<p>We evaluated two models, JSL-MedM and GPT4o, across four task categories: Summary, QA, Biomedical, and Open-Ended. Each model’s preference rate represents the percentage of cases where it was preferred over the other or over a neutral/no-preference choice. These metrics reflect how often each model was favored based on Factuality, Clinical Relevance, and Conciseness.</p>
+<div class="h3-box">
 
-<p>&lt;/div&gt;&lt;div class="h3-box" markdown="1"&gt;</p>
+  <h3 id="benchmark-summary-2">Benchmark Summary</h3>
 
-<h4 id="overall-performance">Overall Performance</h4>
+  <p>We evaluated two models, JSL-MedM and GPT4o, across four task categories: Summary, QA, Biomedical, and Open-Ended. Each model’s preference rate represents the percentage of cases where it was preferred over the other or over a neutral/no-preference choice. These metrics reflect how often each model was favored based on Factuality, Clinical Relevance, and Conciseness.</p>
 
-<p>JSL-MedM leads in Conciseness (50%), being nearly twice as preferred as ChatGPT (26%).
+</div>
+
+<div class="h3-box">
+
+  <h4 id="overall-performance">Overall Performance</h4>
+
+  <p>JSL-MedM leads in Conciseness (50%), being nearly twice as preferred as ChatGPT (26%).
 In Factuality, JSL-MedM (29%) is 38% more preferred than ChatGPT (21%).
 For Clinical Relevance, ChatGPT (30%) slightly outperforms JSL-MedM (25%), showing a modest edge in generating contextually relevant clinical content.
 A significant share of responses was Neutral (43% factuality, 38% clinical relevance), suggesting areas where neither model had a clear advantage.</p>
 
-<p>&lt;/div&gt;&lt;div class="h3-box" markdown="1"&gt;</p>
+</div>
 
-<h4 id="category-wise-insights-1">Category-Wise Insights</h4>
+<div class="h3-box">
 
-<ol>
-  <li>
-    <p>Summary Tasks
+  <h4 id="category-wise-insights-1">Category-Wise Insights</h4>
+
+  <ol>
+    <li>
+      <p>Summary Tasks
 JSL-MedM leads in Factuality and Clinical Relevance, with 42% preference for each, while GPT4o scores 33% in both.
 JSL-MedM is 27% more preferred in these categories.
 In Conciseness, JSL-MedM (50%) is nearly twice as preferred as GPT4o (28%), highlighting its ability to produce succinct summaries.
 Neutral ratings (17%) indicate relatively few cases where the models were evenly matched.</p>
-  </li>
-  <li>
-    <p>QA Tasks
+    </li>
+    <li>
+      <p>QA Tasks
 JSL-MedM has a commanding lead in all attributes:
 Factuality (40%): Over 2.5 times more preferred than GPT4o (15%).
 Clinical Relevance (36%): Nearly 2 times more preferred than GPT4o (19%).
 Conciseness (60%): Over 3 times more preferred than GPT4o (19%).
 These results underscore JSL-MedM’s superiority in question-answering tasks across all benchmarks.</p>
-  </li>
-  <li>
-    <p>Biomedical Tasks
+    </li>
+    <li>
+      <p>Biomedical Tasks
 In Conciseness, JSL-MedM (55%) is 2.4 times more preferred than GPT4o (23%).
 In Factuality, JSL-MedM (22%) narrowly leads GPT4o (21%), showing parity in factual content.
 GPT4o (36%) is 2.6 times more preferred in Clinical Relevance than JSL-MedM (14%), suggesting its strength in contextual alignment within biomedical discussions.
 Neutral ratings (49% factuality, 44% clinical relevance) highlight room for improvement for both models.</p>
-  </li>
-  <li>
-    <p>Open-Ended Tasks
+    </li>
+    <li>
+      <p>Open-Ended Tasks
 JSL-MedM performs better in Conciseness (38%), with a 22% higher preference rate than GPT4o (31%).
 For Factuality, JSL-MedM (21%) narrowly edges out GPT4o (18%), being 16% more preferred.
 GPT4o leads in Clinical Relevance (30%), being 58% more preferred than JSL-MedM (19%).
 High neutral responses (55% factuality, 46% clinical relevance) indicate that open-ended tasks often lack a clear preference.</p>
-  </li>
-</ol>
+    </li>
+  </ol>
 
-<p>&lt;/div&gt;&lt;div class="h3-box" markdown="1"&gt;</p>
+</div>
 
-<h4 id="conclusion-1">Conclusion</h4>
-<p>JSL-MedM consistently outperforms GPT4o in Conciseness, often being 2-3 times more preferred.
+<div class="h3-box">
+
+  <h4 id="conclusion-1">Conclusion</h4>
+
+  <p>JSL-MedM consistently outperforms GPT4o in Conciseness, often being 2-3 times more preferred.
 It maintains a strong edge in Factuality, particularly in QA and Summary tasks.
 GPT4o demonstrates strength in Clinical Relevance, especially in Biomedical and Open-Ended tasks.
 Neutral and “None” ratings across categories highlight areas for further optimization for both models.
 This analysis underscores the strengths of JSL-MedM in producing concise and factual outputs, while GPT4o shows a stronger contextual understanding in certain specialized tasks.</p>
 
-<p>&lt;/div&gt;</p>
+</div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
       <time itemprop="dateModified" datetime="2025-09-04T00:00:00+00:00">Sep 04, 2025</time>
     </span><!-- start custom article footer snippet -->
