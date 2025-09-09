@@ -9,12 +9,12 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>NLP Lab Release Notes 3.3.1</title><meta property="og:title" content="NLP Lab | John Snow Labs"/>
+<!-- End Google Tag Manager --><title>Generative AI Lab 7.3.1</title><meta property="og:title" content="Generative AI Lab | John Snow Labs"/>
 
 <meta name="description" content="High Performance NLP with Apache Spark
 ">
-<!-- <link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_3_3_1"> -->
-<link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_3_3_1"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<!-- <link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_7_3_1"> -->
+<link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_7_3_1"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -616,31 +616,44 @@ function wrapWordInSpan(data, wordToWrap) {
 </script><div class="article__header"><div class="header-nav"><div class="main-docs">
   <ul class="breadcrambs">
     <li><a href="/docs">Documentation</a></li>
-    <li>NLP Lab Release Notes 3.3.1</li>
+    <li>Generative AI Lab 7.3.1</li>
   </ul>
 </div></div><header class="main-docs have_subtitle">
-          <h1>NLP Lab Release Notes 3.3.1</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
+          <h1>Generative AI Lab 7.3.1</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
-            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/alab/annotation_labs_releases/release_notes_3_3_1.md">
-            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="NLP Lab Release Notes 3.3.1"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
+            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/alab/annotation_labs_releases/release_notes_7_3_1.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Generative AI Lab 7.3.1"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <h2 id="section">3.3.1</h2>
+  <h2 id="generative-ai-lab-731">Generative AI Lab 7.3.1</h2>
+  <p style="text-align:center;">Release date: 07-31-2025</p>
 
-  <p>Release date: <strong>24-06-2022</strong></p>
+  <p>This patch release brings important improvements to cloud project import workflows, enhanced session handling, and better control over import permissions to ensure a smoother, more secure experience.</p>
 
-  <p>We are very excited to announce the release of Annotation Lab v3.3.1 which includes updated Active Learning messages, bug fixed for importing dictionary rule, NER projects and Visual NER projects . Here are the highlights:</p>
+  <h2 id="bug-fixes--improvements">Bug Fixes &amp; Improvements</h2>
 
-  <h3 id="highlights">Highlights</h3>
   <ul>
-    <li>Updated Active Learning statuses</li>
-    <li>Fix for importing Visual NER task exported before v3.2.0.</li>
-    <li>Fix for import of project from Windows OS</li>
-    <li>Fix for import of dictionary rules</li>
-    <li>Fix for show Score text is Results widget on the labeling page when the confidence score is null</li>
+    <li>
+      <p><strong>Flexible Session Token Updates</strong> You can now update the session token during cloud import without losing previously saved credentials—no need to re-enter everything from scratch.</p>
+    </li>
+    <li>
+      <p><strong>Reliable Cloud Import &amp; Export</strong> Resolved an issue that prevented importing or exporting projects from cloud storage, restoring full functionality for remote workflows.</p>
+    </li>
+    <li>
+      <p><strong>Complete API Visibility</strong> Missing endpoints have been added back to the Swagger documentation, ensuring developers have full access to all available APIs.</p>
+    </li>
+    <li>
+      <p><strong>Crash-Free Page Refresh</strong> Addressed a crash that occurred when refreshing the import page with the local import feature disabled.</p>
+    </li>
+    <li>
+      <p><strong>Enforced Import Restrictions</strong> When local import is disabled, users are now fully restricted from uploading projects from local files, ensuring consistent access control.</p>
+    </li>
+    <li>
+      <p><strong>Unblocked Cloud Import Flow</strong> Fixed an issue where users were unable to import from cloud storage unless they checked the “Save Credential” box. Cloud import now works seamlessly without requiring that extra step.</p>
+    </li>
   </ul>
 
 </div>
@@ -718,7 +731,7 @@ function wrapWordInSpan(data, wordToWrap) {
   <li><a href="release_notes_5_1_0">5.1.0</a></li>
 </ul>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2022-06-29T00:00:00+00:00">Jun 29, 2022</time>
+      <time itemprop="dateModified" datetime="2025-07-31T00:00:00+00:00">Jul 31, 2025</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
