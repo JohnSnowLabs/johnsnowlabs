@@ -5,7 +5,7 @@ seotitle: Spark NLP for Healthcare | John Snow Labs
 title: Healthcare NLP Release Notes
 permalink: /docs/en/spark_nlp_healthcare_versions/licensed_release_notes
 key: docs-licensed-release-notes
-modify_date: 2025-07-22
+modify_date: 2025-08-13
 show_nav: true
 sidebar:
     nav: sparknlp-healthcare
@@ -13,189 +13,153 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-## 6.0.4
+## 6.1.0
 
 #### Highlights
 
-We are delighted to announce remarkable enhancements and updates in our latest release of Healthcare NLP. **This release introduces a series of performance improvements for sentence embeddings, zero-shot NER, and assertion classification tasks in Healthcare NLP via ONNX-optimized models and native batching support across multiple components.**
+We are delighted to announce remarkable enhancements and updates in our latest release of Healthcare NLP. **This release comes with a brand new Medical multimodal LLMs,text-only small LLMs that could run on commodity hardware, speed and performance optimizations for popular healthcare NLP tools (NER, assertion, etc.) via Onnx, as well as 37 new and updated clinical pretrained models and pipelines**. 
 
-+ ONNX model optimizations and batch inference improvements (GPU & CPU)
-+ Batch inference and OpenVINO support for `PretrainedZeroShotNER`, our most capable and preferred medical NER framework
-+ New MedS-NER LLM for structured medical entity extraction via 3B size small LLMs
-+ Advanced clinical one-liner pretrained pipelines for PHI detection and extraction
-+ Clinical code resolution via one-liner pretrained pipelines for medical terminology mapping
-+ Clinical document explanation, one-liner pretrained pipelines for comprehensive clinical entity analysis
-+ New NER model and pipeline about vaccinations and infectious diseases
-+ New blog posts on various topics
-+ Various core improvements; bug fixes, enhanced overall robustness and reliability of Healthcare NLP
-    - Improved memory management for ONNX in ML-based transformers
-    - Fixed an issue in `TextMatcherInternal` where `null` values could appear in the output due to race conditions during parallel processing.
-    - Resolved a bug in `PretrainedZeroShotNER` that caused an `emptyIterator` exception in certain edge cases when processing empty or malformed input.
-    - Enhanced geo-consistency algorithm in `Deidentification` to reliably process previously skipped geographic entities.
-+ Updated notebooks and demonstrations for making Healthcare NLP easier to navigate and understand
-    - New [Deidentification NER Profiling Pipeline](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/04.12.Deidentification_NER_Profiling_Pipeline.ipynb) Notebook
-    - New [Annotation Converter](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/50.Annotation_Converter.ipynb) Notebook 
-    - Updated [Pretrained NER Profiling Pipelines](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/07.1.Pretrained_NER_Profiling_Pipelines.ipynb) Notebook
-    - Updated [Clinical Deidentification Improvement](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/04.4.Clinical_Deidentification_Improvement.ipynb) Notebook
+- **Medical Vision LLM module to run multiomodal LLMs**: Advancing clinical AI with integrated visual language understanding via popular multimodal LLMs specifically finetuned for medical tasks
+- **Small size multimodal LLMs (VLMs) for text and visual entity extraction**: 6 newly released lightweight Vision Language Models for efficient structured medical entity extraction from documents and images
+- **JSL Medical LLM Collection Expansion with recent popluar model families**: Addition of v4 and v5 models in 4B and 8B parameter sizes, available in q4, q8, and q16 quantization formats for optimal deployment flexibility
+- **LLM Architecture Upgrade**: Refined architecture built on llama.cpp, delivering improved inference efficiency, scalability, and accuracy to support the latest generation of LLM families enabling faster performance and broader model compatibility
+- **Continuous Performance Optimization & Benchmarking for Healthcare Modules**: Ongoing speed enhancements and comparative analysis of machine learning model architectures across CPU/GPU platforms
+- **Mapper Model Additions**: 7 new medical terminology mapper models supporting HPO, gene, disease, and biomedical concept analysis
+- **Pretrained Clinical Pipelines**: One-Liner, domain-specific pipelines for targeted clinical document analysis
+- **Various core improvements**: Bug fixes, enhanced overall robustness and reliability of Healthcare NLP
+  - **Model Size Display**: Added the ability to display the model size when using `pretrained` functions, providing better insight into resource requirements before loading.
+  - **AssertionLogRegModel Enhancements**: Introduced new metadata fields to `AssertionLogRegModel`, aligning it with other assertion annotators and enabling improved traceability of processed chunks.
+  - **DeIdentificationModel Save/Load Fix**: Resolved a persistence issue that affected saving and loading in `DeIdentificationModel`.
++ Updated notebooks and demonstrations for making Spark NLP for Healthcare easier to navigate and understand
+    - New [Deidentification Model Evaluation](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.12.Deidentification_Model_Evaluation.ipynb) Notebook
+    - New [Metadata Annotation Converter](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/MetadataAnnotationConverter.ipynb) MOOC Notebook
+    - New [Multi Modal LLMs](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/46.1.Multi_Modal_LLMs.ipynb) Notebook
+    - Updated [Chunk Mapping](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/26.Chunk_Mapping.ipynb) Notebook
+    - Updated [Clinical Deidentification Improvement](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.4.Clinical_Deidentification_Improvement.ipynb) Notebook
+    - Updated [Loading Medical and Open Souce LLMs](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/46.Loading_Medical_and_Open-Souce_LLMs.ipynb) Notebook
 + The addition and update of numerous new clinical models and pipelines continue to reinforce our offering in the healthcare domain
 
-These enhancements will elevate your experience with Healthcare NLP, enabling more efficient, accurate, and streamlined analysis of healthcare-related natural language data.
+These enhancements will further elevate your experience with Spark NLP for Healthcare, delivering more efficient, accurate, and streamlined analysis of healthcare-related natural language data across a wide range of clinical and research applications.
 
 
 </div><div class="h3-box" markdown="1">
 
-#### ONNX Model Optimizations and Batch Inference Improvements (GPU & CPU)
+#### **Medical Vision LLM Module to Run Multiomodal LLMs**: Advancing Clinical AI with Integrated Visual Language Understanding via Popular Multimodal LLMs Specifically Finetuned for Medical Tasks
 
-This release delivers powerful runtime improvements for `BertSentenceEmbeddings` and `BertForAssertionClassification` in JohnSnowLabs. With the introduction of ONNX-optimized models and native batch inference, users can achieve significant speedups on both CPU and GPU, all without sacrificing model accuracy or requiring changes to existing pipelines.
+We are introducing `MedicalVisionLLM`, a significant advancement in our model suite that extends large language model capabilities with integrated visual understanding. This annotator is designed to process and analyze multimodal data — combining textual and image inputs — enabling more comprehensive clinical analysis.
+Leveraging the latest innovations in multimodal AI, MedicalVisionLLM can interpret medical images alongside corresponding clinical narratives, supporting more informed decision-making in healthcare workflows. With 9 newly released Vision-Language Models (VLMs), it offers robust performance for tasks such as diagnostic image interpretation, image-to-text summarization, and integrated clinical documentation analysis.
 
-- Key Highlights:
-    - ONNX-Accelerated Embeddings for BertSentenceEmbeddings and BertSentenceChunkEmbeddings, yielding up to 109× faster (100+ times faster) inference on GPU.
-    - End-to-End Pipeline Speedup: Using ONNX models in SentenceEntityResolver pipelines improves performance up to 5.5×, with minimal changes.
-    - Optimized Assertion Classification: ONNX models for BertForAssertionClassification offer up to 28× faster inference on GPU, with native batching support for scalable performance.
+| **Model Name**             | **Quantization Options**   | **Description**   |
+| -------------------------- | -------------------------- | ----------------- |
+| JSL_MedS_VLM_3B_v1         | [q4](https://nlp.johnsnowlabs.com/2025/08/08/jsl_meds_vlm_3b_q4_v1_en.html), [q8](https://nlp.johnsnowlabs.com/2025/08/08/jsl_meds_vlm_3b_q8_v1_en.html), [q16](https://nlp.johnsnowlabs.com/2025/08/08/jsl_meds_vlm_3b_q16_v1_en.html) | Extract and link structured medical named entities |
+| JSL_MedS_VLM_2B_v1         | [q4](https://nlp.johnsnowlabs.com/2025/08/10/jsl_meds_ner_vlm_2b_q4_v1_en.html), [q8](https://nlp.johnsnowlabs.com/2025/08/10/jsl_meds_ner_vlm_2b_q8_v1_en.html), [q16](https://nlp.johnsnowlabs.com/2025/08/10/jsl_meds_ner_vlm_2b_q16_v1_en.html) | Extract and link structured medical named entities |
+| JSL_MedS_VLM_2B_v2         | [q4](https://nlp.johnsnowlabs.com/2025/08/10/jsl_meds_ner_vlm_2b_q4_v2_en.html), [q8](https://nlp.johnsnowlabs.com/2025/08/10/jsl_meds_ner_vlm_2b_q8_v2_en.html), [q16](https://nlp.johnsnowlabs.com/2025/08/10/jsl_meds_ner_vlm_2b_q16_v2_en.html) | Extract and link structured medical named entities |
 
-All ONNX models maintain original output quality and are drop-in compatible with existing workflows.
-These enhancements make clinical NLP tasks in production environments faster, leaner, and more deployable across diverse hardware platforms.
+*Example*:
 
-- Test Environment:
-    + Instance Type:
-        - CPU: Colab V6e-1 TPU, 173.0 GB RAM, 44 CPUs
-        - GPU: Colab A100, 83.5 GB RAM, 40.0 GB GPU RAM, 12 Cores
-    + Datasets:
-        - 1000 rows MTSamples dataset (~500 tokens per row)
-        - 7500 rows Assertion test dataset
+```python
+prompt = """Extract demographics, clinical disease and medication informations"""
 
+input_df = vision_llm_preprocessor(
+    spark=spark,
+    images_path="./images",
+    prompt=prompt,
+    output_col_name="prompt"
+)
 
-- **ONNX Optimization for `BertSentenceEmbeddings` and `BertSentenceChunkEmbeddings`**: We benchmarked both `BertSentenceEmbeddings` (for full-text sentence-level embeddings) and `BertSentenceChunkEmbeddings` (for NER-extracted chunks) using their ONNX-optimized versions.
+document_assembler = DocumentAssembler()\
+    .setInputCol("prompt")\
+    .setOutputCol("document")
 
-    + CPU Performance:
-      
-        | Component       | TensorFlow | ONNX        | Speedup |
-        |-----------------|------------|-------------|---------|
-        | `BertSentenceEmbeddings` | 6 min 18 s | 2 min 57 s | ~ 2.1× |
+image_assembler = ImageAssembler()\
+    .setInputCol("image")\
+    .setOutputCol("image_assembler")
 
-    + ⚡GPU Performance:
-      
-        | Component       | TensorFlow | ONNX        | Speedup     |
-        |-----------------|------------|-------------|-------------|
-        | `BertSentenceEmbeddings` | 20 min | 11 s   | ~ 109×      |
+medical_vision_llm = MedicalVisionLLM.pretrained("jsl_meds_vlm_3b_q4_v1", "en", "clinical/models")\
+    .setInputCols(["document", "image_assembler"])\
+    .setOutputCol("completions")\
+    .setChatTemplate("vicuna")\
+    .setBatchSize(4)\
+    .setNPredict(-1)\
+    .setTemperature(0)\
+    .setNGpuLayers(99)\
 
-    **Notes:**
+pipeline = Pipeline(
+    stages = [
+        document_assembler,
+        image_assembler,
+        medical_vision_llm
+])
+```
 
-        - ONNX models significantly accelerate inference, particularly on GPUs.
-        - Embedding quality, dimensionality, and behavior remain unchanged.
-        - Suitable for both full-text and chunk-level sentence embeddings.
+input:
 
-
-- **`BertSentenceEmbeddings` in Entity Resolver Pipeline**: We also evaluated `BertSentenceEmbeddings` inside a complete `SentenceEntityResolver` pipeline on a 1K clinical dataset using a GPU.
-
-    *Example*:
-
-    ```python
-    pipeline = nlp.Pipeline(stages=[
-        DocumentAssembler
-        SentenceDetectorDL
-        Tokenizer
-        WordEmbeddingsModel
-        MedicalNerModel
-        NerConverter
-        Chunk2Doc
-        BertSentenceEmbeddings (TF or ONNX)
-        SentenceEntityResolver
-    ])
-    ```
-
-    *Results*:
-
-    | Pipeline Scope   | TensorFlow | ONNX  | Speedup |
-    |------------------|------------|-------|---------|
-    | Without Resolver | 661 s      | 121 s | ~ 5.5×  |
-    | With Resolver    | 6397 s     | 5758 s| ~ 10% faster|
-
-    **Notes:**
-
-        - ONNX version delivers a 5–6× speedup in pipelines without resolver stages.
-        - Including resolver still yields a ~10% runtime improvement.
-        - No pipeline logic needs to be changed to benefit from ONNX speedups.
+![Input of Medical Vision LLM](/assets/images/releases/6_1_0/medical_visual_llm.png)
 
 
-- **ONNX Models & Batch Inference for BertForAssertionClassification**: We’ve introduced ONNX-optimized versions of the `BertForAssertionClassification` model, along with internal batching support for improved performance across CPU and GPU environments.
 
-    - CPU Performance:
+*Result*:
 
-        | Framework     | Inference Time | Speedup |
-        |---------------|----------------|---------|
-        | TensorFlow    | 56.9 s         | —       |
-        | ONNX          | 33 s           | ~ 1.7×  |
+```bash
+{
+    "Prescription Date": "2023-08-30",
+    "Diagnosis": "Malaria",
+    "Medicine Name": "TAB. ABCIXIMAB",
+    "Dosage": "1 Morning",
+    "Duration": "4 Days",
+    "Follow-up Date": "2023-09-04",
+    "Doctor Name": "Dr. Akshara",
+    "Hospital Name": "SMS hospital"
+}
+```
 
-    - ⚡GPU Performance:
-
-        | Framework     | Inference Time | Speedup   |
-        |---------------|----------------|-----------|
-        | TensorFlow    | 3 min 24 s     | —         |
-        | ONNX          | 7.35 s         | ~ 27.8×   |
 
 
-    Available ONNX Models:
+  
 
-    {:.table-model-big}
-    | Model Name | Predicted Entities |
-    |------------|--------------------|
-    | [`assertion_bert_classification_clinical_onnx`](https://nlp.johnsnowlabs.com/2025/07/15/assertion_bert_classification_clinical_onnx_en.html) | `absent`, `present`, `conditional`, `associated_with_someone_else`, `hypothetical`, `possible` |
-    | [`assertion_bert_classification_jsl_onnx`](https://nlp.johnsnowlabs.com/2025/07/15/assertion_bert_classification_jsl_onnx_en.html) | `Present`, `Planned`, `SomeoneElse`, `Past`, `Family`, `Absent`, `Hypothetical`, `Possible` |
-    | [`assertion_bert_classification_oncology_onnx`](https://nlp.johnsnowlabs.com/2025/07/15/assertion_bert_classification_oncology_onnx_en.html) | `Present`, `Past`, `Family`, `Absent`, `Hypothetical`, `Possible` |
-    | [`assertion_bert_classification_radiology_onnx`](https://nlp.johnsnowlabs.com/2025/07/15/assertion_bert_classification_radiology_onnx_en.html) | `Confirmed`, `Suspected`, `Negative` |
 
+Please check the [Multi Modal LLMs](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/46.1.Multi_Modal_LLMs.ipynb) Notebook
 
 
 </div><div class="h3-box" markdown="1">
 
-#### Batch Inference and OpenVINO Support for `PretrainedZeroShotNER`, Our Most Capable and preferred Medical NER Framework
+####  **Small Size Multimodal LLMs (VLMs) for Text and Visual Entity Extraction**: 6 Newly Released Lightweight Vision Language Models for Efficient Structured Medical Entity Extraction from Documents and Images
 
-The `PretrainedZeroShotNER` model now supports efficient batch inference, dramatically reducing GPU runtime.
+These small language models (LLMs) are trained to extract and link medical entities within a document. Users need to define an input schema, as explained in the example section. For instance, a drug field can be defined as a list to indicate that there may be multiple drugs in the document, and the model should extract all of them. Each drug has properties such as name and reaction. Since name contains only a single value, it is defined as a string, whereas reaction may include multiple values and is therefore defined as a list. Similarly, users can define any schema for any type of entity, allowing the model’s output to be structured according to specific requirements.
 
-- **Batch Inference**: Native support for batchSize significantly reduces GPU runtime.
-    - At batchSize = 32, inference is up to 4× faster compared to legacy (non-batched) execution.
-    - Output quality and accuracy remain unchanged.
-    - Flexible batch size tuning allows adaptation to different hardware.
+Also this same model family can extract entities given an image. 
 
-        | Configuration                 | Inference Time | Speedup |
-        |-------------------------------|----------------|---------|
-        | No batching (legacy)          | 2 min 51 s     | —       |
-        | With batching (`batchSize=32`)| 43.3 s         | ~ 4×    |
-    
-- **OpenVINO Integration**: The model is now compatible with OpenVINO for optimized CPU inference,
-
-    **Notes:**
-
-        - The model now includes native batching (tested with `batchSize = 32`).
-        - Users can tune `batchSize` to suit their hardware ("spot tuning").
-        - Model accuracy and outputs remain unchanged.
-
-
-
-</div><div class="h3-box" markdown="1">
-    
-####  New MedS-NER LLM for Structured Medical Entity Extraction via 3B Size Small LLMs
-
-These schema-driven LLMs extract structured medical entities with various quantization options (Q4, Q8, Q16), including OpenVINO-optimized versions for high-speed, resource-efficient deployment.
+**Example usage for text-only contents**
 
 {:.table-model-big}
-| Model Name | Quantization Options | Description |
-| ---------- | -------------------- | ------------ |
-| **jsl_meds_ner_v4 (OpenVINO)** | [q4](https://nlp.johnsnowlabs.com/2025/06/30/jsl_meds_ner_openvino_q4_v4_en.html), [q8](https://nlp.johnsnowlabs.com/2025/07/01/jsl_meds_ner_openvino_q8_v4_en.html), [q16](https://nlp.johnsnowlabs.com/2025/07/01/jsl_meds_ner_openvino_q16_v4_en.html) | OpenVINO-optimized models for fast, efficient schema-based medical entity extraction on edge devices. |
-| **jsl_meds_ner_v4** | [q4](https://nlp.johnsnowlabs.com/2025/07/01/jsl_meds_ner_q4_v4_en.html), [q8](https://nlp.johnsnowlabs.com/2025/07/01/jsl_meds_ner_q8_v4_en.html), [q16](https://nlp.johnsnowlabs.com/2025/07/01/jsl_meds_ner_q16_v4_en.html) | Standard quantized models for flexible deployment, balancing accuracy and performance in clinical text mining. |
-
+| Model Name         |Model Links|
+|--------------------|-----------|
+| JSL_MedS_VLM_2B_v1 | [q4](https://nlp.johnsnowlabs.com/2025/08/10/jsl_meds_ner_vlm_2b_q4_v1_en.html), [q8](https://nlp.johnsnowlabs.com/2025/08/10/jsl_meds_ner_vlm_2b_q8_v1_en.html), [q16](https://nlp.johnsnowlabs.com/2025/08/10/jsl_meds_ner_vlm_2b_q16_v1_en.html) | Extract and link structured medical named entities |
+| JSL_MedS_VLM_2B_v2 | [q4](https://nlp.johnsnowlabs.com/2025/08/10/jsl_meds_ner_vlm_2b_q4_v2_en.html), [q8](https://nlp.johnsnowlabs.com/2025/08/10/jsl_meds_ner_vlm_2b_q8_v2_en.html), [q16](https://nlp.johnsnowlabs.com/2025/08/10/jsl_meds_ner_vlm_2b_q16_v2_en.html) | Extract and link structured medical named entities |
 
 
 *Example*:
 
 ```python
-phi3 = Phi3Transformer.pretrained(f"jsl_meds_ner_openvino_q4_v4", "en", "clinical/models")\
-    .setInputCols(["documents"])\
-    .setOutputCol("generation")\
-    .setMaxOutputLength(500)
+document_assembler = DocumentAssembler()\
+    .setInputCol("text")\
+    .setOutputCol("document")
 
-text = """
+medical_llm = MedicalLLM.pretrained("jsl_meds_ner_vlm_2b_q8_v1", "en", "clinical/models")\
+    .setInputCols("document")\
+    .setOutputCol("completions")\
+    .setBatchSize(1)\
+    .setNPredict(100)\
+    .setUseChatTemplate(True)\
+    .setTemperature(0)
+
+pipeline = Pipeline(
+    stages = [
+        document_assembler,
+        medical_llm
+])
+
+med_ner_prompt = """
 ### Template:
 {
     "drugs": [
@@ -213,336 +177,326 @@ Gp 's started me on 75 twice a day and I have to take it every day for the next 
 So far its been very good , pains almost gone , but I feel a bit weird , did n't have that when on 50.
 """
 
-data = spark.createDataFrame([[text]]).toDF("text")
+data = spark.createDataFrame([[med_ner_prompt]]).toDF("text")
+
+results = pipeline.fit(data).transform(data)
+
+results.select("completions").show(truncate=False)
 ```
 
 *Result*:
 
 ```bash
-{
-    "drugs": [
-        {
-            "name": "Arthrotec 50",
-            "reactions": [
-                "drowsy",
-                "blurred vision",
-                "gastric problems"
-            ]
-        },
-        {
-            "name": "75",
-            "reactions": [
-                "weird"
-            ]
-        }
-    ]
+{'drugs': [
+    {
+        'name': 'Arthrotec 50',
+        'reactions': [
+              'drowsy', 
+              'blurred vision', 
+              'gastric problems'
+          ]
+    },
+    {
+        'name': 'Gp 75', 
+        'reactions': [
+            'pains almost gone', 
+            'weird'
+        ]
+    }]    
 }
 ```
 
+
+
+**Example usage for documents (PDFs, Word, Excel, PowerPoint, HTML, Text, Email, Markdown)**
+
+Extracting structured medical entities from various document types. The workflow supports end-to-end PDF processing:
+
+- Read PDFs with Reader2Doc to convert content into plain text.
+- Add a custom prompt template with custom_llm_preprocessor_converter to define your desired entity schema.
+- Run the VLM with MedicalLLM to extract and link entities according to the schema.
+
+The result is a precise, structured NER output that works for both text-only and multimodal (text + image) content, enabling efficient integration into clinical data pipelines while keeping models small and inference fast.
+
+
+Please check the [Loading Medical and Open-Source LLMs](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/46.Loading_Medical_and_Open-Souce_LLMs.ipynb) Notebook
+
+
 </div><div class="h3-box" markdown="1">
 
-#### Advanced Clinical One-Liner Pretrained Pipelines for PHI Detection and Extraction
+####  **JSL Medical LLM Collection Expansion with Recent Popluar Model Families** — Addition of v4 and v5 Models in 4B and 8B Parameter Sizes, Available in q4, q8, and q16 Quantization Formats for Optimal Deployment Flexibility
 
-We introduce specialized pretrained pipelines designed specifically for Protected Health Information (PHI) detection and de-identification in clinical documents. These pipelines leverage state-of-the-art Named Entity Recognition (NER) models to automatically identify and extract sensitive medical information, ensuring compliance with healthcare privacy regulations.
-
-Our de-identification pipelines eliminate the complexity of building custom PHI detection systems from scratch. Healthcare organizations and researchers can now deploy robust privacy protection measures with simple one-liner implementations, streamlining the process of sanitizing clinical documents while maintaining high accuracy standards.
+The JSL_MedS LLM Collection is a set of advanced transformer-based medical language models developed by John Snow Labs, purpose-built for high-performance clinical NLP tasks such as question answering (Q&A), summarization, Retrieval-Augmented Generation (RAG), and medical chatbot interactions.
+This release expands the collection with 9 new models, spanning two major versions (v4 and v5), two parameter sizes (4B and 8B), and three quantization levels (q4, q8, q16) to meet diverse requirements for speed, memory efficiency, and latency. Each model is optimized for accurate, context-aware understanding of clinical text, supporting use cases such as real-time doctor–patient conversation assistance, summarizing lengthy patient histories, and extracting insights from medical literature or electronic health records (EHRs). The availability of quantized variants ensures deployment flexibility — from high-performance GPU clusters to resource-constrained environments.
 
 {:.table-model-big}
-| Model Name  |      Description            |
-|-------------|-----------------------------|
-| [`ner_deid_docwise_benchmark_optimized`](https://nlp.johnsnowlabs.com/2025/06/17/ner_deid_docwise_benchmark_optimized_en.html) | Extract PHI information such as `LOCATION`, `CONTACT`, `PROFESSION`, `NAME`, `DATE`, `AGE`, `MEDICALRECORD`, `ORGANIZATION`, `HEALTHPLAN`, `DOCTOR`, `USERNAME`, `LOCATION-OTHER`, `URL`, `DEVICE`, `CITY`, `ZIP`, `STATE`, `PATIENT`, `STREET`, `PHONE`, `HOSPITAL`, `EMAIL`, `IDNUM`, `BIOID`, `FAX`, `LOCATION_OTHER`, `DLN`, `SSN`, `ACCOUNT`, `PLATE`, `VIN`, `LICENSE`, `IP` entities. |
-| [`ner_profiling_deidentification`](https://nlp.johnsnowlabs.com/2025/06/16/ner_profiling_deidentification_en.html) | Comprehensive PHI de‑identification pipeline that combines ~40 pretrained NER models, matchers, and parsers to detect entities such as `ACCOUNT`, `AGE`, `BIOID`, `CITY`, `CONTACT`, `COUNTRY`, `DATE`, `DEVICE`, `DLN`, `DOCTOR`, `EMAIL`, `FAX`, `HEALTHPLAN`, `HOSPITAL`, `ID`, `IDNUM`, `LICENSE`, `LOCATION`, `LOCATION_OTHER`, `MEDICALRECORD`, `NAME`, `ORGANIZATION`, `PATIENT`, `PHONE`, `PROFESSION`, `SSN`, `STATE`, `STREET`, `URL`, `USERNAME`, and `ZIP`. |
+| Model Name            |            |
+|-----------------------|------------|
+| `jsl_meds_4b_v4` | [q16](https://nlp.johnsnowlabs.com/2025/08/05/jsl_meds_4b_q16_v4_en.html), [q8](https://nlp.johnsnowlabs.com/2025/08/05/jsl_meds_4b_q8_v4_en.html), [q4](https://nlp.johnsnowlabs.com/2025/08/05/jsl_meds_4b_q4_v4_en.html)   |
+| `jsl_meds_4b_v5` | [q16](https://nlp.johnsnowlabs.com/2025/08/05/jsl_meds_4b_q16_v5_en.html), [q8](https://nlp.johnsnowlabs.com/2025/08/05/jsl_meds_4b_q8_v5_en.html), [q4](https://nlp.johnsnowlabs.com/2025/08/05/jsl_meds_4b_q4_v5_en.html)   |
+| `jsl_meds_8b_v4` | [q16](https://nlp.johnsnowlabs.com/2025/08/05/jsl_meds_8b_q16_v4_en.html), [q8](https://nlp.johnsnowlabs.com/2025/08/05/jsl_meds_8b_q8_v4_en.html), [q4](https://nlp.johnsnowlabs.com/2025/08/05/jsl_meds_8b_q4_v4_en.html)   |
+
+
+*Example:*
+
+```python
+medical_llm = medical.MedicalLLM.pretrained("jsl_meds_4b_q16_v5", "en", "clinical/models")\
+    .setInputCols("document")\
+    .setOutputCol("completions")\
+    .setBatchSize(1)\
+    .setNPredict(100)\
+    .setUseChatTemplate(True)\
+    .setTemperature(0)
+
+pipeline = nlp.Pipeline(stages=[
+    document_assembler,
+    medical_llm
+])
+
+prompt = """
+A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. She otherwise feels well and is followed by a doctor for her pregnancy. Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus.
+Which of the following is the best treatment for this patient?
+A: Ampicillin
+B: Ceftriaxone
+C: Ciprofloxacin
+D: Doxycycline
+E: Nitrofurantoin
+"""
+```
+
+*Result*:
+
+```bash
+The patient presents with symptoms suggestive of a urinary tract infection (UTI) during pregnancy. Given the gestational age (22 weeks), the most appropriate treatment option is E: Nitrofurantoin.
+```
+
+
+</div><div class="h3-box" markdown="1">
+
+#### **LLM Architecture Upgrade**: Refined Architecture Built on llama.cpp, Delivering Improved Inference Efficiency, Scalability, and Accuracy to Support the Latest Generation of LLM Families Enabling Faster Performance and Broader Model Compatibility
+
+The Large Language Model (LLM) architecture in Spark NLP for Healthcare has been upgraded to support the latest generation of LLM families, ensuring full compatibility with cutting-edge medical and general-purpose language models.
+
+---
+
+**🚀Key Improvements**
+- **Optimized LLM Inference Performance** — Achieves approximately **~10% faster inference** on GPU for both `MedicalLLM` and `LLMLoader`, enhancing throughput in production environments.
+- **Extended LLM Compatibility** — Adds support for the **newest LLM architectures**, enabling seamless integration with state-of-the-art models for advanced healthcare NLP applications.
+
+---
+
+**Impact:**  
+These improvements ensure faster and more scalable deployment of LLM-based healthcare NLP pipelines, while also allowing teams to leverage the **latest advancements in large language model research** without sacrificing performance.
+
+
+</div><div class="h3-box" markdown="1">
+
+#### **Continuous Performance Optimization & Benchmarking for Healthcare Modules**: Ongoing Speed Enhancements and Comparative Analysis of Machine Learning Model Architectures Across CPU/GPU Platforms
+
+To evaluate the performance of different model architectures available in healthcare library, we benchmarked **TensorFlow**, **ONNX**, and **OpenVINO** implementations of the same model under identical conditions.  
+Tests were run on both **CPU** and **GPU** with the same input dataset and batch configurations to ensure a fair comparison.
+
+---
+
+- Test Environment:
+  + Instance Type:
+    - CPU: Colab V6e-1 TPU, 173.0 GB RAM, 44 CPUs
+    - GPU: Colab A100, 83.5 GB RAM, 40.0 GB GPU RAM, 12 Cores
+  + Datasets:
+    - 1000 rows MTSamples dataset (~500 tokens per row)
+
+---
+
+     🖥 CPU Performance
+
+| Component                | TensorFlow | ONNX    | OpenVINO |
+|--------------------------|------------|---------|----------|
+| `BertSentenceEmbeddings` | 8 min 37 s | 4 min 46 s | 3 min 31 s |
+
+---
+
+    ⚡ GPU Performance:
+
+| Component                | TensorFlow | ONNX    | OpenVINO |
+|--------------------------|------------|---------|----------|
+| `BertSentenceEmbeddings` | 28 min 50 s | 11.4 s  | 18 min 49 s |
+
+---
+
+**Notes:**
+- ONNX consistently outperformed TensorFlow in both CPU and GPU tests, with **massive gains on GPU**.
+- OpenVINO delivered the **fastest CPU performance**, but was slower than ONNX on GPU.
+- All measurements were taken on the same hardware, with warm-up runs to avoid cold-start effects.
+
+---
+
+*Future Direction:*
+
+Based on these benchmark results, future releases will **focus more on ONNX and OpenVINO model architectures**.  
+These formats demonstrated **significant performance improvements** over TensorFlow, especially ONNX on GPU and OpenVINO on CPU.  
+Our aim is to expand model coverage, add optimized pipelines, and ensure maximum compatibility with hardware acceleration backends.
+
+
+</div><div class="h3-box" markdown="1">
+
+####  **Mapper Model Additions**: 7 New Medical Terminology Mapper Models Supporting HPO, Gene, Disease, and Biomedical Concept Analysis
+
+These 7 ChunkMapper models act as fast, lightweight lookup layers between key biomedical vocabularies—genes, diseases, Human Phenotype Ontology (HPO) terms, extra-ocular-movement (EOM) phenotypes, and UMLS concepts. 
+
+{:.table-model-big}
+| Model Name                                                            |      Description            |
+|-----------------------------------------------------------------------|-----------------------------|
+| [`gene_disease_mapper`](https://nlp.johnsnowlabs.com/2025/07/28/gene_disease_mapper_en.html) | Maps genes to their related diseases |
+| [`gene_hpo_code_mapper`](https://nlp.johnsnowlabs.com/2025/07/28/gene_hpo_code_mapper_en.html) | Maps genes to their corresponding HPO codes |
+| [`hpo_code_eom_mapper`](https://nlp.johnsnowlabs.com/2025/07/28/hpo_code_eom_mapper_en.html) | Maps HPO codes to their related extraocular movements (EOM) |
+| [`hpo_code_gene_mapper`](https://nlp.johnsnowlabs.com/2025/07/28/hpo_code_gene_mapper_en.html) | Maps HPO codes to related genes |
+| [`hpo_umls_mapper`](https://nlp.johnsnowlabs.com/2025/07/28/hpo_umls_mapper_en.html) | Maps HPO codes to corresponding UMLS codes |
+| [`umls_hpo_mapper`](https://nlp.johnsnowlabs.com/2025/07/28/umls_hpo_mapper_en.html) | Maps UMLS codes to corresponding HPO codes |
+| [`hpo_code_gene_disease_mapper`](https://nlp.johnsnowlabs.com/2025/08/05/hpo_code_gene_disease_mapper_en.html) | Maps HPO codes to their associated genes and further maps those genes to related diseases |
 
 
 *Example*:
 
 ```python
-deid_pipeline = PretrainedPipeline("ner_deid_docwise_benchmark_optimized", "en", "clinical/models")
+mapperModel = ChunkMapperModel.pretrained("gene_disease_mapper", "en", "clinical/models")\
+    .setInputCols(["ner_chunk"])\
+    .setOutputCol("mappings")\
+    .setRels(["disease"])
 
-text = """Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024. 
-The patient’s medical record number is 56467890. 
-The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890."""
+model = nlp_pipeline.fit(spark.createDataFrame([['']]).toDF("text"))
+result = model.transform(spark.createDataFrame([["We will systematically examine seven genes (CHN1, MDH1, and SNAP25) that are altered in the three neurodegenerative diseases."]]).toDF("text"))
 ```
 
 *Result*:
 
 {:.table-model-big}
-|    | chunks               |   begin |   end | entities   |
-|----|----------------------|---------|-------|------------|
-|  0 | John Lee             |       4 |    11 | DOCTOR     |
-|  1 | Royal Medical Clinic |      19 |    38 | HOSPITAL   |
-|  2 | Chicago              |      43 |    49 | CITY       |
-|  3 | 11/05/2024           |      79 |    88 | DATE       |
-|  4 | 56467890             |     131 |   138 | ID         |
-|  5 | Emma Wilson          |     155 |   165 | PATIENT    |
-|  6 | 50 years old         |     171 |   182 | AGE        |
-|  7 | 444-456-7890         |     205 |   216 | PHONE      |
+|  gene| disease| all_k_resolutions|
+|------|--------|----------------------------------------|
+|  CHN1|preaxial hand polydactyly|preaxial hand polydactyly:::brachydactyly:::marcus gunn jaw winking synkinesis:::triphalangeal thumb:::duane anomaly:::seizure:::global developmental delay:::irregular hyperpigmentation:::ectopic k...|
+|  MDH1|        hyperglutamatemia|hyperglutamatemia:::hypertonia:::seizure:::global developmental delay:::infra-orbital crease:::hypsarrhythmia:::partial agenesis of the corpus callosum:::autosomal recessive inheritance:::axial hyp...|
+|SNAP25|              poor speech|poor speech:::poor head control:::proximal muscle weakness:::motor delay:::gait disturbance:::bulbar palsy:::areflexia:::seizure:::hypotonia:::ataxia:::intellectual disability:::hyporeflexia:::dysa...|
+
 
 
 
 
 </div><div class="h3-box" markdown="1">
 
-#### Clinical Code Resolution One-Liner Pretrained Pipelines for Medical Terminology Mapping
+#### **Pretrained Clinical Pipelines**: One Liner, Domain Specific Pipelines for Targeted Clinical Document Analysis
 
-We introduce a comprehensive suite of specialized pretrained pipelines designed for automated medical terminology extraction and code resolution. These pipelines leverage state-of-the-art Named Entity Recognition (NER) models to identify clinical entities and map them to standardized medical coding systems, enabling seamless integration with healthcare information systems and ensuring coding compliance.
+This release introduces a suite of advanced, hybrid pretrained pipelines purpose-built to streamline clinical document analysis. Each pipeline integrates multiple state-of-the-art (SOTA) pretrained models, providing a ready-to-use solution for extracting key clinical information with minimal setup.
 
-Our resolver pipelines eliminate the complexity of building custom medical terminology extraction systems. Healthcare organizations can now deploy robust clinical coding solutions with simple one-liner implementations, streamlining the process of converting unstructured clinical text into standardized medical codes across multiple coding systems.
+A key advantage of these pipelines is the removal of the complexity traditionally involved in building and chaining models manually. Users no longer need to experiment with different model combinations or invest time in constructing intricate workflows from scratch. Instead, these one-liner pipelines offer a seamless, efficient, and reliable approach — enabling rapid deployment for targeted clinical tasks and concepts while maintaining high accuracy and performance.
+
+In our **hpo_mapper_pipeline_v3** pipeline, with the new **TextMatcher** features enabled, we observed the following improvements compared to the default mode:
+
+- **Exact match**: ↑ from **67.07%** to **86.47%** (**+19.4%**)
+- **Partial match**: ↓ from **4.54%** to **1.68%** (**−2.86%**)
+- **None match**: ↓ from **28.39%** to **11.85%** (**−16.54%**)
+
 
 {:.table-model-big}
-| Model Name |      Description | Model Name |      Description |
-|------------|------------------|------------|------------------|
-| [`ner_atc_pipeline`](https://nlp.johnsnowlabs.com/2025/06/24/ner_atc_pipeline_en.html) | Maps to ATC codes | [`ner_cpt_pipeline`](https://nlp.johnsnowlabs.com/2025/06/24/ner_cpt_pipeline_en.html) | Maps to CPT codes |
-| [`ner_hcc_pipeline`](https://nlp.johnsnowlabs.com/2025/06/24/ner_hcc_pipeline_en.html) | Maps to HCC codes | [`ner_hgnc_pipeline`](http://nlp.johnsnowlabs.com/2025/06/24/ner_hgnc_pipeline_en.html) | Maps to HGNC codes |
-| [`ner_icd10cm_pipeline`](https://nlp.johnsnowlabs.com/2025/06/24/ner_icd10cm_pipeline_en.html) | Maps to ICD-10CM codes | [`ner_icd10pcs_pipeline`](https://nlp.johnsnowlabs.com/2025/06/24/ner_icd10pcs_pipeline_en.html) | Maps to ICD-10-PCS codes |
-| [`ner_icdo_pipeline`](https://nlp.johnsnowlabs.com/2025/06/24/ner_icdo_pipeline_en.html) | Maps to ICD-O codes | [`ner_loinc_pipeline`](https://nlp.johnsnowlabs.com/2025/06/24/ner_loinc_pipeline_en.html) | Maps to LOINC codes |
-| [`ner_mesh_pipeline`](https://nlp.johnsnowlabs.com/2025/06/24/ner_mesh_pipeline_en.html) | Maps to MESH codes | [`ner_ncit_pipeline`](https://nlp.johnsnowlabs.com/2025/06/24/ner_ncit_pipeline_en.html) | Maps to NCI-t codes |
-| [`ner_ndc_pipeline`](https://nlp.johnsnowlabs.com/2025/06/24/ner_ndc_pipeline_en.html) | Maps to NDC codes | [`ner_rxcui_pipeline`](https://nlp.johnsnowlabs.com/2025/06/24/ner_rxcui_pipeline_en.html) | Maps to RxCUI codes |
-| [`ner_rxnorm_pipeline`](https://nlp.johnsnowlabs.com/2025/06/24/ner_rxnorm_pipeline_en.html) | Maps to RxNorm codes | [`ner_hcpcs_pipeline`](https://nlp.johnsnowlabs.com/2025/06/25/ner_hcpcs_pipeline_en.html) | Maps to HCPCS codes |
-| [`ner_hpo_pipeline`](https://nlp.johnsnowlabs.com/2025/06/25/ner_hpo_pipeline_en.html) | Maps to HPO codes | [`ner_meddra_llt_pipeline`](https://nlp.johnsnowlabs.com/2025/06/25/ner_meddra_llt_pipeline_en.html) | Maps to MedDRA - Lowest Level Term (LLT) codes |
-| [`ner_meddra_pt_pipeline`](https://nlp.johnsnowlabs.com/2025/06/25/ner_meddra_pt_pipeline_en.html) | Maps to MedDRA PT (Preferred Term) codes | [`ner_snomed_auxConcepts_findings_pipeline`](https://nlp.johnsnowlabs.com/2025/06/25/ner_snomed_auxConcepts_findings_pipeline_en.html) | Maps to SNOMED (Findings and Concepts) codes |
-| [`ner_snomed_auxConcepts_pipeline`](https://nlp.johnsnowlabs.com/2025/06/25/ner_snomed_auxConcepts_pipeline_en.html) | Maps to SNOMED Concept codes | [`ner_snomed_bodyStructure_pipeline`](https://nlp.johnsnowlabs.com/2025/06/25/ner_snomed_bodyStructure_pipeline_en.html) | Maps to SNOMED (Body Structure) codes |
-| [`ner_snomed_conditions_pipeline`](https://nlp.johnsnowlabs.com/2025/06/25/ner_snomed_conditions_pipeline_en.html) | Maps to SNOMED Conditions codes | [`ner_snomed_drug_pipeline`](https://nlp.johnsnowlabs.com/2025/06/25/ner_snomed_drug_pipeline_en.html) | Maps to SNOMED Drug codes |
-| [`ner_snomed_findings_pipeline`](https://nlp.johnsnowlabs.com/2025/06/25/ner_snomed_findings_pipeline_en.html) | Maps to SNOMED (Clinical Findings) codes | [`ner_snomed_procedures_measurements_pipeline`](https://nlp.johnsnowlabs.com/2025/06/25/ner_snomed_procedures_measurements_pipeline_en.html) | Maps to SNOMED (Procedures and Measurements) codes |
-| [`ner_snomed_term_pipeline`](https://nlp.johnsnowlabs.com/2025/06/25/ner_snomed_term_pipeline_en.html) | Maps to SNOMED (Findings and Concepts) codes | [`ner_umls_clinical_drugs_pipeline`](https://nlp.johnsnowlabs.com/2025/06/25/ner_umls_clinical_drugs_pipeline_en.html) | Maps to UMLS CUI (Clinical Drug) codes |
-| [`ner_umls_clinical_findings_pipeline`](https://nlp.johnsnowlabs.com/2025/06/25/ner_umls_clinical_findings_pipeline_en.html) | Maps to UMLS CUI codes | [`ner_umls_disease_syndrome_pipeline`](https://nlp.johnsnowlabs.com/2025/06/25/ner_umls_disease_syndrome_pipeline_en.html) | Maps to UMLS CUI (Disease or Syndrome) codes |
-| [`ner_umls_drug_substance_pipeline`](https://nlp.johnsnowlabs.com/2025/06/25/ner_umls_drug_substance_pipeline_en.html) | Maps to UMLS CUI (Drug & Substance) codes | [`ner_umls_major_concepts_pipeline`](https://nlp.johnsnowlabs.com/2025/06/25/ner_umls_major_concepts_pipeline_en.html) | Maps to 4 major categories of UMLS CUI codes |
-| [`ner_ade_age_meddra_test_pipeline`](https://nlp.johnsnowlabs.com/2025/06/29/ner_ade_age_meddra_test_pipeline_en.html) | Extracts Age, Age Groups, ADE, MedDRA codes, Laboratory Tests and Results, Medical History, and Administory information |
+| Model Name                                                            |      Description            |
+|-----------------------------------------------------------------------|-----------------------------|
+| [`hpo_mapper_pipeline_v3`](https://nlp.johnsnowlabs.com/2025/08/07/hpo_mapper_pipeline_v3_en.html) | Designed to extract phenotype-related entities from clinical or biomedical text, map them to their corresponding Human Phenotype Ontology (HPO) codes, and determine their assertion status |
+| [`ner_docwise_benchmark_medium`](https://nlp.johnsnowlabs.com/2025/07/31/ner_docwise_benchmark_medium_en.html) | This pipeline can be used to extract PHI information such as ‘CONTACT’, ‘DATE’, ‘ID’, ‘LOCATION’, ‘PROFESSION’, ‘DOCTOR’, ‘EMAIL’, ‘PATIENT’, ‘URL’, ‘USERNAME’, ‘CITY’, ‘COUNTRY’, ‘DLN’, ‘HOSPITAL’, ‘IDNUM’, ‘LOCATION_OTHER’, ‘MEDICALRECORD’, ‘STATE’, ‘STREET’, ‘ZIP’, ‘AGE’, ‘PHONE’, ‘ORGANIZATION’, ‘SSN’, ‘ACCOUNT’, ‘PLATE’, ‘VIN’, ‘LICENSE’, and ‘IP’ entities. |
+| [`ner_docwise_benchmark_large`](https://nlp.johnsnowlabs.com/2025/07/31/ner_docwise_benchmark_large_en.html) | This pipeline can be used to extract PHI information such as ‘CONTACT’, ‘DATE’, ‘ID’, ‘LOCATION’, ‘PROFESSION’, ‘DOCTOR’, ‘EMAIL’, ‘PATIENT’, ‘URL’, ‘USERNAME’, ‘CITY’, ‘COUNTRY’, ‘DLN’, ‘HOSPITAL’, ‘IDNUM’, ‘LOCATION_OTHER’, ‘MEDICALRECORD’, ‘STATE’, ‘STREET’, ‘ZIP’, ‘AGE’, ‘PHONE’, ‘ORGANIZATION’, ‘SSN’, ‘ACCOUNT’, ‘PLATE’, ‘VIN’, ‘LICENSE’, and ‘IP’ entities. |
+| [`clinical_deidentification_docwise_benchmark_medium`](https://nlp.johnsnowlabs.com/2025/07/31/clinical_deidentification_docwise_benchmark_medium_en.html) | This pipeline can be used to extract PHI information such as ‘CONTACT’, ‘DATE’, ‘ID’, ‘LOCATION’, ‘PROFESSION’, ‘DOCTOR’, ‘EMAIL’, ‘PATIENT’, ‘URL’, ‘USERNAME’, ‘CITY’, ‘COUNTRY’, ‘DLN’, ‘HOSPITAL’, ‘IDNUM’, ‘LOCATION_OTHER’, ‘MEDICALRECORD’, ‘STATE’, ‘STREET’, ‘ZIP’, ‘AGE’, ‘PHONE’, ‘ORGANIZATION’, ‘SSN’, ‘ACCOUNT’, ‘PLATE’, ‘VIN’, ‘LICENSE’, and ‘IP’ entities. |
+| [`clinical_deidentification_docwise_benchmark_large`](https://nlp.johnsnowlabs.com/2025/07/25/clinical_deidentification_docwise_benchmark_large_en.html) | This pipeline can be used to extract PHI information such as ‘CONTACT’, ‘DATE’, ‘ID’, ‘LOCATION’, ‘PROFESSION’, ‘DOCTOR’, ‘EMAIL’, ‘PATIENT’, ‘URL’, ‘USERNAME’, ‘CITY’, ‘COUNTRY’, ‘DLN’, ‘HOSPITAL’, ‘IDNUM’, ‘LOCATION_OTHER’, ‘MEDICALRECORD’, ‘STATE’, ‘STREET’, ‘ZIP’, ‘AGE’, ‘PHONE’, ‘ORGANIZATION’, ‘SSN’, ‘ACCOUNT’, ‘PLATE’, ‘VIN’, ‘LICENSE’, and ‘IP’ entities. |
+
 
 
 *Example*:
 
 ```python
-ner_pipeline = PretrainedPipeline("ner_atc_pipeline", "en", "clinical/models")
+from sparknlp.pretrained import PretrainedPipeline
 
-result = ner_pipeline.annotate("""
-The patient was prescribed Albuterol inhaler when needed. She was seen by the endocrinology service, prescribed Avandia 4 mg at nights,
-Coumadin 5 mg with meals, Metformin 100 mg two times a day, and a daily dose of Lisinopril 10 mg.
+pipeline = PretrainedPipeline("hpo_mapper_pipeline_v3", "en", "clinical/models")
+
+result = pipeline.fullAnnotate("""APNEA: Presumed apnea of prematurity since < 34 wks gestation at birth.
+HYPERBILIRUBINEMIA: At risk for hyperbilirubinemia d/t prematurity.
+1/25-1/30: Received Amp/Gent while undergoing sepsis evaluation.
+Mother is A+, GBS unknown, and infant delivered
+for decreasing fetal movement and preeclampsia.
+Long finger and toes detected.
+he has a increased overbite expression.
 """)
 ```
 
 *Result*:
 
 {:.table-model-big}
-|   | chunks            | begin | end | entities |
-|---|-------------------|-------|-----|----------|
-| 0 | Albuterol inhaler |    28 |  44 | DRUG     |
-| 1 | Avandia 4 mg      |   113 | 124 | DRUG     |
-| 2 | Coumadin 5 mg     |   137 | 149 | DRUG     |
-| 3 | Metformin 100 mg  |   163 | 178 | DRUG     |
-| 4 | Lisinopril 10 mg  |   217 | 232 | DRUG     |
-
-
-
-</div><div class="h3-box" markdown="1">
-
-#### Clinical Document Explanation One-Liner Pretrained Pipelines for Comprehensive Clinical Entity Analysis
-
-We introduce a sophisticated suite of domain-specific pretrained pipelines designed for comprehensive clinical document explanation and entity extraction. These advanced pipelines combine multiple state-of-the-art NER models and text matchers to provide detailed analysis and interpretation of clinical narratives across various medical specialties and use cases.
-
-Our explanation pipelines transform complex clinical documents into structured, interpretable data by automatically identifying and categorizing clinical entities, relationships, and contextual information. This enables healthcare professionals and researchers to quickly understand and analyze clinical content without manual review, significantly improving efficiency in clinical documentation processing.
-
-{:.table-model-big}
-| Model Name |      Description            |
-|------------|-----------------------------|
-| [`explain_clinical_doc_generic_light`](https://nlp.johnsnowlabs.com/2025/06/26/explain_clinical_doc_generic_light_en.html) | Extracts PROBLEM, TEST, and TREATMENT entities with four clinical NER models. |
-| [`explain_clinical_doc_biomarker_light`](https://nlp.johnsnowlabs.com/2025/06/27/explain_clinical_doc_biomarker_light_en.html) | Extracts the biomarkers and their results with 3 NER models and a text matcher. |
-| [`explain_clinical_doc_medication_generic_light`](https://nlp.johnsnowlabs.com/2025/06/27/explain_clinical_doc_medication_generic_light_en.html) | Extract medication entities with 2 NER models and a text matcher. |
-| [`explain_clinical_doc_medication_light`](https://nlp.johnsnowlabs.com/2025/06/27/explain_clinical_doc_medication_light_en.html) | Extract medication entities with 2 NER models and a text matcher. |
-| [`explain_clinical_doc_mental_health_light`](https://nlp.johnsnowlabs.com/2025/06/27/explain_clinical_doc_mental_health_light_en.html) | Extract mental health-related clinical/medical entities with 2 NER models and a text matcher. |
-| [`explain_clinical_doc_oncology_light`](https://nlp.johnsnowlabs.com/2025/06/27/explain_clinical_doc_oncology_light_en.html) | Extract oncology-related clinical/medical entities with 4 NER models and 2 text matchers. |
-| [`explain_clinical_doc_public_health_light`](https://nlp.johnsnowlabs.com/2025/06/27/explain_clinical_doc_public_health_light_en.html) | Extract public health-related clinical/medical entities with 3 NER models and a text matcher. |
-| [`explain_clinical_doc_radiology_light`](https://nlp.johnsnowlabs.com/2025/06/27/explain_clinical_doc_radiology_light_en.html) | Extract radiology-related clinical/medical entities with 3 NER models. |
-| [`explain_clinical_doc_risk_factors_light`](https://nlp.johnsnowlabs.com/2025/06/27/explain_clinical_doc_risk_factors_light_en.html) | Extract entities that may be considered as risk factors with 3 NER models and 2 text matchers. |
-| [`explain_clinical_doc_sdoh_light`](https://nlp.johnsnowlabs.com/2025/06/27/explain_clinical_doc_sdoh_light_en.html) | Extract social determinants of health-related clinical/medical entities with 3 NER models and 2 text matchers. |
-| [`explain_clinical_doc_vop_light`](https://nlp.johnsnowlabs.com/2025/06/27/explain_clinical_doc_vop_light_en.html) | Extract clinical/medical entities with 3 NER models and 2 text matchers. |
-| [`explain_clinical_doc_ade_light`](https://nlp.johnsnowlabs.com/2025/06/30/explain_clinical_doc_ade_light_en.html) | Extract `ADE` and `DRUG` entities, and establish relations between the extracted `DRUG` and `ADE` results from the clinical documents. |
-| [`explain_clinical_doc_granular_light`](https://nlp.johnsnowlabs.com/2025/06/30/explain_clinical_doc_granular_light_en.html) | Extract clinical entities and establish relations between the extracted entities. |
-
-
-*Example*:
-
-```python
-ner_pipeline = PretrainedPipeline("explain_clinical_doc_generic_light", "en", "clinical/models")
-
-text = """A 65-year-old woman had a history of debulking surgery, bilateral oophorectomy with omentectomy, total anterior hysterectomy with radical pelvic lymph nodes dissection due to ovarian carcinoma (mucinous-type carcinoma, stage Ic) 1 year ago.
- The patient's medical compliance was poor and failed to complete her chemotherapy (cyclophosphamide 750 mg/m2, carboplatin 300 mg/m2). 
- Recently, she noted a palpable right breast mass, 15 cm in size which nearly occupied the whole right breast in 2 months. Core needle biopsy revealed metaplastic carcinoma.
- """
-
-result = ner_pipeline.annotate(text)
-```
-
-*Result*:
-
-{:.table-model-big}
-|    | chunks                                |begin | end | entities       |
-|----|---------------------------------------|------|-----|----------------|
-|  0 | debulking surgery                     |   37 |  53 | TREATMENT      |
-|  1 | bilateral oophorectomy                |   56 |  77 | CANCER_SURGERY |
-|  2 | omentectomy                           |   84 |  94 | TREATMENT      |
-|  3 | total anterior hysterectomy           |   98 | 124 | TREATMENT      |
-|  4 | radical pelvic lymph nodes dissection |  131 | 167 | TREATMENT      |
-|  5 | ovarian carcinoma                     |  176 | 192 | PROBLEM        |
-|  6 | mucinous-type carcinoma               |  195 | 217 | PROBLEM        |
-|  7 | stage Ic                              |  220 | 227 | PROBLEM        |
-|  8 | her chemotherapy                      |  308 | 323 | TREATMENT      |
-|  9 | cyclophosphamide                      |  326 | 341 | TREATMENT      |
-| 10 | carboplatin                           |  354 | 364 | TREATMENT      |
-| 11 | a palpable right breast mass          |  400 | 427 | PROBLEM        |
-| 12 | Core needle biopsy                    |  504 | 521 | TREATMENT      |
-| 13 | metaplastic carcinoma                 |  532 | 552 | PROBLEM        |
-
-
-
+|           matched_text|                ner_chunk|begin|end|assertion|  hpo_code|                                                                                                                                            hpo_parent|umls_mapping|         eom_mapping|                                                                                                                                          gene_disease|
+|-----------------------|-------------------------|-----|---|---------|----------|------------------------------------------------------------------------------------------------------------------------------------------------------|------------|--------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|
+|      apnea prematurity|     apnea of prematurity|   16| 35|  present|HP:0034236|HP:0002104: Apnea ## Lack of breathing with no movement of the respiratory muscles and no exchange of air in the lungs. This term refers to a dispo...|        NONE|                NONE|                                                                                                                                                  NONE|
+|     hyperbilirubinemia|       hyperbilirubinemia|  104|121|  present|HP:0002904|HP:0033479: Abnormal circulating bilirubin concentration ##  => HP:0010995: Abnormal circulating dicarboxylic acid concentration ## A dicarboxylic ...|    C1142335|                NONE|{"ADK": ["poor speech", "seizure", "hypotonia", "increased csf methionine concentration", "hepatic steatosis", "cholestasis", "muscle weakness", "a...|
+|                 sepsis|                   sepsis|  186|191|  present|HP:0100806|HP:0010978: Abnormality of immune system physiology ## A functional abnormality of the immune system. => HP:0002715: Abnormality of the immune syst...|        NONE|                NONE|{"ABCA3": ["honeycomb lung", "ground-glass opacification", "nonspecific interstitial pneumonia", "bronchial wall thickening", "sepsis", "clubbing",...|
+|decrease fetal movement|decreasing fetal movement|  257|281|  present|HP:0001558|HP:0001557: Prenatal movement abnormality ## Fetal movements generally become apparent during the second trimester of pregnancy around the 20th wee...|        NONE|                NONE|{"AARS1": ["distal muscle weakness", "limb dystonia", "bilateral sensorineural hearing impairment", "abnormality of prenatal development or birth",...|
+|           preeclampsia|             preeclampsia|  287|298|  present|HP:0100602|HP:0100603: Toxemia of pregnancy ## Pregnancy-induced toxic reactions of the mother that can be as harmless as slight Maternal hypertension or as l...|        NONE|                NONE|{"SLC25A20": ["reduced circulating 6-pyruvoyltetrahydropterin synthase activity", "reduced tissue carnitine-acylcarnitine translocase activity", "e...|
+|            Long finger|              Long finger|  301|311|  present|HP:0100807|HP:0001167: Abnormal finger morphology ## An anomaly of a finger. => HP:0001155: Abnormality of the hand ## An abnormality affecting one or both ha...|        NONE|EOM:41535e8ed3dc9076|{"BIN1": ["distal muscle weakness", "exercise-induced myalgia", "proximal muscle weakness", "generalized amyotrophy", "generalized hypotonia", "lon...|
+|     increased overbite|       increased overbite|  341|358|  present|HP:0011094|HP:0000692: Tooth malposition ## Abnormal alignment, positioning, or spacing of the teeth, i.e., misaligned teeth. => HP:0000164: Abnormality of th...|        NONE|                NONE|{"EP300": ["adducted thumb", "syndactyly", "trichiasis", "simple ear", "spina bifida", "sporadic", "panic attack", "generalized hypotonia", "agenes...|
 
 
 </div><div class="h3-box" markdown="1">
 
-#### New NER Model and Pipeline About Vaccinations and Infectious Diseases
+#### **Various core improvements**: Bug fixes, enhanced overall robustness and reliability of Healthcare NLP
 
-The new vaccination NER models are specialized for extracting comprehensive vaccine-related information from clinical and medical texts. These models go beyond basic vaccine identification to capture the full vaccination context, including disease relationships and vaccine characteristics.
-
-{:.table-model-big}
-| Model Name |      Description            |
-|------------|-----------------------------|
-| [`ner_vaccine_types`](https://nlp.johnsnowlabs.com/2025/07/14/ner_vaccine_types_en.html) | Extract vaccine and related disease/symptom entities from clinical/medical texts. |
-| [`ner_vaccine_types_pipeline`](https://nlp.johnsnowlabs.com/2025/07/14/ner_vaccine_types_pipeline_en.html) | Extract types of vaccines and related disease/symptom entities from clinical/medical texts. |
-
-
-
-*Example*:
-
-```python
-ner_model = MedicalNerModel.pretrained("ner_vaccine_types", "en", "clinical/models")\
-    .setInputCols(["sentence", "token", "embeddings"])\
-    .setOutputCol("ner")
-
-sample_texts = ["""
-On May 14, 2023, a 57-year-old female presented with fever, joint pain, and fatigue three days after receiving her third dose of the Shingrix vaccine.
-Her history includes rheumatoid arthritis, managed with immunosuppressants, and prior breast cancer in remission. 
-She previously received Gardasil 9, an HPV vaccine, and the hepatitis B recombinant vaccine series in 2020. 
-Notably, she developed mild aches following her annual influenza shot, which is an inactivated vaccine."""
-]
-
-data = spark.createDataFrame(sample_texts, StringType()).toDF("text")
-```
-
-*Result*:
-
-{:.table-model-big}
-|sent_id|chunk               |begin|end|entities              |
-|-------|--------------------|-----|---|----------------------|
-|0      |May 14, 2023        |4    |15 |Date                  |
-|0      |57-year-old         |20   |30 |Age                   |
-|0      |fever               |54   |58 |Sign_Symptom          |
-|0      |joint pain          |61   |70 |Sign_Symptom          |
-|0      |fatigue             |77   |83 |Sign_Symptom          |
-|0      |third dose          |116  |125|Vax_Dose              |
-|0      |Shingrix            |134  |141|Viral_Vax             |
-|0      |vaccine             |143  |149|Adaptive_Immunity     |
-|1      |rheumatoid arthritis|174  |193|Other_Disease_Disorder|
-|1      |breast cancer       |239  |251|Other_Disease_Disorder|
-|2      |Gardasil            |292  |301|Viral_Vax             |
-|2      |HPV                 |307  |309|Infectious_Disease    |
-|2      |vaccine             |311  |317|Adaptive_Immunity     |
-|2      |hepatitis B         |328  |338|Infectious_Disease    |
-|2      |recombinant         |340  |350|Other_Vax             |
-|2      |vaccine             |352  |358|Adaptive_Immunity     |
-|2      |2020                |370  |373|Date                  |
-|3      |aches               |405  |409|Sign_Symptom          |
-|3      |influenza           |432  |440|Infectious_Disease    |
-|3      |inactivated         |460  |470|Inactivated           |
-|3      |vaccine             |472  |478|Adaptive_Immunity     |
-
+- **Model Size Display**: Added the ability to display the model size when using `pretrained` functions, providing better insight into resource requirements before loading.
+- **AssertionLogRegModel Enhancements**: Introduced `ner_chunk`, `ner_label`, and `confidence` metadata fields  to `AssertionLogRegModel`, aligning it with other assertion annotators and enabling improved traceability of processed chunks.
+- **DeIdentificationModel Save/Load Fix**: Resolved a persistence issue that affected saving and loading in `DeIdentificationModel`, ensuring models can be reliably saved and restored without loss of functionality.
 
 </div><div class="h3-box" markdown="1">
 
-#### New Blog Posts on Various Topics
+#### Updated Notebooks And Demonstrations For making Spark NLP For Healthcare Easier To Navigate And Understand
 
-- [Beyond Named Entity Recognition: A Comprehensive NLP Framework for HPO Phenotype Classification](https://www.johnsnowlabs.com/beyond-named-entity-recognition-a-comprehensive-nlp-framework-for-hpo-phenotype-classification/) Human phenotypes, observable traits, and clinical abnormalities like “short stature” or “muscle weakness” are crucial in diagnosing diseases, especially in rare and genetic conditions. However, these phenotypes are often buried in unstructured clinical text. To address this, we built an NLP pipeline using John Snow Labs’ Healthcare NLP & LLM library that automatically extracts phenotype mentions, determines their assertion status (e.g., present, absent, etc.), and maps them to standardized Human Phenotype Ontology (HPO) codes, which provides a structured vocabulary used worldwide in genomics and precision medicine. This pipeline enables scalable, accurate phenotypic data extraction for research and clinical applications.
-
-</div><div class="h3-box" markdown="1">
-
-#### Various Core Improvements: Bug Fixes, Enhanced Overall Robustness, and Reliability of Healthcare NLP
-
-- Closed ONNX tensors for better memory management in `BertForAssertionClassification`  
-- Fixed an issue in `TextMatcherInternal` where `null` values could appear in the output due to race conditions during parallel processing.
-- Resolved a bug in `PretrainedZeroShotNER` that caused an `emptyIterator` exception in certain edge cases when processing empty or malformed input.
-- Improved Geo-consistency algorithm in `Deidentification` to handle geo entities if skipped
-
-</div><div class="h3-box" markdown="1">
-
-#### Updated Notebooks and Demonstrations for making Healthcare NLP Easier to Navigate and Understand
-
-- New [Deidentification NER Profiling Pipeline](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/04.12.Deidentification_NER_Profiling_Pipeline.ipynb) Notebook
-- New [Annotation Converter](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/50.Annotation_Converter.ipynb) Notebook 
-- Updated [Pretrained NER Profiling Pipelines](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/07.1.Pretrained_NER_Profiling_Pipelines.ipynb) Notebook
-- Updated [Clinical Deidentification Improvement](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/04.4.Clinical_Deidentification_Improvement.ipynb) Notebook
-
+- New [Deidentification Model Evaluation](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.12.Deidentification_Model_Evaluation.ipynb) Notebook
+- New [Metadata Annotation Converter](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/MetadataAnnotationConverter.ipynb) MOOC Notebook
+- New [Multi Modal LLMs](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/46.1.Multi_Modal_LLMs.ipynb) Notebook
+- Updated [Chunk Mapping](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/26.Chunk_Mapping.ipynb) Notebook
+- Updated [Clinical Deidentification Improvement](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.4.Clinical_Deidentification_Improvement.ipynb) Notebook
+- Updated [Loading Medical and Open Souce LLMs](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/46.Loading_Medical_and_Open-Souce_LLMs.ipynb) Notebook
 
 </div><div class="h3-box" markdown="1">
 
 #### We Have Added And Updated A Substantial Number Of New Clinical Models And Pipelines, Further Solidifying Our Offering In The Healthcare Domain.
 
-+ `jsl_meds_ner_openvino_q4_v4`
-+ `jsl_meds_ner_openvino_q8_v4`
-+ `jsl_meds_ner_openvino_q16_v4`
-+ `jsl_meds_ner_q4_v4`
-+ `jsl_meds_ner_q8_v4`
-+ `jsl_meds_ner_q16_v4`
-+ `ner_deid_docwise_benchmark_optimized`
-+ `ner_profiling_deidentification`
-+ `ner_atc_pipeline`
-+ `ner_cpt_pipeline`
-+ `ner_hcc_pipeline`
-+ `ner_hgnc_pipeline`
-+ `ner_icd10cm_pipeline`
-+ `ner_icd10pcs_pipeline`
-+ `ner_icdo_pipeline`
-+ `ner_loinc_pipeline`
-+ `ner_mesh_pipeline`
-+ `ner_ncit_pipeline`
-+ `ner_ndc_pipeline`
-+ `ner_rxcui_pipeline`
-+ `ner_rxnorm_pipeline`
-+ `ner_hcpcs_pipeline`
-+ `ner_hpo_pipeline`
-+ `ner_meddra_llt_pipeline`
-+ `ner_meddra_pt_pipeline`
-+ `ner_snomed_auxConcepts_findings_pipeline`
-+ `ner_snomed_auxConcepts_pipeline`
-+ `ner_snomed_bodyStructure_pipeline`
-+ `ner_snomed_conditions_pipeline`
-+ `ner_snomed_drug_pipeline`
-+ `ner_snomed_findings_pipeline`
-+ `ner_snomed_procedures_measurements_pipeline`
-+ `ner_snomed_term_pipeline`
-+ `ner_umls_clinical_drugs_pipeline`
-+ `ner_umls_clinical_findings_pipeline`
-+ `ner_umls_disease_syndrome_pipeline`
-+ `ner_umls_drug_substance_pipeline`
-+ `ner_umls_major_concepts_pipeline`
-+ `explain_clinical_doc_generic_light`
-+ `explain_clinical_doc_biomarker_light`
-+ `explain_clinical_doc_medication_generic_light`
-+ `explain_clinical_doc_medication_light`
-+ `explain_clinical_doc_mental_health_light`
-+ `explain_clinical_doc_oncology_light`
-+ `explain_clinical_doc_public_health_light`
-+ `explain_clinical_doc_radiology_light`
-+ `explain_clinical_doc_risk_factors_light`
-+ `explain_clinical_doc_sdoh_light`
-+ `explain_clinical_doc_vop_light`
-+ `explain_clinical_doc_ade_light`
-+ `explain_clinical_doc_granular_light`
-+ `ner_ade_age_meddra_test_pipeline`
-+ `ner_vaccine_types`
-+ `ner_vaccine_types_pipeline`
-+ `assertion_bert_classification_clinical_onnx`
-+ `assertion_bert_classification_jsl_onnx`
-+ `assertion_bert_classification_oncology_onnx`
-+ `assertion_bert_classification_radiology_onnx`
++ `jsl_meds_vlm_2b_q16_v1`
++ `jsl_meds_vlm_2b_q8_v1`
++ `jsl_meds_vlm_2b_q4_v1`
++ `jsl_meds_vlm_2b_q16_v2`
++ `jsl_meds_vlm_2b_q8_v2`
++ `jsl_meds_vlm_2b_q4_v2`
++ `jsl_meds_4b_q16_v4`
++ `jsl_meds_4b_q8_v4`
++ `jsl_meds_4b_q4_v4`
++ `jsl_meds_4b_q16_v5`
++ `jsl_meds_4b_q8_v5`
++ `jsl_meds_4b_q4_v5`
++ `jsl_meds_8b_q16_v4`
++ `jsl_meds_8b_q8_v4`
++ `jsl_meds_8b_q4_v4`
++ `jsl_meds_vlm_3b_q16_v1`
++ `jsl_meds_vlm_3b_q8_v1`
++ `jsl_meds_vlm_3b_q4_v1`
++ `jsl_meds_vlm_2b_q16_v1`
++ `jsl_meds_vlm_2b_q8_v1`
++ `jsl_meds_vlm_2b_q4_v1`
++ `jsl_meds_vlm_2b_q16_v2`
++ `jsl_meds_vlm_2b_q8_v2`
++ `jsl_meds_vlm_2b_q4_v2`
++ `gene_disease_mapper`
++ `gene_hpo_code_mapper`
++ `hpo_code_eom_mapper`
++ `hpo_code_gene_mapper`
++ `hpo_umls_mapper`
++ `umls_hpo_mapper`
++ `hpo_code_gene_disease_mapper`
++ `hpo_mapper_pipeline_v3`
++ `ner_docwise_benchmark_medium`
++ `ner_docwise_benchmark_large`
++ `clinical_deidentification_docwise_benchmark_medium`
++ `clinical_deidentification_docwise_benchmark_large`
+
 
 
 </div><div class="h3-box" markdown="1">

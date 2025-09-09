@@ -13,6 +13,27 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
+## 08-17-2025
+
+### Model Updates
+
+We’re excited to announce that an updated versions of our Medical-Reasoning-LLM-32B models is now available, delivering significant accuracy improvements across key medical benchmarks.
+
+#### Specifications
+
+| **Model Name**             | **Parameters** | **Recommended GPU Memory** | **Max Sequence Length** | **Model Size** | **Max KV-Cache** | **Tensor Parallel Sizes** |
+|---------------------------|--------------|------------------|-------------------|-------------|----------------|------------------------|
+| Medical-Reasoning-LLM-32B | 32B         | ~111 GB          | 40K               | 61 GB       | 50 GB          | 2, 4, 8               |
+
+#### Benchmark Accuracy Comparison with previous versions
+
+Medical-Reasoning-LLM-32B leads with refined gains in:
+
+- Clinical Knowledge: Improved from 86.66% to 87.04% — a +0.38 point increase
+- Professional Medicine: Improved from 89.24% to 90.07% — a +0.83 point increase
+- Medical Genetics: Improved from 92.0% to 93.0% — a +1.0 point increase
+
+
 ## 07-17-2025
 
 ### Model Updates
@@ -35,7 +56,7 @@ We're excited to announce that updated versions of our Medical-LLM-8B, Medical-L
 
 
 
-#### Benchmark Accuracy Comparison wiht previous versions
+#### Benchmark Accuracy Comparison with previous versions
 
 * Medical-LLM-8B shows a notable boost in Anatomy (8.88 pts), Clinical Knowledge (6.41 pts), and College Medicine (9.83 pts).
 * Medical-LLM-Small delivers higher precision in Anatomy (6.7 pts), College Biology (3.12 pts), while maintaining top-tier performance in compact deployments
@@ -81,12 +102,10 @@ We are excited to announce the launch of the on premise deplyment of our Medical
 | **Model Name** | **Parameters** | **Recommended GPU Memory** | **Max Sequence Length** | **Model Size** | **Max KV-Cache** | **Tensor Parallel Sizes** |
 |----------------------------|------------|--------------|---------------------|------------|--------------|----------------------|
 | Medical-LLM-7B             | 7B         | ~25 GB       | 32K                 | 14 GB      | 11 GB        | 1, 2, 4              |
-| Medical-LLM-10B            | 10B        | ~35 GB       | 32K                 | 19 GB      | 15 GB        | 1, 2, 4              |
 | Medical-LLM-14B            | 14B        | ~40 GB       | 16K                 | 27 GB      | 13 GB        | 1, 2                 |
 | Medical-LLM-24B            | 24B        | ~69 GB       | 32K                 | 44 GB      | 25 GB        | 1, 2, 4, 8           |
 | Medical-LLM-Small          | 14B        | ~58 GB       | 32K                 | 28 GB      | 30 GB        | 1, 2, 4, 8           |
 | Medical-LLM-Medium         | 70B        | ~452 GB      | 128K                | 131 GB     | 320 GB       | 4, 8                 |
-| Medical-Reasoning-LLM-14B  | 14B        | ~58 GB       | 32K                 | 28 GB      | 30 GB        | 1, 2, 4, 8           |
 | Medical-Reasoning-LLM-32B  | 32B        | ~222 GB      | 128K                | 61 GB      | 160 GB       | 2, 4, 8              |
 
 </div>

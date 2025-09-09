@@ -22,7 +22,7 @@ This pretrained pipeline maps extracted entities in the German language to ICD-1
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
-<button class="button button-orange" disabled>Open in Colab</button>
+[Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/07.0.Pretrained_Clinical_Pipelines.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/icd10gm_resolver_pipeline_de_4.4.4_3.0_1688200760355.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/icd10gm_resolver_pipeline_de_4.4.4_3.0_1688200760355.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 

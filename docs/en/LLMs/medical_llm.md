@@ -21,12 +21,9 @@ Our models are designed to deliver best-in-class performance across a wide range
 | **Model Name** | **Parameters** | **Recommended GPU Memory** | **Max Sequence Length** | **Model Size** | **Max KV-Cache** | **Tensor Parallel Sizes** |
 |----------------------------|------------|--------------|---------------------|------------|--------------|----------------------|
 | Medical-LLM-8B             | 8B         | ~38 GB       | 40K                 | 15 GB      | 23 GB        | 1, 2, 4, 8           |
-| Medical-LLM-10B            | 10B        | ~35 GB       | 32K                 | 19 GB      | 15 GB        | 1, 2, 4              |
 | Medical-LLM-14B            | 14B        | ~40 GB       | 16K                 | 27 GB      | 13 GB        | 1, 2                 |
-| Medical-LLM-24B            | 24B        | ~69 GB       | 32K                 | 44 GB      | 25 GB        | 1, 2, 4, 8           |
 | Medical-LLM-Small          | 14B        | ~59 GB       | 40K                 | 28 GB      | 31 GB        | 1, 2, 4, 8           |
 | Medical-LLM-Medium         | 70B        | ~452 GB      | 128K                | 131 GB     | 320 GB       | 4, 8                 |
-| Medical-Reasoning-LLM-14B  | 14B        | ~58 GB       | 32K                 | 28 GB      | 30 GB        | 1, 2, 4, 8           |
 | Medical-Reasoning-LLM-32B  | 32B        | ~111 GB      | 40K                 | 61 GB      | 50 GB        | 2, 4, 8              |
 | Medical-VLM-24B            | 24B        | ~145 GB      | 128K                | 45 GB      | 100 GB       | 2, 4, 8              |
 | Spanish-Medical-LLM-24B    | 24B        | ~145 GB      | 128K                | 45 GB      | 100 GB       | 2, 4, 8              |
@@ -144,14 +141,6 @@ One of the standout features of John Snow Labs' Medical LLMs is their efficiency
  - Medical reasoning at 90% matches Med-PaLM-2’s performance
  - Higher accuracy than Meditron-70B while using 5x less parameters
  - Suitable for deployment scenarios with compute constraints
-
-**Medical-LLM – 10B**
-
- - Average score of 75.19% across medical benchmarks
- - Clinical analysis score of 88.19% vs Med-PaLM-1’s 83.8%
- - Medical Genetics score of 82% vs Med-PaLM-1’s 75%
- - Comparable performance to models requiring 7x more parameters
- - Balanced option for resource-conscious implementations
 
 **Medical-LLM – 8B**
 

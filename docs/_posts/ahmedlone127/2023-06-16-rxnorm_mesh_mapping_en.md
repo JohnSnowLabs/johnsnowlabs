@@ -26,7 +26,7 @@ This pretrained pipeline maps RxNorm codes to MeSH codes without using any text 
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
-<button class="button button-orange" disabled>Open in Colab</button>
+[Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/06.1.Code_Mapping_Pipelines.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/rxnorm_mesh_mapping_en_4.4.4_3.4_1686921695964.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/rxnorm_mesh_mapping_en_4.4.4_3.4_1686921695964.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 

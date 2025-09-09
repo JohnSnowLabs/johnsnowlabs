@@ -385,6 +385,7 @@ document.write(`
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.medical_llm</span></code></a><input checked="" class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.medical_llm.medical_llm</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../medical_vision_llm/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.medical_llm.medical_vision_llm</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../merge/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.merge</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -669,6 +670,11 @@ according to your hardware to avoid out-of-memory errors.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.disableLog">
+<span class="sig-name descname"><span class="pre">disableLog</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.disableLog" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.disableTokenIds">
 <span class="sig-name descname"><span class="pre">disableTokenIds</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.disableTokenIds" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -714,16 +720,6 @@ according to your hardware to avoid out-of-memory errors.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.grpAttnN">
-<span class="sig-name descname"><span class="pre">grpAttnN</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.grpAttnN" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.grpAttnW">
-<span class="sig-name descname"><span class="pre">grpAttnW</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.grpAttnW" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.ignoreEos">
 <span class="sig-name descname"><span class="pre">ignoreEos</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.ignoreEos" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -744,11 +740,6 @@ according to your hardware to avoid out-of-memory errors.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.inputPrefixBos">
-<span class="sig-name descname"><span class="pre">inputPrefixBos</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.inputPrefixBos" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.inputSuffix">
 <span class="sig-name descname"><span class="pre">inputSuffix</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.inputSuffix" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -759,13 +750,8 @@ according to your hardware to avoid out-of-memory errors.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.lookupCacheDynamicFilePath">
-<span class="sig-name descname"><span class="pre">lookupCacheDynamicFilePath</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.lookupCacheDynamicFilePath" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.lookupCacheStaticFilePath">
-<span class="sig-name descname"><span class="pre">lookupCacheStaticFilePath</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.lookupCacheStaticFilePath" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.logVerbosity">
+<span class="sig-name descname"><span class="pre">logVerbosity</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.logVerbosity" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -814,11 +800,6 @@ according to your hardware to avoid out-of-memory errors.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.nChunks">
-<span class="sig-name descname"><span class="pre">nChunks</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.nChunks" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.nCtx">
 <span class="sig-name descname"><span class="pre">nCtx</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.nCtx" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -854,11 +835,6 @@ according to your hardware to avoid out-of-memory errors.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.nSequences">
-<span class="sig-name descname"><span class="pre">nSequences</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.nSequences" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.nThreads">
 <span class="sig-name descname"><span class="pre">nThreads</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.nThreads" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -866,16 +842,6 @@ according to your hardware to avoid out-of-memory errors.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.nThreadsBatch">
 <span class="sig-name descname"><span class="pre">nThreadsBatch</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.nThreadsBatch" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.nThreadsBatchDraft">
-<span class="sig-name descname"><span class="pre">nThreadsBatchDraft</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.nThreadsBatchDraft" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.nThreadsDraft">
-<span class="sig-name descname"><span class="pre">nThreadsDraft</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.nThreadsDraft" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -911,11 +877,6 @@ according to your hardware to avoid out-of-memory errors.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.outputCol">
 <span class="sig-name descname"><span class="pre">outputCol</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.outputCol" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.pSplit">
-<span class="sig-name descname"><span class="pre">pSplit</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.pSplit" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -986,11 +947,6 @@ according to your hardware to avoid out-of-memory errors.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.temperature">
 <span class="sig-name descname"><span class="pre">temperature</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.temperature" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.tensorSplit">
-<span class="sig-name descname"><span class="pre">tensorSplit</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.tensorSplit" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -1186,6 +1142,12 @@ default value. Raises an error if neither is set.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.getSystemPrompt">
+<span class="sig-name descname"><span class="pre">getSystemPrompt</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.getSystemPrompt" title="Permalink to this definition">#</a></dt>
+<dd><p>Get the system prompt.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.hasDefault">
 <span class="sig-name descname"><span class="pre">hasDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Param</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.hasDefault" title="Permalink to this definition">#</a></dt>
 <dd><p>Checks whether a param has a default value.</p>
@@ -1312,6 +1274,12 @@ Spark NLPs repositories otherwise.</p></li>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setDisableLog">
+<span class="sig-name descname"><span class="pre">setDisableLog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">disableLog</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setDisableLog" title="Permalink to this definition">#</a></dt>
+<dd><p>Whether to disable logging</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setDisableTokenIds">
 <span class="sig-name descname"><span class="pre">setDisableTokenIds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">disableTokenIds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setDisableTokenIds" title="Permalink to this definition">#</a></dt>
 <dd><p>Set the token ids to disable in the completion</p>
@@ -1327,12 +1295,6 @@ Spark NLPs repositories otherwise.</p></li>
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setDynamicTemperatureRange">
 <span class="sig-name descname"><span class="pre">setDynamicTemperatureRange</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dynamicTemperatureRange</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setDynamicTemperatureRange" title="Permalink to this definition">#</a></dt>
 <dd><p>Set the dynamic temperature range</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setEmbedding">
-<span class="sig-name descname"><span class="pre">setEmbedding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">embedding</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setEmbedding" title="Permalink to this definition">#</a></dt>
-<dd><p>Whether to load model with embedding support</p>
 </dd></dl>
 
 <dl class="py method">
@@ -1360,18 +1322,6 @@ Spark NLPs repositories otherwise.</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setGrpAttnN">
-<span class="sig-name descname"><span class="pre">setGrpAttnN</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">grpAttnN</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setGrpAttnN" title="Permalink to this definition">#</a></dt>
-<dd><p>Set the group-attention factor</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setGrpAttnW">
-<span class="sig-name descname"><span class="pre">setGrpAttnW</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">grpAttnW</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setGrpAttnW" title="Permalink to this definition">#</a></dt>
-<dd><p>Set the group-attention width</p>
-</dd></dl>
-
-<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setIgnoreEos">
 <span class="sig-name descname"><span class="pre">setIgnoreEos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ignoreEos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setIgnoreEos" title="Permalink to this definition">#</a></dt>
 <dd><p>Set whether to ignore end of stream token and continue generating (implies –logit-bias 2-inf)</p>
@@ -1395,12 +1345,6 @@ Spark NLPs repositories otherwise.</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setInputPrefixBos">
-<span class="sig-name descname"><span class="pre">setInputPrefixBos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputPrefixBos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setInputPrefixBos" title="Permalink to this definition">#</a></dt>
-<dd><p>Whether to add prefix BOS to user inputs, preceding the <cite>–in-prefix</cite> string</p>
-</dd></dl>
-
-<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setInputSuffix">
 <span class="sig-name descname"><span class="pre">setInputSuffix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputSuffix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setInputSuffix" title="Permalink to this definition">#</a></dt>
 <dd><p>Set a suffix for infilling</p>
@@ -1420,21 +1364,9 @@ RecursivePipeline</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setLookupCacheDynamicFilePath">
-<span class="sig-name descname"><span class="pre">setLookupCacheDynamicFilePath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lookupCacheDynamicFilePath</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setLookupCacheDynamicFilePath" title="Permalink to this definition">#</a></dt>
-<dd><p>Set path to dynamic lookup cache to use for lookup decoding (updated by generation)</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setLookupCacheStaticFilePath">
-<span class="sig-name descname"><span class="pre">setLookupCacheStaticFilePath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lookupCacheStaticFilePath</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setLookupCacheStaticFilePath" title="Permalink to this definition">#</a></dt>
-<dd><p>Set path to static lookup cache to use for lookup decoding (not updated by generation)</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setLoraAdapters">
-<span class="sig-name descname"><span class="pre">setLoraAdapters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loraAdapters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setLoraAdapters" title="Permalink to this definition">#</a></dt>
-<dd><p>Set LoRA adapters with their scaling factors</p>
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setLogVerbosity">
+<span class="sig-name descname"><span class="pre">setLogVerbosity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logVerbosity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setLogVerbosity" title="Permalink to this definition">#</a></dt>
+<dd><p>Set the log verbosity level</p>
 </dd></dl>
 
 <dl class="py method">
@@ -1492,12 +1424,6 @@ RecursivePipeline</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setNChunks">
-<span class="sig-name descname"><span class="pre">setNChunks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nChunks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setNChunks" title="Permalink to this definition">#</a></dt>
-<dd><p>Set the maximal number of chunks to process</p>
-</dd></dl>
-
-<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setNCtx">
 <span class="sig-name descname"><span class="pre">setNCtx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nCtx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setNCtx" title="Permalink to this definition">#</a></dt>
 <dd><p>Set the size of the prompt context</p>
@@ -1546,12 +1472,6 @@ RecursivePipeline</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setNSequences">
-<span class="sig-name descname"><span class="pre">setNSequences</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nSequences</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setNSequences" title="Permalink to this definition">#</a></dt>
-<dd><p>Set the number of sequences to decode</p>
-</dd></dl>
-
-<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setNThreads">
 <span class="sig-name descname"><span class="pre">setNThreads</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nThreads</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setNThreads" title="Permalink to this definition">#</a></dt>
 <dd><p>Set the number of threads to use during generation</p>
@@ -1561,18 +1481,6 @@ RecursivePipeline</p>
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setNThreadsBatch">
 <span class="sig-name descname"><span class="pre">setNThreadsBatch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nThreadsBatch</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setNThreadsBatch" title="Permalink to this definition">#</a></dt>
 <dd><p>Set the number of threads to use during batch and prompt processing</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setNThreadsBatchDraft">
-<span class="sig-name descname"><span class="pre">setNThreadsBatchDraft</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nThreadsBatchDraft</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setNThreadsBatchDraft" title="Permalink to this definition">#</a></dt>
-<dd><p>Set the number of threads to use during batch and prompt processing</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setNThreadsDraft">
-<span class="sig-name descname"><span class="pre">setNThreadsDraft</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nThreadsDraft</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setNThreadsDraft" title="Permalink to this definition">#</a></dt>
-<dd><p>Set the number of threads to use during draft generation</p>
 </dd></dl>
 
 <dl class="py method">
@@ -1591,6 +1499,14 @@ RecursivePipeline</p>
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setNumaStrategy">
 <span class="sig-name descname"><span class="pre">setNumaStrategy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">numaStrategy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setNumaStrategy" title="Permalink to this definition">#</a></dt>
 <dd><p>Set optimization strategies that help on some NUMA systems (if available)</p>
+<p>Possible values:</p>
+<ul class="simple">
+<li><p>DISABLED: No NUMA optimizations</p></li>
+<li><p>DISTRIBUTE: spread execution evenly over all</p></li>
+<li><p>ISOLATE: only spawn threads on CPUs on the node that execution started on</p></li>
+<li><p>NUMA_CTL: use the CPU map provided by numactl</p></li>
+<li><p>MIRROR: Mirrors the model across NUMA nodes</p></li>
+</ul>
 </dd></dl>
 
 <dl class="py method">
@@ -1602,12 +1518,6 @@ RecursivePipeline</p>
 <dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – Name of output column</p>
 </dd>
 </dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setPSplit">
-<span class="sig-name descname"><span class="pre">setPSplit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pSplit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setPSplit" title="Permalink to this definition">#</a></dt>
-<dd><p>Set the speculative decoding split probability</p>
 </dd></dl>
 
 <dl class="py method">
@@ -1642,6 +1552,13 @@ RecursivePipeline</p>
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setPoolingType">
 <span class="sig-name descname"><span class="pre">setPoolingType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">poolingType</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setPoolingType" title="Permalink to this definition">#</a></dt>
 <dd><p>Set the pooling type for embeddings, use model default if unspecified</p>
+<p>Possible values:</p>
+<ul class="simple">
+<li><p>MEAN: Mean Pooling</p></li>
+<li><p>CLS: CLS Pooling</p></li>
+<li><p>LAST: Last token pooling</p></li>
+<li><p>RANK: For reranked models</p></li>
+</ul>
 </dd></dl>
 
 <dl class="py method">
@@ -1677,7 +1594,13 @@ RecursivePipeline</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setRopeScalingType">
 <span class="sig-name descname"><span class="pre">setRopeScalingType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ropeScalingType</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setRopeScalingType" title="Permalink to this definition">#</a></dt>
-<dd><p>Set the RoPE frequency scaling method, defaults to linear unless specified by the model</p>
+<dd><p>Set the RoPE frequency scaling method, defaults to linear unless specified by the model.</p>
+<p>Possible values:</p>
+<ul class="simple">
+<li><p>NONE: Don’t use any scaling</p></li>
+<li><p>LINEAR: Linear scaling</p></li>
+<li><p>YARN: YaRN RoPE scaling</p></li>
+</ul>
 </dd></dl>
 
 <dl class="py method">
@@ -1700,20 +1623,14 @@ RecursivePipeline</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setSystemPrompt">
-<span class="sig-name descname"><span class="pre">setSystemPrompt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">systemPrompt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setSystemPrompt" title="Permalink to this definition">#</a></dt>
-<dd><p>Set a system prompt to use</p>
+<span class="sig-name descname"><span class="pre">setSystemPrompt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">systemPrompt</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setSystemPrompt" title="Permalink to this definition">#</a></dt>
+<dd><p>Set a system prompt to use.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setTemperature">
 <span class="sig-name descname"><span class="pre">setTemperature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">temperature</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setTemperature" title="Permalink to this definition">#</a></dt>
 <dd><p>Set the temperature</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setTensorSplit">
-<span class="sig-name descname"><span class="pre">setTensorSplit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensorSplit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setTensorSplit" title="Permalink to this definition">#</a></dt>
-<dd><p>Set how split tensors should be distributed across GPUs</p>
 </dd></dl>
 
 <dl class="py method">
@@ -1868,6 +1785,7 @@ RecursivePipeline</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.cachePrompt"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.cachePrompt</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.chatTemplate"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.chatTemplate</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.defragmentationThreshold"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.defragmentationThreshold</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.disableLog"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.disableLog</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.disableTokenIds"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.disableTokenIds</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.dynamicTemperatureExponent"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.dynamicTemperatureExponent</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.dynamicTemperatureRange"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.dynamicTemperatureRange</span></code></a></li>
@@ -1877,17 +1795,13 @@ RecursivePipeline</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.getter_attrs"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.getter_attrs</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.gpuSplitMode"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.gpuSplitMode</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.grammar"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.grammar</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.grpAttnN"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.grpAttnN</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.grpAttnW"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.grpAttnW</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.ignoreEos"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.ignoreEos</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.inputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.inputAnnotatorTypes</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.inputCols"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.inputCols</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.inputPrefix"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.inputPrefix</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.inputPrefixBos"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.inputPrefixBos</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.inputSuffix"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.inputSuffix</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.lazyAnnotator"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.lazyAnnotator</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.lookupCacheDynamicFilePath"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.lookupCacheDynamicFilePath</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.lookupCacheStaticFilePath"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.lookupCacheStaticFilePath</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.logVerbosity"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.logVerbosity</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.mainGpu"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.mainGpu</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.minKeep"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.minKeep</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.minP"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.minP</span></code></a></li>
@@ -1897,7 +1811,6 @@ RecursivePipeline</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.modelAlias"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.modelAlias</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.modelDraft"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.modelDraft</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.nBatch"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.nBatch</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.nChunks"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.nChunks</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.nCtx"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.nCtx</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.nDraft"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.nDraft</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.nGpuLayers"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.nGpuLayers</span></code></a></li>
@@ -1905,11 +1818,8 @@ RecursivePipeline</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.nKeep"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.nKeep</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.nPredict"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.nPredict</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.nProbs"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.nProbs</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.nSequences"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.nSequences</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.nThreads"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.nThreads</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.nThreadsBatch"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.nThreadsBatch</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.nThreadsBatchDraft"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.nThreadsBatchDraft</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.nThreadsDraft"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.nThreadsDraft</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.nUbatch"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.nUbatch</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.name"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.name</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.noKvOffload"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.noKvOffload</span></code></a></li>
@@ -1917,7 +1827,6 @@ RecursivePipeline</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.optionalInputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.optionalInputAnnotatorTypes</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.outputAnnotatorType"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.outputAnnotatorType</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.outputCol"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.outputCol</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.pSplit"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.pSplit</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.penalizeNl"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.penalizeNl</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.penaltyPrompt"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.penaltyPrompt</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.poolingType"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.poolingType</span></code></a></li>
@@ -1932,7 +1841,6 @@ RecursivePipeline</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.stopStrings"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.stopStrings</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.systemPrompt"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.systemPrompt</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.temperature"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.temperature</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.tensorSplit"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.tensorSplit</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.tfsZ"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.tfsZ</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.topK"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.topK</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.topP"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.topP</span></code></a></li>
@@ -1959,6 +1867,7 @@ RecursivePipeline</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.getOutputCol"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.getOutputCol()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.getParam"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.getParam()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.getParamValue"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.getParamValue()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.getSystemPrompt"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.getSystemPrompt()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.hasDefault"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.hasDefault()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.hasParam"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.hasParam()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.inputColsValidation"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.inputColsValidation()</span></code></a></li>
@@ -1974,25 +1883,20 @@ RecursivePipeline</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setCachePrompt"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setCachePrompt()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setChatTemplate"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setChatTemplate()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setDefragmentationThreshold"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setDefragmentationThreshold()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setDisableLog"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setDisableLog()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setDisableTokenIds"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setDisableTokenIds()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setDynamicTemperatureExponent"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setDynamicTemperatureExponent()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setDynamicTemperatureRange"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setDynamicTemperatureRange()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setEmbedding"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setEmbedding()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setFlashAttention"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setFlashAttention()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setFrequencyPenalty"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setFrequencyPenalty()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setGpuSplitMode"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setGpuSplitMode()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setGrammar"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setGrammar()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setGrpAttnN"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setGrpAttnN()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setGrpAttnW"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setGrpAttnW()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setIgnoreEos"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setIgnoreEos()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setInputCols"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setInputCols()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setInputPrefix"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setInputPrefix()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setInputPrefixBos"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setInputPrefixBos()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setInputSuffix"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setInputSuffix()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setLazyAnnotator()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setLookupCacheDynamicFilePath"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setLookupCacheDynamicFilePath()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setLookupCacheStaticFilePath"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setLookupCacheStaticFilePath()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setLoraAdapters"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setLoraAdapters()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setLogVerbosity"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setLogVerbosity()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setMainGpu"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setMainGpu()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setMinKeep"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setMinKeep()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setMinP"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setMinP()</span></code></a></li>
@@ -2002,7 +1906,6 @@ RecursivePipeline</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setModelAlias"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setModelAlias()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setModelDraft"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setModelDraft()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setNBatch"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setNBatch()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setNChunks"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setNChunks()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setNCtx"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setNCtx()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setNDraft"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setNDraft()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setNGpuLayers"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setNGpuLayers()</span></code></a></li>
@@ -2011,16 +1914,12 @@ RecursivePipeline</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setNParallel"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setNParallel()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setNPredict"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setNPredict()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setNProbs"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setNProbs()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setNSequences"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setNSequences()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setNThreads"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setNThreads()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setNThreadsBatch"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setNThreadsBatch()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setNThreadsBatchDraft"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setNThreadsBatchDraft()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setNThreadsDraft"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setNThreadsDraft()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setNUbatch"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setNUbatch()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setNoKvOffload"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setNoKvOffload()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setNumaStrategy"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setNumaStrategy()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setOutputCol"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setOutputCol()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setPSplit"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setPSplit()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setParamValue"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setParamValue()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setParams"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setParams()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setPenalizeNl"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setPenalizeNl()</span></code></a></li>
@@ -2037,7 +1936,6 @@ RecursivePipeline</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setStopStrings"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setStopStrings()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setSystemPrompt"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setSystemPrompt()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setTemperature"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setTemperature()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setTensorSplit"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setTensorSplit()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setTfsZ"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setTfsZ()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setTokenBias"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setTokenBias()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_llm.MedicalLLM.setTokenIdBias"><code class="docutils literal notranslate"><span class="pre">MedicalLLM.setTokenIdBias()</span></code></a></li>
