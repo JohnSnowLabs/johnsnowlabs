@@ -18,17 +18,15 @@ sidebar:
 
 We’re excited to announce the release of Generative AI Lab 7.4, a version focused on improving usability, flexibility, and evaluation workflows for LLM projects. This update brings significant enhancements such as long-form chunk-level comments for LLM evaluation annotations, real-time tooltips for XML creation, and expanded LLM integration options.
 
-Alongside these major updates, we’ve introduced improvements to analytics, simplified prompt import workflows, and added support for Claude across all key features. Usability has been further refined with better project configuration, user filtering in analytics, and external ID support for users.
+Alongside these updates, we’ve introduced improvements to analytics, simplified prompt import workflows, and added support for Claude across all key features. Usability has been further refined with better project configuration, user filtering in analytics, and external ID support for users.
 
 This release also includes numerous bug fixes to ensure smoother workflows, stronger stability, and more consistent performance across annotation, evaluation, and integration processes.
 
-## Support Long-form Comments at Chunk-Level for LLM Evaluation Annotations 
+## LLM Evaluation - Explain your Annotations via Comments
 
-**What’s New:**  
+**What’s New:** Generative AI Lab 7.4 introduces support for **long-form, chunk-level comments** in LLM evaluation and comparison projects. Users can now add dedicated, long-form comments to each annotation span in LLM evaluation projects, separate from the existing meta field. These comments provide detailed explanations for labels such as "hallucinations" and other NER-style annotations  
 
-Generative AI Lab 7.4 introduces support for **long-form, chunk-level comments** in LLM evaluation and comparison projects. Users can now add dedicated, long-form comments to each annotation span in LLM evaluation projects, separate from the existing meta field. These comments provide detailed explanations for labels such as "hallucinations" and other NER-style annotations  
-
-**Technical Implementation:**  
+**Technical Details:**  
 
 - Each annotation span has its own comment field, separate from the meta field.
 - Comments support long-form input for detailed notes, for example, facts, contradictions, or references.
@@ -41,24 +39,19 @@ is split 60/40 between NER spans and relations.
 
 ![740image](/assets/images/annotation_lab/7.4.0/1.png)
 
-**User Benefits**
-
+**User Benefits:**
 - **Reliable data export** – Comments are included in the JSON output as text and as key value metadata, so downstream systems receive complete information.
 - **Seamless commenting experience** – Users can add and view chunk-level comments directly in the annotation workflow.
 - **No migration worries** – Older annotations remain fully compatible, so existing work is preserved without extra effort.
 - **Improved usability** – The annotation widget automatically adjusts its size to provide the best experience, whether relation annotations are present or not.  
 
-**Example Use Case:**  
+**Example Use Case:** During evaluation, a user labels a text span as a "hallucination" and adds a detailed comment explaining why it is factually incorrect, providing context for future reviewers and model fine-tuning.  
 
-During evaluation, a user labels a text span as a "hallucination" and adds a detailed comment explaining why it is factually incorrect, providing context for future reviewers and model fine-tuning.  
+## Guided XML Configuration via Tooltips
 
-## Add Tag-Level Tooltip During XML Creation in Customize Label Page
+**What’s New:** Users now receive **real-time tag-level tooltips** while creating XML configurations in the **Customize Label** page. These tooltips provide clear descriptions and value suggestions for each tag, making XML creation more accurate and efficient.
 
-**What’s New:**
-
-Users now receive **real-time tag-level tooltips** while creating XML configurations in the **Customize Label** page. These tooltips provide clear descriptions and value suggestions for each tag, making XML creation more accurate and efficient.
-
-**Technical Implementation:**
+**Technical Details:**
 -   Tooltip appears dynamically as the user types a tag during XML creation.  
 -   Tooltip content includes:
     -   Description of the tag   
@@ -71,22 +64,21 @@ Users now receive **real-time tag-level tooltips** while creating XML configurat
 -   **New Users:** Understand tag semantics easily, reducing the learning curve and setup errors.
 -   **Experienced Users:** Speed up XML configuration with real-time guidance and attribute suggestions.
 
-**Example Use Case:**
-A team setting up custom XML configurations for their project can now view **tooltips** for each tag, ensuring correct attribute usage and minimizing errors during the configuration process.
+**Example Use Case:** A team setting up custom XML configurations for their project can now view **tooltips** for each tag, ensuring correct attribute usage and minimizing errors during the configuration process.
 
 ![740image](/assets/images/annotation_lab/7.4.0/3.gif)
 
+
 ## Improvements
 
-### LLM Evaluation Improvements:
 
-### **Enable Users to Add LLMs from Configuration Page and Request Admin Approval**
+### Streamlined LLM Integration with Admin Approval Workflow
 
-**What’s New:**
+Generative AI Lab 7.4 simplifies LLM integration with a centralized approval system that allows users to request access to language models while maintaining administrative control over resource usage and permissions.
 
-Users can now add LLMs from the Configuration page and submit a request for admin approval to use those models for response generation. Once an approval is granted, the selected LLM appears as a selectable option wherever responses are generated, and administrators can revoke that permission at any time without affecting other models. In addition, ADHOC providers created by users are now listed on the Configuration page, improving visibility and making provider management easier.
+**What’s New:** Users can now add LLMs from the Configuration page and submit a request for admin approval to use those models for response generation. Once an approval is granted, the selected LLM appears as a selectable option wherever responses are generated, and administrators can revoke that permission at any time without affecting other models. In addition, ADHOC providers created by users are now listed on the Configuration page, improving visibility and making provider management easier.
 
-**Technical Implementation:**
+**Technical Details:**
 -   All available LLMs are listed on the Configuration and Integration page.    
 -   Users can select an LLM and submit an approval request to the admin.    
 -   **Before approval:** 
@@ -101,20 +93,23 @@ Users can now add LLMs from the Configuration page and submit a request for admi
 **User Benefits:**
 -   **Teams:** Streamlines integrating LLMs and getting admin approval without navigating multiple steps.    
 -   **Admins:** Maintains control over LLM usage while allowing flexibility in project setup.
-**Example Use Case:**  
-A project team can select an LLM from the Configuration page and request approval. After the admin approves, they can start generating responses immediately. This reduces setup delays and improves operational efficiency.
+
+**Example Use Case:** A project team can select an LLM from the Configuration page and request approval. After the admin approves, they can start generating responses immediately. This reduces setup delays and improves operational efficiency.
+
 ***Notes:***
 -   _Users cannot request a revoked LLM_    
 -   _Once an LLM is re-approved, it is automatically listed in the project LLM list without requiring a new request._
 
 ![740image](/assets/images/annotation_lab/7.4.0/5.gif)
 
-### Enhance Project Configuration Wizard: Skip LLM Setup with Custom LLMs
 
-**What’s New:**
+### Flexible Project Setup with Optional LLM Configuration 
 
-The project configuration wizard for LLM projects now allows users to **skip the LLM configuration step**. By creating a **custom LLM**, users can **customize labels and view analytics** without needing to configure any external LLM service provider.
-**Technical Implementation:**
+Accelerate project creation by bypassing external LLM setup when not immediately needed. Create custom LLM configurations and access analytics and label customization without waiting for external service integration.
+
+**What’s New:** The project configuration wizard for LLM projects now allows users to **skip the LLM configuration step**. By creating a **custom LLM**, users can **customize labels and view analytics** without needing to configure any external LLM service provider.
+
+**Technical Details:**
 -   The wizard now allows **skipping the LLM configuration step** for LLM projects.    
 -   Users can create a **custom LLM** and proceed directly to **label customization and analytics**.
 
@@ -124,19 +119,23 @@ The project configuration wizard for LLM projects now allows users to **skip the
 -   **Project Teams:** Quickly set up projects and access analytics without relying on external LLMs.    
 -   **Annotators:** Start customizing labels immediately and reduce setup time.    
 -   **Data Analysts:** View project insights and metrics without waiting for LLM configuration.
+
 **Example Use Case:**
 A user setting up an LLM project can create a **custom LLM**, skip the external configuration steps, and immediately **customize labels and view project analytics**.
+
 ***Notes:***
 _If a user attempts to generate responses without any configured LLM, they will be redirected to the setup page to complete the necessary steps._
 
 ![740image](/assets/images/annotation_lab/7.4.0/7.gif)
 
-### Update Analytics in LLM-Based Projects to Support Multiple Ratings, HypertextLabels, and Choices
 
-**What’s New:**
+### Comprehensive Analytics for LLM Evaluation
 
-The Analytics page in **LLM-based projects** now supports **multiple rating sections, HypertextLabels, and Choices** within the evaluation block. This provides more **detailed and accurate analytics** for completed evaluations.
-**Technical Implementation:**
+Gain deeper insights into your LLM projects with enhanced analytics that support complex evaluation structures including multiple rating systems, hypertext labels, and choice-based assessments.
+
+**What’s New:** The Analytics page in **LLM-based projects** now supports **multiple rating sections, HypertextLabels, and Choices** within the evaluation block. This provides more **detailed and accurate analytics** for completed evaluations.
+
+**Technical Details:**
 -   Added support for **multiple rating sections** in evaluation blocks.    
 -   HypertextLabels and Choices are now **fully displayed and counted** in analytics.    
 -   Updated chart behavior:    
@@ -149,8 +148,8 @@ The Analytics page in **LLM-based projects** now supports **multiple rating sect
 -   **Project Teams:** Can view more detailed and accurate analytics with multiple rating sections.    
 -   **Data Analysts:** Better insights into responses with full support for HypertextLabels and Choices.    
 -   **Managers/Reviewers:** Clearer visualization of results and improved consistency in the interface.
-**Example Use Case:**
-A user reviewing an LLM-based project can now analyze multiple ratings, choices, and hypertext labels for each evaluation. This ensures more accurate reporting of team performance and evaluation results.
+
+**Example Use Case:** A user reviewing an LLM-based project can now analyze multiple ratings, choices, and hypertext labels for each evaluation. This ensures more accurate reporting of team performance and evaluation results.
 
 ***Note:***
 _All labels, classifications, and ratings defined after the following XML line will be included in the LLM analytics._
@@ -159,16 +158,14 @@ _All labels, classifications, and ratings defined after the following XML line w
 <View orientation="vertical" pretty="true" style="overflow-y: auto;" evaluation_block="true">
 ```
 
-## Simplified Prompt Import for LLM Evaluation and Comparison Projects
 
-Generative AI Lab 7.4 introduces usability improvements for Large Language Model (LLM) evaluation workflows, making it easier for teams to import prompts in both JSON and CSV formats.
+### Simplified Prompt Import for LLM Evaluation and Comparison
 
-**What’s New:**
+Import prompts effortlessly using simplified JSON or CSV formats that work consistently across all LLM project types, replacing complex data structures with user-friendly options.
 
-Users can now import prompts using a simple JSON or CSV format across all LLM project types, replacing the previously complex JSON structure.
+**What’s New:** Users can now import prompts using a simple JSON or CSV format across all LLM project types, replacing the previously complex JSON structure.
 
-**Technical Implementation:**
-
+**Technical Details:**
 - New lightweight JSON schema for prompt import:
 ```json
 { "text": "Your Prompt Here" }
@@ -199,20 +196,21 @@ Users can now import prompts using a simple JSON or CSV format across all LLM pr
 - **Faster Onboarding:** Downloadable samples reduce setup errors and accelerate project configuration.
 - **Flexible Input Options:** Teams can choose between JSON or CSV depending on workflow preference.
 
-**Example Use Case:**
+**Example Use Case:** A research team setting up an LLM Response Comparison project can quickly import 500 test prompts from a CSV file instead of building complex JSON payloads, allowing them to focus on analyzing model quality instead of data formatting.
 
-A research team setting up an LLM Response Comparison project can quickly import 500 test prompts from a CSV file instead of building complex JSON payloads, allowing them to focus on analyzing model quality instead of data formatting.
 
-### Support Claude for all features
+### Complete Claude Integration Across All Features
 
-**What’s New:**
+Expand your LLM toolkit with full Claude support across synthetic task generation, external prompts, and LangTest augmentation, providing greater flexibility and choice in your AI workflows.
 
-The application now provides **full support for Claude** across all major features, including:
+**What’s New:** The application now provides **full support for Claude** across all major features, including:
 -   **Synthetic Task Generation**    
 -   **External LLM Prompts**
 -   **LangTest Augmented Tasks**
 This enhancement ensures seamless integration of Claude for multiple workflows, expanding flexibility and choice for users working with LLM-based tasks.
-**Technical Implementation:**
+
+**Technical Details:**
+
 -   Added **Claude integration** for generating synthetic tasks.    
 -   Enabled **Claude as a provider** for external LLM prompts.    
 -   Extended **LangTest pipeline** to support Claude for augmented task generation.
@@ -227,42 +225,43 @@ This enhancement ensures seamless integration of Claude for multiple workflows, 
 **User Benefits:**
 -   **Flexibility:** Users can now select Claude as an alternative LLM for synthetic data generation and task augmentation.    
 -   **Consistency:** Claude is supported across all major LLM-related features for a unified experience.
-**Example Use Case:**
-A user creating synthetic tasks for evaluation can now select Claude as the LLM to generate tasks.
 
-### **Add User Filtering in "Submitted Completions Over Time" Chart**
+**Example Use Case:** A user creating synthetic tasks for evaluation can now select Claude as the LLM to generate tasks.
 
-**What’s New:**  
 
-The **"Submitted Completions Over Time"** chart in the **Team Productivity** section now includes an option to filter submissions by individual users instead of viewing all users collectively.
+### Enhanced Team Analytics with Individual User Filtering
+
+**What’s New:** The **"Submitted Completions Over Time"** chart in the **Team Productivity** section now includes an option to filter submissions by individual users instead of viewing all users collectively.
+
 **User Benefit:**  
 Users can analyze team productivity in more detail by filtering data for a specific user, making performance tracking more accurate.
-**Technical Implementation:**
+
+**Technical Details:**
 -   Added **user filter dropdown** to the chart component in the **Analytics Dashboard**.    
 -   Handled UI state management so that when a user is unselected, the chart resets to show data for all users.
 
 ![740image](/assets/images/annotation_lab/7.4.0/12.gif)
 
-**Example Use Case:**  
-A project manager can now select a single user in the chart to check how many completions that user submitted over time.
+**Example Use Case:** A project manager can now select a single user in the chart to check how many completions that user submitted over time.
 
-### **Add New Field: External ID for Users**
 
-**What’s New:**  
+### External System Integration with User ID Mapping
 
-Admins can now add an External ID when creating a user. This field links a Generative AI Lab user to the matching account in an external application.
+**What’s New:** Admins can now add an External ID when creating a user. This field links a Generative AI Lab user to the matching account in an external application.
 
 **User Benefit:**  
 Better mapping between Generative AI Lab and external systems, which improves integration and makes user management easier.
-**Technical Implementation:**
+
+**Technical Details:**
 - The User Creation form includes an External ID field with input validation. The field accepts any string, including special characters, up to 50 characters.
 
  ![740image](/assets/images/annotation_lab/7.4.0/13.gif)
 
-**Example:**  
-An admin creating a new user for an enterprise integration can set the External ID as extemp-1023 to map the Generative AI Lab user with the enterprise HR system.
+**Example:** An admin creating a new user for an enterprise integration can set the External ID as extemp-1023 to map the Generative AI Lab user with the enterprise HR system.
+
 
 ### Bug Fixes
+
 - **Credentials Not Saved for Project Cloud Export/Import**
 
 	Fixed an issue where S3 credentials were not being persisted for project export/import operations, requiring users to re-enter them each time. Credentials are now stored securely and reused across sessions. Additionally, sensitive credential information is no longer exposed in API payloads, improving security.
