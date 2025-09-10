@@ -10,7 +10,8 @@ show_nav: true
 sidebar:
     nav: sparknlp-healthcare
 ---
-</div><div class="h3-box" markdown="1">
+
+<div class="h3-box" markdown="1">
 
 ## Installation with johnsnowlabs
 On Oct 4th, 2022 we released `johnsnowlabs` library, which eases the installation and session starting processes in an 
