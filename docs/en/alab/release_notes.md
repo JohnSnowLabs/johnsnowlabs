@@ -57,6 +57,7 @@ During evaluation, a user labels a text span as a "hallucination" and adds a det
 ## Add Tag-Level Tooltip During XML Creation in Customize Label Page
 
 **What’s New:**
+
 Users now receive **real-time tag-level tooltips** while creating XML configurations in the **Customize Label** page. These tooltips provide clear descriptions and value suggestions for each tag, making XML creation more accurate and efficient.
 
 **Technical Implementation:**
@@ -69,10 +70,12 @@ Users now receive **real-time tag-level tooltips** while creating XML configurat
 ![740image](/assets/images/annotation_lab/7.4.0/2.png)
 
 **User Benefits:**
+
 -   **New Users:** Understand tag semantics easily, reducing the learning curve and setup errors.
 -   **Experienced Users:** Speed up XML configuration with real-time guidance and attribute suggestions.
 
 **Example Use Case:**
+
 A team setting up custom XML configurations for their project can now view **tooltips** for each tag, ensuring correct attribute usage and minimizing errors during the configuration process.
 
 ![740image](/assets/images/annotation_lab/7.4.0/3.gif)
@@ -84,6 +87,7 @@ A team setting up custom XML configurations for their project can now view **too
 ### **Enable Users to Add LLMs from Configuration Page and Request Admin Approval**
 
 **What’s New:**
+
 Users can now add LLMs from the Configuration page and submit a request for admin approval to use those models for response generation. Once an approval is granted, the selected LLM appears as a selectable option wherever responses are generated, and administrators can revoke that permission at any time without affecting other models. In addition, ADHOC providers created by users are now listed on the Configuration page, improving visibility and making provider management easier.
 
 **Technical Implementation:**
@@ -112,6 +116,7 @@ A project team can select an LLM from the Configuration page and request approva
 ### Enhance Project Configuration Wizard: Skip LLM Setup with Custom LLMs
 
 **What’s New:**
+
 The project configuration wizard for LLM projects now allows users to **skip the LLM configuration step**. By creating a **custom LLM**, users can **customize labels and view analytics** without needing to configure any external LLM service provider.
 **Technical Implementation:**
 -   The wizard now allows **skipping the LLM configuration step** for LLM projects.    
@@ -133,6 +138,7 @@ _If a user attempts to generate responses without any configured LLM, they will 
 ### Update Analytics in LLM-Based Projects to Support Multiple Ratings, HypertextLabels, and Choices
 
 **What’s New:**
+
 The Analytics page in **LLM-based projects** now supports **multiple rating sections, HypertextLabels, and Choices** within the evaluation block. This provides more **detailed and accurate analytics** for completed evaluations.
 **Technical Implementation:**
 -   Added support for **multiple rating sections** in evaluation blocks.    
@@ -162,6 +168,7 @@ _All labels, classifications, and ratings defined after the following XML line w
 Generative AI Lab 7.4 introduces usability improvements for Large Language Model (LLM) evaluation workflows, making it easier for teams to import prompts in both JSON and CSV formats.
 
 **What’s New:**
+
 Users can now import prompts using a simple JSON or CSV format across all LLM project types, replacing the previously complex JSON structure.
 
 **Technical Implementation:**
@@ -203,6 +210,7 @@ A research team setting up an LLM Response Comparison project can quickly import
 ### Support Claude for all features
 
 **What’s New:**
+
 The application now provides **full support for Claude** across all major features, including:
 -   **Synthetic Task Generation**    
 -   **External LLM Prompts**
@@ -229,6 +237,7 @@ A user creating synthetic tasks for evaluation can now select Claude as the LLM 
 ### **Add User Filtering in "Submitted Completions Over Time" Chart**
 
 **What’s New:**  
+
 The **"Submitted Completions Over Time"** chart in the **Team Productivity** section now includes an option to filter submissions by individual users instead of viewing all users collectively.
 **User Benefit:**  
 Users can analyze team productivity in more detail by filtering data for a specific user, making performance tracking more accurate.
@@ -244,6 +253,7 @@ A project manager can now select a single user in the chart to check how many co
 ### **Add New Field: External ID for Users**
 
 **What’s New:**  
+
 Admins can now add an External ID when creating a user. This field links a Generative AI Lab user to the matching account in an external application.
 
 **User Benefit:**  
