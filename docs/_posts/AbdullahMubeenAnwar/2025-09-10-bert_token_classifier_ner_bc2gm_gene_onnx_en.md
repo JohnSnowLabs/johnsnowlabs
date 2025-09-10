@@ -80,7 +80,7 @@ pipeline = Pipeline(stages=[
     ner_converter
 ])
 
-test_sentence = "In recent years, infections caused by Escherichia coli have become increasingly resistant to antibiotics, especially in hospital environments. Another common pathogen is Staphylococcus aureus, which is notorious for methicillin-resistant strains (MRSA) that pose significant treatment challenges. In cases of pneumonia, Klebsiella pneumoniae is frequently isolated, while Pseudomonas aeruginosa is a leading cause of chronic lung infections in patients with cystic fibrosis. Foodborne outbreaks are often linked to Salmonella enterica and Listeria monocytogenes, both of which can contaminate improperly handled food products. In addition, Clostridium difficile has been associated with severe diarrhea following prolonged antibiotic use. Other important pathogens include Mycobacterium tuberculosis, the causative agent of tuberculosis, and Helicobacter pylori, which colonizes the stomach lining and is associated with peptic ulcers. Opportunistic infections are also observed with Enterococcus faecalis and Bacteroides fragilis in immunocompromised patients."
+test_sentence = "ROCK-I, Kinectin, and mDia2 can bind the wild type forms of both RhoA and Cdc42 in a GTP-dependent manner in vitro. These results support the hypothesis that in the presence of tryptophan the ribosome translating tnaC blocks Rho ' s access to the boxA and rut sites, thereby preventing transcription termination."
 data = spark.createDataFrame([[test_sentence]]).toDF("text")
 
 model = pipeline.fit(data)
@@ -119,7 +119,7 @@ val pipeline = new Pipeline()
     nerConverter
   ))
 
-val testSentence = "In recent years, infections caused by Escherichia coli have become increasingly resistant to antibiotics, especially in hospital environments. Another common pathogen is Staphylococcus aureus, which is notorious for methicillin-resistant strains (MRSA) that pose significant treatment challenges. In cases of pneumonia, Klebsiella pneumoniae is frequently isolated, while Pseudomonas aeruginosa is a leading cause of chronic lung infections in patients with cystic fibrosis. Foodborne outbreaks are often linked to Salmonella enterica and Listeria monocytogenes, both of which can contaminate improperly handled food products. In addition, Clostridium difficile has been associated with severe diarrhea following prolonged antibiotic use. Other important pathogens include Mycobacterium tuberculosis, the causative agent of tuberculosis, and Helicobacter pylori, which colonizes the stomach lining and is associated with peptic ulcers. Opportunistic infections are also observed with Enterococcus faecalis and Bacteroides fragilis in immunocompromised patients."
+val testSentence = "ROCK-I, Kinectin, and mDia2 can bind the wild type forms of both RhoA and Cdc42 in a GTP-dependent manner in vitro. These results support the hypothesis that in the presence of tryptophan the ribosome translating tnaC blocks Rho ' s access to the boxA and rut sites, thereby preventing transcription termination."
 val data = Seq(testSentence).toDF("text")
 
 val model = pipeline.fit(data)
