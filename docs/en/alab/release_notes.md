@@ -56,10 +56,10 @@ During evaluation, a user labels a text span as a "hallucination" and adds a det
 
 ## Add Tag-Level Tooltip During XML Creation in Customize Label Page
 
-### **What’s New:**
+**What’s New:**
 Users now receive **real-time tag-level tooltips** while creating XML configurations in the **Customize Label** page. These tooltips provide clear descriptions and value suggestions for each tag, making XML creation more accurate and efficient.
 
-### **Technical Implementation:**
+**Technical Implementation:**
 -   Tooltip appears dynamically as the user types a tag during XML creation.  
 -   Tooltip content includes:
     -   Description of the tag   
@@ -68,11 +68,11 @@ Users now receive **real-time tag-level tooltips** while creating XML configurat
 
 ![740image](/assets/images/annotation_lab/7.4.0/2.png)
 
-### **User Benefits:**
+**User Benefits:**
 -   **New Users:** Understand tag semantics easily, reducing the learning curve and setup errors.
 -   **Experienced Users:** Speed up XML configuration with real-time guidance and attribute suggestions.
 
-### **Example Use Case:**
+**Example Use Case:**
 A team setting up custom XML configurations for their project can now view **tooltips** for each tag, ensuring correct attribute usage and minimizing errors during the configuration process.
 
 ![740image](/assets/images/annotation_lab/7.4.0/3.gif)
@@ -82,10 +82,11 @@ A team setting up custom XML configurations for their project can now view **too
 ### LLM Evaluation Improvements:
 
 ### **Enable Users to Add LLMs from Configuration Page and Request Admin Approval**
-#### **What’s New:**
+
+**What’s New:**
 Users can now add LLMs from the Configuration page and submit a request for admin approval to use those models for response generation. Once an approval is granted, the selected LLM appears as a selectable option wherever responses are generated, and administrators can revoke that permission at any time without affecting other models. In addition, ADHOC providers created by users are now listed on the Configuration page, improving visibility and making provider management easier.
 
-#### **Technical Implementation:**
+**Technical Implementation:**
 -   All available LLMs are listed on the Configuration and Integration page.    
 -   Users can select an LLM and submit an approval request to the admin.    
 -   **Before approval:** 
@@ -97,41 +98,43 @@ Users can now add LLMs from the Configuration page and submit a request for admi
 
 ![740image](/assets/images/annotation_lab/7.4.0/4.gif)
 
-#### **User Benefits:**
+**User Benefits:**
 -   **Teams:** Streamlines integrating LLMs and getting admin approval without navigating multiple steps.    
 -   **Admins:** Maintains control over LLM usage while allowing flexibility in project setup.
-#### **Example Use Case:**  
+**Example Use Case:**  
 A project team can select an LLM from the Configuration page and request approval. After the admin approves, they can start generating responses immediately. This reduces setup delays and improves operational efficiency.
-#### ***Notes:***
+***Notes:***
 -   _Users cannot request a revoked LLM_    
 -   _Once an LLM is re-approved, it is automatically listed in the project LLM list without requiring a new request._
 
 ![740image](/assets/images/annotation_lab/7.4.0/5.gif)
 
 ### Enhance Project Configuration Wizard: Skip LLM Setup with Custom LLMs
-#### **What’s New:**
+
+**What’s New:**
 The project configuration wizard for LLM projects now allows users to **skip the LLM configuration step**. By creating a **custom LLM**, users can **customize labels and view analytics** without needing to configure any external LLM service provider.
-#### **Technical Implementation:**
+**Technical Implementation:**
 -   The wizard now allows **skipping the LLM configuration step** for LLM projects.    
 -   Users can create a **custom LLM** and proceed directly to **label customization and analytics**.
 
 ![740image](/assets/images/annotation_lab/7.4.0/6.gif)
 
-#### **User Benefits:**
+**User Benefits:**
 -   **Project Teams:** Quickly set up projects and access analytics without relying on external LLMs.    
 -   **Annotators:** Start customizing labels immediately and reduce setup time.    
 -   **Data Analysts:** View project insights and metrics without waiting for LLM configuration.
-#### **Example Use Case:**
+**Example Use Case:**
 A user setting up an LLM project can create a **custom LLM**, skip the external configuration steps, and immediately **customize labels and view project analytics**.
-#### ***Notes:***
+***Notes:***
 _If a user attempts to generate responses without any configured LLM, they will be redirected to the setup page to complete the necessary steps._
 
 ![740image](/assets/images/annotation_lab/7.4.0/7.gif)
 
 ### Update Analytics in LLM-Based Projects to Support Multiple Ratings, HypertextLabels, and Choices
-#### **What’s New:**
+
+**What’s New:**
 The Analytics page in **LLM-based projects** now supports **multiple rating sections, HypertextLabels, and Choices** within the evaluation block. This provides more **detailed and accurate analytics** for completed evaluations.
-#### **Technical Implementation:**
+**Technical Implementation:**
 -   Added support for **multiple rating sections** in evaluation blocks.    
 -   HypertextLabels and Choices are now **fully displayed and counted** in analytics.    
 -   Updated chart behavior:    
@@ -140,14 +143,14 @@ The Analytics page in **LLM-based projects** now supports **multiple rating sect
 
 ![740image](/assets/images/annotation_lab/7.4.0/8.gif)
 
-#### **User Benefits:**
+**User Benefits:**
 -   **Project Teams:** Can view more detailed and accurate analytics with multiple rating sections.    
 -   **Data Analysts:** Better insights into responses with full support for HypertextLabels and Choices.    
 -   **Managers/Reviewers:** Clearer visualization of results and improved consistency in the interface.
-#### **Example Use Case:**
+**Example Use Case:**
 A user reviewing an LLM-based project can now analyze multiple ratings, choices, and hypertext labels for each evaluation. This ensures more accurate reporting of team performance and evaluation results.
 
-#### ***Note:***
+***Note:***
 _All labels, classifications, and ratings defined after the following XML line will be included in the LLM analytics._
 
 ```xml
@@ -158,7 +161,7 @@ _All labels, classifications, and ratings defined after the following XML line w
 
 Generative AI Lab 7.4 introduces usability improvements for Large Language Model (LLM) evaluation workflows, making it easier for teams to import prompts in both JSON and CSV formats.
 
-#### What’s New:
+**What’s New:**
 Users can now import prompts using a simple JSON or CSV format across all LLM project types, replacing the previously complex JSON structure.
 
 **Technical Implementation:**
@@ -198,13 +201,14 @@ Users can now import prompts using a simple JSON or CSV format across all LLM pr
 A research team setting up an LLM Response Comparison project can quickly import 500 test prompts from a CSV file instead of building complex JSON payloads, allowing them to focus on analyzing model quality instead of data formatting.
 
 ### Support Claude for all features
-#### **What’s New:**
+
+**What’s New:**
 The application now provides **full support for Claude** across all major features, including:
 -   **Synthetic Task Generation**    
 -   **External LLM Prompts**
 -   **LangTest Augmented Tasks**
 This enhancement ensures seamless integration of Claude for multiple workflows, expanding flexibility and choice for users working with LLM-based tasks.
-#### **Technical Implementation:**
+**Technical Implementation:**
 -   Added **Claude integration** for generating synthetic tasks.    
 -   Enabled **Claude as a provider** for external LLM prompts.    
 -   Extended **LangTest pipeline** to support Claude for augmented task generation.
@@ -216,41 +220,44 @@ This enhancement ensures seamless integration of Claude for multiple workflows, 
 **_Exernal Prompt_**
  ![740image](/assets/images/annotation_lab/7.4.0/11.gif)
  
-#### **User Benefits:**
+**User Benefits:**
 -   **Flexibility:** Users can now select Claude as an alternative LLM for synthetic data generation and task augmentation.    
 -   **Consistency:** Claude is supported across all major LLM-related features for a unified experience.
-#### **Example Use Case:**
+**Example Use Case:**
 A user creating synthetic tasks for evaluation can now select Claude as the LLM to generate tasks.
 
 ### **Add User Filtering in "Submitted Completions Over Time" Chart**
-#### **What’s New:**  
+
+**What’s New:**  
 The **"Submitted Completions Over Time"** chart in the **Team Productivity** section now includes an option to filter submissions by individual users instead of viewing all users collectively.
-#### **User Benefit:**  
+**User Benefit:**  
 Users can analyze team productivity in more detail by filtering data for a specific user, making performance tracking more accurate.
-#### **Technical Implementation:**
+**Technical Implementation:**
 -   Added **user filter dropdown** to the chart component in the **Analytics Dashboard**.    
 -   Handled UI state management so that when a user is unselected, the chart resets to show data for all users.
 
 ![740image](/assets/images/annotation_lab/7.4.0/12.gif)
 
-#### **Example Use Case:**  
+**Example Use Case:**  
 A project manager can now select a single user in the chart to check how many completions that user submitted over time.
 
 ### **Add New Field: External ID for Users**
-### **What’s New:**  
+
+**What’s New:**  
 Admins can now add an External ID when creating a user. This field links a Generative AI Lab user to the matching account in an external application.
 
-#### **User Benefit:**  
+**User Benefit:**  
 Better mapping between Generative AI Lab and external systems, which improves integration and makes user management easier.
-#### **Technical Implementation:**
+**Technical Implementation:**
 - The User Creation form includes an External ID field with input validation. The field accepts any string, including special characters, up to 50 characters.
 
  ![740image](/assets/images/annotation_lab/7.4.0/13.gif)
 
-#### **Example:**  
+**Example:**  
 An admin creating a new user for an enterprise integration can set the External ID as extemp-1023 to map the Generative AI Lab user with the enterprise HR system.
 
 ### Bug Fixes
+
 - **Credentials Not Saved for Project Cloud Export/Import**
 
 	Fixed an issue where S3 credentials were not being persisted for project export/import operations, requiring users to re-enter them each time. Credentials are now stored securely and reused across sessions. Additionally, sensitive credential information is no longer exposed in API payloads, improving security.
