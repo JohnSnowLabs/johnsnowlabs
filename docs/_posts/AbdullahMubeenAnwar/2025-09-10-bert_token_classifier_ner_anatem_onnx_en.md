@@ -7,7 +7,7 @@ date: 2025-09-10
 tags: [medical, clinical, ner, en, licensed, onnx]
 task: Named Entity Recognition
 language: en
-edition: Healthcare NLP 6.1.0
+edition: Healthcare NLP 6.1.1
 spark_version: 3.0
 supported: true
 engine: onnx
@@ -30,8 +30,8 @@ This model is trained with the BertForTokenClassification method from the transf
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/bert_token_classifier_ner_anatem_onnx_en_6.1.0_3.0_1757520931204.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/bert_token_classifier_ner_anatem_onnx_en_6.1.0_3.0_1757520931204.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/bert_token_classifier_ner_anatem_onnx_en_6.1.1_3.0_1757520931204.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/bert_token_classifier_ner_anatem_onnx_en_6.1.1_3.0_1757520931204.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -151,7 +151,7 @@ val result = model.transform(data)
 {:.table-model}
 |---|---|
 |Model Name:|bert_token_classifier_ner_anatem_onnx|
-|Compatibility:|Healthcare NLP 6.1.0+|
+|Compatibility:|Healthcare NLP 6.1.1+|
 |License:|Licensed|
 |Edition:|Official|
 |Input Labels:|[document, token]|
