@@ -1,0 +1,183 @@
+---
+layout: model
+title: Detect Pathogen, Medical Condition and Medicine (BertForTokenClassifier - ONNX)
+author: John Snow Labs
+name: bert_token_classifier_ner_pathogen_onnx
+date: 2025-09-11
+tags: [medical, clinical, ner, en, licensed, onnx]
+task: Named Entity Recognition
+language: en
+edition: Healthcare NLP 6.1.1
+spark_version: 3.0
+supported: true
+engine: onnx
+annotator: MedicalBertForTokenClassifier
+article_header:
+  type: cover
+use_language_switcher: "Python-Scala-Java"
+---
+
+## Description
+
+This pretrained named entity recognition (NER) model is a deep learning model for detecting medical conditions (influenza, headache, malaria, etc), medicine (aspirin, penicillin, methotrexate) and pathogens (Corona Virus, Zika Virus, E. Coli, etc) in clinical texts. This model is trained with [BertForTokenClassification] method from transformers library and imported into Spark NLP.
+
+## Predicted Entities
+
+`B-Medicine`, `B-Pathogen`, `I-MedicalCondition`, `I-Pathogen`, `I-Medicine`, `B-MedicalCondition`, `O`, `PAD`
+
+{:.btn-box}
+<button class="button button-orange" disabled>Live Demo</button>
+<button class="button button-orange" disabled>Open in Colab</button>
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/bert_token_classifier_ner_pathogen_onnx_en_6.1.1_3.0_1757561594143.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/bert_token_classifier_ner_pathogen_onnx_en_6.1.1_3.0_1757561594143.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+
+## How to use
+
+
+
+<div class="tabs-box" markdown="1">
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+```python
+from sparknlp.base import DocumentAssembler
+from sparknlp_jsl.annotator import SentenceDetectorDLModel, MedicalBertForTokenClassifier
+from sparknlp.annotator import Tokenizer, NerConverter
+from pyspark.ml import Pipeline
+
+document_assembler = (
+    DocumentAssembler()
+    .setInputCol("text")
+    .setOutputCol("document")
+)
+
+sentenceDetector = (
+    SentenceDetectorDLModel.pretrained("sentence_detector_dl","xx")
+    .setInputCols(["document"])
+    .setOutputCol("sentence")
+)
+
+tokenizer = (
+    Tokenizer()
+    .setInputCols(["sentence"])
+    .setOutputCol("token")
+)
+
+token_classifier = (
+    MedicalBertForTokenClassifier.pretrained(
+        "bert_token_classifier_ner_pathogen_onnx",
+        "en",
+        "clinical/models"
+    )
+    .setInputCols(["token", "sentence"])
+    .setOutputCol("ner")
+    .setCaseSensitive(True)
+)
+
+ner_converter = (
+    NerConverter()
+    .setInputCols(["sentence", "token", "ner"])
+    .setOutputCol("ner_chunk")
+)
+
+pipeline = Pipeline(stages=[
+    document_assembler,
+    sentenceDetector,
+    tokenizer,
+    token_classifier,
+    ner_converter
+])
+
+test_sentence = "Racecadotril is an antisecretory medication and it has better tolerability than loperamide. Diarrhea is the condition of having loose, liquid or watery bowel movements each day. Signs of dehydration often begin with loss of the normal stretchiness of the skin. This can progress to loss of skin color, a fast heart rate as it becomes more severe; while it has been speculated that rabies virus, Lyssavirus and Ephemerovirus could be transmitted through aerosols, studies have concluded that this is only feasible in limited conditions."
+data = spark.createDataFrame([[test_sentence]]).toDF("text")
+
+model = pipeline.fit(data)
+result = model.transform(data)
+```
+```scala
+import com.johnsnowlabs.nlp.base.DocumentAssembler
+import com.johnsnowlabs.nlp.annotators.Tokenizer
+import com.johnsnowlabs.nlp.annotators.ner.NerConverter
+import com.johnsnowlabs.nlp.annotators.classifier.dl.MedicalBertForTokenClassifier
+import com.johnsnowlabs.nlp.annotators.sentence_detector_dl.SentenceDetectorDLApproach
+import org.apache.spark.ml.Pipeline
+
+val documentAssembler = new DocumentAssembler()
+  .setInputCol("text")
+  .setOutputCol("document")
+
+val sentenceDetector = new SentenceDetectorDLModel()
+  .pretrained("sentence_detector_dl","xx")
+  .setInputCols(["document"])
+  .setOutputCol("sentence")
+
+val tokenizer = new Tokenizer()
+  .setInputCols("document")
+  .setOutputCol("token")
+
+val tokenClassifier = MedicalBertForTokenClassifier
+  .pretrained("bert_token_classifier_ner_pathogen_onnx", "en", "clinical/models")
+  .setInputCols("token", "document")
+  .setOutputCol("ner")
+  .setCaseSensitive(true)
+
+val nerConverter = new NerConverter()
+  .setInputCols("document", "token", "ner")
+  .setOutputCol("ner_chunk")
+
+val pipeline = new Pipeline()
+  .setStages(Array(
+    documentAssembler,
+    sentenceDetector,
+    tokenizer,
+    tokenClassifier,
+    nerConverter
+  ))
+
+val testSentence = "Racecadotril is an antisecretory medication and it has better tolerability than loperamide. Diarrhea is the condition of having loose, liquid or watery bowel movements each day. Signs of dehydration often begin with loss of the normal stretchiness of the skin. This can progress to loss of skin color, a fast heart rate as it becomes more severe; while it has been speculated that rabies virus, Lyssavirus and Ephemerovirus could be transmitted through aerosols, studies have concluded that this is only feasible in limited conditions."
+val data = Seq(testSentence).toDF("text")
+
+val model = pipeline.fit(data)
+val result = model.transform(data)
+```
+</div>
+
+## Results
+
+```bash
+
++---------------+----------------+
+|text           |entity          |
++---------------+----------------+
+|Racecadotril   |Medicine        |
+|loperamide     |Medicine        |
+|Diarrhea       |MedicalCondition|
+|loose          |MedicalCondition|
+|liquid         |MedicalCondition|
+|watery         |MedicalCondition|
+|bowel movements|MedicalCondition|
+|dehydration    |MedicalCondition|
+|loss           |MedicalCondition|
+|color          |MedicalCondition|
+|fast           |MedicalCondition|
+|heart rate     |MedicalCondition|
+|rabies virus   |Pathogen        |
+|Lyssavirus     |Pathogen        |
+|Ephemerovirus  |Pathogen        |
++---------------+----------------+
+
+```
+
+{:.model-param}
+## Model Information
+
+{:.table-model}
+|---|---|
+|Model Name:|bert_token_classifier_ner_pathogen_onnx|
+|Compatibility:|Healthcare NLP 6.1.1+|
+|License:|Licensed|
+|Edition:|Official|
+|Input Labels:|[document, token]|
+|Output Labels:|[ner]|
+|Language:|en|
+|Size:|403.7 MB|
+|Case sensitive:|true|
+|Max sentence length:|128|
