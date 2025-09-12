@@ -185,7 +185,7 @@ val pipeline = new Pipeline()
     nerConverter
   ))
 
-vval data = Seq(Array("I felt kind of dizzy after taking that medication for a month.",
+val data = Seq(Array("I felt kind of dizzy after taking that medication for a month.",
                       "I took antibiotics last week and everything went well.")).toDS.toDF("text")
 
 val model = pipeline.fit(data)
