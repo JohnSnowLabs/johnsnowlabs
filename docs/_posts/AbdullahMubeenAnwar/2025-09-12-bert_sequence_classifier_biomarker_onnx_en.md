@@ -1,0 +1,222 @@
+---
+layout: model
+title: Bert For Sequence Classification (Biomarker) ONNX
+author: John Snow Labs
+name: bert_sequence_classifier_biomarker_onnx
+date: 2025-09-12
+tags: [en, licensed, bfsc, biomarker, classification, onnx]
+task: Text Classification
+language: en
+edition: Healthcare NLP 6.1.1
+spark_version: 3.0
+supported: true
+engine: onnx
+annotator: MedicalBertForSequenceClassification
+article_header:
+  type: cover
+use_language_switcher: "Python-Scala-Java"
+---
+
+## Description
+
+This model is a [BioBERT](https://sparknlp.org/2023/09/13/biobert_base_cased_v1.2_en.html) based sentence classification model that can determine whether the clinical sentences include terms related to biomarkers or not.
+
+## Predicted Entities
+
+`1: Contains biomarker related terms`, `0: Doesn't contain biomarker related terms`
+
+{:.btn-box}
+<button class="button button-orange" disabled>Live Demo</button>
+<button class="button button-orange" disabled>Open in Colab</button>
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/bert_sequence_classifier_biomarker_onnx_en_6.1.1_3.0_1757682824025.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/bert_sequence_classifier_biomarker_onnx_en_6.1.1_3.0_1757682824025.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+
+## How to use
+
+
+
+<div class="tabs-box" markdown="1">
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+```python
+from sparknlp.base import DocumentAssembler
+from sparknlp_jsl.annotator import SentenceDetectorDLModel, MedicalBertForTokenClassifier
+from sparknlp.annotator import Tokenizer, NerConverter
+from pyspark.ml import Pipeline
+
+document_assembler = (
+    DocumentAssembler()
+    .setInputCol("text")
+    .setOutputCol("document")
+)
+
+sentenceDetector = (
+    SentenceDetectorDLModel.pretrained("sentence_detector_dl","xx")
+    .setInputCols(["document"])
+    .setOutputCol("sentence")
+)
+
+tokenizer = (
+    Tokenizer()
+    .setInputCols(["sentence"])
+    .setOutputCol("token")
+)
+
+token_classifier = (
+    MedicalBertForTokenClassifier.pretrained(
+        "bert_sequence_classifier_biomarker_onnx",
+        "en",
+        "clinical/models"
+    )
+    .setInputCols(["token", "sentence"])
+    .setOutputCol("ner")
+    .setCaseSensitive(True)
+)
+
+ner_converter = (
+    NerConverter()
+    .setInputCols(["sentence", "token", "ner"])
+    .setOutputCol("ner_chunk")
+)
+
+pipeline = Pipeline(stages=[
+    document_assembler,
+    sentenceDetector,
+    tokenizer,
+    token_classifier,
+    ner_converter
+])
+
+data = spark.createDataFrame([["""In the realm of cancer research, several biomarkers have emerged as crucial indicators of disease progression and treatment response. For instance, the expression levels of HER2/neu, a protein receptor, have been linked to aggressive forms of breast cancer. Additionally, the presence of prostate-specific antigen (PSA) is often monitored to track the progression of prostate cancer. Moreover, in cardiovascular health, high-sensitivity C-reactive protein (hs-CRP) serves as a biomarker for inflammation and potential risk of heart disease. Meanwhile, elevated levels of troponin T are indicative of myocardial damage, commonly observed in acute coronary syndrome. In the field of diabetes management, glycated hemoglobin is a widely used to assess long-term blood sugar control. Its levels reflect the average blood glucose concentration over the past two to three months, offering valuable insights into disease management strategies."""]]).toDF("text")
+
+model = pipeline.fit(data)
+result = model.transform(data)
+```
+
+{:.jsl-block}
+```python
+from johnsnowlabs import nlp, medical
+
+document_assembler = (
+    nlp.DocumentAssembler()
+    .setInputCol("text")
+    .setOutputCol("document")
+)
+
+sentenceDetector = (
+    nlp.SentenceDetectorDLModel.pretrained("sentence_detector_dl","xx")
+    .setInputCols(["document"])
+    .setOutputCol("sentence")
+)
+
+tokenizer = (
+    nlp.Tokenizer()
+    .setInputCols(["sentence"])
+    .setOutputCol("token")
+)
+
+token_classifier = (
+    medical.MedicalBertForTokenClassifier.pretrained(
+        "bert_sequence_classifier_biomarker_onnx",
+        "en",
+        "clinical/models"
+    )
+    .setInputCols(["token", "sentence"])
+    .setOutputCol("ner")
+    .setCaseSensitive(True)
+)
+
+ner_converter = (
+    nlp.NerConverter()
+    .setInputCols(["sentence", "token", "ner"])
+    .setOutputCol("ner_chunk")
+)
+
+pipeline = nlp.Pipeline(stages=[
+    document_assembler,
+    sentenceDetector,
+    tokenizer,
+    token_classifier,
+    ner_converter
+])
+
+data = spark.createDataFrame([["""In the realm of cancer research, several biomarkers have emerged as crucial indicators of disease progression and treatment response. For instance, the expression levels of HER2/neu, a protein receptor, have been linked to aggressive forms of breast cancer. Additionally, the presence of prostate-specific antigen (PSA) is often monitored to track the progression of prostate cancer. Moreover, in cardiovascular health, high-sensitivity C-reactive protein (hs-CRP) serves as a biomarker for inflammation and potential risk of heart disease. Meanwhile, elevated levels of troponin T are indicative of myocardial damage, commonly observed in acute coronary syndrome. In the field of diabetes management, glycated hemoglobin is a widely used to assess long-term blood sugar control. Its levels reflect the average blood glucose concentration over the past two to three months, offering valuable insights into disease management strategies."""]]).toDF("text")
+
+model = pipeline.fit(data)
+result = model.transform(data)
+
+```
+```scala
+import com.johnsnowlabs.nlp.base._
+import com.johnsnowlabs.nlp.annotators._
+import org.apache.spark.ml.Pipeline
+
+val documentAssembler = new DocumentAssembler()
+  .setInputCol("text")
+  .setOutputCol("document")
+
+val sentenceDetector = new SentenceDetectorDLModel()
+  .pretrained("sentence_detector_dl","xx")
+  .setInputCols(["document"])
+  .setOutputCol("sentence")
+
+val tokenizer = new Tokenizer()
+  .setInputCols("document")
+  .setOutputCol("token")
+
+val tokenClassifier = MedicalBertForTokenClassifier
+  .pretrained("bert_sequence_classifier_biomarker_onnx", "en", "clinical/models")
+  .setInputCols("token", "document")
+  .setOutputCol("ner")
+  .setCaseSensitive(true)
+
+val nerConverter = new NerConverter()
+  .setInputCols("document", "token", "ner")
+  .setOutputCol("ner_chunk")
+
+val pipeline = new Pipeline()
+  .setStages(Array(
+    documentAssembler,
+    sentenceDetector,
+    tokenizer,
+    tokenClassifier,
+    nerConverter
+  ))
+
+val data = Seq("""In the realm of cancer research, several biomarkers have emerged as crucial indicators of disease progression and treatment response. For instance, the expression levels of HER2/neu, a protein receptor, have been linked to aggressive forms of breast cancer. Additionally, the presence of prostate-specific antigen (PSA) is often monitored to track the progression of prostate cancer. Moreover, in cardiovascular health, high-sensitivity C-reactive protein (hs-CRP) serves as a biomarker for inflammation and potential risk of heart disease. Meanwhile, elevated levels of troponin T are indicative of myocardial damage, commonly observed in acute coronary syndrome. In the field of diabetes management, glycated hemoglobin is a widely used to assess long-term blood sugar control. Its levels reflect the average blood glucose concentration over the past two to three months, offering valuable insights into disease management strategies.""").toDF("text")
+
+val model = pipeline.fit(data)
+val result = model.transform(data)
+```
+</div>
+
+## Results
+
+```bash
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------+----------+
+|sentence                                                                                                                                                    |prediction|
++------------------------------------------------------------------------------------------------------------------------------------------------------------+----------+
+|In the realm of cancer research, several biomarkers have emerged as crucial indicators of disease progression and treatment response.                       |0         |
+|For instance, the expression levels of HER2/neu, a protein receptor, have been linked to aggressive forms of breast cancer.                                 |1         |
+|Additionally, the presence of prostate-specific antigen (PSA) is often monitored to track the progression of prostate cancer.                               |1         |
+|Moreover, in cardiovascular health, high-sensitivity C-reactive protein (hs-CRP) serves as a biomarker for inflammation and potential risk of heart disease.|1         |
+|Meanwhile, elevated levels of troponin T are indicative of myocardial damage, commonly observed in acute coronary syndrome.                                 |0         |
+|In the field of diabetes management, glycated hemoglobin is a widely used to assess long-term blood sugar control.                                          |0         |
+|Its levels reflect the average blood glucose concentration over the past two to three months, offering valuable insights into disease management strategies.|0         |
++------------------------------------------------------------------------------------------------------------------------------------------------------------+----------+
+```
+
+{:.model-param}
+## Model Information
+
+{:.table-model}
+|---|---|
+|Model Name:|bert_sequence_classifier_biomarker_onnx|
+|Compatibility:|Healthcare NLP 6.1.1+|
+|License:|Licensed|
+|Edition:|Official|
+|Input Labels:|[sentence, token]|
+|Output Labels:|[label]|
+|Language:|en|
+|Size:|437.7 MB|
+|Case sensitive:|true|
