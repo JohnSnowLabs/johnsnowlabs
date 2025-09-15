@@ -5,7 +5,7 @@ seotitle: Medical LLMs | John Snow Labs
 title: On-premise Deployment
 permalink: /docs/en/LLMs/on_prem_deploy
 key: docs-medical-llm
-modify_date: "2025-07-17"
+modify_date: "2025-09-15"
 show_nav: true
 sidebar:
     nav: medical-llm
@@ -54,18 +54,19 @@ The following models are currently available for on-premise deployments:
 |----------------------------|------------|--------------|---------------------|------------|--------------|----------------------|
 | Medical-LLM-8B             | 8B         | ~38 GB       | 40K                 | 15 GB      | 23 GB        | 1, 2, 4, 8           |
 | Medical-LLM-14B            | 14B        | ~40 GB       | 16K                 | 27 GB      | 13 GB        | 1, 2                 |
+| Medical-Visual-LLM-7B      | 7B         | ~64 GB       | 128K                | 15 GB      | 48 GB        | 1, 2, 4              |
 | Medical-LLM-Small          | 14B        | ~59 GB       | 40K                 | 28 GB      | 31 GB        | 1, 2, 4, 8           |
 | Medical-LLM-Medium         | 70B        | ~452 GB      | 128K                | 131 GB     | 320 GB       | 4, 8                 |
 | Medical-Reasoning-LLM-32B  | 32B        | ~111 GB      | 40K                 | 61 GB      | 50 GB        | 2, 4, 8              |
-| Medical-VLM-24B            | 24B        | ~145 GB      | 128K                | 45 GB      | 100 GB       | 2, 4, 8              |
-| Spanish-Medical-LLM-24B    | 24B        | ~145 GB      | 128K                | 45 GB      | 100 GB       | 2, 4, 8              |
+| Medical-Visual-LLM-24B     | 24B        | ~145 GB      | 128K                | 45 GB      | 100 GB       | 2, 4, 8              |
+| Medical-Spanish-LLM-24B    | 24B        | ~145 GB      | 128K                | 45 GB      | 100 GB       | 2, 4, 8              |
 
 
 > **Important Notes**
-> 
+>
 > **Memory Calculations:** All memory calculations are based on half-precision (fp16/bf16) weights. Recommended GPU Memory considers the model size and the maximum key-value cache at the model's maximum sequence length. These calculations follow the guidelines from [DJL's LMI Deployment Guide.](https://docs.djl.ai/master/docs/serving/serving/docs/lmi/deployment_guide/instance-type-selection.html)
-> 
-> **Vision Language Model Limitations:** Medical-VLM-24B and Spanish-Medical-LLM-24B currently **only support text inference** for on-premise deployment. For full vision-language capabilities (both text and image processing), please use these models through [AWS SageMaker Marketplace](/docs/en/LLMs/on_aws) where these models support complete multimodal functionality.
+>
+> **Vision Language Model Limitations:** Medical-Visual-LLM-24B and Medical-Spanish-LLM-24B currently **only support text inference** for on-premise deployment. For full vision-language capabilities (both text and image processing), please use these models through [AWS SageMaker Marketplace](/docs/en/LLMs/on_aws) where these models support complete multimodal functionality.
 
 </div>
 
