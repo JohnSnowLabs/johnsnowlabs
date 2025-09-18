@@ -38,52 +38,22 @@ This model is a [BioBERT](https://nlp.johnsnowlabs.com/2022/07/18/biobert_pubmed
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
 ```python
-from sparknlp.base import DocumentAssembler
-from sparknlp_jsl.annotator import SentenceDetectorDLModel, MedicalBertForTokenClassifier
-from sparknlp.annotator import Tokenizer, NerConverter
-from pyspark.ml import Pipeline
-
-document_assembler = (
-    DocumentAssembler()
-    .setInputCol("text")
+document_assembler = DocumentAssembler() \
+    .setInputCol("text") \
     .setOutputCol("document")
-)
 
-sentenceDetector = (
-    SentenceDetectorDLModel.pretrained("sentence_detector_dl","xx")
-    .setInputCols(["document"])
-    .setOutputCol("sentence")
-)
-
-tokenizer = (
-    Tokenizer()
-    .setInputCols(["sentence"])
+tokenizer = Tokenizer() \
+    .setInputCols(["document"]) \
     .setOutputCol("token")
-)
 
-token_classifier = (
-    MedicalBertForTokenClassifier.pretrained(
-        "bert_sequence_classifier_vaccine_sentiment_onnx",
-        "en",
-        "clinical/models"
-    )
-    .setInputCols(["token", "sentence"])
-    .setOutputCol("ner")
-    .setCaseSensitive(True)
-)
-
-ner_converter = (
-    NerConverter()
-    .setInputCols(["sentence", "token", "ner"])
-    .setOutputCol("ner_chunk")
-)
+sequence_classifier = MedicalBertForSequenceClassification.pretrained("bert_sequence_classifier_vaccine_sentiment_onnx", "en", "clinical/models")\
+  .setInputCols(["document", "token"])\
+  .setOutputCol("class")
 
 pipeline = Pipeline(stages=[
-    document_assembler,
-    sentenceDetector,
+    document_assembler, 
     tokenizer,
-    token_classifier,
-    ner_converter
+    sequence_classifier    
 ])
 
 text_list = ['A little bright light for an otherwise dark week. Thanks researchers, and frontline workers. Onwards.', 
@@ -98,49 +68,22 @@ result = model.transform(data)
 
 {:.jsl-block}
 ```python
-from johnsnowlabs import nlp, medical
-
-document_assembler = (
-    nlp.DocumentAssembler()
-    .setInputCol("text")
+document_assembler = nlp.DocumentAssembler() \
+    .setInputCol("text") \
     .setOutputCol("document")
-)
 
-sentenceDetector = (
-    nlp.SentenceDetectorDLModel.pretrained("sentence_detector_dl","xx")
-    .setInputCols(["document"])
-    .setOutputCol("sentence")
-)
-
-tokenizer = (
-    nlp.Tokenizer()
-    .setInputCols(["sentence"])
+tokenizer = nlp.Tokenizer() \
+    .setInputCols(["document"]) \
     .setOutputCol("token")
-)
 
-token_classifier = (
-    medical.MedicalBertForTokenClassifier.pretrained(
-        "bert_sequence_classifier_vaccine_sentiment_onnx",
-        "en",
-        "clinical/models"
-    )
-    .setInputCols(["token", "sentence"])
-    .setOutputCol("ner")
-    .setCaseSensitive(True)
-)
-
-ner_converter = (
-    nlp.NerConverter()
-    .setInputCols(["sentence", "token", "ner"])
-    .setOutputCol("ner_chunk")
-)
+sequenceClassifier = medical.BertForSequenceClassification.pretrained("bert_sequence_classifier_vaccine_sentiment_onnx", "en", "clinical/models")\
+    .setInputCols(["document","token"])\
+    .setOutputCol("classes")
 
 pipeline = nlp.Pipeline(stages=[
     document_assembler,
-    sentenceDetector,
     tokenizer,
-    token_classifier,
-    ner_converter
+    sequenceClassifier
 ])
 
 text_list = ['A little bright light for an otherwise dark week. Thanks researchers, and frontline workers. Onwards.', 
@@ -154,46 +97,23 @@ result = model.transform(data)
 
 ```
 ```scala
-import com.johnsnowlabs.nlp.base._
-import com.johnsnowlabs.nlp.annotators._
-import org.apache.spark.ml.Pipeline
-import spark.implicits._
+val document_assembler = new DocumentAssembler() 
+    .setInputCol("text") 
+    .setOutputCol("document")
 
-val documentAssembler = new DocumentAssembler()
-  .setInputCol("text")
-  .setOutputCol("document")
+val tokenizer = new Tokenizer() 
+    .setInputCols(Array("document")) 
+    .setOutputCol("token")
 
-val sentenceDetector = new SentenceDetectorDLModel()
-  .pretrained("sentence_detector_dl","xx")
-  .setInputCols(["document"])
-  .setOutputCol("sentence")
+val sequenceClassifier = MedicalBertForSequenceClassification.pretrained("bert_sequence_classifier_vaccine_sentiment_onnx", "en", "clinical/models")
+  .setInputCols(Array("document","token"))
+  .setOutputCol("class")
 
-val tokenizer = new Tokenizer()
-  .setInputCols("document")
-  .setOutputCol("token")
-
-val tokenClassifier = MedicalBertForTokenClassifier
-  .pretrained("bert_sequence_classifier_vaccine_sentiment_onnx", "en", "clinical/models")
-  .setInputCols("token", "document")
-  .setOutputCol("ner")
-  .setCaseSensitive(true)
-
-val nerConverter = new NerConverter()
-  .setInputCols("document", "token", "ner")
-  .setOutputCol("ner_chunk")
-
-val pipeline = new Pipeline()
-  .setStages(Array(
-    documentAssembler,
-    sentenceDetector,
-    tokenizer,
-    tokenClassifier,
-    nerConverter
-  ))
+val pipeline = new Pipeline().setStages(Array(document_assembler, tokenizer, sequenceClassifier))
 
 val data = Seq(Array("A little bright light for an otherwise dark week. Thanks researchers, and frontline workers. Onwards.", 
                      "People with a history of severe allergic reaction to any component of the vaccine should not take.", 
-                     "43 million doses of vaccines administrated worldwide...Production capacity of CHINA to reach 4 b")).toDS.toDF("text")
+                     "43 million doses of vaccines administrated worldwide...Production capacity of CHINA to reach 4 b")).toDF("text")
 
 
 val model = pipeline.fit(data)

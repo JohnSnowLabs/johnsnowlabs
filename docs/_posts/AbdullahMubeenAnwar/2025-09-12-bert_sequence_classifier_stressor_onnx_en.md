@@ -38,54 +38,23 @@ This model is a [bioBERT](https://nlp.johnsnowlabs.com/2022/07/18/biobert_pubmed
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
 ```python
-from sparknlp.base import DocumentAssembler
-from sparknlp_jsl.annotator import SentenceDetectorDLModel, MedicalBertForTokenClassifier
-from sparknlp.annotator import Tokenizer, NerConverter
-from pyspark.ml import Pipeline
-
-document_assembler = (
-    DocumentAssembler()
-    .setInputCol("text")
+document_assembler = DocumentAssembler() \
+    .setInputCol("text") \
     .setOutputCol("document")
-)
 
-sentenceDetector = (
-    SentenceDetectorDLModel.pretrained("sentence_detector_dl","xx")
-    .setInputCols(["document"])
-    .setOutputCol("sentence")
-)
-
-tokenizer = (
-    Tokenizer()
-    .setInputCols(["sentence"])
+tokenizer = Tokenizer() \
+    .setInputCols(["document"]) \
     .setOutputCol("token")
-)
 
-token_classifier = (
-    MedicalBertForTokenClassifier.pretrained(
-        "bert_sequence_classifier_stressor_onnx",
-        "en",
-        "clinical/models"
-    )
-    .setInputCols(["token", "sentence"])
-    .setOutputCol("ner")
-    .setCaseSensitive(True)
-)
-
-ner_converter = (
-    NerConverter()
-    .setInputCols(["sentence", "token", "ner"])
-    .setOutputCol("ner_chunk")
-)
+sequence_classifier = MedicalBertForSequenceClassification.pretrained("bert_sequence_classifier_stressor_onnx", "en", "clinical/models")\
+  .setInputCols(["document", "token"])\
+  .setOutputCol("class")
 
 pipeline = Pipeline(stages=[
-    document_assembler,
-    sentenceDetector,
+    document_assembler, 
     tokenizer,
-    token_classifier,
-    ner_converter
+    sequence_classifier    
 ])
-
 data = spark.createDataFrame([["All the panic about the global pandemic has been stressing me out!"]]).toDF("text")
 
 model = pipeline.fit(data)
@@ -94,49 +63,22 @@ result = model.transform(data)
 
 {:.jsl-block}
 ```python
-from johnsnowlabs import nlp, medical
-
-document_assembler = (
-    nlp.DocumentAssembler()
-    .setInputCol("text")
+document_assembler = nlp.DocumentAssembler() \
+    .setInputCol("text") \
     .setOutputCol("document")
-)
 
-sentenceDetector = (
-    nlp.SentenceDetectorDLModel.pretrained("sentence_detector_dl","xx")
-    .setInputCols(["document"])
-    .setOutputCol("sentence")
-)
-
-tokenizer = (
-    nlp.Tokenizer()
-    .setInputCols(["sentence"])
+tokenizer = nlp.Tokenizer() \
+    .setInputCols(["document"]) \
     .setOutputCol("token")
-)
 
-token_classifier = (
-    medical.MedicalBertForTokenClassifier.pretrained(
-        "bert_sequence_classifier_stressor_onnx",
-        "en",
-        "clinical/models"
-    )
-    .setInputCols(["token", "sentence"])
-    .setOutputCol("ner")
-    .setCaseSensitive(True)
-)
-
-ner_converter = (
-    nlp.NerConverter()
-    .setInputCols(["sentence", "token", "ner"])
-    .setOutputCol("ner_chunk")
-)
+sequenceClassifier = medical.BertForSequenceClassification.pretrained("bert_sequence_classifier_stressor_onnx", "en", "clinical/models")\
+    .setInputCols(["document","token"])\
+    .setOutputCol("classes")
 
 pipeline = nlp.Pipeline(stages=[
     document_assembler,
-    sentenceDetector,
     tokenizer,
-    token_classifier,
-    ner_converter
+    sequenceClassifier
 ])
 
 data = spark.createDataFrame([["All the panic about the global pandemic has been stressing me out!"]]).toDF("text")
