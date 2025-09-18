@@ -37,6 +37,7 @@ Pretrained named entity recognition deep learning model for Drugs. This model is
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.base import DocumentAssembler
 from sparknlp_jsl.annotator import SentenceDetectorDLModel, MedicalBertForTokenClassifier
@@ -73,7 +74,7 @@ token_classifier = (
 )
 
 ner_converter = (
-    NerConverter()
+     NerConverterInternal()
     .setInputCols(["sentence", "token", "ner"])
     .setOutputCol("ner_chunk")
 )
@@ -92,6 +93,56 @@ data = spark.createDataFrame([[test_sentence]]).toDF("text")
 model = pipeline.fit(data)
 result = model.transform(data)
 ```
+
+{:.jsl-block}
+```python
+from johnsnowlabs import nlp, medical
+
+document_assembler = nlp.DocumentAssembler()\
+    .setInputCol("text")\
+    .setOutputCol("document")
+
+
+sentenceDetector = nlp.SentenceDetectorDLModel.pretrained("sentence_detector_dl","xx")\
+    .setInputCols(["document"])\
+    .setOutputCol("sentence")
+
+
+tokenizer = nlp.Tokenizer()\
+    .setInputCols(["sentence"])\
+    .setOutputCol("token")
+
+
+token_classifier = medical.BertForTokenClassifier.pretrained(
+        "bert_token_classifier_ner_drugs_onnx",
+        "en",
+        "clinical/models"
+    )\
+    .setInputCols(["token", "sentence"])\
+    .setOutputCol("ner")\
+    .setCaseSensitive(True)
+
+
+ner_converter = medical.NerConverterInternal()\
+    .setInputCols(["sentence", "token", "ner"])\
+    .setOutputCol("ner_chunk")
+
+
+pipeline = Pipeline(stages=[
+    document_assembler,
+    sentenceDetector,
+    tokenizer,
+    token_classifier,
+    ner_converter
+])
+
+test_sentence = "The human KCNJ9 (Kir 3.3, GIRK3) is a member of the G-protein-activated inwardly rectifying potassium (GIRK) channel family. Here we describe the genomicorganization of the KCNJ9 locus on chromosome 1q21-23 as a candidate gene forType II diabetes mellitus in the Pima Indian population. The gene spansapproximately 7.6 kb and contains one noncoding and two coding exons separated byapproximately 2.2 and approximately 2.6 kb introns, respectively. We identified14 single nucleotide polymorphisms (SNPs), including one that predicts aVal366Ala substitution, and an 8 base-pair (bp) insertion/deletion. Ourexpression studies revealed the presence of the transcript in various humantissues including pancreas, and two major insulin-responsive tissues: fat andskeletal muscle. The characterization of the KCNJ9 gene should facilitate furtherstudies on the function of the KCNJ9 protein and allow evaluation of thepotential role of the locus in Type II diabetes.BACKGROUND: At present, it is one of the most important issues for the treatment of breast cancer to develop the standard therapy for patients previously treated with anthracyclines and taxanes. With the objective of determining the usefulnessof vinorelbine monotherapy in patients with advanced or recurrent breast cancerafter standard therapy, we evaluated the efficacy and safety of vinorelbine inpatients previously treated with anthracyclines and taxanes."
+data = spark.createDataFrame([[test_sentence]]).toDF("text")
+
+model = pipeline.fit(data)
+result = model.transform(data)
+```
+
 ```scala
 import com.johnsnowlabs.nlp.base.DocumentAssembler
 import com.johnsnowlabs.nlp.annotators.Tokenizer
@@ -106,7 +157,7 @@ val documentAssembler = new DocumentAssembler()
 
 val sentenceDetector = new SentenceDetectorDLModel()
   .pretrained("sentence_detector_dl","xx")
-  .setInputCols(["document"])
+  .setInputCols("document")
   .setOutputCol("sentence")
 
 val tokenizer = new Tokenizer()
@@ -115,12 +166,12 @@ val tokenizer = new Tokenizer()
 
 val tokenClassifier = MedicalBertForTokenClassifier
   .pretrained("bert_token_classifier_ner_drugs_onnx", "en", "clinical/models")
-  .setInputCols("token", "document")
+  .setInputCols(Array("token", "document"))
   .setOutputCol("ner")
   .setCaseSensitive(true)
 
-val nerConverter = new NerConverter()
-  .setInputCols("document", "token", "ner")
+val nerConverter = new  NerConverterInternal()
+  .setInputCols(Array("document", "token", "ner"))
   .setOutputCol("ner_chunk")
 
 val pipeline = new Pipeline()

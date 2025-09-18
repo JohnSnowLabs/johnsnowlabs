@@ -45,6 +45,7 @@ It identifies mentions of bacterial species in biomedical and clinical text, mak
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.base import DocumentAssembler
 from sparknlp_jsl.annotator import MedicalBertForTokenClassifier
@@ -75,7 +76,7 @@ token_classifier = (
 )
 
 ner_converter = (
-    NerConverter()
+     NerConverterInternal()
     .setInputCols(["document", "token", "ner"])
     .setOutputCol("ner_chunk")
 )
@@ -93,6 +94,49 @@ data = spark.createDataFrame([[test_sentence]]).toDF("text")
 model = pipeline.fit(data)
 result = model.transform(data)
 ```
+{:.jsl-block}
+```python
+from johnsnowlabs import nlp, medical
+
+document_assembler = nlp.DocumentAssembler()\
+    .setInputCol("text")\
+    .setOutputCol("document")
+
+
+tokenizer = nlp.Tokenizer()\
+    .setInputCols(["document"])\
+    .setOutputCol("token")
+
+
+token_classifier = medical.BertForTokenClassifier.pretrained(
+        "bert_token_classifier_ner_bacteria_onnx",
+        "en",
+        "clinical/models"
+    )\
+    .setInputCols(["token", "document"])\
+    .setOutputCol("ner")\
+    .setCaseSensitive(True)
+
+
+ner_converter = medical.NerConverterInternal()\
+    .setInputCols(["document", "token", "ner"])\
+    .setOutputCol("ner_chunk")
+
+
+pipeline = Pipeline(stages=[
+    document_assembler,
+    tokenizer,
+    token_classifier,
+    ner_converter
+])
+
+test_sentence = "In recent years, infections caused by Escherichia coli have become increasingly resistant to antibiotics, especially in hospital environments. Another common pathogen is Staphylococcus aureus, which is notorious for methicillin-resistant strains (MRSA) that pose significant treatment challenges. In cases of pneumonia, Klebsiella pneumoniae is frequently isolated, while Pseudomonas aeruginosa is a leading cause of chronic lung infections in patients with cystic fibrosis. Foodborne outbreaks are often linked to Salmonella enterica and Listeria monocytogenes, both of which can contaminate improperly handled food products. In addition, Clostridium difficile has been associated with severe diarrhea following prolonged antibiotic use. Other important pathogens include Mycobacterium tuberculosis, the causative agent of tuberculosis, and Helicobacter pylori, which colonizes the stomach lining and is associated with peptic ulcers. Opportunistic infections are also observed with Enterococcus faecalis and Bacteroides fragilis in immunocompromised patients."
+data = spark.createDataFrame([[test_sentence]]).toDF("text")
+
+model = pipeline.fit(data)
+result = model.transform(data)
+```
+
 ```scala
 import com.johnsnowlabs.nlp.base.DocumentAssembler
 import com.johnsnowlabs.nlp.annotators.Tokenizer
@@ -110,12 +154,12 @@ val tokenizer = new Tokenizer()
 
 val tokenClassifier = MedicalBertForTokenClassifier
   .pretrained("bert_token_classifier_ner_bacteria_onnx", "en", "clinical/models")
-  .setInputCols("token", "document")
+  .setInputCols(Array("token", "document"))
   .setOutputCol("ner")
   .setCaseSensitive(true)
 
-val nerConverter = new NerConverter()
-  .setInputCols("document", "token", "ner")
+val nerConverter = new  NerConverterInternal()
+  .setInputCols(Array("document", "token", "ner"))
   .setOutputCol("ner_chunk")
 
 val pipeline = new Pipeline()

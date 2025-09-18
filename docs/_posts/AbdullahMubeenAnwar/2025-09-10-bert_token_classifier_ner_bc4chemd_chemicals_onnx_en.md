@@ -39,6 +39,7 @@ This model is trained with the BertForTokenClassification method from the transf
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.base import DocumentAssembler
 from sparknlp_jsl.annotator import MedicalBertForTokenClassifier
@@ -69,7 +70,7 @@ token_classifier = (
 )
 
 ner_converter = (
-    NerConverter()
+     NerConverterInternal()
     .setInputCols(["document", "token", "ner"])
     .setOutputCol("ner_chunk")
 )
@@ -87,6 +88,49 @@ data = spark.createDataFrame([[test_sentence]]).toDF("text")
 model = pipeline.fit(data)
 result = model.transform(data)
 ```
+{:.jsl-block}
+```python
+from johnsnowlabs import nlp, medical
+
+document_assembler = nlp.DocumentAssembler()\
+    .setInputCol("text")\
+    .setOutputCol("document")
+
+
+tokenizer = nlp.Tokenizer()\
+    .setInputCols(["document"])\
+    .setOutputCol("token")
+
+
+token_classifier = medical.BertForTokenClassifier.pretrained(
+        "bert_token_classifier_ner_bc4chemd_chemicals_onnx",
+        "en",
+        "clinical/models"
+    )\
+    .setInputCols(["token", "document"])\
+    .setOutputCol("ner")\
+    .setCaseSensitive(True)
+
+
+ner_converter = medical.NerConverterInternal()\
+    .setInputCols(["document", "token", "ner"])\
+    .setOutputCol("ner_chunk")
+
+
+pipeline = Pipeline(stages=[
+    document_assembler,
+    tokenizer,
+    token_classifier,
+    ner_converter
+])
+
+test_sentence = "The main isolated compounds were triterpenes (alpha - amyrin, beta - amyrin, lupeol, betulin, betulinic acid, uvaol, erythrodiol and oleanolic acid) and phenolic acid derivatives from 4 - hydroxybenzoic acid (gallic and protocatechuic acids and isocorilagin)."
+data = spark.createDataFrame([[test_sentence]]).toDF("text")
+
+model = pipeline.fit(data)
+result = model.transform(data)
+```
+
 ```scala
 import com.johnsnowlabs.nlp.base.DocumentAssembler
 import com.johnsnowlabs.nlp.annotators.Tokenizer
@@ -104,12 +148,12 @@ val tokenizer = new Tokenizer()
 
 val tokenClassifier = MedicalBertForTokenClassifier
   .pretrained("bert_token_classifier_ner_bc4chemd_chemicals_onnx", "en", "clinical/models")
-  .setInputCols("token", "document")
+  .setInputCols(Array("token", "document"))
   .setOutputCol("ner")
   .setCaseSensitive(true)
 
-val nerConverter = new NerConverter()
-  .setInputCols("document", "token", "ner")
+val nerConverter = new  NerConverterInternal()
+  .setInputCols(Array("document", "token", "ner"))
   .setOutputCol("ner_chunk")
 
 val pipeline = new Pipeline()

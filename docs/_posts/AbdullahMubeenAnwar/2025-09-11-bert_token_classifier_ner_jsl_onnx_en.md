@@ -117,6 +117,7 @@ Predicted Entities and Definitions:
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.base import DocumentAssembler
 from sparknlp_jsl.annotator import SentenceDetectorDLModel, MedicalBertForTokenClassifier
@@ -153,7 +154,7 @@ token_classifier = (
 )
 
 ner_converter = (
-    NerConverter()
+    NerConverterInternal()
     .setInputCols(["sentence", "token", "ner"])
     .setOutputCol("ner_chunk")
 )
@@ -172,6 +173,56 @@ data = spark.createDataFrame([[test_sentence]]).toDF("text")
 model = pipeline.fit(data)
 result = model.transform(data)
 ```
+{:.jsl-block}
+```python
+from johnsnowlabs import nlp, medical
+
+
+document_assembler = nlp.DocumentAssembler()\
+    .setInputCol("text")\
+    .setOutputCol("document")
+
+
+sentenceDetector = nlp.SentenceDetectorDLModel.pretrained("sentence_detector_dl","xx")\
+    .setInputCols(["document"])\
+    .setOutputCol("sentence")
+
+
+tokenizer = nlp.Tokenizer()\
+    .setInputCols(["sentence"])\
+    .setOutputCol("token")
+
+
+token_classifier = medical.BertForTokenClassifier.pretrained(
+        "bert_token_classifier_ner_jsl_onnx",
+        "en",
+        "clinical/models"
+    )\
+    .setInputCols(["token", "sentence"])\
+    .setOutputCol("ner")\
+    .setCaseSensitive(True)
+
+
+ner_converter =  medical.NerConverterInternal()\
+    .setInputCols(["sentence", "token", "ner"])\
+    .setOutputCol("ner_chunk")
+
+
+pipeline = Pipeline(stages=[
+    document_assembler,
+    sentenceDetector,
+    tokenizer,
+    token_classifier,
+    ner_converter
+])
+
+test_sentence = "The patient is a 21-day-old Caucasian male here for 2 days of congestion - mom has been suctioning yellow discharge from the patient's nares, plus she has noticed some mild problems with his breathing while feeding (but negative for any perioral cyanosis or retractions). One day ago, mom also noticed a tactile temperature and gave the patient Tylenol. Baby-girl also has had some decreased p.o. intake. His normal breast-feeding is down from 20 minutes q.2h. to 5 to 10 minutes secondary to his respiratory congestion. He sleeps well, but has been more tired and has been fussy over the past 2 days. The parents noticed no improvement with albuterol treatments given in the ER. His urine output has also decreased; normally he has 8 to 10 wet and 5 dirty diapers per 24 hours, now he has down to 4 wet diapers per 24 hours. Mom denies any diarrhea. His bowel movements are yellow colored and soft in nature."
+data = spark.createDataFrame([[test_sentence]]).toDF("text")
+
+model = pipeline.fit(data)
+result = model.transform(data)
+```
+
 ```scala
 import com.johnsnowlabs.nlp.base.DocumentAssembler
 import com.johnsnowlabs.nlp.annotators.Tokenizer
@@ -186,7 +237,7 @@ val documentAssembler = new DocumentAssembler()
 
 val sentenceDetector = new SentenceDetectorDLModel()
   .pretrained("sentence_detector_dl","xx")
-  .setInputCols(["document"])
+  .setInputCols("document")
   .setOutputCol("sentence")
 
 val tokenizer = new Tokenizer()
@@ -195,12 +246,12 @@ val tokenizer = new Tokenizer()
 
 val tokenClassifier = MedicalBertForTokenClassifier
   .pretrained("bert_token_classifier_ner_jsl_onnx", "en", "clinical/models")
-  .setInputCols("token", "document")
+  .setInputCols(Array("token", "document"))
   .setOutputCol("ner")
   .setCaseSensitive(true)
 
-val nerConverter = new NerConverter()
-  .setInputCols("document", "token", "ner")
+val nerConverter = new  NerConverterInternal()
+  .setInputCols(Array("document", "token", "ner"))
   .setOutputCol("ner_chunk")
 
 val pipeline = new Pipeline()

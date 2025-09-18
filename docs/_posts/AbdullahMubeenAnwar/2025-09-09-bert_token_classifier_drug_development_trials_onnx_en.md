@@ -37,6 +37,7 @@ A BERT-based NER model for extracting key concepts from clinical trial texts, in
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.base import DocumentAssembler
 from sparknlp_jsl.annotator import MedicalBertForTokenClassifier
@@ -67,7 +68,7 @@ token_classifier = (
 )
 
 ner_converter = (
-    NerConverter()
+    NerConverterInternal()
     .setInputCols(["document", "token", "ner"])
     .setOutputCol("ner_chunk")
 )
@@ -92,6 +93,56 @@ data = spark.createDataFrame([[test_sentence]]).toDF("text")
 model = pipeline.fit(data)
 result = model.transform(data)
 ```
+{:.jsl-block}
+```python
+from johnsnowlabs import nlp, medical
+
+document_assembler = nlp.DocumentAssembler()\
+    .setInputCol("text")\
+    .setOutputCol("document")
+
+
+tokenizer = nlp.Tokenizer()\
+    .setInputCols(["document"])\
+    .setOutputCol("token")
+
+
+token_classifier = medical.BertForTokenClassifier.pretrained(
+        "bert_token_classifier_drug_development_trials_onnx",
+        "en",
+        "clinical/models"
+    )\
+    .setInputCols(["token", "document"])\
+    .setOutputCol("ner")\
+    .setCaseSensitive(True)
+
+
+ner_converter = medical.NerConverterInternal()\
+    .setInputCols(["document", "token", "ner"])\
+    .setOutputCol("ner_chunk")
+
+
+pipeline = Pipeline(stages=[
+    document_assembler,
+    tokenizer,
+    token_classifier,
+    ner_converter
+])
+
+test_sentence = (
+    "In June 2003, the median overall survival with and without topotecan "
+    "were 4.0 and 3.6 months, respectively. The best complete response (CR), "
+    "partial response (PR), stable disease, and progressive disease were "
+    "observed in 23, 63, 55, and 33 patients with topotecan, and 11, 61, 66, "
+    "and 32 patients without topotecan."
+)
+
+data = spark.createDataFrame([[test_sentence]]).toDF("text")
+
+model = pipeline.fit(data)
+result = model.transform(data)
+```
+
 ```scala
 import com.johnsnowlabs.nlp.base.DocumentAssembler
 import com.johnsnowlabs.nlp.annotators.Tokenizer
@@ -109,12 +160,12 @@ val tokenizer = new Tokenizer()
 
 val tokenClassifier = MedicalBertForTokenClassifier
   .pretrained("bert_token_classifier_drug_development_trials_onnx", "en", "clinical/models")
-  .setInputCols("token", "document")
+  .setInputCols(Array("token", "document"))
   .setOutputCol("ner")
   .setCaseSensitive(true)
 
-val nerConverter = new NerConverter()
-  .setInputCols("document", "token", "ner")
+val nerConverter = new  NerConverterInternal()
+  .setInputCols(Array("document", "token", "ner"))
   .setOutputCol("ner_chunk")
 
 val pipeline = new Pipeline()

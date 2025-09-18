@@ -97,6 +97,8 @@ result = model.transform(data)
 ```
 {:.jsl-block}
 ```python
+from johnsnowlabs import nlp, medical
+
 document_assembler = nlp.DocumentAssembler() \
     .setInputCol("text") \
     .setOutputCol("document")
@@ -146,7 +148,7 @@ val documentAssembler = new DocumentAssembler()
 
 val sentenceDetector = new SentenceDetectorDLModel()
   .pretrained("sentence_detector_dl","xx")
-  .setInputCols(["document"])
+  .setInputCols("document")
   .setOutputCol("sentence")
 
 val tokenizer = new Tokenizer()
@@ -155,12 +157,12 @@ val tokenizer = new Tokenizer()
 
 val tokenClassifier = MedicalBertForTokenClassifier
   .pretrained("bert_token_classifier_ner_species_onnx", "en", "clinical/models")
-  .setInputCols("token", "document")
+  .setInputCols(Array("token", "document"))
   .setOutputCol("ner")
   .setCaseSensitive(true)
 
-val nerConverter = new NerConverter()
-  .setInputCols("document", "token", "ner")
+val nerConverter = new NerConverterInternal()
+  .setInputCols(Array("document", "token", "ner"))
   .setOutputCol("ner_chunk")
 
 val pipeline = new Pipeline()

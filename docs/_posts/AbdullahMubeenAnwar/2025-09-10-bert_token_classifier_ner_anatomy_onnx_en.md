@@ -37,6 +37,7 @@ Pretrained named entity recognition deep learning model for anatomy terms. This 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.base import DocumentAssembler
 from sparknlp_jsl.annotator import MedicalBertForTokenClassifier
@@ -67,7 +68,7 @@ token_classifier = (
 )
 
 ner_converter = (
-    NerConverter()
+     NerConverterInternal()
     .setInputCols(["document", "token", "ner"])
     .setOutputCol("ner_chunk")
 )
@@ -85,6 +86,50 @@ data = spark.createDataFrame([[test_sentence]]).toDF("text")
 model = pipeline.fit(data)
 result = model.transform(data)
 ```
+
+{:.jsl-block}
+```python
+from johnsnowlabs import nlp, medical
+
+document_assembler = nlp.DocumentAssembler()\
+    .setInputCol("text")\
+    .setOutputCol("document")
+
+
+tokenizer = nlp.Tokenizer()\
+    .setInputCols(["document"])\
+    .setOutputCol("token")
+
+
+token_classifier =  medical.BertForTokenClassifier.pretrained(
+        "bert_token_classifier_ner_anatomy_onnx",
+        "en",
+        "clinical/models"
+    )\
+    .setInputCols(["token", "document"])\
+    .setOutputCol("ner")\
+    .setCaseSensitive(True)
+
+
+ner_converter = medical.NerConverterInternal()\
+    .setInputCols(["document", "token", "ner"])\
+    .setOutputCol("ner_chunk")
+
+
+pipeline = Pipeline(stages=[
+    document_assembler,
+    tokenizer,
+    token_classifier,
+    ner_converter
+])
+
+test_sentence = "The heart is an organ composed of cardiac muscle tissue and supported by connective tissue, making it a complex multi-tissue structure within the circulatory system, an anatomical system. It develops from the embryonic heart tube, a developing anatomical structure, and is connected to the left atrium, an organism subdivision. Surrounding it is the pericardial sac, an immaterial anatomical entity, which encloses the pericardial cavity, another immaterial anatomical entity. Within the myocardium, cardiac cells function together, and inside them, mitochondria act as vital cellular components. The blood circulating through the heart is an organism substance, while pus may accumulate in case of infection, representing a pathological formation. Sometimes, tumors can also arise in the lung, another organ, showing abnormal pathological formations."
+data = spark.createDataFrame([[test_sentence]]).toDF("text")
+
+model = pipeline.fit(data)
+result = model.transform(data)
+```
+
 ```scala
 import com.johnsnowlabs.nlp.base.DocumentAssembler
 import com.johnsnowlabs.nlp.annotators.Tokenizer
@@ -102,12 +147,12 @@ val tokenizer = new Tokenizer()
 
 val tokenClassifier = MedicalBertForTokenClassifier
   .pretrained("bert_token_classifier_ner_anatomy_onnx", "en", "clinical/models")
-  .setInputCols("token", "document")
+  .setInputCols(Array("token", "document"))
   .setOutputCol("ner")
   .setCaseSensitive(true)
 
-val nerConverter = new NerConverter()
-  .setInputCols("document", "token", "ner")
+val nerConverter = new  NerConverterInternal()
+  .setInputCols(Array("document", "token", "ner"))
   .setOutputCol("ner_chunk")
 
 val pipeline = new Pipeline()

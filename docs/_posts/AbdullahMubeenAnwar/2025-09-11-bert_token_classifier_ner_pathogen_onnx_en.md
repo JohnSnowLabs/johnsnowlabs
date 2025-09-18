@@ -169,7 +169,7 @@ val tokenClassifier = MedicalBertForTokenClassifier
   .setOutputCol("ner")
   .setCaseSensitive(true)
 
-val nerConverter = new NerConverter()
+val nerConverter = new NerConverterInternal()
   .setInputCols("document", "token", "ner")
   .setOutputCol("ner_chunk")
 

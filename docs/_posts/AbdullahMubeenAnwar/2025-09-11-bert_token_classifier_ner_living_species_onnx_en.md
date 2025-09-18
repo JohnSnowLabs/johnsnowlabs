@@ -44,6 +44,7 @@ It is trained on the [LivingNER](https://temu.bsc.es/livingner/2022/05/03/multil
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.base import DocumentAssembler
 from sparknlp_jsl.annotator import SentenceDetectorDLModel, MedicalBertForTokenClassifier
@@ -80,7 +81,7 @@ token_classifier = (
 )
 
 ner_converter = (
-    NerConverter()
+     NerConverterInternal()
     .setInputCols(["sentence", "token", "ner"])
     .setOutputCol("ner_chunk")
 )
@@ -99,6 +100,55 @@ data = spark.createDataFrame([[test_sentence]]).toDF("text")
 model = pipeline.fit(data)
 result = model.transform(data)
 ```
+{:.jsl-block}
+```python
+from johnsnowlabs import nlp, medical
+
+document_assembler = nlp.DocumentAssembler()
+    .setInputCol("text")
+    .setOutputCol("document")
+
+
+sentenceDetector = nlp.SentenceDetectorDLModel.pretrained("sentence_detector_dl","xx")
+    .setInputCols(["document"])
+    .setOutputCol("sentence")
+
+
+tokenizer = nlp.Tokenizer()
+    .setInputCols(["sentence"])
+    .setOutputCol("token")
+
+
+token_classifier = medical.BertForTokenClassifier.pretrained(
+        "bert_token_classifier_ner_living_species_onnx",
+        "en",
+        "clinical/models"
+    )
+    .setInputCols(["token", "sentence"])
+    .setOutputCol("ner")
+    .setCaseSensitive(True)
+
+
+ner_converter = medical.NerConverterInternal()
+    .setInputCols(["sentence", "token", "ner"])
+    .setOutputCol("ner_chunk")
+
+
+pipeline = nlp.Pipeline(stages=[
+    document_assembler,
+    sentenceDetector,
+    tokenizer,
+    token_classifier,
+    ner_converter
+])
+
+test_sentence = "42-year-old woman with end-stage chronic kidney disease, secondary to lupus nephropathy, and on peritoneal dialysis. History of four episodes of bacterial peritonitis and change of Tenckhoff catheter six months prior to admission due to catheter dysfunction. Three peritoneal fluid samples during her hospitalisation tested positive for Fusarium spp. The patient responded favourably and continued outpatient treatment with voriconazole (4mg/kg every 12 hours orally). All three isolates were identified as species of the Fusarium solani complex. In vitro susceptibility to itraconazole, voriconazole and posaconazole, according to Clinical and Laboratory Standards Institute - CLSI (M38-A) methodology, showed a minimum inhibitory concentration (MIC) in all three isolates and for all three antifungals of >16 μg/mL."
+data = spark.createDataFrame([[test_sentence]]).toDF("text")
+
+model = pipeline.fit(data)
+result = model.transform(data)
+```
+
 ```scala
 import com.johnsnowlabs.nlp.base.DocumentAssembler
 import com.johnsnowlabs.nlp.annotators.Tokenizer
@@ -113,7 +163,7 @@ val documentAssembler = new DocumentAssembler()
 
 val sentenceDetector = new SentenceDetectorDLModel()
   .pretrained("sentence_detector_dl","xx")
-  .setInputCols(["document"])
+  .setInputCols("document")
   .setOutputCol("sentence")
 
 val tokenizer = new Tokenizer()
@@ -122,12 +172,12 @@ val tokenizer = new Tokenizer()
 
 val tokenClassifier = MedicalBertForTokenClassifier
   .pretrained("bert_token_classifier_ner_living_species_onnx", "en", "clinical/models")
-  .setInputCols("token", "document")
+  .setInputCols(Array("token", "document"))
   .setOutputCol("ner")
   .setCaseSensitive(true)
 
-val nerConverter = new NerConverter()
-  .setInputCols("document", "token", "ner")
+val nerConverter = new  NerConverterInternal()
+  .setInputCols(Array("document", "token", "ner"))
   .setOutputCol("ner_chunk")
 
 val pipeline = new Pipeline()
