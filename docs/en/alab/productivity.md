@@ -114,6 +114,8 @@ Below are the charts included in the Team Productivity section.
 
 **Total number of completions submitted over time**
 
+This chart can be filtered by individual user, you can select a specific annotator to see their submission trend over time, or view all users combined.
+
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/analytics/submitted_completions_over_time.png" style="width:100%;"/>
 
 <br />

@@ -19,6 +19,8 @@ Generative AI Lab currently supports multiple predefined project configurations.
 
 For customizing a predefined configuration, click on the corresponding link in the table above and then navigate to the Labeling configuration tab and manually edit or update it to contain the labels you want.
 
+When editing the labeling configuration XML, the editor provides real-time assistance. As you type a tag, a tooltip appears showing the description of that tag along with its expected attributes. This makes it easier to understand how each element should be used and helps reduce errors when defining labels and annotation tags.
+
 After you finish editing the labels you want to define for your project click the “Save” button.
 
 </div><div class="h3-box" markdown="1">

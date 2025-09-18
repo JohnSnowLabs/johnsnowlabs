@@ -207,7 +207,7 @@ annotation-lab:
             url: /docs/en/alab/resolvers 
           - title: De-Identification
             url: /docs/en/alab/de_identify
-          - title: LLM Evaluation & Comparision
+          - title: LLM Evaluation & Comparison
             url: /docs/en/alab/llm_eval
           - title: Audit Trail
             url: /docs/en/alab/audit_trail

@@ -13,7 +13,8 @@ sidebar:
   nav: annotation-lab
 ---
 
-Basic user management features are present in the Generative AI Lab. The user with the admin privilege can add or remove other users from the system or can edit user information if necessary. This feature is available by selecting the _Users_ option under the _Settings_ menu from the navigation panel.
+Basic user management features are present in the Generative AI Lab. The user with the admin privilege can add or remove other users from the system or can edit user information if necessary. This feature is available by selecting the _Users_ option under the _Settings_ menu from the navigation panel. Admins can also set an External ID during user creation or when editing a user, which helps map accounts to external systems.
+
 
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/user_management.png" style="width:25;"/>
 
@@ -24,6 +25,10 @@ All user accounts created on the Generative AI Lab can be seen on the Users page
 ## User Details
 
 Generative AI Lab stores basic information for each user. Such as the _First Name_, _Last Name_, and _Email_. It is editable from the _Details_ section by any user with admin privilege.
+
+**External ID**  
+
+Admins can optionally set an External ID for a user. This links the Generative AI Lab account to a user record in an external system. The field accepts any string up to 50 characters, including special characters. The External ID appears in the user details once saved and can be edited by an admin when needed.
 
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/user_details.png" style="width:110%;"/>
 

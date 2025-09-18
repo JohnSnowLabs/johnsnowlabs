@@ -24,10 +24,12 @@ These project types support integration with major LLM providers:
 - **OpenAI**
 - **Azure OpenAI**
 - **Amazon SageMaker**
+- **Anthropic Claude**
 
 ### Setting Up LLM Provider Integration
 1. Navigate to **Settings → System Settings → Integration**.
 2. Click **Add**, enter your provider credentials, and save the configuration..
+3. If a provider is added by a non-admin user, an admin must approve it before it can be used to generate responses.
 
 ![720image](/assets/images/annotation_lab/7.2.0/1.gif)
 
@@ -40,7 +42,8 @@ These project types support integration with major LLM providers:
    - Click Add button to create an external provider specific to the project (this provider will only be used within this project), or
    - Click Go to External Service Page to be redirected to Integration page, associate the project with one of the supported external LLM providers, and return to Project → Configuration → Select LLM Response Provider
 5. Choose the provider you want to use, save the configuration and click on Next.
-6. Customize labels and choices as needed in the Customize Labels section, and save the configuration.
+6. You can proceed without connecting an external provider by using a custom LLM configuration.
+7. Customize labels and choices as needed in the Customize Labels section, and save the configuration.
 
 ![720image](/assets/images/annotation_lab/7.2.0/2.gif)
 
@@ -48,40 +51,77 @@ For **LLM Evaluation Comparison** projects, follow the same steps, but associate
 
 ### Importing Prompts for LLM Evaluation (No Pre-Filled Responses)
 
-To start working with prompts:
+## What to do
+
+1. **Find the block that starts with** `To start working with prompts:` and ends right before the next heading.
+2. **Replace that whole block** with the two subsections below.
+
+---
+
+### Importing prompts for LLM Evaluation or Comparison
+
+To import prompts:
 
 1. Go to the **Tasks** page and click **Import**.
+2. Upload prompts in **JSON** or **CSV**.
 
-2. Upload your prompts in either .json or .zip format using the structure below. 
+**JSON format**
+Provide an array of objects with a `text` field:
 
-**Sample JSON for LLM Evaluation Project**
 ```json
-{
-  "data": {
-    "prompt": "Give me a diet plan for a diabetic 35 year old with reference links",
-    "response1": "",
-    "title": "DietPlan"
-  }
-}
+[
+  {"text": "Give me a diet plan for a diabetic 35 year old with reference links"},
+  {"text": "Summarize the following discharge note and list medications separately"}
+]
 ```
-**Sample JSON for LLM Evaluation Comparison Project**
-```json
-{
-  "data": {
-    "prompt": "Give me a diet plan for a diabetic 35 year old with reference links",
-    "response1": "",
-    "response2": "",
-    "title": "DietPlan"
-  }
-}
-```
-3. Once the prompts are imported as tasks, click the **Generate Response** button to fetch LLM responses directly from the configured providers.
+
+**CSV format**
+Provide a CSV file with a single `text` column, one prompt per row.
+
+After import, open a task and click **Generate Response** to fetch model outputs from the configured provider.
 
 ![720image](/assets/images/annotation_lab/7.2.0/3.gif)
 
-After the responses are generated, users can begin evaluating them directly within the task interface.
+After the responses are generated, users can evaluate them in the task interface.
 
-### Importing Promtps and LLM Responses for Evaluation
+
+### Importing prompts together with prefilled responses
+
+Use this method when you already have one or more model responses that you want to include at import time.
+
+**Sample JSON for LLM Evaluation Project**
+
+```json
+{
+  "data": {
+    "prompt": "Give me a diet plan for a diabetic 35 year old with reference links",
+    "response1": "Model A response text here",
+    "title": "DietPlan"
+  }
+}
+```
+
+**Sample JSON for LLM Evaluation Comparison Project**
+
+```json
+{
+  "data": {
+    "prompt": "Give me a diet plan for a diabetic 35 year old with reference links",
+    "response1": "Model A response text here",
+    "response2": "Model B response text here",
+    "title": "DietPlan"
+  }
+}
+```
+
+You can add additional response fields if the project configuration expects them. The responses will appear in the task for side by side review.
+
+
+### Annotation Comments
+
+Each annotation in an LLM Evaluation or Comparison project can include a long-form comment for detailed explanations. Reviewers can add a comment to any highlighted selection, or example to explain why a passage is marked as a hallucination. These comments are separate from metadata fields and are saved with the annotation. Comments are visible in the annotation interface when you open a selection, and they are included in exported JSON.
+
+### Importing Prompts and LLM Responses for Evaluation
 Users can also import prompts and LLM-generated responses using a structured JSON format. This feature supports both LLM Evaluation and LLM Evaluation Comparison project types.
 
 Below are example JSON formats:
@@ -128,6 +168,9 @@ A dedicated analytics tab provides quantitative insights for LLM evaluation proj
 - Statistical summaries derived from submitted completions
 - Multi-annotator scenarios prioritize submissions from highest-priority users
 - Analytics calculations exclude draft completions (submitted tasks only)
+- Multiple rating sections in one evaluation are supported.
+- HyperTextLabels and choice fields are fully represented in the charts.
+
 
 ![720image](/assets/images/annotation_lab/7.2.0/4.gif)
 
