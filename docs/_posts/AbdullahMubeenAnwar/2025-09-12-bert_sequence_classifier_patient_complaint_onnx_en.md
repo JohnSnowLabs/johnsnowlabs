@@ -44,52 +44,22 @@ The Text Classifier model has been trained using in-house annotated health-relat
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
 ```python
-from sparknlp.base import DocumentAssembler
-from sparknlp_jsl.annotator import SentenceDetectorDLModel, MedicalBertForTokenClassifier
-from sparknlp.annotator import Tokenizer, NerConverter
-from pyspark.ml import Pipeline
-
-document_assembler = (
-    DocumentAssembler()
-    .setInputCol("text")
+document_assembler = DocumentAssembler() \
+    .setInputCol("text") \
     .setOutputCol("document")
-)
 
-sentenceDetector = (
-    SentenceDetectorDLModel.pretrained("sentence_detector_dl","xx")
-    .setInputCols(["document"])
-    .setOutputCol("sentence")
-)
-
-tokenizer = (
-    Tokenizer()
-    .setInputCols(["sentence"])
+tokenizer = Tokenizer() \
+    .setInputCols(["document"]) \
     .setOutputCol("token")
-)
 
-token_classifier = (
-    MedicalBertForTokenClassifier.pretrained(
-        "bert_sequence_classifier_patient_complaint_onnx",
-        "en",
-        "clinical/models"
-    )
-    .setInputCols(["token", "sentence"])
-    .setOutputCol("ner")
-    .setCaseSensitive(True)
-)
-
-ner_converter = (
-    NerConverter()
-    .setInputCols(["sentence", "token", "ner"])
-    .setOutputCol("ner_chunk")
-)
+sequence_classifier = MedicalBertForSequenceClassification.pretrained("bert_sequence_classifier_patient_complaint_onnx", "en", "clinical/models")\
+  .setInputCols(["document", "token"])\
+  .setOutputCol("class")
 
 pipeline = Pipeline(stages=[
-    document_assembler,
-    sentenceDetector,
+    document_assembler, 
     tokenizer,
-    token_classifier,
-    ner_converter
+    sequence_classifier    
 ])
 
 data = spark.createDataFrame([["""The Medical Center is a large state of the art hospital facility with great doctors, nurses, technicians and receptionists.  Service is top notch, knowledgeable and friendly.  This hospital site has plenty of parking"""],
@@ -101,49 +71,22 @@ result = model.transform(data)
 
 {:.jsl-block}
 ```python
-from johnsnowlabs import nlp, medical
-
-document_assembler = (
-    nlp.DocumentAssembler()
-    .setInputCol("text")
+document_assembler = nlp.DocumentAssembler() \
+    .setInputCol("text") \
     .setOutputCol("document")
-)
 
-sentenceDetector = (
-    nlp.SentenceDetectorDLModel.pretrained("sentence_detector_dl","xx")
-    .setInputCols(["document"])
-    .setOutputCol("sentence")
-)
-
-tokenizer = (
-    nlp.Tokenizer()
-    .setInputCols(["sentence"])
+tokenizer = nlp.Tokenizer() \
+    .setInputCols(["document"]) \
     .setOutputCol("token")
-)
 
-token_classifier = (
-    medical.MedicalBertForTokenClassifier.pretrained(
-        "bert_sequence_classifier_patient_complaint_onnx",
-        "en",
-        "clinical/models"
-    )
-    .setInputCols(["token", "sentence"])
-    .setOutputCol("ner")
-    .setCaseSensitive(True)
-)
-
-ner_converter = (
-    nlp.NerConverter()
-    .setInputCols(["sentence", "token", "ner"])
-    .setOutputCol("ner_chunk")
-)
+sequenceClassifier = medical.BertForSequenceClassification.pretrained("bert_sequence_classifier_patient_complaint_onnx", "en", "clinical/models")\
+    .setInputCols(["document","token"])\
+    .setOutputCol("classes")
 
 pipeline = nlp.Pipeline(stages=[
     document_assembler,
-    sentenceDetector,
     tokenizer,
-    token_classifier,
-    ner_converter
+    sequenceClassifier
 ])
 
 data = spark.createDataFrame([["""The Medical Center is a large state of the art hospital facility with great doctors, nurses, technicians and receptionists.  Service is top notch, knowledgeable and friendly.  This hospital site has plenty of parking"""],
@@ -154,44 +97,21 @@ result = model.transform(data)
 
 ```
 ```scala
-import com.johnsnowlabs.nlp.base._
-import com.johnsnowlabs.nlp.annotators._
-import org.apache.spark.ml.Pipeline
-import spark.implicits._
+val document_assembler = new DocumentAssembler() 
+    .setInputCol("text") 
+    .setOutputCol("document")
 
-val documentAssembler = new DocumentAssembler()
-  .setInputCol("text")
-  .setOutputCol("document")
+val tokenizer = new Tokenizer() 
+    .setInputCols(Array("document")) 
+    .setOutputCol("token")
 
-val sentenceDetector = new SentenceDetectorDLModel()
-  .pretrained("sentence_detector_dl","xx")
-  .setInputCols(["document"])
-  .setOutputCol("sentence")
+val sequenceClassifier = MedicalBertForSequenceClassification.pretrained("bert_sequence_classifier_patient_complaint_onnx", "en", "clinical/models")
+  .setInputCols(Array("document","token"))
+  .setOutputCol("class")
 
-val tokenizer = new Tokenizer()
-  .setInputCols("document")
-  .setOutputCol("token")
+val pipeline = new Pipeline().setStages(Array(document_assembler, tokenizer, sequenceClassifier))
 
-val tokenClassifier = MedicalBertForTokenClassifier
-  .pretrained("bert_sequence_classifier_patient_complaint_onnx", "en", "clinical/models")
-  .setInputCols("token", "document")
-  .setOutputCol("ner")
-  .setCaseSensitive(true)
-
-val nerConverter = new NerConverter()
-  .setInputCols("document", "token", "ner")
-  .setOutputCol("ner_chunk")
-
-val pipeline = new Pipeline()
-  .setStages(Array(
-    documentAssembler,
-    sentenceDetector,
-    tokenizer,
-    tokenClassifier,
-    nerConverter
-  ))
-
-val data = Seq(Array("The Medical Center is a large state of the art hospital facility with great doctors, nurses, technicians and receptionists.  Service is top notch, knowledgeable and friendly.  This hospital site has plenty of parking", "My gf dad wasn’t feeling well so we decided to take him to this place cus it’s his insurance and we waited for a while and mind that my girl dad couldn’t breath good while the staff seem not to care and when they got to us they said they we’re gonna a take some blood samples and they made us wait again and to see the staff workers talking to each other and laughing taking there time and not seeming to care about there patience, while we were in the lobby there was another guy who told us they also made him wait while he can hardly breath and they left him there to wait my girl dad is coughing and not doing better and when the lady came in my girl dad didn’t have his shirt because he was hot and the lady came in said put on his shirt on and then left still waiting to get help rn")).toDS().toDF("text")
+val data = Seq(Array("The Medical Center is a large state of the art hospital facility with great doctors, nurses, technicians and receptionists.  Service is top notch, knowledgeable and friendly.  This hospital site has plenty of parking", "My gf dad wasn’t feeling well so we decided to take him to this place cus it’s his insurance and we waited for a while and mind that my girl dad couldn’t breath good while the staff seem not to care and when they got to us they said they we’re gonna a take some blood samples and they made us wait again and to see the staff workers talking to each other and laughing taking there time and not seeming to care about there patience, while we were in the lobby there was another guy who told us they also made him wait while he can hardly breath and they left him there to wait my girl dad is coughing and not doing better and when the lady came in my girl dad didn’t have his shirt because he was hot and the lady came in said put on his shirt on and then left still waiting to get help rn")).toDF("text")
 
 val model = pipeline.fit(data)
 val result = model.transform(data)

@@ -39,6 +39,7 @@ This model is trained with the BertForTokenClassification method from the transf
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.base import DocumentAssembler
 from sparknlp_jsl.annotator import SentenceDetectorDLModel, MedicalBertForTokenClassifier
@@ -75,7 +76,7 @@ token_classifier = (
 )
 
 ner_converter = (
-    NerConverter()
+    NerConverterInternal()
     .setInputCols(["sentence", "token", "ner"])
     .setOutputCol("ner_chunk")
 )
@@ -94,6 +95,43 @@ data = spark.createDataFrame([[test_sentence]]).toDF("text")
 model = pipeline.fit(data)
 result = model.transform(data)
 ```
+{:.jsl-block}
+```python
+document_assembler = nlp.DocumentAssembler() \
+    .setInputCol("text") \
+    .setOutputCol("document")
+   
+sentenceDetector = nlp.SentenceDetectorDLModel.pretrained("sentence_detector_dl","xx")\
+    .setInputCols(["document"])\
+    .setOutputCol("sentence")
+
+tokenizer = nlp.Tokenizer() \
+    .setInputCols(["sentence"]) \
+    .setOutputCol("token")
+
+tokenClassifier = medical.BertForTokenClassification.pretrained("bert_token_classifier_ner_species_onnx", "en", "clinical/models")\
+    .setInputCols(["sentence","token"])\
+    .setOutputCol("ner")
+
+ner_converter = medical.NerConverterInternal()\
+    .setInputCols(["sentence", "token", "ner"])\
+    .setOutputCol("ner_chunk")
+
+
+pipeline = nlp.Pipeline(stages=[
+    document_assembler,
+    tokenizer,
+    tokenClassifier,
+    ner_converter
+])
+
+data = spark.createDataFrame(["As determined by 16S rRNA gene sequence analysis, strain 6C (T) represents a distinct species belonging to the class Betaproteobacteria and is most closely related to Thiomonas intermedia DSM 18155 (T) and Thiomonas perometabolis DSM 18570 (T)."], StringType()).toDF("text")
+
+model = pipeline.fit(data)
+result = model.transform(data)
+
+```
+
 ```scala
 import com.johnsnowlabs.nlp.base.DocumentAssembler
 import com.johnsnowlabs.nlp.annotators.Tokenizer

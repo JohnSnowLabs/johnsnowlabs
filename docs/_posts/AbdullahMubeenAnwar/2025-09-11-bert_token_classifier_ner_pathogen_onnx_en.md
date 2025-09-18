@@ -37,6 +37,7 @@ This pretrained named entity recognition (NER) model is a deep learning model fo
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.base import DocumentAssembler
 from sparknlp_jsl.annotator import SentenceDetectorDLModel, MedicalBertForTokenClassifier
@@ -73,7 +74,7 @@ token_classifier = (
 )
 
 ner_converter = (
-    NerConverter()
+    NerConverterInternal()
     .setInputCols(["sentence", "token", "ner"])
     .setOutputCol("ner_chunk")
 )
@@ -92,6 +93,55 @@ data = spark.createDataFrame([[test_sentence]]).toDF("text")
 model = pipeline.fit(data)
 result = model.transform(data)
 ```
+{:.jsl-block}
+```python
+from johnsnowlabs import nlp, medical
+
+document_assembler = nlp.DocumentAssembler()\
+    .setInputCol("text")\
+    .setOutputCol("document")
+
+
+sentenceDetector = nlp.SentenceDetectorDLModel.pretrained("sentence_detector_dl","xx")\
+    .setInputCols(["document"])\
+    .setOutputCol("sentence")
+
+
+tokenizer = nlp.Tokenizer()\
+    .setInputCols(["sentence"])\
+    .setOutputCol("token")
+
+
+token_classifier = medical.BertForTokenClassifier.pretrained(
+        "bert_token_classifier_ner_pathogen_onnx",
+        "en",
+        "clinical/models"
+    )\
+    .setInputCols(["token", "sentence"])\
+    .setOutputCol("ner")\
+    .setCaseSensitive(True)
+
+
+ner_converter = medical.NerConverterInternal()\
+    .setInputCols(["sentence", "token", "ner"])\
+    .setOutputCol("ner_chunk")
+
+
+pipeline = nlp.Pipeline(stages=[
+    document_assembler,
+    sentenceDetector,
+    tokenizer,
+    token_classifier,
+    ner_converter
+])
+
+test_sentence = "Racecadotril is an antisecretory medication and it has better tolerability than loperamide. Diarrhea is the condition of having loose, liquid or watery bowel movements each day. Signs of dehydration often begin with loss of the normal stretchiness of the skin. This can progress to loss of skin color, a fast heart rate as it becomes more severe; while it has been speculated that rabies virus, Lyssavirus and Ephemerovirus could be transmitted through aerosols, studies have concluded that this is only feasible in limited conditions."
+data = spark.createDataFrame([[test_sentence]]).toDF("text")
+
+model = pipeline.fit(data)
+result = model.transform(data)
+```
+
 ```scala
 import com.johnsnowlabs.nlp.base.DocumentAssembler
 import com.johnsnowlabs.nlp.annotators.Tokenizer
