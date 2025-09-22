@@ -396,6 +396,7 @@ document.write(`
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../ner/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../ner/iob_tagger/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.iob_tagger</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ner/medical_ner/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.medical_ner</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ner/medical_ner_dl_graph_checker/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.medical_ner_dl_graph_checker</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ner/ner_chunker/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.ner_chunker</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ner/ner_converter_internal/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.ner_converter_internal</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ner/ner_template_render/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.ner_template_render</span></code></a></li>
@@ -575,6 +576,11 @@ Default: False.</p></li>
 If True, the month will remain unchanged during the obfuscation process.
 If False, the month will be modified along with the year and day.
 Default: False.</p></li>
+<li><p><strong>isRandomDateDisplacement</strong> – Use a random displacement days in dates entities, that random number is based on the <cite>seed</cite> parameter.
+If true use random displacement days in dates entities, if false use the <cite>days</cite> parameter.
+The default value is false.</p></li>
+<li><p><strong>maxRandomDisplacementDays</strong> – The maximum number of days for random displacement when <cite>isRandomDateDisplacement</cite> is set to True.
+Default is 1825.</p></li>
 <li><p><strong>obfuscateRefSource</strong> (<em>str</em>) – The source of obfuscation of to obfuscate the entities. For dates entities, This property is invalid.
 The values ar the following:
 ‘custom’ or ‘file’: Takes the fakers from the setCustomFakers function or from the file.
@@ -612,6 +618,25 @@ The HIPAA Privacy Rule mandates that ages from patients older than 90 years must
 while age for patients 90 years or younger can remain unchanged.
 If True, age entities larger than 90 will be obfuscated as per HIPAA Privacy Rule, the others will remain unchanged.
 If False, <cite>ageRanges</cite> parameter is valid. Default: False.</p></li>
+<li><p><strong>obfuscateZipByHipaa</strong> (<em>bool</em>) – <p>Whether to apply HIPAA Safe Harbor ZIP code obfuscation rules.</p>
+<dl class="simple">
+<dt>If True,</dt><dd><dl class="simple">
+<dt>Apply HIPAA Safe Harbor rules for ZIP/ZIP+4 codes:</dt><dd><ol class="arabic simple">
+<li><p>Extract the first five digits from the input (accepting formats like
+“12345”, “12345-6789”, “123456789”, and other tolerant forms).</p></li>
+<li><p>If the first three-digit ZIP prefix is in the HIPAA restricted list
+(the 17 prefixes derived from 2000 Census data), the ZIP is suppressed
+to the canonical value “000**”.</p></li>
+<li><p>Otherwise, the ZIP is generalized to the first three digits followed by
+“**” (i.e. <cite>XXX**</cite>). The +4 portion is will be masked with asterisks if present.</p></li>
+</ol>
+</dd>
+</dl>
+</dd>
+<dt>If False,</dt><dd><p>HIPAA-specific ZIP masking is not applied. Instead, the component’s default ZIP obfuscation rules will be used.</p>
+</dd>
+</dl>
+</p></li>
 <li><p><strong>consistentAcrossNameParts</strong> (<em>bool</em>) – <p>Param that indicates whether consistency should be enforced across different parts of a name
 (e.g., first name, middle name, last name).</p>
 <p>When set to <cite>True</cite>, the same transformation or obfuscation will be applied consistently to all parts
@@ -706,6 +731,11 @@ Default: False</p></li>
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.isRandomDateDisplacement">
+<span class="sig-name descname"><span class="pre">isRandomDateDisplacement</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.isRandomDateDisplacement" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.keepMonth">
 <span class="sig-name descname"><span class="pre">keepMonth</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.keepMonth" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -731,6 +761,11 @@ Default: False</p></li>
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.maxRandomDisplacementDays">
+<span class="sig-name descname"><span class="pre">maxRandomDisplacementDays</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.maxRandomDisplacementDays" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.mode">
 <span class="sig-name descname"><span class="pre">mode</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.mode" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -743,6 +778,11 @@ Default: False</p></li>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.obfuscateRefSource">
 <span class="sig-name descname"><span class="pre">obfuscateRefSource</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.obfuscateRefSource" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.obfuscateZipByHipaa">
+<span class="sig-name descname"><span class="pre">obfuscateZipByHipaa</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.obfuscateZipByHipaa" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -1017,6 +1057,17 @@ obfuscation patterns.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setIsRandomDateDisplacement">
+<span class="sig-name descname"><span class="pre">setIsRandomDateDisplacement</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setIsRandomDateDisplacement" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets if you want to use random displacement in dates</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>s</strong> (<em>bool</em>) – Boolean value to select if you want to use random displacement in dates</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setKeepMonth">
 <span class="sig-name descname"><span class="pre">setKeepMonth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setKeepMonth" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets whether to keep the month intact when obfuscating date entities.
@@ -1097,6 +1148,18 @@ If the entity is less than 3 chars (like Jo, or 5), asterisks without brackets w
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setMaxRandomDisplacementDays">
+<span class="sig-name descname"><span class="pre">setMaxRandomDisplacementDays</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">days</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setMaxRandomDisplacementDays" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets maximum number of days for random date displacement.
+Default is 1825.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>days</strong> (<em>int</em>) – Maximum number of days for random date displacement.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setMode">
 <span class="sig-name descname"><span class="pre">setMode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setMode" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets mode for Anonymizer [‘mask’|’obfuscate’]</p>
@@ -1137,6 +1200,48 @@ both : Takes the entities from the setCustomFakers function and the faker module
 <dd class="field-odd"><p><strong>source</strong> (<em>str</em>) – The source of obfuscation to obfuscate the entities. Default: faker.</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setObfuscateZipByHipaa">
+<span class="sig-name descname"><span class="pre">setObfuscateZipByHipaa</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setObfuscateZipByHipaa" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to apply HIPAA Safe Harbor ZIP code obfuscation rules.</p>
+<section id="behavior">
+<h4>Behavior<a class="headerlink" href="#behavior" title="Permalink to this heading">#</a></h4>
+<ul class="simple">
+<li><dl class="simple">
+<dt>True:</dt><dd><dl class="simple">
+<dt>Apply HIPAA Safe Harbor rules for ZIP/ZIP+4 codes:</dt><dd><ol class="arabic simple">
+<li><p>Extract the first five digits from the input (accepting formats like
+“12345”, “12345-6789”, “123456789”, and other tolerant forms).</p></li>
+<li><p>If the first three-digit ZIP prefix is in the HIPAA restricted list
+(the 17 prefixes derived from 2000 Census data), the ZIP is suppressed
+to the canonical value “000**”.</p></li>
+<li><p>Otherwise, the ZIP is generalized to the first three digits followed by
+“**” (i.e. <cite>XXX**</cite>). The +4 portion will be masked with asterisks if present.</p></li>
+</ol>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>False:</dt><dd><p>HIPAA-specific ZIP masking is not applied. Instead, the component’s default or
+user-defined ZIP obfuscation rules will be used.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">param value<span class="colon">:</span></dt>
+<dd class="field-odd"><p>If True, apply HIPAA Safe Harbor ZIP obfuscation rules.
+If False, skip HIPAA-specific rules and use the default/custom ZIP obfuscation.</p>
+</dd>
+<dt class="field-even">type value<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</section>
 </dd></dl>
 
 <dl class="py method">
@@ -1391,14 +1496,17 @@ Options: [mask, obfuscate, skip]. Default: obfuscate.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.fixedMaskLength"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.fixedMaskLength</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.genderAwareness"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.genderAwareness</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.geoConsistency"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.geoConsistency</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.isRandomDateDisplacement"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.isRandomDateDisplacement</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.keepMonth"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.keepMonth</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.keepTextSizeForObfuscation"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.keepTextSizeForObfuscation</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.keepYear"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.keepYear</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.language"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.language</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.maskingPolicy"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.maskingPolicy</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.maxRandomDisplacementDays"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.maxRandomDisplacementDays</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.mode"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.mode</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.obfuscateDate"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.obfuscateDate</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.obfuscateRefSource"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.obfuscateRefSource</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.obfuscateZipByHipaa"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.obfuscateZipByHipaa</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.region"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.region</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.sameLengthFormattedEntities"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.sameLengthFormattedEntities</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.seed"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.seed</span></code></a></li>
@@ -1419,14 +1527,17 @@ Options: [mask, obfuscate, skip]. Default: obfuscate.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setFixedMaskLength"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.setFixedMaskLength()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setGenderAwareness"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.setGenderAwareness()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setGeoConsistency"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.setGeoConsistency()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setIsRandomDateDisplacement"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.setIsRandomDateDisplacement()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setKeepMonth"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.setKeepMonth()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setKeepTextSizeForObfuscation"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.setKeepTextSizeForObfuscation()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setKeepYear"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.setKeepYear()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setLanguage"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.setLanguage()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setMaskingPolicy"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.setMaskingPolicy()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setMaxRandomDisplacementDays"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.setMaxRandomDisplacementDays()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setMode"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.setMode()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setObfuscateDate"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.setObfuscateDate()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setObfuscateRefSource"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.setObfuscateRefSource()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setObfuscateZipByHipaa"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.setObfuscateZipByHipaa()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setObfuscationEquivalents"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.setObfuscationEquivalents()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setRegion"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.setRegion()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.base_deidentification_params.BaseDeIdentificationParams.setSameLengthFormattedEntities"><code class="docutils literal notranslate"><span class="pre">BaseDeIdentificationParams.setSameLengthFormattedEntities()</span></code></a></li>
