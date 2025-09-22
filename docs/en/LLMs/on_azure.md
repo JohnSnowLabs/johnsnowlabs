@@ -27,6 +27,8 @@ The list below shows John Snow Labs' Medical LLM models available on Azure marke
 
 [Medical Spanish LLM - 24B](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.spanish_medical_llm_24b?tab=Overview)
 
+[Medical Visual LLM - 7B](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.medical_vlm_7b?tab=Overview)
+
 ## Deployment Instructions
 
 1. Subscribe to the Product from the models listing page using the `Get It Now` button.
