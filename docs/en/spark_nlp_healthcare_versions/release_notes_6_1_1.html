@@ -9,12 +9,12 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Healthcare NLP v3.4.2 Release Notes</title><meta property="og:title" content="Spark NLP for Healthcare | John Snow Labs"/>
+<!-- End Google Tag Manager --><title>Healthcare NLP v6.1.1 Release Notes</title><meta property="og:title" content="Spark NLP for Healthcare | John Snow Labs"/>
 
 <meta name="description" content="High Performance NLP with Apache Spark
 ">
-<!-- <link rel="canonical" href="/docs/en/spark_nlp_healthcare_versions/release_notes_3_4_2"> -->
-<link rel="canonical" href="/docs/en/spark_nlp_healthcare_versions/release_notes_3_4_2"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<!-- <link rel="canonical" href="/docs/en/spark_nlp_healthcare_versions/release_notes_6_1_1"> -->
+<link rel="canonical" href="/docs/en/spark_nlp_healthcare_versions/release_notes_6_1_1"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -616,238 +616,963 @@ function wrapWordInSpan(data, wordToWrap) {
 </script><div class="article__header"><div class="header-nav"><div class="main-docs">
   <ul class="breadcrambs">
     <li><a href="/docs">Documentation</a></li>
-    <li>Healthcare NLP v3.4.2 Release Notes</li>
+    <li>Healthcare NLP v6.1.1 Release Notes</li>
   </ul>
 </div></div><header class="main-docs have_subtitle">
-          <h1>Healthcare NLP v3.4.2 Release Notes</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
+          <h1>Healthcare NLP v6.1.1 Release Notes</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
-            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/spark_nlp_healthcare_versions/release_notes_3_4_2.md">
-            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Healthcare NLP v3.4.2 Release Notes"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
+            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/spark_nlp_healthcare_versions/release_notes_6_1_1.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Healthcare NLP v6.1.1 Release Notes"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <h2 id="section">3.4.2</h2>
-  <p>We are glad to announce that Spark NLP Healthcare 3.4.2 has been released!</p>
+  <h2 id="section">6.1.1</h2>
 
   <h4 id="highlights">Highlights</h4>
 
-  <ul>
-    <li>New RCT Classifier, NER models and pipeline (Deidentification)</li>
-    <li>Setting the scope window (target area) dynamically in Assertion Status detection models</li>
-    <li>Reading JSON files (exported from ALAB) from HDFS with <code class="language-plaintext highlighter-rouge">AnnotationJsonReader</code></li>
-    <li>Allow users to write Tensorflow graphs to HDFS</li>
-    <li>Serving Spark NLP on APIs</li>
-    <li>Updated documentation on installing Spark NLP for Healthcare in AWS EMR (Jupyter, Livy, Yarn, Hadoop)</li>
-    <li>New series of notebooks to reproduce the academic papers published by our colleagues</li>
-    <li>PySpark tutorial notebooks to let non-Spark users get started with Apache Spark ecosystem in Python</li>
-    <li>New &amp; updated notebooks</li>
-    <li>List of recently updated or added models</li>
-  </ul>
-
-</div>
-<div class="h3-box">
-
-  <h4 id="new-rct-classifier-ner-models-and-pipeline-deidentification">New RCT Classifier, NER Models and Pipeline (Deidentification)</h4>
-
-  <p>We are releasing a new <code class="language-plaintext highlighter-rouge">bert_sequence_classifier_rct_biobert</code> model, four new Spanish deidentification NER models (<code class="language-plaintext highlighter-rouge">ner_deid_generic_augmented</code>, <code class="language-plaintext highlighter-rouge">ner_deid_subentity_augmented</code>, <code class="language-plaintext highlighter-rouge">ner_deid_generic_roberta_augmented</code>, <code class="language-plaintext highlighter-rouge">ner_deid_subentity_roberta_augmented</code>) and a pipeline (<code class="language-plaintext highlighter-rouge">clinical_deidentification_augmented</code>).</p>
+  <p>We are delighted to announce <strong>significant new features and major enhancements</strong> in the latest release of Healthcare NLP.
+This release introduces brand-new <strong>Medical Vision language models (VLMs)</strong>, new capabilities such as the new <strong>Annotation2Training</strong> module for converting annotations from GenAI Lab into trainable dataframes, the <strong>MedicalNerDLGraphChecker</strong> for well-informed NER training, domain-specific <strong>LLM pipelines</strong>, and <strong>faster ONNX models</strong>—a total of <strong>78 new LLMs, pipelines, and ONNX models</strong> available out of the box.</p>
 
   <ul>
-    <li><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_rct_biobert</code>: This model can classify the sections within abstract of scientific articles regarding randomized clinical trials (RCT) (<code class="language-plaintext highlighter-rouge">BACKGROUND</code>, <code class="language-plaintext highlighter-rouge">CONCLUSIONS</code>, <code class="language-plaintext highlighter-rouge">METHODS</code>, <code class="language-plaintext highlighter-rouge">OBJECTIVE</code>, <code class="language-plaintext highlighter-rouge">RESULTS</code>).</li>
-  </ul>
-
-  <p><em>Example</em> :</p>
-
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">...</span>
-<span class="n">sequenceClassifier_model</span> <span class="o">=</span> <span class="n">MedicalBertForSequenceClassification</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"bert_sequence_classifier_rct_biobert"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
-  <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">,</span><span class="s">'token'</span><span class="p">])</span>\
-  <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"class"</span><span class="p">)</span>
-<span class="p">...</span>
-
-<span class="n">sample_text</span> <span class="o">=</span> <span class="s">"Previous attempts to prevent all the unwanted postoperative responses to major surgery with an epidural hydrophilic opioid , morphine , have not succeeded . The authors ' hypothesis was that the lipophilic opioid fentanyl , infused epidurally close to the spinal-cord opioid receptors corresponding to the dermatome of the surgical incision , gives equal pain relief but attenuates postoperative hormonal and metabolic responses more effectively than does systemic fentanyl ."</span>
-
-<span class="n">result</span> <span class="o">=</span> <span class="n">sequence_clf_model</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="n">sample_text</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">))</span>
-
-<span class="o">&gt;&gt;</span> <span class="n">class</span><span class="p">:</span> <span class="s">'BACKGROUND'</span>
-</code></pre></div>  </div>
-
-  <ul>
-    <li>
-      <p><code class="language-plaintext highlighter-rouge">ner_deid_generic_augmented</code>, <code class="language-plaintext highlighter-rouge">ner_deid_subentity_augmented</code>, <code class="language-plaintext highlighter-rouge">ner_deid_generic_roberta_augmented</code>, <code class="language-plaintext highlighter-rouge">ner_deid_subentity_roberta_augmented</code> models and <code class="language-plaintext highlighter-rouge">clinical_deidentification_augmented</code> pipeline : You can use either <code class="language-plaintext highlighter-rouge">sciwi-embeddings</code> (300 dimensions) or the Roberta Clinical Embeddings (infix <code class="language-plaintext highlighter-rouge">_roberta_</code>) with these NER models. These models and pipeline are different to their non-augmented versions in the following:</p>
-
+    <li>Medical Vision LLM Models extend clinical AI with multimodal text and image understanding</li>
+    <li>Pretrained Clinical Pipelines for LLMs deliver ready-to-use Q&amp;A, NER, summarization, RAG, and chat</li>
+    <li>Introducing <code class="language-plaintext highlighter-rouge">MedicalNerDLGraphChecker</code> improves graph management during medical NER training</li>
+    <li><code class="language-plaintext highlighter-rouge">Annotation2Training</code> converts GenAI Lab annotations into NER-ready training datasets</li>
+    <li>Lightweight Text-to-SQL Model based on small LLMs enables seamless natural language queries on healthcare data</li>
+    <li>Human phenotype ontology (HPO) Mapping Models and Pipeline standardize phenotype recognition and linking via returning exact, related, and broad synonyms for each term at once</li>
+    <li>ONNX-Optimized MedicalBERT Models provide faster inference on CPU and GPU for certain tasks (NER, assertion)</li>
+    <li>Cross-Framework Benchmarking compares TensorFlow, ONNX, and OpenVINO, with ONNX leading on GPU</li>
+    <li>Additional De-Identification Enhancements strengthen HIPAA compliance and customization</li>
+    <li>Structured JSON Converter with Mappers streamlines integration of structured data</li>
+    <li>Various core improvements; bug fixes, enhanced overall robustness and reliability of Spark NLP for Healthcare
       <ul>
-        <li>They are trained with more data, now including an in-house annotated deidentification dataset;</li>
-        <li>New <code class="language-plaintext highlighter-rouge">SEX</code> tag is available for all of them. This tag is now included in the NER and has been improved with more rules in the ContextualParsers of the pipeline, resulting in having a bigger recall to detect the sex of the patient.</li>
-        <li>New <code class="language-plaintext highlighter-rouge">STREET</code>, <code class="language-plaintext highlighter-rouge">CITY</code> and <code class="language-plaintext highlighter-rouge">COUNTRY</code> entities are added to subentity versions.</li>
+        <li>Simplified Spark Session initialization</li>
+        <li><code class="language-plaintext highlighter-rouge">ner_source</code> metadata key in IOBTagger</li>
+        <li>Consistent results with <code class="language-plaintext highlighter-rouge">genderAwareness=True</code> in DeIdentification</li>
       </ul>
     </li>
+    <li>Updated notebooks and demonstrations for making Spark NLP for Healthcare easier to navigate and understand
+      <ul>
+        <li>New <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/MedicalVisionLLM.ipynb">MedicalVisionLLM</a> MOOC Notebook</li>
+        <li>New <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/AssertionMerger.ipynb">AssertionMerger</a> MOOC Notebook</li>
+        <li>New <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/04.14.End2End_Preannotation_and_Training_Pipeline.ipynb">End2End Preannotation and Training Pipeline</a> Notebook</li>
+        <li>New <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.7.Generative_AI_to_Ner_Training.ipynb">GenAI Lab to Ner Training</a> Notebook</li>
+        <li>New <a href="https://demo.johnsnowlabs.com/healthcare/NER_ASSERTIONS_RULE_BASED/">NER ASSERTIONS RULE BASED</a> Demo</li>
+        <li>Updated <a href="https://demo.johnsnowlabs.com/healthcare/MEDICAL_LLM/">MEDICAL LLM</a> Demo</li>
+        <li>Updated <a href="https://demo.johnsnowlabs.com/healthcare/ER_CODE_MAPPING/">ENTITY RESOLUTION CODE MAPPING</a> Demo</li>
+        <li>Updated <a href="https://demo.johnsnowlabs.com/healthcare/NER_GENE_PHENOTYPES/">NER GENE PHENOTYPES</a> Demo</li>
+      </ul>
+    </li>
+    <li>The addition and update of numerous new clinical models and pipelines continue to reinforce our offering in the healthcare domain</li>
   </ul>
 
-  <p>For more details and examples, please check <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.2.Clinical_Deidentification_in_Spanish.ipynb">Clinical Deidentification in Spanish notebook</a>.</p>
+</div>
+<div class="h3-box">
 
-  <p><em>Example</em> :</p>
+  <h4 id="medical-vision-llm-models-extend-clinical-ai-with-multimodal-text-and-image-understanding">Medical Vision LLM Models Extend Clinical AI with Multimodal Text and Image Understanding</h4>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">...</span>
-<span class="n">embeddings</span> <span class="o">=</span> <span class="n">WordEmbeddingsModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"embeddings_sciwiki_300d"</span><span class="p">,</span><span class="s">"es"</span><span class="p">,</span><span class="s">"clinical/models"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"embeddings"</span><span class="p">)</span>
+  <p>In this release, we are expanding our Medical Vision LLM (VLM) family with additional models specifically finetuned for medical tasks. These models extend large language model capabilities with integrated visual language understanding, enabling multimodal clinical analysis by combining textual and image inputs.</p>
 
-<span class="n">deid_ner</span> <span class="o">=</span> <span class="n">MedicalNerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"ner_deid_generic_augmented"</span><span class="p">,</span> <span class="s">"es"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>
+  <p>The new VLMs provide strong performance for tasks such as diagnostic image interpretation, image-to-text summarization, and integrated documentation analysis — continuing our mission to advance clinical AI with robust, domain-specific multimodal solutions.</p>
 
-<span class="n">deid_sub_entity_ner</span> <span class="o">=</span> <span class="n">MedicalNerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"ner_deid_subentity_augmented"</span><span class="p">,</span> <span class="s">"es"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_sub_entity"</span><span class="p">)</span>
-<span class="p">...</span>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th><strong>Model Name</strong></th>
+        <th><strong>Quantization Options</strong></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>jsl_meds_ner_vlm_8b_v1</td>
+        <td><a href="https://nlp.johnsnowlabs.com/2025/08/27/jsl_meds_ner_vlm_8b_q4_v1_en.html">q4</a>, <a href="https://nlp.johnsnowlabs.com/2025/08/27/jsl_meds_ner_vlm_8b_q8_v1_en.html">q8</a>, <a href="https://nlp.johnsnowlabs.com/2025/08/27/jsl_meds_ner_vlm_8b_q16_v1_en.html">q16</a></td>
+      </tr>
+      <tr>
+        <td>jsl_meds_ner_vlm_7b_v1</td>
+        <td><a href="https://nlp.johnsnowlabs.com/2025/09/16/jsl_meds_ner_vlm_7b_q4_v1_en.html">q4</a>, <a href="https://nlp.johnsnowlabs.com/2025/09/16/jsl_meds_ner_vlm_7b_q8_v1_en.html">q8</a>, <a href="https://nlp.johnsnowlabs.com/2025/09/16/jsl_meds_ner_vlm_7b_q16_v1_en.html">q16</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><em>Example</em>:</p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">prompt</span> <span class="o">=</span> <span class="s">"""
+# Template:
+{
+  "Patient Name": "string",
+  "Patient Age": "integer",
+  "Patient Gender": "string",
+  "Hospital Number": "string",
+  "Episode Number": "string",
+  "Episode Date": "date-time"
+}
+# Context:
+&lt;image&gt;
+"""</span>
+
+<span class="n">input_df</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">vision_llm_preprocessor</span><span class="p">(</span>
+    <span class="n">spark</span><span class="o">=</span><span class="n">spark</span><span class="p">,</span>
+    <span class="n">images_path</span><span class="o">=</span><span class="s">"images"</span><span class="p">,</span>
+    <span class="n">prompt</span><span class="o">=</span><span class="n">prompt</span><span class="p">,</span>
+    <span class="n">output_col_name</span><span class="o">=</span><span class="s">"prompt"</span>
+<span class="p">)</span>
+
+<span class="n">document_assembler</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span>
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"prompt"</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"caption_document"</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">image_assembler</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">nlp</span><span class="p">.</span><span class="n">ImageAssembler</span><span class="p">()</span>
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"image"</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"image_assembler"</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">medicalVisionLLM</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">medical</span><span class="p">.</span><span class="n">AutoGGUFVisionModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"jsl_meds_ner_vlm_8b_q16_v1"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"caption_document"</span><span class="p">,</span> <span class="s">"image_assembler"</span><span class="p">])</span>
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"completions"</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">().</span><span class="n">setStages</span><span class="p">([</span>
+    <span class="n">document_assembler</span><span class="p">,</span>
+    <span class="n">image_assembler</span><span class="p">,</span>
+    <span class="n">medicalVisionLLM</span>
+<span class="p">])</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">input_df</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">input_df</span><span class="p">)</span>
 </code></pre></div>  </div>
 
-  <p><em>Results</em> :</p>
-  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>chunk                    entity_subentity    entity_generic
-<span class="nt">-----------------------</span>  <span class="nt">------------------</span>  <span class="nt">----------------</span>
-Antonio Miguel Martínez  PATIENT             NAME
-un varón                 SEX                 SEX
-35                       AGE                 AGE
-auxiliar de enfermería   PROFESSION          PROFESSION
-Cadiz                    CITY                LOCATION
-España                   COUNTRY             LOCATION
-Clinica San Carlos       HOSPITAL            LOCATION
+  <p><em>Result</em>:</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">{</span>
+    <span class="s2">"Patient Name"</span>: <span class="s2">"Ms RUKHSANA SHAHEEN"</span>,
+    <span class="s2">"Patient Age"</span>: 56,
+    <span class="s2">"Patient Gender"</span>: <span class="s2">"Female"</span>,
+    <span class="s2">"Hospital Number"</span>: <span class="s2">"MH005990453"</span>,
+    <span class="s2">"Episode Number"</span>: <span class="s2">"030000528270"</span>,
+    <span class="s2">"Episode Date"</span>: <span class="s2">"2021-07-02T08:31:00"</span>
+<span class="o">}</span>
 </code></pre></div>  </div>
 
 </div>
 <div class="h3-box">
 
-  <h4 id="setting-the-scope-window-target-area-dynamically-in-assertion-status-detection-models">Setting the Scope Window (Target Area) Dynamically in Assertion Status Detection Models</h4>
+  <h4 id="pretrained-clinical-pipelines-for-llms-deliver-ready-to-use-qa-ner-summarization-rag-and-chat">Pretrained Clinical Pipelines for LLMs Deliver ready-to-use Q&amp;A, NER, summarization, RAG, and chat</h4>
 
-  <p>This parameter allows you to train the Assertion Status Models to focus on specific context windows when resolving the status of a NER chunk. The window is in format <code class="language-plaintext highlighter-rouge">[X,Y]</code> being <code class="language-plaintext highlighter-rouge">X</code> the number of tokens to consider on the left of the chunk, and <code class="language-plaintext highlighter-rouge">Y</code> the max number of tokens to consider on the right. Let’s take a look at what different windows mean:</p>
+  <p>This release introduces a new collection of pretrained clinical LLM pipelines, designed to streamline clinical document analysis. Each pipeline is built on top of state-of-the-art small-sized Medical LLMs finetuned by us, providing ready-to-use solutions for Q&amp;A, NER, Summarization, Retrieval-Augmented Generation (RAG), and Chat.</p>
 
+  <p>The main advantage of these pipelines is the elimination of manual model chaining. Instead of building and testing complex workflows, users can instantly deploy one-liner pipelines that are efficient, accurate, and purpose-built for clinical tasks — reducing setup time while maintaining high performance.</p>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Model Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2025/08/16/jsl_meds_4b_q16_v4_pipeline_en.html"><code class="language-plaintext highlighter-rouge">jsl_meds_4b_q16_v4_pipeline</code></a></td>
+        <td>Q&amp;A, NER, Summarization, RAG, and Chat.</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2025/08/16/jsl_meds_8b_q8_v4_pipeline_en.html"><code class="language-plaintext highlighter-rouge">jsl_meds_8b_q8_v4_pipeline</code></a></td>
+        <td>Q&amp;A, NER, Summarization, RAG, and Chat.</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2025/08/16/jsl_meds_ner_2b_q16_v2_pipeline_en.html"><code class="language-plaintext highlighter-rouge">jsl_meds_ner_2b_q16_v2_pipeline</code></a></td>
+        <td>Q&amp;A, NER, Summarization, RAG, and Chat.</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2025/08/16/jsl_meds_ner_q16_v4_pipeline_en.html"><code class="language-plaintext highlighter-rouge">jsl_meds_ner_q16_v4_pipeline</code></a></td>
+        <td>Q&amp;A, NER</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2025/08/16/jsl_meds_ner_vlm_2b_q16_v2_pipeline_en.html"><code class="language-plaintext highlighter-rouge">jsl_meds_ner_vlm_2b_q16_v2_pipeline</code></a></td>
+        <td>Q&amp;A, NER</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><em>Example</em>:</p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span><span class="p">,</span> <span class="n">medical</span>
+
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"jsl_meds_ner_2b_q16_v2_pipeline"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="s">"""
+# Template:
+{
+  "Patient Name": "string",
+  "Patient Age": "integer",
+  "Patient Gender": "string",
+  "Hospital Number": "string",
+  "Episode Number": "string",
+  "Episode Date": "date-time"
+}
+# Context:
+The patient, Johnathan Miller, is a 54-year-old male admitted under hospital number HN382914. 
+His most recent episode number is EP2024-1178, recorded on 2025-08-10. 
+The patient presented with chronic knee pain and swelling. 
+Past medical history includes hypertension and type 2 diabetes.
+"""</span>
+</code></pre></div>  </div>
+
+  <p><em>Result</em>:</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">{</span>
+    <span class="s2">"Patient Name"</span>: <span class="s2">"Johnathan Miller"</span>,
+    <span class="s2">"Patient Age"</span>: 54,
+    <span class="s2">"Patient Gender"</span>: <span class="s2">"male"</span>,
+    <span class="s2">"Hospital Number"</span>: <span class="s2">"HN382914"</span>,
+    <span class="s2">"Episode Number"</span>: <span class="s2">"EP2024-1178"</span>,
+    <span class="s2">"Episode Date"</span>: <span class="s2">"2025-08-10"</span>
+<span class="o">}</span>
+</code></pre></div>  </div>
+
+  <p>Please check <a href="[https://nlp.johnsnowlabs.com/docs/en/benchmark#deidentification-benchmarks](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/36.0.Loading_Medical_and_Open_Source_LLMs.ipynb)">Loading Medical and Open Source LLMs</a> notebook for more detail</p>
+
+</div>
+<div class="h3-box">
+
+  <h4 id="introducing-medicalnerdlgraphchecker-improves-graph-management-during-medical-ner-training">Introducing <code class="language-plaintext highlighter-rouge">MedicalNerDLGraphChecker</code> Improves Graph Management During Medical NER Training</h4>
+
+  <p>This release introduces a new annotator, <code class="language-plaintext highlighter-rouge">MedicalNerDLGraphChecker</code>, designed to verify whether a suitable MedicalNerApproach TensorFlow graph is available for a given training dataset before computation begins. This prevents runtime errors and ensures that the correct graph is used for custom training workflows.</p>
+
+  <p>Along with the new annotator, we have added ~80 new graph files to support a wider range of configurations.</p>
+
+  <p>The <code class="language-plaintext highlighter-rouge">MedicalNerDLGraphChecker</code> must be placed before embeddings or MedicalNerApproach annotators in the pipeline. It processes the dataset to extract required graph parameters (tokens, labels, embedding dimensions) and raises an exception if the appropriate graph is missing in the JAR. This makes it especially useful for custom datasets and specialized NER training cases.</p>
+
+  <p><em>Example</em>:</p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">nerDLGraphChecker</span> <span class="o">=</span> <span class="p">(</span><span class="n">MedicalNerDLGraphChecker</span><span class="p">()</span>
+            <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span>
+            <span class="p">.</span><span class="n">setLabelColumn</span><span class="p">(</span><span class="s">"label"</span><span class="p">)</span>
+            <span class="p">.</span><span class="n">setEmbeddingsModel</span><span class="p">(</span><span class="n">embeddings</span><span class="p">))</span>
+            
+<span class="n">nerDLGraphChecker</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_df</span><span class="p">)</span>
+</code></pre></div>  </div>
+
+  <blockquote>
+    <p><strong>Note</strong>: The <code class="language-plaintext highlighter-rouge">MedicalNerDLGraphChecker</code> automatically validates whether a suitable TensorFlow graph is bundled inside the JAR for the specified embeddings and labels.</p>
+
+    <ul>
+      <li>If a required graph is <strong>not found</strong>, it will raise a detailed error message, guiding you on what configuration is missing.</li>
+      <li>If a suitable graph <strong>is found</strong>, it runs silently, confirming that the embedded graph is compatible, and you can proceed with training without manually creating graph files.</li>
+    </ul>
+  </blockquote>
+
+</div>
+<div class="h3-box">
+
+  <h4 id="annotation2training-converts-genai-lab-annotations-into-ner-ready-training-datasets"><code class="language-plaintext highlighter-rouge">Annotation2Training</code> Converts GenAI Lab Annotations into NER-ready Training Datasets</h4>
+
+  <p>We’re introducing <code class="language-plaintext highlighter-rouge">Annotation2Training</code>, a utility that converts annotation outputs (from JSON or CSV) into a Spark DataFrame ready for NER training. It expects inputs structured like John Snow Labs’ Generative AI annotation tool exports and produces token-level labels aligned with sentences and documents.</p>
+
+  <p>🚀 <strong><em>Features &amp; Highlights</em></strong></p>
   <ul>
-    <li>By default, the window is <code class="language-plaintext highlighter-rouge">[-1,-1]</code> which means that the Assertion Status will look at all of the tokens in the sentence/document (up to a maximum of tokens set in <code class="language-plaintext highlighter-rouge">setMaxSentLen()</code>).</li>
-    <li><code class="language-plaintext highlighter-rouge">[0,0]</code> means “don’t pay attention to any token except the ner_chunk”, what basically is not considering any context for the Assertion resolution.</li>
-    <li><code class="language-plaintext highlighter-rouge">[9,15]</code> is what empirically seems to be the best baseline, meaning that we look up to 9 tokens on the left and 15 on the right of the ner chunk to understand the context and resolve the status.</li>
+    <li><strong>Converts GenAI Exports to NER Training DataFrames</strong>
+      <ul>
+        <li><code class="language-plaintext highlighter-rouge">convertJson2NerDF</code></li>
+        <li><code class="language-plaintext highlighter-rouge">convertCsv2NerDF</code></li>
+      </ul>
+    </li>
+    <li><strong>Practical &amp; Easy-to-Use</strong>: Convert JSON or CSV files directly into Spark DataFrames with a single function call.</li>
+    <li><strong>Fast &amp; Scalable</strong>: Optimized partitioning ensures high performance, leveraging system CPU cores for parallel processing.</li>
+    <li><strong>Base Pipeline Compatibility</strong>: Works with your base pipeline (e.g., <code class="language-plaintext highlighter-rouge">DocumentAssembler</code>, <code class="language-plaintext highlighter-rouge">SentenceDetector</code>, <code class="language-plaintext highlighter-rouge">InternalDocumentSplitter</code>, and <code class="language-plaintext highlighter-rouge">Tokenizer</code>).</li>
+    <li><strong>NER Training Ready</strong>: Use this to streamline data prep for <code class="language-plaintext highlighter-rouge">MedicalNerApproach</code> and other NER trainers—no manual wrangling, consistent columns, and validated alignment out of the box.</li>
+    <li><strong>Modern Alternative</strong>: Eliminates the complexity of traditional <strong>CoNLL-based approach</strong>, providing a more efficient and reliable workflow.</li>
   </ul>
 
-  <p>Check this <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/2.1.Scope_window_tuning_assertion_status_detection.ipynb">scope window tuning assertion status detection notebook</a> that illustrates the effect of the different windows and how to properly <strong>fine-tune</strong> your AssertionDLModels to get the best of them.</p>
+  <p><em>Example</em>:</p>
 
-  <p><em>Example</em> :</p>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">JSON_PATH</span> <span class="o">=</span> <span class="s">"/content/result.json"</span>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">assertion_status</span> <span class="o">=</span> <span class="n">AssertionDLApproach</span><span class="p">()</span> \
-          <span class="p">.</span><span class="n">setGraphFolder</span><span class="p">(</span><span class="s">"assertion_dl/"</span><span class="p">)</span> \
-          <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"chunk"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">)</span> \
-          <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"assertion"</span><span class="p">)</span> \
-          <span class="p">...</span>
-          <span class="p">...</span>
-          <span class="p">.</span><span class="n">setScopeWindow</span><span class="p">([</span><span class="mi">9</span><span class="p">,</span> <span class="mi">15</span><span class="p">])</span>     <span class="c1"># NEW! Scope Window!
+<span class="kn">from</span> <span class="nn">sparknlp_jsl.training</span> <span class="kn">import</span> <span class="n">Annotation2Training</span>
+<span class="n">annotation2training</span> <span class="o">=</span> <span class="n">Annotation2Training</span><span class="p">(</span><span class="n">spark</span><span class="p">)</span>
+<span class="n">training_df_json</span> <span class="o">=</span> <span class="n">annotation2training</span><span class="p">.</span><span class="n">convertJson2NerDF</span><span class="p">(</span>
+    <span class="n">json_path</span> <span class="o">=</span> <span class="n">JSON_PATH</span><span class="p">,</span>                   <span class="c1"># Path to the input JSON file.
+</span>    <span class="n">pipeline_model</span> <span class="o">=</span> <span class="n">base_pipeline_model</span><span class="p">,</span>    <span class="c1"># A pre-trained Spark NLP PipelineModel that includes at least a DocumentAssembler, and Tokenizer.
+</span>    <span class="n">repartition</span> <span class="o">=</span> <span class="p">(</span><span class="n">os</span><span class="p">.</span><span class="n">cpu_count</span><span class="p">()</span> <span class="o">*</span> <span class="mi">4</span><span class="p">),</span>      <span class="c1"># Number of partitions to use when creating the DataFrame (default is 32).
+</span>    <span class="n">token_output_col</span> <span class="o">=</span> <span class="s">"token"</span><span class="p">,</span>              <span class="c1"># The name of the column containing token annotations (default is "token").
+</span>    <span class="n">ner_label_col</span> <span class="o">=</span> <span class="s">"label"</span><span class="p">)</span>                 <span class="c1"># The name of the output column for NER labels (default is "label").
 </span></code></pre></div>  </div>
 
+  <p>Please check the <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.7.Generative_AI_to_Ner_Training.ipynb">1.7.GenAI Lab_to_Ner_Training.ipynb</a> Notebook</p>
+
 </div>
 <div class="h3-box">
 
-  <h4 id="reading-json-files-exported-from-alab-from-hdfs-with-annotationjsonreader">Reading JSON Files (Exported from ALAB) From HDFS with <code class="language-plaintext highlighter-rouge">AnnotationJsonReader</code></h4>
+  <h4 id="lightweight-text-to-sql-model-enables-seamless-natural-language-queries-on-healthcare-data">Lightweight Text-to-SQL Model Enables Seamless Natural Language Queries on Healthcare Data</h4>
 
-  <p>Now we can read the dataframe from a HDFS that we read the files from in our cluster.</p>
+  <p>We are releasing a new Text-to-SQL model fine-tuned by John Snow Labs for the healthcare domain based on small LLMs. The <code class="language-plaintext highlighter-rouge">jsl_meds_text2sql_1b_q16_v1</code> model is lightweight and optimized for transforming natural language queries into SQL, enabling seamless interaction with structured medical and healthcare datasets.</p>
 
-  <p><em>Example</em> :</p>
+  <p><em>Example</em>:</p>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">filename</span> <span class="o">=</span> <span class="s">"hdfs:///user/livy/import.json"</span>
-<span class="n">reader</span> <span class="o">=</span> <span class="n">AnnotationToolJsonReader</span><span class="p">(</span><span class="n">assertion_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s">'AsPresent'</span><span class="p">,</span> <span class="s">'AsAbsent'</span><span class="p">,</span> <span class="s">'AsConditional'</span><span class="p">,</span> <span class="s">'AsHypothetical'</span><span class="p">,</span> <span class="s">'Family'</span><span class="p">,</span> <span class="s">'AsPossible'</span><span class="p">,</span> <span class="s">'AsElse'</span><span class="p">])</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">reader</span><span class="p">.</span><span class="n">readDataset</span><span class="p">(</span><span class="n">spark</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">medical_llm</span> <span class="o">=</span> <span class="n">MedicalLLM</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"jsl_meds_text2sql_1b_q16_v1"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"completions"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setBatchSize</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setNPredict</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setUseChatTemplate</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setTemperature</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">medm_prompt</span> <span class="o">=</span> <span class="s">"""### Instruction:
+### Instruction:
+Table: CancerPatients
+- patient_id (INT)
+- name (VARCHAR)
+- age (INT)
+- gender (VARCHAR)
+- cancer_type (VARCHAR)
+- diagnosis_date (DATE)
+List the names of patients diagnosed with breast cancer.
+### Response:
+"""</span>
+</code></pre></div>  </div>
+
+  <p><em>Results</em>:</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT name FROM CancerPatients WHERE cancer_type <span class="o">=</span> <span class="s1">'breast cancer'</span>
 </code></pre></div>  </div>
 
 </div>
 <div class="h3-box">
 
-  <h4 id="allow-users-write-tensorflow-graphs-to-hdfs">Allow Users Write Tensorflow Graphs to HDFS</h4>
+  <h4 id="hpo-mapping-models-and-pipeline-standardize-phenotype-recognition-and-linking">HPO Mapping Models and Pipeline Standardize Phenotype Recognition and Linking</h4>
 
-  <p>Now we can save custom Tensorflow graphs to the HDFS that mainly being used in a cluster environment.</p>
-
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tf_graph</span><span class="p">.</span><span class="n">build</span><span class="p">(</span><span class="s">"ner_dl"</span><span class="p">,</span> <span class="n">build_params</span><span class="o">=</span><span class="p">{</span><span class="s">"embeddings_dim"</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="s">"nchars"</span><span class="p">:</span> <span class="mi">128</span><span class="p">,</span> <span class="s">"ntags"</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="s">"is_medical"</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span> <span class="n">model_location</span><span class="o">=</span><span class="s">"hdfs:///user/livy"</span><span class="p">,</span> <span class="n">model_filename</span><span class="o">=</span><span class="s">"auto"</span><span class="p">)</span>
-</code></pre></div>  </div>
-
-</div>
-<div class="h3-box">
-
-  <h4 id="serving-spark-nlp-on-apis">Serving Spark NLP on APIs</h4>
-
-  <p>Two new notebooks and a series of blog posts / Medium articles have been created to guide Spark NLP users to serve Spark NLP on a RestAPI.</p>
+  <p>We are introducing new resources for phenotype extraction and ontology mapping. Together, the <code class="language-plaintext highlighter-rouge">hpo_synonym_mapper</code> model and the <code class="language-plaintext highlighter-rouge">hpo_mapper_pipeline_v4</code> pipeline enable comprehensive recognition and standardization of phenotypic concepts in clinical and biomedical text.</p>
 
   <ul>
-    <li>The notebooks can be found <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/tutorials/RestAPI">here</a>.</li>
-    <li>The articles can be found in the Technical Documentation of Spark NLP, available <a href="https://nlp.johnsnowlabs.com/docs/en/quickstart">here</a> and also in Medium:
+    <li>The <code class="language-plaintext highlighter-rouge">pretrained model</code> maps Human Phenotype Ontology (HPO) terms to their exact, related, and broad synonyms, ensuring consistent representation of phenotypic concepts.</li>
+    <li>The <code class="language-plaintext highlighter-rouge">pretrained pipeline</code> extracts phenotype-related entities, maps them to HPO codes, determines assertion status (present, absent, suspected), and enriches the results by linking to UMLS CUIs, genes, and associated diseases.</li>
+  </ul>
+
+  <p>These tools provide a powerful way to achieve deeper phenotypic and genomic insights directly from unstructured text, supporting downstream clinical and biomedical applications.</p>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Model Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2025/09/04/hpo_synonym_mapper_en.html"><code class="language-plaintext highlighter-rouge">hpo_synonym_mapper</code></a></td>
+        <td>Maps HPO terms to their exact, related, and broad synonyms</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2025/09/04/hpo_mapper_pipeline_v4_en.html"><code class="language-plaintext highlighter-rouge">hpo_mapper_pipeline_v4</code></a></td>
+        <td>Designed to extract phenotype-related entities from clinical or biomedical text, map them to their corresponding Human Phenotype Ontology (HPO) codes, and determine their assertion status</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><em>Example</em>:</p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mapperModel</span> <span class="o">=</span> <span class="n">ChunkMapperModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"hpo_synonym_mapper"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"ner_chunk"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"mappings"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setRels</span><span class="p">([</span><span class="s">"synonym"</span><span class="p">])</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"""The patient, a 62-year-old male, presented with a neoplasm in the lung. He also reported progressive fatigue over the past three months and episodes of shortness of breath. On examination, hepatomegaly was noted, and laboratory results confirmed anemia."""</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">))</span>
+</code></pre></div>  </div>
+
+  <p><em>Results</em>:</p>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>term</th>
+        <th>synonym</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>shortness of breath</td>
+        <td>{‘exact_synonym’: [‘dyspnea’, ‘abnormal breathing’, ‘breathing difficulty’, ‘difficult to breathe’, ‘difficulty breathing’, ‘dyspnoea’, ‘trouble breathing’], ‘related_synonym’: [‘panting’], ‘broad_synonym’: []}</td>
+      </tr>
+      <tr>
+        <td>fatigue</td>
+        <td>{‘exact_synonym’: [‘fatigue’, ‘tired’, ‘tiredness’], ‘related_synonym’: [], ‘broad_synonym’: []}</td>
+      </tr>
+      <tr>
+        <td>neoplasm</td>
+        <td>{‘exact_synonym’: [‘neoplasia’, ‘oncological abnormality’, ‘tumor’, ‘tumour’], ‘related_synonym’: [‘cancer’, ‘oncology’], ‘broad_synonym’: [‘abnormal tissue mass’]}</td>
+      </tr>
+      <tr>
+        <td>anemia</td>
+        <td>{‘exact_synonym’: [‘anaemia’, ‘low number of red blood cells or haemoglobin’, ‘low number of red blood cells or hemoglobin’], ‘related_synonym’: [‘decreased haemoglobin’, ‘decreased hemoglobin’], ‘broad_synonym’: []}</td>
+      </tr>
+      <tr>
+        <td>progressive</td>
+        <td>{‘exact_synonym’: [‘worsens with time’], ‘related_synonym’: [‘progressive disorder’], ‘broad_synonym’: []}</td>
+      </tr>
+      <tr>
+        <td>hepatomegaly</td>
+        <td>{‘exact_synonym’: [‘enlarged liver’], ‘related_synonym’: [], ‘broad_synonym’: []}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<div class="h3-box">
+
+  <h4 id="onnx-optimized-medicalbert-models-provide-faster-inference-on-cpu-and-gpu">ONNX-Optimized MedicalBERT Models Provide Faster Inference on CPU and GPU</h4>
+
+  <p>We have converted multiple <code class="language-plaintext highlighter-rouge">MedicalBertForSequenceClassification</code> and <code class="language-plaintext highlighter-rouge">MedicalBertForTokenClassifier</code> models into ONNX format, enabling significant speed improvements when running on CPU and especially GPU.
+This conversion allows users to leverage the efficiency of ONNX Runtime, resulting in faster inference times. The new models ends with <code class="language-plaintext highlighter-rouge">_onnx</code> in their names to easily identify them.</p>
+
+  <p><em>Example</em>:</p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sequence_classification</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">MedicalBertForSequenceClassification</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span>
+        <span class="s">"bert_sequence_classifier_ade_augmented_onnx"</span><span class="p">,</span>
+        <span class="s">"en"</span><span class="p">,</span>
+        <span class="s">"clinical/models"</span>
+    <span class="p">)</span>
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"token"</span><span class="p">,</span> <span class="s">"sentence"</span><span class="p">])</span>
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setCaseSensitive</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([</span><span class="s">"So glad I am off effexor, so sad it ruined my teeth. tip Please be carefull taking antideppresiva and read about it 1st"</span><span class="p">,</span>
+                              <span class="s">"Religare Capital Ranbaxy has been accepting approval for Diovan since 2012"</span><span class="p">],</span> <span class="n">StringType</span><span class="p">()).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+</code></pre></div>  </div>
+
+  <p><em>Results</em>:</p>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>text</th>
+        <th>result</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>So glad I am off effexor, so sad it ruined my teeth. tip Please be carefull taking antideppresiva and read about it 1st</td>
+        <td>[ADE]</td>
+      </tr>
+      <tr>
+        <td>Religare Capital Ranbaxy has been accepting approval for Diovan since 2012</td>
+        <td>[noADE]</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<div class="h3-box">
+
+  <h4 id="cross-framework-benchmarking-compares-tensorflow-onnx-and-openvino-with-onnx-leading-on-gpu">Cross-Framework Benchmarking compares TensorFlow, ONNX, and OpenVINO, with ONNX leading on GPU</h4>
+
+  <p>This benchmark evaluates the performance of Spark NLP for Healthcare models across three different architectures (TensorFlow, ONNX, OpenVINO) on both CPU and GPU hardware.
+Key findings show ONNX consistently delivers superior performance on GPU environments.</p>
+
+  <ul>
+    <li><strong>Datasets:</strong>
       <ul>
-        <li><a href="https://medium.com/@jjmcarrascosa/serving-spark-nlp-via-api-1-3-microsoft-synapse-ml-2c77a3f61f9d">Serving Spark NLP via API (1/3): Microsoft’s Synapse ML</a></li>
-        <li><a href="https://medium.com/@jjmcarrascosa/serving-spark-nlp-via-api-2-3-fastapi-and-lightpipelines-218d1980c9fc">Serving Spark NLP via API (2/3): FastAPI and LightPipelines</a></li>
-        <li><a href="https://medium.com/@jjmcarrascosa/serving-spark-nlp-via-api-3-3-databricks-and-mlflow-serve-apis-4ef113e7fac4">Serving Spark NLP via API (3/3): Databricks Jobs and MLFlow Serve APIs</a></li>
+        <li><strong>MTSamples Dataset:</strong> 1,000 clinical texts, ~500 tokens per text
+          <ul>
+            <li><em>Usage:</em> General NER and embedding benchmarks</li>
+          </ul>
+        </li>
+        <li><strong>Assertion Test Dataset:</strong> 7,570 labeled rows
+          <ul>
+            <li><em>Usage:</em> BertForAssertionClassification evaluation</li>
+          </ul>
+        </li>
       </ul>
+    </li>
+    <li><strong>Versions:</strong>
+      <ul>
+        <li><strong>spark-nlp Version:</strong> v6.1.1</li>
+        <li><strong>spark-nlp-jsl Version :</strong> v6.1.0</li>
+        <li><strong>Spark Version :</strong> v3.5.1</li>
+      </ul>
+    </li>
+    <li><strong>Instance Types:</strong>
+      <ul>
+        <li><strong>CPU Machine:</strong> Colab V6e-1, 173.0 GB RAM, 44 vCPUs</li>
+        <li><strong>GPU Machine:</strong> Colab A100, 83.5 GB RAM, 40.0 GB GPU VRAM, 12 vCPUs</li>
+      </ul>
+    </li>
+    <li><strong>Models Tested:</strong>
+      <ul>
+        <li><strong>BertSentenceEmbeddings</strong> → <code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli</code></li>
+        <li><strong>MedicalBertForSequenceClassification</strong> → <code class="language-plaintext highlighter-rouge">bert_sequence_classifier_ade</code></li>
+        <li><strong>BertForAssertionClassification</strong> → <code class="language-plaintext highlighter-rouge">assertion_bert_classification_oncology</code></li>
+        <li><strong>MedicalBertForTokenClassifier</strong> → <code class="language-plaintext highlighter-rouge">bert_token_classifier_ner_clinical</code></li>
+        <li><strong>PretrainedZeroShotNER</strong> → <code class="language-plaintext highlighter-rouge">zeroshot_ner_deid_subentity_merged_medium</code></li>
+        <li><strong>WordEmbeddings + MedicalNerModel</strong> → <code class="language-plaintext highlighter-rouge">embeddings_clinical</code> + <code class="language-plaintext highlighter-rouge">ner_deid_subentity_augmented</code></li>
+        <li><strong>WordEmbeddings + 2 MedicalNerModel</strong> → <code class="language-plaintext highlighter-rouge">embeddings_clinical</code> + <code class="language-plaintext highlighter-rouge">ner_deid_subentity_augmented</code> + <code class="language-plaintext highlighter-rouge">ner_deid_generic_docwise</code></li>
+      </ul>
+    </li>
+    <li><strong>NOTES:</strong>
+      <ul>
+        <li>This benchmark compares Transformer architectures and ML models across CPU and GPU environments</li>
+        <li><strong>Hardware Context:</strong> CPU and GPU machines differ in cores and memory; comparisons should consider these hardware variations</li>
+        <li><strong>Preprocessing:</strong> DocumentAssembler, SentenceDetector, and Tokenizer stages were pre-processed; reported times reflect pure model execution</li>
+        <li><strong>Configuration:</strong> All models executed with default settings</li>
+        <li><strong>Timing Methodology:</strong>
+          <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">%%</span><span class="n">timeit</span> <span class="o">-</span><span class="n">n</span> <span class="mi">3</span> <span class="o">-</span><span class="n">r</span> <span class="mi">1</span>
+<span class="n">model</span><span class="p">.</span><span class="n">write</span><span class="p">.</span><span class="n">mode</span><span class="p">(</span><span class="s">"overwrite"</span><span class="p">).</span><span class="nb">format</span><span class="p">(</span><span class="s">"noop"</span><span class="p">).</span><span class="n">save</span><span class="p">()</span>
+</code></pre></div>          </div>
+        </li>
+        <li><strong>Results:</strong> Numbers represent average execution times across runs</li>
+      </ul>
+    </li>
+    <li><strong>Base Pipeline Configuration:</strong>
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">basePipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span>
+    <span class="n">stages</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">documentAssembler</span><span class="p">,</span>
+        <span class="n">sentenceDetector</span><span class="p">,</span>
+        <span class="n">tokenizer</span>
+    <span class="p">])</span>
+</code></pre></div>      </div>
     </li>
   </ul>
 
-  <p>The difference between both approaches are the following:</p>
+  <h5 id="cpu-benchmarking">CPU Benchmarking</h5>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th style="text-align: left">Model</th>
+        <th style="text-align: right">TensorFlow</th>
+        <th style="text-align: right">ONNX</th>
+        <th style="text-align: right">OpenVINO</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: left">BertSentenceEmbeddings</td>
+        <td style="text-align: right">8 min 37 sec</td>
+        <td style="text-align: right">4 min 46 sec</td>
+        <td style="text-align: right">3 min 31 sec</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">MedicalBertForSequenceClassification</td>
+        <td style="text-align: right">3 min 30 sec</td>
+        <td style="text-align: right">2 min 47 sec</td>
+        <td style="text-align: right">N/A</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">BertForAssertionClassification</td>
+        <td style="text-align: right">57 sec</td>
+        <td style="text-align: right">33 sec</td>
+        <td style="text-align: right">N/A</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">MedicalBertForTokenClassifier</td>
+        <td style="text-align: right">3 min 29 sec</td>
+        <td style="text-align: right">2 min 46 sec</td>
+        <td style="text-align: right">N/A</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">PretrainedZeroShotNER</td>
+        <td style="text-align: right">N/A</td>
+        <td style="text-align: right">38 min 10 sec</td>
+        <td style="text-align: right">N/A</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">WordEmbeddings + MedicalNerModel</td>
+        <td style="text-align: right">25 sec</td>
+        <td style="text-align: right">N/A</td>
+        <td style="text-align: right">N/A</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">WordEmbeddings + 2 MedicalNerModel</td>
+        <td style="text-align: right">38 sec</td>
+        <td style="text-align: right">N/A</td>
+        <td style="text-align: right">N/A</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h5 id="gpu-benchmarking">GPU Benchmarking</h5>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th style="text-align: left">Model</th>
+        <th style="text-align: right">TensorFlow</th>
+        <th style="text-align: right">ONNX</th>
+        <th style="text-align: right">OpenVINO</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: left">BertSentenceEmbeddings</td>
+        <td style="text-align: right">28 min 50 sec</td>
+        <td style="text-align: right">12 sec</td>
+        <td style="text-align: right">18 min 49 sec</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">MedicalBertForSequenceClassification</td>
+        <td style="text-align: right">11 min 45 sec</td>
+        <td style="text-align: right">28 sec</td>
+        <td style="text-align: right">N/A</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">BertForAssertionClassification</td>
+        <td style="text-align: right">3 min 24 sec</td>
+        <td style="text-align: right">8 sec</td>
+        <td style="text-align: right">N/A</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">MedicalBertForTokenClassifier</td>
+        <td style="text-align: right">11 min 47 sec</td>
+        <td style="text-align: right">26 sec</td>
+        <td style="text-align: right">N/A</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">PretrainedZeroShotNER</td>
+        <td style="text-align: right">N/A</td>
+        <td style="text-align: right">1 min 1 sec</td>
+        <td style="text-align: right">N/A</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">WordEmbeddings + MedicalNerModel</td>
+        <td style="text-align: right">2 min 24 sec</td>
+        <td style="text-align: right">N/A</td>
+        <td style="text-align: right">N/A</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">WordEmbeddings + 2 MedicalNerModel</td>
+        <td style="text-align: right">4 min 8 sec</td>
+        <td style="text-align: right">N/A</td>
+        <td style="text-align: right">N/A</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<div class="h3-box">
+
+  <h4 id="de-identification-enhancements-strengthen-hipaa-compliance-and-customization">De-Identification Enhancements strengthen HIPAA compliance and customization</h4>
+
+  <p>This release introduces new parameters that give users more flexibility and control over how sensitive information is obfuscated, while also ensuring alignment with HIPAA Safe Harbor requirements.</p>
+
   <ul>
-    <li><code class="language-plaintext highlighter-rouge">SynapseML</code> is a Microsoft Azure Open Source library used to carry out ML at scale. In this case, we use the Spark Serving feature, that leverages Spark Streaming and adds a web server with a Load Balancer, allowing concurrent processing of Spark NLP calls. Best approach if you look for scalability with Load Balancing.</li>
-    <li><code class="language-plaintext highlighter-rouge">FastAPI</code> + <code class="language-plaintext highlighter-rouge">LightPipelines</code>: A solution to run Spark NLP using a FastAPI webserver. It uses LightPipelines, what means having a very good performance but not leveraging Spark Clusters. Also, no Load Balancer is available in the suggestion, but you can create your own. Best approach if you look for performance.</li>
-    <li><code class="language-plaintext highlighter-rouge">Databricks</code> and <code class="language-plaintext highlighter-rouge">MLFlow</code>: Using MLFlow Serve or Databricks Jobs APIs to serve for inference Spark NLP pipelines from within Databricks. Best approach if you look for scalability within Databricks.</li>
+    <li><strong>ZIP Code Obfuscation (HIPAA Safe Harbor)</strong><br />
+A new parameter <code class="language-plaintext highlighter-rouge">obfuscateZipByHipaa</code> allows users to enforce HIPAA-compliant ZIP code handling.<br />
+When enabled, ZIP and ZIP+4 codes are automatically masked according to HIPAA Safe Harbor rules: restricted prefixes are fully suppressed, and all others are generalized to protect patient privacy.<br />
+When disabled, the system falls back to default/custom ZIP obfuscation rules, offering freedom for alternative strategies.</li>
+  </ul>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">data</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s">"Patient lives at 123 Main St, ZIP 12345-6789, with mild asthma."</span><span class="p">,),</span>
+    <span class="p">(</span><span class="s">"The clinic in ZIP 03690 treated the patient for diabetes."</span><span class="p">,),</span>
+    <span class="p">(</span><span class="s">"Follow-up scheduled at ZIP 90210 for hypertension check."</span><span class="p">,)</span>
+<span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="p">[</span><span class="s">"text"</span><span class="p">])</span>
+
+<span class="n">deidentification</span> <span class="o">=</span> <span class="n">LightDeIdentification</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">,</span> <span class="s">"chunk"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"deid"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setMode</span><span class="p">(</span><span class="s">"obfuscate"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setObfuscateZipByHipaa</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>    
+</code></pre></div>  </div>
+  <p><em>Results</em>:</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+---------------------------------------------------------------+
+|deid                                                           |
++---------------------------------------------------------------+
+|Patient lives at 123 Main St, ZIP 123<span class="k">**</span>-<span class="k">****</span>, with mild asthma.|
+|The clinic <span class="k">in </span>ZIP 000<span class="k">**</span> treated the patient <span class="k">for </span>diabetes.      |
+|Follow-up scheduled at ZIP 902<span class="k">**</span> <span class="k">for </span>hypertension check.       |
++---------------------------------------------------------------+
+</code></pre></div>  </div>
+
+  <ul>
+    <li><strong>Date Obfuscation Flexibility</strong></li>
+  </ul>
+
+  <p>The <code class="language-plaintext highlighter-rouge">maxRandomDisplacementDays</code> parameter provides fine-grained control over the extent to which date values can be randomly shifted when randomization is enabled. This ensures a balanced trade-off between data utility and privacy.
+When an ID column (e.g., patient identifier) is provided, all dates linked to the same ID will be displaced by the <em>same amount</em>. This preserves the relative temporal relationships within a patient’s timeline, while still protecting sensitive information.</p>
+
+  <p><em>Example:</em></p>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">data</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s">"PAT-0001"</span><span class="p">,</span> <span class="s">"Patient was admitted on 11/11/2020."</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">"PAT-0001"</span><span class="p">,</span> <span class="s">"Follow-up scheduled for 13/11/2020."</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">"PAT-0002"</span><span class="p">,</span> <span class="s">"Discharge planned on 15/11/2020."</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">"PAT-0002"</span><span class="p">,</span> <span class="s">"Next appointment set for 17/11/2020."</span><span class="p">)</span>
+<span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="p">[</span><span class="s">"ID"</span><span class="p">,</span> <span class="s">"text"</span><span class="p">])</span>
+</code></pre></div>  </div>
+
+  <p><em>Define DeIdentification and Pipeline</em></p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">documentAssembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setIdCol</span><span class="p">(</span><span class="s">"ID"</span><span class="p">)</span>
+
+<span class="n">dateMatcher</span> <span class="o">=</span> <span class="n">RegexMatcherInternalModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"date_matcher"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"date"</span><span class="p">)</span>
+
+<span class="n">deIdentification</span> <span class="o">=</span> <span class="n">LightDeIdentification</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"date"</span><span class="p">,</span> <span class="s">"document"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"dei"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setMode</span><span class="p">(</span><span class="s">"obfuscate"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setObfuscateDate</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setMaxRandomDisplacementDays</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setIsRandomDateDisplacement</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setSeed</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
+    <span class="n">documentAssembler</span><span class="p">,</span>
+    <span class="n">dateMatcher</span><span class="p">,</span>
+    <span class="n">deIdentification</span>
+<span class="p">])</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="n">result</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">"ID"</span><span class="p">,</span> <span class="s">"text"</span><span class="p">,</span> <span class="s">"dei.result"</span><span class="p">).</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div>  </div>
+  <p><em>Results</em>:</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+--------+------------------------------------+--------------------------------------+
+|ID      |text                                |result                                |
++--------+------------------------------------+--------------------------------------+
+|PAT-0001|Patient was admitted on 11/11/2020. |[Patient was admitted on 16/11/2020.] |
+|PAT-0001|Follow-up scheduled <span class="k">for </span>13/11/2020. |[Follow-up scheduled <span class="k">for </span>18/11/2020.] |
+|PAT-0002|Discharge planned on 15/11/2020.    |[Discharge planned on 06/12/2020.]    |
+|PAT-0002|Next appointment <span class="nb">set </span><span class="k">for </span>17/11/2020.|[Next appointment <span class="nb">set </span><span class="k">for </span>08/12/2020.]|
++--------+------------------------------------+--------------------------------------+
+</code></pre></div>  </div>
+
+  <p>These improvements empower users to adopt stricter compliance when required, while also maintaining flexibility for research, testing, or custom obfuscation needs.</p>
+
+</div>
+<div class="h3-box">
+
+  <h4 id="structuredjsonconverter-with-mappers-streamlines-integration-of-structured-data"><code class="language-plaintext highlighter-rouge">StructuredJsonConverter</code> with Mappers streamlines integration of structured data</h4>
+
+  <p>We have added support for mappers in StructuredJsonConverter, making it easier to transform and normalize extracted entity outputs into custom schemas. This enhancement allows developers to map model outputs (e.g., synonyms, IDs, or ontology codes) directly into a structured JSON format that aligns with their downstream applications.</p>
+
+  <p><em>Example</em>:</p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ner_converter</span> <span class="o">=</span> <span class="n">NerConverterInternal</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>
+
+<span class="n">hpo_mapper</span> <span class="o">=</span> <span class="n">ChunkMapperModel</span><span class="p">().</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"hpo_mapper"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"ner_chunk"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"hpo_code"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setLowerCase</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">sparknlp_jsl.pipeline_tracer</span> <span class="kn">import</span> <span class="n">PipelineTracer</span>
+<span class="n">tracer</span> <span class="o">=</span> <span class="n">PipelineTracer</span><span class="p">(</span><span class="n">base_model</span><span class="p">)</span>
+<span class="n">columns_schema</span> <span class="o">=</span> <span class="n">tracer</span><span class="p">.</span><span class="n">createParserDictionary</span><span class="p">()</span>
+<span class="n">columns_schema</span>
+</code></pre></div>  </div>
+  <p><em>Schema of the StructuredJsonConverter</em>:</p>
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">{</span><span class="s1">'document_identifier'</span>: <span class="s1">''</span>,
+ <span class="s1">'document_text'</span>: <span class="s1">'document'</span>,
+ <span class="s1">'entities'</span>: <span class="o">[</span><span class="s1">'ner_chunk'</span><span class="o">]</span>,
+ <span class="s1">'assertions'</span>: <span class="o">[]</span>,
+ <span class="s1">'resolutions'</span>: <span class="o">[]</span>,
+ <span class="s1">'relations'</span>: <span class="o">[]</span>,
+ <span class="s1">'summaries'</span>: <span class="o">[]</span>,
+ <span class="s1">'deidentifications'</span>: <span class="o">[]</span>,
+ <span class="s1">'classifications'</span>: <span class="o">[]</span>,
+ <span class="s1">'mappers'</span>: <span class="o">[</span><span class="s1">'hpo_code'</span><span class="o">]}</span>
+</code></pre></div>  </div>
+
+  <p><em>Define StructuredJsonConverter And Transform</em></p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">converter</span> <span class="o">=</span> <span class="n">StructuredJsonConverter</span><span class="p">()</span> \
+<span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"json"</span><span class="p">)</span> \
+<span class="p">.</span><span class="n">setConverterSchema</span><span class="p">(</span><span class="n">columns_schema</span><span class="p">)</span> \
+<span class="p">.</span><span class="n">setOutputAsStr</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span> \
+<span class="p">.</span><span class="n">setCleanAnnotations</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="n">json_df</span> <span class="o">=</span> <span class="n">converter</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">base_df</span><span class="p">)</span>
+<span class="n">mappers_json_output</span> <span class="o">=</span> <span class="n">json_df</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">"json.mappers"</span><span class="p">).</span><span class="n">collect</span><span class="p">()[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">mappers_json_output</span>
+</code></pre></div>  </div>
+  <p><em>Result</em>:</p>
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[{</span><span class="s1">'sentence'</span>: <span class="s1">'0'</span>,
+  <span class="s1">'resolved_text'</span>: <span class="s1">'HP:0001249'</span>,
+  <span class="s1">'distance'</span>: <span class="s1">'0.0'</span>,
+  <span class="s1">'all_relations'</span>: <span class="s1">''</span>,
+  <span class="s1">'chunk'</span>: <span class="s1">'intellectual disability'</span>,
+  <span class="s1">'ner_source'</span>: <span class="s1">'ner_chunk'</span>,
+  <span class="s1">'ner_confidence'</span>: <span class="s1">'0.99325'</span>,
+  <span class="s1">'chunk_id'</span>: <span class="s1">'30e08780'</span>,
+  <span class="s1">'relation'</span>: <span class="s1">'hpo_code'</span>,
+  <span class="s1">'ner_label'</span>: <span class="s1">'HP'</span>,
+  <span class="s1">'all_k_distances'</span>: <span class="s1">'0.0:::0.0'</span>,
+  <span class="s1">'all_k_resolutions'</span>: <span class="s1">'HP:0001249'</span>,
+  <span class="s1">'end'</span>: <span class="s1">'49'</span>,
+  <span class="s1">'begin'</span>: <span class="s1">'27'</span><span class="o">}]</span>
+</code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
+
+  <h4 id="various-core-improvements-bug-fixes-enhanced-overall-robustness-and-reliability-of-spark-nlp-for-healthcare">Various Core Improvements: Bug Fixes, Enhanced Overall Robustness, and Reliability of Spark NLP for Healthcare</h4>
+
+  <ul>
+    <li>Simplified Spark Session initialization</li>
+  </ul>
+
+  <p>Starting a Spark NLP for Healthcare session is now easier and more flexible.<br />
+Previously, a <code class="language-plaintext highlighter-rouge">secret</code> had to be explicitly passed to the <code class="language-plaintext highlighter-rouge">start()</code> function:</p>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">spark</span> <span class="o">=</span> <span class="n">sparknlp_jsl</span><span class="p">.</span><span class="n">start</span><span class="p">(</span><span class="n">secret</span> <span class="o">=</span> <span class="s">"YOUR_SECRET_HERE"</span><span class="p">)</span>
+</code></pre></div>  </div>
+  <p>With this release, the library can automatically read the secret from the environment variable <code class="language-plaintext highlighter-rouge">SECRET</code>, so you can simply run:</p>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">spark</span> <span class="o">=</span> <span class="n">sparknlp_jsl</span><span class="p">.</span><span class="n">start</span><span class="p">()</span>
+</code></pre></div>  </div>
+  <p>This improvement makes session startup simpler, more user-friendly, and adaptable across different environments.</p>
+
+  <ul>
+    <li>Disabled llama.cpp logs in LLM annotators</li>
+  </ul>
+
+  <p>LLM annotators in Spark NLP for Healthcare now run with <strong>llama.cpp logs disabled</strong> by default.<br />
+  This change provides a <strong>cleaner and less verbose output</strong>, making it easier to focus on the actual results.</p>
+
+  <ul>
+    <li><code class="language-plaintext highlighter-rouge">ner_source</code> metadata key in IOBTagger</li>
+  </ul>
+
+  <p>The <code class="language-plaintext highlighter-rouge">IOBTagger</code> annotator now enriches its metadata with a new field: <strong><code class="language-plaintext highlighter-rouge">ner_source</code></strong>.<br />
+This field indicates the originating chunk for each created token. This enhancement provides:</p>
+  <ul>
+    <li><strong>Better monitoring</strong> of token generation</li>
+    <li><strong>Improved traceability</strong> between chunks and their derived tokens</li>
+  </ul>
+
+  <p>With this addition, users gain <strong>deeper insights</strong> into the tokenization process and can more easily debug or analyze entity extraction workflows.</p>
+
+  <ul>
+    <li>Consistent Results with <code class="language-plaintext highlighter-rouge">genderAwareness=True</code> in DeIdentification
+Fixed an issue in <strong>DeIdentification</strong> where enabling <code class="language-plaintext highlighter-rouge">genderAwareness=True</code> produced inconsistent results for names with three parts (<code class="language-plaintext highlighter-rouge">[first_name, middle_name, last_name]</code>).<br />
+Now, both two-part and three-part names are handled consistently.</li>
   </ul>
 
 </div>
 <div class="h3-box">
 
-  <h4 id="updated-documentation-on-installing-spark-nlp-for-healthcare-in-aws-emr-jupyter-livy-yarn-hadoop">Updated Documentation on Installing Spark NLP For Healthcare in AWS EMR (Jupyter, Livy, Yarn, Hadoop)</h4>
-
-  <p>Ready-to-go Spark NLP for Healthcare environment in AWS EMR. Full instructions are <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/platforms/emr">here</a>.</p>
-
-</div>
-<div class="h3-box">
-
-  <h4 id="new-series-of-notebooks-to-reproduce-the-academic-papers-published-by-our-colleagues">New Series of Notebooks to Reproduce the Academic Papers Published by Our Colleagues</h4>
-
-  <p>You can find all these notebooks <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/tutorials/academic">here</a></p>
-
-</div>
-<div class="h3-box">
-
-  <h4 id="pyspark-tutorial-notebooks-to-let-non-spark-users-to-get-started-with-apache-spark-ecosystem-in-python">PySpark Tutorial Notebooks to Let Non-Spark Users to Get Started with Apache Spark Ecosystem in Python</h4>
-
-  <p>John Snow Labs has created a series of 8 notebooks to go over PySpark from zero to hero. Notebooks cover PySpark essentials, DataFrame creation, querying, importing data from different formats, functions / udfs, Spark MLLib examples (regression, classification, clustering) and Spark NLP best practises (usage of parquet, repartition, coalesce, custom annotators, etc).</p>
-
-  <p>You can find all these notebooks <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/tutorials/PySpark">here</a>.</p>
-
-</div>
-<div class="h3-box">
-
-  <h4 id="new--updated-notebooks">New &amp; Updated Notebooks</h4>
+  <h4 id="updated-notebooks-and-demonstrations-for-making-spark-nlp-for-healthcare-easier-to-navigate-and-understand">Updated Notebooks And Demonstrations For Making Spark NLP For Healthcare Easier To Navigate And Understand</h4>
 
   <ul>
-    <li><code class="language-plaintext highlighter-rouge">Series of academic notebooks</code> : A new series of academic paper notebooks, available <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/tutorials/academic">here</a></li>
-    <li><code class="language-plaintext highlighter-rouge">Clinical_Deidentification_in_Spanish.ipynb</code>: A notebook showcasing Clinical Deidentification in Spanish, available <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.2.Clinical_Deidentification_in_Spanish.ipynb">here</a>.</li>
-    <li><code class="language-plaintext highlighter-rouge">Clinical_Deidentification_Comparison.ipynb</code>: A new series of comparisons between different Deidentification libraries. So far, it contains Spark NLP for Healthcare and ScrubaDub with Spacy Transformers. Available <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.3.Clinical_Deidentification_Comparison.ipynb">here</a>.</li>
-    <li><code class="language-plaintext highlighter-rouge">Scope_window_tuning_assertion_status_detection.ipynb</code>: How to finetune Assertion Status using the Scope Window. Available <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/2.1.Scope_window_tuning_assertion_status_detection.ipynb">here</a></li>
-    <li><code class="language-plaintext highlighter-rouge">Clinical_Longformer_vs_BertSentence_&amp;_USE.ipynb</code>: A Comparison of how Clinical Longformer embeddings, averaged by the Sentence Embeddings annotator, performs compared to BioBert and UniversalSentenceEncoding. Link <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/clinical_text_classification/3.Clinical_Longformer_vs_BertSentence_%26_USE.ipynb">here</a>.</li>
-    <li><code class="language-plaintext highlighter-rouge">Serving_SparkNLP_with_Synapse.ipynb</code>: Serving SparkNLP for production purposes using Synapse ML. Available <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/RestAPI/Serving_SparkNLP_with_Synapse.ipynb">here</a></li>
-    <li><code class="language-plaintext highlighter-rouge">Serving_SparkNLP_with_FastAPI_and_LP.ipynb</code>: Serving SparkNLP for production purposes using FastAPI, RestAPI and LightPipelines. Available <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/RestAPI/Serving_SparkNLP_with_FastAPI_and_LP.ipynb">here</a></li>
-    <li><code class="language-plaintext highlighter-rouge">Series of PySpark tutorial notebooks</code>: Available <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/tutorials/PySpark">here</a></li>
+    <li>New <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/MedicalVisionLLM.ipynb">MedicalVisionLLM</a> MOOC Notebook</li>
+    <li>New <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/Spark_NLP_Udemy_MOOC/Healthcare_NLP/AssertionMerger.ipynb">AssertionMerger</a> MOOC Notebook</li>
+    <li>New <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/04.14.End2End_Preannotation_and_Training_Pipeline.ipynb">End2End Preannotation and Training Pipeline</a> Notebook</li>
+    <li>New <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.7.Generative_AI_to_Ner_Training.ipynb">Generative AI to Ner Training</a> Notebook</li>
+    <li>New <a href="https://demo.johnsnowlabs.com/healthcare/NER_ASSERTIONS_RULE_BASED/">NER ASSERTIONS RULE BASED</a> Demo</li>
+    <li>Updated <a href="https://demo.johnsnowlabs.com/healthcare/MEDICAL_LLM/">MEDICAL LLM</a> Demo</li>
+    <li>Updated <a href="https://demo.johnsnowlabs.com/healthcare/ER_CODE_MAPPING/">ENTITY RESOLUTION CODE MAPPING</a> Demo</li>
+    <li>Updated <a href="https://demo.johnsnowlabs.com/healthcare/NER_GENE_PHENOTYPES/">NER GENE PHENOTYPES</a> Demo</li>
   </ul>
 
 </div>
 <div class="h3-box">
 
-  <h4 id="list-of-recently-updated-or-added-models">List of Recently Updated or Added Models</h4>
+  <h4 id="we-have-added-and-updated-a-substantial-number-of-new-clinical-models-and-pipelines-further-solidifying-our-offering-in-the-healthcare-domain">We Have Added And Updated A Substantial Number Of New Clinical Models And Pipelines, Further Solidifying Our Offering In The Healthcare Domain.</h4>
 
   <ul>
-    <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_hcpcs</code></li>
-    <li><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_rct_biobert</code></li>
-    <li><code class="language-plaintext highlighter-rouge">ner_deid_generic_augmented_es</code></li>
-    <li><code class="language-plaintext highlighter-rouge">ner_deid_subentity_augmented_es</code></li>
-    <li><code class="language-plaintext highlighter-rouge">ner_deid_generic_roberta_augmented_es</code></li>
-    <li><code class="language-plaintext highlighter-rouge">ner_deid_subentity_roberta_augmented_es</code></li>
-    <li><code class="language-plaintext highlighter-rouge">clinical_deidentification_augmented_es</code></li>
+    <li><code class="language-plaintext highlighter-rouge">jsl_meds_4b_q16_v4_pipeline</code></li>
+    <li><code class="language-plaintext highlighter-rouge">jsl_meds_8b_q8_v4_pipeline</code></li>
+    <li><code class="language-plaintext highlighter-rouge">jsl_meds_ner_2b_q16_v2_pipeline</code></li>
+    <li><code class="language-plaintext highlighter-rouge">jsl_meds_ner_q16_v4_pipeline</code></li>
+    <li><code class="language-plaintext highlighter-rouge">jsl_meds_ner_vlm_2b_q16_v2_pipeline</code></li>
+    <li><code class="language-plaintext highlighter-rouge">jsl_meds_ner_vlm_8b_q16_v1</code></li>
+    <li><code class="language-plaintext highlighter-rouge">jsl_meds_ner_vlm_8b_q8_v1</code></li>
+    <li><code class="language-plaintext highlighter-rouge">jsl_meds_ner_vlm_8b_q4_v1</code></li>
+    <li><code class="language-plaintext highlighter-rouge">jsl_meds_ner_vlm_7b_q4_v1</code></li>
+    <li><code class="language-plaintext highlighter-rouge">jsl_meds_ner_vlm_7b_q8_v1</code></li>
+    <li><code class="language-plaintext highlighter-rouge">jsl_meds_ner_vlm_7b_q16_v1</code></li>
+    <li><code class="language-plaintext highlighter-rouge">hpo_synonym_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">hpo_mapper_pipeline_v4</code></li>
+    <li><code class="language-plaintext highlighter-rouge">jsl_meds_text2sql_1b_q16_v1</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_ade_augmented_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_ade_augmented_v2_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_age_group_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_binary_rct_biobert_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_biomarker_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_clinical_sections_headless_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_covid_sentiment_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_drug_reviews_webmd_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_exact_age_reddit_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_gender_biobert_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_health_mandates_premise_tweet_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_health_mandates_stance_tweet_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_health_mentions_bert_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_health_mentions_medbert_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_metastasis_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_patient_complaint_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_patient_urgency_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_pico_biobert_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_rct_biobert_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_response_to_treatment_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_sdoh_community_absent_status_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_sdoh_community_present_status_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_sdoh_environment_status_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_sdoh_frailty_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_sdoh_frailty_vulnerability_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_sdoh_mental_health_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_sdoh_violence_abuse_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_self_reported_age_tweet_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_self_reported_partner_violence_tweet_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_self_reported_stress_tweet_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_self_reported_symptoms_tweet_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_self_reported_vaccine_status_tweet_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_stressor_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_treatment_changes_sentiment_tweet_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_vaccine_sentiment_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_vop_adverse_event_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_vop_drug_side_effect_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_vop_hcp_consult_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_vop_self_report_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_vop_side_effect_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_vop_sound_medical_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_token_classifier_ade_tweet_binary_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_token_classifier_drug_development_trials_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_token_classifier_ner_ade_binary_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_token_classifier_ner_ade_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_token_classifier_ner_anatem_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_token_classifier_ner_anatomy_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_token_classifier_ner_bacteria_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_token_classifier_ner_bc2gm_gene_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_token_classifier_ner_bc4chemd_chemicals_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_token_classifier_ner_bc5cdr_chemicals_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_token_classifier_ner_bc5cdr_disease_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_token_classifier_ner_bionlp_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_token_classifier_ner_cellular_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_token_classifier_ner_chemicals_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_token_classifier_ner_chemprot_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_token_classifier_ner_clinical_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_token_classifier_ner_clinical_trials_abstracts_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_token_classifier_ner_deid_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_token_classifier_ner_drugs_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_token_classifier_ner_jnlpba_cellular_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_token_classifier_ner_jsl_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_token_classifier_ner_jsl_slim_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_token_classifier_ner_linnaeus_species_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_token_classifier_ner_living_species_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_token_classifier_ner_ncbi_disease_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_token_classifier_ner_pathogen_onnx</code></li>
+    <li><code class="language-plaintext highlighter-rouge">bert_token_classifier_ner_species_onnx</code></li>
   </ul>
 
-  <p><strong>For all Spark NLP for healthcare models, please check : <a href="https://nlp.johnsnowlabs.com/models?edition=Spark+NLP+for+Healthcare">Models Hub Page</a></strong></p>
+</div>
+<div class="h3-box">
+
+  <p>For all Spark NLP for Healthcare models, please check: <a href="https://nlp.johnsnowlabs.com/models?edition=Healthcare+NLP">Models Hub Page</a></p>
 
 </div>
-<div class="prev_ver h3-box">
+<div class="h3-box">
 
   <h2 id="versions">Versions</h2>
 
@@ -951,7 +1676,7 @@ Clinica San Carlos       HOSPITAL            LOCATION
     <li><a href="release_notes_2_4_0">2.4.0</a></li>
 </ul>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2021-07-14T00:00:00+00:00">Jul 14, 2021</time>
+      <time itemprop="dateModified" datetime="2025-09-22T00:00:00+00:00">Sep 22, 2025</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
