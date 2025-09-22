@@ -287,6 +287,8 @@ sparknlp-healthcare:
         url: /licensed/api/
       - title: Python API (Sphinx)
         url: /licensed/api/python
+      - title: Healthcare NLP Example Notebooks
+        url: /docs/en/healthcare-nlp-example-notebooks
       - title: Wiki
         url: /docs/en/wiki
       - title: Benchmarks
