@@ -2,8 +2,8 @@
 layout: docs
 header: true
 seotitle: Spark NLP for Healthcare | John Snow Labs
-title: Healthcare NLP Release Notes
-permalink: /docs/en/spark_nlp_healthcare_versions/licensed_release_notes
+title: Healthcare NLP v6.1.1 Release Notes
+permalink: /docs/en/spark_nlp_healthcare_versions/release_notes_6_1_1
 key: docs-licensed-release-notes
 modify_date: 2025-09-22
 show_nav: true
@@ -16,6 +16,7 @@ sidebar:
 ## 6.1.1
 
 #### Highlights
+
 
 We are delighted to announce **significant new features and major enhancements** in the latest release of Healthcare NLP.
 This release introduces brand-new **Medical Vision language models (VLMs)**, new capabilities such as the new **Annotation2Training** module for converting annotations from GenAI Lab into trainable dataframes, the **MedicalNerDLGraphChecker** for well-informed NER training, domain-specific **LLM pipelines**, and **faster ONNX models**—a total of **78 new LLMs, pipelines, and ONNX models** available out of the box.
@@ -767,8 +768,7 @@ For all Spark NLP for Healthcare models, please check: [Models Hub Page](https:/
 
 </div><div class="h3-box" markdown="1">
 
-
-## Previous versions
+## Versions
 
 </div>
 {%- include docs-healthcare-pagination.html -%}
