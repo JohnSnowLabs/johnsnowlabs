@@ -5,13 +5,58 @@ seotitle: Medical LLMs | John Snow Labs
 title: Release Notes
 permalink: /docs/en/LLMs/releases/release_notes
 key: docs-medical-llm
-modify_date: "2025-07-17"
+modify_date: "2025-09-15"
 show_nav: true
 sidebar:
     nav: medical-llm
 ---
 
 <div class="h3-box" markdown="1">
+
+## 09-15-2025
+
+### Model Updates
+
+We're excited to announce the addition of a new compact yet powerful vision-language model to our Medical LLM lineup.
+
+- **Medical-Visual-LLM-7B**: A vision-language model that delivers medical-grade multimodal intelligence in a compact, efficient format. This model combines medical expertise with visual comprehension capabilities, understanding both clinical text and visual content including X-rays, MRIs, pathology slides, medical diagrams, and structured documents. It's well-suited for RAG applications and healthcare integrations.
+
+#### Specifications
+
+| **Model Name**             | **Parameters** | **Recommended GPU Memory** | **Max Sequence Length** | **Model Size** | **Max KV-Cache** | **Tensor Parallel Sizes** |
+|---------------------------|--------------|------------------|-------------------|-------------|----------------|------------------------|
+| Medical-Visual-LLM-7B  | 7B          | ~64 GB           | 128K              | 15 GB       | 48 GB          | 1, 2, 4               |
+
+#### Benchmark Performance
+
+- Achieves 71.0% average across OpenMed benchmarks
+- Scores 75.85% on clinical knowledge assessment
+- Reaches 81% on medical genetics understanding
+- Performs at 84.72% for college biology concepts
+- Processes professional medicine with 71.69% accuracy
+- Handles medical MCQAs with 55.08% precision
+- Maintains 59.07% accuracy on MedQA 4-options test
+
+## 08-17-2025
+
+### Model Updates
+
+We’re excited to announce that an updated versions of our Medical-Reasoning-LLM-32B models is now available, delivering significant accuracy improvements across key medical benchmarks.
+
+#### Specifications
+
+| **Model Name**             | **Parameters** | **Recommended GPU Memory** | **Max Sequence Length** | **Model Size** | **Max KV-Cache** | **Tensor Parallel Sizes** |
+|---------------------------|--------------|------------------|-------------------|-------------|----------------|------------------------|
+| Medical-Reasoning-LLM-32B | 32B         | ~111 GB          | 40K               | 61 GB       | 50 GB          | 2, 4, 8               |
+
+#### Benchmark Accuracy Comparison with previous versions
+
+Medical-Reasoning-LLM-32B leads with refined gains in:
+
+- Clinical Knowledge: Improved from 86.66% to 87.04% — a +0.38 point increase
+- Professional Medicine: Improved from 89.24% to 90.07% — a +0.83 point increase
+- Medical Genetics: Improved from 92.0% to 93.0% — a +1.0 point increase
+
 
 ## 07-17-2025
 
@@ -35,7 +80,7 @@ We're excited to announce that updated versions of our Medical-LLM-8B, Medical-L
 
 
 
-#### Benchmark Accuracy Comparison wiht previous versions
+#### Benchmark Accuracy Comparison with previous versions
 
 * Medical-LLM-8B shows a notable boost in Anatomy (8.88 pts), Clinical Knowledge (6.41 pts), and College Medicine (9.83 pts).
 * Medical-LLM-Small delivers higher precision in Anatomy (6.7 pts), College Biology (3.12 pts), while maintaining top-tier performance in compact deployments
@@ -50,25 +95,25 @@ These models are optimized for clinical decision support, medical research, and 
 | Medical-LLM-Small (Previous version)         | 77.04 | 83.02 | 90.28 | 76.30 | 90 | 85.29 | 79.0 |
 | Medical-LLM-Small (Latest version)         | 83.74 | 83.40 | 93.40 | 78.03 | 84 | 85.66 | 77.4 |
 | Medical-Reasoning-LLM-32B (Previous version) | 78.52 | 85.66 | 93.75 | 80.35 | 91 | 87.5 | 75.8 |
-| Medical-Reasoning-LLM-32 (Latest version) | 78. 52 | 85.66 | 94.44 | 83.24 | 92 | 88.6 | 77.8 |
+| Medical-Reasoning-LLM-32B (Latest version) | 78. 52 | 85.66 | 94.44 | 83.24 | 92 | 88.6 | 77.8 |
 
 
 ## 05-19-2025
 
 We are excited to announce the addition of two new powerful models to our Medical LLM lineup.
 
-- **Medical-VLM-24B**: A 24B parameter vision-language model that combines medical expertise with visual comprehension capabilities. This model excels at processing both medical images (X-rays, MRIs, pathology slides) and text, enabling comprehensive analysis of visual and textual medical data.
+- **Medical-Visual-LLM-24B**: A 24B parameter vision-language model that combines medical expertise with visual comprehension capabilities. This model excels at processing both medical images (X-rays, MRIs, pathology slides) and text, enabling comprehensive analysis of visual and textual medical data.
 
-Get more information about the **Medical-VLM-24B** model in this [blog](https://www.johnsnowlabs.com/introducing-medical-vlm-24b-our-first-medical-vision-language-model/).
+Get more information about the **Medical-Visual-LLM-24B** model in this [blog](https://www.johnsnowlabs.com/introducing-medical-vlm-24b-our-first-medical-vision-language-model/).
 
-- **Spanish-Medical-LLM-24B**: A specialized 24B parameter model designed for Spanish-speaking healthcare environments, offering native processing of Spanish medical terminology and clinical documentation. The model maintains high precision in Spanish medical language understanding without requiring translation.
+- **Medical-Spanish-LLM-24B**: A specialized 24B parameter model designed for Spanish-speaking healthcare environments, offering native processing of Spanish medical terminology and clinical documentation. The model maintains high precision in Spanish medical language understanding without requiring translation.
 
 #### Specifications
 
 | **Model Name**             | **Parameters** | **Recommended GPU Memory** | **Max Sequence Length** | **Model Size** | **Max KV-Cache** | **Tensor Parallel Sizes** |
 |---------------------------|--------------|------------------|-------------------|-------------|----------------|------------------------|
-| Medical-VLM-24B           | 24B         | ~145 GB          | 128K              | 45 GB       | 100 GB         | 2, 4, 8               |
-| Spanish-Medical-LLM-24B   | 24B         | ~145 GB          | 128K              | 45 GB       | 100 GB         | 2, 4, 8               |
+| Medical-Visual-LLM-24B           | 24B         | ~145 GB          | 128K              | 45 GB       | 100 GB         | 2, 4, 8               |
+| Medical-Spanish-LLM-24B   | 24B         | ~145 GB          | 128K              | 45 GB       | 100 GB         | 2, 4, 8               |
 
 ## 04-06-2025
 

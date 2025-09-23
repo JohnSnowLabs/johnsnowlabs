@@ -5,7 +5,7 @@ seotitle: Medical LLMs| John Snow Labs
 title: Deploy LLMs as Private AWS Endpoints
 permalink: /docs/en/LLMs/on_aws
 key: docs-medical-llm
-modify_date: "2025-03-31"
+modify_date: "2025-09-15"
 show_nav: true
 sidebar:
     nav: medical-llm
@@ -29,6 +29,7 @@ The LLMs listed below are available as AWS Sagemaker Endpoints.
 
 [Medical Spanish LLM - 24B](https://aws.amazon.com/marketplace/pp/prodview-5njzrglnfav6y)
 
+[Medical Visual LLM - 7B](https://aws.amazon.com/marketplace/pp/prodview-fhcd3rwnhxbka)
 
 
 

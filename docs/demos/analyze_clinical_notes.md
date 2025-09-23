@@ -202,4 +202,16 @@ data:
           - text: Colab
             type: blue_btn
             url:  
+        - title: Rule-Based NER and Assertion Models 
+          id: rule_based_ner_assertion_models  
+          image: 
+              src: /assets/images/Rule-BasedNER-Assertion-Models.svg
+          excerpt: 'Explore a comprehensive pipeline that combines multiple rule-based Named Entity Recognition (NER) and assertion detection models for structured information extraction from clinical text. This pipeline extracts the following entities: states, cities, drugs, biomarkers, and cancer diagnoses. Additionally, it detects assertion statuses—present, absent, possible, conditional, and past—for clinical entities.' 
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/NER_ASSERTIONS_RULE_BASED/
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/RULE_BASED_PIPELINE.ipynb
 ---

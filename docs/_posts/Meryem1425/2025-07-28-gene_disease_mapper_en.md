@@ -23,6 +23,7 @@ This pretrained model maps genes to their related diseases. It also returns all 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
+[Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/06.0.Chunk_Mapping.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/gene_disease_mapper_en_6.0.4_3.0_1753715908214.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/gene_disease_mapper_en_6.0.4_3.0_1753715908214.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 

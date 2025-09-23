@@ -24,7 +24,7 @@ Zero-shot Named Entity Recognition (NER) enables the identification of entities 
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
-<button class="button button-orange" disabled>Open in Colab</button>
+[Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/01.4.ZeroShot_Clinical_NER.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/zeroshot_ner_deid_subentity_merged_large_en_5.5.1_3.0_1734472523759.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/zeroshot_ner_deid_subentity_merged_large_en_5.5.1_3.0_1734472523759.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 

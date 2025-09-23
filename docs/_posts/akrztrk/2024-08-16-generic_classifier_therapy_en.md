@@ -28,7 +28,7 @@ This model is a therapy classification model that determines whether clinical se
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
-<button class="button button-orange" disabled>Open in Colab</button>
+[Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/08.2.Generic_Classifier.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/generic_classifier_therapy_en_5.4.0_3.0_1723792286109.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/generic_classifier_therapy_en_5.4.0_3.0_1723792286109.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 

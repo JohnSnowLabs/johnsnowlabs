@@ -1441,10 +1441,16 @@ Used to convert the dicom frames into images. Faster than DicomToImageV2.
 ##### Input Columns
 
 {:.table-model-big}
-| Param name | Type | Default | Column Data Description |
+| Param name | Type | Default | Description |
 | --- | --- | --- | --- |
-| inputCols | list[string] | list[content] | Specifies the input columns. If the DICOM splitter is used upstream, provide both the DICOM path and frames; otherwise, provide either the file path or binary content. |
-| originCol | string | - |  Specifies the column containing the path of the original DICOM file. |
+| keepInput | boolean | False |  Indicates whether input columns should be retained in the resulting DataFrame |
+| pageNumCol | string | - | Specifies the column containing the page number in the resulting DataFrame |
+| scale | float | 1 | The scale factor by which the image will be rescaled. Default is '1' (no scaling). |
+| frameLimit | int | 0 | Limits the number of frames extracted; set to 0 to extract all frames. |
+| compressionThreshold              | int                                              |        1 | File size threshold **in MB** that triggers compression when `compressionMode` is `"auto"`.                                                                                        |
+| compressionMode                   | string (`"auto"` \| `"enabled"` \| `"disabled"`) | disabled | Compression behavior: `"enabled"` compresses every file using `compressionQuality`; `"disabled"` never compresses; `"auto"` compresses only if file size ≥ `compressionThreshold`. |
+| compressionQuality                | int (1–95)                                       |       85 | JPEG quality used when compressing (higher = better quality/larger size).                                                                                                          |
+
 
 </div><div class="h3-box" markdown="1">
 
@@ -2346,6 +2352,7 @@ one of the methods with params:
 
 {:.table-model-big}
 | Method name | Params  | Description |
+| --- | --- | --- |
 |addScalingTransform| factor| Scale image by scaling factor. |
 |addOtsuTransform| | The automatic thresholder utilizes the Otsu threshold method. |
 |addHuangTransform| | The automatic thresholder utilizes the Huang threshold method. |
