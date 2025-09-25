@@ -42,7 +42,7 @@ curl -sSL https://s3.us-east-1.amazonaws.com/artifacts.terminologyservice.johnsn
   </tr>
   <tr>
     <th>Port requirements</th>
-    <td>The service uses port <bl>8000</bl>. So it expects the port to be unused.</td>
+    <td>The service uses port <bl>80</bl>. So it expects the port to be unused.</td>
   </tr>
   <tr>
     <th>Server requirements</th>
