@@ -15,19 +15,36 @@ sidebar:
 
 ## Authorization and User Management
 
-- A secure login page is implemented to authenticate users before they can access the Terminology Server.
+**Authenticated appilcation access** 
+
+A secure login mechanism ensures user authentication prior to granting access to the Terminology Server.
   ![Screenshot of login](/assets/images/term_server/v3/login_page.png)
-- Implement user roles and permissions to control access to different features and valuesets within the Terminology Server.
-- Admin users can create and manage user accounts.
+
+**User Management**
+
+Basic user management features are present in the Terminology Server application. The user with the admin privilege can add or remove other users from the system or can edit user information if necessary. This feature is available by selecting the Manage Users option menu from the navigation panel when clikinng on the user account name.
+
+Admin users can create and manage user accounts.
   ![Screenshot of user management](/assets/images/term_server/v3/user_management.png)
+
+**ValueSet access Management**
+
+Terminolgy Server implements user roles and permissions to control access to different features and valuesets within the Terminology Server.
 - Regular users can access the terminology search and value set management features based on their assigned permissions
-- API access is secured through API keys linked to user accounts, ensuring that only authorized users can interact with the API endpoints.
-
-## Share valuesets among users
-
 - Users can share created value sets with other users, facilitating collaboration and consistency in terminology usage.
 - Shared value sets can be accessed and utilized by authorized users based on their permissions.
   ![value set sharing](/assets/images/term_server/v3/valueset_share.gif)
+ 
+
+**Customize Search Results View**
+
+
+The application provides a flexible search results table that can be customized to match each user’s needs. Users can select which columns are displayed, allowing them to focus on the information most relevant to their workflow. This configurable view makes it easy to streamline results, reduce clutter, and highlight key data points for faster review and decision-making.
+ ![Screenshot of column management](/assets/images/term_server/v3/column_management.gif)
+
+**Secured API Access** 
+
+- API access is secured through API keys linked to user accounts, ensuring that only authorized users can interact with the API endpoints.
 
 ## Improvements
 
