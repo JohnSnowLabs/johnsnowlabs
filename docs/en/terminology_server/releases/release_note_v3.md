@@ -23,12 +23,12 @@ A secure login mechanism ensures user authentication prior to granting access to
 
 **User Management**
 
-Basic user management features are present in the Terminology Server application. The user with the admin privilege can add or remove other users from the system or can edit user information if necessary. This feature is available by selecting the Manage Users option menu from the navigation panel when clikinng on the user account name.
+The Terminology Server includes basic user management capabilities. Users with administrative privileges can add, remove, or update user accounts as needed. This functionality is available through the Manage Users option in the navigation panel when clicking on the user account name.
 
-Admin users can create and manage user accounts.
+Administrators can create and manage accounts to ensure proper system access
   ![Screenshot of user management](/assets/images/term_server/v3/user_management.png)
 
-**ValueSet access Management**
+**ValueSet Access Management**
 
 Terminolgy Server implements user roles and permissions to control access to different features and valuesets within the Terminology Server.
 - Regular users can access the terminology search and value set management features based on their assigned permissions
@@ -40,7 +40,7 @@ Terminolgy Server implements user roles and permissions to control access to dif
 **Customize Search Results View**
 
 
-The application provides a flexible search results table that can be customized to match each user’s needs. Users can select which columns are displayed, allowing them to focus on the information most relevant to their workflow. This configurable view makes it easy to streamline results, reduce clutter, and highlight key data points for faster review and decision-making.
+The application provides a flexible search results table that can be customized to match each user’s needs. Columns can be selected or hidden, allowing users to focus on the information most relevant to their workflow. This configurable view reduces clutter, streamlines results, and highlights key data points for faster review and decision-making.
  ![Screenshot of column management](/assets/images/term_server/v3/column_management.gif)
 
 **Secured API Access** 
@@ -49,9 +49,9 @@ The application provides a flexible search results table that can be customized 
 
 ## Improvements
 
-* Hierarchy Display improvements for better visualization and navigation of concept hierarchies.
+* Improved hierarchy display for clearer visualization and navigation of concept hierarchies.
   ![hierarchy display improvements](/assets/images/term_server/v3/hierarchy.gif)
-* Enhanced query performance for quicker search results.
-* Improved the deployment script for faster setup and configuration.
-* Added a Search button to the UI for better user experience.
-* Spell Checker Improvements - Enhanced spell checker to provide more accurate suggestions and corrections for misspelled terms.
+* Enhanced query performance for faster search results.
+* Updated deployment script for quicker setup and configuration.
+* Added a dedicated _Search_ button in the UI for a smoother user experience.
+* Improved spell checker to deliver more accurate suggestions and corrections.
