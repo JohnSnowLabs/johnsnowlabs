@@ -3,50 +3,20 @@ layout: docs
 header: true
 seotitle: Terminology Server | John Snow Labs
 title: Terminology Server 
-permalink: /docs/en/terminology_server/release_notes
+permalink: /docs/en/terminology_server/release_notes/release_notes_v1
 key: docs-term-server
 modify_date: "2025-04-01"
 show_nav: true
 sidebar:
     nav: term-server
+
 ---
-## September 30, 2025
-**V3 Key Features:**
 
-* Authorization and User Management 
-    - Implement user roles and permissions to control access to different features and valuesets within the Terminology Server.
-    - Admin users can manage user accounts, assign roles, and monitor usage.
-    - Value set can be shared among users.
-    - Regular users can access the terminology search and value set management features based on their assigned permissions
-    - API access is secured through API keys linked to user accounts, ensuring that only authorized users can interact with the API endpoints.
-
-* Spell Checker Improvements - Enhanced spell checker to provide more accurate suggestions and corrections for misspelled terms.
-
-**Improvements:**
-
-* Hierarchy Display improvements for better visualization and navigation of concept hierarchies.
-* Enhanced query performance for quicker search results.
-* Improved the deployment script for faster setup and configuration.
-* Added a Search button to the UI for better user experience.
-
-## June 02, 2025
-
-**V2 Key Features:**
-
-* Hierarchy Display - View the hierarchy of a concept, including its ancestors and descendants, to understand its context within the broader terminology structure.
-
-  The following image explains how the hierarchy information is displayed when a code is clicked inside the results table:
-
-  ![Screenshot of hierarchy](/assets/images/term_server/CodeHierarchy.png)
-  
-* Context Based Search - Perform searches that consider the context of the query, allowing for more relevant results based on the specific domain or use case.
-
-**Improvements:** 
-* Improved initial setup time for the On Premise Deployment of Terminology Server, reducing the time it takes to get started with the application.
-* Merged backend services into a single service, simplifying the architecture and improving maintainability.
+## Terminology Server v1 Release Notes
 
 
-## May 03, 2025
+<p style="text-align:center;">Release date: {{ page.modify_date | date: '%m-%d-%Y' }}</p>
+
 
 **V1 Key Features:**
 * Term Search - associated synonyms and employing both string matching and embedding matches for similarity searches.
