@@ -37,6 +37,12 @@ Terminolgy Server implements user roles and permissions to control access to dif
   ![value set sharing](/assets/images/term_server/v3/valueset_share.gif)
  
 
+**Customize Search Results View**
+
+
+The application provides a flexible search results table that can be customized to match each user’s needs. Users can select which columns are displayed, allowing them to focus on the information most relevant to their workflow. This configurable view makes it easy to streamline results, reduce clutter, and highlight key data points for faster review and decision-making.
+ ![Screenshot of column management](/assets/images/term_server/v3/column_management.gif)
+
 **Secured API Access** 
 
 - API access is secured through API keys linked to user accounts, ensuring that only authorized users can interact with the API endpoints.
