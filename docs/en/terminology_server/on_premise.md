@@ -15,9 +15,9 @@ sidebar:
 
 **Prerequisites:**
 
-* Docker
-* awscli (AWS command-line interface)
 * jq (lightweight command-line JSON processor)
+* curl (command-line tool for transferring data with URLs)
+* sudoer access on the server where you want to install Terminology Server
 
 **Step 1: Get your license file or license key**
 
@@ -42,7 +42,7 @@ curl -sSL https://s3.us-east-1.amazonaws.com/artifacts.terminologyservice.johnsn
   </tr>
   <tr>
     <th>Port requirements</th>
-    <td>The service uses port <bl>8000</bl>. So it expects the port to be unused.</td>
+    <td>The service uses port <bl>80</bl>. So it expects the port to be unused.</td>
   </tr>
   <tr>
     <th>Server requirements</th>
