@@ -15,9 +15,9 @@ sidebar:
 
 **Prerequisites:**
 
-* Docker
-* awscli (AWS command-line interface)
 * jq (lightweight command-line JSON processor)
+* curl (command-line tool for transferring data with URLs)
+* sudoer access on the server where you want to install Terminology Server
 
 **Step 1: Get your license file or license key**
 
