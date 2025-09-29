@@ -1,3 +1,7 @@
+
+
+</div>
+
 ---
 layout: docs
 header: true
@@ -969,3 +973,639 @@ tracer_result.show(truncate=False)
 ```
 
 </div>
+
+<div class="h3-box" markdown="1">
+
+## Pipeline Tracer
+
+PipelineTracer is a class that allows to trace the stages of a pipeline and get information about them.
+    The `PipelineTracer` class provides functionality for tracing and retrieving information about the various stages of a pipeline.
+    It can be used to obtain detailed insights into the entities, assertions, and relationships utilized within the pipeline.
+    Compatibility with both `PipelineModel` and `PretrainedPipeline`.
+    It can be used with a PipelineModel or a PretrainedPipeline.
+    Additionally, it can be used to create a parser dictionary that can be used to create a PipelineOutputParser.
+
+
+**Parameters
+
+- `printPipelineSchema`: Prints the schema of the pipeline.
+- `createParserDictionary`: Returns a parser dictionary that can be used to create a PipelineOutputParser
+- `getPossibleEntities`: Returns a list of possible entities that the pipeline can include.
+- `getPossibleAssertions`: Returns a list of possible assertions that the pipeline can include
+- `getPossibleRelations`: Returns a list of possible relations that the pipeline can include.
+- `getPipelineStages`: Returns a list of PipelineStage objects that represent the stages of the pipeline.
+- `getParserDictDirectly`: Returns a parser dictionary that can be used to create a PipelineOutputParser. This method is used to get the parser dictionary directly without creating a     PipelineTracer object.
+- `listAvailableModels`: Returns a list of available models for a given language and source
+- `showAvailableModels`: Prints a list of available models for a given language and source.
+
+```python
+from sparknlp_jsl.pipeline_tracer import PipelineTracer
+from sparknlp_jsl.pipeline_output_parser import PipelineOutputParser
+```
+
+ ##showAvailableModels
+
+```python
+PipelineTracer.showAvailableModels(language="en", source="clinical/models")
+```
+
+ clinical_deidentification
+explain_clinical_doc_ade
+explain_clinical_doc_biomarker
+explain_clinical_doc_generic
+explain_clinical_doc_granular
+explain_clinical_doc_medication
+explain_clinical_doc_oncology
+explain_clinical_doc_public_health
+explain_clinical_doc_radiology
+explain_clinical_doc_risk_factors
+explain_clinical_doc_vop
+icd10cm_resolver_pipeline
+icd10cm_rxnorm_resolver_pipeline
+rxnorm_resolver_pipeline
+snomed_resolver_pipeline
+
+
+## PipelineOutputParser
+
+The output parser module seamlessly integrates with existing systems to return clear, easy-to-read & process prettified results in dictionary format from pretrained pipelines. It is designed to enhance API integration, and user understanding and streamline data analysis workflows. This class is used to parse the output of a Spark NLP pipeline.It provides methods for extracting named entities, assertions, code mapping, relations, summaries, and deidentification from the output.
+
+<div class="h3-box" markdown="1">
+
+```python
+  import sparknlp
+  import sparknlp_jsl
+  from sparknlp.pretrained import PretrainedPipeline
+  from sparknlp_jsl.pipeline_output_parser import PipelineOutputParser
+
+    ## Load the pipeline and the text
+
+    text = [
+        "Immunohistochemistry was negative for thyroid transcription factor-1 and napsin A. The test was positive for ER and PR, and negative for HER2.",
+         "The had previously undergone a left mastectomy and an axillary lymph node dissection for a left breast cancer twenty years ago." +
+         "The tumor was positive for ER and PR. Postoperatively, radiotherapy was administered to the residual breast. The cancer recurred as a right lung metastasis 13 years later." +
+         "He underwent a regimen consisting of adriamycin (60 mg/m2) and cyclophosphamide (600 mg/m2) over six courses, as first line therapy."
+     ]
+
+     oncology_pipeline = PretrainedPipeline("oncology_biomarker_pipeline", "en", "clinical/models")
+     annotations = oncology_pipeline.fullAnnotate(text)
+
+    ## Define the column_maps dictionary
+
+    column_maps = {
+        'document_identifier': 'XYZ_123',
+        'document_text': 'document',
+        'entities': ["merged_chunk"],
+        'assertions': ["assertion_chunk"],
+        'resolver': ["icd10_code"]
+        'relations': [],
+        'summaries': [],
+        "deidentifications" : [],
+        "classifications":[]
+    }
+
+    ## Initialized parser from the dictionary
+
+    pipeline_parser = PipelineOutputParser(column_maps)
+
+    ## Run the parser on the output of a Spark NLP pipeline
+
+     parsed_result = pipeline_parser.run(annotations)
+     print(parsed_result)
+```
+</div>
+
+
+
+
+
+
+        
+## Died Relational Database
+
+The RelationalDBDeidentification class provides a robust solution for de-identifying sensitive data in relational databases. It supports a variety of obfuscation techniques and integrates seamlessly with database systems. Key features include:
+
+- End-to-End De-Identification:
+	- deidentify(): Automates the de-identification process by:
+        - Fetching tables.
+        - Extracting schema information.
+        - Detecting sensitive columns.
+        - Applying obfuscation and masking techniques.
+        - Exporting de-identified data as CSV files.
+- Database Connectivity:
+	- connect_to_db(): Establishes a connection to the MySQL database.
+	- get_all_tables(): Retrieves all table names from the connected database.
+- Schema and Data Processing:
+	- get_schema_info(table_name): Extracts schema details, including date columns, primary keys, and foreign keys, for a specified table.
+- Data Obfuscation:
+	- obfuscate_dates(df, date_columns): Shifts dates by a specified number of days.
+	- obfuscate_ages(df, age_columns, use_hipaa): Obfuscates age columns using HIPAA rules or predefined age groups.
+	- mask_other_sensitive_columns(df, other_columns): Masks sensitive columns by replacing their values with asterisks.
+ 
+This class provides a complete framework for protecting sensitive information while maintaining data integrity for relational databases.
+
+*Example*:
+
+```python
+from sparknlp_jsl.utils.database_deidentification import RelationalDBDeidentification
+
+config = {
+    "db_config": {
+        "host": "localhost",
+        "user": "root",
+        "password": "root",
+        "database": "healthcare_db"
+    },
+    "deid_options": {
+        "days_to_shift": 10,
+        "age_groups": {
+            "child": (0, 12),
+            "teen": (13, 19),
+            "adult": (20, 64),
+            "senior": (65, 90)
+        },
+        "pk_fk_shift_value": 100,
+        "use_hipaa": False,
+        "output_path": "deidentified_output/"
+    },
+    "logging": {
+        "level": "INFO",
+        "file": "deidentification.log"
+    }
+}
+
+deidentifier = RelationalDBDeidentification(spark, config)
+deidentifier.deidentify()
+```
+
+*Example for appointments*:
+
+{:.table-model-big}
+|appointment_id|patient_id|doctor_name      |appointment_date|reason            |
+|--------------|----------|-----------------|----------------|------------------|
+|1             |1         |Dr. Emily Carter |2024-01-15      |Annual Checkup    |
+|2             |2         |Dr. Sarah Johnson|2024-02-10      |Flu Symptoms      |
+|3             |1         |Dr. Emily Carter |2024-02-15      |Follow-up Visit   |
+|4             |1         |Dr. James Wilson |2024-03-20      |Routine Blood Test|
+
+*Result for appointments (De-identified table)*:
+
+{:.table-model-big}
+|appointment_id|patient_id|doctor_name|appointment_date|reason            |
+|--------------|----------|-----------|----------------|------------------|
+|101           |101       |*****      |2024-01-25      |Annual Checkup    |
+|102           |102       |*****      |2024-02-20      |Flu Symptoms      |
+|103           |101       |*****      |2024-02-25      |Follow-up Visit   |
+|104           |101       |*****      |2024-03-30      |Routine Blood Test|
+
+
+
+*Example for patients*:
+
+{:.table-model-big}
+|patient_id|name      |address                 |ssn        |email                 |dob       |age|
+|----------|----------|------------------------|-----------|----------------------|----------|---|
+|1         |John Doe  |123 Main St, Springfield|123-45-6789|john.doe@example.com  |1985-04-15|38 |
+|2         |Jane Smith|456 Elm St, Shelbyville |987-65-4321|jane.smith@example.com|1990-07-20|33 |
+
+*Result for patients (De-identified table)*:
+
+{:.table-model-big}
+|patient_id|name |address|ssn  |email|dob       |age|
+|----------|-----|-------|-----|-----|----------|---|
+|101       |*****|*****  |*****|*****|1985-04-25|39 |
+|102       |*****|*****  |*****|*****|1990-07-30|62 |
+
+
+Please check the [4.8.Clinical_Deidentification_for_Structured_Data](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.8.Clinical_Deidentification_for_Structured_Data.ipynb) Notebook for more information
+
+
+</div><div class="h3-box" markdown="1">
+
+## Apply_Exception_Handling
+
+Sets setDoExceptionHandling(True) for specified or all stages in a Spark NLP pipeline.
+
+    param pipeline: Spark NLP Pipeline or PipelineModel object
+    param stage: List of stage indices to set exception handling (if parameter exists)
+    param all: If True, applies to all stages with the parameter. ( Default: True )
+
+<div class="h3-box" markdown="1">
+
+```python
+from sparknlp_jsl.utils import apply_exception_handling
+```
+</div>
+
+<div class="h3-box" markdown="1">
+
+```python
+from sparknlp.pretrained import PretrainedPipeline
+
+oncology_pipeline = PretrainedPipeline("oncology_biomarker_pipeline", "en", "clinical/models")
+stage = oncology_pipeline.model.stages[15]
+stage.getDoExceptionHandling()
+```
+</div>
+
+
+<div class="h3-box" markdown="1">
+
+```python
+handled_pretrainedPipeline =  apply_exception_handling(oncology_pipeline)
+```
+</div>
+
+ Total modified stages: 15
+  - Stage 4: MedicalNerModel
+  - Stage 5: NerConverterInternalModel
+  - Stage 6: MedicalNerModel
+  - Stage 7: NerConverterInternalModel
+  - Stage 8: MedicalNerModel
+  - Stage 9: NerConverterInternalModel
+  - Stage 10: MedicalNerModel
+  - Stage 11: NerConverterInternalModel
+  - Stage 13: ChunkMergeModel
+  - Stage 14: ChunkMergeModel
+  - Stage 15: AssertionDLModel
+  - Stage 16: ChunkFilterer
+  - Stage 17: AssertionDLModel
+  - Stage 21: RelationExtractionModel
+  - Stage 22: RelationExtractionModel
+Total skipped stages: 9
+  - Stage 0: DocumentAssembler (No exception handling support)
+  - Stage 1: SentenceDetectorDLModel (No exception handling support)
+  - Stage 2: TokenizerModel (No exception handling support)
+  - Stage 3: WordEmbeddingsModel (No exception handling support)
+  - Stage 12: TextMatcherInternalModel (No exception handling support)
+  - Stage 18: AssertionMerger (No exception handling support)
+  - Stage 19: PerceptronModel (No exception handling support)
+  - Stage 20: DependencyParserModel (No exception handling support)
+  - Stage 23: AnnotationMerger (No exception handling support)
+
+  
+  
+  <div class="h3-box" markdown="1">
+
+  ```python
+  stage = handled_pretrainedPipeline.stages[15]
+  stage.getDoExceptionHandling()
+  ```
+
+  </div>
+
+   True
+
+   
+<div class="h3-box" markdown="1">
+
+```python
+from sparknlp.base import LightPipeline
+
+light_model = LightPipeline(handled_pretrainedPipeline)
+result = light_model.fullAnnotate("The patient is a 55-years old. He has a history of smoking and lung cancer.")
+```
+
+</div>
+
+## Annotation2Training
+
+Converts annotation results from json or csv files to DataFrame suitable for NER training.
+    Input files must have a structure similar to the one produced by John Snow Labs' Generative AI annotation tool.
+
+  
+
+
+
+
+<div class="h3-box" markdown="1">
+
+Example
+-------
+```python
+from sparknlp_jsl.training import Annotation2Training
+from sparknlp_jsl.annotator import *
+from sparknlp.annotator import *
+from sparknlp.base import *
+from pyspark.ml import Pipeline
+
+# Create a base pipeline to extract sentences and tokens
+document_assembler = DocumentAssembler() \
+  .setInputCol("text") \
+  .setOutputCol("document")
+sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare", "en", "clinical/models") \
+  .setInputCols(["document"]) \
+  .setOutputCol("sentence")
+tokenizer = Tokenizer() \
+  .setInputCols(["sentence"]) \
+  .setOutputCol("token")
+pipeline = Pipeline(stages=[
+  document_assembler,
+  sentence_detector,
+  tokenizer,
+])
+pipeline_model = pipeline.fit(spark.createDataFrame([[""]]).toDF("text"))
+
+# Load the annotation2training utility class
+annotation2training = Annotation2Training(spark)
+
+# Convert a json file to a training dataframe
+training_df = annotation2training.convertJson2NerDF(
+  json_path= "path/to/annotations.json",  # Path to GenAI json file
+  pipeline_model=pipeline_model,
+  repartition=32,                # Number of partitions to use when creating the DataFrame
+  token_output_col="token",
+  ner_label_col="label")
+training_df.show(5)
+# Returns a Spark DataFrame to train NER models.
+# Ready to go for MedicalNerApproach
+```
+
+## Dic_to_Annotation_Converter
+
+This method is used to convert a list of dictionaries to a Spark DataFrame. The returned DataFrame will contain chunk and document columns that are compatible with Spark NLP and can be used for deidentification.
+
+    The input data should be a list of dictionaries.
+    Each dictionary should have a "text" key and a "chunks" key.
+    The "text" key should contain the text of the document and the "chunks" key should contain a list of dictionaries.
+
+    Each dictionary in the "chunks" list should have "begin", "end", "result", "entity" and "metadata" keys.
+
+    The "begin" key should contain the start index of the chunk,
+    the "end" key should contain the end index of the chunk,
+    the "result" key should contain the text of the chunk,
+    the "entity" key should contain the entity type of the chunk
+    and the "metadata" key should contain the metadata of the chunk.
+
+    Parameters
+    ----------
+        spark: SparkSession
+            The Spark session object.
+        data: list
+            A list of dictionaries.
+        document_col_name: str
+            The name of the document column. Default: "document".
+        chunk_col_name: str
+            The name of the chunk column. Default: "chunk".
+        adjust_end: bool
+            If True, the end values of the chunks will minus 1. Default: False.
+        chunk_validation_options : dict
+            A dictionary specifying options for chunk validation. Default is None. None means no validation.
+            Possible keys include:
+            - "validation_mode" (str): Determines what happens if a chunk cannot be validated:
+                - "filter" (default): Invalid chunks are removed from the chunks.
+                - "error": A ValueError is raised if any chunk cannot be validated.
+            - "scope_window" (list of int): A list of two integers [before, after] that define the number of characters
+                before and after the chunk's begin and end index to include in the search window. Default is [0, 0].
+            - "case_sensitive" (bool): If False, chunk matching is case-insensitive. Default is True.
+
+             - The provided begin, end, and result values are not validated for accuracy. It is the user's responsibility to ensure these values are correct.
+    The validation can be done by setting the chunk_validation_options parameter.
+
+    - Spark NLP annotators calculate the end index of the annotations by minus 1 from the actual end index. 
+    If the end index is not minus 1, the annotators will not be able to calculate the correct end index. 
+    Therefore, the end index of the chunks should be minus 1. 
+    If the end index is not minus 1 in chunks, the adjust_end parameter should be set to True.
+
+    - document_col_name and chunk_col_name should not be the same as the column names in the input data.
+
+    - The name of 'document_metadata' is reserved for the metadata column of the document. 
+    'document_metadata' values should be a dictionary. 
+    All dictionaries must have a 'document_metadata' key if the 'document_metadata' is provided in one of the dictionaries.
+
+    - 'text' and 'chunks' keys are reserved for the text and chunks of the document. 
+    'text' values should be a string and 'chunks' values should be a list of dictionaries.
+
+    - 'begin', 'end', 'result', 'entity' and 'metadata' keys are reserved for the chunk annotations. 
+    'begin' and 'end' values should be integers, 'result' values should be a string, 'entity' values should be a string and 'metadata' values should be a dictionary.
+
+    Returns
+    -------
+    Spark DataFrame: A Spark DataFrame with the converted columns which are compatible with Spark NLP and is ready to deidentify.
+    The returned DataFrame will contain chunk and document columns that are compatible with Spark NLP and can be used for deidentification.
+    Additionally, the returned DataFrame will contain all the columns from the input data except the "chunks" column.
+
+    Raises
+    ------
+    ValueError
+        If the validation_mode is set to "error" or the given parameters and options are not valid.
+
+
+ <div class="h3-box" markdown="1">
+
+  ```python
+  list_of_dict = [
+    {
+      "text": "My name is George, and I was born on 12/11/1995. I have the pleasure of working at John Snow Labs.",
+      "chunks": [
+        {
+          "begin": 11,
+          "end": 16, 
+          "result": "George",
+          "entity": "PERSON",
+          "metadata": {"confidence": "1", "ner_source": "llm_output"}
+        },
+        {
+          "begin": 37,
+          "end": 46,
+          "result": "12/11/1995",
+          "entity": "DATE",
+          "metadata": {"confidence": "0.9", "ner_source": "llm_output"}
+        },
+        {
+          "begin": 83,
+          "end": 96,
+          "result": "John Snow labs",
+          "entity": "ORG",
+          "metadata": {"confidence": "0.87", "ner_source": "llm_output"}
+        }
+      ],
+      "doc_id": "1",
+      "document_metadata": {"dateshift": "10"},
+      "file_path": "/path/to/file1"
+    },
+    {
+      "text": "I am Bush, and English is my native language. You can reach me at my email: bush@example.com.",
+      "chunks": [
+        {
+          "begin": 5,
+          "end": 8,
+          "result": "Bush",
+          "entity": "PERSON",
+          "metadata": {"confidence": "1", "ner_source": "ner_dl"}
+        },
+        {
+          "begin": 15,
+          "end": 21,
+          "result": "English",
+          "entity": "LANGUAGE",
+          "metadata": {"confidence": "0.98", "ner_source": "ner_dl"}
+        },
+        {
+          "begin": 76,
+          "end": 91,
+          "result": "bush@example.com",
+          "entity": "EMAIL",
+          "metadata": {"confidence": "0.87", "ner_source": "ner_dl"}
+        }
+      ],
+      "doc_id": "2",
+      "document_metadata": {"dateshift": "5"},
+      "file_path": "/path/to/file2"
+    }
+  ]
+  from sparknlp.annotator import *
+  from sparknlp_jsl.utils import *
+  result_df = dict_to_annotation_converter(spark, list_of_dict, document_col_name="document", chunk_col_name="chunk", adjust_end=False)
+  light_deIdentification = (
+    LightDeIdentification()
+    .setInputCols(["document", "chunk"])
+    .setOutputCol("deidentified")
+    .setMode("mask")
+  )
+  light_deIdentification.transform(result_df).selectExpr("deidentified.result").show(truncate=False)
+  ```
+
+  </div>
+
+  ## llm_df_preprocessor
+
+  Preprocesses text data in a DataFrame by adding prefix and/or suffix prompts for LLM usage.
+
+    This function takes a PySpark DataFrame containing text data and creates prompts suitable
+    for Large Language Model (LLM) processing by concatenating a prefix prompt, the original
+    text, and optionally a suffix prompt. This is particularly useful for batch processing
+    of text data in distributed computing environments.
+
+    The function supports both in-place column updates and creation of new columns, making it
+    flexible for different use cases. It performs comprehensive input validation to ensure
+    data integrity and provides clear error messages for troubleshooting.
+
+    Args
+    ----
+
+    data_frame (DataFrame): A PySpark DataFrame containing the text data to be processed.
+                           Must be a valid PySpark DataFrame with at least one column.
+
+    text_col_name (str): The name of the column containing the text data that will be
+                        processed. This column must exist in the DataFrame and be of
+                        StringType.
+
+    prefix_prompt (str, optional): The prompt text to be added at the beginning of each
+                                 text entry. Can be empty string if only suffix is needed.
+                                 Defaults to "".
+
+    suffix_prompt (str, optional): The prompt text to be added at the end of each text
+                                 entry. Can be empty string if only prefix is needed.
+                                 Defaults to "".
+
+    new_text_col_name (str, optional): The name of the new column to create with the
+                                     processed prompts. If None or same as text_col_name,
+                                     the original column will be updated in-place.
+                                     Defaults to None.
+
+    Returns
+    -------
+
+    DataFrame: A new PySpark DataFrame with the processed prompt column. The DataFrame
+              contains all original columns plus the new/updated prompt column with
+              the concatenated prefix + text + suffix format.
+
+
+ <div class="h3-box" markdown="1">
+
+  ```python
+  df = spark.createDataFrame([
+        ("The weather is nice today",),
+        ("It will rain tomorrow",),
+        ("I love sunny days",)
+     ], ["text"])
+   
+     result_df = llm_df_preprocessor(
+        data_frame=df,
+        text_col_name="text",
+        prefix_prompt="Analyze the sentiment of this text: ",
+        new_text_col_name="prompt"
+     )
+     result_df.show(truncate=False)
+
+ ```
+</div>
+
+    +-------------------------+-------------------------------------------------------------+
+    |text                     |prompt                                                       |
+    +-------------------------+-------------------------------------------------------------+
+    |The weather is nice today|Analyze the sentiment of this text: The weather is nice today|
+    |It will rain tomorrow    |Analyze the sentiment of this text: It will rain tomorrow    |
+    |I love sunny days        |Analyze the sentiment of this text: I love sunny days        |
+    +-------------------------+-------------------------------------------------------------+
+
+        
+
+- At least one of prefix_prompt or suffix_prompt must be provided (non-empty).
+- The function preserves all original columns in the DataFrame.
+- For large datasets, consider caching the input DataFrame before calling this
+  function multiple times: `data_frame.cache()`.
+- If the text column contains null values, they will be treated as empty strings
+  in the concatenation operation.
+- The function is designed to work efficiently with Spark's distributed computing
+  model and can handle large-scale text preprocessing tasks.
+    
+## vision_llm_preprocessor
+
+ Loads images from a specified path as raw bytes and adds a prompt column for Vision LLM processing.
+
+    This function is specifically designed for MedicalVisionLLM and other vision-language models
+    that require images in raw byte format rather than OpenCV-compatible format. It loads images
+    from a directory path, preserves them as raw bytes along with their metadata, and adds a
+    user-defined prompt that will be associated with each image for downstream processing.
+
+    The function supports common image formats and is optimized for distributed processing
+    of large image datasets in medical and computer vision applications.
+
+    Args:
+        spark (SparkSession): An active SparkSession instance
+
+        images_path (str): The file system path to the directory containing images or a
+                          specific image file pattern. Supports both local file system
+                          and distributed file systems (HDFS, S3, etc.).
+                          Supported formats: JPEG, PNG, GIF, and BMP.
+                          Examples: "/path/to/images/", "s3://bucket/images/*.jpg"
+
+        prompt (str): The text prompt to be associated with each image. This prompt will
+                     be stored in the specified output column and can be used for
+                     vision-language model instructions, descriptions, or queries.
+                     Must be a non-empty string.
+
+        output_col_name (str, optional): The name of the column where the prompt will be
+                                        stored in the resulting DataFrame. Must be a valid
+                                        column name. Defaults to "text".
+
+    Returns
+    -------
+
+    DataFrame: A PySpark DataFrame
+
+
+<div class="h3-box" markdown="1">
+
+  ```python
+df = vision_llm_preprocessor(
+      spark=spark,
+      images_path="/path/to/medical/images/",
+      prompt="Analyze this medical image for abnormalities",
+      output_col_name="medical_prompt"
+     )
+   df.show(5, truncate=False)
+
+ ```
+</div>
+
+Technical Requirements:
+        - File system permissions must allow read access to the specified path.
+
+    See Also:
+        - MedicalVisionLLM: For processing the output DataFrame with vision-language models
+        - ImageAssembler: The underlying Spark NLP component used for image loading
+
+        
