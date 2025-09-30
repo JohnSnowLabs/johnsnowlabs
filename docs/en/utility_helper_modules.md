@@ -1,7 +1,19 @@
+---
+layout: docs
+header: true
+seotitle: Spark NLP for Healthcare | John Snow Labs
+title: Utility & Helper Modules
+permalink: /docs/en/utility_helper_modules
+key: docs-utility-helper-modules
+modify_date: '2025-09-30'
+use_language_switcher: 'Python-Scala'
+show_nav: true
+sidebar:
+  nav: sparknlp-healthcare
+---
+ 
+<div class="h3-box" markdown="1">
 
-| layout | header | seotitle                                      | title                   | permalink                      | key                       | modify_date | use_language_switcher | show_nav | sidebar.nav           |
-|--------|--------|-----------------------------------------------|-------------------------|-------------------------------|---------------------------|-------------|----------------------|----------|-----------------------|
-| docs   | true   | Spark NLP for Healthcare &#124; John Snow Labs | Utility & Helper Modules| /docs/en/utility_helper_modules| docs-utility-helper-modules| 2022-12-13  | Python-Scala         | true     | sparknlp-healthcare   |     |     |
 
 ## NLP Lab (Annotation Lab) Interface Module
 
