@@ -1590,8 +1590,752 @@ Applies shift-filling logic to the given DataFrame.</p>
 </code></pre></div>  </div>
 
 </div>
+
+<div class="h3-box">
+
+  <h3 id="pipeline-tracer">Pipeline Tracer</h3>
+
+  <p><code class="language-plaintext highlighter-rouge">PipelineTracer</code> is a class that allows you to trace the stages of a pipeline and get information about them.</p>
+
+  <p>The <code class="language-plaintext highlighter-rouge">PipelineTracer</code> class provides functionality for tracing and retrieving information about the various stages of a pipeline. It can be used to obtain detailed insights into the entities, assertions, and relationships utilized within the pipeline. Compatibility with both <code class="language-plaintext highlighter-rouge">PipelineModel</code> and <code class="language-plaintext highlighter-rouge">PretrainedPipeline</code>.</p>
+
+  <p>It can be used with a <code class="language-plaintext highlighter-rouge">PipelineModel</code> or a <code class="language-plaintext highlighter-rouge">PretrainedPipeline</code>. Additionally, it can be used to create a parser dictionary that can be used to create a <code class="language-plaintext highlighter-rouge">PipelineOutputParser</code>.</p>
+
+  <p><strong>Parameters</strong></p>
+
+  <ul>
+    <li><code class="language-plaintext highlighter-rouge">printPipelineSchema</code>: Prints the schema of the pipeline.</li>
+    <li><code class="language-plaintext highlighter-rouge">createParserDictionary</code>: Returns a parser dictionary that can be used to create a <code class="language-plaintext highlighter-rouge">PipelineOutputParser</code></li>
+    <li><code class="language-plaintext highlighter-rouge">getPossibleEntities</code>: Returns a list of possible entities that the pipeline can include.</li>
+    <li><code class="language-plaintext highlighter-rouge">getPossibleAssertions</code>: Returns a list of possible assertions that the pipeline can include</li>
+    <li><code class="language-plaintext highlighter-rouge">getPossibleRelations</code>: Returns a list of possible relations that the pipeline can include.</li>
+    <li><code class="language-plaintext highlighter-rouge">getPipelineStages</code>: Returns a list of PipelineStage objects that represent the stages of the pipeline.</li>
+    <li><code class="language-plaintext highlighter-rouge">getParserDictDirectly</code>: Returns a parser dictionary that can be used to create a <code class="language-plaintext highlighter-rouge">PipelineOutputParser</code>. This method is used to get the parser dictionary directly without creating a PipelineTracer object.</li>
+    <li><code class="language-plaintext highlighter-rouge">listAvailableModels</code>: Returns a list of available models for a given language and source</li>
+    <li><code class="language-plaintext highlighter-rouge">showAvailableModels</code>: Prints a list of available models for a given language and source.</li>
+  </ul>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp_jsl.pipeline_tracer</span> <span class="kn">import</span> <span class="n">PipelineTracer</span>
+<span class="kn">from</span> <span class="nn">sparknlp_jsl.pipeline_output_parser</span> <span class="kn">import</span> <span class="n">PipelineOutputParser</span>
+</code></pre></div>  </div>
+
+  <h2 id="showavailablemodels">showAvailableModels</h2>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">PipelineTracer</span><span class="p">.</span><span class="n">showAvailableModels</span><span class="p">(</span><span class="n">language</span><span class="o">=</span><span class="s">"en"</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s">"clinical/models"</span><span class="p">)</span>
+</code></pre></div>  </div>
+
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>clinical_deidentification
+explain_clinical_doc_ade
+explain_clinical_doc_biomarker
+explain_clinical_doc_generic
+explain_clinical_doc_granular
+explain_clinical_doc_medication
+explain_clinical_doc_oncology
+explain_clinical_doc_public_health
+explain_clinical_doc_radiology
+explain_clinical_doc_risk_factors
+explain_clinical_doc_vop
+icd10cm_resolver_pipeline
+icd10cm_rxnorm_resolver_pipeline
+rxnorm_resolver_pipeline
+snomed_resolver_pipeline
+</code></pre></div>  </div>
+
+  <h2 id="pipelineoutputparser">PipelineOutputParser</h2>
+
+  <p>The output parser module seamlessly integrates with existing systems to return clear, easy-to-read &amp; process prettified results in dictionary format from pretrained pipelines. It is designed to enhance API integration, and user understanding and streamline data analysis workflows. This class is used to parse the output of a Spark NLP pipeline. It provides methods for extracting named entities, assertions, code mapping, relations, summaries, and deidentification from the output.</p>
+
+  <hr />
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">sparknlp</span>
+<span class="kn">import</span> <span class="nn">sparknlp_jsl</span>
+<span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
+<span class="kn">from</span> <span class="nn">sparknlp_jsl.pipeline_output_parser</span> <span class="kn">import</span> <span class="n">PipelineOutputParser</span>
+
+<span class="c1">## Load the pipeline and the text
+</span>
+<span class="n">text</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s">"Immunohistochemistry was negative for thyroid transcription factor-1 and napsin A. The test was positive for ER and PR, and negative for HER2."</span><span class="p">,</span>
+    <span class="s">"The had previously undergone a left mastectomy and an axillary lymph node dissection for a left breast cancer twenty years ago."</span> <span class="o">+</span>
+    <span class="s">"The tumor was positive for ER and PR. Postoperatively, radiotherapy was administered to the residual breast. The cancer recurred as a right lung metastasis 13 years later."</span> <span class="o">+</span>
+    <span class="s">"He underwent a regimen consisting of adriamycin (60 mg/m2) and cyclophosphamide (600 mg/m2) over six courses, as first line therapy."</span>
+<span class="p">]</span>
+
+<span class="n">oncology_pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"oncology_biomarker_pipeline"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
+<span class="n">annotations</span> <span class="o">=</span> <span class="n">oncology_pipeline</span><span class="p">.</span><span class="n">fullAnnotate</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</code></pre></div>  </div>
+
+  <hr />
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">## Define the column_maps dictionary
+</span>
+<span class="n">column_maps</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'document_identifier'</span><span class="p">:</span> <span class="s">'XYZ_123'</span><span class="p">,</span>
+    <span class="s">'document_text'</span><span class="p">:</span> <span class="s">'document'</span><span class="p">,</span>
+    <span class="s">'entities'</span><span class="p">:</span> <span class="p">[</span><span class="s">"merged_chunk"</span><span class="p">],</span>
+    <span class="s">'assertions'</span><span class="p">:</span> <span class="p">[</span><span class="s">"assertion_chunk"</span><span class="p">],</span>
+    <span class="s">'resolver'</span><span class="p">:</span> <span class="p">[</span><span class="s">"icd10_code"</span><span class="p">],</span>
+    <span class="s">'relations'</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="s">'summaries'</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="s">"deidentifications"</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="s">"classifications"</span><span class="p">:</span> <span class="p">[]</span>
+<span class="p">}</span>
+
+<span class="c1">## Initialized parser from the dictionary
+</span>
+<span class="n">pipeline_parser</span> <span class="o">=</span> <span class="n">PipelineOutputParser</span><span class="p">(</span><span class="n">column_maps</span><span class="p">)</span>
+</code></pre></div>  </div>
+
+  <hr />
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">## Run the parser on the output of a Spark NLP pipeline
+</span>
+<span class="n">parsed_result</span> <span class="o">=</span> <span class="n">pipeline_parser</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">annotations</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">parsed_result</span><span class="p">)</span>
+</code></pre></div>  </div>
+  <h2 id="relationaldbdeidentification">RelationalDBDeidentification</h2>
+
+  <p>The <code class="language-plaintext highlighter-rouge">RelationalDBDeidentification</code> class provides a robust solution for de-identifying sensitive data in relational databases. It supports a variety of obfuscation techniques and integrates seamlessly with database systems.</p>
+
+  <p><strong>Key features include:</strong></p>
+
+  <ul>
+    <li><strong>End-to-End De-Identification:</strong>
+      <ul>
+        <li><code class="language-plaintext highlighter-rouge">deidentify()</code>: Automates the de-identification process by:
+          <ul>
+            <li>Fetching tables.</li>
+            <li>Extracting schema information.</li>
+            <li>Detecting sensitive columns.</li>
+            <li>Applying obfuscation and masking techniques.</li>
+            <li>Exporting de-identified data as CSV files.</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><strong>Database Connectivity:</strong>
+      <ul>
+        <li><code class="language-plaintext highlighter-rouge">connect_to_db()</code>: Establishes a connection to the MySQL database.</li>
+        <li><code class="language-plaintext highlighter-rouge">get_all_tables()</code>: Retrieves all table names from the connected database.</li>
+      </ul>
+    </li>
+    <li><strong>Schema and Data Processing:</strong>
+      <ul>
+        <li><code class="language-plaintext highlighter-rouge">get_schema_info(table_name)</code>: Extracts schema details, including date columns, primary keys, and foreign keys, for a specified table.</li>
+      </ul>
+    </li>
+    <li><strong>Data Obfuscation:</strong>
+      <ul>
+        <li><code class="language-plaintext highlighter-rouge">obfuscate_dates(df, date_columns)</code>: Shifts dates by a specified number of days.</li>
+        <li><code class="language-plaintext highlighter-rouge">obfuscate_ages(df, age_columns, use_hipaa)</code>: Obfuscates age columns using HIPAA rules or predefined age groups.</li>
+        <li><code class="language-plaintext highlighter-rouge">mask_other_sensitive_columns(df, other_columns)</code>: Masks sensitive columns by replacing their values with asterisks.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <p>This class provides a complete framework for protecting sensitive information while maintaining data integrity for relational databases.</p>
+
+  <hr />
+
+  <h3 id="example-usage">Example Usage</h3>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp_jsl.utils.database_deidentification</span> <span class="kn">import</span> <span class="n">RelationalDBDeidentification</span>
+
+<span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"db_config"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">"host"</span><span class="p">:</span> <span class="s">"localhost"</span><span class="p">,</span>
+        <span class="s">"user"</span><span class="p">:</span> <span class="s">"root"</span><span class="p">,</span>
+        <span class="s">"password"</span><span class="p">:</span> <span class="s">"root"</span><span class="p">,</span>
+        <span class="s">"database"</span><span class="p">:</span> <span class="s">"healthcare_db"</span>
+    <span class="p">},</span>
+    <span class="s">"deid_options"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">"days_to_shift"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="s">"age_groups"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">"child"</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span>
+            <span class="s">"teen"</span><span class="p">:</span> <span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">19</span><span class="p">),</span>
+            <span class="s">"adult"</span><span class="p">:</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">64</span><span class="p">),</span>
+            <span class="s">"senior"</span><span class="p">:</span> <span class="p">(</span><span class="mi">65</span><span class="p">,</span> <span class="mi">90</span><span class="p">)</span>
+        <span class="p">},</span>
+        <span class="s">"pk_fk_shift_value"</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+        <span class="s">"use_hipaa"</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
+        <span class="s">"output_path"</span><span class="p">:</span> <span class="s">"deidentified_output/"</span>
+    <span class="p">},</span>
+    <span class="s">"logging"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">"level"</span><span class="p">:</span> <span class="s">"INFO"</span><span class="p">,</span>
+        <span class="s">"file"</span><span class="p">:</span> <span class="s">"deidentification.log"</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">deidentifier</span> <span class="o">=</span> <span class="n">RelationalDBDeidentification</span><span class="p">(</span><span class="n">spark</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
+<span class="n">deidentifier</span><span class="p">.</span><span class="n">deidentify</span><span class="p">()</span>
+</code></pre></div>  </div>
+
+  <hr />
+
+  <h3 id="example-for-appointments">Example for appointments</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>appointment_id</th>
+        <th>patient_id</th>
+        <th>doctor_name</th>
+        <th>appointment_date</th>
+        <th>reason</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>1</td>
+        <td>Dr. Emily Carter</td>
+        <td>2024-01-15</td>
+        <td>Annual Checkup</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>2</td>
+        <td>Dr. Sarah Johnson</td>
+        <td>2024-02-10</td>
+        <td>Flu Symptoms</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>1</td>
+        <td>Dr. Emily Carter</td>
+        <td>2024-02-15</td>
+        <td>Follow-up Visit</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>1</td>
+        <td>Dr. James Wilson</td>
+        <td>2024-03-20</td>
+        <td>Routine Blood Test</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Result for appointments (De-identified table):</strong></p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>appointment_id</th>
+        <th>patient_id</th>
+        <th>doctor_name</th>
+        <th>appointment_date</th>
+        <th>reason</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>101</td>
+        <td>101</td>
+        <td>*****</td>
+        <td>2024-01-25</td>
+        <td>Annual Checkup</td>
+      </tr>
+      <tr>
+        <td>102</td>
+        <td>102</td>
+        <td>*****</td>
+        <td>2024-02-20</td>
+        <td>Flu Symptoms</td>
+      </tr>
+      <tr>
+        <td>103</td>
+        <td>101</td>
+        <td>*****</td>
+        <td>2024-02-25</td>
+        <td>Follow-up Visit</td>
+      </tr>
+      <tr>
+        <td>104</td>
+        <td>101</td>
+        <td>*****</td>
+        <td>2024-03-30</td>
+        <td>Routine Blood Test</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr />
+
+  <h3 id="example-for-patients">Example for patients</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>patient_id</th>
+        <th>name</th>
+        <th>address</th>
+        <th>ssn</th>
+        <th>email</th>
+        <th>dob</th>
+        <th>age</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>John Doe</td>
+        <td>123 Main St, Springfield</td>
+        <td>123-45-6789</td>
+        <td>john.doe@example.com</td>
+        <td>1985-04-15</td>
+        <td>38</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Smith</td>
+        <td>456 Elm St, Shelbyville</td>
+        <td>987-65-4321</td>
+        <td>jane.smith@example.com</td>
+        <td>1990-07-20</td>
+        <td>33</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Result for patients (De-identified table):</strong></p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>patient_id</th>
+        <th>name</th>
+        <th>address</th>
+        <th>ssn</th>
+        <th>email</th>
+        <th>dob</th>
+        <th>age</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>101</td>
+        <td>*****</td>
+        <td>*****</td>
+        <td>*****</td>
+        <td>*****</td>
+        <td>1985-04-25</td>
+        <td>39</td>
+      </tr>
+      <tr>
+        <td>102</td>
+        <td>*****</td>
+        <td>*****</td>
+        <td>*****</td>
+        <td>*****</td>
+        <td>1990-07-30</td>
+        <td>62</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr />
+
+  <p>Please check the <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.8.Clinical_Deidentification_for_Structured_Data.ipynb">4.8.Clinical_Deidentification_for_Structured_Data Notebook</a> for more information.</p>
+
+  <h2 id="apply-exception-handling">Apply Exception Handling</h2>
+
+  <p>The <code class="language-plaintext highlighter-rouge">apply_exception_handling</code> utility sets <code class="language-plaintext highlighter-rouge">setDoExceptionHandling(True)</code> for specified or all stages in a Spark NLP pipeline, making your pipeline more robust to errors in supported stages.</p>
+
+  <p><strong>Parameters:</strong></p>
+  <ul>
+    <li><code class="language-plaintext highlighter-rouge">pipeline</code>: Spark NLP <code class="language-plaintext highlighter-rouge">Pipeline</code> or <code class="language-plaintext highlighter-rouge">PipelineModel</code> object</li>
+    <li><code class="language-plaintext highlighter-rouge">stage</code>: List of stage indices to set exception handling (if parameter exists)</li>
+    <li><code class="language-plaintext highlighter-rouge">all</code>: If <code class="language-plaintext highlighter-rouge">True</code>, applies to all stages with the parameter. (Default: <code class="language-plaintext highlighter-rouge">True</code>)</li>
+  </ul>
+
+  <hr />
+
+  <h3 id="import--usage">Import &amp; Usage</h3>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp_jsl.utils</span> <span class="kn">import</span> <span class="n">apply_exception_handling</span>
+</code></pre></div>  </div>
+
+  <hr />
+
+  <h3 id="checking-stage-exception-handling">Checking Stage Exception Handling</h3>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
+
+<span class="n">oncology_pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"oncology_biomarker_pipeline"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
+<span class="n">stage</span> <span class="o">=</span> <span class="n">oncology_pipeline</span><span class="p">.</span><span class="n">model</span><span class="p">.</span><span class="n">stages</span><span class="p">[</span><span class="mi">15</span><span class="p">]</span>
+<span class="n">stage</span><span class="p">.</span><span class="n">getDoExceptionHandling</span><span class="p">()</span>
+</code></pre></div>  </div>
+
+  <hr />
+
+  <h3 id="apply-exception-handling-to-pipeline">Apply Exception Handling to Pipeline</h3>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">handled_pretrainedPipeline</span> <span class="o">=</span> <span class="n">apply_exception_handling</span><span class="p">(</span><span class="n">oncology_pipeline</span><span class="p">)</span>
+</code></pre></div>  </div>
+
+  <p><strong>Output:</strong></p>
+
+  <p>Total modified stages: 15</p>
+  <ul>
+    <li>Stage 4: MedicalNerModel</li>
+    <li>Stage 5: NerConverterInternalModel</li>
+    <li>Stage 6: MedicalNerModel</li>
+    <li>Stage 7: NerConverterInternalModel</li>
+    <li>Stage 8: MedicalNerModel</li>
+    <li>Stage 9: NerConverterInternalModel</li>
+    <li>Stage 10: MedicalNerModel</li>
+    <li>Stage 11: NerConverterInternalModel</li>
+    <li>Stage 13: ChunkMergeModel</li>
+    <li>Stage 14: ChunkMergeModel</li>
+    <li>Stage 15: AssertionDLModel</li>
+    <li>Stage 16: ChunkFilterer</li>
+    <li>Stage 17: AssertionDLModel</li>
+    <li>Stage 21: RelationExtractionModel</li>
+    <li>Stage 22: RelationExtractionModel</li>
+  </ul>
+
+  <p>Total skipped stages: 9</p>
+  <ul>
+    <li>Stage 0: DocumentAssembler (No exception handling support)</li>
+    <li>Stage 1: SentenceDetectorDLModel (No exception handling support)</li>
+    <li>Stage 2: TokenizerModel (No exception handling support)</li>
+    <li>Stage 3: WordEmbeddingsModel (No exception handling support)</li>
+    <li>Stage 12: TextMatcherInternalModel (No exception handling support)</li>
+    <li>Stage 18: AssertionMerger (No exception handling support)</li>
+    <li>Stage 19: PerceptronModel (No exception handling support)</li>
+    <li>Stage 20: DependencyParserModel (No exception handling support)</li>
+    <li>Stage 23: AnnotationMerger (No exception handling support)</li>
+  </ul>
+
+  <hr />
+
+  <h3 id="confirm-exception-handling-setting">Confirm Exception Handling Setting</h3>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">stage</span> <span class="o">=</span> <span class="n">handled_pretrainedPipeline</span><span class="p">.</span><span class="n">stages</span><span class="p">[</span><span class="mi">15</span><span class="p">]</span>
+<span class="n">stage</span><span class="p">.</span><span class="n">getDoExceptionHandling</span><span class="p">()</span>
+</code></pre></div>  </div>
+
+  <p><strong>Output:</strong></p>
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+</code></pre></div>  </div>
+
+  <hr />
+
+  <h3 id="using-with-lightpipeline">Using with LightPipeline</h3>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp.base</span> <span class="kn">import</span> <span class="n">LightPipeline</span>
+
+<span class="n">light_model</span> <span class="o">=</span> <span class="n">LightPipeline</span><span class="p">(</span><span class="n">handled_pretrainedPipeline</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">light_model</span><span class="p">.</span><span class="n">fullAnnotate</span><span class="p">(</span><span class="s">"The patient is a 55-years old. He has a history of smoking and lung cancer."</span><span class="p">)</span>
+</code></pre></div>  </div>
+
+  <h2 id="annotation2training">Annotation2Training</h2>
+
+  <p>The <code class="language-plaintext highlighter-rouge">Annotation2Training</code> utility converts annotation results from JSON or CSV files into a DataFrame suitable for NER training.<br />
+Input files must have a structure similar to those produced by John Snow Labs’ Generative AI annotation tool.</p>
+
+  <hr />
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp_jsl.training</span> <span class="kn">import</span> <span class="n">Annotation2Training</span>
+<span class="kn">from</span> <span class="nn">sparknlp_jsl.annotator</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">sparknlp.annotator</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">sparknlp.base</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+
+<span class="c1"># Create a base pipeline to extract sentences and tokens
+</span><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span> \
+  <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span> \
+  <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+<span class="n">sentence_detector</span> <span class="o">=</span> <span class="n">SentenceDetectorDLModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sentence_detector_dl_healthcare"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
+  <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span> \
+  <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">()</span> \
+  <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">])</span> \
+  <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
+
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
+  <span class="n">document_assembler</span><span class="p">,</span>
+  <span class="n">sentence_detector</span><span class="p">,</span>
+  <span class="n">tokenizer</span><span class="p">,</span>
+<span class="p">])</span>
+
+<span class="n">pipeline_model</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">""</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">))</span>
+</code></pre></div>  </div>
+
+  <hr />
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Load the annotation2training utility class
+</span><span class="n">annotation2training</span> <span class="o">=</span> <span class="n">Annotation2Training</span><span class="p">(</span><span class="n">spark</span><span class="p">)</span>
+</code></pre></div>  </div>
+
+  <hr />
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Convert a json file to a training dataframe
+</span><span class="n">training_df</span> <span class="o">=</span> <span class="n">annotation2training</span><span class="p">.</span><span class="n">convertJson2NerDF</span><span class="p">(</span>
+  <span class="n">json_path</span><span class="o">=</span><span class="s">"path/to/annotations.json"</span><span class="p">,</span>  <span class="c1"># Path to GenAI json file
+</span>  <span class="n">pipeline_model</span><span class="o">=</span><span class="n">pipeline_model</span><span class="p">,</span>
+  <span class="n">repartition</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span>                        <span class="c1"># Number of partitions to use when creating the DataFrame
+</span>  <span class="n">token_output_col</span><span class="o">=</span><span class="s">"token"</span><span class="p">,</span>
+  <span class="n">ner_label_col</span><span class="o">=</span><span class="s">"label"</span>
+<span class="p">)</span>
+
+<span class="n">training_df</span><span class="p">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="c1"># Returns a Spark DataFrame to train NER models.
+# Ready to go for MedicalNerApproach
+</span></code></pre></div>  </div>
+
+  <h2 id="dicttoannotationconverter">dict_to_annotation_converter</h2>
+
+  <p>This method is used to convert a list of dictionaries to a Spark DataFrame. The returned DataFrame will contain chunk and document columns that are compatible with Spark NLP and can be used for deidentification.</p>
+
+  <h3 id="key-points">Key Points</h3>
+
+  <ul>
+    <li>The input data should be a list of dictionaries.</li>
+    <li>Each dictionary must have a <code class="language-plaintext highlighter-rouge">"text"</code> key (document text) and a <code class="language-plaintext highlighter-rouge">"chunks"</code> key (list of chunk dictionaries).</li>
+    <li>Each chunk dictionary should have <code class="language-plaintext highlighter-rouge">"begin"</code>, <code class="language-plaintext highlighter-rouge">"end"</code>, <code class="language-plaintext highlighter-rouge">"result"</code>, <code class="language-plaintext highlighter-rouge">"entity"</code>, and <code class="language-plaintext highlighter-rouge">"metadata"</code> keys.</li>
+    <li>Optionally, <code class="language-plaintext highlighter-rouge">"document_metadata"</code> and other custom columns can be included.</li>
+    <li>Returns a Spark DataFrame compatible with Spark NLP (ready for deidentification).</li>
+    <li>Use <code class="language-plaintext highlighter-rouge">adjust_end=True</code> if your chunk end indices are not already minus 1.</li>
+    <li>Flexible validation options via <code class="language-plaintext highlighter-rouge">chunk_validation_options</code>.</li>
+  </ul>
+
+  <p><strong>Parameters:</strong></p>
+  <ul>
+    <li><code class="language-plaintext highlighter-rouge">spark</code>: SparkSession</li>
+    <li><code class="language-plaintext highlighter-rouge">data</code>: list of dictionaries</li>
+    <li><code class="language-plaintext highlighter-rouge">document_col_name</code>: Name for document column (default: <code class="language-plaintext highlighter-rouge">"document"</code>)</li>
+    <li><code class="language-plaintext highlighter-rouge">chunk_col_name</code>: Name for chunk column (default: <code class="language-plaintext highlighter-rouge">"chunk"</code>)</li>
+    <li><code class="language-plaintext highlighter-rouge">adjust_end</code>: If <code class="language-plaintext highlighter-rouge">True</code>, chunk end indices will be minus 1 (default: <code class="language-plaintext highlighter-rouge">False</code>)</li>
+    <li><code class="language-plaintext highlighter-rouge">chunk_validation_options</code>: Dict for validation options, e.g.:
+      <ul>
+        <li><code class="language-plaintext highlighter-rouge">"validation_mode"</code>: <code class="language-plaintext highlighter-rouge">"filter"</code> (default) or <code class="language-plaintext highlighter-rouge">"error"</code></li>
+        <li><code class="language-plaintext highlighter-rouge">"scope_window"</code>: <code class="language-plaintext highlighter-rouge">[before, after]</code> chars to check chunk span</li>
+        <li><code class="language-plaintext highlighter-rouge">"case_sensitive"</code>: Boolean for matching case</li>
+      </ul>
+    </li>
+  </ul>
+
+  <hr />
+
+  <h3 id="example">Example</h3>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">list_of_dict</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">{</span>
+    <span class="s">"text"</span><span class="p">:</span> <span class="s">"My name is George, and I was born on 12/11/1995. I have the pleasure of working at John Snow Labs."</span><span class="p">,</span>
+    <span class="s">"chunks"</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s">"begin"</span><span class="p">:</span> <span class="mi">11</span><span class="p">,</span>
+        <span class="s">"end"</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span> 
+        <span class="s">"result"</span><span class="p">:</span> <span class="s">"George"</span><span class="p">,</span>
+        <span class="s">"entity"</span><span class="p">:</span> <span class="s">"PERSON"</span><span class="p">,</span>
+        <span class="s">"metadata"</span><span class="p">:</span> <span class="p">{</span><span class="s">"confidence"</span><span class="p">:</span> <span class="s">"1"</span><span class="p">,</span> <span class="s">"ner_source"</span><span class="p">:</span> <span class="s">"llm_output"</span><span class="p">}</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s">"begin"</span><span class="p">:</span> <span class="mi">37</span><span class="p">,</span>
+        <span class="s">"end"</span><span class="p">:</span> <span class="mi">46</span><span class="p">,</span>
+        <span class="s">"result"</span><span class="p">:</span> <span class="s">"12/11/1995"</span><span class="p">,</span>
+        <span class="s">"entity"</span><span class="p">:</span> <span class="s">"DATE"</span><span class="p">,</span>
+        <span class="s">"metadata"</span><span class="p">:</span> <span class="p">{</span><span class="s">"confidence"</span><span class="p">:</span> <span class="s">"0.9"</span><span class="p">,</span> <span class="s">"ner_source"</span><span class="p">:</span> <span class="s">"llm_output"</span><span class="p">}</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s">"begin"</span><span class="p">:</span> <span class="mi">83</span><span class="p">,</span>
+        <span class="s">"end"</span><span class="p">:</span> <span class="mi">96</span><span class="p">,</span>
+        <span class="s">"result"</span><span class="p">:</span> <span class="s">"John Snow labs"</span><span class="p">,</span>
+        <span class="s">"entity"</span><span class="p">:</span> <span class="s">"ORG"</span><span class="p">,</span>
+        <span class="s">"metadata"</span><span class="p">:</span> <span class="p">{</span><span class="s">"confidence"</span><span class="p">:</span> <span class="s">"0.87"</span><span class="p">,</span> <span class="s">"ner_source"</span><span class="p">:</span> <span class="s">"llm_output"</span><span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s">"doc_id"</span><span class="p">:</span> <span class="s">"1"</span><span class="p">,</span>
+    <span class="s">"document_metadata"</span><span class="p">:</span> <span class="p">{</span><span class="s">"dateshift"</span><span class="p">:</span> <span class="s">"10"</span><span class="p">},</span>
+    <span class="s">"file_path"</span><span class="p">:</span> <span class="s">"/path/to/file1"</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="s">"text"</span><span class="p">:</span> <span class="s">"I am Bush, and English is my native language. You can reach me at my email: bush@example.com."</span><span class="p">,</span>
+    <span class="s">"chunks"</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s">"begin"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="s">"end"</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+        <span class="s">"result"</span><span class="p">:</span> <span class="s">"Bush"</span><span class="p">,</span>
+        <span class="s">"entity"</span><span class="p">:</span> <span class="s">"PERSON"</span><span class="p">,</span>
+        <span class="s">"metadata"</span><span class="p">:</span> <span class="p">{</span><span class="s">"confidence"</span><span class="p">:</span> <span class="s">"1"</span><span class="p">,</span> <span class="s">"ner_source"</span><span class="p">:</span> <span class="s">"ner_dl"</span><span class="p">}</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s">"begin"</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span>
+        <span class="s">"end"</span><span class="p">:</span> <span class="mi">21</span><span class="p">,</span>
+        <span class="s">"result"</span><span class="p">:</span> <span class="s">"English"</span><span class="p">,</span>
+        <span class="s">"entity"</span><span class="p">:</span> <span class="s">"LANGUAGE"</span><span class="p">,</span>
+        <span class="s">"metadata"</span><span class="p">:</span> <span class="p">{</span><span class="s">"confidence"</span><span class="p">:</span> <span class="s">"0.98"</span><span class="p">,</span> <span class="s">"ner_source"</span><span class="p">:</span> <span class="s">"ner_dl"</span><span class="p">}</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s">"begin"</span><span class="p">:</span> <span class="mi">76</span><span class="p">,</span>
+        <span class="s">"end"</span><span class="p">:</span> <span class="mi">91</span><span class="p">,</span>
+        <span class="s">"result"</span><span class="p">:</span> <span class="s">"bush@example.com"</span><span class="p">,</span>
+        <span class="s">"entity"</span><span class="p">:</span> <span class="s">"EMAIL"</span><span class="p">,</span>
+        <span class="s">"metadata"</span><span class="p">:</span> <span class="p">{</span><span class="s">"confidence"</span><span class="p">:</span> <span class="s">"0.87"</span><span class="p">,</span> <span class="s">"ner_source"</span><span class="p">:</span> <span class="s">"ner_dl"</span><span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s">"doc_id"</span><span class="p">:</span> <span class="s">"2"</span><span class="p">,</span>
+    <span class="s">"document_metadata"</span><span class="p">:</span> <span class="p">{</span><span class="s">"dateshift"</span><span class="p">:</span> <span class="s">"5"</span><span class="p">},</span>
+    <span class="s">"file_path"</span><span class="p">:</span> <span class="s">"/path/to/file2"</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div>  </div>
+
+  <hr />
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp.annotator</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">sparknlp_jsl.utils</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">result_df</span> <span class="o">=</span> <span class="n">dict_to_annotation_converter</span><span class="p">(</span>
+  <span class="n">spark</span><span class="p">,</span> 
+  <span class="n">list_of_dict</span><span class="p">,</span> 
+  <span class="n">document_col_name</span><span class="o">=</span><span class="s">"document"</span><span class="p">,</span> 
+  <span class="n">chunk_col_name</span><span class="o">=</span><span class="s">"chunk"</span><span class="p">,</span> 
+  <span class="n">adjust_end</span><span class="o">=</span><span class="bp">False</span>
+<span class="p">)</span>
+</code></pre></div>  </div>
+
+  <hr />
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">light_deIdentification</span> <span class="o">=</span> <span class="p">(</span>
+  <span class="n">LightDeIdentification</span><span class="p">()</span>
+  <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">,</span> <span class="s">"chunk"</span><span class="p">])</span>
+  <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"deidentified"</span><span class="p">)</span>
+  <span class="p">.</span><span class="n">setMode</span><span class="p">(</span><span class="s">"mask"</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">light_deIdentification</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">result_df</span><span class="p">).</span><span class="n">selectExpr</span><span class="p">(</span><span class="s">"deidentified.result"</span><span class="p">).</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div>  </div>
+
+  <p>## llm_df_preprocessor</p>
+
+  <p>Preprocesses text data in a DataFrame by adding prefix and/or suffix prompts for LLM usage.</p>
+
+  <p>This function takes a PySpark DataFrame containing text data and creates prompts suitable for Large Language Model (LLM) processing by concatenating a prefix prompt, the original text, and optionally a suffix prompt. This is particularly useful for batch processing of text data in distributed computing environments.</p>
+
+  <p>The function supports both in-place column updates and creation of new columns, making it flexible for different use cases. It performs comprehensive input validation to ensure data integrity and provides clear error messages for troubleshooting.</p>
+
+  <hr />
+
+  <h3 id="arguments">Arguments</h3>
+
+  <ul>
+    <li><strong>data_frame</strong> (<code class="language-plaintext highlighter-rouge">DataFrame</code>): A PySpark DataFrame containing the text data to be processed. Must be a valid PySpark DataFrame with at least one column.</li>
+    <li><strong>text_col_name</strong> (<code class="language-plaintext highlighter-rouge">str</code>): The name of the column containing the text data that will be processed. This column must exist in the DataFrame and be of StringType.</li>
+    <li><strong>prefix_prompt</strong> (<code class="language-plaintext highlighter-rouge">str</code>, optional): The prompt text to be added at the beginning of each text entry. Can be empty string if only suffix is needed. Defaults to <code class="language-plaintext highlighter-rouge">""</code>.</li>
+    <li><strong>suffix_prompt</strong> (<code class="language-plaintext highlighter-rouge">str</code>, optional): The prompt text to be added at the end of each text entry. Can be empty string if only prefix is needed. Defaults to <code class="language-plaintext highlighter-rouge">""</code>.</li>
+    <li><strong>new_text_col_name</strong> (<code class="language-plaintext highlighter-rouge">str</code>, optional): The name of the new column to create with the processed prompts. If <code class="language-plaintext highlighter-rouge">None</code> or same as <code class="language-plaintext highlighter-rouge">text_col_name</code>, the original column will be updated in-place. Defaults to <code class="language-plaintext highlighter-rouge">None</code>.</li>
+  </ul>
+
+  <hr />
+
+  <h3 id="returns">Returns</h3>
+
+  <ul>
+    <li><strong>DataFrame</strong>: A new PySpark DataFrame with the processed prompt column. The DataFrame contains all original columns plus the new/updated prompt column with the concatenated <code class="language-plaintext highlighter-rouge">prefix + text + suffix</code> format.</li>
+  </ul>
+
+  <hr />
+
+  <h3 id="example-usage-1">Example Usage</h3>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([</span>
+    <span class="p">(</span><span class="s">"The weather is nice today"</span><span class="p">,),</span>
+    <span class="p">(</span><span class="s">"It will rain tomorrow"</span><span class="p">,),</span>
+    <span class="p">(</span><span class="s">"I love sunny days"</span><span class="p">,)</span>
+<span class="p">],</span> <span class="p">[</span><span class="s">"text"</span><span class="p">])</span>
+
+<span class="n">result_df</span> <span class="o">=</span> <span class="n">llm_df_preprocessor</span><span class="p">(</span>
+    <span class="n">data_frame</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
+    <span class="n">text_col_name</span><span class="o">=</span><span class="s">"text"</span><span class="p">,</span>
+    <span class="n">prefix_prompt</span><span class="o">=</span><span class="s">"Analyze the sentiment of this text: "</span><span class="p">,</span>
+    <span class="n">new_text_col_name</span><span class="o">=</span><span class="s">"prompt"</span>
+<span class="p">)</span>
+<span class="n">result_df</span><span class="p">.</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div>  </div>
+
+  <p>Output:</p>
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+-------------------------+-------------------------------------------------------------+
+|text                     |prompt                                                       |
++-------------------------+-------------------------------------------------------------+
+|The weather is nice today|Analyze the sentiment of this text: The weather is nice today|
+|It will rain tomorrow    |Analyze the sentiment of this text: It will rain tomorrow    |
+|I love sunny days        |Analyze the sentiment of this text: I love sunny days        |
++-------------------------+-------------------------------------------------------------+
+</code></pre></div>  </div>
+
+  <hr />
+
+  <p><strong>Notes:</strong></p>
+
+  <ul>
+    <li>At least one of <code class="language-plaintext highlighter-rouge">prefix_prompt</code> or <code class="language-plaintext highlighter-rouge">suffix_prompt</code> must be provided (non-empty).</li>
+    <li>The function preserves all original columns in the DataFrame.</li>
+    <li>For large datasets, consider caching the input DataFrame before calling this function multiple times: <code class="language-plaintext highlighter-rouge">data_frame.cache()</code>.</li>
+    <li>If the text column contains null values, they will be treated as empty strings in the concatenation operation.</li>
+    <li>The function is designed to work efficiently with Spark’s distributed computing model and can handle large-scale text preprocessing tasks.</li>
+  </ul>
+
+  <h2 id="visionllmpreprocessor">vision_llm_preprocessor</h2>
+
+  <p>Loads images from a specified path as raw bytes and adds a prompt column for Vision LLM processing.</p>
+
+  <p>This function is specifically designed for MedicalVisionLLM and other vision-language models that require images in raw byte format rather than OpenCV-compatible format. It loads images from a directory path, preserves them as raw bytes along with their metadata, and adds a user-defined prompt that will be associated with each image for downstream processing.</p>
+
+  <p>Supports common image formats and is optimized for distributed processing of large image datasets in medical and computer vision applications.</p>
+
+  <hr />
+
+  <h3 id="arguments-1">Arguments</h3>
+
+  <ul>
+    <li><strong>spark</strong> (<code class="language-plaintext highlighter-rouge">SparkSession</code>): An active SparkSession instance.</li>
+    <li><strong>images_path</strong> (<code class="language-plaintext highlighter-rouge">str</code>): The file system path to the directory containing images or a specific image file pattern.<br />
+Supports both local file system and distributed file systems (HDFS, S3, etc.).<br />
+Supported formats: JPEG, PNG, GIF, and BMP.<br />
+Examples: <code class="language-plaintext highlighter-rouge">"/path/to/images/"</code>, <code class="language-plaintext highlighter-rouge">"s3://bucket/images/*.jpg"</code></li>
+    <li><strong>prompt</strong> (<code class="language-plaintext highlighter-rouge">str</code>): The text prompt to be associated with each image.<br />
+This prompt will be stored in the specified output column and can be used for vision-language model instructions, descriptions, or queries.<br />
+Must be a non-empty string.</li>
+    <li><strong>output_col_name</strong> (<code class="language-plaintext highlighter-rouge">str</code>, optional): The name of the column where the prompt will be stored in the resulting DataFrame.<br />
+Must be a valid column name. Defaults to <code class="language-plaintext highlighter-rouge">"text"</code>.</li>
+  </ul>
+
+  <hr />
+
+  <h3 id="returns-1">Returns</h3>
+
+  <ul>
+    <li><strong>DataFrame</strong>: A PySpark DataFrame with image raw bytes, metadata, and prompt column.</li>
+  </ul>
+
+  <hr />
+
+  <h3 id="example-usage-2">Example Usage</h3>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span> <span class="o">=</span> <span class="n">vision_llm_preprocessor</span><span class="p">(</span>
+    <span class="n">spark</span><span class="o">=</span><span class="n">spark</span><span class="p">,</span>
+    <span class="n">images_path</span><span class="o">=</span><span class="s">"/path/to/medical/images/"</span><span class="p">,</span>
+    <span class="n">prompt</span><span class="o">=</span><span class="s">"Analyze this medical image for abnormalities"</span><span class="p">,</span>
+    <span class="n">output_col_name</span><span class="o">=</span><span class="s">"medical_prompt"</span>
+<span class="p">)</span>
+<span class="n">df</span><span class="p">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">truncate</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div>  </div>
+
+  <hr />
+
+  <p><strong>Technical Requirements:</strong></p>
+  <ul>
+    <li>File system permissions must allow read access to the specified path.</li>
+  </ul>
+
+  <hr />
+
+  <ul>
+    <li><strong>MedicalVisionLLM</strong>: For processing the output DataFrame with vision-language models</li>
+    <li><strong>ImageAssembler</strong>: The underlying Spark NLP component used for image loading</li>
+  </ul>
+</div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2022-12-13T00:00:00+00:00">Dec 13, 2022</time>
+      <time itemprop="dateModified" datetime="2025-09-30T00:00:00+00:00">Sep 30, 2025</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
