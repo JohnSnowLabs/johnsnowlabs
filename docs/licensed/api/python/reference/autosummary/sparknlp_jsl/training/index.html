@@ -28,7 +28,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../../static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../../../static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../../static/graphviz.css?v=eafc0fe6" />
     <link rel="stylesheet" type="text/css" href="../../../../static/css/custom.css?v=e1fb877f" />
@@ -394,11 +394,11 @@ document.write(`
 <p>Converts annotation results from json or csv files to DataFrame suitable for NER training.
 Input files must have a structure similar to the one produced by John Snow Labs’ Generative AI annotation tool.</p>
 <p class="rubric">Example</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp_jsl.training</span> <span class="kn">import</span> <span class="n">Annotation2Training</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp_jsl.annotator</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp.annotator</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp.base</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sparknlp_jsl.training</span><span class="w"> </span><span class="kn">import</span> <span class="n">Annotation2Training</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sparknlp_jsl.annotator</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sparknlp.annotator</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sparknlp.base</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pyspark.ml</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pipeline</span>
 <span class="go">Create a base pipeline to extract sentences and tokens</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span> \
 <span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s2">&quot;text&quot;</span><span class="p">)</span> \
@@ -546,7 +546,7 @@ instantiating the class:</p>
 </li>
 </ul>
 <dl>
-<dt>Examples:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp_jsl.training</span> <span class="kn">import</span> <span class="n">AnnotationToolJsonReader</span>
+<dt>Examples:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sparknlp_jsl.training</span><span class="w"> </span><span class="kn">import</span> <span class="n">AnnotationToolJsonReader</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">assertion_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;AsPresent&quot;</span><span class="p">,</span><span class="s2">&quot;Absent&quot;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">excluded_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Treatment&quot;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rdr</span> <span class="o">=</span> <span class="n">AnnotationToolJsonReader</span><span class="p">(</span>
@@ -883,7 +883,7 @@ following columns:
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">REDatasetHelper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark_df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><span class="pre">pyspark.sql.DataFrame</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.REDatasetHelper" title="Permalink to this definition">#</a></dt>
 <dd><p>Class to preprocess RE dataset loaded into Spark Dataframe.</p>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp_jsl.training</span> <span class="kn">import</span> <span class="n">REDatasetHelper</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sparknlp_jsl.training</span><span class="w"> </span><span class="kn">import</span> <span class="n">REDatasetHelper</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">PATH</span> <span class="o">=</span> <span class="s2">&quot;/content/i2b2_clinical_rel_dataset.csv&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;header&quot;</span><span class="p">,</span><span class="s2">&quot;true&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;csv&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">PATH</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt;</span>

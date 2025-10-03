@@ -28,7 +28,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../../static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../../../../../static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../../../../static/graphviz.css?v=eafc0fe6" />
     <link rel="stylesheet" type="text/css" href="../../../../../../static/css/custom.css?v=e1fb877f" />
@@ -558,9 +558,9 @@ The transformer includes parameters for setting the schema, returning entities i
 The transformer checks the input columns and document identifier column and ensures that the input columns are compatible with the transformer.</p>
 <p>PipelineParser` class can be used to extract the schema from a pipeline.</p>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sparknlp</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp_jsl.pipeline_tracer</span> <span class="kn">import</span> <span class="n">PipelineTracer</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">sparknlp</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sparknlp.pretrained</span><span class="w"> </span><span class="kn">import</span> <span class="n">PretrainedPipeline</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sparknlp_jsl.pipeline_tracer</span><span class="w"> </span><span class="kn">import</span> <span class="n">PipelineTracer</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;In the bone- marrow (BM) aspiration, blasts accounted for 88.1</span><span class="si">% o</span><span class="s2">f ANCs, which were positive for CD9 and CD10 on flow cytometry.&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="n">text</span><span class="p">]])</span><span class="o">.</span><span class="n">toDF</span><span class="p">(</span><span class="s2">&quot;text&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">bio_pipe</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s2">&quot;explain_clinical_doc_biomarker&quot;</span><span class="p">,</span> <span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="s2">&quot;clinical/models&quot;</span><span class="p">)</span>
@@ -806,8 +806,8 @@ a default value.</p>
 </pre></div>
 </div>
 <p class="rubric">Example</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp_jsl.pipeline_tracer</span> <span class="kn">import</span> <span class="n">PipelineTracer</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sparknlp.pretrained</span><span class="w"> </span><span class="kn">import</span> <span class="n">PretrainedPipeline</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sparknlp_jsl.pipeline_tracer</span><span class="w"> </span><span class="kn">import</span> <span class="n">PipelineTracer</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">bio_pipe</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s2">&quot;explain_clinical_doc_biomarker&quot;</span><span class="p">,</span> <span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="s2">&quot;clinical/models&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pipeline_tracer</span> <span class="o">=</span> <span class="n">PipelineTracer</span><span class="p">(</span><span class="n">bio_pipe</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">columns</span> <span class="o">=</span> <span class="n">pipeline_tracer</span><span class="o">.</span><span class="n">createParserDictionary</span><span class="p">()</span>
