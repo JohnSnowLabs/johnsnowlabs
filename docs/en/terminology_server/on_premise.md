@@ -33,6 +33,12 @@ curl -sSL https://s3.us-east-1.amazonaws.com/artifacts.terminologyservice.johnsn
 
 > **_NOTE:_** The initial setup may take a little longer if you’re running it for the first time, as databases and images are downloaded and services are created. We appreciate your patience! For more information regarding installation of Terminology Server on a dedicated server please contact us at [support@johnsnowlabs.com](mailto:support@johnsnowlabs.com).
 
+**Step 3: Access Terminology Server**
+
+Once the installation is complete, you can access Terminology Server by navigating to `http://localhost` or `http://YOUR_SERVER_IP` in your web browser.
+The credentials to login will be provided in the terminal after installation script is completed.
+
+
 ## Recommended Configurations
 
 <table class="table2">
