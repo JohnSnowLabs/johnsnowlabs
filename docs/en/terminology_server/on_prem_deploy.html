@@ -631,9 +631,9 @@ function wrapWordInSpan(data, wordToWrap) {
 <p><strong>Prerequisites:</strong></p>
 
 <ul>
-  <li>Docker</li>
-  <li>awscli (AWS command-line interface)</li>
   <li>jq (lightweight command-line JSON processor)</li>
+  <li>curl (command-line tool for transferring data with URLs)</li>
+  <li>sudoer access on the server where you want to install Terminology Server</li>
 </ul>
 
 <p><strong>Step 1: Get your license file or license key</strong></p>
@@ -653,6 +653,11 @@ function wrapWordInSpan(data, wordToWrap) {
   <p><strong><em>NOTE:</em></strong> The initial setup may take a little longer if you’re running it for the first time, as databases and images are downloaded and services are created. We appreciate your patience! For more information regarding installation of Terminology Server on a dedicated server please contact us at <a href="mailto:support@johnsnowlabs.com">support@johnsnowlabs.com</a>.</p>
 </blockquote>
 
+<p><strong>Step 3: Access Terminology Server</strong></p>
+
+<p>Once the installation is complete, you can access Terminology Server by navigating to <code class="language-plaintext highlighter-rouge">http://localhost</code> or <code class="language-plaintext highlighter-rouge">http://YOUR_SERVER_IP</code> in your web browser.
+The credentials to login will be provided in the terminal after installation script is completed.</p>
+
 <h2 id="recommended-configurations">Recommended Configurations</h2>
 
 <table class="table2">
@@ -662,7 +667,7 @@ function wrapWordInSpan(data, wordToWrap) {
   </tr>
   <tr>
     <th>Port requirements</th>
-    <td>The service uses port <bl>8000</bl>. So it expects the port to be unused.</td>
+    <td>The service uses port <bl>80</bl>. So it expects the port to be unused.</td>
   </tr>
   <tr>
     <th>Server requirements</th>
