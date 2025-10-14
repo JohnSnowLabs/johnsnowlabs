@@ -2,14 +2,15 @@
 layout: docs
 header: true
 seotitle: Release Notes  | Terminology Server | John Snow Labs
-title: v3 Release Notes
-permalink: /docs/en/terminology_server/release_notes/
+title: Terminology Server Release Notes
+permalink: /docs/en/terminology_server/release/latest_release
 key: docs-term-server
 modify_date: "2025-09-30"
 show_nav: true
 sidebar:
     nav: term-server
 ---
+
 
 <p style="text-align:center;">Release date: {{ page.modify_date | date: '%m-%d-%Y' }}</p>
 
@@ -56,9 +57,14 @@ The application provides a flexible search results table that can be customized 
 * Improved spell checker to deliver more accurate suggestions and corrections.
 
 
+<div class="prev_ver h3-box" markdown="1">
+
 ## Versions
+
+</div>
+
 <ul class="pagination pagination_big">
-    <li><a href="release_note_v3">v3</a></li>
-    <li><a href="release_note_v2">v2</a></li>
-    <li><a href="release_note_v1">v1</a></li>
+  <li class="active"><a href="release_note_v3">v3</a></li>
+  <li><a href="release_note_v2">v2</a></li>
+  <li><a href="release_note_v1">v1</a></li>
 </ul>

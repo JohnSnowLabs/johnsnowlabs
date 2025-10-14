@@ -1,9 +1,9 @@
 ---
 layout: docs
 header: true
-seotitle: Terminology Server | John Snow Labs
-title: Terminology Server 
-permalink: /docs/en/terminology_server/release_notes/release_note_v2
+seotitle: Release Notes  | Terminology Server | John Snow Labs
+title: Terminology Server Release Notes
+permalink: /docs/en/terminology_server/release/release_note_v2
 key: docs-term-server
 modify_date: "2025-06-02"
 show_nav: true
@@ -25,3 +25,11 @@ sidebar:
   ![Screenshot of hierarchy](/assets/images/term_server/CodeHierarchy.png)
   
 * Context Based Search - Perform searches that consider the context of the query, allowing for more relevant results based on the specific domain or use case.
+
+<div class="prev_ver h3-box" markdown="1">
+
+## Versions
+
+</div>
+
+{%- include docs-terminology-pagination.html -%}
