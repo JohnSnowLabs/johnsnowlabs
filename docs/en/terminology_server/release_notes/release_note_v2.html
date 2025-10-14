@@ -9,12 +9,12 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>v3 Release Notes</title><meta property="og:title" content="Release Notes  | Terminology Server | John Snow Labs"/>
+<!-- End Google Tag Manager --><title>Terminology Server</title><meta property="og:title" content="Terminology Server | John Snow Labs"/>
 
 <meta name="description" content="High Performance NLP with Apache Spark
 ">
-<!-- <link rel="canonical" href="/docs/en/terminology_server/release_notes/release_notes_v3"> -->
-<link rel="canonical" href="/docs/en/terminology_server/release_notes/release_notes_v3"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<!-- <link rel="canonical" href="/docs/en/terminology_server/release_notes/release_note_v2"> -->
+<link rel="canonical" href="/docs/en/terminology_server/release_notes/release_note_v2"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -616,65 +616,36 @@ function wrapWordInSpan(data, wordToWrap) {
 </script><div class="article__header"><div class="header-nav"><div class="main-docs">
   <ul class="breadcrambs">
     <li><a href="/docs">Documentation</a></li>
-    <li>v3 Release Notes</li>
+    <li>Terminology Server</li>
   </ul>
 </div></div><header class="main-docs have_subtitle">
-          <h1>v3 Release Notes</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
+          <h1>Terminology Server</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
-            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/terminology_server/releases/release_note_v3.md">
-            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="v3 Release Notes"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
+            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/terminology_server/release_notes/release_note_v2.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Terminology Server"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
-<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><p style="text-align:center;">Release date: 09-30-2025</p>
+<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="terminology-server-v2-release-notes">Terminology Server v2 Release Notes</h2>
 
-<h2 id="authorization-and-user-management">Authorization and User Management</h2>
+<p style="text-align:center;">Release date: 06-02-2025</p>
 
-<p><strong>Authenticated appilcation access</strong></p>
-
-<p>A secure login mechanism ensures user authentication prior to granting access to the Terminology Server.
-  <img src="/assets/images/term_server/v3/login_page.png" alt="Screenshot of login" /></p>
-
-<p><strong>User Management</strong></p>
-
-<p>The Terminology Server includes basic user management capabilities. Users with administrative privileges can add, remove, or update user accounts as needed. This functionality is available through the Manage Users option in the navigation panel when clicking on the user account name.</p>
-
-<p>Administrators can create and manage accounts to ensure proper system access
-  <img src="/assets/images/term_server/v3/user_management.png" alt="Screenshot of user management" /></p>
-
-<p><strong>ValueSet Access Management</strong></p>
-
-<p>Terminolgy Server implements user roles and permissions to control access to different features and valuesets within the Terminology Server.</p>
-<ul>
-  <li>Regular users can access the terminology search and value set management features based on their assigned permissions</li>
-  <li>Users can share created value sets with other users, facilitating collaboration and consistency in terminology usage.</li>
-  <li>Shared value sets can be accessed and utilized by authorized users based on their permissions.
-<img src="/assets/images/term_server/v3/valueset_share.gif" alt="value set sharing" /></li>
-</ul>
-
-<p><strong>Customize Search Results View</strong></p>
-
-<p>The application provides a flexible search results table that can be customized to match each user’s needs. Columns can be selected or hidden, allowing users to focus on the information most relevant to their workflow. This configurable view reduces clutter, streamlines results, and highlights key data points for faster review and decision-making.
- <img src="/assets/images/term_server/v3/column_management.gif" alt="Screenshot of column management" /></p>
-
-<p><strong>Secured API Access</strong></p>
+<p><strong>V2 Key Features:</strong></p>
 
 <ul>
-  <li>API access is secured through API keys linked to user accounts, ensuring that only authorized users can interact with the API endpoints.</li>
-</ul>
+  <li>
+    <p>Hierarchy Display - View the hierarchy of a concept, including its ancestors and descendants, to understand its context within the broader terminology structure.</p>
 
-<h2 id="improvements">Improvements</h2>
+    <p>The following image explains how the hierarchy information is displayed when a code is clicked inside the results table:</p>
 
-<ul>
-  <li>Improved hierarchy display for clearer visualization and navigation of concept hierarchies.
-<img src="/assets/images/term_server/v3/hierarchy.gif" alt="hierarchy display improvements" /></li>
-  <li>Enhanced query performance for faster search results.</li>
-  <li>Updated deployment script for quicker setup and configuration.</li>
-  <li>Added a dedicated <em>Search</em> button in the UI for a smoother user experience.</li>
-  <li>Improved spell checker to deliver more accurate suggestions and corrections.</li>
+    <p><img src="/assets/images/term_server/CodeHierarchy.png" alt="Screenshot of hierarchy" /></p>
+  </li>
+  <li>
+    <p>Context Based Search - Perform searches that consider the context of the query, allowing for more relevant results based on the specific domain or use case.</p>
+  </li>
 </ul>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2025-09-30T00:00:00+00:00">Sep 30, 2025</time>
+      <time itemprop="dateModified" datetime="2025-06-02T00:00:00+00:00">Jun 02, 2025</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>

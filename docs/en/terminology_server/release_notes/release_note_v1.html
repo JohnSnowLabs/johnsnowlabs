@@ -13,8 +13,8 @@
 
 <meta name="description" content="High Performance NLP with Apache Spark
 ">
-<!-- <link rel="canonical" href="/docs/en/terminology_server/release_notes/release_notes_v2"> -->
-<link rel="canonical" href="/docs/en/terminology_server/release_notes/release_notes_v2"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<!-- <link rel="canonical" href="/docs/en/terminology_server/release_notes/release_note_v1"> -->
+<link rel="canonical" href="/docs/en/terminology_server/release_notes/release_note_v1"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -622,30 +622,42 @@ function wrapWordInSpan(data, wordToWrap) {
           <h1>Terminology Server</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
-            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/terminology_server/releases/release_note_v2.md">
+            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/terminology_server/release_notes/release_note_v1.md">
             <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Terminology Server"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
-<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="terminology-server-v2-release-notes">Terminology Server v2 Release Notes</h2>
+<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="terminology-server-v1-release-notes">Terminology Server v1 Release Notes</h2>
 
-<p style="text-align:center;">Release date: 06-02-2025</p>
+<p style="text-align:center;">Release date: 04-01-2025</p>
 
-<p><strong>V2 Key Features:</strong></p>
-
+<p><strong>V1 Key Features:</strong></p>
 <ul>
-  <li>
-    <p>Hierarchy Display - View the hierarchy of a concept, including its ancestors and descendants, to understand its context within the broader terminology structure.</p>
-
-    <p>The following image explains how the hierarchy information is displayed when a code is clicked inside the results table:</p>
-
-    <p><img src="/assets/images/term_server/CodeHierarchy.png" alt="Screenshot of hierarchy" /></p>
+  <li>Term Search - associated synonyms and employing both string matching and embedding matches for similarity searches.</li>
+  <li>Code Search - Search for specific Code and filter by specific available Code System</li>
+  <li>Code Seach with Code mapping results - Search for specific Code and show similar code results in other vocabularies</li>
+  <li>Spell checker - Account for misspellings, allowing the user to retain original string or apply correction</li>
+  <li>Filter search results by:
+    <ul>
+      <li>Domain: Specifies the general topic area of a concept (e.g., Condition/Device, Condition/Meas, Drug, Gender). The available options for this filter are pre-populated in the dropdown list.</li>
+      <li>OMOP Standards Concepts Only: Limits the search results to concepts that are flagged as “Standard” in the OMOP CDM.</li>
+      <li>Only Valid Concepts: Filters out concepts that have been invalidated due to deletion or being superseded.</li>
+      <li>Confidence Score: Allows refining results based on their confidence score.</li>
+      <li>Value Set</li>
+    </ul>
   </li>
-  <li>
-    <p>Context Based Search - Perform searches that consider the context of the query, allowing for more relevant results based on the specific domain or use case.</p>
+  <li>Value Set Management:
+    <ul>
+      <li>Craft custom Value Sets and apply them as filters to refine search outcomes based on data from a specific version of the chosen Value Set.</li>
+      <li>Generate new versions of an existing Value Set through the upload feature.</li>
+      <li>Access and review the data of any selected Value Set within the application.</li>
+    </ul>
   </li>
+  <li>API service:</li>
 </ul>
+
+<p>Allows seamless integration with your applications, enabling you to leverage our platform’s capabilities. By obtaining an API key, developers can interact with various endpoints to retrieve and manipulate data, ensuring smooth connectivity with external systems. Detailed documentation is available to guide you through authentication, rate limits, and usage examples, making the integration process straightforward.</p>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2025-06-02T00:00:00+00:00">Jun 02, 2025</time>
+      <time itemprop="dateModified" datetime="2025-04-01T00:00:00+00:00">Apr 01, 2025</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
