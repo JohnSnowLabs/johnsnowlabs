@@ -31,6 +31,9 @@ Visit the [product page on Azure Marketplace](https://azuremarketplace.microsoft
 
   ![Terminology Service Loading](/assets/images/term_server/loading.png)
 
-  <b>Once the services are up, you will be automatically redirected to the Terminology Server UI where you can start using it.</b>
+
+- Once the services are up, you can login to the Terminology Server UI using the following credentials:
+  - Username: admin@term.server
+  - Password: <<subscription_id>> (You can find the subscription id in the Azure portal)
 
   ![Terminology Service UI](/assets/images/term_server/ui.png)

@@ -3,31 +3,20 @@ layout: docs
 header: true
 seotitle: Terminology Server | John Snow Labs
 title: Terminology Server 
-permalink: /docs/en/terminology_server/release_notes
+permalink: /docs/en/terminology_server/release_notes/release_notes_v1
 key: docs-term-server
 modify_date: "2025-04-01"
 show_nav: true
 sidebar:
     nav: term-server
+
 ---
-## June 02, 2025
 
-**V2 Key Features:**
-
-* Hierarchy Display - View the hierarchy of a concept, including its ancestors and descendants, to understand its context within the broader terminology structure.
-
-  The following image explains how the hierarchy information is displayed when a code is clicked inside the results table:
-
-  ![Screenshot of hierarchy](/assets/images/term_server/CodeHierarchy.png)
-  
-* Context Based Search - Perform searches that consider the context of the query, allowing for more relevant results based on the specific domain or use case.
-
-**Improvements:** 
-* Improved initial setup time for the On Premise Deployment of Terminology Server, reducing the time it takes to get started with the application.
-* Merged backend services into a single service, simplifying the architecture and improving maintainability.
+## Terminology Server v1 Release Notes
 
 
-## May 03, 2025
+<p style="text-align:center;">Release date: {{ page.modify_date | date: '%m-%d-%Y' }}</p>
+
 
 **V1 Key Features:**
 * Term Search - associated synonyms and employing both string matching and embedding matches for similarity searches.
