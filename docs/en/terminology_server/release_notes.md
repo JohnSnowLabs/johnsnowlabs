@@ -58,7 +58,7 @@ The application provides a flexible search results table that can be customized 
 
 ## Versions
 <ul class="pagination pagination_big">
-    <li><a href="release_notes_v3">v3</a></li>
-    <li><a href="release_notes_v2">v2</a></li>
-    <li><a href="release_notes_v1">v1</a></li>
+    <li><a href="release_note_v3">v3</a></li>
+    <li><a href="release_note_v2">v2</a></li>
+    <li><a href="release_note_v1">v1</a></li>
 </ul>
