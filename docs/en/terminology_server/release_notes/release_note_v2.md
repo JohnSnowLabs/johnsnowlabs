@@ -3,7 +3,7 @@ layout: docs
 header: true
 seotitle: Terminology Server | John Snow Labs
 title: Terminology Server 
-permalink: /docs/en/terminology_server/release_notes/release_notes_v2
+permalink: /docs/en/terminology_server/release_notes/release_note_v2
 key: docs-term-server
 modify_date: "2025-06-02"
 show_nav: true

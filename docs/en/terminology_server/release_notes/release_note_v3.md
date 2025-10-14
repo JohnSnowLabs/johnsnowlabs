@@ -3,7 +3,7 @@ layout: docs
 header: true
 seotitle: Release Notes  | Terminology Server | John Snow Labs
 title: v3 Release Notes
-permalink: /docs/en/terminology_server/release_notes/release_notes_v3
+permalink: /docs/en/terminology_server/release_notes/release_note_v3
 key: docs-term-server
 modify_date: "2025-09-30"
 show_nav: true
