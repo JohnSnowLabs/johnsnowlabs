@@ -140,7 +140,7 @@ term-server:
       - title: Support
         url: /docs/en/terminology_server/support
       - title: Release Notes
-        url: /docs/en/terminology_server/release_notes
+        url: /docs/en/terminology_server/release/latest_release
 
 annotation-lab:
   - title: Generative AI Lab

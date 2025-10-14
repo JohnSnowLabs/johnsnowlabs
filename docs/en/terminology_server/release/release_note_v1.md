@@ -1,9 +1,9 @@
 ---
 layout: docs
 header: true
-seotitle: Terminology Server | John Snow Labs
-title: Terminology Server 
-permalink: /docs/en/terminology_server/release_notes/release_note_v1
+seotitle: Release Notes  | Terminology Server | John Snow Labs
+title: Terminology Server Release Notes
+permalink: /docs/en/terminology_server/release/release_note_v1
 key: docs-term-server
 modify_date: "2025-04-01"
 show_nav: true
@@ -36,3 +36,11 @@ sidebar:
 *  API service: 
 
 Allows seamless integration with your applications, enabling you to leverage our platform’s capabilities. By obtaining an API key, developers can interact with various endpoints to retrieve and manipulate data, ensuring smooth connectivity with external systems. Detailed documentation is available to guide you through authentication, rate limits, and usage examples, making the integration process straightforward.
+
+<div class="prev_ver h3-box" markdown="1">
+
+## Versions
+
+</div>
+
+{%- include docs-terminology-pagination.html -%}

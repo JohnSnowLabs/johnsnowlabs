@@ -2,8 +2,8 @@
 layout: docs
 header: true
 seotitle: Release Notes  | Terminology Server | John Snow Labs
-title: v3 Release Notes
-permalink: /docs/en/terminology_server/release_notes/release_note_v3
+title: Terminology Server Release Notes
+permalink: /docs/en/terminology_server/release/release_note_v3
 key: docs-term-server
 modify_date: "2025-09-30"
 show_nav: true
@@ -11,6 +11,7 @@ sidebar:
     nav: term-server
 ---
 
+## Terminology Server v3 Release Notes
 
 <p style="text-align:center;">Release date: {{ page.modify_date | date: '%m-%d-%Y' }}</p>
 
@@ -55,3 +56,11 @@ The application provides a flexible search results table that can be customized 
 * Updated deployment script for quicker setup and configuration.
 * Added a dedicated _Search_ button in the UI for a smoother user experience.
 * Improved spell checker to deliver more accurate suggestions and corrections.
+
+<div class="prev_ver h3-box" markdown="1">
+
+## Versions
+
+</div>
+
+{%- include docs-terminology-pagination.html -%}
