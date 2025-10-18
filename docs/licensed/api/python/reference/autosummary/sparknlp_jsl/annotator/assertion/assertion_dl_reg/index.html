@@ -545,7 +545,7 @@ document.write(`
 <td><p>Train a Assertion algorithm using a regression log model.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.annotator.assertion.assertion_dl_reg.AssertionLogRegModel" title="sparknlp_jsl.annotator.assertion.assertion_dl_reg.AssertionLogRegModel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AssertionLogRegModel</span></code></a></p></td>
-<td><p>Model to extract assertion status of entities using Logarithmic Regression.</p></td>
+<td><p>Model to extract assertion status of entities using Logistic Regression.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1072,9 +1072,9 @@ RecursivePipeline</p>
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.assertion.assertion_dl_reg.AssertionLogRegModel">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AssertionLogRegModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'com.johnsnowlabs.nlp.annotators.assertion.logreg.AssertionLogRegModel'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">java_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.assertion.assertion_dl_reg.AssertionLogRegModel" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.common.AnnotatorModelInternal</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.common.HasStorageRef</span></code></p>
-<p>Model to extract assertion status of entities using Logarithmic Regression.</p>
+<p>Model to extract assertion status of entities using Logistic Regression.</p>
 <p>To train a custom model, use <a class="reference internal" href="#sparknlp_jsl.annotator.assertion.assertion_dl_reg.AssertionLogRegApproach" title="sparknlp_jsl.annotator.assertion.assertion_dl_reg.AssertionLogRegApproach"><code class="xref py py-class docutils literal notranslate"><span class="pre">AssertionLogRegApproach</span></code></a> instead.</p>
-<p>Logarithmic Regression is used to extract Assertion Status from extracted
+<p>Logistic Regression is used to extract Assertion Status from extracted
 entities and text. AssertionLogRegModel requires DOCUMENT, CHUNK and WORD_EMBEDDINGS
 type annotations as inputs. Excluding the label, the annotations can be obtained
 with, for example:</p>
