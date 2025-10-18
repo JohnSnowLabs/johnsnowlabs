@@ -1,0 +1,857 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>sparkocr.transformers.tokenizer.bros_hocr_tokenizer &#8212; Spark OCR  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../../static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../../../../static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../../static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../static/css/custom.css?v=e1fb877f" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../../../../static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../../static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../../../../static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script data-url_root="../../../../../../" id="documentation_options" src="../../../../../../static/documentation_options.js?v=b3ba4146"></script>
+    <script src="../../../../../../static/doctools.js?v=888ff710"></script>
+    <script src="../../../../../../static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../../../../../static/toggleprompt.js?v=5801b3bb"></script>
+    <script src="../../../../../../static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../../../static/copybutton.js?v=6dbb43f8"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'reference/autosummary/sparkocr/transformers/tokenizer/bros_hocr_tokenizer/index';</script>
+    <link rel="icon" href="../../../../../../static/fav.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the annotators, functions, and more..."
+         aria-label="Search the annotators, functions, and more..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../../../static/logo.png" class="logo__image only-light" alt="Spark OCR  documentation - Home"/>
+    <img src="../../../../../../static/logo.png" class="logo__image only-dark pst-js-only" alt="Spark OCR  documentation - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../index.html">
+    API Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../../autosummary/sparkocr.html">
+    sparkocr
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../index.html">
+    API Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../../autosummary/sparkocr.html">
+    sparkocr
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../annotators/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.annotators</span></code></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../annotators/form_relation_extractor/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.annotators.form_relation_extractor</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../annotators/geo_relation_extractor/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.annotators.geo_relation_extractor</span></code></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../detectors/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.detectors</span></code></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../detectors/document_layout_analyzer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.detectors.document_layout_analyzer</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../detectors/image_checkbox_detector/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.detectors.image_checkbox_detector</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../detectors/image_document_region_detector/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.detectors.image_document_region_detector</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../detectors/image_text_detector/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.detectors.image_text_detector</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../detectors/image_text_detector_craft/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.detectors.image_text_detector_craft</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../detectors/image_text_detector_dit/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.detectors.image_text_detector_dit</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../detectors/image_text_detector_v2/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.detectors.image_text_detector_v2</span></code></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../dicom/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.dicom</span></code></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../dicom/base_dicom/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.dicom.base_dicom</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dicom/dicom_deidentifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.dicom.dicom_deidentifier</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dicom/dicom_draw_regions/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.dicom.dicom_draw_regions</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dicom/dicom_metadata_deidentifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.dicom.dicom_metadata_deidentifier</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dicom/dicom_splitter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.dicom.dicom_splitter</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dicom/dicom_to_image_v2/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.dicom.dicom_to_image_v2</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dicom/dicom_to_image_v3/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.dicom.dicom_to_image_v3</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dicom/dicom_to_metadata/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.dicom.dicom_to_metadata</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dicom/dicom_to_pdf/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.dicom.dicom_to_pdf</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dicom/dicom_update_pdf/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.dicom.dicom_update_pdf</span></code></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../embeddings/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.embeddings</span></code></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../embeddings/vit_image_embeddings/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.embeddings.vit_image_embeddings</span></code></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../inpainting/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.inpainting</span></code></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../inpainting/image_inpainting/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.inpainting.image_inpainting</span></code></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../ner/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.ner</span></code></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../ner/hocr_to_features/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.ner.hocr_to_features</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ner/visual_document_ner/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.ner.visual_document_ner</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ner/visual_document_ner_geo/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.ner.visual_document_ner_geo</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ner/visual_document_ner_layoutlm_v1/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.ner.visual_document_ner_layoutlm_v1</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ner/visual_document_ner_lilt/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.ner.visual_document_ner_lilt</span></code></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../pdf/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.pdf</span></code></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pdf/image_to_pdf/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.pdf.image_to_pdf</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pdf/image_to_text_pdf/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.pdf.image_to_text_pdf</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pdf/pdf_assembler/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.pdf.pdf_assembler</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pdf/pdf_draw_regions/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.pdf.pdf_draw_regions</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pdf/pdf_to_form/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.pdf.pdf_to_form</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pdf/pdf_to_hocr/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.pdf.pdf_to_hocr</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pdf/pdf_to_image/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.pdf.pdf_to_image</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pdf/pdf_to_text/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.pdf.pdf_to_text</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pdf/pdf_to_text_table/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.pdf.pdf_to_text_table</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pdf/text_to_pdf/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.pdf.text_to_pdf</span></code></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../readers/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.readers</span></code></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../readers/alab_readers/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.readers.alab_readers</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../readers/docvqa_reader/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.readers.docvqa_reader</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../readers/funsd_reader/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.readers.funsd_reader</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../readers/iam_reader/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.readers.iam_reader</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../readers/mixed_iterator/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.readers.mixed_iterator</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../readers/rvlcdip_reader/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.readers.rvlcdip_reader</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../readers/sroie_reader/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.readers.sroie_reader</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../readers/tacd_reader/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.readers.tacd_reader</span></code></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../recognizers/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.recognizers</span></code></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../recognizers/image_to_text_v2/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.recognizers.image_to_text_v2</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../recognizers/image_to_text_v3/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.recognizers.image_to_text_v3</span></code></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.tokenizer</span></code></a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.tokenizer.bros_hocr_tokenizer</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hocr_document_assembler/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.tokenizer.hocr_document_assembler</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hocr_tokenizer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.tokenizer.hocr_tokenizer</span></code></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../visual_encoder_decoder/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.visual_encoder_decoder</span></code></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../visual_encoder_decoder/Dit/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.visual_encoder_decoder.Dit</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../visual_encoder_decoder/Lilt/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.visual_encoder_decoder.Lilt</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../visual_encoder_decoder/engine_for_finetuning/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.visual_encoder_decoder.engine_for_finetuning</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../visual_encoder_decoder/optim_factory/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.visual_encoder_decoder.optim_factory</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../visual_encoder_decoder/utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.visual_encoder_decoder.utils</span></code></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../vqa/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.vqa</span></code></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../vqa/visual_question_answering_donut/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.vqa.visual_question_answering_donut</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../vqa/visual_question_answering_pix2struct/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.vqa.visual_question_answering_pix2struct</span></code></a></li>
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../base64_to_binary/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.base64_to_binary</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../base64_to_image/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.base64_to_image</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../binary_to_image/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.binary_to_image</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../chart_to_text_table/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.chart_to_text_table</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dataset_reader/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.dataset_reader</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dicom_to_image/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.dicom_to_image</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../doc_to_pdf/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.doc_to_pdf</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../doc_to_text/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.doc_to_text</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../doc_to_text_table/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.doc_to_text_table</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../extended_java_wrapper/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.extended_java_wrapper</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../foundationone_parser/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.foundationone_parser</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hocr_merger/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.hocr_merger</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hocr_to_image/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.hocr_to_image</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hocr_to_text_table/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.hocr_to_text_table</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../image_adaptive_binarizer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.image_adaptive_binarizer</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../image_adaptive_scaler/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.image_adaptive_scaler</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../image_adaptive_thresholding/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.image_adaptive_thresholding</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../image_base_transformer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.image_base_transformer</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../image_binarizer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.image_binarizer</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../image_brands_ocr/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.image_brands_ocr</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../image_cells_to_text_table/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.image_cells_to_text_table</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../image_cropper/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.image_cropper</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../image_draw_annotations/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.image_draw_annotations</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../image_draw_regions/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.image_draw_regions</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../image_enhance_contrast/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.image_enhance_contrast</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../image_erosion/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.image_erosion</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../image_gpu_transform/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.image_gpu_transform</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../image_handwritten_detector/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.image_handwritten_detector</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../image_handwritten_text_recognizer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.image_handwritten_text_recognizer</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../image_homogenize_light/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.image_homogenize_light</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../image_layout_analyzer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.image_layout_analyzer</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../image_morphology_operartion1/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.image_morphology_operartion1</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../image_morphology_operation/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.image_morphology_operation</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../image_noise_scorer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.image_noise_scorer</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../image_remove_background/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.image_remove_background</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../image_remove_glare/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.image_remove_glare</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../image_remove_objects/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.image_remove_objects</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../image_scaler/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.image_scaler</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../image_skew_corrector/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.image_skew_corrector</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../image_split_regions/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.image_split_regions</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../image_table_cell_detector/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.image_table_cell_detector</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../image_table_detector/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.image_table_detector</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../image_text_cleaner/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.image_text_cleaner</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../image_to_dicom/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.image_to_dicom</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../image_to_hocr/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.image_to_hocr</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../image_to_text/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.image_to_text</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../image_transformer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.image_transformer</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ner_output_cleaner/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.ner_output_cleaner</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ocr_resource_downloader/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.ocr_resource_downloader</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.params</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../position_finder/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.position_finder</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ppt_to_pdf/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.ppt_to_pdf</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ppt_to_text_table/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.ppt_to_text_table</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../regions_merger/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.regions_merger</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../update_text_position/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.update_text_position</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../visual_document_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.visual_document_classifier</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../visual_document_classifier_lilt/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.visual_document_classifier_lilt</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../visual_document_classifier_v3/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.visual_document_classifier_v3</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../visual_document_processor/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.visual_document_processor</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../visual_question_answering/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.visual_question_answering</span></code></a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.tokenizer.bros_hocr_tokenizer</span></code></span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="module-sparkocr.transformers.tokenizer.bros_hocr_tokenizer">
+<span id="sparkocr-transformers-tokenizer-bros-hocr-tokenizer"></span><h1><a class="reference internal" href="#module-sparkocr.transformers.tokenizer.bros_hocr_tokenizer" title="sparkocr.transformers.tokenizer.bros_hocr_tokenizer"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.transformers.tokenizer.bros_hocr_tokenizer</span></code></a><a class="headerlink" href="#module-sparkocr.transformers.tokenizer.bros_hocr_tokenizer" title="Permalink to this heading">#</a></h1>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this heading">#</a></h2>
+<section id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer" title="sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BrosHocrTokenizer</span></code></a></p></td>
+<td><p>HocrTokenizer</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">BrosHocrTokenizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'com.johnsnowlabs.ocr.transformers.BrosHocrTokenizer'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">java_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pyspark.ml.wrapper.JavaTransformer</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">pyspark.ml.param.shared.HasInputCol</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">pyspark.ml.param.shared.HasOutputCol</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">pyspark.ml.util.JavaMLReadable</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">pyspark.ml.util.JavaMLWritable</span></code></p>
+<p>HocrTokenizer</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.inputCol">
+<span class="sig-name descname"><span class="pre">inputCol</span></span><em class="property"><span class="w"> </span><span class="pre">:Param[str]</span></em><a class="headerlink" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.inputCol" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">'BrosHocrTokenizer'</span></em><a class="headerlink" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.name" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.outputCol">
+<span class="sig-name descname"><span class="pre">outputCol</span></span><em class="property"><span class="w"> </span><span class="pre">:Param[str]</span></em><a class="headerlink" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.outputCol" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.tokenizerType">
+<span class="sig-name descname"><span class="pre">tokenizerType</span></span><a class="headerlink" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.tokenizerType" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.uid">
+<span class="sig-name descname"><span class="pre">uid</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">''</span></em><a class="headerlink" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.uid" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.ml.param.Param.html#pyspark.ml.param.Param" title="(in PySpark vmaster)"><span class="pre">pyspark.ml.param.Param</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.clear" title="Permalink to this definition">#</a></dt>
+<dd><p>Clears a param from the param map if it has been explicitly set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pyspark.ml._typing.ParamMap</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">JP</span></span></span><a class="headerlink" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.copy" title="Permalink to this definition">#</a></dt>
+<dd><p>Creates a copy of this instance with the same uid and some
+extra params. This implementation first calls Params.copy and
+then make a copy of the companion Java pipeline component with
+extra params. So both the Python wrapper and the Java pipeline
+component get copied.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>extra</strong> (<em>dict</em><em>, </em><em>optional</em>) – Extra parameters to copy to the new instance</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Copy of this instance</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">JavaParams</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.explainParam">
+<span class="sig-name descname"><span class="pre">explainParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Param</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.explainParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Explains a single param and returns its name, doc, and optional
+default value and user-supplied value in a string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.explainParams">
+<span class="sig-name descname"><span class="pre">explainParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.explainParams" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the documentation of all params with their optionally
+default values and user-supplied values.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.extractParamMap">
+<span class="sig-name descname"><span class="pre">extractParamMap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pyspark.ml._typing.ParamMap</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pyspark.ml._typing.ParamMap</span></span></span><a class="headerlink" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.extractParamMap" title="Permalink to this definition">#</a></dt>
+<dd><p>Extracts the embedded default param values and user-supplied
+values, and then merges them with extra values from input into
+a flat param map, where the latter value is used if there exist
+conflicts, i.e., with ordering: default param values &lt;
+user-supplied values &lt; extra.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>extra</strong> (<em>dict</em><em>, </em><em>optional</em>) – extra param values</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>merged param map</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.getInputCol">
+<span class="sig-name descname"><span class="pre">getInputCol</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.getInputCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the value of inputCol or its default value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.getOrDefault">
+<span class="sig-name descname"><span class="pre">getOrDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="headerlink" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.getOrDefault" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">getOrDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Param</span><span class="p"><span class="pre">[</span></span><span class="pre">T</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">T</span></span></span></dt>
+<dd><p>Gets the value of a param in the user-supplied param map or its
+default value. Raises an error if neither is set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.getOutputCol">
+<span class="sig-name descname"><span class="pre">getOutputCol</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.getOutputCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the value of outputCol or its default value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.getParam">
+<span class="sig-name descname"><span class="pre">getParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Param</span></span></span><a class="headerlink" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.getParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets a param by its name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.hasDefault">
+<span class="sig-name descname"><span class="pre">hasDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Param</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.hasDefault" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param has a default value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.hasParam">
+<span class="sig-name descname"><span class="pre">hasParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.hasParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Tests whether this instance contains a param with a given
+(string) name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.isDefined">
+<span class="sig-name descname"><span class="pre">isDefined</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Param</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.isDefined" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param is explicitly set by user or has
+a default value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.isSet">
+<span class="sig-name descname"><span class="pre">isSet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Param</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.isSet" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param is explicitly set by user.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.load">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">RL</span></span></span><a class="headerlink" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.load" title="Permalink to this definition">#</a></dt>
+<dd><p>Reads an ML instance from the input path, a shortcut of <cite>read().load(path)</cite>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.pretrained">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pretrained</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'clinical/ocr/'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.pretrained" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.read">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">JavaMLReader</span><span class="p"><span class="pre">[</span></span><span class="pre">RL</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.read" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns an MLReader instance for this class.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.save" title="Permalink to this definition">#</a></dt>
+<dd><p>Save this ML instance to the given path, a shortcut of ‘write().save(path)’.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.set">
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.set" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets a parameter in the embedded param map.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.setInputCol">
+<span class="sig-name descname"><span class="pre">setInputCol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.setInputCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the value of <a class="reference internal" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.inputCol" title="sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.inputCol"><code class="xref py py-attr docutils literal notranslate"><span class="pre">inputCol</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.setOutputCol">
+<span class="sig-name descname"><span class="pre">setOutputCol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.setOutputCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the value of <a class="reference internal" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.outputCol" title="sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.outputCol"><code class="xref py py-attr docutils literal notranslate"><span class="pre">outputCol</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.setTokenizerType">
+<span class="sig-name descname"><span class="pre">setTokenizerType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.setTokenizerType" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the value of <a class="reference internal" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.tokenizerType" title="sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.tokenizerType"><code class="xref py py-attr docutils literal notranslate"><span class="pre">tokenizerType</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.setVocabulary">
+<span class="sig-name descname"><span class="pre">setVocabulary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.setVocabulary" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the value of vocabulary.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.setVocabularyFile">
+<span class="sig-name descname"><span class="pre">setVocabularyFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.setVocabularyFile" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the value of vocabulary.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><span class="pre">pyspark.sql.dataframe.DataFrame</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pyspark.ml._typing.ParamMap</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><span class="pre">pyspark.sql.dataframe.DataFrame</span></a></span></span><a class="headerlink" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.transform" title="Permalink to this definition">#</a></dt>
+<dd><p>Transforms the input dataset with optional parameters.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.3.0.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.sql.DataFrame</span></code></a>) – input dataset</p></li>
+<li><p><strong>params</strong> (<em>dict</em><em>, </em><em>optional</em>) – an optional param map that overrides embedded params.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>transformed dataset</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.sql.DataFrame</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.write">
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">JavaMLWriter</span></span></span><a class="headerlink" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.write" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns an MLWriter instance for this ML instance.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer"><code class="docutils literal notranslate"><span class="pre">BrosHocrTokenizer</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.inputCol"><code class="docutils literal notranslate"><span class="pre">BrosHocrTokenizer.inputCol</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.name"><code class="docutils literal notranslate"><span class="pre">BrosHocrTokenizer.name</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.outputCol"><code class="docutils literal notranslate"><span class="pre">BrosHocrTokenizer.outputCol</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.tokenizerType"><code class="docutils literal notranslate"><span class="pre">BrosHocrTokenizer.tokenizerType</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.uid"><code class="docutils literal notranslate"><span class="pre">BrosHocrTokenizer.uid</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.clear"><code class="docutils literal notranslate"><span class="pre">BrosHocrTokenizer.clear()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.copy"><code class="docutils literal notranslate"><span class="pre">BrosHocrTokenizer.copy()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.explainParam"><code class="docutils literal notranslate"><span class="pre">BrosHocrTokenizer.explainParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.explainParams"><code class="docutils literal notranslate"><span class="pre">BrosHocrTokenizer.explainParams()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.extractParamMap"><code class="docutils literal notranslate"><span class="pre">BrosHocrTokenizer.extractParamMap()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.getInputCol"><code class="docutils literal notranslate"><span class="pre">BrosHocrTokenizer.getInputCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.getOrDefault"><code class="docutils literal notranslate"><span class="pre">BrosHocrTokenizer.getOrDefault()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.getOutputCol"><code class="docutils literal notranslate"><span class="pre">BrosHocrTokenizer.getOutputCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.getParam"><code class="docutils literal notranslate"><span class="pre">BrosHocrTokenizer.getParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.hasDefault"><code class="docutils literal notranslate"><span class="pre">BrosHocrTokenizer.hasDefault()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.hasParam"><code class="docutils literal notranslate"><span class="pre">BrosHocrTokenizer.hasParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.isDefined"><code class="docutils literal notranslate"><span class="pre">BrosHocrTokenizer.isDefined()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.isSet"><code class="docutils literal notranslate"><span class="pre">BrosHocrTokenizer.isSet()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.load"><code class="docutils literal notranslate"><span class="pre">BrosHocrTokenizer.load()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.pretrained"><code class="docutils literal notranslate"><span class="pre">BrosHocrTokenizer.pretrained()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.read"><code class="docutils literal notranslate"><span class="pre">BrosHocrTokenizer.read()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.save"><code class="docutils literal notranslate"><span class="pre">BrosHocrTokenizer.save()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.set"><code class="docutils literal notranslate"><span class="pre">BrosHocrTokenizer.set()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.setInputCol"><code class="docutils literal notranslate"><span class="pre">BrosHocrTokenizer.setInputCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.setOutputCol"><code class="docutils literal notranslate"><span class="pre">BrosHocrTokenizer.setOutputCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.setTokenizerType"><code class="docutils literal notranslate"><span class="pre">BrosHocrTokenizer.setTokenizerType()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.setVocabulary"><code class="docutils literal notranslate"><span class="pre">BrosHocrTokenizer.setVocabulary()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.setVocabularyFile"><code class="docutils literal notranslate"><span class="pre">BrosHocrTokenizer.setVocabularyFile()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.transform"><code class="docutils literal notranslate"><span class="pre">BrosHocrTokenizer.transform()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.transformers.tokenizer.bros_hocr_tokenizer.BrosHocrTokenizer.write"><code class="docutils literal notranslate"><span class="pre">BrosHocrTokenizer.write()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../../../static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../../../../static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, John Snow Labs.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.1.2.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
