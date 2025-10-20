@@ -192,9 +192,19 @@ The pairs must have exactly 3 elements: [original, entityType, fake].
 - `obfuscationEquivalentsResource` : Allows loading obfuscation equivalents from an external file (e.g., CSV).  
   Supports custom delimiter through the `options` parameter.
 
+- `doExceptionHandling` : When true, enables safe exception handling during de-identification. Instead of interrupting processing when invalid or unexpected data is encountered (for example, malformed dates or missing entities), the annotator emits a special *error annotation* containing the exception message and continues with the next record. This helps prevent pipeline failure at the cost of a small performance penalty.
 
+- `obfuscationStrategyOnException` : Defines the fallback obfuscation strategy to apply when an exception occurs during processing.  
+  Supported values:  
+  - `"mask"` : Replace the original chunk with a masking pattern (for example, `***`).  
+  - `"default"` : Replace the chunk using the default faker (default behavior).  
+  - `"skip"` : Leave the original text unchanged.  
+  - `"exception"` : Stop processing and raise the exception.  
+  The default value is `"default"`.
 
+- `useShiftDays` : When true, activates random or pre-defined date shifting for obfuscation when a document includes date-shift metadata. This feature is useful for temporal data anonymization while preserving relative time consistency across entities. Default is false.
 
+- `lazyAnnotator` : When true, the annotator initializes its resources (such as dictionaries, regex patterns, and faker modules) only when first invoked within a RecursivePipeline. This can significantly reduce pipeline startup time, especially when multiple large annotators are loaded but not all are used immediately.
 
 To create a configured DeIdentificationModel, please see the example of DeIdentification.
 {%- endcapture -%}
