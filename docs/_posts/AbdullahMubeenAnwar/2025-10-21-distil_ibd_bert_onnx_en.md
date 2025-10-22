@@ -19,7 +19,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-The model classifies documents as either IBD or Not IBD. It is designed to distinguish between documents that are likely related to patients with inflammatory bowel disease (IBD) and those that are not suggestive of IBD.
+This model creates text embeddings tailored for clinical documents related to inflammatory bowel disease (IBD). These embeddings help represent the meaning of medical text more effectively, making it easier to use in tasks like classifying IBD-related documents, finding patient groups, or retrieving clinical information.
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
