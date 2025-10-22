@@ -1,3 +1,18 @@
+---
+layout: docs
+header: true
+seotitle: Generative AI Lab | John Snow Labs
+title: Generative AI Lab 7.4
+permalink: /docs/en/alab/annotation_labs_releases/release_notes_7_4_0
+key: docs-licensed-release-notes
+modify_date: 2025-09-10
+show_nav: true
+sidebar:
+    nav: annotation-lab
+---
+
+<div class="h3-box" markdown="1">
+
 ## Generative AI Lab 7.5: Smarter, Safer, and Seamlessly Connected
 Generative AI Lab 7.5.0 takes productivity and security to the next level with smarter automation, seamless integrations, and a smoother user experience. This release empowers teams with credential-free S3 access via EC2 roles, incremental imports for faster data syncs, and real-time admin notifications for better collaboration. With enhanced LLM controls, refined confidence filtering, and polished UI interactions, version 7.5.0 makes managing, annotating, and optimizing AI projects more effortless than ever.
 
@@ -76,7 +91,7 @@ With this update, **the new Analytics and LLM requests** are automatically notif
 -   Enables **faster coordination** between users and admins without any manual steps.
 ----------
 
-<img width="1792" height="693" alt="Screenshot 2025-10-15 at 11 04 10 AM" src="assets\images\annotation_lab\7.5.0\3.png" />
+![750image](/assets/images/annotation_lab/7.5.0/3.png)
 
 **User Benefits:**
 -   **Automatic notifications** - No need for users to manually inform admins about new requests. 
