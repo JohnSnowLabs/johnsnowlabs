@@ -1,15 +1,18 @@
 ---
 layout: docs
+comment: no
 header: true
 seotitle: Generative AI Lab | John Snow Labs
-title: Generative AI Lab 7.5
-permalink: /docs/en/alab/annotation_labs_releases/release_notes_7_5_0
-key: docs-licensed-release-notes
-modify_date: 2025-10-22
+title: Release Notes
+permalink: /docs/en/alab/release_notes
+key: docs-training
+modify_date: "2025-10-22"
+use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
-    nav: annotation-lab
+  nav: annotation-lab
 ---
+
 
 <div class="h3-box" markdown="1">
 
@@ -19,6 +22,7 @@ Generative AI Lab 7.5.0 takes productivity and security to the next level with s
 ### Support for EC2 Instance Role-Based Access to S3 for Import and Export
 
 **What's New**: Generative AI Lab **7.5.0** introduces seamless and secure integration with **AWS S3** through **EC2 instance-level IAM roles**. Until now, users had to manually enter their S3 credentials each time they imported or exported data, a process that was repetitive, error-prone, and posed security risks.
+
 With this update, the application can access designated S3 buckets directly using the IAM role assigned to the hosting EC2 instance, removing the need for user-provided credentials entirely.
 
 **Technical Details:**
@@ -28,7 +32,7 @@ With this update, the application can access designated S3 buckets directly usin
 - Implementation follows **AWS security best practices**, including the **least-privilege principle**, ensuring only necessary permissions are granted.
 - The workflow for importing or exporting data remains unchanged; users simply select the S3 bucket, and the platform handles authentication automatically.
 
-  ![IAMImport](/assets/images/annotation_lab/7.5.0/1.gif) 
+  ![IAMImport](/assets/images/annotation_lab/7.5.0/1.gif)
 
 **User Benefits:**
 - **Simplified workflow** - eliminates the need to repeatedly enter and manage S3 credentials.
@@ -39,7 +43,9 @@ With this update, the application can access designated S3 buckets directly usin
 
 **Example Use Case:**
 An organization hosts Generative AI Lab on an **EC2 instance** configured with an **IAM role** that grants read/write permissions to specific **S3 buckets**.
+
 When users import datasets or export annotated projects, the platform seamlessly accesses the corresponding S3 buckets using the IAM role, with no manual credential entry needed.
+
 This ensures a faster, safer, and more consistent data management experience.
 
 ### Support Incremental Imports from S3 Buckets (Avoid Re-importing Existing Files)
@@ -83,54 +89,56 @@ In the past, admins were not **automatically notified** of the requests, so user
 
 With this update, **the new Analytics and LLM requests** are automatically notified to the admin users in **real-time** to allow them to coordinate faster and have a better view of the operations.
 
-----------
+
 **Technical Details:**
 -   Implemented **automated notification triggers** for Analytics and LLM requests.
 -   Notifications are sent **only to admin users** for better control and clarity.
 -   Notifications are delivered **in real time**, ensuring immediate awareness of new requests.  
--   Enables **faster coordination** between users and admins without any manual steps.
-----------
+-	Enables **faster coordination** between users and admins without any manual steps.
 
-![750image](/assets/images/annotation_lab/7.5.0/3.png)
+
+  ![750image](/assets/images/annotation_lab/7.5.0/3.png)
 
 **User Benefits:**
 -   **Automatic notifications** - No need for users to manually inform admins about new requests. 
 -   **Improved visibility** - Admins stay up to date on all Analytics and LLM activities.
 -   **Faster coordination** - Enables quicker reviews, approvals, and responses. 
 -   **Operational transparency** - Keeps teams aligned and informed.
-----------
+
 **Example Use Case:**  
 A user submits a new **Analytics request** to generate insights for their project. The assigned **admins are instantly notified**, allowing them to review and manage the request promptly.
 
-![request](assets\images\annotation_lab\7.5.0\4.gif)
+  ![IAMImport](/assets/images/annotation_lab/7.5.0/4.gif)
 
 ### Improvements
 
 ### Accurate Relation Filtering Based on Confidence Score
 
 **What's New:**  
+
 Generative AI Lab **7.5.0** enhances the **confidence score filtering** mechanism to ensure that **relations are filtered consistently** with their associated labels.
 
 Previously, when users filtered annotations by confidence score, related entities with lower confidence values were not correctly filtered out, leading to mismatched or incomplete views of prediction results.
 
 With this improvement, relations are now automatically filtered according to the **confidence score range** applied, ensuring precise and consistent annotation visibility.
 
-----------
 **Technical Details:**
+
 -   Updated the filtering logic to include **relation confidence scores** alongside labels.    
 -   Relations below the selected confidence threshold are now **excluded** from the task view.    
 -   Ensures **real-time synchronization** between label and relation filtering.   
 -   Improves **annotation accuracy and UI consistency** during review.
-----------
 
-![relation](assets\images\annotation_lab\7.5.0\5.gif)
+  ![IAMImport](/assets/images/annotation_lab/7.5.0/5.gif)
 
 **User Benefits:**
+
 -   **Consistent filtering** - Relations now align with label confidence score filters. 
 -   **Improved clarity** - Reduces confusion caused by partially filtered results. 
 -   **Better accuracy** - Only relevant relations remain visible during high-confidence analysis.
-----------
+
 **Example Use Case:**  
+
 A user filters annotations by a **confidence range of 0.9-1.0**.  
 Previously, relations with confidence scores below this range (e.g., **0.88**) would still appear.  
 Now, such relations are automatically **excluded**, providing a cleaner and more accurate view of confident predictions.
@@ -138,26 +146,25 @@ Now, such relations are automatically **excluded**, providing a cleaner and more
 ### Configurable Temperature and Token Settings for All Supported LLMs
 
 **What's New:**  
+
 Generative AI Lab **7.5.0** introduces new options in the UI to **define temperature and token limits** for all supported LLM providers - **OpenAI**, **Claude**, **Azure OpenAI**, and **Amazon SageMaker**.
 
 Previously, these parameters were fixed or required backend configuration, limiting flexibility.  
 With this improvement, users can now easily adjust **generation behavior and output length** directly from the interface, ensuring greater control over model responses.
 
-----------
 **Technical Details:**
 -   Added **Temperature** and **Max Token** input fields to the UI for all supported LLMs.  
 -   Applied across key features, including **Task Generation** and **External Prompts**.   
 -   Configurations are **stored and applied dynamically** during request execution.  
 -   Supports all providers: **OpenAI**, **Claude**, **Azure**, and **SageMaker**.
-----------
 
-![temperature](assets\images\annotation_lab\7.5.0\6.gif)
+  ![IAMImport](/assets/images/annotation_lab/7.5.0/6.gif)
 
 **User Benefits:**
 -   **Fine-tuned control** - Users can customize creativity (temperature) and the response length (tokens).   
 -   **Unified experience** - Same configuration options available across all LLM providers.   
 -   **Enhanced flexibility** - Easily adapt model behavior for diverse project needs.
-----------
+
 **Example Use Case:**  
 A user generating tasks using **Azure OpenAI** can now set a **temperature of 0.7** for balanced creativity and a **max token limit of 512** to control response length.  
 These parameters can be adjusted, helping teams optimize output quality and consistency across different LLMs.
@@ -173,21 +180,19 @@ Generative AI Lab **7.5.0** now allows users to **select predefined LLM response
 
 Previously, users had to manually enter response names, which increased the risk of typos and inconsistencies. With this update, selecting names is faster, easier, and error-free.
 
-----------
 **Technical Details:**
 -   Added a **dropdown menu** listing all predefined LLM response names.  
 -   Users can now select a response name directly from the dropdown instead of typing it manually.  
 -   Fully integrated into LLM Comparison projects for seamless workflow.
-----------
 
-![response](assets\images\annotation_lab\7.5.0\7.gif)
+  ![IAMImport](/assets/images/annotation_lab/7.5.0/7.gif)
 
 **User Benefits:**
 -   **Simplified workflow** - Quickly select response names without typing.  
 -   **Reduced errors** - Eliminates typos and mismatched entries.  
 -   **Faster setup** - Speeds up project configuration and comparison tasks.
 -   **Improved consistency** - Maintains uniform naming across projects.
-----------
+
 **Example Use Case:**  
 A user creating a **LLM Comparison project**, can now select from a list of predefined response names, using the dropdown. This ensures uniformity across multiple comparisons and reduces manual input errors, saving time and improving project accuracy.
 
@@ -200,16 +205,13 @@ Previously, the message could be misleading, especially for first-time users, im
 
 With this update, the pop-up text now accurately reflects the process, reducing confusion and improving the user experience.
 
-----------
 **Technical Details:**
 -   Updated the **confirmation pop-up message** before submission.
 -   Clarifies that **submitted completions cannot be edited**, but new completions can be created for changes.
 -   Added a **"Don't show again"** checkbox for user preference. 
 -   Applied across all relevant task types in the platform for consistency.
 
-----------
-
-<img width="3454" height="1848" alt="image" src="assets\images\annotation_lab\7.5.0\8.png" />
+  ![IAMImport](/assets/images/annotation_lab/7.5.0/8.png)
 
 **User Benefits:**
 
@@ -217,31 +219,32 @@ With this update, the pop-up text now accurately reflects the process, reducing 
 -   **Reduced confusion** - Eliminates misunderstandings about submission and editing limitations. 
 -   **Improved UX** - Supports smoother task completion and reduces support queries.   
 -   **Optional reminder** - Users can disable the pop-up if preferred.
-----------
+
 **Example Use Case:**
 
 A first-time annotator submits a completion. The updated pop-up now states:  
 _"Submitting this completion means it cannot be edited further. To make changes, please create a new completion. Are you sure you want to continue?"_
 
-### **Improved OCR Server Connection Feedback for NER Projects**
+### Improved OCR Server Connection Feedback for NER Projects
 
 Enhance user experience with clear visual indicators when connecting to an existing OCR server, reducing confusion and preventing duplicate deployment attempts.
 
-#### **What's New:**
+**What's New:**
 Generative AI Lab 7.5.0 introduces an improved loading experience for OCR-enabled NER projects. When the Import page is refreshed and an OCR server is already deployed, users now see a **loading spinner** indicating that the OCR server is connecting.  
 
 Additionally, the **"Add Sample Task"** button now displays a **loading state** after being clicked, letting users know the process is in progress.
 
-#### **Technical Details:**
+**Technical Details:**
 
 -   Added a **loading spinner** on the Import page during OCR server connection for NER projects.
 -   Disabled the **"Add Sample Task"** button while the OCR server is busy.   
 -   Implemented a **loading animation** on the button after user interaction. 
 -   Prevents duplicate OCR deployment attempts by clearly showing connection progress.
 
-![spinner](assets\images\annotation_lab\7.5.0\9.gif)
+  ![750Image](/assets/images/annotation_lab/7.5.0/9.gif)
     
-#### **User Benefits:**
+**User Benefits:**
+
 -   **Clarity:** Users immediately see when the OCR server is connecting.  
 -   **Efficiency:** Avoids redundant deployment attempts due to unclear server state.    
 -   **Feedback:** Loading indicators provide better understanding of ongoing operations.
@@ -321,48 +324,7 @@ Additionally, the **"Add Sample Task"** button now displays a **loading state** 
 
 -  **User are not able to generate Augmented Task**
 
-    Fixed an issue preventing users from generating augmented tasks. Task augmentation executes successfully and reflects the generated results without error.
-
-
-### Features
-- [ALAB-6700] Enable EC2 Instance Role Access to S3 Buckets for Import & Export Without User Credentials
-- [ALAB-6701] Support Incremental Imports from S3 Buckets (Avoid Re-importing Existing Files)
-- [ALAB-6186] Admins should be notified about the Analytics Request
-
-### Improvements
-- [ALAB-6324] When user filters using confidence score, the relations should be filtered accordingly to the removed labels
-- [ALAB-6488] Add Option to define temperature and tokens in the UI for all supported LLMS
-- [ALAB-6577] Add Dropdown to Selected Pre-define LLM Response Names in LLM Comparison Project
-- [ALAB-6683] Update Pop-up Messaging Before Submission
-
-### Bug Fixes
-- [ALAB-6015] Confidence Score Displayed in HTML Project Despite Labeling Options Being Disabled
-- [ALAB-6371] Import Status Shows Failure When PDF is Present in ZIP
-- [ALAB-6484] Pre-annotation server is deployed successfully even when model is not available 
-- [ALAB-6520] Add Spinner to Indicate OCR Server Is Already Connecting for NER project
-- [ALAB-6529] Assertion models cannot be deployed with NER model for pre-annotation
-- [ALAB-6565] "Something Went Wrong" Error When Using Delete All Tasks Button
-- [ALAB-6572] Credentials Not Saved and Masked for Synthetic Task Generation
-- [ALAB-6374] Coordinates aren't visible in Bbox Detection project types
-- [ALAB-6408] Credentials aren't saved for external providers in "Generate Synthetic Tasks"
-- [ALAB-6575] User is not automatically Redirected to logout page after session time out
-- [ALAB-6594] Element Name Must Match Response Name for Labeling in LLM Response Comparision
-- [ALAB-6600] User are not able to Generate Augmented Task
-- [ALAB-6628] Reviewer dropdown not populating after page refresh when assigning reviewers
-- [ALAB-6661] Project Owner Missing in Member Order API After Import
-- [ALAB-6676] "Only Assigned" checkbox is not visible when Prediction section is selected
-- [ALAB-6679] Confirmation dialog box overlapped by Labels section in labelling page while submitting tasks
-- [ALAB-6680] Labeling page flickers when user compares between completions
-- [ALAB-6682] User cannot deploy OCR Server if no models are configured in a Project
-- [ALAB-6697] Error When Accessing Settings for Template Augmentation with OpenAI
-- [ALAB-6698] Internal Server Error When Viewing Newly Uploaded PDF and Image Tasks
-- [ALAB-6717] Error during Bulk import of JSON text
-
-### Tasks
-- [ALAB-6615] Check if admin can create a login URL/flow for annotators without having to input the credentials
-- [ALAB-6619] Add a new API to authenticate users through the token passed on a query parameter
-- [ALAB-6620] Create a script to automatically create a new client and add the Service Account Role to it with specified permissions
-- [ALAB-6681] Script to assign/unassign users from the project
+   Fixed an issue preventing users from generating augmented tasks. Task augmentation executes successfully and reflects the generated results without error.
 
 ## Versions
 
