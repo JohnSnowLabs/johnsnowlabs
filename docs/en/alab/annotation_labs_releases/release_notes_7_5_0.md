@@ -2,10 +2,10 @@
 layout: docs
 header: true
 seotitle: Generative AI Lab | John Snow Labs
-title: Generative AI Lab 7.4
-permalink: /docs/en/alab/annotation_labs_releases/release_notes_7_4_0
+title: Generative AI Lab 7.5
+permalink: /docs/en/alab/annotation_labs_releases/release_notes_7_5_0
 key: docs-licensed-release-notes
-modify_date: 2025-09-10
+modify_date: 2025-10-22
 show_nav: true
 sidebar:
     nav: annotation-lab
@@ -102,7 +102,7 @@ With this update, **the new Analytics and LLM requests** are automatically notif
 **Example Use Case:**  
 A user submits a new **Analytics request** to generate insights for their project. The assigned **admins are instantly notified**, allowing them to review and manage the request promptly.
 
-![request](assets\images\annotation_lab\7.5.0\4.gif)
+![request](/assets\images\annotation_lab\7.5.0\4.gif)
 
 ### Improvements
 
@@ -123,7 +123,7 @@ With this improvement, relations are now automatically filtered according to the
 -   Improves **annotation accuracy and UI consistency** during review.
 ----------
 
-![relation](assets\images\annotation_lab\7.5.0\5.gif)
+![relation](/assets\images\annotation_lab\7.5.0\5.gif)
 
 **User Benefits:**
 -   **Consistent filtering** - Relations now align with label confidence score filters. 
@@ -151,7 +151,7 @@ With this improvement, users can now easily adjust **generation behavior and out
 -   Supports all providers: **OpenAI**, **Claude**, **Azure**, and **SageMaker**.
 ----------
 
-![temperature](assets\images\annotation_lab\7.5.0\6.gif)
+![temperature](/assets\images\annotation_lab\7.5.0\6.gif)
 
 **User Benefits:**
 -   **Fine-tuned control** - Users can customize creativity (temperature) and the response length (tokens).   

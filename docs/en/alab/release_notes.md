@@ -2,10 +2,10 @@
 layout: docs
 header: true
 seotitle: Generative AI Lab | John Snow Labs
-title: Generative AI Lab 7.4
-permalink: /docs/en/alab/annotation_labs_releases/release_notes_7_4_0
+title: Generative AI Lab 7.5
+permalink: /docs/en/alab/annotation_labs_releases/release_notes_7_5_0
 key: docs-licensed-release-notes
-modify_date: 2025-09-10
+modify_date: 2025-10-22
 show_nav: true
 sidebar:
     nav: annotation-lab
@@ -91,7 +91,7 @@ With this update, **the new Analytics and LLM requests** are automatically notif
 -   Enables **faster coordination** between users and admins without any manual steps.
 ----------
 
-<img width="1792" height="693" alt="Screenshot 2025-10-15 at 11 04 10 AM" src="assets\images\annotation_lab\7.5.0\3.png" />
+![750image](/assets/images/annotation_lab/7.5.0/3.png)
 
 **User Benefits:**
 -   **Automatic notifications** - No need for users to manually inform admins about new requests. 
