@@ -17,13 +17,11 @@ sidebar:
 <div class="h3-box" markdown="1">
 
 ## Generative AI Lab 7.5: Smarter, Safer, and Seamlessly Connected
-Generative AI Lab 7.5.0 takes productivity and security to the next level with smarter automation, seamless integrations, and a smoother user experience. This release empowers teams with credential-free S3 access via EC2 roles, incremental imports for faster data syncs, and real-time admin notifications for better collaboration. With enhanced LLM controls, refined confidence filtering, and polished UI interactions, version 7.5.0 makes managing, annotating, and optimizing AI projects more effortless than ever.
+Generative AI Lab takes productivity and security to the next level with smarter automation, seamless integrations, and a smoother user experience. This release empowers teams with credential-free S3 access via EC2 roles, incremental imports for faster data syncs, and real-time admin notifications for better collaboration. With enhanced LLM controls, refined confidence filtering, and polished UI interactions, version 7.5 makes managing, annotating, and optimizing AI projects more effortless than ever.
 
 ### Support for EC2 Instance Role-Based Access to S3 for Import and Export
 
-**What's New**: Generative AI Lab **7.5.0** introduces seamless and secure integration with **AWS S3** through **EC2 instance-level IAM roles**. Until now, users had to manually enter their S3 credentials each time they imported or exported data, a process that was repetitive, error-prone, and posed security risks.
-
-With this update, the application can access designated S3 buckets directly using the IAM role assigned to the hosting EC2 instance, removing the need for user-provided credentials entirely.
+**What's New**: Generative AI Lab **7.5** introduces seamless, AWS-native S3 access by using the **IAM role attached to the hosting EC2 instance**. Users no longer need to enter or store S3 credentials for import/export operations — the platform authenticates automatically using the instance role, simplifying the workflow and reducing credential-related security risks.
 
 **Technical Details:**
 - The **import** and **export** logic has been enhanced to automatically use the **instance's IAM role** when interacting with S3.
@@ -50,10 +48,9 @@ This ensures a faster, safer, and more consistent data management experience.
 
 ### Support Incremental Imports from S3 Buckets (Avoid Re-importing Existing Files)
 
-**What's New:** Generative AI Lab **7.5.0** introduces a major enhancement to the **S3 import workflow**: incremental imports.
-Previously, every time users imported data from an S3 bucket, **all files** in the bucket were re-imported, even if they had already been added to the project. This led to **duplicate tasks**, redundant processing, and longer import times.
+**What's New:** Generative AI Lab **7.5** adds incremental imports to the **S3 import workflow**, so only new files are brought into a project. The importer now detects files already present in the project and skips them automatically, preventing duplicate tasks and cutting import time.
 
-With this update, Generative AI Lab now intelligently identifies which files are **new** and only imports those, while skipping files that already exist in the project. This ensures faster imports, cleaner task management, and a more efficient workflow.
+This smarter import behavior produces faster, cleaner imports with clear feedback on how many files were added versus skipped — no extra setup required.
 
 **Technical Details:**
 - The import process now compares **file names** against existing task names within the project.
@@ -81,13 +78,7 @@ This process saves time, prevents redundancy, and keeps project data clean and c
 
 ## Admin Notifications for Analytics and LLM Requests
 
-**What's New:**  
-
-Generative AI Lab **7.5.0** introduces a new feature that automatically **notifies administrators** whenever users create **Analytics** or **LLM requests**.
-
-In the past, admins were not **automatically notified** of the requests, so users had to **inform admins directly**. This usually resulted in slow response and complicated the tracking of running activities by the admins.
-
-With this update, **the new Analytics and LLM requests** are automatically notified to the admin users in **real-time** to allow them to coordinate faster and have a better view of the operations.
+**What's New:** Generative AI Lab **7.5** adds real-time notifications for **Analytics** and **LLM requests**, automatically alerting admin users when new requests are created. This gives admins immediate visibility into ongoing activities, enabling faster coordination and monitoring without any manual handoffs.
 
 
 **Technical Details:**
@@ -116,11 +107,7 @@ A user submits a new **Analytics request** to generate insights for their projec
 
 **What's New:**  
 
-Generative AI Lab **7.5.0** enhances the **confidence score filtering** mechanism to ensure that **relations are filtered consistently** with their associated labels.
-
-Previously, when users filtered annotations by confidence score, related entities with lower confidence values were not correctly filtered out, leading to mismatched or incomplete views of prediction results.
-
-With this improvement, relations are now automatically filtered according to the **confidence score range** applied, ensuring precise and consistent annotation visibility.
+Generative AI Lab **7.5** improves confidence-based filtering so that relations follow the same confidence thresholds as their associated labels. Relations that fall outside the selected confidence range are now excluded, delivering consistent, accurate views of predictions and reducing reviewer confusion.
 
 **Technical Details:**
 
@@ -147,10 +134,7 @@ Now, such relations are automatically **excluded**, providing a cleaner and more
 
 **What's New:**  
 
-Generative AI Lab **7.5.0** introduces new options in the UI to **define temperature and token limits** for all supported LLM providers - **OpenAI**, **Claude**, **Azure OpenAI**, and **Amazon SageMaker**.
-
-Previously, these parameters were fixed or required backend configuration, limiting flexibility.  
-With this improvement, users can now easily adjust **generation behavior and output length** directly from the interface, ensuring greater control over model responses.
+Generative AI Lab **7.5** adds UI controls for **temperature** and **max token** limits across all supported LLMs (OpenAI, Claude, Azure OpenAI, and Amazon SageMaker). Users can now adjust generation creativity and response length directly in the interface, with settings applied dynamically at request time for consistent, provider-agnostic control.
 
 **Technical Details:**
 -   Added **Temperature** and **Max Token** input fields to the UI for all supported LLMs.  
@@ -176,9 +160,7 @@ These parameters can be adjusted, helping teams optimize output quality and cons
 ### Dropdown to Select Predefined LLM Response Names in LLM Comparison Projects
 
 **What's New:**  
-Generative AI Lab **7.5.0** now allows users to **select predefined LLM response names from a dropdown** in LLM Comparison projects.
-
-Previously, users had to manually enter response names, which increased the risk of typos and inconsistencies. With this update, selecting names is faster, easier, and error-free.
+Generative AI Lab **7.5** introduces a dropdown for selecting predefined LLM response names in LLM Comparison projects. Choosing names from the list is faster, removes typing errors, and ensures consistent naming across comparisons.
 
 **Technical Details:**
 -   Added a **dropdown menu** listing all predefined LLM response names.  
@@ -199,11 +181,7 @@ A user creating a **LLM Comparison project**, can now select from a list of pred
 ### Updated Pop-up Messaging Before Submission
 
 **What's New:**  
-Generative AI Lab **7.5.0** updates the **submission confirmation pop-up** to provide clearer guidance to users.
-
-Previously, the message could be misleading, especially for first-time users, implying that **no further modifications** are possible after submission. In reality, changes can still be made by creating a **new completion**.
-
-With this update, the pop-up text now accurately reflects the process, reducing confusion and improving the user experience.
+Generative AI Lab **7.5** clarifies the submission confirmation pop-up to make the workflow explicit: submitted completions cannot be edited, but users can create a new completion (clone) to make changes. The dialog now includes a **"Don't show again"** option so experienced users can skip the reminder.
 
 **Technical Details:**
 -   Updated the **confirmation pop-up message** before submission.
@@ -230,7 +208,7 @@ _"Submitting this completion means it cannot be edited further. To make changes,
 Enhance user experience with clear visual indicators when connecting to an existing OCR server, reducing confusion and preventing duplicate deployment attempts.
 
 **What's New:**
-Generative AI Lab 7.5.0 introduces an improved loading experience for OCR-enabled NER projects. When the Import page is refreshed and an OCR server is already deployed, users now see a **loading spinner** indicating that the OCR server is connecting.  
+Generative AI Lab 7.5 introduces an improved loading experience for OCR-enabled NER projects. When the Import page is refreshed and an OCR server is already deployed, users now see a **loading spinner** indicating that the OCR server is connecting.  
 
 Additionally, the **"Add Sample Task"** button now displays a **loading state** after being clicked, letting users know the process is in progress.
 
