@@ -1443,14 +1443,14 @@ For running OCR models, upload the following JAR and wheel files to the Workspac
 
 </div><div class="h3-box" markdown="1">
 
-## Azure AI Studio instructions
+## Azure ML Studio instructions
+<!--
+Go to [(https://ml.azure.com/)](https://ml.azure.com/)
 
-Go to [https://ai.azure.com/](https://ai.azure.com/)
-
-To create a project in Azure AI Studio, adhere to the following structured approach:
+To create a project in Azure ML Studio, adhere to the following structured approach:
 
 1. Navigate to the Build Tab
-- Access the Azure AI Studio webpage and locate the Build tab positioned at the top of the interface.
+- Access the Azure ML Studio webpage and locate the Build tab positioned at the top of the interface.
 
 2. Initiate New Project Creation
 - Click on the **+ New project** button to start the process of creating a new project.
@@ -1486,16 +1486,16 @@ To create a project in Azure AI Studio, adhere to the following structured appro
 - After reviewing all the details for accuracy, click on **Create a project** to complete the setup process.
 
 ![Azure AI Studio instructions](/assets/images/azure/azure_1.png)
-
-13. Then go to All Azure AI dropdown and choose **Azure Machine Learning Studio**.
+-->
+1. Go to All Azure AI dropdown and choose **Azure Machine Learning Studio**.
 
 ![Azure AI Studio instructions](/assets/images/azure/azure_2.png)
 
-14. Such a window will Appear. Go to Add compute.
+2. Such a window will Appear. Go to Add compute.
 
 ![Azure AI Studio instructions](/assets/images/azure/azure_3.png)
 
-15. Choose the compute type and enable auto-shutdown as well.
+3. Choose the compute type and enable auto-shutdown as well.
 
 ![Azure AI Studio instructions](/assets/images/azure/azure_10.png)
 
@@ -1503,21 +1503,21 @@ To create a project in Azure AI Studio, adhere to the following structured appro
 
 ![Azure AI Studio instructions](/assets/images/azure/azure_9.png)
 
-16. Then go to the Notebooks Section.
+4. Then go to the Notebooks Section.
 
 ![Azure AI Studio instructions](/assets/images/azure/azure_4.png)
 
 In NB section, you can create your own NB or load existing NBs.
 
-17. Here I uploaded a NB and attached the compute we created above, with Python 3.8 Azure ML as kernel.
+5. Here I uploaded a NB and attached the compute we created above, with Python 3.8 Azure ML as kernel.
 
 ![Azure AI Studio instructions](/assets/images/azure/azure_5.png)
 
-18. Once the session starts, you just need to install the johnsnowlabs library and update the environment with license keys in this way. Then using `nlp.install()` and `nlp.start()` you can install the required jars and wheels and start the spark session.
+6. Once the session starts, you just need to install the johnsnowlabs library and update the environment with license keys in this way. Then using `nlp.install()` and `nlp.start()` you can install the required jars and wheels and start the spark session.
 
 ![Azure AI Studio instructions](/assets/images/azure/azure_6.png)
 
-19. Once spark session is created. Then you can run the johnsnowlabs models and pipelines there (licensed as well as open source).
+7. Once spark session is created. Then you can run the johnsnowlabs models and pipelines there (licensed as well as open source).
 
 ![Azure AI Studio instructions](/assets/images/azure/azure_7.png)
 
