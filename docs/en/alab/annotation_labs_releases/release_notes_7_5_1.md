@@ -23,6 +23,9 @@ sidebar:
 - Fixed issue where users were unable to generate synthetic or augmented tasks even with valid credentials.
 - Resolved "Something went wrong" error when adding a new rule in Section-Based Annotation for text projects.
 - Fixed issue where users were unable to view pre-annotated multipage Visual NER documents.
+
+</div><div class="prev_ver h3-box" markdown="1">
+
 ## Versions
 
 </div>
