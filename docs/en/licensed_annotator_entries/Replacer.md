@@ -21,16 +21,17 @@ The `NameChunkObfuscatorApproach` annotator is used to identify and obfuscate se
 
 Parameter:
 
-- `setUseReplacement`: (Boolean) Select what output format should be used. By default it will use the current day.
-- `setPlaceHolderDelimiters`: (String) Sets the placeholder string to use when noneValuesTo is set to "place_holder". This placeholder string will be wrapped by the delimiters defined in placeHolderDelimiters.
-- `setPlaceHolder`: (String) Determines the action to take when encountering a value of 'NONE' in the annotation. This parameter can take one of the following three string values:
-   * "entity": Replaces 'NONE' values with the entity field extracted from the annotation, if available. If the entity field is not available, it uses the string "NONE" wrapped by the specified delimiters.
-   * "place_holder": Replaces 'NONE' values with a placeholder string wrapped by the specified delimiters.
-   * "skip": Retains the original target_text from the annotation's metadata if available. If not available, it retains the original annotation result.
-- `mappingsColumn`: (String) Column name for mapping. This column maps the annotations to their corresponding chunks before the entities are replaced.
-- `returnEntityMappings`: (Boolean) With this property you select if you want to return mapping column.
-- `staticEntityMappingsFallback`: (String) Fallback option for static entity mappings. Allowed values: 'entity', 'place_holder', 'skip', 'error'.
-- `staticEntityMappings`: (dict)  Static entity mappings. A dictionary with entity types as keys and replacement values as values.
+- `inputCols`: Input annotation columns, typically including the entity or replacement annotations (e.g. ["replacement", "sentence"]).
+- `outputCol`: Output column that will contain the modified document text after replacements are applied.
+- `useReplacement`: Whether to use the replacement field from the metadata if it exists. Default: True.
+- `noneValuesTo`: Action to take when encountering a value of 'NONE' in the annotation. Allowed values: "entity", "place_holder", "skip", "prioritizestatic_entity".
+- `placeHolder`: Placeholder string to use when `noneValuesTo` is set to "place_holder". This string is wrapped by the delimiters defined in `placeHolderDelimiters`.
+- `placeHolderDelimiters`: Array of two strings used to wrap placeholders or entities when `noneValuesTo` is set to "place_holder" or "entity". Default: ["<", ">"].
+- `mappingsColumn`: Column name used for mapping annotations to their corresponding chunks before replacements are made.
+- `returnEntityMappings`: Whether to return the mapping column with entity-chunk associations. Default: False.
+- `staticEntityMappings`: Dictionary mapping entity types to static replacement values. Example: {"NAME": "John Doe"}.
+- `staticEntityMappingsFallback`: Fallback action when a static mapping is unavailable. Allowed values: "entity", "place_holder", "skip", "error".
+- `lazyAnnotator`: Whether the annotator should load its resources lazily in a recursive pipeline to reduce startup time.
 
 {%- endcapture -%}
 

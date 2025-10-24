@@ -11,7 +11,12 @@ This annotator converts 'LABELED_DEPENDENCY' type annotations coming from [[Chun
 
 Parameters:
 
-- `filterNoneValues`: (Bool) Filter 'NONE' values
+- `inputCols`: Input annotation columns, typically `["relations"]`, containing `LABELED_DEPENDENCY` type annotations from `ChunkMapper`.
+
+- `outputCol`: Name of the output column that will store the resulting `CHUNK` annotations.
+
+- `filterNoneValues`: Whether to filter out `NONE` or empty values when converting labeled dependencies to chunks.  
+  Default: False.
 
 {%- endcapture -%}
 
