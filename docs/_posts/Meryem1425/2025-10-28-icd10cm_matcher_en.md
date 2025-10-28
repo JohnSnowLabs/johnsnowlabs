@@ -36,6 +36,7 @@ This model extracts icd10cm entities in clinical notes using rule-based TextMatc
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
  documentAssembler = DocumentAssembler()\
     .setInputCol("text")\
