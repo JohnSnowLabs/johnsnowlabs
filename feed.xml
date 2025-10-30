@@ -1,94 +1,102 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-10-30T16:36:08+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
-</subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">ICD10CM Text Matcher</title><link href="/2025/10/28/icd10cm_matcher_en.html" rel="alternate" type="text/html" title="ICD10CM Text Matcher" /><published>2025-10-28T00:00:00+00:00</published><updated>2025-10-28T00:00:00+00:00</updated><id>/2025/10/28/icd10cm_matcher_en</id><content type="html" xml:base="/2025/10/28/icd10cm_matcher_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-10-30T19:28:12+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
+</subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">ICD10CM Text Matcher</title><link href="/2025/10/28/icd10cm_matcher_en.html" rel="alternate" type="text/html" title="ICD10CM Text Matcher" /><published>2025-10-28T00:00:00+00:00</published><updated>2025-10-28T00:00:00+00:00</updated><id>/2025/10/28/icd10cm_matcher_en</id><content type="html" xml:base="/2025/10/28/icd10cm_matcher_en.html">## Description
 
-&lt;p&gt;This model extracts icd10cm entities in clinical notes using rule-based TextMatcherInternal annotator.&lt;/p&gt;
+This model extracts icd10cm entities in clinical notes using rule-based TextMatcherInternal annotator.
 
-&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
+## Predicted Entities
 
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ICD10_ENTITY&lt;/code&gt;&lt;/p&gt;
+`ICD10_ENTITY`
 
-&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
-&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/icd10cm_matcher_en_6.1.1_3.0_1761674746255.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
-&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/icd10cm_matcher_en_6.1.1_3.0_1761674746255.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/icd10cm_matcher_en_6.1.1_3.0_1761674746255.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/icd10cm_matcher_en_6.1.1_3.0_1761674746255.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+## How to use
 
-&lt;div class=&quot;tabs-box&quot;&gt;
-  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;strong&gt;Healthcare NLP&lt;/strong&gt;&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;Python&lt;strong&gt;JohnSnowLabs&lt;/strong&gt;&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
 
-  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;n&quot;&gt;documentAssembler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+  
+```python
+ documentAssembler = DocumentAssembler()\
+    .setInputCol(&quot;text&quot;)\
+    .setOutputCol(&quot;document&quot;)
 
-&lt;span class=&quot;n&quot;&gt;text_matcher&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TextMatcherInternalModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;icd10cm_matcher&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; \
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;icd10cm&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setMergeOverlapping&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+tokenizer = Tokenizer()\
+    .setInputCols([&quot;document&quot;])\
+    .setOutputCol(&quot;token&quot;)
 
-&lt;span class=&quot;n&quot;&gt;mathcer_pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setStages&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;documentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;text_matcher&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+text_matcher = TextMatcherInternalModel.pretrained(&quot;icd10cm_matcher&quot;,&quot;en&quot;,&quot;clinical/models&quot;) \
+    .setInputCols([&quot;document&quot;, &quot;token&quot;])\
+    .setOutputCol(&quot;icd10cm&quot;)\
+    .setMergeOverlapping(True)
 
-&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus, associated with obesity with a body mass index (BMI) of 33.5 kg/m2, presented with a one-week history of polyuria, polydipsia, poor appetite, and vomiting. Two weeks prior to presentation, she was treated with a five-day course of amoxicillin for a respiratory tract infection.&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+mathcer_pipeline = Pipeline().setStages([
+    documentAssembler,
+    tokenizer,
+    text_matcher])
 
-&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mathcer_pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+data = spark.createDataFrame([[&quot;&quot;&quot;A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus, associated with obesity with a body mass index (BMI) of 33.5 kg/m2, presented with a one-week history of polyuria, polydipsia, poor appetite, and vomiting. Two weeks prior to presentation, she was treated with a five-day course of amoxicillin for a respiratory tract infection.&quot;&quot;&quot;]]).toDF(&quot;text&quot;)
 
-  &lt;div class=&quot;language-python jsl-block highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;documentAssembler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+result = mathcer_pipeline.fit(data).transform(data)
+```
 
-&lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+{:.jsl-block}
+```python
+documentAssembler = nlp.DocumentAssembler()\
+    .setInputCol(&quot;text&quot;)\
+    .setOutputCol(&quot;document&quot;)
 
-&lt;span class=&quot;n&quot;&gt;text_matcher&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;medical&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TextMatcherInternalModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;icd10cm_matcher&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; \
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;icd10cm&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setMergeOverlapping&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+tokenizer = nlp.Tokenizer()\
+    .setInputCols([&quot;document&quot;])\
+    .setOutputCol(&quot;token&quot;)
 
-&lt;span class=&quot;n&quot;&gt;mathcer_pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setStages&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;documentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;text_matcher&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+text_matcher = medical.TextMatcherInternalModel.pretrained(&quot;icd10cm_matcher&quot;,&quot;en&quot;,&quot;clinical/models&quot;) \
+    .setInputCols([&quot;document&quot;, &quot;token&quot;])\
+    .setOutputCol(&quot;icd10cm&quot;)\
+    .setMergeOverlapping(True)
 
-&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus, associated with obesity with a body mass index (BMI) of 33.5 kg/m2, presented with a one-week history of polyuria, polydipsia, poor appetite, and vomiting. Two weeks prior to presentation, she was treated with a five-day course of amoxicillin for a respiratory tract infection.&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+mathcer_pipeline = nlp.Pipeline().setStages([
+    documentAssembler,
+    tokenizer,
+    text_matcher])
 
-&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mathcer_pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
-  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;documentAssembler&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+data = spark.createDataFrame([[&quot;&quot;&quot;A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus, associated with obesity with a body mass index (BMI) of 33.5 kg/m2, presented with a one-week history of polyuria, polydipsia, poor appetite, and vomiting. Two weeks prior to presentation, she was treated with a five-day course of amoxicillin for a respiratory tract infection.&quot;&quot;&quot;]]).toDF(&quot;text&quot;)
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;tokenizer&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Tokenizer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+result = mathcer_pipeline.fit(data).transform(data)
+```
+```scala
+val documentAssembler = new DocumentAssembler()
+    .setInputCol(&quot;text&quot;)
+    .setOutputCol(&quot;document&quot;)
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;text_matcher&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;TextMatcherInternalModel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;icd10cm_matcher&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;icd10cm&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setMergeOverlapping&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+val tokenizer = new Tokenizer()
+    .setInputCols(&quot;document&quot;)
+    .setOutputCol(&quot;token&quot;)
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;mathcer_pipeline&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setStages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;documentAssembler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;text_matcher&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+val text_matcher = TextMatcherInternalModel.pretrained(&quot;icd10cm_matcher&quot;,&quot;en&quot;,&quot;clinical/models&quot;)
+    .setInputCols(Array(&quot;document&quot;, &quot;token&quot;))
+    .setOutputCol(&quot;icd10cm&quot;)
+    .setMergeOverlapping(true)
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Seq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus, associated with obesity with a body mass index (BMI) of 33.5 kg/m2, presented with a one-week history of polyuria, polydipsia, poor appetite, and vomiting. Two weeks prior to presentation, she was treated with a five-day course of amoxicillin for a respiratory tract infection.&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+val mathcer_pipeline = new Pipeline().setStages(Array(
+    documentAssembler,
+    tokenizer,
+    text_matcher))
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;mathcer_pipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+val data = Seq(&quot;&quot;&quot;A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus, associated with obesity with a body mass index (BMI) of 33.5 kg/m2, presented with a one-week history of polyuria, polydipsia, poor appetite, and vomiting. Two weeks prior to presentation, she was treated with a five-day course of amoxicillin for a respiratory tract infection.&quot;&quot;&quot;).toDF(&quot;text&quot;)
+
+val result = mathcer_pipeline.fit(data).transform(data)
+```
 &lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+## Results
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+-----------------------------+-----+---+------------+
+```bash
++-----------------------------+-----+---+------------+
 |chunk                        |begin|end|ner_label   |
 +-----------------------------+-----+---+------------+
 |gestational diabetes mellitus|39   |67 |ICD10_ENTITY|
@@ -97,165 +105,145 @@
 |vomiting                     |302  |309|ICD10_ENTITY|
 +-----------------------------+-----+---+------------+
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+```
 
-&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+{:.model-param}
+## Model Information
 
-&lt;table class=&quot;table-model&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Model Name:&lt;/td&gt;
-      &lt;td&gt;icd10cm_matcher&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Compatibility:&lt;/td&gt;
-      &lt;td&gt;Healthcare NLP 6.1.1+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;License:&lt;/td&gt;
-      &lt;td&gt;Licensed&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Edition:&lt;/td&gt;
-      &lt;td&gt;Official&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Input Labels:&lt;/td&gt;
-      &lt;td&gt;[sentence, token]&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Output Labels:&lt;/td&gt;
-      &lt;td&gt;[entity_text]&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Language:&lt;/td&gt;
-      &lt;td&gt;en&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size:&lt;/td&gt;
-      &lt;td&gt;9.8 MB&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Case sensitive:&lt;/td&gt;
-      &lt;td&gt;false&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="clinical" /><category term="icd10cm" /><category term="matcher" /><category term="textmatcher" /><summary type="html">Description This model extracts icd10cm entities in clinical notes using rule-based TextMatcherInternal annotator. Predicted Entities ICD10_ENTITY Live Demo Open in Colab Download Copy S3 URI How to use PythonHealthcare NLPPythonJohnSnowLabsScalaNLU documentAssembler = DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) tokenizer = Tokenizer()\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;token&quot;) text_matcher = TextMatcherInternalModel.pretrained(&quot;icd10cm_matcher&quot;,&quot;en&quot;,&quot;clinical/models&quot;) \ .setInputCols([&quot;document&quot;, &quot;token&quot;])\ .setOutputCol(&quot;icd10cm&quot;)\ .setMergeOverlapping(True) mathcer_pipeline = Pipeline().setStages([ documentAssembler, tokenizer, text_matcher]) data = spark.createDataFrame([[&quot;&quot;&quot;A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus, associated with obesity with a body mass index (BMI) of 33.5 kg/m2, presented with a one-week history of polyuria, polydipsia, poor appetite, and vomiting. Two weeks prior to presentation, she was treated with a five-day course of amoxicillin for a respiratory tract infection.&quot;&quot;&quot;]]).toDF(&quot;text&quot;) result = mathcer_pipeline.fit(data).transform(data) documentAssembler = nlp.DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) tokenizer = nlp.Tokenizer()\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;token&quot;) text_matcher = medical.TextMatcherInternalModel.pretrained(&quot;icd10cm_matcher&quot;,&quot;en&quot;,&quot;clinical/models&quot;) \ .setInputCols([&quot;document&quot;, &quot;token&quot;])\ .setOutputCol(&quot;icd10cm&quot;)\ .setMergeOverlapping(True) mathcer_pipeline = nlp.Pipeline().setStages([ documentAssembler, tokenizer, text_matcher]) data = spark.createDataFrame([[&quot;&quot;&quot;A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus, associated with obesity with a body mass index (BMI) of 33.5 kg/m2, presented with a one-week history of polyuria, polydipsia, poor appetite, and vomiting. Two weeks prior to presentation, she was treated with a five-day course of amoxicillin for a respiratory tract infection.&quot;&quot;&quot;]]).toDF(&quot;text&quot;) result = mathcer_pipeline.fit(data).transform(data) val documentAssembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val tokenizer = new Tokenizer() .setInputCols(&quot;document&quot;) .setOutputCol(&quot;token&quot;) val text_matcher = TextMatcherInternalModel.pretrained(&quot;icd10cm_matcher&quot;,&quot;en&quot;,&quot;clinical/models&quot;) .setInputCols(Array(&quot;document&quot;, &quot;token&quot;)) .setOutputCol(&quot;icd10cm&quot;) .setMergeOverlapping(true) val mathcer_pipeline = new Pipeline().setStages(Array( documentAssembler, tokenizer, text_matcher)) val data = Seq(&quot;&quot;&quot;A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus, associated with obesity with a body mass index (BMI) of 33.5 kg/m2, presented with a one-week history of polyuria, polydipsia, poor appetite, and vomiting. Two weeks prior to presentation, she was treated with a five-day course of amoxicillin for a respiratory tract infection.&quot;&quot;&quot;).toDF(&quot;text&quot;) val result = mathcer_pipeline.fit(data).transform(data) Results +-----------------------------+-----+---+------------+ |chunk |begin|end|ner_label | +-----------------------------+-----+---+------------+ |gestational diabetes mellitus|39 |67 |ICD10_ENTITY| |polyuria |261 |268|ICD10_ENTITY| |polydipsia |271 |280|ICD10_ENTITY| |vomiting |302 |309|ICD10_ENTITY| +-----------------------------+-----+---+------------+ Model Information Model Name: icd10cm_matcher Compatibility: Healthcare NLP 6.1.1+ License: Licensed Edition: Official Input Labels: [sentence, token] Output Labels: [entity_text] Language: en Size: 9.8 MB Case sensitive: false</summary></entry><entry><title type="html">BioClinicalBERT IBD Classifier (ONNX)</title><link href="/2025/10/21/bert_sequence_classifier_ibd_onnx_en.html" rel="alternate" type="text/html" title="BioClinicalBERT IBD Classifier (ONNX)" /><published>2025-10-21T00:00:00+00:00</published><updated>2025-10-21T00:00:00+00:00</updated><id>/2025/10/21/bert_sequence_classifier_ibd_onnx_en</id><content type="html" xml:base="/2025/10/21/bert_sequence_classifier_ibd_onnx_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+{:.table-model}
+|---|---|
+|Model Name:|icd10cm_matcher|
+|Compatibility:|Healthcare NLP 6.1.1+|
+|License:|Licensed|
+|Edition:|Official|
+|Input Labels:|[sentence, token]|
+|Output Labels:|[entity_text]|
+|Language:|en|
+|Size:|9.8 MB|
+|Case sensitive:|false|</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="clinical" /><category term="icd10cm" /><category term="matcher" /><category term="textmatcher" /><summary type="html">Description This model extracts icd10cm entities in clinical notes using rule-based TextMatcherInternal annotator. Predicted Entities ICD10_ENTITY Live Demo Open in Colab Download Copy S3 URI How to use PythonHealthcare NLPPythonJohnSnowLabsScalaNLU documentAssembler = DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) tokenizer = Tokenizer()\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;token&quot;) text_matcher = TextMatcherInternalModel.pretrained(&quot;icd10cm_matcher&quot;,&quot;en&quot;,&quot;clinical/models&quot;) \ .setInputCols([&quot;document&quot;, &quot;token&quot;])\ .setOutputCol(&quot;icd10cm&quot;)\ .setMergeOverlapping(True) mathcer_pipeline = Pipeline().setStages([ documentAssembler, tokenizer, text_matcher]) data = spark.createDataFrame([[&quot;&quot;&quot;A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus, associated with obesity with a body mass index (BMI) of 33.5 kg/m2, presented with a one-week history of polyuria, polydipsia, poor appetite, and vomiting. Two weeks prior to presentation, she was treated with a five-day course of amoxicillin for a respiratory tract infection.&quot;&quot;&quot;]]).toDF(&quot;text&quot;) result = mathcer_pipeline.fit(data).transform(data) documentAssembler = nlp.DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) tokenizer = nlp.Tokenizer()\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;token&quot;) text_matcher = medical.TextMatcherInternalModel.pretrained(&quot;icd10cm_matcher&quot;,&quot;en&quot;,&quot;clinical/models&quot;) \ .setInputCols([&quot;document&quot;, &quot;token&quot;])\ .setOutputCol(&quot;icd10cm&quot;)\ .setMergeOverlapping(True) mathcer_pipeline = nlp.Pipeline().setStages([ documentAssembler, tokenizer, text_matcher]) data = spark.createDataFrame([[&quot;&quot;&quot;A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus, associated with obesity with a body mass index (BMI) of 33.5 kg/m2, presented with a one-week history of polyuria, polydipsia, poor appetite, and vomiting. Two weeks prior to presentation, she was treated with a five-day course of amoxicillin for a respiratory tract infection.&quot;&quot;&quot;]]).toDF(&quot;text&quot;) result = mathcer_pipeline.fit(data).transform(data) val documentAssembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val tokenizer = new Tokenizer() .setInputCols(&quot;document&quot;) .setOutputCol(&quot;token&quot;) val text_matcher = TextMatcherInternalModel.pretrained(&quot;icd10cm_matcher&quot;,&quot;en&quot;,&quot;clinical/models&quot;) .setInputCols(Array(&quot;document&quot;, &quot;token&quot;)) .setOutputCol(&quot;icd10cm&quot;) .setMergeOverlapping(true) val mathcer_pipeline = new Pipeline().setStages(Array( documentAssembler, tokenizer, text_matcher)) val data = Seq(&quot;&quot;&quot;A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus, associated with obesity with a body mass index (BMI) of 33.5 kg/m2, presented with a one-week history of polyuria, polydipsia, poor appetite, and vomiting. Two weeks prior to presentation, she was treated with a five-day course of amoxicillin for a respiratory tract infection.&quot;&quot;&quot;).toDF(&quot;text&quot;) val result = mathcer_pipeline.fit(data).transform(data) Results +-----------------------------+-----+---+------------+ |chunk |begin|end|ner_label | +-----------------------------+-----+---+------------+ |gestational diabetes mellitus|39 |67 |ICD10_ENTITY| |polyuria |261 |268|ICD10_ENTITY| |polydipsia |271 |280|ICD10_ENTITY| |vomiting |302 |309|ICD10_ENTITY| +-----------------------------+-----+---+------------+ Model Information Model Name: icd10cm_matcher Compatibility: Healthcare NLP 6.1.1+ License: Licensed Edition: Official Input Labels: [sentence, token] Output Labels: [entity_text] Language: en Size: 9.8 MB Case sensitive: false</summary></entry><entry><title type="html">BioClinicalBERT IBD Classifier (ONNX)</title><link href="/2025/10/21/bert_sequence_classifier_ibd_onnx_en.html" rel="alternate" type="text/html" title="BioClinicalBERT IBD Classifier (ONNX)" /><published>2025-10-21T00:00:00+00:00</published><updated>2025-10-21T00:00:00+00:00</updated><id>/2025/10/21/bert_sequence_classifier_ibd_onnx_en</id><content type="html" xml:base="/2025/10/21/bert_sequence_classifier_ibd_onnx_en.html">## Description
 
-&lt;p&gt;The model classifies documents as either IBD or Not IBD. It is designed to distinguish between documents that are likely related to patients with inflammatory bowel disease (IBD) and those that are not suggestive of IBD.&lt;/p&gt;
+The model classifies documents as either IBD or Not IBD. It is designed to distinguish between documents that are likely related to patients with inflammatory bowel disease (IBD) and those that are not suggestive of IBD.
 
-&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
-&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/bert_sequence_classifier_ibd_onnx_en_6.1.0_3.0_1761067785719.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
-&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/bert_sequence_classifier_ibd_onnx_en_6.1.0_3.0_1761067785719.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/bert_sequence_classifier_ibd_onnx_en_6.1.0_3.0_1761067785719.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/bert_sequence_classifier_ibd_onnx_en_6.1.0_3.0_1761067785719.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+## How to use
 
-&lt;div class=&quot;tabs-box&quot;&gt;
-  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;strong&gt;Healthcare NLP&lt;/strong&gt;&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;Python&lt;strong&gt;JohnSnowLabs&lt;/strong&gt;&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
-  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp.base&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DocumentAssembler&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp_jsl.annotator&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BertForSequenceClassification&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pyspark.ml&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; \
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; \
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; \
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; \
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+```python
+from sparknlp.base import DocumentAssembler
+from sparknlp_jsl.annotator import Tokenizer, BertForSequenceClassification
+from pyspark.ml import Pipeline
 
-&lt;span class=&quot;n&quot;&gt;bfsc_loaded&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BertForSequenceClassification&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;bert_sequence_classifier_ibd_onnx&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; \
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'document'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'token'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; \
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;label&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+document_assembler = DocumentAssembler() \
+    .setInputCol(&quot;text&quot;) \
+    .setOutputCol(&quot;document&quot;)
 
-&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;bfsc_loaded&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+tokenizer = Tokenizer() \
+    .setInputCols([&quot;document&quot;]) \
+    .setOutputCol(&quot;token&quot;)
 
-&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Patient with inflammatory bowel disease and colon inflammation.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Normal colonoscopy findings, no evidence of inflammation.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;]).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+bfsc_loaded = BertForSequenceClassification.pretrained(&quot;bert_sequence_classifier_ibd_onnx&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \
+    .setInputCols(['document', 'token']) \
+    .setOutputCol(&quot;label&quot;)
 
-&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+pipeline = Pipeline(stages=[
+    document_assembler,
+    tokenizer,
+    bfsc_loaded
+])
 
-&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;select&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;label.result&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;truncate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+data = spark.createDataFrame([
+    [&quot;Patient with inflammatory bowel disease and colon inflammation.&quot;],
+    [&quot;Normal colonoscopy findings, no evidence of inflammation.&quot;],
+]).toDF(&quot;text&quot;)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+model = pipeline.fit(data)
+result = model.transform(data)
 
-  &lt;div class=&quot;language-python jsl-block highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;johnsnowlabs&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;medical&lt;/span&gt;
+result.select(&quot;text&quot;, &quot;label.result&quot;).show(truncate=False)
 
-&lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; \
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; \
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+```
 
-&lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; \
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; \
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+{:.jsl-block}
+```python
+from johnsnowlabs import nlp, medical
 
-&lt;span class=&quot;n&quot;&gt;bfsc_loaded&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BertForSequenceClassification&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;bert_sequence_classifier_ibd_onnx&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; \
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'document'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'token'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; \
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;label&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+document_assembler = nlp.DocumentAssembler() \
+    .setInputCol(&quot;text&quot;) \
+    .setOutputCol(&quot;document&quot;)
 
-&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;bfsc_loaded&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+tokenizer = nlp.Tokenizer() \
+    .setInputCols([&quot;document&quot;]) \
+    .setOutputCol(&quot;token&quot;)
 
-&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Patient with inflammatory bowel disease and colon inflammation.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Normal colonoscopy findings, no evidence of inflammation.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;]).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+bfsc_loaded = nlp.BertForSequenceClassification.pretrained(&quot;bert_sequence_classifier_ibd_onnx&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \
+    .setInputCols(['document', 'token']) \
+    .setOutputCol(&quot;label&quot;)
 
-&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+pipeline = nlp.Pipeline(stages=[
+    document_assembler,
+    tokenizer,
+    bfsc_loaded
+])
 
-&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;select&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;label.result&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;truncate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+data = spark.createDataFrame([
+    [&quot;Patient with inflammatory bowel disease and colon inflammation.&quot;],
+    [&quot;Normal colonoscopy findings, no evidence of inflammation.&quot;],
+]).toDF(&quot;text&quot;)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
-  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.base._&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.annotator._&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.apache.spark.ml.Pipeline&lt;/span&gt;
+model = pipeline.fit(data)
+result = model.transform(data)
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;documentAssembler&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+result.select(&quot;text&quot;, &quot;label.result&quot;).show(truncate=False)
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;tokenizer&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Tokenizer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+```
+```scala
+import com.johnsnowlabs.nlp.base._
+import com.johnsnowlabs.nlp.annotator._
+import org.apache.spark.ml.Pipeline
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;bfscLoaded&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;BertForSequenceClassification&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;bert_sequence_classifier_ibd_onnx&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;label&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+val documentAssembler = new DocumentAssembler()
+  .setInputCol(&quot;text&quot;)
+  .setOutputCol(&quot;document&quot;)
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setStages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;documentAssembler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;bfscLoaded&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+val tokenizer = new Tokenizer()
+  .setInputCols(Array(&quot;document&quot;))
+  .setOutputCol(&quot;token&quot;)
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Seq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Patient with inflammatory bowel disease and colon inflammation.&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Normal colonoscopy findings, no evidence of inflammation.&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+val bfscLoaded = BertForSequenceClassification.pretrained(&quot;bert_sequence_classifier_ibd_onnx&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+  .setInputCols(Array(&quot;document&quot;, &quot;token&quot;))
+  .setOutputCol(&quot;label&quot;)
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+val pipeline = new Pipeline().setStages(Array(
+  documentAssembler,
+  tokenizer,
+  bfscLoaded
+))
 
-&lt;span class=&quot;nv&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;select&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;label.result&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+val data = Seq(
+  (&quot;Patient with inflammatory bowel disease and colon inflammation.&quot;),
+  (&quot;Normal colonoscopy findings, no evidence of inflammation.&quot;)
+).toDF(&quot;text&quot;)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+val model = pipeline.fit(data)
+val result = model.transform(data)
+
+result.select(&quot;text&quot;, &quot;label.result&quot;).show(false)
+
+```
 &lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+## Results
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+```bash
+
 +---------------------------------------------------------------+---------+
 |text                                                           |result   |
 +---------------------------------------------------------------+---------+
@@ -263,209 +251,164 @@
 |Normal colonoscopy findings, no evidence of inflammation.      |[Not IBD]|
 +---------------------------------------------------------------+---------+
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+```
 
-&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+{:.model-param}
+## Model Information
 
-&lt;table class=&quot;table-model&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Model Name:&lt;/td&gt;
-      &lt;td&gt;bert_sequence_classifier_ibd_onnx&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Compatibility:&lt;/td&gt;
-      &lt;td&gt;Healthcare NLP 6.1.0+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;License:&lt;/td&gt;
-      &lt;td&gt;Licensed&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Edition:&lt;/td&gt;
-      &lt;td&gt;Official&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Input Labels:&lt;/td&gt;
-      &lt;td&gt;[document, token]&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Output Labels:&lt;/td&gt;
-      &lt;td&gt;[label]&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Language:&lt;/td&gt;
-      &lt;td&gt;en&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size:&lt;/td&gt;
-      &lt;td&gt;405.5 MB&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;</content><author><name>John Snow Labs</name></author><category term="medical" /><category term="clinical" /><category term="en" /><category term="classification" /><category term="licensed" /><category term="onnx" /><summary type="html">Description The model classifies documents as either IBD or Not IBD. It is designed to distinguish between documents that are likely related to patients with inflammatory bowel disease (IBD) and those that are not suggestive of IBD. Live Demo Open in Colab Download Copy S3 URI How to use PythonHealthcare NLPPythonJohnSnowLabsScalaNLU from sparknlp.base import DocumentAssembler from sparknlp_jsl.annotator import Tokenizer, BertForSequenceClassification from pyspark.ml import Pipeline document_assembler = DocumentAssembler() \ .setInputCol(&quot;text&quot;) \ .setOutputCol(&quot;document&quot;) tokenizer = Tokenizer() \ .setInputCols([&quot;document&quot;]) \ .setOutputCol(&quot;token&quot;) bfsc_loaded = BertForSequenceClassification.pretrained(&quot;bert_sequence_classifier_ibd_onnx&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \ .setInputCols(['document', 'token']) \ .setOutputCol(&quot;label&quot;) pipeline = Pipeline(stages=[ document_assembler, tokenizer, bfsc_loaded ]) data = spark.createDataFrame([ [&quot;Patient with inflammatory bowel disease and colon inflammation.&quot;], [&quot;Normal colonoscopy findings, no evidence of inflammation.&quot;], ]).toDF(&quot;text&quot;) model = pipeline.fit(data) result = model.transform(data) result.select(&quot;text&quot;, &quot;label.result&quot;).show(truncate=False) from johnsnowlabs import nlp, medical document_assembler = nlp.DocumentAssembler() \ .setInputCol(&quot;text&quot;) \ .setOutputCol(&quot;document&quot;) tokenizer = nlp.Tokenizer() \ .setInputCols([&quot;document&quot;]) \ .setOutputCol(&quot;token&quot;) bfsc_loaded = nlp.BertForSequenceClassification.pretrained(&quot;bert_sequence_classifier_ibd_onnx&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \ .setInputCols(['document', 'token']) \ .setOutputCol(&quot;label&quot;) pipeline = nlp.Pipeline(stages=[ document_assembler, tokenizer, bfsc_loaded ]) data = spark.createDataFrame([ [&quot;Patient with inflammatory bowel disease and colon inflammation.&quot;], [&quot;Normal colonoscopy findings, no evidence of inflammation.&quot;], ]).toDF(&quot;text&quot;) model = pipeline.fit(data) result = model.transform(data) result.select(&quot;text&quot;, &quot;label.result&quot;).show(truncate=False) import com.johnsnowlabs.nlp.base._ import com.johnsnowlabs.nlp.annotator._ import org.apache.spark.ml.Pipeline val documentAssembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val tokenizer = new Tokenizer() .setInputCols(Array(&quot;document&quot;)) .setOutputCol(&quot;token&quot;) val bfscLoaded = BertForSequenceClassification.pretrained(&quot;bert_sequence_classifier_ibd_onnx&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;document&quot;, &quot;token&quot;)) .setOutputCol(&quot;label&quot;) val pipeline = new Pipeline().setStages(Array( documentAssembler, tokenizer, bfscLoaded )) val data = Seq( (&quot;Patient with inflammatory bowel disease and colon inflammation.&quot;), (&quot;Normal colonoscopy findings, no evidence of inflammation.&quot;) ).toDF(&quot;text&quot;) val model = pipeline.fit(data) val result = model.transform(data) result.select(&quot;text&quot;, &quot;label.result&quot;).show(false) Results +---------------------------------------------------------------+---------+ |text |result | +---------------------------------------------------------------+---------+ |Patient with inflammatory bowel disease and colon inflammation.|[IBD] | |Normal colonoscopy findings, no evidence of inflammation. |[Not IBD]| +---------------------------------------------------------------+---------+ Model Information Model Name: bert_sequence_classifier_ibd_onnx Compatibility: Healthcare NLP 6.1.0+ License: Licensed Edition: Official Input Labels: [document, token] Output Labels: [label] Language: en Size: 405.5 MB</summary></entry><entry><title type="html">DistilBERT IBD Embeddings (ONNX)</title><link href="/2025/10/21/distil_ibd_bert_onnx_en.html" rel="alternate" type="text/html" title="DistilBERT IBD Embeddings (ONNX)" /><published>2025-10-21T00:00:00+00:00</published><updated>2025-10-21T00:00:00+00:00</updated><id>/2025/10/21/distil_ibd_bert_onnx_en</id><content type="html" xml:base="/2025/10/21/distil_ibd_bert_onnx_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+{:.table-model}
+|---|---|
+|Model Name:|bert_sequence_classifier_ibd_onnx|
+|Compatibility:|Healthcare NLP 6.1.0+|
+|License:|Licensed|
+|Edition:|Official|
+|Input Labels:|[document, token]|
+|Output Labels:|[label]|
+|Language:|en|
+|Size:|405.5 MB|</content><author><name>John Snow Labs</name></author><category term="medical" /><category term="clinical" /><category term="en" /><category term="classification" /><category term="licensed" /><category term="onnx" /><summary type="html">Description The model classifies documents as either IBD or Not IBD. It is designed to distinguish between documents that are likely related to patients with inflammatory bowel disease (IBD) and those that are not suggestive of IBD. Live Demo Open in Colab Download Copy S3 URI How to use PythonHealthcare NLPPythonJohnSnowLabsScalaNLU from sparknlp.base import DocumentAssembler from sparknlp_jsl.annotator import Tokenizer, BertForSequenceClassification from pyspark.ml import Pipeline document_assembler = DocumentAssembler() \ .setInputCol(&quot;text&quot;) \ .setOutputCol(&quot;document&quot;) tokenizer = Tokenizer() \ .setInputCols([&quot;document&quot;]) \ .setOutputCol(&quot;token&quot;) bfsc_loaded = BertForSequenceClassification.pretrained(&quot;bert_sequence_classifier_ibd_onnx&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \ .setInputCols(['document', 'token']) \ .setOutputCol(&quot;label&quot;) pipeline = Pipeline(stages=[ document_assembler, tokenizer, bfsc_loaded ]) data = spark.createDataFrame([ [&quot;Patient with inflammatory bowel disease and colon inflammation.&quot;], [&quot;Normal colonoscopy findings, no evidence of inflammation.&quot;], ]).toDF(&quot;text&quot;) model = pipeline.fit(data) result = model.transform(data) result.select(&quot;text&quot;, &quot;label.result&quot;).show(truncate=False) from johnsnowlabs import nlp, medical document_assembler = nlp.DocumentAssembler() \ .setInputCol(&quot;text&quot;) \ .setOutputCol(&quot;document&quot;) tokenizer = nlp.Tokenizer() \ .setInputCols([&quot;document&quot;]) \ .setOutputCol(&quot;token&quot;) bfsc_loaded = nlp.BertForSequenceClassification.pretrained(&quot;bert_sequence_classifier_ibd_onnx&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \ .setInputCols(['document', 'token']) \ .setOutputCol(&quot;label&quot;) pipeline = nlp.Pipeline(stages=[ document_assembler, tokenizer, bfsc_loaded ]) data = spark.createDataFrame([ [&quot;Patient with inflammatory bowel disease and colon inflammation.&quot;], [&quot;Normal colonoscopy findings, no evidence of inflammation.&quot;], ]).toDF(&quot;text&quot;) model = pipeline.fit(data) result = model.transform(data) result.select(&quot;text&quot;, &quot;label.result&quot;).show(truncate=False) import com.johnsnowlabs.nlp.base._ import com.johnsnowlabs.nlp.annotator._ import org.apache.spark.ml.Pipeline val documentAssembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val tokenizer = new Tokenizer() .setInputCols(Array(&quot;document&quot;)) .setOutputCol(&quot;token&quot;) val bfscLoaded = BertForSequenceClassification.pretrained(&quot;bert_sequence_classifier_ibd_onnx&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;document&quot;, &quot;token&quot;)) .setOutputCol(&quot;label&quot;) val pipeline = new Pipeline().setStages(Array( documentAssembler, tokenizer, bfscLoaded )) val data = Seq( (&quot;Patient with inflammatory bowel disease and colon inflammation.&quot;), (&quot;Normal colonoscopy findings, no evidence of inflammation.&quot;) ).toDF(&quot;text&quot;) val model = pipeline.fit(data) val result = model.transform(data) result.select(&quot;text&quot;, &quot;label.result&quot;).show(false) Results +---------------------------------------------------------------+---------+ |text |result | +---------------------------------------------------------------+---------+ |Patient with inflammatory bowel disease and colon inflammation.|[IBD] | |Normal colonoscopy findings, no evidence of inflammation. |[Not IBD]| +---------------------------------------------------------------+---------+ Model Information Model Name: bert_sequence_classifier_ibd_onnx Compatibility: Healthcare NLP 6.1.0+ License: Licensed Edition: Official Input Labels: [document, token] Output Labels: [label] Language: en Size: 405.5 MB</summary></entry><entry><title type="html">DistilBERT IBD Embeddings (ONNX)</title><link href="/2025/10/21/distil_ibd_bert_onnx_en.html" rel="alternate" type="text/html" title="DistilBERT IBD Embeddings (ONNX)" /><published>2025-10-21T00:00:00+00:00</published><updated>2025-10-21T00:00:00+00:00</updated><id>/2025/10/21/distil_ibd_bert_onnx_en</id><content type="html" xml:base="/2025/10/21/distil_ibd_bert_onnx_en.html">## Description
 
-&lt;p&gt;This model creates text embeddings tailored for clinical documents related to inflammatory bowel disease (IBD). These embeddings help represent the meaning of medical text more effectively, making it easier to use in tasks like classifying IBD-related documents, finding patient groups, or retrieving clinical information.&lt;/p&gt;
+This model creates text embeddings tailored for clinical documents related to inflammatory bowel disease (IBD). These embeddings help represent the meaning of medical text more effectively, making it easier to use in tasks like classifying IBD-related documents, finding patient groups, or retrieving clinical information.
 
-&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
-&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/distil_ibd_bert_onnx_en_6.1.0_3.0_1761068463785.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
-&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/distil_ibd_bert_onnx_en_6.1.0_3.0_1761068463785.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/distil_ibd_bert_onnx_en_6.1.0_3.0_1761068463785.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/distil_ibd_bert_onnx_en_6.1.0_3.0_1761068463785.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+## How to use
 
-&lt;div class=&quot;tabs-box&quot;&gt;
-  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;strong&gt;Healthcare NLP&lt;/strong&gt;&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;Python&lt;strong&gt;JohnSnowLabs&lt;/strong&gt;&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
-  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp.base&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DocumentAssembler&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp_jsl.annotator&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DistilBertEmbeddings&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pyspark.ml&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; \
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; \
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; \
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; \
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+```python
+from sparknlp.base import DocumentAssembler
+from sparknlp_jsl.annotator import Tokenizer, DistilBertEmbeddings
+from pyspark.ml import Pipeline
 
-&lt;span class=&quot;n&quot;&gt;distilbert_loaded&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DistilBertEmbeddings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;distil_ibd_bert_onnx&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; \
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'document'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'token'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; \
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;distilbert&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+document_assembler = DocumentAssembler() \
+    .setInputCol(&quot;text&quot;) \
+    .setOutputCol(&quot;document&quot;)
 
-&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;distilbert_loaded&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+tokenizer = Tokenizer() \
+    .setInputCols([&quot;document&quot;]) \
+    .setOutputCol(&quot;token&quot;)
 
-&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;The patient reports intermittent abdominal pain and loose stools over the past three months.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;]).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+distilbert_loaded = DistilBertEmbeddings.pretrained(&quot;distil_ibd_bert_onnx&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \
+    .setInputCols(['document', 'token']) \
+    .setOutputCol(&quot;distilbert&quot;)
 
-&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+pipeline = Pipeline(stages=[
+    document_assembler,
+    tokenizer,
+    distilbert_loaded
+])
 
-&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;select&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;distilbert.embeddings&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+data = spark.createDataFrame([
+    [&quot;The patient reports intermittent abdominal pain and loose stools over the past three months.&quot;]
+]).toDF(&quot;text&quot;)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+model = pipeline.fit(data)
+result = model.transform(data)
 
-  &lt;div class=&quot;language-python jsl-block highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;johnsnowlabs&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;medical&lt;/span&gt;
+result.select(&quot;distilbert.embeddings&quot;).show()
 
-&lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; \
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; \
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+```
 
-&lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; \
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; \
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+{:.jsl-block}
+```python
+from johnsnowlabs import nlp, medical
 
-&lt;span class=&quot;n&quot;&gt;distilbert_loaded&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DistilBertEmbeddings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;distil_ibd_bert_onnx&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; \
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'document'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'token'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; \
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;distilbert&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+document_assembler = nlp.DocumentAssembler() \
+    .setInputCol(&quot;text&quot;) \
+    .setOutputCol(&quot;document&quot;)
 
-&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;distilbert_loaded&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+tokenizer = nlp.Tokenizer() \
+    .setInputCols([&quot;document&quot;]) \
+    .setOutputCol(&quot;token&quot;)
 
-&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;The patient reports intermittent abdominal pain and loose stools over the past three months.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;]).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+distilbert_loaded = nlp.DistilBertEmbeddings.pretrained(&quot;distil_ibd_bert_onnx&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \
+    .setInputCols(['document', 'token']) \
+    .setOutputCol(&quot;distilbert&quot;)
 
-&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+pipeline = nlp.Pipeline(stages=[
+    document_assembler,
+    tokenizer,
+    distilbert_loaded
+])
 
-&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;select&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;distilbert.embeddings&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+data = spark.createDataFrame([
+    [&quot;The patient reports intermittent abdominal pain and loose stools over the past three months.&quot;]
+]).toDF(&quot;text&quot;)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
-  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.base._&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.annotators._&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.apache.spark.ml.Pipeline&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;spark.implicits._&lt;/span&gt;
+model = pipeline.fit(data)
+result = model.transform(data)
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;documentAssembler&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+result.select(&quot;distilbert.embeddings&quot;).show()
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;tokenizer&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Tokenizer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+```
+```scala
+import com.johnsnowlabs.nlp.base._
+import com.johnsnowlabs.nlp.annotators._
+import org.apache.spark.ml.Pipeline
+import spark.implicits._
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;distilBert&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;DistilBertEmbeddings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;distil_ibd_bert_onnx&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;distilbert&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+val documentAssembler = new DocumentAssembler()
+  .setInputCol(&quot;text&quot;)
+  .setOutputCol(&quot;document&quot;)
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setStages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;documentAssembler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;distilBert&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+val tokenizer = new Tokenizer()
+  .setInputCols(Array(&quot;document&quot;))
+  .setOutputCol(&quot;token&quot;)
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Seq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
-  &lt;span class=&quot;s&quot;&gt;&quot;The patient reports intermittent abdominal pain and loose stools over the past three months.&quot;&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+val distilBert = DistilBertEmbeddings.pretrained(&quot;distil_ibd_bert_onnx&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+  .setInputCols(Array(&quot;document&quot;, &quot;token&quot;))
+  .setOutputCol(&quot;distilbert&quot;)
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+val pipeline = new Pipeline().setStages(Array(
+  documentAssembler,
+  tokenizer,
+  distilBert
+))
 
-&lt;span class=&quot;nv&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;select&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;distilbert.embeddings&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+val data = Seq(
+  &quot;The patient reports intermittent abdominal pain and loose stools over the past three months.&quot;
+).toDF(&quot;text&quot;)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+val model = pipeline.fit(data)
+val result = model.transform(data)
+
+result.select(&quot;distilbert.embeddings&quot;).show(false)
+
+```
 &lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+## Results
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+```bash
+
 +--------------------+
 |          embeddings|
 +--------------------+
 |[[0.23429918, 0.3...|
 +--------------------+
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+```
 
-&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+{:.model-param}
+## Model Information
 
-&lt;table class=&quot;table-model&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Model Name:&lt;/td&gt;
-      &lt;td&gt;distil_ibd_bert_onnx&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Compatibility:&lt;/td&gt;
-      &lt;td&gt;Healthcare NLP 6.1.0+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;License:&lt;/td&gt;
-      &lt;td&gt;Licensed&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Edition:&lt;/td&gt;
-      &lt;td&gt;Official&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Input Labels:&lt;/td&gt;
-      &lt;td&gt;[document, token]&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Output Labels:&lt;/td&gt;
-      &lt;td&gt;[distilbert]&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Language:&lt;/td&gt;
-      &lt;td&gt;en&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size:&lt;/td&gt;
-      &lt;td&gt;247.2 MB&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Case sensitive:&lt;/td&gt;
-      &lt;td&gt;true&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;</content><author><name>John Snow Labs</name></author><category term="medical" /><category term="clinical" /><category term="en" /><category term="embeddings" /><category term="licensed" /><category term="onnx" /><summary type="html">Description This model creates text embeddings tailored for clinical documents related to inflammatory bowel disease (IBD). These embeddings help represent the meaning of medical text more effectively, making it easier to use in tasks like classifying IBD-related documents, finding patient groups, or retrieving clinical information. Live Demo Open in Colab Download Copy S3 URI How to use PythonHealthcare NLPPythonJohnSnowLabsScalaNLU from sparknlp.base import DocumentAssembler from sparknlp_jsl.annotator import Tokenizer, DistilBertEmbeddings from pyspark.ml import Pipeline document_assembler = DocumentAssembler() \ .setInputCol(&quot;text&quot;) \ .setOutputCol(&quot;document&quot;) tokenizer = Tokenizer() \ .setInputCols([&quot;document&quot;]) \ .setOutputCol(&quot;token&quot;) distilbert_loaded = DistilBertEmbeddings.pretrained(&quot;distil_ibd_bert_onnx&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \ .setInputCols(['document', 'token']) \ .setOutputCol(&quot;distilbert&quot;) pipeline = Pipeline(stages=[ document_assembler, tokenizer, distilbert_loaded ]) data = spark.createDataFrame([ [&quot;The patient reports intermittent abdominal pain and loose stools over the past three months.&quot;] ]).toDF(&quot;text&quot;) model = pipeline.fit(data) result = model.transform(data) result.select(&quot;distilbert.embeddings&quot;).show() from johnsnowlabs import nlp, medical document_assembler = nlp.DocumentAssembler() \ .setInputCol(&quot;text&quot;) \ .setOutputCol(&quot;document&quot;) tokenizer = nlp.Tokenizer() \ .setInputCols([&quot;document&quot;]) \ .setOutputCol(&quot;token&quot;) distilbert_loaded = nlp.DistilBertEmbeddings.pretrained(&quot;distil_ibd_bert_onnx&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \ .setInputCols(['document', 'token']) \ .setOutputCol(&quot;distilbert&quot;) pipeline = nlp.Pipeline(stages=[ document_assembler, tokenizer, distilbert_loaded ]) data = spark.createDataFrame([ [&quot;The patient reports intermittent abdominal pain and loose stools over the past three months.&quot;] ]).toDF(&quot;text&quot;) model = pipeline.fit(data) result = model.transform(data) result.select(&quot;distilbert.embeddings&quot;).show() import com.johnsnowlabs.nlp.base._ import com.johnsnowlabs.nlp.annotators._ import org.apache.spark.ml.Pipeline import spark.implicits._ val documentAssembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val tokenizer = new Tokenizer() .setInputCols(Array(&quot;document&quot;)) .setOutputCol(&quot;token&quot;) val distilBert = DistilBertEmbeddings.pretrained(&quot;distil_ibd_bert_onnx&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;document&quot;, &quot;token&quot;)) .setOutputCol(&quot;distilbert&quot;) val pipeline = new Pipeline().setStages(Array( documentAssembler, tokenizer, distilBert )) val data = Seq( &quot;The patient reports intermittent abdominal pain and loose stools over the past three months.&quot; ).toDF(&quot;text&quot;) val model = pipeline.fit(data) val result = model.transform(data) result.select(&quot;distilbert.embeddings&quot;).show(false) Results +--------------------+ | embeddings| +--------------------+ |[[0.23429918, 0.3...| +--------------------+ Model Information Model Name: distil_ibd_bert_onnx Compatibility: Healthcare NLP 6.1.0+ License: Licensed Edition: Official Input Labels: [document, token] Output Labels: [distilbert] Language: en Size: 247.2 MB Case sensitive: true</summary></entry><entry><title type="html">JSL_MedS_NER_VLM_v1 (VLM - 7b - q16)</title><link href="/2025/09/16/jsl_meds_ner_vlm_7b_q16_v1_en.html" rel="alternate" type="text/html" title="JSL_MedS_NER_VLM_v1 (VLM - 7b - q16)" /><published>2025-09-16T00:00:00+00:00</published><updated>2025-09-16T00:00:00+00:00</updated><id>/2025/09/16/jsl_meds_ner_vlm_7b_q16_v1_en</id><content type="html" xml:base="/2025/09/16/jsl_meds_ner_vlm_7b_q16_v1_en.html">## Description
+{:.table-model}
+|---|---|
+|Model Name:|distil_ibd_bert_onnx|
+|Compatibility:|Healthcare NLP 6.1.0+|
+|License:|Licensed|
+|Edition:|Official|
+|Input Labels:|[document, token]|
+|Output Labels:|[distilbert]|
+|Language:|en|
+|Size:|247.2 MB|
+|Case sensitive:|true|</content><author><name>John Snow Labs</name></author><category term="medical" /><category term="clinical" /><category term="en" /><category term="embeddings" /><category term="licensed" /><category term="onnx" /><summary type="html">Description This model creates text embeddings tailored for clinical documents related to inflammatory bowel disease (IBD). These embeddings help represent the meaning of medical text more effectively, making it easier to use in tasks like classifying IBD-related documents, finding patient groups, or retrieving clinical information. Live Demo Open in Colab Download Copy S3 URI How to use PythonHealthcare NLPPythonJohnSnowLabsScalaNLU from sparknlp.base import DocumentAssembler from sparknlp_jsl.annotator import Tokenizer, DistilBertEmbeddings from pyspark.ml import Pipeline document_assembler = DocumentAssembler() \ .setInputCol(&quot;text&quot;) \ .setOutputCol(&quot;document&quot;) tokenizer = Tokenizer() \ .setInputCols([&quot;document&quot;]) \ .setOutputCol(&quot;token&quot;) distilbert_loaded = DistilBertEmbeddings.pretrained(&quot;distil_ibd_bert_onnx&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \ .setInputCols(['document', 'token']) \ .setOutputCol(&quot;distilbert&quot;) pipeline = Pipeline(stages=[ document_assembler, tokenizer, distilbert_loaded ]) data = spark.createDataFrame([ [&quot;The patient reports intermittent abdominal pain and loose stools over the past three months.&quot;] ]).toDF(&quot;text&quot;) model = pipeline.fit(data) result = model.transform(data) result.select(&quot;distilbert.embeddings&quot;).show() from johnsnowlabs import nlp, medical document_assembler = nlp.DocumentAssembler() \ .setInputCol(&quot;text&quot;) \ .setOutputCol(&quot;document&quot;) tokenizer = nlp.Tokenizer() \ .setInputCols([&quot;document&quot;]) \ .setOutputCol(&quot;token&quot;) distilbert_loaded = nlp.DistilBertEmbeddings.pretrained(&quot;distil_ibd_bert_onnx&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \ .setInputCols(['document', 'token']) \ .setOutputCol(&quot;distilbert&quot;) pipeline = nlp.Pipeline(stages=[ document_assembler, tokenizer, distilbert_loaded ]) data = spark.createDataFrame([ [&quot;The patient reports intermittent abdominal pain and loose stools over the past three months.&quot;] ]).toDF(&quot;text&quot;) model = pipeline.fit(data) result = model.transform(data) result.select(&quot;distilbert.embeddings&quot;).show() import com.johnsnowlabs.nlp.base._ import com.johnsnowlabs.nlp.annotators._ import org.apache.spark.ml.Pipeline import spark.implicits._ val documentAssembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val tokenizer = new Tokenizer() .setInputCols(Array(&quot;document&quot;)) .setOutputCol(&quot;token&quot;) val distilBert = DistilBertEmbeddings.pretrained(&quot;distil_ibd_bert_onnx&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;document&quot;, &quot;token&quot;)) .setOutputCol(&quot;distilbert&quot;) val pipeline = new Pipeline().setStages(Array( documentAssembler, tokenizer, distilBert )) val data = Seq( &quot;The patient reports intermittent abdominal pain and loose stools over the past three months.&quot; ).toDF(&quot;text&quot;) val model = pipeline.fit(data) val result = model.transform(data) result.select(&quot;distilbert.embeddings&quot;).show(false) Results +--------------------+ | embeddings| +--------------------+ |[[0.23429918, 0.3...| +--------------------+ Model Information Model Name: distil_ibd_bert_onnx Compatibility: Healthcare NLP 6.1.0+ License: Licensed Edition: Official Input Labels: [document, token] Output Labels: [distilbert] Language: en Size: 247.2 MB Case sensitive: true</summary></entry><entry><title type="html">JSL_MedS_NER_VLM_v1 (VLM - 7b - q16)</title><link href="/2025/09/16/jsl_meds_ner_vlm_7b_q16_v1_en.html" rel="alternate" type="text/html" title="JSL_MedS_NER_VLM_v1 (VLM - 7b - q16)" /><published>2025-09-16T00:00:00+00:00</published><updated>2025-09-16T00:00:00+00:00</updated><id>/2025/09/16/jsl_meds_ner_vlm_7b_q16_v1_en</id><content type="html" xml:base="/2025/09/16/jsl_meds_ner_vlm_7b_q16_v1_en.html">## Description
 
 This vision-language model is trained to understand medical images and extract key details such as patient demographics, clinical conditions, and prescribed medications, etc.
 
