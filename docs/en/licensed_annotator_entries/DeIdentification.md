@@ -189,22 +189,44 @@ The pairs must have exactly 3 elements: [original, entityType, fake].
   This parameter allows the system to automatically include a set of predefined common English name equivalents.
   Default is False.
 
-- `obfuscationEquivalentsResource` : Allows loading obfuscation equivalents from an external file (e.g., CSV).  
+- `obfuscationEquivalentsResource` : allows loading obfuscation equivalents from an external file (e.g., CSV).  
   Supports custom delimiter through the `options` parameter.
 
-- `doExceptionHandling` : When true, enables safe exception handling during de-identification. Instead of interrupting processing when invalid or unexpected data is encountered (for example, malformed dates or missing entities), the annotator emits a special *error annotation* containing the exception message and continues with the next record. This helps prevent pipeline failure at the cost of a small performance penalty.
+- `entityCasingModes` dictionary path to the JSON file that contains the entity casing modes.
 
-- `obfuscationStrategyOnException` : Defines the fallback obfuscation strategy to apply when an exception occurs during processing.  
-  Supported values:  
-  - `"mask"` : Replace the original chunk with a masking pattern (for example, `***`).  
-  - `"default"` : Replace the chunk using the default faker (default behavior).  
-  - `"skip"` : Leave the original text unchanged.  
-  - `"exception"` : Stop processing and raise the exception.  
-  The default value is `"default"`.
+- `AdditionalDateFormats`: (formats: list) Sets additional date formats to be considered during date obfuscation. This allows users to specify custom date formats in addition to the default date formats.
 
-- `useShiftDays` : When true, activates random or pre-defined date shifting for obfuscation when a document includes date-shift metadata. This feature is useful for temporal data anonymization while preserving relative time consistency across entities. Default is false.
+- `AgeRangesByHipaa`: (BooleanParam) Set whether to obfuscate ages based on HIPAA (Health Insurance Portability and Accountability Act) Privacy Rule.
 
-- `lazyAnnotator` : When true, the annotator initializes its resources (such as dictionaries, regex patterns, and faker modules) only when first invoked within a RecursivePipeline. This can significantly reduce pipeline startup time, especially when multiple large annotators are loaded but not all are used immediately.
+- `BlackListEntities` (value): Sets a list of entities coming from NER or regex rules that will be ignored for masking or obfuscation. The rest entities will be processed. Default: []
+
+- `CombineRegexPatterns`: (BooleanParam) Sets whether you want to use regex both loaded regex file and default regex file.
+
+- `DateEntities`: (entities: list) Sets list of date entities. Default: [‘DATE’, ‘DOB’, ‘DOD’, ‘EFFDATE’, ‘FISCAL_YEAR’]
+
+- `DoExceptionHandling`: (BooleanParam) If True, exceptions are handled. An error annotation is emitted which has the exception message. Processing continues with the next one. This comes with a performance penalty.
+
+- `GenderAwareness`: (BooleanParam) Set whether to use gender-aware names or not during obfuscation. This param effects only names. If value is true, it might decrease performance. Default: False
+
+- `MaxRandomDisplacementDays`: (days: int) Sets maximum number of days for random date displacement. Default is 1825.
+
+- `ObfuscateZipByHipaa`: (BooleanParam) Sets whether to apply HIPAA Safe Harbor ZIP code obfuscation rules.
+
+- `ObfuscationStrategyOnException` (value: str) Sets the obfuscation strategy to be applied when an exception occurs. Four possible values are supported:
+
+    “mask”: The original chunk is replaced with a masking pattern.
+
+    “default”: The original chunk is replaced with a default faker.
+
+    “skip”: The original chunk is not replaced with any faker.
+
+    “exception”: Throws the exception.
+
+  The default obfuscation strategy is “default”.
+
+- `RegexPatternsDictionaryAsJsonString`: (json) Sets dictionary with regular expression patterns as JSON that match some protected entity. 
+
+- `UseShiftDays` (s): Sets if you want to use the random shift day when the document has this in its metadata. Default: False
 
 To create a configured DeIdentificationModel, please see the example of DeIdentification.
 {%- endcapture -%}
