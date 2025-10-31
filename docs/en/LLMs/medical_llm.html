@@ -635,13 +635,13 @@ function wrapWordInSpan(data, wordToWrap) {
 <table>
   <thead>
     <tr>
-      <th><strong>Model Name</strong></th>
-      <th><strong>Parameters</strong></th>
-      <th><strong>Recommended GPU Memory</strong></th>
-      <th><strong>Max Sequence Length</strong></th>
-      <th><strong>Model Size</strong></th>
-      <th><strong>Max KV-Cache</strong></th>
-      <th><strong>Tensor Parallel Sizes</strong></th>
+      <th>Model Name</th>
+      <th>Parameters</th>
+      <th>Recommended GPU Memory</th>
+      <th>Max Sequence Length</th>
+      <th>Model Size</th>
+      <th>Max KV-Cache</th>
+      <th>Tensor Parallel Sizes</th>
     </tr>
   </thead>
   <tbody>
@@ -664,13 +664,13 @@ function wrapWordInSpan(data, wordToWrap) {
       <td>1, 2</td>
     </tr>
     <tr>
-      <td>Medical-Visual-LLM-7B</td>
-      <td>7B</td>
+      <td>Medical-Visual-LLM-8B</td>
+      <td>8B</td>
       <td>~64 GB</td>
-      <td>128K</td>
-      <td>15 GB</td>
-      <td>48 GB</td>
-      <td>1, 2, 4</td>
+      <td>262K</td>
+      <td>16 GB</td>
+      <td>50 GB</td>
+      <td>1, 2, 4, 8</td>
     </tr>
     <tr>
       <td>Medical-LLM-Small</td>
@@ -683,7 +683,7 @@ function wrapWordInSpan(data, wordToWrap) {
     </tr>
     <tr>
       <td>Medical-LLM-Medium</td>
-      <td>70B</td>
+      <td>78B</td>
       <td>~452 GB</td>
       <td>128K</td>
       <td>131 GB</td>
@@ -700,13 +700,13 @@ function wrapWordInSpan(data, wordToWrap) {
       <td>2, 4, 8</td>
     </tr>
     <tr>
-      <td>Medical-Visual-LLM-24B</td>
-      <td>24B</td>
-      <td>~145 GB</td>
-      <td>128K</td>
-      <td>45 GB</td>
+      <td>Medical-Visual-LLM-30B</td>
+      <td>30B</td>
+      <td>~150 GB</td>
+      <td>262K</td>
+      <td>58 GB</td>
       <td>100 GB</td>
-      <td>2, 4, 8</td>
+      <td>1, 2, 4</td>
     </tr>
     <tr>
       <td>Medical-Spanish-LLM-24B</td>
@@ -720,195 +720,682 @@ function wrapWordInSpan(data, wordToWrap) {
   </tbody>
 </table>
 
-<p><em>Note: All memory calculations are based on half-precision (fp16/bf16) weights. Recommended GPU Memory considers the model size and the maximum key-value cache at the model’s maximum sequence length. These calculations follow the guidelines from <a href="https://docs.djl.ai/master/docs/serving/serving/docs/lmi/deployment_guide/instance-type-selection.html">DJL’s LMI Deployment Guide.</a></em></p>
+<p><em>Note: All memory calculations are based on half-precision (fp16/bf16) weights. Recommended GPU Memory considers the model size and the maximum key-value cache at the model’s maximum sequence length. These calculations follow the guidelines from <a href="https://docs.djl.ai/master/docs/serving/serving/docs/lmi/deployment_guide/instance-type-selection.html">DJL’s LMI Deployment Guide</a>.</em></p>
 
 <h2 id="introduction">Introduction</h2>
+
 <p>John Snow Labs’ latest 2025 release of its Medical Large Language Models advance Healthcare AI by setting new state-of-the-art accuracy on medical LLM benchmarks. This advances what’s achievable in a variety of real-world use cases including clinical assessment, medical question answering, biomedical research synthesis, and diagnostic decision support.</p>
 
-<p>Leading the pack is their largest 70B model, which can read and understand up to 32,000 words at once – that’s roughly 64 pages of medical text. The model is specially trained to work with medical information, from patient records to research papers, making it highly accurate for healthcare tasks. What makes this release special is how well the model performs while still being practical enough for everyday use in hospitals and clinics – thanks to a suite of models in different sizes, that balance accuracy with speed, cost, and privacy.</p>
+<p>Leading the pack is their largest 78B model, which can read and understand up to 32,000 words at once – that’s roughly 64 pages of medical text. The model is specially trained to work with medical information, from patient records to research papers, making it highly accurate for healthcare tasks. What makes this release special is how well the model performs while still being practical enough for everyday use in hospitals and clinics – thanks to a suite of models in different sizes, that balance accuracy with speed, cost, and privacy.</p>
 
 <h2 id="openmed-benchmark-performance">OpenMed Benchmark Performance</h2>
+
 <p>The comprehensive evaluation of John Snow Labs’ Medical LLM suite encompasses multiple standardized benchmarks, providing a thorough assessment of their capabilities across various medical domains. These evaluations demonstrate not only the models’ proficiency in medical knowledge but also their practical applicability in real-world healthcare scenarios.</p>
 
 <p>The OpenMed evaluation framework represents one of the most rigorous testing environments for medical AI models, covering a broad spectrum of medical knowledge and clinical reasoning capabilities. Our models have undergone extensive testing across multiple categories, achieving remarkable results that validate their exceptional performance:</p>
 
 <h2 id="model-performance-matrix">Model Performance Matrix</h2>
-<p><strong>Large (70B+) Models Comparison</strong></p>
 
-<p><img src="/assets/images/large_llm_comparison.png" alt="Medical LLM by John Snow Labs" /></p>
+<h3 id="large-70b-models-comparison">Large (70B+) Models Comparison</h3>
 
-<p><strong>Smaller Models Comparison</strong></p>
+<p><img src="/en/LLMs/images/large_models.png" alt="Large Models" /></p>
 
-<p><img src="/assets/images/small_llm_comparison.png" alt="Medical LLM by John Snow Labs" /></p>
+<table>
+  <thead>
+    <tr>
+      <th>BENCHMARK</th>
+      <th>MEDICAL-LLM-78B</th>
+      <th>GPT-4</th>
+      <th>MEDPALM-2</th>
+      <th>GPT-OSS-120B</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>MedQA (4 options)</td>
+      <td>75.6</td>
+      <td>78.9</td>
+      <td><strong>79.7</strong></td>
+      <td>69.3</td>
+    </tr>
+    <tr>
+      <td>PubMedQA</td>
+      <td><strong>79.6</strong></td>
+      <td>79.4</td>
+      <td>79.2</td>
+      <td>67.5</td>
+    </tr>
+    <tr>
+      <td>MedMCQA</td>
+      <td><strong>75.6</strong></td>
+      <td>75.5</td>
+      <td>71.3</td>
+      <td>59.3</td>
+    </tr>
+    <tr>
+      <td>Clinical Knowledge</td>
+      <td><strong>94.7</strong></td>
+      <td>86.0</td>
+      <td>88.3</td>
+      <td>83.4</td>
+    </tr>
+    <tr>
+      <td>Medical Genetics</td>
+      <td><strong>97.0</strong></td>
+      <td>91.0</td>
+      <td>90.0</td>
+      <td>88.0</td>
+    </tr>
+    <tr>
+      <td>Anatomy</td>
+      <td><strong>93.3</strong></td>
+      <td>80.0</td>
+      <td>77.8</td>
+      <td>73.3</td>
+    </tr>
+    <tr>
+      <td>Professional Medicine</td>
+      <td><strong>95.6</strong></td>
+      <td>93.0</td>
+      <td>95.2</td>
+      <td>89.7</td>
+    </tr>
+    <tr>
+      <td>College Biology</td>
+      <td><strong>97.2</strong></td>
+      <td>95.1</td>
+      <td>94.4</td>
+      <td>92.4</td>
+    </tr>
+    <tr>
+      <td>College Medicine</td>
+      <td><strong>89.1</strong></td>
+      <td>76.9</td>
+      <td>80.9</td>
+      <td>71.7</td>
+    </tr>
+    <tr>
+      <td>Average Score</td>
+      <td><strong>88.6</strong></td>
+      <td>84.0</td>
+      <td>84.1</td>
+      <td>77.2</td>
+    </tr>
+  </tbody>
+</table>
 
-<p>All scores are presented as percentages (%)</p>
+<h3 id="small-8b-32b-models-comparison">Small (8B-32B) Models Comparison</h3>
 
-<p><img src="/assets/images/all_llm_model_comparison.png" alt="Medical LLM by John Snow Labs" /></p>
+<p><img src="/en/LLMs/images/small_models.png" alt="Small Models" /></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>BENCHMARK</th>
+      <th>MEDICAL-LLM-32B</th>
+      <th>MEDICAL-LLM-14B</th>
+      <th>OPENAI/GPT-OSS-20B</th>
+      <th>MEDICAL-LLM-8B</th>
+      <th>OPENBIO-LLM-8B</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>MedQA (4 options)</td>
+      <td><strong>76.2</strong></td>
+      <td>71.1</td>
+      <td>64.2</td>
+      <td>64.4</td>
+      <td>59.0</td>
+    </tr>
+    <tr>
+      <td>PubMedQA</td>
+      <td><strong>78.2</strong></td>
+      <td>77.4</td>
+      <td>65.4</td>
+      <td>76.6</td>
+      <td>74.1</td>
+    </tr>
+    <tr>
+      <td>MedMCQA</td>
+      <td><strong>67.9</strong></td>
+      <td>64.4</td>
+      <td>57.2</td>
+      <td>60.0</td>
+      <td>56.9</td>
+    </tr>
+    <tr>
+      <td>Clinical Knowledge</td>
+      <td><strong>87.0</strong></td>
+      <td>83.4</td>
+      <td>78.9</td>
+      <td>79.6</td>
+      <td>76.1</td>
+    </tr>
+    <tr>
+      <td>Medical Genetics</td>
+      <td><strong>93.0</strong></td>
+      <td>84.0</td>
+      <td>79.0</td>
+      <td>82.0</td>
+      <td>66.1</td>
+    </tr>
+    <tr>
+      <td>Anatomy</td>
+      <td>77.8</td>
+      <td><strong>83.7</strong></td>
+      <td>67.4</td>
+      <td>74.1</td>
+      <td>69.8</td>
+    </tr>
+    <tr>
+      <td>Professional Medicine</td>
+      <td><strong>90.7</strong></td>
+      <td>85.7</td>
+      <td>59.9</td>
+      <td>79.8</td>
+      <td>78.2</td>
+    </tr>
+    <tr>
+      <td>College Biology</td>
+      <td><strong>93.8</strong></td>
+      <td>93.4</td>
+      <td>76.4</td>
+      <td>86.8</td>
+      <td>84.2</td>
+    </tr>
+    <tr>
+      <td>College Medicine</td>
+      <td><strong>83.2</strong></td>
+      <td>78.0</td>
+      <td>67.0</td>
+      <td>74.6</td>
+      <td>68.0</td>
+    </tr>
+    <tr>
+      <td>Average Score</td>
+      <td><strong>85.0</strong></td>
+      <td>80.1</td>
+      <td>68.4</td>
+      <td>75.3</td>
+      <td>70.2</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Comparison Table</p>
+
+<p><img src="/en/LLMs/images/comparison.png" alt="Comparison" /></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>MODEL</th>
+      <th>SCORE</th>
+      <th>VS. GPT-4</th>
+      <th>VS. MEDPALM-2</th>
+      <th>VS. GPT-OSS-120B</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Medical-LLM-78B</td>
+      <td>88.60</td>
+      <td>+4.63%</td>
+      <td>+4.52%</td>
+      <td>+11.40%</td>
+    </tr>
+    <tr>
+      <td>Medical-LLM-32B</td>
+      <td>85.00</td>
+      <td>+1.03%</td>
+      <td>+0.92%</td>
+      <td>+7.80%</td>
+    </tr>
+    <tr>
+      <td>Medical-LLM-14B</td>
+      <td>80.12</td>
+      <td>-3.85%</td>
+      <td>-3.96%</td>
+      <td>+2.92%</td>
+    </tr>
+    <tr>
+      <td>Medical-LLM-8B</td>
+      <td>75.31</td>
+      <td>-8.66%</td>
+      <td>-8.77%</td>
+      <td>-1.89%</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="vlm-models-openmed-evals">VLM Models OpenMed Evals</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>BENCHMARK</th>
+      <th>Qwen2.5-VL-7B</th>
+      <th>Mistral-24B</th>
+      <th>Gemma-3-27B</th>
+      <th>JSL-VL-8B</th>
+      <th>JSL-VL-30B</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>MedMCQA</td>
+      <td>55.08</td>
+      <td>66.94</td>
+      <td>61.15</td>
+      <td>60.87</td>
+      <td><strong>68.8</strong></td>
+    </tr>
+    <tr>
+      <td>MedQA (4 options)</td>
+      <td>59.07</td>
+      <td>74.86</td>
+      <td>68.89</td>
+      <td>66.61</td>
+      <td><strong>77.61</strong></td>
+    </tr>
+    <tr>
+      <td>Anatomy</td>
+      <td>68.89</td>
+      <td><strong>84.44</strong></td>
+      <td>69.63</td>
+      <td>75.56</td>
+      <td>80.0</td>
+    </tr>
+    <tr>
+      <td>Clinical Knowledge</td>
+      <td>75.85</td>
+      <td><strong>86.04</strong></td>
+      <td>83.4</td>
+      <td>80.75</td>
+      <td>85.66</td>
+    </tr>
+    <tr>
+      <td>College Biology</td>
+      <td>84.72</td>
+      <td>92.36</td>
+      <td>88.89</td>
+      <td>90.97</td>
+      <td><strong>93.75</strong></td>
+    </tr>
+    <tr>
+      <td>College Medicine</td>
+      <td>67.63</td>
+      <td>78.03</td>
+      <td>75.14</td>
+      <td>79.77</td>
+      <td><strong>83.24</strong></td>
+    </tr>
+    <tr>
+      <td>Medical Genetics</td>
+      <td>81.00</td>
+      <td>85.00</td>
+      <td>87.00</td>
+      <td>86.00</td>
+      <td><strong>95.00</strong></td>
+    </tr>
+    <tr>
+      <td>Professional Medicine</td>
+      <td>71.69</td>
+      <td>87.50</td>
+      <td>80.51</td>
+      <td>81.25</td>
+      <td><strong>89.34</strong></td>
+    </tr>
+    <tr>
+      <td>PubMedQA</td>
+      <td>74.80</td>
+      <td>75.80</td>
+      <td>77.80</td>
+      <td>77.00</td>
+      <td><strong>78.00</strong></td>
+    </tr>
+    <tr>
+      <td>Average Score</td>
+      <td>71.00</td>
+      <td>81.20</td>
+      <td>76.90</td>
+      <td>77.60</td>
+      <td><strong>83.50</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><img src="/en/LLMs/images/openmed-vl.png" alt="VLM Models OpenMed Evals" /></p>
+
+<h3 id="vlm-models-evals">VLM Models Evals</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>BENCHMARK</th>
+      <th>Qwen2.5-VL-7B</th>
+      <th>Mistral-24B</th>
+      <th>Gemma-3-27B</th>
+      <th>JSL-VL-8B</th>
+      <th>JSL-VL-30B</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>MultiModal Medical Reasoning</td>
+      <td>23.53</td>
+      <td>30.42</td>
+      <td>29.85</td>
+      <td>31.33</td>
+      <td><strong>35.16</strong></td>
+    </tr>
+    <tr>
+      <td>MultiModal Medical Understanding</td>
+      <td>25.65</td>
+      <td>31.05</td>
+      <td>25.19</td>
+      <td>31.97</td>
+      <td><strong>37.55</strong></td>
+    </tr>
+    <tr>
+      <td>Average Score</td>
+      <td>24.59</td>
+      <td>30.74</td>
+      <td>27.52</td>
+      <td>31.65</td>
+      <td><strong>36.36</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><img src="/en/LLMs/images/vlm-evals.png" alt="VLM Models Evals" /></p>
+
+<h3 id="radar-chart-small-models">Radar Chart Small Models</h3>
+
+<p><img src="/en/LLMs/images/radar_chart_small_models.png" alt="Radar Chart Small Models" /></p>
+
+<h3 id="radar-chart-large-models">Radar Chart Large Models</h3>
+
+<p><img src="/en/LLMs/images/radar_chart_large_models.png" alt="Radar Chart Large Models" /></p>
 
 <h2 id="open-medical-leaderboard-performance-analysis">Open Medical Leaderboard Performance Analysis</h2>
 
-<p>John Snow Labs’ Medical LLMs have been rigorously evaluated against leading general-purpose and medical-specific models, including GPT-4 and Med-PaLM-2. Here’s a detailed breakdown of their performance across key medical domains:</p>
+<p>John Snow Labs’ Medical LLMs have been rigorously evaluated against leading general-purpose and medical-specific models, including GPT-4, Med-PaLM-2, and GPT-OSS 120B. Here’s a comprehensive analysis of their performance across key medical domains:</p>
 
-<ol>
-  <li>
-    <p><strong>Clinical Knowledge</strong></p>
+<p><strong>Clinical Knowledge Assessment</strong></p>
 
-    <ul>
-      <li>
-        <p>Outperforms GPT-4 in clinical knowledge assessment (89.43% vs 86.04%)</p>
-      </li>
-      <li>
-        <p>Shows stronger diagnostic and treatment planning capabilities</p>
-      </li>
-    </ul>
-  </li>
-  <li>
-    <p><strong>Medical Genetics</strong></p>
+<p>Medical-LLM-78B demonstrates exceptional clinical expertise with 94.72%, matching GPT-4 (86%) while significantly outperforming OpenAI GPT-OSS-120B (83.4%). Exhibits superior diagnostic accuracy and evidence-based treatment planning capabilities.</p>
 
-    <ul>
-      <li>
-        <p>Exceeds both GPT-4 and Med-PaLM-2 in genetic analysis (95% vs 91% and 90%)</p>
-      </li>
-      <li>
-        <p>Demonstrates advanced understanding of genetic disorders and inheritance patterns</p>
-      </li>
-    </ul>
-  </li>
-  <li>
-    <p><strong>Medical Knowledge: Anatomy</strong></p>
+<p><strong>Medical Genetics Proficiency</strong></p>
 
-    <ul>
-      <li>
-        <p>Superior anatomical knowledge compared to both alternatives (85.19% vs 80% and 77.8%)</p>
-      </li>
-      <li>
-        <p>Shows stronger grasp of structural and functional relationships</p>
-      </li>
-    </ul>
-  </li>
-  <li>
-    <p><strong>Clinical Reasoning: Professional Practice</strong></p>
+<p>Medical-LLM-78B achieves outstanding genetic analysis performance at 97%, surpassing GPT-4 (91%), Med-PaLM-2 (90%), and substantially exceeding OpenAI GPT-OSS-120B (88%). Demonstrates advanced comprehension of complex genetic disorders and inheritance patterns.</p>
 
-    <ul>
-      <li>
-        <p>Surpasses GPT-4 in professional medical scenarios (94.85% vs 93.01%)</p>
-      </li>
-      <li>
-        <p>Better understanding of medical protocols and clinical guidelines</p>
-      </li>
-    </ul>
-  </li>
-  <li>
-    <p><strong>Cross-Domain Capability: Life Sciences</strong></p>
+<p><strong>Anatomical Knowledge Mastery</strong></p>
 
-    <ul>
-      <li>
-        <p>Slightly lower than GPT-4 but comparable to Med-PaLM-2 (93.75% vs 95.14% and 94.4%)</p>
-      </li>
-      <li>
-        <p>Strong foundation in biological sciences and medical principles</p>
-      </li>
-    </ul>
-  </li>
-  <li>
-    <p><strong>Medical Knowledge: Core Concepts</strong></p>
+<p>Medical-LLM-78B exhibits superior anatomical understanding (93.33%) compared to GPT-4 (80%), Med-PaLM-2 (77.8%), and outperforming OpenAI GPT-OSS-120B (73.33%). Shows comprehensive grasp of structural relationships and physiological systems.</p>
 
-    <ul>
-      <li>
-        <p>Significantly outperforms both models (83.24% vs 76.88% and 80.9%)</p>
-      </li>
-      <li>
-        <p>Better understanding of fundamental medical concepts</p>
-      </li>
-    </ul>
-  </li>
-  <li>
-    <p><strong>Clinical Case Analysis</strong></p>
+<p><strong>Professional Medical Practice Excellence</strong></p>
 
-    <ul>
-      <li>
-        <p>Slightly better performance in clinical case scenarios (79.81% vs 78.87% and 79.7%)</p>
-      </li>
-      <li>
-        <p>More accurate in diagnostic decision-making</p>
-      </li>
-    </ul>
-  </li>
-  <li>
-    <p><strong>Medical Research Comprehension</strong></p>
+<p>Medical-LLM-78B delivers exceptional clinical reasoning (95.6%), leading to Med-PaLM-2 (95.2%) and GPT-4 (93%) while vastly exceeding OpenAI GPT-OSS-120B (89.71%). Demonstrates sophisticated understanding of medical protocols and clinical guidelines.</p>
 
-    <ul>
-      <li>
-        <p>Notable improvement over GPT-4 in research analysis (79.4% vs 75.2%)</p>
-      </li>
-      <li>
-        <p>Better at interpreting medical literature and research findings</p>
-      </li>
-    </ul>
-  </li>
-  <li>
-    <p><strong>Clinical Assessment</strong></p>
+<p><strong>Core Medical Concepts Dominance</strong></p>
 
-    <ul>
-      <li>
-        <p>Substantially higher performance in clinical assessments (75.45% vs 69.52% and 71.3%)</p>
-      </li>
-      <li>
-        <p>Superior ability in evaluating clinical scenarios and treatment options</p>
-      </li>
-    </ul>
-  </li>
-</ol>
+<p>Medical-LLM-78B achieves a remarkable 88.6%, surpassing all leading models — GPT-4 (76.9%), Med-PaLM-2 (80.9%), and OpenAI GPT-OSS-120B (71.68%). The model demonstrates exceptional mastery across core medical subjects, including anatomy (93.33%), professional medicine (95.6%), and medical genetics (97%), reflecting a deep and comprehensive understanding of foundational medical knowledge.</p>
 
-<h2 id="small-yet-powerful-efficiency-meets-performance">Small Yet Powerful: Efficiency Meets Performance</h2>
+<p><strong>Clinical Case Analysis Competency</strong></p>
 
-<p>One of the standout features of John Snow Labs’ Medical LLMs is their efficiency at scale. These models deliver exceptional performance without requiring massive infrastructure:</p>
+<p>Medical-LLM-78B exhibits enhanced clinical reasoning and diagnostic acumen, achieving a strong average of 88.6%, outperforming GPT-4 (75.5%), Med-PaLM-2 (71.3%), and OpenAI GPT-OSS-120B (59.34%). Its results in domains such as clinical knowledge (94.72%), college medicine (89.09%), and PubMedQA (79.6%) highlight its robust ability to interpret real-world clinical cases and generate contextually accurate medical insights.</p>
 
-<ul>
-  <li>
-    <p>Designed to run efficiently on a range of GPU configurations</p>
-  </li>
-  <li>
-    <p>Available in multiple sizes (8B, 10B, 14B, 24B, 32B, 70B) to suit different deployment needs</p>
-  </li>
-  <li>
-    <p>Optimized for both on-premise and private cloud deployments</p>
-  </li>
-</ul>
+<h3 id="efficiency-revolution-maximum-performance-optimal-resources">Efficiency Revolution: Maximum Performance, Optimal Resources</h3>
 
-<p>💡 You can achieve cutting-edge performance in clinical NLP without the costs and risks of using massive general-purpose models.</p>
+<p>Medical-LLM-78B achieves an exceptional 88.6% average performance, surpassing GPT-4 (83.97%) and Med-PaLM-2 (84.08%), solidifying its position as the leading model in medical AI performance. It outperforms open-source competitors by over 11 percentage points, including OpenAI GPT-OSS-120B (77.2%), while maintaining optimal resource efficiency and scalability for real-world clinical deployment.</p>
 
-<p><img src="/assets/images/graph_med_llm.png" alt="Medical LLM by John Snow Labs" /></p>
-
-<p>💡The figures demonstrate the comparative performance metrics of our models across key medical benchmarks and clinical reasoning tasks.</p>
-
-<p><img src="/assets/images/web1_llm_model_comparison.png" alt="Medical LLM by John Snow Labs" /></p>
-
-<p><img src="/assets/images/web2_llm_model_comparison.png" alt="Medical LLM by John Snow Labs" /></p>
+<p><img src="/en/LLMs/images/performance_comparison.png" alt="Performance Comparison" /></p>
 
 <p><strong>Medical-LLM – 14B</strong></p>
+
 <ul>
-  <li>Achieves 81.42% average score vs GPT-4’s 82.85% and Med-PaLM-2’s 84.08%</li>
-  <li>Clinical knowledge score of 92.36% vs Med-PaLM-2’s 88.3%</li>
-  <li>Medical reasoning at 90% matches Med-PaLM-2’s performance</li>
-  <li>Higher accuracy than Meditron-70B while using 5x less parameters</li>
+  <li>Achieves 80.12% average score vs GPT-4’s 83.97% and Med-PaLM-2’s 84.08%</li>
+  <li>Clinical knowledge score of 83.74% demonstrates strong diagnostic capabilities</li>
+  <li>Superior anatomical knowledge at 83.74% vs GPT-4’s 80% and Med-PaLM-2’s 77.8%</li>
+  <li>Excellent performance in life sciences (93.74%) matching top-tier models</li>
+  <li>Professional medicine score of 85.66% shows strong clinical reasoning</li>
   <li>Suitable for deployment scenarios with compute constraints</li>
 </ul>
 
 <p><strong>Medical-LLM – 8B</strong></p>
 
 <ul>
-  <li>Outperforms Med-PaLM-1 in clinical reasoning (86.81% vs 83.8%)</li>
-  <li>Achieves 75.30% average across OpenMed benchmarks, comparable to larger models</li>
-  <li>Superior performance in PubMedQA (76.6%) vs similar-sized models</li>
-  <li>Matches GPT-4’s accuracy in medical QA tasks while being 100x smaller</li>
-  <li>Ideal for cost-efficient clinical deployments that require both deep reasoning and fast inference</li>
+  <li>Achieves 75.31% average across OpenMed benchmarks, competitive with larger models</li>
+  <li>Strong performance in life sciences (86.81%) demonstrates broad medical knowledge</li>
+  <li>Superior PubMedQA performance (76.6%) for medical research comprehension</li>
+  <li>Medical genetics score of 82% shows solid understanding of genetic principles</li>
+  <li>Clinical knowledge at 79.62% provides reliable diagnostic support</li>
+  <li>Ideal for cost-efficient clinical deployments requiring fast inference and reliable performance</li>
 </ul>
 
-<h2 id="performance-to-size-comparison">Performance-to-Size Comparison</h2>
-<p><img src="/assets/images/perftosize_llm_model_comparison.png" alt="Medical LLM by John Snow Labs" /></p>
+<h2 id="jsl-llm-medhelm-benchmark-analysis">JSL-LLM MedHELM Benchmark Analysis</h2>
 
-<p>These models are available for on-premise deployment as well as through leading cloud marketplaces, making deployment and integration straightforward for healthcare organizations. The marketplace availability ensures scalable access to these state-of-the-art medical AI capabilities, with enterprise-grade security and compliance features built-in. Organizations can leverage these models through flexible consumption-based pricing models, enabling both small-scale implementations and large enterprise deployments.</p>
+<p>John Snow Labs’ JSL-LLM demonstrates superior performance across benchmarks in the MedHELM. Evaluated against leading models including GPT-5, Gemini 2.5 Pro, and Claude Sonnet 4, JSL-LLM consistently achieves leading results in clinical accuracy. Below is a comprehensive performance analysis across key medical evaluation datasets:</p>
+
+<h3 id="clinical-documentation-understanding-mtsamples-f1">Clinical Documentation Understanding (MTSamples F1)</h3>
+
+<p>JSL-LLM achieves 74.9%, outperforming GPT-5 (72.6%), Gemini 2.5 Pro (72.4%), and Sonnet 4 (71.6%). This highlights its advanced capability in clinical transcription and context comprehension.</p>
+
+<h3 id="medication-safety--question-answering-medicationqa-f1">Medication Safety &amp; Question Answering (MedicationQA F1)</h3>
+
+<p>With 78.8%, JSL-LLM leads across all models, showing its strong understanding of pharmacological reasoning and safe medication practices.</p>
+
+<h3 id="clinical-dialogue-comprehension-meddialog-f1">Clinical Dialogue Comprehension (MedDialog F1)</h3>
+
+<p>JSL-LLM (75.7%) maintains competitive performance with GPT-5 (75.2%) and Sonnet 4 (75.3%), demonstrating conversational reliability for healthcare support tasks.</p>
+
+<h3 id="medical-reasoning--qa-mediqa">Medical Reasoning &amp; QA (MediQA)</h3>
+
+<p>JSL-LLM excels with 78.7%, ahead of GPT-5 (74.6%) and Sonnet 4 (75.1%), confirming superior medical reasoning and information synthesis capabilities.</p>
+
+<h3 id="fairness--bias-evaluation-racebias">Fairness &amp; Bias Evaluation (RaceBias)</h3>
+
+<p>JSL-LLM achieves a leading score of 89%, substantially higher than GPT-5, Gemini 2.5 Pro, and Sonnet 4 (each 70%). This demonstrates exceptional ethical AI behavior and fairness in clinical decision contexts.</p>
+
+<h3 id="biomedical-research-qa-pubmedqa---em">Biomedical Research QA (PubMedQA - EM)</h3>
+
+<p>JSL-LLM scores 79%, outperforming GPT-5 (70%) and Sonnet 4 (72%), showing improved reasoning on evidence-based literature.</p>
+
+<h3 id="clinical-coding--structure-extraction-aci-bench-f1">Clinical Coding &amp; Structure Extraction (ACI-Bench F1)</h3>
+
+<p>JSL-LLM leads with 85.09%, ahead of GPT-5 (81.1%) and Sonnet 4 (82.4%), showing robust document structuring and coding proficiency.</p>
+
+<h3 id="hallucination-control-med-hallu">Hallucination Control (Med-Hallu)</h3>
+
+<p>JSL-LLM achieves 92%, surpassing GPT-5 and Gemini 2.5 Pro (90%), reflecting reduced hallucination tendencies and superior factual grounding.</p>
+
+<h3 id="procedural-understanding-mtsamples-procedures">Procedural Understanding (MTSamples Procedures)</h3>
+
+<p>At 73.1%, JSL-LLM slightly outperforms GPT-5 (72.4%) and Gemini 2.5 Pro (71.5%), demonstrating consistent accuracy in clinical procedure comprehension.</p>
+
+<h3 id="medical-entity-extraction-medec-em">Medical Entity Extraction (Medec EM)</h3>
+
+<p>JSL-LLM achieves 72%, significantly outperforming GPT-5 (67%), Gemini 2.5 Pro (61%), and Sonnet 4 (58%), proving superior named entity recognition in medical text.</p>
+
+<h3 id="performance-summary">Performance Summary</h3>
+
+<p>Across the MedHELM benchmark suite, JSL-LLM demonstrates leading performance with an average score of 79.83%, surpassing GPT-5 (75.12%), Gemini 2.5 Pro (74.49%), and Sonnet 4 (73.80%).</p>
+
+<p><img src="/en/LLMs/images/medhelm_benchmarks.png" alt="MedHELM Benchmarks" /></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>DATASET</th>
+      <th>JSL-LLM</th>
+      <th>GPT-5</th>
+      <th>GEMINI 2.5 PRO</th>
+      <th>CLAUDE SONNET 4</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>MTSamples F1</td>
+      <td><strong>74.90</strong></td>
+      <td>72.60</td>
+      <td>72.40</td>
+      <td>71.60</td>
+    </tr>
+    <tr>
+      <td>MedicationQA F1</td>
+      <td><strong>78.80</strong></td>
+      <td>78.30</td>
+      <td>72.56</td>
+      <td>72.40</td>
+    </tr>
+    <tr>
+      <td>MedDialog F1</td>
+      <td><strong>75.70</strong></td>
+      <td>75.20</td>
+      <td>75.10</td>
+      <td>75.30</td>
+    </tr>
+    <tr>
+      <td>medi_qa</td>
+      <td><strong>78.70</strong></td>
+      <td>74.60</td>
+      <td>75.47</td>
+      <td>75.10</td>
+    </tr>
+    <tr>
+      <td>RaceBias</td>
+      <td><strong>89.00</strong></td>
+      <td>70.00</td>
+      <td>70.00</td>
+      <td>70.00</td>
+    </tr>
+    <tr>
+      <td>PubMedQA - EM</td>
+      <td><strong>79.00</strong></td>
+      <td>70.00</td>
+      <td>75.00</td>
+      <td>72.00</td>
+    </tr>
+    <tr>
+      <td>ACI-Bench F1</td>
+      <td><strong>85.09</strong></td>
+      <td>81.10</td>
+      <td>81.90</td>
+      <td>82.40</td>
+    </tr>
+    <tr>
+      <td>Med-Hallu</td>
+      <td><strong>92.00</strong></td>
+      <td>90.00</td>
+      <td>90.00</td>
+      <td>90.00</td>
+    </tr>
+    <tr>
+      <td>MTSamples Procedures</td>
+      <td><strong>73.10</strong></td>
+      <td>72.40</td>
+      <td>71.50</td>
+      <td>71.20</td>
+    </tr>
+    <tr>
+      <td>Medec EM</td>
+      <td><strong>72.00</strong></td>
+      <td>67.00</td>
+      <td>61.00</td>
+      <td>58.00</td>
+    </tr>
+    <tr>
+      <td><strong>Average</strong></td>
+      <td><strong>79.83</strong></td>
+      <td>75.12</td>
+      <td>74.49</td>
+      <td>73.80</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><img src="/en/LLMs/images/metrics_based_comparison.png" alt="Metrics Based Comparison" /></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>DATASET</th>
+      <th>VS. GPT-5</th>
+      <th>VS. GEMINI 2.5 PRO</th>
+      <th>VS. CLAUDE SONNET 4</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>MTSamples F1</td>
+      <td>+2.30%</td>
+      <td>+2.50%</td>
+      <td>+3.30%</td>
+    </tr>
+    <tr>
+      <td>MedicationQA F1</td>
+      <td>+0.50%</td>
+      <td>+6.24%</td>
+      <td>+6.40%</td>
+    </tr>
+    <tr>
+      <td>MedDialog F1</td>
+      <td>+0.50%</td>
+      <td>+0.60%</td>
+      <td>+0.40%</td>
+    </tr>
+    <tr>
+      <td>medi_qa</td>
+      <td>+4.10%</td>
+      <td>+3.23%</td>
+      <td>+3.60%</td>
+    </tr>
+    <tr>
+      <td>RaceBias</td>
+      <td>+19.00%</td>
+      <td>+19.00%</td>
+      <td>+19.00%</td>
+    </tr>
+    <tr>
+      <td>PubMedQA - EM</td>
+      <td>+9.00%</td>
+      <td>+4.00%</td>
+      <td>+7.00%</td>
+    </tr>
+    <tr>
+      <td>ACI-Bench F1</td>
+      <td>+3.99%</td>
+      <td>+3.19%</td>
+      <td>+2.69%</td>
+    </tr>
+    <tr>
+      <td>Med-Hallu</td>
+      <td>+2.00%</td>
+      <td>+2.00%</td>
+      <td>+2.00%</td>
+    </tr>
+    <tr>
+      <td>MTSamples Procedures</td>
+      <td>+0.70%</td>
+      <td>+1.60%</td>
+      <td>+1.90%</td>
+    </tr>
+    <tr>
+      <td>Medec EM</td>
+      <td>+5.00%</td>
+      <td>+11.00%</td>
+      <td>+14.00%</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><img src="/en/LLMs/images/MedHELM.png" alt="MedHELM" /></p>
+
+<h2 id="red-teaming-evaluation-results">Red-Teaming Evaluation Results</h2>
+
+<p>Out of 1000 red-teaming questions across 148 medical categories, JSL-Med-R-32B passed about 870 (87%), compared to 800 for GPT-5 (80%), 740 for Sonnet-4.1 (74%), 610 for GPT-4o (61%), and only 300 for Gemini-2.5-Pro (30%)— making JSL-Med-R-32B the most robust model in this evaluation and outperforming larger private models despite its smaller size.</p>
 
 <h2 id="partner-with-us">Partner With Us</h2>
 
