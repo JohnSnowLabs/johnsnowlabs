@@ -12,11 +12,11 @@ The  LargeFewShotClassifierModel annotator is designed to work effectively with 
 
 Parameters:
 
-- `inputCols`: The name of the columns containing the input annotations. It can read either a String column or an Array.
-
-- `outputCol`: The name of the column in Document type that is generated. We can specify only one column here.
-
-
+- `inputCols` : Input columns containing DOCUMENT annotations.
+- `outputCol` : Output column name where classification results (CATEGORY) are stored.
+- `batchSize` : Batch size for processing documents (default: 8).
+- `caseSensitive` : Whether the classifier is sensitive to text casing (default: false).
+- `maxSentenceLength` : Maximum input sentence length (text beyond this may be truncated).
 
 {%- endcapture -%}
 
