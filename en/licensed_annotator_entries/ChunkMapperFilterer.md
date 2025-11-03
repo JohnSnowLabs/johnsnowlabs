@@ -12,7 +12,14 @@ model
 
 Parametres:
 
-- `ReturnCriteria` *(String)*: Has two possible values: “success” or “fail”. If “fail” (default), returns the chunks that are not in the label dependencies; if “success”, returns the labels that were successfully mapped by the `ChunkMapperModel` annotator.
+- `inputCols` : Input annotation columns for the filter. Typically includes CHUNK and LABEL_DEPENDENCY annotations from a previous stage (such as a ChunkMapper), which contain the entities and their mapping information.  
+- `outputCol` : Name of the output column that will contain the filtered CHUNK annotations after applying the selection criteria.  
+- `returnCriteria` : Determines which chunks are kept after filtering.  
+  - "success" returns only chunks that were successfully mapped by the ChunkMapper.  
+  - "fail" (default) returns chunks that failed to map or have no corresponding dependency.  
+- `whiteList` : List of entity labels to explicitly include in processing. Only chunks whose entities match one of these labels will be considered; others are ignored.  
+- `blackList` : List of entity labels to exclude from processing. Chunks matching these labels will be ignored, while all others will be processed.  
+- `caseSensitive` : Controls whether the label matching in whiteList and blackList is case sensitive. Default is True.
 
 Example usage and more details can be found on Spark NLP Workshop repository accessible in GitHub, for example the notebook [Healthcare Chunk Mapping](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/26.Chunk_Mapping.ipynb).
 
