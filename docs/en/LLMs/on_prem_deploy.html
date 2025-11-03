@@ -695,13 +695,13 @@ johnsnowlabs/jsl-llms <span class="se">\</span>
         <td>1, 2</td>
       </tr>
       <tr>
-        <td>Medical-Visual-LLM-7B</td>
-        <td>7B</td>
+        <td>Medical-Visual-LLM-8B</td>
+        <td>8B</td>
         <td>~64 GB</td>
-        <td>128K</td>
-        <td>15 GB</td>
-        <td>48 GB</td>
-        <td>1, 2, 4</td>
+        <td>262K</td>
+        <td>16 GB</td>
+        <td>50 GB</td>
+        <td>1, 2, 4, 8</td>
       </tr>
       <tr>
         <td>Medical-LLM-Small</td>
@@ -731,11 +731,11 @@ johnsnowlabs/jsl-llms <span class="se">\</span>
         <td>2, 4, 8</td>
       </tr>
       <tr>
-        <td>Medical-Visual-LLM-24B</td>
-        <td>24B</td>
-        <td>~145 GB</td>
-        <td>128K</td>
-        <td>45 GB</td>
+        <td>Medical-Visual-LLM-30B</td>
+        <td>30B</td>
+        <td>~150 GB</td>
+        <td>262K</td>
+        <td>58 GB</td>
         <td>100 GB</td>
         <td>2, 4, 8</td>
       </tr>
@@ -755,8 +755,6 @@ johnsnowlabs/jsl-llms <span class="se">\</span>
     <p><strong>Important Notes</strong></p>
 
     <p><strong>Memory Calculations:</strong> All memory calculations are based on half-precision (fp16/bf16) weights. Recommended GPU Memory considers the model size and the maximum key-value cache at the model’s maximum sequence length. These calculations follow the guidelines from <a href="https://docs.djl.ai/master/docs/serving/serving/docs/lmi/deployment_guide/instance-type-selection.html">DJL’s LMI Deployment Guide.</a></p>
-
-    <p><strong>Vision Language Model Limitations:</strong> Medical-Visual-LLM-24B and Medical-Spanish-LLM-24B currently <strong>only support text inference</strong> for on-premise deployment. For full vision-language capabilities (both text and image processing), please use these models through <a href="/docs/en/LLMs/on_aws">AWS SageMaker Marketplace</a> where these models support complete multimodal functionality.</p>
   </blockquote>
 
 </div>
