@@ -11,8 +11,9 @@ sidebar:
     nav: term-server
 ---
 
+<div class="h3-box" markdown="1">
 
-<p style="text-align:center;">Release date: {{ page.modify_date | date: '%m-%d-%Y' }}</p>
+<p style="text-align:center;" markdown="1">Release date: {{ page.modify_date | date: '%m-%d-%Y' }}</p>
 
 ## Authorization and User Management
 
@@ -47,6 +48,8 @@ The application provides a flexible search results table that can be customized 
 
 - API access is secured through API keys linked to user accounts, ensuring that only authorized users can interact with the API endpoints.
 
+</div><div class="h3-box" markdown="1">
+
 ## Improvements
 
 * Improved hierarchy display for clearer visualization and navigation of concept hierarchies.
@@ -57,7 +60,7 @@ The application provides a flexible search results table that can be customized 
 * Improved spell checker to deliver more accurate suggestions and corrections.
 
 
-<div class="prev_ver h3-box" markdown="1">
+</div><div class="prev_ver h3-box" markdown="1">
 
 ## Versions
 

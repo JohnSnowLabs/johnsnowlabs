@@ -68,7 +68,7 @@ The following models are currently available for on-premise deployments:
 >
 > **Vision Language Model Limitations:** Medical-Visual-LLM-24B and Medical-Spanish-LLM-24B currently **only support text inference** for on-premise deployment. For full vision-language capabilities (both text and image processing), please use these models through [AWS SageMaker Marketplace](/docs/en/LLMs/on_aws) where these models support complete multimodal functionality.
 
-</div>
+</div><div class="h3-box" markdown="1">
 
 ### 🪄 Memory Optimization Tips
 
@@ -76,6 +76,7 @@ The following models are currently available for on-premise deployments:
 - Leverage tensor parallelism for large models
 - Select an appropriate model based on your GPU resources
 
+</div><div class="h3-box" markdown="1">
 
 ## Model Interactions
 Once deployed, the container exposes a RESTful API for model interactions.
@@ -114,8 +115,4 @@ payload = {
 }
 ```
 
-
-
-
-
-
+</div>
