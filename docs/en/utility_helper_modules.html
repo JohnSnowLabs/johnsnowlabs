@@ -1590,7 +1590,6 @@ Applies shift-filling logic to the given DataFrame.</p>
 </code></pre></div>  </div>
 
 </div>
-
 <div class="h3-box">
 
   <h3 id="pipeline-tracer">Pipeline Tracer</h3>
@@ -1619,6 +1618,9 @@ Applies shift-filling logic to the given DataFrame.</p>
 <span class="kn">from</span> <span class="nn">sparknlp_jsl.pipeline_output_parser</span> <span class="kn">import</span> <span class="n">PipelineOutputParser</span>
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h2 id="showavailablemodels">showAvailableModels</h2>
 
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">PipelineTracer</span><span class="p">.</span><span class="n">showAvailableModels</span><span class="p">(</span><span class="n">language</span><span class="o">=</span><span class="s">"en"</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s">"clinical/models"</span><span class="p">)</span>
@@ -1640,6 +1642,9 @@ icd10cm_rxnorm_resolver_pipeline
 rxnorm_resolver_pipeline
 snomed_resolver_pipeline
 </code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
 
   <h2 id="pipelineoutputparser">PipelineOutputParser</h2>
 
@@ -1690,6 +1695,10 @@ snomed_resolver_pipeline
 <span class="n">parsed_result</span> <span class="o">=</span> <span class="n">pipeline_parser</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">annotations</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">parsed_result</span><span class="p">)</span>
 </code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
+
   <h2 id="relationaldbdeidentification">RelationalDBDeidentification</h2>
 
   <p>The <code class="language-plaintext highlighter-rouge">RelationalDBDeidentification</code> class provides a robust solution for de-identifying sensitive data in relational databases. It supports a variety of obfuscation techniques and integrates seamlessly with database systems.</p>
@@ -1935,6 +1944,9 @@ snomed_resolver_pipeline
 
   <p>Please check the <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.8.Clinical_Deidentification_for_Structured_Data.ipynb">4.8.Clinical_Deidentification_for_Structured_Data Notebook</a> for more information.</p>
 
+</div>
+<div class="h3-box">
+
   <h2 id="apply-exception-handling">Apply Exception Handling</h2>
 
   <p>The <code class="language-plaintext highlighter-rouge">apply_exception_handling</code> utility sets <code class="language-plaintext highlighter-rouge">setDoExceptionHandling(True)</code> for specified or all stages in a Spark NLP pipeline, making your pipeline more robust to errors in supported stages.</p>
@@ -2027,6 +2039,9 @@ snomed_resolver_pipeline
 <span class="n">result</span> <span class="o">=</span> <span class="n">light_model</span><span class="p">.</span><span class="n">fullAnnotate</span><span class="p">(</span><span class="s">"The patient is a 55-years old. He has a history of smoking and lung cancer."</span><span class="p">)</span>
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h2 id="annotation2training">Annotation2Training</h2>
 
   <p>The <code class="language-plaintext highlighter-rouge">Annotation2Training</code> utility converts annotation results from JSON or CSV files into a DataFrame suitable for NER training.<br />
@@ -2081,6 +2096,9 @@ Input files must have a structure similar to those produced by John Snow Labs’
 <span class="c1"># Returns a Spark DataFrame to train NER models.
 # Ready to go for MedicalNerApproach
 </span></code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
 
   <h2 id="dicttoannotationconverter">dict_to_annotation_converter</h2>
 
@@ -2205,7 +2223,10 @@ Input files must have a structure similar to those produced by John Snow Labs’
 <span class="n">light_deIdentification</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">result_df</span><span class="p">).</span><span class="n">selectExpr</span><span class="p">(</span><span class="s">"deidentified.result"</span><span class="p">).</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 </code></pre></div>  </div>
 
-  <p>## llm_df_preprocessor</p>
+</div>
+<div class="h3-box">
+
+  <h2 id="llmdfpreprocessor">llm_df_preprocessor</h2>
 
   <p>Preprocesses text data in a DataFrame by adding prefix and/or suffix prompts for LLM usage.</p>
 
@@ -2274,6 +2295,9 @@ Input files must have a structure similar to those produced by John Snow Labs’
     <li>The function is designed to work efficiently with Spark’s distributed computing model and can handle large-scale text preprocessing tasks.</li>
   </ul>
 
+</div>
+<div class="h3-box">
+
   <h2 id="visionllmpreprocessor">vision_llm_preprocessor</h2>
 
   <p>Loads images from a specified path as raw bytes and adds a prompt column for Vision LLM processing.</p>
@@ -2333,6 +2357,7 @@ Must be a valid column name. Defaults to <code class="language-plaintext highlig
     <li><strong>MedicalVisionLLM</strong>: For processing the output DataFrame with vision-language models</li>
     <li><strong>ImageAssembler</strong>: The underlying Spark NLP component used for image loading</li>
   </ul>
+
 </div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
       <time itemprop="dateModified" datetime="2025-09-30T00:00:00+00:00">Sep 30, 2025</time>

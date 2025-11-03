@@ -626,63 +626,71 @@ function wrapWordInSpan(data, wordToWrap) {
             <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Deploy LLMs as Private Azure Endpoints"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
-<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><p>The list below shows John Snow Labs’ Medical LLM models available on Azure marketplace.</p>
+<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-<p><strong>All LLMs on Azure are Open AI compatible.</strong></p>
+  <p>The list below shows John Snow Labs’ Medical LLM models available on Azure marketplace.</p>
 
-<p><a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.medical_llm_medium?tab=Overview">Medical LLM - Medium</a></p>
+  <p><strong>All LLMs on Azure are Open AI compatible.</strong></p>
 
-<p><a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.medical_llm_small?tab=Overview">Medical LLM - Small</a></p>
+  <p><a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.medical_llm_medium?tab=Overview">Medical LLM - Medium</a></p>
 
-<p><a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.medical_llm_14b?tab=Overview">Medical LLM - 14B</a></p>
+  <p><a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.medical_llm_small?tab=Overview">Medical LLM - Small</a></p>
 
-<p><a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.medical_llm_7b?tab=Overview">Medical LLM - 8B</a></p>
+  <p><a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.medical_llm_14b?tab=Overview">Medical LLM - 14B</a></p>
 
-<p><a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.medical_reasoning_llm_32b?tab=Overview">Medical Reasoning LLM - 32B</a></p>
+  <p><a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.medical_llm_7b?tab=Overview">Medical LLM - 8B</a></p>
 
-<p><a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.spanish_medical_llm_24b?tab=Overview">Medical Spanish LLM - 24B</a></p>
+  <p><a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.medical_reasoning_llm_32b?tab=Overview">Medical Reasoning LLM - 32B</a></p>
 
-<p><a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.medical_vlm_7b?tab=Overview">Medical Visual LLM - 7B</a></p>
+  <p><a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.spanish_medical_llm_24b?tab=Overview">Medical Spanish LLM - 24B</a></p>
 
-<h2 id="deployment-instructions">Deployment Instructions</h2>
+  <p><a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.medical_vlm_7b?tab=Overview">Medical Visual LLM - 7B</a></p>
 
-<ol>
-  <li>
-    <p>Subscribe to the Product from the models listing page using the <code class="language-plaintext highlighter-rouge">Get It Now</code> button.
+</div>
+<div class="h3-box">
+
+  <h2 id="deployment-instructions">Deployment Instructions</h2>
+
+  <ol>
+    <li>
+      <p>Subscribe to the Product from the models listing page using the <code class="language-plaintext highlighter-rouge">Get It Now</code> button.
 <img src="/assets/images/med_llms/azure_subscribe.png" alt="azure_subscribe" /></p>
-  </li>
-  <li>
-    <p>Create a virtual machine of the product. Make sure port 80 is open for inbound requests.</p>
+    </li>
+    <li>
+      <p>Create a virtual machine of the product. Make sure port 80 is open for inbound requests.</p>
 
-    <p><em><strong>Optional</strong>, open port 3000 for Open Web UI interface.</em>
+      <p><em><strong>Optional</strong>, open port 3000 for Open Web UI interface.</em>
  <img src="/assets/images/med_llms/azure_launch.png" alt="launch_azure_product" /></p>
-  </li>
-  <li>Wait for the services to be active. This might take few minutes for the initial boot.
+    </li>
+    <li>Wait for the services to be active. This might take few minutes for the initial boot.
 <br />
  To check the status, login to the instance and run this command
 <br />
 <code class="language-plaintext highlighter-rouge">sudo systemctl status med-llm.service</code>
  <img src="/assets/images/med_llms/azure_status.png" alt="azure_product_status" /></li>
-  <li>
-    <p>Once all the status is active, access the model api docs from http://INSTANCE_IP/docs</p>
-  </li>
-  <li>Open WebUI hosted on port 3000. You can also interact with the model from here.
+    <li>
+      <p>Once all the status is active, access the model api docs from http://INSTANCE_IP/docs</p>
+    </li>
+    <li>Open WebUI hosted on port 3000. You can also interact with the model from here.
  <img src="/assets/images/med_llms/azure_open_web.png" alt="azure_open_web_ui" /></li>
-</ol>
+  </ol>
 
-<h2 id="model-interactions">Model Interactions</h2>
-<p>Once deployed, the container exposes a RESTful API for model interactions.</p>
+</div>
+<div class="h3-box">
 
-<h3 id="chat-completions">Chat Completions</h3>
-<p>Use this endpoint for multi-turn conversational interactions (e.g., clinical assistants).</p>
+  <h2 id="model-interactions">Model Interactions</h2>
+  <p>Once deployed, the container exposes a RESTful API for model interactions.</p>
 
-<ul>
-  <li><strong>Endpoint</strong>: <code class="language-plaintext highlighter-rouge">/v1/chat/completions</code></li>
-  <li><strong>Method</strong>: POST</li>
-  <li><strong>Example Request</strong>:</li>
-</ul>
+  <h3 id="chat-completions">Chat Completions</h3>
+  <p>Use this endpoint for multi-turn conversational interactions (e.g., clinical assistants).</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+  <ul>
+    <li><strong>Endpoint</strong>: <code class="language-plaintext highlighter-rouge">/v1/chat/completions</code></li>
+    <li><strong>Method</strong>: POST</li>
+    <li><strong>Example Request</strong>:</li>
+  </ul>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">"model"</span><span class="p">:</span> <span class="s">"Medical-LLM-8B"</span><span class="p">,</span>
     <span class="s">"messages"</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span><span class="s">"role"</span><span class="p">:</span> <span class="s">"system"</span><span class="p">,</span> <span class="s">"content"</span><span class="p">:</span> <span class="s">"You are a professional medical assistant"</span><span class="p">},</span>
@@ -691,23 +699,26 @@ function wrapWordInSpan(data, wordToWrap) {
     <span class="s">"temperature"</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">,</span>
     <span class="s">"max_tokens"</span><span class="p">:</span> <span class="mi">1024</span>
 <span class="p">}</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
 
-<h3 id="text-completions">Text Completions</h3>
-<p>Use this endpoint for single-turn prompts or generating long-form medical text.</p>
+  <h3 id="text-completions">Text Completions</h3>
+  <p>Use this endpoint for single-turn prompts or generating long-form medical text.</p>
 
-<ul>
-  <li><strong>Endpoint</strong>: <code class="language-plaintext highlighter-rouge">/v1/completions</code></li>
-  <li><strong>Method</strong>: POST</li>
-  <li><strong>Example Request</strong>:
-```python
-payload = {
-  “model”: “Medical-LLM-8B”,
-  “prompt”: “Provide a detailed explanation of rheumatoid arthritis treatment”,
-  “temperature”: 0.7,
-  “max_tokens”: 4096
-}</li>
-</ul>
+  <ul>
+    <li><strong>Endpoint</strong>: <code class="language-plaintext highlighter-rouge">/v1/completions</code></li>
+    <li><strong>Method</strong>: POST</li>
+    <li><strong>Example Request</strong>:
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">"model"</span><span class="p">:</span> <span class="s">"Medical-LLM-8B"</span><span class="p">,</span>
+  <span class="s">"prompt"</span><span class="p">:</span> <span class="s">"Provide a detailed explanation of rheumatoid arthritis treatment"</span><span class="p">,</span>
+  <span class="s">"temperature"</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">,</span>
+  <span class="s">"max_tokens"</span><span class="p">:</span> <span class="mi">4096</span>
+<span class="p">}</span>
+</code></pre></div>      </div>
+    </li>
+  </ul>
+
+</div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
       <time itemprop="dateModified" datetime="2025-03-31T00:00:00+00:00">Mar 31, 2025</time>
     </span><!-- start custom article footer snippet -->

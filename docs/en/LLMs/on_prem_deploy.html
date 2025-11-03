@@ -758,28 +758,32 @@ johnsnowlabs/jsl-llms <span class="se">\</span>
   </blockquote>
 
 </div>
+<div class="h3-box">
 
-<h3 id="-memory-optimization-tips">🪄 Memory Optimization Tips</h3>
+  <h3 id="memory-optimization-tips">🪄 Memory Optimization Tips</h3>
 
-<ul>
-  <li>Use smaller sequence lengths to reduce KV-cache memory</li>
-  <li>Leverage tensor parallelism for large models</li>
-  <li>Select an appropriate model based on your GPU resources</li>
-</ul>
+  <ul>
+    <li>Use smaller sequence lengths to reduce KV-cache memory</li>
+    <li>Leverage tensor parallelism for large models</li>
+    <li>Select an appropriate model based on your GPU resources</li>
+  </ul>
 
-<h2 id="model-interactions">Model Interactions</h2>
-<p>Once deployed, the container exposes a RESTful API for model interactions.</p>
+</div>
+<div class="h3-box">
 
-<h3 id="chat-completions">Chat Completions</h3>
-<p>Use this endpoint for multi-turn conversational interactions (e.g., clinical assistants).</p>
+  <h2 id="model-interactions">Model Interactions</h2>
+  <p>Once deployed, the container exposes a RESTful API for model interactions.</p>
 
-<ul>
-  <li><strong>Endpoint</strong>: <code class="language-plaintext highlighter-rouge">/v1/chat/completions</code></li>
-  <li><strong>Method</strong>: POST</li>
-  <li><strong>Example Request</strong>:</li>
-</ul>
+  <h3 id="chat-completions">Chat Completions</h3>
+  <p>Use this endpoint for multi-turn conversational interactions (e.g., clinical assistants).</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+  <ul>
+    <li><strong>Endpoint</strong>: <code class="language-plaintext highlighter-rouge">/v1/chat/completions</code></li>
+    <li><strong>Method</strong>: POST</li>
+    <li><strong>Example Request</strong>:</li>
+  </ul>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">"model"</span><span class="p">:</span> <span class="s">"Medical-LLM-8B"</span><span class="p">,</span>
     <span class="s">"messages"</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span><span class="s">"role"</span><span class="p">:</span> <span class="s">"system"</span><span class="p">,</span> <span class="s">"content"</span><span class="p">:</span> <span class="s">"You are a professional medical assistant"</span><span class="p">},</span>
@@ -788,25 +792,26 @@ johnsnowlabs/jsl-llms <span class="se">\</span>
     <span class="s">"temperature"</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">,</span>
     <span class="s">"max_tokens"</span><span class="p">:</span> <span class="mi">1024</span>
 <span class="p">}</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
 
-<h3 id="text-completions">Text Completions</h3>
-<p>Use this endpoint for single-turn prompts or generating long-form medical text.</p>
+  <h3 id="text-completions">Text Completions</h3>
+  <p>Use this endpoint for single-turn prompts or generating long-form medical text.</p>
 
-<ul>
-  <li><strong>Endpoint</strong>: <code class="language-plaintext highlighter-rouge">/v1/completions</code></li>
-  <li><strong>Method</strong>: POST</li>
-  <li><strong>Example Request</strong>:
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+  <ul>
+    <li><strong>Endpoint</strong>: <code class="language-plaintext highlighter-rouge">/v1/completions</code></li>
+    <li><strong>Method</strong>: POST</li>
+    <li><strong>Example Request</strong>:
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">"model"</span><span class="p">:</span> <span class="s">"Medical-LLM-8B"</span><span class="p">,</span>
   <span class="s">"prompt"</span><span class="p">:</span> <span class="s">"Provide a detailed explanation of rheumatoid arthritis treatment"</span><span class="p">,</span>
   <span class="s">"temperature"</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">,</span>
   <span class="s">"max_tokens"</span><span class="p">:</span> <span class="mi">4096</span>
 <span class="p">}</span>
-</code></pre></div>    </div>
-  </li>
-</ul>
+</code></pre></div>      </div>
+    </li>
+  </ul>
 
+</div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
       <time itemprop="dateModified" datetime="2025-09-15T00:00:00+00:00">Sep 15, 2025</time>
     </span><!-- start custom article footer snippet -->

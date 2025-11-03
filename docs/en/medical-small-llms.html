@@ -626,26 +626,29 @@ function wrapWordInSpan(data, wordToWrap) {
             <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Medical Small LLMs"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
-<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="medical-small-llms">Medical Small LLMs</h2>
+<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-<p>John Snow Labs provides a curated suite of <strong>specialized small language models (between 1B and 10B parameters) (apart from the larger and more capable versions that are already available on</strong> <a href="https://nlp.johnsnowlabs.com/docs/en/LLMs/medical_llm" title="https://nlp.johnsnowlabs.com/docs/en/llms/medical_llm">marketplaces</a><strong>)</strong>, built and fine-tuned on medical context and tasks. These models leverage both in-house datasets and leading open-source medical corpora, ensuring high accuracy across a wide range of healthcare NLP use cases.</p>
+  <h2 id="medical-small-llms">Medical Small LLMs</h2>
 
-<p>Optimized for real-world deployment, all models are <strong>quantized and efficient enough to run on commodity hardware without a GPU</strong> (though GPU acceleration remains supported and preferred). They integrate seamlessly into the <strong>Healthcare NLP library</strong>, just like any other module, and are fully covered by the <strong>Healthcare NLP license</strong>.</p>
+  <p>John Snow Labs provides a curated suite of <strong>specialized small language models (between 1B and 10B parameters) (apart from the larger and more capable versions that are already available on</strong> <a href="https://nlp.johnsnowlabs.com/docs/en/LLMs/medical_llm" title="https://nlp.johnsnowlabs.com/docs/en/llms/medical_llm">marketplaces</a><strong>)</strong>, built and fine-tuned on medical context and tasks. These models leverage both in-house datasets and leading open-source medical corpora, ensuring high accuracy across a wide range of healthcare NLP use cases.</p>
 
-<p>To make adoption easier, we also provide a <strong>Colab notebook</strong> where users can quickly test and integrate these models into their own workflows.</p>
+  <p>Optimized for real-world deployment, all models are <strong>quantized and efficient enough to run on commodity hardware without a GPU</strong> (though GPU acceleration remains supported and preferred). They integrate seamlessly into the <strong>Healthcare NLP library</strong>, just like any other module, and are fully covered by the <strong>Healthcare NLP license</strong>.</p>
 
-<p>These models can be:</p>
+  <p>To make adoption easier, we also provide a <strong>Colab notebook</strong> where users can quickly test and integrate these models into their own workflows.</p>
 
-<ul>
-  <li>Plugged into <strong>Healthcare NLP pipelines</strong>, alongside other components coming from Spark NLP.</li>
-  <li>Scaled across distributed clusters to process <strong>millions of records</strong>.</li>
-  <li>Experimented with locally, allowing teams to validate performance before scaling into production.</li>
-</ul>
+  <p>These models can be:</p>
 
-<p>Ideal for clinical, biomedical, and operational NLP tasks (as detailed below), these models strike the balance between <strong>efficiency, scalability, and medical relevance</strong>—making them a trusted choice for healthcare AI projects.</p>
+  <ul>
+    <li>Plugged into <strong>Healthcare NLP pipelines</strong>, alongside other components coming from Spark NLP.</li>
+    <li>Scaled across distributed clusters to process <strong>millions of records</strong>.</li>
+    <li>Experimented with locally, allowing teams to validate performance before scaling into production.</li>
+  </ul>
 
-<p><strong>You can explore these models on our</strong> <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/36.0.Loading_Medical_and_Open_Source_LLMs.ipynb" title="https://colab.research.google.com/github/johnsnowlabs/spark-nlp-workshop/blob/master/healthcare-nlp/36.0.loading_medical_and_open_source_llms.ipynb">Colab notebook</a> <strong>and see how these models can enhance your healthcare workflows.</strong></p>
+  <p>Ideal for clinical, biomedical, and operational NLP tasks (as detailed below), these models strike the balance between <strong>efficiency, scalability, and medical relevance</strong>—making them a trusted choice for healthcare AI projects.</p>
 
+  <p><strong>You can explore these models on our</strong> <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/36.0.Loading_Medical_and_Open_Source_LLMs.ipynb" title="https://colab.research.google.com/github/johnsnowlabs/spark-nlp-workshop/blob/master/healthcare-nlp/36.0.loading_medical_and_open_source_llms.ipynb">Colab notebook</a> <strong>and see how these models can enhance your healthcare workflows.</strong></p>
+
+</div>
 <div class="h3-box">
 
   <table class="table-model-big db">
@@ -902,11 +905,11 @@ function wrapWordInSpan(data, wordToWrap) {
       <li>Larger context window may require more GPU memory.</li>
     </ul>
   </blockquote>
+
 </div>
-
-<h2 id="medical-small-llms-benchmarking">Medical Small LLMs Benchmarking</h2>
-
 <div class="h3-box">
+
+  <h2 id="medical-small-llms-benchmarking">Medical Small LLMs Benchmarking</h2>
 
   <table class="table-model-big db">
     <thead>
@@ -1007,7 +1010,6 @@ function wrapWordInSpan(data, wordToWrap) {
   </table>
 
 </div>
-
 <div class="h3-box">
 
   <h3 id="benchmark-summary">Benchmark Summary</h3>
@@ -1017,7 +1019,6 @@ function wrapWordInSpan(data, wordToWrap) {
   <p>Each model’s performance was measured based on accuracy, reflecting how well it handled medical reasoning, clinical knowledge, and biomedical question answering.</p>
 
 </div>
-
 <div class="h3-box">
 
   <h2 id="jsl-meds">JSL-MedS</h2>
@@ -1071,8 +1072,8 @@ function wrapWordInSpan(data, wordToWrap) {
 | None       | 0.17         | 0.17                 | 0.19          |
 | Total      | 1.00         | 1.00                 | 1.00          |
 </code></pre></div>  </div>
-</div>
 
+</div>
 <div class="h3-box">
 
   <h3 id="benchmark-summary-1">Benchmark Summary</h3>
@@ -1080,7 +1081,6 @@ function wrapWordInSpan(data, wordToWrap) {
   <p>We evaluated two models, JSL-MedS and GPT4o, across four task categories: Summary, QA, Biomedical, and Open-Ended. Each model’s preference rate represents the percentage of cases where it was preferred over the other or over a neutral/no-preference choice. These metrics reflect how often each model was favored based on Factuality, Clinical Relevance, and Conciseness.</p>
 
 </div>
-
 <div class="h3-box">
 
   <h4 id="overall-performance-analysis">Overall Performance Analysis:</h4>
@@ -1088,7 +1088,6 @@ function wrapWordInSpan(data, wordToWrap) {
   <p>Across all the categories, JSL-MedS overall outperforms the GPT4o in two out of three metrics: factuality by 26% (0.24 vs 0.19) and conciseness by 41% (0.38 vs 0.27). However, GPT4o edges out JSL-MedS in clinical relevance by a slight 4% (0.26 vs 0.25). The “neutral” and “none” responses are quite high for these models, indicating that the participants often found no clear preference between the two models.</p>
 
 </div>
-
 <div class="h3-box">
 
   <h4 id="category-wise-insights">Category-Wise Insights</h4>
@@ -1117,7 +1116,6 @@ For open-ended tasks, the two models are more evenly matched. JSL-MedS barely ex
   <p>JSL-MedS shows superior performance in the categories of summary, QA, and Biomedical tasks for all three metrics: Factuality, Clinical Relevance, and Conciseness. Only in the open-ended tasks category does GPT4o show a slightly better result than JSL-MedS in Clinical Relevance and Conciseness. This indicates JSL-MedS to be an overall more robust model, especially in tasks needing precise and concise responses. GPT4o, while falling behind in most areas, exhibits stronger performance in open-ended tasks, which may indicate a better ability to tackle more abstract or diverse problems. High neutral responses across all tasks and categories suggest that there are significant opportunities for either model to improve.</p>
 
 </div>
-
 <div class="h3-box">
 
   <h2 id="jsl-medm">JSL-MedM</h2>
@@ -1174,7 +1172,6 @@ For open-ended tasks, the two models are more evenly matched. JSL-MedS barely ex
 </code></pre></div>  </div>
 
 </div>
-
 <div class="h3-box">
 
   <h3 id="benchmark-summary-2">Benchmark Summary</h3>
@@ -1182,7 +1179,6 @@ For open-ended tasks, the two models are more evenly matched. JSL-MedS barely ex
   <p>We evaluated two models, JSL-MedM and GPT4o, across four task categories: Summary, QA, Biomedical, and Open-Ended. Each model’s preference rate represents the percentage of cases where it was preferred over the other or over a neutral/no-preference choice. These metrics reflect how often each model was favored based on Factuality, Clinical Relevance, and Conciseness.</p>
 
 </div>
-
 <div class="h3-box">
 
   <h4 id="overall-performance">Overall Performance</h4>
@@ -1193,7 +1189,6 @@ For Clinical Relevance, ChatGPT (30%) slightly outperforms JSL-MedM (25%), showi
 A significant share of responses was Neutral (43% factuality, 38% clinical relevance), suggesting areas where neither model had a clear advantage.</p>
 
 </div>
-
 <div class="h3-box">
 
   <h4 id="category-wise-insights-1">Category-Wise Insights</h4>
@@ -1231,7 +1226,6 @@ High neutral responses (55% factuality, 46% clinical relevance) indicate that op
   </ol>
 
 </div>
-
 <div class="h3-box">
 
   <h4 id="conclusion-1">Conclusion</h4>
