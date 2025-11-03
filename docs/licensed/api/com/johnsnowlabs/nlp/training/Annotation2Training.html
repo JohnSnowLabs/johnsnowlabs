@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 6.1.1 ScalaDoc  - com.johnsnowlabs.nlp.training.Annotation2Training</title>
-          <meta name="description" content="Spark NLP 6.1.1 ScalaDoc - com.johnsnowlabs.nlp.training.Annotation2Training" />
-          <meta name="keywords" content="Spark NLP 6.1.1 ScalaDoc com.johnsnowlabs.nlp.training.Annotation2Training" />
+          <title>Spark NLP 6.2.0 ScalaDoc  - com.johnsnowlabs.nlp.training.Annotation2Training</title>
+          <meta name="description" content="Spark NLP 6.2.0 ScalaDoc - com.johnsnowlabs.nlp.training.Annotation2Training" />
+          <meta name="keywords" content="Spark NLP 6.2.0 ScalaDoc com.johnsnowlabs.nlp.training.Annotation2Training" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 6.1.1 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 6.2.0 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -477,9 +477,9 @@ Input files must have a structure similar to the one produced by John Snow Labs'
               
         </dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.training.Annotation2Training#convertCsv2NerDF" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="convertCsv2NerDF(csvPath:String,pipelineModel:org.apache.spark.ml.PipelineModel,repartition:Int,tokenOutputCol:String,nerLabelCol:String):org.apache.spark.sql.DataFrame"></a><a id="convertCsv2NerDF(String,PipelineModel,Int,String,String):DataFrame"></a>
+      <a id="convertCsv2NerDF(csvPath:String,pipelineModel:org.apache.spark.ml.PipelineModel,repartition:Int,tokenOutputCol:String,nerLabelCol:String,whiteList:java.util.List[String],blackList:java.util.List[String],replaceLabels:java.util.Map[String,String]):org.apache.spark.sql.DataFrame"></a><a id="convertCsv2NerDF(String,PipelineModel,Int,String,String,List[String],List[String],Map[String,String]):DataFrame"></a>
       <span class="permalink">
-      <a href="../../../../com/johnsnowlabs/nlp/training/Annotation2Training.html#convertCsv2NerDF(csvPath:String,pipelineModel:org.apache.spark.ml.PipelineModel,repartition:Int,tokenOutputCol:String,nerLabelCol:String):org.apache.spark.sql.DataFrame" title="Permalink">
+      <a href="../../../../com/johnsnowlabs/nlp/training/Annotation2Training.html#convertCsv2NerDF(csvPath:String,pipelineModel:org.apache.spark.ml.PipelineModel,repartition:Int,tokenOutputCol:String,nerLabelCol:String,whiteList:java.util.List[String],blackList:java.util.List[String],replaceLabels:java.util.Map[String,String]):org.apache.spark.sql.DataFrame" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -488,16 +488,16 @@ Input files must have a structure similar to the one produced by John Snow Labs'
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">convertCsv2NerDF</span><span class="params">(<span name="csvPath">csvPath: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="pipelineModel">pipelineModel: <span class="extype" name="org.apache.spark.ml.PipelineModel">PipelineModel</span></span>, <span name="repartition">repartition: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">32</span></span>, <span name="tokenOutputCol">tokenOutputCol: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;token&quot;</span></span>, <span name="nerLabelCol">nerLabelCol: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;label&quot;</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span></span>
+        <span class="name">convertCsv2NerDF</span><span class="params">(<span name="csvPath">csvPath: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="pipelineModel">pipelineModel: <span class="extype" name="org.apache.spark.ml.PipelineModel">PipelineModel</span></span>, <span name="repartition">repartition: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">32</span></span>, <span name="tokenOutputCol">tokenOutputCol: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;token&quot;</span></span>, <span name="nerLabelCol">nerLabelCol: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;label&quot;</span></span>, <span name="whiteList">whiteList: <span class="extype" name="java.util.List">List</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">new util.ArrayList[String]()</span></span>, <span name="blackList">blackList: <span class="extype" name="java.util.List">List</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">new util.ArrayList[String]()</span></span>, <span name="replaceLabels">replaceLabels: <span class="extype" name="java.util.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">new util.HashMap[String, String]()</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span></span>
       </span>
       
       <p class="shortcomment cmt">Converts a CSV file with annotation results to a DataFrame suitable for NER training.</p><div class="fullcomment"><div class="comment cmt"><p>Converts a CSV file with annotation results to a DataFrame suitable for NER training.
 </p></div><dl class="paramcmts block"><dt class="param">csvPath</dt><dd class="cmt"><p>Path to the input CSV file. The file will be read with the spark.read.csv method with header, multiLine, quote and escape options set.</p></dd><dt class="param">pipelineModel</dt><dd class="cmt"><p>A pre-trained Spark NLP PipelineModel that includes at least a DocumentAssembler, and Tokenizer.
                      PipelineModel can also include SentenceDetector, DocumentSplitter, WordEmbeddings, etc.</p></dd><dt class="param">repartition</dt><dd class="cmt"><p>Number of partitions to use when reading the CSV file (default is 32).</p></dd><dt class="param">tokenOutputCol</dt><dd class="cmt"><p>The name of the column containing token annotations (default is &quot;token&quot;).</p></dd><dt class="param">nerLabelCol</dt><dd class="cmt"><p>The name of the output column for NER labels (default is &quot;label&quot;).</p></dd><dt>returns</dt><dd class="cmt"><p>A DataFrame to train NER models.</p></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.training.Annotation2Training#convertJson2NerDF" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="convertJson2NerDF(inputPath:String,pipelineModel:org.apache.spark.ml.PipelineModel,repartition:Int,tokenOutputCol:String,nerLabelCol:String):org.apache.spark.sql.DataFrame"></a><a id="convertJson2NerDF(String,PipelineModel,Int,String,String):DataFrame"></a>
+      <a id="convertJson2NerDF(inputPath:String,pipelineModel:org.apache.spark.ml.PipelineModel,repartition:Int,tokenOutputCol:String,nerLabelCol:String,whiteList:java.util.List[String],blackList:java.util.List[String],replaceLabels:java.util.Map[String,String]):org.apache.spark.sql.DataFrame"></a><a id="convertJson2NerDF(String,PipelineModel,Int,String,String,List[String],List[String],Map[String,String]):DataFrame"></a>
       <span class="permalink">
-      <a href="../../../../com/johnsnowlabs/nlp/training/Annotation2Training.html#convertJson2NerDF(inputPath:String,pipelineModel:org.apache.spark.ml.PipelineModel,repartition:Int,tokenOutputCol:String,nerLabelCol:String):org.apache.spark.sql.DataFrame" title="Permalink">
+      <a href="../../../../com/johnsnowlabs/nlp/training/Annotation2Training.html#convertJson2NerDF(inputPath:String,pipelineModel:org.apache.spark.ml.PipelineModel,repartition:Int,tokenOutputCol:String,nerLabelCol:String,whiteList:java.util.List[String],blackList:java.util.List[String],replaceLabels:java.util.Map[String,String]):org.apache.spark.sql.DataFrame" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -506,7 +506,7 @@ Input files must have a structure similar to the one produced by John Snow Labs'
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">convertJson2NerDF</span><span class="params">(<span name="inputPath">inputPath: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="pipelineModel">pipelineModel: <span class="extype" name="org.apache.spark.ml.PipelineModel">PipelineModel</span></span>, <span name="repartition">repartition: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">32</span></span>, <span name="tokenOutputCol">tokenOutputCol: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;token&quot;</span></span>, <span name="nerLabelCol">nerLabelCol: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;label&quot;</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span></span>
+        <span class="name">convertJson2NerDF</span><span class="params">(<span name="inputPath">inputPath: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="pipelineModel">pipelineModel: <span class="extype" name="org.apache.spark.ml.PipelineModel">PipelineModel</span></span>, <span name="repartition">repartition: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">32</span></span>, <span name="tokenOutputCol">tokenOutputCol: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;token&quot;</span></span>, <span name="nerLabelCol">nerLabelCol: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;label&quot;</span></span>, <span name="whiteList">whiteList: <span class="extype" name="java.util.List">List</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">new util.ArrayList[String]()</span></span>, <span name="blackList">blackList: <span class="extype" name="java.util.List">List</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">new util.ArrayList[String]()</span></span>, <span name="replaceLabels">replaceLabels: <span class="extype" name="java.util.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">new util.HashMap[String, String]()</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span></span>
       </span>
       
       <p class="shortcomment cmt">Converts a JSON file with annotation results to a DataFrame suitable for NER training.</p><div class="fullcomment"><div class="comment cmt"><p>Converts a JSON file with annotation results to a DataFrame suitable for NER training.
@@ -566,6 +566,35 @@ Input files must have a structure similar to the one produced by John Snow Labs'
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.training.Annotation2Training#generateConll" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="generateConll(df:org.apache.spark.sql.DataFrame,outputPath:String,labelCol:String,docIdCol:String):Unit"></a><a id="generateConll(DataFrame,String,String,String):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../com/johnsnowlabs/nlp/training/Annotation2Training.html#generateConll(df:org.apache.spark.sql.DataFrame,outputPath:String,labelCol:String,docIdCol:String):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">generateConll</span><span class="params">(<span name="df">df: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span></span>, <span name="outputPath">outputPath: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="labelCol">labelCol: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;label&quot;</span></span>, <span name="docIdCol">docIdCol: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;id&quot;</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Generates a CoNLL format file from a DataFrame containing Spark NLP compatible NER (Named Entity Recognition) annotations.</p><div class="fullcomment"><div class="comment cmt"><p>Generates a CoNLL format file from a DataFrame containing Spark NLP compatible NER (Named Entity Recognition) annotations.</p><p>This method processes a DataFrame with NER labels and writes the output in CoNLL-2003 format,
+which is commonly used for NER tasks. Each document is separated by a <code>-DOCSTART-</code> header,
+sentences are separated by blank lines, and each token is written with its corresponding label.
+</p></div><dl class="paramcmts block"><dt class="param">df</dt><dd class="cmt"><p>The input DataFrame containing NER annotations. Must include:</p><ul><li>A document ID column (specified by <code>docIdCol</code>)</li><li>A label column (specified by <code>labelCol</code>)</li></ul></dd><dt class="param">outputPath</dt><dd class="cmt"><p>The file system path where the CoNLL file will be written.
+                  Supports various file systems:</p><ul><li>Local: <code>file:///path/to/output.conll</code></li><li>DBFS: <code>dbfs:/mnt/path/to/output.conll</code>
+                  If the file exists, it will be overwritten.</li></ul></dd><dt class="param">labelCol</dt><dd class="cmt"><p>The name of the column containing NER label annotations.
+                Default is &quot;label&quot;. The column must exist in the DataFrame.</p></dd><dt class="param">docIdCol</dt><dd class="cmt"><p>The name of the column containing document identifiers.
+                Default is &quot;id&quot;. The column must exist in the DataFrame.
+                **IMPORTANT**: All document IDs must be unique. Duplicate IDs will cause
+                an IllegalArgumentException to be thrown.</p></dd></dl><dl class="attributes block"> <div class="block">Example:
+               <ol><li class="cmt"><p></p><pre><span class="cmt">// Example usage with default parameters</span>
+<span class="kw">val</span> df = spark.read.parquet(<span class="lit">"/path/to/ner_annotations.parquet"</span>)
+generateConll(df, <span class="lit">"file:///tmp/output.conll"</span>)</pre></li></ol>
+            </div><dt>Exceptions thrown</dt><dd><span class="cmt"><p>if:</p><ul><li>The <code>labelCol</code> column does not exist in the DataFrame</li><li>The <code>docIdCol</code> column does not exist in the DataFrame</li><li>Duplicate document IDs are found in the <code>docIdCol</code> column</li></ul></span><span class="cmt"><p><span class="extype" name="java.io.IOException"><code>java.io.IOException</code></span> if there are file system errors during writing</p></span></dd><dt>Note</dt><dd><span class="cmt"><p></p><ul><li>The output follows CoNLL-2003 format: <code>TOKEN -X- -X- LABEL</code></li><li>Documents are separated by <code>-DOCSTART- -X- -DOCID- O</code> headers</li><li>Sentences within documents are separated by blank lines</li></ul></span></dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <span class="permalink">
@@ -674,6 +703,23 @@ Input files must have a structure similar to the one produced by John Snow Labs'
                 <span class="name">@native</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.training.Annotation2Training#showLabelDistributions" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="showLabelDistributions(df:org.apache.spark.sql.DataFrame,nerLabelCol:String):Unit"></a><a id="showLabelDistributions(DataFrame,String):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../com/johnsnowlabs/nlp/training/Annotation2Training.html#showLabelDistributions(df:org.apache.spark.sql.DataFrame,nerLabelCol:String):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">showLabelDistributions</span><span class="params">(<span name="df">df: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span></span>, <span name="nerLabelCol">nerLabelCol: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;label&quot;</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Shows the distribution of entity labels in the training DataFrame.</p><div class="fullcomment"><div class="comment cmt"><p>Shows the distribution of entity labels in the training DataFrame.
+</p></div><dl class="paramcmts block"><dt class="param">df</dt><dd class="cmt"><p>The training DataFrame</p></dd><dt class="param">nerLabelCol</dt><dd class="cmt"><p>The name of the column containing NER labels (default is &quot;label&quot;)</p></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">

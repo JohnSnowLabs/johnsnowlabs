@@ -28,7 +28,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../../static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../../../../../static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../../../../static/graphviz.css?v=eafc0fe6" />
     <link rel="stylesheet" type="text/css" href="../../../../../../static/css/custom.css?v=e1fb877f" />
@@ -940,6 +940,11 @@ according to your hardware to avoid out-of-memory errors.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.removeThinkingTag">
+<span class="sig-name descname"><span class="pre">removeThinkingTag</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.removeThinkingTag" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.repeatLastN">
 <span class="sig-name descname"><span class="pre">repeatLastN</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.repeatLastN" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -1061,6 +1066,12 @@ according to your hardware to avoid out-of-memory errors.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.close" title="Permalink to this definition">#</a></dt>
+<dd><p>Closes the llama.cpp model backend freeing resources. The model is reloaded when used again.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.copy">
 <span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pyspark.ml._typing.ParamMap</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">JP</span></span></span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.copy" title="Permalink to this definition">#</a></dt>
 <dd><p>Creates a copy of this instance with the same uid and some
@@ -1179,6 +1190,12 @@ default value. Raises an error if neither is set.</p>
 <dd class="field-odd"><p><strong>paramName</strong> (<em>str</em>) – Name of the parameter</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.getRemoveThinkingTag">
+<span class="sig-name descname"><span class="pre">getRemoveThinkingTag</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.getRemoveThinkingTag" title="Permalink to this definition">#</a></dt>
+<dd><p>Get the thinking tag to be removed from output.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -1609,6 +1626,13 @@ RecursivePipeline</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.setRemoveThinkingTag">
+<span class="sig-name descname"><span class="pre">setRemoveThinkingTag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.setRemoveThinkingTag" title="Permalink to this definition">#</a></dt>
+<dd><p>Set a thinking tag (e.g. <cite>think</cite>) to be removed from output.
+Will produce the regex: <cite>(?s)&lt;$TAG&gt;.+?&lt;/$TAG&gt;</cite></p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.setRepeatLastN">
 <span class="sig-name descname"><span class="pre">setRepeatLastN</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">repeatLastN</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.setRepeatLastN" title="Permalink to this definition">#</a></dt>
 <dd><p>Set the last n tokens to consider for penalties</p>
@@ -1872,6 +1896,7 @@ RecursivePipeline</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.penaltyPrompt"><code class="docutils literal notranslate"><span class="pre">MedicalVisionLLM.penaltyPrompt</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.poolingType"><code class="docutils literal notranslate"><span class="pre">MedicalVisionLLM.poolingType</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.presencePenalty"><code class="docutils literal notranslate"><span class="pre">MedicalVisionLLM.presencePenalty</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.removeThinkingTag"><code class="docutils literal notranslate"><span class="pre">MedicalVisionLLM.removeThinkingTag</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.repeatLastN"><code class="docutils literal notranslate"><span class="pre">MedicalVisionLLM.repeatLastN</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.repeatPenalty"><code class="docutils literal notranslate"><span class="pre">MedicalVisionLLM.repeatPenalty</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.ropeFreqBase"><code class="docutils literal notranslate"><span class="pre">MedicalVisionLLM.ropeFreqBase</span></code></a></li>
@@ -1896,6 +1921,7 @@ RecursivePipeline</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.yarnExtFactor"><code class="docutils literal notranslate"><span class="pre">MedicalVisionLLM.yarnExtFactor</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.yarnOrigCtx"><code class="docutils literal notranslate"><span class="pre">MedicalVisionLLM.yarnOrigCtx</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.clear"><code class="docutils literal notranslate"><span class="pre">MedicalVisionLLM.clear()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.close"><code class="docutils literal notranslate"><span class="pre">MedicalVisionLLM.close()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.copy"><code class="docutils literal notranslate"><span class="pre">MedicalVisionLLM.copy()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.explainParam"><code class="docutils literal notranslate"><span class="pre">MedicalVisionLLM.explainParam()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.explainParams"><code class="docutils literal notranslate"><span class="pre">MedicalVisionLLM.explainParams()</span></code></a></li>
@@ -1908,6 +1934,7 @@ RecursivePipeline</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.getOutputCol"><code class="docutils literal notranslate"><span class="pre">MedicalVisionLLM.getOutputCol()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.getParam"><code class="docutils literal notranslate"><span class="pre">MedicalVisionLLM.getParam()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.getParamValue"><code class="docutils literal notranslate"><span class="pre">MedicalVisionLLM.getParamValue()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.getRemoveThinkingTag"><code class="docutils literal notranslate"><span class="pre">MedicalVisionLLM.getRemoveThinkingTag()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.getSystemPrompt"><code class="docutils literal notranslate"><span class="pre">MedicalVisionLLM.getSystemPrompt()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.hasDefault"><code class="docutils literal notranslate"><span class="pre">MedicalVisionLLM.hasDefault()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.hasParam"><code class="docutils literal notranslate"><span class="pre">MedicalVisionLLM.hasParam()</span></code></a></li>
@@ -1967,6 +1994,7 @@ RecursivePipeline</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.setPenaltyPrompt"><code class="docutils literal notranslate"><span class="pre">MedicalVisionLLM.setPenaltyPrompt()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.setPoolingType"><code class="docutils literal notranslate"><span class="pre">MedicalVisionLLM.setPoolingType()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.setPresencePenalty"><code class="docutils literal notranslate"><span class="pre">MedicalVisionLLM.setPresencePenalty()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.setRemoveThinkingTag"><code class="docutils literal notranslate"><span class="pre">MedicalVisionLLM.setRemoveThinkingTag()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.setRepeatLastN"><code class="docutils literal notranslate"><span class="pre">MedicalVisionLLM.setRepeatLastN()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.setRepeatPenalty"><code class="docutils literal notranslate"><span class="pre">MedicalVisionLLM.setRepeatPenalty()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.setRopeFreqBase"><code class="docutils literal notranslate"><span class="pre">MedicalVisionLLM.setRopeFreqBase()</span></code></a></li>
