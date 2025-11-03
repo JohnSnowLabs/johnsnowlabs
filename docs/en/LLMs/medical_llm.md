@@ -26,7 +26,7 @@ Our models are designed to deliver best-in-class performance across a wide range
 | Medical-LLM-Small | 14B | ~59 GB | 40K | 28 GB | 31 GB | 1, 2, 4, 8 |
 | Medical-LLM-Medium | 78B | ~452 GB | 128K | 131 GB | 320 GB | 4, 8 |
 | Medical-Reasoning-LLM-32B | 32B | ~111 GB | 40K | 61 GB | 50 GB | 2, 4, 8 |
-| Medical-Visual-LLM-30B | 30B | ~150 GB | 262K | 58 GB | 100 GB | 1, 2, 4 |
+| Medical-Visual-LLM-30B | 30B | ~150 GB | 262K | 58 GB | 100 GB | 2, 4, 8 |
 | Medical-Spanish-LLM-24B | 24B | ~145 GB | 128K | 45 GB | 100 GB | 2, 4, 8 |
 
 *Note: All memory calculations are based on half-precision (fp16/bf16) weights. Recommended GPU Memory considers the model size and the maximum key-value cache at the model's maximum sequence length. These calculations follow the guidelines from [DJL's LMI Deployment Guide](https://docs.djl.ai/master/docs/serving/serving/docs/lmi/deployment_guide/instance-type-selection.html).*
