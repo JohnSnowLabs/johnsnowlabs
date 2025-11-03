@@ -20,46 +20,51 @@ If you need help or access, feel free to contact us at [support@johnsnowlabs.com
 
 Parameters:
 
-- `fhirVersion`: (Param[String]) The FHIR version to use for de-identification. Options: ['R4', 'R5', 'DSTU3']
+- `inputCol`: Name of the input column containing FHIR resources.
 
-- `parserType`: (Param[String]) The parser type to use for de-identification. Options: ['JSON', 'XML']
+- `outputCol`: Name of the output column that will contain de-identified FHIR resources.
 
-- `mode`: (Param[String]) Mode for Anonymizer. Options: ['mask', 'obfuscate']
+- `fhirVersion`: FHIR version to use for de-identification. Options: ['R4', 'R5', 'DSTU3'].
 
-- `dateEntities`: (StringArrayParam) List of date entities. Default: ['DATE', 'DOB', 'DOD']
+- `parserType`: Parser type for FHIR resources. Options: ['JSON', 'XML'].
 
-- `obfuscateDate`: (BooleanParam) When `mode == "obfuscate"`, whether to obfuscate dates or not. If `True` and obfuscation fails, `unnormalizedDateMode` will be used.
+- `mode`: De-identification mode. Options: ['mask', 'obfuscate'].
 
-- `unnormalizedDateMode`: (Param[String]) The mode to use if the date is not formatted. Options: ['mask', 'obfuscate', 'skip']. Default: 'obfuscate'
+- `mappingRules`: Dictionary mapping FHIR field paths to entity types for de-identification (e.g., `{"Patient.name.given": "FIRST_NAME"}`).
 
-- `days`: (IntParam) Number of days to displace dates for obfuscation. If not set, a random value between 1 and 60 will be used.
+- `dateEntities`: List of date entity labels to de-identify (default: ['DATE', 'DOB', 'DOD']).
 
-- `dateFormats`: (StringArrayParam) List of date formats to automatically displace if parsed.
+- `obfuscateDate`: Whether to obfuscate or mask dates in obfuscation mode (default: False).
 
-- `obfuscateRefSource`: (Param[String]) The source to use for obfuscating entities (not applicable to date entities). Options: ['custom', 'faker', 'both']
+- `unnormalizedDateMode`: Behavior for unformatted dates. Options: ['mask', 'obfuscate', 'skip'] (default: 'obfuscate').
 
-- `language`: (Param[String]) Language for regex and faker data. Options: ['en', 'de', 'es', 'fr', 'ar', 'ro']. Default: 'en'
+- `days`: Number of days to displace date entities for obfuscation.
 
-- `seed`: (IntParam) Seed for deterministic obfuscation results
+- `dateFormats`: List of supported date formats for obfuscation.
 
-- `maskingPolicy`: (Param[String]) Select the masking policy. Options: ['same_length_chars', 'entity_labels', 'fixed_length_chars']
+- `obfuscateRefSource`: Source for obfuscation data. Options: ['custom', 'faker', 'both'].
 
-- `fixedMaskLength`: (IntParam) Length of masking sequence when using 'fixed_length_chars' masking policy
+- `language`: Language for regex and faker entities. Options: ['en', 'de', 'es', 'fr', 'ar', 'ro'] (default: 'en').
 
-- `sameLengthFormattedEntities`: (StringArrayParam) List of formatted entities to keep same-length during obfuscation. Supported: PHONE, FAX, ID, IDNUM, BIOID, MEDICALRECORD, ZIP, VIN, SSN, DLN, LICENSE, PLATE
+- `seed`: Randomization seed for reproducible obfuscation.
 
-- `genderAwareness`: (BooleanParam) Whether to use gender-aware names during obfuscation. Default: False
+- `maskingPolicy`: Masking policy for entity replacement. Options: ['same_length_chars', 'entity_labels', 'fixed_length_chars', 'entity_labels_without_brackets', 'same_length_chars_without_brackets'].
 
-- `ageRanges`: (IntArrayParam) List of integers specifying limits of age groups to preserve during obfuscation
+- `fixedMaskLength`: Length of masking when using `fixed_length_chars` policy.
 
-- `selectiveObfuscationModes`: (MapParam[String, StringArrayParam]) Dictionary of entity-wise obfuscation modes. Example: {'NAME': ['mask_entity_labels'], 'PHONE': ['obfuscate']}
+- `sameLengthFormattedEntities`: List of entities to preserve length during obfuscation (e.g., PHONE, ZIP, SSN).
 
-- `customFakers`: (MapParam[String, StringArrayParam]) Custom dictionary of faker terms to be used for specific entities
+- `genderAwareness`: Use gender-aware name replacement during obfuscation (default: False).
 
-- `keepYear`: (BooleanParam) Whether to keep the year intact during date obfuscation. Default: False
+- `ageRanges`: Integer list defining age brackets to preserve.
 
-- `keepMonth`: (BooleanParam) Whether to keep the month intact during date obfuscation. Default: False
+- `selectiveObfuscationModes`: Dictionary defining custom obfuscation modes for specific entities (e.g., `{'obfuscate': ['PHONE'], 'mask_entity_labels': ['NAME'], 'skip': ['id']}`).
 
+- `customFakers`: Dictionary defining custom fake values for entities (e.g., `{'NAME': ['John', 'Jane'], 'CITY': ['Paris', 'London']}`).
+
+- `keepYear`: Keep year unchanged when obfuscating dates (default: False).
+
+- `keepMonth`: Keep month unchanged when obfuscating dates (default: False).
 
 {%- endcapture -%}
 
