@@ -11,6 +11,8 @@ sidebar:
     nav: medical-llm
 ---
 
+<div class="h3-box" markdown="1">
+
 The LLMs listed below are available as AWS Sagemaker Endpoints.
 
 **All LLMs on AWS Sagemaker are Open AI compatible.**
@@ -31,13 +33,10 @@ The LLMs listed below are available as AWS Sagemaker Endpoints.
 
 [Medical Visual LLM - 8B](https://aws.amazon.com/marketplace/pp/prodview-fhcd3rwnhxbka)
 
-
-
-
+</div><div class="h3-box" markdown="1">
 
 ## Deployment Instructions
 
 <iframe width="853" height="480" src="https://www.youtube.com/embed/i04iYe4U9C0" title="Medical Language Models as AWS SageMaker private API endpoints" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> 
 
-
-
+</div>

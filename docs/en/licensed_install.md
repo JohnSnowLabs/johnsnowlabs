@@ -1711,9 +1711,8 @@ You can also run the pipelines without using the `.load()` or `.from_disk()` met
 
 ![Run the pipeline with `.pretrained()` method](/assets/images/installation/Fabric_4.png)
 ![Run the pipeline with `.pretrained()` method](/assets/images/installation/Fabric_5.png)
-</div>
 
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ## AWS Marketplace
 The entire suite of John Snow Labs NLP and Visual NLP libraries are offered as a pay-as-you-go product on AWS Marketplace, pre-installed and ready to use. 30+ Notebooks are included in the AWS product to allow you to start experimenting on your own data right away. To subscribe to the pay-as-you-go product on AWS Marketplace navigate to the [product page](https://aws.amazon.com/marketplace/pp/prodview-kpac4xtqkxuqu?sr=0-1&ref_=beagle&applicationId=AWSMPContessa) and follow the instructions in the video below. 

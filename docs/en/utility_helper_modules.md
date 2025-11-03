@@ -969,9 +969,7 @@ tracer_result.show(truncate=False)
 +----+------------------------------------------+--------+-----+----------+---+---------+----------------------------------------------------------------------+----------------------------------------------------------------------------+--------------------------------------------------------------+--------------------------------------------------------------------------+--------------------------------------------------------------------+-----------------------------------------------------------------+
 ```
 
-</div>
-
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ### Pipeline Tracer
 
@@ -998,6 +996,8 @@ from sparknlp_jsl.pipeline_tracer import PipelineTracer
 from sparknlp_jsl.pipeline_output_parser import PipelineOutputParser
 ```
 
+</div><div class="h3-box" markdown="1">
+
 ## showAvailableModels
 
 ```python
@@ -1021,6 +1021,8 @@ icd10cm_rxnorm_resolver_pipeline
 rxnorm_resolver_pipeline
 snomed_resolver_pipeline
 ```
+
+</div><div class="h3-box" markdown="1">
 
 ## PipelineOutputParser
 
@@ -1074,6 +1076,9 @@ pipeline_parser = PipelineOutputParser(column_maps)
 parsed_result = pipeline_parser.run(annotations)
 print(parsed_result)
 ```
+
+</div><div class="h3-box" markdown="1">
+
 ## RelationalDBDeidentification
 
 The `RelationalDBDeidentification` class provides a robust solution for de-identifying sensitive data in relational databases. It supports a variety of obfuscation techniques and integrates seamlessly with database systems.
@@ -1174,7 +1179,9 @@ deidentifier.deidentify()
 ---
 
 Please check the [4.8.Clinical_Deidentification_for_Structured_Data Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.8.Clinical_Deidentification_for_Structured_Data.ipynb) for more information.
-        
+
+</div><div class="h3-box" markdown="1">
+
 ## Apply Exception Handling
 
 The `apply_exception_handling` utility sets `setDoExceptionHandling(True)` for specified or all stages in a Spark NLP pipeline, making your pipeline more robust to errors in supported stages.
@@ -1267,6 +1274,8 @@ light_model = LightPipeline(handled_pretrainedPipeline)
 result = light_model.fullAnnotate("The patient is a 55-years old. He has a history of smoking and lung cancer.")
 ```
 
+</div><div class="h3-box" markdown="1">
+
 ## Annotation2Training
 
 The `Annotation2Training` utility converts annotation results from JSON or CSV files into a DataFrame suitable for NER training.  
@@ -1324,6 +1333,8 @@ training_df.show(5)
 # Returns a Spark DataFrame to train NER models.
 # Ready to go for MedicalNerApproach
 ```
+
+</div><div class="h3-box" markdown="1">
 
 ## dict_to_annotation_converter
 
@@ -1444,7 +1455,9 @@ light_deIdentification = (
 light_deIdentification.transform(result_df).selectExpr("deidentified.result").show(truncate=False)
 ```
 
-  ## llm_df_preprocessor
+</div><div class="h3-box" markdown="1">
+
+## llm_df_preprocessor
 
 Preprocesses text data in a DataFrame by adding prefix and/or suffix prompts for LLM usage.
 
@@ -1508,7 +1521,9 @@ Output:
 - For large datasets, consider caching the input DataFrame before calling this function multiple times: `data_frame.cache()`.
 - If the text column contains null values, they will be treated as empty strings in the concatenation operation.
 - The function is designed to work efficiently with Spark's distributed computing model and can handle large-scale text preprocessing tasks.
-    
+
+</div><div class="h3-box" markdown="1">
+
 ## vision_llm_preprocessor
 
 Loads images from a specified path as raw bytes and adds a prompt column for Vision LLM processing.
@@ -1562,3 +1577,5 @@ df.show(5, truncate=False)
 
 - **MedicalVisionLLM**: For processing the output DataFrame with vision-language models
 - **ImageAssembler**: The underlying Spark NLP component used for image loading
+
+</div>

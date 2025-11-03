@@ -11,6 +11,8 @@ sidebar:
     nav: term-server
 ---
 
+</div><div class="h3-box" markdown="1">
+
 ## **On-Prem Installation Guide**
 
 **Prerequisites:**
@@ -38,6 +40,7 @@ curl -sSL https://s3.us-east-1.amazonaws.com/artifacts.terminologyservice.johnsn
 Once the installation is complete, you can access Terminology Server by navigating to `http://localhost` or `http://YOUR_SERVER_IP` in your web browser.
 The credentials to login will be provided in the terminal after installation script is completed.
 
+</div><div class="h3-box" markdown="1">
 
 ## Recommended Configurations
 
@@ -69,5 +72,4 @@ The credentials to login will be provided in the terminal after installation scr
   </tr>
 </table>
 
-
-
+</div>

@@ -11,13 +11,17 @@ sidebar:
     nav: medical-llm
 ---
 
+<div class="h3-box" markdown="1">
+
 There is overwhelming evidence from both academic research and industry benchmarks that domain-specific, task-optimized large language models consistently outperform general-purpose LLMs in healthcare. At John Snow Labs, we've developed a suite of Medical LLMs purpose-built for clinical, biomedical, and life sciences applications.
 
 Our models are designed to deliver best-in-class performance across a wide range of medical tasks—from clinical reasoning and diagnostics to medical research comprehension and genetic analysis.
 
+</div><div class="h3-box" markdown="1">
+
 ## Medical LLMs Offering
 
-
+{:.table-model-big}
 | Model Name | Parameters | Recommended GPU Memory | Max Sequence Length | Model Size | Max KV-Cache | Tensor Parallel Sizes |
 |---|---|---|---|---|---|---|
 | Medical-LLM-8B | 8B | ~38 GB | 40K | 15 GB | 23 GB | 1, 2, 4, 8 |
@@ -31,11 +35,15 @@ Our models are designed to deliver best-in-class performance across a wide range
 
 *Note: All memory calculations are based on half-precision (fp16/bf16) weights. Recommended GPU Memory considers the model size and the maximum key-value cache at the model's maximum sequence length. These calculations follow the guidelines from [DJL's LMI Deployment Guide](https://docs.djl.ai/master/docs/serving/serving/docs/lmi/deployment_guide/instance-type-selection.html).*
 
+</div><div class="h3-box" markdown="1">
+
 ## Introduction
 
 John Snow Labs' latest 2025 release of its Medical Large Language Models advance Healthcare AI by setting new state-of-the-art accuracy on medical LLM benchmarks. This advances what's achievable in a variety of real-world use cases including clinical assessment, medical question answering, biomedical research synthesis, and diagnostic decision support.
 
 Leading the pack is their largest 78B model, which can read and understand up to 32,000 words at once – that's roughly 64 pages of medical text. The model is specially trained to work with medical information, from patient records to research papers, making it highly accurate for healthcare tasks. What makes this release special is how well the model performs while still being practical enough for everyday use in hospitals and clinics – thanks to a suite of models in different sizes, that balance accuracy with speed, cost, and privacy.
+
+</div><div class="h3-box" markdown="1">
 
 ## OpenMed Benchmark Performance
 
@@ -43,12 +51,15 @@ The comprehensive evaluation of John Snow Labs' Medical LLM suite encompasses mu
 
 The OpenMed evaluation framework represents one of the most rigorous testing environments for medical AI models, covering a broad spectrum of medical knowledge and clinical reasoning capabilities. Our models have undergone extensive testing across multiple categories, achieving remarkable results that validate their exceptional performance:
 
+</div><div class="h3-box" markdown="1">
+
 ## Model Performance Matrix
 
 ### Large (70B+) Models Comparison
 
 ![Large Models](/en/LLMs/images/large_models.png)
 
+{:.table-model-big}
 | BENCHMARK | MEDICAL-LLM-78B | GPT-4 | MEDPALM-2 | GPT-OSS-120B |
 |---|---|---|---|---|
 | MedQA (4 options) | 75.6 | 78.9 | **79.7** | 69.3 |
@@ -62,11 +73,13 @@ The OpenMed evaluation framework represents one of the most rigorous testing env
 | College Medicine | **89.1** | 76.9 | 80.9 | 71.7 |
 | Average Score | **88.6** | 84.0 | 84.1 | 77.2 |
 
+</div><div class="h3-box" markdown="1">
 
 ### Small (8B-32B) Models Comparison
 
 ![Small Models](/en/LLMs/images/small_models.png)
 
+{:.table-model-big}
 | BENCHMARK | MEDICAL-LLM-32B | MEDICAL-LLM-14B | OPENAI/GPT-OSS-20B | MEDICAL-LLM-8B | OPENBIO-LLM-8B |
 |---|---|---|---|---|---|
 | MedQA (4 options) | **76.2** | 71.1 | 64.2 | 64.4 | 59.0 |
@@ -85,6 +98,7 @@ Comparison Table
 
 ![Comparison](/en/LLMs/images/comparison.png)
 
+{:.table-model-big}
 | MODEL | SCORE | VS. GPT-4 | VS. MEDPALM-2 | VS. GPT-OSS-120B |
 |---|---|---|---|---|
 | Medical-LLM-78B | 88.60 |  +4.63% |  +4.52% |  +11.40% |
@@ -92,9 +106,11 @@ Comparison Table
 | Medical-LLM-14B | 80.12 |  -3.85% |  -3.96% |  +2.92% |
 | Medical-LLM-8B | 75.31 |  -8.66% |  -8.77% |  -1.89% |
 
+</div><div class="h3-box" markdown="1">
 
 ### VLM Models OpenMed Evals
 
+{:.table-model-big}
 | BENCHMARK | Qwen2.5-VL-7B | Mistral-24B | Gemma-3-27B | JSL-VL-8B | JSL-VL-30B |
 |---|---|---|---|---|---|
 | MedMCQA | 55.08 | 66.94 | 61.15 | 60.87 | **68.8** |
@@ -111,9 +127,11 @@ Comparison Table
 
 ![VLM Models OpenMed Evals](/en/LLMs/images/openmed-vl.png)
 
+</div><div class="h3-box" markdown="1">
 
 ### VLM Models Evals
 
+{:.table-model-big}
 | BENCHMARK | Qwen2.5-VL-7B | Mistral-24B | Gemma-3-27B | JSL-VL-8B | JSL-VL-30B |
 |---|---|---|---|---|---|
 | MultiModal Medical Reasoning | 23.53 | 30.42 | 29.85 | 31.33 | **35.16** |
@@ -131,7 +149,7 @@ Comparison Table
 
 ![Radar Chart Large Models](/en/LLMs/images/radar_chart_large_models.png)
 
-
+</div><div class="h3-box" markdown="1">
 
 ## Open Medical Leaderboard Performance Analysis
 
@@ -186,6 +204,8 @@ Medical-LLM-78B achieves an exceptional 88.6% average performance, surpassing GP
 - Clinical knowledge at 79.62% provides reliable diagnostic support
 - Ideal for cost-efficient clinical deployments requiring fast inference and reliable performance
 
+</div><div class="h3-box" markdown="1">
+
 ## JSL-LLM MedHELM Benchmark Analysis
 
 John Snow Labs' JSL-LLM demonstrates superior performance across benchmarks in the MedHELM. Evaluated against leading models including GPT-5, Gemini 2.5 Pro, and Claude Sonnet 4, JSL-LLM consistently achieves leading results in clinical accuracy. Below is a comprehensive performance analysis across key medical evaluation datasets:
@@ -236,6 +256,7 @@ Across the MedHELM benchmark suite, JSL-LLM demonstrates leading performance wit
 
 ![MedHELM Benchmarks](/en/LLMs/images/medhelm_benchmarks.png)
 
+{:.table-model-big}
 | DATASET | JSL-LLM | GPT-5 | GEMINI 2.5 PRO | CLAUDE SONNET 4 |
 |---|---|---|---|---|
 | MTSamples F1 | **74.90** | 72.60 | 72.40 | 71.60 |
@@ -250,10 +271,11 @@ Across the MedHELM benchmark suite, JSL-LLM demonstrates leading performance wit
 | Medec EM | **72.00** | 67.00 | 61.00 | 58.00 |
 | **Average** | **79.83** | 75.12 | 74.49 | 73.80 |
 
-
+</div><div class="h3-box" markdown="1">
 
 ![Metrics Based Comparison](/en/LLMs/images/metrics_based_comparison.png)
 
+{:.table-model-big}
 | DATASET | VS. GPT-5 | VS. GEMINI 2.5 PRO | VS. CLAUDE SONNET 4 |
 |---|---|---|---|
 | MTSamples F1 | +2.30% | +2.50% | +3.30% |
@@ -267,20 +289,24 @@ Across the MedHELM benchmark suite, JSL-LLM demonstrates leading performance wit
 | MTSamples Procedures | +0.70% | +1.60% | +1.90% |
 | Medec EM | +5.00% | +11.00% | +14.00% |
 
-
-
 ![MedHELM](/en/LLMs/images/MedHELM.png)
+
+</div><div class="h3-box" markdown="1">
 
 ## Red-Teaming Evaluation Results
 
 Out of 1000 red-teaming questions across 148 medical categories, JSL-Med-R-32B passed about 870 (87%), compared to 800 for GPT-5 (80%), 740 for Sonnet-4.1 (74%), 610 for GPT-4o (61%), and only 300 for Gemini-2.5-Pro (30%)— making JSL-Med-R-32B the most robust model in this evaluation and outperforming larger private models despite its smaller size.
 
+</div><div class="h3-box" markdown="1">
 
 ## Partner With Us
 
 We’re committed to helping you stay at the cutting edge of medical AI. Whether you’re building decision support tools, clinical chatbots, or research platforms — our team is here to help.
 
- [Book a call with our experts to:](https://www.johnsnowlabs.com/schedule-a-demo/) 
+[Book a call with our experts to:](https://www.johnsnowlabs.com/schedule-a-demo/) 
+
 - Discuss your specific use case
 - Get a live demo of the Medical LLMs
 - Explore tailored deployment options.
+
+</div>

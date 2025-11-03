@@ -11,6 +11,8 @@ sidebar:
   nav: sparknlp-healthcare
 ---
 
+<div class="h3-box" markdown="1">
+
 ## Medical Small LLMs
 
 John Snow Labs provides a curated suite of **specialized small language models (between 1B and 10B parameters) (apart from the larger and more capable versions that are already available on** [marketplaces](https://nlp.johnsnowlabs.com/docs/en/LLMs/medical_llm "https://nlp.johnsnowlabs.com/docs/en/llms/medical_llm")**)**, built and fine-tuned on medical context and tasks. These models leverage both in-house datasets and leading open-source medical corpora, ensuring high accuracy across a wide range of healthcare NLP use cases.
@@ -29,7 +31,7 @@ Ideal for clinical, biomedical, and operational NLP tasks (as detailed below), t
 
 **You can explore these models on our** [Colab notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/36.0.Loading_Medical_and_Open_Source_LLMs.ipynb "https://colab.research.google.com/github/johnsnowlabs/spark-nlp-workshop/blob/master/healthcare-nlp/36.0.loading_medical_and_open_source_llms.ipynb") **and see how these models can enhance your healthcare workflows.**
 
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 {:.table-model-big.db}
 | Model Name               | Disk Size | Model Size | Modality   | Available <br> Quantizations                                                                 | GPU Memory <br> Required | Token/Sec | Max Context <br> Window* | Tasks                                                  |
@@ -57,11 +59,10 @@ Ideal for clinical, biomedical, and operational NLP tasks (as detailed below), t
 |                           | 3.3G      | 2B         | multimodal | [q16](https://nlp.johnsnowlabs.com/2025/08/10/jsl_meds_ner_vlm_2b_q16_v2_en.html)        | 10GB                 | 48.9      | 32,768              | Extract and link structured medical named entities     |
 
 > * Larger context window may require more GPU memory.
-</div>
+
+</div><div class="h3-box" markdown="1">
 
 ## Medical Small LLMs Benchmarking
-
-<div class="h3-box" markdown="1">
 
 {:.table-model-big.db}
 | Model            | Average | MedMCQA | MedQA | MMLU <br> Anatomy | MMLU <br> Clinical Knowledge | MMLU <br> College Biology | MMLU <br> College Medicine | MMLU <br> Medical Genetics | MMLU <br> Professional Medicine | PubMedQA |
@@ -73,9 +74,7 @@ Ideal for clinical, biomedical, and operational NLP tasks (as detailed below), t
 | **jsl_meds_q8_v3**  | 0.5727  | 0.53    | 0.4933 | 0.6593            | 0.7623                       | 0.8681                    | 0.6301                     | 0.76                       | 0.7647                          | 0.762    |
 | **jsl_meds_q16_v3** | 0.5793  | 0.5482  | 0.4839 | 0.637             | 0.7585                       | 0.8403                    | 0.6532                     | 0.77                       | 0.7022                          | 0.766    |
 
-</div>
-
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ### Benchmark Summary
 
@@ -83,9 +82,7 @@ We evaluated six Johnsnow Lab LLM models across ten task categories: MedMCQA, Me
 
 Each model's performance was measured based on accuracy, reflecting how well it handled medical reasoning, clinical knowledge, and biomedical question answering.
 
-</div>
-
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ## JSL-MedS
 
@@ -139,25 +136,20 @@ We have generated a total of 400 questions, 100 from each category. These questi
 | None       | 0.17         | 0.17                 | 0.19          |
 | Total      | 1.00         | 1.00                 | 1.00          |
 ```
-</div>
 
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ### Benchmark Summary
 
 We evaluated two models, JSL-MedS and GPT4o, across four task categories: Summary, QA, Biomedical, and Open-Ended. Each model's preference rate represents the percentage of cases where it was preferred over the other or over a neutral/no-preference choice. These metrics reflect how often each model was favored based on Factuality, Clinical Relevance, and Conciseness.
 
-</div>
-
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 #### Overall Performance Analysis:
 
 Across all the categories, JSL-MedS overall outperforms the GPT4o in two out of three metrics: factuality by 26% (0.24 vs 0.19) and conciseness by 41% (0.38 vs 0.27). However, GPT4o edges out JSL-MedS in clinical relevance by a slight 4% (0.26 vs 0.25). The "neutral" and "none" responses are quite high for these models, indicating that the participants often found no clear preference between the two models.
 
-</div>
-
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 #### Category-Wise Insights
 
@@ -177,9 +169,7 @@ Across all the categories, JSL-MedS overall outperforms the GPT4o in two out of 
 
 JSL-MedS shows superior performance in the categories of summary, QA, and Biomedical tasks for all three metrics: Factuality, Clinical Relevance, and Conciseness. Only in the open-ended tasks category does GPT4o show a slightly better result than JSL-MedS in Clinical Relevance and Conciseness. This indicates JSL-MedS to be an overall more robust model, especially in tasks needing precise and concise responses. GPT4o, while falling behind in most areas, exhibits stronger performance in open-ended tasks, which may indicate a better ability to tackle more abstract or diverse problems. High neutral responses across all tasks and categories suggest that there are significant opportunities for either model to improve.
 
-</div>
-
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ## JSL-MedM
 
@@ -235,17 +225,13 @@ We have generated a total of 400 questions, 100 from each category. These questi
 
 ```
 
-</div>
-
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ### Benchmark Summary
 
 We evaluated two models, JSL-MedM and GPT4o, across four task categories: Summary, QA, Biomedical, and Open-Ended. Each model's preference rate represents the percentage of cases where it was preferred over the other or over a neutral/no-preference choice. These metrics reflect how often each model was favored based on Factuality, Clinical Relevance, and Conciseness.
 
-</div>
-
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 #### Overall Performance
 
@@ -254,9 +240,7 @@ In Factuality, JSL-MedM (29%) is 38% more preferred than ChatGPT (21%).
 For Clinical Relevance, ChatGPT (30%) slightly outperforms JSL-MedM (25%), showing a modest edge in generating contextually relevant clinical content.
 A significant share of responses was Neutral (43% factuality, 38% clinical relevance), suggesting areas where neither model had a clear advantage.
 
-</div>
-
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 #### Category-Wise Insights
 
@@ -285,9 +269,7 @@ A significant share of responses was Neutral (43% factuality, 38% clinical relev
    GPT4o leads in Clinical Relevance (30%), being 58% more preferred than JSL-MedM (19%).
    High neutral responses (55% factuality, 46% clinical relevance) indicate that open-ended tasks often lack a clear preference.
 
-</div>
-
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 #### Conclusion
 
