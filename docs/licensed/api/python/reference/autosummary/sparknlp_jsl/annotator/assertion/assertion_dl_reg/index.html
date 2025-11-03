@@ -28,7 +28,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../../static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../../../../../static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../../../../static/graphviz.css?v=eafc0fe6" />
     <link rel="stylesheet" type="text/css" href="../../../../../../static/css/custom.css?v=e1fb877f" />
@@ -545,7 +545,7 @@ document.write(`
 <td><p>Train a Assertion algorithm using a regression log model.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.annotator.assertion.assertion_dl_reg.AssertionLogRegModel" title="sparknlp_jsl.annotator.assertion.assertion_dl_reg.AssertionLogRegModel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AssertionLogRegModel</span></code></a></p></td>
-<td><p>Model to extract assertion status of entities using Logistic Regression.</p></td>
+<td><p>Model to extract assertion status of entities using Logarithmic Regression.</p></td>
 </tr>
 </tbody>
 </table>
@@ -589,12 +589,12 @@ document.write(`
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sparknlp</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp.base</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp.annotator</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp_jsl.annotator</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp.training</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">sparknlp</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sparknlp.base</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sparknlp.annotator</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sparknlp_jsl.annotator</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sparknlp.training</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pyspark.ml</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pipeline</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span> \
 <span class="gp">... </span>   <span class="o">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s2">&quot;text&quot;</span><span class="p">)</span> \
 <span class="gp">... </span>   <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;document&quot;</span><span class="p">)</span>
@@ -1072,9 +1072,9 @@ RecursivePipeline</p>
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.assertion.assertion_dl_reg.AssertionLogRegModel">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AssertionLogRegModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'com.johnsnowlabs.nlp.annotators.assertion.logreg.AssertionLogRegModel'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">java_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.assertion.assertion_dl_reg.AssertionLogRegModel" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.common.AnnotatorModelInternal</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.common.HasStorageRef</span></code></p>
-<p>Model to extract assertion status of entities using Logistic Regression.</p>
+<p>Model to extract assertion status of entities using Logarithmic Regression.</p>
 <p>To train a custom model, use <a class="reference internal" href="#sparknlp_jsl.annotator.assertion.assertion_dl_reg.AssertionLogRegApproach" title="sparknlp_jsl.annotator.assertion.assertion_dl_reg.AssertionLogRegApproach"><code class="xref py py-class docutils literal notranslate"><span class="pre">AssertionLogRegApproach</span></code></a> instead.</p>
-<p>Logistic Regression is used to extract Assertion Status from extracted
+<p>Logarithmic Regression is used to extract Assertion Status from extracted
 entities and text. AssertionLogRegModel requires DOCUMENT, CHUNK and WORD_EMBEDDINGS
 type annotations as inputs. Excluding the label, the annotations can be obtained
 with, for example:</p>
@@ -1110,12 +1110,12 @@ with, for example:</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sparknlp</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp.base</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp.annotator</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp_jsl.annotator</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp.training</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">sparknlp</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sparknlp.base</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sparknlp.annotator</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sparknlp_jsl.annotator</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sparknlp.training</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pyspark.ml</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pipeline</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span> \
