@@ -17,6 +17,26 @@ See [Github Releases](https://github.com/JohnSnowLabs/johnsnowlabs/releases) for
 
 
 
+
+## 6.2.0
+Release date: 11-4-2025
+
+The John Snow Labs 6.2.0 Library released with the following pre-installed and recommended dependencies
+
+{:.table-model-big}
+| Library                                                                                 | Version    |
+|-----------------------------------------------------------------------------------------|------------|
+| [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes) | `6.1.0`    |
+| [Enterprise NLP](https://nlp.johnsnowlabs.com/docs/en/licensed_annotators)              | `6.2.1`    |
+| [Finance NLP](https://nlp.johnsnowlabs.com/docs/en/financial_release_notes)             | `1.X.X`    |
+| [Legal NLP](https://nlp.johnsnowlabs.com/docs/en/legal_release_notes)                   | `1.X.X`    |
+| [NLU](https://github.com/JohnSnowLabs/nlu/releases)                                     | `5.4.1`    |
+| [Spark-NLP-Display](https://sparknlp.org/docs/en/display)                               | `5.0`      |
+| [Spark-NLP](https://github.com/JohnSnowLabs/spark-nlp/releases/)                        | `6.2.0`    |
+| [Pyspark](https://spark.apache.org/docs/latest/api/python/)                             | `3.4.0`    |
+
+
+
 ## 6.1.1
 Release date: 9-22-2025
 
