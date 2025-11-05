@@ -33,6 +33,7 @@ The pipeline can mask and obfuscate 'LOCATION', 'CONTACT', 'PROFESSION', 'DATE',
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
