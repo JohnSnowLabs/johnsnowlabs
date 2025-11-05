@@ -27,8 +27,8 @@ We're excited to announce major updates to our vision-language models with enhan
 
 | **Model Name**             | **Parameters** | **Recommended GPU Memory** | **Max Sequence Length** | **Model Size** | **Max KV-Cache** | **Tensor Parallel Sizes** |
 |---------------------------|--------------|------------------|-------------------|-------------|----------------|------------------------|
-| Medical-Visual-LLM-8B  | 8B          | ~64 GB           | 262K              | 16 GB       | 50 GB          | 1, 2, 4, 8            |
-| Medical-Visual-LLM-30B | 30B         | ~150 GB          | 262K              | 58 GB       | 100 GB         | 2, 4, 8               |
+| Medical-Visual-LLM-8B  | 8B          | ~64 GB           | 262K              | 16 GB       |48 GB          | 1, 2, 4, 8            |
+| Medical-Visual-LLM-30B | 30B         | ~150 GB          | 262K              | 58 GB       | 92 GB         | 2, 4, 8               |
 
 #### Benchmark Performance
 
