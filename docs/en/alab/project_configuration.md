@@ -15,7 +15,7 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-Generative AI Lab currently supports multiple predefined project configurations. The most popular ones are `Text Classification`, `Named Entity Recognition` (NER) and `Visual NER`. Create a setup from scratch or customize a predefined one according to your needs.
+Generative AI Lab supports multiple predefined project configurations such as `Text Classification`, `Named Entity Recognition (NER)`, `Visual NER`, `LLM Evaluation`, and `HCC Coding`. Create a setup from scratch or customize a predefined one according to your needs.
 
 For customizing a predefined configuration, click on the corresponding link in the table above and then navigate to the Labeling configuration tab and manually edit or update it to contain the labels you want.
 
@@ -25,11 +25,13 @@ After you finish editing the labels you want to define for your project click th
 
 ### Project templates
 
-We currently support multiple predefined project configurations. The most popular ones are **Text Classification**, **Named Entity Recognition** and **Visual NER**.
+Generative AI Lab includes multiple predefined project configurations such as **Text Classification**, **Named Entity Recognition**, **Visual NER**, **LLM Evaluation**, and **HCC Coding**.
+
 
 **Content Type**
 
-The first step when creating a new project or customizing an existing one is to choose what content you need to annotate. Five content types are currently supported: `Video`, `Audio`, `HTML`, `Image`, `PDF` and `Text`. For each content type a list of available templates is available. You can pick any one of those as a starting point in your project configuration.
+The first step when creating a new project or customizing an existing one is to choose what content you need to annotate. The following content types are supported: `Video`, `Audio`, `HTML`, `Image`, `PDF`, and `Text`. For each content type, a list of available templates is shown. You can pick any one of those as a starting point in your project configuration.
+
 
 ![Generative AI Lab](/assets/images/annotation_lab/4.10.0/add_video_type.png "lit_shadow")
 
@@ -40,6 +42,8 @@ Users can add custom labels and choices in the project configuration from the Vi
 ![Generative AI Lab](https://user-images.githubusercontent.com/33893292/203908059-95b96598-ef34-4418-8b9a-48dd6b03b409.gif "lit_shadow")
 
 After you finish editing the labels click the “Save” button.
+
+> **Note:** Some resource combinations are not supported. For example, **Visual NER** projects do **not** support adding **Rules** or **External Classification Prompts**. The interface disables these options to prevent invalid configurations.
 
 </div><div class="h3-box" markdown="1">
 
@@ -173,7 +177,7 @@ To see the structure of a project configuration XML file and the definitions of 
 
 **Add New Element**
 
-The new menu user interface allows users to easily add new elements to their project configurations. Users can click on the plus icon ("+") within the Visual Menu Builder interface to add a new element. Once the element is added, users can further customize it by configuring additional parameters directly in the interface. This might include setting attributes, defining properties, or linking to other project components.
+The menu user interface allows users to easily add new elements to their project configurations. Users can click on the plus icon ("+") within the Visual Menu Builder interface to add a new element. Once the element is added, users can further customize it by configuring additional parameters directly in the interface. This might include setting attributes, defining properties, or linking to other project components.
 
 ![genAI650](/assets/images/annotation_lab/6.5.0/6.gif)
 
@@ -191,7 +195,7 @@ Users can remove unwanted elements from the project configuration. Users can cli
 
 **Drag and Move Element**
 
-The new visual menu builder allows users to easily rearrange elements within the project configuration using a drag-and-drop interface. To move an element, users can click and hold on the "Handle" icon, which is represented by a set of six dots (three parallel dots in two vertical rows) next to the element. After clicking on the Handle, users can drag the element to the desired position within the project configuration. Release the mouse button to drop the element in its new location. This feature provides flexibility in organizing the project structure, allowing users to quickly and intuitively reorder elements.
+The visual menu builder allows users to easily rearrange elements within the project configuration using a drag-and-drop interface. To move an element, users can click and hold on the "Handle" icon, which is represented by a set of six dots (three parallel dots in two vertical rows) next to the element. After clicking on the Handle, users can drag the element to the desired position within the project configuration. Release the mouse button to drop the element in its new location. This feature provides flexibility in organizing the project structure, allowing users to quickly and intuitively reorder elements.
 
 ![genAI650](/assets/images/annotation_lab/6.5.0/9.gif)
 
@@ -212,5 +216,8 @@ The **Show parent action buttons on hover** button in the Visual Menu Builder al
 The "**Fullscreen**" button in the visual menu builder allows users to expand the workspace to occupy the entire screen, providing a larger and more focused view of the project configuration. Clicking on the "**Fullscreen**" button maximizes the Visual Menu Builder, hiding other UI elements so the entire screen is dedicated to the project configuration. To exit fullscreen mode, users can click the "**Fullscreen**" button again or use the Esc key to return to the normal view with all standard UI elements visible.
 
 ![genAI650](/assets/images/annotation_lab/6.5.0/12.gif)
+
+> The Visual Menu Builder automatically validates structure and prevents saving malformed configurations, ensuring projects remain compatible with supported annotation types and pre-annotation workflows.
+
 
 </div>

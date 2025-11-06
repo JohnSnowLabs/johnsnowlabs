@@ -49,6 +49,12 @@ It is an important to ensure a complete audit trail of all user actions. Generat
 
 <img class="image image__shadow image__align--center" src="/assets/images/annotation_lab/4.1.0/completion_history.png" style="width:40%;"/>
 
+#### Reviewer Completions & Cloning
+Annotators can open completions submitted by a **Reviewer** and **clone** them as a starting point for further edits.  
+From the **Annotations / Versions** panel, open the reviewer’s completion and click **Clone** to create an editable copy under your account.
+
+When comparing the original and the cloned completion, the **Diff View** automatically highlights differences between the two, streamlining handoffs and collaborative review.
+
 </div><div class="h3-box" markdown="1">
 
 ### Predictions
@@ -67,7 +73,9 @@ Each predicted annotation includes a confidence score, helping users assess reli
 
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/confidence.png" style="width:100%;"/>
 
-On the Labeling page, when selecting the <es>Prediction</es> widget, users can see all preannotation in the <es>Annotations</es> section with a score assigned to them. Using the confidence slider, users can filter out low confidence labels before starting to edit/correct the labels. Both _Accept Prediction_ and _Add a new completion based on this prediction_ operation apply to the filtered annotations from the confidence slider.
+On the Labeling page, when selecting the **Prediction** widget, all pre-annotations appear in the **Annotations** section with their scores.  
+Using the **confidence slider**, users can filter out low-confidence **labels and relations** before editing or correcting results.  
+Both **Accept Prediction** and **Add a new completion based on this prediction** apply to the set currently visible after confidence filtering.
 
 </div><div class="h3-box" markdown="1">
 

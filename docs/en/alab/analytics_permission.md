@@ -1,4 +1,4 @@
----
+
 layout: docs
 comment: no
 header: true
@@ -11,30 +11,58 @@ use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
   nav: annotation-lab
----
+
 
 <div class="h3-box" markdown="1">
 
-By default, dashboards in the Analytics page is disabled for a project. Users can request the _admin_ to enable the Analytics page. The request is then listed on the Analytics Request page under the Settings menu. This page is only accessible to the _admin_ user. After the _admin_ user approves the request, the user can access the various dashboards in the Analytics page.
+## Analytics Permission
 
-</div><div class="h3-box" markdown="1">
+By default, dashboards in the Analytics page are disabled for each project.  
+Users can request that an _admin_ enable Analytics access for their project. These requests are automatically logged and managed through the **Analytics Requests** system, ensuring controlled access to potentially resource-intensive analytics computations.
 
-## Analytics Requests
+### Analytics Requests
 
-The Analytics Requests page lists all the pending requests for the Analytics page from one or more users. The _admin_ user can grant or deny the permission to the requests as needed. It is accessible from `Settings > Analytics Requests`. Each request contains information such as the name of project for which the analytics request was made, the user who initiated the request, and the date when the request was made.
+When a user submits a request to enable Analytics for a project, the request appears on the **Analytics Requests** page under the **Settings** menu.  
+This page is accessible only to _admin_ users and lists all pending, approved, and denied requests, including details such as:
+- The name of the project for which analytics access was requested  
+- The user who initiated the request  
+- The date of submission  
 
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/analytics_requests.png" style="width:100%;"/>
 
-**Granting a request**
+In addition to appearing on the **Analytics Requests** page, administrators are now **instantly notified in-app** whenever a new request is made.  
+This real-time notification system ensures that admins are alerted immediately, without requiring separate communication (such as emails or messages).  
+Admins can open the notification to review the pending request and take action directly—significantly speeding up response times and improving collaboration between users and administrators.
 
-All the requests granted by the _admin_ user is listed under this tab. The table shows information about the granted requests, like the name of the project for which the analytics request was made, the user who initiated the request, the user who granted the request, the date when the request was granted, the latest date when the analytics were updated. The _admin_ user can also revoke an already granted request from this list.
+### Granting a Request
+
+All requests granted by the _admin_ are listed under the **Granted** tab.  
+The table includes:
+- Project name  
+- Requesting user  
+- Admin who granted the request  
+- Date of approval  
+- Date of the most recent analytics update  
+
+Admins can also **revoke previously granted requests** at any time from the same list.
 
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/ar_granted.png" style="width:100%;"/>
 
-**Denying/Revoking a request**
+### Denying or Revoking a Request
 
-All the requests denied or revoked by the _admin_ user is listed under this tab. The table shows information about the denied/revoked requests, like the name of the project for which the analytics request was made, the user who initiated the request, the user who denied/revoked the request, the date when the request was denied/revoked, the latest date when the analytics were updated.
+Denied or revoked requests are displayed under the **Denied/Revoked** tab, which includes similar details—showing who denied the request, when, and for which project.  
+This provides a clear audit trail of all analytics permission decisions.
 
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/ar_revoked.png" style="width:100%;"/>
+
+### Summary
+
+With the addition of **real-time admin notifications**, Analytics access requests are now handled more efficiently:
+- Users can submit requests directly from their project settings.
+- Admins receive immediate in-app alerts for new requests.
+- Approvals and revocations can be performed instantly from the notification or the **Analytics Requests** dashboard.
+
+This enhancement ensures smoother collaboration and faster activation of Analytics features across teams.
+
 
 </div>

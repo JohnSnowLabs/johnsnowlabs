@@ -97,27 +97,66 @@ All that **without writing a line of code**!
 
 ## Quick Intro
 
-Annotation Lab had progressed into the NLP Lab and has further developed into the Generative AI Lab. Generative AI Lab is a End-to-End No-Code platform for document labeling and AI/ML model training. It enables domain experts (e.g. nurses, doctors, lawyers, accountants, investors, etc.) to extract meaningful facts from text documents, images or PDFs and train models that will automatically predict those facts on new documents. This is done by using state-of-the-art Spark NLP pre-trained models or by tuning models to better handle specific use cases.
+Generative AI Lab is an end‑to‑end no‑code platform for labeling documents, extracting structured information, and training, testing, and deploying AI models. It enables domain experts such as clinicians, legal professionals, and data analysts to annotate text, images, PDFs, audio, video, or HTML content and then train custom models that automatically reproduce those annotations on new data.
 
-Based on an auto-scaling architecture powered by Kubernetes, it can scale to many teams and projects. Enterprise-grade security is provided for free including support for air-gap environments, zero data sharing, role-based access, full audit trails, MFA, and identity provider integrations. It allows powerful experiments for model training and finetuning, model testing, and model deployment as API endpoints.
+Built on a scalable Kubernetes architecture, it supports unlimited users, projects, and models while maintaining enterprise‑grade security, including air‑gap deployment, role‑based access control (RBAC), multi‑factor authentication (MFA), and comprehensive audit trails.
 
-There is no limitation on the number of users, projects, tasks, models, or trainings that can be run with this subscription.
+Generative AI Lab empowers organizations to manage the full machine learning lifecycle, from data labeling and model training to evaluation, deployment, and monitoring, all within a unified environment.
 
-Healthcare, Visual, Legal and Finance features are available via BYOL.
+## Included Features
 
-**Included Features:**
+- **Comprehensive Annotation Support** for text, image, PDF, audio, video, and HTML data types  
+  - High productivity labeling UI with shortcuts and pre‑annotations  
+  - Multi‑page PDF, image, and side‑by‑side (OCR text + image) annotation  
+  - Section‑based annotation for large documents
 
-- Annotation support for Text, Image, Audio, Video and HTML content;
-- High productivity annotation UI with keyboard shortcuts and pre-annotations;
-- Support for text annotation in 250+ languages;
-- Out-of-the-box support for the following NLP tasks: Classification, Named Entity Recognition, Assertion Status, and Relation Extraction;
-- Support for projects and teams: 30+ project templates; unlimited projects and users, project import, export and cloning, project grouping;
-- Task assignment, tagging, and comments; duplicate tasks identification; task searching and filtering;
-- Consensus analysis and Inter Annotator Agreement charts;
-- Performance dashboards;
-- Enterprise-level security and privacy: role-based access control, role-based views, annotation versioning, full audit trail, Single Sign on;
-- AI-Assisted Annotation: never start from scratch but reuse existing models to pre-annotate tasks with the latest Spark NLP models for classification, NER, assertion status, and relation detection;
-- Full Models Hub integration: you can explore available models and embeddings, download them with the click of a button and reuse those in your project configuration.
-- Train Classification, NER, and Assertion Status models: use default parameters or easily tune them on the UI for different experiments;
-- Active Learning automatically trains new versions of your models once new annotations are available;
-- API access to all features for easy integration into custom data analysis pipelines;
+- **Extensive Project Templates** for specialized tasks  
+  - Standard templates for Named Entity Recognition (NER), Classification, Assertion Status, and Relation Extraction  
+  - De‑identification projects for anonymizing PII/PHI with configurable masking per entity label  
+  - LLM Evaluation and LLM Comparison projects for benchmarking large language model outputs  
+  - Health Care Coding templates (Text and PDF+Text) for medical risk adjustment coding  
+  - Support for rule‑based, zero‑shot, and LLM‑prompt‑based workflows
+
+- **AI‑Assisted Annotation**  
+  - Pre‑annotation using Spark NLP and Healthcare NLP models  
+  - Entity resolution and code lookups for ICD‑10, CPT, and custom terminologies  
+  - Confidence‑based filtering of predictions (entities and relations) with relation filtering tied to label confidence  
+  - Integration with LLMs (OpenAI, Azure OpenAI, Amazon SageMaker, Anthropic Claude) for external prompt‑based generation with adjustable temperature and max token limits
+  - Dropdown selection of predefined response names for LLM comparison projects
+
+- **Model Training and Evaluation**  
+  - Train and fine‑tune NER, Classification, Assertion, and Relation models directly in the UI  
+  - Built‑in LangTest module for model testing and robustness evaluation  
+  - Data augmentation through proportional and templatic augmentation for better training datasets  
+  - Visual reports for bias, fairness, robustness, and accuracy metrics
+
+- **Task and Workflow Management**  
+  - Task assignment, tagging, and commenting  
+  - Consensus analysis and inter‑annotator agreement (IAA) charts for text and HTML projects  
+  - Task ranking and prioritization via ranking scores  
+  - Persistent "tasks per page" setting remembered across sessions  
+  - Reviewer feedback cloning and completion comparison with auto‑highlighted differences  
+  - Updated submission pop‑up that clarifies completions cannot be edited and allows users to skip future reminders
+
+- **Import, Export, and Integration**  
+  - Import tasks from local files, URLs, or cloud storage (AWS S3, Azure Blob)  
+  - Credential‑free AWS integration when deployed on EC2 using IAM roles
+  - Incremental S3 imports that skip previously imported files and avoid duplicates  
+  - Background import for large datasets using a dedicated import cluster  
+  - Cloud export via IAM role authentication (no manual keys required)  
+  - Full REST API access for automation and external integrations
+
+- **Data Privacy, Security, and Compliance**  
+  - Local‑only data processing (no external data sharing)  
+  - HIPAA‑aligned compliance controls: audit logging, local import/export restrictions, admin‑only project creation  
+  - On‑prem and cloud pay‑as‑you‑go licensing options with unified key management  
+  - Fine‑grained user roles: Annotator, Reviewer, Manager, Supervisor, and Admin  
+  - Built‑in trial license management and simplified license rotation
+
+- **Analytics and Productivity Dashboards**  
+  - Detailed progress, label distribution, and team productivity charts  
+  - Real‑time admin notifications for analytics and LLM requests:contentReference  
+  - Request‑based analytics access with automatic admin notifications for approvals  
+  - LLM evaluation dashboards for rating and comparing model responses
+
+Generative AI Lab continues to evolve with new capabilities for LLM evaluation, medical coding workflows, de‑identification, and secure cloud integration, offering a single environment for all stages of data preparation and AI model lifecycle management.

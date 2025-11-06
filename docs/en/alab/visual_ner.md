@@ -45,21 +45,24 @@ After import, the task becomes available on the `Tasks Page`. The title of the n
 On the labeling page, the PDF file is displayed with pagination so that annotators can annotate on the PDF document one page at a time.
 
 
-## OCR and Visual NER servers
+## OCR and Visual NER Servers
 
-Just like (preannotation servers)[], Generative AI Lab 3.0.0 also supports the deployment of multiple OCR servers. If a user has uploaded a Spark OCR license, be it airgap or floating, OCR inference is enabled. 
+Generative AI Lab supports the deployment and management of multiple **OCR servers**, similar to pre-annotation servers.  
+When a valid **Spark OCR license** (air-gapped or floating) is available, OCR inference becomes active and ready for use.
 
-To create a Visual NER project, users have to deploy at least one OCR server. Any OCR server can perform preannotation. To select the OCR server, users have to go to the Import page, toggle the OCR option and from the popup, choose one of the available OCR servers. In no suitable OCR server is available, one can be created by choosing the “Create Server” option.
+To create a **Visual NER project**, at least one OCR server must be deployed. OCR servers can be used for **automatic pre-annotation** of visual or PDF-based documents.  
+From the **Import** page, users can toggle the **OCR** option and select one of the available OCR servers from the list. If no suitable OCR server exists, a new one can be created directly by choosing **Create Server**.
 
 ![ocr_dialog](https://user-images.githubusercontent.com/26042994/161700598-fd2c8887-3bf9-4c71-9cb2-c47fc065a42a.gif)
 
-## Visual NER Training And Preannotation
 
-With release 3.4.0 came support for Visual NER Automated Preannotation and Model Training. 
+## Visual NER Training and Pre-Annotation
 
-### Visual NER Training Support
+Generative AI Lab provides full support for **Visual NER model training** and **automated pre-annotation**.  
+Users can train Visual NER models using annotated image or PDF tasks, apply **active learning** to continuously improve model accuracy, and use trained models to **pre-annotate new documents**—accelerating labeling and reducing manual effort.
 
-Version 3.4.0 of the Generative AI Lab offers the ability to train Visual NER models, apply active learning for automatic model training, and preannotate image-based tasks with existing models in order to accelerate annotation work.
+This streamlined workflow allows teams to combine OCR, Visual NER training, and pre-annotation capabilities to efficiently process image-based datasets while maintaining high annotation quality.
+
 
 #### License Requirements
 

@@ -52,7 +52,7 @@ When predictions are available for a task, Annotator can accept the predictions 
 
 ## Labeling editor Settings
 
-The labeling editor offers some configurable features. For example, you can modify the editor's layout, show or hide predictions, annotations, or the confidence panel, show or hide various controls and information. It is also possible to keep a label selected after creating a region, display labels on bounding boxes, polygons and other regions while labeling, and show line numbers for text labeling.
+The labeling editor offers some configurable features. For example, you can modify the editor's layout, show or hide predictions, annotations, or the confidence panel, show or hide various controls and information. It is also possible to keep a label selected after creating a region, display labels on bounding boxes, polygons and other regions while labeling, and show line numbers for text labeling. 
 
 </div><div class="h3-box" markdown="1">
 
@@ -233,7 +233,10 @@ we'll obtain the output illustrated below:
 
 ## Comments on the Labeling Page
 
-Since version 4.10.0, Generative AI Lab offers enhanced comment feature for labeling pages, enabling users to easily add, update, and delete comments within labeling pages. This feature enhances the communication between the annotators, improves work efficiency and enhances productivity. In order to use this feature, there is a New Burger menu at the top right corner of the labeling page. The dropdown through this menu allows users to add, update, and delete comments.
+Generative AI Lab provides an enhanced **Comments** feature on the labeling page, enabling users to add, update, and delete comments directly within annotation tasks.  
+This capability improves communication between team members, streamlines collaboration, and boosts overall annotation efficiency.  
+
+To use this feature, open the **burger menu** at the top-right corner of the labeling page and choose the **Comments** option from the dropdown to manage task-level discussions.
 
 ![Comments on the Labeling Page](/assets/images/annotation_lab/4.10.0/2-min.gif)
 
@@ -241,7 +244,12 @@ Since version 4.10.0, Generative AI Lab offers enhanced comment feature for labe
 
 ## Tags from the Labeling Screen
 
-From version 4.10 onwards, Generative AI Lab introduces an enhanced tags feature for labeling pages. This addition offers users a convenient method to create, attach, and delete tags directly on the labeling page. It greatly enhances organization and boosts productivity by streamlining task management, granting users greater flexibility in classifying and monitoring their labeled data. Similar to the aforementioned comment feature, this can also be accessed from the burger menu at the top right corner of the labeling page. From the dropdown, select "Assign Tags".
+Generative AI Lab includes an enhanced **Tags** feature on the labeling page, allowing users to create, attach, and delete tags directly while annotating.  
+This feature improves organization and productivity by streamlining task management, making it easier to classify and monitor labeled data.  
+
+The tags option is available from the **burger menu** at the top-right corner of the labeling page.  
+From the dropdown, select **Assign Tags** to manage task tagging.
+
 
 ![Tags from the Labeling Screen](/assets/images/annotation_lab/4.10.0/3-min.gif)
 
@@ -259,47 +267,58 @@ Label configuration editor and <es>Preview Window</es> covers 50/50 part of the 
 
 ## Switch Role
 
-For users having multiple roles (_Annotator/Reviewer/Manager_) the labeling page can get confusing. Switch Role filter present on the top-right corner can help address this problem. This filter was introduced in Generative AI Lab from version <bl>2.6.0</bl>, previously refered to as <es>View As</es> filter. When selecting _Annotator_ option, the view changes to facilitate annotating the task. Similar changes to the view applies when switching to _Reviewer_ or _Manager_ option. The selection persists even when the tab is closed or refreshed.
+For users with multiple roles (_Annotator_, _Reviewer_, or _Manager_), the labeling page can display role-specific views to simplify the interface.  
+The **Switch Role** filter, located in the top-right corner of the labeling page, allows users to change their active role and instantly adjust the workspace accordingly.  
+
+Selecting the **Annotator** option focuses the view on annotation tasks, while choosing **Reviewer** or **Manager** displays the appropriate tools and controls for those roles.  
+The selected view preference is automatically saved and persists across sessions.
+
 
 ![Switch Role](/assets/images/annotation_lab/4.1.0/switch_role.png "lit_shadow")
 
 </div><div class="h3-box" markdown="1">
 
 ## Annotation Instructions for Labels
-Generative AI Lab 6.7 introduces a new feature allowing admin users to add annotation instructions to labels directly from the `Customize Labels` page. This enhancement ensures that annotators have clear and consistent guidelines, improving labeling accuracy and quality. The annotation guidelines are available for both NER (Named Entity Recognition) and VisualNER project types, offering flexibility across different project formats. 
+
+Admin users can add **annotation instructions** to labels directly from the `Customize Labels` page during project setup.  
+This feature helps ensure that annotators have clear, consistent labeling guidelines, improving annotation accuracy and quality.  
+Annotation guidelines are supported for both **NER (Named Entity Recognition)** and **Visual NER** project types, providing flexibility across different annotation formats.
 
 To add annotation instructions to a label, follow these steps:
- - Navigate to the `Customize Labels` section, where all your project’s labels are listed.
- - Click on the `Edit` icon next to the label for which you want to add instructions. This action will take you to the `Edit Label` page.
- - Enter the guidelines under the `Label Instructions` field.
- - Click on `Save Label` to store the instructions.
- - Click on `Save Config` to save the configuration.
+ - Navigate to the `Customize Labels` section, where all project labels are listed.
+ - Click the **Edit** icon next to the label for which you want to add instructions.  
+   This opens the **Edit Label** window.
+ - Enter your guidelines under the **Label Instructions** field.
+ - Click **Save Label**, then **Save Config** to apply your changes.
 
 ![670image](/assets/images/annotation_lab/6.7.0/10.gif)
 
-Once annotation instructions are added, they can be viewed from the labeling page in the widget area on the right side. Users can enable or disable the annotation guidelines through the `Annotation Guidelines` toggle. To view the guidelines, the label must first be activated by clicking on it, which will display the label under the `Annotation Guideline` section. Clicking on the label text will then reveal the annotation instructions for that label. 
+Once instructions are added, they can be viewed directly from the labeling page in the **Annotation Guidelines** widget on the right panel.  
+Annotators can toggle the display on or off using the **Annotation Guidelines** switch.  
+To view the guidelines, the label must be activated by clicking it; the corresponding instructions will appear under the **Annotation Guideline** section.
 
 ![670image](/assets/images/annotation_lab/6.7.0/11.gif)
 
-Users with the Project Manager role can edit and delete annotation guidelines directly from the labeling page. However, users with the Annotator and Reviewer roles can only view the guidelines and do not have permission to edit or delete them. 
+Users with the **Project Manager** role can edit or delete annotation guidelines directly from the labeling page.  
+Annotators and Reviewers can view the instructions but cannot modify or remove them.
 
-Remove the annotation instructions from the labeling page: 
+Remove instructions from the labeling page:
 
 ![670image](/assets/images/annotation_lab/6.7.0/12.gif)
 
-Edit the annotation instructions from the Labeling page: 
+Edit instructions from the labeling page:
 
 ![670image](/assets/images/annotation_lab/6.7.0/13.gif)
 
-When multiple labels are selected, the guidelines for each label can be viewed one at a time by clicking on the corresponding label text.
+When multiple labels are selected, their respective guidelines can be viewed one at a time by clicking the label name.
 
 ![670image](/assets/images/annotation_lab/6.7.0/14.gif)
 
-Annotation guidelines can also be downloaded in JSON format by clicking on the Download icon from the Customize Labels page.
+Annotation guidelines can also be downloaded in JSON format via the **Download** icon on the `Customize Labels` page, enabling easy sharing or reuse across projects.
 
 ![670image](/assets/images/annotation_lab/6.7.0/15.png)
 
-Additionally, annotation guidelines are available for Assertion Labels as well. 
+Guidelines are also available for **Assertion Labels**, ensuring consistent labeling for entity and context annotations alike.
 
 ![670image](/assets/images/annotation_lab/6.7.0/16.gif)
 

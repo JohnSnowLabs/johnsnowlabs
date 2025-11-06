@@ -15,19 +15,25 @@ sidebar:
 
 ## LLM Evaluation Project Types with Multi-Provider Integration
 
+Generative AI Lab provides specialized project types for evaluating and comparing responses from large language models (LLMs):
 
-You can now systematically evaluate and compare the outputs of large language models (LLMs) using two specialized project types in Generative AI Lab:
-- **LLM Evaluation:**  Assess responses from a single LLM based on custom criteria.
-- **LLM Evaluation Comparison:** Compare side-by-side outputs from two different LLMs for the same prompt.
+- **LLM Evaluation** – assess responses from a single LLM based on defined criteria.  
+- **LLM Comparison** – compare side-by-side responses from two or more LLMs for the same prompt.
 
-These project types support integration with major LLM providers:
+These projects enable structured model assessment, supporting both qualitative and quantitative scoring within the same collaborative annotation environment.
+
+### Supported LLM Providers
+
+Generative AI Lab integrates with multiple leading LLM providers:
+
 - **OpenAI**
 - **Azure OpenAI**
 - **Amazon SageMaker**
+- **Anthropic Claude**
 
-### Setting Up LLM Provider Integration
-1. Navigate to **Settings → System Settings → Integration**.
-2. Click **Add**, enter your provider credentials, and save the configuration..
+You can configure one or more providers globally from **System Settings → Integration**, where credentials for each service can be securely added.  
+The procedure is consistent across providers—enter the required API keys or access tokens, validate, and save.  
+Once configured, these providers are available for selection when creating LLM Evaluation or Comparison projects.
 
 ![720image](/assets/images/annotation_lab/7.2.0/1.gif)
 

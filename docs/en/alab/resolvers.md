@@ -15,16 +15,21 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-### Lookup code/terms in Labeling page
-Generative AI Lab version 5.9.0 introduces support for Entity Resolution, allowing users to enhance their annotations by adding lookup datasets. By allowing users to enrich labeled text with additional information, Generative AI Lab provides the way for improving the context and accuracy of annotations. Lookup functionality is currently supported exclusively by text based NER projects.
+### Lookup Code/Terms in the Labeling Page
+Generative AI Lab supports **Entity Resolution (ER)** for text-based annotation projects, enabling users to enrich entity labels with external lookup datasets.  
+This feature enhances annotation accuracy and context by linking labeled text to structured terminology, such as medical codes or standardized identifiers.
+
+Lookup functionality is available for text-based Named Entity Recognition (NER) projects and allows annotators to connect entities directly to relevant metadata — for example, mapping a medical **procedure** mention to a **CPT code**, or linking a diagnosis to an **ICD-10** code.
 
 </div><div class="h3-box" markdown="1">
 
 ### Configuring Lookup
-Configuring lookup datasets is straightforward: use the well-known Customize Labels page during project configuration and follow the steps below:
-1. Click on the specific label for which you want to add lookup data.
-2. Select the desired lookup dataset from the dropdown list.
-3. Navigate to the task page and add lookup information to labeled texts.
+
+Configuring lookup datasets is straightforward through the **Customize Labels** page during project setup:
+
+1. Click the specific label you want to associate with a lookup dataset.  
+2. Select the desired lookup dataset from the dropdown list.  
+3. Proceed to the Task page to apply lookup information to labeled entities.
 
 ![LookUpConfiguration](/assets/images/annotation_lab/5.9.0/1.gif)
 
@@ -54,9 +59,17 @@ This new feature enhances the annotation capabilities of Generative AI Lab, allo
 
 </div><div class="h3-box" markdown="1">
 
-## Pre-annotate metadata using Resolvers 
+## Pre-Annotate Metadata Using Resolvers
 
-- Generative AI Lab 5.9 introduces a pivotal enhancement that expands pre-annotation capabilities with the use of Healthcare resolvers. These resolvers are now conveniently accessible and discoverable on the NLP Models Hub page. Simply apply the "Entity Resolution" filter to view the comprehensive list.
+Generative AI Lab supports the use of **Healthcare Resolvers** for pre-annotating metadata, extending the platform’s capabilities to entity resolution tasks. Resolvers map recognized entities to standardized terminologies or knowledge bases, helping enrich annotations with meaningful metadata such as concept codes, canonical forms, or entity definitions.
+
+Resolvers are available directly in the **NLP Models Hub** — users can easily locate them by applying the **“Entity Resolution”** filter. Once selected, these models can be deployed for pre-annotation like other model types, automatically linking identified entities to their corresponding concepts.
+
+This enhancement allows annotation teams to:
+- **Enrich Annotations Automatically:** Add structured metadata such as concept IDs and synonyms to labeled entities.  
+- **Leverage Domain Knowledge:** Use domain-specific resolvers (e.g., Healthcare, Finance, Legal) to ensure high-quality entity linking.  
+- **Streamline Workflows:** Reduce manual post-processing by integrating entity resolution directly into pre-annotation pipelines.
+
 
 ![Resolution_prediction](/assets/images/annotation_lab/5.9.0/6.png)
 
@@ -79,13 +92,15 @@ This new feature enhances the annotation capabilities of Generative AI Lab, allo
 
 </div><div class="h3-box" markdown="1">
 
-## Pair Entity resolver models with rules and zero-shot prompts
-Version 6.5.0 introduces expanded support for using Entity Resolution (ER) models, now allowing their use alongside rules and zero-shot prompts. ER models were previously limited to use with Named Entity Recognition (NER) models only. Users can now leverage ER models not only with NER models but also in conjunction with rules and zero-shot prompts. This enhancement offers greater flexibility and efficiency in annotation workflows.
+## Combining Entity Resolvers with Rules and Zero-Shot Prompts
 
-**How to Use**:
-  - **Step 1**: Add a rule or prompt from the Re-use Resource page.
-  - **Step 2**: Edit the label in the Customize Labels page and select the appropriate ER model to associate with the labels.
-  - **Step 3**: Import tasks and Pre-annotate the task.
+Entity Resolution models can be used not only with NER models but also alongside **Rules** and **Zero-Shot Prompts**, allowing flexible pre-annotation and enrichment workflows.
+
+**How to Use:**
+1. Add a Rule or Prompt resource from the **Reuse Resources** page.  
+2. Edit the label in **Customize Labels** and assign an Entity Resolver model.  
+3. Import and pre-annotate tasks to automatically resolve entities to their canonical forms or codes.
+
     
 ![genAI650](/assets/images/annotation_lab/6.5.0/13.gif)
 

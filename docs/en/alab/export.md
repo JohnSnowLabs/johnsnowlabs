@@ -2008,14 +2008,24 @@ If this option is enabled then only the tasks having ground truth in the complet
 
 **Exclude tasks without Completions**
 
-Previous versions of the Generative AI Lab only allowed the export of tasks that contained completions. From version <bl>2.8.0</bl> on, the tasks without any completions can be exported as this can be necessary for cloning projects. In the case where only tasks with completions are required in the export, users can enable the _Exclude tasks without Completions_ option on the Export page.
+You can choose whether to include tasks that have no completions in the export.  
+Enable **Exclude tasks without Completions** on the Export page to export only tasks that contain at least one completion (useful when you don’t want empty tasks in downstream workflows).  
+Leave it unchecked to include all tasks—completed and empty—such as when cloning or archiving full projects.
 
 
-## Integration with Amazon S3 and Azure Blob for tasks and projects export
-Generative AI Lab 5.2 offers seamless integration with Amazon Simple Storage Service. Users can now effortlessly export annotated tasks and projects directly to a given S3 bucket. This enhancement simplifies data management and ensures a smooth transition from annotation to model training and deployment.
 
-In previous versions, exported tasks were sent to the local workstation, but now it is possible to store annotated tasks and project backups securely in an S3 bucket. When triggering export, a new popup window will prompt the user to choose the target destination.
-By default, the "Local Export" tab is selected. This means that when the user clicks on the export button, target files will be downloaded to the local workstation. For those who prefer the convenience and reliability of cloud storage, it is now possible to select the "S3 Export" tab - enter Amazon S3 credentials, and export tasks and projects directly to the specified S3 bucket path. S3 credentials can be stored by the Generative AI Lab for future use.
+## Integration with Amazon S3 and Azure Blob for Tasks and Projects Export
+
+Generative AI Lab provides seamless integration with **Amazon S3** and **Azure Blob Storage**, enabling users to export annotated tasks and entire projects directly to cloud storage.  
+This simplifies data management and ensures a smooth transition from annotation to model training or deployment.
+
+When triggering an export, a popup window prompts users to select the target destination.  
+By default, the **Local Export** tab is selected, meaning files are downloaded to the local workstation.  
+Alternatively, users can switch to the **S3 Export** tab to send project data directly to an Amazon S3 bucket or to the **Azure Blob Export** tab for Azure storage.
+
+S3 credentials can be entered manually and securely saved for future use.  
+> **Note:** When running on an **AWS EC2 instance** with an attached **IAM role**, Generative AI Lab automatically uses that role’s permissions for S3 exports—no manual AWS keys are required.
+
 
 ![exports3](/assets/images/annotation_lab/5.2.2/2.gif)
 
@@ -2045,6 +2055,11 @@ This integration with Azure Blob storage empowers Generative AI Lab users to man
 - You click on Save Credentils as well for the future use
 - Optionally, save credentials for future use
 - Click "EXPORT"
+
+> **Note:**  
+> When exporting projects to **AWS S3**, if Generative AI Lab is running on an **AWS EC2 instance** with an attached **IAM role**, the platform can automatically use that role’s credentials for authentication.  
+> In this case, you do **not** need to manually enter or store AWS Access or Secret Keys—the system securely uses the IAM role permissions assigned to the instance to perform the export operation.
+
 ![s3_export](/assets/images/annotation_lab/5.9.0/17.gif)
 
 **Steps to export a project to Azure Blob:**
@@ -2057,9 +2072,12 @@ This integration with Azure Blob storage empowers Generative AI Lab users to man
 - Click "EXPORT"
 ![azure_export](/assets/images/annotation_lab/5.9.0/18.gif)
 
-## Improved HIPAA compliance with disabled exports to local storage
+## Improved HIPAA Compliance with Restricted Local Exports
 
-Another new feature Generative AI Lab 5.2 offers is the option to restrict the export for more control over tasks and projects. Exporting tasks and projects to the local workstation can be disabled by admin users when dealing with sensitive data. This encourages users to adopt the more versatile and secure option of exporting data to Amazon S3.
+Administrators can restrict local exports to enhance data security and maintain HIPAA compliance.  
+When local export is disabled, users can no longer download projects or tasks to their workstation and must instead export them securely to cloud storage, such as **Amazon S3** or **Azure Blob**.  
+
+This ensures sensitive information remains protected while still allowing flexible and compliant data handling for annotation workflows.
 
 **Disable Local Export:**
 
@@ -2076,5 +2094,5 @@ data that will be stored securely in the cloud.
 
 ![disableExport2](/assets/images/annotation_lab/5.2.2/3.gif)
 
-By introducing these export enhancements, Generative AI Lab 5.2.0 empowers organizations to streamline their data management processes while maintaining flexibility and control over export options. Users can continue to export specific projects to their local workstations if required, while others can benefit from the reliability and accessibility of exporting to Amazon S3 buckets.
+
 

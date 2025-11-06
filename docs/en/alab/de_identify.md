@@ -16,12 +16,14 @@ sidebar:
 <div class="h3-box" markdown="1">
 
 ## Support for De-identification
-Version 6.4 of Generative AI Lab introduces a new de-identification feature, enabling users to anonymize documents containing sensitive information such as PII (Personally Identifiable Information) and PHI (Protected Health Information). This functionality is intended to protect data privacy and ensure compliance with privacy regulations while preserving the data’s usefulness for subsequent analysis and processing.
+Generative AI Lab provides a **De-Identification project type** that enables users to anonymize documents containing sensitive information such as **PII (Personally Identifiable Information)** and **PHI (Protected Health Information)** while preserving the overall data utility.  
+This capability supports privacy-compliant processing of text data in regulated environments and ensures that annotated information remains valuable for downstream analytics and model development.
 
-Version 6.7 of Generative AI Lab improves on the original feature to allow for custom methods of de-identification for each entity label and support for the newest John Snow Labs De-identification Pipeline. 
+De-Identification projects combine manually created or pre-trained **NER models**, **rules**, and **prompts** to automatically detect sensitive entities.  
+You can choose **different de-identification methods for each entity label**, such as masking, obfuscation, or replacement, and even leverage the latest **John Snow Labs De-Identification Pipeline** for optimal accuracy and performance.
 
-**De-identification Projects** When creating a new project in the Generative AI Lab, users can mark it as De-Identification specific. These projects allow the use of manually trained or pre-trained text-based NER models, together with prompts, rules, and custom labels created by the user for identifying sensitive data inside of tasks. Once the sensitive data is identified (either automatically or manually) and validated by human users, it can be exported for further processing. 
-When creating De-identification projects make sure you only target sensitive entities as part of your project configuration and avoid annotating relevant data you need for downstream processing as all those entities will be removed when exporting the project tasks as de-identified documents. The best practice, in this case, is to re-use de-identification specific models combined with custom prompts/rules. 
+When creating a De-Identification project, target only entities that represent sensitive data; any labeled entity will be transformed or removed during export.  
+A best-practice setup combines domain-specific de-identification models with custom rules or prompts to ensure the correct balance between privacy and data preservation. 
 
 **Exporting De-identified Documents:** The tasks of your project with PII/PHI labeled entities can be exported as de-identified documents. During the export process, labeled entities will be replaced by the label names, or special characters (such as "*"), or obfuscated and replaced with fake data. This ensures that sensitive information is removed and not available for downstream analysis.
 
@@ -130,22 +132,32 @@ This new de-identification feature significantly enhances data privacy by anonym
 
 #### Add demo test project for De-identification project**
 
-With Version 6.11, we have created a **Demo De-identification Project**. This is designed to help users familiarize themselves with de-identification workflows without the need for manual project setup.
+#### Demo De-Identification Project
 
-Now, users can click the **Import** button and select **Import Demo Projects**, which will automatically add a pre-configured de-identification project to their workspace. This feature provides a practical example, enabling users to explore how de-identification pipelines work, understand labeling structures, and experiment with different de-identification settings before working on actual datasets. Please note that the project will only be imported if a **valid license** is available within the application.
+Generative AI Lab includes a **Demo De-Identification Project** that helps users quickly familiarize themselves with de-identification workflows without manual setup.  
+
+From the **Import** menu, select **Import Demo Projects** to automatically add a pre-configured de-identification project to your workspace.  
+This example project allows users to explore how de-identification pipelines operate, review label structures, and experiment with various anonymization settings before working with real datasets.  
+
+> **Note:** The demo project requires a valid license to be available in the application.
 
 ![6110image](/assets/images/annotation_lab/6.11.0/6.gif)
 
-#### Simplified Export of De-identified tasks**
+#### Simplified Export of De-Identified Tasks
 
-With Version 6.11, manually completing de-identifications before export is no longer necessary. Now, when exporting de-identified tasks, the system automatically determines what to export:
-- If **de-identified submitted completions** are available, they are prioritized for export.
-- If no submitted completions exist, the **de-identified predictions** generated by the model are exported instead.
+The export process for de-identified tasks automatically determines which results to include.  
+When exporting:
+
+- **De-identified submitted completions** are prioritized for export.  
+- If no submitted completions are available, the system automatically exports **de-identified predictions** generated by the model.
+
+This ensures that sensitive information is consistently anonymized while streamlining the export workflow.
 
 ![6110image](/assets/images/annotation_lab/6.11.0/7.gif)
 
-#### Increased Consistency in the De-Identification Process Across De-identification Projects
+#### Consistent De-Identification Workflow
 
-With Version 6.11, the **De-identify** button now functions uniformly across all de-identification projects, whether using models or pipelines. It seamlessly **pre-annotates and de-identifies predictions** in a single step, ensuring a smoother and more predictable workflow.
+The **De-identify** button provides a uniform workflow across all de-identification projects—whether using pipelines, pre-trained models, or custom rules.  
+It performs **pre-annotation and de-identification** in a single step, ensuring smooth and predictable processing across projects.
 
-Users can now rely on a standardized approach, reducing confusion and making the de-identification workflow more intuitive.
+This unified approach simplifies training, reduces configuration errors, and ensures a consistent experience for all users.

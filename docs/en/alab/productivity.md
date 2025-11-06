@@ -34,6 +34,9 @@ A refresh button is present on the top-right corner of the Analytics page. The A
 
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/analytics/refresh.png" style="width:100%;"/>
 
+> **Note:** In evaluation projects with multiple rating questions, analytics aggregate results **per question** so teams can compare models or responses across individual criteria (e.g., accuracy, coherence, safety) without additional setup.
+
+
 ### Task Analytics
 
 To access Task Analytics, navigate on the first tab of the <es>Analytics</es> Dashboard, called <bl>Tasks</bl>. The following blog post explains how to [Improve Annotation Quality using Task Analytics in the Generative AI Lab](https://www.johnsnowlabs.com/improving-annotation-quality-using-analytics-in-the-annotation-lab/).
@@ -120,7 +123,9 @@ Below are the charts included in the Team Productivity section.
 
 ### Inter-Annotator Agreement (IAA)
 
-Starting from version 2.8.0, Inter Annotator Agreement(IAA) charts allow the comparison between annotations produced by <es>Annotators</es>, <es>Reviewers</es>, or <es>Managers</es>.
+Inter-Annotator Agreement (IAA) charts allow teams to compare annotations produced by <es>Annotators</es>, <es>Reviewers</es>, or <es>Managers</es>.  
+IAA is available for **NER projects — including those that use HTML content** — so rich-text/HTML labeling workflows benefit from the same agreement metrics as plain-text projects.
+
 
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/analytics/iaa_analytics.gif" style="width:100%;"/>
 

@@ -21,7 +21,8 @@ NLP Models HUB page is accessible from the left navigation panel by users in the
 
 ![Models hub](/assets/images/annotation_lab/4.1.0/models_hub.png)
 
-The Models Hub page lists all the pre-trained models and embeddings from NLP Models Hub that are compatible with the Spark NLP version present in the Generative AI Lab.
+The Models Hub page lists all the pre-trained models and embeddings available from the NLP Models Hub that are compatible with the Lab’s current Spark NLP version.  
+Generative AI Lab automatically detects the active Spark NLP library version and filters available models to ensure compatibility.  
 
 </div><div class="h3-box" markdown="1">
 

@@ -25,7 +25,7 @@ Users can import the accepted file formats in multiple ways. They can drag and d
 
 When you upload a plain text file, only one task will be created which will contain the entire data in the input file.
 
-This is an update from earlier versions of Generative AI Lab when the input text file was split by the new line character and one task was created for each line.
+Previously, plain text files were split by newline characters into multiple tasks, but the system now treats the entire file as a single unit for more accurate and efficient processing.
 {:.warning}
 
 ## Json file
@@ -56,15 +56,17 @@ When importing tasks that already contain annotations (e.g. exported from anothe
 
 ## Dynamic Task Pagination
 
-The support for pagination offered by earlier versions of the Generative AI Lab involved the use of the `<pagebreak>` tag. A document pre-processing step was necessary for adding/changing the page breaks and those involved extra effort from the part of the users.
+Dynamic pagination allows annotators and reviewers to control how large documents are displayed during annotation.  
+Instead of relying on static `<pagebreak>` tags or manual preprocessing, users can now define pagination settings directly from the **Labeling page**, making the workflow more flexible and efficient.
 
-Generative AI Lab 2.8 and above introduces a paradigm change for pagination. Pagination is dynamic and can be configured according to the user’s needs and preferences from the Labeling page. Annotators or reviewers can now choose the number of words to include on a single page from a predefined list of values or can add the desired counts.
+Annotators can choose the number of words to include on a single page from a predefined list or specify a custom value, tailoring the page size to their preference or task complexity.
 
 ![Dynamic Task Pagination](/assets/images/annotation_lab/4.2.0/pagination.gif "lit_shadow w_80")
 
-A new settings option has been added to prevent splitting a sentence into two different pages.
+An additional setting is available to **prevent sentences from being split across pages**, ensuring better readability and preserving context during annotation.
 
 ![Dynamic Task Pagination](/assets/images/annotation_lab/2.8.0/158552636-1b9f8814-5e05-4904-8ab4-401ea476d32e.png "lit_shadow w_60")
+
 
 ## Import from Cloud Storage
 Generative AI Lab supports importing tasks and entire projects directly from cloud storage, including AWS S3 and Azure Blob Storage.
@@ -82,8 +84,12 @@ How to Import Tasks from Cloud:
    - For AWS S3: Bucket name, path, Access Key, Secret Key (and Session Token for MFA).
    - For Azure Blob: Container name, Account name, and Account Secret Key.
   - Click “Import” to fetch all files from the specified path and load them as tasks into your project.
+  - If your Generative AI Lab instance is running on an AWS EC2 machine that has an IAM role attached, you can skip filling the Access Key and Secret Key fields. The Lab automatically uses the instance role credentials for S3 import and export operations, offering a secure, credential-free connection.
+
 
 **Note:-** All compatible documents in the specified cloud path will be automatically converted into tasks in the current project.
+**Note:** When re-importing from the same AWS S3 path, previously imported files are automatically skipped. Only new or updated files are added as tasks, preventing duplicates and streamlining incremental imports.
+
 
 ![Effortless Task Import from Azure Blob Storage](/assets/images/annotation_lab/5.8.0/2.gif)
 
@@ -91,7 +97,7 @@ How to Import Tasks from Cloud:
 
 ### Import Project from S3 and Blob
 
-Starting from version 5.9, you can import a full project archive (including tasks, labels, configurations) stored as a .zip file in cloud storage.
+SUsers are able to import a full project archive (including tasks, labels, configurations) stored as a .zip file in cloud storage.
 
 How to Import a Project from AWS S3:
   - Go to the Import Project section.
