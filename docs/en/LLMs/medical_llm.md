@@ -41,7 +41,7 @@ Our models are designed to deliver best-in-class performance across a wide range
 
 John Snow Labs' latest 2025 release of its Medical Large Language Models advance Healthcare AI by setting new state-of-the-art accuracy on medical LLM benchmarks. This advances what's achievable in a variety of real-world use cases including clinical assessment, medical question answering, biomedical research synthesis, and diagnostic decision support.
 
-Leading the pack is their largest 78B model, which can read and understand up to 32,000 words at once – that's roughly 64 pages of medical text. The model is specially trained to work with medical information, from patient records to research papers, making it highly accurate for healthcare tasks. What makes this release special is how well the model performs while still being practical enough for everyday use in hospitals and clinics – thanks to a suite of models in different sizes, that balance accuracy with speed, cost, and privacy.
+Leading the pack is the largest 78B model, which can read and understand up to 32,000 words at once – that's roughly 64 pages of medical text. The model is specially trained to work with medical information, from patient records to research papers, making it highly accurate for healthcare tasks. What makes this release special is how well the model performs while still being practical enough for everyday use in hospitals and clinics – thanks to a suite of models in different sizes, that balance accuracy with speed, cost, and privacy.
 
 </div><div class="h3-box" markdown="1">
 
