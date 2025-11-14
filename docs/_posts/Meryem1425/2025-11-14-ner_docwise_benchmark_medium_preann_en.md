@@ -2,7 +2,7 @@
 layout: model
 title: NER Pipeline Benchmark Large (Document Wise)
 author: John Snow Labs
-name: ner_docwise_benchmark_medium_preann
+name: pp_docwise_benchmark_medium_preann
 date: 2025-11-14
 tags: [ner, en, licensed, clinical, pipeline, docwise]
 task: [Named Entity Recognition, Pipeline Healthcare]
@@ -24,8 +24,8 @@ This pipeline can be used to detect PHI entities in medical texts using Named En
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_docwise_benchmark_medium_preann_en_6.0.4_3.4_1763090882030.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_docwise_benchmark_medium_preann_en_6.0.4_3.4_1763090882030.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/pp_docwise_benchmark_medium_preann_en_6.0.4_3.4_1763090882030.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/pp_docwise_benchmark_medium_preann_en_6.0.4_3.4_1763090882030.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -38,7 +38,7 @@ This pipeline can be used to detect PHI entities in medical texts using Named En
 
 from sparknlp.pretrained import PretrainedPipeline
 
-ner_docwise = PretrainedPipeline("ner_docwise_benchmark_medium_preann", "en", "clinical/models")
+ner_docwise = PretrainedPipeline("pp_docwise_benchmark_medium_preann", "en", "clinical/models")
 
 text = """Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024.
 The patient’s medical record number is 56467890.
@@ -54,7 +54,7 @@ result = ner_docwise.fullAnnotate(text)
 
 from sparknlp.pretrained import PretrainedPipeline
 
-ner_docwise = nlp.PretrainedPipeline("ner_docwise_benchmark_medium_preann", "en", "clinical/models")
+ner_docwise = nlp.PretrainedPipeline("pp_docwise_benchmark_medium_preann", "en", "clinical/models")
 
 text = """Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024.
 The patient’s medical record number is 56467890.
@@ -67,7 +67,7 @@ result = ner_docwise.fullAnnotate(text)
 
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
-val ner_docwise = PretrainedPipeline("ner_docwise_benchmark_medium_preann", "en", "clinical/models")
+val ner_docwise = PretrainedPipeline("pp_docwise_benchmark_medium_preann", "en", "clinical/models")
 
 val text = """Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024.
 The patient’s medical record number is 56467890.
@@ -102,7 +102,7 @@ val result = ner_docwise.fullAnnotate(text)
 
 {:.table-model}
 |---|---|
-|Model Name:|ner_docwise_benchmark_medium_preann|
+|Model Name:|pp_docwise_benchmark_medium_preann|
 |Type:|pipeline|
 |Compatibility:|Healthcare NLP 6.0.4+|
 |License:|Licensed|
