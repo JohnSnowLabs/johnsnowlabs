@@ -33,6 +33,7 @@ This pipeline can be used to detect PHI entities in medical texts using Named En
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
