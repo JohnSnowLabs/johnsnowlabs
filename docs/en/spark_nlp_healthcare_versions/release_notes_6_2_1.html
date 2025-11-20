@@ -9,12 +9,12 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Healthcare NLP v3.5.3 Release Notes</title><meta property="og:title" content="Spark NLP for Healthcare | John Snow Labs"/>
+<!-- End Google Tag Manager --><title>Healthcare NLP v6.2.1 Release Notes</title><meta property="og:title" content="Spark NLP for Healthcare | John Snow Labs"/>
 
 <meta name="description" content="High Performance NLP with Apache Spark
 ">
-<!-- <link rel="canonical" href="/docs/en/spark_nlp_healthcare_versions/release_notes_3_5_3"> -->
-<link rel="canonical" href="/docs/en/spark_nlp_healthcare_versions/release_notes_3_5_3"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<!-- <link rel="canonical" href="/docs/en/spark_nlp_healthcare_versions/release_notes_6_2_1"> -->
+<link rel="canonical" href="/docs/en/spark_nlp_healthcare_versions/release_notes_6_2_1"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -616,319 +616,338 @@ function wrapWordInSpan(data, wordToWrap) {
 </script><div class="article__header"><div class="header-nav"><div class="main-docs">
   <ul class="breadcrambs">
     <li><a href="/docs">Documentation</a></li>
-    <li>Healthcare NLP v3.5.3 Release Notes</li>
+    <li>Healthcare NLP v6.2.1 Release Notes</li>
   </ul>
 </div></div><header class="main-docs have_subtitle">
-          <h1>Healthcare NLP v3.5.3 Release Notes</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
+          <h1>Healthcare NLP v6.2.1 Release Notes</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
-            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/spark_nlp_healthcare_versions/release_notes_3_5_3.md">
-            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Healthcare NLP v3.5.3 Release Notes"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
+            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/spark_nlp_healthcare_versions/release_notes_6_2_1.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Healthcare NLP v6.2.1 Release Notes"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <h2 id="section">3.5.3</h2>
+  <h2 id="section">6.2.1</h2>
 
   <h4 id="highlights">Highlights</h4>
 
+  <p>We are delighted to announce remarkable enhancements and updates in our latest release of Healthcare NLP. This release focuses on making NER training and clinical document analysis significantly faster and easier with a major upgrade to <strong>Annotation2Training</strong>, major improvements and reduced memory usage in <strong>MedicalNerApproach</strong> training, new one-liner pretrained pipelines and models for end-to-end clinical document understanding. In addition, this version delivers core robustness improvements, refreshed notebooks and demonstrations, and 5 new and updated clinical models and pipelines to further strengthen our Healthcare NLP.</p>
+
   <ul>
-    <li>New <code class="language-plaintext highlighter-rouge">rxnorm_mapper</code> model</li>
-    <li>New <code class="language-plaintext highlighter-rouge">ChunkMapperFilterer</code> annotator to filter <code class="language-plaintext highlighter-rouge">ChunkMapperModel</code> results</li>
-    <li>New features
+    <li>Major training performance improvements for <code class="language-plaintext highlighter-rouge">MedicalNerApproach</code>, including significantly reduced memory usage and faster multi-epoch NER training.</li>
+    <li><code class="language-plaintext highlighter-rouge">Annotation2Training</code> makes it much easier to prepare high-quality NER training datasets with built-in label filtering, relabeling, CoNLL export, and quick label distribution insights</li>
+    <li>Clinical document analysis with one-liner pretrained-pipelines for specific clinical tasks and concepts</li>
+    <li>Introducing a new city TextMatcher model for extracting city names from clinical text</li>
+    <li>New blog post to understand how to deploy Medical LLMs on Databricks</li>
+    <li>Various core improvements; bug fixes, enhanced overall robustness and reliability of Healthcare NLP</li>
+    <li>Updated notebooks and demonstrations for making Healthcare NLP easier to navigate and understand
       <ul>
-        <li>Add the <code class="language-plaintext highlighter-rouge">setReplaceLabels</code> parameter that allows replacing the non-conventional labels without using an external source file in the <code class="language-plaintext highlighter-rouge">NerConverterInternal()</code>.</li>
-        <li>Case sensitivity can be set in <code class="language-plaintext highlighter-rouge">ChunkMapperApproach</code> and <code class="language-plaintext highlighter-rouge">ChunkMapperModel</code> through <code class="language-plaintext highlighter-rouge">setLowerCase()</code> parameter.</li>
-        <li>Return multiple relations at a time in <code class="language-plaintext highlighter-rouge">ChunkMapperModel</code> models via <code class="language-plaintext highlighter-rouge">setRels()</code> parameter.</li>
-        <li>Filter the multi-token chunks separated with whitespace in <code class="language-plaintext highlighter-rouge">ChunkMapperApproach</code> by <code class="language-plaintext highlighter-rouge">setAllowMultiTokenChunk()</code> parameter.</li>
+        <li>New Databricks <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/databricks/python/tutorials/healthcare_tutorials/1.1.Generative_AI_to_Ner_Training.ipynb">Generative AI to Ner Training</a> Notebook</li>
+        <li>Updated <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.7.Generative_AI_to_Ner_Training.ipynb">Generative AI to Ner Training</a> Notebook</li>
       </ul>
     </li>
-    <li>New license validation policy in License Validator.</li>
-    <li>Bug fixes</li>
-    <li>Updated notebooks</li>
-    <li>List of recently updated or added models</li>
+    <li>The addition and update of numerous new clinical models and pipelines continue to reinforce our offering in the healthcare domain</li>
   </ul>
 
-</div>
-<div class="h3-box">
-
-  <h4 id="new-rxnormmapper-model">New <code class="language-plaintext highlighter-rouge">rxnorm_mapper</code> Model</h4>
-
-  <p>We are releasing <code class="language-plaintext highlighter-rouge">rxnorm_mapper</code> model that maps clinical entities and concepts to corresponding rxnorm codes.</p>
-
-  <p>See <a href="https://nlp.johnsnowlabs.com/2022/06/07/rxnorm_mapper_en_3_0.html">Model Hub Page</a> for details.</p>
-
-  <p><em>Example</em> :</p>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">...</span>
-<span class="n">chunkerMapper</span> <span class="o">=</span> <span class="n">ChunkMapperModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"rxnorm_mapper"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
-       <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"ner_chunk"</span><span class="p">])</span>\
-       <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"mappings"</span><span class="p">)</span>\
-       <span class="p">.</span><span class="n">setRel</span><span class="p">(</span><span class="s">"rxnorm_code"</span><span class="p">)</span>
-<span class="p">...</span>
-
-<span class="n">sample_text</span> <span class="o">=</span> <span class="s">"The patient was given Zyrtec 10 MG, Adapin 10 MG Oral Capsule, Septi-Soothe 0.5 Topical Spray"</span>
-</code></pre></div>  </div>
-
-  <p><em>Results</em> :</p>
-
-  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> +------------------------------+---------------+
- |chunk                         |rxnorm_mappings|
- +------------------------------+---------------+
- |Zyrtec 10 MG                  |1011483        |
- |Adapin 10 MG Oral Capsule     |1000050        |
- |Septi-Soothe 0.5 Topical Spray|1000046        |
- +------------------------------+---------------+
-</code></pre></div>  </div>
+  <p>These enhancements will elevate your experience with Healthcare NLP, enabling more efficient, accurate, and streamlined analysis of healthcare-related natural language data.</p>
 
 </div>
 <div class="h3-box">
 
-  <h4 id="new-chunkmapperfilterer-annotator-to-filter-chunkmappermodel-results">New <code class="language-plaintext highlighter-rouge">ChunkMapperFilterer</code> Annotator to Filter <code class="language-plaintext highlighter-rouge">ChunkMapperModel</code> Results</h4>
-  <p><code class="language-plaintext highlighter-rouge">ChunkMapperFilterer</code> annotator allows filtering of the chunks that were passed through the <code class="language-plaintext highlighter-rouge">ChunkMapperModel</code>.
-If <code class="language-plaintext highlighter-rouge">setReturnCriteria()</code> is set as <code class="language-plaintext highlighter-rouge">"success"</code>, only the chunks which are mapped by <code class="language-plaintext highlighter-rouge">ChunkMapperModel</code> are returned. Otherwise, if <code class="language-plaintext highlighter-rouge">setReturnCriteria()</code> is set as <code class="language-plaintext highlighter-rouge">"fail"</code>, only the chunks which are not mapped by ChunkMapperModel are returned.</p>
+  <h4 id="medicalnerapproach-training-optimizations-faster--more-memory-efficient-ner-training">MedicalNerApproach Training Optimizations: Faster &amp; More Memory-Efficient NER Training</h4>
 
-  <p><em>Example</em> :</p>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">...</span>
-<span class="n">cfModel</span> <span class="o">=</span> <span class="n">ChunkMapperFilterer</span><span class="p">()</span> \
-            <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"ner_chunk"</span><span class="p">,</span><span class="s">"mappings"</span><span class="p">])</span> \
-            <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"chunks_filtered"</span><span class="p">)</span>\
-            <span class="p">.</span><span class="n">setReturnCriteria</span><span class="p">(</span><span class="s">"success"</span><span class="p">)</span> <span class="c1">#or "fail"
-</span><span class="p">...</span>
-<span class="n">sample_text</span> <span class="o">=</span> <span class="s">"The patient was given Warfarina Lusa and amlodipine 10 mg. Also, he was given Aspagin, coumadin 5 mg and metformin"</span>
-
-</code></pre></div>  </div>
-
-  <p><code class="language-plaintext highlighter-rouge">.setReturnCriteria("success")</code> <em>Results</em> :</p>
-
-  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+-----+---+--------------+--------------+
-|begin|end|        entity|      mappings|
-+-----+---+--------------+--------------+
-|   22| 35|          DRUG|Warfarina Lusa|
-+-----+---+--------------+--------------+
-</code></pre></div>  </div>
-
-  <p><code class="language-plaintext highlighter-rouge">.setReturnCriteria("fail")</code> <em>Results</em> :</p>
-
-  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+-----+---+--------+------------+
-|begin|end|  entity|  not mapped|
-+-----+---+--------+------------+
-|   41| 50|    DRUG|  amlodipine|
-|   80| 86|    DRUG|     Aspagin|
-|   89| 96|    DRUG|    coumadin|
-|  115|123|    DRUG|   metformin|
-+-----+---+--------+------------+
-</code></pre></div>  </div>
-
-</div>
-<div class="h3-box">
-
-  <h4 id="new-features">New Features:</h4>
-
-  <h5 id="add-setreplacelabels-parameter-that-allows-replacing-the-non-conventional-labels-without-using-an-external-source-file-in-the-nerconverterinternal">Add <code class="language-plaintext highlighter-rouge">setReplaceLabels</code> Parameter That Allows Replacing the Non-Conventional Labels Without Using an External Source File in the <code class="language-plaintext highlighter-rouge">NerConverterInternal()</code>.</h5>
-
-  <p>Now you can replace the labels in NER models with custom labels by using <code class="language-plaintext highlighter-rouge">.setReplaceLabels</code> parameter with <code class="language-plaintext highlighter-rouge">NerConverterInternal</code> annotator. In this way, you will not need to use any other external source file to replace the labels with custom ones.</p>
-
-  <p><em>Example</em> :</p>
-
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">...</span>
-<span class="n">clinical_ner</span> <span class="o">=</span> <span class="n">MedicalNerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"ner_jsl"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span><span class="s">"token"</span><span class="p">,</span> <span class="s">"word_embeddings"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>
-
-<span class="n">ner_converter_original</span> <span class="o">=</span> <span class="n">NerConverterInternal</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner"</span><span class="p">])</span> \
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"original_label"</span><span class="p">)</span>
-
-<span class="n">ner_converter_replaced</span> <span class="o">=</span> <span class="n">NerConverterInternal</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner"</span><span class="p">])</span> \
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"replaced_label"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setReplaceLabels</span><span class="p">({</span><span class="s">"Drug_Ingredient"</span> <span class="p">:</span> <span class="s">"Drug"</span><span class="p">,</span><span class="s">'Drug_BrandName'</span><span class="p">:</span><span class="s">'Drug'</span><span class="p">})</span>
-<span class="p">...</span>
-
-<span class="n">sample_text</span> <span class="o">=</span> <span class="s">"The patient was given Warfarina Lusa and amlodipine 10 mg. Also, he was given Aspagin, coumadin 5 mg, and metformin"</span>
-</code></pre></div>  </div>
-
-  <p><em>Results</em> :</p>
-
-  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+--------------+-----+---+---------------+--------------+
-|chunk         |begin|end|original_label |replaced_label|
-+--------------+-----+---+---------------+--------------+
-|Warfarina Lusa|22   |35 |Drug_BrandName |Drug          |
-|amlodipine    |41   |50 |Drug_Ingredient|Drug          |
-|10 mg         |52   |56 |Strength       |Strength      |
-|he            |65   |66 |Gender         |Gender        |
-|Aspagin       |78   |84 |Drug_BrandName |Drug          |
-|coumadin      |87   |94 |Drug_Ingredient|Drug          |
-|5 mg          |96   |99 |Strength       |Strength      |
-|metformin     |106  |114|Drug_Ingredient|Drug          |
-+--------------+-----+---+---------------+--------------+
-</code></pre></div>  </div>
-
-</div>
-<div class="h3-box">
-
-  <h5 id="case-sensitivity-in-chunkmapperapproach-and-chunkmappermodel-through-setlowercase-parameter">Case Sensitivity in <code class="language-plaintext highlighter-rouge">ChunkMapperApproach</code> and <code class="language-plaintext highlighter-rouge">ChunkMapperModel</code> Through <code class="language-plaintext highlighter-rouge">setLowerCase()</code> Parameter</h5>
-
-  <p>The case status of <code class="language-plaintext highlighter-rouge">ChunkMapperApproach</code> and <code class="language-plaintext highlighter-rouge">ChunkMapperModel</code> can be set by using <code class="language-plaintext highlighter-rouge">setLowerCase()</code> parameter.</p>
-
-  <p><em>Example</em> :</p>
-
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">...</span>
-<span class="n">chunkerMapperapproach</span> <span class="o">=</span> <span class="n">ChunkMapperApproach</span><span class="p">()</span> \
-        <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"ner_chunk"</span><span class="p">])</span> \
-        <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"mappings"</span><span class="p">)</span> \
-        <span class="p">.</span><span class="n">setDictionary</span><span class="p">(</span><span class="s">"mappings.json"</span><span class="p">)</span> \
-        <span class="p">.</span><span class="n">setRel</span><span class="p">(</span><span class="s">"action"</span><span class="p">)</span> \
-        <span class="p">.</span><span class="n">setLowerCase</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span> <span class="c1">#or False
-</span>
-<span class="p">...</span>
-
-<span class="n">sentences</span> <span class="o">=</span> <span class="p">[[</span><span class="s">"""The patient was given Warfarina lusa and amlodipine 10 mg, coumadin 5 mg.
-                 The patient was given Coumadin"""</span><span class="p">]]</span>
-</code></pre></div>  </div>
-
-  <p><code class="language-plaintext highlighter-rouge">setLowerCase(True)</code> <em>Results</em> :</p>
-
-  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+------------------------+-----------+
-|chunk                   |mapped     |
-+------------------------+-----------+
-|Warfarina lusa          |540228     |
-|amlodipine              |329526     |
-|coumadin                |202421     |
-|Coumadin                |202421     |
-+------------------------+-----------+
-
-</code></pre></div>  </div>
-
-  <p><code class="language-plaintext highlighter-rouge">setLowerCase(False)</code> <em>Results</em> :</p>
-
-  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+------------------------+-----------+
-|chunk                   |mapped     |
-+------------------------+-----------+
-|Warfarina lusa          |NONE       |
-|amlodipine              |329526     |
-|coumadin                |NONE       |
-|Coumadin                |202421     |
-+------------------------+-----------+
-</code></pre></div>  </div>
-
-</div>
-<div class="h3-box">
-
-  <h5 id="return-multiple-relations-at-a-time-in-chunkmapper-models-via-setrels-parameter">Return Multiple Relations At a Time In ChunkMapper Models Via <code class="language-plaintext highlighter-rouge">setRels()</code> Parameter</h5>
-  <p>Multiple relations for the same chunk can be set with the <code class="language-plaintext highlighter-rouge">setRels()</code> parameter in both <code class="language-plaintext highlighter-rouge">ChunkMapperApproach</code> and <code class="language-plaintext highlighter-rouge">ChunkMapperModel</code>.</p>
-
-  <p><em>Example</em> :</p>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">...</span>
-<span class="n">chunkerMapperapproach</span> <span class="o">=</span> <span class="n">ChunkMapperApproach</span><span class="p">()</span> \
-        <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"ner_chunk"</span><span class="p">])</span> \
-        <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"mappings"</span><span class="p">)</span> \
-        <span class="p">.</span><span class="n">setDictionary</span><span class="p">(</span><span class="s">"mappings.json"</span><span class="p">)</span> \
-        <span class="p">.</span><span class="n">setRels</span><span class="p">([</span><span class="s">"action"</span><span class="p">,</span><span class="s">"treatment"</span><span class="p">])</span> \
-        <span class="p">.</span><span class="n">setLowerCase</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span> \
-<span class="p">...</span>
-
-<span class="n">sample_text</span> <span class="o">=</span> <span class="s">"The patient was given Warfarina Lusa."</span>
-</code></pre></div>  </div>
-
-  <p><em>Results</em> :</p>
-
-  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+-----+---+--------------+-------------+---------+
-|begin|end|        entity|     mappings| relation|
-+-----+---+--------------+-------------+---------+
-|   22| 35|Warfarina Lusa|Anticoagulant|   action|
-|   22| 35|Warfarina Lusa|Heart Disease|treatment|
-+-----+---+--------------+-------------+---------+
-</code></pre></div>  </div>
-
-</div>
-<div class="h3-box">
-
-  <h5 id="filter-the-multi-token-chunks-separated-with-whitespace-in-chunkmapperapproach-and-chunkmappermodel-by-setallowmultitokenchunk-parameter">Filter the Multi-Token Chunks Separated With Whitespace in <code class="language-plaintext highlighter-rouge">ChunkMapperApproach</code> and <code class="language-plaintext highlighter-rouge">ChunkMapperModel</code> by <code class="language-plaintext highlighter-rouge">setAllowMultiTokenChunk()</code> Parameter</h5>
-
-  <p>The chunks that include multi-tokens separated by a whitespace, can be filtered by using <code class="language-plaintext highlighter-rouge">setAllowMultiTokenChunk()</code> parameter.</p>
-
-  <p><em>Example</em> :</p>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">...</span>
-<span class="n">chunkerMapper</span> <span class="o">=</span> <span class="n">ChunkMapperApproach</span><span class="p">()</span> \
-        <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"ner_chunk"</span><span class="p">])</span> \
-        <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"mappings"</span><span class="p">)</span> \
-        <span class="p">.</span><span class="n">setDictionary</span><span class="p">(</span><span class="s">"mappings.json"</span><span class="p">)</span> \
-        <span class="p">.</span><span class="n">setLowerCase</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span> \
-        <span class="p">.</span><span class="n">setRels</span><span class="p">([</span><span class="s">"action"</span><span class="p">,</span> <span class="s">"treatment"</span><span class="p">])</span> \
-        <span class="p">.</span><span class="n">setAllowMultiTokenChunk</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
-<span class="p">...</span>
-
-<span class="n">sample_text</span> <span class="o">=</span> <span class="s">"The patient was given Warfarina Lusa"</span>
-</code></pre></div>  </div>
-
-  <p><code class="language-plaintext highlighter-rouge">setAllowMultiTokenChunk(False)</code> <em>Results</em> :</p>
-
-  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+-----+---+--------------+--------+--------+
-|begin|end|         chunk|mappings|relation|
-+-----+---+--------------+--------+--------+
-|   22| 35|Warfarina Lusa|    NONE|    null|
-+-----+---+--------------+--------+--------+
-</code></pre></div>  </div>
-
-  <p><code class="language-plaintext highlighter-rouge">setAllowMultiTokenChunk(True)</code> <em>Results</em> :</p>
-
-  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+-----+---+--------------+-------------+---------+
-|begin|end|         chunk|     mappings| relation|
-+-----+---+--------------+-------------+---------+
-|   22| 35|Warfarina Lusa|Anticoagulant|   action|
-|   22| 35|Warfarina Lusa|Heart Disease|treatment|
-+-----+---+--------------+-------------+---------+
-</code></pre></div>  </div>
-
-</div>
-<div class="h3-box">
-
-  <h4 id="new-license-validation-policies-in-license-validator">New License Validation Policies in License Validator</h4>
-
-  <p>A new version of the License Validator has been included in Spark NLP for Healthcare. This License Validator checks the compatibility between the type of your license and the environment you are using, allowing the license to be used only for the environment it was requested (single-node, cluster, databricks, etc) and the number of concurrent sessions (floating or not-floating). You can check which type of license you have in <a href="https://my.johnsnowlabs.com/">my.johnsnowlabs.com</a> -&gt; My Subscriptions.</p>
-
-  <p>If your license stopped working, please contact <a href="mailto:support@johnsnowlabs.com">support@johnsnowlabs.com</a> so that it can be checked the difference between the environment your license was requested for and the one it’s currently being used.</p>
-
-</div>
-<div class="h3-box">
-
-  <h4 id="bug-fixes">Bug Fixes</h4>
-
-  <p>We fixed some issues in <code class="language-plaintext highlighter-rouge">AnnotationToolJsonReader</code> tool, <code class="language-plaintext highlighter-rouge">DrugNormalizer</code> and <code class="language-plaintext highlighter-rouge">ContextualParserApproach</code> annotators.</p>
+  <p>Significant performance upgrades have been introduced to <strong>MedicalNerApproach</strong>, making NER model training faster, lighter, and more efficient—especially when working with BERT-based embeddings or memory-constrained environments.</p>
 
   <ul>
-    <li><strong><code class="language-plaintext highlighter-rouge">DrugNormalizer</code></strong> : Fixed some issues that affect the performance.</li>
-    <li><strong><code class="language-plaintext highlighter-rouge">ContextualParserApproach</code></strong> : Fixed the issue in the computation of indices for documents with more than one sentence while defining the rule-scope field as a document.</li>
-    <li><strong><code class="language-plaintext highlighter-rouge">AnnotationToolJsonReader</code></strong> : Fixed an issue where relation labels were not being extracted from the Annotation Lab json file export.</li>
+    <li>
+      <p><strong>Reduced Memory Usage with BERT-Based Embeddings</strong><br />
+Optimized internal handling of output embeddings substantially reduces the peak memory footprint during training. Users can expect <strong>up to 2× lower RAM consumption</strong>, particularly with transformer-based embeddings.</p>
+    </li>
+    <li>
+      <p><strong>Automatic Dataset Caching for Multi-Epoch Training</strong><br />
+When using <code class="language-plaintext highlighter-rouge">setEnableMemoryOptimizer(true)</code> and running with <code class="language-plaintext highlighter-rouge">maxEpoch &gt; 1</code>, input datasets are now <strong>automatically cached</strong>, resulting in faster epoch transitions and less data reloading overhead.</p>
+    </li>
+    <li>
+      <p><strong>TensorFlow Graph Metadata Reuse</strong><br />
+The <code class="language-plaintext highlighter-rouge">MedicalNerDLGraphChecker</code> now stores TensorFlow graph metadata that can be reused by <code class="language-plaintext highlighter-rouge">MedicalNerApproach</code>, reducing redundant initialization work and improving overall training responsiveness.</p>
+    </li>
+    <li>
+      <p><strong>Smarter Graph Selection for NER Models</strong></p>
+
+      <p>We’ve enhanced the graph selection logic in MedicalNerApproach. It now identifies the most efficient (smallest compatible) TensorFlow graph, resulting in improved performance and lower memory consumption.</p>
+    </li>
   </ul>
 
 </div>
 <div class="h3-box">
 
-  <h4 id="updated-notebooks">Updated Notebooks</h4>
+  <h4 id="annotation2training-makes-it-much-easier-to-prepare-high-quality-ner-training-datasets-with-built-in-label-filtering-relabeling-conll-export-and-quick-label-distribution-insights"><code class="language-plaintext highlighter-rouge">Annotation2Training</code> makes it much easier to prepare high-quality NER training datasets with built-in label filtering, relabeling, CoNLL export, and quick label distribution insights</h4>
+
+  <p><code class="language-plaintext highlighter-rouge">Annotation2Training</code> now turns raw annotation JSON into training-ready NER datasets much faster and with less manual work. With built-in label filtering, on-the-fly relabeling, CoNLL export, and label distribution inspection, you can clean, reshape, and export your data in a few lines of code—making NER training more efficient, shorter to set up, and easier to iterate on.</p>
 
   <ul>
-    <li><a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.Clinical_Named_Entity_Recognition_Model.ipynb">Clinical Named Entity Recognition Notebook</a> <br />
- <code class="language-plaintext highlighter-rouge">.setReplaceLabels</code> parameter example was added.</li>
-    <li><a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/26.Chunk_Mapping.ipynb">Chunk Mapping Notebook</a> <br />
- New case sensitivity, selecting multiple relations, filtering multi-token chunks and <code class="language-plaintext highlighter-rouge">ChunkMapperFilterer</code> features were added.</li>
+    <li><strong>CoNLL file generation (generateConll)</strong></li>
+  </ul>
+
+  <p>Generates a CoNLL-2003 formatted file directly from a Spark NLP NER DataFrame, writing TOKEN -X- -X- LABEL lines with -DOCSTART- document headers and sentence boundaries. Supports local paths and DBFS, and enforces unique document IDs to prevent training issues.</p>
+
+  <p><em>Example</em>:</p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">annotation2training</span><span class="p">.</span><span class="n">generateConll</span><span class="p">(</span><span class="n">training_df_json</span><span class="p">,</span> <span class="s">"main.conll"</span><span class="p">)</span>
+</code></pre></div>  </div>
+
+  <ul>
+    <li><strong>Label whitelisting &amp; blacklisting (convertJson2NerDF)</strong></li>
+  </ul>
+
+  <p>Adds white_list and black_list parameters so you can explicitly include or exclude specific entity labels when converting JSON annotations to a NER DataFrame.</p>
+
+  <p><em>Example</em>:</p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">JSON_PATH</span> <span class="o">=</span> <span class="s">"/content/result.json"</span>
+
+<span class="kn">from</span> <span class="nn">sparknlp_jsl.training</span> <span class="kn">import</span> <span class="n">Annotation2Training</span>
+<span class="n">annotation2training</span> <span class="o">=</span> <span class="n">Annotation2Training</span><span class="p">(</span><span class="n">spark</span><span class="p">)</span>
+<span class="n">training_df_json</span> <span class="o">=</span> <span class="n">annotation2training</span><span class="p">.</span><span class="n">convertJson2NerDF</span><span class="p">(</span>
+    <span class="n">json_path</span> <span class="o">=</span> <span class="n">JSON_PATH</span><span class="p">,</span>                   <span class="c1"># Path to the input JSON file.
+</span>    <span class="n">pipeline_model</span> <span class="o">=</span> <span class="n">base_pipeline_model</span><span class="p">,</span>    <span class="c1"># A pre-trained Spark NLP PipelineModel that includes at least a DocumentAssembler, and Tokenizer.
+</span>    <span class="n">repartition</span> <span class="o">=</span> <span class="p">(</span><span class="n">os</span><span class="p">.</span><span class="n">cpu_count</span><span class="p">()</span> <span class="o">*</span> <span class="mi">4</span><span class="p">),</span>      <span class="c1"># Number of partitions to use when creating the DataFrame (default is 32).
+</span>    <span class="n">token_output_col</span> <span class="o">=</span> <span class="s">"token"</span><span class="p">,</span>              <span class="c1"># The name of the column containing token annotations (default is "token").
+</span>    <span class="n">ner_label_col</span> <span class="o">=</span> <span class="s">"label"</span><span class="p">,</span>                  <span class="c1"># The name of the output column for NER labels (default is "label").
+</span>    <span class="n">black_list</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Quit_Attempts"</span><span class="p">],</span>
+    <span class="n">replace_labels</span> <span class="o">=</span> <span class="p">{</span><span class="s">"Smoking_Type"</span><span class="p">:</span><span class="s">"Smoking_Status"</span><span class="p">})</span>
+</code></pre></div>  </div>
+
+  <ul>
+    <li><strong>Label distribution explorer (showLabelDistributions)</strong></li>
+  </ul>
+
+  <p>A utility method to quickly display the frequency distribution of entity labels in the training DataFrame. It explodes the label column and prints counts per label, helping you spot class imbalance, missing labels, or noisy annotations before training.</p>
+
+  <p><em>Example</em>:</p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">annotation2training</span><span class="p">.</span><span class="n">showLabelDistributions</span><span class="p">(</span><span class="n">training_df_json</span><span class="p">,</span> <span class="s">"label"</span><span class="p">)</span>
+</code></pre></div>  </div>
+
+  <p>Please check <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.7.Generative_AI_to_Ner_Training.ipynb">Generative AI to Ner Training</a> notebook for more detail</p>
+
+</div>
+<div class="h3-box">
+
+  <h4 id="clinical-document-analysis-with-one-liner-pretrained-pipelines-for-specific-clinical-tasks-and-concepts">Clinical Document Analysis with One-Liner Pretrained-Pipelines for Specific Clinical Tasks and Concepts</h4>
+
+  <p>We introduce a suite of advanced, hybrid pretrained pipelines, specifically designed to streamline the clinical document analysis process. These pipelines are built upon multiple state-of-the-art (SOTA) pretrained models, delivering a comprehensive solution for quickly extracting vital information.</p>
+
+  <p>What sets this release apart is the elimination of complexities typically involved in building and chaining models. Users no longer need to navigate the intricacies of constructing intricate pipelines from scratch or the uncertainty of selecting the most effective model combinations. Our new pretrained pipelines simplify these processes, offering a seamless, user-friendly experience.</p>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Model Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2025/11/14/pp_docwise_benchmark_large_preann_en.html"><code class="language-plaintext highlighter-rouge">pp_docwise_benchmark_large_preann</code></a></td>
+        <td>Detect PHI entities in medical texts using Named Entity Recognition (NER).</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2025/11/14/pp_docwise_benchmark_medium_preann_en.html"><code class="language-plaintext highlighter-rouge">pp_docwise_benchmark_medium_preann</code></a></td>
+        <td>Detect PHI entities in medical texts using Named Entity Recognition (NER).</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2025/11/05/clinical_deidentification_sentwise_benchmark_large_en.html"><code class="language-plaintext highlighter-rouge">clinical_deidentification_sentwise_benchmark_large</code></a></td>
+        <td>Deidentify PHI information from medical texts.</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2025/11/05/clinical_deidentification_sentwise_benchmark_medium_en.html"><code class="language-plaintext highlighter-rouge">clinical_deidentification_sentwise_benchmark_medium</code></a></td>
+        <td>Deidentify PHI information from medical texts.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><em>Example</em>:</p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span><span class="p">,</span> <span class="n">medical</span>
+
+<span class="n">ner_docwise</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"ner_docwise_benchmark_large_preann"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="s">"""Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024.
+The patient’s medical record number is 56467890.
+The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 ."""</span>
+</code></pre></div>  </div>
+
+  <p><em>Result</em>:</p>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>chunk</th>
+        <th>begin</th>
+        <th>end</th>
+        <th>ner_label</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>John Lee</td>
+        <td>4</td>
+        <td>11</td>
+        <td>DOCTOR</td>
+      </tr>
+      <tr>
+        <td>Royal Medical Clinic</td>
+        <td>19</td>
+        <td>38</td>
+        <td>HOSPITAL</td>
+      </tr>
+      <tr>
+        <td>Chicago</td>
+        <td>43</td>
+        <td>49</td>
+        <td>CITY</td>
+      </tr>
+      <tr>
+        <td>11/05/2024</td>
+        <td>79</td>
+        <td>88</td>
+        <td>DATE</td>
+      </tr>
+      <tr>
+        <td>56467890</td>
+        <td>130</td>
+        <td>137</td>
+        <td>IDNUM</td>
+      </tr>
+      <tr>
+        <td>Emma Wilson</td>
+        <td>153</td>
+        <td>163</td>
+        <td>PATIENT</td>
+      </tr>
+      <tr>
+        <td>50 years old</td>
+        <td>169</td>
+        <td>180</td>
+        <td>AGE</td>
+      </tr>
+      <tr>
+        <td>444-456-7890</td>
+        <td>203</td>
+        <td>214</td>
+        <td>PHONE</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<div class="h3-box">
+
+  <h4 id="introducing-a-new-city-textmatcher-model-for-extracting-city-names-from-clinical-text">Introducing a new city TextMatcher model for extracting city names from clinical text</h4>
+
+  <p>A new TextMatcherInternal model from John Snow Labs automatically extracts city names from clinical text, enabling structured geo-location information for downstream analytics and reporting.</p>
+
+  <p><em>Example</em>:</p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">text_matcher</span> <span class="o">=</span> <span class="n">TextMatcherInternalModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"city_matcher"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span><span class="s">"clinical/models"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"city_name"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setMergeOverlapping</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"""Name: Johnson, Alice, Record date: 2093-03-22, MR: 846275.
+Dr. Emily Brown, IP 192.168.1.1.
+She is a 55-year-old female who was admitted to the Global Hospital in Los Angeles for hip replacement on 03/22/93.
+Patient's VIN: 2HGFA165X8H123456, SSN: 444-55-8888, Driver's license no: C789012D.
+Phone: (212) 555-7890, 4321 Oak Street, New York City, USA, E-MAIL: alice.johnson@example.com.
+Patient has traveled to Tokyo, Paris, and Sydney in the past year."""</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+</code></pre></div>  </div>
+
+  <p><em>Result</em>:</p>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>chunk</th>
+        <th>begin</th>
+        <th>end</th>
+        <th>label</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Los Angeles</td>
+        <td>163</td>
+        <td>173</td>
+        <td>CITY</td>
+      </tr>
+      <tr>
+        <td>New York City</td>
+        <td>331</td>
+        <td>343</td>
+        <td>CITY</td>
+      </tr>
+      <tr>
+        <td>Tokyo</td>
+        <td>410</td>
+        <td>414</td>
+        <td>CITY</td>
+      </tr>
+      <tr>
+        <td>Paris</td>
+        <td>417</td>
+        <td>421</td>
+        <td>CITY</td>
+      </tr>
+      <tr>
+        <td>Sydney</td>
+        <td>428</td>
+        <td>433</td>
+        <td>CITY</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<div class="h3-box">
+
+  <h4 id="new-blog-post-to-understand-how-to-deploy-medical-llms-on-databricks">New blog post to understand how to deploy Medical LLMs on Databricks</h4>
+
+  <ul>
+    <li><a href="https://medium.com/john-snow-labs/deploying-john-snow-labs-medical-llms-on-databricks-three-flexible-deployment-options-6005e7129b42">Deploying John Snow Labs Medical LLMs on Databricks: Three Flexible Deployment Options</a> This blog post explores how to securely and efficiently deploy healthcare-focused Large Language Models (LLMs) and Vision Language Models (VLMs) on Databricks. It introduces three flexible deployment options developed in collaboration with Databricks, each balancing performance, cost, and operational control while meeting strict healthcare security and compliance requirements. The post walks through these options using a real customer scenario, illustrating how to run state-of-the-art medical LLMs on Databricks infrastructure and helping teams choose the setup that best fits their clinical workflows and IT constraints.</li>
   </ul>
 
 </div>
 <div class="h3-box">
 
-  <h4 id="list-of-recently-updated-models">List of Recently Updated Models</h4>
+  <h4 id="updated-notebooks-and-demonstrations-for-making-healthcare-nlp-easier-to-navigate-and-understand">Updated Notebooks And Demonstrations For making Healthcare NLP Easier To Navigate And Understand</h4>
 
   <ul>
-    <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_icdo_augmented</code></li>
-    <li><code class="language-plaintext highlighter-rouge">rxnorm_mapper</code></li>
+    <li>New Databricks <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/databricks/python/tutorials/healthcare_tutorials/1.1.Generative_AI_to_Ner_Training.ipynb">Generative AI to Ner Training</a> Notebook</li>
+    <li>Updated <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.7.Generative_AI_to_Ner_Training.ipynb">Generative AI to Ner Training</a> Notebook</li>
   </ul>
 
-  <p>For all Spark NLP for healthcare models, please check: <a href="https://nlp.johnsnowlabs.com/models?edition=Spark+NLP+for+Healthcare">Models Hub Page</a></p>
+</div>
+<div class="h3-box">
+
+  <h4 id="we-have-added-and-updated-a-substantial-number-of-new-clinical-models-and-pipelines-further-solidifying-our-offering-in-the-healthcare-domain">We Have Added And Updated A Substantial Number Of New Clinical Models And Pipelines, Further Solidifying Our Offering In The Healthcare Domain.</h4>
+
+  <ul>
+    <li><code class="language-plaintext highlighter-rouge">pp_docwise_benchmark_large_preann</code></li>
+    <li><code class="language-plaintext highlighter-rouge">pp_docwise_benchmark_medium_preann</code></li>
+    <li><code class="language-plaintext highlighter-rouge">clinical_deidentification_sentwise_benchmark_large</code></li>
+    <li><code class="language-plaintext highlighter-rouge">clinical_deidentification_sentwise_benchmark_medium</code></li>
+    <li><code class="language-plaintext highlighter-rouge">city_matcher</code></li>
+  </ul>
 
 </div>
-<div class="prev_ver h3-box">
+<div class="h3-box">
+
+  <p>For all Healthcare NLP models, please check: <a href="https://nlp.johnsnowlabs.com/models?edition=Healthcare+NLP">Models Hub Page</a></p>
+
+</div>
+<div class="h3-box">
 
   <h2 id="versions">Versions</h2>
 
@@ -1034,7 +1053,7 @@ If <code class="language-plaintext highlighter-rouge">setReturnCriteria()</code>
     <li><a href="release_notes_2_4_0">2.4.0</a></li>
 </ul>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2021-07-14T00:00:00+00:00">Jul 14, 2021</time>
+      <time itemprop="dateModified" datetime="2025-11-20T00:00:00+00:00">Nov 20, 2025</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>

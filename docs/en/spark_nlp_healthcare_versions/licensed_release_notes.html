@@ -628,392 +628,304 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <h2 id="section">6.2.0</h2>
+  <h2 id="section">6.2.1</h2>
 
   <h4 id="highlights">Highlights</h4>
 
-  <p>We are delighted to announce a release of <strong>Healthcare NLP 6.2.0</strong>, introducing production-ready deployment of state-of-the-art medical Large Language Models (LLMs) and Vision Language Models (VLMs) on Databricks infrastructure. This release introduces <strong>the first containerized LLM solution for Databricks Container Services, as well as 3 new or updated clinical pre-trained models and pipeline</strong>. We aim to bring enterprise-grade, medical-specific AI to healthcare organizations, with three flexible deployment options with industry-leading accuracy that outperforms GPT-4, Claude, and Gemini on healthcare benchmarks.</p>
+  <p>We are delighted to announce remarkable enhancements and updates in our latest release of Healthcare NLP. This release focuses on making NER training and clinical document analysis significantly faster and easier with a major upgrade to <strong>Annotation2Training</strong>, major improvements and reduced memory usage in <strong>MedicalNerApproach</strong> training, new one-liner pretrained pipelines and models for end-to-end clinical document understanding. In addition, this version delivers core robustness improvements, refreshed notebooks and demonstrations, and 5 new and updated clinical models and pipelines to further strengthen our Healthcare NLP.</p>
 
   <ul>
-    <li>Support for GGUF based John Snow Labs LLMs/ VLMs on Databricks environment</li>
-    <li>Containerized LLM solutions for Databricks Container Services and other platforms</li>
-    <li>A new inflammatory bowel disease (IBD) classification model</li>
-    <li>Introducing a new model for ICD10CM coding</li>
-    <li>Updated certification training and Databricks tutorial notebooks for Healthcare NLP</li>
-    <li>New blog posts on various topics</li>
-    <li>Various core improvements; bug fixes, enhanced overall robustness and reliability of Spark NLP for Healthcare</li>
-    <li>Updated notebooks and demonstrations for making Spark NLP for Healthcare easier to navigate and understand</li>
+    <li>Major training performance improvements for <code class="language-plaintext highlighter-rouge">MedicalNerApproach</code>, including significantly reduced memory usage and faster multi-epoch NER training.</li>
+    <li><code class="language-plaintext highlighter-rouge">Annotation2Training</code> makes it much easier to prepare high-quality NER training datasets with built-in label filtering, relabeling, CoNLL export, and quick label distribution insights</li>
+    <li>Clinical document analysis with one-liner pretrained-pipelines for specific clinical tasks and concepts</li>
+    <li>Introducing a new city TextMatcher model for extracting city names from clinical text</li>
+    <li>New blog post to understand how to deploy Medical LLMs on Databricks</li>
+    <li>Various core improvements; bug fixes, enhanced overall robustness and reliability of Healthcare NLP</li>
+    <li>Updated notebooks and demonstrations for making Healthcare NLP easier to navigate and understand
+      <ul>
+        <li>New Databricks <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/databricks/python/tutorials/healthcare_tutorials/1.1.Generative_AI_to_Ner_Training.ipynb">Generative AI to Ner Training</a> Notebook</li>
+        <li>Updated <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.7.Generative_AI_to_Ner_Training.ipynb">Generative AI to Ner Training</a> Notebook</li>
+      </ul>
+    </li>
     <li>The addition and update of numerous new clinical models and pipelines continue to reinforce our offering in the healthcare domain</li>
   </ul>
 
-  <p>These enhancements will elevate your experience with Spark NLP for Healthcare, enabling more efficient, accurate, and streamlined analysis of healthcare-related natural language data.</p>
+  <p>These enhancements will elevate your experience with Healthcare NLP, enabling more efficient, accurate, and streamlined analysis of healthcare-related natural language data.</p>
 
 </div>
 <div class="h3-box">
 
-  <h4 id="llm-vlm-benchmarks">LLM/ VLM Benchmarks</h4>
+  <h4 id="medicalnerapproach-training-optimizations-faster--more-memory-efficient-ner-training">MedicalNerApproach Training Optimizations: Faster &amp; More Memory-Efficient NER Training</h4>
 
-  <ul>
-    <li>83.5% accuracy on OpenMed clinical benchmarks (vs. 71-77% for open-source alternatives)</li>
-    <li>88% higher physician preference on clinical summarization compared to GPT-4o</li>
-    <li>79.83% on MedHELM evaluation (+4.7 to +6.0 points ahead of GPT-5, Gemini 2.5 Pro, and Claude Sonnet 4)</li>
-    <li>92% accuracy on handwritten medical documents with Vision Language Models</li>
-    <li>Zero data leaving your environment with HIPAA, GDPR, SOC 2, and HITRUST compliance</li>
-  </ul>
-
-</div>
-<div class="h3-box">
-
-  <h4 id="support-for-john-snow-labs-llmsvlms-on-databricks">Support for John Snow Labs’ LLMs/VLMs on Databricks</h4>
-
-  <p>John Snow Labs’ LLMs/VLMs now support seamless integration with Databricks, enabling efficient deployment and use of lightweight large language models (LLMs) in gguf format. These modules are designed to facilitate interaction with LLMs that have been converted into the gguf format—optimized for performance and resource efficiency. They make it possible to use John Snow Labs’ licensed, domain-specific models directly within the Databricks environment.</p>
-
-  <p>Features:</p>
-  <ul>
-    <li>Model Flexibility: Supports various model sizes tailored to medical and healthcare-related tasks.</li>
-    <li>Comprehensive API: Provides methods for setting parameters, loading models, generating text outputs, and retrieving metadata.</li>
-    <li>Simplifies the deployment of specialized LLMs on Databricks.</li>
-    <li>Enables efficient inference with smaller model footprints.</li>
-    <li>Ensures compliance with John Snow Labs’ licensing for secure enterprise use.</li>
-  </ul>
-
-  <p>please see the example <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/databricks/python/healthcare-nlp/30.0.MedicalLLM.ipynb">AutoGGUFModel</a> and  <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/databricks/python/healthcare-nlp/30.1.Multi_Modal_LLMs.ipynb">Multi_Modal_LLMs</a> notebooks</p>
-
-</div>
-<div class="h3-box">
-
-  <h4 id="john-snow-labs-containerized-llmvlm-solutions-for-databricks-container-services-and-other-platforms">John Snow Labs Containerized LLM/VLM Solutions for Databricks Container Services and Other Platforms</h4>
-
-  <p>We provide containerized Large Language Model (LLM) solutions that can be seamlessly deployed in Databricks or any other environment supporting Docker. These solutions enable users to run JSL’s healthcare-specific LLMs locally within containerized clusters—without relying on external APIs.</p>
-
-  <p>By configuring a Databricks cluster with the provided Docker image and license environment variables, users can immediately access and run models such as text-only, vision, and reasoning variants. Each model is pre-packaged and ready for inference directly within the container, ensuring performance, security, and data privacy.</p>
-
-  <p>This setup allows healthcare and enterprise users to easily load, execute, and scale LLM workloads in isolated and compliant environments, making it ideal for production-grade deployments across various infrastructure setups.</p>
+  <p>Significant performance upgrades have been introduced to <strong>MedicalNerApproach</strong>, making NER model training faster, lighter, and more efficient—especially when working with BERT-based embeddings or memory-constrained environments.</p>
 
   <ul>
     <li>
-      <ol>
-        <li>Configure the cluster</li>
-      </ol>
-
-      <p>In databricks, go to cluster configuration and add the image name and tag. Also need to add the environment variables with the following:</p>
-
-      <ul>
-        <li>Go to Compute -&gt; Configuration -&gt; Advenced -&gt; Spark -&gt; Environment variables, and set your license variable
-          <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  SPARK_NLP_LICENSE=eyXXXX......
-</code></pre></div>          </div>
-        </li>
-        <li>Go to Compute -&gt; Configuration -&gt; Advenced -&gt; Docker
-          <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  Docker Image URL: docker.io/johnsnowlabs/dockerized-applications-healthcare:dbr-llm-test-201
-  Authentication: Username and password
-  UserName: &lt;docker hub user name&gt;
-  Password: &lt;docker hub user password&gt;
-</code></pre></div>          </div>
-        </li>
-        <li>Run the notebook using this cluster. Add the following in the first cell of the notebook</li>
-      </ul>
-
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1"># this section only needs for onDataBricks 
-</span>  <span class="kn">import</span> <span class="nn">sys</span>
-  <span class="kn">import</span> <span class="nn">runpy</span>
-  <span class="n">sys</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">extend</span><span class="p">([</span><span class="s">"/"</span><span class="p">,</span> <span class="s">"/usr/local/lib/python3.10/site-packages"</span><span class="p">])</span>
-  <span class="n">runpy</span><span class="p">.</span><span class="n">run_path</span><span class="p">(</span><span class="s">"/usr/local/lib/python3.10/site-packages/sitecustomize.py"</span><span class="p">)</span>
-</code></pre></div>      </div>
+      <p><strong>Reduced Memory Usage with BERT-Based Embeddings</strong><br />
+Optimized internal handling of output embeddings substantially reduces the peak memory footprint during training. Users can expect <strong>up to 2× lower RAM consumption</strong>, particularly with transformer-based embeddings.</p>
     </li>
     <li>
-      <ol>
-        <li>Model List</li>
-      </ol>
-
-      <table>
-        <thead>
-          <tr>
-            <th>model_name</th>
-            <th>model_type</th>
-            <th>test</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>jsl_meds_4b</td>
-            <td>text only</td>
-            <td>available</td>
-          </tr>
-          <tr>
-            <td>jsl_meds_8b</td>
-            <td>text only</td>
-            <td>available</td>
-          </tr>
-          <tr>
-            <td>jsl_medm_14b</td>
-            <td>text only</td>
-            <td>available</td>
-          </tr>
-          <tr>
-            <td>jsl_meds_vl_3b</td>
-            <td>vision</td>
-            <td>available</td>
-          </tr>
-          <tr>
-            <td>jsl_meds_vl_7b</td>
-            <td>vision</td>
-            <td>available</td>
-          </tr>
-          <tr>
-            <td>jsl_meds_vl_4b</td>
-            <td>vision</td>
-            <td>will be available</td>
-          </tr>
-          <tr>
-            <td>jsl_meds_vl_8b</td>
-            <td>vision</td>
-            <td>will be available</td>
-          </tr>
-          <tr>
-            <td>jsl_medm_vl_30b</td>
-            <td>vision</td>
-            <td>available</td>
-          </tr>
-          <tr>
-            <td>jsl_meds_reasoning_8b</td>
-            <td>reasoning</td>
-            <td>available</td>
-          </tr>
-          <tr>
-            <td>jsl_medm_reasoning_32b</td>
-            <td>reasoning</td>
-            <td>available</td>
-          </tr>
-        </tbody>
-      </table>
+      <p><strong>Automatic Dataset Caching for Multi-Epoch Training</strong><br />
+When using <code class="language-plaintext highlighter-rouge">setEnableMemoryOptimizer(true)</code> and running with <code class="language-plaintext highlighter-rouge">maxEpoch &gt; 1</code>, input datasets are now <strong>automatically cached</strong>, resulting in faster epoch transitions and less data reloading overhead.</p>
     </li>
-    <li>Text Only Models</li>
+    <li>
+      <p><strong>TensorFlow Graph Metadata Reuse</strong><br />
+The <code class="language-plaintext highlighter-rouge">MedicalNerDLGraphChecker</code> now stores TensorFlow graph metadata that can be reused by <code class="language-plaintext highlighter-rouge">MedicalNerApproach</code>, reducing redundant initialization work and improving overall training responsiveness.</p>
+    </li>
+    <li>
+      <p><strong>Smarter Graph Selection for NER Models</strong></p>
+
+      <p>We’ve enhanced the graph selection logic in MedicalNerApproach. It now identifies the most efficient (smallest compatible) TensorFlow graph, resulting in improved performance and lower memory consumption.</p>
+    </li>
   </ul>
-
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">jsl_llm_lib.jsl_llm</span> <span class="kn">import</span> <span class="n">JslLlm</span>
-<span class="n">llm</span> <span class="o">=</span> <span class="n">JslLlm</span><span class="p">()</span>
-<span class="n">llm</span><span class="p">.</span><span class="n">load_model</span><span class="p">(</span><span class="n">llm_name</span><span class="o">=</span><span class="s">"jsl_meds_4b"</span><span class="p">)</span>
-
-<span class="n">text</span> <span class="o">=</span> <span class="s">""".."""</span>
-
-<span class="n">prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="s">"""
-"""</span>
-
-<span class="n">result</span> <span class="o">=</span> <span class="n">llm</span><span class="p">.</span><span class="n">get_prediction</span><span class="p">(</span><span class="n">prompt</span><span class="o">=</span><span class="n">prompt</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"Result:"</span><span class="p">,</span><span class="sa">f</span><span class="s">"</span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
-</code></pre></div>  </div>
-
-  <ul>
-    <li>Reasoning Models</li>
-  </ul>
-
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">jsl_llm_lib.jsl_llm</span> <span class="kn">import</span> <span class="n">JslLlm</span>
-<span class="n">llm</span> <span class="o">=</span> <span class="n">JslLlm</span><span class="p">()</span>
-<span class="n">llm</span><span class="p">.</span><span class="n">load_model</span><span class="p">(</span><span class="n">llm_name</span><span class="o">=</span><span class="s">"jsl_meds_reasoning_8b"</span><span class="p">)</span>
-
-<span class="n">text</span> <span class="o">=</span> <span class="s">""".."""</span>
-
-<span class="n">prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="s">"""
-"""</span>
-
-<span class="n">result</span> <span class="o">=</span> <span class="n">llm</span><span class="p">.</span><span class="n">get_prediction</span><span class="p">(</span><span class="n">prompt</span><span class="o">=</span><span class="n">prompt</span><span class="p">,</span> <span class="n">thinking</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"Result:"</span><span class="p">,</span><span class="sa">f</span><span class="s">"</span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
-</code></pre></div>  </div>
-
-  <ul>
-    <li>Vision Models</li>
-  </ul>
-
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">jsl_llm_lib.jsl_llm</span> <span class="kn">import</span> <span class="n">JslLlm</span>
-<span class="n">llm</span> <span class="o">=</span> <span class="n">JslLlm</span><span class="p">()</span>
-<span class="n">llm</span><span class="p">.</span><span class="n">load_model</span><span class="p">(</span><span class="n">llm_name</span><span class="o">=</span><span class="s">"jsl_meds_vl_3b"</span><span class="p">)</span>
-
-<span class="n">images_dir</span> <span class="o">=</span> <span class="s">"images"</span>
-<span class="n">os</span><span class="p">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">images_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="n">os</span><span class="p">.</span><span class="n">system</span><span class="p">(</span><span class="sa">f</span><span class="s">"wget -O </span><span class="si">{</span><span class="n">images_dir</span><span class="si">}</span><span class="s">/prescription.png  -q </span><span class="se">\"</span><span class="s">https://raw.githubusercontent.com/JohnSnowLabs/spark-nlp-workshop/master/healthcare-nlp/data/ocr/prescription_02.png</span><span class="se">\"</span><span class="s">"</span><span class="p">)</span>
-
-<span class="n">image_path</span> <span class="o">=</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">images_dir</span><span class="p">,</span> <span class="s">"prescription.png"</span><span class="p">)</span>
-
-<span class="n">prompt</span> <span class="o">=</span> <span class="s">"""Extract demographic, clinical disease and medication informations"""</span>
-
-<span class="n">result</span> <span class="o">=</span> <span class="n">llm</span><span class="p">.</span><span class="n">get_prediction</span><span class="p">(</span><span class="n">prompt</span><span class="o">=</span><span class="n">prompt</span><span class="p">,</span> <span class="n">image_path</span><span class="o">=</span><span class="n">image_path</span><span class="p">)</span>
-</code></pre></div>  </div>
-
-  <p>Please check the <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/products">gitbub</a> for more information</p>
 
 </div>
 <div class="h3-box">
 
-  <h4 id="new-inflammatory-bowel-disease-ibd-classification-model">New Inflammatory Bowel Disease (IBD) Classification Model</h4>
+  <h4 id="annotation2training-makes-it-much-easier-to-prepare-high-quality-ner-training-datasets-with-built-in-label-filtering-relabeling-conll-export-and-quick-label-distribution-insights"><code class="language-plaintext highlighter-rouge">Annotation2Training</code> makes it much easier to prepare high-quality NER training datasets with built-in label filtering, relabeling, CoNLL export, and quick label distribution insights</h4>
 
-  <p>John Snow Labs introduces a new Inflammatory Bowel Disease (IBD) Classification Model designed to accurately distinguish between clinical documents that reference IBD and those that do not. 
-The model classifies input text into two categories:</p>
+  <p><code class="language-plaintext highlighter-rouge">Annotation2Training</code> now turns raw annotation JSON into training-ready NER datasets much faster and with less manual work. With built-in label filtering, on-the-fly relabeling, CoNLL export, and label distribution inspection, you can clean, reshape, and export your data in a few lines of code—making NER training more efficient, shorter to set up, and easier to iterate on.</p>
+
   <ul>
-    <li>IBD: Documents containing evidence or discussion related to Inflammatory Bowel Disease.</li>
-    <li>Not IBD: Documents without any suggestive indications of IBD.</li>
+    <li><strong>CoNLL file generation (generateConll)</strong></li>
   </ul>
 
-  <p>Built on a pretrained BERT architecture, this model leverages sequence classification techniques to identify IBD-related patterns in clinical narratives efficiently.
-The model <a href="https://nlp.johnsnowlabs.com/2025/10/21/bert_sequence_classifier_ibd_onnx_en.html"><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_ibd_onnx</code></a> is optimized for use with the compatible embeddings <a href="https://nlp.johnsnowlabs.com/2025/10/21/distil_ibd_bert_onnx_en.html"><code class="language-plaintext highlighter-rouge">distil_ibd_bert_onnx</code></a>, ensuring high performance and efficiency in clinical text classification workflows.</p>
+  <p>Generates a CoNLL-2003 formatted file directly from a Spark NLP NER DataFrame, writing TOKEN -X- -X- LABEL lines with -DOCSTART- document headers and sentence boundaries. Supports local paths and DBFS, and enforces unique document IDs to prevent training issues.</p>
 
   <p><em>Example</em>:</p>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bfsc_loaded</span> <span class="o">=</span> <span class="n">BertForSequenceClassification</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"bert_sequence_classifier_ibd_onnx"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">'document'</span><span class="p">,</span> <span class="s">'token'</span><span class="p">])</span> \
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"label"</span><span class="p">)</span>
-
-<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([</span>
-    <span class="p">[</span><span class="s">"Patient with inflammatory bowel disease and colon inflammation."</span><span class="p">],</span>
-    <span class="p">[</span><span class="s">"Normal colonoscopy findings, no evidence of inflammation."</span><span class="p">],</span>
-<span class="p">]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
-
-<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([</span>
-    <span class="p">[</span><span class="s">"A 30-year-old man presents with chronic abdominal pain, fatigue, and intermittent diarrhea lasting several months. He reports 3–4 loose stools per day, often with postprandial cramping. Colonoscopy shows patchy ulceration and cobblestoning in the terminal ileum, while biopsies confirm chronic granulomatous inflammation. Labs reveal mild iron-deficiency anemia and elevated CRP. He is started on azathioprine and mesalamine, and receives dietary counseling on low-residue and high-protein intake."</span><span class="p">],</span>
-    <span class="p">[</span><span class="s">"A 49-year-old female presents with chronic constipation over several years. Colonoscopy is normal. Thyroid function, CRP, and electrolytes are within normal limits. She is diagnosed with chronic idiopathic constipation and started on polyethylene glycol and dietary fiber. No evidence of mucosal inflammation or IBD."</span><span class="p">],</span>
-<span class="p">]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">annotation2training</span><span class="p">.</span><span class="n">generateConll</span><span class="p">(</span><span class="n">training_df_json</span><span class="p">,</span> <span class="s">"main.conll"</span><span class="p">)</span>
 </code></pre></div>  </div>
 
-  <p><em>Result for short text</em>:</p>
+  <ul>
+    <li><strong>Label whitelisting &amp; blacklisting (convertJson2NerDF)</strong></li>
+  </ul>
+
+  <p>Adds white_list and black_list parameters so you can explicitly include or exclude specific entity labels when converting JSON annotations to a NER DataFrame.</p>
+
+  <p><em>Example</em>:</p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">JSON_PATH</span> <span class="o">=</span> <span class="s">"/content/result.json"</span>
+
+<span class="kn">from</span> <span class="nn">sparknlp_jsl.training</span> <span class="kn">import</span> <span class="n">Annotation2Training</span>
+<span class="n">annotation2training</span> <span class="o">=</span> <span class="n">Annotation2Training</span><span class="p">(</span><span class="n">spark</span><span class="p">)</span>
+<span class="n">training_df_json</span> <span class="o">=</span> <span class="n">annotation2training</span><span class="p">.</span><span class="n">convertJson2NerDF</span><span class="p">(</span>
+    <span class="n">json_path</span> <span class="o">=</span> <span class="n">JSON_PATH</span><span class="p">,</span>                   <span class="c1"># Path to the input JSON file.
+</span>    <span class="n">pipeline_model</span> <span class="o">=</span> <span class="n">base_pipeline_model</span><span class="p">,</span>    <span class="c1"># A pre-trained Spark NLP PipelineModel that includes at least a DocumentAssembler, and Tokenizer.
+</span>    <span class="n">repartition</span> <span class="o">=</span> <span class="p">(</span><span class="n">os</span><span class="p">.</span><span class="n">cpu_count</span><span class="p">()</span> <span class="o">*</span> <span class="mi">4</span><span class="p">),</span>      <span class="c1"># Number of partitions to use when creating the DataFrame (default is 32).
+</span>    <span class="n">token_output_col</span> <span class="o">=</span> <span class="s">"token"</span><span class="p">,</span>              <span class="c1"># The name of the column containing token annotations (default is "token").
+</span>    <span class="n">ner_label_col</span> <span class="o">=</span> <span class="s">"label"</span><span class="p">,</span>                  <span class="c1"># The name of the output column for NER labels (default is "label").
+</span>    <span class="n">black_list</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Quit_Attempts"</span><span class="p">],</span>
+    <span class="n">replace_labels</span> <span class="o">=</span> <span class="p">{</span><span class="s">"Smoking_Type"</span><span class="p">:</span><span class="s">"Smoking_Status"</span><span class="p">})</span>
+</code></pre></div>  </div>
+
+  <ul>
+    <li><strong>Label distribution explorer (showLabelDistributions)</strong></li>
+  </ul>
+
+  <p>A utility method to quickly display the frequency distribution of entity labels in the training DataFrame. It explodes the label column and prints counts per label, helping you spot class imbalance, missing labels, or noisy annotations before training.</p>
+
+  <p><em>Example</em>:</p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">annotation2training</span><span class="p">.</span><span class="n">showLabelDistributions</span><span class="p">(</span><span class="n">training_df_json</span><span class="p">,</span> <span class="s">"label"</span><span class="p">)</span>
+</code></pre></div>  </div>
+
+  <p>Please check <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.7.Generative_AI_to_Ner_Training.ipynb">Generative AI to Ner Training</a> notebook for more detail</p>
+
+</div>
+<div class="h3-box">
+
+  <h4 id="clinical-document-analysis-with-one-liner-pretrained-pipelines-for-specific-clinical-tasks-and-concepts">Clinical Document Analysis with One-Liner Pretrained-Pipelines for Specific Clinical Tasks and Concepts</h4>
+
+  <p>We introduce a suite of advanced, hybrid pretrained pipelines, specifically designed to streamline the clinical document analysis process. These pipelines are built upon multiple state-of-the-art (SOTA) pretrained models, delivering a comprehensive solution for quickly extracting vital information.</p>
+
+  <p>What sets this release apart is the elimination of complexities typically involved in building and chaining models. Users no longer need to navigate the intricacies of constructing intricate pipelines from scratch or the uncertainty of selecting the most effective model combinations. Our new pretrained pipelines simplify these processes, offering a seamless, user-friendly experience.</p>
 
   <table class="table-model-big">
     <thead>
       <tr>
-        <th>text</th>
-        <th>result</th>
+        <th>Model Name</th>
+        <th>Description</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>Patient with inflammatory bowel disease and colon inflammation.</td>
-        <td>[IBD]</td>
+        <td><a href="https://nlp.johnsnowlabs.com/2025/11/14/pp_docwise_benchmark_large_preann_en.html"><code class="language-plaintext highlighter-rouge">pp_docwise_benchmark_large_preann</code></a></td>
+        <td>Detect PHI entities in medical texts using Named Entity Recognition (NER).</td>
       </tr>
       <tr>
-        <td>Normal colonoscopy findings, no evidence of inflammation.</td>
-        <td>[Not IBD]</td>
+        <td><a href="https://nlp.johnsnowlabs.com/2025/11/14/pp_docwise_benchmark_medium_preann_en.html"><code class="language-plaintext highlighter-rouge">pp_docwise_benchmark_medium_preann</code></a></td>
+        <td>Detect PHI entities in medical texts using Named Entity Recognition (NER).</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2025/11/05/clinical_deidentification_sentwise_benchmark_large_en.html"><code class="language-plaintext highlighter-rouge">clinical_deidentification_sentwise_benchmark_large</code></a></td>
+        <td>Deidentify PHI information from medical texts.</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2025/11/05/clinical_deidentification_sentwise_benchmark_medium_en.html"><code class="language-plaintext highlighter-rouge">clinical_deidentification_sentwise_benchmark_medium</code></a></td>
+        <td>Deidentify PHI information from medical texts.</td>
       </tr>
     </tbody>
   </table>
 
-  <p><em>Result for long text</em>:</p>
+  <p><em>Example</em>:</p>
 
-  <table class="table-model-big">
-    <thead>
-      <tr>
-        <th>text</th>
-        <th>result</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>A 30-year-old man presents with chronic abdominal pain, fatigue, and intermittent diarrhea lasting several months. He reports 3–4 loose stools per day, often with postprandial cramping. Colonoscopy shows patchy ulceration and cobblestoning in the terminal ileum, while biopsies confirm chronic granulomatous inflammation. Labs reveal mild iron-deficiency anemia and elevated CRP. He is started on azathioprine and mesalamine, and receives dietary counseling on low-residue and high-protein intake.</td>
-        <td>[Not IBD]</td>
-      </tr>
-      <tr>
-        <td>A 49-year-old female presents with chronic constipation over several years. Colonoscopy is normal. Thyroid function, CRP, and electrolytes are within normal limits. She is diagnosed with chronic idiopathic constipation and started on polyethylene glycol and dietary fiber. No evidence of mucosal inflammation or IBD.</td>
-        <td>[Not IBD]</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span><span class="p">,</span> <span class="n">medical</span>
 
-  <p><strong>Advanced IBD Classification</strong></p>
+<span class="n">ner_docwise</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"ner_docwise_benchmark_large_preann"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s">"inflammatory_bowel_diseases"</span><span class="p">,</span> <span class="s">"Crohn's_disease"</span><span class="p">,</span> <span class="s">"Ulcerative_colitis"</span><span class="p">,</span> <span class="s">"Indeterminate_colitis"</span><span class="p">,</span> <span class="s">"Irritable_Bowel_Syndrome"</span><span class="p">,</span> <span class="s">"other_disease"</span><span class="p">]</span>
-
-<span class="n">pretrained_zero_shot_ner</span> <span class="o">=</span> <span class="n">PretrainedZeroShotNER</span><span class="p">().</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"zeroshot_ner_generic_large"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
-      <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">)</span>\
-      <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>\
-      <span class="p">.</span><span class="n">setPredictionThreshold</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>\
-      <span class="p">.</span><span class="n">setLabels</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
-
-<span class="p">...</span>
-<span class="n">assertion_classifier</span> <span class="o">=</span> <span class="n">BertForAssertionClassification</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"assertion_bert_classification_clinical"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
-      <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"ner_chunk"</span><span class="p">])</span>\
-      <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"assertion_class"</span><span class="p">)</span>
-
-
-<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([</span>
-    <span class="p">[</span><span class="s">"A 30-year-old man presents with chronic abdominal pain, fatigue, and intermittent diarrhea lasting several months. He reports 3–4 loose stools per day, often with postprandial cramping. Colonoscopy shows patchy ulceration and cobblestoning in the terminal ileum, while biopsies confirm chronic granulomatous inflammation. Labs reveal mild iron-deficiency anemia and elevated CRP. He is started on azathioprine and mesalamine, and receives dietary counseling on low-residue and high-protein intake."</span><span class="p">],</span>
-    <span class="p">[</span><span class="s">"A 49-year-old female presents with chronic constipation over several years. Colonoscopy is normal. Thyroid function, CRP, and electrolytes are within normal limits. She is diagnosed with chronic idiopathic constipation and started on polyethylene glycol and dietary fiber. No evidence of mucosal inflammation or IBD."</span><span class="p">],</span>
-<span class="p">]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s">"""Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024.
+The patient’s medical record number is 56467890.
+The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 ."""</span>
 </code></pre></div>  </div>
 
-  <p><em>Result:</em></p>
+  <p><em>Result</em>:</p>
 
   <table class="table-model-big">
     <thead>
       <tr>
-        <th>doc_id</th>
-        <th>text</th>
-        <th>ner_chunk</th>
+        <th>chunk</th>
+        <th>begin</th>
+        <th>end</th>
         <th>ner_label</th>
-        <th>assertion_result</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>1</td>
-        <td>A 30-year-old man presents with chronic abdominal pain, fatigue, and intermittent diarrhea lasting several months. He reports 3–4 loose stools per day, often with postprandial cramping. Colonoscopy shows patchy ulceration and cobblestoning in the terminal ileum, while biopsies confirm chronic granulomatous inflammation. Labs reveal mild iron-deficiency anemia and elevated CRP. He is started on azathioprine and mesalamine, and receives dietary counseling on low-residue and high-protein intake.</td>
-        <td>chronic granulomatous inflammation</td>
-        <td>inflammatory_bowel_diseases</td>
-        <td>present</td>
+        <td>John Lee</td>
+        <td>4</td>
+        <td>11</td>
+        <td>DOCTOR</td>
       </tr>
       <tr>
-        <td>2</td>
-        <td>A 49-year-old female presents with chronic constipation over several years. Colonoscopy is normal. Thyroid function, CRP, and electrolytes are within normal limits. She is diagnosed with chronic idiopathic constipation and started on polyethylene glycol and dietary fiber. No evidence of mucosal inflammation or IBD.</td>
-        <td>IBD</td>
-        <td>inflammatory_bowel_diseases</td>
-        <td>absent</td>
+        <td>Royal Medical Clinic</td>
+        <td>19</td>
+        <td>38</td>
+        <td>HOSPITAL</td>
+      </tr>
+      <tr>
+        <td>Chicago</td>
+        <td>43</td>
+        <td>49</td>
+        <td>CITY</td>
+      </tr>
+      <tr>
+        <td>11/05/2024</td>
+        <td>79</td>
+        <td>88</td>
+        <td>DATE</td>
+      </tr>
+      <tr>
+        <td>56467890</td>
+        <td>130</td>
+        <td>137</td>
+        <td>IDNUM</td>
+      </tr>
+      <tr>
+        <td>Emma Wilson</td>
+        <td>153</td>
+        <td>163</td>
+        <td>PATIENT</td>
+      </tr>
+      <tr>
+        <td>50 years old</td>
+        <td>169</td>
+        <td>180</td>
+        <td>AGE</td>
+      </tr>
+      <tr>
+        <td>444-456-7890</td>
+        <td>203</td>
+        <td>214</td>
+        <td>PHONE</td>
       </tr>
     </tbody>
   </table>
 
-  <p>JSL provides powerful annotators like NER, Assertion Classification, and DocumentFiltererByNER that enable more detailed and advanced clinical text processing workflows.
-This advanced pipeline enables precise IBD document classification with entity-level granularity and assertion status.</p>
-
 </div>
 <div class="h3-box">
 
-  <h4 id="introducing-a-new-textmatcher-model-for-icd10cm-coding">Introducing a New TextMatcher Model for ICD10CM Coding</h4>
+  <h4 id="introducing-a-new-city-textmatcher-model-for-extracting-city-names-from-clinical-text">Introducing a new city TextMatcher model for extracting city names from clinical text</h4>
 
-  <p>A new TextMatcher model from John Snow Labs automatically maps clinical text to ICD10CM codes, making medical coding faster and more accurate. It streamlines documentation, reduces manual effort, and improves overall coding efficiency.</p>
+  <p>A new TextMatcherInternal model from John Snow Labs automatically extracts city names from clinical text, enabling structured geo-location information for downstream analytics and reporting.</p>
 
   <p><em>Example</em>:</p>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">text_matcher</span> <span class="o">=</span> <span class="n">TextMatcherInternalModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"icd10cm_matcher"</span><span class="p">,</span> <span class="s">"en"</span> <span class="p">,</span><span class="s">"clinical/models"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"icd10cm"</span><span class="p">)</span>\
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">text_matcher</span> <span class="o">=</span> <span class="n">TextMatcherInternalModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"city_matcher"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span><span class="s">"clinical/models"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"city_name"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setMergeOverlapping</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
 
-<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"""A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus, associated with obesity with a body mass index (BMI) of 33.5 kg/m2, presented with a one-week history of polyuria, polydipsia, poor appetite, and vomiting. Two weeks prior to presentation, she was treated with a five-day course of amoxicillin for a respiratory tract infection."""</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"""Name: Johnson, Alice, Record date: 2093-03-22, MR: 846275.
+Dr. Emily Brown, IP 192.168.1.1.
+She is a 55-year-old female who was admitted to the Global Hospital in Los Angeles for hip replacement on 03/22/93.
+Patient's VIN: 2HGFA165X8H123456, SSN: 444-55-8888, Driver's license no: C789012D.
+Phone: (212) 555-7890, 4321 Oak Street, New York City, USA, E-MAIL: alice.johnson@example.com.
+Patient has traveled to Tokyo, Paris, and Sydney in the past year."""</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
 </code></pre></div>  </div>
 
-  <p><em>Result:</em>
-|chunk                        |begin|end|ner_label   |
-|—————————–|—–|—|————|
-|gestational diabetes mellitus|39   |67 |ICD10_ENTITY|
-|polyuria                     |261  |268|ICD10_ENTITY|
-|polydipsia                   |271  |280|ICD10_ENTITY|
-|vomiting                     |302  |309|ICD10_ENTITY|</p>
+  <p><em>Result</em>:</p>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>chunk</th>
+        <th>begin</th>
+        <th>end</th>
+        <th>label</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Los Angeles</td>
+        <td>163</td>
+        <td>173</td>
+        <td>CITY</td>
+      </tr>
+      <tr>
+        <td>New York City</td>
+        <td>331</td>
+        <td>343</td>
+        <td>CITY</td>
+      </tr>
+      <tr>
+        <td>Tokyo</td>
+        <td>410</td>
+        <td>414</td>
+        <td>CITY</td>
+      </tr>
+      <tr>
+        <td>Paris</td>
+        <td>417</td>
+        <td>421</td>
+        <td>CITY</td>
+      </tr>
+      <tr>
+        <td>Sydney</td>
+        <td>428</td>
+        <td>433</td>
+        <td>CITY</td>
+      </tr>
+    </tbody>
+  </table>
 
 </div>
 <div class="h3-box">
 
-  <h4 id="updated-certification-training-and-databricks-tutorial-notebooks-for-healthcare-nlp">Updated Certification Training and Databricks Tutorial Notebooks for Healthcare NLP</h4>
-
-  <p>All Certification Training and Databricks Tutorial notebooks for John Snow Labs Healthcare NLP have been updated with the latest enhancements, ensuring better usability, performance, and compatibility with the latest Spark NLP releases. These updates aim to provide a smoother learning experience and more efficient model deployment within healthcare AI and NLP pipelines.</p>
-
-  <p>Please see the <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/healthcare-nlp">Healthcare NLP Workshop</a> and <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/databricks/python/healthcare-nlp">Databricks Tutorials</a> folders</p>
-
-</div>
-<div class="h3-box">
-
-  <h4 id="new-blog-posts-on-various-topics">New Blog Posts on Various Topics</h4>
-
-  <p>Explore our latest John Snow Labs blog posts, highlighting new advancements in Healthcare NLP and real-world applications that enhance clinical insights and patient care.</p>
+  <h4 id="new-blog-post-to-understand-how-to-deploy-medical-llms-on-databricks">New blog post to understand how to deploy Medical LLMs on Databricks</h4>
 
   <ul>
-    <li><a href="https://medium.com/john-snow-labs/john-snow-labs-healthcare-nlp-6-1-launch-expanding-llm-and-vlm-capabilities-899a4ca8818d">John Snow Labs Healthcare NLP 6.1 Launch: Expanding LLM and VLM Capabilities</a> Discover how the latest release combines domain-specific NLP with Large Language Models (LLMs) and Vision Language Models (VLMs) to revolutionize healthcare AI and improve patient outcomes.</li>
-    <li><a href="https://medium.com/john-snow-labs/automated-vaccine-registries-from-unstructured-notes-to-structured-insights-d3789b485975">Automated Vaccine Registries: From Unstructured Notes to Structured Insights</a> Learn how NLP models can automatically extract vaccine types, infectious diseases, and related symptoms from unstructured clinical text—turning free-text notes into actionable data for public health and research.</li>
+    <li><a href="https://medium.com/john-snow-labs/deploying-john-snow-labs-medical-llms-on-databricks-three-flexible-deployment-options-6005e7129b42">Deploying John Snow Labs Medical LLMs on Databricks: Three Flexible Deployment Options</a> This blog post explores how to securely and efficiently deploy healthcare-focused Large Language Models (LLMs) and Vision Language Models (VLMs) on Databricks. It introduces three flexible deployment options developed in collaboration with Databricks, each balancing performance, cost, and operational control while meeting strict healthcare security and compliance requirements. The post walks through these options using a real customer scenario, illustrating how to run state-of-the-art medical LLMs on Databricks infrastructure and helping teams choose the setup that best fits their clinical workflows and IT constraints.</li>
+  </ul>
+
+</div>
+<div class="h3-box">
+
+  <h4 id="updated-notebooks-and-demonstrations-for-making-healthcare-nlp-easier-to-navigate-and-understand">Updated Notebooks And Demonstrations For making Healthcare NLP Easier To Navigate And Understand</h4>
+
+  <ul>
+    <li>New Databricks <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/databricks/python/tutorials/healthcare_tutorials/1.1.Generative_AI_to_Ner_Training.ipynb">Generative AI to Ner Training</a> Notebook</li>
+    <li>Updated <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.7.Generative_AI_to_Ner_Training.ipynb">Generative AI to Ner Training</a> Notebook</li>
   </ul>
 
 </div>
@@ -1022,15 +934,17 @@ This advanced pipeline enables precise IBD document classification with entity-l
   <h4 id="we-have-added-and-updated-a-substantial-number-of-new-clinical-models-and-pipelines-further-solidifying-our-offering-in-the-healthcare-domain">We Have Added And Updated A Substantial Number Of New Clinical Models And Pipelines, Further Solidifying Our Offering In The Healthcare Domain.</h4>
 
   <ul>
-    <li><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_ibd_onnx</code></li>
-    <li><code class="language-plaintext highlighter-rouge">distil_ibd_bert_onnx</code></li>
-    <li><code class="language-plaintext highlighter-rouge">icd10cm_matcher</code></li>
+    <li><code class="language-plaintext highlighter-rouge">pp_docwise_benchmark_large_preann</code></li>
+    <li><code class="language-plaintext highlighter-rouge">pp_docwise_benchmark_medium_preann</code></li>
+    <li><code class="language-plaintext highlighter-rouge">clinical_deidentification_sentwise_benchmark_large</code></li>
+    <li><code class="language-plaintext highlighter-rouge">clinical_deidentification_sentwise_benchmark_medium</code></li>
+    <li><code class="language-plaintext highlighter-rouge">city_matcher</code></li>
   </ul>
 
 </div>
 <div class="h3-box">
 
-  <p>For all Spark NLP for Healthcare models, please check: <a href="https://nlp.johnsnowlabs.com/models?edition=Healthcare+NLP">Models Hub Page</a></p>
+  <p>For all Healthcare NLP models, please check: <a href="https://nlp.johnsnowlabs.com/models?edition=Healthcare+NLP">Models Hub Page</a></p>
 
 </div>
 <div class="h3-box">
@@ -1050,6 +964,7 @@ This advanced pipeline enables precise IBD document classification with entity-l
     </li>
 </ul>
 <ul class="pagination owl-carousel pagination_big">
+    <li><a href="release_notes_6_2_1">6.2.1</a></li>
     <li><a href="release_notes_6_2_0">6.2.0</a></li>
     <li><a href="release_notes_6_1_1">6.1.1</a></li>
     <li><a href="release_notes_6_1_0">6.1.0</a></li>
@@ -1138,7 +1053,7 @@ This advanced pipeline enables precise IBD document classification with entity-l
     <li><a href="release_notes_2_4_0">2.4.0</a></li>
 </ul>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2025-10-31T00:00:00+00:00">Oct 31, 2025</time>
+      <time itemprop="dateModified" datetime="2025-11-20T00:00:00+00:00">Nov 20, 2025</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
