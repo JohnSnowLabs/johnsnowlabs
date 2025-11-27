@@ -1,10 +1,10 @@
 ---
 layout: docs
 header: true
-seotitle: Generative AI Lab - Free No Code AI Platform by John Snow Labs
-pagetitle: Generative AI Lab - Free No Code AI Platform by John Snow Labs
-title: Generative AI Lab&#58; The No-Code Tool for AI Teams
-excerpt: Generative AI Lab is the fastest tool for document annotation. Free No Code AI platform to annotate text, images and PDF.
+seotitle: Generative AI Lab - No Code AI Platform by John Snow Labs
+pagetitle: Generative AI Lab - No Code AI Platform by John Snow Labs
+title: Generative AI Lab - The No-Code Tool for AI Teams
+excerpt: Generative AI Lab is a regulatory grade Human in the Loop tool for document annotation. Boost productivity by combining AI and Human Feedback.
 permalink: /docs/en/alab/quickstart
 key: docs-quickstart
 modify_date: "2025-11-27"
@@ -16,9 +16,15 @@ sidebar:
 
 <div class="main-docs" markdown="1">
 
+<div style="text-align: center; margin-bottom: 40px;">
+
+Generative AI Lab is a no-code annotation platform that combines human expertise with AI-powered automation. Accelerate your data labeling by 10x using pre-trained models, build custom AI without coding, and maintain enterprise-grade security and compliance.
+
+</div>
+
 <div style="text-align: center; margin-bottom: 30px;">
 
-<h4> A highly efficient End-to-End No Code AI platform for enterprise teams that need to: </h4>
+<h4>A highly efficient end-to-end platform for enterprise teams to:</h4>
 
 </div>
 
@@ -33,7 +39,7 @@ Annotate text, images, PDFs, video, and audio with human-in-the-loop workflows �
 <div class="block-box" markdown="1" style="border: 1px solid #e8f4f8; min-width: 0; flex: 1 1 45%;">
 <h4 style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Build Custom AI</h4>
 
-Train and tune custom NLP models that learn from your annotations, or design and test prompts for GPT, Claude, and other LLMs interactively.
+Train and tune custom NLP models that learn from your annotations, test prompts for GPT, Claude, and other LLMs interactively.
 </div>
 
 </div>
@@ -49,7 +55,7 @@ Run blind evaluations and side-by-side comparisons to choose the right LLM for y
 <div class="block-box" markdown="1" style="border: 1px solid #e8f4f8; min-width: 0; flex: 1 1 45%;">
 <h4 style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">De-identify Sensitive Data</h4>
 
-Automatically detect and mask PII/PHI in text using AI-powered models, choose your preferred de-identification strategies, and review results before safely sharing data with third parties for research.
+Automatically detect and mask PII/PHI in text using AI-powered models, choose your preferred de-identification strategies, and review results before safely sharing data with third parties.
 </div>
 
 </div>
@@ -70,136 +76,211 @@ Manage multiple projects and teams with reviewer workflows, task assignments, an
 
 </div>
 
-<div style="text-align: center; margin: 40px 0 20px 0;" markdown="1">
+<div style="text-align: center; margin: 40px auto 30px auto; max-width: 850px;">
+<div style="background: linear-gradient(135deg, #f0f7ff 0%, #e8f4f8 100%); border-left: 4px solid #0066cc; padding: 30px 45px; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,0.08);">
 
-All that **without writing a line of code**!
+<p style="font-size: 1.6em; font-weight: 700; margin: 0 0 15px 0; color: #0066cc; line-height: 1.3;">All that <strong style="color: #004494;">without writing a line of code</strong>!</p>
+
+<p style="font-size: 1.05em; margin: 0 0 10px 0; color: #2c3e50; line-height: 1.5;">Build, train, and deploy AI models entirely through the UI. No programming, command line, or technical expertise needed.</p>
+
 
 </div>
-
-<div style="text-align: center; margin: 20px 0;" markdown="1">
-
-{:.btn-block.btn-flex}
-[Install on AWS](https://aws.amazon.com/marketplace/pp/prodview-zrcp6k6nqvxoa){:.button.button--primary.button--rounded.button--md}
-[Install on Azure](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.gen_ai_lab?tab=Overview){:.button.button--primary.button--rounded.button--md}
-
 </div>
 
 </div>
 
-<div class="block-wrapper block-wrapper-top">
+## Boost Productivity by Combining AI with Human Feedback
+
+Speed up your annotation teams with intelligent pre-annotations from state-of-the-art models. Built for seamless teamwork with advanced collaboration features, role-based workflows, and backed by enterprise level security.
+
+**AI pre-annotates → Humans refine → Models improve → Repeat**
+
+- **[Pre-annotation](/docs/en/alab/preannotation)** — Start with any of the 13,000+ pre-trained models instead of blank documents
+- **Human Review** — Domain experts correct predictions using [a high-productivity UI](/docs/en/alab/annotation)
+- **[Active Learning](/docs/en/alab/active_learning)** — Models automatically retrain on corrections, creating a virtuous cycle
+- **10x Faster** — Experts focus on edge cases while AI handles repetitive patterns
+
+
+
+## Create Your First Annotation Project
+
+<div class="block-wrapper">
 
 <div class="block-box" markdown="1">
-<div class="has_i" markdown="1">
-## Productivity 
-<img class="image image--xl" src="/assets/images/annotation_lab/Productivity.svg" alt="john snow labs annotation lab"/>
-</div>
 
-- Never start from scratch
-- Keep Annotators in the Zone
-- Reach agreement quickly
+**1. [Create a Project](/docs/en/alab/project_creation)**
+
+Choose from 30+ templates for NER, classification, de-identification, LLM evaluation, and more.
+
 </div>
 
 <div class="block-box" markdown="1">
-<div class="has_i" markdown="1">
-## Auto NLP 
-<img class="image image--xl" src="/assets/images/annotation_lab/AutoNLP.svg" alt="john snow labs annotation lab"/>
-</div>
 
-- Active learning
-- Deliver an accurate model, not just labels
-- Built for High Compliance Enterprise Environments
-</div>
+**2. [Set Up Your Team](/docs/en/alab/user_management)**
+
+Pick who you want to work with and define their specific roles (Annotator, Reviewer, Manager).
 
 </div>
 
-<div class="block-wrapper block-wrapper-top">
 <div class="block-box" markdown="1">
-<div class="has_i" markdown="1">
-## Teamwork 
-<img class="image image--xl" src="/assets/images/annotation_lab/Teamwork.svg" alt="john snow labs annotation lab"/>
-</div>
 
-- Projects & Teams
-- Workflows
-- Security
-- Analytics
+**3. [Import Data](/docs/en/alab/import)**
+
+Upload files or connect to cloud storage (S3, Azure Blob).
 
 </div>
+
+</div>
+
+<div class="block-wrapper">
+
 <div class="block-box" markdown="1">
-<div class="has_i" markdown="1">
-## Resources
-<img class="image image--xl" src="/assets/images/annotation_lab/best_practices.svg" alt="john snow labs annotation lab"/>
-</div>
 
-- <a href="https://www.johnsnowlabs.com/john-snow-labs-data-annotator-for-human-in-the-loop-ai-is-now-included-with-all-subscriptions/" target="_blank">General tutorials</a>
-- <a href="https://www.nlpsummit.org/auto-nlp-pretrain-tune-deploy-state-of-the-art-models/" rel="nofollow" target="_blank">Annotation best practices</a>
-- <a href="https://nlp.johnsnowlabs.com/learn#data-annotator--active-learning">Tips and tricks</a>
+**4. [Pre-annotate](/docs/en/alab/preannotation)**
+
+Let AI models generate initial labels automatically.
 
 </div>
+
+<div class="block-box" markdown="1">
+
+**5. [Review & Refine](/docs/en/alab/annotation)**
+
+Correct predictions using productivity features and keyboard shortcuts.
+
 </div>
 
-## Quick Intro
+<div class="block-box" markdown="1">
 
-Generative AI Lab is an end‑to‑end no‑code platform for labeling documents, extracting structured information, and training, testing, and deploying AI models. It enables domain experts such as clinicians, legal professionals, and data analysts to annotate text, images, PDFs, audio, video, or HTML content and then train custom models that automatically reproduce those annotations on new data.
+**6. [Train Models](/docs/en/alab/training_configurations)**
 
-Built on a scalable Kubernetes architecture, it supports unlimited users, projects, and models while maintaining enterprise‑grade security, including air‑gap deployment, role‑based access control (RBAC), multi‑factor authentication (MFA), and comprehensive audit trails.
+Build custom models that learn from your ground truth data.
 
-Generative AI Lab empowers organizations to manage the full machine learning lifecycle, from data labeling and model training to evaluation, deployment, and monitoring, all within a unified environment.
+</div>
 
-## Included Features
+</div>
 
-- **Comprehensive Annotation Support** for text, image, PDF, audio, video, and HTML data types  
-  - High productivity labeling UI with shortcuts and pre‑annotations  
-  - Multi‑page PDF, image, and side‑by‑side (OCR text + image) annotation  
-  - Section‑based annotation for large documents
+## Core Capabilities
 
-- **Extensive Project Templates** for specialized tasks  
-  - Standard templates for Named Entity Recognition (NER), Classification, Assertion Status, and Relation Extraction  
-  - De‑identification projects for anonymizing PII/PHI with configurable masking per entity label  
-  - LLM Evaluation and LLM Comparison projects for benchmarking large language model outputs  
-  - Health Care Coding templates (Text and PDF+Text) for medical risk adjustment coding  
-  - Support for rule‑based, zero‑shot, and LLM‑prompt‑based workflows
+<div class="block-wrapper">
 
-- **AI‑Assisted Annotation**  
-  - Pre‑annotation using Spark NLP and Healthcare NLP models  
-  - Entity resolution and code lookups for ICD‑10, CPT, and custom terminologies  
-  - Confidence‑based filtering of predictions (entities and relations) with relation filtering tied to label confidence  
-  - Integration with LLMs (OpenAI, Azure OpenAI, Amazon SageMaker, Anthropic Claude) for external prompt‑based generation with adjustable temperature and max token limits
-  - Dropdown selection of predefined response names for LLM comparison projects
+<div class="block-box" markdown="1">
 
-- **Model Training and Evaluation**  
-  - Train and fine‑tune NER, Classification, Assertion, and Relation models directly in the UI  
-  - Built‑in LangTest module for model testing and robustness evaluation  
-  - Data augmentation through proportional and templatic augmentation for better training datasets  
-  - Visual reports for bias, fairness, robustness, and accuracy metrics
+### Multi-Format Annotation
 
-- **Task and Workflow Management**  
-  - Task assignment, tagging, and commenting  
-  - Consensus analysis and inter‑annotator agreement (IAA) charts for text and HTML projects  
-  - Task ranking and prioritization via ranking scores  
-  - Persistent "tasks per page" setting remembered across sessions  
-  - Reviewer feedback cloning and completion comparison with auto‑highlighted differences  
-  - Updated submission pop‑up that clarifies completions cannot be edited and allows users to skip future reminders
+Annotate across multiple document types with a unified interface:
+- [Text documents](/docs/en/alab/tags_text) in 250+ languages
+- [Images](/docs/en/alab/tags_image) and [PDFs](/docs/en/alab/tags_pdf)
+- [Audio](/docs/en/alab/tags_audio) and [video](/docs/en/alab/tags_video)
+- [Productivity features](/docs/en/alab/annotation) 
 
-- **Import, Export, and Integration**  
-  - Import tasks from local files, URLs, or cloud storage (AWS S3, Azure Blob)  
-  - Credential‑free AWS integration when deployed on EC2 using IAM roles
-  - Incremental S3 imports that skip previously imported files and avoid duplicates  
-  - Background import for large datasets using a dedicated import cluster  
-  - Cloud export via IAM role authentication (no manual keys required)  
-  - Full REST API access for automation and external integrations
+</div>
 
-- **Data Privacy, Security, and Compliance**  
-  - Local‑only data processing (no external data sharing)  
-  - HIPAA‑aligned compliance controls: audit logging, local import/export restrictions, admin‑only project creation  
-  - On‑prem and cloud pay‑as‑you‑go licensing options with unified key management  
-  - Fine‑grained user roles: Annotator, Reviewer, Manager, Supervisor, and Admin  
-  - Built‑in trial license management and simplified license rotation
+<div class="block-box" markdown="1">
 
-- **Analytics and Productivity Dashboards**  
-  - Detailed progress, label distribution, and team productivity charts  
-  - Real‑time admin notifications for analytics and LLM requests:contentReference  
-  - Request‑based analytics access with automatic admin notifications for approvals  
-  - LLM evaluation dashboards for rating and comparing model responses
+### AI-Powered Annotations
 
-Generative AI Lab continues to evolve with new capabilities for LLM evaluation, medical coding workflows, de‑identification, and secure cloud integration, offering a single environment for all stages of data preparation and AI model lifecycle management.
+Leverage pre-trained models and LLM prompting:
+- [13,000+ pre-trained models](/docs/en/alab/models_hub)
+- [LLM integration](/docs/en/alab/llm_prompts) for easy customization
+- [Active learning](/docs/en/alab/active_learning)
+- [Rules-based](/docs/en/alab/rules) and [zero-shot](/docs/en/alab/zero_prompts) annotation
+
+</div>
+
+</div>
+
+<div class="block-wrapper">
+
+<div class="block-box" markdown="1">
+
+### Model Training & Evaluation
+
+Build and test custom AI models:
+- [Train NER, classification, and assertion models](/docs/en/alab/training_configurations)
+- [Evaluate LLMs](/docs/en/alab/llm_eval)
+- [Transfer learning](/docs/en/alab/transfer_learning) capabilities
+- [Model testing](/docs/en/alab/langtest) with LangTest
+
+</div>
+
+<div class="block-box" markdown="1">
+
+### Enterprise Features & Integration
+
+Security, compliance, and team collaboration:
+- [Workflows](/docs/en/alab/workflow) with reviewer roles and [task management](/docs/en/alab/tasks)
+- [HIPAA compliance](/docs/en/alab/hipaa_compliance) and [audit trails](/docs/en/alab/audit_trail)
+- [Role-based access control](/docs/en/alab/security) and SSO
+- [REST API](/docs/en/alab/api) for automation
+
+</div>
+
+</div>
+
+## Documentation & Support
+
+<div class="block-wrapper">
+
+<div class="block-box" markdown="1">
+
+### Getting Started & Guides
+
+Essential documentation for new users:
+- [Project Configuration](/docs/en/alab/project_configuration)
+- [Annotation Best Practices](/docs/en/alab/annotation)
+- [Resources Hub](/docs/en/alab/models_hub)
+- [Team Collaboration](/docs/en/alab/workflow)
+- [Data Import](/docs/en/alab/import) and [Export](/docs/en/alab/export)
+- [Video Tutorials](/docs/en/alab/tutorials)
+- [Infrastructure Setup](/docs/en/alab/infrastructure)
+- [Backup & Restore](/docs/en/alab/backup_restore)
+
+</div>
+
+<div class="block-box" markdown="1">
+
+### Advanced Features & Support
+
+Power user features and help resources:
+- [Entity Resolution](/docs/en/alab/resolvers) for medical coding
+- [Prompt Pre-annotation](/docs/en/alab/llm_prompts)
+- [Synthetic Data Generation](/docs/en/alab/synthetic_task)
+- [Troubleshooting Guide](/docs/en/alab/troubleshooting)
+- [Tips & Best Practices](/docs/en/alab/tips)
+- [Version Information](/docs/en/alab/version)
+- [Release Notes](/docs/en/alab/release_notes)
+- [Contact Support](mailto:support@johnsnowlabs.com)
+
+</div>
+
+</div>
+
+## Ready to Get Started?
+
+Deploy Generative AI Lab on your infrastructure and start annotating in minutes. Choose your preferred deployment option:
+
+<div style="text-align: center; margin: 30px auto; max-width: 850px;">
+<div style="background: linear-gradient(135deg, #f0f7ff 0%, #e8f4f8 100%); border-left: 4px solid #0066cc; padding: 30px 45px; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,0.08);">
+
+<div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+<a href="https://aws.amazon.com/marketplace/pp/prodview-zrcp6k6nqvxoa" class="button button--primary button--rounded button--md">Install on AWS</a>
+<a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.gen_ai_lab?tab=Overview" class="button button--primary button--rounded button--md">Install on Azure</a>
+<a href="/docs/en/alab/install#dedicated-server" class="button button--primary button--rounded button--md">Install On-Premise</a>
+</div>
+
+<p style="font-size: 0.95em; margin: 20px 0 0 0; color: #5a6c7d;">After installation, log in with <strong>username: admin</strong> and your instance ID as the password. You'll be guided through creating your first project.</p>
+
+</div>
+</div>
+
+**What Happens After Installation?**
+- Access the web interface through your browser — no client installation needed
+- Follow the built-in setup wizard to create your first annotation project
+- Import sample data or connect to your cloud storage (S3, Azure Blob)
+- Try pre-annotation with one of 13,000+ pre-trained models
+- Invite team members and assign roles (Annotator, Reviewer, Manager)
+- Start annotating and training custom models immediately
+
+Need help? Check the [Installation Guide](/docs/en/alab/install) for detailed instructions or [contact our support team](mailto:support@johnsnowlabs.com).
+
