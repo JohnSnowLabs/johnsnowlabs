@@ -6,7 +6,7 @@ seotitle: Generative AI Lab | John Snow Labs
 title: Text
 permalink: /docs/en/alab/tags_text
 key: docs-training
-modify_date: "2023-06-20"
+modify_date: "2025-11-27"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
@@ -21,6 +21,21 @@ The `Text` tag shows text that can be labeled. The text template is divided into
 - Text summarization.
 
 </div><div class="h3-box" markdown="1">
+
+### Specialized Templates
+
+In addition to standard Text projects for NER, classification, and summarization, Generative AI Lab also provides several specialized text-based templates designed for advanced workflows:
+
+- **HCC Coding (Text)** – combines NER and classification to support medical coding and clinical risk adjustment. Annotators can link detected clinical entities to their corresponding HCC codes for validation and review.  
+
+- **LLM Evaluation Projects** – designed to assess responses from Large Language Models (LLMs) using configurable rating criteria such as accuracy, coherence, and helpfulness.  
+  Evaluators can score and compare generated outputs directly in the Lab interface.
+
+- **LLM Comparison Projects** – enable side-by-side evaluation of responses from two or more LLMs, helping users benchmark performance or calibrate model output quality.  
+  These projects support provider integrations including OpenAI, Azure OpenAI, Amazon SageMaker, and Anthropic Claude.
+
+These specialized templates expand the capabilities of Text projects, allowing both annotation and evaluation workflows to coexist within the same platform.
+
 
 ### Named Entity Recognition
 
@@ -163,13 +178,14 @@ For a simple text summarization, the configuration just needs the `Text` and `Te
 </div>
 
 ## Support for HCC Coding
-This release introduces support for HCC Coding for text and PDF content. The system now maps detected ICD-10 codes to their corresponding HCC codes, streamlining clinical risk adjustment workflows and insurance claim verification. 
+Generative AI Lab supports **HCC (Hierarchical Condition Category) Coding** for both text and PDF-based content.  
+These project types streamline clinical risk adjustment and insurance verification workflows by mapping detected ICD-10 diagnosis codes to their corresponding HCC categories.
 
-**New project types:**
-1. **HCC Coding for Text**
-2. **HCC Coding for PDF and Text (side by side)**
-   
-These project types enable the association of HCC codes with annotated clinical entities using preconfigured lookup datasets, reducing manual input and improving consistency in medical coding.
+**Available Project Types**
+1. **HCC Coding for Text** – supports text-based annotation, allowing users to label and map clinical findings directly to HCC codes.  
+2. **HCC Coding for PDF + Text (side-by-side)** – provides a dual-view interface for reviewing the original PDF alongside extracted text during annotation.
+
+These templates allow users to associate HCC codes with annotated clinical entities using preconfigured lookup datasets, reducing manual input and improving consistency in medical coding.
 
 ![700image](/assets/images/annotation_lab/7.0.0/1.png)
 
@@ -208,7 +224,7 @@ Once a task is labeled and lookup codes are assigned along with HCC Codes, revie
 
 ### Raking Score Integration
 
-Tasks can now include **ranking scores** to support triaging and prioritization, allowing users to manage large annotation datasets more effectively. When importing tasks, users can associate each task with a ranking score that reflects its clinical significance or urgency. These scores are then displayed in the task list and can be used to sort and filter tasks dynamically. This functionality is particularly beneficial in risk adjustment workflows where prioritizing complex or high-impact cases is critical. Ranking scores also integrate with the HCC coding workflow, enabling annotators and reviewers to systematically focus on the most relevant cases for validation.
+Tasks can include **ranking scores** to support triaging and prioritization, allowing users to manage large annotation datasets more effectively. When importing tasks, users can associate each task with a ranking score that reflects its clinical significance or urgency. These scores are then displayed in the task list and can be used to sort and filter tasks dynamically. This functionality is particularly beneficial in risk adjustment workflows where prioritizing complex or high-impact cases is critical. Ranking scores also integrate with the HCC coding workflow, enabling annotators and reviewers to systematically focus on the most relevant cases for validation.
 
 ![700image](/assets/images/annotation_lab/7.0.0/6.png)
 

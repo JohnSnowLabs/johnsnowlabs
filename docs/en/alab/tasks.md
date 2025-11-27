@@ -6,7 +6,7 @@ seotitle: Generative AI Lab | John Snow Labs
 title: Tasks
 permalink: /docs/en/alab/tasks
 key: docs-training
-modify_date: "2025-07-28"
+modify_date: "2025-11-27"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
@@ -116,6 +116,24 @@ Annotators can now view corrections and comments added by reviewers, enhancing t
 - **Enhanced Feedback**: Reviewers can now make precise corrections and add detailed comments on individual labels, helping annotators understand exactly what changes are needed.
 - **Improved Collaboration**: Annotators can better align their work with the reviewer’s expectations by viewing the reviewer's cloned submission.
 - **Quality Control**: This feature helps in maintaining a higher standard of annotations by ensuring that feedback is clear and actionable.
+
+## Task Ranking and Display Preferences
+
+Generative AI Lab supports prioritizing and organizing tasks through ranking scores and persistent display preferences.
+
+### Task Ranking (Priority Score)
+Each task can include an optional **priority** or **ranking score** field, which helps teams focus on the most important or urgent cases first.  
+If a ranking score is provided during task import (for example, as a field in the import JSON or CSV), it will automatically appear as a **Rank** column in the task list.  
+
+Users can:
+- **Sort** tasks by ranking to bring high-priority documents to the top.
+- **Filter** or visually identify high-value tasks for review or QA.
+  
+This feature enables project managers and reviewers to efficiently manage workflows, ensuring that critical items receive attention first.
+
+### Persistent “Tasks per Page” Setting
+The **Tasks per page** preference is now remembered across sessions.  
+When a user selects a preferred number of visible tasks from the dropdown, that setting is saved and automatically applied the next time they open the Tasks page—ensuring a consistent viewing experience without needing to reselect options every time.
 
 
 ## Task Filters

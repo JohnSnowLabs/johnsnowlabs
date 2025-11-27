@@ -6,36 +6,37 @@ seotitle: Generative AI Lab | John Snow Labs
 title: Section Based Annotations  
 permalink: /docs/en/alab/section_based_annotations
 key: docs-training
-modify_date: "2023-08-13"
+modify_date: "2025-11-27"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
     nav: annotation-lab
 ---
 
-## Generative AI Lab 5 - Harness the Power of Section-Based Annotation for Advanced NLP Tasks
+## Section-Based Annotation for Advanced NLP Tasks
 
-We're excited to announce that Generative AI Lab 5 is now available! This major update offers out-of-the-box support for section-based annotation, a feature that makes annotating larger documents with deep learning (DL) models or large language models (LLMs) an absolute breeze.
+Section-Based Annotation (SBA) provides an efficient strategy for managing both manual and automated text annotation across long or complex documents. It enables users to split tasks into smaller, meaningful sections — at the level of sentences, paragraphs, or pages — and focus annotation efforts on only the parts of a document that matter for the project’s goals.
 
-Section-based annotation is a cornerstone feature, that proposes a new strategy to handle manual and automatic text annotation. First of all, it allows the splitting of tasks into distinct sections, at various granular levels such as sentences, paragraphs, or even pages, depending on the requirement of the use case at hand. This approach gives annotators a clear view and fine-grained control over the document structure. Second, it allows users to specify what are the relevant sections for their project's specific goals. This can be done by a combination of specific keywords that can be found inside the relevant texts, regular expressions (regex) matching particular patterns within the text, or by the use of classifiers specially trained to recognize specific types of sections. 
+This approach improves control and clarity for annotators while optimizing how large language models (LLMs) and deep learning (DL) models process data. Users can define **relevant sections** using a combination of:
+- Specific keywords found in the text,
+- Regular expressions (regex) that match desired patterns, or
+- Classifiers trained to recognize particular section types.
 
-This two-step process ensures that only relevant sections, those most likely to provide valuable insights, are selected for further annotation. The following are three essential benefits related to this process:
-- streamlined and targeted annotations that **ignore irrelevant sections** within a task, 
-- context limitation for **text processing via LLMs, and DL models** for **increased performance and speed at lower costs**,
-- **customizable taxonomies** for each section for focused (pre)annotations.
+By combining these methods, only the sections most likely to yield valuable insights are selected for annotation.  
+Key benefits include:
+- **Streamlined and targeted annotation:** ignore irrelevant content to save time.  
+- **Improved model performance:** limit context sent to DL or LLM models, increasing speed and reducing cost.  
+- **Customizable taxonomies:** assign distinct labels or choices to each section for more precise pre-annotation and training.
 
-Relevant sections can be automatically identified by the Generative AI Lab during the task import step but they can also be manually adjusted/created/removed when required, by the annotators themselves as part of their completions. 
-Limiting the (pre)annotation context is essential in view of the larger integration with LLM we are preparing (stay tuned for Generative AI Lab 5.2). By focusing on one relevant section at a time, instead of an entire document that can be hundreds of pages long, Generative AI Lab ensures that the LLM ingests only the relevant context, suppressing distraction by eliminating noise or irrelevant data. This will improve the response time and the precision of predictions while being considerate of the processing costs. 
+Relevant sections can be automatically identified during task import or adjusted later by annotators directly within their completions.  
+Focusing annotation and model input on relevant sections not only enhances accuracy but also minimizes noise, speeds up predictions, and optimizes resource usage.
 
-NER tasks are all about precision! Starting with Generative AI Lab 5 you will be able to associate relevant labels to specific sections of text. This results in more precise entity recognition and reduced chances of false positives. This granularity of annotation is crucial for those working on projects where each detail matters.
+Section-based workflows also improve **Named Entity Recognition (NER)** precision by associating relevant labels with specific text sections, reducing false positives and ensuring higher-quality results. For **classification** tasks, users can classify text at the sentence, paragraph, or page level — offering fine-grained flexibility suited to different document types.
 
-For classification tasks, the section-based annotation feature enables classification to be performed at the sentence, paragraph, or page level. This offers unparalleled flexibility to split the task according to the required level of granularity. Whether you are classifying sentences or whole paragraphs, Generative AI Lab now accommodates your needs in a much more tailored way.
+During **model training**, only annotations from relevant sections are used, which significantly reduces training time and computational load. Similarly, **pre-annotation** steps using models, prompts, or rules operate only within those relevant sections, producing faster and more accurate outcomes.
 
-We understand that annotators want to focus their efforts on the most pertinent areas of the documents they process. With section-based annotation, they can focus solely on the relevant sections, leading to better productivity and less time spent scrolling through irrelevant content.
+Overall, Section-Based Annotation helps teams focus on the most meaningful content, streamline their workflows, and train better models with less effort — driving higher productivity and more precise results across NLP projects.
 
-During model training, only the annotations from the relevant sections will be used. This feature drastically reduces the training time required, saving valuable computational resources and accelerating the project timelines. When it comes to pre-annotations, the models, prompts, and rules now evaluate solely the relevant sections. This thoughtful approach results in more precise pre-annotations and faster computation of results, thereby boosting your project efficiency.
-
-Overall, section-based annotation in Generative AI Lab streamlines the annotation process, enabling annotators to concentrate on the necessary sections while optimizing training time and enhancing the accuracy of pre-annotations. We're confident that this new release will significantly improve your NLP project execution. We can't wait to see what amazing things you'll do with it!
 
 ## NLP Tasks compatible with Section-Based Annotation
 
@@ -177,11 +178,17 @@ If there are multiple completions submitted by different annotators and the user
 ## Section-based annotation improvements
 **Support for task splitting with external services**
 
-We are excited to introduce a new feature in Generative AI Lab that allows users to import sections created outside of the platform. Users can now import tasks already split into sections using external tools like Open AI’s ChatGPT. 
+Users are able to import sections created outside of the platform. Users can import tasks already split into sections using external tools like Open AI’s ChatGPT. 
 For this, we added support for “Additional sections” – sections that do not have a definition to allow their automatic identification by Generative AI Lab. Those sections can only be manually created by annotators or imported via the JSON import format. On the import screen users must check the “Preserve Imported Sections" options, if the imported JSON file includes a section definition. 
 
-## Targeted pre-annotation for relevant sections
-While in previous versions the Annotation screen was set to filter out the list of available labels/choices based on their association with the active sections, this version takes things to the next level. It is now possible to also filter out pre-annotations based on section-specific configuration. 
+## Targeted Pre-Annotation for Relevant Sections
+
+The annotation screen now supports filtering not only the list of available labels or choices based on their associated sections, but also the **pre-annotations** generated by models, rules, or prompts.  
+
+When pre-annotation is triggered, the system automatically applies section-specific configurations—ensuring that predictions appear only in the sections where their corresponding labels or choices are defined. This results in cleaner, more accurate annotations and eliminates noise from unrelated sections.
+
+For example, if **Label A** is configured to appear only in **Section 1** and **Label B** in **Section 2**, the pre-annotation process will generate predictions exclusively within those respective sections. This focused approach improves efficiency during both automated and manual review.
+
 
 ![preannotationviasections](/assets/images/annotation_lab/5.2.2/4.gif)
 
@@ -189,13 +196,16 @@ Users can configure labels to be displayed exclusively in specific sections duri
 
 When running pre-annotation, Generative AI Lab will automatically adhere to these associations. Consequently, during the pre-annotation process, in Section 1, users will only see annotations for Label1, and similarly, in Section 2, only instances of Label2 will be shown.
 
-## Pre-annotations applied to all defined sections tasks
-Generative AI Lab 5.2, adds a new feature - "Preannotations for Union of Sections". This enhancement ensures that pre-annotations cover all relevant sections – imported from outside sources, manually added by annotators, or automatically detected by the tool.
+## Pre-Annotations Applied Across All Defined Sections
 
-With this feature, collaboration is enhanced, and all points of view are taken into account during pre-annotation, resulting in a more precise and efficient annotation process.
+Pre-annotation now automatically considers the **union of all relevant sections** associated with a task — including those imported from external sources, created manually by annotators, or automatically detected based on section rules.  
 
-Imagine there's a task Task-1, and two annotators, Annotator-1 and Annotator-2, are working on it. Annotator-1 decides to customize the sections and manually deletes all the relevant sections generated through section rules. Instead, he adds a new relevant section manually. On the other hand, Annotator-2 prefers to keep the sections automatically detected and also manually creates a new relevant section, different from what Annotator-1 added. Now, when the project manager runs pre-annotation on Task-1, the pre-annotation process will consider the union of sections added by both annotators, along with the relevant sections generated from the section rules or imported from external sources.
+This ensures that every defined section is taken into account during pre-annotation, enhancing collaboration and consistency across team members. Different annotators may define or adjust sections in their own completions, but when pre-annotation runs, the system aggregates all section definitions to produce comprehensive results.
 
-To further optimize the annotation experience, Generative AI Lab provides a checkbox "Filter pre-annotations according to my latest completion" within the Predictions card on the right-hand side of the labeling screen. Enabling this option ensures that the pre-annotation process only includes sections present in the latest completion of the current user.
+For example, if one annotator deletes auto-generated sections and adds new custom ones, while another keeps the original sections and creates additional ones, pre-annotation will include all of them. This guarantees that no relevant content is missed, even when multiple annotators have customized their section views.
+
+To fine-tune the behavior, the **Predictions** card on the right-hand side of the labeling screen includes the option **“Filter pre-annotations according to my latest completion.”**  
+When enabled, pre-annotation focuses only on the sections defined in the user’s most recent completion, providing a more personalized and controlled workflow.
 
 ![union-section](/assets/images/annotation_lab/5.2.2/5.gif)
+
