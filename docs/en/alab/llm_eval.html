@@ -628,24 +628,29 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="llm-evaluation-project-types-with-multi-provider-integration">LLM Evaluation Project Types with Multi-Provider Integration</h2>
 
-<p>You can now systematically evaluate and compare the outputs of large language models (LLMs) using two specialized project types in Generative AI Lab:</p>
+<p>Generative AI Lab provides specialized project types for evaluating and comparing responses from large language models (LLMs):</p>
+
 <ul>
-  <li><strong>LLM Evaluation:</strong>  Assess responses from a single LLM based on custom criteria.</li>
-  <li><strong>LLM Evaluation Comparison:</strong> Compare side-by-side outputs from two different LLMs for the same prompt.</li>
+  <li><strong>LLM Evaluation</strong> – assess responses from a single LLM based on defined criteria.</li>
+  <li><strong>LLM Comparison</strong> – compare side-by-side responses from two or more LLMs for the same prompt.</li>
 </ul>
 
-<p>These project types support integration with major LLM providers:</p>
+<p>These projects enable structured model assessment, supporting both qualitative and quantitative scoring within the same collaborative annotation environment.</p>
+
+<h3 id="supported-llm-providers">Supported LLM Providers</h3>
+
+<p>Generative AI Lab integrates with multiple leading LLM providers:</p>
+
 <ul>
   <li><strong>OpenAI</strong></li>
   <li><strong>Azure OpenAI</strong></li>
   <li><strong>Amazon SageMaker</strong></li>
+  <li><strong>Anthropic Claude</strong></li>
 </ul>
 
-<h3 id="setting-up-llm-provider-integration">Setting Up LLM Provider Integration</h3>
-<ol>
-  <li>Navigate to <strong>Settings → System Settings → Integration</strong>.</li>
-  <li>Click <strong>Add</strong>, enter your provider credentials, and save the configuration..</li>
-</ol>
+<p>You can configure one or more providers globally from <strong>System Settings → Integration</strong>, where credentials for each service can be securely added.<br />
+The procedure is consistent across providers—enter the required API keys or access tokens, validate, and save.<br />
+Once configured, these providers are available for selection when creating LLM Evaluation or Comparison projects.</p>
 
 <p><img src="/assets/images/annotation_lab/7.2.0/1.gif" alt="720image" /></p>
 
@@ -764,7 +769,7 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <p>These new project types provide teams with a structured approach to assess and compare LLM outputs efficiently, whether for performance tuning, QA validation, or human-in-the-loop benchmarking.</p>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2025-07-28T00:00:00+00:00">Jul 28, 2025</time>
+      <time itemprop="dateModified" datetime="2025-11-27T00:00:00+00:00">Nov 27, 2025</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>

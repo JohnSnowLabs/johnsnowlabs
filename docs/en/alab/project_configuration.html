@@ -628,7 +628,7 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <p>Generative AI Lab currently supports multiple predefined project configurations. The most popular ones are <code class="language-plaintext highlighter-rouge">Text Classification</code>, <code class="language-plaintext highlighter-rouge">Named Entity Recognition</code> (NER) and <code class="language-plaintext highlighter-rouge">Visual NER</code>. Create a setup from scratch or customize a predefined one according to your needs.</p>
+  <p>Generative AI Lab supports multiple predefined project configurations such as <code class="language-plaintext highlighter-rouge">Text Classification</code>, <code class="language-plaintext highlighter-rouge">Named Entity Recognition (NER)</code>, <code class="language-plaintext highlighter-rouge">Visual NER</code>, <code class="language-plaintext highlighter-rouge">LLM Evaluation</code>, and <code class="language-plaintext highlighter-rouge">HCC Coding</code>. Create a setup from scratch or customize a predefined one according to your needs.</p>
 
   <p>For customizing a predefined configuration, click on the corresponding link in the table above and then navigate to the Labeling configuration tab and manually edit or update it to contain the labels you want.</p>
 
@@ -639,11 +639,11 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <h3 id="project-templates">Project templates</h3>
 
-  <p>We currently support multiple predefined project configurations. The most popular ones are <strong>Text Classification</strong>, <strong>Named Entity Recognition</strong> and <strong>Visual NER</strong>.</p>
+  <p>Generative AI Lab includes multiple predefined project configurations such as <strong>Text Classification</strong>, <strong>Named Entity Recognition</strong>, <strong>Visual NER</strong>, <strong>LLM Evaluation</strong>, and <strong>HCC Coding</strong>.</p>
 
   <p><strong>Content Type</strong></p>
 
-  <p>The first step when creating a new project or customizing an existing one is to choose what content you need to annotate. Five content types are currently supported: <code class="language-plaintext highlighter-rouge">Video</code>, <code class="language-plaintext highlighter-rouge">Audio</code>, <code class="language-plaintext highlighter-rouge">HTML</code>, <code class="language-plaintext highlighter-rouge">Image</code>, <code class="language-plaintext highlighter-rouge">PDF</code> and <code class="language-plaintext highlighter-rouge">Text</code>. For each content type a list of available templates is available. You can pick any one of those as a starting point in your project configuration.</p>
+  <p>The first step when creating a new project or customizing an existing one is to choose what content you need to annotate. The following content types are supported: <code class="language-plaintext highlighter-rouge">Video</code>, <code class="language-plaintext highlighter-rouge">Audio</code>, <code class="language-plaintext highlighter-rouge">HTML</code>, <code class="language-plaintext highlighter-rouge">Image</code>, <code class="language-plaintext highlighter-rouge">PDF</code>, and <code class="language-plaintext highlighter-rouge">Text</code>. For each content type, a list of available templates is shown. You can pick any one of those as a starting point in your project configuration.</p>
 
   <p><img src="/assets/images/annotation_lab/4.10.0/add_video_type.png" alt="Generative AI Lab" title="lit_shadow" /></p>
 
@@ -654,6 +654,10 @@ function wrapWordInSpan(data, wordToWrap) {
   <p><img src="https://user-images.githubusercontent.com/33893292/203908059-95b96598-ef34-4418-8b9a-48dd6b03b409.gif" alt="Generative AI Lab" title="lit_shadow" /></p>
 
   <p>After you finish editing the labels click the “Save” button.</p>
+
+  <blockquote>
+    <p><strong>Note:</strong> Some resource combinations are not supported. For example, <strong>Visual NER</strong> projects do <strong>not</strong> support adding <strong>Rules</strong> or <strong>External Classification Prompts</strong>. The interface disables these options to prevent invalid configurations.</p>
+  </blockquote>
 
 </div>
 <div class="h3-box">
@@ -829,7 +833,7 @@ To define such constraint, add allowed attribute to the <Relation> tag:</Relatio
 
   <p><strong>Add New Element</strong></p>
 
-  <p>The new menu user interface allows users to easily add new elements to their project configurations. Users can click on the plus icon (“+”) within the Visual Menu Builder interface to add a new element. Once the element is added, users can further customize it by configuring additional parameters directly in the interface. This might include setting attributes, defining properties, or linking to other project components.</p>
+  <p>The menu user interface allows users to easily add new elements to their project configurations. Users can click on the plus icon (“+”) within the Visual Menu Builder interface to add a new element. Once the element is added, users can further customize it by configuring additional parameters directly in the interface. This might include setting attributes, defining properties, or linking to other project components.</p>
 
   <p><img src="/assets/images/annotation_lab/6.5.0/6.gif" alt="genAI650" /></p>
 
@@ -847,7 +851,7 @@ To define such constraint, add allowed attribute to the <Relation> tag:</Relatio
 
   <p><strong>Drag and Move Element</strong></p>
 
-  <p>The new visual menu builder allows users to easily rearrange elements within the project configuration using a drag-and-drop interface. To move an element, users can click and hold on the “Handle” icon, which is represented by a set of six dots (three parallel dots in two vertical rows) next to the element. After clicking on the Handle, users can drag the element to the desired position within the project configuration. Release the mouse button to drop the element in its new location. This feature provides flexibility in organizing the project structure, allowing users to quickly and intuitively reorder elements.</p>
+  <p>The visual menu builder allows users to easily rearrange elements within the project configuration using a drag-and-drop interface. To move an element, users can click and hold on the “Handle” icon, which is represented by a set of six dots (three parallel dots in two vertical rows) next to the element. After clicking on the Handle, users can drag the element to the desired position within the project configuration. Release the mouse button to drop the element in its new location. This feature provides flexibility in organizing the project structure, allowing users to quickly and intuitively reorder elements.</p>
 
   <p><img src="/assets/images/annotation_lab/6.5.0/9.gif" alt="genAI650" /></p>
 
@@ -869,9 +873,13 @@ To define such constraint, add allowed attribute to the <Relation> tag:</Relatio
 
   <p><img src="/assets/images/annotation_lab/6.5.0/12.gif" alt="genAI650" /></p>
 
+  <blockquote>
+    <p>The Visual Menu Builder automatically validates structure and prevents saving malformed configurations, ensuring projects remain compatible with supported annotation types and pre-annotation workflows.</p>
+  </blockquote>
+
 </div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2022-12-03T00:00:00+00:00">Dec 03, 2022</time>
+      <time itemprop="dateModified" datetime="2025-11-27T00:00:00+00:00">Nov 27, 2025</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>

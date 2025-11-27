@@ -9,12 +9,12 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>NLP Lab Release Notes 4.3.0</title><meta property="og:title" content="NLP Lab | John Snow Labs"/>
+<!-- End Google Tag Manager --><title>HCC Coding Projects</title><meta property="og:title" content="Generative AI Lab | John Snow Labs"/>
 
 <meta name="description" content="High Performance NLP with Apache Spark
 ">
-<!-- <link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_4_3_0"> -->
-<link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_4_3_0"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<!-- <link rel="canonical" href="/docs/en/alab/hcc_coding"> -->
+<link rel="canonical" href="/docs/en/alab/hcc_coding"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -616,129 +616,104 @@ function wrapWordInSpan(data, wordToWrap) {
 </script><div class="article__header"><div class="header-nav"><div class="main-docs">
   <ul class="breadcrambs">
     <li><a href="/docs">Documentation</a></li>
-    <li>NLP Lab Release Notes 4.3.0</li>
+    <li>HCC Coding Projects</li>
   </ul>
 </div></div><header class="main-docs have_subtitle">
-          <h1>NLP Lab Release Notes 4.3.0</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
+          <h1>HCC Coding Projects</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
-            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/alab/annotation_labs_releases/release_notes_4_3_0.md">
-            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="NLP Lab Release Notes 4.3.0"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
+            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/alab/hcc_coding.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="HCC Coding Projects"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
-<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
+<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="overview">Overview</h2>
 
-  <h2 id="section">4.3.0</h2>
+<p>Generative AI Lab provides specialized <strong>HCC Coding</strong> project types for <strong>Hierarchical Condition Category (HCC)</strong> risk adjustment coding.<br />
+These templates are designed to help healthcare organizations and coders efficiently map clinical findings or diagnoses to the correct <strong>HCC codes</strong>, ensuring accurate documentation for reimbursement and compliance workflows.</p>
 
-  <p>Release date: <strong>25-11-2022</strong></p>
+<p>HCC Coding projects integrate medical entity recognition, code lookup, and reviewer validation within the annotation interface — linking each identified ICD-10 diagnosis to its corresponding HCC category.<br />
+This automation supports human-in-the-loop validation while maintaining transparency and control.</p>
 
-  <p>Annotation Lab 4.3.0 adds support for Finance and Legal NLP Libraries, Finance and Legal License Scopes, and access to pre-trained Visual NER models on the Models Hub. It also allows easy task import directly from S3 and keeps the complete history of training logs. The release also includes stabilization and fixes for several issues reported by our user community.</p>
+<h2 id="available-templates">Available Templates</h2>
 
-  <p>Here are the highlights of this release:</p>
+<p>Two project templates are available for HCC coding tasks:</p>
 
-  <h3 id="highlights">Highlights</h3>
+<ol>
+  <li><strong>HCC Coding (Text)</strong> – for coding clinical narratives and structured text data.</li>
+  <li><strong>HCC Coding (PDF + Text Side-by-Side)</strong> – for coding scanned or PDF documents while viewing both the original source and its extracted OCR text simultaneously.</li>
+</ol>
 
-  <ul>
-    <li><strong>Support for Finance NLP and Legal NLP</strong>. Annotation Labs now includes a full-fledged integration with two new NLP libraries: Finance NLP and Legal NLP. Pretrained models for the Finance and Legal verticals are now available on the Models Hub page, covering tasks such as Entity Recognition, Assertion Status, and Text Classification.</li>
-    <li><strong>Searching models on Models Hub</strong>. A new filter named Edition was added to the Models Hub. It includes all supported NLP editions: Healthcare, Opensource, Legal, Finance, and Visual. It will ease search for models specific to an Edition, which can then easily be downloaded and used within Annotation Lab projects.</li>
-    <li><strong>Support for Finance and Legal Licenses</strong>. Annotation Lab now supports import of licenses with legal and/or finance scopes. It can be uploaded from the Licenses page. Similar to Healthcare and Visual licenses, they unlock access to optimized annotators, models, embeddings, and rules.</li>
-    <li><strong>Pre-annotations using Finance and Legal models</strong>. Finance and Legal models downloaded from the Models Hub can be used for pre-annotation in NER, assertion status, and classification projects.</li>
-    <li><strong>Train Finance and Legal models</strong>. Two new options: Legal and Finance libraries were added for selection when training a new NER model in Annotation Lab. The new options are only available when at least one valid license with the corresponding scope is added to the License page.</li>
-    <li><strong>Import tasks from S3</strong>. Annotation Lab now supports importing tasks/documents stored on Amazon S3. In the Import Page, a new section was added which allows users to define S3 connection details. All documents in the specified path will then be imported as tasks in the current project.</li>
-    <li><strong>Project level history of the Trained Models</strong>. It is now possible to keep track of all previous training activities executed for a project. When pressing the History button from the Train page, users are presented with a list of all trainings triggered for the current project.</li>
-    <li><strong>Easier page navigation</strong>. Users can now right-click on the available links and select “Open in new tab” to open the link in a new tab without losing the current work context.</li>
-    <li><strong>Optimized user editing UI</strong>. All the checkboxes on the Users Edit page now have the same style. The “UserAdmins” group was renamed to “Admins” and the description of groups is more detailed and easier to understand. Also, a new error message is shown when an invalid email address is used.</li>
-    <li><strong>Improved page navigation for Visual NER projects</strong>. For Visual NER projects, users can jump to a specific page in any multi-page task instead of passing through all pages to reach a target section of a PDF document.</li>
-    <li><strong>Visual configuration options for Visual NER project</strong>. Users are now able to add custom labels and choices in the project configuration from the Visual tab for Visual NER projects as well as for the text projects.</li>
-    <li><strong>Visual NER Models available on the Models Hub page</strong>. Visual NER models can now be filtered, downloaded from the NLP Models Hub, and used for pre-annotating image-based documents.</li>
-    <li><strong>Lower CPU and Memory resources allocated to the license server</strong>. In this version, the resources allocated to the license server were decreased to CPU: 1000m (1 core) and Memory: 1GB.</li>
-    <li><strong>Simplify Training and Pre-annotation configurations</strong>. Now the user only need to adjust “Memory limit” and “CPU limit” in the Infrastructure page. “Spark Drive Memory” is calculated as 85% of Memory Limit where are “Spark Kryo Buff Max” and “Spark Driver Max Result Size” are constants with values “2000 MB” and “4096 MB” respectively.</li>
-    <li><strong>Auto-close user settings</strong>. The user settings menu is closed automatically when a user clicks on any other settings options.</li>
-    <li><strong>Preserve task filters</strong>. From version 4.3.0, all defined filters in the task page remain preserved when the user navigates back and forth between the labeling page and the task page.</li>
-    <li><strong>Optimized Alert Messages</strong>. All the alert notification shows clear errors, warnings, information, and success messages.</li>
-    <li><strong>Zoom in/out features in Visual NER projects with Sticky Left Column view</strong>. In various views of Visual NER, zoom-controlling features are now available by default.</li>
-  </ul>
+<p>Both templates include preconfigured entity labels and code mappings, enabling annotators to assign and validate codes directly during annotation.</p>
 
-</div>
-<div class="prev_ver h3-box">
+<h2 id="how-it-works">How It Works</h2>
 
-  <h2 id="versions">Versions</h2>
+<p>When annotating medical entities such as diagnoses or conditions, the system automatically suggests the most relevant <strong>HCC category code</strong> based on the annotated <strong>ICD-10 code</strong>.<br />
+These mappings are powered by integrated lookup datasets and medical coding pipelines.</p>
 
-</div>
-<ul class="pagination">
-  <li>
-      <a href="#">Version <strong id="previosver"></strong></a>
-  </li>
-  <li>
-      <strong>Version <strong id="currversion"></strong></strong>
-  </li>
-  <li>
-      <a href="#">Version <strong id="nextver"></strong></a>
-  </li>
+<p>Within the labeling interface, annotators can:</p>
+
+<ul>
+  <li><strong>Accept or modify HCC code suggestions</strong> using the <strong>“Accept HCC Suggestion”</strong> button beside each detected entity.</li>
+  <li><strong>Manually edit</strong> the suggested HCC code from a searchable dropdown or code panel.</li>
+  <li><strong>Mark codes as confirmed</strong> once verified, signaling that the assigned HCC mapping is clinically and administratively valid.</li>
+  <li><strong>Tag findings as “Non-Billable”</strong> when a diagnosis is present but not eligible for billing, using the <strong>Non-Billable toggle</strong> in the entity detail view.</li>
 </ul>
-<ul class="pagination owl-carousel pagination_big">
-  <li><a href="release_notes_7_6_0">7.6.0</a></li>	
-  <li><a href="release_notes_7_5_1">7.5.1</a></li>
-  <li><a href="release_notes_7_5_0">7.5.0</a></li>
-  <li><a href="release_notes_7_4_0">7.4.0</a></li>
-  <li><a href="release_notes_7_3_1">7.3.1</a></li>
-  <li><a href="release_notes_7_3_0">7.3.0</a></li>
-  <li><a href="release_notes_7_2_2">7.2.2</a></li>
-  <li><a href="release_notes_7_2_1">7.2.2</a></li>
-  <li><a href="release_notes_7_2_0">7.2.0</a></li>
-  <li><a href="release_notes_7_1_0">7.1.0</a></li>
-  <li><a href="release_notes_7_0_1">7.0.1</a></li>
-  <li><a href="release_notes_7_0_0">7.0.0</a></li>
-  <li><a href="release_notes_6_11_3">6.11.3</a></li>
-  <li><a href="release_notes_6_11_2">6.11.2</a></li>
-  <li><a href="release_notes_6_11_1">6.11.1</a></li>
-  <li><a href="release_notes_6_11_0">6.11.0</a></li>
-  <li><a href="release_notes_6_10_1">6.10.1</a></li>
-  <li><a href="release_notes_6_10_0">6.10.0</a></li>
-  <li><a href="release_notes_6_9_1">6.9.1</a></li>
-  <li><a href="release_notes_6_9_0">6.9.0</a></li>
-  <li><a href="release_notes_6_8_1">6.8.1</a></li>
-  <li><a href="release_notes_6_8_0">6.8.0</a></li>
-  <li><a href="release_notes_6_7_2">6.7.2</a></li>
-  <li><a href="release_notes_6_7_0">6.7.0</a></li>
-  <li><a href="release_notes_6_6_0">6.6.0</a></li>
-  <li><a href="release_notes_6_5_1">6.5.1</a></li>
-  <li><a href="release_notes_6_5_0">6.5.0</a></li>
-  <li><a href="release_notes_6_4_1">6.4.1</a></li>
-  <li><a href="release_notes_6_4_0">6.4.0</a></li>
-  <li><a href="release_notes_6_3_2">6.3.2</a></li>
-  <li><a href="release_notes_6_3_0">6.3.0</a></li>
-  <li><a href="release_notes_6_2_1">6.2.1</a></li>
-  <li><a href="release_notes_6_2_0">6.2.0</a></li>
-  <li><a href="release_notes_6_1_2">6.1.2</a></li>
-  <li><a href="release_notes_6_1_1">6.1.1</a></li>
-  <li><a href="release_notes_6_1_0">6.1.0</a></li>
-  <li><a href="release_notes_6_0_2">6.0.2</a></li>
-  <li><a href="release_notes_6_0_0">6.0.0</a></li>
-  <li><a href="release_notes_5_9_3">5.9.3</a></li>
-  <li><a href="release_notes_5_9_2">5.9.2</a></li>
-  <li><a href="release_notes_5_9_1">5.9.1</a></li>
-  <li><a href="release_notes_5_9_0">5.9.0</a></li>
-  <li><a href="release_notes_5_8_1">5.8.1</a></li>
-  <li><a href="release_notes_5_8_0">5.8.0</a></li>
-  <li><a href="release_notes_5_7_1">5.7.1</a></li>
-  <li><a href="release_notes_5_7_0">5.7.0</a></li>
-  <li><a href="release_notes_5_6_2">5.6.2</a></li>
-  <li><a href="release_notes_5_6_1">5.6.1</a></li>
-  <li><a href="release_notes_5_6_0">5.6.0</a></li>
-  <li><a href="release_notes_5_5_3">5.5.3</a></li>
-  <li><a href="release_notes_5_5_2">5.5.2</a></li>
-  <li><a href="release_notes_5_5_1">5.5.1</a></li>
-  <li><a href="release_notes_5_5_0">5.5.0</a></li>
-  <li><a href="release_notes_5_4_1">5.4.1</a></li>
-  <li><a href="release_notes_5_3_2">5.3.2</a></li>	
-  <li><a href="release_notes_5_2_3">5.2.3</a></li>	
-  <li><a href="release_notes_5_2_2">5.2.2</a></li>
-  <li><a href="release_notes_5_1_1">5.1.1</a></li>
-  <li><a href="release_notes_5_1_0">5.1.0</a></li>
+
+<p>Each entity displays its ICD-10 label and HCC mapping inline, allowing for quick visual review.</p>
+
+<h2 id="typical-workflow">Typical Workflow</h2>
+
+<ol>
+  <li><strong>Project Setup</strong>
+    <ul>
+      <li>Navigate to <strong>Projects → New Project</strong>.</li>
+      <li>Under the <strong>Text</strong> or <strong>PDF</strong> content type, select one of the available <strong>HCC Coding</strong> templates.</li>
+      <li>A valid <strong>Healthcare NLP license</strong> is required for HCC Coding projects, as they use domain-specific clinical models and code lookups.</li>
+    </ul>
+  </li>
+  <li><strong>Label Customization</strong>
+    <ul>
+      <li>On the <strong>Customize Labels</strong> page, link your label set to a preloaded <strong>lookup dataset</strong> (containing ICD-10 and HCC mappings).</li>
+      <li>You can apply the lookup globally across all labels or individually per label for granular control.</li>
+      <li>Lookup datasets can also include CPT or other medical code sets if procedure-level coding is needed.</li>
+    </ul>
+  </li>
+  <li><strong>Annotation and Review</strong>
+    <ul>
+      <li>Annotate entities in the document using the standard text or PDF+Text view.</li>
+      <li>The system automatically proposes matching HCC codes.</li>
+      <li>Use the <strong>Accept HCC Suggestion</strong> button to confirm mappings, or modify them manually.</li>
+      <li>Mark entities as <strong>Confirmed</strong> or <strong>Non-Billable</strong> as applicable.</li>
+    </ul>
+  </li>
+  <li><strong>Reviewer Confirmation</strong>
+    <ul>
+      <li>Reviewers validate the assigned HCC codes and can accept, remove, or mark labels as non-billable directly from the annotation widget.</li>
+      <li>Review status is visible inline, ensuring clarity and auditability throughout the workflow.</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="exporting-and-reporting">Exporting and Reporting</h2>
+
+<p>When exporting tasks, only completions marked as <strong>Ground Truth</strong> are included in the de-identified, coded output.<br />
+Exports retain ICD-10 and HCC associations for downstream billing analysis or quality audits.<br />
+The HCC-coded data can also be re-imported into other annotation or review projects to support iterative validation and continuous model improvement.</p>
+
+<h2 id="summary">Summary</h2>
+
+<p>HCC Coding projects in Generative AI Lab provide a structured, human-in-the-loop environment for healthcare risk adjustment and coding accuracy.<br />
+By combining ICD-10 detection, automatic HCC mapping, and manual validation, these projects empower healthcare teams to:</p>
+
+<ul>
+  <li>Improve coding quality and compliance</li>
+  <li>Streamline risk adjustment workflows</li>
+  <li>Reduce manual effort and rework</li>
+  <li>Maintain full transparency and audit traceability</li>
 </ul>
+
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2022-12-07T00:00:00+00:00">Dec 07, 2022</time>
+      <time itemprop="dateModified" datetime="2025-11-27T00:00:00+00:00">Nov 27, 2025</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
@@ -993,7 +968,7 @@ $(document).ready(function () {
 
 });
 
-</script></div><section class="page__comments d-print-none"></section></article><!-- start custom main bottom snippet -->
+</script></div></article><!-- start custom main bottom snippet -->
 
 <!-- end custom main bottom snippet --></div>
             </div></div></div><div class="page__footer d-print-none">

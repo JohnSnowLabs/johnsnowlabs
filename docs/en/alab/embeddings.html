@@ -626,21 +626,108 @@ function wrapWordInSpan(data, wordToWrap) {
             <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Embeddings"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
-<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><p>All the embeddings available in the Generative AI Lab are listed on this page. General information about the embeddings like the name, version, source, and date of upload/download is available. Like models, any compatible embeddings can be downloaded from <a href="https://nlp.johnsnowlabs.com/models">NLP Models Hub</a>. By default, <code class="language-plaintext highlighter-rouge">glove_100d</code>, <code class="language-plaintext highlighter-rouge">bert_base_cased</code>, <code class="language-plaintext highlighter-rouge">tfhub_use</code> embeddings are included in every fresh installation of Generative AI Lab.</p>
+<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h1 id="embeddings">Embeddings</h1>
+
+<h2 id="overview">Overview</h2>
+
+<p>The <strong>Embeddings</strong> page lists all available vector embeddings that can be used in Generative AI Lab for model training, pre-annotation, or feature extraction.<br />
+Embeddings define how text or tokens are represented numerically before model processing and are critical to NLP performance.</p>
+
+<p>Generative AI Lab integrates with the <a href="https://nlp.johnsnowlabs.com/models">John Snow Labs NLP Models Hub</a>, allowing users to download or upload embeddings directly from within the application.<br />
+All compatible embeddings can also be added manually through the <strong>Upload</strong> option.</p>
+
+<hr />
+
+<h2 id="default-and-downloadable-embeddings">Default and Downloadable Embeddings</h2>
+
+<p>Every new installation of Generative AI Lab includes several default embeddings such as:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">glove_100d</code></li>
+  <li><code class="language-plaintext highlighter-rouge">bert_base_cased</code></li>
+  <li><code class="language-plaintext highlighter-rouge">tfhub_use</code></li>
+</ul>
+
+<p>Additional embeddings can be downloaded from the <strong>Models Hub</strong> tab, which supports resources from multiple NLP editions:</p>
+
+<ul>
+  <li><strong>Open Source NLP</strong></li>
+  <li><strong>Healthcare NLP</strong></li>
+  <li><strong>Finance NLP</strong></li>
+  <li><strong>Legal NLP</strong></li>
+  <li><strong>Visual NLP</strong></li>
+</ul>
+
+<p>Each embedding entry displays its name, edition, version, source, and upload or download date.</p>
+
+<hr />
+
+<h2 id="search-and-filter">Search and Filter</h2>
+
+<p>The Embeddings page includes search and filtering tools for easy navigation.<br />
+Users can filter by <strong>name</strong>, <strong>edition</strong>, or <strong>embedding type</strong> (word, sentence, document).<br />
+This helps quickly locate embeddings for specific domains such as medical, financial, or visual data processing.</p>
+
+<hr />
+
+<h2 id="storage-and-version-information">Storage and Version Information</h2>
+
+<p>The page provides disk usage indicators for locally installed embeddings, showing total and available space.<br />
+Administrators can check storage usage and version details before downloading new resources.<br />
+Each embedding includes version metadata that ensures compatibility with the currently installed NLP libraries.</p>
+
+<hr />
 
 <p><img src="/assets/images/annotation_lab/4.1.0/embeddings.png" alt="Embeddings" title="lit_shadow" /></p>
 
 <h2 id="custom-embeddings-upload">Custom Embeddings Upload</h2>
 
-<p>Custom embeddings can be uploaded using the Upload button present in the top right corner of the page.</p>
+<p>Custom embeddings can be uploaded using the <strong>Upload</strong> button in the top-right corner of the page.<br />
+Uploaded embeddings must follow the Spark NLP format. The system validates each upload and rejects incompatible formats with a descriptive error message.</p>
+
+<p>After upload, validated embeddings appear in the list and can be reused across projects.<br />
+All embedding uploads and updates are recorded in the <strong>Audit Trail</strong>.</p>
 
 <p><img src="/assets/images/annotation_lab/4.1.0/upload_embeddings.png" alt="Custom Embeddings Upload" title="lit_shadow w_80" /></p>
 
 <blockquote>
   <p><strong>Note:</strong> The embeddings to upload need to be Spark NLP compatible.</p>
 </blockquote>
+
+<h2 id="compatibility-validation">Compatibility Validation</h2>
+
+<p>Each embedding is validated against the installed Spark NLP, Healthcare NLP, or Visual NLP library versions.<br />
+If an imported or trained model references an embedding that is missing or incompatible, the system notifies the user and offers to download the correct version automatically.<br />
+This dependency check prevents loading errors and ensures reproducibility.</p>
+
+<h2 id="updates-and-notifications">Updates and Notifications</h2>
+
+<p>Generative AI Lab checks for new or updated embeddings when the application starts or when users click <strong>Check for Updates</strong>.<br />
+If updates are available, the system displays an alert showing the new version, size, and edition.<br />
+Updates require user confirmation and are logged after completion.</p>
+
+<h2 id="best-practices">Best Practices</h2>
+
+<ul>
+  <li><strong>Keep embeddings up to date:</strong> Use the latest versions compatible with your installed NLP libraries.</li>
+  <li><strong>Check storage usage:</strong> Ensure sufficient space before downloading large embeddings.</li>
+  <li><strong>Use matching versions:</strong> Always train and deploy models with the same embedding versions for consistent results.</li>
+  <li><strong>Validate uploads:</strong> Confirm that custom embeddings follow the Spark NLP format.</li>
+  <li><strong>Use domain-specific resources:</strong> Choose embeddings optimized for your target domain to improve accuracy.</li>
+</ul>
+
+<h2 id="summary">Summary</h2>
+
+<p>The <strong>Embeddings</strong> page provides centralized management for all vector resources in Generative AI Lab, including:</p>
+
+<ul>
+  <li>Easy access to pre-trained embeddings</li>
+  <li>Version and compatibility validation</li>
+  <li>Integration with the NLP Models Hub</li>
+  <li>Logging of all embedding-related actions for compliance and audit</li>
+</ul>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2022-10-19T00:00:00+00:00">Oct 19, 2022</time>
+      <time itemprop="dateModified" datetime="2025-11-27T00:00:00+00:00">Nov 27, 2025</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>

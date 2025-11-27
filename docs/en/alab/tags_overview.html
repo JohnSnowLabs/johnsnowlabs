@@ -628,13 +628,29 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <p>Generative AI Lab enables the utilization of XML-like tags to configure the labeling interface. Generative AI Lab contains three distinct tag types for labeling management:</p>
+  <p>Generative AI Lab enables you to configure labeling interfaces using either <strong>XML-like tags</strong> or a <strong>Visual Menu Builder</strong> that automatically generates these configurations through an intuitive UI.<br />
+This flexibility allows both technical and non-technical users to define how annotation tasks are displayed and labeled.</p>
+
+  <p>The Lab supports three main types of tags for managing labeling logic and display:</p>
 
   <ul>
-    <li><code class="language-plaintext highlighter-rouge">Object tags</code> serve for data types, presenting labeled elements within a task, which can be labeled as video, audio, HTML, images, PDF, and text.</li>
-    <li><code class="language-plaintext highlighter-rouge">Control tags</code> facilitate the annotation of objects. For instance, labels are employed in semantic and named entity tasks, and choices for classification tasks inside Generative AI Lab.</li>
-    <li><code class="language-plaintext highlighter-rouge">Visual tags</code> allow for changes to the visual elements of the labelling interface, giving control over the presentation of particular labeling choices or the presence of a header.</li>
+    <li><strong>Object tags</strong> define the data type to be labeled — such as text, image, audio, video, HTML, or PDF.</li>
+    <li><strong>Control tags</strong> define the annotation actions applied to objects — for example, using <code class="language-plaintext highlighter-rouge">Labels</code> for entity recognition or <code class="language-plaintext highlighter-rouge">Choices</code> for classification.</li>
+    <li><strong>Visual tags</strong> adjust the appearance or structure of the labeling interface, such as adding headers or layout controls.</li>
   </ul>
+
+  <h3 id="available-project-types">Available Project Types</h3>
+
+  <p>Generative AI Lab supports a wide range of project templates designed to cover diverse annotation and evaluation workflows.<br />
+These include traditional types such as <strong>Text</strong>, <strong>Image</strong>, <strong>Audio</strong>, <strong>Video</strong>, and <strong>PDF</strong> projects, as well as <strong>De-Identification</strong> projects for anonymizing sensitive data.<br />
+In addition, specialized templates are available for advanced use cases, including:</p>
+
+  <ul>
+    <li><strong>LLM Evaluation Projects</strong> – for assessing and comparing outputs from different Large Language Models (LLMs) across prompts and criteria such as accuracy, coherence, and safety.</li>
+    <li><strong>HCC Risk Adjustment Coding Projects</strong> – for mapping medical findings to Hierarchical Condition Category (HCC) codes, supporting clinical coding and risk adjustment use cases.</li>
+  </ul>
+
+  <p>These specialized templates expand the Lab’s capabilities beyond standard annotation, allowing teams to perform model evaluation and domain-specific coding within the same unified interface.</p>
 
 </div>
 <div class="h3-box">
@@ -664,7 +680,7 @@ To use a variable, define it with the value parameter of a tag and specify it us
 
   <h2 id="configure-project-using-visual-menu-builder">Configure project using Visual Menu Builder</h2>
 
-  <p>This version of Generative AI Lab introduces a new way for configuring your projects, removing the need for manual XML configuration. With the Visual Menu Builder, users can easily create, edit, and manage project configurations through a user-friendly interface. This makes the configuration process much more straightforward, especially for those unfamiliar with XML syntax, while also reducing the risk of errors associated with manual coding.</p>
+  <p>Generative AI Lab includes a <strong>Visual Menu Builder</strong> that lets you configure projects without writing XML manually. This tool provides a simple, interactive way to add, edit, and organize labeling elements while still following the same XML structure behind the scenes. It’s ideal for users who prefer a no-code interface but still want the flexibility and precision of custom configurations.</p>
 
   <p>To see the structure of a project configuration XML file and the definitions of the supported tag types and various parameters and variables, and to better understand how Visual Menu Builder maps and creates these elements when configuring your project, see <a href="https://nlp.johnsnowlabs.com/docs/en/alab/tags_overview">Project Configuration Overview</a>.</p>
 
@@ -714,7 +730,7 @@ To use a variable, define it with the value parameter of a tag and specify it us
 
 </div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2023-06-20T00:00:00+00:00">Jun 20, 2023</time>
+      <time itemprop="dateModified" datetime="2025-11-27T00:00:00+00:00">Nov 27, 2025</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>

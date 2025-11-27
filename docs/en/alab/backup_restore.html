@@ -628,53 +628,86 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <p>Generative AI Lab 6.8 introduces new features designed for users migrating from NLP Lab onto the newest version of Generative AI Lab. With the new Backup and Restore feature, you can transfer projects, annotated data, models, and configurations to the Generative AI Lab 6.8 and above. Simply back up your projects and resources to cloud storage services like Azure Blob or AWS S3, then restore them directly into the new environment, entirely through the user interface.</p>
+  <h2 id="backup-and-restore">Backup and Restore</h2>
 
-  <p>This release also introduces other small enhancements to existing features, including a “None” option in the de-identification dropdown, allowing you to label text without altering the original content. We’ve also added a helpful visual indicator for labels with associated annotation guidelines—now marked with a colored dot matching the label’s color.</p>
+  <p>Generative AI Lab includes a comprehensive <strong>Backup and Restore</strong> feature that enables administrators to safeguard and migrate all critical system components — including projects, annotated data, models, and configurations — to secure cloud storage such as <strong>AWS S3</strong> or <strong>Azure Blob</strong>.<br />
+This functionality is essential for disaster recovery, system migration, and long-term data retention. All operations can be performed directly through the user interface, without requiring manual scripts or CLI commands.</p>
 
-</div>
-<div class="h3-box">
+  <p>Recent improvements make the backup process more reliable and interactive:</p>
+  <ul>
+    <li><strong>Immediate input validation</strong> ensures that all fields (e.g., storage credentials, paths, frequency) are verified before saving, preventing misconfigured schedules.</li>
+    <li>The <strong>Backup page now auto-refreshes</strong> whenever a new backup is created, modified, or completed, so administrators always see the most up-to-date backup list and status without manual reloading.</li>
+    <li>Administrators can also perform <strong>ad-hoc (on-demand) backups</strong> at any time — without relying solely on a scheduled run. This is useful when you want to create a one-time snapshot before making system changes or updates.</li>
+  </ul>
 
-  <h2 id="migrate-your-nlp-lab-backup-to-generative-ai-lab">Migrate your NLP Lab Backup to Generative AI Lab</h2>
-  <p>Migration to the new version is now a seamless process. Users of the NLP Lab can transfer their models, projects, annotated data and configuration settings to the Generative AI Lab using our Backup and Restore feature. Once backed up, configurations can be easily restored to a Generative AI Lab server. To migrate your data, the process is as follows:</p>
+  <hr />
 
-  <h3 id="steps-to-backup-data-from-nlp-lab">Steps to Backup Data from NLP Lab</h3>
+  <h3 id="scheduling-backups">Scheduling Backups</h3>
+
+  <p>To create a recurring backup schedule:</p>
+
   <ol>
-    <li><strong>Login</strong> to your current NLP Lab deployment as the admin user.</li>
-    <li>Go to the <strong><code class="language-plaintext highlighter-rouge">System Settings</code></strong> page.</li>
-    <li>Navigate to the <strong><code class="language-plaintext highlighter-rouge">Backup</code></strong> tab.</li>
-    <li>Enter the required <strong>backup details</strong>.</li>
-    <li>Schedule an immediate backup using the <strong><code class="language-plaintext highlighter-rouge">Backup now</code></strong> feature.</li>
-    <li>Monitor the <strong>backup pod status</strong> to ensure the process completes successfully.
-      <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get pods
-</code></pre></div>      </div>
-      <p><strong>Verify Backup:</strong> Upon completion, your backed-up database and files will be visible in cloud storage.</p>
+    <li>Navigate to <strong>System Settings → Backup</strong>.</li>
+    <li>Enter the necessary configuration details such as:
+      <ul>
+        <li><strong>Target Storage Type:</strong> Choose between <strong>AWS S3</strong> or <strong>Azure Blob</strong>.</li>
+        <li><strong>Storage Credentials:</strong> Provide access credentials, or if running on AWS with IAM role permissions, simply specify the bucket/container path (no keys required).</li>
+        <li><strong>Backup Frequency:</strong> Set how often backups should run automatically (e.g., daily, weekly).</li>
+        <li><strong>Backup Retention:</strong> Optionally configure how many past backups to keep.</li>
+      </ul>
     </li>
+    <li>The system now validates your inputs instantly, highlighting any missing or invalid fields before you can save or start a backup.</li>
+    <li>Once the configuration is valid, click <strong>Save Schedule</strong>.</li>
   </ol>
 
+  <p>The new real-time validation helps prevent scheduling issues by ensuring that all required parameters are properly defined before activation.</p>
+
+  <hr />
+
+  <h3 id="running-an-immediate-on-demand-backup">Running an Immediate (On-Demand) Backup</h3>
+
+  <p>In addition to scheduled backups, admins can manually trigger an immediate backup at any time:</p>
+
+  <ol>
+    <li>Go to <strong>System Settings → Backup</strong>.</li>
+    <li>Click <strong>Run Backup Now</strong>.</li>
+    <li>Monitor the progress of the backup in the same view — the page automatically refreshes to show the new entry once the process starts or completes.</li>
+  </ol>
+
+  <p>This capability makes it simple to perform a quick backup before applying upgrades, restoring data, or modifying configurations.</p>
+
+  <hr />
+
+  <h3 id="restoring-from-a-backup">Restoring from a Backup</h3>
+
+  <p>Restoration follows a similarly intuitive process:</p>
+
+  <ol>
+    <li>Navigate to <strong>System Settings → Restore</strong>.</li>
+    <li>Choose your backup source (<strong>AWS S3</strong> or <strong>Azure Blob</strong>) and enter the path to the desired backup.</li>
+    <li>Click <strong>Restore Now</strong>.</li>
+    <li>The restore status updates automatically on the page as the process runs.</li>
+  </ol>
+
+  <p>Once complete, all projects, models, data, and configurations from the backup become available in the environment, allowing you to resume work immediately.</p>
+
+  <hr />
+
+  <h3 id="typical-migration-workflow-nlp-lab--generative-ai-lab">Typical Migration Workflow (NLP Lab → Generative AI Lab)</h3>
+
+  <p>For users migrating from <strong>NLP Lab</strong>, this feature enables full transfer of models, annotations, and settings to the Generative AI Lab environment.<br />
+The process involves backing up data in NLP Lab, uploading it to cloud storage, and restoring it in Generative AI Lab.</p>
   <iframe width="800" height="450" src="https://www.youtube.com/embed/wUiDq5peZK4?si=v2Q6XCtK01KmcKJa&amp;hd=1" title="NLP Lab to Generative AI Lab migration - Step 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
-
-  <h3 id="steps-to-restore-data">Steps to Restore Data</h3>
-
-  <ol>
-    <li><strong>Deploy</strong> a fresh instance of Generative AI Lab version 6.8.0 or higher from the marketplace.</li>
-    <li><strong>Login</strong> to the UI as the admin user.</li>
-    <li>Go to the <strong><code class="language-plaintext highlighter-rouge">System Settings</code></strong> page.</li>
-    <li>Click on the <strong><code class="language-plaintext highlighter-rouge">Restore</code></strong> tab and fill in the necessary details.</li>
-    <li>Click on <strong><code class="language-plaintext highlighter-rouge">Restore Now</code></strong> to initiate the process.</li>
-    <li>Monitor the <strong>restore pod status</strong> to ensure successful completion.
-      <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get pods
-</code></pre></div>      </div>
-    </li>
-  </ol>
-
-  <p><strong>Verify Restoration:</strong> Access the UI, all projects, models, data and files should now be successfully restored.</p>
 
   <iframe width="800" height="450" src="https://www.youtube.com/embed/8JihFXLfHGc?si=hczRk74snB9cP8Es&amp;hd=1" title="NLP Lab to Generative AI Lab migration - Step 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
 
+  <hr />
+
+  <p>With these enhancements, the Backup and Restore system now offers a smoother, safer, and more responsive experience — ensuring administrators can protect their data with minimal effort and complete confidence.</p>
+
 </div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2022-10-14T00:00:00+00:00">Oct 14, 2022</time>
+      <time itemprop="dateModified" datetime="2025-11-27T00:00:00+00:00">Nov 27, 2025</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>

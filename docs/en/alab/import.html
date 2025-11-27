@@ -638,7 +638,7 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <p>When you upload a plain text file, only one task will be created which will contain the entire data in the input file.</p>
 
-<p class="warning">This is an update from earlier versions of Generative AI Lab when the input text file was split by the new line character and one task was created for each line.</p>
+<p class="warning">Previously, plain text files were split by newline characters into multiple tasks, but the system now treats the entire file as a single unit for more accurate and efficient processing.</p>
 
 <h2 id="json-file">Json file</h2>
 
@@ -668,13 +668,14 @@ this is a second task, Breast radiation therapy.txt
 
 <h2 id="dynamic-task-pagination">Dynamic Task Pagination</h2>
 
-<p>The support for pagination offered by earlier versions of the Generative AI Lab involved the use of the <code class="language-plaintext highlighter-rouge">&lt;pagebreak&gt;</code> tag. A document pre-processing step was necessary for adding/changing the page breaks and those involved extra effort from the part of the users.</p>
+<p>Dynamic pagination allows annotators and reviewers to control how large documents are displayed during annotation.<br />
+Instead of relying on static <code class="language-plaintext highlighter-rouge">&lt;pagebreak&gt;</code> tags or manual preprocessing, users can now define pagination settings directly from the <strong>Labeling page</strong>, making the workflow more flexible and efficient.</p>
 
-<p>Generative AI Lab 2.8 and above introduces a paradigm change for pagination. Pagination is dynamic and can be configured according to the user’s needs and preferences from the Labeling page. Annotators or reviewers can now choose the number of words to include on a single page from a predefined list of values or can add the desired counts.</p>
+<p>Annotators can choose the number of words to include on a single page from a predefined list or specify a custom value, tailoring the page size to their preference or task complexity.</p>
 
 <p><img src="/assets/images/annotation_lab/4.2.0/pagination.gif" alt="Dynamic Task Pagination" title="lit_shadow w_80" /></p>
 
-<p>A new settings option has been added to prevent splitting a sentence into two different pages.</p>
+<p>An additional setting is available to <strong>prevent sentences from being split across pages</strong>, ensuring better readability and preserving context during annotation.</p>
 
 <p><img src="/assets/images/annotation_lab/2.8.0/158552636-1b9f8814-5e05-4904-8ab4-401ea476d32e.png" alt="Dynamic Task Pagination" title="lit_shadow w_60" /></p>
 
@@ -694,15 +695,17 @@ this is a second task, Breast radiation therapy.txt
   <li>For AWS S3: Bucket name, path, Access Key, Secret Key (and Session Token for MFA).</li>
   <li>For Azure Blob: Container name, Account name, and Account Secret Key.</li>
   <li>Click “Import” to fetch all files from the specified path and load them as tasks into your project.</li>
+  <li>If your Generative AI Lab instance is running on an AWS EC2 machine that has an IAM role attached, you can skip filling the Access Key and Secret Key fields. The Lab automatically uses the instance role credentials for S3 import and export operations, offering a secure, credential-free connection.</li>
 </ul>
 
-<p><strong>Note:-</strong> All compatible documents in the specified cloud path will be automatically converted into tasks in the current project.</p>
+<p><strong>Note:-</strong> All compatible documents in the specified cloud path will be automatically converted into tasks in the current project.
+<strong>Note:</strong> When re-importing from the same AWS S3 path, previously imported files are automatically skipped. Only new or updated files are added as tasks, preventing duplicates and streamlining incremental imports.</p>
 
 <p><img src="/assets/images/annotation_lab/5.8.0/2.gif" alt="Effortless Task Import from Azure Blob Storage" /></p>
 
 <h3 id="import-project-from-s3-and-blob">Import Project from S3 and Blob</h3>
 
-<p>Starting from version 5.9, you can import a full project archive (including tasks, labels, configurations) stored as a .zip file in cloud storage.</p>
+<p>SUsers are able to import a full project archive (including tasks, labels, configurations) stored as a .zip file in cloud storage.</p>
 
 <p>How to Import a Project from AWS S3:</p>
 <ul>
@@ -800,7 +803,7 @@ progress and confirm successful uploads.</li>
 
 <p><img src="/assets/images/annotation_lab/7.3.0/2.png" alt="730image" /></p>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2025-07-28T00:00:00+00:00">Jul 28, 2025</time>
+      <time itemprop="dateModified" datetime="2025-11-27T00:00:00+00:00">Nov 27, 2025</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>

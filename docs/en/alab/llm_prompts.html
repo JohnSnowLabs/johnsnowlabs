@@ -630,7 +630,10 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <h2 id="entity-extraction-and-pre-annotation-via-gpt-prompting">Entity Extraction and Pre-Annotation via GPT Prompting</h2>
 
-  <p>The highlight of this release is the integration with an external service provider, Open AI, to expand and deepen the range of prompts available for pre-annotation (in addition to the Zero Shot entity and relation prompts already supported). This feature:.</p>
+  <p>Generative AI Lab supports integration with external large language model (LLM) providers such as <strong>OpenAI</strong>, enabling a broader and more flexible range of prompts for pre-annotation.<br />
+This capability complements the existing <strong>Zero-Shot Entity</strong> and <strong>Relation Prompting</strong> options, allowing users to leverage advanced LLMs to generate high-quality pre-annotations even when no pre-trained model is available.</p>
+
+  <p>By combining GPT-based prompting with existing zero-shot and rule-based approaches, users can design more effective annotation workflows, quickly generate entity or relation suggestions, and improve overall annotation efficiency.</p>
 
   <ul>
     <li>
@@ -667,6 +670,30 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <p>The Open AI integration allows users to tap into a vast reservoir of external expertise, enhancing the depth and breadth of their projects. We’ve ensured that the integration process is as intuitive as possible, allowing users to focus on what truly matters: crafting refined and effective pre-annotations.</p>
 
+  <h4 id="additional-supported-providers-and-configuration-options">Additional Supported Providers and Configuration Options</h4>
+
+  <p>Generative AI Lab now supports integration with multiple external LLM providers:</p>
+  <ul>
+    <li><strong>OpenAI</strong> (ChatGPT, GPT-4 family)</li>
+    <li><strong>Azure OpenAI Service</strong></li>
+    <li><strong>Anthropic Claude</strong></li>
+    <li><strong>Amazon SageMaker LLM Endpoints</strong></li>
+  </ul>
+
+  <p>Each provider can be added and configured from <strong>System Settings → Integrations</strong> using the same setup process. Users simply supply the required credentials (API key, access token, or endpoint) and validate the connection before linking the provider to specific projects.</p>
+
+  <p>Each integration form now includes <strong>generation control parameters</strong> that are consistent across providers:</p>
+
+  <ul>
+    <li><strong>Temperature</strong> – Adjusts the randomness or creativity of the model output.<br />
+Lower values (e.g., 0.1) make responses deterministic, while higher ones (e.g., 0.9) yield more varied generations.</li>
+    <li><strong>Max Tokens</strong> – Limits the maximum number of tokens generated in the response.<br />
+This setting helps control the verbosity and ensures annotations remain concise.</li>
+  </ul>
+
+  <p>These parameters can be configured globally for a provider or fine-tuned per project when defining prompts.<br />
+They are saved along with the provider configuration and automatically applied during pre-annotation.</p>
+
 </div>
 <div class="h3-box">
 
@@ -685,6 +712,9 @@ function wrapWordInSpan(data, wordToWrap) {
     </li>
   </ul>
 
+  <p>The testing interface supports <strong>all integrated providers</strong> — users can preview and compare prompt responses from OpenAI, Azure, Anthropic Claude, and SageMaker models within the same workflow.<br />
+The output display and post-processing are consistent across providers, ensuring parity in prompt behavior and entity alignment.</p>
+
   <p>This streamlined approach ensures that integrating and testing external prompts is as intuitive and efficient as possible.</p>
 
   <p><img src="/assets/images/annotation_lab/5.3.0/2.gif" alt="Integration" /></p>
@@ -693,18 +723,25 @@ function wrapWordInSpan(data, wordToWrap) {
 <div class="h3-box">
 
   <h3 id="consistent-workflow-with-llm-prompts">Consistent Workflow with LLM Prompts</h3>
-  <p>Even with the introduction of new features in Generative AI Lab’s 5.3.0 release, users can take comfort in the consistent experience offered when working with prompts. The addition of external service provider prompts brings a fresh layer to the annotation process, yet the core workflow you’re familiar with stays the same.</p>
+
+  <p>Generative AI Lab maintains a familiar and streamlined experience when working with LLM-based prompts.<br />
+Even with the addition of new integrations and external LLM providers, the prompt workflow remains intuitive and consistent across all project types.</p>
 
   <ul>
     <li>
-      <p><strong>Familiarity Amidst Innovation</strong>: Despite the new integrations, the process of using available prompts remains as straightforward as ever. Whether you’re working with traditional prompts or the newly introduced ones, the experience is smooth and consistent.</p>
+      <p><strong>Familiar Interface</strong>: The process of creating, selecting, and applying prompts follows the same simple steps users are accustomed to, whether using built-in templates or external LLM-powered prompts.</p>
     </li>
     <li>
-      <p><strong>Seamless Transition</strong>: Our commitment to user-centric design means that even as we innovate, we prioritize the ease of use you’ve come to expect. Transitioning to or incorporating external prompts is made effortless, with the interface and steps for prompt creation, selection, and integration remaining intuitive and unchanged.</p>
+      <p><strong>Seamless Integration</strong>: External prompt providers can be added without changing existing workflows. The interface for managing and applying prompts remains unified, allowing teams to adopt new capabilities without retraining or workflow disruptions.</p>
+    </li>
+    <li>
+      <p><strong>Saved Parameters and Analytics Support</strong>:<br />
+When used in projects, prompts retain their custom Temperature and Max Token settings automatically.<br />
+The analytics module also includes LLM-related metadata, allowing reviewers to correlate evaluation results with model configuration for transparency.</p>
     </li>
   </ul>
 
-  <p>With Generative AI Lab 5.3.0, you get the best of both worlds: exciting new features and the comfort of a familiar workflow.</p>
+  <p>With Generative AI Lab, you get the best of both worlds: exciting new features and the comfort of a familiar workflow.</p>
 
   <p><img src="/assets/images/annotation_lab/5.3.0/3.gif" alt="Integration" /></p>
 
@@ -714,7 +751,7 @@ function wrapWordInSpan(data, wordToWrap) {
 
 </div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2023-08-19T00:00:00+00:00">Aug 19, 2023</time>
+      <time itemprop="dateModified" datetime="2025-11-27T00:00:00+00:00">Nov 27, 2025</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>

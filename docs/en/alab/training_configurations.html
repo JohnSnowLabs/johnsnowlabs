@@ -662,7 +662,13 @@ The running servers can be seen by visiting the <a href="/docs/en/alab/cluster_m
 
 <p><img class="image image__shadow" src="/assets/images/annotation_lab/4.2.0/training_logs.png" style="width:100%;" /></p>
 
-<p>Starting from version 4.3.0, it is possible to keep track of all previous training activities executed for a project. When pressing the <code class="language-plaintext highlighter-rouge">History</code> button from the Train page, users are presented with a list of all trainings triggered for the current project. Each training event is characterized by the source (<em>manual</em>, <em>active learning</em>), data used for training, date of event, and status. Training logs can also be downloaded for each training event.</p>
+<h2 id="training-history-and-logs">Training History and Logs</h2>
+
+<p>Generative AI Lab provides a <strong>Training History</strong> feature that allows users to track all previous training activities executed for a project. By clicking the <strong>History</strong> button on the <strong>Train</strong> page, users can view a complete list of training sessions associated with the current project.</p>
+
+<p>Each training record displays key details such as the <strong>training source</strong> (manual or active learning), the <strong>dataset used</strong>, the <strong>date and time</strong> of the event, and its <strong>status</strong>. For deeper analysis, users can also <strong>download training logs</strong> directly from this view to review training progress, outcomes, and any potential issues.</p>
+
+<p>This feature ensures full transparency of the training process and helps teams monitor model evolution over time.</p>
 
 <p><img class="image image__shadow" src="https://user-images.githubusercontent.com/10126570/203515966-52c37515-ee27-4e94-93f3-79071f15a0cf.gif" style="width:100%;" /></p>
 
@@ -682,8 +688,13 @@ The running servers can be seen by visiting the <a href="/docs/en/alab/cluster_m
 
 <p>Generative AI Lab also includes additional filtering options for the training dataset based on the status of completions, either all submitted completions can be used for training or only the reviewed ones.</p>
 
-<h3 id="model-versioning-when-training-models">Model Versioning when Training Models</h3>
-<p>Generative AI Lab 6.9 introduces model versioning for the following project types: Named Entity Recognition (NER), Classification, Assertion, Relation, and Visual NER. In the <strong>TRAINING SETTINGS</strong> section of the <strong>Train</strong> page, a toggle labeled <strong>Enable Versioning</strong> is now available. By default, model versioning is disabled. To enable it, toggle <strong>Enable Versioning</strong> to <strong>on</strong>.</p>
+<h3 id="model-versioning-during-training">Model Versioning During Training</h3>
+
+<p>Generative AI Lab supports <strong>model versioning</strong> for multiple project types, including <strong>Named Entity Recognition (NER)</strong>, <strong>Classification</strong>, <strong>Assertion</strong>, <strong>Relation</strong>, and <strong>Visual NER</strong>.</p>
+
+<p>Within the <strong>Training Settings</strong> section of the <strong>Train</strong> page, users can enable model versioning by toggling the <strong>Enable Versioning</strong> option. When activated, each new training run creates a distinct version of the model, allowing teams to track model evolution, compare performance, and safely revert to earlier versions if needed.</p>
+
+<p>By default, model versioning is turned off, giving users flexibility to decide when version tracking is required for their workflow.</p>
 
 <p><img src="/assets/images/annotation_lab/6.9.0/5.png" alt="690image" /></p>
 
@@ -954,7 +965,7 @@ For instance, with both GPU and CPU: 1 CPU core, 24GB RAM, and 1 GPU
 <p>Users can download English, German, Spanish, Portuguese, Italian, Danish and Romanian pretrained models from the NLP Models Hub and use them for pre-annotation.
 Generative AI Lab also offers support for training/tuning models in the above languages.</p>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2022-12-02T00:00:00+00:00">Dec 02, 2022</time>
+      <time itemprop="dateModified" datetime="2025-11-27T00:00:00+00:00">Nov 27, 2025</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>

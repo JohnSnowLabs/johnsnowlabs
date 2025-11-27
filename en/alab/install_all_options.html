@@ -748,7 +748,7 @@ th {
     <li>Subscribe to the product on the AWS Marketplace.</li>
     <li>Deploy it on a new machine.</li>
     <li>
-      <p>In Launch an instance configuration attach IAM role to the AMI (IAM role attached to the AMI machine should have access to both <code class="language-plaintext highlighter-rouge">aws-marketplace:MeterUsage</code> and <code class="language-plaintext highlighter-rouge">ec2:DescribeInstanceTypes</code> permission)</p>
+      <p>In Launch an instance configuration attach an IAM role to the AMI. The IAM role should include <code class="language-plaintext highlighter-rouge">aws-marketplace:MeterUsage</code>, <code class="language-plaintext highlighter-rouge">ec2:DescribeInstanceTypes</code>, and S3 access permissions (<code class="language-plaintext highlighter-rouge">s3:ListBucket</code>, <code class="language-plaintext highlighter-rouge">s3:GetObject</code>, <code class="language-plaintext highlighter-rouge">s3:PutObject</code>) if you plan to import or export data. Generative AI Lab automatically uses the instance’s IAM role for S3 import and export, so no Access Key or Secret Key needs to be entered.</p>
 
       <p><img src="/assets/images/annotation_lab/iam.png" alt="IAM" /></p>
     </li>
@@ -900,6 +900,10 @@ Outputs:
   <h2 id="azure-marketplace">Azure Marketplace</h2>
 
   <p>Visit the <a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.gen_ai_lab?tab=Overview">product page on Azure Marketplace</a> and follow these steps. Generative AI Lab offers a one-click deployment within your security perimeter using Azure Kubernetes Service (AKS), a fully managed Kubernetes solution that simplifies the deployment, management, and scaling of containerized applications.</p>
+
+  <p>Azure Marketplace supports both GPU and CPU deployments.<br />
+For teams without GPU workloads, a CPU-only option is available to reduce cost while retaining full functionality.<br />
+Select the CPU instance type during the cluster creation process in Azure to deploy Generative AI Lab on CPU-based infrastructure.</p>
 
   <ol>
     <li>
@@ -1412,7 +1416,7 @@ cd artifacts
 
 </div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2024-04-22T00:00:00+00:00">Apr 22, 2024</time>
+      <time itemprop="dateModified" datetime="2025-11-27T00:00:00+00:00">Nov 27, 2025</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>

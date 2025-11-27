@@ -658,7 +658,7 @@ th {
     <li>Subscribe to the product on the AWS Marketplace.</li>
     <li>Deploy it on a new machine.</li>
     <li>
-      <p>In Launch an instance configuration attach IAM role to the AMI (IAM role attached to the AMI machine should have access to both <code class="language-plaintext highlighter-rouge">aws-marketplace:MeterUsage</code> and <code class="language-plaintext highlighter-rouge">ec2:DescribeInstanceTypes</code> permission)</p>
+      <p>In Launch an instance configuration attach an IAM role to the AMI. The IAM role should include <code class="language-plaintext highlighter-rouge">aws-marketplace:MeterUsage</code>, <code class="language-plaintext highlighter-rouge">ec2:DescribeInstanceTypes</code>, and S3 access permissions (<code class="language-plaintext highlighter-rouge">s3:ListBucket</code>, <code class="language-plaintext highlighter-rouge">s3:GetObject</code>, <code class="language-plaintext highlighter-rouge">s3:PutObject</code>) if you plan to import or export data. Generative AI Lab automatically uses the instance’s IAM role for S3 access, so no AWS credentials need to be entered or stored.</p>
 
       <p><img src="/assets/images/annotation_lab/iam.png" alt="IAM" /></p>
     </li>
@@ -678,6 +678,10 @@ Password: INSTANCE_ID</li>
 
 </div>
 <div class="h3-box">
+
+  <ul>
+    <li>Azure Marketplace now also provides a CPU-only deployment option for users who do not require GPU resources. This enables more flexible and cost-efficient deployments while maintaining full functionality. The deployment process and UI remain identical; simply select a CPU-based instance size when creating the cluster.</li>
+  </ul>
 
   <h2 id="secure-access-to-generative-ai-lab-on-aws">Secure access to Generative AI Lab on AWS</h2>
 
@@ -989,7 +993,7 @@ Create a file named <code class="language-plaintext highlighter-rouge">License</
 </table>
 </div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2024-11-15T00:00:00+00:00">Nov 15, 2024</time>
+      <time itemprop="dateModified" datetime="2025-11-27T00:00:00+00:00">Nov 27, 2025</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>

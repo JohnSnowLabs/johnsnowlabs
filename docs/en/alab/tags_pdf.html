@@ -651,22 +651,22 @@ function wrapWordInSpan(data, wordToWrap) {
 <p>&lt;/div&gt;</p>
 
 <h3 id="identify-and-validate-checkboxes-with-precision">Identify and Validate Checkboxes with Precision</h3>
-<p>Version 6.9.0 introduces a new project type called <strong>Checkbox Detection</strong>. With the new update, users can now use the model offered by Generative AI Lab to identify checkboxes in the tasks, including the <strong>checked</strong> and <strong>unchecked</strong> status in the respective tasks.</p>
 
-<p>This project type can be selected from the <strong>Content Type</strong> page under the <strong>Image</strong> tab during project setup. The default model associated with Checkbox Detection is automatically downloaded from the <strong>Models Hub</strong> page and added to the project configuration.</p>
+<p>Generative AI Lab includes a dedicated <strong>Checkbox Detection</strong> project type that enables automatic identification of checkboxes within image-based tasks, detecting both <strong>checked</strong> and <strong>unchecked</strong> states.</p>
+
+<p>This project type can be selected during project setup from the <strong>Content Type</strong> page under the <strong>Image</strong> tab. When chosen, the default model for checkbox detection is automatically downloaded from the <strong>Models Hub</strong> and added to the project configuration, allowing users to get started immediately.</p>
 
 <p><img src="/assets/images/annotation_lab/6.9.0/1.png" alt="690image" /></p>
 
-<p>After the project is configured, users can add relevant tasks and leverage the model to detect checkboxes and their respective checked and unchecked statuses.</p>
+<p>Once configured, users can upload PDF or image tasks and use the model to detect checkbox elements and their status directly within the annotation interface.</p>
 
 <p><img src="/assets/images/annotation_lab/6.9.0/2.png" alt="690image" /></p>
 
-<p>This new update integrates seamlessly with the existing workflow, ensuring no changes or disruptions to the current application processes.</p>
-
-<p>This model can not currently be combined with other models.</p>
+<p>Checkbox Detection integrates seamlessly with existing annotation workflows and requires no additional setup.<br />
+<strong>Note:</strong> The Checkbox Detection model currently operates independently and cannot be combined with other models within the same project.</p>
 
 <h3 id="detect-and-validate-handwritten-text-and-signatures">Detect and Validate Handwritten Text and Signatures</h3>
-<p>This update continues with the <strong>Handwritten Text and Signature Detection</strong> project type. This new feature enables the automatic identification and annotation of handwritten text and signatures within documents, using John Snow Lab’s Visual NLP Library. The new project type can be selected from the <strong>Content Type</strong> page under <strong>Image</strong> tab during project configuration. Upon selection, the default model for Handwritten Text and Signature Detection is automatically downloaded from the <strong>Models Hub</strong> and integrated into the project configuration.</p>
+<p>The <strong>Handwritten Text and Signature Detection</strong> project type enables the automatic identification and annotation of handwritten text and signatures within documents, using John Snow Lab’s Visual NLP Library. The project type can be selected from the <strong>Content Type</strong> page under <strong>Image</strong> tab during project configuration. Upon selection, the default model for Handwritten Text and Signature Detection is automatically downloaded from the <strong>Models Hub</strong> and integrated into the project configuration.</p>
 
 <p><img src="/assets/images/annotation_lab/6.9.0/3.png" alt="690image" /></p>
 
@@ -676,10 +676,13 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <p>This feature doesn’t change the existing application workflow, and can not be combined with other models at this time.</p>
 
-<h2 id="view-text-alongside-images-and-optimized-image-loading-in-visual-ner">View Text alongside images, and Optimized Image Loading in Visual NER</h2>
-<p>Generative AI Lab 6.11 brings an Image-Text Side-by-Side Annotation project, allowing users to view the original image or PDF alongside its OCR-extracted text for easier annotation. It also includes optimized Visual NER for faster PDF processing, enhanced zoom functionality, and a new licensing model for on-premises deployments.</p>
+<h2 id="view-text-alongside-images-and-optimized-image-loading-in-visual-ner">View Text Alongside Images and Optimized Image Loading in Visual NER</h2>
 
-<p>Other minor improvements have been made to Generative AI Lab, specifically to model training and de-identification.</p>
+<p>Generative AI Lab introduces an <strong>Image-Text Side-by-Side Annotation</strong> project type, enabling users to view the original image or PDF alongside its OCR-extracted text. This dual-view layout simplifies the comparison between visual and textual content, allowing annotators to review and label information more accurately and efficiently.</p>
+
+<p>In addition, <strong>Visual NER performance has been optimized</strong> for faster PDF and image processing. Enhancements include improved zoom and navigation, smoother page transitions, and optimized image loading—especially beneficial for projects handling large, multi-page, or high-resolution documents.</p>
+
+<p>These updates ensure a more responsive and seamless annotation experience. Additional improvements have also been made to <strong>model training</strong> and <strong>de-identification workflows</strong>, enhancing accuracy, performance, and overall usability across project types.</p>
 
 <h2 id="annotate-while-referencing-orginal-documents">Annotate while referencing Orginal Documents</h2>
 <p>This feature improves visibility for image-based documents by displaying both the image/PDF and its OCR-extracted text side by side. Users can now annotate more efficiently while maintaining a visual reference. While Generative AI Lab has offered annotation on top of Image and PDF formats for quite some time, there was a gap in annotating large amounts of data on top of the original document, as there was not enough space to adequately address more robust annotation projects.</p>
@@ -764,16 +767,18 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <p><img src="/assets/images/annotation_lab/6.11.0/3.png" alt="6110image" /></p>
 
-<h2 id="support-for-hcc-coding">Support for HCC Coding</h2>
-<p>This release introduces support for HCC Coding for text and PDF content. The system now maps detected ICD-10 codes to their corresponding HCC codes, streamlining clinical risk adjustment workflows and insurance claim verification.</p>
+<h2 id="hcc-coding-for-pdf-projects">HCC Coding for PDF Projects</h2>
+<p>Generative AI Lab supports <strong>HCC (Hierarchical Condition Category) Coding</strong> for PDF and text-based projects.<br />
+These specialized project types enable annotators to link clinical entities detected in PDFs to their corresponding HCC codes, improving efficiency in medical coding and risk adjustment workflows.</p>
 
-<p><strong>New project types:</strong></p>
+<p><strong>Available Templates</strong></p>
 <ol>
   <li><strong>HCC Coding for Text</strong></li>
-  <li><strong>HCC Coding for PDF and Text (side by side)</strong></li>
+  <li><strong>HCC Coding for PDF + Text (side-by-side)</strong></li>
 </ol>
 
-<p>These project types enable the association of HCC codes with annotated clinical entities using preconfigured lookup datasets, reducing manual input and improving consistency in medical coding.</p>
+<p>The side-by-side HCC Coding template displays the original PDF document next to its extracted text, allowing annotators to label entities and review mapped codes while maintaining full context of the source material.<br />
+These projects use preconfigured lookup datasets that automatically map ICD-10 codes to their respective HCC categories, reducing manual data entry and improving coding consistency.</p>
 
 <p><img src="/assets/images/annotation_lab/7.0.0/1.png" alt="700image" /></p>
 
@@ -784,7 +789,7 @@ function wrapWordInSpan(data, wordToWrap) {
 <ol>
   <li><strong>Project Setup</strong>
     <ul>
-      <li>Select either of the new project templates during project creation.</li>
+      <li>Select either of the HCC project templates during project creation.</li>
       <li>Choose the HCC Coding for PDF and Text (side by side) option if you need a visual representation of the original document while performing HCC coding.</li>
     </ul>
   </li>
@@ -793,10 +798,10 @@ function wrapWordInSpan(data, wordToWrap) {
 <p><img src="/assets/images/annotation_lab/7.0.0/2.png" alt="700image" /></p>
 
 <ol>
-  <li><strong>Label Customization</strong> - On the Customize Labels page, users can either:
+  <li><strong>Label Customization</strong>
     <ul>
-      <li>Apply a lookup dataset globally, to all labels in your taxonomy at once.</li>
-      <li>Assign Lookup options to specific labels.</li>
+      <li>On the <strong>Customize Labels</strong> page, you can apply a lookup dataset globally to all labels or assign lookup options individually.</li>
+      <li>This setup defines how entities in the document link to their ICD-10 and HCC mappings.</li>
     </ul>
   </li>
 </ol>
@@ -835,8 +840,21 @@ Once a task is labeled and lookup codes are assigned along with HCC Codes, revie
 <p>Tasks can now include <strong>ranking scores</strong> to support triaging and prioritization, allowing users to manage large annotation datasets more effectively. When importing tasks, users can associate each task with a ranking score that reflects its clinical significance or urgency. These scores are then displayed in the task list and can be used to sort and filter tasks dynamically. This functionality is particularly beneficial in risk adjustment workflows where prioritizing complex or high-impact cases is critical. Ranking scores also integrate with the HCC coding workflow, enabling annotators and reviewers to systematically focus on the most relevant cases for validation.</p>
 
 <p><img src="/assets/images/annotation_lab/7.0.0/6.png" alt="700image" /></p>
+
+<h3 id="fine-grained-ocr-page-control">Fine-Grained OCR Page Control</h3>
+
+<p>For image and PDF-based projects that rely on OCR, users can now choose to <strong>exclude specific pages from OCR processing</strong>.<br />
+This provides finer control when certain pages—such as cover sheets, disclaimers, or scanned tables—don’t require text extraction.</p>
+
+<p>To configure:</p>
+<ul>
+  <li>In the OCR options during import or project setup, deselect the pages you want excluded.</li>
+  <li>Only the remaining pages will be processed and displayed for annotation, improving accuracy and performance.</li>
+</ul>
+
+<p>This selective OCR feature helps optimize resource usage and ensures annotations focus only on relevant content.</p>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2023-06-20T00:00:00+00:00">Jun 20, 2023</time>
+      <time itemprop="dateModified" datetime="2025-11-27T00:00:00+00:00">Nov 27, 2025</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>

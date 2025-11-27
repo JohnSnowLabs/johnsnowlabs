@@ -890,7 +890,10 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <h2 id="comments-on-the-labeling-page">Comments on the Labeling Page</h2>
 
-  <p>Since version 4.10.0, Generative AI Lab offers enhanced comment feature for labeling pages, enabling users to easily add, update, and delete comments within labeling pages. This feature enhances the communication between the annotators, improves work efficiency and enhances productivity. In order to use this feature, there is a New Burger menu at the top right corner of the labeling page. The dropdown through this menu allows users to add, update, and delete comments.</p>
+  <p>Generative AI Lab provides an enhanced <strong>Comments</strong> feature on the labeling page, enabling users to add, update, and delete comments directly within annotation tasks.<br />
+This capability improves communication between team members, streamlines collaboration, and boosts overall annotation efficiency.</p>
+
+  <p>To use this feature, open the <strong>burger menu</strong> at the top-right corner of the labeling page and choose the <strong>Comments</strong> option from the dropdown to manage task-level discussions.</p>
 
   <p><img src="/assets/images/annotation_lab/4.10.0/2-min.gif" alt="Comments on the Labeling Page" /></p>
 
@@ -899,7 +902,11 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <h2 id="tags-from-the-labeling-screen">Tags from the Labeling Screen</h2>
 
-  <p>From version 4.10 onwards, Generative AI Lab introduces an enhanced tags feature for labeling pages. This addition offers users a convenient method to create, attach, and delete tags directly on the labeling page. It greatly enhances organization and boosts productivity by streamlining task management, granting users greater flexibility in classifying and monitoring their labeled data. Similar to the aforementioned comment feature, this can also be accessed from the burger menu at the top right corner of the labeling page. From the dropdown, select “Assign Tags”.</p>
+  <p>Generative AI Lab includes an enhanced <strong>Tags</strong> feature on the labeling page, allowing users to create, attach, and delete tags directly while annotating.<br />
+This feature improves organization and productivity by streamlining task management, making it easier to classify and monitor labeled data.</p>
+
+  <p>The tags option is available from the <strong>burger menu</strong> at the top-right corner of the labeling page.<br />
+From the dropdown, select <strong>Assign Tags</strong> to manage task tagging.</p>
 
   <p><img src="/assets/images/annotation_lab/4.10.0/3-min.gif" alt="Tags from the Labeling Screen" /></p>
 
@@ -919,7 +926,11 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <h2 id="switch-role">Switch Role</h2>
 
-  <p>For users having multiple roles (<em>Annotator/Reviewer/Manager</em>) the labeling page can get confusing. Switch Role filter present on the top-right corner can help address this problem. This filter was introduced in Generative AI Lab from version <bl>2.6.0</bl>, previously refered to as <es>View As</es> filter. When selecting <em>Annotator</em> option, the view changes to facilitate annotating the task. Similar changes to the view applies when switching to <em>Reviewer</em> or <em>Manager</em> option. The selection persists even when the tab is closed or refreshed.</p>
+  <p>For users with multiple roles (<em>Annotator</em>, <em>Reviewer</em>, or <em>Manager</em>), the labeling page can display role-specific views to simplify the interface.<br />
+The <strong>Switch Role</strong> filter, located in the top-right corner of the labeling page, allows users to change their active role and instantly adjust the workspace accordingly.</p>
+
+  <p>Selecting the <strong>Annotator</strong> option focuses the view on annotation tasks, while choosing <strong>Reviewer</strong> or <strong>Manager</strong> displays the appropriate tools and controls for those roles.<br />
+The selected view preference is automatically saved and persists across sessions.</p>
 
   <p><img src="/assets/images/annotation_lab/4.1.0/switch_role.png" alt="Switch Role" title="lit_shadow" /></p>
 
@@ -927,48 +938,54 @@ function wrapWordInSpan(data, wordToWrap) {
 <div class="h3-box">
 
   <h2 id="annotation-instructions-for-labels">Annotation Instructions for Labels</h2>
-  <p>Generative AI Lab 6.7 introduces a new feature allowing admin users to add annotation instructions to labels directly from the <code class="language-plaintext highlighter-rouge">Customize Labels</code> page. This enhancement ensures that annotators have clear and consistent guidelines, improving labeling accuracy and quality. The annotation guidelines are available for both NER (Named Entity Recognition) and VisualNER project types, offering flexibility across different project formats.</p>
+
+  <p>Admin users can add <strong>annotation instructions</strong> to labels directly from the <code class="language-plaintext highlighter-rouge">Customize Labels</code> page during project setup.<br />
+This feature helps ensure that annotators have clear, consistent labeling guidelines, improving annotation accuracy and quality.<br />
+Annotation guidelines are supported for both <strong>NER (Named Entity Recognition)</strong> and <strong>Visual NER</strong> project types, providing flexibility across different annotation formats.</p>
 
   <p>To add annotation instructions to a label, follow these steps:</p>
   <ul>
-    <li>Navigate to the <code class="language-plaintext highlighter-rouge">Customize Labels</code> section, where all your project’s labels are listed.</li>
-    <li>Click on the <code class="language-plaintext highlighter-rouge">Edit</code> icon next to the label for which you want to add instructions. This action will take you to the <code class="language-plaintext highlighter-rouge">Edit Label</code> page.</li>
-    <li>Enter the guidelines under the <code class="language-plaintext highlighter-rouge">Label Instructions</code> field.</li>
-    <li>Click on <code class="language-plaintext highlighter-rouge">Save Label</code> to store the instructions.</li>
-    <li>Click on <code class="language-plaintext highlighter-rouge">Save Config</code> to save the configuration.</li>
+    <li>Navigate to the <code class="language-plaintext highlighter-rouge">Customize Labels</code> section, where all project labels are listed.</li>
+    <li>Click the <strong>Edit</strong> icon next to the label for which you want to add instructions.<br />
+This opens the <strong>Edit Label</strong> window.</li>
+    <li>Enter your guidelines under the <strong>Label Instructions</strong> field.</li>
+    <li>Click <strong>Save Label</strong>, then <strong>Save Config</strong> to apply your changes.</li>
   </ul>
 
   <p><img src="/assets/images/annotation_lab/6.7.0/10.gif" alt="670image" /></p>
 
-  <p>Once annotation instructions are added, they can be viewed from the labeling page in the widget area on the right side. Users can enable or disable the annotation guidelines through the <code class="language-plaintext highlighter-rouge">Annotation Guidelines</code> toggle. To view the guidelines, the label must first be activated by clicking on it, which will display the label under the <code class="language-plaintext highlighter-rouge">Annotation Guideline</code> section. Clicking on the label text will then reveal the annotation instructions for that label.</p>
+  <p>Once instructions are added, they can be viewed directly from the labeling page in the <strong>Annotation Guidelines</strong> widget on the right panel.<br />
+Annotators can toggle the display on or off using the <strong>Annotation Guidelines</strong> switch.<br />
+To view the guidelines, the label must be activated by clicking it; the corresponding instructions will appear under the <strong>Annotation Guideline</strong> section.</p>
 
   <p><img src="/assets/images/annotation_lab/6.7.0/11.gif" alt="670image" /></p>
 
-  <p>Users with the Project Manager role can edit and delete annotation guidelines directly from the labeling page. However, users with the Annotator and Reviewer roles can only view the guidelines and do not have permission to edit or delete them.</p>
+  <p>Users with the <strong>Project Manager</strong> role can edit or delete annotation guidelines directly from the labeling page.<br />
+Annotators and Reviewers can view the instructions but cannot modify or remove them.</p>
 
-  <p>Remove the annotation instructions from the labeling page:</p>
+  <p>Remove instructions from the labeling page:</p>
 
   <p><img src="/assets/images/annotation_lab/6.7.0/12.gif" alt="670image" /></p>
 
-  <p>Edit the annotation instructions from the Labeling page:</p>
+  <p>Edit instructions from the labeling page:</p>
 
   <p><img src="/assets/images/annotation_lab/6.7.0/13.gif" alt="670image" /></p>
 
-  <p>When multiple labels are selected, the guidelines for each label can be viewed one at a time by clicking on the corresponding label text.</p>
+  <p>When multiple labels are selected, their respective guidelines can be viewed one at a time by clicking the label name.</p>
 
   <p><img src="/assets/images/annotation_lab/6.7.0/14.gif" alt="670image" /></p>
 
-  <p>Annotation guidelines can also be downloaded in JSON format by clicking on the Download icon from the Customize Labels page.</p>
+  <p>Annotation guidelines can also be downloaded in JSON format via the <strong>Download</strong> icon on the <code class="language-plaintext highlighter-rouge">Customize Labels</code> page, enabling easy sharing or reuse across projects.</p>
 
   <p><img src="/assets/images/annotation_lab/6.7.0/15.png" alt="670image" /></p>
 
-  <p>Additionally, annotation guidelines are available for Assertion Labels as well.</p>
+  <p>Guidelines are also available for <strong>Assertion Labels</strong>, ensuring consistent labeling for entity and context annotations alike.</p>
 
   <p><img src="/assets/images/annotation_lab/6.7.0/16.gif" alt="670image" /></p>
 
 </div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2022-12-12T00:00:00+00:00">Dec 12, 2022</time>
+      <time itemprop="dateModified" datetime="2025-11-27T00:00:00+00:00">Nov 27, 2025</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>

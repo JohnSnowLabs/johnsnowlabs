@@ -628,18 +628,23 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <h3 id="lookup-codeterms-in-labeling-page">Lookup code/terms in Labeling page</h3>
-  <p>Generative AI Lab version 5.9.0 introduces support for Entity Resolution, allowing users to enhance their annotations by adding lookup datasets. By allowing users to enrich labeled text with additional information, Generative AI Lab provides the way for improving the context and accuracy of annotations. Lookup functionality is currently supported exclusively by text based NER projects.</p>
+  <h3 id="lookup-codeterms-in-the-labeling-page">Lookup Code/Terms in the Labeling Page</h3>
+  <p>Generative AI Lab supports <strong>Entity Resolution (ER)</strong> for text-based annotation projects, enabling users to enrich entity labels with external lookup datasets.<br />
+This feature enhances annotation accuracy and context by linking labeled text to structured terminology, such as medical codes or standardized identifiers.</p>
+
+  <p>Lookup functionality is available for text-based Named Entity Recognition (NER) projects and allows annotators to connect entities directly to relevant metadata — for example, mapping a medical <strong>procedure</strong> mention to a <strong>CPT code</strong>, or linking a diagnosis to an <strong>ICD-10</strong> code.</p>
 
 </div>
 <div class="h3-box">
 
   <h3 id="configuring-lookup">Configuring Lookup</h3>
-  <p>Configuring lookup datasets is straightforward: use the well-known Customize Labels page during project configuration and follow the steps below:</p>
+
+  <p>Configuring lookup datasets is straightforward through the <strong>Customize Labels</strong> page during project setup:</p>
+
   <ol>
-    <li>Click on the specific label for which you want to add lookup data.</li>
+    <li>Click the specific label you want to associate with a lookup dataset.</li>
     <li>Select the desired lookup dataset from the dropdown list.</li>
-    <li>Navigate to the task page and add lookup information to labeled texts.</li>
+    <li>Proceed to the Task page to apply lookup information to labeled entities.</li>
   </ol>
 
   <p><img src="/assets/images/annotation_lab/5.9.0/1.gif" alt="LookUpConfiguration" /></p>
@@ -673,10 +678,17 @@ function wrapWordInSpan(data, wordToWrap) {
 </div>
 <div class="h3-box">
 
-  <h2 id="pre-annotate-metadata-using-resolvers">Pre-annotate metadata using Resolvers</h2>
+  <h2 id="pre-annotate-metadata-using-resolvers">Pre-Annotate Metadata Using Resolvers</h2>
 
+  <p>Generative AI Lab supports the use of <strong>Healthcare Resolvers</strong> for pre-annotating metadata, extending the platform’s capabilities to entity resolution tasks. Resolvers map recognized entities to standardized terminologies or knowledge bases, helping enrich annotations with meaningful metadata such as concept codes, canonical forms, or entity definitions.</p>
+
+  <p>Resolvers are available directly in the <strong>NLP Models Hub</strong> — users can easily locate them by applying the <strong>“Entity Resolution”</strong> filter. Once selected, these models can be deployed for pre-annotation like other model types, automatically linking identified entities to their corresponding concepts.</p>
+
+  <p>This enhancement allows annotation teams to:</p>
   <ul>
-    <li>Generative AI Lab 5.9 introduces a pivotal enhancement that expands pre-annotation capabilities with the use of Healthcare resolvers. These resolvers are now conveniently accessible and discoverable on the NLP Models Hub page. Simply apply the “Entity Resolution” filter to view the comprehensive list.</li>
+    <li><strong>Enrich Annotations Automatically:</strong> Add structured metadata such as concept IDs and synonyms to labeled entities.</li>
+    <li><strong>Leverage Domain Knowledge:</strong> Use domain-specific resolvers (e.g., Healthcare, Finance, Legal) to ensure high-quality entity linking.</li>
+    <li><strong>Streamline Workflows:</strong> Reduce manual post-processing by integrating entity resolution directly into pre-annotation pipelines.</li>
   </ul>
 
   <p><img src="/assets/images/annotation_lab/5.9.0/6.png" alt="Resolution_prediction" /></p>
@@ -712,21 +724,22 @@ function wrapWordInSpan(data, wordToWrap) {
 </div>
 <div class="h3-box">
 
-  <h2 id="pair-entity-resolver-models-with-rules-and-zero-shot-prompts">Pair Entity resolver models with rules and zero-shot prompts</h2>
-  <p>Version 6.5.0 introduces expanded support for using Entity Resolution (ER) models, now allowing their use alongside rules and zero-shot prompts. ER models were previously limited to use with Named Entity Recognition (NER) models only. Users can now leverage ER models not only with NER models but also in conjunction with rules and zero-shot prompts. This enhancement offers greater flexibility and efficiency in annotation workflows.</p>
+  <h2 id="combining-entity-resolvers-with-rules-and-zero-shot-prompts">Combining Entity Resolvers with Rules and Zero-Shot Prompts</h2>
 
-  <p><strong>How to Use</strong>:</p>
-  <ul>
-    <li><strong>Step 1</strong>: Add a rule or prompt from the Re-use Resource page.</li>
-    <li><strong>Step 2</strong>: Edit the label in the Customize Labels page and select the appropriate ER model to associate with the labels.</li>
-    <li><strong>Step 3</strong>: Import tasks and Pre-annotate the task.</li>
-  </ul>
+  <p>Entity Resolution models can be used not only with NER models but also alongside <strong>Rules</strong> and <strong>Zero-Shot Prompts</strong>, allowing flexible pre-annotation and enrichment workflows.</p>
+
+  <p><strong>How to Use:</strong></p>
+  <ol>
+    <li>Add a Rule or Prompt resource from the <strong>Reuse Resources</strong> page.</li>
+    <li>Edit the label in <strong>Customize Labels</strong> and assign an Entity Resolver model.</li>
+    <li>Import and pre-annotate tasks to automatically resolve entities to their canonical forms or codes.</li>
+  </ol>
 
   <p><img src="/assets/images/annotation_lab/6.5.0/13.gif" alt="genAI650" /></p>
 
 </div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2024-03-24T00:00:00+00:00">Mar 24, 2024</time>
+      <time itemprop="dateModified" datetime="2025-11-27T00:00:00+00:00">Nov 27, 2025</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
