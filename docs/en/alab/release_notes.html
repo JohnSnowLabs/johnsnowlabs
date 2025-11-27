@@ -626,359 +626,588 @@ function wrapWordInSpan(data, wordToWrap) {
             <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Release Notes"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
-<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
+<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="generative-ai-lab-76-multi-model-blind-evaluation-and-advanced-ner-training">Generative AI Lab 7.6: Multi Model Blind Evaluation and Advanced NER Training</h2>
+<p>Generative AI Lab 7.6.0 delivers one of the most significant upgrades to the evaluation and training workflow to date, introducing powerful new capabilities for multi-model benchmarking, advanced NER training, and deeper analytics insights.</p>
 
-  <h2 id="generative-ai-lab-75-smarter-safer-and-seamlessly-connected">Generative AI Lab 7.5: Smarter, Safer, and Seamlessly Connected</h2>
-  <p>Generative AI Lab takes productivity and security to the next level with smarter automation, seamless integrations, and a smoother user experience. This release empowers teams with credential-free S3 access via EC2 roles, incremental imports for faster data syncs, and real-time admin notifications for better collaboration. With enhanced LLM controls, refined confidence filtering, and polished UI interactions, version 7.5 makes managing, annotating, and optimizing AI projects more effortless than ever.</p>
+<p>This release focuses on enabling teams to perform unbiased, large-scale LLM comparisons, streamline annotation workflows, and improve both the usability and clarity of analytics across the platform. With the introduction of Blind LLM Response Comparison, a new BertForTokenClassifier training option, and a wide range of UI/UX refinements and stability improvements, 7.6.0 enhances accuracy, transparency, and efficiency across every stage of the AI development lifecycle.</p>
 
-  <h3 id="support-for-ec2-instance-role-based-access-to-s3-for-import-and-export">Support for EC2 Instance Role-Based Access to S3 for Import and Export</h3>
+<p>Whether you’re evaluating multiple foundation models, training high-performance NER pipelines, or managing complex annotation teams, this release provides the tools needed to build regulatory-grade, auditable, and scalable human-in-the-loop workflows.</p>
 
-  <p><strong>What’s New</strong>: Generative AI Lab <strong>7.5</strong> introduces seamless, AWS-native S3 access by using the <strong>IAM role attached to the hosting EC2 instance</strong>. Users no longer need to enter or store S3 credentials for import/export operations — the platform authenticates automatically using the instance role, simplifying the workflow and reducing credential-related security risks.</p>
+<h2 id="unbiased-multi-model-assessment-with-blind-llm-response-comparison">Unbiased Multi-Model Assessment with Blind LLM Response Comparison</h2>
+<p>Generative AI Lab <strong>7.6.0</strong> introduces a major capability designed for teams comparing the performance of several large language models: <strong>Blind LLM Response Comparison</strong>. This new project type enables the evaluation responses from <strong>two or more LLMs</strong> without revealing which model produced each answer, allowing fair, unbiased assessment at scale.</p>
 
-  <p><strong>Technical Details:</strong></p>
-  <ul>
-    <li>The <strong>import</strong> and <strong>export</strong> logic has been enhanced to automatically use the <strong>instance’s IAM role</strong> when interacting with S3.</li>
-    <li>User-entered credentials are no longer required for S3 operations.</li>
-    <li>The system securely accesses designated S3 buckets configured under <strong>AWS IAM policies</strong>.</li>
-    <li>Implementation follows <strong>AWS security best practices</strong>, including the <strong>least-privilege principle</strong>, ensuring only necessary permissions are granted.</li>
-    <li>
-      <p>The workflow for importing or exporting data remains unchanged; users simply select the S3 bucket, and the platform handles authentication automatically.</p>
+<p>This feature supports a broad range of evaluation workflows from automated response generation to uploading outputs from external systems while providing a redesigned review interface tailored for multi-model comparisons.</p>
 
-      <p><img src="/assets/images/annotation_lab/7.5.0/1.gif" alt="IAMImport" /></p>
-    </li>
-  </ul>
+<h3 id="technical-details"><strong>Technical Details</strong></h3>
 
-  <p><strong>User Benefits:</strong></p>
-  <ul>
-    <li><strong>Simplified workflow</strong> - eliminates the need to repeatedly enter and manage S3 credentials.</li>
-    <li><strong>Enhanced security</strong> - reduces the risk of exposed or misconfigured credentials.</li>
-    <li><strong>AWS-native integration</strong> - leverages IAM roles for secure and scalable access management.</li>
-    <li><strong>Improved reliability</strong> - minimizes import/export errors related to credential handling.</li>
-    <li><strong>Reduced support overhead</strong> - fewer configuration and troubleshooting steps for teams.</li>
-  </ul>
+<ul>
+  <li>
+    <p><strong>New Project Type: Blind LLM Response Comparison</strong></p>
 
-  <p><strong>Example Use Case:</strong>
-An organization hosts Generative AI Lab on an <strong>EC2 instance</strong> configured with an <strong>IAM role</strong> that grants read/write permissions to specific <strong>S3 buckets</strong>.</p>
+    <p>A dedicated configuration flow enables users to select <strong>any number of connected LLM endpoints</strong>, removing the former limitation of comparing only two models. Popular LLMs, along with responses generated from Custom and organization-specific LLM services, are fully supported for evaluation.</p>
+  </li>
+</ul>
 
-  <p>When users import datasets or export annotated projects, the platform seamlessly accesses the corresponding S3 buckets using the IAM role, with no manual credential entry needed.</p>
+<p><img src="/assets/images/annotation_lab/7.6.0/1.gif" alt="760image" /></p>
 
-  <p>This ensures a faster, safer, and more consistent data management experience.</p>
+<ul>
+  <li>
+    <p><strong>Flexible Prompt Importing</strong></p>
 
-  <h3 id="support-incremental-imports-from-s3-buckets-avoid-re-importing-existing-files">Support Incremental Imports from S3 Buckets (Avoid Re-importing Existing Files)</h3>
+    <p>Prompts or questions can be imported individually or in bulk using <code class="language-plaintext highlighter-rouge">.json</code> or <code class="language-plaintext highlighter-rouge">.txt</code> formats.
+Example JSON prompt:
+<code class="language-plaintext highlighter-rouge">{ "text": "What are some of the symptoms seen in a person suffering from sepsis?" }</code>
+The system accepts a variable number of responses for each prompt, whether generated within Generative AI Lab or responses that are imported in GenAI Lab.</p>
+  </li>
+</ul>
 
-  <p><strong>What’s New:</strong> Generative AI Lab <strong>7.5</strong> adds incremental imports to the <strong>S3 import workflow</strong>, so only new files are brought into a project. The importer now detects files already present in the project and skips them automatically, preventing duplicate tasks and cutting import time.</p>
+<p><img src="/assets/images/annotation_lab/7.6.0/2.gif" alt="760image" /></p>
 
-  <p>This smarter import behavior produces faster, cleaner imports with clear feedback on how many files were added versus skipped — no extra setup required.</p>
+<ul>
+  <li>
+    <p><strong>Support for External Responses</strong></p>
 
-  <p><strong>Technical Details:</strong></p>
-  <ul>
-    <li>The import process now compares <strong>file names</strong> against existing task names within the project.</li>
-    <li>Files already imported are <strong>skipped automatically</strong>, preventing duplicates.</li>
-    <li>The <strong>import summary message</strong> clearly indicates how many new files were imported and how many were skipped.</li>
-    <li>The enhancement is fully <strong>backward compatible</strong>, existing projects and import configurations continue to function without any changes.</li>
-    <li>No modification is required on the user’s part; the system handles this logic seamlessly.</li>
-  </ul>
+    <p>Imported datasets may include model outputs produced outside Generative AI Lab, as long as they follow the supported JSON structure. During import, the system validates the format and correctly associates each response with its corresponding prompt, enabling flexible, mixed-source evaluation workflows.</p>
+  </li>
+  <li>
+    <p><strong>Blind &amp; Randomized Response Display</strong></p>
 
-  <p><img src="/assets/images/annotation_lab/7.5.0/2.gif" alt="IncrementalImport" /></p>
+    <p>Responses appear in <strong>random order</strong> and each response is labeled with generic identifiers (e.g., “Response A”, “Response B”).
+Model identities remain hidden from annotators. Internally, a secure mapping is stored and can be viewed by project managers while accessing analytics, but never exposed during labeling.</p>
+  </li>
+</ul>
 
-  <p><strong>User Benefits:</strong></p>
-  <ul>
-    <li><strong>Eliminates duplication</strong> - prevents re-importing files that are already part of the project.</li>
-    <li><strong>Faster imports</strong> - only new or updated files are processed.</li>
-    <li><strong>Clear feedback</strong> - users receive precise information on how many files were imported and skipped.</li>
-    <li><strong>Improved efficiency</strong> - reduces unnecessary computation and improves project organization.</li>
-    <li><strong>Hassle-free transition</strong> - no additional setup or configuration needed for existing projects.</li>
-  </ul>
+<p><img src="/assets/images/annotation_lab/7.6.0/3.gif" alt="760image" /></p>
 
-  <h3 id="example-use-case"><strong>Example Use Case:</strong></h3>
-  <p>A user initially imports <strong>10 documents</strong> from an S3 bucket. Later, <strong>5 more documents</strong> are added to the same bucket. When re-importing, Generative AI Lab automatically detects the existing 10 files and imports only the <strong>5 new ones</strong>.</p>
+<ul>
+  <li>
+    <p><strong>Enhanced Annotation Interface</strong></p>
+
+    <p>To accommodate multiple LLM answers, the annotation screen uses <strong>scrollable panes</strong>, <strong>collapsible response sections</strong>, and <strong>fullscreen view</strong>, making it easier to navigate and compare more than two answers without clutter. Annotators can expand or hide responses based on their review style.</p>
+  </li>
+</ul>
+
+<p><img src="/assets/images/annotation_lab/7.6.0/4.gif" alt="760image" /></p>
+
+<ul>
+  <li>
+    <p><strong>Expanded Analytics for Multi-Model Comparison</strong></p>
+
+    <p>The Analytics dashboard now supports detailed comparisons across two or more LLMs, enabling teams to analyze performance differences with greater precision. Enhanced filtering options allow users to narrow the view to specific models, model combinations, or evaluation criteria, making it easier to uncover strengths, weaknesses, and behavioral patterns across LLMs.</p>
+
+    <p>Users can interactively refine the displayed data by <strong>toggling LLM names directly from the bar-graph legend</strong> or by <strong>selecting specific LLMs from the dropdown filter</strong>. This allows focused analysis on individual models or direct comparisons between selected LLMs, rather than viewing the entire dataset at once.</p>
+  </li>
+</ul>
+
+<p><img src="/assets/images/annotation_lab/7.6.0/5.gif" alt="760image" /></p>
+
+<ul>
+  <li>
+    <p><strong>Mandatory Classifications Across LLM Evaluation Templates</strong></p>
+
+    <p>LLM evaluation project templates now enforce mandatory classification selections to maintain consistency and prevent incomplete task submissions. A response cannot be submitted until at least one choice option is selected, ensuring evaluators always provide a definitive classification. This requirement applies not only to <strong>Blind LLM Response Comparison</strong> but also to other evaluation-oriented templates, including <strong>LLM Evaluation</strong> and <strong>LLM Response Comparison</strong> for both <strong>Text</strong> and <strong>HTML</strong> project types.</p>
+
+    <p>This functionality is enabled by the <code class="language-plaintext highlighter-rouge">required="true"</code> attribute automatically included in all <code class="language-plaintext highlighter-rouge">&lt;Choice&gt;</code> elements within the default XML templates. Administrators may modify the XML configuration if optional selections are preferred for their workflow.</p>
+  </li>
+</ul>
+
+<h3 id="user-benefits"><strong>User Benefits</strong></h3>
+
+<ul>
+  <li><strong>Unbiased Model Assessment</strong> – Blind review ensures annotations and judgments are not influenced by model vendor or expectations.</li>
+  <li><strong>Scalable Multi-Model Evaluation</strong> – Supports multiple LLM endpoints, accommodating internal, external, or custom models.</li>
+  <li><strong>Flexible Data Handling</strong> – Works seamlessly with system-generated responses and externally produced outputs.</li>
+  <li><strong>Improved Usability</strong> – A modernized annotation view makes multi-model comparison practical, even with large sets of responses.</li>
+  <li><strong>Deeper Insights</strong> – Enhanced analytics help teams pinpoint which models perform best under specific prompts or criteria.</li>
+</ul>
+
+<h3 id="example-use-case"><strong>Example Use Case</strong></h3>
+
+<p>A research team wants to evaluate five LLMs, one hosted on SageMaker, and different models offered by OpenAI, Azure OpenAI, and Claude. They import a set of prompts, upload external responses for some models, generate responses for others, and begin review.</p>
+
+<p>Annotators see randomized, anonymized answers, while project managers access full analytics showing how each model performed across accuracy, completeness, and other criteria. The Blind LLM Response Comparison workflow ensures evaluation results remain fair, structured, and scalable.</p>
+
+<h2 id="ner-training-approach--support-for-bertfortokenclassifier-training">NER Training Approach – Support for BertForTokenClassifier Training</h2>
+<p>A new NER Training Approach option has been introduced, enabling users to train NER models using the BertForTokenClassifier pipeline. This enhancement leverages the licensed model training architecture and offers greater flexibility and accuracy for advanced NER tasks.</p>
+
+<p><strong>What’s New</strong></p>
+
+<p>Users can now choose between MedicalNER (existing approach) and the new BertForTokenClassifier method when training NER models. This unlocks the ability to train transformer-based token classification models directly within the platform, with optimized defaults and GPU support for faster processing.</p>
+
+<p><img src="/assets/images/annotation_lab/7.6.0/6.png" alt="760image" /></p>
+
+<p><strong>Technical Details</strong></p>
+
+<ul>
+  <li><strong>New Training Parameter Added:</strong><br />
+<code class="language-plaintext highlighter-rouge">NER Training Approach</code> with two options:
+    <ul>
+      <li><strong>MedicalNER</strong> (default / existing)</li>
+      <li><strong>BertForTokenClassifier</strong> (new)</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Visible for Healthcare License Types:</strong><br />
+The new parameter appears only for customers using a <strong>Healthcare</strong> license, as it leverages the licensed training pipeline.</p>
+  </li>
+  <li><strong>Automatic Learning Rate Adjustment:</strong><br />
+When <strong>BertForTokenClassifier</strong> is selected, the system automatically reduces the learning rate from:
+    <ul>
+      <li><strong>0.001 → 0.00002</strong></li>
+    </ul>
+  </li>
+  <li><strong>No Embeddings Required:</strong><br />
+The BertForTokenClassifier pipeline <strong>does not use embeddings</strong>.
+    <ul>
+      <li>If users switch back to <strong>MedicalNER</strong> or <strong>Open-Source NER</strong>, they must <strong>re-select the appropriate embeddings</strong>.</li>
+    </ul>
+  </li>
+  <li><strong>GPU Support Enabled for NER Training:</strong><br />
+Training with BertForTokenClassifier is more compute-intensive than MedicalNER.
+    <ul>
+      <li><strong>GPU execution is now supported and recommended</strong> for this training approach.</li>
+      <li>Previously, GPU usage was only available for Visual NER projects.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>User Benefits</strong></p>
+
+<ul>
+  <li>
+    <p><strong>Greater Flexibility:</strong><br />
+Choose between fast MedicalNER training or the more powerful BertForTokenClassifier approach.</p>
+  </li>
+  <li>
+    <p><strong>Higher Accuracy for Complex Tasks:</strong><br />
+Transformer-based models improve performance on advanced NER workloads.</p>
+  </li>
+  <li>
+    <p><strong>Optimized Training Defaults:</strong><br />
+Automatic learning rate tuning reduces configuration steps.</p>
+  </li>
+  <li>
+    <p><strong>GPU-Accelerated Training:</strong><br />
+Enables significantly faster training for larger datasets.</p>
+  </li>
+  <li>
+    <p><strong>Smooth Workflow:</strong><br />
+Clear switching between approaches with guidance for embedding requirements.</p>
+  </li>
+</ul>
+
+<p><strong>Example Use Case</strong></p>
+
+<p>A data scientist wants to improve accuracy for clinical NER tasks involving complex entity boundaries. They select <strong>BertForTokenClassifier</strong> under the NER Training Approach. The system configures the optimized learning rate automatically, and training is performed efficiently on a GPU instance.<br />
+Later, if they revert to MedicalNER, they simply re-select the suitable embeddings for the model.</p>
+
+<hr />
+
+<h2 id="improvements">Improvements</h2>
+
+<h3 id="analytics-charts-updates">Analytics Charts Updates:</h3>
+
+<h4 id="minimize-the-need-for-annotator-selection-in-inter-annotator-charts">Minimize the Need for Annotator Selection in Inter-Annotator Charts</h4>
+<p><strong>What’s Improved:</strong><br />
+The Inter-Annotator Charts page now offers a more streamlined workflow by reducing repetitive annotator selections. Previously, every chart required users to manually pick one or two annotators, making the process time-consuming. Especially when reviewing multiple charts in sequence.
+With this enhancement, annotators’ selection is now centralized and intelligently retained across all IAA charts, ensuring a smoother and more consistent analysis experience. Individual charts also load their data when available.</p>
+
+<p><strong>Technical Details:</strong></p>
+<ul>
+  <li>A <strong>global annotators selector</strong> has been introduced at the top of the Inter-Annotator Charts page.</li>
+  <li>The <strong>global selection automatically applies to all IAA charts</strong>, minimizing repeated manual input for IAA charts.</li>
+  <li>A <strong>default annotator</strong> is pre-selected to simplify initial chart loading.</li>
+  <li>The selected annotator(s) are <strong>retained across navigation and refresh</strong>, improving continuity during analysis.</li>
+</ul>
+
+<p><img src="/assets/images/annotation_lab/7.6.0/7.gif" alt="Pre-selected initial chart loading" /></p>
+
+<p><strong>User Benefits:</strong></p>
+<ul>
+  <li><strong>Consistent interactions:</strong> Annotator selections persist across the entire IAA charts.</li>
+  <li><strong>Greater efficiency</strong> — default pre-selection speeds up chart loading.</li>
+  <li><strong>Flexibility</strong> – All charts can still be individually customized when needed.</li>
+  <li><strong>Smoother workflow:</strong> Ideal for reviewing multiple charts quickly and efficiently.</li>
+</ul>
+
+<p><strong>Example Use Case:</strong><br />
+A project manager reviewing multiple Inter-Annotator charts selects Annotator A and Annotator B once using the new global selector, and all charts automatically update with this choice. The selection persists across all IAA charts, allowing fast and consistent comparison without repeated manual input.</p>
+
+<p><img src="/assets/images/annotation_lab/7.6.0/8.gif" alt="Global selection automatically applies to IAA all charts" /></p>
+
+<h4 id="improved-context-visibility-in-prediction-vs-ground-truth-comparison">Improved Context Visibility in Prediction vs Ground Truth Comparison</h4>
+<p><strong>What’s Improved:</strong><br />
+The Prediction vs Ground Truth comparison table now provides sentence-level context to make review and error analysis clearer and more intuitive. Previously, predictions and annotations were shown without surrounding text, making it harder for reviewers to understand where each token or label appeared in the original content.</p>
+
+<p>With this enhancement, a new <strong>Context</strong> column has been added to the comparison view, offering meaningful context for every prediction–ground truth pair.</p>
+
+<p><strong>Technical Details:</strong></p>
+<ul>
+  <li>A new <strong>Context</strong> column is displayed in the <em>Prediction vs Ground Truth</em> table.</li>
+  <li>When sentence boundaries are unavailable, the system automatically extracts a <strong>±20-token context window</strong> around the token.</li>
+  <li>The context column is available <strong>both in the UI</strong> and <strong>in exported reports</strong>, ensuring consistent review clarity across platforms.</li>
+</ul>
+
+<p><img src="/assets/images/annotation_lab/7.6.0/9.gif" alt="760image" /></p>
+
+<p><strong>User Benefits</strong></p>
+<ul>
+  <li><strong>Better Readability:</strong> Reviewers can immediately understand the text surrounding a token or label.</li>
+  <li><strong>Faster Error Analysis:</strong> Context helps identify why certain prediction mismatches occurred.</li>
+</ul>
+
+<p><strong>Example Use Case:</strong><br />
+A reviewer checking mismatches can now see the sentence around each token, making it easier to understand whether the model’s prediction makes sense in context.</p>
+
+<h4 id="more-meaningful-metrics">More Meaningful Metrics</h4>
+<p><strong>What’s Improved:</strong> 
+The Analytics charts have been updated to deliver clearer, cleaner, and more user-friendly visualizations. Previously, charts showed floating-point values even when they weren’t meaningful, and some charts displayed auto-generated labels like <em>bar1</em> or <em>chart2</em>, which created visual clutter.</p>
+
+<p><strong>Technical Details:</strong></p>
+<ul>
+  <li>Floating-point values now appear <strong>only</strong> on charts that display average-based metrics.</li>
+  <li>Unnecessary autogenerated labels such as <em>bar1</em> and <em>chart2</em> have been removed.</li>
+  <li>Units (e.g., <strong>seconds, labels</strong>) are now included in both the <strong>tooltip</strong> and <strong>y-axis</strong>, improving readability and context.</li>
+</ul>
+
+<p><img src="/assets/images/annotation_lab/7.6.0/10.gif" alt="760image" /></p>
+
+<p><strong>User Benefits</strong></p>
+<ul>
+  <li><strong>Cleaner charts:</strong> Users can interpret visual data more quickly without distracting labels.</li>
+  <li><strong>Better consistency:</strong> Only relevant charts show decimal values, reducing confusion.</li>
+  <li><strong>Improved clarity:</strong> Units added to tooltips and axes make chart values more understandable at a glance.</li>
+</ul>
+
+<p><strong>Example Use Case:</strong></p>
+
+<p>A user reviewing project performance opens the <em>Task Completion Time</em> chart. Previously, the chart showed long decimal values and confusing labels like <em>chart2</em>, making it harder to interpret. Now, the chart displays clean whole numbers with <strong>“seconds”</strong> clearly shown on the y-axis and tooltip, allowing the user to quickly understand the timing data without distractions.</p>
+
+<h4 id="choices-chart-now-shows-actual-provider-names">Choices Chart Now Shows Actual Provider Names</h4>
+<p><strong>What’s Improved:</strong><br />
+The Choices chart in Blind Evaluation Analytics now displays the <strong>actual provider names</strong> instead of generic labels like <em>Response 1, Response 2</em>, making it much easier for users to interpret which provider’s output was selected during evaluation.</p>
+
+<p><strong>Technical Details:</strong></p>
+<ul>
+  <li>The chart now maps each choice directly to its <strong>corresponding provider</strong>, removing ambiguity.</li>
+  <li>Users no longer need to manually cross-reference response numbers with providers.</li>
+</ul>
+
+<p><img src="/assets/images/annotation_lab/7.6.0/11.png" alt="760image" /></p>
+
+<p><strong>User Benefits</strong></p>
+<ul>
+  <li><strong>Clearer Insights:</strong> Users can instantly identify which provider was preferred.</li>
+  <li><strong>Better Comparisons:</strong> Makes evaluation patterns more meaningful and easier to analyze.</li>
+</ul>
+
+<p><strong>Example Use Case:</strong><br />
+A reviewer analyzing provider performance can now look at the Choices chart and immediately see that “OpenAI” or “Claude” was selected most often, instead of trying to decode which response number mapped to which provider. This makes evaluating provider quality faster and more accurate.</p>
+
+<h3 id="support-for-multiple-pie-charts-outside-the-evaluation-block">Support for Multiple Pie Charts Outside the Evaluation Block</h3>
+<p><strong>What’s Improved:</strong><br />
+Previously, analytics could only render a single pie chart for elements placed outside the <strong>Evaluation Block</strong>, causing missing or incomplete visualizations in projects with custom configurations. This limitation made it difficult for users to analyze additional classification fields when positioned outside the evaluation structure.</p>
+
+<p><strong>Technical Details:</strong></p>
+<ul>
+  <li>The system now supports <strong>multiple pie charts</strong> even when they are defined outside the Evaluation Block.</li>
+  <li>All classification elements placed outside the block are now correctly visualized as individual charts.</li>
+  <li>Projects with custom analytics layouts can display all relevant charts without restriction.</li>
+</ul>
+
+<p><img src="/assets/images/annotation_lab/7.6.0/12.gif" alt="760image" /></p>
+
+<p><strong>User Benefits</strong></p>
+<ul>
+  <li><strong>Greater Flexibility:</strong> Custom project configurations now work seamlessly with analytics.</li>
+  <li><strong>More Complete Insights:</strong> Users can view every classification chart without elements being skipped or overwritten.</li>
+</ul>
+
+<p><strong>Example Use Case:</strong><br />
+A project using custom fields that are outside the Evaluation Block can now display a separate pie chart for each field. This allows reviewers to analyze all classification metrics without losing visibility due to previous single-chart limitations.</p>
+
+<hr />
+
+<h3 id="clearer-more-clickable-role-options-in-team-member-settings">Clearer, More Clickable Role Options in Team Member Settings</h3>
+<p><strong>What’s Improved:</strong><br />
+The Team Member page has been updated to make role options—<strong>Annotator</strong>, <strong>Reviewer</strong>, and <strong>Manager</strong>—clearly appear selectable. Previously, the light text styling made these roles look disabled or non-interactive, which created confusion for users assigning team roles.</p>
+
+<p><strong>Technical Details:</strong></p>
+<ul>
+  <li>Role options now use a <strong>darker, more prominent text style</strong>, making them clearly visible and intuitively clickable.</li>
+  <li>When a user is selected, the corresponding role text becomes even more distinct, giving immediate visual confirmation of selection.</li>
+</ul>
+
+<p><img src="/assets/images/annotation_lab/7.6.0/13.gif" alt="760image" /></p>
+
+<h4 id="user-benefits-1"><strong>User Benefits</strong></h4>
+<ul>
+  <li><strong>Better Usability:</strong> Users can now confidently identify which roles are interactive.</li>
+  <li><strong>Reduced Confusion:</strong> The updated styling eliminates the impression that role checkboxes are disabled.</li>
+</ul>
+
+<h3 id="credential-visibility-toggle-added-for-s3-and-azure-imports">Credential Visibility Toggle Added for S3 and Azure Imports</h3>
+<p><strong>What’s Improved:</strong><br />
+Users can now toggle the visibility of their S3 and Azure credentials during task import, making it easier to verify input values and avoid errors. Previously, credentials were always masked, which often led to mistakes that were difficult to detect.</p>
+
+<p><strong>Technical Details:</strong></p>
+<ul>
+  <li>An <strong>eye icon</strong> has been added to the S3 and Azure credential fields.</li>
+  <li>Users can <strong>switch between hidden and visible text</strong>, ensuring credentials are entered correctly.</li>
+  <li>Enhances clarity and reduces back-and-forth corrections during configuration.</li>
+</ul>
+
+<p><img src="/assets/images/annotation_lab/7.6.0/14.gif" alt="760image" /></p>
+
+<p><strong>User Benefits</strong></p>
+<ul>
+  <li><strong>Improved Usability:</strong> Users can confirm the accuracy of credentials instantly.</li>
+  <li><strong>Fewer Input Errors:</strong> Mis-typed keys are now easy to spot before submission.</li>
+</ul>
+
+<p><strong>Example Use Case:</strong><br />
+A user configuring task import for an S3 bucket can click the eye icon to briefly reveal the access key and confirm it’s typed correctly, preventing import failures caused by hidden credential typos.</p>
+
+<h3 id="custom-llm-names-are-now-automatically-made-unique">Custom LLM Names Are Now Automatically Made Unique</h3>
+<p><strong>What’s Improved:</strong><br />
+Users were previously able to create multiple custom LLMs with the same name, leading to confusion in the “Select LLM Response Providers” tab, where identical labels made it hard to tell providers apart.</p>
+
+<p><strong>Technical Details:</strong></p>
+<ul>
+  <li>The platform automatically assigns a unique sequential Custom name for every Custom LLM created(e.g., <em>Custom_1, Custom_2, Custom_3</em>).</li>
+  <li>The system now checks for existing custom LLM names when a new one is created.</li>
+</ul>
+
+<p><img src="/assets/images/annotation_lab/7.6.0/15.gif" alt="760image" /></p>
+
+<p><strong>User Benefits</strong></p>
+<ul>
+  <li><strong>Improved Clarity:</strong> Users can easily identify each custom LLM without encountering duplicate names.</li>
+  <li><strong>Smoother Setup:</strong> Reduces mistakes and confusion during project configuration.</li>
+</ul>
+
+<p><strong>Example Use Case:</strong></p>
+
+<p>A user creating multiple custom LLMs now has a unique name automatically applied, making it easy to distinguish them in the Select LLM Response Providers tab.</p>
+
+<h3 id="prevent-multiple-sample-task-actions-during-import">Prevent Multiple Sample Task Actions During Import</h3>
+
+<p><strong>What’s Improved:</strong><br />
+The <strong>Add Sample Task</strong> button in Visual NER projects is now disabled while tasks are being imported. Previously, users could click the button repeatedly, affecting the application’s performance. A dialog box now alerts users that the task import is in progress.</p>
+
+<p><strong>Technical Details:</strong></p>
+<ul>
+  <li>The Add Sample Task button is disabled during task import.</li>
+  <li>A dialog box informs the user that tasks are being imported.</li>
+  <li>The button is re-enabled once the import completes.</li>
+</ul>
+
+<p><img src="/assets/images/annotation_lab/7.6.0/16.gif" alt="760image" /></p>
+
+<p><strong>User Benefits:</strong></p>
+<ul>
+  <li><strong>Improved Stability:</strong> Prevents repeated clicks from affecting the application.</li>
+  <li><strong>Clear Feedback:</strong> Users are informed that the import is in progress.</li>
+</ul>
+
+<p><strong>Example Use Case:</strong><br />
+A user importing tasks into a Visual NER project can no longer click the Add Sample Task button multiple times. The dialog box confirms the import is in progress, preventing errors and confusion.</p>
+
+<h3 id="enable-left-navigation-bar-expansion-on-hover">Enable Left Navigation Bar Expansion on Hover</h3>
+<p><strong>What’s Improved:</strong><br />
+The left navigation bar now expands automatically when users hover over it, making navigation faster and more intuitive. Previously, users had to click to open the menu, which added unnecessary steps during frequent navigation.</p>
+
+<p><strong>Technical Details:</strong></p>
+<ul>
+  <li>The navigation bar expands instantly when the cursor hovers over it and collapses smoothly when the cursor moves away.</li>
+  <li>No clicks are required, creating a more fluid and responsive interaction.</li>
+  <li>A subtle animation is applied to ensure a clean and polished transition.</li>
+</ul>
+
+<p><img src="/assets/images/annotation_lab/7.6.0/17.gif" alt="760image" /></p>
+
+<h4 id="user-benefits-2"><strong>User Benefits</strong></h4>
+<ul>
+  <li><strong>Faster Navigation:</strong> Users can access menu items more quickly, especially during repetitive workflows.</li>
+  <li><strong>Better Usability:</strong> The UI feels more responsive and reduces extra clicks.</li>
+</ul>
+
+<p><strong>Note:</strong><br />
+This functionality applies <strong>only to the Customize Labels page and the Labelling page</strong>.</p>
+
+<h3 id="bug-fixes">Bug Fixes</h3>
+
+<h4 id="labeling-page-issues">Labeling Page Issues</h4>
+<ul>
+  <li><strong>Long Project Names Overlap in Breadcrumb Navigation</strong></li>
+</ul>
 
-  <p>This process saves time, prevents redundancy, and keeps project data clean and consistent.</p>
+<p>Fixed an issue where long project names caused breadcrumb links to overlap or spill into adjacent navigation elements. Breadcrumbs now dynamically adjust and truncate appropriately, ensuring clean and readable navigation across all project types.</p>
+
+<ul>
+  <li><strong>Pixelated Label Names in Visual NER Annotations</strong></li>
+</ul>
+
+<p>Resolved an issue where annotated label names in Visual NER tasks appeared blurry or pixelated. The annotation window now renders labels sharply, improving clarity and overall annotation accuracy.</p>
 
-  <blockquote>
-    <p><strong>Note:</strong> Incremental import applies only when <strong>Saved Credentials</strong> are used.
-If the saved credentials or import path are modified, all files in the bucket will be re-imported as a new batch.</p>
-  </blockquote>
+<ul>
+  <li><strong>“Annotation Guidelines” Shown for Projects Without Labels</strong></li>
+</ul>
 
-  <h2 id="admin-notifications-for-analytics-and-llm-requests">Admin Notifications for Analytics and LLM Requests</h2>
+<p>Previously, the Annotation Guidelines toggle appeared for all project types, including those without label definitions. The toggle is now shown only when at least one label includes annotation instructions, ensuring a cleaner and more relevant user interface.</p>
 
-  <p><strong>What’s New:</strong> Generative AI Lab <strong>7.5</strong> adds real-time notifications for <strong>Analytics</strong> and <strong>LLM requests</strong>, automatically alerting admin users when new requests are created. This gives admins immediate visibility into ongoing activities, enabling faster coordination and monitoring without any manual handoffs.</p>
+<ul>
+  <li><strong>Gestures Allowed Zooming Into Blank Spaces</strong></li>
+</ul>
 
-  <p><strong>Technical Details:</strong></p>
-  <ul>
-    <li>Implemented <strong>automated notification triggers</strong> for Analytics and LLM requests.</li>
-    <li>Notifications are sent <strong>only to admin users</strong> for better control and clarity.</li>
-    <li>Notifications are delivered <strong>in real time</strong>, ensuring immediate awareness of new requests.</li>
-    <li>Enables <strong>faster coordination</strong> between users and admins without any manual steps.</li>
-  </ul>
+<p>Fixed an issue where gesture-based zooming allowed users to zoom into empty or whitespace areas, particularly in PDF and image-based projects. The zoom behavior now correctly focuses only on valid content regions across all project types.</p>
 
-  <p><img src="/assets/images/annotation_lab/7.5.0/3.png" alt="750image" /></p>
+<ul>
+  <li><strong>Discrepancy in Visual NER After Labeling Multiline Tokens</strong></li>
+</ul>
 
-  <p><strong>User Benefits:</strong></p>
-  <ul>
-    <li><strong>Automatic notifications</strong> - No need for users to manually inform admins about new requests.</li>
-    <li><strong>Improved visibility</strong> - Admins stay up to date on all Analytics and LLM activities.</li>
-    <li><strong>Faster coordination</strong> - Enables quicker reviews, approvals, and responses.</li>
-    <li><strong>Operational transparency</strong> - Keeps teams aligned and informed.</li>
-  </ul>
+<p>Addressed a discrepancy where multiline token annotations displayed or behaved inconsistently in Visual NER projects. Multiline annotations now render and behave as expected across all scenarios.</p>
 
-  <p><strong>Example Use Case:</strong><br />
-A user submits a new <strong>Analytics request</strong> to generate insights for their project. The assigned <strong>admins are instantly notified</strong>, allowing them to review and manage the request promptly.</p>
+<ul>
+  <li><strong>Annotation Guidelines Hidden on Smaller Screens</strong></li>
+</ul>
 
-  <p><img src="/assets/images/annotation_lab/7.5.0/4.gif" alt="IAMImport" /></p>
+<p>Resolved a layout issue where the Annotation Guidelines section was clipped or hidden on smaller screens. The section now responds appropriately to screen size and remains fully visible.</p>
 
-  <h3 id="improvements">Improvements</h3>
+<ul>
+  <li><strong>UI Error When Interchanging Labels and Regions in Side-by-Side Projects</strong></li>
+</ul>
 
-  <h3 id="accurate-relation-filtering-based-on-confidence-score">Accurate Relation Filtering Based on Confidence Score</h3>
+<p>Fixed a UI error that occurred when users interchanged labels and regions on the labeling page for side-by-side projects. The page now renders correctly and supports smooth interaction with no functional disruptions.</p>
 
-  <p><strong>What’s New:</strong></p>
+<ul>
+  <li><strong>Deleting the First Annotation Removes Overlapping Annotations in HTML Projects</strong></li>
+</ul>
 
-  <p>Generative AI Lab <strong>7.5</strong> improves confidence-based filtering so that relations follow the same confidence thresholds as their associated labels. Relations that fall outside the selected confidence range are now excluded, delivering consistent, accurate views of predictions and reducing reviewer confusion.</p>
+<p>Fixed an issue in HTML projects where deleting an annotation inadvertently would remove overlapping annotations. Additional issues were also addressed: Users can now annotate across multiple paragraphs, and they can simultaneously annotate text and HTML tags.</p>
 
-  <p><strong>Technical Details:</strong></p>
+<ul>
+  <li><strong>Annotation Guidelines Button Hidden When Multiple Annotations Are Listed</strong></li>
+</ul>
 
-  <ul>
-    <li>Updated the filtering logic to include <strong>relation confidence scores</strong> alongside labels.</li>
-    <li>Relations below the selected confidence threshold are now <strong>excluded</strong> from the task view.</li>
-    <li>Ensures <strong>real-time synchronization</strong> between label and relation filtering.</li>
-    <li>Improves <strong>annotation accuracy and UI consistency</strong> during review.</li>
-  </ul>
+<p>Fixed an issue where the Annotation Guidelines button became hidden when a long list of annotations was present. The button now remains consistently visible regardless of the number of annotations.</p>
 
-  <p><img src="/assets/images/annotation_lab/7.5.0/5.gif" alt="IAMImport" /></p>
+<ul>
+  <li><strong>Unable to Configure Zoom Tag for B-Box Projects</strong></li>
+</ul>
 
-  <p><strong>User Benefits:</strong></p>
+<p>Resolved an issue preventing users from configuring the <code class="language-plaintext highlighter-rouge">&lt;zoom&gt;</code> tag in B-Box (Bounding Box) project types. The zoom configuration now works correctly across B-Box and other supported project types, enabling proper zoom functionality during annotation.</p>
 
-  <ul>
-    <li><strong>Consistent filtering</strong> - Relations now align with label confidence score filters.</li>
-    <li><strong>Improved clarity</strong> - Reduces confusion caused by partially filtered results.</li>
-    <li><strong>Better accuracy</strong> - Only relevant relations remain visible during high-confidence analysis.</li>
-  </ul>
+<ul>
+  <li><strong>Search Not Working in Visual NER Task Labeling Page</strong></li>
+</ul>
 
-  <p><strong>Example Use Case:</strong></p>
+<p>The search function on the Visual NER task labeling page was not returning results. The issue has been fixed, and users can now successfully search for text within Visual NER tasks.</p>
 
-  <p>A user filters annotations by a <strong>confidence range of 0.9-1.0</strong>.<br />
-Previously, relations with confidence scores below this range (e.g., <strong>0.88</strong>) would still appear.<br />
-Now, such relations are automatically <strong>excluded</strong>, providing a cleaner and more accurate view of confident predictions.</p>
+<ul>
+  <li><strong>Unable to Modify Token Labels Without Deleting Them in Blind Evaluation Projects</strong></li>
+</ul>
 
-  <h3 id="configurable-temperature-and-token-settings-for-all-supported-llms">Configurable Temperature and Token Settings for All Supported LLMs</h3>
+<p>Fixed an issue where users could not modify labels on tokens without deleting them first in Blind Evaluation projects. Token labels can now be updated directly, improving annotation efficiency and usability.</p>
 
-  <p><strong>What’s New:</strong></p>
+<h4 id="ui-issues">UI Issues</h4>
+<ul>
+  <li><strong>Tasks per Page Field Overflows with Large Input</strong></li>
+</ul>
 
-  <p>Generative AI Lab <strong>7.5</strong> adds UI controls for <strong>temperature</strong> and <strong>max token</strong> limits across all supported LLMs (OpenAI, Claude, Azure OpenAI, and Amazon SageMaker). Users can now adjust generation creativity and response length directly in the interface, with settings applied dynamically at request time for consistent, provider-agnostic control.</p>
+<p>Fixed an issue where entering large values (e.g., over 9 digits) in the Tasks per Page field caused overflow, unexpected UI behavior, and pagination instability. The input is now capped at a maximum value of 200, preventing overflow, UI freezing, and maintaining smooth pagination performance.</p>
 
-  <p><strong>Technical Details:</strong></p>
-  <ul>
-    <li>Added <strong>Temperature</strong> and <strong>Max Token</strong> input fields to the UI for all supported LLMs.</li>
-    <li>Applied across key features, including <strong>Task Generation</strong> and <strong>External Prompts</strong>.</li>
-    <li>Configurations are <strong>stored and applied dynamically</strong> during request execution.</li>
-    <li>Supports all providers: <strong>OpenAI</strong>, <strong>Claude</strong>, <strong>Azure</strong>, and <strong>SageMaker</strong>.</li>
-  </ul>
+<ul>
+  <li><strong>Unable to Erase First Character in Input Field for Custom LLM due to Space Validator</strong></li>
+</ul>
 
-  <p><img src="/assets/images/annotation_lab/7.5.0/6.gif" alt="IAMImport" /></p>
+<p>Resolved an issue where users were prevented from deleting the first character in custom LLM input fields because the space validator misinterpreted the action as invalid. Users can now freely delete or modify the first character without restrictions.</p>
 
-  <p><strong>User Benefits:</strong></p>
-  <ul>
-    <li><strong>Fine-tuned control</strong> - Users can customize creativity (temperature) and the response length (tokens).</li>
-    <li><strong>Unified experience</strong> - Same configuration options available across all LLM providers.</li>
-    <li><strong>Enhanced flexibility</strong> - Easily adapt model behavior for diverse project needs.</li>
-  </ul>
+<ul>
+  <li><strong>Labels Selection Triggers by Hotkeys While Entering Custom Value in Characters per Page</strong></li>
+</ul>
 
-  <p><strong>Example Use Case:</strong><br />
-A user generating tasks using <strong>Azure OpenAI</strong> can now set a <strong>temperature of 0.7</strong> for balanced creativity and a <strong>max token limit of 512</strong> to control response length.<br />
-These parameters can be adjusted, helping teams optimize output quality and consistency across different LLMs.</p>
+<p>Addressed an issue where label-selection hotkeys were unintentionally triggered while typing inside the Characters per Page field. Hotkeys are now automatically disabled during input, preventing accidental label selection.</p>
 
-  <p><strong><em>Note:</em></strong>
-<em>-   The <strong>temperature</strong> value ranges from <strong>0 to 1</strong>.</em>
-<em>-   If a user sets the value to <strong>0</strong>, the system automatically applies a <strong>default temperature of 0.7</strong> to maintain optimal model performance.</em></p>
+<ul>
+  <li><strong>Benchmark Button Active When No Benchmark Data Is Available</strong></li>
+</ul>
 
-  <h3 id="dropdown-to-select-predefined-llm-response-names-in-llm-comparison-projects">Dropdown to Select Predefined LLM Response Names in LLM Comparison Projects</h3>
+<p>Previously, the Benchmark button remained enabled even when no benchmark data existed, leading to errors when clicked. The Benchmark button is now hidden when benchmark data is unavailable, preventing invalid interactions and ensuring a clean user experience.</p>
 
-  <p><strong>What’s New:</strong><br />
-Generative AI Lab <strong>7.5</strong> introduces a dropdown for selecting predefined LLM response names in LLM Comparison projects. Choosing names from the list is faster, removes typing errors, and ensures consistent naming across comparisons.</p>
+<ul>
+  <li><strong>“Something Went Wrong” Error When Generating Templatic Augmentation Using OpenAI</strong></li>
+</ul>
 
-  <p><strong>Technical Details:</strong></p>
-  <ul>
-    <li>Added a <strong>dropdown menu</strong> listing all predefined LLM response names.</li>
-    <li>Users can now select a response name directly from the dropdown instead of typing it manually.</li>
-    <li>Fully integrated into LLM Comparison projects for seamless workflow.</li>
-  </ul>
+<p>Fixed an issue where generating templatic augmentation tasks with the OpenAI model redirected users to a generic error page. Users can now generate templatic augmentation tasks successfully without encountering the error page.</p>
 
-  <p><img src="/assets/images/annotation_lab/7.5.0/7.gif" alt="IAMImport" /></p>
+<ul>
+  <li><strong>Unable to Import Augmented Tasks</strong></li>
+</ul>
 
-  <p><strong>User Benefits:</strong></p>
-  <ul>
-    <li><strong>Simplified workflow</strong> - Quickly select response names without typing.</li>
-    <li><strong>Reduced errors</strong> - Eliminates typos and mismatched entries.</li>
-    <li><strong>Faster setup</strong> - Speeds up project configuration and comparison tasks.</li>
-    <li><strong>Improved consistency</strong> - Maintains uniform naming across projects.</li>
-  </ul>
+<p>Resolved a backend validation error that prevented users from importing augmented tasks, resulting in an error toast message during the import process.
+Augmented tasks now import correctly with no errors or interruptions.</p>
 
-  <p><strong>Example Use Case:</strong><br />
-A user creating a <strong>LLM Comparison project</strong>, can now select from a list of predefined response names, using the dropdown. This ensures uniformity across multiple comparisons and reduces manual input errors, saving time and improving project accuracy.</p>
+<ul>
+  <li><strong>“Tasks Uploaded Successfully” Dialog Not Shown During Subsequent Cloud Import</strong></li>
+</ul>
 
-  <h3 id="updated-pop-up-messaging-before-submission">Updated Pop-up Messaging Before Submission</h3>
+<p>Fixed an issue where the success dialog failed to appear during repeated cloud imports. The confirmation dialog now appears reliably for every import attempt, and validation messages correctly display when credentials are missing.</p>
 
-  <p><strong>What’s New:</strong><br />
-Generative AI Lab <strong>7.5</strong> clarifies the submission confirmation pop-up to make the workflow explicit: submitted completions cannot be edited, but users can create a new completion (clone) to make changes. The dialog now includes a <strong>“Don’t show again”</strong> option so experienced users can skip the reminder.</p>
+<ul>
+  <li><strong>Missing Error Message When Generating Templatic Augmentation Without Annotations</strong></li>
+</ul>
 
-  <p><strong>Technical Details:</strong></p>
-  <ul>
-    <li>Updated the <strong>confirmation pop-up message</strong> before submission.</li>
-    <li>Clarifies that <strong>submitted completions cannot be edited</strong>, but new completions can be created for changes.</li>
-    <li>Added a <strong>“Don’t show again”</strong> checkbox for user preference.</li>
-    <li>Applied across all relevant task types in the platform for consistency.</li>
-  </ul>
+<p>Previously, no pop-up message was shown when users attempted to generate templatic augmentation tasks without any annotated labels. The system now displays a clear and informative error message, ensuring users understand why the action cannot proceed.</p>
 
-  <p><img src="/assets/images/annotation_lab/7.5.0/8.png" alt="IAMImport" /></p>
+<h4 id="system-errors">System Errors</h4>
 
-  <p><strong>User Benefits:</strong></p>
+<ul>
+  <li><strong>Admin User Unable to Disable an Existing User Account</strong></li>
+</ul>
 
-  <ul>
-    <li><strong>Clear guidance</strong> - Users understand the correct workflow for editing and creating completions.</li>
-    <li><strong>Reduced confusion</strong> - Eliminates misunderstandings about submission and editing limitations.</li>
-    <li><strong>Improved UX</strong> - Supports smoother task completion and reduces support queries.</li>
-    <li><strong>Optional reminder</strong> - Users can disable the pop-up if preferred.</li>
-  </ul>
+<p>Fixed an issue where admin users were unable to disable an existing user account due to an error being thrown during the action. Admins can now successfully disable user accounts, and disabled users are correctly prevented from accessing the application.</p>
 
-  <p><strong>Example Use Case:</strong></p>
+<ul>
+  <li><strong>Missing Success Popup After LLM Integration</strong></li>
+</ul>
 
-  <p>A first-time annotator submits a completion. The updated pop-up now states:<br />
-<em>“Submitting this completion means it cannot be edited further. To make changes, please create a new completion. Are you sure you want to continue?”</em></p>
+<p>Previously, no confirmation pop-up appeared after successfully integrating an LLM, leaving users unsure whether the process was completed correctly. But now, after a successful LLM integration, a validation pop-up stating “New service provider added” is displayed, confirming successful integration.</p>
 
-  <h3 id="improved-ocr-server-connection-feedback-for-ner-projects">Improved OCR Server Connection Feedback for NER Projects</h3>
+<ul>
+  <li><strong>Error When Creating New Section-Based Rules</strong></li>
+</ul>
 
-  <p>Enhance user experience with clear visual indicators when connecting to an existing OCR server, reducing confusion and preventing duplicate deployment attempts.</p>
+<p>Users were redirected to a “Something went wrong” error page when attempting to create new rules under Relevant Sections in project configuration. The issue has been resolved, and users can now create section-based rules without any errors.</p>
 
-  <p><strong>What’s New:</strong>
-Generative AI Lab 7.5 introduces an improved loading experience for OCR-enabled NER projects. When the Import page is refreshed and an OCR server is already deployed, users now see a <strong>loading spinner</strong> indicating that the OCR server is connecting.</p>
+<ul>
+  <li><strong>Blank Page When Modifying Member Order in a Project</strong></li>
+</ul>
 
-  <p>Additionally, the <strong>“Add Sample Task”</strong> button now displays a <strong>loading state</strong> after being clicked, letting users know the process is in progress.</p>
+<p>Fixed an issue where users were redirected to a blank page after altering the order of members in a project’s team settings. Users can now reorder project members successfully, and changes are saved correctly without triggering any UI or API errors.</p>
 
-  <p><strong>Technical Details:</strong></p>
+<ul>
+  <li><strong>“License in Use” Message Not Displayed for Floating License Conflicts</strong></li>
+</ul>
 
-  <ul>
-    <li>Added a <strong>loading spinner</strong> on the Import page during OCR server connection for NER projects.</li>
-    <li>Disabled the <strong>“Add Sample Task”</strong> button while the OCR server is busy.</li>
-    <li>Implemented a <strong>loading animation</strong> on the button after user interaction.</li>
-    <li>Prevents duplicate OCR deployment attempts by clearly showing connection progress.</li>
-  </ul>
+<p>The “License in use” message was not shown when floating licenses were used across multiple instances, covering scenarios such as: De-identification pipeline used with Visual Classification or OCR/Visual NER models; NER model used with Visual Classification or OCR/Visual NER models. This behavior has now been fixed. The UI correctly displays the “License in use” message in all relevant scenarios, ensuring users are informed of licensing conflicts.</p>
 
-  <p><img src="/assets/images/annotation_lab/7.5.0/9.gif" alt="750Image" /></p>
+<ul>
+  <li><strong>Notification Indicator Visible for Supervisor Even When No Requests Are Pending</strong></li>
+</ul>
 
-  <p><strong>User Benefits:</strong></p>
+<p>Fixed an issue where the notification indicator in the Request Center remained active for Supervisor users despite having no pending requests. Since the Request Center is read-only for Supervisor roles, the notification indicator is now correctly hidden, ensuring the UI reflects the actual request status.</p>
 
-  <ul>
-    <li><strong>Clarity:</strong> Users immediately see when the OCR server is connecting.</li>
-    <li><strong>Efficiency:</strong> Avoids redundant deployment attempts due to unclear server state.</li>
-    <li><strong>Feedback:</strong> Loading indicators provide better understanding of ongoing operations.</li>
-  </ul>
-
-  <h3 id="bug-fixes">Bug Fixes</h3>
-  <ul>
-    <li>
-      <p><strong>Confidence Score Shown in HTML Projects Even When Labeling Options Are Disabled</strong></p>
-
-      <p>Fixed an issue where confidence scores were displayed in HTML projects even when the corresponding labeling option was disabled. The confidence score now only appears when explicitly enabled in project settings, ensuring consistent UI behavior.</p>
-    </li>
-    <li>
-      <p><strong>Import Status Shows Failure When ZIP Contains a PDF File</strong></p>
-
-      <p>The import status now correctly reflects the outcome when a ZIP contains both .txt and .pdf files. All valid .txt tasks are imported successfully, while the .pdf file is skipped and listed as a failed task, with the final status showing correct status.</p>
-    </li>
-    <li>
-      <p><strong>Pre-Annotation Server Deploys Successfully Even When Model Is Unavailable</strong></p>
-
-      <p>Fixed an issue where the pre-annotation server deployment succeeded even when no model was available. The deployment process now validates model availability before proceeding, preventing false-positive success notifications.</p>
-    </li>
-    <li>
-      <p><strong>Assertion Models Cannot Be Deployed Alongside NER Models for Pre-Annotation</strong></p>
-
-      <p>Addressed an issue where assertion models could not be deployed together with NER models for pre-annotation. The system now supports joint deployment of both models, enabling richer pre-annotation capabilities.</p>
-    </li>
-    <li>
-      <p><strong>“Something Went Wrong” Error Appears When Using Delete All Tasks Button</strong></p>
-
-      <p>Fixed a bug that triggered a generic “Something Went Wrong” error when using the Delete All Tasks button. The action now completes successfully, and appropriate success or error messages are displayed.</p>
-    </li>
-    <li>
-      <p><strong>Credentials Not Saved or Masked During Synthetic Task Generation</strong></p>
-
-      <p>Resolved an issue where credentials used for synthetic task generation were not saved or masked. Credentials are now securely stored, masked in the UI, and reused across sessions to enhance usability and security.</p>
-    </li>
-    <li>
-      <p><strong>Coordinates aren’t visible in Bbox Detection project types</strong></p>
-
-      <p>Fixed an issue where bounding box coordinates were not visible in detection-type projects. Coordinates are now displayed correctly, improving annotation visibility and accuracy.</p>
-    </li>
-    <li>
-      <p><strong>Credentials aren’t saved for external providers in “Generate Synthetic Tasks”</strong></p>
-
-      <p>Addressed an issue where credentials for external data providers in Generate Synthetic Tasks were not being saved. Credentials are now persisted securely and reused without requiring re-entry.</p>
-    </li>
-    <li>
-      <p><strong>User is not automatically redirected to logout page after session timeout</strong></p>
-
-      <p>Fixed an issue where users were not redirected to the logout page after session timeout. The system now automatically logs out inactive users and redirects them to the login screen, ensuring session integrity.</p>
-    </li>
-    <li>
-      <p><strong>No Validation Required for Response Name in Labeling config in LLM Response Comparison</strong></p>
-
-      <p>Validation now correctly enforces that the element name must match the response name (response1 or response2) for LLM Response Comparison in HTML project type in visual project configuration mode. Incorrect names are blocked since there is now a drop-down of the response names for these fields.</p>
-    </li>
-    <li>
-      <p><strong>Reviewer Dropdown Fails to Populate After Page Refresh When Assigning Reviewers</strong></p>
-
-      <p>Addressed an issue where the reviewer dropdown failed to populate after refreshing the page during reviewer assignment. Reviewer lists now load correctly after refresh, improving task management flow.</p>
-    </li>
-    <li>
-      <p><strong>Project Owner Missing in Member Order API After Import</strong></p>
-
-      <p>Fixed an issue where the project owner was missing from the Member Order API response after project import. The API now includes the owner field as expected.</p>
-    </li>
-    <li>
-      <p><strong>“Only Assigned” checkbox is not visible when Prediction section is selected</strong></p>
-
-      <p>Resolved a UI issue where the Only Assigned checkbox disappeared when the Prediction section was selected. The checkbox now remains visible and functional across all relevant views.</p>
-    </li>
-    <li>
-      <p><strong>Confirmation dialog box overlapped by Labels section in labelling page while submitting tasks</strong></p>
-
-      <p>Fixed a UI layering issue causing the confirmation dialog box to be overlapped by the labels section during task submission. Dialogs now appear in the correct visual hierarchy.</p>
-    </li>
-    <li>
-      <p><strong>Labeling page flickers when user compares between completions</strong></p>
-
-      <p>Resolved a visual glitch where the labeling page flickered while switching between completions. Completion view is now smooth and stable.</p>
-    </li>
-    <li>
-      <p><strong>User cannot deploy OCR Server if no models are configured in a Project</strong></p>
-
-      <p>Fixed an issue where users were unable to deploy the OCR server if no models were configured in the project. Users can now successfully deploy the OCR server in a Visual NER project even when no models are configured.</p>
-    </li>
-    <li>
-      <p><strong>Internal Server Error When Viewing Newly Uploaded PDF and Image Tasks</strong></p>
-
-      <p>Addressed an issue that caused an internal server error when opening newly uploaded PDF or image tasks. These tasks now render correctly in the viewer without errors.</p>
-    </li>
-    <li>
-      <p><strong>Error during Bulk import of JSON text</strong></p>
-
-      <p>Fixed an issue where bulk importing JSON text resulted in errors. JSON imports are now processed reliably, with improved validation and error handling.</p>
-    </li>
-    <li>
-      <p><strong>User are not able to generate Augmented Task</strong></p>
-
-      <p>Fixed an issue preventing users from generating augmented tasks. Task augmentation executes successfully and reflects the generated results without error.</p>
-    </li>
-  </ul>
+<div class="h3-box">
 
   <h2 id="versions">Versions</h2>
 
 </div>
 
 <ul class="pagination owl-carousel pagination_big">
+    <li class="active"><a href="annotation_labs_releases/release_notes_7_6_0">7.6.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_7_5_1">7.5.1</a></li>
-    <li class="active"><a href="annotation_labs_releases/release_notes_7_5_0">7.5.0</a></li>
+    <li><a href="annotation_labs_releases/release_notes_7_5_0">7.5.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_7_3_3">7.4.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_7_3_3">7.3.3</a></li>
     <li><a href="annotation_labs_releases/release_notes_7_3_1">7.3.1</a></li>
@@ -997,7 +1226,7 @@ Generative AI Lab 7.5 introduces an improved loading experience for OCR-enabled 
     <li><a href="annotation_labs_releases/release_notes_6_10_0">6.10.0</a></li>
 </ul>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2025-10-22T00:00:00+00:00">Oct 22, 2025</time>
+      <time itemprop="dateModified" datetime="2025-11-27T00:00:00+00:00">Nov 27, 2025</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
