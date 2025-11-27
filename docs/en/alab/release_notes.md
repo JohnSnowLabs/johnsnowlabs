@@ -13,7 +13,7 @@ sidebar:
   nav: annotation-lab
 ---
 
-## Generative AI Lab - 7.6.0
+## Generative AI Lab 7.6: Multi Model Blind Evaluation and Advanced NER Training
 Generative AI Lab 7.6.0 delivers one of the most significant upgrades to the evaluation and training workflow to date, introducing powerful new capabilities for multi-model benchmarking, advanced NER training, and deeper analytics insights.
 
 This release focuses on enabling teams to perform unbiased, large-scale LLM comparisons, streamline annotation workflows, and improve both the usability and clarity of analytics across the platform. With the introduction of Blind LLM Response Comparison, a new BertForTokenClassifier training option, and a wide range of UI/UX refinements and stability improvements, 7.6.0 enhances accuracy, transparency, and efficiency across every stage of the AI development lifecycle.
