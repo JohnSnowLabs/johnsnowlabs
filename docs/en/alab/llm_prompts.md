@@ -6,7 +6,7 @@ seotitle: Generative AI Lab | John Snow Labs
 title: LLM Prompts
 permalink: /docs/en/alab/llm_prompts
 key: docs-training
-modify_date: "2023-08-19"
+modify_date: "2025-11-27"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:

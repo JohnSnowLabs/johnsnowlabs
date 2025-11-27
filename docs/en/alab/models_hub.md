@@ -6,7 +6,7 @@ seotitle: Generative AI Lab | John Snow Labs
 title: Models Hub
 permalink: /docs/en/alab/models_hub
 key: docs-training
-modify_date: "2022-12-02"
+modify_date: "2025-11-27"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:

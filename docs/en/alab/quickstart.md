@@ -7,7 +7,7 @@ title: Generative AI Lab&#58; The No-Code Tool for AI Teams
 excerpt: Generative AI Lab is the fastest tool for document annotation. Free No Code AI platform to annotate text, images and PDF.
 permalink: /docs/en/alab/quickstart
 key: docs-quickstart
-modify_date: "2024-03-31"
+modify_date: "2025-11-27"
 header: true
 show_nav: true
 sidebar:
@@ -16,29 +16,72 @@ sidebar:
 
 <div class="main-docs" markdown="1">
 
-<div class="alab-top-wrapper shadow">
-<div class="block-box-inner" markdown="1">
+<div style="text-align: center; margin-bottom: 30px;">
 
-A highly efficient End-to-End No Code NLP platform for all enterprise teams that need to:
-- Interactive Prompt Engineering
-- Annotate Text & Images
-- AI Assisted Annotation
-- Train & Tune NLP Models
-- Models, Rules, and Prompts Hub
-- Manage Projects & Teams
-- Enterprise Security & Privacy
+<h4> A highly efficient End-to-End No Code AI platform for enterprise teams that need to: </h4>
+
+</div>
+
+<div class="block-wrapper block-wrapper-top" style="gap: 20px; margin-bottom: 20px;">
+
+<div class="block-box" markdown="1" style="border: 1px solid #e8f4f8; min-width: 0; flex: 1 1 45%;">
+<h4 style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Annotate Anything</h4>
+
+Annotate text, images, PDFs, video, and audio with human-in-the-loop workflows — then auto-annotate with pre-trained models to speed up labeling by 10x.
+</div>
+
+<div class="block-box" markdown="1" style="border: 1px solid #e8f4f8; min-width: 0; flex: 1 1 45%;">
+<h4 style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Build Custom AI</h4>
+
+Train and tune custom NLP models that learn from your annotations, or design and test prompts for GPT, Claude, and other LLMs interactively.
+</div>
+
+</div>
+
+<div class="block-wrapper block-wrapper-top" style="gap: 20px; margin-bottom: 20px;">
+
+<div class="block-box" markdown="1" style="border: 1px solid #e8f4f8; min-width: 0; flex: 1 1 45%;">
+<h4 style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Evaluate & Compare LLMs</h4>
+
+Run blind evaluations and side-by-side comparisons to choose the right LLM for your task with direct integrations to OpenAI, Anthropic Claude, and Amazon SageMaker.
+</div>
+
+<div class="block-box" markdown="1" style="border: 1px solid #e8f4f8; min-width: 0; flex: 1 1 45%;">
+<h4 style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">De-identify Sensitive Data</h4>
+
+Automatically detect and mask PII/PHI in text using AI-powered models, choose your preferred de-identification strategies, and review results before safely sharing data with third parties for research.
+</div>
+
+</div>
+
+<div class="block-wrapper block-wrapper-top" style="gap: 20px;">
+
+<div class="block-box" markdown="1" style="border: 1px solid #e8f4f8; min-width: 0; flex: 1 1 45%;">
+<h4 style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Stay Secure & Compliant</h4>
+
+Enforce role-based access controls, and meet HIPAA compliance with built-in audit logs and air-gap deployments.
+</div>
+
+<div class="block-box" markdown="1" style="border: 1px solid #e8f4f8; min-width: 0; flex: 1 1 45%;">
+<h4 style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Collaborate at Scale</h4>
+
+Manage multiple projects and teams with reviewer workflows, task assignments, and LLM output comparisons for blind evaluations.
+</div>
+
+</div>
+
+<div style="text-align: center; margin: 40px 0 20px 0;" markdown="1">
 
 All that **without writing a line of code**!
 
+</div>
+
+<div style="text-align: center; margin: 20px 0;" markdown="1">
 
 {:.btn-block.btn-flex}
 [Install on AWS](https://aws.amazon.com/marketplace/pp/prodview-zrcp6k6nqvxoa){:.button.button--primary.button--rounded.button--md}
 [Install on Azure](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.gen_ai_lab?tab=Overview){:.button.button--primary.button--rounded.button--md}
 
-</div>
-<div class="block-box-inner alab-top-image df">
-    <figure><img class="image image--xl" src="/assets/images/annotation_lab/flower_22.png" alt="annotation lab"/></figure>
-</div>
 </div>
 
 </div>

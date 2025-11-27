@@ -6,7 +6,7 @@ seotitle: Generative AI Lab | John Snow Labs
 title: Embeddings
 permalink: /docs/en/alab/embeddings
 key: docs-training
-modify_date: "2022-10-19"
+modify_date: "2025-11-27"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:

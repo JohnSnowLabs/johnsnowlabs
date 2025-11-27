@@ -6,7 +6,7 @@ seotitle: Generative AI Lab | John Snow Labs
 title: Entity Resolution 
 permalink: /docs/en/alab/resolvers
 key: docs-training
-modify_date: "2024-03-24"
+modify_date: "2025-11-27"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:

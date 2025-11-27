@@ -6,7 +6,7 @@ seotitle: Generative AI Lab | John Snow Labs
 title: Configurations
 permalink: /docs/en/alab/annotation_configurations
 key: docs-training
-modify_date: "2022-12-12"
+modify_date: "2025-11-27"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:

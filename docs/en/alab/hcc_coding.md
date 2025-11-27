@@ -6,7 +6,7 @@ seotitle: Generative AI Lab | John Snow Labs
 title: HCC Coding Projects
 permalink: /docs/en/alab/hcc_coding
 key: docs-training
-modify_date: "2025-07-28"
+modify_date: "2025-11-27"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:

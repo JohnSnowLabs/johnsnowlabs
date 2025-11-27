@@ -6,7 +6,7 @@ seotitle: Generative AI Lab | John Snow Labs
 title: Synthetic Task Generation
 permalink: /docs/en/alab/synthetic_task
 key: docs-training
-modify_date: "2024-03-19"
+modify_date: "2025-11-27"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:

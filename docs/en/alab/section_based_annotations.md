@@ -6,7 +6,7 @@ seotitle: Generative AI Lab | John Snow Labs
 title: Section Based Annotations  
 permalink: /docs/en/alab/section_based_annotations
 key: docs-training
-modify_date: "2023-08-13"
+modify_date: "2025-11-27"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:

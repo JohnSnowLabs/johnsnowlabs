@@ -6,7 +6,7 @@ seotitle: Generative AI Lab | John Snow Labs
 title: Import Documents
 permalink: /docs/en/alab/import
 key: docs-training
-modify_date: "2025-07-28"
+modify_date: "2025-11-27"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
