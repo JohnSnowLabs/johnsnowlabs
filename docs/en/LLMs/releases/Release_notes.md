@@ -5,13 +5,52 @@ seotitle: Medical LLMs | John Snow Labs
 title: Release Notes
 permalink: /docs/en/LLMs/releases/release_notes
 key: docs-medical-llm
-modify_date: "2025-09-15"
+modify_date: "2025-11-03"
 show_nav: true
 sidebar:
     nav: medical-llm
 ---
 
 <div class="h3-box" markdown="1">
+
+## 11-03-2025
+
+### Model Updates
+
+We're excited to announce major updates to our vision-language models with enhanced capabilities and improved performance.
+
+- **Medical-Visual-LLM-8B**: An 8B parameter vision-language model that delivers enhanced medical-grade multimodal intelligence. This model combines medical expertise with visual comprehension capabilities, understanding both clinical text and visual content including X-rays, MRIs, pathology slides, medical diagrams, and structured documents. It is optimized for RAG applications and healthcare integrations.
+
+- **Medical-Visual-LLM-30B**: A 30B parameter vision-language model that seamlessly integrates advanced medical reasoning with powerful visual understanding. This model excels at processing both medical images (X-rays, MRIs, CT scans, pathology slides and anatomical diagrams) and text, enabling comprehensive analysis of visual and textual medical data for extended medical reports and multi-image cases.
+
+#### Specifications
+
+| **Model Name**             | **Parameters** | **Recommended GPU Memory** | **Max Sequence Length** | **Model Size** | **Max KV-Cache** | **Tensor Parallel Sizes** |
+|---------------------------|--------------|------------------|-------------------|-------------|----------------|------------------------|
+| Medical-Visual-LLM-8B  | 8B          | ~64 GB           | 262K              | 16 GB       |48 GB          | 1, 2, 4, 8            |
+| Medical-Visual-LLM-30B | 30B         | ~150 GB          | 262K              | 58 GB       | 92 GB         | 2, 4, 8               |
+
+#### Benchmark Performance
+
+**Medical-Visual-LLM-8B:**
+
+- Achieves 77.6% average across OpenMed benchmarks
+- Scores 80.75% on clinical knowledge assessment
+- Reaches 86% on medical genetics understanding
+- Performs at 90.97% for college biology concepts
+- Processes professional medicine with 81.25% accuracy
+- Handles medical MCQAs with 60.87% precision
+- Maintains 66.61% accuracy on MedQA 4-options test
+
+**Medical-Visual-LLM-30B:**
+
+- Achieves 83.5% average across OpenMed benchmarks
+- Scores 85.66% on clinical knowledge assessment
+- Reaches 95% on medical genetics understanding
+- Performs at 93.75% for college biology concepts
+- Processes professional medicine with 89.34% accuracy
+- Handles medical MCQAs with 68.8% precision
+- Maintains 77.61% accuracy on MedQA 4-options test
 
 ## 09-15-2025
 

@@ -11,6 +11,8 @@ sidebar:
     nav: medical-llm
 ---
 
+<div class="h3-box" markdown="1">
+
 The list below shows John Snow Labs' Medical LLM models available on Azure marketplace.
 
 **All LLMs on Azure are Open AI compatible.**
@@ -27,7 +29,11 @@ The list below shows John Snow Labs' Medical LLM models available on Azure marke
 
 [Medical Spanish LLM - 24B](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.spanish_medical_llm_24b?tab=Overview)
 
-[Medical Visual LLM - 7B](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.medical_vlm_7b?tab=Overview)
+[Medical Visual LLM - 8B](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.medical_vlm_7b?tab=Overview)
+
+[Medical Visual LLM - 30B](https://marketplace.microsoft.com/en-us/product/virtual-machines/johnsnowlabsinc1646051154808.medical_vom_30b?tab=Overview)
+
+</div><div class="h3-box" markdown="1">
 
 ## Deployment Instructions
 
@@ -49,6 +55,8 @@ The list below shows John Snow Labs' Medical LLM models available on Azure marke
 
 5. Open WebUI hosted on port 3000. You can also interact with the model from here.
     ![azure_open_web_ui](/assets/images/med_llms/azure_open_web.png)
+
+</div><div class="h3-box" markdown="1">
 
 ## Model Interactions
 Once deployed, the container exposes a RESTful API for model interactions.
@@ -85,3 +93,6 @@ payload = {
     "temperature": 0.7,
     "max_tokens": 4096
 }
+```
+
+</div>

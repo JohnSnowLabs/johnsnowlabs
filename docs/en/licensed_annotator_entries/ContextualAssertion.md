@@ -12,21 +12,22 @@ clinical assertion detection. It annotates text chunks with assertions based on 
 
 Parametres:
 
-- `inputCols`: Input annotations.
-- `caseSensitive`: Whether to use case sensitive when matching values, by default `False`.
-- `prefixAndSuffixMatch`: Whether to match both prefix and suffix to annotate the hit, by default `False`.
-- `prefixKeywords`: Prefix keywords to match.
-- `suffixKeywords`: Suffix keywords to match
-- `exceptionKeywords`: Exception keywords not to match.
-- `prefixRegexPatterns`: Prefix regex patterns to match
-- `suffixRegexPatterns`: Suffix regex pattern to match
-- `exceptionRegexPatterns`: Exception regex pattern not to match
-- `scopeWindow`: The scope window of the assertion expression
-- `assertion`: Assertion to match
-- `scopeWindowDelimiter`: Delimiters used to limit the scope window.
-- `includeChunkToScope`: Whether to include chunk to scope when matching values
-- `ConfidenceCalculationDirection`: Indicates the direction for calculating assertion confidence (left, right, or both; default is left).
-
+- `inputCols` : Input columns containing DOCUMENT, TOKEN, and CHUNK annotations.
+- `outputCol` : Output column name for ASSERTION annotations.
+- `assertion` : Assertion label to assign when matched (default: "absent").
+- `caseSensitive` : Whether matching is case-sensitive (default: false).
+- `prefixAndSuffixMatch` : Whether both prefix and suffix must match to annotate (default: false).
+- `prefixKeywords` : List of prefix keywords to match before a chunk.
+- `suffixKeywords` : List of suffix keywords to match after a chunk.
+- `exceptionKeywords` : List of exception keywords to exclude from matches.
+- `prefixRegexPatterns` : Regex patterns to match as prefixes.
+- `suffixRegexPatterns` : Regex patterns to match as suffixes.
+- `exceptionRegexPatterns` : Regex patterns to exclude from matches.
+- `scopeWindow` : Number of tokens to the left and right of a chunk to search (default: [-1, -1]).
+- `scopeWindowDelimiters` : Delimiters that restrict the scope window.
+- `includeChunkToScope` : Whether to include the chunk text itself in scope (default: false).
+- `confidenceCalculationDirection` : Direction for confidence calculation — "left", "right", or "both" (default: "left").
+- `doExceptionHandling` : If true, emits error annotations instead of failing on exceptions (default: false).
 
 See [Spark NLP Workshop](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/2.3.Contextual_Assertion.ipynb) for more examples of usage.
 {%- endcapture -%}

@@ -134,7 +134,7 @@ data:
             url: https://databricks.com/
         - title:
           image:
-            src: https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/ArcGIS_logo.png/600px-ArcGIS_logo.png
+            src: /assets/images/home/717-7172505_datei-esri-logo-svg.webp
             url: https://www.esri.com/en-us/home
             style: "padding: 20px;"
         - title:
@@ -143,7 +143,7 @@ data:
             url: https://www.shell.com/
         - title:
           image:
-            src: https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Walmart_logo.svg/800px-Walmart_logo.svg.png
+            src: /assets/images/home/Walmart_logo.svg.webp
             url: https://www.walmart.com/
         - title:
           image:
@@ -196,7 +196,7 @@ data:
             url: https://www.oracle.com/index.html
         - title:
           image:
-            src: https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Deloitte.svg/1024px-Deloitte.svg.png
+            src: https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/DeloitteNewLogo.png/1200px-DeloitteNewLogo.png
             url: https://www2.deloitte.com/
         - title:
           image:
