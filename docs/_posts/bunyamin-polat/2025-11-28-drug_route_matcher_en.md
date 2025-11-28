@@ -36,6 +36,7 @@ This is a TextMatcher model that can identify drug route entities in clinical te
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
@@ -61,16 +62,16 @@ pipeline = Pipeline().setStages([
     drug_route_matcher
 ])
 
-text = """Patient was prescribed aspirin 500mg tablet orally twice daily.
-Administer the medication intravenously for rapid effect.
-The injection should be given subcutaneously."""
+text = """Patient was prescribed aspirin 500mg tablet orally twice daily. Administer the medication intravenously for rapid effect. The injection should be given subcutaneously."""
 
 data = spark.createDataFrame([[text]]).toDF("text")
+
 result = pipeline.fit(data).transform(data)
 
 ```
 
 {:.jsl-block}
+
 ```python
 
 document_assembler = nlp.DocumentAssembler()\
@@ -96,9 +97,7 @@ pipeline = nlp.Pipeline().setStages([
     drug_route_matcher
 ])
 
-text = """Patient was prescribed aspirin 500mg tablet orally twice daily.
-Administer the medication intravenously for rapid effect.
-The injection should be given subcutaneously."""
+text = """Patient was prescribed aspirin 500mg tablet orally twice daily. Administer the medication intravenously for rapid effect. The injection should be given subcutaneously."""
 
 data = spark.createDataFrame([[text]]).toDF("text")
 
@@ -131,9 +130,7 @@ val pipeline = new Pipeline().setStages(Array(
     drugRouteMatcher
 ))
 
-val data = Seq("""Patient was prescribed aspirin 500mg tablet orally twice daily.
-Administer the medication intravenously for rapid effect.
-The injection should be given subcutaneously.""").toDF("text")
+val data = Seq("""Patient was prescribed aspirin 500mg tablet orally twice daily. Administer the medication intravenously for rapid effect. The injection should be given subcutaneously.""").toDF("text")
 
 val result = pipeline.fit(data).transform(data)
 
