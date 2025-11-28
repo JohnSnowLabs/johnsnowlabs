@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This is a TextMatcher model that can identify drug form entities in clinical text.It recognizes various pharmaceutical forms including tablet, capsule, injection, cream, solution,
+This is a TextMatcher model that can identify drug form entities in clinical text. It recognizes various pharmaceutical forms including tablet, capsule, injection, cream, solution,
 spray, patch, drops, suppository, nebulizer, and many more drug delivery forms.
 
 ## Predicted Entities
@@ -37,6 +37,7 @@ spray, patch, drops, suppository, nebulizer, and many more drug delivery forms.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
@@ -62,12 +63,10 @@ pipeline = Pipeline().setStages([
     drug_form_matcher
 ])
 
-text = """Patient was prescribed aspirin 500mg tablet orally twice daily.
-Also given ibuprofen capsule for pain relief.
-The doctor recommended insulin injection subcutaneously."""
-
+text = """Patient was prescribed aspirin 500mg tablet orally twice daily. Also given ibuprofen capsule for pain relief. The doctor recommended insulin injection subcutaneously."""
 
 data = spark.createDataFrame([[text]]).toDF("text")
+
 result = pipeline.fit(data).transform(data)
 
 ```
@@ -98,9 +97,7 @@ pipeline = nlp.Pipeline().setStages([
     drug_form_matcher
 ])
 
-text = """Patient was prescribed aspirin 500mg tablet orally twice daily.
-Also given ibuprofen capsule for pain relief.
-The doctor recommended insulin injection subcutaneously."""
+text = """Patient was prescribed aspirin 500mg tablet orally twice daily. Also given ibuprofen capsule for pain relief. The doctor recommended insulin injection subcutaneously."""
 
 data = spark.createDataFrame([[text]]).toDF("text")
 
@@ -133,9 +130,7 @@ val pipeline = new Pipeline().setStages(Array(
     drugFormMatcher
 ))
 
-val data = Seq("""Patient was prescribed aspirin 500mg tablet orally twice daily.
-Also given ibuprofen capsule for pain relief.
-The doctor recommended insulin injection subcutaneously.""").toDF("text")
+val data = Seq("""Patient was prescribed aspirin 500mg tablet orally twice daily. Also given ibuprofen capsule for pain relief. The doctor recommended insulin injection subcutaneously.""").toDF("text")
 
 val result = pipeline.fit(data).transform(data)
 
