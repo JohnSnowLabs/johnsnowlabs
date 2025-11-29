@@ -36,6 +36,7 @@ This is a TextMatcher model that can identify procedure entities in clinical tex
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
@@ -64,6 +65,7 @@ pipeline = Pipeline().setStages([
 text = """The patient was admitted with chest pain. An ECG was performed which showed ST elevations. Coronary angiography revealed 90% stenosis in the LAD artery. The patient underwent percutaneous coronary intervention with stent placement. Post-procedure echocardiogram showed improved cardiac function."""
 
 data = spark.createDataFrame([[text]]).toDF("text")
+
 result = pipeline.fit(data).transform(data)
 
 ```
