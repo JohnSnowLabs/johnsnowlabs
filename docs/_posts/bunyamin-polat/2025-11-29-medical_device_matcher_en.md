@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This is a TextMatcher model that can identify medical device entities in clinical text. It recognizes various medical devices including insulin pump, pacemaker, CPAP machine, glucometer, oxygen concentrator, hearing aid, catheter, nebulizer, stent, and many more medical devices.
+This is a TextMatcher model that can identify medical device entities in clinical text. It recognizes various medical devices including insulin pumps, pacemakers, CPAP machines, glucometers, oxygen concentrators, and many more medical devices.
 
 ## Predicted Entities
 
@@ -36,6 +36,7 @@ This is a TextMatcher model that can identify medical device entities in clinica
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
@@ -61,16 +62,16 @@ pipeline = Pipeline().setStages([
     medical_device_matcher
 ])
 
-text = """Patient has an insulin pump for diabetes management.
-The pacemaker was implanted last year.
-Using a CPAP machine for sleep apnea."""
+text = """Patient has an insulin pump for diabetes management. The pacemaker was implanted last year. Using a CPAP machine for sleep apnea."""
 
 data = spark.createDataFrame([[text]]).toDF("text")
+
 result = pipeline.fit(data).transform(data)
 
 ```
 
 {:.jsl-block}
+
 ```python
 
 document_assembler = nlp.DocumentAssembler()\
@@ -96,9 +97,7 @@ pipeline = nlp.Pipeline().setStages([
     medical_device_matcher
 ])
 
-text = """Patient has an insulin pump for diabetes management.
-The pacemaker was implanted last year.
-Using a CPAP machine for sleep apnea."""
+text = """Patient has an insulin pump for diabetes management. The pacemaker was implanted last year. Using a CPAP machine for sleep apnea."""
 
 data = spark.createDataFrame([[text]]).toDF("text")
 
@@ -131,9 +130,7 @@ val pipeline = new Pipeline().setStages(Array(
     medicalDeviceMatcher
 ))
 
-val data = Seq("""Patient has an insulin pump for diabetes management.
-The pacemaker was implanted last year.
-Using a CPAP machine for sleep apnea.""").toDF("text")
+val data = Seq("""Patient has an insulin pump for diabetes management. The pacemaker was implanted last year. Using a CPAP machine for sleep apnea.""").toDF("text")
 
 val result = pipeline.fit(data).transform(data)
 
