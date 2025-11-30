@@ -85,7 +85,7 @@ tokenizer = nlp.Tokenizer()\
     .setInputCols(["sentence"])\
     .setOutputCol("token")
 
-symptom_matcher = medical.TextMatcherInternalModel.pretrained("symptom_matcher", "en", "clinical/models")\
+symptom_matcher = medical.TextMatcherModel.pretrained("symptom_matcher", "en", "clinical/models")\
     .setInputCols(["sentence", "token"])\
     .setOutputCol("matched_symptom")
 
