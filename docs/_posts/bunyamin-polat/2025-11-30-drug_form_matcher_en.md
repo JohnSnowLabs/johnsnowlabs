@@ -36,6 +36,7 @@ This is a TextMatcher model that can identify drug form entities in clinical tex
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
