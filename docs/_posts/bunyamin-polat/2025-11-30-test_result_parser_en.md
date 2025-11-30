@@ -36,6 +36,7 @@ This is a ContextualParser model that identifies test result entities in clinica
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
