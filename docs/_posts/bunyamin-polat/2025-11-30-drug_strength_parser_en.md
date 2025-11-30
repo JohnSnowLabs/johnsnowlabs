@@ -36,6 +36,7 @@ This is a ContextualParser model that identifies drug strength entities in clini
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
