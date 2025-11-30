@@ -36,6 +36,7 @@ This is a TextMatcher model that identifies drug administration route entities i
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
