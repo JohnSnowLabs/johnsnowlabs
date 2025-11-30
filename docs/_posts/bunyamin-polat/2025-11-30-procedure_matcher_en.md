@@ -36,6 +36,7 @@ This is a TextMatcher model that identifies medical procedure entities in clinic
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
