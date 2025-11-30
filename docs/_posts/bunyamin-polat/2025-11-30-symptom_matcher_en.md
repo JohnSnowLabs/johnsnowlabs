@@ -36,6 +36,7 @@ This is a TextMatcher model that can identify symptom entities in clinical text.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
