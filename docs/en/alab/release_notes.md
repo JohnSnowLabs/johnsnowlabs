@@ -21,7 +21,7 @@ This release focuses on enabling teams to perform unbiased, large-scale LLM comp
 Whether you're evaluating multiple foundation models, training high-performance NER pipelines, or managing complex annotation teams, this release provides the tools needed to build regulatory-grade, auditable, and scalable human-in-the-loop workflows.
 
 ## Unbiased Multi-Model Assessment with Blind LLM Response Comparison
-Generative AI Lab **7.6.0** introduces a major capability designed for teams comparing the performance of several large language models: **Blind LLM Response Comparison**. This new project type enables the evaluation responses from **two or more LLMs** without revealing which model produced each answer, allowing fair, unbiased assessment at scale.
+Generative AI Lab **7.6** introduces a major capability designed for teams comparing the performance of several large language models: **Blind LLM Response Comparison**. This new project type enables the evaluation responses from **two or more LLMs** without revealing which model produced each answer, allowing fair, unbiased assessment at scale.
 
 This feature supports a broad range of evaluation workflows from automated response generation to uploading outputs from external systems while providing a redesigned review interface tailored for multi-model comparisons.
 
