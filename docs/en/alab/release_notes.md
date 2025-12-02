@@ -14,14 +14,14 @@ sidebar:
 ---
 
 ## Generative AI Lab 7.6: Multi Model Blind Evaluation and Advanced NER Training
-Generative AI Lab 7.6.0 delivers one of the most significant upgrades to the evaluation and training workflow to date, introducing powerful new capabilities for multi-model benchmarking, advanced NER training, and deeper analytics insights.
+Generative AI Lab 7.6 delivers one of the most significant upgrades to the evaluation and training workflow to date, introducing powerful new capabilities for multi-model benchmarking, advanced NER training, and deeper analytics insights.
 
 This release focuses on enabling teams to perform unbiased, large-scale LLM comparisons, streamline annotation workflows, and improve both the usability and clarity of analytics across the platform. With the introduction of Blind LLM Response Comparison, a new BertForTokenClassifier training option, and a wide range of UI/UX refinements and stability improvements, 7.6.0 enhances accuracy, transparency, and efficiency across every stage of the AI development lifecycle.
 
 Whether you're evaluating multiple foundation models, training high-performance NER pipelines, or managing complex annotation teams, this release provides the tools needed to build regulatory-grade, auditable, and scalable human-in-the-loop workflows.
 
 ## Unbiased Multi-Model Assessment with Blind LLM Response Comparison
-Generative AI Lab **7.6.0** introduces a major capability designed for teams comparing the performance of several large language models: **Blind LLM Response Comparison**. This new project type enables the evaluation responses from **two or more LLMs** without revealing which model produced each answer, allowing fair, unbiased assessment at scale.
+Generative AI Lab **7.6** introduces a major capability designed for teams comparing the performance of several large language models: **Blind LLM Response Comparison**. This new project type enables the evaluation responses from **two or more LLMs** without revealing which model produced each answer, allowing fair, unbiased assessment at scale.
 
 This feature supports a broad range of evaluation workflows from automated response generation to uploading outputs from external systems while providing a redesigned review interface tailored for multi-model comparisons.
 
