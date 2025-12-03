@@ -1,6 +1,6 @@
 ---
 layout: model
-title: Sentence Entity Resolver for SNOMED CT (BGE Embeddings)
+title: Sentence Entity Resolver for SNOMED Codes ( bge_base_en_v1_5_onnx )
 author: John Snow Labs
 name: bgeresolve_snomed
 date: 2025-12-03
@@ -36,6 +36,7 @@ This is a Sentence Entity Resolver model that maps clinical entities to SNOMED c
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
@@ -50,7 +51,7 @@ tokenizer = Tokenizer()\
     .setInputCols(["sentence"])\
     .setOutputCol("token")
 
-word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical","en", "clinical/models")\
+word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")\
     .setInputCols(["sentence", "token"])\
     .setOutputCol("embeddings")
 
@@ -64,10 +65,10 @@ ner_jsl_converter = NerConverterInternal()\
     .setWhiteList(["Procedure","Kidney_Disease","Cerebrovascular_Disease","Heart_Disease",
                    "Disease_Syndrome_Disorder", "ImagingFindings", "Symptom", "VS_Finding",
                    "EKG_Findings", "Communicable_Disease","Substance","Drug_Ingredient",
-                   "Internal_organ_or_component","External_body_part_or_region","Modifier",
+                   "Internal_organ_or_component", "External_body_part_or_region", "Modifier",
                    "Triglycerides", "Alcohol", "Smoking", "Hypertension", "Obesity",
                    "Injury_or_Poisoning","Test","Hyperlipidemia","BMI","Oncological",
-                   "Psychological_Condition","LDL","Diabetes"])
+                   "Psychological_Condition", "LDL", "Diabetes"])
 
 chunk2doc = Chunk2Doc()\
     .setInputCols("ner_jsl_chunk")\
@@ -109,7 +110,7 @@ document_assembler = nlp.DocumentAssembler()\
     .setInputCol("text")\
     .setOutputCol("document")
 
-sentence_detector = nlp.SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")\
+sentence_detector = nlp.SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare", "en" ,"clinical/models")\
     .setInputCols(["document"])\
     .setOutputCol("sentence")
 
@@ -117,7 +118,7 @@ tokenizer = nlp.Tokenizer()\
     .setInputCols(["sentence"])\
     .setOutputCol("token")
 
-word_embeddings = nlp.WordEmbeddingsModel.pretrained("embeddings_clinical","en", "clinical/models")\
+word_embeddings = nlp.WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")\
     .setInputCols(["sentence", "token"])\
     .setOutputCol("embeddings")
 
@@ -131,10 +132,10 @@ ner_jsl_converter = medical.NerConverterInternal()\
     .setWhiteList(["Procedure","Kidney_Disease","Cerebrovascular_Disease","Heart_Disease",
                    "Disease_Syndrome_Disorder", "ImagingFindings", "Symptom", "VS_Finding",
                    "EKG_Findings", "Communicable_Disease","Substance","Drug_Ingredient",
-                   "Internal_organ_or_component","External_body_part_or_region","Modifier",
+                   "Internal_organ_or_component", "External_body_part_or_region", "Modifier",
                    "Triglycerides", "Alcohol", "Smoking", "Hypertension", "Obesity",
                    "Injury_or_Poisoning","Test","Hyperlipidemia","BMI","Oncological",
-                   "Psychological_Condition","LDL","Diabetes"])
+                   "Psychological_Condition", "LDL"," Diabetes"])
 
 chunk2doc = nlp.Chunk2Doc()\
     .setInputCols("ner_jsl_chunk")\
@@ -196,10 +197,10 @@ val nerJslConverter = new NerConverterInternal()
     .setWhiteList(Array("Procedure","Kidney_Disease","Cerebrovascular_Disease","Heart_Disease",
                         "Disease_Syndrome_Disorder", "ImagingFindings", "Symptom", "VS_Finding",
                         "EKG_Findings", "Communicable_Disease","Substance","Drug_Ingredient",
-                        "Internal_organ_or_component","External_body_part_or_region","Modifier",
+                        "Internal_organ_or_component", "External_body_part_or_region", "Modifier",
                         "Triglycerides", "Alcohol", "Smoking", "Hypertension", "Obesity",
                         "Injury_or_Poisoning","Test","Hyperlipidemia","BMI","Oncological",
-                        "Psychological_Condition","LDL","Diabetes"))
+                        "Psychological_Condition", "LDL", "Diabetes"))
 
 val chunk2doc = new Chunk2Doc()
     .setInputCols("ner_jsl_chunk")
