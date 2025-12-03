@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model maps drug entities to RxNorm codes using `bge_base_en_v1_5_onnx` Sentence BGE Embeddings. It leverages contextual embeddings to improve code resolution accuracy for drug concepts.
+This model maps drug entities to RxNorm codes using `bge_base_en_v1_5_onnx` embeddings. It leverages contextual embeddings to improve code resolution accuracy for drug concepts.
 
 ## Predicted Entities
 
@@ -36,6 +36,7 @@ This model maps drug entities to RxNorm codes using `bge_base_en_v1_5_onnx` Sent
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
@@ -88,7 +89,7 @@ pipeline = Pipeline().setStages([
     rxnorm_resolver
 ])
 
-text = """The patient was prescribed aspirin and Albuterol inhaler for respiratory issues. She also takes apixaban 5 mg, metformin 1000 mg for diabetes, and Lisinopril 10 mg for blood pressure."""
+text = """The patient was prescribed aspirin and an Albuterol inhaler for respiratory issues. She also takes Apixaban 5 mg, Metformin 1000 mg for diabetes, and Lisinopril 10 mg for blood pressure."""
 
 data = spark.createDataFrame([[text]]).toDF("text")
 
@@ -149,7 +150,7 @@ pipeline = nlp.Pipeline().setStages([
     rxnorm_resolver
 ])
 
-text = """The patient was prescribed aspirin and Albuterol inhaler for respiratory issues. She also takes apixaban 5 mg, metformin 1000 mg for diabetes, and Lisinopril 10 mg for blood pressure."""
+text = """The patient was prescribed aspirin and an Albuterol inhaler for respiratory issues. She also takes Apixaban 5 mg, Metformin 1000 mg for diabetes, and Lisinopril 10 mg for blood pressure."""
 
 data = spark.createDataFrame([[text]]).toDF("text")
 
@@ -208,7 +209,7 @@ val pipeline = new Pipeline().setStages(Array(
     rxnormResolver
 ))
 
-val data = Seq("""The patient was prescribed aspirin and Albuterol inhaler for respiratory issues. She also takes apixaban 5 mg, metformin 1000 mg for diabetes, and Lisinopril 10 mg for blood pressure.""").toDF("text")
+val data = Seq("""The patient was prescribed aspirin and an Albuterol inhaler for respiratory issues. She also takes Apixaban 5 mg, Metformin 1000 mg for diabetes, and Lisinopril 10 mg for blood pressure.""").toDF("text")
 
 val result = pipeline.fit(data).transform(data)
 
@@ -223,8 +224,8 @@ val result = pipeline.fit(data).transform(data)
 |-------|-----------------|------|-----------|-------------------------|-----------------------------------------------|-----------------------------------------------|
 |0      |aspirin          |DRUG  |1191       |aspirin                  |[1191, 1295740, 1154070, 1001473, 218266, ...] |[aspirin, aspirin product, aspirin pill, ecpi...]|
 |0      |Albuterol inhaler|DRUG  |1154602    |albuterol inhalant product|[1154602, 745678, 435, 1154606, 1649559, ...]  |[albuterol inhalant product, albuterol metered...]|
-|1      |apixaban 5 mg    |DRUG  |1364444    |apixaban 5 mg            |[1364444, 1364431, 1364446, 1364445, 1364447, ...]|[apixaban 5 mg, apixaban 2.5 mg, apixaban 5 mg...]|
-|1      |metformin 1000 mg|DRUG  |316255     |metformin 1000 mg        |[316255, 860995, 330861, 860997, 429841, ...]  |[metformin 1000 mg, metformin hydrochloride 10...]|
+|1      |Apixaban 5 mg    |DRUG  |1364444    |apixaban 5 mg            |[1364444, 1364431, 1364446, 1364445, 1364447, ...]|[apixaban 5 mg, apixaban 2.5 mg, apixaban 5 mg...]|
+|1      |Metformin 1000 mg|DRUG  |316255     |metformin 1000 mg        |[316255, 860995, 330861, 860997, 429841, ...]  |[metformin 1000 mg, metformin hydrochloride 10...]|
 |1      |Lisinopril 10 mg |DRUG  |316151     |lisinopril 10 mg         |[316151, 314076, 563611, 565846, 567576, ...]  |[lisinopril 10 mg, lisinopril 10mg 10 mg, lisi...]|
 
 ```
