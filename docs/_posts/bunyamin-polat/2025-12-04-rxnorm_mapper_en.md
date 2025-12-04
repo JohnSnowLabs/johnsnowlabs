@@ -36,6 +36,7 @@ This model maps drug entities to their corresponding RxNorm codes. It provides f
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
