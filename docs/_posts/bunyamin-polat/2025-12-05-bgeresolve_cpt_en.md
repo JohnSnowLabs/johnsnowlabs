@@ -72,7 +72,7 @@ bge_embeddings = BGEEmbeddings.pretrained("bge_base_en_v1_5_onnx", "en")\
     .setInputCols(["ner_chunk_doc"])\
     .setOutputCol("bge_embeddings")
 
-cpt_resolver = SentenceEntityResolverModel.pretrained("bgeresolve_cpt", "en", "clinical/models")\
+cpt_resolver = SentenceEntityResolverModel.load("bgeresolve_cpt")\
     .setInputCols(["bge_embeddings"])\
     .setOutputCol("cpt_code")\
     .setDistanceFunction("EUCLIDEAN")
@@ -133,7 +133,7 @@ bge_embeddings = nlp.BGEEmbeddings.pretrained("bge_base_en_v1_5_onnx", "en")\
     .setInputCols(["ner_chunk_doc"])\
     .setOutputCol("bge_embeddings")
 
-cpt_resolver = medical.SentenceEntityResolverModel.pretrained("bgeresolve_cpt", "en", "clinical/models")\
+cpt_resolver = medical.SentenceEntityResolverModel.load("bgeresolve_cpt")\
     .setInputCols(["bge_embeddings"])\
     .setOutputCol("cpt_code")\
     .setDistanceFunction("EUCLIDEAN")
@@ -192,7 +192,7 @@ val bgeEmbeddings = BGEEmbeddings.pretrained("bge_base_en_v1_5_onnx", "en")
     .setInputCols(Array("ner_chunk_doc"))
     .setOutputCol("bge_embeddings")
 
-val cptResolver = SentenceEntityResolverModel.pretrained("bgeresolve_cpt", "en", "clinical/models")
+val cptResolver = SentenceEntityResolverModel.load("bgeresolve_cpt")
     .setInputCols(Array("bge_embeddings"))
     .setOutputCol("cpt_code")
     .setDistanceFunction("EUCLIDEAN")
