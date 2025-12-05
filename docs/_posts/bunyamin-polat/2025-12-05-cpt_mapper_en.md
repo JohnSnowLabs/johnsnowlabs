@@ -36,6 +36,7 @@ This model maps clinical entities (procedures, tests, treatments) to their corre
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
@@ -165,7 +166,7 @@ val nerModelConverter = new NerConverterInternal()
     .setOutputCol("ner_chunk")
     .setWhiteList(Array("Procedure", "Test", "Treatment", "Clinical_Dept"))
 
-val cptMapper = ChunkMapperModel.pretrained("cpt_mapper", "en", "clinical/models")
+val cptMapper = ChunkMapperModel.load("cpt_mapper", "en", "clinical/models")
     .setInputCols(Array("ner_chunk"))
     .setOutputCol("mappings")
     .setRels(Array("cpt_code"))
@@ -214,3 +215,7 @@ val result = pipeline.fit(data).transform(data)
 |Output Labels:|[mappings]|
 |Language:|en|
 |Size:|5.1 MB|
+
+## References
+
+**CPT resolver models are removed from the Models Hub due to license restrictions and can only be shared with the users who already have a valid CPT license. If you possess one and wish to use this model, kindly contact us at support@johnsnowlabs.com.**
