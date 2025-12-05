@@ -36,6 +36,7 @@ This model maps clinical entities (Observation, Procedures, Tests, Treatments, D
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
@@ -242,3 +243,7 @@ val result = pipeline.fit(data).transform(data)
 |Language:|en|
 |Size:|388.0 MB|
 |Case sensitive:|false|
+
+## References
+
+**CPT resolver models are removed from the Models Hub due to license restrictions and can only be shared with the users who already have a valid CPT license. If you possess one and wish to use this model, kindly contact us at support@johnsnowlabs.com.**
