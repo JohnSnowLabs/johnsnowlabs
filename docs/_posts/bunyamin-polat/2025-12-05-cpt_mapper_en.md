@@ -64,7 +64,7 @@ ner_model_converter = NerConverterInternal()\
     .setOutputCol("ner_chunk")\
     .setWhiteList(["Procedure", "Test", "Treatment", "Clinical_Dept"])
 
-cpt_mapper = ChunkMapperModel.load("cpt_mapper", "en", "clinical/models")\
+cpt_mapper = ChunkMapperModel.load("cpt_mapper")\
     .setInputCols(["ner_chunk"])\
     .setOutputCol("mappings")\
     .setRels(["cpt_code"])\
@@ -116,7 +116,7 @@ ner_model_converter = medical.NerConverterInternal()\
     .setOutputCol("ner_chunk")\
     .setWhiteList(["Procedure", "Test", "Treatment", "Clinical_Dept"])
 
-cpt_mapper = medical.ChunkMapperModel.load("cpt_mapper", "en", "clinical/models")\
+cpt_mapper = medical.ChunkMapperModel.load("cpt_mapper")\
     .setInputCols(["ner_chunk"])\
     .setOutputCol("mappings")\
     .setRels(["cpt_code"])\
@@ -166,7 +166,7 @@ val nerModelConverter = new NerConverterInternal()
     .setOutputCol("ner_chunk")
     .setWhiteList(Array("Procedure", "Test", "Treatment", "Clinical_Dept"))
 
-val cptMapper = ChunkMapperModel.load("cpt_mapper", "en", "clinical/models")
+val cptMapper = ChunkMapperModel.load("cpt_mapper")
     .setInputCols(Array("ner_chunk"))
     .setOutputCol("mappings")
     .setRels(Array("cpt_code"))
