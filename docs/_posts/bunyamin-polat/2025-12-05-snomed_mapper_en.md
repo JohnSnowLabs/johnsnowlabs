@@ -36,6 +36,7 @@ This model maps clinical entities to their corresponding SNOMED codes. It provid
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
