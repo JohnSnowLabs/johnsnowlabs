@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 6.2.1 ScalaDoc  - com.johnsnowlabs.nlp.annotators.ner</title>
-          <meta name="description" content="Spark NLP 6.2.1 ScalaDoc - com.johnsnowlabs.nlp.annotators.ner" />
-          <meta name="keywords" content="Spark NLP 6.2.1 ScalaDoc com.johnsnowlabs.nlp.annotators.ner" />
+          <title>Spark NLP 6.2.2 ScalaDoc  - com.johnsnowlabs.nlp.annotators.ner</title>
+          <meta name="description" content="Spark NLP 6.2.2 ScalaDoc - com.johnsnowlabs.nlp.annotators.ner" />
+          <meta name="keywords" content="Spark NLP 6.2.2 ScalaDoc com.johnsnowlabs.nlp.annotators.ner" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 6.2.1 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 6.2.2 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -418,9 +418,17 @@
                         <a class="class" href="PretrainedZeroShotNER.html" title=""></a>
                         <a href="PretrainedZeroShotNER.html" title="">PretrainedZeroShotNER</a>
                       </li><li class="current-entities indented5">
+                        <a class="object" href="PretrainedZeroShotNERChunker$.html" title=""></a>
+                        <a class="class" href="PretrainedZeroShotNERChunker.html" title="A fine-tuned zero-shot named-entity recognition (NER) model."></a>
+                        <a href="PretrainedZeroShotNERChunker.html" title="A fine-tuned zero-shot named-entity recognition (NER) model.">PretrainedZeroShotNERChunker</a>
+                      </li><li class="current-entities indented5">
                         <span class="separator"></span>
                         <a class="trait" href="ReadPretrainedZeroShotNER.html" title=""></a>
                         <a href="ReadPretrainedZeroShotNER.html" title="">ReadPretrainedZeroShotNER</a>
+                      </li><li class="current-entities indented5">
+                        <span class="separator"></span>
+                        <a class="trait" href="ReadPretrainedZeroShotNERChunker.html" title=""></a>
+                        <a href="ReadPretrainedZeroShotNERChunker.html" title="">ReadPretrainedZeroShotNERChunker</a>
                       </li><li class="current-entities indented5">
                         <span class="separator"></span>
                         <a class="trait" href="ReadZeroShotNerTensorflowModel.html" title=""></a>
@@ -433,6 +441,10 @@
                         <span class="separator"></span>
                         <a class="trait" href="ReadablePretrainedPretrainedZeroShotNER.html" title=""></a>
                         <a href="ReadablePretrainedPretrainedZeroShotNER.html" title="">ReadablePretrainedPretrainedZeroShotNER</a>
+                      </li><li class="current-entities indented5">
+                        <span class="separator"></span>
+                        <a class="trait" href="ReadablePretrainedPretrainedZeroShotNERChunker.html" title=""></a>
+                        <a href="ReadablePretrainedPretrainedZeroShotNERChunker.html" title="">ReadablePretrainedPretrainedZeroShotNERChunker</a>
                       </li><li class="current-entities indented5">
                         <span class="separator"></span>
                         <a class="trait" href="ReadablePretrainedZeroShotNer.html" title=""></a>
@@ -1183,6 +1195,59 @@ See also <a href="https://en.wikipedia.org/wiki/Inside%E2%80%93outside%E2%80%93b
       </span>
       
       
+    </li><li name="com.johnsnowlabs.nlp.annotators.ner.PretrainedZeroShotNERChunker" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="PretrainedZeroShotNERChunkerextendsPretrainedZeroShotNER"></a><a id="PretrainedZeroShotNERChunker:PretrainedZeroShotNERChunker"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/ner/PretrainedZeroShotNERChunker.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a title="A fine-tuned zero-shot named-entity recognition (NER) model." href="PretrainedZeroShotNERChunker.html"><span class="name">PretrainedZeroShotNERChunker</span></a><span class="result"> extends <a href="PretrainedZeroShotNER.html" class="extype" name="com.johnsnowlabs.nlp.annotators.ner.PretrainedZeroShotNER">PretrainedZeroShotNER</a></span>
+      </span>
+      
+      <p class="shortcomment cmt">A fine-tuned zero-shot named-entity recognition (NER) model.</p><div class="fullcomment"><div class="comment cmt"><p>A fine-tuned zero-shot named-entity recognition (NER) model. Performs NER on arbitrary text
+without task-specific labeled training.</p><p>In contrast to <a href="PretrainedZeroShotNER.html" class="extype" name="com.johnsnowlabs.nlp.annotators.ner.PretrainedZeroShotNER">PretrainedZeroShotNER</a> this annotator directly outputs NER chunks instead of
+aligning them to provided tokens.</p><h4>Example</h4><pre><span class="kw">val</span> text = <span class="lit">""</span><span class="lit">"
+        |Cristiano Ronaldo dos Santos Aveiro (Portuguese pronunciation: [kɾiʃˈtjɐnu ʁɔˈnaldu]; born 5 February
+        |1985) is a Portuguese professional footballer who plays as a forward for and captains both Saudi Pro
+        |League club Al Nassr and the Portugal national team. Widely regarded as one of the greatest players of
+        |all time, Ronaldo has won five Ballon d'Or awards,[note 3] a record three UEFA Men's Player of the Year
+        |Awards, and four European Golden Shoes, the most by a European player.
+        "</span><span class="lit">""</span>.stripMargin
+
+<span class="kw">val</span> testData = <span class="std">Seq</span>(text).toDF(<span class="lit">"text"</span>)
+<span class="kw">val</span> documentAssembler = <span class="kw">new</span> DocumentAssembler()
+  .setInputCol(<span class="lit">"text"</span>)
+  .setOutputCol(<span class="lit">"document"</span>)
+<span class="kw">val</span> sentenceDetector = <span class="kw">new</span> SentenceDetector()
+  .setInputCols(<span class="std">Array</span>(<span class="lit">"document"</span>))
+  .setOutputCol(<span class="lit">"sentence"</span>)
+<span class="kw">val</span> ner = PretrainedZeroShotNERChunker
+  .pretrained()
+  .setInputCols(<span class="std">Array</span>(<span class="lit">"sentence"</span>))
+  .setOutputCol(<span class="lit">"ner_chunk"</span>)
+  .setLabels(<span class="std">Array</span>(<span class="lit">"person"</span>, <span class="lit">"award"</span>, <span class="lit">"date"</span>, <span class="lit">"competitions"</span>, <span class="lit">"teams"</span>))
+<span class="kw">val</span> pipeline =
+  <span class="kw">new</span> Pipeline().setStages(<span class="std">Array</span>(documentAssembler, sentenceDetector, ner))
+<span class="kw">val</span> results = pipeline.fit(testData).transform(testData)
+results.selectExpr(<span class="lit">"explode(entity)"</span>).show(<span class="num">1000</span>, truncate = <span class="kw">false</span>)</pre><p>Results:</p><pre>+--------------------------------------------------------------------------------------------------------------------------------------------------+
+|col                                                                                                                                               |
++--------------------------------------------------------------------------------------------------------------------------------------------------+
+|{chunk, <span class="num">2</span>, <span class="num">37</span>, Cristiano Ronaldo dos Santos Aveiro, {sentence -&gt; <span class="num">0</span>, entity -&gt; person, confidence -&gt; <span class="num">0.9144007</span>, ner_source -&gt; ner_chunk}, []}      |
+|{chunk, <span class="num">93</span>, <span class="num">109</span>, <span class="num">5</span> February\r\n1985, {sentence -&gt; <span class="num">1</span>, entity -&gt; date, confidence -&gt; <span class="num">0.99999976</span>, ner_source -&gt; ner_chunk}, []}                      |
+|{chunk, <span class="num">196</span>, <span class="num">213</span>, Saudi Pro\r\nLeague, {sentence -&gt; <span class="num">1</span>, entity -&gt; competitions, confidence -&gt; <span class="num">0.9926515</span>, ner_source -&gt; ner_chunk}, []}             |
+|{chunk, <span class="num">219</span>, <span class="num">227</span>, Al Nassr, {sentence -&gt; <span class="num">1</span>, entity -&gt; teams, confidence -&gt; <span class="num">0.99384415</span>, ner_source -&gt; ner_chunk}, []}                              |
+|{chunk, <span class="num">321</span>, <span class="num">328</span>, Ronaldo, {sentence -&gt; <span class="num">2</span>, entity -&gt; person, confidence -&gt; <span class="num">0.999997</span>, ner_source -&gt; ner_chunk}, []}                                |
+|{chunk, <span class="num">342</span>, <span class="num">353</span>, Ballon d'Or, {sentence -&gt; <span class="num">2</span>, entity -&gt; award, confidence -&gt; <span class="num">0.95896983</span>, ner_source -&gt; ner_chunk}, []}                           |
+|{chunk, <span class="num">385</span>, <span class="num">422</span>, UEFA Men's Player of the Year\r\nAwards, {sentence -&gt; <span class="num">2</span>, entity -&gt; award, confidence -&gt; <span class="num">0.9687164</span>, ner_source -&gt; ner_chunk}, []}|
+|{chunk, <span class="num">433</span>, <span class="num">454</span>, European Golden Shoes, {sentence -&gt; <span class="num">2</span>, entity -&gt; award, confidence -&gt; <span class="num">0.999326</span>, ner_source -&gt; ner_chunk}, []}                   |
++--------------------------------------------------------------------------------------------------------------------------------------------------+</pre></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p>
+  <a href="PretrainedZeroShotNER.html" class="extype" name="com.johnsnowlabs.nlp.annotators.ner.PretrainedZeroShotNER">PretrainedZeroShotNER</a></p></span></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.ner.ReadPretrainedZeroShotNER" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="ReadPretrainedZeroShotNERextendsReadSentencePieceModelwithInternalReadOnnxModelwithReadOpenvinoModel"></a><a id="ReadPretrainedZeroShotNER:ReadPretrainedZeroShotNER"></a>
       <span class="permalink">
@@ -1196,6 +1261,22 @@ See also <a href="https://en.wikipedia.org/wiki/Inside%E2%80%93outside%E2%80%93b
       </span>
       <span class="symbol">
         <a title="" href="ReadPretrainedZeroShotNER.html"><span class="name">ReadPretrainedZeroShotNER</span></a><span class="result"> extends <span class="extype" name="com.johnsnowlabs.ml.tensorflow.sentencepiece.ReadSentencePieceModel">ReadSentencePieceModel</span> with <span class="extype" name="com.johnsnowlabs.ml.onnx.InternalReadOnnxModel">InternalReadOnnxModel</span> with <span class="extype" name="com.johnsnowlabs.ml.openvino.ReadOpenvinoModel">ReadOpenvinoModel</span></span>
+      </span>
+      
+      
+    </li><li name="com.johnsnowlabs.nlp.annotators.ner.ReadPretrainedZeroShotNERChunker" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ReadPretrainedZeroShotNERChunkerextendsReadSentencePieceModelwithInternalReadOnnxModelwithReadOpenvinoModel"></a><a id="ReadPretrainedZeroShotNERChunker:ReadPretrainedZeroShotNERChunker"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/ner/ReadPretrainedZeroShotNERChunker.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="ReadPretrainedZeroShotNERChunker.html"><span class="name">ReadPretrainedZeroShotNERChunker</span></a><span class="result"> extends <span class="extype" name="com.johnsnowlabs.ml.tensorflow.sentencepiece.ReadSentencePieceModel">ReadSentencePieceModel</span> with <span class="extype" name="com.johnsnowlabs.ml.onnx.InternalReadOnnxModel">InternalReadOnnxModel</span> with <span class="extype" name="com.johnsnowlabs.ml.openvino.ReadOpenvinoModel">ReadOpenvinoModel</span></span>
       </span>
       
       
@@ -1244,6 +1325,22 @@ See also <a href="https://en.wikipedia.org/wiki/Inside%E2%80%93outside%E2%80%93b
       </span>
       <span class="symbol">
         <a title="" href="ReadablePretrainedPretrainedZeroShotNER.html"><span class="name">ReadablePretrainedPretrainedZeroShotNER</span></a><span class="result"> extends <span class="extype" name="com.johnsnowlabs.nlp.ParamsAndFeaturesReadable">ParamsAndFeaturesReadable</span>[<a href="PretrainedZeroShotNER.html" class="extype" name="com.johnsnowlabs.nlp.annotators.ner.PretrainedZeroShotNER">PretrainedZeroShotNER</a>] with <span class="extype" name="com.johnsnowlabs.nlp.HasPretrained">HasPretrained</span>[<a href="PretrainedZeroShotNER.html" class="extype" name="com.johnsnowlabs.nlp.annotators.ner.PretrainedZeroShotNER">PretrainedZeroShotNER</a>]</span>
+      </span>
+      
+      
+    </li><li name="com.johnsnowlabs.nlp.annotators.ner.ReadablePretrainedPretrainedZeroShotNERChunker" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ReadablePretrainedPretrainedZeroShotNERChunkerextendsParamsAndFeaturesReadable[com.johnsnowlabs.nlp.annotators.ner.PretrainedZeroShotNERChunker]withHasPretrained[com.johnsnowlabs.nlp.annotators.ner.PretrainedZeroShotNERChunker]"></a><a id="ReadablePretrainedPretrainedZeroShotNERChunker:ReadablePretrainedPretrainedZeroShotNERChunker"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/ner/ReadablePretrainedPretrainedZeroShotNERChunker.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="ReadablePretrainedPretrainedZeroShotNERChunker.html"><span class="name">ReadablePretrainedPretrainedZeroShotNERChunker</span></a><span class="result"> extends <span class="extype" name="com.johnsnowlabs.nlp.ParamsAndFeaturesReadable">ParamsAndFeaturesReadable</span>[<a href="PretrainedZeroShotNERChunker.html" class="extype" name="com.johnsnowlabs.nlp.annotators.ner.PretrainedZeroShotNERChunker">PretrainedZeroShotNERChunker</a>] with <span class="extype" name="com.johnsnowlabs.nlp.HasPretrained">HasPretrained</span>[<a href="PretrainedZeroShotNERChunker.html" class="extype" name="com.johnsnowlabs.nlp.annotators.ner.PretrainedZeroShotNERChunker">PretrainedZeroShotNERChunker</a>]</span>
       </span>
       
       
@@ -1531,6 +1628,22 @@ Supports: IOB and IOB2 https://en.wikipedia.org/wiki/Inside%E2%80%93outside%E2%8
       </span>
       <span class="symbol">
         <a title="" href="PretrainedZeroShotNER$.html"><span class="name">PretrainedZeroShotNER</span></a><span class="result"> extends <a href="ReadablePretrainedPretrainedZeroShotNER.html" class="extype" name="com.johnsnowlabs.nlp.annotators.ner.ReadablePretrainedPretrainedZeroShotNER">ReadablePretrainedPretrainedZeroShotNER</a> with <a href="ReadPretrainedZeroShotNER.html" class="extype" name="com.johnsnowlabs.nlp.annotators.ner.ReadPretrainedZeroShotNER">ReadPretrainedZeroShotNER</a> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      
+      
+    </li><li name="com.johnsnowlabs.nlp.annotators.ner.PretrainedZeroShotNERChunker" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="PretrainedZeroShotNERChunker"></a><a id="PretrainedZeroShotNERChunker:PretrainedZeroShotNERChunker"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/ner/PretrainedZeroShotNERChunker$.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="PretrainedZeroShotNERChunker$.html"><span class="name">PretrainedZeroShotNERChunker</span></a><span class="result"> extends <a href="ReadablePretrainedPretrainedZeroShotNERChunker.html" class="extype" name="com.johnsnowlabs.nlp.annotators.ner.ReadablePretrainedPretrainedZeroShotNERChunker">ReadablePretrainedPretrainedZeroShotNERChunker</a> with <a href="ReadPretrainedZeroShotNERChunker.html" class="extype" name="com.johnsnowlabs.nlp.annotators.ner.ReadPretrainedZeroShotNERChunker">ReadPretrainedZeroShotNERChunker</a> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       
       

@@ -401,6 +401,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../../ner/ner_converter_internal/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.ner_converter_internal</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ner/ner_template_render/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.ner_template_render</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ner/pretrained_zero_shot_ner/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.pretrained_zero_shot_ner</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ner/pretrained_zero_shot_ner_chunker/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.pretrained_zero_shot_ner_chunker</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ner/zero_shot_ner/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.zero_shot_ner</span></code></a></li>
 </ul>
 </li>
@@ -785,6 +786,11 @@ rows within the same group.</p></li>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.obfuscateZipByHipaa">
 <span class="sig-name descname"><span class="pre">obfuscateZipByHipaa</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.obfuscateZipByHipaa" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.obfuscateZipKeepDigits">
+<span class="sig-name descname"><span class="pre">obfuscateZipKeepDigits</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.obfuscateZipKeepDigits" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -1494,6 +1500,44 @@ If False, skip HIPAA-specific rules and use the default/custom ZIP obfuscation.<
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setObfuscateZipKeepDigits">
+<span class="sig-name descname"><span class="pre">setObfuscateZipKeepDigits</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setObfuscateZipKeepDigits" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the number of leading ZIP code digits to preserve when applying
+HIPAA-based ZIP code obfuscation.</p>
+<p>This parameter is only effective when <code class="docutils literal notranslate"><span class="pre">obfuscateZipByHipaa</span></code> is enabled.</p>
+<section id="id5">
+<h4>Behavior<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h4>
+<blockquote>
+<div><ul class="simple">
+<li><p>Preserves the first <code class="docutils literal notranslate"><span class="pre">value</span></code> digits of the ZIP code.</p></li>
+<li><p>Masks all remaining digits— including any ZIP+4 portion—with asterisks (<code class="docutils literal notranslate"><span class="pre">*</span></code>).</p></li>
+<li><p>Default: <code class="docutils literal notranslate"><span class="pre">3</span></code>.</p></li>
+<li><p>Allowed range: <code class="docutils literal notranslate"><span class="pre">0</span></code> to <code class="docutils literal notranslate"><span class="pre">5</span></code>.</p></li>
+</ul>
+</div></blockquote>
+<dl class="simple">
+<dt><strong>Examples</strong></dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">12345</span></code> → <code class="docutils literal notranslate"><span class="pre">123**</span></code></p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">value</span> <span class="pre">=</span> <span class="pre">2</span></code> → <code class="docutils literal notranslate"><span class="pre">12***</span></code></p></li>
+</ul>
+</dd>
+</dl>
+<p>This setting overrides the default HIPAA Safe Harbor ZIP generalization
+pattern (<code class="docutils literal notranslate"><span class="pre">XXX**</span></code>) and allows clients to customize how many leading digits
+remain unmasked, enabling expert-determination–based deidentification flows.</p>
+<dl class="field-list simple">
+<dt class="field-odd">param value<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Number of ZIP digits to preserve before masking. Must be between
+<code class="docutils literal notranslate"><span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">5</span></code> (inclusive).</p>
+</dd>
+<dt class="field-even">type value<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setObfuscationEquivalents">
 <span class="sig-name descname"><span class="pre">setObfuscationEquivalents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">equivalents</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setObfuscationEquivalents" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets variant-to-canonical entity mappings to ensure consistent obfuscation.</p>
@@ -1655,8 +1699,8 @@ you can reply to an execution several times with the same output.</p>
 This is used to selectively apply different obfuscation methods to specific entities.
 The keys are entity names and the values are the obfuscation sources.
 If an entity is not specified in this map, the <cite>obfuscateRefSource</cite> param is used to determine the obfuscation source.</p>
-<section id="id5">
-<h4>Example:<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h4>
+<section id="id6">
+<h4>Example:<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h4>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">selective_sources</span> <span class="o">=</span> <span class="p">{</span>
 <span class="gp">... </span><span class="s1">&#39;PHONE&#39;</span><span class="p">:</span> <span class="s1">&#39;file&#39;</span><span class="p">,</span>
 <span class="gp">... </span><span class="s1">&#39;ADDRESS&#39;</span><span class="p">:</span> <span class="s1">&#39;both&#39;</span>
@@ -1692,8 +1736,8 @@ The keys are entity names and the values are the obfuscation sources.</p>
 </dd>
 </dl>
 <p>The entities which have not been given in dictionary will deidentify according to <cite>mode</cite> parameter.</p>
-<section id="id6">
-<h4>Example:<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h4>
+<section id="id7">
+<h4>Example:<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h4>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">DeidAnnotator</span><span class="p">()</span> \
 <span class="gp">&gt;&gt;&gt; </span>    <span class="o">.</span><span class="n">setMode</span><span class="p">(</span><span class="s1">&#39;mask&#39;</span><span class="p">)</span> \
 <span class="gp">&gt;&gt;&gt; </span>    <span class="o">.</span><span class="n">setSelectiveObfuscationModes</span><span class="p">({</span><span class="s1">&#39;obfuscate&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;PHONE&#39;</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">],</span>
@@ -1719,8 +1763,8 @@ The keys are entity names and the values are the obfuscation sources.</p>
 This method is used to set static obfuscation pairs that will be used for de-identification.
 Each pair should contain three elements: original, entity type, and fake.
 The pairs must have exactly 3 elements: [original, entityType, fake].</p>
-<section id="id7">
-<h4>Example:<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h4>
+<section id="id8">
+<h4>Example:<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h4>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pairs</span> <span class="o">=</span> <span class="p">[</span>
 <span class="gp">... </span>    <span class="p">[</span><span class="s2">&quot;John Doe&quot;</span><span class="p">,</span> <span class="s2">&quot;PERSON&quot;</span><span class="p">,</span> <span class="s2">&quot;Jane Smith&quot;</span><span class="p">],</span>
 <span class="gp">... </span>    <span class="p">[</span><span class="s2">&quot;Los Angeles&quot;</span><span class="p">,</span> <span class="s2">&quot;LOCATION&quot;</span><span class="p">,</span> <span class="s2">&quot;New York City&quot;</span><span class="p">],</span>
@@ -1848,6 +1892,7 @@ Options: [mask, obfuscate, skip]. Default: obfuscate.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.obfuscateDate"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.obfuscateDate</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.obfuscateRefSource"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.obfuscateRefSource</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.obfuscateZipByHipaa"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.obfuscateZipByHipaa</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.obfuscateZipKeepDigits"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.obfuscateZipKeepDigits</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.obfuscationStrategyOnException"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.obfuscationStrategyOnException</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.outputAsDocument"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.outputAsDocument</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.regexOverride"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.regexOverride</span></code></a></li>
@@ -1901,6 +1946,7 @@ Options: [mask, obfuscate, skip]. Default: obfuscate.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setObfuscateDate"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setObfuscateDate()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setObfuscateRefSource"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setObfuscateRefSource()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setObfuscateZipByHipaa"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setObfuscateZipByHipaa()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setObfuscateZipKeepDigits"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setObfuscateZipKeepDigits()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setObfuscationEquivalents"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setObfuscationEquivalents()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setObfuscationStrategyOnException"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setObfuscationStrategyOnException()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setOutputAsDocument"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setOutputAsDocument()</span></code></a></li>
