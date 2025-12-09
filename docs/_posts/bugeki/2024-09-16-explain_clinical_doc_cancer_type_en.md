@@ -14,6 +14,12 @@ annotator: PipelineModel
 article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
+
+deploy:
+  sagemaker_link: https://aws.amazon.com/marketplace/pp/prodview-7ttmxi3lwei3o
+  snowflake_link: https://app.snowflake.com/marketplace/listing/GZTYZ4386LJA8/john-snow-labs-extract-oncological-entities
+  databricks_link: 
+
 ---
 
 ## Description
@@ -74,6 +80,13 @@ and [posology_re](https://nlp.johnsnowlabs.com/2020/09/01/posology_re.html)  rel
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/07.0.Pretrained_Clinical_Pipelines.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_cancer_type_en_5.4.1_3.2_1726521598087.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_cancer_type_en_5.4.1_3.2_1726521598087.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+
+{% if page.deploy %}
+## Available as Private API Endpoint
+
+{:.tac}
+{% include display_platform_information.html %}
+{% endif %}
 
 ## How to use
 

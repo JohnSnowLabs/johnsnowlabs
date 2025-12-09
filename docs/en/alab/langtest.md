@@ -6,7 +6,7 @@ seotitle: Generative AI Lab | John Snow Labs
 title: LangTest
 permalink: /docs/en/alab/langtest
 key: docs-training
-modify_date: "2024-06-12"
+modify_date: "2025-11-27"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
@@ -21,7 +21,7 @@ A Test Suite represents a collection of tests designed to evaluate your trained 
 </div><div class="h3-box" markdown="1">
 
 ### Test Suites HUB
-The new **"Test Suites HUB"** option under the Hub parent node, is the place where existing Test Suites are saved and managed. Clicking on Test Suites Hub takes the user to the **"Test Suite"** page, where all existing Test Suites he/she has access to are listed.
+The **Test Suites HUB** (under the Hub parent node) is where existing Test Suites are saved and managed. Clicking it opens the **Test Suite** page, which lists all test suites you can access.
 
 ![GenaiImage](/assets/images/annotation_lab/6.2.0/1.png)
 
@@ -41,7 +41,7 @@ Creating a new Test Suite from the **"Test Suite"** page is straightforward:
 6.  Apply the steps above for any number of different categories you require to configure the test suite.
 7.  Save your work, when configuration is complete by clicking on the **"Save"** button.
 
-**Note**: The Model type is set to "NER" and cannot be changed, as Generative AI Lab supports only testing NER models in this version.
+**Note:** LangTest supports both **NER** and **Classification** models. Choose the appropriate **Model Type** when creating a test suite.
 
 ![GenaiImage](/assets/images/annotation_lab/6.2.0/2.gif)
 
@@ -150,8 +150,9 @@ Use the search feature on the **"Test Suite"** page, the **"SEARCH TEST SUITES .
 
 </div><div class="h3-box" markdown="1">
 
-### New "Test" page under Project Menu
-A new entry, **"Test"** has been added under the project menu in the left navigation bar for NER projects. Clicking on the **"Test"** node in the left navigation bar will take the user to the **"Test"** page, where they can manage tests and execute model testing.
+### The Test Page under Project Menu
+The **Test** entry in the project’s left navigation opens the **Test** page, where managers configure tests, create/edit test cases, start/stop testing, review logs, and review/download/delete results.
+
 
 ![GenaiImage](/assets/images/annotation_lab/6.2.0/10.png)
  
@@ -285,7 +286,7 @@ Furthermore, users can delete test results from the **"Test Results History"** b
 
 ## Visualizing Test Reports
 
-Generative AI Lab 6.6 brings enhanced visualization support for test reports, offering users an intuitive way to assess test results at both high-level and granular views. By toggling the "**Show Graph**" option on, users can visualize test outcomes through a weighted bar chart displaying the pass and fail percentages. This graphical representation simplifies the interpretation of the test report, providing a quick overview of overall test performance. Other parameters such as Test Categories, Test Types, Passing Rate, and Failure Rate are available next to the graph. If you want to hide the charts, **Show Graph** option can be toggled off.
+Turn on **Show Graph** to visualize test outcomes as a weighted bar chart of pass/fail percentages. This provides a quick overview, with adjacent controls for filtering by **Test Category**, **Test Type**, passing and failure rates. Toggle **Show Graph** off to hide the chart.
 
 ![660image](/assets/images/annotation_lab/6.6.0/3.gif)
 
@@ -303,10 +304,14 @@ The users can apply the filters on the graph based on the test category and the 
 
 This visualization tool streamlines the process of analyzing test results, providing both high-level summaries and detailed breakdowns to assist in better decision-making and problem identification.
 
-## Data Augmentation for more Robust Model Training
-Instead of having to manually create new tasks or documents to enhance model performance and evaluate it against different test types, when the project manager reviews the LangTest report, they can then take steps to improve the model using newly introduced data augmentation techniques. With the release of the Data Augmentation feature in Generative AI Lab 6.5, users can now automatically generate new data for different test types from the existing dataset. This feature streamlines the model improvement process by creating augmented tasks, retraining the model, and testing it against a wider range of scenarios. Users can simply click the "**Improve Test Results**" button to generate augmented tasks for the test types that failed.
+## Data Augmentation for More Robust Model Training
 
-The new tab called "**Generate Augmented Data**" on the import page will make it easier for you to create augmented tasks. By clicking on the "**Improve Test Results**" option, you'll be redirected to the "**Generate Augmented Data**" page. Here, the lang-test framework automatically selects the test types you have run and failed, along with the corresponding values of the max_proportion for each test type under "**Proportional Augmentation**".
+Instead of manually creating new tasks or documents to improve model performance, project managers can use built-in data augmentation tools directly from the LangTest report. After reviewing test outcomes, users can click **Improve Test Results** to automatically generate new data for the test types that failed.
+
+This workflow streamlines model improvement by creating augmented tasks, enabling retraining, and allowing retesting across a broader range of scenarios — all from within the same interface.  
+
+A dedicated **Generate Augmented Data** tab on the Import page simplifies this process. When **Improve Test Results** is selected, users are redirected to the **Generate Augmented Data** page, where the LangTest framework automatically preselects the failed test types and applies the corresponding **max_proportion** values for each test type under **Proportional Augmentation**.  
+
 
 ![genAI650](/assets/images/annotation_lab/6.5.0/1.gif)
 
@@ -339,16 +344,20 @@ After the augmented tasks are generated, the user can import the tasks. The augm
 
 Users can then re-train the model with the newly augmented tasks and run model testing, which will improve the model's performance under the augmented conditions.
 
-## Test Classification models
-Version 6.6 brings support for evaluating and testing classification models, a feature previously available only for Named Entity Recognition (NER) models, enabling users to assess the accuracy and performance of both pre-trained and custom classification models across various test types. 
+## Test Classification Models
 
-While the test types from NER model testing—such as Bias, Robustness, Fairness, Representation, and Accuracy—are still supported for classification models, a notable new addition is the "Grammar" test. This test evaluates how well classification models handle grammatically complex or varied sentences, ensuring that the model maintains high accuracy even with challenging grammatical structures. Users need to select the model type as classification from the **Model Type** dropdown while creating the test suite. 
+LangTest supports evaluating and testing **Classification** models in addition to **Named Entity Recognition (NER)** models, allowing users to assess the accuracy and performance of both pre-trained and custom models across various test types.
+
+All standard LangTest categories — **Bias**, **Robustness**, **Fairness**, **Representation**, and **Accuracy** — are available for classification model testing. In addition, a dedicated **Grammar** test is included to evaluate how well classification models handle grammatically complex or varied sentences, ensuring strong performance even with challenging linguistic structures.
+
+When creating a test suite, select **Classification** from the **Model Type** dropdown to configure tests for classification models.
+
 
 ![660image](/assets/images/annotation_lab/6.6.0/1.png)
 
 ### Test Setup and Configuration for Classification Models
 
-To set up and configure tests for classification models in version 6.6, follow these steps:
+To set up and configure tests for classification models, follow these steps:
 
 1. **Navigate to the Test Page**: Open the test page within the specific project where the model is used.
 

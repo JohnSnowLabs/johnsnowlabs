@@ -11,13 +11,15 @@ sidebar:
     nav: term-server
 ---
 
+</div><div class="h3-box" markdown="1">
+
 ## **On-Prem Installation Guide**
 
 **Prerequisites:**
 
-* Docker
-* awscli (AWS command-line interface)
 * jq (lightweight command-line JSON processor)
+* curl (command-line tool for transferring data with URLs)
+* sudoer access on the server where you want to install Terminology Server
 
 **Step 1: Get your license file or license key**
 
@@ -33,6 +35,13 @@ curl -sSL https://s3.us-east-1.amazonaws.com/artifacts.terminologyservice.johnsn
 
 > **_NOTE:_** The initial setup may take a little longer if you’re running it for the first time, as databases and images are downloaded and services are created. We appreciate your patience! For more information regarding installation of Terminology Server on a dedicated server please contact us at [support@johnsnowlabs.com](mailto:support@johnsnowlabs.com).
 
+**Step 3: Access Terminology Server**
+
+Once the installation is complete, you can access Terminology Server by navigating to `http://localhost` or `http://YOUR_SERVER_IP` in your web browser.
+The credentials to login will be provided in the terminal after installation script is completed.
+
+</div><div class="h3-box" markdown="1">
+
 ## Recommended Configurations
 
 <table class="table2">
@@ -42,7 +51,7 @@ curl -sSL https://s3.us-east-1.amazonaws.com/artifacts.terminologyservice.johnsn
   </tr>
   <tr>
     <th>Port requirements</th>
-    <td>The service uses port <bl>8000</bl>. So it expects the port to be unused.</td>
+    <td>The service uses port <bl>80</bl>. So it expects the port to be unused.</td>
   </tr>
   <tr>
     <th>Server requirements</th>
@@ -63,5 +72,4 @@ curl -sSL https://s3.us-east-1.amazonaws.com/artifacts.terminologyservice.johnsn
   </tr>
 </table>
 
-
-
+</div>

@@ -6,7 +6,7 @@ seotitle: Generative AI Lab | John Snow Labs
 title: Playground
 permalink: /docs/en/alab/playground
 key: docs-training
-modify_date: "2023-02-11"
+modify_date: "2025-11-27"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:

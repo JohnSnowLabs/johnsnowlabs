@@ -6,7 +6,7 @@ seotitle: Generative AI Lab | John Snow Labs
 title: Productivity
 permalink: /docs/en/alab/productivity
 key: docs-training
-modify_date: "2024-12-03"
+modify_date: "2025-11-27"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
@@ -33,6 +33,9 @@ By default, the Analytics page is disabled for every project because computing t
 A refresh button is present on the top-right corner of the Analytics page. The Analytics charts doesn't automatically reflect the changes made by the annotators (like creating tasks, adding new completion, etc.). Updating the analytics to reflect the latest changes can be done using the refresh button.
 
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/analytics/refresh.png" style="width:100%;"/>
+
+> **Note:** In evaluation projects with multiple rating questions, analytics aggregate results **per question** so teams can compare models or responses across individual criteria (e.g., accuracy, coherence, safety) without additional setup.
+
 
 ### Task Analytics
 
@@ -120,7 +123,9 @@ Below are the charts included in the Team Productivity section.
 
 ### Inter-Annotator Agreement (IAA)
 
-Starting from version 2.8.0, Inter Annotator Agreement(IAA) charts allow the comparison between annotations produced by <es>Annotators</es>, <es>Reviewers</es>, or <es>Managers</es>.
+Inter-Annotator Agreement (IAA) charts allow teams to compare annotations produced by <es>Annotators</es>, <es>Reviewers</es>, or <es>Managers</es>.  
+IAA is available for **NER projects — including those that use HTML content** — so rich-text/HTML labeling workflows benefit from the same agreement metrics as plain-text projects.
+
 
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/analytics/iaa_analytics.gif" style="width:100%;"/>
 

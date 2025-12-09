@@ -6,7 +6,7 @@ seotitle: Generative AI Lab | John Snow Labs
 title: Bundled Libraries Versions
 permalink: /docs/en/alab/version
 key: docs-training
-modify_date: "2024-04-8"
+modify_date: "2025-11-27"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:

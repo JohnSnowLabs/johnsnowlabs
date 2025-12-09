@@ -6,7 +6,7 @@ seotitle: Generative AI Lab | John Snow Labs
 title: FAQ
 permalink: /docs/en/alab/troubleshooting
 key: docs-training
-modify_date: "2022-11-21"
+modify_date: "2025-11-27"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
