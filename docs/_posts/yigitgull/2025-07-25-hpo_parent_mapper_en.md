@@ -7,7 +7,7 @@ date: 2025-07-25
 tags: [hpo, mapper, parent, en, licensed, clinical]
 task: Chunk Mapping
 language: en
-edition: Healthcare NLP 6.4.0
+edition: Healthcare NLP 6.1.0
 spark_version: 3.2
 supported: true
 annotator: ChunkMapperModel
@@ -183,7 +183,7 @@ val res = model.transform(data)
 {:.table-model}
 |---|---|
 |Model Name:|hpo_parent_mapper|
-|Compatibility:|Healthcare NLP 6.4.0+|
+|Compatibility:|Healthcare NLP 6.1.0+|
 |License:|Licensed|
 |Edition:|Official|
 |Input Labels:|[hpo_code_chunk]|
