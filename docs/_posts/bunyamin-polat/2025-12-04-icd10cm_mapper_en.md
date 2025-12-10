@@ -106,11 +106,11 @@ word_embeddings = nlp.WordEmbeddingsModel.pretrained("embeddings_clinical", "en"
     .setInputCols(["sentence", "token"])\
     .setOutputCol("embeddings")
 
-ner_model = medical.MedicalNerModel.pretrained("ner_clinical", "en", "clinical/models")\
+ner_model = medical.NerModel.pretrained("ner_clinical", "en", "clinical/models")\
     .setInputCols(["sentence", "token", "embeddings"])\
     .setOutputCol("ner")
 
-ner_converter = medical.NerConverterInternal()\
+ner_converter = medical.NerConverter()\
     .setInputCols("sentence", "token", "ner")\
     .setOutputCol("ner_chunk")\
     .setWhiteList(["PROBLEM"])

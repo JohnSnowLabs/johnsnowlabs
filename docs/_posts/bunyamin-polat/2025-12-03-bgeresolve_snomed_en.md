@@ -122,11 +122,11 @@ word_embeddings = nlp.WordEmbeddingsModel.pretrained("embeddings_clinical", "en"
     .setInputCols(["sentence", "token"])\
     .setOutputCol("embeddings")
 
-ner_jsl = medical.MedicalNerModel.pretrained("ner_jsl", "en", "clinical/models")\
+ner_jsl = medical.NerModel.pretrained("ner_jsl", "en", "clinical/models")\
     .setInputCols(["sentence", "token", "embeddings"])\
     .setOutputCol("ner_jsl")
 
-ner_jsl_converter = medical.NerConverterInternal()\
+ner_jsl_converter = medical.NerConverter()\
     .setInputCols(["sentence", "token", "ner_jsl"])\
     .setOutputCol("ner_jsl_chunk")\
     .setWhiteList(["Procedure","Kidney_Disease","Cerebrovascular_Disease","Heart_Disease",

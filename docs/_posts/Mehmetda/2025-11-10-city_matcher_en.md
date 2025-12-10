@@ -85,7 +85,7 @@ tokenizer = nlp.Tokenizer()\
     .setInputCols(["sentence"])\
     .setOutputCol("token")
 
-text_matcher = medical.TextMatcherInternalModel.pretrained("city_matcher","en","clinical/models") \
+text_matcher = medical.TextMatcherModel.pretrained("city_matcher","en","clinical/models") \
     .setInputCols(["sentence", "token"])\
     .setOutputCol("city_name")\
     .setMergeOverlapping(True)
