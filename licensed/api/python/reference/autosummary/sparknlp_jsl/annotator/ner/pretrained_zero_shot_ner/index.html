@@ -401,6 +401,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../ner_converter_internal/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.ner_converter_internal</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ner_template_render/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.ner_template_render</span></code></a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.pretrained_zero_shot_ner</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pretrained_zero_shot_ner_chunker/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.pretrained_zero_shot_ner_chunker</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../zero_shot_ner/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.zero_shot_ner</span></code></a></li>
 </ul>
 </li>
@@ -541,7 +542,7 @@ document.write(`
 <table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.annotator.ner.pretrained_zero_shot_ner.PretrainedZeroShotNER" title="sparknlp_jsl.annotator.ner.pretrained_zero_shot_ner.PretrainedZeroShotNER"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PretrainedZeroShotNER</span></code></a></p></td>
-<td><p>Zero shot named entity recognition based on RoBertaForQuestionAnswering.</p></td>
+<td><p>A fine-tuned zero-shot named-entity recognition (NER) model. Performs NER on arbitrary text</p></td>
 </tr>
 </tbody>
 </table>
@@ -549,7 +550,8 @@ document.write(`
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.ner.pretrained_zero_shot_ner.PretrainedZeroShotNER">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">PretrainedZeroShotNER</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'com.johnsnowlabs.nlp.annotators.ner.PretrainedZeroShotNER'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">java_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.ner.pretrained_zero_shot_ner.PretrainedZeroShotNER" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.common.AnnotatorModelInternal</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.common.HasBatchedAnnotate</span></code></p>
-<p>Zero shot named entity recognition based on RoBertaForQuestionAnswering.</p>
+<p>A fine-tuned zero-shot named-entity recognition (NER) model. Performs NER on arbitrary text
+without task-specific labeled training.</p>
 <table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Input Annotation types</p></th>
@@ -557,7 +559,7 @@ document.write(`
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">DOCUMENT</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">DOCUMENT</span></code>, <code class="docutils literal notranslate"><span class="pre">TOKEN</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">NAMED_ENTITY</span></code></p></td>
 </tr>
 </tbody>
@@ -866,7 +868,7 @@ a default value.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>name</strong> (<em>str</em>) – Name of the pre-trained model, by default “pretrained_zeroshot_ner”</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – Name of the pre-trained model, by default “zeroshot_ner_deid_subentity_merged_medium”</p></li>
 <li><p><strong>lang</strong> (<em>str</em>) – Language of the pre-trained model, by default “en”</p></li>
 <li><p><strong>remote_loc</strong> (<em>str</em>) – Remote location of the pre-trained model. If None, use the
 open-source location. Other values are “clinical/models”,
