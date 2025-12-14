@@ -26,8 +26,8 @@ The pipeline can mask and obfuscate 'NAME','DATE', 'LOCATION', 'PROFESSION', 'DO
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_docwise_benchmark_optimized_v2_en_6.2.2_3.4_1765730615223.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_docwise_benchmark_optimized_v2_en_6.2.2_3.4_1765730615223.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_docwise_benchmark_optimized_v2_en_6.2.2_3.4_1765742513008.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_docwise_benchmark_optimized_v2_en_6.2.2_3.4_1765742513008.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -84,7 +84,7 @@ val deid_result = deid_pipeline.fullAnnotate(text)
 ```bash
 |    | text                                                                                       | result                                                                                                                                                                                                    | result                                                                                                                                                                                                                                |
 |---:|:-------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|  0 | Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024. | ['Dr. <DOCTOR>, from <HOSPITAL> in <CITY>, attended to the patient on <DATE>.\nThe patient’s medical record number is <MEDICALRECORD>.\nThe patient, <PATIENT>, is <AGE>, her Contact number: <PHONE> .'] | ['Dr. Valerie Aho, from Mercy Hospital Aurora in Berea, attended to the patient on 16/05/2024.\nThe patient’s medical record number is 78689012.\nThe patient, Johnathon Bunde, is 55 years old, her Contact number: 666-678-9012 .'] |
+|  0 | Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024. | ['Dr. <DOCTOR>, from <HOSPITAL> in <CITY>, attended to the patient on <DATE>.\nThe patient’s medical record number is <MEDICALRECORD>.\nThe patient, <PATIENT>, is <AGE>, her Contact number: <PHONE> .'] | ['Dr. Valerie Aho, from Mercy Hospital Aurora in Berea, attended to the patient on 28/06/2024.\nThe patient’s medical record number is 78689012.\nThe patient, Johnathon Bunde, is 55 years old, her Contact number: 666-678-9012 .'] |
 |    | The patient’s medical record number is 56467890.                                           |                                                                                                                                                                                                           |                                                                                                                                                                                                                                       |
 |    | The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .              |                                                                                                                                                                                                           |                                                                                                                                                                                                                                       |
 ```
@@ -109,6 +109,8 @@ val deid_result = deid_pipeline.fullAnnotate(text)
 - TokenizerModel
 - TokenizerModel
 - WordEmbeddingsModel
+- MedicalNerModel
+- NerConverterInternalModel
 - MedicalNerModel
 - NerConverterInternalModel
 - MedicalNerModel
