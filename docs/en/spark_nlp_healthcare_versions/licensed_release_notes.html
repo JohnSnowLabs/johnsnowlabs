@@ -739,16 +739,70 @@ Mr.Doe,55yearsold, has an appointment scheduled for October262025, regarding his
     <span class="p">.</span><span class="n">setLabels</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
 
 </code></pre></div>  </div>
-  <p><em>Results</em>
-| begin | end | chunk              | entity   | confidence |
-|——-|—–|——————–|———-|————|
-| 4     | 16  | Eleanor Vance      | DOCTOR   | 0.99998724 |
-| 36    | 53  | MountSinaiHospital | HOSPITAL | 0.99986887 |
-| 55    | 65  | NewYorkCity        | CITY     | 0.99928530 |
-| 99    | 105 | JohnDoe            | PATIENT  | 0.99999845 |
-| 111   | 113 | Doe                | PATIENT  | 0.99999870 |
-| 115   | 124 | 55yearsold         | AGE      | 0.99999976 |
-| 160   | 172 | October262025      | DATE     | 1.0        |</p>
+  <p><em>Results</em></p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>begin</th>
+        <th>end</th>
+        <th>chunk</th>
+        <th>entity</th>
+        <th>confidence</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>4</td>
+        <td>16</td>
+        <td>Eleanor Vance</td>
+        <td>DOCTOR</td>
+        <td>0.99998724</td>
+      </tr>
+      <tr>
+        <td>36</td>
+        <td>53</td>
+        <td>MountSinaiHospital</td>
+        <td>HOSPITAL</td>
+        <td>0.99986887</td>
+      </tr>
+      <tr>
+        <td>55</td>
+        <td>65</td>
+        <td>NewYorkCity</td>
+        <td>CITY</td>
+        <td>0.99928530</td>
+      </tr>
+      <tr>
+        <td>99</td>
+        <td>105</td>
+        <td>JohnDoe</td>
+        <td>PATIENT</td>
+        <td>0.99999845</td>
+      </tr>
+      <tr>
+        <td>111</td>
+        <td>113</td>
+        <td>Doe</td>
+        <td>PATIENT</td>
+        <td>0.99999870</td>
+      </tr>
+      <tr>
+        <td>115</td>
+        <td>124</td>
+        <td>55yearsold</td>
+        <td>AGE</td>
+        <td>0.99999976</td>
+      </tr>
+      <tr>
+        <td>160</td>
+        <td>172</td>
+        <td>October262025</td>
+        <td>DATE</td>
+        <td>1.0</td>
+      </tr>
+    </tbody>
+  </table>
 
   <p><strong>Why does <code class="language-plaintext highlighter-rouge">PretrainedZeroShotNERChunker</code> find more entities?</strong></p>
 

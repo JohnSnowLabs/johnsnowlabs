@@ -1,694 +1,614 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-12-14T20:41:50+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
-</subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">Clinical Deidentification Pipeline Large v2 (Document Wise)</title><link href="/2025/12/14/clinical_deidentification_docwise_benchmark_large_v2_en.html" rel="alternate" type="text/html" title="Clinical Deidentification Pipeline Large v2 (Document Wise)" /><published>2025-12-14T00:00:00+00:00</published><updated>2025-12-14T00:00:00+00:00</updated><id>/2025/12/14/clinical_deidentification_docwise_benchmark_large_v2_en</id><content type="html" xml:base="/2025/12/14/clinical_deidentification_docwise_benchmark_large_v2_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-12-15T13:21:30+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
+</subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">Clinical Deidentification Pipeline Large v2 (Document Wise)</title><link href="/2025/12/14/clinical_deidentification_docwise_benchmark_large_v2_en.html" rel="alternate" type="text/html" title="Clinical Deidentification Pipeline Large v2 (Document Wise)" /><published>2025-12-14T00:00:00+00:00</published><updated>2025-12-14T00:00:00+00:00</updated><id>/2025/12/14/clinical_deidentification_docwise_benchmark_large_v2_en</id><content type="html" xml:base="/2025/12/14/clinical_deidentification_docwise_benchmark_large_v2_en.html">## Description
 
-&lt;p&gt;This pipeline can be used to deidentify PHI information from medical texts. The PHI information will be masked and obfuscated in the resulting text.
-The pipeline can mask and obfuscate ‘DATE’, ‘LOCATION’, ‘PROFESSION’, ‘DOCTOR’, ‘EMAIL’,’PATIENT’, ‘URL’, ‘USERNAME’,
-‘CITY’, ‘COUNTRY’, ‘DLN’, ‘HOSPITAL’, ‘IDNUM’, ‘MEDICALRECORD’, ‘STATE’, ‘STREET’, ‘ZIP’, ‘AGE’, ‘PHONE’, ‘ORGANIZATION’,’SSN’, ‘ACCOUNT’,
-‘PLATE’, ‘VIN’, ‘LICENSE’, ‘IP’ entities.&lt;/p&gt;
+This pipeline can be used to deidentify PHI information from medical texts. The PHI information will be masked and obfuscated in the resulting text.
+The pipeline can mask and obfuscate 'DATE', 'LOCATION', 'PROFESSION', 'DOCTOR', 'EMAIL','PATIENT', 'URL', 'USERNAME',
+'CITY', 'COUNTRY', 'DLN', 'HOSPITAL', 'IDNUM', 'MEDICALRECORD', 'STATE', 'STREET', 'ZIP', 'AGE', 'PHONE', 'ORGANIZATION','SSN', 'ACCOUNT',
+'PLATE', 'VIN', 'LICENSE', 'IP' entities.
 
-&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
-&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_docwise_benchmark_large_v2_en_6.2.2_3.4_1765730686060.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
-&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_docwise_benchmark_large_v2_en_6.2.2_3.4_1765730686060.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_docwise_benchmark_large_v2_en_6.2.2_3.4_1765730686060.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_docwise_benchmark_large_v2_en_6.2.2_3.4_1765730686060.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+## How to use
 
-&lt;div class=&quot;tabs-box&quot;&gt;
-  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;strong&gt;Healthcare NLP&lt;/strong&gt;&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;Python&lt;strong&gt;JohnSnowLabs&lt;/strong&gt;&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
-  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp.pretrained&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;deid_pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;clinical_deidentification_docwise_benchmark_large_v2&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024.
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+```python
+
+from sparknlp.pretrained import PretrainedPipeline
+
+deid_pipeline = PretrainedPipeline(&quot;clinical_deidentification_docwise_benchmark_large_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+
+text = &quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024.
 The patient’s medical record number is 56467890.
-The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot;&lt;/span&gt;
+The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot;
 
-&lt;span class=&quot;n&quot;&gt;deid_result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;deid_pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fullAnnotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+deid_result = deid_pipeline.fullAnnotate(text)
 
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+```
 
-  &lt;div class=&quot;language-python jsl-block highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp.pretrained&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;
+{:.jsl-block}
+```python
 
-&lt;span class=&quot;n&quot;&gt;deid_pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;clinical_deidentification_docwise_benchmark_large_v2&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+from sparknlp.pretrained import PretrainedPipeline
 
-&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024.
+deid_pipeline = nlp.PretrainedPipeline(&quot;clinical_deidentification_docwise_benchmark_large_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+
+text = &quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024.
 The patient’s medical record number is 56467890.
-The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot;&lt;/span&gt;
+The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot;
 
-&lt;span class=&quot;n&quot;&gt;deid_result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;deid_pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fullAnnotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+deid_result = deid_pipeline.fullAnnotate(text)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
-  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.pretrained.PretrainedPipeline&lt;/span&gt;
+```
+```scala
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;deid_pipeline&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;clinical_deidentification_docwise_benchmark_large_v2&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024.
+val deid_pipeline = PretrainedPipeline(&quot;clinical_deidentification_docwise_benchmark_large_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+
+val text = &quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024.
 The patient’s medical record number is 56467890.
-The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot;&lt;/span&gt;
+The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot;
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;deid_result&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;deid_pipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;fullAnnotate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+val deid_result = deid_pipeline.fullAnnotate(text)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+```
 &lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+## Results
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;|    | text                                                                                       | result                                                                                                                                                                                            | result                                                                                                                                                                                                                                |
+```bash
+|    | text                                                                                       | result                                                                                                                                                                                            | result                                                                                                                                                                                                                                |
 |---:|:-------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|  0 | Dr. John Lee, from Royal Medical Clinic &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;Chicago, attended to the patient on 11/05/2024. | &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Dr. &amp;lt;DOCTOR&amp;gt;, from &amp;lt;HOSPITAL&amp;gt; in &amp;lt;CITY&amp;gt;, attended to the patient on &amp;lt;DATE&amp;gt;.\nThe patient’s medical record number is &amp;lt;IDNUM&amp;gt;.\nThe patient, &amp;lt;PATIENT&amp;gt;, is &amp;lt;AGE&amp;gt;, her Contact number: &amp;lt;PHONE&amp;gt; .'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; | &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Dr. Valerie Aho, from Mercy Hospital Aurora in Berea, attended to the patient on 12/06/2024.\nThe patient’s medical record number is 78689012.\nThe patient, Johnathon Bunde, is 55 years old, her Contact number: 666-678-9012 .'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; |
+|  0 | Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024. | ['Dr. &lt;DOCTOR&gt;, from &lt;HOSPITAL&gt; in &lt;CITY&gt;, attended to the patient on &lt;DATE&gt;.\nThe patient’s medical record number is &lt;IDNUM&gt;.\nThe patient, &lt;PATIENT&gt;, is &lt;AGE&gt;, her Contact number: &lt;PHONE&gt; .'] | ['Dr. Valerie Aho, from Mercy Hospital Aurora in Berea, attended to the patient on 12/06/2024.\nThe patient’s medical record number is 78689012.\nThe patient, Johnathon Bunde, is 55 years old, her Contact number: 666-678-9012 .'] |
 |    | The patient’s medical record number is 56467890.                                           |                                                                                                                                                                                                   |                                                                                                                                                                                                                                       |
-|    | The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;              |                                                                                                                                                                                                   |                                                                                                                                                                                                                                       |
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+|    | The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .              |                                                                                                                                                                                                   |                                                                                                                                                                                                                                       |
+```
 
-&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+{:.model-param}
+## Model Information
 
-&lt;table class=&quot;table-model&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Model Name:&lt;/td&gt;
-      &lt;td&gt;clinical_deidentification_docwise_benchmark_large_v2&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Type:&lt;/td&gt;
-      &lt;td&gt;pipeline&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Compatibility:&lt;/td&gt;
-      &lt;td&gt;Healthcare NLP 6.2.2+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;License:&lt;/td&gt;
-      &lt;td&gt;Licensed&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Edition:&lt;/td&gt;
-      &lt;td&gt;Official&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Language:&lt;/td&gt;
-      &lt;td&gt;en&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size:&lt;/td&gt;
-      &lt;td&gt;3.5 GB&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+{:.table-model}
+|---|---|
+|Model Name:|clinical_deidentification_docwise_benchmark_large_v2|
+|Type:|pipeline|
+|Compatibility:|Healthcare NLP 6.2.2+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|
+|Size:|3.5 GB|
 
-&lt;h2 id=&quot;included-models&quot;&gt;Included Models&lt;/h2&gt;
+## Included Models
 
-&lt;ul&gt;
-  &lt;li&gt;DocumentAssembler&lt;/li&gt;
-  &lt;li&gt;InternalDocumentSplitter&lt;/li&gt;
-  &lt;li&gt;TokenizerModel&lt;/li&gt;
-  &lt;li&gt;TokenizerModel&lt;/li&gt;
-  &lt;li&gt;WordEmbeddingsModel&lt;/li&gt;
-  &lt;li&gt;MedicalNerModel&lt;/li&gt;
-  &lt;li&gt;NerConverterInternalModel&lt;/li&gt;
-  &lt;li&gt;PretrainedZeroShotNERChunker&lt;/li&gt;
-  &lt;li&gt;MedicalNerModel&lt;/li&gt;
-  &lt;li&gt;NerConverterInternalModel&lt;/li&gt;
-  &lt;li&gt;ChunkMergeModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;RegexMatcherInternalModel&lt;/li&gt;
-  &lt;li&gt;RegexMatcherInternalModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;RegexMatcherInternalModel&lt;/li&gt;
-  &lt;li&gt;RegexMatcherInternalModel&lt;/li&gt;
-  &lt;li&gt;RegexMatcherInternalModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;TextMatcherInternalModel&lt;/li&gt;
-  &lt;li&gt;TextMatcherInternalModel&lt;/li&gt;
-  &lt;li&gt;TextMatcherInternalModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ChunkMergeModel&lt;/li&gt;
-  &lt;li&gt;ChunkMergeModel&lt;/li&gt;
-  &lt;li&gt;ChunkMergeModel&lt;/li&gt;
-  &lt;li&gt;LightDeIdentification&lt;/li&gt;
-  &lt;li&gt;LightDeIdentification&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>John Snow Labs</name></author><category term="deidentification" /><category term="deid" /><category term="en" /><category term="licensed" /><category term="clinical" /><category term="pipeline" /><category term="docwise" /><summary type="html">Description This pipeline can be used to deidentify PHI information from medical texts. The PHI information will be masked and obfuscated in the resulting text. The pipeline can mask and obfuscate ‘DATE’, ‘LOCATION’, ‘PROFESSION’, ‘DOCTOR’, ‘EMAIL’,’PATIENT’, ‘URL’, ‘USERNAME’, ‘CITY’, ‘COUNTRY’, ‘DLN’, ‘HOSPITAL’, ‘IDNUM’, ‘MEDICALRECORD’, ‘STATE’, ‘STREET’, ‘ZIP’, ‘AGE’, ‘PHONE’, ‘ORGANIZATION’,’SSN’, ‘ACCOUNT’, ‘PLATE’, ‘VIN’, ‘LICENSE’, ‘IP’ entities. Live Demo Open in Colab Download Copy S3 URI How to use PythonHealthcare NLPPythonJohnSnowLabsScalaNLU from sparknlp.pretrained import PretrainedPipeline deid_pipeline = PretrainedPipeline(&quot;clinical_deidentification_docwise_benchmark_large_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) text = &quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024. The patient’s medical record number is 56467890. The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot; deid_result = deid_pipeline.fullAnnotate(text) from sparknlp.pretrained import PretrainedPipeline deid_pipeline = nlp.PretrainedPipeline(&quot;clinical_deidentification_docwise_benchmark_large_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) text = &quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024. The patient’s medical record number is 56467890. The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot; deid_result = deid_pipeline.fullAnnotate(text) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val deid_pipeline = PretrainedPipeline(&quot;clinical_deidentification_docwise_benchmark_large_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val text = &quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024. The patient’s medical record number is 56467890. The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot; val deid_result = deid_pipeline.fullAnnotate(text) Results | | text | result | result | |---:|:-------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| | 0 | Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024. | ['Dr. &amp;lt;DOCTOR&amp;gt;, from &amp;lt;HOSPITAL&amp;gt; in &amp;lt;CITY&amp;gt;, attended to the patient on &amp;lt;DATE&amp;gt;.\nThe patient’s medical record number is &amp;lt;IDNUM&amp;gt;.\nThe patient, &amp;lt;PATIENT&amp;gt;, is &amp;lt;AGE&amp;gt;, her Contact number: &amp;lt;PHONE&amp;gt; .'] | ['Dr. Valerie Aho, from Mercy Hospital Aurora in Berea, attended to the patient on 12/06/2024.\nThe patient’s medical record number is 78689012.\nThe patient, Johnathon Bunde, is 55 years old, her Contact number: 666-678-9012 .'] | | | The patient’s medical record number is 56467890. | | | | | The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 . | | | Model Information Model Name: clinical_deidentification_docwise_benchmark_large_v2 Type: pipeline Compatibility: Healthcare NLP 6.2.2+ License: Licensed Edition: Official Language: en Size: 3.5 GB Included Models DocumentAssembler InternalDocumentSplitter TokenizerModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverterInternalModel PretrainedZeroShotNERChunker MedicalNerModel NerConverterInternalModel ChunkMergeModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel RegexMatcherInternalModel RegexMatcherInternalModel ContextualParserModel ContextualParserModel RegexMatcherInternalModel RegexMatcherInternalModel RegexMatcherInternalModel ContextualParserModel TextMatcherInternalModel TextMatcherInternalModel TextMatcherInternalModel ContextualParserModel ContextualParserModel ChunkMergeModel ChunkMergeModel ChunkMergeModel LightDeIdentification LightDeIdentification</summary></entry><entry><title type="html">Clinical Deidentification Pipeline Medium v2 (Document Wise)</title><link href="/2025/12/14/clinical_deidentification_docwise_benchmark_medium_v2_en.html" rel="alternate" type="text/html" title="Clinical Deidentification Pipeline Medium v2 (Document Wise)" /><published>2025-12-14T00:00:00+00:00</published><updated>2025-12-14T00:00:00+00:00</updated><id>/2025/12/14/clinical_deidentification_docwise_benchmark_medium_v2_en</id><content type="html" xml:base="/2025/12/14/clinical_deidentification_docwise_benchmark_medium_v2_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+- DocumentAssembler
+- InternalDocumentSplitter
+- TokenizerModel
+- TokenizerModel
+- WordEmbeddingsModel
+- MedicalNerModel
+- NerConverterInternalModel
+- PretrainedZeroShotNERChunker
+- MedicalNerModel
+- NerConverterInternalModel
+- ChunkMergeModel
+- ContextualParserModel
+- ContextualParserModel
+- ContextualParserModel
+- ContextualParserModel
+- ContextualParserModel
+- ContextualParserModel
+- ContextualParserModel
+- ContextualParserModel
+- RegexMatcherInternalModel
+- RegexMatcherInternalModel
+- ContextualParserModel
+- ContextualParserModel
+- RegexMatcherInternalModel
+- RegexMatcherInternalModel
+- RegexMatcherInternalModel
+- ContextualParserModel
+- TextMatcherInternalModel
+- TextMatcherInternalModel
+- TextMatcherInternalModel
+- ContextualParserModel
+- ContextualParserModel
+- ChunkMergeModel
+- ChunkMergeModel
+- ChunkMergeModel
+- LightDeIdentification
+- LightDeIdentification</content><author><name>John Snow Labs</name></author><category term="deidentification" /><category term="deid" /><category term="en" /><category term="licensed" /><category term="clinical" /><category term="pipeline" /><category term="docwise" /><summary type="html">Description This pipeline can be used to deidentify PHI information from medical texts. The PHI information will be masked and obfuscated in the resulting text. The pipeline can mask and obfuscate ‘DATE’, ‘LOCATION’, ‘PROFESSION’, ‘DOCTOR’, ‘EMAIL’,’PATIENT’, ‘URL’, ‘USERNAME’, ‘CITY’, ‘COUNTRY’, ‘DLN’, ‘HOSPITAL’, ‘IDNUM’, ‘MEDICALRECORD’, ‘STATE’, ‘STREET’, ‘ZIP’, ‘AGE’, ‘PHONE’, ‘ORGANIZATION’,’SSN’, ‘ACCOUNT’, ‘PLATE’, ‘VIN’, ‘LICENSE’, ‘IP’ entities. Live Demo Open in Colab Download Copy S3 URI How to use PythonHealthcare NLPPythonJohnSnowLabsScalaNLU from sparknlp.pretrained import PretrainedPipeline deid_pipeline = PretrainedPipeline(&quot;clinical_deidentification_docwise_benchmark_large_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) text = &quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024. The patient’s medical record number is 56467890. The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot; deid_result = deid_pipeline.fullAnnotate(text) from sparknlp.pretrained import PretrainedPipeline deid_pipeline = nlp.PretrainedPipeline(&quot;clinical_deidentification_docwise_benchmark_large_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) text = &quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024. The patient’s medical record number is 56467890. The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot; deid_result = deid_pipeline.fullAnnotate(text) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val deid_pipeline = PretrainedPipeline(&quot;clinical_deidentification_docwise_benchmark_large_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val text = &quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024. The patient’s medical record number is 56467890. The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot; val deid_result = deid_pipeline.fullAnnotate(text) Results | | text | result | result | |---:|:-------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| | 0 | Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024. | ['Dr. &amp;lt;DOCTOR&amp;gt;, from &amp;lt;HOSPITAL&amp;gt; in &amp;lt;CITY&amp;gt;, attended to the patient on &amp;lt;DATE&amp;gt;.\nThe patient’s medical record number is &amp;lt;IDNUM&amp;gt;.\nThe patient, &amp;lt;PATIENT&amp;gt;, is &amp;lt;AGE&amp;gt;, her Contact number: &amp;lt;PHONE&amp;gt; .'] | ['Dr. Valerie Aho, from Mercy Hospital Aurora in Berea, attended to the patient on 12/06/2024.\nThe patient’s medical record number is 78689012.\nThe patient, Johnathon Bunde, is 55 years old, her Contact number: 666-678-9012 .'] | | | The patient’s medical record number is 56467890. | | | | | The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 . | | | Model Information Model Name: clinical_deidentification_docwise_benchmark_large_v2 Type: pipeline Compatibility: Healthcare NLP 6.2.2+ License: Licensed Edition: Official Language: en Size: 3.5 GB Included Models DocumentAssembler InternalDocumentSplitter TokenizerModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverterInternalModel PretrainedZeroShotNERChunker MedicalNerModel NerConverterInternalModel ChunkMergeModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel RegexMatcherInternalModel RegexMatcherInternalModel ContextualParserModel ContextualParserModel RegexMatcherInternalModel RegexMatcherInternalModel RegexMatcherInternalModel ContextualParserModel TextMatcherInternalModel TextMatcherInternalModel TextMatcherInternalModel ContextualParserModel ContextualParserModel ChunkMergeModel ChunkMergeModel ChunkMergeModel LightDeIdentification LightDeIdentification</summary></entry><entry><title type="html">Clinical Deidentification Pipeline Medium v2 (Document Wise)</title><link href="/2025/12/14/clinical_deidentification_docwise_benchmark_medium_v2_en.html" rel="alternate" type="text/html" title="Clinical Deidentification Pipeline Medium v2 (Document Wise)" /><published>2025-12-14T00:00:00+00:00</published><updated>2025-12-14T00:00:00+00:00</updated><id>/2025/12/14/clinical_deidentification_docwise_benchmark_medium_v2_en</id><content type="html" xml:base="/2025/12/14/clinical_deidentification_docwise_benchmark_medium_v2_en.html">## Description
 
-&lt;p&gt;This pipeline can be used to deidentify PHI information from medical texts. The PHI information will be masked and obfuscated in the resulting text.
-The pipeline can mask and obfuscate ‘DATE’, ‘LOCATION’, ‘PROFESSION’, ‘DOCTOR’, ‘EMAIL’,’PATIENT’, ‘URL’, ‘USERNAME’,
-‘CITY’, ‘COUNTRY’, ‘DLN’, ‘HOSPITAL’, ‘IDNUM’, ‘MEDICALRECORD’, ‘STATE’, ‘STREET’, ‘ZIP’, ‘AGE’, ‘PHONE’, ‘ORGANIZATION’,’SSN’, ‘ACCOUNT’,
-‘PLATE’, ‘VIN’, ‘LICENSE’, ‘IP’ entities.&lt;/p&gt;
+This pipeline can be used to deidentify PHI information from medical texts. The PHI information will be masked and obfuscated in the resulting text.
+The pipeline can mask and obfuscate 'DATE', 'LOCATION', 'PROFESSION', 'DOCTOR', 'EMAIL','PATIENT', 'URL', 'USERNAME',
+'CITY', 'COUNTRY', 'DLN', 'HOSPITAL', 'IDNUM', 'MEDICALRECORD', 'STATE', 'STREET', 'ZIP', 'AGE', 'PHONE', 'ORGANIZATION','SSN', 'ACCOUNT',
+'PLATE', 'VIN', 'LICENSE', 'IP' entities.
 
-&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
-&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_docwise_benchmark_medium_v2_en_6.2.2_3.4_1765730665630.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
-&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_docwise_benchmark_medium_v2_en_6.2.2_3.4_1765730665630.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_docwise_benchmark_medium_v2_en_6.2.2_3.4_1765730665630.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_docwise_benchmark_medium_v2_en_6.2.2_3.4_1765730665630.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+## How to use
 
-&lt;div class=&quot;tabs-box&quot;&gt;
-  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;strong&gt;Healthcare NLP&lt;/strong&gt;&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;Python&lt;strong&gt;JohnSnowLabs&lt;/strong&gt;&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
-  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp.pretrained&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;deid_pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;clinical_deidentification_docwise_benchmark_medium_v2&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024.
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+```python
+
+from sparknlp.pretrained import PretrainedPipeline
+
+deid_pipeline = PretrainedPipeline(&quot;clinical_deidentification_docwise_benchmark_medium_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+
+text = &quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024.
 The patient’s medical record number is 56467890.
-The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot;&lt;/span&gt;
+The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot;
 
-&lt;span class=&quot;n&quot;&gt;deid_result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;deid_pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fullAnnotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+deid_result = deid_pipeline.fullAnnotate(text)
 
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+```
 
-  &lt;div class=&quot;language-python jsl-block highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp.pretrained&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;
+{:.jsl-block}
+```python
 
-&lt;span class=&quot;n&quot;&gt;deid_pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;clinical_deidentification_docwise_benchmark_medium_v2&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+from sparknlp.pretrained import PretrainedPipeline
 
-&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024.
+deid_pipeline = nlp.PretrainedPipeline(&quot;clinical_deidentification_docwise_benchmark_medium_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+
+text = &quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024.
 The patient’s medical record number is 56467890.
-The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot;&lt;/span&gt;
+The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot;
 
-&lt;span class=&quot;n&quot;&gt;deid_result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;deid_pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fullAnnotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+deid_result = deid_pipeline.fullAnnotate(text)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
-  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.pretrained.PretrainedPipeline&lt;/span&gt;
+```
+```scala
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;deid_pipeline&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;clinical_deidentification_docwise_benchmark_medium_v2&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024.
+val deid_pipeline = PretrainedPipeline(&quot;clinical_deidentification_docwise_benchmark_medium_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+
+val text = &quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024.
 The patient’s medical record number is 56467890.
-The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot;&lt;/span&gt;
+The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot;
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;deid_result&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;deid_pipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;fullAnnotate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+val deid_result = deid_pipeline.fullAnnotate(text)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+```
 &lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+## Results
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;|    | text                                                                                       | result                                                                                                                                                                                            | result                                                                                                                                                                                                                                |
+```bash
+|    | text                                                                                       | result                                                                                                                                                                                            | result                                                                                                                                                                                                                                |
 |---:|:-------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|  0 | Dr. John Lee, from Royal Medical Clinic &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;Chicago, attended to the patient on 11/05/2024. | &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Dr. &amp;lt;DOCTOR&amp;gt;, from &amp;lt;HOSPITAL&amp;gt; in &amp;lt;CITY&amp;gt;, attended to the patient on &amp;lt;DATE&amp;gt;.\nThe patient’s medical record number is &amp;lt;IDNUM&amp;gt;.\nThe patient, &amp;lt;PATIENT&amp;gt;, is &amp;lt;AGE&amp;gt;, her Contact number: &amp;lt;PHONE&amp;gt; .'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; | &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Dr. Valerie Aho, from Mercy Hospital Aurora in Berea, attended to the patient on 12/05/2024.\nThe patient’s medical record number is 78689012.\nThe patient, Johnathon Bunde, is 55 years old, her Contact number: 666-678-9012 .'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; |
+|  0 | Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024. | ['Dr. &lt;DOCTOR&gt;, from &lt;HOSPITAL&gt; in &lt;CITY&gt;, attended to the patient on &lt;DATE&gt;.\nThe patient’s medical record number is &lt;IDNUM&gt;.\nThe patient, &lt;PATIENT&gt;, is &lt;AGE&gt;, her Contact number: &lt;PHONE&gt; .'] | ['Dr. Valerie Aho, from Mercy Hospital Aurora in Berea, attended to the patient on 12/05/2024.\nThe patient’s medical record number is 78689012.\nThe patient, Johnathon Bunde, is 55 years old, her Contact number: 666-678-9012 .'] |
 |    | The patient’s medical record number is 56467890.                                           |                                                                                                                                                                                                   |                                                                                                                                                                                                                                       |
-|    | The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;              |                                                                                                                                                                                                   |                                                                                                                                                                                                                                       |
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+|    | The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .              |                                                                                                                                                                                                   |                                                                                                                                                                                                                                       |
+```
 
-&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+{:.model-param}
+## Model Information
 
-&lt;table class=&quot;table-model&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Model Name:&lt;/td&gt;
-      &lt;td&gt;clinical_deidentification_docwise_benchmark_medium_v2&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Type:&lt;/td&gt;
-      &lt;td&gt;pipeline&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Compatibility:&lt;/td&gt;
-      &lt;td&gt;Healthcare NLP 6.2.2+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;License:&lt;/td&gt;
-      &lt;td&gt;Licensed&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Edition:&lt;/td&gt;
-      &lt;td&gt;Official&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Language:&lt;/td&gt;
-      &lt;td&gt;en&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size:&lt;/td&gt;
-      &lt;td&gt;2.5 GB&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+{:.table-model}
+|---|---|
+|Model Name:|clinical_deidentification_docwise_benchmark_medium_v2|
+|Type:|pipeline|
+|Compatibility:|Healthcare NLP 6.2.2+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|
+|Size:|2.5 GB|
 
-&lt;h2 id=&quot;included-models&quot;&gt;Included Models&lt;/h2&gt;
+## Included Models
 
-&lt;ul&gt;
-  &lt;li&gt;DocumentAssembler&lt;/li&gt;
-  &lt;li&gt;InternalDocumentSplitter&lt;/li&gt;
-  &lt;li&gt;TokenizerModel&lt;/li&gt;
-  &lt;li&gt;TokenizerModel&lt;/li&gt;
-  &lt;li&gt;WordEmbeddingsModel&lt;/li&gt;
-  &lt;li&gt;MedicalNerModel&lt;/li&gt;
-  &lt;li&gt;NerConverterInternalModel&lt;/li&gt;
-  &lt;li&gt;PretrainedZeroShotNERChunker&lt;/li&gt;
-  &lt;li&gt;MedicalNerModel&lt;/li&gt;
-  &lt;li&gt;NerConverterInternalModel&lt;/li&gt;
-  &lt;li&gt;ChunkMergeModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;RegexMatcherInternalModel&lt;/li&gt;
-  &lt;li&gt;RegexMatcherInternalModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;RegexMatcherInternalModel&lt;/li&gt;
-  &lt;li&gt;RegexMatcherInternalModel&lt;/li&gt;
-  &lt;li&gt;RegexMatcherInternalModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;TextMatcherInternalModel&lt;/li&gt;
-  &lt;li&gt;TextMatcherInternalModel&lt;/li&gt;
-  &lt;li&gt;TextMatcherInternalModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ChunkMergeModel&lt;/li&gt;
-  &lt;li&gt;ChunkMergeModel&lt;/li&gt;
-  &lt;li&gt;ChunkMergeModel&lt;/li&gt;
-  &lt;li&gt;LightDeIdentification&lt;/li&gt;
-  &lt;li&gt;LightDeIdentification&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>John Snow Labs</name></author><category term="deidentification" /><category term="deid" /><category term="en" /><category term="licensed" /><category term="clinical" /><category term="pipeline" /><category term="docwise" /><summary type="html">Description This pipeline can be used to deidentify PHI information from medical texts. The PHI information will be masked and obfuscated in the resulting text. The pipeline can mask and obfuscate ‘DATE’, ‘LOCATION’, ‘PROFESSION’, ‘DOCTOR’, ‘EMAIL’,’PATIENT’, ‘URL’, ‘USERNAME’, ‘CITY’, ‘COUNTRY’, ‘DLN’, ‘HOSPITAL’, ‘IDNUM’, ‘MEDICALRECORD’, ‘STATE’, ‘STREET’, ‘ZIP’, ‘AGE’, ‘PHONE’, ‘ORGANIZATION’,’SSN’, ‘ACCOUNT’, ‘PLATE’, ‘VIN’, ‘LICENSE’, ‘IP’ entities. Live Demo Open in Colab Download Copy S3 URI How to use PythonHealthcare NLPPythonJohnSnowLabsScalaNLU from sparknlp.pretrained import PretrainedPipeline deid_pipeline = PretrainedPipeline(&quot;clinical_deidentification_docwise_benchmark_medium_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) text = &quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024. The patient’s medical record number is 56467890. The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot; deid_result = deid_pipeline.fullAnnotate(text) from sparknlp.pretrained import PretrainedPipeline deid_pipeline = nlp.PretrainedPipeline(&quot;clinical_deidentification_docwise_benchmark_medium_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) text = &quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024. The patient’s medical record number is 56467890. The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot; deid_result = deid_pipeline.fullAnnotate(text) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val deid_pipeline = PretrainedPipeline(&quot;clinical_deidentification_docwise_benchmark_medium_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val text = &quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024. The patient’s medical record number is 56467890. The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot; val deid_result = deid_pipeline.fullAnnotate(text) Results | | text | result | result | |---:|:-------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| | 0 | Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024. | ['Dr. &amp;lt;DOCTOR&amp;gt;, from &amp;lt;HOSPITAL&amp;gt; in &amp;lt;CITY&amp;gt;, attended to the patient on &amp;lt;DATE&amp;gt;.\nThe patient’s medical record number is &amp;lt;IDNUM&amp;gt;.\nThe patient, &amp;lt;PATIENT&amp;gt;, is &amp;lt;AGE&amp;gt;, her Contact number: &amp;lt;PHONE&amp;gt; .'] | ['Dr. Valerie Aho, from Mercy Hospital Aurora in Berea, attended to the patient on 12/05/2024.\nThe patient’s medical record number is 78689012.\nThe patient, Johnathon Bunde, is 55 years old, her Contact number: 666-678-9012 .'] | | | The patient’s medical record number is 56467890. | | | | | The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 . | | | Model Information Model Name: clinical_deidentification_docwise_benchmark_medium_v2 Type: pipeline Compatibility: Healthcare NLP 6.2.2+ License: Licensed Edition: Official Language: en Size: 2.5 GB Included Models DocumentAssembler InternalDocumentSplitter TokenizerModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverterInternalModel PretrainedZeroShotNERChunker MedicalNerModel NerConverterInternalModel ChunkMergeModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel RegexMatcherInternalModel RegexMatcherInternalModel ContextualParserModel ContextualParserModel RegexMatcherInternalModel RegexMatcherInternalModel RegexMatcherInternalModel ContextualParserModel TextMatcherInternalModel TextMatcherInternalModel TextMatcherInternalModel ContextualParserModel ContextualParserModel ChunkMergeModel ChunkMergeModel ChunkMergeModel LightDeIdentification LightDeIdentification</summary></entry><entry><title type="html">Clinical Deidentification Pipeline Optimized v2 (Document Wise)</title><link href="/2025/12/14/clinical_deidentification_docwise_benchmark_optimized_v2_en.html" rel="alternate" type="text/html" title="Clinical Deidentification Pipeline Optimized v2 (Document Wise)" /><published>2025-12-14T00:00:00+00:00</published><updated>2025-12-14T00:00:00+00:00</updated><id>/2025/12/14/clinical_deidentification_docwise_benchmark_optimized_v2_en</id><content type="html" xml:base="/2025/12/14/clinical_deidentification_docwise_benchmark_optimized_v2_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+- DocumentAssembler
+- InternalDocumentSplitter
+- TokenizerModel
+- TokenizerModel
+- WordEmbeddingsModel
+- MedicalNerModel
+- NerConverterInternalModel
+- PretrainedZeroShotNERChunker
+- MedicalNerModel
+- NerConverterInternalModel
+- ChunkMergeModel
+- ContextualParserModel
+- ContextualParserModel
+- ContextualParserModel
+- ContextualParserModel
+- ContextualParserModel
+- ContextualParserModel
+- ContextualParserModel
+- ContextualParserModel
+- RegexMatcherInternalModel
+- RegexMatcherInternalModel
+- ContextualParserModel
+- ContextualParserModel
+- RegexMatcherInternalModel
+- RegexMatcherInternalModel
+- RegexMatcherInternalModel
+- ContextualParserModel
+- TextMatcherInternalModel
+- TextMatcherInternalModel
+- TextMatcherInternalModel
+- ContextualParserModel
+- ContextualParserModel
+- ChunkMergeModel
+- ChunkMergeModel
+- ChunkMergeModel
+- LightDeIdentification
+- LightDeIdentification</content><author><name>John Snow Labs</name></author><category term="deidentification" /><category term="deid" /><category term="en" /><category term="licensed" /><category term="clinical" /><category term="pipeline" /><category term="docwise" /><summary type="html">Description This pipeline can be used to deidentify PHI information from medical texts. The PHI information will be masked and obfuscated in the resulting text. The pipeline can mask and obfuscate ‘DATE’, ‘LOCATION’, ‘PROFESSION’, ‘DOCTOR’, ‘EMAIL’,’PATIENT’, ‘URL’, ‘USERNAME’, ‘CITY’, ‘COUNTRY’, ‘DLN’, ‘HOSPITAL’, ‘IDNUM’, ‘MEDICALRECORD’, ‘STATE’, ‘STREET’, ‘ZIP’, ‘AGE’, ‘PHONE’, ‘ORGANIZATION’,’SSN’, ‘ACCOUNT’, ‘PLATE’, ‘VIN’, ‘LICENSE’, ‘IP’ entities. Live Demo Open in Colab Download Copy S3 URI How to use PythonHealthcare NLPPythonJohnSnowLabsScalaNLU from sparknlp.pretrained import PretrainedPipeline deid_pipeline = PretrainedPipeline(&quot;clinical_deidentification_docwise_benchmark_medium_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) text = &quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024. The patient’s medical record number is 56467890. The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot; deid_result = deid_pipeline.fullAnnotate(text) from sparknlp.pretrained import PretrainedPipeline deid_pipeline = nlp.PretrainedPipeline(&quot;clinical_deidentification_docwise_benchmark_medium_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) text = &quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024. The patient’s medical record number is 56467890. The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot; deid_result = deid_pipeline.fullAnnotate(text) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val deid_pipeline = PretrainedPipeline(&quot;clinical_deidentification_docwise_benchmark_medium_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val text = &quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024. The patient’s medical record number is 56467890. The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot; val deid_result = deid_pipeline.fullAnnotate(text) Results | | text | result | result | |---:|:-------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| | 0 | Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024. | ['Dr. &amp;lt;DOCTOR&amp;gt;, from &amp;lt;HOSPITAL&amp;gt; in &amp;lt;CITY&amp;gt;, attended to the patient on &amp;lt;DATE&amp;gt;.\nThe patient’s medical record number is &amp;lt;IDNUM&amp;gt;.\nThe patient, &amp;lt;PATIENT&amp;gt;, is &amp;lt;AGE&amp;gt;, her Contact number: &amp;lt;PHONE&amp;gt; .'] | ['Dr. Valerie Aho, from Mercy Hospital Aurora in Berea, attended to the patient on 12/05/2024.\nThe patient’s medical record number is 78689012.\nThe patient, Johnathon Bunde, is 55 years old, her Contact number: 666-678-9012 .'] | | | The patient’s medical record number is 56467890. | | | | | The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 . | | | Model Information Model Name: clinical_deidentification_docwise_benchmark_medium_v2 Type: pipeline Compatibility: Healthcare NLP 6.2.2+ License: Licensed Edition: Official Language: en Size: 2.5 GB Included Models DocumentAssembler InternalDocumentSplitter TokenizerModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverterInternalModel PretrainedZeroShotNERChunker MedicalNerModel NerConverterInternalModel ChunkMergeModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel RegexMatcherInternalModel RegexMatcherInternalModel ContextualParserModel ContextualParserModel RegexMatcherInternalModel RegexMatcherInternalModel RegexMatcherInternalModel ContextualParserModel TextMatcherInternalModel TextMatcherInternalModel TextMatcherInternalModel ContextualParserModel ContextualParserModel ChunkMergeModel ChunkMergeModel ChunkMergeModel LightDeIdentification LightDeIdentification</summary></entry><entry><title type="html">Clinical Deidentification Pipeline Optimized v2 (Document Wise)</title><link href="/2025/12/14/clinical_deidentification_docwise_benchmark_optimized_v2_en.html" rel="alternate" type="text/html" title="Clinical Deidentification Pipeline Optimized v2 (Document Wise)" /><published>2025-12-14T00:00:00+00:00</published><updated>2025-12-14T00:00:00+00:00</updated><id>/2025/12/14/clinical_deidentification_docwise_benchmark_optimized_v2_en</id><content type="html" xml:base="/2025/12/14/clinical_deidentification_docwise_benchmark_optimized_v2_en.html">## Description
 
-&lt;p&gt;This pipeline can be used to deidentify PHI information from medical texts. The PHI information will be masked and obfuscated in the resulting text.
-The pipeline can mask and obfuscate ‘NAME’,’DATE’, ‘LOCATION’, ‘PROFESSION’, ‘DOCTOR’, ‘EMAIL’,’PATIENT’, ‘URL’, ‘USERNAME’,
-‘CITY’, ‘COUNTRY’, ‘DLN’, ‘HOSPITAL’, ‘IDNUM’, ‘MEDICALRECORD’, ‘STATE’, ‘STREET’, ‘ZIP’, ‘AGE’, ‘PHONE’, ‘ORGANIZATION’,’SSN’, ‘ACCOUNT’,
-‘PLATE’, ‘VIN’, ‘LICENSE’, ‘IP’ entities.&lt;/p&gt;
+This pipeline can be used to deidentify PHI information from medical texts. The PHI information will be masked and obfuscated in the resulting text.
+The pipeline can mask and obfuscate 'NAME','DATE', 'LOCATION', 'PROFESSION', 'DOCTOR', 'EMAIL','PATIENT', 'URL', 'USERNAME',
+'CITY', 'COUNTRY', 'DLN', 'HOSPITAL', 'IDNUM', 'MEDICALRECORD', 'STATE', 'STREET', 'ZIP', 'AGE', 'PHONE', 'ORGANIZATION','SSN', 'ACCOUNT',
+'PLATE', 'VIN', 'LICENSE', 'IP' entities.
 
-&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
-&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_docwise_benchmark_optimized_v2_en_6.2.2_3.4_1765742513008.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
-&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_docwise_benchmark_optimized_v2_en_6.2.2_3.4_1765742513008.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_docwise_benchmark_optimized_v2_en_6.2.2_3.4_1765742513008.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_docwise_benchmark_optimized_v2_en_6.2.2_3.4_1765742513008.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+## How to use
 
-&lt;div class=&quot;tabs-box&quot;&gt;
-  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;strong&gt;Healthcare NLP&lt;/strong&gt;&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;Python&lt;strong&gt;JohnSnowLabs&lt;/strong&gt;&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
-  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp.pretrained&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;deid_pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;clinical_deidentification_docwise_benchmark_optimized_v2&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024.
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+```python
+
+from sparknlp.pretrained import PretrainedPipeline
+
+deid_pipeline = PretrainedPipeline(&quot;clinical_deidentification_docwise_benchmark_optimized_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+
+text = &quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024.
 The patient’s medical record number is 56467890.
-The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot;&lt;/span&gt;
+The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot;
 
-&lt;span class=&quot;n&quot;&gt;deid_result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;deid_pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fullAnnotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+deid_result = deid_pipeline.fullAnnotate(text)
 
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+```
 
-  &lt;div class=&quot;language-python jsl-block highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp.pretrained&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;
+{:.jsl-block}
+```python
 
-&lt;span class=&quot;n&quot;&gt;deid_pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;clinical_deidentification_docwise_benchmark_optimized_v2&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+from sparknlp.pretrained import PretrainedPipeline
 
-&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024.
+deid_pipeline = nlp.PretrainedPipeline(&quot;clinical_deidentification_docwise_benchmark_optimized_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+
+text = &quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024.
 The patient’s medical record number is 56467890.
-The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot;&lt;/span&gt;
+The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot;
 
-&lt;span class=&quot;n&quot;&gt;deid_result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;deid_pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fullAnnotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+deid_result = deid_pipeline.fullAnnotate(text)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
-  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.pretrained.PretrainedPipeline&lt;/span&gt;
+```
+```scala
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;deid_pipeline&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;clinical_deidentification_docwise_benchmark_optimized_v2&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024.
+val deid_pipeline = PretrainedPipeline(&quot;clinical_deidentification_docwise_benchmark_optimized_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+
+val text = &quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024.
 The patient’s medical record number is 56467890.
-The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot;&lt;/span&gt;
+The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot;
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;deid_result&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;deid_pipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;fullAnnotate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+val deid_result = deid_pipeline.fullAnnotate(text)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+```
 &lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+## Results
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;|    | text                                                                                       | result                                                                                                                                                                                                    | result                                                                                                                                                                                                                                |
+```bash
+|    | text                                                                                       | result                                                                                                                                                                                                    | result                                                                                                                                                                                                                                |
 |---:|:-------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|  0 | Dr. John Lee, from Royal Medical Clinic &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;Chicago, attended to the patient on 11/05/2024. | &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Dr. &amp;lt;DOCTOR&amp;gt;, from &amp;lt;HOSPITAL&amp;gt; in &amp;lt;CITY&amp;gt;, attended to the patient on &amp;lt;DATE&amp;gt;.\nThe patient’s medical record number is &amp;lt;MEDICALRECORD&amp;gt;.\nThe patient, &amp;lt;PATIENT&amp;gt;, is &amp;lt;AGE&amp;gt;, her Contact number: &amp;lt;PHONE&amp;gt; .'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; | &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Dr. Valerie Aho, from Mercy Hospital Aurora in Berea, attended to the patient on 28/06/2024.\nThe patient’s medical record number is 78689012.\nThe patient, Johnathon Bunde, is 55 years old, her Contact number: 666-678-9012 .'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; |
+|  0 | Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024. | ['Dr. &lt;DOCTOR&gt;, from &lt;HOSPITAL&gt; in &lt;CITY&gt;, attended to the patient on &lt;DATE&gt;.\nThe patient’s medical record number is &lt;MEDICALRECORD&gt;.\nThe patient, &lt;PATIENT&gt;, is &lt;AGE&gt;, her Contact number: &lt;PHONE&gt; .'] | ['Dr. Valerie Aho, from Mercy Hospital Aurora in Berea, attended to the patient on 28/06/2024.\nThe patient’s medical record number is 78689012.\nThe patient, Johnathon Bunde, is 55 years old, her Contact number: 666-678-9012 .'] |
 |    | The patient’s medical record number is 56467890.                                           |                                                                                                                                                                                                           |                                                                                                                                                                                                                                       |
-|    | The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;              |                                                                                                                                                                                                           |                                                                                                                                                                                                                                       |
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+|    | The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .              |                                                                                                                                                                                                           |                                                                                                                                                                                                                                       |
+```
 
-&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+{:.model-param}
+## Model Information
 
-&lt;table class=&quot;table-model&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Model Name:&lt;/td&gt;
-      &lt;td&gt;clinical_deidentification_docwise_benchmark_optimized_v2&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Type:&lt;/td&gt;
-      &lt;td&gt;pipeline&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Compatibility:&lt;/td&gt;
-      &lt;td&gt;Healthcare NLP 6.2.2+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;License:&lt;/td&gt;
-      &lt;td&gt;Licensed&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Edition:&lt;/td&gt;
-      &lt;td&gt;Official&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Language:&lt;/td&gt;
-      &lt;td&gt;en&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size:&lt;/td&gt;
-      &lt;td&gt;1.8 GB&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+{:.table-model}
+|---|---|
+|Model Name:|clinical_deidentification_docwise_benchmark_optimized_v2|
+|Type:|pipeline|
+|Compatibility:|Healthcare NLP 6.2.2+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|
+|Size:|1.8 GB|
 
-&lt;h2 id=&quot;included-models&quot;&gt;Included Models&lt;/h2&gt;
+## Included Models
 
-&lt;ul&gt;
-  &lt;li&gt;DocumentAssembler&lt;/li&gt;
-  &lt;li&gt;InternalDocumentSplitter&lt;/li&gt;
-  &lt;li&gt;TokenizerModel&lt;/li&gt;
-  &lt;li&gt;TokenizerModel&lt;/li&gt;
-  &lt;li&gt;WordEmbeddingsModel&lt;/li&gt;
-  &lt;li&gt;MedicalNerModel&lt;/li&gt;
-  &lt;li&gt;NerConverterInternalModel&lt;/li&gt;
-  &lt;li&gt;MedicalNerModel&lt;/li&gt;
-  &lt;li&gt;NerConverterInternalModel&lt;/li&gt;
-  &lt;li&gt;MedicalNerModel&lt;/li&gt;
-  &lt;li&gt;NerConverterInternalModel&lt;/li&gt;
-  &lt;li&gt;MedicalNerModel&lt;/li&gt;
-  &lt;li&gt;NerConverterInternalModel&lt;/li&gt;
-  &lt;li&gt;ChunkMergeModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;RegexMatcherInternalModel&lt;/li&gt;
-  &lt;li&gt;RegexMatcherInternalModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;RegexMatcherInternalModel&lt;/li&gt;
-  &lt;li&gt;RegexMatcherInternalModel&lt;/li&gt;
-  &lt;li&gt;RegexMatcherInternalModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;TextMatcherInternalModel&lt;/li&gt;
-  &lt;li&gt;TextMatcherInternalModel&lt;/li&gt;
-  &lt;li&gt;TextMatcherInternalModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ChunkMergeModel&lt;/li&gt;
-  &lt;li&gt;ChunkMergeModel&lt;/li&gt;
-  &lt;li&gt;ChunkMergeModel&lt;/li&gt;
-  &lt;li&gt;LightDeIdentification&lt;/li&gt;
-  &lt;li&gt;LightDeIdentification&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>John Snow Labs</name></author><category term="deidentification" /><category term="deid" /><category term="en" /><category term="licensed" /><category term="clinical" /><category term="pipeline" /><category term="docwise" /><summary type="html">Description This pipeline can be used to deidentify PHI information from medical texts. The PHI information will be masked and obfuscated in the resulting text. The pipeline can mask and obfuscate ‘NAME’,’DATE’, ‘LOCATION’, ‘PROFESSION’, ‘DOCTOR’, ‘EMAIL’,’PATIENT’, ‘URL’, ‘USERNAME’, ‘CITY’, ‘COUNTRY’, ‘DLN’, ‘HOSPITAL’, ‘IDNUM’, ‘MEDICALRECORD’, ‘STATE’, ‘STREET’, ‘ZIP’, ‘AGE’, ‘PHONE’, ‘ORGANIZATION’,’SSN’, ‘ACCOUNT’, ‘PLATE’, ‘VIN’, ‘LICENSE’, ‘IP’ entities. Live Demo Open in Colab Download Copy S3 URI How to use PythonHealthcare NLPPythonJohnSnowLabsScalaNLU from sparknlp.pretrained import PretrainedPipeline deid_pipeline = PretrainedPipeline(&quot;clinical_deidentification_docwise_benchmark_optimized_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) text = &quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024. The patient’s medical record number is 56467890. The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot; deid_result = deid_pipeline.fullAnnotate(text) from sparknlp.pretrained import PretrainedPipeline deid_pipeline = nlp.PretrainedPipeline(&quot;clinical_deidentification_docwise_benchmark_optimized_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) text = &quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024. The patient’s medical record number is 56467890. The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot; deid_result = deid_pipeline.fullAnnotate(text) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val deid_pipeline = PretrainedPipeline(&quot;clinical_deidentification_docwise_benchmark_optimized_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val text = &quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024. The patient’s medical record number is 56467890. The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot; val deid_result = deid_pipeline.fullAnnotate(text) Results | | text | result | result | |---:|:-------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| | 0 | Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024. | ['Dr. &amp;lt;DOCTOR&amp;gt;, from &amp;lt;HOSPITAL&amp;gt; in &amp;lt;CITY&amp;gt;, attended to the patient on &amp;lt;DATE&amp;gt;.\nThe patient’s medical record number is &amp;lt;MEDICALRECORD&amp;gt;.\nThe patient, &amp;lt;PATIENT&amp;gt;, is &amp;lt;AGE&amp;gt;, her Contact number: &amp;lt;PHONE&amp;gt; .'] | ['Dr. Valerie Aho, from Mercy Hospital Aurora in Berea, attended to the patient on 28/06/2024.\nThe patient’s medical record number is 78689012.\nThe patient, Johnathon Bunde, is 55 years old, her Contact number: 666-678-9012 .'] | | | The patient’s medical record number is 56467890. | | | | | The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 . | | | Model Information Model Name: clinical_deidentification_docwise_benchmark_optimized_v2 Type: pipeline Compatibility: Healthcare NLP 6.2.2+ License: Licensed Edition: Official Language: en Size: 1.8 GB Included Models DocumentAssembler InternalDocumentSplitter TokenizerModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverterInternalModel MedicalNerModel NerConverterInternalModel MedicalNerModel NerConverterInternalModel MedicalNerModel NerConverterInternalModel ChunkMergeModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel RegexMatcherInternalModel RegexMatcherInternalModel ContextualParserModel ContextualParserModel RegexMatcherInternalModel RegexMatcherInternalModel RegexMatcherInternalModel ContextualParserModel TextMatcherInternalModel TextMatcherInternalModel TextMatcherInternalModel ContextualParserModel ContextualParserModel ChunkMergeModel ChunkMergeModel ChunkMergeModel LightDeIdentification LightDeIdentification</summary></entry><entry><title type="html">Clinical Deidentification Pipeline Zero Shot Large (Document Wise)</title><link href="/2025/12/14/clinical_deidentification_docwise_zeroshot_large_en.html" rel="alternate" type="text/html" title="Clinical Deidentification Pipeline Zero Shot Large (Document Wise)" /><published>2025-12-14T00:00:00+00:00</published><updated>2025-12-14T00:00:00+00:00</updated><id>/2025/12/14/clinical_deidentification_docwise_zeroshot_large_en</id><content type="html" xml:base="/2025/12/14/clinical_deidentification_docwise_zeroshot_large_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+- DocumentAssembler
+- InternalDocumentSplitter
+- TokenizerModel
+- TokenizerModel
+- WordEmbeddingsModel
+- MedicalNerModel
+- NerConverterInternalModel
+- MedicalNerModel
+- NerConverterInternalModel
+- MedicalNerModel
+- NerConverterInternalModel
+- MedicalNerModel
+- NerConverterInternalModel
+- ChunkMergeModel
+- ContextualParserModel
+- ContextualParserModel
+- ContextualParserModel
+- ContextualParserModel
+- ContextualParserModel
+- ContextualParserModel
+- ContextualParserModel
+- ContextualParserModel
+- RegexMatcherInternalModel
+- RegexMatcherInternalModel
+- ContextualParserModel
+- ContextualParserModel
+- RegexMatcherInternalModel
+- RegexMatcherInternalModel
+- RegexMatcherInternalModel
+- ContextualParserModel
+- TextMatcherInternalModel
+- TextMatcherInternalModel
+- TextMatcherInternalModel
+- ContextualParserModel
+- ContextualParserModel
+- ChunkMergeModel
+- ChunkMergeModel
+- ChunkMergeModel
+- LightDeIdentification
+- LightDeIdentification</content><author><name>John Snow Labs</name></author><category term="deidentification" /><category term="deid" /><category term="en" /><category term="licensed" /><category term="clinical" /><category term="pipeline" /><category term="docwise" /><summary type="html">Description This pipeline can be used to deidentify PHI information from medical texts. The PHI information will be masked and obfuscated in the resulting text. The pipeline can mask and obfuscate ‘NAME’,’DATE’, ‘LOCATION’, ‘PROFESSION’, ‘DOCTOR’, ‘EMAIL’,’PATIENT’, ‘URL’, ‘USERNAME’, ‘CITY’, ‘COUNTRY’, ‘DLN’, ‘HOSPITAL’, ‘IDNUM’, ‘MEDICALRECORD’, ‘STATE’, ‘STREET’, ‘ZIP’, ‘AGE’, ‘PHONE’, ‘ORGANIZATION’,’SSN’, ‘ACCOUNT’, ‘PLATE’, ‘VIN’, ‘LICENSE’, ‘IP’ entities. Live Demo Open in Colab Download Copy S3 URI How to use PythonHealthcare NLPPythonJohnSnowLabsScalaNLU from sparknlp.pretrained import PretrainedPipeline deid_pipeline = PretrainedPipeline(&quot;clinical_deidentification_docwise_benchmark_optimized_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) text = &quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024. The patient’s medical record number is 56467890. The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot; deid_result = deid_pipeline.fullAnnotate(text) from sparknlp.pretrained import PretrainedPipeline deid_pipeline = nlp.PretrainedPipeline(&quot;clinical_deidentification_docwise_benchmark_optimized_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) text = &quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024. The patient’s medical record number is 56467890. The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot; deid_result = deid_pipeline.fullAnnotate(text) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val deid_pipeline = PretrainedPipeline(&quot;clinical_deidentification_docwise_benchmark_optimized_v2&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val text = &quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024. The patient’s medical record number is 56467890. The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot; val deid_result = deid_pipeline.fullAnnotate(text) Results | | text | result | result | |---:|:-------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| | 0 | Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024. | ['Dr. &amp;lt;DOCTOR&amp;gt;, from &amp;lt;HOSPITAL&amp;gt; in &amp;lt;CITY&amp;gt;, attended to the patient on &amp;lt;DATE&amp;gt;.\nThe patient’s medical record number is &amp;lt;MEDICALRECORD&amp;gt;.\nThe patient, &amp;lt;PATIENT&amp;gt;, is &amp;lt;AGE&amp;gt;, her Contact number: &amp;lt;PHONE&amp;gt; .'] | ['Dr. Valerie Aho, from Mercy Hospital Aurora in Berea, attended to the patient on 28/06/2024.\nThe patient’s medical record number is 78689012.\nThe patient, Johnathon Bunde, is 55 years old, her Contact number: 666-678-9012 .'] | | | The patient’s medical record number is 56467890. | | | | | The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 . | | | Model Information Model Name: clinical_deidentification_docwise_benchmark_optimized_v2 Type: pipeline Compatibility: Healthcare NLP 6.2.2+ License: Licensed Edition: Official Language: en Size: 1.8 GB Included Models DocumentAssembler InternalDocumentSplitter TokenizerModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverterInternalModel MedicalNerModel NerConverterInternalModel MedicalNerModel NerConverterInternalModel MedicalNerModel NerConverterInternalModel ChunkMergeModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel RegexMatcherInternalModel RegexMatcherInternalModel ContextualParserModel ContextualParserModel RegexMatcherInternalModel RegexMatcherInternalModel RegexMatcherInternalModel ContextualParserModel TextMatcherInternalModel TextMatcherInternalModel TextMatcherInternalModel ContextualParserModel ContextualParserModel ChunkMergeModel ChunkMergeModel ChunkMergeModel LightDeIdentification LightDeIdentification</summary></entry><entry><title type="html">Clinical Deidentification Pipeline Zero Shot Large (Document Wise)</title><link href="/2025/12/14/clinical_deidentification_docwise_zeroshot_large_en.html" rel="alternate" type="text/html" title="Clinical Deidentification Pipeline Zero Shot Large (Document Wise)" /><published>2025-12-14T00:00:00+00:00</published><updated>2025-12-14T00:00:00+00:00</updated><id>/2025/12/14/clinical_deidentification_docwise_zeroshot_large_en</id><content type="html" xml:base="/2025/12/14/clinical_deidentification_docwise_zeroshot_large_en.html">## Description
 
-&lt;p&gt;This pipeline can be used to deidentify PHI information from medical texts. The PHI information will be masked and obfuscated in the resulting text.
-The pipeline can mask and obfuscate ‘DATE’, ‘PROFESSION’, ‘DOCTOR’, ‘EMAIL’,’PATIENT’, ‘URL’, ‘USERNAME’,
-‘CITY’, ‘COUNTRY’, ‘DLN’, ‘HOSPITAL’, ‘IDNUM’, ‘MEDICALRECORD’, ‘STATE’, ‘STREET’, ‘ZIP’, ‘AGE’, ‘PHONE’, ‘ORGANIZATION’,’SSN’, ‘ACCOUNT’,
-‘PLATE’, ‘VIN’, ‘LICENSE’, ‘IP’ entities.&lt;/p&gt;
+This pipeline can be used to deidentify PHI information from medical texts. The PHI information will be masked and obfuscated in the resulting text.
+The pipeline can mask and obfuscate 'DATE', 'PROFESSION', 'DOCTOR', 'EMAIL','PATIENT', 'URL', 'USERNAME',
+'CITY', 'COUNTRY', 'DLN', 'HOSPITAL', 'IDNUM', 'MEDICALRECORD', 'STATE', 'STREET', 'ZIP', 'AGE', 'PHONE', 'ORGANIZATION','SSN', 'ACCOUNT',
+'PLATE', 'VIN', 'LICENSE', 'IP' entities.
 
-&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
-&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_docwise_zeroshot_large_en_6.2.2_3.4_1765731123391.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
-&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_docwise_zeroshot_large_en_6.2.2_3.4_1765731123391.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_docwise_zeroshot_large_en_6.2.2_3.4_1765731123391.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_docwise_zeroshot_large_en_6.2.2_3.4_1765731123391.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+## How to use
 
-&lt;div class=&quot;tabs-box&quot;&gt;
-  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;strong&gt;Healthcare NLP&lt;/strong&gt;&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;Python&lt;strong&gt;JohnSnowLabs&lt;/strong&gt;&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
-  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp.pretrained&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;deid_pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;clinical_deidentification_docwise_zeroshot_large&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024.
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+```python
+
+from sparknlp.pretrained import PretrainedPipeline
+
+deid_pipeline = PretrainedPipeline(&quot;clinical_deidentification_docwise_zeroshot_large&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+
+text = &quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024.
 The patient’s medical record number is 56467890.
-The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot;&lt;/span&gt;
+The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot;
 
-&lt;span class=&quot;n&quot;&gt;deid_result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;deid_pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fullAnnotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+deid_result = deid_pipeline.fullAnnotate(text)
 
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+```
 
-  &lt;div class=&quot;language-python jsl-block highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp.pretrained&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;
+{:.jsl-block}
+```python
 
-&lt;span class=&quot;n&quot;&gt;deid_pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;clinical_deidentification_docwise_zeroshot_large&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+from sparknlp.pretrained import PretrainedPipeline
 
-&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024.
+deid_pipeline = nlp.PretrainedPipeline(&quot;clinical_deidentification_docwise_zeroshot_large&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+
+text = &quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024.
 The patient’s medical record number is 56467890.
-The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot;&lt;/span&gt;
+The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot;
 
-&lt;span class=&quot;n&quot;&gt;deid_result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;deid_pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fullAnnotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+deid_result = deid_pipeline.fullAnnotate(text)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
-  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.pretrained.PretrainedPipeline&lt;/span&gt;
+```
+```scala
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;deid_pipeline&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;clinical_deidentification_docwise_zeroshot_large&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024.
+val deid_pipeline = PretrainedPipeline(&quot;clinical_deidentification_docwise_zeroshot_large&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+
+val text = &quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024.
 The patient’s medical record number is 56467890.
-The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot;&lt;/span&gt;
+The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot;
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;deid_result&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;deid_pipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;fullAnnotate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+val deid_result = deid_pipeline.fullAnnotate(text)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+```
 &lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+## Results
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;|    | text                                                                                       | result                                                                                                                                                                                            | result                                                                                                                                                                                                                                |
+```bash
+|    | text                                                                                       | result                                                                                                                                                                                            | result                                                                                                                                                                                                                                |
 |---:|:-------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|  0 | Dr. John Lee, from Royal Medical Clinic &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;Chicago, attended to the patient on 11/05/2024. | &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Dr. &amp;lt;DOCTOR&amp;gt;, from &amp;lt;HOSPITAL&amp;gt; in &amp;lt;CITY&amp;gt;, attended to the patient on &amp;lt;DATE&amp;gt;.\nThe patient’s medical record number is &amp;lt;IDNUM&amp;gt;.\nThe patient, &amp;lt;PATIENT&amp;gt;, is &amp;lt;AGE&amp;gt;, her Contact number: &amp;lt;PHONE&amp;gt; .'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; | &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Dr. Valerie Aho, from Mercy Hospital Aurora in Berea, attended to the patient on 22/06/2024.\nThe patient’s medical record number is 78689012.\nThe patient, Johnathon Bunde, is 55 years old, her Contact number: 666-678-9012 .'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; |
+|  0 | Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024. | ['Dr. &lt;DOCTOR&gt;, from &lt;HOSPITAL&gt; in &lt;CITY&gt;, attended to the patient on &lt;DATE&gt;.\nThe patient’s medical record number is &lt;IDNUM&gt;.\nThe patient, &lt;PATIENT&gt;, is &lt;AGE&gt;, her Contact number: &lt;PHONE&gt; .'] | ['Dr. Valerie Aho, from Mercy Hospital Aurora in Berea, attended to the patient on 22/06/2024.\nThe patient’s medical record number is 78689012.\nThe patient, Johnathon Bunde, is 55 years old, her Contact number: 666-678-9012 .'] |
 |    | The patient’s medical record number is 56467890.                                           |                                                                                                                                                                                                   |                                                                                                                                                                                                                                       |
-|    | The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;              |                                                                                                                                                                                                   |                                                                                                                                                                                                                                       |
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+|    | The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .              |                                                                                                                                                                                                   |                                                                                                                                                                                                                                       |
+```
 
-&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+{:.model-param}
+## Model Information
 
-&lt;table class=&quot;table-model&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Model Name:&lt;/td&gt;
-      &lt;td&gt;clinical_deidentification_docwise_zeroshot_large&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Type:&lt;/td&gt;
-      &lt;td&gt;pipeline&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Compatibility:&lt;/td&gt;
-      &lt;td&gt;Healthcare NLP 6.2.2+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;License:&lt;/td&gt;
-      &lt;td&gt;Licensed&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Edition:&lt;/td&gt;
-      &lt;td&gt;Official&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Language:&lt;/td&gt;
-      &lt;td&gt;en&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size:&lt;/td&gt;
-      &lt;td&gt;1.8 GB&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+{:.table-model}
+|---|---|
+|Model Name:|clinical_deidentification_docwise_zeroshot_large|
+|Type:|pipeline|
+|Compatibility:|Healthcare NLP 6.2.2+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|
+|Size:|1.8 GB|
 
-&lt;h2 id=&quot;included-models&quot;&gt;Included Models&lt;/h2&gt;
+## Included Models
 
-&lt;ul&gt;
-  &lt;li&gt;DocumentAssembler&lt;/li&gt;
-  &lt;li&gt;InternalDocumentSplitter&lt;/li&gt;
-  &lt;li&gt;TokenizerModel&lt;/li&gt;
-  &lt;li&gt;PretrainedZeroShotNERChunker&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;RegexMatcherInternalModel&lt;/li&gt;
-  &lt;li&gt;RegexMatcherInternalModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;RegexMatcherInternalModel&lt;/li&gt;
-  &lt;li&gt;RegexMatcherInternalModel&lt;/li&gt;
-  &lt;li&gt;RegexMatcherInternalModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;TextMatcherInternalModel&lt;/li&gt;
-  &lt;li&gt;TextMatcherInternalModel&lt;/li&gt;
-  &lt;li&gt;TextMatcherInternalModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ChunkMergeModel&lt;/li&gt;
-  &lt;li&gt;ChunkMergeModel&lt;/li&gt;
-  &lt;li&gt;ChunkMergeModel&lt;/li&gt;
-  &lt;li&gt;LightDeIdentification&lt;/li&gt;
-  &lt;li&gt;LightDeIdentification&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>John Snow Labs</name></author><category term="deidentification" /><category term="deid" /><category term="en" /><category term="licensed" /><category term="clinical" /><category term="pipeline" /><category term="docwise" /><summary type="html">Description This pipeline can be used to deidentify PHI information from medical texts. The PHI information will be masked and obfuscated in the resulting text. The pipeline can mask and obfuscate ‘DATE’, ‘PROFESSION’, ‘DOCTOR’, ‘EMAIL’,’PATIENT’, ‘URL’, ‘USERNAME’, ‘CITY’, ‘COUNTRY’, ‘DLN’, ‘HOSPITAL’, ‘IDNUM’, ‘MEDICALRECORD’, ‘STATE’, ‘STREET’, ‘ZIP’, ‘AGE’, ‘PHONE’, ‘ORGANIZATION’,’SSN’, ‘ACCOUNT’, ‘PLATE’, ‘VIN’, ‘LICENSE’, ‘IP’ entities. Live Demo Open in Colab Download Copy S3 URI How to use PythonHealthcare NLPPythonJohnSnowLabsScalaNLU from sparknlp.pretrained import PretrainedPipeline deid_pipeline = PretrainedPipeline(&quot;clinical_deidentification_docwise_zeroshot_large&quot;, &quot;en&quot;, &quot;clinical/models&quot;) text = &quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024. The patient’s medical record number is 56467890. The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot; deid_result = deid_pipeline.fullAnnotate(text) from sparknlp.pretrained import PretrainedPipeline deid_pipeline = nlp.PretrainedPipeline(&quot;clinical_deidentification_docwise_zeroshot_large&quot;, &quot;en&quot;, &quot;clinical/models&quot;) text = &quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024. The patient’s medical record number is 56467890. The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot; deid_result = deid_pipeline.fullAnnotate(text) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val deid_pipeline = PretrainedPipeline(&quot;clinical_deidentification_docwise_zeroshot_large&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val text = &quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024. The patient’s medical record number is 56467890. The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot; val deid_result = deid_pipeline.fullAnnotate(text) Results | | text | result | result | |---:|:-------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| | 0 | Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024. | ['Dr. &amp;lt;DOCTOR&amp;gt;, from &amp;lt;HOSPITAL&amp;gt; in &amp;lt;CITY&amp;gt;, attended to the patient on &amp;lt;DATE&amp;gt;.\nThe patient’s medical record number is &amp;lt;IDNUM&amp;gt;.\nThe patient, &amp;lt;PATIENT&amp;gt;, is &amp;lt;AGE&amp;gt;, her Contact number: &amp;lt;PHONE&amp;gt; .'] | ['Dr. Valerie Aho, from Mercy Hospital Aurora in Berea, attended to the patient on 22/06/2024.\nThe patient’s medical record number is 78689012.\nThe patient, Johnathon Bunde, is 55 years old, her Contact number: 666-678-9012 .'] | | | The patient’s medical record number is 56467890. | | | | | The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 . | | | Model Information Model Name: clinical_deidentification_docwise_zeroshot_large Type: pipeline Compatibility: Healthcare NLP 6.2.2+ License: Licensed Edition: Official Language: en Size: 1.8 GB Included Models DocumentAssembler InternalDocumentSplitter TokenizerModel PretrainedZeroShotNERChunker ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel RegexMatcherInternalModel RegexMatcherInternalModel ContextualParserModel ContextualParserModel RegexMatcherInternalModel RegexMatcherInternalModel RegexMatcherInternalModel ContextualParserModel TextMatcherInternalModel TextMatcherInternalModel TextMatcherInternalModel ContextualParserModel ContextualParserModel ChunkMergeModel ChunkMergeModel ChunkMergeModel LightDeIdentification LightDeIdentification</summary></entry><entry><title type="html">Clinical Deidentification Pipeline Zero Shot Medium (Document Wise)</title><link href="/2025/12/14/clinical_deidentification_docwise_zeroshot_medium_en.html" rel="alternate" type="text/html" title="Clinical Deidentification Pipeline Zero Shot Medium (Document Wise)" /><published>2025-12-14T00:00:00+00:00</published><updated>2025-12-14T00:00:00+00:00</updated><id>/2025/12/14/clinical_deidentification_docwise_zeroshot_medium_en</id><content type="html" xml:base="/2025/12/14/clinical_deidentification_docwise_zeroshot_medium_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+- DocumentAssembler
+- InternalDocumentSplitter
+- TokenizerModel
+- PretrainedZeroShotNERChunker
+- ContextualParserModel
+- ContextualParserModel
+- ContextualParserModel
+- ContextualParserModel
+- ContextualParserModel
+- ContextualParserModel
+- ContextualParserModel
+- ContextualParserModel
+- RegexMatcherInternalModel
+- RegexMatcherInternalModel
+- ContextualParserModel
+- ContextualParserModel
+- RegexMatcherInternalModel
+- RegexMatcherInternalModel
+- RegexMatcherInternalModel
+- ContextualParserModel
+- TextMatcherInternalModel
+- TextMatcherInternalModel
+- TextMatcherInternalModel
+- ContextualParserModel
+- ContextualParserModel
+- ChunkMergeModel
+- ChunkMergeModel
+- ChunkMergeModel
+- LightDeIdentification
+- LightDeIdentification</content><author><name>John Snow Labs</name></author><category term="deidentification" /><category term="deid" /><category term="en" /><category term="licensed" /><category term="clinical" /><category term="pipeline" /><category term="docwise" /><summary type="html">Description This pipeline can be used to deidentify PHI information from medical texts. The PHI information will be masked and obfuscated in the resulting text. The pipeline can mask and obfuscate ‘DATE’, ‘PROFESSION’, ‘DOCTOR’, ‘EMAIL’,’PATIENT’, ‘URL’, ‘USERNAME’, ‘CITY’, ‘COUNTRY’, ‘DLN’, ‘HOSPITAL’, ‘IDNUM’, ‘MEDICALRECORD’, ‘STATE’, ‘STREET’, ‘ZIP’, ‘AGE’, ‘PHONE’, ‘ORGANIZATION’,’SSN’, ‘ACCOUNT’, ‘PLATE’, ‘VIN’, ‘LICENSE’, ‘IP’ entities. Live Demo Open in Colab Download Copy S3 URI How to use PythonHealthcare NLPPythonJohnSnowLabsScalaNLU from sparknlp.pretrained import PretrainedPipeline deid_pipeline = PretrainedPipeline(&quot;clinical_deidentification_docwise_zeroshot_large&quot;, &quot;en&quot;, &quot;clinical/models&quot;) text = &quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024. The patient’s medical record number is 56467890. The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot; deid_result = deid_pipeline.fullAnnotate(text) from sparknlp.pretrained import PretrainedPipeline deid_pipeline = nlp.PretrainedPipeline(&quot;clinical_deidentification_docwise_zeroshot_large&quot;, &quot;en&quot;, &quot;clinical/models&quot;) text = &quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024. The patient’s medical record number is 56467890. The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot; deid_result = deid_pipeline.fullAnnotate(text) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val deid_pipeline = PretrainedPipeline(&quot;clinical_deidentification_docwise_zeroshot_large&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val text = &quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024. The patient’s medical record number is 56467890. The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot; val deid_result = deid_pipeline.fullAnnotate(text) Results | | text | result | result | |---:|:-------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| | 0 | Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024. | ['Dr. &amp;lt;DOCTOR&amp;gt;, from &amp;lt;HOSPITAL&amp;gt; in &amp;lt;CITY&amp;gt;, attended to the patient on &amp;lt;DATE&amp;gt;.\nThe patient’s medical record number is &amp;lt;IDNUM&amp;gt;.\nThe patient, &amp;lt;PATIENT&amp;gt;, is &amp;lt;AGE&amp;gt;, her Contact number: &amp;lt;PHONE&amp;gt; .'] | ['Dr. Valerie Aho, from Mercy Hospital Aurora in Berea, attended to the patient on 22/06/2024.\nThe patient’s medical record number is 78689012.\nThe patient, Johnathon Bunde, is 55 years old, her Contact number: 666-678-9012 .'] | | | The patient’s medical record number is 56467890. | | | | | The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 . | | | Model Information Model Name: clinical_deidentification_docwise_zeroshot_large Type: pipeline Compatibility: Healthcare NLP 6.2.2+ License: Licensed Edition: Official Language: en Size: 1.8 GB Included Models DocumentAssembler InternalDocumentSplitter TokenizerModel PretrainedZeroShotNERChunker ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel RegexMatcherInternalModel RegexMatcherInternalModel ContextualParserModel ContextualParserModel RegexMatcherInternalModel RegexMatcherInternalModel RegexMatcherInternalModel ContextualParserModel TextMatcherInternalModel TextMatcherInternalModel TextMatcherInternalModel ContextualParserModel ContextualParserModel ChunkMergeModel ChunkMergeModel ChunkMergeModel LightDeIdentification LightDeIdentification</summary></entry><entry><title type="html">Clinical Deidentification Pipeline Zero Shot Medium (Document Wise)</title><link href="/2025/12/14/clinical_deidentification_docwise_zeroshot_medium_en.html" rel="alternate" type="text/html" title="Clinical Deidentification Pipeline Zero Shot Medium (Document Wise)" /><published>2025-12-14T00:00:00+00:00</published><updated>2025-12-14T00:00:00+00:00</updated><id>/2025/12/14/clinical_deidentification_docwise_zeroshot_medium_en</id><content type="html" xml:base="/2025/12/14/clinical_deidentification_docwise_zeroshot_medium_en.html">## Description
 
-&lt;p&gt;This pipeline can be used to deidentify PHI information from medical texts. The PHI information will be masked and obfuscated in the resulting text.
-The pipeline can mask and obfuscate ‘DATE’, ‘PROFESSION’, ‘DOCTOR’, ‘EMAIL’,’PATIENT’, ‘URL’, ‘USERNAME’,
-‘CITY’, ‘COUNTRY’, ‘DLN’, ‘HOSPITAL’, ‘IDNUM’, ‘MEDICALRECORD’, ‘STATE’, ‘STREET’, ‘ZIP’, ‘AGE’, ‘PHONE’, ‘ORGANIZATION’,’SSN’, ‘ACCOUNT’,
-‘PLATE’, ‘VIN’, ‘LICENSE’, ‘IP’ entities.&lt;/p&gt;
+This pipeline can be used to deidentify PHI information from medical texts. The PHI information will be masked and obfuscated in the resulting text.
+The pipeline can mask and obfuscate 'DATE', 'PROFESSION', 'DOCTOR', 'EMAIL','PATIENT', 'URL', 'USERNAME',
+'CITY', 'COUNTRY', 'DLN', 'HOSPITAL', 'IDNUM', 'MEDICALRECORD', 'STATE', 'STREET', 'ZIP', 'AGE', 'PHONE', 'ORGANIZATION','SSN', 'ACCOUNT',
+'PLATE', 'VIN', 'LICENSE', 'IP' entities.
 
-&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
-&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_docwise_zeroshot_medium_en_6.2.2_3.4_1765730992871.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
-&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_docwise_zeroshot_medium_en_6.2.2_3.4_1765730992871.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_docwise_zeroshot_medium_en_6.2.2_3.4_1765730992871.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_docwise_zeroshot_medium_en_6.2.2_3.4_1765730992871.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+## How to use
 
-&lt;div class=&quot;tabs-box&quot;&gt;
-  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;strong&gt;Healthcare NLP&lt;/strong&gt;&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;Python&lt;strong&gt;JohnSnowLabs&lt;/strong&gt;&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
-  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp.pretrained&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;deid_pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;clinical_deidentification_docwise_zeroshot_medium&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024.
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+```python
+
+from sparknlp.pretrained import PretrainedPipeline
+
+deid_pipeline = PretrainedPipeline(&quot;clinical_deidentification_docwise_zeroshot_medium&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+
+text = &quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024.
 The patient’s medical record number is 56467890.
-The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot;&lt;/span&gt;
+The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot;
 
-&lt;span class=&quot;n&quot;&gt;deid_result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;deid_pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fullAnnotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+deid_result = deid_pipeline.fullAnnotate(text)
 
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+```
 
-  &lt;div class=&quot;language-python jsl-block highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp.pretrained&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;
+{:.jsl-block}
+```python
 
-&lt;span class=&quot;n&quot;&gt;deid_pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;clinical_deidentification_docwise_zeroshot_medium&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+from sparknlp.pretrained import PretrainedPipeline
 
-&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024.
+deid_pipeline = nlp.PretrainedPipeline(&quot;clinical_deidentification_docwise_zeroshot_medium&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+
+text = &quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024.
 The patient’s medical record number is 56467890.
-The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot;&lt;/span&gt;
+The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot;
 
-&lt;span class=&quot;n&quot;&gt;deid_result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;deid_pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fullAnnotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+deid_result = deid_pipeline.fullAnnotate(text)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
-  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.pretrained.PretrainedPipeline&lt;/span&gt;
+```
+```scala
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;deid_pipeline&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;clinical_deidentification_docwise_zeroshot_medium&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024.
+val deid_pipeline = PretrainedPipeline(&quot;clinical_deidentification_docwise_zeroshot_medium&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+
+val text = &quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024.
 The patient’s medical record number is 56467890.
-The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot;&lt;/span&gt;
+The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot;
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;deid_result&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;deid_pipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;fullAnnotate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+val deid_result = deid_pipeline.fullAnnotate(text)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+```
 &lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+## Results
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;|    | text                                                                                       | result                                                                                                                                                                                            | result                                                                                                                                                                                                                                |
+```bash
+|    | text                                                                                       | result                                                                                                                                                                                            | result                                                                                                                                                                                                                                |
 |---:|:-------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|  0 | Dr. John Lee, from Royal Medical Clinic &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;Chicago, attended to the patient on 11/05/2024. | &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Dr. &amp;lt;DOCTOR&amp;gt;, from &amp;lt;HOSPITAL&amp;gt; in &amp;lt;CITY&amp;gt;, attended to the patient on &amp;lt;DATE&amp;gt;.\nThe patient’s medical record number is &amp;lt;IDNUM&amp;gt;.\nThe patient, &amp;lt;PATIENT&amp;gt;, is &amp;lt;AGE&amp;gt;, her Contact number: &amp;lt;PHONE&amp;gt; .'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; | &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Dr. Valerie Aho, from Mercy Hospital Aurora in Berea, attended to the patient on 05/07/2024.\nThe patient’s medical record number is 78689012.\nThe patient, Johnathon Bunde, is 55 years old, her Contact number: 666-678-9012 .'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; |
+|  0 | Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024. | ['Dr. &lt;DOCTOR&gt;, from &lt;HOSPITAL&gt; in &lt;CITY&gt;, attended to the patient on &lt;DATE&gt;.\nThe patient’s medical record number is &lt;IDNUM&gt;.\nThe patient, &lt;PATIENT&gt;, is &lt;AGE&gt;, her Contact number: &lt;PHONE&gt; .'] | ['Dr. Valerie Aho, from Mercy Hospital Aurora in Berea, attended to the patient on 05/07/2024.\nThe patient’s medical record number is 78689012.\nThe patient, Johnathon Bunde, is 55 years old, her Contact number: 666-678-9012 .'] |
 |    | The patient’s medical record number is 56467890.                                           |                                                                                                                                                                                                   |                                                                                                                                                                                                                                       |
-|    | The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;              |                                                                                                                                                                                                   |                                                                                                                                                                                                                                       |
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+|    | The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .              |                                                                                                                                                                                                   |                                                                                                                                                                                                                                       |
+```
 
-&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+{:.model-param}
+## Model Information
 
-&lt;table class=&quot;table-model&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Model Name:&lt;/td&gt;
-      &lt;td&gt;clinical_deidentification_docwise_zeroshot_medium&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Type:&lt;/td&gt;
-      &lt;td&gt;pipeline&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Compatibility:&lt;/td&gt;
-      &lt;td&gt;Healthcare NLP 6.2.2+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;License:&lt;/td&gt;
-      &lt;td&gt;Licensed&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Edition:&lt;/td&gt;
-      &lt;td&gt;Official&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Language:&lt;/td&gt;
-      &lt;td&gt;en&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size:&lt;/td&gt;
-      &lt;td&gt;791.2 MB&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+{:.table-model}
+|---|---|
+|Model Name:|clinical_deidentification_docwise_zeroshot_medium|
+|Type:|pipeline|
+|Compatibility:|Healthcare NLP 6.2.2+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|
+|Size:|791.2 MB|
 
-&lt;h2 id=&quot;included-models&quot;&gt;Included Models&lt;/h2&gt;
+## Included Models
 
-&lt;ul&gt;
-  &lt;li&gt;DocumentAssembler&lt;/li&gt;
-  &lt;li&gt;InternalDocumentSplitter&lt;/li&gt;
-  &lt;li&gt;TokenizerModel&lt;/li&gt;
-  &lt;li&gt;PretrainedZeroShotNERChunker&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;RegexMatcherInternalModel&lt;/li&gt;
-  &lt;li&gt;RegexMatcherInternalModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;RegexMatcherInternalModel&lt;/li&gt;
-  &lt;li&gt;RegexMatcherInternalModel&lt;/li&gt;
-  &lt;li&gt;RegexMatcherInternalModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;TextMatcherInternalModel&lt;/li&gt;
-  &lt;li&gt;TextMatcherInternalModel&lt;/li&gt;
-  &lt;li&gt;TextMatcherInternalModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ContextualParserModel&lt;/li&gt;
-  &lt;li&gt;ChunkMergeModel&lt;/li&gt;
-  &lt;li&gt;ChunkMergeModel&lt;/li&gt;
-  &lt;li&gt;ChunkMergeModel&lt;/li&gt;
-  &lt;li&gt;LightDeIdentification&lt;/li&gt;
-  &lt;li&gt;LightDeIdentification&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>John Snow Labs</name></author><category term="deidentification" /><category term="deid" /><category term="en" /><category term="licensed" /><category term="clinical" /><category term="pipeline" /><category term="docwise" /><summary type="html">Description This pipeline can be used to deidentify PHI information from medical texts. The PHI information will be masked and obfuscated in the resulting text. The pipeline can mask and obfuscate ‘DATE’, ‘PROFESSION’, ‘DOCTOR’, ‘EMAIL’,’PATIENT’, ‘URL’, ‘USERNAME’, ‘CITY’, ‘COUNTRY’, ‘DLN’, ‘HOSPITAL’, ‘IDNUM’, ‘MEDICALRECORD’, ‘STATE’, ‘STREET’, ‘ZIP’, ‘AGE’, ‘PHONE’, ‘ORGANIZATION’,’SSN’, ‘ACCOUNT’, ‘PLATE’, ‘VIN’, ‘LICENSE’, ‘IP’ entities. Live Demo Open in Colab Download Copy S3 URI How to use PythonHealthcare NLPPythonJohnSnowLabsScalaNLU from sparknlp.pretrained import PretrainedPipeline deid_pipeline = PretrainedPipeline(&quot;clinical_deidentification_docwise_zeroshot_medium&quot;, &quot;en&quot;, &quot;clinical/models&quot;) text = &quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024. The patient’s medical record number is 56467890. The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot; deid_result = deid_pipeline.fullAnnotate(text) from sparknlp.pretrained import PretrainedPipeline deid_pipeline = nlp.PretrainedPipeline(&quot;clinical_deidentification_docwise_zeroshot_medium&quot;, &quot;en&quot;, &quot;clinical/models&quot;) text = &quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024. The patient’s medical record number is 56467890. The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot; deid_result = deid_pipeline.fullAnnotate(text) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val deid_pipeline = PretrainedPipeline(&quot;clinical_deidentification_docwise_zeroshot_medium&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val text = &quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024. The patient’s medical record number is 56467890. The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot; val deid_result = deid_pipeline.fullAnnotate(text) Results | | text | result | result | |---:|:-------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| | 0 | Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024. | ['Dr. &amp;lt;DOCTOR&amp;gt;, from &amp;lt;HOSPITAL&amp;gt; in &amp;lt;CITY&amp;gt;, attended to the patient on &amp;lt;DATE&amp;gt;.\nThe patient’s medical record number is &amp;lt;IDNUM&amp;gt;.\nThe patient, &amp;lt;PATIENT&amp;gt;, is &amp;lt;AGE&amp;gt;, her Contact number: &amp;lt;PHONE&amp;gt; .'] | ['Dr. Valerie Aho, from Mercy Hospital Aurora in Berea, attended to the patient on 05/07/2024.\nThe patient’s medical record number is 78689012.\nThe patient, Johnathon Bunde, is 55 years old, her Contact number: 666-678-9012 .'] | | | The patient’s medical record number is 56467890. | | | | | The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 . | | | Model Information Model Name: clinical_deidentification_docwise_zeroshot_medium Type: pipeline Compatibility: Healthcare NLP 6.2.2+ License: Licensed Edition: Official Language: en Size: 791.2 MB Included Models DocumentAssembler InternalDocumentSplitter TokenizerModel PretrainedZeroShotNERChunker ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel RegexMatcherInternalModel RegexMatcherInternalModel ContextualParserModel ContextualParserModel RegexMatcherInternalModel RegexMatcherInternalModel RegexMatcherInternalModel ContextualParserModel TextMatcherInternalModel TextMatcherInternalModel TextMatcherInternalModel ContextualParserModel ContextualParserModel ChunkMergeModel ChunkMergeModel ChunkMergeModel LightDeIdentification LightDeIdentification</summary></entry><entry><title type="html">Sentence Entity Resolver for CPT Codes (bge_base_en_v1_5_onnx)</title><link href="/2025/12/05/bgeresolve_cpt_en.html" rel="alternate" type="text/html" title="Sentence Entity Resolver for CPT Codes (bge_base_en_v1_5_onnx)" /><published>2025-12-05T00:00:00+00:00</published><updated>2025-12-05T00:00:00+00:00</updated><id>/2025/12/05/bgeresolve_cpt_en</id><content type="html" xml:base="/2025/12/05/bgeresolve_cpt_en.html">## Description
+- DocumentAssembler
+- InternalDocumentSplitter
+- TokenizerModel
+- PretrainedZeroShotNERChunker
+- ContextualParserModel
+- ContextualParserModel
+- ContextualParserModel
+- ContextualParserModel
+- ContextualParserModel
+- ContextualParserModel
+- ContextualParserModel
+- ContextualParserModel
+- RegexMatcherInternalModel
+- RegexMatcherInternalModel
+- ContextualParserModel
+- ContextualParserModel
+- RegexMatcherInternalModel
+- RegexMatcherInternalModel
+- RegexMatcherInternalModel
+- ContextualParserModel
+- TextMatcherInternalModel
+- TextMatcherInternalModel
+- TextMatcherInternalModel
+- ContextualParserModel
+- ContextualParserModel
+- ChunkMergeModel
+- ChunkMergeModel
+- ChunkMergeModel
+- LightDeIdentification
+- LightDeIdentification</content><author><name>John Snow Labs</name></author><category term="deidentification" /><category term="deid" /><category term="en" /><category term="licensed" /><category term="clinical" /><category term="pipeline" /><category term="docwise" /><summary type="html">Description This pipeline can be used to deidentify PHI information from medical texts. The PHI information will be masked and obfuscated in the resulting text. The pipeline can mask and obfuscate ‘DATE’, ‘PROFESSION’, ‘DOCTOR’, ‘EMAIL’,’PATIENT’, ‘URL’, ‘USERNAME’, ‘CITY’, ‘COUNTRY’, ‘DLN’, ‘HOSPITAL’, ‘IDNUM’, ‘MEDICALRECORD’, ‘STATE’, ‘STREET’, ‘ZIP’, ‘AGE’, ‘PHONE’, ‘ORGANIZATION’,’SSN’, ‘ACCOUNT’, ‘PLATE’, ‘VIN’, ‘LICENSE’, ‘IP’ entities. Live Demo Open in Colab Download Copy S3 URI How to use PythonHealthcare NLPPythonJohnSnowLabsScalaNLU from sparknlp.pretrained import PretrainedPipeline deid_pipeline = PretrainedPipeline(&quot;clinical_deidentification_docwise_zeroshot_medium&quot;, &quot;en&quot;, &quot;clinical/models&quot;) text = &quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024. The patient’s medical record number is 56467890. The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot; deid_result = deid_pipeline.fullAnnotate(text) from sparknlp.pretrained import PretrainedPipeline deid_pipeline = nlp.PretrainedPipeline(&quot;clinical_deidentification_docwise_zeroshot_medium&quot;, &quot;en&quot;, &quot;clinical/models&quot;) text = &quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024. The patient’s medical record number is 56467890. The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot; deid_result = deid_pipeline.fullAnnotate(text) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val deid_pipeline = PretrainedPipeline(&quot;clinical_deidentification_docwise_zeroshot_medium&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val text = &quot;&quot;&quot;Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024. The patient’s medical record number is 56467890. The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .&quot;&quot;&quot; val deid_result = deid_pipeline.fullAnnotate(text) Results | | text | result | result | |---:|:-------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| | 0 | Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024. | ['Dr. &amp;lt;DOCTOR&amp;gt;, from &amp;lt;HOSPITAL&amp;gt; in &amp;lt;CITY&amp;gt;, attended to the patient on &amp;lt;DATE&amp;gt;.\nThe patient’s medical record number is &amp;lt;IDNUM&amp;gt;.\nThe patient, &amp;lt;PATIENT&amp;gt;, is &amp;lt;AGE&amp;gt;, her Contact number: &amp;lt;PHONE&amp;gt; .'] | ['Dr. Valerie Aho, from Mercy Hospital Aurora in Berea, attended to the patient on 05/07/2024.\nThe patient’s medical record number is 78689012.\nThe patient, Johnathon Bunde, is 55 years old, her Contact number: 666-678-9012 .'] | | | The patient’s medical record number is 56467890. | | | | | The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 . | | | Model Information Model Name: clinical_deidentification_docwise_zeroshot_medium Type: pipeline Compatibility: Healthcare NLP 6.2.2+ License: Licensed Edition: Official Language: en Size: 791.2 MB Included Models DocumentAssembler InternalDocumentSplitter TokenizerModel PretrainedZeroShotNERChunker ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel ContextualParserModel RegexMatcherInternalModel RegexMatcherInternalModel ContextualParserModel ContextualParserModel RegexMatcherInternalModel RegexMatcherInternalModel RegexMatcherInternalModel ContextualParserModel TextMatcherInternalModel TextMatcherInternalModel TextMatcherInternalModel ContextualParserModel ContextualParserModel ChunkMergeModel ChunkMergeModel ChunkMergeModel LightDeIdentification LightDeIdentification</summary></entry><entry><title type="html">Sentence Entity Resolver for CPT Codes (bge_base_en_v1_5_onnx)</title><link href="/2025/12/05/bgeresolve_cpt_en.html" rel="alternate" type="text/html" title="Sentence Entity Resolver for CPT Codes (bge_base_en_v1_5_onnx)" /><published>2025-12-05T00:00:00+00:00</published><updated>2025-12-05T00:00:00+00:00</updated><id>/2025/12/05/bgeresolve_cpt_en</id><content type="html" xml:base="/2025/12/05/bgeresolve_cpt_en.html">## Description
 
 This model maps clinical entities (Observation, Procedures, Tests, Treatments, Drug) to their corresponding CPT (Current Procedural Terminology) codes using `bge_base_en_v1_5_onnx` embeddings. It uses `bge_base_en_v1_5_onnx` embeddings and provides multiple resolution candidates with confidence scores, making it ideal for accurate procedural code assignment in clinical documentation.
 
