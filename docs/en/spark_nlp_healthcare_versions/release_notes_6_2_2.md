@@ -93,6 +93,7 @@ zeroshot_chunker = medical.PretrainedZeroShotNERChunker() \
 
 ```
 *Results*
+
 | begin | end | chunk              | entity   | confidence |
 |-------|-----|--------------------|----------|------------|
 | 4     | 16  | Eleanor Vance      | DOCTOR   | 0.99998724 |
