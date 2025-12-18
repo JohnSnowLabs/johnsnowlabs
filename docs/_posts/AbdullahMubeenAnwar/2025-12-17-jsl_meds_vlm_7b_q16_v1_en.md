@@ -7,7 +7,7 @@ date: 2025-12-17
 tags: [medical, clinical, vlm, q16, 7b, en, licensed, llamacpp]
 task: Text Generation
 language: en
-edition: Healthcare NLP 6.1.0
+edition: Healthcare NLP 6.2.0
 spark_version: 3.0
 supported: true
 engine: llamacpp
@@ -24,8 +24,8 @@ This multimodal medical reasoning model is trained to interpret medical images a
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/jsl_meds_vlm_7b_q16_v1_en_6.1.0_3.0_1765978015987.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/jsl_meds_vlm_7b_q16_v1_en_6.1.0_3.0_1765978015987.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/jsl_meds_vlm_7b_q16_v1_en_6.2.0_3.0_1765978015987.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/jsl_meds_vlm_7b_q16_v1_en_6.2.0_3.0_1765978015987.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -184,7 +184,7 @@ This approach prioritizes confirming malignancy while ruling out other chronic p
 {:.table-model}
 |---|---|
 |Model Name:|jsl_meds_vlm_7b_q16_v1|
-|Compatibility:|Healthcare NLP 6.1.0+|
+|Compatibility:|Healthcare NLP 6.2.0+|
 |License:|Licensed|
 |Edition:|Official|
 |Input Labels:|[caption_document, image_assembler]|
