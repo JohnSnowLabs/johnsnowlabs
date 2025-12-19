@@ -36,6 +36,7 @@ Pretrained named entity recognition deep learning model for Drugs. The model com
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
@@ -204,7 +205,7 @@ val results = pipeline.fit(data).transform(data)
 
 ## References
 
-Trained on merged ner_posology, ner_ade, ner_drugs dataset.
+Trained on merged ner_posology, ner_ade, ner_drugs datasets.
 
 ## Benchmarking
 
