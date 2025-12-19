@@ -36,6 +36,7 @@ This model detects PHI (Protected Health Information) entities for deidentificat
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
@@ -187,7 +188,7 @@ val result = pipeline.fit(data).transform(data)
 |Boston General Hospital|85   |107|LOCATION |
 |10/25/2023             |112  |121|DATE     |
 |123 Oak Street         |137  |150|LOCATION |
-|Springfield             |153  |163|LOCATION |
+|Springfield            |153  |163|LOCATION |
 |IL                     |166  |167|LOCATION |
 |555-0199               |199  |206|CONTACT  |
 |999-00-1234            |221  |231|ID       |
