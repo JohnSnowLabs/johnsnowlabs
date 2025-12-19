@@ -4,7 +4,7 @@ title: Detect PHI for Deidentification(Generic)
 author: John Snow Labs
 name: ner_deid_generic_nonMedical
 date: 2025-12-19
-tags: [en, licensed, clinical, deid, ner, phi, generic, anonymization]
+tags: [en, licensed, clinical, deid, ner, phi, generic]
 task: Named Entity Recognition
 language: en
 edition: Healthcare NLP 6.2.2
