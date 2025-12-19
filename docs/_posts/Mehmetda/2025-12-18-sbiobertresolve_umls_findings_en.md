@@ -20,6 +20,11 @@ use_language_switcher: "Python-Scala-Java"
 
 This model maps clinical findings to their corresponding UMLS CUI codes using sbiobert_base_cased_mli Sentence Bert Embeddings. It is trained on ´2025AB´ release of the Unified Medical Language System (UMLS) dataset.
 
+
+## Predicted Entities
+
+`UMLS CUI codes`
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
@@ -32,6 +37,7 @@ This model maps clinical findings to their corresponding UMLS CUI codes using sb
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 
