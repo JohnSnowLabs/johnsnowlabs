@@ -5,7 +5,7 @@ author: John Snow Labs
 name: icd10_parser
 date: 2025-12-20
 tags: [en, contextualparser, licensed, clinical, icd10]
-task: Entity Resolution
+task: Contextual Parser
 language: en
 edition: Healthcare NLP 6.2.2
 spark_version: 3.0
