@@ -28,6 +28,11 @@ Medication: Unique Identifier: T074 Tree Number: A1.3.1
 
 Procedure: Unique Identifier: T061 Tree Number: B1.3.1.3
 
+
+## Predicted Entities
+
+`UMLS CUI codes for general concepts`
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
@@ -40,8 +45,8 @@ Procedure: Unique Identifier: T061 Tree Number: B1.3.1.3
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
-
 
 documentAssembler = DocumentAssembler()\
     .setInputCol("text")\
@@ -75,7 +80,8 @@ chunk2doc = Chunk2Doc()\
     .setInputCols("ner_chunk")\
     .setOutputCol("ner_chunk_doc")
 
-sbert_embedder = BertSentenceEmbeddings    .pretrained("sbiobert_base_cased_mli","en","clinical/models")\
+sbert_embedder = BertSentenceEmbeddings\
+    .pretrained("sbiobert_base_cased_mli","en","clinical/models")\
     .setInputCols(["ner_chunk_doc"])\
     .setOutputCol("sbert_embeddings")\
     .setCaseSensitive(False)
@@ -170,7 +176,6 @@ result = umls_lp.fit(data).transform(data)
 
 ```
 ```scala
-
 
 val document_assembler = new DocumentAssembler()
       .setInputCol("text")
@@ -275,3 +280,7 @@ val res = p_model.fit(data).transform(data)
 |Language:|en|
 |Size:|4.0 GB|
 |Case sensitive:|false|
+
+## References
+
+Trained on disease, symptom, medication and procedure concepts of the ´2025AB´ release of the Unified Medical Language System® (UMLS). Knowledge Sources: https://www.nlm.nih.gov/research/umls/index.html
