@@ -241,4 +241,4 @@ val res = p_model.fit(data).transform(data)
 
 ## References
 
-Trained on concepts from clinical major concepts for the 2025AB release of the Unified Medical Language System® (UMLS) Knowledge Sources: https://www.nlm.nih.gov/research/umls/index.html
+Trained on concepts from clinical major concepts for the `2025AB` release of the Unified Medical Language System® (UMLS) Knowledge Sources: https://www.nlm.nih.gov/research/umls/index.html
