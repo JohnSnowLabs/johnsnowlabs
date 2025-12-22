@@ -20,6 +20,10 @@ use_language_switcher: "Python-Scala-Java"
 
 This model maps clinical entities to UMLS CUI codes. The complete dataset has 127 different categories, and this model is trained on the “Disease or Syndrome” category using ´sbiobert_base_cased_mli´ embeddings.
 
+## Predicted Entities
+
+`UMLS CUI codes for Disease or Syndrome`
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
@@ -32,6 +36,7 @@ This model maps clinical entities to UMLS CUI codes. The complete dataset has 12
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 documentAssembler = DocumentAssembler()\
@@ -249,3 +254,7 @@ val res = p_model.fit(data).transform(data)
 |Language:|en|
 |Size:|1.3 GB|
 |Case sensitive:|false|
+
+## References
+
+Trained on ´2025AB´ UMLS dataset’s ´Disease or Syndrome´ category. https://www.nlm.nih.gov/research/umls/index.html
