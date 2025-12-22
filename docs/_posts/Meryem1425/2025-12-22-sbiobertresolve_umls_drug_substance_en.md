@@ -20,6 +20,10 @@ use_language_switcher: "Python-Scala-Java"
 
 This model maps drug and substances to UMLS CUI codes. It is trained on ´2025AA´ release of the Unified Medical Language System (UMLS) dataset. The complete dataset has 127 different categories, and this model is trained on the “Clinical Drug”, “Pharmacologic Substance”, “Antibiotic”, and “Hazardous or Poisonous Substance” categories using ´sbiobert_base_cased_mli´ embeddings.
 
+## Predicted Entities
+
+`UMLS CUI codes for drug substances`
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
@@ -32,6 +36,7 @@ This model maps drug and substances to UMLS CUI codes. It is trained on ´2025AA
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 documentAssembler = DocumentAssembler()\
@@ -245,3 +250,7 @@ val res = p_model.fit(data).transform(data)
 |Language:|en|
 |Size:|3.0 GB|
 |Case sensitive:|false|
+
+## References
+
+This model was trained on the ´Clinical Drug´ concept of the ´2025AB´ release of the Unified Medical Language System® (UMLS) Knowledge Sources: https://www.nlm.nih.gov/research/umls/index.html
