@@ -238,3 +238,7 @@ val res = p_model.fit(data).transform(data)
 |Language:|en|
 |Size:|4.3 GB|
 |Case sensitive:|false|
+
+## References
+
+Trained on concepts from clinical major concepts for the 2025AB release of the Unified Medical Language System® (UMLS) Knowledge Sources: https://www.nlm.nih.gov/research/umls/index.html
