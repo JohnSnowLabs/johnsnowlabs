@@ -8,7 +8,7 @@ tags: [en, contextualparser, licensed, clinical, vin]
 task: Contextual Parser
 language: en
 edition: Healthcare NLP 6.2.2
-spark_version: 3.0
+spark_version: 3.4
 supported: true
 annotator: ContextualParserModel
 article_header:
