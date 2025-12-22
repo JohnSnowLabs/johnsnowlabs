@@ -20,6 +20,10 @@ use_language_switcher: "Python-Scala-Java"
 
 This model maps clinical entities and concepts to 4 major categories of UMLS CUI codes: `Clinical Findings`, `Medical Devices`, `Anatomical Structures`, `Injuries & Poisoning` terms, using `sbiobert_base_cased_mli` Sentence Bert Embeddings.
 
+## Predicted Entities
+
+`UMLS CUI major concepts`
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
@@ -32,8 +36,8 @@ This model maps clinical entities and concepts to 4 major categories of UMLS CUI
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
-
 
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
@@ -142,7 +146,6 @@ results = pipeline.fit(data).transform(data)
 
 ```
 ```scala
-
 
 val document_assembler = new DocumentAssembler()
       .setInputCol("text")
