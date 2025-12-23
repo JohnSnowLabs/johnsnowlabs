@@ -38,6 +38,10 @@ Tree Number: B1.3.1.3
 
 **NOTE**: This model can be used with spark v3.4.0 and above versions.
 
+## Predicted Entities
+
+`UMLS CUI codes for general concepts`
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
@@ -50,6 +54,7 @@ Tree Number: B1.3.1.3
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 documentAssembler = DocumentAssembler()\
@@ -78,8 +83,7 @@ ner_model_converter = NerConverterInternal()\
     .setWhiteList(["Injury_or_Poisoning","Hyperlipidemia","Kidney_Disease","Oncological","Cerebrovascular_Disease",
                   "Oxygen_Therapy","Heart_Disease","Obesity","Disease_Syndrome_Disorder","Symptom","Treatment","Diabetes",
                   "Injury_or_Poisoning", "Procedure","Symptom","Treatment","Drug_Ingredient","VS_Finding","Communicable_Disease",
-                  "Drug_BrandName","Hypertension"
-                  ])
+                  "Drug_BrandName","Hypertension"])
 
 chunk2doc = Chunk2Doc()\
     .setInputCols("ner_chunk")\
@@ -143,8 +147,7 @@ ner_model_converter = medical.NerConverterInternal()\
     .setWhiteList(["Injury_or_Poisoning","Hyperlipidemia","Kidney_Disease","Oncological","Cerebrovascular_Disease",
                   "Oxygen_Therapy","Heart_Disease","Obesity","Disease_Syndrome_Disorder","Symptom","Treatment","Diabetes",
                   "Injury_or_Poisoning", "Procedure","Symptom","Treatment","Drug_Ingredient","VS_Finding","Communicable_Disease",
-                  "Drug_BrandName","Hypertension"
-                  ])
+                  "Drug_BrandName","Hypertension"])
 
 chunk2doc = medical.Chunk2Doc()\
     .setInputCols("ner_chunk")\
@@ -184,7 +187,7 @@ val document_assembler = new DocumentAssembler()
       .setInputCol("text")
       .setOutputCol("document")
 
-val sentence_detector = new SentenceDetector()
+val sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")
       .setInputCols(Array("document"))
       .setOutputCol("sentence")
 
@@ -205,17 +208,16 @@ val ner_model = MedicalNerModel
 val ner_model_converter = new NerConverterInternal()
       .setInputCols(Array("sentence", "token", "ner_jsl"))
       .setOutputCol("ner_chunk")
-      .setWhiteList(["Injury_or_Poisoning","Hyperlipidemia","Kidney_Disease","Oncological","Cerebrovascular_Disease",
-                    "Oxygen_Therapy", "Heart_Disease","Obesity","Disease_Syndrome_Disorder","Symptom","Treatment","Diabetes",
-                    "Injury_or_Poisoning", "Procedure","Symptom","Treatment","Drug_Ingredient","VS_Finding","Communicable_Disease",
-                    "Drug_BrandName","Hypertension","Imaging_Technique"
-                  ])
+      .setWhiteList(Array("Injury_or_Poisoning","Hyperlipidemia","Kidney_Disease","Oncological","Cerebrovascular_Disease",
+                  "Oxygen_Therapy","Heart_Disease","Obesity","Disease_Syndrome_Disorder","Symptom","Treatment","Diabetes",
+                  "Injury_or_Poisoning", "Procedure","Symptom","Treatment","Drug_Ingredient","VS_Finding","Communicable_Disease",
+                  "Drug_BrandName","Hypertension"))
 
 val chunk2doc = new Chunk2Doc()
       .setInputCols("ner_chunk")
       .setOutputCol("ner_chunk_doc")
 
-val embeddings =MPNetEmbeddings.pretrained("mpnet_embeddings_biolord_2023_c","en")
+val embeddings = MPNetEmbeddings.pretrained("mpnet_embeddings_biolord_2023_c","en")
     .setInputCols(Array("ner_chunk_doc"))
     .setOutputCol("mpnet_embeddings")
     .setCaseSensitive(False)
@@ -237,7 +239,7 @@ val resolver_pipeline = new Pipeline().setStages(Array(
     embeddings,
     umls_resolver))
 
-val data = Seq([["""A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus (T2DM), one prior episode of pancreatitis three years prior to presentation, associated with an acute hepatitis, and obesity with a BMI of 33.5 kg/m2, presented with a one-week history of polyuria, polydipsia, poor appetite, and vomiting."""]]).toDF("text")
+val data = Seq("A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus (T2DM), one prior episode of pancreatitis three years prior to presentation, associated with an acute hepatitis, and obesity with a BMI of 33.5 kg/m2, presented with a one-week history of polyuria, polydipsia, poor appetite, and vomiting.").toDF("text")
 
 val result = resolver_pipeline.fit(data).transform(data)
 
@@ -279,3 +281,7 @@ val result = resolver_pipeline.fit(data).transform(data)
 |Language:|en|
 |Size:|4.0 GB|
 |Case sensitive:|false|
+
+## References
+
+Trained on concepts from clinical general concepts for the 2025AB release of the Unified Medical Language System® (UMLS) Knowledge Sources: https://www.nlm.nih.gov/research/umls/index.html
