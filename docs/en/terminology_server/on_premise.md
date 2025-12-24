@@ -11,7 +11,7 @@ sidebar:
     nav: term-server
 ---
 
-</div><div class="h3-box" markdown="1">
+<div class="h3-box" markdown="1">
 
 ## **On-Prem Installation Guide**
 
