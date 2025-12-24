@@ -960,57 +960,57 @@ Databrics-AWS Config with CPU/GPU Options
 
 ### [Clinical Deidentification Pipeline Benchmark (Document Wise) (Large)](https://nlp.johnsnowlabs.com/2025/07/25/clinical_deidentification_docwise_benchmark_large_en.html)
 
-    Included Models
+Included Models
 
-    - DocumentAssembler
-    - InternalDocumentSplitter
-    - 2*TokenizerModel
-    - WordEmbeddingsModel
-    - **3*MedicalNerModel**
-    - 4*NerConverterInternalModel
-    - **PretrainedZeroShotNER (large)**
-    - 3*ChunkMergeModel
-    - 13*ContextualParserModel
-    - 4*RegexMatcherInternalModel
-    - 2*TextMatcherInternalModel
-    - 2*LightDeIdentification
+- DocumentAssembler
+- InternalDocumentSplitter
+- 2*TokenizerModel
+- WordEmbeddingsModel
+- **3*MedicalNerModel**
+- 4*NerConverterInternalModel
+- **PretrainedZeroShotNER (large)**
+- 3*ChunkMergeModel
+- 13*ContextualParserModel
+- 4*RegexMatcherInternalModel
+- 2*TextMatcherInternalModel
+- 2*LightDeIdentification
 
 </div><div class="h3-box" markdown="1">
 
 ### [Clinical Deidentification Pipeline Benchmark (Document Wise) (Medium)](https://nlp.johnsnowlabs.com/2025/07/31/clinical_deidentification_docwise_benchmark_medium_en.html)
 
-    Included Models
+Included Models
 
-    - DocumentAssembler
-    - InternalDocumentSplitter
-    - 2*TokenizerModel
-    - WordEmbeddingsModel
-    - **3*MedicalNerModel**
-    - 4*NerConverterInternalModel
-    - **PretrainedZeroShotNER (medium)**
-    - 3*ChunkMergeModel
-    - 13*ContextualParserModel
-    - 4*RegexMatcherInternalModel
-    - 2*TextMatcherInternalModel
-    - 2*LightDeIdentification
+- DocumentAssembler
+- InternalDocumentSplitter
+- 2*TokenizerModel
+- WordEmbeddingsModel
+- **3*MedicalNerModel**
+- 4*NerConverterInternalModel
+- **PretrainedZeroShotNER (medium)**
+- 3*ChunkMergeModel
+- 13*ContextualParserModel
+- 4*RegexMatcherInternalModel
+- 2*TextMatcherInternalModel
+- 2*LightDeIdentification
 
 </div><div class="h3-box" markdown="1">
 
 ### [Clinical Deidentification Pipeline Benchmark (Document Wise) (Optimized)](https://nlp.johnsnowlabs.com/2025/06/19/clinical_deidentification_docwise_benchmark_optimized_en.html)
 
-    Included Models
+Included Models
 
-    - DocumentAssembler
-    - InternalDocumentSplitter
-    - 2*TokenizerModel
-    - WordEmbeddingsModel
-    - **4*MedicalNerModel**
-    - 4*NerConverterInternalModel
-    - 3*ChunkMergeModel
-    - 13*ContextualParserModel
-    - 4*RegexMatcherInternalModel
-    - 2*TextMatcherInternalModel
-    - 2*LightDeIdentification
+- DocumentAssembler
+- InternalDocumentSplitter
+- 2*TokenizerModel
+- WordEmbeddingsModel
+- **4*MedicalNerModel**
+- 4*NerConverterInternalModel
+- 3*ChunkMergeModel
+- 13*ContextualParserModel
+- 4*RegexMatcherInternalModel
+- 2*TextMatcherInternalModel
+- 2*LightDeIdentification
 
 </div><div class="h3-box" markdown="1">
 
@@ -1737,5 +1737,6 @@ These findings unequivocally affirm Spark NLP's superiority for NER extraction t
 *SpaCy with pandas UDFs*: Development might be more straightforward since you're essentially working with Python functions. However, maintaining optimal performance with larger datasets and ensuring scalability can be tricky.
 
 </div>
+
 
 
