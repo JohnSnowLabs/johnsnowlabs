@@ -1478,4 +1478,261 @@ These findings unequivocally affirm Spark NLP's superiority for NER extraction t
 
 *SpaCy with pandas UDFs*: Development might be more straightforward since you're essentially working with Python functions. However, maintaining optimal performance with larger datasets and ensuring scalability can be tricky.
 
+</div><div class="h3-box" markdown="1">
+
+## Deidentification Pipelines Speed Comparison on Databrics-AWS
+
+</div><div class="h3-box" markdown="1">
+
+### Deidentification Pipelines Benchmarks
+
+These pipelines can be used to deidentify PHI information from medical texts. The PHI information will be masked and obfuscated. It also provides valuable insights into the efficiency and scalability of deidentification pipelines in different computational environments on Databrics.
+
+</div><div class="h3-box" markdown="1">
+
+### Dataset
+
+Dataset is created by merging 1100 different clinical notes, 360.000+ NER Medical Reports, 110.000+ Masked PII notes.
+
+Total rows: 478527
+
+Avg text length: 152.71
+
+Total token size: 11.705.890
+
+Avg tokens per row: 24,46
+
+</div><div class="h3-box" markdown="1">
+
+### Versions
+
+spark-nlp Version: v6.2.2
+
+spark-nlp-jsl Version: v6.2.1
+
+Databricks Runtime: 16.4 LTS (includes Apache Spark 3.5.2, Scala 2.12)
+
+</div><div class="h3-box" markdown="1">
+
+### Instance Type
+
+Databrics-AWS Config with CPU/GPU Options
+
+- (CPU)
+
+    Worker Type: m5d.2xlarge 32 GB Memory, 8 Cores, 8 Workers
+
+- (GPU)
+
+    Worker Type: g4dn.2xlarge[T4] 32 GB Memory, 1 GPU, 8 Workers
+
+</div><div class="h3-box" markdown="1">
+
+### [Clinical Deidentification Pipeline Benchmark (Document Wise) (Large)](https://nlp.johnsnowlabs.com/2025/07/25/clinical_deidentification_docwise_benchmark_large_en.html)
+
+    Included Models
+
+    - DocumentAssembler
+    - InternalDocumentSplitter
+    - 2*TokenizerModel
+    - WordEmbeddingsModel
+    - **3*MedicalNerModel**
+    - 4*NerConverterInternalModel
+    - **PretrainedZeroShotNER (large)**
+    - 3*ChunkMergeModel
+    - 13*ContextualParserModel
+    - 4*RegexMatcherInternalModel
+    - 2*TextMatcherInternalModel
+    - 2*LightDeIdentification
+
+</div><div class="h3-box" markdown="1">
+
+### [Clinical Deidentification Pipeline Benchmark (Document Wise) (Medium)](https://nlp.johnsnowlabs.com/2025/07/31/clinical_deidentification_docwise_benchmark_medium_en.html)
+
+    Included Models
+
+    - DocumentAssembler
+    - InternalDocumentSplitter
+    - 2*TokenizerModel
+    - WordEmbeddingsModel
+    - **3*MedicalNerModel**
+    - 4*NerConverterInternalModel
+    - **PretrainedZeroShotNER (medium)**
+    - 3*ChunkMergeModel
+    - 13*ContextualParserModel
+    - 4*RegexMatcherInternalModel
+    - 2*TextMatcherInternalModel
+    - 2*LightDeIdentification
+
+</div><div class="h3-box" markdown="1">
+
+### [Clinical Deidentification Pipeline Benchmark (Document Wise) (Optimized)](https://nlp.johnsnowlabs.com/2025/06/19/clinical_deidentification_docwise_benchmark_optimized_en.html)
+
+    Included Models
+
+    - DocumentAssembler
+    - InternalDocumentSplitter
+    - 2*TokenizerModel
+    - WordEmbeddingsModel
+    - **4*MedicalNerModel**
+    - 4*NerConverterInternalModel
+    - 3*ChunkMergeModel
+    - 13*ContextualParserModel
+    - 4*RegexMatcherInternalModel
+    - 2*TextMatcherInternalModel
+    - 2*LightDeIdentification
+
+</div><div class="h3-box" markdown="1">
+
+### CPU Runtime Comparison of Large, Medium and Optimized Pipelines
+
+{:.table-model-big}
+| Model |  Infrastructure | Runtime | Batch Size |
+|-------|----------------:|--------:|-----------:|
+| clinical_deidentification_docwise_benchmark_large_en | CPU  | 9h 23m 54s | 32 |
+| clinical_deidentification_docwise_benchmark_medium_en | CPU  | 3h 7m 19s | 32 |
+| clinical_deidentification_docwise_benchmark_optimized_en | CPU  | 26m 6s | 32 |
+
+</div><div class="h3-box" markdown="1">
+
+### CPU & GPU Runtime Comparison of Medium Pipeline
+
+{:.table-model-big}
+| Model |  Infrastructure | Runtime | Batch Size |
+|-------|----------------:|--------:|-----------:|
+| clinical_deidentification_docwise_benchmark_medium_en | GPU  | 1h 2m 35s | 8 |
+| clinical_deidentification_docwise_benchmark_medium_en | CPU  | 3h 7m 19s | 32 |
+
+</div><div class="h3-box" markdown="1">
+
+### Run Speed Test and Benchmark Results
+
+- These benchmarks demonstrate the computational impact of pipeline design and infrastructure choice on large-scale clinical deidentification workloads executed on Databricks-AWS. Using a substantial and diverse clinical corpus (~478K documents, ~11.7M tokens), the results highlight clear performance trade-offs.
+
+- Pipeline complexity is the primary driver of runtime. The Large pipeline, with the most extensive model stack, exhibits the highest execution time (9.4 hours on CPU). The Medium pipeline achieves a notable reduction (~3.1 hours on CPU), while the Optimized pipeline delivers a step-change improvement, completing in ~26 minutes on CPU due to architectural simplifications and reduced model overhead.
+
+- GPU acceleration further enhances performance for the Medium pipeline, reducing execution time from ~3.1 hours (CPU) to ~1.0 hour (GPU), even with a smaller batch size. This indicates that GPU utilization effectively mitigates inference bottlenecks in moderately complex NLP pipelines.
+
+**Overall, the findings emphasize that pipeline optimization yields greater performance gains than hardware scaling alone, while GPU resources provide additional, complementary speedups when applied to appropriately balanced pipeline configurations.**
+
+</div><div class="h3-box" markdown="1">
+
+## Pretrained Zero-Shot Named Entity Recognition (NER) Deidentification Subentity Speed Comparison on Databrics-AWS
+
+</div><div class="h3-box" markdown="1">
+
+### Zero-shot NER Run Speed Test
+
+Zero-shot Named Entity Recognition (NER) enables the identification of entities in text with minimal effort. By leveraging pre-trained language models and contextual understanding, zero-shot NER extends entity recognition capabilities to new domains and languages.
+
+This experiment compares the Pretrained Zero-shot NER runtime for CPU and GPU clusters on Databrics-AWS environment.
+
+</div><div class="h3-box" markdown="1">
+
+### Models to be tested
+
+[zeroshot_ner_deid_subentity_merged_medium](https://nlp.johnsnowlabs.com/2024/11/27/zeroshot_ner_deid_subentity_merged_medium_en.html)
+
+[zeroshot_ner_deid_subentity_merged_large](https://nlp.johnsnowlabs.com/2024/12/17/zeroshot_ner_deid_subentity_merged_large_en.html)
+
+</div><div class="h3-box" markdown="1">
+
+### Dataset
+
+Dataset is created by merging 1100 different clinical notes, 360.000+ NER Medical Reports, 110.000+ Masked PII notes.
+
+Total rows: 478527
+
+Avg text length: 152.71
+
+Total token size: 11.705.890
+
+Avg tokens per row: 24,46
+
+</div><div class="h3-box" markdown="1">
+
+### Versions
+
+spark-nlp Version: v6.2.2
+
+spark-nlp-jsl Version: v6.2.1
+
+Databricks Runtime: 16.4 LTS (includes Apache Spark 3.5.2, Scala 2.12)
+
+</div><div class="h3-box" markdown="1">
+
+### Instance Type
+
+Databrics-AWS Config with CPU/GPU Options
+
+- (CPU)
+
+    Worker Type: m5d.2xlarge 32 GB Memory, 8 Cores, 8 Workers
+
+- (GPU)
+
+    Worker Type: g4dn.2xlarge[T4] 32 GB Memory, 1 GPU, 8 Workers
+
+</div><div class="h3-box" markdown="1">
+
+### Spark NLP Pipeline
+
+```
+ nlpPipeline = Pipeline(stages=[
+            DocumentAssembler,
+            InternalDocumentSplitter,
+            Tokenizer,
+            PretrainedZeroShotNER
+            ])
+
+</div><div class="h3-box" markdown="1">
+
+### Zero-shot Medium Model CPU & GPU Runtime Comparison
+
+{:.table-model-big}
+| Model | Infrastructure | Runtime | Batch Size |
+|-------|---------------:|--------:|-----------:|
+| zeroshot_ner_deid_subentity_merged_medium_en | CPU  | 2h 47m 24s | 32 |
+| zeroshot_ner_deid_subentity_merged_medium_en | GPU  | 6m 26s | 32 |
+
+</div><div class="h3-box" markdown="1">
+
+### Zero-shot Medium Model Batch Size Comparison via GPU Cluster
+
+{:.table-model-big}
+| Model | Infrastructure | Runtime | Batch Size |
+|-------|---------------:|--------:|-----------:|
+| zeroshot_ner_deid_subentity_merged_medium_en | GPU  | 6m 26s | 32 |
+| zeroshot_ner_deid_subentity_merged_medium_en | GPU  | 12m 3s | 8 |
+
+</div><div class="h3-box" markdown="1">
+
+### Zero-shot Medium & Large Models GPU Runtime Comparison
+
+{:.table-model-big}
+| Model | Infrastructure | Runtime | Batch Size |
+|-------|---------------:|--------:|-----------:|
+| zeroshot_ner_deid_subentity_merged_medium_en | GPU  | 12m 3s | 8 |
+| zeroshot_ner_deid_subentity_merged_large_en | GPU  | 30m 23s | 8 |
+
+</div><div class="h3-box" markdown="1">
+
+### Run Speed Test Results
+
+These results highlight the significant impact of GPU acceleration, batch size tuning, and model scale on deidentification pipeline runtime.
+
+- CPU vs GPU (Medium model):
+
+GPU execution provides an orders-of-magnitude speedup, reducing runtime from ~2.8 hours on CPU to ~6.5 minutes on GPU at the same batch size. This clearly indicates that the Medium model is compute-bound on CPU and highly optimized for GPU inference.
+
+- GPU batch size comparison (Medium model):
+
+Increasing the batch size from 8 to 32 nearly halves the runtime (from ~12.0 minutes to ~6.4 minutes). This demonstrates that throughput scales efficiently with larger batches on GPU, provided memory constraints are respected.
+
+- Medium vs Large model on GPU:
+
+At the same batch size (8), the Large model requires ~30.4 minutes, compared to ~12.0 minutes for the Medium model. This reflects the expected cost of increased model complexity, confirming a direct trade-off between model capacity and inference speed.
+
+**Overall, the findings show that GPU usage is essential for production-scale runs, batch size optimization is critical for maximizing GPU efficiency, and model size should be selected based on the required balance between accuracy and runtime performance.**
+
 </div>
