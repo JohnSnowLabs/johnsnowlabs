@@ -3202,6 +3202,413 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
 </div>
 <div class="h3-box">
 
+  <h2 id="deidentification-pipelines-speed-comparison-on-databrics-aws">Deidentification Pipelines Speed Comparison on Databrics-AWS</h2>
+
+</div>
+<div class="h3-box">
+
+  <h3 id="deidentification-pipelines-benchmarks">Deidentification Pipelines Benchmarks</h3>
+
+  <p>These pipelines can be used to deidentify PHI information from medical texts. The PHI information will be masked and obfuscated. It also provides valuable insights into the efficiency and scalability of deidentification pipelines in different computational environments on Databrics.</p>
+
+</div>
+<div class="h3-box">
+
+  <h3 id="dataset">Dataset</h3>
+
+  <p>Dataset is created by merging 1100 different clinical notes, 360.000+ NER Medical Reports, 110.000+ Masked PII notes.</p>
+
+  <p>Total rows: 478527</p>
+
+  <p>Avg text length: 152.71</p>
+
+  <p>Total token size: 11.705.890</p>
+
+  <p>Avg tokens per row: 24,46</p>
+
+</div>
+<div class="h3-box">
+
+  <h3 id="versions">Versions</h3>
+
+  <p>spark-nlp Version: v6.2.2</p>
+
+  <p>spark-nlp-jsl Version: v6.2.1</p>
+
+  <p>Databricks Runtime: 16.4 LTS (includes Apache Spark 3.5.2, Scala 2.12)</p>
+
+</div>
+<div class="h3-box">
+
+  <h3 id="instance-type">Instance Type</h3>
+
+  <p>Databrics-AWS Config with CPU/GPU Options</p>
+
+  <ul>
+    <li>
+      <p>(CPU)</p>
+
+      <p>Worker Type: m5d.2xlarge 32 GB Memory, 8 Cores, 8 Workers</p>
+    </li>
+    <li>
+      <p>(GPU)</p>
+
+      <p>Worker Type: g4dn.2xlarge[T4] 32 GB Memory, 1 GPU, 8 Workers</p>
+    </li>
+  </ul>
+
+</div>
+<div class="h3-box">
+
+  <h3 id="clinical-deidentification-pipeline-benchmark-document-wise-large"><a href="https://nlp.johnsnowlabs.com/2025/07/25/clinical_deidentification_docwise_benchmark_large_en.html">Clinical Deidentification Pipeline Benchmark (Document Wise) (Large)</a></h3>
+
+  <p>Included Models</p>
+
+  <ul>
+    <li>DocumentAssembler</li>
+    <li>InternalDocumentSplitter</li>
+    <li>2*TokenizerModel</li>
+    <li>WordEmbeddingsModel</li>
+    <li><strong>3*MedicalNerModel</strong></li>
+    <li>4*NerConverterInternalModel</li>
+    <li><strong>PretrainedZeroShotNER (large)</strong></li>
+    <li>3*ChunkMergeModel</li>
+    <li>13*ContextualParserModel</li>
+    <li>4*RegexMatcherInternalModel</li>
+    <li>2*TextMatcherInternalModel</li>
+    <li>2*LightDeIdentification</li>
+  </ul>
+
+</div>
+<div class="h3-box">
+
+  <h3 id="clinical-deidentification-pipeline-benchmark-document-wise-medium"><a href="https://nlp.johnsnowlabs.com/2025/07/31/clinical_deidentification_docwise_benchmark_medium_en.html">Clinical Deidentification Pipeline Benchmark (Document Wise) (Medium)</a></h3>
+
+  <p>Included Models</p>
+
+  <ul>
+    <li>DocumentAssembler</li>
+    <li>InternalDocumentSplitter</li>
+    <li>2*TokenizerModel</li>
+    <li>WordEmbeddingsModel</li>
+    <li><strong>3*MedicalNerModel</strong></li>
+    <li>4*NerConverterInternalModel</li>
+    <li><strong>PretrainedZeroShotNER (medium)</strong></li>
+    <li>3*ChunkMergeModel</li>
+    <li>13*ContextualParserModel</li>
+    <li>4*RegexMatcherInternalModel</li>
+    <li>2*TextMatcherInternalModel</li>
+    <li>2*LightDeIdentification</li>
+  </ul>
+
+</div>
+<div class="h3-box">
+
+  <h3 id="clinical-deidentification-pipeline-benchmark-document-wise-optimized"><a href="https://nlp.johnsnowlabs.com/2025/06/19/clinical_deidentification_docwise_benchmark_optimized_en.html">Clinical Deidentification Pipeline Benchmark (Document Wise) (Optimized)</a></h3>
+
+  <p>Included Models</p>
+
+  <ul>
+    <li>DocumentAssembler</li>
+    <li>InternalDocumentSplitter</li>
+    <li>2*TokenizerModel</li>
+    <li>WordEmbeddingsModel</li>
+    <li><strong>4*MedicalNerModel</strong></li>
+    <li>4*NerConverterInternalModel</li>
+    <li>3*ChunkMergeModel</li>
+    <li>13*ContextualParserModel</li>
+    <li>4*RegexMatcherInternalModel</li>
+    <li>2*TextMatcherInternalModel</li>
+    <li>2*LightDeIdentification</li>
+  </ul>
+
+</div>
+<div class="h3-box">
+
+  <h3 id="cpu-runtime-comparison-of-large-medium-and-optimized-pipelines">CPU Runtime Comparison of Large, Medium and Optimized Pipelines</h3>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Model</th>
+        <th style="text-align: right">Infrastructure</th>
+        <th style="text-align: right">Runtime</th>
+        <th style="text-align: right">Batch Size</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>clinical_deidentification_docwise_benchmark_large_en</td>
+        <td style="text-align: right">CPU</td>
+        <td style="text-align: right">9h 23m 54s</td>
+        <td style="text-align: right">32</td>
+      </tr>
+      <tr>
+        <td>clinical_deidentification_docwise_benchmark_medium_en</td>
+        <td style="text-align: right">CPU</td>
+        <td style="text-align: right">3h 7m 19s</td>
+        <td style="text-align: right">32</td>
+      </tr>
+      <tr>
+        <td>clinical_deidentification_docwise_benchmark_optimized_en</td>
+        <td style="text-align: right">CPU</td>
+        <td style="text-align: right">26m 6s</td>
+        <td style="text-align: right">32</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<div class="h3-box">
+
+  <h3 id="cpu--gpu-runtime-comparison-of-medium-pipeline">CPU &amp; GPU Runtime Comparison of Medium Pipeline</h3>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Model</th>
+        <th style="text-align: right">Infrastructure</th>
+        <th style="text-align: right">Runtime</th>
+        <th style="text-align: right">Batch Size</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>clinical_deidentification_docwise_benchmark_medium_en</td>
+        <td style="text-align: right">GPU</td>
+        <td style="text-align: right">1h 2m 35s</td>
+        <td style="text-align: right">8</td>
+      </tr>
+      <tr>
+        <td>clinical_deidentification_docwise_benchmark_medium_en</td>
+        <td style="text-align: right">CPU</td>
+        <td style="text-align: right">3h 7m 19s</td>
+        <td style="text-align: right">32</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<div class="h3-box">
+
+  <h3 id="run-speed-test-and-benchmark-results">Run Speed Test and Benchmark Results</h3>
+
+  <ul>
+    <li>
+      <p>These benchmarks demonstrate the computational impact of pipeline design and infrastructure choice on large-scale clinical deidentification workloads executed on Databricks-AWS. Using a substantial and diverse clinical corpus (~478K documents, ~11.7M tokens), the results highlight clear performance trade-offs.</p>
+    </li>
+    <li>
+      <p>Pipeline complexity is the primary driver of runtime. The Large pipeline, with the most extensive model stack, exhibits the highest execution time (9.4 hours on CPU). The Medium pipeline achieves a notable reduction (~3.1 hours on CPU), while the Optimized pipeline delivers a step-change improvement, completing in ~26 minutes on CPU due to architectural simplifications and reduced model overhead.</p>
+    </li>
+    <li>
+      <p>GPU acceleration further enhances performance for the Medium pipeline, reducing execution time from ~3.1 hours (CPU) to ~1.0 hour (GPU), even with a smaller batch size. This indicates that GPU utilization effectively mitigates inference bottlenecks in moderately complex NLP pipelines.</p>
+    </li>
+  </ul>
+
+  <p><strong>Overall, the findings emphasize that pipeline optimization yields greater performance gains than hardware scaling alone, while GPU resources provide additional, complementary speedups when applied to appropriately balanced pipeline configurations.</strong></p>
+
+</div>
+<div class="h3-box">
+
+  <h2 id="pretrained-zero-shot-named-entity-recognition-ner-deidentification-subentity-speed-comparison-on-databrics-aws">Pretrained Zero-Shot Named Entity Recognition (NER) Deidentification Subentity Speed Comparison on Databrics-AWS</h2>
+
+</div>
+<div class="h3-box">
+
+  <h3 id="zero-shot-ner-run-speed-test">Zero-shot NER Run Speed Test</h3>
+
+  <p>Zero-shot Named Entity Recognition (NER) enables the identification of entities in text with minimal effort. By leveraging pre-trained language models and contextual understanding, zero-shot NER extends entity recognition capabilities to new domains and languages.</p>
+
+  <p>This experiment compares the Pretrained Zero-shot NER runtime for CPU and GPU clusters on Databrics-AWS environment.</p>
+
+</div>
+<div class="h3-box">
+
+  <h3 id="models-to-be-tested">Models to be tested</h3>
+
+  <p><a href="https://nlp.johnsnowlabs.com/2024/11/27/zeroshot_ner_deid_subentity_merged_medium_en.html">zeroshot_ner_deid_subentity_merged_medium</a></p>
+
+  <p><a href="https://nlp.johnsnowlabs.com/2024/12/17/zeroshot_ner_deid_subentity_merged_large_en.html">zeroshot_ner_deid_subentity_merged_large</a></p>
+
+</div>
+<div class="h3-box">
+
+  <h3 id="dataset-1">Dataset</h3>
+
+  <p>Dataset is created by merging 1100 different clinical notes, 360.000+ NER Medical Reports, 110.000+ Masked PII notes.</p>
+
+  <p>Total rows: 478527</p>
+
+  <p>Avg text length: 152.71</p>
+
+  <p>Total token size: 11.705.890</p>
+
+  <p>Avg tokens per row: 24,46</p>
+
+</div>
+<div class="h3-box">
+
+  <h3 id="versions-1">Versions</h3>
+
+  <p>spark-nlp Version: v6.2.2</p>
+
+  <p>spark-nlp-jsl Version: v6.2.1</p>
+
+  <p>Databricks Runtime: 16.4 LTS (includes Apache Spark 3.5.2, Scala 2.12)</p>
+
+</div>
+<div class="h3-box">
+
+  <h3 id="instance-type-1">Instance Type</h3>
+
+  <p>Databrics-AWS Config with CPU/GPU Options</p>
+
+  <ul>
+    <li>
+      <p>(CPU)</p>
+
+      <p>Worker Type: m5d.2xlarge 32 GB Memory, 8 Cores, 8 Workers</p>
+    </li>
+    <li>
+      <p>(GPU)</p>
+
+      <p>Worker Type: g4dn.2xlarge[T4] 32 GB Memory, 1 GPU, 8 Workers</p>
+    </li>
+  </ul>
+
+</div>
+<div class="h3-box">
+
+  <h3 id="spark-nlp-pipeline">Spark NLP Pipeline</h3>
+
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> nlpPipeline = Pipeline(stages=[
+            DocumentAssembler,
+            InternalDocumentSplitter,
+            Tokenizer,
+            PretrainedZeroShotNER
+            ])
+</code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
+
+  <h3 id="zero-shot-medium-model-cpu--gpu-runtime-comparison">Zero-shot Medium Model CPU &amp; GPU Runtime Comparison</h3>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Model</th>
+        <th style="text-align: right">Infrastructure</th>
+        <th style="text-align: right">Runtime</th>
+        <th style="text-align: right">Batch Size</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>zeroshot_ner_deid_subentity_merged_medium_en</td>
+        <td style="text-align: right">CPU</td>
+        <td style="text-align: right">2h 47m 24s</td>
+        <td style="text-align: right">32</td>
+      </tr>
+      <tr>
+        <td>zeroshot_ner_deid_subentity_merged_medium_en</td>
+        <td style="text-align: right">GPU</td>
+        <td style="text-align: right">6m 26s</td>
+        <td style="text-align: right">32</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<div class="h3-box">
+
+  <h3 id="zero-shot-medium-model-batch-size-comparison-via-gpu-cluster">Zero-shot Medium Model Batch Size Comparison via GPU Cluster</h3>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Model</th>
+        <th style="text-align: right">Infrastructure</th>
+        <th style="text-align: right">Runtime</th>
+        <th style="text-align: right">Batch Size</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>zeroshot_ner_deid_subentity_merged_medium_en</td>
+        <td style="text-align: right">GPU</td>
+        <td style="text-align: right">6m 26s</td>
+        <td style="text-align: right">32</td>
+      </tr>
+      <tr>
+        <td>zeroshot_ner_deid_subentity_merged_medium_en</td>
+        <td style="text-align: right">GPU</td>
+        <td style="text-align: right">12m 3s</td>
+        <td style="text-align: right">8</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<div class="h3-box">
+
+  <h3 id="zero-shot-medium--large-models-gpu-runtime-comparison">Zero-shot Medium &amp; Large Models GPU Runtime Comparison</h3>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Model</th>
+        <th style="text-align: right">Infrastructure</th>
+        <th style="text-align: right">Runtime</th>
+        <th style="text-align: right">Batch Size</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>zeroshot_ner_deid_subentity_merged_medium_en</td>
+        <td style="text-align: right">GPU</td>
+        <td style="text-align: right">12m 3s</td>
+        <td style="text-align: right">8</td>
+      </tr>
+      <tr>
+        <td>zeroshot_ner_deid_subentity_merged_large_en</td>
+        <td style="text-align: right">GPU</td>
+        <td style="text-align: right">30m 23s</td>
+        <td style="text-align: right">8</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<div class="h3-box">
+
+  <h3 id="run-speed-test-results">Run Speed Test Results</h3>
+
+  <p>These results highlight the significant impact of GPU acceleration, batch size tuning, and model scale on deidentification pipeline runtime.</p>
+
+  <ul>
+    <li>CPU vs GPU (Medium model):</li>
+  </ul>
+
+  <p>GPU execution provides an orders-of-magnitude speedup, reducing runtime from ~2.8 hours on CPU to ~6.5 minutes on GPU at the same batch size. This clearly indicates that the Medium model is compute-bound on CPU and highly optimized for GPU inference.</p>
+
+  <ul>
+    <li>GPU batch size comparison (Medium model):</li>
+  </ul>
+
+  <p>Increasing the batch size from 8 to 32 nearly halves the runtime (from ~12.0 minutes to ~6.4 minutes). This demonstrates that throughput scales efficiently with larger batches on GPU, provided memory constraints are respected.</p>
+
+  <ul>
+    <li>Medium vs Large model on GPU:</li>
+  </ul>
+
+  <p>At the same batch size (8), the Large model requires ~30.4 minutes, compared to ~12.0 minutes for the Medium model. This reflects the expected cost of increased model complexity, confirming a direct trade-off between model capacity and inference speed.</p>
+
+  <p><strong>Overall, the findings show that GPU usage is essential for production-scale runs, batch size optimization is critical for maximizing GPU efficiency, and model size should be selected based on the required balance between accuracy and runtime performance.</strong></p>
+
+</div>
+<div class="h3-box">
+
   <h2 id="rxnorm-benchmark-healthcare-nlp--gpt-4--amazon">RxNorm Benchmark: Healthcare NLP &amp; GPT-4 &amp; Amazon</h2>
 
   <h3 id="motivation">Motivation</h3>
@@ -3552,7 +3959,7 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
 </div>
 <div class="h3-box">
 
-  <h3 id="versions">Versions</h3>
+  <h3 id="versions-2">Versions</h3>
   <p>The benchmarking was carried out with the following Spark NLP versions:</p>
 
   <p>Spark version: <code class="language-plaintext highlighter-rouge">3.0.2</code></p>
@@ -3580,7 +3987,7 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
 </div>
 <div class="h3-box">
 
-  <h4 id="dataset">Dataset</h4>
+  <h4 id="dataset-2">Dataset</h4>
   <p>The size of the dataset was small (17K), consisting of:</p>
 
   <p>Training (rows): <code class="language-plaintext highlighter-rouge">14041</code></p>
@@ -3781,7 +4188,7 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
 </div>
 <div class="h3-box">
 
-  <h3 id="versions-1">Versions</h3>
+  <h3 id="versions-3">Versions</h3>
 
   <p>The benchmarking was carried out with the following versions:</p>
 
@@ -3796,7 +4203,7 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
 </div>
 <div class="h3-box">
 
-  <h3 id="dataset-1">Dataset</h3>
+  <h3 id="dataset-3">Dataset</h3>
 
   <p>The size of the dataset is (120K), consisting of news articles that can be found <a href="https://raw.githubusercontent.com/JohnSnowLabs/spark-nlp-workshop/master/open-source-nlp/data/news_category_train.csv">here</a>.</p>
 
@@ -3963,6 +4370,7 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
   <p><em>SpaCy with pandas UDFs</em>: Development might be more straightforward since you’re essentially working with Python functions. However, maintaining optimal performance with larger datasets and ensuring scalability can be tricky.</p>
 
 </div>
+
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
       <time itemprop="dateModified" datetime="2021-10-04T00:00:00+00:00">Oct 04, 2021</time>
     </span><!-- start custom article footer snippet -->
