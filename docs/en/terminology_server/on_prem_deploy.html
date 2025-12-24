@@ -626,45 +626,46 @@ function wrapWordInSpan(data, wordToWrap) {
             <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Terminology Server"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
-<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><p>&lt;/div&gt;&lt;div class="h3-box" markdown="1"&gt;</p>
+<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-<h2 id="on-prem-installation-guide"><strong>On-Prem Installation Guide</strong></h2>
+  <h2 id="on-prem-installation-guide"><strong>On-Prem Installation Guide</strong></h2>
 
-<p><strong>Prerequisites:</strong></p>
+  <p><strong>Prerequisites:</strong></p>
 
-<ul>
-  <li>jq (lightweight command-line JSON processor)</li>
-  <li>curl (command-line tool for transferring data with URLs)</li>
-  <li>sudoer access on the server where you want to install Terminology Server</li>
-</ul>
+  <ul>
+    <li>jq (lightweight command-line JSON processor)</li>
+    <li>curl (command-line tool for transferring data with URLs)</li>
+    <li>sudoer access on the server where you want to install Terminology Server</li>
+  </ul>
 
-<p><strong>Step 1: Get your license file or license key</strong></p>
+  <p><strong>Step 1: Get your license file or license key</strong></p>
 
-<p>If license file is provided, place your license file in a local path. If license key is provided, you can directly use it in next step.</p>
+  <p>If license file is provided, place your license file in a local path. If license key is provided, you can directly use it in next step.</p>
 
-<p><strong>Step 2: Run the Installation/Upgrade Command</strong></p>
+  <p><strong>Step 2: Run the Installation/Upgrade Command</strong></p>
 
-<ul>
-  <li>Install <code class="language-plaintext highlighter-rouge">latest</code> version using your license file path or license key:</li>
-</ul>
+  <ul>
+    <li>Install <code class="language-plaintext highlighter-rouge">latest</code> version using your license file path or license key:</li>
+  </ul>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-sSL</span> https://s3.us-east-1.amazonaws.com/artifacts.terminologyservice.johnsnowlabs.com/install.sh | bash <span class="nt">-s</span> <span class="s2">"YOUR_LICENSE_FILE_PATH_OR_LICENSE_KEY"</span>
-</code></pre></div></div>
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-sSL</span> https://s3.us-east-1.amazonaws.com/artifacts.terminologyservice.johnsnowlabs.com/install.sh | bash <span class="nt">-s</span> <span class="s2">"YOUR_LICENSE_FILE_PATH_OR_LICENSE_KEY"</span>
+</code></pre></div>  </div>
 
-<blockquote>
-  <p><strong><em>NOTE:</em></strong> The initial setup may take a little longer if you’re running it for the first time, as databases and images are downloaded and services are created. We appreciate your patience! For more information regarding installation of Terminology Server on a dedicated server please contact us at <a href="mailto:support@johnsnowlabs.com">support@johnsnowlabs.com</a>.</p>
-</blockquote>
+  <blockquote>
+    <p><strong><em>NOTE:</em></strong> The initial setup may take a little longer if you’re running it for the first time, as databases and images are downloaded and services are created. We appreciate your patience! For more information regarding installation of Terminology Server on a dedicated server please contact us at <a href="mailto:support@johnsnowlabs.com">support@johnsnowlabs.com</a>.</p>
+  </blockquote>
 
-<p><strong>Step 3: Access Terminology Server</strong></p>
+  <p><strong>Step 3: Access Terminology Server</strong></p>
 
-<p>Once the installation is complete, you can access Terminology Server by navigating to <code class="language-plaintext highlighter-rouge">http://localhost</code> or <code class="language-plaintext highlighter-rouge">http://YOUR_SERVER_IP</code> in your web browser.
+  <p>Once the installation is complete, you can access Terminology Server by navigating to <code class="language-plaintext highlighter-rouge">http://localhost</code> or <code class="language-plaintext highlighter-rouge">http://YOUR_SERVER_IP</code> in your web browser.
 The credentials to login will be provided in the terminal after installation script is completed.</p>
 
-<p>&lt;/div&gt;&lt;div class="h3-box" markdown="1"&gt;</p>
+</div>
+<div class="h3-box">
 
-<h2 id="recommended-configurations">Recommended Configurations</h2>
+  <h2 id="recommended-configurations">Recommended Configurations</h2>
 
-<table class="table2">
+  <table class="table2">
   <tr>
     <th>System requirements</th>
     <td>You can install Terminology Server on a Ubuntu 20+ machine.</td>
@@ -692,7 +693,7 @@ The credentials to login will be provided in the terminal after installation scr
   </tr>
 </table>
 
-<p>&lt;/div&gt;</p>
+</div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
       <time itemprop="dateModified" datetime="2025-04-01T00:00:00+00:00">Apr 01, 2025</time>
     </span><!-- start custom article footer snippet -->
