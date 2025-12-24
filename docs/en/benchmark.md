@@ -1684,6 +1684,7 @@ Databrics-AWS Config with CPU/GPU Options
             Tokenizer,
             PretrainedZeroShotNER
             ])
+```
 
 </div><div class="h3-box" markdown="1">
 
@@ -1736,3 +1737,4 @@ At the same batch size (8), the Large model requires ~30.4 minutes, compared to 
 **Overall, the findings show that GPU usage is essential for production-scale runs, batch size optimization is critical for maximizing GPU efficiency, and model size should be selected based on the required balance between accuracy and runtime performance.**
 
 </div>
+
