@@ -35,6 +35,7 @@ The model is designed to support any set of entity labels, allowing users to ada
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
