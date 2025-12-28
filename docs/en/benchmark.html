@@ -2308,6 +2308,163 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
 
   <h2 id="deidentification-benchmarks">Deidentification Benchmarks</h2>
 
+  <h3 id="clinical-de-identification--most-up-to-date-pipelines">Clinical De-identification – Most Up-to-Date Pipelines</h3>
+
+  <ul>
+    <li><strong>GPU setup:</strong>
+      <ul>
+        <li>A100 GPU</li>
+        <li>48 Spark partitions</li>
+      </ul>
+    </li>
+    <li><strong>CPU setup:</strong>
+      <ul>
+        <li>Colab CPU High-RAM</li>
+        <li>32 Spark partitions</li>
+      </ul>
+    </li>
+    <li><strong>Input Data Count:</strong> 1000 clinical documents</li>
+    <li><strong>Average Token Count:</strong> 503 tokens per document</li>
+  </ul>
+
+  <blockquote>
+    <p><strong>Note:</strong> The input data count and average token count are used for <strong>end-to-end speed benchmarking</strong> and are consistent across all pipeline configurations to ensure a fair runtime comparison.</p>
+  </blockquote>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>pipeline</th>
+        <th style="text-align: right">GPU<br />wall time</th>
+        <th style="text-align: right">CPU<br />wall time</th>
+        <th style="text-align: right">Paper<br />precision</th>
+        <th style="text-align: right">Paper<br />recall</th>
+        <th style="text-align: right">Paper<br />F1-score</th>
+        <th style="text-align: right">Surrogate<br />precision</th>
+        <th style="text-align: right">Surrogate<br />recall</th>
+        <th style="text-align: right">Surrogate<br />F1-score</th>
+        <th>pipeline content</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>clinical_deidentification_docwise_benchmark_optimized</td>
+        <td style="text-align: right">5 min 15 sec</td>
+        <td style="text-align: right">8 min 55 sec</td>
+        <td style="text-align: right">0.93</td>
+        <td style="text-align: right">0.93</td>
+        <td style="text-align: right">0.93</td>
+        <td style="text-align: right">0.92</td>
+        <td style="text-align: right">0.96</td>
+        <td style="text-align: right">0.94</td>
+        <td>21 rule-based annotators<br />4 NER</td>
+      </tr>
+      <tr>
+        <td>clinical_deidentification_docwise_benchmark_medium</td>
+        <td style="text-align: right">4 min 38 sec</td>
+        <td style="text-align: right">32 min 57 sec</td>
+        <td style="text-align: right">0.90</td>
+        <td style="text-align: right">0.97</td>
+        <td style="text-align: right">0.93</td>
+        <td style="text-align: right">0.87</td>
+        <td style="text-align: right">0.96</td>
+        <td style="text-align: right">0.91</td>
+        <td>21 rule-based annotators<br />3 NER + 1 Zero-shot (medium)</td>
+      </tr>
+      <tr>
+        <td>clinical_deidentification_docwise_benchmark_medium_v2</td>
+        <td style="text-align: right">3 min 42 sec</td>
+        <td style="text-align: right">37 min 56 sec</td>
+        <td style="text-align: right">0.91</td>
+        <td style="text-align: right">0.96</td>
+        <td style="text-align: right">0.93</td>
+        <td style="text-align: right">0.86</td>
+        <td style="text-align: right">0.93</td>
+        <td style="text-align: right">0.90</td>
+        <td>21 rule-based annotators<br />2 NER + Zero-shot Chunker</td>
+      </tr>
+      <tr>
+        <td>clinical_deidentification_docwise_zeroshot_medium</td>
+        <td style="text-align: right">26.7 sec</td>
+        <td style="text-align: right">27 min</td>
+        <td style="text-align: right">0.92</td>
+        <td style="text-align: right">0.94</td>
+        <td style="text-align: right">0.93</td>
+        <td style="text-align: right">0.86</td>
+        <td style="text-align: right">0.90</td>
+        <td style="text-align: right">0.88</td>
+        <td>21 rule-based annotators<br />Zero-shot Chunker (medium)</td>
+      </tr>
+      <tr>
+        <td>clinical_deidentification_docwise_SingleStage_zeroshot_medium</td>
+        <td style="text-align: right">33.1 sec</td>
+        <td style="text-align: right">26 min 41 sec</td>
+        <td style="text-align: right">0.92</td>
+        <td style="text-align: right">0.91</td>
+        <td style="text-align: right">0.92</td>
+        <td style="text-align: right">0.87</td>
+        <td style="text-align: right">0.88</td>
+        <td style="text-align: right">0.88</td>
+        <td>Zero-shot Chunker (medium)</td>
+      </tr>
+      <tr>
+        <td>clinical_deidentification_docwise_benchmark_large</td>
+        <td style="text-align: right">4 min 51 sec</td>
+        <td style="text-align: right">2 h 10 min</td>
+        <td style="text-align: right">0.90</td>
+        <td style="text-align: right">0.97</td>
+        <td style="text-align: right">0.94</td>
+        <td style="text-align: right">0.88</td>
+        <td style="text-align: right">0.96</td>
+        <td style="text-align: right">0.92</td>
+        <td>21 rule-based annotators<br />3 NER + 1 Zero-shot (large)</td>
+      </tr>
+      <tr>
+        <td>clinical_deidentification_docwise_benchmark_large_v2</td>
+        <td style="text-align: right">3 min 46 sec</td>
+        <td style="text-align: right">1 h 32 min</td>
+        <td style="text-align: right">0.92</td>
+        <td style="text-align: right">0.98</td>
+        <td style="text-align: right">0.95</td>
+        <td style="text-align: right">0.87</td>
+        <td style="text-align: right">0.94</td>
+        <td style="text-align: right">0.91</td>
+        <td>21 rule-based annotators<br />2 NER + Zero-shot Chunker</td>
+      </tr>
+      <tr>
+        <td>clinical_deidentification_docwise_zeroshot_large</td>
+        <td style="text-align: right">43.8 sec</td>
+        <td style="text-align: right">1 h 18 min</td>
+        <td style="text-align: right">0.93</td>
+        <td style="text-align: right">0.97</td>
+        <td style="text-align: right">0.95</td>
+        <td style="text-align: right">0.87</td>
+        <td style="text-align: right">0.93</td>
+        <td style="text-align: right">0.90</td>
+        <td>21 rule-based annotators<br />Zero-shot Chunker (large)</td>
+      </tr>
+      <tr>
+        <td>clinical_deidentification_docwise_SingleStage_zeroshot_large</td>
+        <td style="text-align: right">41.1 sec</td>
+        <td style="text-align: right">1 h 15 min</td>
+        <td style="text-align: right">0.93</td>
+        <td style="text-align: right">0.95</td>
+        <td style="text-align: right">0.94</td>
+        <td style="text-align: right">0.88</td>
+        <td style="text-align: right">0.92</td>
+        <td style="text-align: right">0.90</td>
+        <td>Zero-shot Chunker (large)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <blockquote>
+    <p>This table reports end-to-end runtime and token-level precision, recall, and F1-score for the most up-to-date clinical de-identification pipelines.</p>
+  </blockquote>
+
+</div>
+<div class="h3-box">
+
   <h3 id="deidentification-comparison-experiment-on-clusters">Deidentification Comparison Experiment on Clusters</h3>
 
   <ul>
