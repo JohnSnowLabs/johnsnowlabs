@@ -44,26 +44,35 @@ prompt = """Extract all medical entities from the clinical note below and return
 {{
   "entities": [
     {{
-      "AGE": ["verbatim-string"],
-      "CITY": ["verbatim-string"],
-      "COUNTRY": ["verbatim-string"],
-      "DATE": ["verbatim-string"],
-      "DOCTOR": ["verbatim-string"],
-      "DOSAGE": ["verbatim-string"],
-      "DRUG": ["verbatim-string"],
-      "DURATION": ["verbatim-string"],
-      "CANCER": ["verbatim-string"],
-      "FREQUENCY": ["verbatim-string"],
-      "HOSPITAL": ["verbatim-string"],
-      "BODY_PART": ["verbatim-string"],
-      "PATIENT": ["verbatim-string"],
-      "PHONE": ["verbatim-string"],
-      "PROBLEM": ["verbatim-string"],
-      "PROFESSION": ["verbatim-string"],
-      "STATE": ["verbatim-string"],
-      "STRENGTH": ["verbatim-string"],
-      "TEST": ["verbatim-string"],
-      "TREATMENT": ["verbatim-string"]
+      "ACCOUNTNUM": ["verbatim-string"],
+    "AGE": ["verbatim-string"],
+    "CITY": ["verbatim-string"],
+    "COUNTRY": ["verbatim-string"],
+    "DATE": ["verbatim-string"],
+    "DEVICE": ["verbatim-string"],
+    "DLN": ["verbatim-string"],
+    "DOCTOR": ["verbatim-string"],
+    "EMAIL": ["verbatim-string"],
+    "GENDER": ["verbatim-string"],
+    "HOSPITAL": ["verbatim-string"],
+    "IDNUM": ["verbatim-string"],
+    "IP": ["verbatim-string"],
+    "LOCATION_OTHER": ["verbatim-string"],
+    "MEDICALRECORD": ["verbatim-string"],
+    "NAME": ["verbatim-string"],
+    "ORGANIZATION": ["verbatim-string"],
+    "PATIENT": ["verbatim-string"],
+    "PHONE": ["verbatim-string"],
+    "PLATE": ["verbatim-string"],
+    "PROFESSION": ["verbatim-string"],
+    "SSN": ["verbatim-string"],
+    "STATE": ["verbatim-string"],
+    "STREET": ["verbatim-string"],
+    "TIME": ["verbatim-string"],
+    "URL": ["verbatim-string"],
+    "USERNAME": ["verbatim-string"],
+    "VIN": ["verbatim-string"],
+    "ZIP": ["verbatim-string"]
     }}
   ]
 }}
@@ -121,26 +130,35 @@ prompt = """Extract all medical entities from the clinical note below and return
 {{
   "entities": [
     {{
-      "AGE": ["verbatim-string"],
-      "CITY": ["verbatim-string"],
-      "COUNTRY": ["verbatim-string"],
-      "DATE": ["verbatim-string"],
-      "DOCTOR": ["verbatim-string"],
-      "DOSAGE": ["verbatim-string"],
-      "DRUG": ["verbatim-string"],
-      "DURATION": ["verbatim-string"],
-      "CANCER": ["verbatim-string"],
-      "FREQUENCY": ["verbatim-string"],
-      "HOSPITAL": ["verbatim-string"],
-      "BODY_PART": ["verbatim-string"],
-      "PATIENT": ["verbatim-string"],
-      "PHONE": ["verbatim-string"],
-      "PROBLEM": ["verbatim-string"],
-      "PROFESSION": ["verbatim-string"],
-      "STATE": ["verbatim-string"],
-      "STRENGTH": ["verbatim-string"],
-      "TEST": ["verbatim-string"],
-      "TREATMENT": ["verbatim-string"]
+      "ACCOUNTNUM": ["verbatim-string"],
+    "AGE": ["verbatim-string"],
+    "CITY": ["verbatim-string"],
+    "COUNTRY": ["verbatim-string"],
+    "DATE": ["verbatim-string"],
+    "DEVICE": ["verbatim-string"],
+    "DLN": ["verbatim-string"],
+    "DOCTOR": ["verbatim-string"],
+    "EMAIL": ["verbatim-string"],
+    "GENDER": ["verbatim-string"],
+    "HOSPITAL": ["verbatim-string"],
+    "IDNUM": ["verbatim-string"],
+    "IP": ["verbatim-string"],
+    "LOCATION_OTHER": ["verbatim-string"],
+    "MEDICALRECORD": ["verbatim-string"],
+    "NAME": ["verbatim-string"],
+    "ORGANIZATION": ["verbatim-string"],
+    "PATIENT": ["verbatim-string"],
+    "PHONE": ["verbatim-string"],
+    "PLATE": ["verbatim-string"],
+    "PROFESSION": ["verbatim-string"],
+    "SSN": ["verbatim-string"],
+    "STATE": ["verbatim-string"],
+    "STREET": ["verbatim-string"],
+    "TIME": ["verbatim-string"],
+    "URL": ["verbatim-string"],
+    "USERNAME": ["verbatim-string"],
+    "VIN": ["verbatim-string"],
+    "ZIP": ["verbatim-string"]
     }}
   ]
 }}
@@ -199,26 +217,35 @@ val prompt = """Extract all medical entities from the clinical note below and re
 {{
   "entities": [
     {{
-      "AGE": ["verbatim-string"],
-      "CITY": ["verbatim-string"],
-      "COUNTRY": ["verbatim-string"],
-      "DATE": ["verbatim-string"],
-      "DOCTOR": ["verbatim-string"],
-      "DOSAGE": ["verbatim-string"],
-      "DRUG": ["verbatim-string"],
-      "DURATION": ["verbatim-string"],
-      "CANCER": ["verbatim-string"],
-      "FREQUENCY": ["verbatim-string"],
-      "HOSPITAL": ["verbatim-string"],
-      "BODY_PART": ["verbatim-string"],
-      "PATIENT": ["verbatim-string"],
-      "PHONE": ["verbatim-string"],
-      "PROBLEM": ["verbatim-string"],
-      "PROFESSION": ["verbatim-string"],
-      "STATE": ["verbatim-string"],
-      "STRENGTH": ["verbatim-string"],
-      "TEST": ["verbatim-string"],
-      "TREATMENT": ["verbatim-string"]
+      "ACCOUNTNUM": ["verbatim-string"],
+    "AGE": ["verbatim-string"],
+    "CITY": ["verbatim-string"],
+    "COUNTRY": ["verbatim-string"],
+    "DATE": ["verbatim-string"],
+    "DEVICE": ["verbatim-string"],
+    "DLN": ["verbatim-string"],
+    "DOCTOR": ["verbatim-string"],
+    "EMAIL": ["verbatim-string"],
+    "GENDER": ["verbatim-string"],
+    "HOSPITAL": ["verbatim-string"],
+    "IDNUM": ["verbatim-string"],
+    "IP": ["verbatim-string"],
+    "LOCATION_OTHER": ["verbatim-string"],
+    "MEDICALRECORD": ["verbatim-string"],
+    "NAME": ["verbatim-string"],
+    "ORGANIZATION": ["verbatim-string"],
+    "PATIENT": ["verbatim-string"],
+    "PHONE": ["verbatim-string"],
+    "PLATE": ["verbatim-string"],
+    "PROFESSION": ["verbatim-string"],
+    "SSN": ["verbatim-string"],
+    "STATE": ["verbatim-string"],
+    "STREET": ["verbatim-string"],
+    "TIME": ["verbatim-string"],
+    "URL": ["verbatim-string"],
+    "USERNAME": ["verbatim-string"],
+    "VIN": ["verbatim-string"],
+    "ZIP": ["verbatim-string"]
     }}
   ]
 }}
@@ -272,28 +299,18 @@ println(output)
 
 ```bash
 
-| chunk                   | begin | end | ner_label | confidence |
-|-------------------------|-------|-----|-----------|------------|
-| January 10, 2024        | 3     | 18  | DATE      | 0.99       |
-| Emily Rodriguez         | 29    | 43  | PATIENT   | 0.92       |
-| 45-year-old             | 48    | 58  | AGE       | 0.93       |
-| 98765432                | 73    | 80  | PHONE     | 0.92       |
-| City General Hospital   | 100   | 120 | HOSPITAL  | 0.92       |
-| Los Angeles             | 125   | 135 | CITY      | 0.92       |
-| under the care          | 142   | 155 | PROFESSION| 0.91       |
-| CA                      | 152   | 153 | COUNTRY   | 0.93       |
-| Michael Chen            | 164   | 175 | DOCTOR    | 0.92       |
-| severe headaches        | 205   | 220 | PROBLEM   | 0.93       |
-| glioblastoma multiforme | 294   | 316 | CANCER    | 0.93       |
-| temporal regions        | 365   | 380 | BODY_PART | 0.93       |
-| temozolomide            | 403   | 414 | DRUG      | 0.93       |
-| 150 mg twice daily      | 416   | 433 | DOSAGE    | 0.92       |
-| 6 weeks                 | 470   | 476 | DURATION  | 0.94       |
-| every 2 weeks           | 504   | 516 | FREQUENCY | 0.93       |
-| MRI                     | 535   | 537 | TEST      | 0.93       |
-| stable disease          | 552   | 565 | STRENGTH  | 0.92       |
-| CA                      | 623   | 624 | STATE     | 0.94       |
-| follow-up               | 679   | 687 | TREATMENT | 0.92       |
+| chunk                 | begin | end | ner_label | confidence |
+|-----------------------|-------|-----|-----------|------------|
+| January 10, 2024      | 3     | 18  | DATE      | 1.00       |
+| Emily Rodriguez       | 29    | 43  | PATIENT   | 0.91       |
+| 45-year-old           | 48    | 58  | AGE       | 0.93       |
+| 98765432              | 73    | 80  | PHONE     | 0.91       |
+| City General Hospital | 100   | 120 | HOSPITAL  | 0.91       |
+| Los Angeles           | 125   | 135 | CITY      | 0.92       |
+| CA                    | 138   | 139 | COUNTRY   | 0.93       |
+| under the care        | 142   | 155 | PROFESSION| 0.92       |
+| Michael Chen          | 164   | 175 | DOCTOR    | 0.92       |
+| CA                    | 623   | 624 | STATE     | 0.93       |
 
 
 ```
