@@ -4,7 +4,7 @@ title: Pretrained Zero-Shot Named Entity Recognition (zeroshot_ner_deid_generic_
 author: John Snow Labs
 name: zeroshot_ner_deid_generic_nonMedical_medium
 date: 2025-12-28
-tags: [licensed, en, ner, deid, zeroshot, clinical, generic, onnx]
+tags: [licensed, en, ner, deid, zeroshot, clinical, generic]
 task: Named Entity Recognition
 language: en
 edition: Healthcare NLP 6.2.2
