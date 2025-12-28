@@ -623,6 +623,36 @@ resolver_pipeline = PipelineModel(
 
 ## Deidentification Benchmarks
 
+### Clinical De-identification – Most Up-to-Date Pipelines
+
+- **GPU setup:**
+  - A100 GPU
+  - 48 Spark partitions
+- **CPU setup:**
+  - Colab CPU High-RAM
+  - 32 Spark partitions
+- **Input Data Count:** 1000 clinical documents
+- **Average Token Count:** 503 tokens per document
+
+> **Note:** The input data count and average token count are used for **end-to-end speed benchmarking** and are consistent across all pipeline configurations to ensure a fair runtime comparison.
+
+{:.table-model-big}
+| pipeline                                                             | GPU<br>wall time | CPU<br>wall time | Paper<br>precision | Paper<br>recall | Paper<br>F1-score | Surrogate<br>precision | Surrogate<br>recall | Surrogate<br>F1-score | pipeline content |
+|----------------------------------------------------------------------|------------------:|------------------:|-------------------:|----------------:|------------------:|----------------------:|-------------------:|---------------------:|-----------------|
+| clinical_deidentification_docwise_benchmark_optimized                | 5 min 15 sec     | 8 min 55 sec     | 0.93               | 0.93            | 0.93              | 0.92                  | 0.96               | 0.94                 | 21 rule-based annotators<br>4 NER |
+| clinical_deidentification_docwise_benchmark_medium                   | 4 min 38 sec     | 32 min 57 sec    | 0.90               | 0.97            | 0.93              | 0.87                  | 0.96               | 0.91                 | 21 rule-based annotators<br>3 NER + 1 Zero-shot (medium) |
+| clinical_deidentification_docwise_benchmark_medium_v2                | 3 min 42 sec     | 37 min 56 sec    | 0.91               | 0.96            | 0.93              | 0.86                  | 0.93               | 0.90                 | 21 rule-based annotators<br>2 NER + Zero-shot Chunker |
+| clinical_deidentification_docwise_zeroshot_medium                    | 26.7 sec         | 27 min           | 0.92               | 0.94            | 0.93              | 0.86                  | 0.90               | 0.88                 | 21 rule-based annotators<br>Zero-shot Chunker (medium) |
+| clinical_deidentification_docwise_SingleStage_zeroshot_medium        | 33.1 sec         | 26 min 41 sec    | 0.92               | 0.91            | 0.92              | 0.87                  | 0.88               | 0.88                 | Zero-shot Chunker (medium) |
+| clinical_deidentification_docwise_benchmark_large                    | 4 min 51 sec     | 2 h 10 min       | 0.90               | 0.97            | 0.94              | 0.88                  | 0.96               | 0.92                 | 21 rule-based annotators<br>3 NER + 1 Zero-shot (large) |
+| clinical_deidentification_docwise_benchmark_large_v2                 | 3 min 46 sec     | 1 h 32 min       | 0.92               | 0.98            | 0.95              | 0.87                  | 0.94               | 0.91                 | 21 rule-based annotators<br>2 NER + Zero-shot Chunker |
+| clinical_deidentification_docwise_zeroshot_large                     | 43.8 sec         | 1 h 18 min       | 0.93               | 0.97            | 0.95              | 0.87                  | 0.93               | 0.90                 | 21 rule-based annotators<br>Zero-shot Chunker (large) |
+| clinical_deidentification_docwise_SingleStage_zeroshot_large         | 41.1 sec         | 1 h 15 min       | 0.93               | 0.95            | 0.94              | 0.88                  | 0.92               | 0.90                 | Zero-shot Chunker (large) |
+
+> This table reports end-to-end runtime and token-level precision, recall, and F1-score for the most up-to-date clinical de-identification pipelines.
+
+</div><div class="h3-box" markdown="1">
+
 ### Deidentification Comparison Experiment on Clusters
  
 - **Dataset:** 1000 Clinical Texts from MTSamples, approx. 503 tokens and 6 chunks per text.
