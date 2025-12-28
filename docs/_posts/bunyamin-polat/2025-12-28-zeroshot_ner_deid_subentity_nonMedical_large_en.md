@@ -4,7 +4,7 @@ title: Pretrained Zero-Shot Named Entity Recognition (zeroshot_ner_deid_subentit
 author: John Snow Labs
 name: zeroshot_ner_deid_subentity_nonMedical_large
 date: 2025-12-28
-tags: [licensed, en, ner, deid, zeroshot, clinical, generic, onnx]
+tags: [licensed, en, ner, deid, zeroshot, clinical, subentity]
 task: Named Entity Recognition
 language: en
 edition: Healthcare NLP 6.2.2
@@ -21,7 +21,7 @@ use_language_switcher: "Python-Scala-Java"
 
 Zero-shot Named Entity Recognition (NER) enables the identification of entities in text with minimal effort. By leveraging pre-trained language models and contextual understanding, zero-shot NER extends entity recognition capabilities to new domains and languages. While the model card includes default labels as examples, it is important to highlight that users are not limited to these labels.
 
-The model is designed to support any set of entity labels, allowing users to adapt it to their specific use cases. For best results, it is recommended to use labels that are conceptually similar to the provided defaults.
+**The model is designed to support any set of entity labels, allowing users to adapt it to their specific use cases. For best results, it is recommended to use labels that are conceptually similar to the provided defaults.**
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
@@ -35,6 +35,7 @@ The model is designed to support any set of entity labels, allowing users to ada
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
