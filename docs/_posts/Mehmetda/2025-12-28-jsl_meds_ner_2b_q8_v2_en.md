@@ -44,26 +44,13 @@ prompt = """Extract all medical entities from the clinical note below and return
 {{
   "entities": [
     {{
-      "AGE": ["verbatim-string"],
-      "CITY": ["verbatim-string"],
-      "COUNTRY": ["verbatim-string"],
-      "DATE": ["verbatim-string"],
-      "DOCTOR": ["verbatim-string"],
-      "DOSAGE": ["verbatim-string"],
-      "DRUG": ["verbatim-string"],
-      "DURATION": ["verbatim-string"],
-      "CANCER": ["verbatim-string"],
-      "FREQUENCY": ["verbatim-string"],
-      "HOSPITAL": ["verbatim-string"],
-      "BODY_PART": ["verbatim-string"],
-      "PATIENT": ["verbatim-string"],
-      "PHONE": ["verbatim-string"],
-      "PROBLEM": ["verbatim-string"],
-      "PROFESSION": ["verbatim-string"],
-      "STATE": ["verbatim-string"],
-      "STRENGTH": ["verbatim-string"],
-      "TEST": ["verbatim-string"],
-      "TREATMENT": ["verbatim-string"]
+    "AGE": ["verbatim-string"],
+    "NAME": ["verbatim-string"],
+    "DATE": ["verbatim-string"],
+    "LOCATION": ["verbatim-string"],
+    "PROFESSION": ["verbatim-string"],
+    "CONTACT": ["verbatim-string"],
+    "ID": ["verbatim-string"]
     }}
   ]
 }}
@@ -122,26 +109,13 @@ prompt = """Extract all medical entities from the clinical note below and return
 {{
   "entities": [
     {{
-      "AGE": ["verbatim-string"],
-      "CITY": ["verbatim-string"],
-      "COUNTRY": ["verbatim-string"],
-      "DATE": ["verbatim-string"],
-      "DOCTOR": ["verbatim-string"],
-      "DOSAGE": ["verbatim-string"],
-      "DRUG": ["verbatim-string"],
-      "DURATION": ["verbatim-string"],
-      "CANCER": ["verbatim-string"],
-      "FREQUENCY": ["verbatim-string"],
-      "HOSPITAL": ["verbatim-string"],
-      "BODY_PART": ["verbatim-string"],
-      "PATIENT": ["verbatim-string"],
-      "PHONE": ["verbatim-string"],
-      "PROBLEM": ["verbatim-string"],
-      "PROFESSION": ["verbatim-string"],
-      "STATE": ["verbatim-string"],
-      "STRENGTH": ["verbatim-string"],
-      "TEST": ["verbatim-string"],
-      "TREATMENT": ["verbatim-string"]
+    "AGE": ["verbatim-string"],
+    "NAME": ["verbatim-string"],
+    "DATE": ["verbatim-string"],
+    "LOCATION": ["verbatim-string"],
+    "PROFESSION": ["verbatim-string"],
+    "CONTACT": ["verbatim-string"],
+    "ID": ["verbatim-string"]
     }}
   ]
 }}
@@ -201,26 +175,13 @@ val prompt = """Extract all medical entities from the clinical note below and re
 {{
   "entities": [
     {{
-      "AGE": ["verbatim-string"],
-      "CITY": ["verbatim-string"],
-      "COUNTRY": ["verbatim-string"],
-      "DATE": ["verbatim-string"],
-      "DOCTOR": ["verbatim-string"],
-      "DOSAGE": ["verbatim-string"],
-      "DRUG": ["verbatim-string"],
-      "DURATION": ["verbatim-string"],
-      "CANCER": ["verbatim-string"],
-      "FREQUENCY": ["verbatim-string"],
-      "HOSPITAL": ["verbatim-string"],
-      "BODY_PART": ["verbatim-string"],
-      "PATIENT": ["verbatim-string"],
-      "PHONE": ["verbatim-string"],
-      "PROBLEM": ["verbatim-string"],
-      "PROFESSION": ["verbatim-string"],
-      "STATE": ["verbatim-string"],
-      "STRENGTH": ["verbatim-string"],
-      "TEST": ["verbatim-string"],
-      "TREATMENT": ["verbatim-string"]
+    "AGE": ["verbatim-string"],
+    "NAME": ["verbatim-string"],
+    "DATE": ["verbatim-string"],
+    "LOCATION": ["verbatim-string"],
+    "PROFESSION": ["verbatim-string"],
+    "CONTACT": ["verbatim-string"],
+    "ID": ["verbatim-string"]
     }}
   ]
 }}
@@ -275,25 +236,15 @@ println(output)
 
 ```bash
 
-|chunk                     |begin|end|ner_label|confidence|
-|--------------------------|-----|---|---------|----------|
-|58-year-old               |41   |51 |AGE      |0.99690467|
-|liver                     |323  |327|BODY_PART|0.99508887|
-|non-small cell lung cancer|265  |290|CANCER   |0.90104083|
-|New York                  |112  |119|CITY     |0.98038649|
-|March 15, 2024            |3    |16 |DATE     |0.9467498 |
-|Sarah Johnson             |148  |160|DOCTOR   |0.92927407|
-|80 mg                     |372  |376|DOSAGE   |0.96529836|
-|osimertinib               |360  |370|DRUG     |0.92001022|
-|3 months                  |470  |477|DURATION |0.91608679|
-|daily                     |378  |382|FREQUENCY|0.96884026|
-|Memorial Hospital         |91   |107|HOSPITAL |0.94301283|
-|John Smith                |27   |36 |PATIENT  |0.93512589|
-|12345678                  |64   |71 |PHONE    |0.91850522|
-|chest pain                |190  |199|PROBLEM  |0.98347442|
-|partial response          |495  |510|STRENGTH |0.96074057|
-|imaging                   |480  |486|TEST     |0.90409901|
-|chemotherapy              |385  |396|TREATMENT|0.97091188|
+|chunk            |begin|end|ner_label |confidence|
+|-----------------|-----|---|--------- |----------|
+|58-year-old      |41   |51 |AGE       |0.91463907|
+|12345678         |64   |71 |CONTACT   |0.98403682|
+|March 15, 2024   |3    |16 |DATE      |0.97907713|
+|12345678         |64   |71 |ID        |0.90554436|
+|Memorial Hospital|91   |107|LOCATION  |0.94546725|
+|John Smith.      |27   |36 |NAME      |0.95915806|
+|care             |136  |139|PROFESSION|0.98084227|
 
 ```
 
