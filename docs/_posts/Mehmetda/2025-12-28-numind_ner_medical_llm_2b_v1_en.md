@@ -4,7 +4,7 @@ title: Numind Medical NER LLM v1 (numind_ner_medical_llm_2b_v1)
 author: John Snow Labs
 name: numind_ner_medical_llm_2b_v1
 date: 2025-12-28
-tags: [medical, clinical, ner, llm, en, licensed, numind, llamacpp]
+tags: [medical, clinical, ner, llm, en, licensed, numind]
 task: Named Entity Recognition
 language: en
 edition: Healthcare NLP 6.2.2
