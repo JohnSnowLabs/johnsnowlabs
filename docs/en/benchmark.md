@@ -636,7 +636,7 @@ resolver_pipeline = PipelineModel(
 
 > **Note:** The input data count and average token count are used for **end-to-end speed benchmarking** and are consistent across all pipeline configurations to ensure a fair runtime comparison.
 
-{:.table-model-big}
+{:.table-model-big.db}
 | pipeline                                                             | GPU<br>wall time | CPU<br>wall time | Paper<br>precision | Paper<br>recall | Paper<br>F1-score | Surrogate<br>precision | Surrogate<br>recall | Surrogate<br>F1-score | pipeline content |
 |----------------------------------------------------------------------|------------------:|------------------:|-------------------:|----------------:|------------------:|----------------------:|-------------------:|---------------------:|-----------------|
 | clinical_deidentification_docwise_benchmark_optimized                | 5 min 15 sec     | 8 min 55 sec     | 0.93               | 0.93            | 0.93              | 0.92                  | 0.96               | 0.94                 | 21 rule-based annotators<br>4 NER |
