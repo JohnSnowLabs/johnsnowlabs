@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model maps drug entities to UMLS CUI codes. It is trained on 2025AA release of the Unified Medical Language System (UMLS) dataset. The complete dataset has 127 different categories, and this model is trained on the “Clinical Drug” category using sbiobert_base_cased_mli embeddings.
+This model maps drug entities to UMLS CUI codes. It is trained on 2025AB release of the Unified Medical Language System (UMLS) dataset. The complete dataset has 127 different categories, and this model is trained on the “Clinical Drug” category using sbiobert_base_cased_mli embeddings.
 
 ## Predicted Entities
 
