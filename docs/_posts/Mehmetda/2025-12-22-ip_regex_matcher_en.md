@@ -38,7 +38,7 @@ documentAssembler = DocumentAssembler()\
       .setInputCol("text")\
       .setOutputCol("document")
 
-ip_regex_matcher = RegexMatcherInternalModel.pretrained("ip_matcher","en","clinical/models")\
+ip_regex_matcher = RegexMatcherInternalModel.pretrained("ip_regex_matcher","en","clinical/models")\
     .setInputCols(["document"])\
     .setOutputCol("IP")\
 
@@ -68,7 +68,7 @@ documentAssembler = nlp.DocumentAssembler()\
       .setInputCol("text")\
       .setOutputCol("document")
 
-ip_regex_matcher = medical.RegexMatcherInternalModel.pretrained("ip_matcher","en","clinical/models")\
+ip_regex_matcher = medical.RegexMatcherInternalModel.pretrained("ip_regex_matcher","en","clinical/models")\
     .setInputCols(["document"])\
     .setOutputCol("IP")\
 
@@ -97,7 +97,7 @@ val documentAssembler = new DocumentAssembler()
 	.setInputCol("text")
 	.setOutputCol("document")
 
-val ip_regex_matcher = RegexMatcherInternalModel.pretrained("ip_matcher","en","clinical/models")
+val ip_regex_matcher = RegexMatcherInternalModel.pretrained("ip_regex_matcher","en","clinical/models")
 	.setInputCols(Array("document"))
 	.setOutputCol("IP")
 

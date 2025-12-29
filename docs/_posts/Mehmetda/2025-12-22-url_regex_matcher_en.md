@@ -38,7 +38,7 @@ documentAssembler = DocumentAssembler()\
       .setInputCol("text")\
       .setOutputCol("document")
 
-url_regex_matcher = RegexMatcherInternalModel.pretrained("url_matcher","en","clinical/models")\
+url_regex_matcher = RegexMatcherInternalModel.pretrained("url_regex_matcher","en","clinical/models")\
     .setInputCols(["document"])\
     .setOutputCol("URL")\
 
@@ -67,7 +67,7 @@ documentAssembler = nlp.DocumentAssembler()\
       .setInputCol("text")\
       .setOutputCol("document")
 
-url_regex_matcher = medical.RegexMatcherInternalModel.pretrained("url_matcher","en","clinical/models")\
+url_regex_matcher = medical.RegexMatcherInternalModel.pretrained("url_regex_matcher","en","clinical/models")\
     .setInputCols(["document"])\
     .setOutputCol("URL")\
 
@@ -95,7 +95,7 @@ val documentAssembler = new DocumentAssembler()
 	.setInputCol("text")
 	.setOutputCol("document")
 
-val url_regex_matcher = RegexMatcherInternalModel.pretrained("url_matcher","en","clinical/models")
+val url_regex_matcher = RegexMatcherInternalModel.pretrained("url_regex_matcher","en","clinical/models")
 	.setInputCols(Array("document"))
 	.setOutputCol("URL")
 

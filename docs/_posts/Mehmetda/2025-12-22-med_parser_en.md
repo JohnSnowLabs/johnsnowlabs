@@ -47,7 +47,7 @@ tokenizer = Tokenizer()\
     .setInputCols(["sentence"])\
     .setOutputCol("token")
 
-medical_record_contextual_parser = ContextualParserModel.pretrained("medical_record_parser","en","clinical/models")\
+medical_record_contextual_parser = ContextualParserModel.pretrained("med_parser","en","clinical/models")\
     .setInputCols(["sentence", "token"])\
     .setOutputCol("chunk_medical_record")
 
@@ -98,7 +98,7 @@ tokenizer = nlp.Tokenizer()\
     .setInputCols(["sentence"])\
     .setOutputCol("token")
 
-medical_record_contextual_parser = medical.ContextualParserModel.pretrained("medical_record_parser","en","clinical/models")\
+medical_record_contextual_parser = medical.ContextualParserModel.pretrained("med_parser","en","clinical/models")\
     .setInputCols(["sentence", "token"])\
     .setOutputCol("chunk_medical_record")
 
@@ -146,7 +146,7 @@ val tokenizer = new Tokenizer()
     .setInputCols("sentence")
     .setOutputCol("token")
 
-val medical_record_contextual_parser = ContextualParserModel.pretrained("medical_record_parser","en","clinical/models")
+val medical_record_contextual_parser = ContextualParserModel.pretrained("med_parser","en","clinical/models")
     .setInputCols(Array("sentence", "token"))
     .setOutputCol("chunk_medical_record")
 

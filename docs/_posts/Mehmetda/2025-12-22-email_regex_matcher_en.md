@@ -38,7 +38,7 @@ documentAssembler = DocumentAssembler()\
       .setInputCol("text")\
       .setOutputCol("document")
 
-email_regex_matcher = RegexMatcherInternalModel.pretrained("email_matcher","en","clinical/models")\
+email_regex_matcher = RegexMatcherInternalModel.pretrained("email_regex_matcher","en","clinical/models")\
     .setInputCols(["document"])\
     .setOutputCol("EMAIL")\
 
@@ -65,7 +65,7 @@ documentAssembler = nlp.DocumentAssembler()\
       .setInputCol("text")\
       .setOutputCol("document")
 
-email_regex_matcher = medical.RegexMatcherInternalModel.pretrained("email_matcher","en","clinical/models")\
+email_regex_matcher = medical.RegexMatcherInternalModel.pretrained("email_regex_matcher","en","clinical/models")\
     .setInputCols(["document"])\
     .setOutputCol("EMAIL")\
 
@@ -91,7 +91,7 @@ val documentAssembler = new DocumentAssembler()
 	.setInputCol("text")
 	.setOutputCol("document")
 
-val email_regex_matcher = RegexMatcherInternalModel.pretrained("email_matcher","en","clinical/models")
+val email_regex_matcher = RegexMatcherInternalModel.pretrained("email_regex_matcher","en","clinical/models")
 	.setInputCols(Array("document"))
 	.setOutputCol("EMAIL")
 

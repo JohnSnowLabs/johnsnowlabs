@@ -46,7 +46,7 @@ tokenizer = Tokenizer()\
     .setInputCols(["sentence"])\
     .setOutputCol("token")
 
-cpt_contextual_parser = ContextualParserModel.pretrained("cpt_contextual_parser","en","clinical/models")\
+cpt_contextual_parser = ContextualParserModel.pretrained("cpt_parser","en","clinical/models")\
     .setInputCols(["sentence", "token"])\
     .setOutputCol("chunk_zip")
 
@@ -87,7 +87,7 @@ tokenizer = nlp.Tokenizer()\
     .setInputCols(["sentence"])\
     .setOutputCol("token")
 
-cpt_contextual_parser = medical.ContextualParserModel.pretrained("cpt_contextual_parser","en","clinical/models")\
+cpt_contextual_parser = medical.ContextualParserModel.pretrained("cpt_parser","en","clinical/models")\
     .setInputCols(["sentence", "token"])\
     .setOutputCol("chunk_zip")
 
@@ -126,7 +126,7 @@ val tokenizer = new Tokenizer()
     .setInputCols(Array("sentence"))
     .setOutputCol("token")
 
-val cpt_contextual_parser = ContextualParserModel.pretrained("cpt_contextual_parser","en","clinical/models")
+val cpt_contextual_parser = ContextualParserModel.pretrained("cpt_parser","en","clinical/models")
     .setInputCols(Array("sentence", "token"))
     .setOutputCol("chunk_zip")
 
