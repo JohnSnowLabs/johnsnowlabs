@@ -13,6 +13,8 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
+⚠️ Note: The instructions below are for Scala 2.12 compatible versions of Spark NLP and Healthcare NLP. If you need to deploy on Scala 2.13 with Java 17 and Spark 3.5.x, please contact Support@johnsnowlabs.com to request the required JAR files.
+
 ## Installation with johnsnowlabs
 On Oct 4th, 2022 we released `johnsnowlabs` library, which eases the installation and session starting processes in an 
 almost transparent way for the user.
