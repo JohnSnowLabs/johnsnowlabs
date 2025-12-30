@@ -70,7 +70,7 @@ Use this endpoint for multi-turn conversational interactions (e.g., clinical ass
 
 ```python
 payload = {
-    "model": "Medical-LLM-8B",
+    "model": "Medical-LLM-Small",
     "messages": [
         {"role": "system", "content": "You are a professional medical assistant"},
         {"role": "user", "content": "Explain symptoms of chronic fatigue syndrome"}
@@ -88,7 +88,7 @@ Use this endpoint for single-turn prompts or generating long-form medical text.
 - **Example Request**:
 ```python
 payload = {
-    "model": "Medical-LLM-8B",
+    "model": "Medical-LLM-Small",
     "prompt": "Provide a detailed explanation of rheumatoid arthritis treatment",
     "temperature": 0.7,
     "max_tokens": 4096
