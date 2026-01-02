@@ -398,7 +398,7 @@ connect-src 'self' data: api.github.com sparknlp.org search.modelshub.johnsnowla
 <path d="M20.2658 26.412H8.38867V26.5781H20.2658V26.412Z" fill="#9EDEFA"/>
 </svg>
 -->
-</a><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">Medical LLMs</li><li class="toc-h2"><a href="/docs/en/LLMs/medical_llm">Home</a></li><li class="toc-h2 active"><a href="/docs/en/LLMs/on_prem_deploy">Deploy on Premise</a></li><li class="toc-h2"><a href="/docs/en/LLMs/on_aws">Deploy on AWS</a></li><li class="toc-h2"><a href="/docs/en/LLMs/on_azure">Deploy on Azure</a></li><li class="toc-h2"><a href="/docs/en/LLMs/on_snowflake">Deploy on Snowflake</a></li><li class="toc-h2"><a href="/docs/en/LLMs/support">Support</a></li><li class="toc-h2"><a href="/docs/en/LLMs/releases/release_notes">Release Notes</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
+</a><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">Medical LLMs</li><li class="toc-h2"><a href="/docs/en/LLMs/medical_llm">Home</a></li><li class="toc-h2 active"><a href="/docs/en/LLMs/on_prem_deploy">Deploy on Premise</a></li><li class="toc-h2"><a href="/docs/en/LLMs/on_aws">Deploy on AWS</a></li><li class="toc-h2"><a href="/docs/en/LLMs/on_azure">Deploy on Azure</a></li><li class="toc-h2"><a href="/docs/en/LLMs/on_databricks">Deploy on Databricks</a></li><li class="toc-h2"><a href="/docs/en/LLMs/on_snowflake">Deploy on Snowflake</a></li><li class="toc-h2"><a href="/docs/en/LLMs/support">Support</a></li><li class="toc-h2"><a href="/docs/en/LLMs/releases/release_notes">Release Notes</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
 
       <div class="page__main-inner"><div class="page__header d-print-none"><!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-59JLR64"
@@ -677,13 +677,13 @@ johnsnowlabs/jsl-llms <span class="se">\</span>
     </thead>
     <tbody>
       <tr>
-        <td>Medical-LLM-8B</td>
+        <td>Medical-Visual-LLM-8B</td>
         <td>8B</td>
-        <td>~38 GB</td>
-        <td>40K</td>
+        <td>~64 GB</td>
+        <td>128K</td>
         <td>15 GB</td>
-        <td>23 GB</td>
-        <td>1, 2, 4, 8</td>
+        <td>48 GB</td>
+        <td>1, 2, 4</td>
       </tr>
       <tr>
         <td>Medical-LLM-14B</td>
@@ -693,15 +693,6 @@ johnsnowlabs/jsl-llms <span class="se">\</span>
         <td>27 GB</td>
         <td>13 GB</td>
         <td>1, 2</td>
-      </tr>
-      <tr>
-        <td>Medical-Visual-LLM-8B</td>
-        <td>8B</td>
-        <td>~64 GB</td>
-        <td>262K</td>
-        <td>16 GB</td>
-        <td>48 GB</td>
-        <td>1, 2, 4, 8</td>
       </tr>
       <tr>
         <td>Medical-LLM-Small</td>
@@ -784,7 +775,7 @@ johnsnowlabs/jsl-llms <span class="se">\</span>
   </ul>
 
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">"model"</span><span class="p">:</span> <span class="s">"Medical-LLM-8B"</span><span class="p">,</span>
+    <span class="s">"model"</span><span class="p">:</span> <span class="s">"Medical-LLM-Small"</span><span class="p">,</span>
     <span class="s">"messages"</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span><span class="s">"role"</span><span class="p">:</span> <span class="s">"system"</span><span class="p">,</span> <span class="s">"content"</span><span class="p">:</span> <span class="s">"You are a professional medical assistant"</span><span class="p">},</span>
         <span class="p">{</span><span class="s">"role"</span><span class="p">:</span> <span class="s">"user"</span><span class="p">,</span> <span class="s">"content"</span><span class="p">:</span> <span class="s">"Explain symptoms of chronic fatigue syndrome"</span><span class="p">}</span>
@@ -802,7 +793,7 @@ johnsnowlabs/jsl-llms <span class="se">\</span>
     <li><strong>Method</strong>: POST</li>
     <li><strong>Example Request</strong>:
       <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s">"model"</span><span class="p">:</span> <span class="s">"Medical-LLM-8B"</span><span class="p">,</span>
+  <span class="s">"model"</span><span class="p">:</span> <span class="s">"Medical-LLM-Small"</span><span class="p">,</span>
   <span class="s">"prompt"</span><span class="p">:</span> <span class="s">"Provide a detailed explanation of rheumatoid arthritis treatment"</span><span class="p">,</span>
   <span class="s">"temperature"</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">,</span>
   <span class="s">"max_tokens"</span><span class="p">:</span> <span class="mi">4096</span>

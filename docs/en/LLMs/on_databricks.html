@@ -9,12 +9,12 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Deploy LLMs as Private Azure Endpoints</title><meta property="og:title" content="Medical LLMs| John Snow Labs"/>
+<!-- End Google Tag Manager --><title>Deploy LLMs as Private Databricks Endpoints</title><meta property="og:title" content="Medical LLMs| John Snow Labs"/>
 
 <meta name="description" content="High Performance NLP with Apache Spark
 ">
-<!-- <link rel="canonical" href="/docs/en/LLMs/on_azure"> -->
-<link rel="canonical" href="/docs/en/LLMs/on_azure"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<!-- <link rel="canonical" href="/docs/en/LLMs/on_databricks"> -->
+<link rel="canonical" href="/docs/en/LLMs/on_databricks"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -398,7 +398,7 @@ connect-src 'self' data: api.github.com sparknlp.org search.modelshub.johnsnowla
 <path d="M20.2658 26.412H8.38867V26.5781H20.2658V26.412Z" fill="#9EDEFA"/>
 </svg>
 -->
-</a><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">Medical LLMs</li><li class="toc-h2"><a href="/docs/en/LLMs/medical_llm">Home</a></li><li class="toc-h2"><a href="/docs/en/LLMs/on_prem_deploy">Deploy on Premise</a></li><li class="toc-h2"><a href="/docs/en/LLMs/on_aws">Deploy on AWS</a></li><li class="toc-h2 active"><a href="/docs/en/LLMs/on_azure">Deploy on Azure</a></li><li class="toc-h2"><a href="/docs/en/LLMs/on_databricks">Deploy on Databricks</a></li><li class="toc-h2"><a href="/docs/en/LLMs/on_snowflake">Deploy on Snowflake</a></li><li class="toc-h2"><a href="/docs/en/LLMs/support">Support</a></li><li class="toc-h2"><a href="/docs/en/LLMs/releases/release_notes">Release Notes</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
+</a><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">Medical LLMs</li><li class="toc-h2"><a href="/docs/en/LLMs/medical_llm">Home</a></li><li class="toc-h2"><a href="/docs/en/LLMs/on_prem_deploy">Deploy on Premise</a></li><li class="toc-h2"><a href="/docs/en/LLMs/on_aws">Deploy on AWS</a></li><li class="toc-h2"><a href="/docs/en/LLMs/on_azure">Deploy on Azure</a></li><li class="toc-h2 active"><a href="/docs/en/LLMs/on_databricks">Deploy on Databricks</a></li><li class="toc-h2"><a href="/docs/en/LLMs/on_snowflake">Deploy on Snowflake</a></li><li class="toc-h2"><a href="/docs/en/LLMs/support">Support</a></li><li class="toc-h2"><a href="/docs/en/LLMs/releases/release_notes">Release Notes</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
 
       <div class="page__main-inner"><div class="page__header d-print-none"><!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-59JLR64"
@@ -616,35 +616,31 @@ function wrapWordInSpan(data, wordToWrap) {
 </script><div class="article__header"><div class="header-nav"><div class="main-docs">
   <ul class="breadcrambs">
     <li><a href="/docs">Documentation</a></li>
-    <li>Deploy LLMs as Private Azure Endpoints</li>
+    <li>Deploy LLMs as Private Databricks Endpoints</li>
   </ul>
 </div></div><header class="main-docs have_subtitle">
-          <h1>Deploy LLMs as Private Azure Endpoints</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
+          <h1>Deploy LLMs as Private Databricks Endpoints</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
-            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/LLMs/on_azure.md">
-            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Deploy LLMs as Private Azure Endpoints"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
+            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/LLMs/on_databricks.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Deploy LLMs as Private Databricks Endpoints"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <p>The list below shows John Snow Labs’ Medical LLM models available on Azure marketplace.</p>
+  <p>The LLMs listed below are available on Databricks Marketplace as Model Serving Endpoints.</p>
 
-  <p><strong>All LLMs on Azure are Open AI compatible.</strong></p>
+  <p><a href="https://marketplace.databricks.com/details/1d43c199-9ab5-4723-804f-004e2ce058c0/John-Snow-Labs_Medical-Visual-LLM-8B">Medical Visual LLM - 8B</a></p>
 
-  <p><a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.medical_llm_medium?tab=Overview">Medical LLM - Medium</a></p>
+  <p><a href="https://marketplace.databricks.com/details/49313e71-8feb-4159-b79b-8ec30c5e3759/John-Snow-Labs_MedicalLLM14B">Medical-LLM-14B</a></p>
 
-  <p><a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.medical_llm_small?tab=Overview">Medical LLM - Small</a></p>
+  <p><a href="https://marketplace.databricks.com/details/2d3cabaf-e93e-45e0-a954-82202000afd8/John-Snow-Labs_Medical-LLM-Small">Medical LLM - Small</a></p>
 
-  <p><a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.medical_llm_14b?tab=Overview">Medical LLM - 14B</a></p>
+  <p><a href="https://marketplace.databricks.com/details/06015a8a-17df-41ba-a2c0-06345833044d/John-Snow-Labs_MedicalVisualLLM30B">Medical-Visual-LLM-30B</a></p>
 
-  <p><a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.medical_reasoning_llm_32b?tab=Overview">Medical Reasoning LLM - 32B</a></p>
+  <p><a href="https://marketplace.databricks.com/details/309ba238-15ed-4edf-b8d2-a99b302b3a26/John-Snow-Labs_MedicalReasoningLLM32B">Medical-Reasoning-LLM-32B</a></p>
 
-  <p><a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.spanish_medical_llm_24b?tab=Overview">Medical Spanish LLM - 24B</a></p>
-
-  <p><a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.medical_vlm_7b?tab=Overview">Medical Visual LLM - 8B</a></p>
-
-  <p><a href="https://marketplace.microsoft.com/en-us/product/virtual-machines/johnsnowlabsinc1646051154808.medical_vom_30b?tab=Overview">Medical Visual LLM - 30B</a></p>
+  <p><a href="https://marketplace.databricks.com/details/6955d25d-2dda-4517-8a26-5dc3239e6995/John-Snow-Labs_MedicalLLMMedium">Medical-LLM-Medium</a></p>
 
 </div>
 <div class="h3-box">
@@ -653,74 +649,41 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <ol>
     <li>
-      <p>Subscribe to the Product from the models listing page using the <code class="language-plaintext highlighter-rouge">Get It Now</code> button.
-<img src="/assets/images/med_llms/azure_subscribe.png" alt="azure_subscribe" /></p>
+      <p>Click <strong>Get access</strong> on the model listing page in Databricks Marketplace.</p>
     </li>
     <li>
-      <p>Create a virtual machine of the product. Make sure port 80 is open for inbound requests.</p>
+      <p>Once access is granted, click the <strong>Open</strong> button to view the model and available versions.</p>
+    </li>
+    <li>
+      <p>Select the model version with the <strong>production</strong> alias (recommended for stable deployments) and click <strong>Serve this model</strong>.</p>
+    </li>
+    <li>
+      <p>In the <strong>Create serving endpoint</strong> configuration:</p>
 
-      <p><em><strong>Optional</strong>, open port 3000 for Open Web UI interface.</em>
- <img src="/assets/images/med_llms/azure_launch.png" alt="launch_azure_product" /></p>
+      <ul>
+        <li>
+          <p><strong>Compute type</strong>: Select the appropriate compute type based on your workload requirements. Refer to the <a href="https://nlp.johnsnowlabs.com/docs/en/LLMs/medical_llm#medical-llms-offering">memory requirements table</a> to determine the approximate memory needed for your selected model.</p>
+        </li>
+        <li>
+          <p><strong>Environment variables</strong>: Add the following required environment variable:</p>
+          <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SPARK_NLP_LICENSE="your-license-key"
+</code></pre></div>          </div>
+        </li>
+      </ul>
     </li>
-    <li>Wait for the services to be active. This might take few minutes for the initial boot.
-<br />
- To check the status, login to the instance and run this command
-<br />
-<code class="language-plaintext highlighter-rouge">sudo systemctl status med-llm.service</code>
- <img src="/assets/images/med_llms/azure_status.png" alt="azure_product_status" /></li>
     <li>
-      <p>Once all the status is active, access the model api docs from http://INSTANCE_IP/docs</p>
+      <p>Complete the serving endpoint configuration and click <strong>Create</strong>.</p>
     </li>
-    <li>Open WebUI hosted on port 3000. You can also interact with the model from here.
- <img src="/assets/images/med_llms/azure_open_web.png" alt="azure_open_web_ui" /></li>
+    <li>
+      <p>Wait for the endpoint to become active.</p>
+    </li>
   </ol>
 
-</div>
-<div class="h3-box">
-
-  <h2 id="model-interactions">Model Interactions</h2>
-  <p>Once deployed, the container exposes a RESTful API for model interactions.</p>
-
-  <h3 id="chat-completions">Chat Completions</h3>
-  <p>Use this endpoint for multi-turn conversational interactions (e.g., clinical assistants).</p>
-
-  <ul>
-    <li><strong>Endpoint</strong>: <code class="language-plaintext highlighter-rouge">/v1/chat/completions</code></li>
-    <li><strong>Method</strong>: POST</li>
-    <li><strong>Example Request</strong>:</li>
-  </ul>
-
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">"model"</span><span class="p">:</span> <span class="s">"Medical-LLM-Small"</span><span class="p">,</span>
-    <span class="s">"messages"</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span><span class="s">"role"</span><span class="p">:</span> <span class="s">"system"</span><span class="p">,</span> <span class="s">"content"</span><span class="p">:</span> <span class="s">"You are a professional medical assistant"</span><span class="p">},</span>
-        <span class="p">{</span><span class="s">"role"</span><span class="p">:</span> <span class="s">"user"</span><span class="p">,</span> <span class="s">"content"</span><span class="p">:</span> <span class="s">"Explain symptoms of chronic fatigue syndrome"</span><span class="p">}</span>
-    <span class="p">],</span>
-    <span class="s">"temperature"</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">,</span>
-    <span class="s">"max_tokens"</span><span class="p">:</span> <span class="mi">1024</span>
-<span class="p">}</span>
-</code></pre></div>  </div>
-
-  <h3 id="text-completions">Text Completions</h3>
-  <p>Use this endpoint for single-turn prompts or generating long-form medical text.</p>
-
-  <ul>
-    <li><strong>Endpoint</strong>: <code class="language-plaintext highlighter-rouge">/v1/completions</code></li>
-    <li><strong>Method</strong>: POST</li>
-    <li><strong>Example Request</strong>:
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s">"model"</span><span class="p">:</span> <span class="s">"Medical-LLM-Small"</span><span class="p">,</span>
-  <span class="s">"prompt"</span><span class="p">:</span> <span class="s">"Provide a detailed explanation of rheumatoid arthritis treatment"</span><span class="p">,</span>
-  <span class="s">"temperature"</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">,</span>
-  <span class="s">"max_tokens"</span><span class="p">:</span> <span class="mi">4096</span>
-<span class="p">}</span>
-</code></pre></div>      </div>
-    </li>
-  </ul>
+  <p><strong>Note</strong>: Each model listing includes a detailed notebook with comprehensive instructions for creating serving endpoints using the Databricks API, along with inference examples and supported formats.</p>
 
 </div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2025-03-31T00:00:00+00:00">Mar 31, 2025</time>
+      <time itemprop="dateModified" datetime="2025-12-30T00:00:00+00:00">Dec 30, 2025</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
@@ -906,7 +869,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/docs/en/LLMs/on_aws">Deploy on AWS</a></div><div class="next nav_link"><span>NEXT</span><a href="/docs/en/LLMs/on_databricks">Deploy on Databricks</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/docs/en/LLMs/on_azure">Deploy on Azure</a></div><div class="next nav_link"><span>NEXT</span><a href="/docs/en/LLMs/on_snowflake">Deploy on Snowflake</a></div></div></div>
 
 </div>
 </div>
