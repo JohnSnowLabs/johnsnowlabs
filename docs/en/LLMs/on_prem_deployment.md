@@ -52,9 +52,8 @@ The following models are currently available for on-premise deployments:
 
 | **Model Name** | **Parameters** | **Recommended GPU Memory** | **Max Sequence Length** | **Model Size** | **Max KV-Cache** | **Tensor Parallel Sizes** |
 |----------------------------|------------|--------------|---------------------|------------|--------------|----------------------|
-| Medical-LLM-8B             | 8B         | ~38 GB       | 40K                 | 15 GB      | 23 GB        | 1, 2, 4, 8           |
+| Medical-Visual-LLM-8B  | 8B          | ~64 GB           | 128K              | 15 GB       | 48 GB          | 1, 2, 4               |
 | Medical-LLM-14B            | 14B        | ~40 GB       | 16K                 | 27 GB      | 13 GB        | 1, 2                 |
-| Medical-Visual-LLM-8B      | 8B         | ~64 GB       | 262K                | 16 GB      | 48 GB        | 1, 2, 4, 8           |
 | Medical-LLM-Small          | 14B        | ~59 GB       | 40K                 | 28 GB      | 31 GB        | 1, 2, 4, 8           |
 | Medical-LLM-Medium         | 70B        | ~452 GB      | 128K                | 131 GB     | 320 GB       | 4, 8                 |
 | Medical-Reasoning-LLM-32B  | 32B        | ~111 GB      | 40K                 | 61 GB      | 50 GB        | 2, 4, 8              |
@@ -88,7 +87,7 @@ Use this endpoint for multi-turn conversational interactions (e.g., clinical ass
 
 ```python
 payload = {
-    "model": "Medical-LLM-8B",
+    "model": "Medical-LLM-Small",
     "messages": [
         {"role": "system", "content": "You are a professional medical assistant"},
         {"role": "user", "content": "Explain symptoms of chronic fatigue syndrome"}
@@ -106,7 +105,7 @@ Use this endpoint for single-turn prompts or generating long-form medical text.
 - **Example Request**:
 ```python
 payload = {
-    "model": "Medical-LLM-8B",
+    "model": "Medical-LLM-Small",
     "prompt": "Provide a detailed explanation of rheumatoid arthritis treatment",
     "temperature": 0.7,
     "max_tokens": 4096

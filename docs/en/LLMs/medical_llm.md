@@ -24,9 +24,8 @@ Our models are designed to deliver best-in-class performance across a wide range
 {:.table-model-big}
 | Model Name | Parameters | Recommended GPU Memory | Max Sequence Length | Model Size | Max KV-Cache | Tensor Parallel Sizes |
 |---|---|---|---|---|---|---|
-| Medical-LLM-8B | 8B | ~38 GB | 40K | 15 GB | 23 GB | 1, 2, 4, 8 |
-| Medical-LLM-14B | 14B | ~40 GB | 16K | 27 GB | 13 GB | 1, 2 |
-| Medical-Visual-LLM-8B | 8B | ~64 GB | 262K | 16 GB | 48 GB | 1, 2, 4, 8 |
+| Medical-Visual-LLM-8B| 8B | ~64 GB | 128K | 15 GB | 48 GB | 1, 2, 4 |
+| Medical-LLM-14B | 14B | ~40 GB | 16K | 27 GB | 13 GB | 1, 2 
 | Medical-LLM-Small | 14B | ~59 GB | 40K | 28 GB | 31 GB | 1, 2, 4, 8 |
 | Medical-LLM-Medium | 78B | ~452 GB | 128K | 131 GB | 320 GB | 4, 8 |
 | Medical-Reasoning-LLM-32B | 32B | ~111 GB | 40K | 61 GB | 50 GB | 2, 4, 8 |
