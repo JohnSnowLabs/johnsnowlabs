@@ -62,7 +62,7 @@ pipeline = Pipeline(stages=[
     converter
 ])
 
-data = spark.createDataFrame([["Al paziente è stata prescritta metformina 500 mg al giorno per la gestione del diabete."]]).toDF("text")
+data = spark.createDataFrame([["Il paziente soffre di diabete mellito e ipertensione arteriosa."]]).toDF("text")
 result = pipeline.fit(data).transform(data)
 
 result.selectExpr("explode(ner_chunk) as chunk").selectExpr(
@@ -99,7 +99,7 @@ pipeline = nlp.Pipeline(stages=[
     converter
 ])
 
-data = spark.createDataFrame([["Al paziente è stata prescritta metformina 500 mg al giorno per la gestione del diabete."]]).toDF("text")
+data = spark.createDataFrame([["Il paziente soffre di diabete mellito e ipertensione arteriosa."]]).toDF("text")
 result = pipeline.fit(data).transform(data)
 
 result.selectExpr("explode(ner_chunk) as chunk").selectExpr(
@@ -137,7 +137,7 @@ val pipeline = new Pipeline().setStages(Array(
   converter
 ))
 
-val data = Seq("Al paziente è stata prescritta metformina 500 mg al giorno per la gestione del diabete.").toDF("text")
+val data = Seq("Il paziente soffre di diabete mellito e ipertensione arteriosa.").toDF("text")
 val result = pipeline.fit(data).transform(data)
 
 result.selectExpr("explode(ner_chunk) as chunk")
