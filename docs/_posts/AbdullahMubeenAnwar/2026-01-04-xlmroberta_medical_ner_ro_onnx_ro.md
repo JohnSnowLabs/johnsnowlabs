@@ -83,7 +83,7 @@ tokenizer = nlp.Tokenizer() \
     .setInputCols("document") \
     .setOutputCol("token")
 
-tokenClassifier = medical.XlmRoBertaForTokenClassification \
+tokenClassifier = nlp.XlmRoBertaForTokenClassification \
     .pretrained("xlmroberta_medical_ner_ro_onnx", "en", "clinical/models") \
     .setInputCols(["document", "token"]) \
     .setOutputCol("ner")

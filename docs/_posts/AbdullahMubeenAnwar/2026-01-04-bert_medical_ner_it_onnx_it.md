@@ -83,7 +83,7 @@ tokenizer = nlp.Tokenizer() \
     .setInputCols("document") \
     .setOutputCol("token")
 
-tokenClassifier = medical.BertForTokenClassification \
+tokenClassifier = nlp.BertForTokenClassification \
     .pretrained("bert_medical_ner_it_onnx", "en", "clinical/models") \
     .setInputCols(["document", "token"]) \
     .setOutputCol("ner")
