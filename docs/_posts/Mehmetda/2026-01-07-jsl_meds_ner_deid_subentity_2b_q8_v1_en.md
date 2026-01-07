@@ -19,7 +19,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This medical LLM model is trained to extract medical entities from clinical notes and return them in structured JSON format. It supports various entity types such as AGE, CITY, COUNTRY, DATE, DEVICE,DLN,DOCTOR etc.
+This medical LLM model is trained to extract medical entities from clinical notes and return them in structured JSON format. It supports various entity types such as AGE, CITY, COUNTRY, DATE, DEVICE, DLN, DOCTOR etc.
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
