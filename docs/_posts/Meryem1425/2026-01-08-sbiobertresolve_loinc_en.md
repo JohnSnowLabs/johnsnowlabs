@@ -21,6 +21,10 @@ use_language_switcher: "Python-Scala-Java"
 This model maps extracted medical entities to Logical Observation Identifiers Names and Codes (LOINC) codes using `sbiobert_base_cased_mli` Sentence Bert Embeddings.
 It also provides the official resolution of the codes within the brackets.
 
+## Predicted Entities
+
+`loinc_code`
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
@@ -33,6 +37,7 @@ It also provides the official resolution of the codes within the brackets.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+	
 ```python
 
 document_assembler = DocumentAssembler()\
@@ -250,3 +255,6 @@ val result = nlpPipeline.fit(data).transform(data)
 |Language:|en|
 |Size:|687.3 MB|
 |Case sensitive:|false|
+
+## References
+This model is trained with LOINC v2.81 dataset
