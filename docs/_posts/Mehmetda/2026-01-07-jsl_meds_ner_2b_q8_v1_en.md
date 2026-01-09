@@ -299,29 +299,26 @@ println(output)
 
 ```bash
 
-
-|chunk                     |begin|end |ner_label |confidence|
-|--------------------------|-----|--------------------------|
-|58-year-old               | 41  |51  |AGE       |0.90656307|
-|chest                     |246  |250 |BODY_PART |0.93823762|
-|non-small cell lung cancer|451  |476 |CANCER    |0.94392558|
-|New York                  |112  |119 |CITY      |0.90966768|
-|United States             |2829 |2841|COUNTRY   |0.90126566|
-|March 15, 2024            |3    |16  |DATE      |0.94820805|
-|Sarah Johnson             |155  |167 |DOCTOR    |0.99527312|
-|30-pack-year              |379  |390 |DOSAGE    |0.99747109|
-|osimertinib               |1128 |1138|DRUG      |0.96035763|
-|once daily                |1153 |1162|DURATION  |0.97008323|
-|daily                     |1158 |1162|FREQUENCY |0.9136936 |
-|Memorial Hospital         |91   |107 |HOSPITAL  |0.97247546|
-|John Smith                |27   |36  |PATIENT   |0.94148871|
-|+1 (555) 123-4567         |2541 |2557|PHONE     |0.96758803|
-|chest pain                |246  |255 |PROBLEM   |0.92068439|
-|oncologist                |173  |182 |PROFESSION|0.98166695|
-|New York                  |112  |119 |STATE     |0.94135707|
-|80 mg                     |1140 |1144|STRENGTH  | 0.9556199|
-|CT scan of the chest      |562  |581 |TEST      |0.97324896|
-|targeted therapy          |1105 |1120|TREATMENT |0.95535014|
+    "AGE": ["58-year-old"],
+    "BODY_PART": ["chest"],
+    "CANCER": ["non-small cell lung cancer"],
+    "CITY": ["New York"],
+    "COUNTRY": ["United States"],
+    "DATE": ["March 15, 2024"],
+    "DOCTOR": ["Sarah Johnson"],
+    "DOSAGE": ["30-pack-year"],
+    "DRUG": ["osimertinib"],
+    "DURATION": ["once daily"],
+    "FREQUENCY": ["daily"],
+    "HOSPITAL": ["Memorial Hospital"],
+    "PATIENT": ["John Smith"],
+    "PHONE": ["+1 (555) 123-4567"],
+    "PROBLEM": ["chest pain"],
+    "PROFESSION": ["oncologist"],
+    "STATE": ["New York"],
+    "STRENGTH": ["80 mg"],
+    "TEST": ["CT scan of the chest"],
+    "TREATMENT": ["targeted therapy"],
 
 ```
 

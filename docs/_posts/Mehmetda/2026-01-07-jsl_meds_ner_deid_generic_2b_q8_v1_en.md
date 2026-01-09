@@ -183,8 +183,7 @@ val prompt = """Extract all medical entities from the clinical note below and re
 }}
 
 #### Clinical Note:
-On March 15, 2024, 58-year-old male patient John Smith (medical record number 12345678) was admitted to Memorial Hospital in New York, NY under the care of Dr. Sarah Johnson with chest pain, cough and shortness of breath. He was diagnosed with stage IV non-small cell lung cancer with metastases to the liver and bones. Treatment included osimertinib 80 mg daily, carboplatin and pemetrexed chemotherapy, and pembrolizumab immunotherapy. After three months, imaging showed a 30% reduction in tumor size, his symptoms improved, and follow-up is scheduled for July 22, 2024.
-
+On March 15, 2024, 58-year-old male patient John Smith, a retired engineer, (medical record number 12345678) was admitted to Memorial Hospital in New York, NY under the care of Dr. Sarah Johnson with chest pain, cough and shortness of breath. He was diagnosed with stage IV non-small cell lung cancer with metastases to the liver and bones. Treatment included osimertinib 80 mg daily, carboplatin and pemetrexed chemotherapy, and pembrolizumab immunotherapy. After three months, imaging showed a 30% reduction in tumor size, his symptoms improved, and follow-up is scheduled for July 22, 2024.
 
 #### Instructions:
 - Extract all entities exactly as they appear in the text
@@ -229,17 +228,13 @@ println(output)
 ## Results
 
 ```bash
-
-|chunk            |begin|end|ner_label |confidence|
-|-----------------|-----|---|--------- |----------|
-|58-year-old      |41   |51 |AGE       |0.91463907|
-|12345678         |64   |71 |CONTACT   |0.98403682|
-|March 15, 2024   |3    |16 |DATE      |0.97907713|
-|12345678         |64   |71 |ID        |0.90554436|
-|Memorial Hospital|91   |107|LOCATION  |0.94546725|
-|John Smith.      |27   |36 |NAME      |0.95915806|
-|care             |136  |139|PROFESSION|0.98084227|
-
+    "AGE": ["58-year-old"],
+    "CONTACT": ["12345678"],
+    "DATE": ["March 15, 2024", "July 22, 2024"],
+    "ID": ["12345678"],
+    "LOCATION": ["Memorial Hospital","NewYork","NY"],
+    "NAME": ["John Smith", "Sarah Johnson"],
+    "PROFESSION": ["engineer"],
 ```
 
 {:.model-param}

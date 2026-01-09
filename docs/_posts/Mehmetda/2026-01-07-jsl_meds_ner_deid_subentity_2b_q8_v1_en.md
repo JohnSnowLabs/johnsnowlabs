@@ -269,7 +269,7 @@ val prompt = """Extract all medical entities from the clinical note below and re
 #### Clinical Note:
 On January 10, 2024 at 14:30, patient Emily Rodriguez, also registered as emily_r45, a 45-year-old female, holding ID number TR12345678901, SSN 123-45-6789, account number ACC-998877, medical record MR## 98765432, and driver's license number D1234567, was admitted to City General Hospital, operated by City Health Organization.
 
-She resides at 742 Evergreen Terrace, Los Angeles, CA, 90001, USA, in the Downtown Medical District.
+She resides at 742 Evergreen Terrace, Los Angeles, CA, 90001, USA, in the Downtown Medical District. Her primary contact name on file is Sarah Martinez, and her billing address is listed as 1234 Oak Street, Los Angeles, CA, 90002.
 
 The patient was brought in using an iPhone 14, connected via IP address 192.168.1.45, and accessed the hospital portal at https://citygeneralhospital.org/patient using email emily.rodriguez@email.com and phone number +1-310-555-0198.
 
@@ -322,38 +322,34 @@ println(output)
 ## Results
 
 ```bash
-
-| chunk                                   | begin | end  | ner_label      | confidence |
-|-----------------------------------------|-------|------|----------------|------------|
-| 45-year-old years old                         | 87    | 97   | AGE            | 0.93       |
-| female                                  | 99    | 104  | GENDER         | 0.93       |
-| TR12345678901                           | 125   | 137  | IDNUM          | 0.94       |
-| 123-45-6789                             | 144   | 154  | SSN            | 0.91       |
-| ACC-998877                              | 172   | 181  | ACCOUNTNUM     | 0.92       |
-| CA                                      | 188   | 189  | STATE          | 0.93       |
-| 98765432                                | 204   | 211  | MEDICALRECORD  | 0.92       |
-| D1234567                                | 242   | 249  | DLN            | 0.94       |
-| City General Hospital                   | 268   | 288  | HOSPITAL       | 0.90       |
-| City Health Organization                | 303   | 326  | ORGANIZATION   | 0.93       |
-| 742 Evergreen Terrace                   | 345   | 365  | LOCATION_OTHER | 0.93       |
-| 742 Evergreen Terrace                   | 345   | 365  | STREET         | 0.92       |
-| 90001                                   | 385   | 389  | ZIP            | 0.93       |
-| USA                                     | 392   | 394  | COUNTRY        | 0.94       |
-| Downtown Medical District               | 404   | 428  | CITY           | 0.94       |
-| iPhone 14                               | 468   | 476  | DEVICE         | 0.91       |
-| 192.168.1.45                            | 504   | 515  | IP             | 0.94       |
-| https://citygeneralhospital.org/patient | 554   | 592  | URL            | 0.92       |
-| emily.rodriguez@email.com               | 606   | 630  | EMAIL          | 0.93       |
-| +1-310-555-0198                         | 649   | 663  | PHONE          | 0.91       |
-| CA-7XYZ123                              | 718   | 727  | PLATE          | 0.92       |
-| 1HGCM82633A004352                       | 737   | 753  | VIN            | 0.93       |
-| Graphic Designer                        | 785   | 800  | PROFESSION     | 0.90       |
-| Michael Chen                            | 826   | 837  | DOCTOR         | 0.91       |
-| January 10, 2024                        | 869   | 884  | DATE           | 0.93       |
-| 09:00 AM                                | 982   | 989  | TIME           | 0.94       |
-| Emily Rodriguez                         | 1086  | 1100 | PATIENT        | 0.94       |
-| Emily Rodriguez                         | 1086  | 1100 | NAME           | 0.92       |
-
+    "ACCOUNTNUM": ["ACC-998877"]
+    "AGE": ["45-year-old"]
+    "CITY": ["Los Angeles", "Downtown Medical District"]
+    "COUNTRY": ["USA"]
+    "DATE": ["January 10, 2024", "May 15, 2024"]
+    "DEVICE": ["iPhone 14"]
+    "DLN": ["D1234567"]
+    "DOCTOR": ["Michael Chen"]
+    "EMAIL": ["emily.rodriguez@email.com"]
+    "GENDER": ["female"]
+    "HOSPITAL": ["City General Hospital"]
+    "IDNUM": ["TR12345678901"]
+    "IP": ["192.168.1.45"]
+    "LOCATION_OTHER": ["742 Evergreen Terrace"]
+    "MEDICALRECORD": ["98765432"]
+    "NAME": ["Sarah Martinez"]
+    "ORGANIZATION": ["City Health Organization"]
+    "PATIENT": ["Emily Rodriguez"]
+    "PHONE": ["+1-310-555-0198"]
+    "PLATE": ["CA-7XYZ123"]
+    "PROFESSION": ["Graphic Designer"]
+    "SSN": ["123-45-6789"]
+    "STATE": ["CA"]
+    "STREET": ["1234 Oak Street"]
+    "TIME": ["09:00 AM", "14:30"]
+    "URL": ["https://citygeneralhospital.org/patient"]
+    "VIN": ["1HGCM82633A004352"]
+    "ZIP": ["90001", "90002"]
 
 ```
 
