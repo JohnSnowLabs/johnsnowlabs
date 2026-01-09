@@ -1,4 +1,4 @@
-
+---
 layout: docs
 comment: no
 header: true
@@ -11,7 +11,7 @@ use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
   nav: annotation-lab
-
+---
 ## License Management
 
 By default, the Generative AI Lab allows access to community pre-trained models and embeddings, available on the **Models Hub** page.  
