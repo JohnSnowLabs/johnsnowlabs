@@ -27,8 +27,8 @@ Identifies medical procedures or treatments that are planned for the future.
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/contextual_assertion_planned_en_6.2.2_3.4_1768168075261.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/contextual_assertion_planned_en_6.2.2_3.4_1768168075261.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/contextual_assertion_planned_en_6.2.2_3.4_1768168739915.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/contextual_assertion_planned_en_6.2.2_3.4_1768168739915.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -67,12 +67,11 @@ ner_converter = NerConverter()\
 contextual_assertion = ContextualAssertion\
     .pretrained("contextual_assertion_planned", "en", "clinical/models")\
     .setInputCols("sentence", "token", "ner_chunk")\
-    .setAssertion("planned")\
-    .setOutputCol("assertionPlanned")
+    .setOutputCol("assertion_planned")
 
 flattener = Flattener()\
-    .setInputCols("assertionPlanned")\
-    .setExplodeSelectedFields({"assertionPlanned": ["metadata.ner_chunk as ner_chunk",
+    .setInputCols("assertion_planned")\
+    .setExplodeSelectedFields({"assertion_planned": ["metadata.ner_chunk as ner_chunk",
                                                       "begin as begin",
                                                       "end as end",
                                                       "metadata.ner_label as ner_label",
@@ -101,47 +100,46 @@ result = model.transform(data)
 {:.jsl-block}
 ```python
 
-document_assembler = DocumentAssembler()\
+document_assembler = nlp.DocumentAssembler()\
     .setInputCol("text")\
     .setOutputCol("document")
 
-sentence_detector = SentenceDetector()\
+sentence_detector = nlp.SentenceDetector()\
     .setInputCols(["document"])\
     .setOutputCol("sentence")
 
-tokenizer = Tokenizer()\
+tokenizer = nlp.Tokenizer()\
     .setInputCols(["sentence"])\
     .setOutputCol("token")
 
-word_embeddings = WordEmbeddingsModel\
+word_embeddings = nlp.WordEmbeddingsModel\
     .pretrained("embeddings_clinical", "en", "clinical/models")\
     .setInputCols(["sentence", "token"])\
     .setOutputCol("embeddings")
 
-clinical_ner = MedicalNerModel\
+clinical_ner = medical.MedicalNerModel\
     .pretrained("ner_clinical", "en", "clinical/models")\
     .setInputCols(["sentence", "token", "embeddings"])\
     .setOutputCol("ner")
 
-ner_converter = NerConverter()\
+ner_converter = nlp.NerConverter()\
     .setInputCols(["sentence", "token", "ner"])\
     .setOutputCol("ner_chunk")
 
-contextual_assertion = ContextualAssertion\
+contextual_assertion = medical.ContextualAssertion\
     .pretrained("contextual_assertion_planned", "en", "clinical/models")\
     .setInputCols("sentence", "token", "ner_chunk")\
-    .setAssertion("planned")\
-    .setOutputCol("assertionPlanned")
+    .setOutputCol("assertion_planned")
 
-flattener = Flattener()\
-    .setInputCols("assertionPlanned")\
-    .setExplodeSelectedFields({"assertionPlanned": ["metadata.ner_chunk as ner_chunk",
+flattener = medical.Flattener()\
+    .setInputCols("assertion_planned")\
+    .setExplodeSelectedFields({"assertion_planned": ["metadata.ner_chunk as ner_chunk",
                                                       "begin as begin",
                                                       "end as end",
                                                       "metadata.ner_label as ner_label",
                                                       "result"]})
 
-pipeline = Pipeline(stages=[
+pipeline = nlp.Pipeline(stages=[
     document_assembler,
     sentence_detector,
     tokenizer,
@@ -191,11 +189,11 @@ val nerConverter = new NerConverterInternal()
 val contextualAssertion = ContextualAssertion
     .pretrained("contextual_assertion_planned", "en", "clinical/models")
     .setInputCols("sentences", "tokens", "nerChunks")
-    .setOutputCol("assertionPlanned")
+    .setOutputCol("assertion_planned")
 
 val flattener = new Flattener()
-    .setInputCols("assertionPlanned")
-    .setExplodeSelectedFields(Map("assertionPlanned" -> Array(
+    .setInputCols("assertion_planned")
+    .setExplodeSelectedFields(Map("assertion_planned" -> Array(
         "metadata.ner_chunk as ner_chunk",
         "begin as begin",
         "end as end",
