@@ -36,6 +36,7 @@ Identifies medical conditions that belong to someone other than the patient (not
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
@@ -60,7 +61,7 @@ clinical_ner = MedicalNerModel\
     .setInputCols(["sentence", "token", "embeddings"])\
     .setOutputCol("ner")
 
-ner_converter = NerConverter()\
+ner_converter = NerConverterInternal()\
     .setInputCols(["sentence", "token", "ner"])\
     .setOutputCol("ner_chunk")
 
@@ -117,12 +118,12 @@ word_embeddings = nlp.WordEmbeddingsModel\
     .setInputCols(["sentence", "token"])\
     .setOutputCol("embeddings")
 
-clinical_ner = medical.MedicalNerModel\
+clinical_ner = medical.NerModel\
     .pretrained("ner_clinical", "en", "clinical/models")\
     .setInputCols(["sentence", "token", "embeddings"])\
     .setOutputCol("ner")
 
-ner_converter = nlp.NerConverter()\
+ner_converter = medical.NerConverterInternal()\
     .setInputCols(["sentence", "token", "ner"])\
     .setOutputCol("ner_chunk")
 
