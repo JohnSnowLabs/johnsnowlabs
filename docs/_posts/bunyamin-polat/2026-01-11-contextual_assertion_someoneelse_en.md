@@ -27,8 +27,8 @@ Identifies medical conditions that belong to someone other than the patient (not
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/contextual_assertion_someoneelse_en_6.2.2_3.4_1768168084193.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/contextual_assertion_someoneelse_en_6.2.2_3.4_1768168084193.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/contextual_assertion_someoneelse_en_6.2.2_3.4_1768168762674.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/contextual_assertion_someoneelse_en_6.2.2_3.4_1768168762674.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -67,12 +67,11 @@ ner_converter = NerConverter()\
 contextual_assertion = ContextualAssertion\
     .pretrained("contextual_assertion_someoneelse", "en", "clinical/models")\
     .setInputCols("sentence", "token", "ner_chunk")\
-    .setAssertion("someoneelse")\
-    .setOutputCol("assertionSomeoneElse")
+    .setOutputCol("assertion_someoneelse")
 
 flattener = Flattener()\
-    .setInputCols("assertionSomeoneElse")\
-    .setExplodeSelectedFields({"assertionSomeoneElse": ["metadata.ner_chunk as ner_chunk",
+    .setInputCols("assertion_someoneelse")\
+    .setExplodeSelectedFields({"assertion_someoneelse": ["metadata.ner_chunk as ner_chunk",
                                                       "begin as begin",
                                                       "end as end",
                                                       "metadata.ner_label as ner_label",
@@ -101,47 +100,46 @@ result = model.transform(data)
 {:.jsl-block}
 ```python
 
-document_assembler = DocumentAssembler()\
+document_assembler = nlp.DocumentAssembler()\
     .setInputCol("text")\
     .setOutputCol("document")
 
-sentence_detector = SentenceDetector()\
+sentence_detector = nlp.SentenceDetector()\
     .setInputCols(["document"])\
     .setOutputCol("sentence")
 
-tokenizer = Tokenizer()\
+tokenizer = nlp.Tokenizer()\
     .setInputCols(["sentence"])\
     .setOutputCol("token")
 
-word_embeddings = WordEmbeddingsModel\
+word_embeddings = nlp.WordEmbeddingsModel\
     .pretrained("embeddings_clinical", "en", "clinical/models")\
     .setInputCols(["sentence", "token"])\
     .setOutputCol("embeddings")
 
-clinical_ner = MedicalNerModel\
+clinical_ner = medical.MedicalNerModel\
     .pretrained("ner_clinical", "en", "clinical/models")\
     .setInputCols(["sentence", "token", "embeddings"])\
     .setOutputCol("ner")
 
-ner_converter = NerConverter()\
+ner_converter = nlp.NerConverter()\
     .setInputCols(["sentence", "token", "ner"])\
     .setOutputCol("ner_chunk")
 
-contextual_assertion = ContextualAssertion\
+contextual_assertion = medical.ContextualAssertion\
     .pretrained("contextual_assertion_someoneelse", "en", "clinical/models")\
     .setInputCols("sentence", "token", "ner_chunk")\
-    .setAssertion("someoneelse")\
-    .setOutputCol("assertionSomeoneElse")
+    .setOutputCol("assertion_someoneelse")
 
-flattener = Flattener()\
-    .setInputCols("assertionSomeoneElse")\
-    .setExplodeSelectedFields({"assertionSomeoneElse": ["metadata.ner_chunk as ner_chunk",
+flattener = medical.Flattener()\
+    .setInputCols("assertion_someoneelse")\
+    .setExplodeSelectedFields({"assertion_someoneelse": ["metadata.ner_chunk as ner_chunk",
                                                       "begin as begin",
                                                       "end as end",
                                                       "metadata.ner_label as ner_label",
                                                       "result"]})
 
-pipeline = Pipeline(stages=[
+pipeline = nlp.Pipeline(stages=[
     document_assembler,
     sentence_detector,
     tokenizer,
@@ -191,11 +189,11 @@ val nerConverter = new NerConverterInternal()
 val contextualAssertion = ContextualAssertion
     .pretrained("contextual_assertion_someoneelse", "en", "clinical/models")
     .setInputCols("sentences", "tokens", "nerChunks")
-    .setOutputCol("assertionSomeoneElse")
+    .setOutputCol("assertion_someoneelse")
 
 val flattener = new Flattener()
-    .setInputCols("assertionSomeoneElse")
-    .setExplodeSelectedFields(Map("assertionSomeoneElse" -> Array(
+    .setInputCols("assertion_someoneelse")
+    .setExplodeSelectedFields(Map("assertion_someoneelse" -> Array(
         "metadata.ner_chunk as ner_chunk",
         "begin as begin",
         "end as end",
