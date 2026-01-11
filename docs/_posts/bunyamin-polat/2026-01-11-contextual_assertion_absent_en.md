@@ -118,7 +118,7 @@ word_embeddings = nlp.WordEmbeddingsModel\
     .setInputCols(["sentence", "token"])\
     .setOutputCol("embeddings")
 
-clinical_ner = medical.MedicalNerModel\
+clinical_ner = medical.NerModel\
     .pretrained("ner_clinical", "en", "clinical/models")\
     .setInputCols(["sentence", "token", "embeddings"])\
     .setOutputCol("ner")
