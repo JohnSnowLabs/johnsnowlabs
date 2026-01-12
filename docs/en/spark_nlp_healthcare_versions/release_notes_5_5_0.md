@@ -270,7 +270,7 @@ Please check the [Task Based Clinical Pretrained Pipelines](https://colab.resear
 
 #### Introducing 8 New Named Entity Recognition (NER) Models and Pipelines to Detect PHI for Deidentification with Minimal Customisation Required
 
-Introducing 8 New Named Entity Recognition (NER) Models: `ner_deid_generic_docwise`, `ner_deid_subentity_docwise`, `ner_deid_subentity_augmented_docwise`, `ner_deid_aipii`, `ner_deid_subentity_augmented_v2`, `clinical_deidentification_docwise_wip`, `clinical_deidentification_nameAugmented_v2` and `clinical_deidentification_v2_wip`. These models work at the document level and are particularly useful for detecting Protected Health Information (PHI) for de-identification.
+Introducing 8 New Named Entity Recognition (NER) Models: `ner_deid_generic_docwise`, `ner_deid_subentity_docwise`, `ner_deid_subentity_augmented_docwise`, `ner_deid_subentity_augmented_v2`, `clinical_deidentification_docwise_wip`, `clinical_deidentification_nameAugmented_v2` and `clinical_deidentification_v2_wip`. These models work at the document level and are particularly useful for detecting Protected Health Information (PHI) for de-identification.
 
 {:.table-model-big}
 | Model Name                                                            |      Description            |
@@ -278,7 +278,6 @@ Introducing 8 New Named Entity Recognition (NER) Models: `ner_deid_generic_docwi
 | [`ner_deid_generic_docwise`](https://nlp.johnsnowlabs.com/2024/09/06/ner_deid_generic_docwise_en.html) | This document-level model detects PHI entities for de-identification. (Generic) |
 | [`ner_deid_subentity_augmented_docwise`](https://nlp.johnsnowlabs.com/2024/09/06/ner_deid_subentity_augmented_docwise_en.html) | This document-level model detects PHI entities for de-identification. (Subentity_Augmented) |
 | [`ner_deid_subentity_docwise`](https://nlp.johnsnowlabs.com/2024/09/06/ner_deid_subentity_docwise_en.html) | This document-level model detects PHI entities for de-identification. (Subentity) |
-| [`ner_deid_aipii`](https://nlp.johnsnowlabs.com/2024/09/25/ner_deid_aipii_en.html) | This model is particularly effective in identifying and labeling various entities, making it useful for detecting protected health information (PHI) that may need to be masked or de-identified. |
 | [`ner_deid_subentity_augmented_v2`](https://nlp.johnsnowlabs.com/2024/09/20/ner_deid_subentity_augmented_v2_en.html) | This document-level model detects PHI entities for de-identification. (Subentity) |
 | [`clinical_deidentification_docwise_wip`](https://nlp.johnsnowlabs.com/2024/10/03/clinical_deidentification_docwise_wip_en.html) | This pipeline can be used to deidentify PHI information from medical texts. The PHI information will be masked and obfuscated in the resulting text. |
 | [`clinical_deidentification_nameAugmented_v2`](https://nlp.johnsnowlabs.com/2024/10/03/clinical_deidentification_nameAugmented_v2_en.html) | This pipeline can be used to deidentify PHI information from medical texts. The PHI information will be masked and obfuscated in the resulting text. |
@@ -772,7 +771,6 @@ Explore the latest developments in healthcare NLP through our new blog posts, wh
 + `ner_deid_generic_docwise`
 + `ner_deid_subentity_augmented_docwise`
 + `ner_deid_subentity_docwise`
-+ `ner_deid_aipii`
 + `explain_clinical_doc_sdoh_small`
 + `icd10cm_chronic_indicator_mapper`
 + `jsl_meds_ner_q4_v2`
