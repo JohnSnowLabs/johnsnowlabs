@@ -1447,7 +1447,7 @@ E: Nitrofurantoin
 
   <h4 id="introducing-8-new-named-entity-recognition-ner-models-and-pipelines-to-detect-phi-for-deidentification-with-minimal-customisation-required">Introducing 8 New Named Entity Recognition (NER) Models and Pipelines to Detect PHI for Deidentification with Minimal Customisation Required</h4>
 
-  <p>Introducing 8 New Named Entity Recognition (NER) Models: <code class="language-plaintext highlighter-rouge">ner_deid_generic_docwise</code>, <code class="language-plaintext highlighter-rouge">ner_deid_subentity_docwise</code>, <code class="language-plaintext highlighter-rouge">ner_deid_subentity_augmented_docwise</code>, <code class="language-plaintext highlighter-rouge">ner_deid_aipii</code>, <code class="language-plaintext highlighter-rouge">ner_deid_subentity_augmented_v2</code>, <code class="language-plaintext highlighter-rouge">clinical_deidentification_docwise_wip</code>, <code class="language-plaintext highlighter-rouge">clinical_deidentification_nameAugmented_v2</code> and <code class="language-plaintext highlighter-rouge">clinical_deidentification_v2_wip</code>. These models work at the document level and are particularly useful for detecting Protected Health Information (PHI) for de-identification.</p>
+  <p>Introducing 8 New Named Entity Recognition (NER) Models: <code class="language-plaintext highlighter-rouge">ner_deid_generic_docwise</code>, <code class="language-plaintext highlighter-rouge">ner_deid_subentity_docwise</code>, <code class="language-plaintext highlighter-rouge">ner_deid_subentity_augmented_docwise</code>, <code class="language-plaintext highlighter-rouge">ner_deid_subentity_augmented_v2</code>, <code class="language-plaintext highlighter-rouge">clinical_deidentification_docwise_wip</code>, <code class="language-plaintext highlighter-rouge">clinical_deidentification_nameAugmented_v2</code> and <code class="language-plaintext highlighter-rouge">clinical_deidentification_v2_wip</code>. These models work at the document level and are particularly useful for detecting Protected Health Information (PHI) for de-identification.</p>
 
   <table class="table-model-big">
     <thead>
@@ -1468,10 +1468,6 @@ E: Nitrofurantoin
       <tr>
         <td><a href="https://nlp.johnsnowlabs.com/2024/09/06/ner_deid_subentity_docwise_en.html"><code class="language-plaintext highlighter-rouge">ner_deid_subentity_docwise</code></a></td>
         <td>This document-level model detects PHI entities for de-identification. (Subentity)</td>
-      </tr>
-      <tr>
-        <td><a href="https://nlp.johnsnowlabs.com/2024/09/25/ner_deid_aipii_en.html"><code class="language-plaintext highlighter-rouge">ner_deid_aipii</code></a></td>
-        <td>This model is particularly effective in identifying and labeling various entities, making it useful for detecting protected health information (PHI) that may need to be masked or de-identified.</td>
       </tr>
       <tr>
         <td><a href="https://nlp.johnsnowlabs.com/2024/09/20/ner_deid_subentity_augmented_v2_en.html"><code class="language-plaintext highlighter-rouge">ner_deid_subentity_augmented_v2</code></a></td>
@@ -2593,7 +2589,6 @@ input_data_rows:1000</p>
     <li><code class="language-plaintext highlighter-rouge">ner_deid_generic_docwise</code></li>
     <li><code class="language-plaintext highlighter-rouge">ner_deid_subentity_augmented_docwise</code></li>
     <li><code class="language-plaintext highlighter-rouge">ner_deid_subentity_docwise</code></li>
-    <li><code class="language-plaintext highlighter-rouge">ner_deid_aipii</code></li>
     <li><code class="language-plaintext highlighter-rouge">explain_clinical_doc_sdoh_small</code></li>
     <li><code class="language-plaintext highlighter-rouge">icd10cm_chronic_indicator_mapper</code></li>
     <li><code class="language-plaintext highlighter-rouge">jsl_meds_ner_q4_v2</code></li>
