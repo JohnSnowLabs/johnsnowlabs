@@ -36,6 +36,7 @@ Identifies medical conditions mentioned in hypothetical or uncertain contexts.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
