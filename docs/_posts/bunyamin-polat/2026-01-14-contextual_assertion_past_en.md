@@ -36,6 +36,7 @@ Identifies medical conditions that occurred in the patient's past medical histor
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
