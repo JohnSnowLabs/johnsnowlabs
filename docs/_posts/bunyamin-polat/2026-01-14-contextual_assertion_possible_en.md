@@ -36,6 +36,7 @@ Identifies medical conditions that are possible or suspected but not confirmed.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
