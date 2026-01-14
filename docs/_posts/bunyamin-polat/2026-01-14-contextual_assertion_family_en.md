@@ -36,6 +36,7 @@ Identifies medical conditions that belong to family members rather than the pati
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
