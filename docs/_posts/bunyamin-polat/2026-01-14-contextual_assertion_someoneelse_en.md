@@ -36,6 +36,7 @@ Identifies medical conditions that belong to someone other than the patient (not
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
