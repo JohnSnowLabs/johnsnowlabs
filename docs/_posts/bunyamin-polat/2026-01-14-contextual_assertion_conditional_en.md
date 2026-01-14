@@ -36,6 +36,7 @@ Identifies medical conditions that are conditional or dependent on certain circu
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
