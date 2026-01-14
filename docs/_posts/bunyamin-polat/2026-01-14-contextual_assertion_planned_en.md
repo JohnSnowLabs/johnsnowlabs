@@ -36,6 +36,7 @@ Identifies medical procedures or treatments that are planned for the future.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
