@@ -21,19 +21,19 @@ use_language_switcher: "Python-Scala-Java"
 A comprehensive medical NLP pipeline designed for clinical entity extraction and assertion status detection from medical text.
 
 **NER Models:**
-- ner_jsl_langtest: Extracts 60+ medical entity types (symptoms, diseases, vitals, procedures, etc.)
-- ner_posology_greedy: Extracts drug-related entities (DRUG, DOSAGE, FREQUENCY, ROUTE, etc.)
-- ner_deid_subentity_augmented_v2: Extracts PATIENT, DOCTOR, and HOSPITAL names
+- `ner_jsl_langtest`: Extracts 60+ medical entity types (symptoms, diseases, vitals, procedures, etc.)
+- `ner_posology_greedy`: Extracts drug-related entities (DRUG, DOSAGE, FREQUENCY, ROUTE, etc.)
+- `ner_deid_subentity_augmented_v2`: Extracts PATIENT, DOCTOR, and HOSPITAL names
 
 **Text Matchers:**
-- procedure_matcher, drug_matcher, cancer_diagnosis_matcher, symptom_matcher
+- `procedure_matcher`, `drug_matcher`, `cancer_diagnosis_matcher`, `symptom_matcher`
 
 **Contextual Parsers:**
-- age_parser: Extracts age mentions
-- date_matcher + DateNormalizer: Extracts and normalizes dates
+- `age_parser`: Extracts age mentions
+- `date_matcher` + `DateNormalizer`: Extracts and normalizes dates
 
 **Assertion Models:**
-- 9 Assertion models: family, someoneelse, absent, past, planned, conditional, hypothetical, possible
+- 9 Assertion models: `family`, `someoneelse`, `absent`, `past`, `planned`, `conditional`, `hypothetical`, `possible`
 
 **Output:** Merged entities with assertion status (present, absent, past, family, planned, possible, conditional, hypothetical, someoneelse).
 Additionally, in the output, you will see entities that are not related to the assertion status as `no_assertion`.
@@ -54,6 +54,7 @@ Additionally, in the output, you will see entities that are not related to the a
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
@@ -76,6 +77,7 @@ result = pipeline.fullAnnotate(text)
 ```
 
 {:.jsl-block}
+
 ```python
 
 pipeline = nlp.PretrainedPipeline("omop_ner_assertion_pipeline", "en", "clinical/models")
