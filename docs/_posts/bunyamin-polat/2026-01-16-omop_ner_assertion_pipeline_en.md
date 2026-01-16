@@ -54,6 +54,7 @@ Additionally, in the output, you will see entities that are not related to the a
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
@@ -76,6 +77,7 @@ result = pipeline.fullAnnotate(text)
 ```
 
 {:.jsl-block}
+
 ```python
 
 pipeline = nlp.PretrainedPipeline("omop_ner_assertion_pipeline", "en", "clinical/models")
