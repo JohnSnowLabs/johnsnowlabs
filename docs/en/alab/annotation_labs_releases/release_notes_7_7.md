@@ -5,7 +5,7 @@ seotitle: Generative AI Lab | John Snow Labs
 title: Generative AI Lab 7.7
 permalink: /docs/en/alab/annotation_labs_releases/release_notes_7_7
 key: docs-licensed-release-notes
-modify_date: 2025-11-27
+modify_date: 2026-01-17
 show_nav: true
 sidebar:
     nav: annotation-lab
@@ -190,7 +190,7 @@ The completion list in the **Version tab** of the annotation widget now supports
 
 In a project where multiple annotators submit several completions for the same task, the reviewer can view up to three recent completions per annotator at a glance and scroll within a specific annotator’s section to review additional submissions, without losing visibility of other annotators’ work.
 
-### Import Actions and File Handling [@sangharsh]
+### Import Actions and File Handling
 - **[ALAB-6853]** Disable New File Import Actions During Ongoing Import  
 - **[ALAB-6861]** Add pagination for list of projects for exceptions in local Import and export  
 

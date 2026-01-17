@@ -189,7 +189,7 @@ The completion list in the **Version tab** of the annotation widget now supports
 
 In a project where multiple annotators submit several completions for the same task, the reviewer can view up to three recent completions per annotator at a glance and scroll within a specific annotator’s section to review additional submissions, without losing visibility of other annotators’ work.
 
-### Import Actions and File Handling [@sangharsh]
+### Import Actions and File Handling
 - **[ALAB-6853]** Disable New File Import Actions During Ongoing Import  
 - **[ALAB-6861]** Add pagination for list of projects for exceptions in local Import and export  
 
