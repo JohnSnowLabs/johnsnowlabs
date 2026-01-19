@@ -631,11 +631,25 @@ function wrapWordInSpan(data, wordToWrap) {
 <p>Generative AI Lab provides specialized project types for evaluating and comparing responses from large language models (LLMs):</p>
 
 <ul>
-  <li><strong>LLM Evaluation</strong> – assess responses from a single LLM based on defined criteria.</li>
-  <li><strong>LLM Comparison</strong> – compare side-by-side responses from two or more LLMs for the same prompt.</li>
+  <li><strong>LLM Evaluation</strong> – assess responses from a single LLM based on defined criteria</li>
+  <li><strong>LLM Comparison</strong> – compare side-by-side responses from two or more LLMs for the same prompt</li>
 </ul>
 
 <p>These projects enable structured model assessment, supporting both qualitative and quantitative scoring within the same collaborative annotation environment.</p>
+
+<h2 id="blind-llm-response-comparison">Blind LLM Response Comparison</h2>
+
+<p>Blind LLM Response Comparison is used when you want reviewers to compare multiple responses without seeing which provider or model generated each response.</p>
+
+<p>In blind comparison projects:</p>
+
+<ul>
+  <li>Responses are displayed using neutral identifiers (for example, Response A, Response B, Response C)</li>
+  <li>The ordering of responses is shuffled per task</li>
+  <li>Provider and model identity is hidden during review</li>
+</ul>
+
+<p>Depending on project configuration, reviewers may also be asked to <strong>rank</strong> responses (best to worst). Ranking can be required or optional based on how the project is configured.</p>
 
 <h3 id="supported-llm-providers">Supported LLM Providers</h3>
 
@@ -649,45 +663,42 @@ function wrapWordInSpan(data, wordToWrap) {
 </ul>
 
 <p>You can configure one or more providers globally from <strong>System Settings → Integration</strong>, where credentials for each service can be securely added.<br />
-The procedure is consistent across providers—enter the required API keys or access tokens, validate, and save.<br />
-Once configured, these providers are available for selection when creating LLM Evaluation or Comparison projects.</p>
+The procedure is consistent across providers: enter the required API keys or access tokens, validate, and save.<br />
+Once configured, these providers are available for selection when creating LLM Evaluation or LLM Comparison projects.</p>
 
 <p><img src="/assets/images/annotation_lab/7.2.0/1.gif" alt="720image" /></p>
 
 <h3 id="creating-an-llm-evaluation-project">Creating an LLM Evaluation Project</h3>
 
 <ol>
-  <li>Navigate to the Projects page and click New.</li>
+  <li>Navigate to the Projects page and click <strong>New</strong>.</li>
   <li>After filling in the project details and assigning to the project team, proceed to the Configuration page.</li>
-  <li>Under the Text tab on step 1 - Content Type, select LLM Evaluation task and click on Next.</li>
-  <li>On the Select LLM Providers page, you can either:
+  <li>Under the <strong>Text</strong> tab in step 1 (Content Type), select <strong>LLM Evaluation</strong> task and click <strong>Next</strong>.</li>
+  <li>On the <strong>Select LLM Providers</strong> page, you can either:
     <ul>
-      <li>Click Add button to create an external provider specific to the project (this provider will only be used within this project), or</li>
-      <li>Click Go to External Service Page to be redirected to Integration page, associate the project with one of the supported external LLM providers, and return to Project → Configuration → Select LLM Response Provider</li>
+      <li>Click <strong>Add</strong> to create an external provider specific to the project (this provider will only be used within this project), or</li>
+      <li>Click <strong>Go to External Service Page</strong> to be redirected to the Integration page, associate the project with one of the supported external LLM providers, and return to <strong>Project → Configuration → Select LLM Response Provider</strong></li>
     </ul>
   </li>
-  <li>Choose the provider you want to use, save the configuration and click on Next.</li>
-  <li>Customize labels and choices as needed in the Customize Labels section, and save the configuration.</li>
+  <li>Choose the provider you want to use, save the configuration, and click <strong>Next</strong>.</li>
+  <li>Customize labels and choices as needed in the <strong>Customize Labels</strong> section, and save the configuration.</li>
 </ol>
 
 <p><img src="/assets/images/annotation_lab/7.2.0/2.gif" alt="720image" /></p>
 
-<p>For <strong>LLM Evaluation Comparison</strong> projects, follow the same steps, but associate the project with <strong>two</strong> different external providers and select both on the <strong>LLM Response Provider</strong> page.</p>
+<p>For <strong>LLM Comparison</strong> projects, follow the same steps, but associate the project with <strong>two or more</strong> different external providers and select them on the <strong>LLM Response Provider</strong> page.</p>
 
 <h3 id="importing-prompts-for-llm-evaluation-no-pre-filled-responses">Importing Prompts for LLM Evaluation (No Pre-Filled Responses)</h3>
 
 <p>To start working with prompts:</p>
 
 <ol>
-  <li>
-    <p>Go to the <strong>Tasks</strong> page and click <strong>Import</strong>.</p>
-  </li>
-  <li>
-    <p>Upload your prompts in either .json or .zip format using the structure below.</p>
-  </li>
+  <li>Go to the <strong>Tasks</strong> page and click <strong>Import</strong>.</li>
+  <li>Upload your prompts in either <code class="language-plaintext highlighter-rouge">.json</code> or <code class="language-plaintext highlighter-rouge">.zip</code> format using the structure below.</li>
 </ol>
 
-<p><strong>Sample JSON for LLM Evaluation Project</strong></p>
+<h3 id="sample-json-for-llm-evaluation-project">Sample JSON for LLM Evaluation Project</h3>
+
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"prompt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Give me a diet plan for a diabetic 35 year old with reference links"</span><span class="p">,</span><span class="w">
@@ -696,7 +707,9 @@ Once configured, these providers are available for selection when creating LLM E
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
-<p><strong>Sample JSON for LLM Evaluation Comparison Project</strong></p>
+
+<h3 id="sample-json-for-llm-comparison-project">Sample JSON for LLM Comparison Project</h3>
+
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"prompt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Give me a diet plan for a diabetic 35 year old with reference links"</span><span class="p">,</span><span class="w">
@@ -706,6 +719,7 @@ Once configured, these providers are available for selection when creating LLM E
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
+
 <ol>
   <li>Once the prompts are imported as tasks, click the <strong>Generate Response</strong> button to fetch LLM responses directly from the configured providers.</li>
 </ol>
@@ -714,22 +728,23 @@ Once configured, these providers are available for selection when creating LLM E
 
 <p>After the responses are generated, users can begin evaluating them directly within the task interface.</p>
 
-<h3 id="importing-promtps-and-llm-responses-for-evaluation">Importing Promtps and LLM Responses for Evaluation</h3>
-<p>Users can also import prompts and LLM-generated responses using a structured JSON format. This feature supports both LLM Evaluation and LLM Evaluation Comparison project types.</p>
+<h3 id="importing-prompts-and-llm-responses-for-evaluation">Importing Prompts and LLM Responses for Evaluation</h3>
+
+<p>Users can also import prompts and LLM-generated responses using a structured JSON format. This feature supports both LLM Evaluation and LLM Comparison project types and is useful when responses are generated outside Generative AI Lab.</p>
 
 <p>Below are example JSON formats:</p>
 
 <ul>
-  <li><strong>LLM Evaluation:</strong> Includes a prompt and one LLM response mapped to a provider.</li>
-  <li><strong>LLM Evaluation Comparison:</strong> Supports multiple LLM responses to the same prompt, allowing side-by-side evaluation.</li>
+  <li><strong>LLM Evaluation:</strong> includes a prompt and one LLM response mapped to a provider</li>
+  <li><strong>LLM Comparison:</strong> supports multiple LLM responses to the same prompt</li>
 </ul>
 
-<p><strong>Sample JSON for LLM Evaluation Project with Response</strong></p>
+<h3 id="sample-json-for-llm-evaluation-project-with-response">Sample JSON for LLM Evaluation Project with Response</h3>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"prompt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Give me a diet plan for a diabetic 35 year old with reference links"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"response1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Prompt Respons1 Here"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"response1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Prompt Response 1 Here"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"llm_details"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w"> </span><span class="nl">"synthetic_tasks_service_provider_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nl">"response_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"response1"</span><span class="w"> </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
@@ -737,20 +752,24 @@ Once configured, these providers are available for selection when creating LLM E
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
-<p><strong>Sample JSON for LLM Evaluation Comparision Project with Response</strong></p>
+
+<h3 id="sample-json-for-llm-comparison-project-with-responses">Sample JSON for LLM Comparison Project with Responses</h3>
+
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"prompt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Give me a diet plan for a diabetic 35 year old with reference links"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"response1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Prompt Respons1 Here"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"response2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Prompt Respons2 Here"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"response1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Prompt Response1 Here"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"response2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Prompt Response2 Here"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"llm_details"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w"> </span><span class="nl">"synthetic_tasks_service_provider_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nl">"response_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"response1"</span><span class="w"> </span><span class="p">},</span><span class="w">
-       </span><span class="p">{</span><span class="w"> </span><span class="nl">"synthetic_tasks_service_provider_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nl">"response_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"response2"</span><span class="w"> </span><span class="p">}</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"synthetic_tasks_service_provider_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nl">"response_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"response2"</span><span class="w"> </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DietPlan"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
+
+<p>When used in blind comparison projects, imported responses are anonymized during review.</p>
 
 <h3 id="analytics-dashboard-for-llm-evaluation-projects">Analytics Dashboard for LLM Evaluation Projects</h3>
 
@@ -767,7 +786,7 @@ Once configured, these providers are available for selection when creating LLM E
 
 <p>The general workflow for these projects aligns with the existing annotation flow in Generative AI Lab. The key difference lies in the integration with external LLM providers and the ability to generate model responses directly within the application for evaluation.</p>
 
-<p>These new project types provide teams with a structured approach to assess and compare LLM outputs efficiently, whether for performance tuning, QA validation, or human-in-the-loop benchmarking.</p>
+<p>These project types provide teams with a structured approach to assess and compare LLM outputs efficiently, whether for performance tuning, QA validation, or human-in-the-loop benchmarking.</p>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
       <time itemprop="dateModified" datetime="2025-11-27T00:00:00+00:00">Nov 27, 2025</time>
     </span><!-- start custom article footer snippet -->

@@ -630,29 +630,73 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <h2 id="protect-sensitive-data-while-preserving-value">Protect Sensitive Data While Preserving Value</h2>
 
-  <p>Working with sensitive documents containing <strong>Personally Identifiable Information (PII)</strong> or <strong>Protected Health Information (PHI)</strong> doesn’t have to be complicated. Generative AI Lab’s <strong>De-Identification</strong> feature helps you automatically detect and anonymize sensitive data—ensuring compliance with privacy regulations like HIPAA and GDPR while keeping your data useful for analysis and model training.
-<br /></p>
+  <p>Working with documents that contain <strong>Personally Identifiable Information (PII)</strong> or <strong>Protected Health Information (PHI)</strong> requires careful handling. Generative AI Lab provides multiple <strong>De-Identification project types</strong> that help detect and transform sensitive data so it can be safely reviewed, shared, and reused for analysis or model training.</p>
+
+  <p>Depending on the project type, de-identification can be applied either to <strong>text representations</strong> or directly to <strong>visual documents such as PDFs and images</strong>.</p>
+
   <h3 id="why-de-identification-matters">Why De-Identification Matters</h3>
 
   <ul>
-    <li><strong>Stay Compliant:</strong> Meet HIPAA, GDPR, and other privacy regulations without manual redaction</li>
-    <li><strong>Share Data Safely:</strong> Collaborate with external teams or researchers without exposing sensitive information</li>
-    <li><strong>Accelerate AI Development:</strong> Train models on realistic data without privacy risks</li>
-    <li><strong>Reduce Risk:</strong> Minimize data breaches by removing PII/PHI before sharing or storing documents</li>
+    <li><strong>Stay compliant:</strong> Support privacy requirements such as HIPAA and GDPR</li>
+    <li><strong>Share data safely:</strong> Collaborate without exposing sensitive information</li>
+    <li><strong>Enable AI development:</strong> Train models on realistic data without privacy risks</li>
+    <li><strong>Reduce exposure:</strong> Limit the spread of PII and PHI across systems</li>
   </ul>
 
 </div>
 
 <div class="h3-box">
-  <h2 id="how-it-works-three-simple-steps">How It Works: Three Simple Steps</h2>
 
-  <h3 id="create-a-de-identification-project">1. Create a De-Identification Project</h3>
+  <h2 id="de-identification-project-types">De-Identification Project Types</h2>
 
-  <p>Start by selecting the <strong>De-identification</strong> template when creating a new project. The system automatically:</p>
+  <p>Generative AI Lab supports two distinct de-identification project types. Both can ingest PDFs, but they differ in <strong>how de-identification is applied</strong> and <strong>what is produced as output</strong>.</p>
+
+  <h3 id="text-de-identification-text-tab">Text De-Identification (TEXT tab)</h3>
+
+  <p>Text De-Identification applies transformations to <strong>text content</strong>.</p>
+
+  <p>Projects of this type:</p>
   <ul>
-    <li>Downloads the state-of-the-art clinical_deidentification pipeline</li>
-    <li>Sets up optimized labels for common sensitive entities (names, dates, IDs, etc.)</li>
-    <li>Configures privacy-preserving export settings</li>
+    <li>Are created under the <strong>TEXT</strong> tab</li>
+    <li>Can ingest plain text inputs</li>
+    <li>Can ingest PDFs that are processed through OCR to extract text</li>
+    <li>Apply de-identification to the extracted text representation</li>
+    <li>Produce <strong>text-based outputs</strong></li>
+  </ul>
+
+  <p>This project type is appropriate when working primarily with text and when preserving the original document layout is not required.</p>
+
+  <h3 id="visual-ner-de-identification-pdf--image-tabs">Visual NER De-Identification (PDF / Image tabs)</h3>
+
+  <p>Visual NER De-Identification applies masking <strong>directly to the visual document</strong>.</p>
+
+  <p>Projects of this type:</p>
+  <ul>
+    <li>Are created under the <strong>PDF</strong> or <strong>Image</strong> tabs</li>
+    <li>Operate on PDFs or images as visual documents</li>
+    <li>Detect sensitive entities using OCR, NER models, and rule-based patterns</li>
+    <li>Apply masking directly on document pages</li>
+    <li>Allow reviewers to preview masked documents</li>
+    <li>Export <strong>de-identified PDFs or images</strong>, with the option to exclude original raw files</li>
+  </ul>
+
+  <p>This project type is intended for document-centric workflows where the visual format must be preserved.</p>
+
+</div>
+
+<div class="h3-box">
+
+  <h2 id="how-it-works-text-de-identification">How It Works (Text De-Identification)</h2>
+
+  <h3 id="create-a-text-de-identification-project">1. Create a Text De-Identification Project</h3>
+
+  <p>Create a new project and select the <strong>De-identification</strong> template under the <strong>TEXT</strong> tab.</p>
+
+  <p>This configures the project for text-based de-identification, including:</p>
+  <ul>
+    <li>Standard labels for common sensitive entities (names, dates, IDs)</li>
+    <li>De-identification configuration options</li>
+    <li>Export behavior based on reviewed completions</li>
   </ul>
 
   <p><br /></p>
@@ -660,184 +704,169 @@ function wrapWordInSpan(data, wordToWrap) {
   <p><img src="/assets/images/annotation_lab/6.7.0/1.png" alt="Create De-ID Project" /></p>
 
   <p><br /></p>
+
   <blockquote>
-    <p><strong>Quick Start:</strong> Import the <strong>Demo De-Identification Project</strong> from the Import menu to explore the feature with sample data before working on real documents.</p>
+    <p><strong>Quick Start:</strong> Import the <strong>Demo De-Identification Project</strong> from the Import menu to explore the workflow using sample data.</p>
   </blockquote>
 
-  <p><br /></p>
   <h3 id="choose-your-de-identification-strategy">2. Choose Your De-Identification Strategy</h3>
-  <p>\
-Select how you want to handle sensitive information—you can even use <strong>different strategies for different entity types</strong>:
-\</p>
+
+  <p>Each entity type can use a different transformation strategy.</p>
 
   <table>
     <thead>
       <tr>
         <th>Strategy</th>
-        <th>What It Does</th>
+        <th>Description</th>
         <th>Example</th>
-        <th>Best For</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><strong>Mask with Entity Labels</strong></td>
-        <td>Replaces text with label names</td>
-        <td>&lt;Patient&gt; is a &lt;Age&gt; y.o.</td>
-        <td>Maintaining document structure</td>
+        <td>Mask with Entity Labels</td>
+        <td>Replace text with label names</td>
+        <td><code class="language-plaintext highlighter-rouge">&lt;Patient&gt; is a &lt;Age&gt; y.o.</code></td>
       </tr>
       <tr>
-        <td><strong>Mask with Characters</strong></td>
-        <td>Replaces each character with *</td>
-        <td>**** ****** is a ** y.o.</td>
-        <td>Preserving text length</td>
+        <td>Mask with Characters</td>
+        <td>Replace characters with <code class="language-plaintext highlighter-rouge">*</code></td>
+        <td><code class="language-plaintext highlighter-rouge">**** ****** is a ** y.o.</code></td>
       </tr>
       <tr>
-        <td><strong>Fixed Length Mask</strong></td>
-        <td>Replaces with fixed ****</td>
-        <td>**** **** is a **** y.o.</td>
-        <td>Uniform anonymization</td>
+        <td>Fixed Length Mask</td>
+        <td>Replace with fixed-length mask</td>
+        <td><code class="language-plaintext highlighter-rouge">**** **** is a **** y.o.</code></td>
       </tr>
       <tr>
-        <td><strong>Obfuscation</strong></td>
-        <td>Replaces with realistic fake data</td>
-        <td>Mark Doe is a 48 y.o.</td>
-        <td>Maintaining data realism</td>
+        <td>Obfuscation</td>
+        <td>Replace with realistic synthetic values</td>
+        <td><code class="language-plaintext highlighter-rouge">Mark Doe is a 48 y.o.</code></td>
       </tr>
     </tbody>
   </table>
 
-  <p><strong>Example:</strong> For “John Davies is a 62 y.o. patient admitted to ICU after an MVA”:</p>
-  <ul>
-    <li>Entity Labels → “&lt;Patient&gt; is a &lt;Age&gt; y.o. patient admitted to ICU after an MVA”</li>
-    <li>Obfuscation → “Mark Doe is a 48 y.o. patient admitted to ICU after an MVA”</li>
-  </ul>
-
   <p><img src="/assets/images/annotation_lab/6.7.0/3.png" alt="Choose Strategy" /></p>
 
-  <p><strong>Pro Tip:</strong> You can upload custom obfuscation rules in JSON format to reuse configurations across projects.</p>
+  <p>You can upload custom obfuscation rules in JSON format to reuse configurations across projects.</p>
 
   <p><img src="/assets/images/annotation_lab/6.7.0/4.gif" alt="Upload Config" /></p>
 
-  <h3 id="de-identify-and-export">3. De-Identify and Export</h3>
-
-  <p>Once your strategy is configured:</p>
+  <h3 id="review-and-export-text-outputs">3. Review and Export Text Outputs</h3>
 
   <ol>
-    <li><strong>Import your documents</strong> - They’ll be tagged as NonDeidentified for easy tracking</li>
-    <li><strong>Click “De-identify”</strong> - The AI automatically detects and labels sensitive entities</li>
-    <li><strong>Review and adjust</strong> - Make any corrections on the labeling page</li>
-    <li><strong>Submit completions</strong> - Mark reviewed tasks with a star</li>
-    <li><strong>Export safely</strong> - Only de-identified, human-verified data is exported</li>
+    <li>Import documents (tasks are tagged as <code class="language-plaintext highlighter-rouge">NonDeidentified</code>)</li>
+    <li>Run <strong>De-identify</strong> to generate predictions</li>
+    <li>Review and correct labels</li>
+    <li>Submit (star) reviewed completions</li>
+    <li>Export de-identified text outputs</li>
   </ol>
 
   <p><img src="/assets/images/annotation_lab/6.7.0/6.gif" alt="De-ID Process" /></p>
 
 </div>
+
 <div class="h3-box">
 
-  <h2 id="advanced-features">Advanced Features</h2>
+  <h2 id="visual-ner-de-identification-for-pdfs-and-images">Visual NER De-Identification for PDFs and Images</h2>
 
-  <h3 id="multi-source-detection">Multi-Source Detection</h3>
+  <p>Visual NER De-Identification is used when sensitive information must be masked <strong>within the document itself</strong>, rather than only in extracted text.</p>
 
-  <p>Combine multiple approaches for maximum accuracy:</p>
+  <h3 id="how-visual-ner-de-identification-works">How Visual NER De-Identification Works</h3>
+
   <ul>
-    <li><strong>Pre-trained models</strong> for common entity types</li>
-    <li><strong>Custom rules</strong> for domain-specific patterns</li>
-    <li><strong>Prompts</strong> for contextual detection</li>
-    <li><strong>John Snow Labs De-Identification Pipeline</strong> for state-of-the-art performance</li>
+    <li>PDFs or images are processed using OCR and visual entity detection</li>
+    <li>Sensitive entities are detected using NER models and rule-based patterns</li>
+    <li>Masking is applied directly to document pages</li>
+    <li>Reviewers can preview masked PDFs or images</li>
+    <li>Exports can be configured to include <strong>only de-identified documents</strong></li>
   </ul>
-
-  <p><img src="/assets/images/annotation_lab/6.7.0/2.png" alt="Pipelines Tab" /></p>
-
-  <h3 id="compare-original-and-de-identified">Compare Original and De-Identified</h3>
-
-  <p>View side-by-side comparisons of original and anonymized text to verify results before export.</p>
-
-  <p><img src="/assets/images/annotation_lab/6.7.0/8.gif" alt="De-ID View" /></p>
-
-  <h3 id="re-import-for-further-processing">Re-Import for Further Processing</h3>
-
-  <p>Export de-identified documents and re-import them into any text project for:</p>
-  <ul>
-    <li>Additional annotation by team members</li>
-    <li>Model training on privacy-safe data</li>
-    <li>Further analysis without compliance concerns</li>
-  </ul>
-
-</div>
-<div class="h3-box">
-
-  <h2 id="best-practices">Best Practices</h2>
-
-  <p>✅ <strong>Target Only Sensitive Entities:</strong> Only label data that needs protection—everything labeled will be transformed during export</p>
-
-  <p>✅ <strong>Verify Before Export:</strong> Always review AI predictions to ensure accuracy. Only starred (submitted) completions are exported</p>
-
-  <p>✅ <strong>Use Entity-Specific Strategies:</strong> Apply obfuscation to names for realism, but mask IDs with fixed characters for simplicity</p>
-
-  <p>✅ <strong>Test with Demo Project:</strong> Familiarize yourself with workflows using the built-in demo before processing real data</p>
-
-  <p>✅ <strong>Leverage Custom Rules:</strong> Combine pre-trained models with custom rules to catch domain-specific patterns</p>
-
-</div>
-<div class="h3-box">
-
-  <h2 id="quick-reference">Quick Reference</h2>
-
-  <h3 id="creating-a-project">Creating a Project</h3>
-
-  <p>From the Import menu:</p>
-  <ol>
-    <li>Select <strong>Import Demo Projects</strong> for a pre-configured example, OR</li>
-    <li>Create a new project and select <strong>De-identification</strong> template under the <strong>TEXT</strong> tab</li>
-  </ol>
 
   <blockquote>
-    <p><strong>Tip:</strong> Look for the de-identification icon in the bottom-left corner of project cards to quickly identify de-identification projects.</p>
+    <p><strong>Screenshot needed:</strong> Visual NER project creation for PDF or image de-identification.</p>
   </blockquote>
 
-  <h3 id="export-workflow">Export Workflow</h3>
+  <h3 id="review-with-visual-preview">Review with Visual Preview</h3>
 
-  <p>The export process automatically handles prioritization:</p>
+  <p>Reviewers validate masking by viewing the de-identified document before export. This allows verification of masked content while preserving document readability.</p>
 
-  <ol>
-    <li><strong>Submitted completions</strong> (starred by annotators) are exported first</li>
-    <li>If no submissions exist, <strong>de-identified predictions</strong> are exported</li>
-    <li>With multiple submissions, the <strong>highest priority user’s completion</strong> is used (configured on the Teams page)</li>
-  </ol>
+  <blockquote>
+    <p><strong>Screenshot needed:</strong> Visual NER review screen showing masked entities on a PDF page.</p>
+  </blockquote>
 
-  <p><img src="/assets/images/annotation_lab/6.7.0/9.gif" alt="Export" /></p>
+  <h3 id="export-de-identified-pdfs-or-images">Export De-Identified PDFs or Images</h3>
 
-  <h3 id="tags-and-status">Tags and Status</h3>
+  <p>Visual NER De-Identification supports exporting masked PDFs or images. Original raw files can be excluded from the export depending on configuration.</p>
 
-  <ul>
-    <li><strong>NonDeidentified tag:</strong> Automatically added to new imports for tracking</li>
-    <li><strong>Status indicators:</strong> Green (success), red (error), grey (pending) next to each task</li>
-    <li><strong>(De-identified) label:</strong> Shown next to completion IDs after de-identification</li>
-  </ul>
-
-  <p><img src="/assets/images/annotation_lab/6.7.0/5.gif" alt="Status" /></p>
+  <blockquote>
+    <p><strong>Screenshot needed:</strong> Export dialog showing the option to export only de-identified documents.</p>
+  </blockquote>
 
 </div>
+
+<div class="h3-box">
+
+  <h2 id="when-to-use-each-project-type">When to Use Each Project Type</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Requirement</th>
+        <th>Recommended Project Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>De-identify text content (including OCR-extracted text from PDFs)</td>
+        <td>Text De-Identification</td>
+      </tr>
+      <tr>
+        <td>Produce text-based outputs</td>
+        <td>Text De-Identification</td>
+      </tr>
+      <tr>
+        <td>Mask sensitive information on PDF pages or images</td>
+        <td>Visual NER De-Identification</td>
+      </tr>
+      <tr>
+        <td>Review masking visually before export</td>
+        <td>Visual NER De-Identification</td>
+      </tr>
+      <tr>
+        <td>Export de-identified PDFs or images</td>
+        <td>Visual NER De-Identification</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+<div class="h3-box">
+
+  <h2 id="best-practices-text-de-identification">Best Practices (Text De-Identification)</h2>
+
+  <ul>
+    <li>Review predictions before export to ensure accuracy</li>
+    <li>Apply different strategies per entity type where appropriate</li>
+    <li>Use demo projects to understand workflows before processing real data</li>
+    <li>Combine models and rules to improve coverage</li>
+  </ul>
+
+</div>
+
 <div class="h3-box">
 
   <h2 id="important-notes">Important Notes</h2>
 
   <blockquote>
-    <p><strong>License Required:</strong> A valid John Snow Labs license is needed to access de-identification features.</p>
+    <p><strong>License Required:</strong> A valid John Snow Labs license is required.</p>
   </blockquote>
 
   <blockquote>
-    <p><strong>Project Type is Permanent:</strong> Projects must be designated as de-identification projects during creation—you cannot convert existing projects to de-identification projects later.</p>
+    <p><strong>Project Type Is Fixed:</strong> The de-identification project type must be selected during project creation. Existing projects cannot be converted to a different de-identification type.</p>
   </blockquote>
 
   <blockquote>
-    <p><strong>Human Review Required:</strong> Pre-annotations alone aren’t exported. Each task must be reviewed and starred by a human to ensure quality.</p>
-  </blockquote>
-
-  <blockquote>
-    <p><strong>Unified Workflow:</strong> The <strong>De-identify</strong> button works consistently across all project types (pipelines, models, rules) for a predictable experience.</p>
+    <p><strong>Human Review:</strong> Export behavior depends on reviewed completions and project configuration.</p>
   </blockquote>
 
 </div>
@@ -847,10 +876,10 @@ Select how you want to handle sensitive information—you can even use <strong>d
   <h2 id="need-help">Need Help?</h2>
 
   <ul>
-    <li><strong>Getting Started:</strong> Import the Demo De-Identification Project from the Import menu</li>
-    <li><strong>Custom Configurations:</strong> Upload JSON obfuscation rules via the Customize Labels page</li>
-    <li><strong>Pipeline Management:</strong> View all downloaded pipelines on the dedicated Pipelines page</li>
-    <li><strong>Support:</strong> Contact <a href="mailto:support@johnsnowlabs.com">support@johnsnowlabs.com</a> for assistance</li>
+    <li>Import the Demo De-Identification Project from the Import menu</li>
+    <li>Upload JSON obfuscation rules from the Customize Labels page</li>
+    <li>Manage pipelines from the Pipelines page</li>
+    <li>Contact <a href="mailto:support@johnsnowlabs.com">support@johnsnowlabs.com</a></li>
   </ul>
 
 </div>
