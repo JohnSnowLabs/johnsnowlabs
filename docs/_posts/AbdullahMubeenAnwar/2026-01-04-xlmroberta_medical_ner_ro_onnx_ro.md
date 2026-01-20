@@ -47,7 +47,7 @@ tokenizer = Tokenizer() \
     .setOutputCol("token")
 
 tokenClassifier = XlmRoBertaForTokenClassification \
-    .pretrained("xlmroberta_medical_ner_ro_onnx", "en", "clinical/models") \
+    .pretrained("xlmroberta_medical_ner_ro_onnx", "ro", "clinical/models") \
     .setInputCols(["document", "token"]) \
     .setOutputCol("ner")
 
@@ -84,7 +84,7 @@ tokenizer = nlp.Tokenizer() \
     .setOutputCol("token")
 
 tokenClassifier = nlp.XlmRoBertaForTokenClassification \
-    .pretrained("xlmroberta_medical_ner_ro_onnx", "en", "clinical/models") \
+    .pretrained("xlmroberta_medical_ner_ro_onnx", "ro", "clinical/models") \
     .setInputCols(["document", "token"]) \
     .setOutputCol("ner")
 
@@ -122,7 +122,7 @@ val tokenizer = new Tokenizer()
   .setOutputCol("token")
 
 val tokenClassifier = XlmRoBertaForTokenClassification
-  .pretrained("xlmroberta_medical_ner_ro_onnx", "en", "clinical/models")
+  .pretrained("xlmroberta_medical_ner_ro_onnx", "ro", "clinical/models")
   .setInputCols(Array("document", "token"))
   .setOutputCol("ner")
 
