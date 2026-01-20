@@ -5,13 +5,39 @@ seotitle: Medical LLMs | John Snow Labs
 title: Release Notes
 permalink: /docs/en/LLMs/releases/release_notes
 key: docs-medical-llm
-modify_date: "2025-11-03"
+modify_date: "2025-12-30"
 show_nav: true
 sidebar:
     nav: medical-llm
 ---
 
 <div class="h3-box" markdown="1">
+
+## 12-30-2025
+
+### Model Updates
+
+We're excited to announce an enhanced version of our Medical-Visual-LLM-8B model with improved accuracy and performance across medical benchmarks.
+
+- **Medical-Visual-LLM-8B**: An updated 8B parameter vision-language model that delivers enhanced medical-grade multimodal intelligence. This model combines medical expertise with visual comprehension capabilities, understanding both clinical text and visual content including X-rays, MRIs, pathology slides, medical diagrams, and structured documents. It excels at summarizing clinical information, answering contextual medical questions, and facilitating decision-making. The model is optimized for RAG applications and healthcare integrations, seamlessly processing both visual and textual medical domains.
+
+#### Specifications
+
+| **Model Name**             | **Parameters** | **Recommended GPU Memory** | **Max Sequence Length** | **Model Size** | **Max KV-Cache** | **Tensor Parallel Sizes** |
+|---------------------------|--------------|------------------|-------------------|-------------|----------------|------------------------|
+| Medical-Visual-LLM-8B  | 8B          | ~64 GB           | 128K              | 15 GB       | 48 GB          | 1, 2, 4               |
+
+#### Benchmark Performance
+
+**Medical-Visual-LLM-8B:**
+
+- Achieves 86.2% average across OpenMed benchmarks
+- Scores 86.4% on clinical knowledge assessment
+- Reaches 93% on medical genetics understanding
+- Performs at 92.4% for college biology concepts
+- Processes professional medicine with 93% accuracy
+- Handles medical MCQAs with 88.5% precision
+- Maintains 85.1% accuracy on Anatomy concepts
 
 ## 11-03-2025
 

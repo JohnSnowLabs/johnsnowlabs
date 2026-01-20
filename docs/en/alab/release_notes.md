@@ -13,442 +13,419 @@ sidebar:
   nav: annotation-lab
 ---
 
-## Generative AI Lab 7.6: Multi Model Blind Evaluation and Advanced NER Training
-Generative AI Lab 7.6 delivers one of the most significant upgrades to the evaluation and training workflow to date, introducing powerful new capabilities for multi-model benchmarking, advanced NER training, and deeper analytics insights.
+## Generative AI Lab 7.7: End-to-End PDF De-Identification for Visual NER
 
-This release focuses on enabling teams to perform unbiased, large-scale LLM comparisons, streamline annotation workflows, and improve both the usability and clarity of analytics across the platform. With the introduction of Blind LLM Response Comparison, a new BertForTokenClassifier training option, and a wide range of UI/UX refinements and stability improvements, 7.6.0 enhances accuracy, transparency, and efficiency across every stage of the AI development lifecycle.
+Generative AI Lab **7.7** delivers major improvements across **data privacy, evaluation workflows, annotation usability, and analytics clarity**. This release significantly expands **Visual NER de-identification** to fully support PDFs and images, introduces **ranking for multi-LLM blind evaluations**, and improves everyday annotation workflows with smarter defaults and a more compact review experience.
 
-Whether you're evaluating multiple foundation models, training high-performance NER pipelines, or managing complex annotation teams, this release provides the tools needed to build regulatory-grade, auditable, and scalable human-in-the-loop workflows.
+In addition to new features, 7.7 includes **UI/UX refinements**, **analytics dashboard improvements**, and a broad set of **stability and reliability fixes**, helping teams scale secure, compliant, and efficient human-in-the-loop workflows with greater confidence.
 
-## Unbiased Multi-Model Assessment with Blind LLM Response Comparison
-Generative AI Lab **7.6** introduces a major capability designed for teams comparing the performance of several large language models: **Blind LLM Response Comparison**. This new project type enables the evaluation responses from **two or more LLMs** without revealing which model produced each answer, allowing fair, unbiased assessment at scale.
+## Support De-Identification for Visual NER Projects
 
-This feature supports a broad range of evaluation workflows from automated response generation to uploading outputs from external systems while providing a redesigned review interface tailored for multi-model comparisons.
+Generative AI Lab **7.7.0** introduces **De-Identification for Visual NER projects**, enabling secure and compliant processing of **images and PDFs** containing sensitive information. This release extends Visual NER to  support **clinical and document-centric de-identification workflows** across the entire project lifecycle, from import and pre-annotation to review and export.
 
-### **Technical Details**
+This enhancement allows teams to confidently process **PHI/PII** in visual documents while supporting regulatory and compliance requirements such as **HIPAA**.
 
-- **New Project Type: Blind LLM Response Comparison**
+## What’s New
 
-  A dedicated configuration flow enables users to select **any number of connected LLM endpoints**, removing the former limitation of comparing only two models. Popular LLMs, along with responses generated from Custom and organization-specific LLM services, are fully supported for evaluation.
+-   Introduced a new **Visual NER – De-Identification** project type
+-   End-to-end **de-identification support for Images and PDFs**
+-   Integrated **clinical de-identification pipeline** for visual data
+-   Support for both **NER model–based** and **rule-based** de-identification methods
+-   De-identification applied consistently across:
+    -   Task creation
+    -   Pre-annotation
+    -   Review and comparison
+    -   Export-Sensitive entities are **masked or replaced** consistently throughout the workflow.
 
-![760image](/assets/images/annotation_lab/7.6.0/1.gif)
+![77image](/assets/images/annotation_lab/7.7/1.gif)
 
-- **Flexible Prompt Importing**
+## Technical Details
+### Project & Pipeline Setup
+-   Added a dedicated **Visual NER De-Identification** project type
+-   Enabled deployment of the visual de-identification pipeline directly in the UI
+-   Pipeline supports clinical NER models, custom NER models and rule-based de-identification
 
-  Prompts or questions can be imported individually or in bulk using `.json` or `.txt` formats.
-  Example JSON prompt:
-  `{ "text": "What are some of the symptoms seen in a person suffering from sepsis?" }`
-  The system accepts a variable number of responses for each prompt, whether generated within Generative AI Lab or responses that are imported in GenAI Lab.
+![77image](/assets/images/annotation_lab/7.7/2.gif)
+*Project configuration for PDF in Visual NER De-Identification project*
 
-![760image](/assets/images/annotation_lab/7.6.0/2.gif)
+![77image](/assets/images/annotation_lab/7.7/3.png)
+*Project configuration for IMAGE in Visual NER De-Identification project*
 
-- **Support for External Responses**
+### Supported Models & Rules
+-   Out-of-the-box support for:
+    -   Clinical PHI detection models
+    -   Generic NER models (names, locations, IDs)
+-   Rule-based detection for:
+    -   Phone numbers
+    -   Emails
+    -   IDs
+    -   Dates
+-   Models and rules can be combined for improved accuracy
 
-  Imported datasets may include model outputs produced outside Generative AI Lab, as long as they follow the supported JSON structure. During import, the system validates the format and correctly associates each response with its corresponding prompt, enabling flexible, mixed-source evaluation workflows.
+### Export Control
+-   Added an **“Export Only De-Identified”** option
+    -   Exports only masked images or PDFs
+    -   Original raw files are excluded to prevent data leakage
+-   Export format always matches the project type
+-   Image-based projects export **de-identified images**
+-   PDF-based projects export **de-identified PDFs**
 
-- **Blind & Randomized Response Display**
+![77image](/assets/images/annotation_lab/7.7/4.gif)
 
-  Responses appear in **random order** and each response is labeled with generic identifiers (e.g., “Response A”, “Response B”).
-  Model identities remain hidden from annotators. Internally, a secure mapping is stored and can be viewed by project managers while accessing analytics, but never exposed during labeling.
+### Configuration Improvements
+-   Added XML flags to distinguish between **image** and **PDF** Visual NER projects
+-   Ensured outputs are routed to the correct storage and export handlers
+-   Removed de-identification options not applicable to Visual NER
 
-![760image](/assets/images/annotation_lab/7.6.0/3.gif)
+## UX & Review Enhancements
+-   **Live de-identification preview**
+    -   Reviewers can verify masked images or PDFs before exporting
+-   Clear visual indicators for:
+    -   De-identified content
+    -   Export-safe outputs
 
-- **Enhanced Annotation Interface**
+### Performance Details
+-   **Default Infrastructure:** `t3.2xlarge` (2 vCPU, 16 GB RAM)
+-   **Processing Time:** ~20 minutes for 100 visual tasks
 
-  To accommodate multiple LLM answers, the annotation screen uses **scrollable panes**, **collapsible response sections**, and **fullscreen view**, making it easier to navigate and compare more than two answers without clutter. Annotators can expand or hide responses based on their review style.
+- *Note:
+— Performance may vary based on PDF page count and the number of detected entities*
 
-![760image](/assets/images/annotation_lab/7.6.0/4.gif)
+### User Benefits
+-   Secure handling of PHI/PII in visual documents   
+-   Complete de-identification workflow for images and PDFs  
+-   Safe exports containing only de-identified outputs  
+-   Visual validation before data sharing  
+-   Seamless integration with existing Visual NER workflows
+-   Predictable performance for enterprise-scale processing
 
-- **Expanded Analytics for Multi-Model Comparison**
+### Example Use Case
+A healthcare compliance team uploads scanned medical reports (PDFs) and patient intake forms (images) into a **Visual NER De-Identification** project. Using the clinical pipeline and rule-based detection, patient names, IDs, and contact details are automatically masked. Reviewers validate the results using live preview and export only the **de-identified PDFs and images** for analytics, audits, and regulatory submissions.
 
-  The Analytics dashboard now supports detailed comparisons across two or more LLMs, enabling teams to analyze performance differences with greater precision. Enhanced filtering options allow users to narrow the view to specific models, model combinations, or evaluation criteria, making it easier to uncover strengths, weaknesses, and behavioral patterns across LLMs.
+### Notes & Recommendations
+-   Ensure the de-identification pipeline is deployed before task creation.
+-   Use PDF projects for multi-page documents to preserve structure.
+-   Review live preview carefully for edge cases such as handwritten text or low-quality scans.
 
-  Users can interactively refine the displayed data by **toggling LLM names directly from the bar-graph legend** or by **selecting specific LLMs from the dropdown filter**. This allows focused analysis on individual models or direct comparisons between selected LLMs, rather than viewing the entire dataset at once.
+### Multi-LLM Ranking for Blind Evaluation Comparison Projects
+Evaluators can now rank individual responses generated for the same prompt, making it easier to express relative preference and compare model performance when more than two LLMs are involved.
 
-![760image](/assets/images/annotation_lab/7.6.0/5.gif)
+#### Technical Details
 
-- **Mandatory Classifications Across LLM Evaluation Templates**
+- **Built-in Ranking Capability:**  Ranking is enabled by default in **Blind LLM Response Comparison** projects and does not require any additional setup. During evaluation, each response associated with the same prompt can be assigned a rank (such as 1st, 2nd, 3rd), allowing evaluators to clearly express preference among multiple LLM outputs.
 
-  LLM evaluation project templates now enforce mandatory classification selections to maintain consistency and prevent incomplete task submissions. A response cannot be submitted until at least one choice option is selected, ensuring evaluators always provide a definitive classification. This requirement applies not only to **Blind LLM Response Comparison** but also to other evaluation-oriented templates, including **LLM Evaluation** and **LLM Response Comparison** for both **Text** and **HTML** project types.
+![77image](/assets/images/annotation_lab/7.7/5.gif)
 
-  This functionality is enabled by the `required="true"` attribute automatically included in all `<Choice>` elements within the default XML templates. Administrators may modify the XML configuration if optional selections are preferred for their workflow.
+- **Required by Default, Configurable by Design:**  Rankings are mandatory by default to ensure every response is evaluated consistently. This requirement is controlled through the project configuration using the `required="true"` attribute. Project Managers can update this value to `false` if rankings should be optional for a specific workflow or evaluation style.
 
-### **User Benefits**
+![77image](/assets/images/annotation_lab/7.7/6.png)
 
-- **Unbiased Model Assessment** – Blind review ensures annotations and judgments are not influenced by model vendor or expectations.
-- **Scalable Multi-Model Evaluation** – Supports multiple LLM endpoints, accommodating internal, external, or custom models.
-- **Flexible Data Handling** – Works seamlessly with system-generated responses and externally produced outputs.
-- **Improved Usability** – A modernized annotation view makes multi-model comparison practical, even with large sets of responses.
-- **Deeper Insights** – Enhanced analytics help teams pinpoint which models perform best under specific prompts or criteria.
+- **Seamless Workflow Integration:**  The ranking feature is fully integrated into the existing Blind Evaluation flow. Evaluators simply select ranks while reviewing responses, with no changes to task navigation, submission flow, or project setup. This ensures that the the existing evaluation workflow remains unchanged.
 
-### **Example Use Case**
+#### User Benefits
 
-A research team wants to evaluate five LLMs, one hosted on SageMaker, and different models offered by OpenAI, Azure OpenAI, and Claude. They import a set of prompts, upload external responses for some models, generate responses for others, and begin review. 
+- **Clearer comparisons:** Rankings provide a direct way to express which responses are better or worse across multiple LLMs.
+- **Consistent evaluations:** Mandatory rankings ensure that all responses are fully assessed.
+- **Minimal setup:** The feature works out of the box without requiring changes to project configuration.
+- **Scalable reviews:** Supports meaningful evaluation when comparing more than two LLMs.
 
-Annotators see randomized, anonymized answers, while project managers access full analytics showing how each model performed across accuracy, completeness, and other criteria. The Blind LLM Response Comparison workflow ensures evaluation results remain fair, structured, and scalable.
+#### Example Use Case
 
-## NER Training Approach – Support for BertForTokenClassifier Training
-A new NER Training Approach option has been introduced, enabling users to train NER models using the BertForTokenClassifier pipeline. This enhancement leverages the licensed model training architecture and offers greater flexibility and accuracy for advanced NER tasks.
-
-**What’s New**
-
-Users can now choose between MedicalNER (existing approach) and the new BertForTokenClassifier method when training NER models. This unlocks the ability to train transformer-based token classification models directly within the platform, with optimized defaults and GPU support for faster processing.
-
-![760image](/assets/images/annotation_lab/7.6.0/6.png)
-
-**Technical Details**
-
-- **New Training Parameter Added:**  
-  `NER Training Approach` with two options:  
-  - **MedicalNER** (default / existing)  
-  - **BertForTokenClassifier** (new)
-
-- **Visible for Healthcare License Types:**  
-  The new parameter appears only for customers using a **Healthcare** license, as it leverages the licensed training pipeline.
-
-- **Automatic Learning Rate Adjustment:**  
-  When **BertForTokenClassifier** is selected, the system automatically reduces the learning rate from:  
-  - **0.001 → 0.00002**
-
-- **No Embeddings Required:**  
-  The BertForTokenClassifier pipeline **does not use embeddings**.  
-  - If users switch back to **MedicalNER** or **Open-Source NER**, they must **re-select the appropriate embeddings**.
-
-- **GPU Support Enabled for NER Training:**  
-  Training with BertForTokenClassifier is more compute-intensive than MedicalNER.  
-  - **GPU execution is now supported and recommended** for this training approach.  
-  - Previously, GPU usage was only available for Visual NER projects.
-
-**User Benefits**
-
-- **Greater Flexibility:**  
-  Choose between fast MedicalNER training or the more powerful BertForTokenClassifier approach.
-
-- **Higher Accuracy for Complex Tasks:**  
-  Transformer-based models improve performance on advanced NER workloads.
-
-- **Optimized Training Defaults:**  
-  Automatic learning rate tuning reduces configuration steps.
-
-- **GPU-Accelerated Training:**  
-  Enables significantly faster training for larger datasets.
-
-- **Smooth Workflow:**  
-  Clear switching between approaches with guidance for embedding requirements.
-
-**Example Use Case**
-
-A data scientist wants to improve accuracy for clinical NER tasks involving complex entity boundaries. They select **BertForTokenClassifier** under the NER Training Approach. The system configures the optimized learning rate automatically, and training is performed efficiently on a GPU instance.  
-Later, if they revert to MedicalNER, they simply re-select the suitable embeddings for the model.
+A team evaluates responses from four different LLMs for the same medical question in a Blind LLM Response Comparison project. During review, the evaluator ranks the responses from best to worst based on accuracy and clarity. These rankings are then used to identify which models consistently perform better across prompts, without revealing model identities during annotation.
 
 ---
 
 ## Improvements
 
-### Analytics Charts Updates: 
+### Improved Default Annotation Experience with Sticky Label Layout
 
-#### Minimize the Need for Annotator Selection in Inter-Annotator Charts
+**What’s Improved**
+
+The **Horizontal Sticky Layout** is now enabled by default for newly created annotation projects. This ensures that labels and classification options remain visible while annotating large or scroll-heavy tasks.
+
+![77image](/assets/images/annotation_lab/7.7/7.png)
+
+**Technical Details**
+
+- The default **Task View** for new projects is set to **Horizontal – Sticky Layout**
+- The change is applied at **project creation time**
+- Applicable to **NER projects** and **all annotation projects that use labels**
+- Existing projects retain their previously configured layout settings
+
+![77image](/assets/images/annotation_lab/7.7/8.png)
+
+**User Benefits**
+
+- Eliminates the need to repeatedly scroll to access labels
+- Improves annotation speed and focus for large tasks
+- Provides a better out-of-the-box experience without requiring manual configuration
+
+**Example Use Case**
+
+A user annotating a long clinical document or large text file can scroll through the content while the label panel remains fixed and accessible, allowing continuous and efficient labeling without interruptions.
+
+### Enhance Completion Workflow with Scrollable User Completions
+
+**What’s Improved**
+
+The completion list in the **Version tab** of the annotation widget now supports **scrolling within each annotator’s completion section**. This allows multiple completions from the same user to be accessed without expanding or scrolling the entire page.
+
+![77image](/assets/images/annotation_lab/7.7/9.gif)
+
+**Technical Details**
+
+- A **vertical scrollbar** is added inside each annotator’s accordion in the Version tab
+- Due to limited vertical space, the UI displays **up to 3 completions per annotator by default**
+- If an annotator has more than 3 submitted completions, the remaining completions can be accessed via **in-panel scrolling**
+- This change applies to the **right-side annotation widget** where the Version tab is displayed
+
+**User Benefits**
+
+- Improves readability and navigation in areas with limited vertical space
+- Allows quick comparison of completions across multiple annotators
+- Reduces excessive page scrolling and keeps the Version tab compact and usable
+
+**Example Use Case**
+
+In a project where multiple annotators submit several completions for the same task, the reviewer can view up to three recent completions per annotator at a glance and scroll within a specific annotator’s section to review additional submissions, without losing visibility of other annotators’ work.
+
+### Import Actions and File Handling
+- **[ALAB-6853]** Disable New File Import Actions During Ongoing Import  
+- **[ALAB-6861]** Add pagination for list of projects for exceptions in local Import and export  
+
+### Disable New File Import Actions During Ongoing Import
 **What’s Improved:**  
-The Inter-Annotator Charts page now offers a more streamlined workflow by reducing repetitive annotator selections. Previously, every chart required users to manually pick one or two annotators, making the process time-consuming. Especially when reviewing multiple charts in sequence.
-With this enhancement, annotators' selection is now centralized and intelligently retained across all IAA charts, ensuring a smoother and more consistent analysis experience. Individual charts also load their data when available.
+File import behavior has been updated to prevent users from starting a new import while another import is already in progress. Previously, users could trigger multiple imports simultaneously or reopen the file selection dialog, which could lead to confusion or inconsistent states.
+
+With this improvement, the system now ensures that only one import process runs at a time.
 
 **Technical Details:**
--   A **global annotators selector** has been introduced at the top of the Inter-Annotator Charts page.
--   The **global selection automatically applies to all IAA charts**, minimizing repeated manual input for IAA charts. 
--   A **default annotator** is pre-selected to simplify initial chart loading.
--   The selected annotator(s) are **retained across navigation and refresh**, improving continuity during analysis.
 
-![Pre-selected initial chart loading](/assets/images/annotation_lab/7.6.0/7.gif)
+-   File import actions remain **disabled** while an import is in progress.
+-   Users cannot open the **file selection dialog** until the current import completes.
+-   Import buttons are automatically **re-enabled** once the ongoing import finishes successfully.
+-   The restriction is handled entirely at the **UI level** to ensure a smooth and predictable experience.
+
+![77image](/assets/images/annotation_lab/7.7/10.gif)
 
 **User Benefits:**
-- **Consistent interactions:** Annotator selections persist across the entire IAA charts.
-- **Greater efficiency** — default pre-selection speeds up chart loading.
-- **Flexibility** – All charts can still be individually customized when needed.
-- **Smoother workflow:** Ideal for reviewing multiple charts quickly and efficiently.
-
-**Example Use Case:**  
-A project manager reviewing multiple Inter-Annotator charts selects Annotator A and Annotator B once using the new global selector, and all charts automatically update with this choice. The selection persists across all IAA charts, allowing fast and consistent comparison without repeated manual input.
-
-![Global selection automatically applies to IAA all charts](/assets/images/annotation_lab/7.6.0/8.gif)
-
-#### Improved Context Visibility in Prediction vs Ground Truth Comparison
-**What’s Improved:**  
-The Prediction vs Ground Truth comparison table now provides sentence-level context to make review and error analysis clearer and more intuitive. Previously, predictions and annotations were shown without surrounding text, making it harder for reviewers to understand where each token or label appeared in the original content.
-
-With this enhancement, a new **Context** column has been added to the comparison view, offering meaningful context for every prediction–ground truth pair.
-
-**Technical Details:**
--   A new **Context** column is displayed in the _Prediction vs Ground Truth_ table.    
--   When sentence boundaries are unavailable, the system automatically extracts a **±20-token context window** around the token.
--   The context column is available **both in the UI** and **in exported reports**, ensuring consistent review clarity across platforms.
-
-![760image](/assets/images/annotation_lab/7.6.0/9.gif)
-
-**User Benefits**
--   **Better Readability:** Reviewers can immediately understand the text surrounding a token or label. 
--   **Faster Error Analysis:** Context helps identify why certain prediction mismatches occurred.
-
-**Example Use Case:**  
-A reviewer checking mismatches can now see the sentence around each token, making it easier to understand whether the model’s prediction makes sense in context.
-
-#### More Meaningful Metrics
-**What’s Improved:** 
-The Analytics charts have been updated to deliver clearer, cleaner, and more user-friendly visualizations. Previously, charts showed floating-point values even when they weren’t meaningful, and some charts displayed auto-generated labels like _bar1_ or _chart2_, which created visual clutter.
-
-**Technical Details:**
--   Floating-point values now appear **only** on charts that display average-based metrics.
--   Unnecessary autogenerated labels such as _bar1_ and _chart2_ have been removed.
--   Units (e.g., **seconds, labels**) are now included in both the **tooltip** and **y-axis**, improving readability and context.
-
-![760image](/assets/images/annotation_lab/7.6.0/10.gif)
-
-**User Benefits**
--   **Cleaner charts:** Users can interpret visual data more quickly without distracting labels.
--   **Better consistency:** Only relevant charts show decimal values, reducing confusion.
--   **Improved clarity:** Units added to tooltips and axes make chart values more understandable at a glance.
+-   **Prevents accidental multiple imports** during long-running upload processes. 
+-   **Improves stability** by avoiding overlapping import operations.  
+-   **Clear user feedback** by visually disabling import actions until completion. 
+-   **Simpler workflow** with reduced chances of user error.
 
 **Example Use Case:**
+A user starts importing a large dataset into a project. While the import is processing, the file upload and import options remain disabled, preventing the user from starting another import until the current one completes successfully.
 
-A user reviewing project performance opens the _Task Completion Time_ chart. Previously, the chart showed long decimal values and confusing labels like _chart2_, making it harder to interpret. Now, the chart displays clean whole numbers with **“seconds”** clearly shown on the y-axis and tooltip, allowing the user to quickly understand the timing data without distractions.
-
-#### Choices Chart Now Shows Actual Provider Names
+### Pagination for Project List in Local Import and Export
 **What’s Improved:**  
-The Choices chart in Blind Evaluation Analytics now displays the **actual provider names** instead of generic labels like _Response 1, Response 2_, making it much easier for users to interpret which provider’s output was selected during evaluation.
+To improve stability and performance during local Import and Export operations, pagination has been introduced for the project selection list. This enhancement prevents issues caused by loading a large number of projects simultaneously and ensures a smoother workflow.
 
-**Technical Details:**
--   The chart now maps each choice directly to its **corresponding provider**, removing ambiguity.
--   Users no longer need to manually cross-reference response numbers with providers.
+Previously, all projects were loaded in a single view, which could lead to UI exceptions and performance degradation when handling large datasets.
 
-![760image](/assets/images/annotation_lab/7.6.0/11.png)
+**Technical Details**
+-   Pagination has been implemented for the project list displayed in **local Import** and **local Export** workflows.    
+-   Projects are now loaded in smaller, manageable batches instead of all at once.
+-   This change prevents UI exceptions and reduces memory and rendering overhead. 
+-   The behavior is applied consistently across both Import and Export flows.
+
+![77image](/assets/images/annotation_lab/7.7/11.gif)
 
 **User Benefits**
--   **Clearer Insights:** Users can instantly identify which provider was preferred.   
--   **Better Comparisons:** Makes evaluation patterns more meaningful and easier to analyze.
 
-**Example Use Case:**  
-A reviewer analyzing provider performance can now look at the Choices chart and immediately see that “OpenAI” or “Claude” was selected most often, instead of trying to decode which response number mapped to which provider. This makes evaluating provider quality faster and more accurate.
-
-### Support for Multiple Pie Charts Outside the Evaluation Block
-**What’s Improved:**  
-Previously, analytics could only render a single pie chart for elements placed outside the **Evaluation Block**, causing missing or incomplete visualizations in projects with custom configurations. This limitation made it difficult for users to analyze additional classification fields when positioned outside the evaluation structure.
-
-**Technical Details:**
--   The system now supports **multiple pie charts** even when they are defined outside the Evaluation Block.  
--   All classification elements placed outside the block are now correctly visualized as individual charts.    
--   Projects with custom analytics layouts can display all relevant charts without restriction.
-
-![760image](/assets/images/annotation_lab/7.6.0/12.gif)
-
-**User Benefits**
--   **Greater Flexibility:** Custom project configurations now work seamlessly with analytics.   
--   **More Complete Insights:** Users can view every classification chart without elements being skipped or overwritten.
-  
-**Example Use Case:**  
-A project using custom fields that are outside the Evaluation Block can now display a separate pie chart for each field. This allows reviewers to analyze all classification metrics without losing visibility due to previous single-chart limitations.
-
---- 
-
-### Clearer, More Clickable Role Options in Team Member Settings
-**What’s Improved:**  
-The Team Member page has been updated to make role options—**Annotator**, **Reviewer**, and **Manager**—clearly appear selectable. Previously, the light text styling made these roles look disabled or non-interactive, which created confusion for users assigning team roles.
-
-**Technical Details:**
--   Role options now use a **darker, more prominent text style**, making them clearly visible and intuitively clickable.
--   When a user is selected, the corresponding role text becomes even more distinct, giving immediate visual confirmation of selection.
-
-![760image](/assets/images/annotation_lab/7.6.0/13.gif)
-
-#### **User Benefits**
--   **Better Usability:** Users can now confidently identify which roles are interactive.
--   **Reduced Confusion:** The updated styling eliminates the impression that role checkboxes are disabled.
-
-### Credential Visibility Toggle Added for S3 and Azure Imports
-**What’s Improved:**  
-Users can now toggle the visibility of their S3 and Azure credentials during task import, making it easier to verify input values and avoid errors. Previously, credentials were always masked, which often led to mistakes that were difficult to detect.
-
-**Technical Details:**
--   An **eye icon** has been added to the S3 and Azure credential fields.
--   Users can **switch between hidden and visible text**, ensuring credentials are entered correctly.
--   Enhances clarity and reduces back-and-forth corrections during configuration.
-
-![760image](/assets/images/annotation_lab/7.6.0/14.gif)
+-   **Improved stability:** Prevents crashes and UI exceptions during Import/Export.  
+-   **Better performance:** Faster load times and smoother navigation.
+-   **Scalability:** Reliable handling of environments with a large number of projects.  
+-   **Enhanced user experience:** Cleaner, more responsive project selection interface.
     
+**Example Use Case**
+
+An admin managing hundreds of projects initiates a local export. Instead of loading all projects at once and encountering performance issues, the project list now loads page by page, allowing smooth selection and a successful export process.
+
+### Blind Evaluation Rating Experience Enhancements
+
+This release significantly improves the **rating experience in Blind Evaluation Comparison projects** by introducing a more compact, intuitive **star-based ratings widget**, improving usability on **low-resolution and zoomed-in screens**, and enforcing **rating immutability after submission** to prevent user confusion.
+
+Together, these updates deliver a clearer, more consistent, and more reliable evaluation workflow while preserving the integrity of submitted results.
+
+![77image](/assets/images/annotation_lab/7.7/12.png)
+
+**Technical Details**
+
+- **Star-Based Ratings Widget (Default)**
+  - Replaced the previous choice-based rating input with a **compact star-based selector**
+  - Enabled by default in **Blind Evaluation Comparison projects**
+  - Each star rating includes a **descriptive tooltip**, allowing evaluators to understand the meaning of each score without cluttering the UI
+  - Tooltip styling has been refined, including a **transparent background** for improved readability and visual consistency
+
+- **Responsive Single-Line Rating Layout**
+  - Ratings are now rendered on a **single line** in standard and moderately constrained screen resolutions
+  - Reduced excessive padding and visual weight of rating elements for a cleaner, more compact layout
+  - In **very low-resolution or heavily zoomed-in states**, multiline wrapping may still occur and is expected to maintain usability
+
+- **Immutable Ratings After Submission**
+  - Once a Blind Evaluation task is submitted, **ratings are locked and cannot be modified**
+  - Prevents scenarios where users could interact with ratings that could not be saved
+  - Ensures consistency between visible UI state and persisted evaluation data
+
 **User Benefits**
--   **Improved Usability:** Users can confirm the accuracy of credentials instantly.
--   **Fewer Input Errors:** Mis-typed keys are now easy to spot before submission.
 
-**Example Use Case:**  
-A user configuring task import for an S3 bucket can click the eye icon to briefly reveal the access key and confirm it’s typed correctly, preventing import failures caused by hidden credential typos.
+- **Clearer and faster evaluations** through an intuitive, compact star-based rating interface
+- **Reduced visual clutter** and improved readability, especially in constrained screen environments
+- **Improved confidence and trust** in the evaluation process by preventing misleading post-submission edits
+- **Consistent rating semantics** via tooltip-based descriptions without overloading the UI
 
-### Custom LLM Names Are Now Automatically Made Unique
-**What’s Improved:**  
-Users were previously able to create multiple custom LLMs with the same name, leading to confusion in the “Select LLM Response Providers” tab, where identical labels made it hard to tell providers apart.
+**Example Use Case**
 
-**Technical Details:**
--   The platform automatically assigns a unique sequential Custom name for every Custom LLM created(e.g., _Custom_1, Custom_2, Custom_3_).  
--   The system now checks for existing custom LLM names when a new one is created.
+An evaluator reviewing responses from multiple LLMs in a Blind Evaluation Comparison project rates each response using the new star-based widget. Hovering over the stars reveals concise descriptions that clarify the meaning of each score. On a laptop with limited screen resolution, all ratings remain aligned on a single line.
 
-![760image](/assets/images/annotation_lab/7.6.0/15.gif)
+
+### Analytics Dashboard Updates
+**What’s New**
+
+Version 7.7.0 introduces a set of visual and usability improvements to the **Analytics Dashboard**, making charts easier to read, more interactive, and more informative. These updates apply across analytics views and are not limited to a single project type.
+
+**Technical Details**
+
+- **Clearer Chart Context and Labels**
+  Analytics charts now include descriptive titles and subtitles, along with clearly labeled X-axis and Y-axis values. Tooltips have been added to the relevant charts throughout the dashboard to display additional details on hover, reducing ambiguity and improving interpretability.
+  
+![77image](/assets/images/annotation_lab/7.7/13.png)
+
+- **Improved Chart Types for Comparative Analysis**
+  In the **LLM Response Comparison** section, vertical bar charts have been replaced with horizontal grouped bar charts. This layout improves readability when comparing multiple models and labels. Bars representing zero values are now hidden to reduce visual noise and keep the focus on meaningful data.
+  
+![77image](/assets/images/annotation_lab/7.7/14.gif)
+
+- **Enhanced Interactive Visuals**
+  Donut charts across the Analytics page have been replaced with interactive pie charts. These charts respond to hover actions by highlighting individual segments and displaying relevant values, enabling more intuitive exploration of proportions and distributions.
+  
+![77image](/assets/images/annotation_lab/7.7/15.gif)
 
 **User Benefits**
--   **Improved Clarity:** Users can easily identify each custom LLM without encountering duplicate names.  
--   **Smoother Setup:** Reduces mistakes and confusion during project configuration.
 
-**Example Use Case:** 
+- Clearer understanding of analytics through improved titles, labels, and tooltips.
+- Better visual comparison across datasets, labels, and models.
+- Reduced clutter in charts by hiding zero-value data points.
+- More engaging analysis experience with interactive and responsive visuals.
 
-A user creating multiple custom LLMs now has a unique name automatically applied, making it easy to distinguish them in the Select LLM Response Providers tab. 
+**Example Use Case**
 
-### Prevent Multiple Sample Task Actions During Import
+A project manager opens the Analytics Dashboard to assess annotation quality and distribution across tasks. The updated charts immediately provide clearer context through improved labels and subtitles. Horizontal grouped bar charts make it easier to compare categories at a glance, while interactive pie charts allow the reviewer to hover over segments to see exact values. These improvements help the reviewer quickly identify patterns and insights, regardless of the underlying project type.
 
-**What’s Improved:**  
-The **Add Sample Task** button in Visual NER projects is now disabled while tasks are being imported. Previously, users could click the button repeatedly, affecting the application’s performance. A dialog box now alerts users that the task import is in progress.
+---
 
-**Technical Details:**
--   The Add Sample Task button is disabled during task import.
--   A dialog box informs the user that tasks are being imported.    
--   The button is re-enabled once the import completes.
+## Bug Fixes
 
-![760image](/assets/images/annotation_lab/7.6.0/16.gif)
+### Model & Training Issues
+- **Unable to Download Uploaded Models**
 
-**User Benefits:**
--   **Improved Stability:** Prevents repeated clicks from affecting the application.
--   **Clear Feedback:** Users are informed that the import is in progress.
+  Fixed an issue that prevented users from downloading previously uploaded models. Users can now successfully download uploaded models without encountering any errors.
 
-**Example Use Case:**  
-A user importing tasks into a Visual NER project can no longer click the Add Sample Task button multiple times. The dialog box confirms the import is in progress, preventing errors and confusion.
+- **Transfer Learning Failure for `ner_biomarker_langtest`**
 
-### Enable Left Navigation Bar Expansion on Hover
-**What’s Improved:**  
-The left navigation bar now expands automatically when users hover over it, making navigation faster and more intuitive. Previously, users had to click to open the menu, which added unnecessary steps during frequent navigation.
+  Resolved an issue where transfer learning failed when using the `ner_biomarker_langtest` model with the Healthcare license and the Include Base Model Labels option enabled. Training and pre-annotation are now complete successfully in the latest version without errors.
 
-**Technical Details:**
--   The navigation bar expands instantly when the cursor hovers over it and collapses smoothly when the cursor moves away.
--   No clicks are required, creating a more fluid and responsive interaction.
--   A subtle animation is applied to ensure a clean and polished transition.
+- **Unable to Deploy `distilbert_ner_distilbert_base_cased_finetuned_conll03_english` in Playground**  
 
-![760image](/assets/images/annotation_lab/7.6.0/17.gif)
+  Fixed an issue that prevented the deployment of the distilbert_ner_distilbert_base_cased_finetuned_conll03_english model in the Playground. The model can now be deployed and used successfully without any issues.
 
-#### **User Benefits**
--   **Faster Navigation:** Users can access menu items more quickly, especially during repetitive workflows.
--   **Better Usability:** The UI feels more responsive and reduces extra clicks.
+### UI / UX Fixes
 
-**Note:**  
-This functionality applies **only to the Customize Labels page and the Labelling page**.
+- **Models Hub Expands with Blank Area When Side Panel Is Minimized**
 
-### Bug Fixes
+  Resolved an issue where the Models Hub expanded with a blank area when accessed from a minimized side panel. This behavior has been fixed for both the Models Hub and Settings views.
 
-#### Labeling Page Issues
-- **Long Project Names Overlap in Breadcrumb Navigation**
+- **Support for Longer Prompt Names with Truncation and Hover Preview**
 
- Fixed an issue where long project names caused breadcrumb links to overlap or spill into adjacent navigation elements. Breadcrumbs now dynamically adjust and truncate appropriately, ensuring clean and readable navigation across all project types.
+  Improved prompt name handling to support longer names. Prompt names can now be saved with a maximum length of 100 characters. Long names are truncated with an ellipsis (`…`) where space is limited, and the full name is accessible via hover tooltip, ensuring no data loss.
 
-- **Pixelated Label Names in Visual NER Annotations**
+- **Selecting Tasks Unbolds “Tags” Dropdown Text**
 
- Resolved an issue where annotated label names in Visual NER tasks appeared blurry or pixelated. The annotation window now renders labels sharply, improving clarity and overall annotation accuracy.
+  Fixed an issue where selecting tasks caused the “Tags” dropdown label to lose its bold styling. The label now remains consistently bold regardless of task selection state.
 
-- **“Annotation Guidelines” Shown for Projects Without Labels**
+- **Full-Screen View Overlap in Individual Sections**
 
- Previously, the Annotation Guidelines toggle appeared for all project types, including those without label definitions. The toggle is now shown only when at least one label includes annotation instructions, ensuring a cleaner and more relevant user interface.
+  Resolved layout issues where the full-screen view overlapped with left-side sections and action buttons were misaligned or non-functional. The full-screen view is now clean, and the Save, Next, and Previous buttons are properly aligned and function as expected.
 
-- **Gestures Allowed Zooming Into Blank Spaces**
+- **Error When Editing or Cloning Predictions with Confidence Scores Enabled**
 
- Fixed an issue where gesture-based zooming allowed users to zoom into empty or whitespace areas, particularly in PDF and image-based projects. The zoom behavior now correctly focuses only on valid content regions across all project types.
+  Fixed an issue where users were redirected to a “`Something Went Wrong`” page when editing or cloning predictions in Visual NER projects with Show Confidence Score in Regions enabled. Predictions can now be edited or cloned successfully without any errors.
 
-- **Discrepancy in Visual NER After Labeling Multiline Tokens**
+### Project & Task Import/Export
+- **Zipped Audio and Video Files Not Imported**
 
- Addressed a discrepancy where multiline token annotations displayed or behaved inconsistently in Visual NER projects. Multiline annotations now render and behave as expected across all scenarios.
+  Fixed an issue where ZIP files containing audio and video tasks were processed, but showed 0 tasks imported in the logs. Zipped audio and video files now import correctly, and all valid tasks within the ZIP are successfully processed.
 
-- **Annotation Guidelines Hidden on Smaller Screens**
+- **First Attempt to Import Zipped Tasks from S3 with Session Token Fails**
 
- Resolved a layout issue where the Annotation Guidelines section was clipped or hidden on smaller screens. The section now responds appropriately to screen size and remains fully visible.
+  Resolved an issue where importing zipped tasks from S3 using a session token failed on the first attempt but succeeded on subsequent retries. The import now works reliably on the first attempt when using a session token.
 
-- **UI Error When Interchanging Labels and Regions in Side-by-Side Projects**
+- **Unable to Import Tasks Exported with “Exclude Tasks Without Completions” in Visual NER Projects**
 
-Fixed a UI error that occurred when users interchanged labels and regions on the labeling page for side-by-side projects. The page now renders correctly and supports smooth interaction with no functional disruptions.
+  Fixed an issue where tasks exported using the Exclude tasks without completions option could not be re-imported into Visual NER projects. These exported tasks can now be imported successfully without errors.
 
-- **Deleting the First Annotation Removes Overlapping Annotations in HTML Projects**
+- **Drag-and-Drop Import Issues Causing Missing or Duplicate Imports**
 
- Fixed an issue in HTML projects where deleting an annotation inadvertently would remove overlapping annotations. Additional issues were also addressed: Users can now annotate across multiple paragraphs, and they can simultaneously annotate text and HTML tags.
+  Addressed issues in the drag-and-drop import workflow where files were not imported via the confirmation pop-up and, in some cases, were imported multiple times after a single drop action. The drag-and-drop import now functions correctly, importing files only once and confirming successful uploads via the pop-up.
 
-- **Annotation Guidelines Button Hidden When Multiple Annotations Are Listed**
+- **Unable to Re-Import Tasks in Blind Evaluation Projects**
 
- Fixed an issue where the Annotation Guidelines button became hidden when a long list of annotations was present. The button now remains consistently visible regardless of the number of annotations.
+  Fixed an issue where re-importing previously exported tasks in Blind Evaluation projects resulted in an internal server error. Users can now delete and re-import tasks without any issues.
 
-- **Unable to Configure Zoom Tag for B-Box Projects**
+### Analytics / Dashboard
+- **Incomplete Analytics Chart Data on Initial Load for Large Projects**
 
- Resolved an issue preventing users from configuring the `<zoom>` tag in B-Box (Bounding Box) project types. The zoom configuration now works correctly across B-Box and other supported project types, enabling proper zoom functionality during annotation.
+  Resolved an issue where Analytics charts for large projects loaded partially on the first view during the backend processing. The Analytics page now displays a banner stating “`This page will be updated in a few minutes. Please wait to see the latest data…`” while data is loading, and automatically refreshes to display complete charts once processing is finished.
 
-- **Search Not Working in Visual NER Task Labeling Page**
+- **Previous Project’s Analytics Briefly Displayed When Switching Projects**
 
- The search function on the Visual NER task labeling page was not returning results. The issue has been fixed, and users can now successfully search for text within Visual NER tasks.
+  Fixed an issue where analytics data from a previously viewed project briefly appeared when switching between projects. Analytics now load cleanly for the selected project without showing outdated or incorrect data.
 
-- **Unable to Modify Token Labels Without Deleting Them in Blind Evaluation Projects**
+### Annotation & Labeling
+- **Incorrect Display of Overlapping Annotations in HTML Projects**
 
-Fixed an issue where users could not modify labels on tokens without deleting them first in Blind Evaluation projects. Token labels can now be updated directly, improving annotation efficiency and usability.
+  Fixed an issue where labeled text was displayed incorrectly when annotations overlapped in HTML projects. Overlapping annotations now render with the correct label text and color, ensuring accurate visual representation.
 
-#### UI Issues
-- **Tasks per Page Field Overflows with Large Input**
+- **Region Annotated Without Label When Selected Before Label in B-Box Projects**
 
- Fixed an issue where entering large values (e.g., over 9 digits) in the Tasks per Page field caused overflow, unexpected UI behavior, and pagination instability. The input is now capped at a maximum value of 200, preventing overflow, UI freezing, and maintaining smooth pagination performance.
+  Resolved an issue where creating a bounding box by selecting the region before choosing a label resulted in unlabeled regions and annotation errors. Regions are now automatically associated with the selected label at the time of creation, providing consistent behavior similar to Visual NER projects.
 
-- **Unable to Erase First Character in Input Field for Custom LLM due to Space Validator**
+- **Unable to Modify Overlapping Labels in NER Project Tasks**
 
- Resolved an issue where users were prevented from deleting the first character in custom LLM input fields because the space validator misinterpreted the action as invalid. Users can now freely delete or modify the first character without restrictions.
+  Fixed an issue that required users to delete overlapping annotations before modifying them. Users can now edit overlapping labels directly in NER project tasks without deleting existing annotations.
 
-- **Labels Selection Triggers by Hotkeys While Entering Custom Value in Characters per Page**
+- **Annotations Reappear After Re-Import in Blind Evaluation Projects**
 
- Addressed an issue where label-selection hotkeys were unintentionally triggered while typing inside the Characters per Page field. Hotkeys are now automatically disabled during input, preventing accidental label selection.
+  Addressed an issue where previously deleted annotations reappeared when a task was deleted and re-imported in Blind Evaluation projects. Re-imported tasks now correctly appear as fresh, unannotated tasks.
 
-- **Benchmark Button Active When No Benchmark Data Is Available**
+- **Vertical Scrolling Not Working in De-Identification Compare View**
 
-Previously, the Benchmark button remained enabled even when no benchmark data existed, leading to errors when clicked. The Benchmark button is now hidden when benchmark data is unavailable, preventing invalid interactions and ensuring a clean user experience.
+  Fixed an issue that prevented vertical scrolling in the De-Identification compare task view.  Users can now scroll through the full content, and the same fix applies to NER project types.
 
-- **“Something Went Wrong” Error When Generating Templatic Augmentation Using OpenAI**
+### System Fixes
+- **User Redirected to Project Screen After Session Timeout and Refresh**
 
- Fixed an issue where generating templatic augmentation tasks with the OpenAI model redirected users to a generic error page. Users can now generate templatic augmentation tasks successfully without encountering the error page.
+  Resolved an issue where refreshing the page after a session timeout redirected users to the Project screen, causing loss of context.  After re-authentication, users are now returned to the same screen they were previously working on.
 
-- **Unable to Import Augmented Tasks**
+- **Duplicate Default Names for Custom Service Providers in LLM Comparison Projects**
 
-Resolved a backend validation error that prevented users from importing augmented tasks, resulting in an error toast message during the import process.
-Augmented tasks now import correctly with no errors or interruptions.
+  Fixed an issue where default names for custom service providers were duplicated when adding multiple providers. Default names now increment correctly, ensuring each provider has a unique name.
 
-- **“Tasks Uploaded Successfully” Dialog Not Shown During Subsequent Cloud Import**
+- **Internal Server Error When Switching Project Type After Importing Image B-Box Tasks**
 
- Fixed an issue where the success dialog failed to appear during repeated cloud imports. The confirmation dialog now appears reliably for every import attempt, and validation messages correctly display when credentials are missing.
+  Resolved an issue where switching project types after importing Image B-Box tasks caused an internal server error due to processing mismatches.  Users can now switch to compatible image-based project types and open previously imported tasks without errors.
 
-- **Missing Error Message When Generating Templatic Augmentation Without Annotations**
+- **Training Banner Not Showing Training Stages Consistently**
 
- Previously, no pop-up message was shown when users attempted to generate templatic augmentation tasks without any annotated labels. The system now displays a clear and informative error message, ensuring users understand why the action cannot proceed.
- 
-#### System Errors
+  Fixed an issue where the training banner intermittently failed to display training stages after a training session started. The training information bar is now always visible and consistently shows the training stages.
 
-- **Admin User Unable to Disable an Existing User Account**
+- **Project Permissions Removed After Export in Visual NER De-Identification Projects** 
 
- Fixed an issue where admin users were unable to disable an existing user account due to an error being thrown during the action. Admins can now successfully disable user accounts, and disabled users are correctly prevented from accessing the application.
+  Resolved an issue where exporting tasks removed user permissions in Visual NER De-Identification projects. Project permissions are now preserved after export, and users retain proper access rights.
 
-- **Missing Success Popup After LLM Integration**
+---
 
- Previously, no confirmation pop-up appeared after successfully integrating an LLM, leaving users unsure whether the process was completed correctly. But now, after a successful LLM integration, a validation pop-up stating “New service provider added” is displayed, confirming successful integration.
-
-- **Error When Creating New Section-Based Rules**
-
- Users were redirected to a “Something went wrong” error page when attempting to create new rules under Relevant Sections in project configuration. The issue has been resolved, and users can now create section-based rules without any errors.
-
-- **Blank Page When Modifying Member Order in a Project**
-
- Fixed an issue where users were redirected to a blank page after altering the order of members in a project's team settings. Users can now reorder project members successfully, and changes are saved correctly without triggering any UI or API errors.
-
-- **“License in Use” Message Not Displayed for Floating License Conflicts**
-
- The “License in use” message was not shown when floating licenses were used across multiple instances, covering scenarios such as: De-identification pipeline used with Visual Classification or OCR/Visual NER models; NER model used with Visual Classification or OCR/Visual NER models. This behavior has now been fixed. The UI correctly displays the “License in use” message in all relevant scenarios, ensuring users are informed of licensing conflicts.
-
-- **Notification Indicator Visible for Supervisor Even When No Requests Are Pending**
-
- Fixed an issue where the notification indicator in the Request Center remained active for Supervisor users despite having no pending requests. Since the Request Center is read-only for Supervisor roles, the notification indicator is now correctly hidden, ensuring the UI reflects the actual request status.
-
-
-
-<div class="h3-box" markdown="1">
 
 
 ## Versions
@@ -456,7 +433,8 @@ Augmented tasks now import correctly with no errors or interruptions.
 </div>
 
 <ul class="pagination owl-carousel pagination_big">
-    <li class="active"><a href="annotation_labs_releases/release_notes_7_6_0">7.6.0</a></li>
+    <li class="active"><a href="annotation_labs_releases/release_notes_7_7">7.7</a></li>
+    <li><a href="annotation_labs_releases/release_notes_7_5_1">7.6.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_7_5_1">7.5.1</a></li>
     <li><a href="annotation_labs_releases/release_notes_7_5_0">7.5.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_7_3_3">7.4.0</a></li>

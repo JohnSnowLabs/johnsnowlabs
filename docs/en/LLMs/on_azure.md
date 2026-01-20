@@ -23,8 +23,6 @@ The list below shows John Snow Labs' Medical LLM models available on Azure marke
 
 [Medical LLM - 14B](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.medical_llm_14b?tab=Overview)
 
-[Medical LLM - 8B](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.medical_llm_7b?tab=Overview)
-
 [Medical Reasoning LLM - 32B](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.medical_reasoning_llm_32b?tab=Overview)
 
 [Medical Spanish LLM - 24B](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.spanish_medical_llm_24b?tab=Overview)
@@ -70,7 +68,7 @@ Use this endpoint for multi-turn conversational interactions (e.g., clinical ass
 
 ```python
 payload = {
-    "model": "Medical-LLM-8B",
+    "model": "Medical-LLM-Small",
     "messages": [
         {"role": "system", "content": "You are a professional medical assistant"},
         {"role": "user", "content": "Explain symptoms of chronic fatigue syndrome"}
@@ -88,7 +86,7 @@ Use this endpoint for single-turn prompts or generating long-form medical text.
 - **Example Request**:
 ```python
 payload = {
-    "model": "Medical-LLM-8B",
+    "model": "Medical-LLM-Small",
     "prompt": "Provide a detailed explanation of rheumatoid arthritis treatment",
     "temperature": 0.7,
     "max_tokens": 4096
