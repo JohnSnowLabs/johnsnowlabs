@@ -47,7 +47,7 @@ tokenizer = Tokenizer() \
     .setOutputCol("token")
 
 tokenClassifier = RoBertaForTokenClassification \
-    .pretrained("roberta_procedure_ner_es_onnx", "en", "clinical/models") \
+    .pretrained("roberta_procedure_ner_es_onnx", "es", "clinical/models") \
     .setInputCols(["document", "token"]) \
     .setOutputCol("ner")
 
@@ -84,7 +84,7 @@ tokenizer = nlp.Tokenizer() \
     .setOutputCol("token")
 
 tokenClassifier = nlp.RoBertaForTokenClassification \
-    .pretrained("roberta_procedure_ner_es_onnx", "en", "clinical/models") \
+    .pretrained("roberta_procedure_ner_es_onnx", "es", "clinical/models") \
     .setInputCols(["document", "token"]) \
     .setOutputCol("ner")
 
@@ -122,7 +122,7 @@ val tokenizer = new Tokenizer()
   .setOutputCol("token")
 
 val tokenClassifier = RoBertaForTokenClassification
-  .pretrained("roberta_procedure_ner_es_onnx", "en", "clinical/models")
+  .pretrained("roberta_procedure_ner_es_onnx", "es", "clinical/models")
   .setInputCols(Array("document", "token"))
   .setOutputCol("ner")
 
