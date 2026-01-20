@@ -1,5 +1,536 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2026-01-19T09:16:11+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
-</subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">Complete OMOP Pipeline for Entity Extraction and Assertion Status</title><link href="/2026/01/16/omop_ner_assertion_pipeline_en.html" rel="alternate" type="text/html" title="Complete OMOP Pipeline for Entity Extraction and Assertion Status" /><published>2026-01-16T00:00:00+00:00</published><updated>2026-01-16T00:00:00+00:00</updated><id>/2026/01/16/omop_ner_assertion_pipeline_en</id><content type="html" xml:base="/2026/01/16/omop_ner_assertion_pipeline_en.html">## Description
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2026-01-20T12:31:01+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
+</subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">Disease Named Entity Recognition Italian (Base, ONNX)</title><link href="/2026/01/20/bert_token_classifier_disease_ner_it_onnx_it.html" rel="alternate" type="text/html" title="Disease Named Entity Recognition Italian (Base, ONNX)" /><published>2026-01-20T00:00:00+00:00</published><updated>2026-01-20T00:00:00+00:00</updated><id>/2026/01/20/bert_token_classifier_disease_ner_it_onnx_it</id><content type="html" xml:base="/2026/01/20/bert_token_classifier_disease_ner_it_onnx_it.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;p&gt;This is a BERT-based NER model for Italian medical text. It identifies disease mentions in clinical sentences and labels them using B-DISEASE, I-DISEASE, or O. The model is intended for extracting disease names from notes, reports, and diagnoses, and is provided in ONNX format for efficient inference.&lt;/p&gt;
+
+&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
+&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/bert_token_classifier_disease_ner_it_onnx_it_6.2.0_3.4_1768900384936.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
+&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/bert_token_classifier_disease_ner_it_onnx_it_6.2.0_3.4_1768900384936.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+
+&lt;div class=&quot;tabs-box&quot;&gt;
+  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;strong&gt;Healthcare NLP&lt;/strong&gt;&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;Python&lt;strong&gt;JohnSnowLabs&lt;/strong&gt;&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
+  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp.base&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp_jsl.annotator&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pyspark.ml&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;documentAssembler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;tokenClassifier&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MedicalBertForTokenClassifier&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;bert_token_classifier_disease_ner_it_onnx&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;it&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;converter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NerConverterInternal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;ner&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner_chunk&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;documentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;tokenClassifier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;converter&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Il paziente è stato diagnosticato con diabete e ipertensione.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;selectExpr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;explode(ner_chunk) as chunk&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;selectExpr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&quot;chunk.result as text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&quot;chunk.metadata['entity'] as entity&quot;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;truncate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+
+  &lt;div class=&quot;language-python jsl-block highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;johnsnowlabs&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;medical&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;documentAssembler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;tokenClassifier&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;medical&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MedicalBertForTokenClassifier&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;bert_token_classifier_disease_ner_it_onnx&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;it&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;converter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NerConverterInternal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;ner&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner_chunk&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;documentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;tokenClassifier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;converter&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Il paziente è stato diagnosticato con diabete e ipertensione.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;selectExpr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;explode(ner_chunk) as chunk&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;selectExpr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&quot;chunk.result as text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&quot;chunk.metadata['entity'] as entity&quot;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;truncate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.base._&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.annotators._&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.apache.spark.ml.Pipeline&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;documentAssembler&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;tokenizer&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Tokenizer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;tokenClassifier&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MedicalBertForTokenClassifier&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;bert_token_classifier_disease_ner_it_onnx&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;it&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;converter&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;NerConverter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;ner&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner_chunk&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setStages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;documentAssembler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;tokenClassifier&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;converter&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Seq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Il paziente è stato diagnosticato con diabete e ipertensione.&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;nv&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;selectExpr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;explode(ner_chunk) as chunk&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;selectExpr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;chunk.result as text&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;chunk.metadata['entity'] as entity&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
++------------+-------+
+|text        |entity |
++------------+-------+
+|diabete     |DISEASE|
+|ipertensione|DISEASE|
++------------+-------+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+
+&lt;table class=&quot;table-model&quot;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Model Name:&lt;/td&gt;
+      &lt;td&gt;bert_token_classifier_disease_ner_it_onnx&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Compatibility:&lt;/td&gt;
+      &lt;td&gt;Healthcare NLP 6.2.0+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;License:&lt;/td&gt;
+      &lt;td&gt;Licensed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Edition:&lt;/td&gt;
+      &lt;td&gt;Official&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Input Labels:&lt;/td&gt;
+      &lt;td&gt;[token, sentence]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Output Labels:&lt;/td&gt;
+      &lt;td&gt;[ner]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Language:&lt;/td&gt;
+      &lt;td&gt;it&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Size:&lt;/td&gt;
+      &lt;td&gt;441.5 MB&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Case sensitive:&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Max sentence length:&lt;/td&gt;
+      &lt;td&gt;128&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</content><author><name>John Snow Labs</name></author><category term="medical" /><category term="clinical" /><category term="bert" /><category term="ner" /><category term="it" /><category term="licensed" /><category term="onnx" /><summary type="html">Description This is a BERT-based NER model for Italian medical text. It identifies disease mentions in clinical sentences and labels them using B-DISEASE, I-DISEASE, or O. The model is intended for extracting disease names from notes, reports, and diagnoses, and is provided in ONNX format for efficient inference. Live Demo Open in Colab Download Copy S3 URI How to use PythonHealthcare NLPPythonJohnSnowLabsScalaNLU from sparknlp.base import * from sparknlp_jsl.annotator import * from pyspark.ml import Pipeline documentAssembler = DocumentAssembler() \ .setInputCol(&quot;text&quot;) \ .setOutputCol(&quot;document&quot;) tokenizer = Tokenizer() \ .setInputCols(&quot;document&quot;) \ .setOutputCol(&quot;token&quot;) tokenClassifier = MedicalBertForTokenClassifier \ .pretrained(&quot;bert_token_classifier_disease_ner_it_onnx&quot;, &quot;it&quot;, &quot;clinical/models&quot;) \ .setInputCols([&quot;document&quot;, &quot;token&quot;]) \ .setOutputCol(&quot;ner&quot;) converter = NerConverterInternal() \ .setInputCols([&quot;document&quot;, &quot;token&quot;, &quot;ner&quot;]) \ .setOutputCol(&quot;ner_chunk&quot;) pipeline = Pipeline(stages=[ documentAssembler, tokenizer, tokenClassifier, converter ]) data = spark.createDataFrame([[&quot;Il paziente è stato diagnosticato con diabete e ipertensione.&quot;]]).toDF(&quot;text&quot;) result = pipeline.fit(data).transform(data) result.selectExpr(&quot;explode(ner_chunk) as chunk&quot;).selectExpr( &quot;chunk.result as text&quot;, &quot;chunk.metadata['entity'] as entity&quot; ).show(truncate=False) from johnsnowlabs import nlp, medical documentAssembler = nlp.DocumentAssembler() \ .setInputCol(&quot;text&quot;) \ .setOutputCol(&quot;document&quot;) tokenizer = nlp.Tokenizer() \ .setInputCols(&quot;document&quot;) \ .setOutputCol(&quot;token&quot;) tokenClassifier = medical.MedicalBertForTokenClassifier \ .pretrained(&quot;bert_token_classifier_disease_ner_it_onnx&quot;, &quot;it&quot;, &quot;clinical/models&quot;) \ .setInputCols([&quot;document&quot;, &quot;token&quot;]) \ .setOutputCol(&quot;ner&quot;) converter = nlp.NerConverterInternal() \ .setInputCols([&quot;document&quot;, &quot;token&quot;, &quot;ner&quot;]) \ .setOutputCol(&quot;ner_chunk&quot;) pipeline = nlp.Pipeline(stages=[ documentAssembler, tokenizer, tokenClassifier, converter ]) data = spark.createDataFrame([[&quot;Il paziente è stato diagnosticato con diabete e ipertensione.&quot;]]).toDF(&quot;text&quot;) result = pipeline.fit(data).transform(data) result.selectExpr(&quot;explode(ner_chunk) as chunk&quot;).selectExpr( &quot;chunk.result as text&quot;, &quot;chunk.metadata['entity'] as entity&quot; ).show(truncate=False) import com.johnsnowlabs.nlp.base._ import com.johnsnowlabs.nlp.annotators._ import org.apache.spark.ml.Pipeline val documentAssembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val tokenizer = new Tokenizer() .setInputCols(Array(&quot;document&quot;)) .setOutputCol(&quot;token&quot;) val tokenClassifier = MedicalBertForTokenClassifier .pretrained(&quot;bert_token_classifier_disease_ner_it_onnx&quot;, &quot;it&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;document&quot;, &quot;token&quot;)) .setOutputCol(&quot;ner&quot;) val converter = new NerConverter() .setInputCols(Array(&quot;document&quot;, &quot;token&quot;, &quot;ner&quot;)) .setOutputCol(&quot;ner_chunk&quot;) val pipeline = new Pipeline().setStages(Array( documentAssembler, tokenizer, tokenClassifier, converter )) val data = Seq(&quot;Il paziente è stato diagnosticato con diabete e ipertensione.&quot;).toDF(&quot;text&quot;) val result = pipeline.fit(data).transform(data) result.selectExpr(&quot;explode(ner_chunk) as chunk&quot;) .selectExpr(&quot;chunk.result as text&quot;, &quot;chunk.metadata['entity'] as entity&quot;) .show(false) Results +------------+-------+ |text |entity | +------------+-------+ |diabete |DISEASE| |ipertensione|DISEASE| +------------+-------+ Model Information Model Name: bert_token_classifier_disease_ner_it_onnx Compatibility: Healthcare NLP 6.2.0+ License: Licensed Edition: Official Input Labels: [token, sentence] Output Labels: [ner] Language: it Size: 441.5 MB Case sensitive: true Max sentence length: 128</summary></entry><entry><title type="html">Medical Named Entity Recognition Italian (Base, ONNX)</title><link href="/2026/01/20/bert_token_classifier_medical_ner_it_onnx_it.html" rel="alternate" type="text/html" title="Medical Named Entity Recognition Italian (Base, ONNX)" /><published>2026-01-20T00:00:00+00:00</published><updated>2026-01-20T00:00:00+00:00</updated><id>/2026/01/20/bert_token_classifier_medical_ner_it_onnx_it</id><content type="html" xml:base="/2026/01/20/bert_token_classifier_medical_ner_it_onnx_it.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;p&gt;This is a BERT-based NER model for Italian medical text. It detects medication names in clinical sentences and labels them using B-MEDICATION, I-MEDICATION, or O. The model is intended for extracting drug mentions from notes, reports, and prescriptions, and is provided in ONNX format for efficient inference.&lt;/p&gt;
+
+&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
+&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/bert_token_classifier_medical_ner_it_onnx_it_6.2.0_3.4_1768899517390.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
+&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/bert_token_classifier_medical_ner_it_onnx_it_6.2.0_3.4_1768899517390.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+
+&lt;div class=&quot;tabs-box&quot;&gt;
+  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;strong&gt;Healthcare NLP&lt;/strong&gt;&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;Python&lt;strong&gt;JohnSnowLabs&lt;/strong&gt;&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
+  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp.base&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp_jsl.annotator&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pyspark.ml&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;documentAssembler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;tokenClassifier&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MedicalBertForTokenClassifier&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;bert_token_classifier_medical_ner_it_onnx&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;it&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;converter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NerConverterInternal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;ner&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner_chunk&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;documentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;tokenClassifier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;converter&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Il paziente assume aspirina e ibuprofene ogni giorno per il dolore.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;selectExpr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;explode(ner_chunk) as chunk&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;selectExpr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&quot;chunk.result as text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&quot;chunk.metadata['entity'] as entity&quot;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;truncate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+
+  &lt;div class=&quot;language-python jsl-block highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;johnsnowlabs&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;medical&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;documentAssembler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;tokenClassifier&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;medical&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MedicalBertForTokenClassifier&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;bert_token_classifier_medical_ner_it_onnx&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;it&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;converter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NerConverterInternal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;ner&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner_chunk&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;documentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;tokenClassifier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;converter&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Il paziente assume aspirina e ibuprofene ogni giorno per il dolore.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;selectExpr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;explode(ner_chunk) as chunk&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;selectExpr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&quot;chunk.result as text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&quot;chunk.metadata['entity'] as entity&quot;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;truncate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.base._&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.annotators._&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.apache.spark.ml.Pipeline&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;documentAssembler&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;tokenizer&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Tokenizer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;tokenClassifier&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MedicalBertForTokenClassifier&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;bert_token_classifier_medical_ner_it_onnx&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;it&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;converter&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;NerConverter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;ner&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner_chunk&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setStages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;documentAssembler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;tokenClassifier&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;converter&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Seq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Il paziente assume aspirina e ibuprofene ogni giorno per il dolore.&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;nv&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;selectExpr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;explode(ner_chunk) as chunk&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;selectExpr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;chunk.result as text&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;chunk.metadata['entity'] as entity&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
++----------+----------+
+|text      |entity    |
++----------+----------+
+|aspirina  |MEDICATION|
+|ibuprofene|MEDICATION|
++----------+----------+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+
+&lt;table class=&quot;table-model&quot;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Model Name:&lt;/td&gt;
+      &lt;td&gt;bert_token_classifier_medical_ner_it_onnx&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Compatibility:&lt;/td&gt;
+      &lt;td&gt;Healthcare NLP 6.2.0+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;License:&lt;/td&gt;
+      &lt;td&gt;Licensed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Edition:&lt;/td&gt;
+      &lt;td&gt;Official&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Input Labels:&lt;/td&gt;
+      &lt;td&gt;[token, sentence]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Output Labels:&lt;/td&gt;
+      &lt;td&gt;[ner]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Language:&lt;/td&gt;
+      &lt;td&gt;it&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Size:&lt;/td&gt;
+      &lt;td&gt;441.5 MB&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Case sensitive:&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Max sentence length:&lt;/td&gt;
+      &lt;td&gt;128&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</content><author><name>John Snow Labs</name></author><category term="medical" /><category term="clinical" /><category term="bert" /><category term="ner" /><category term="it" /><category term="licensed" /><category term="onnx" /><summary type="html">Description This is a BERT-based NER model for Italian medical text. It detects medication names in clinical sentences and labels them using B-MEDICATION, I-MEDICATION, or O. The model is intended for extracting drug mentions from notes, reports, and prescriptions, and is provided in ONNX format for efficient inference. Live Demo Open in Colab Download Copy S3 URI How to use PythonHealthcare NLPPythonJohnSnowLabsScalaNLU from sparknlp.base import * from sparknlp_jsl.annotator import * from pyspark.ml import Pipeline documentAssembler = DocumentAssembler() \ .setInputCol(&quot;text&quot;) \ .setOutputCol(&quot;document&quot;) tokenizer = Tokenizer() \ .setInputCols(&quot;document&quot;) \ .setOutputCol(&quot;token&quot;) tokenClassifier = MedicalBertForTokenClassifier \ .pretrained(&quot;bert_token_classifier_medical_ner_it_onnx&quot;, &quot;it&quot;, &quot;clinical/models&quot;) \ .setInputCols([&quot;document&quot;, &quot;token&quot;]) \ .setOutputCol(&quot;ner&quot;) converter = NerConverterInternal() \ .setInputCols([&quot;document&quot;, &quot;token&quot;, &quot;ner&quot;]) \ .setOutputCol(&quot;ner_chunk&quot;) pipeline = Pipeline(stages=[ documentAssembler, tokenizer, tokenClassifier, converter ]) data = spark.createDataFrame([[&quot;Il paziente assume aspirina e ibuprofene ogni giorno per il dolore.&quot;]]).toDF(&quot;text&quot;) result = pipeline.fit(data).transform(data) result.selectExpr(&quot;explode(ner_chunk) as chunk&quot;).selectExpr( &quot;chunk.result as text&quot;, &quot;chunk.metadata['entity'] as entity&quot; ).show(truncate=False) from johnsnowlabs import nlp, medical documentAssembler = nlp.DocumentAssembler() \ .setInputCol(&quot;text&quot;) \ .setOutputCol(&quot;document&quot;) tokenizer = nlp.Tokenizer() \ .setInputCols(&quot;document&quot;) \ .setOutputCol(&quot;token&quot;) tokenClassifier = medical.MedicalBertForTokenClassifier \ .pretrained(&quot;bert_token_classifier_medical_ner_it_onnx&quot;, &quot;it&quot;, &quot;clinical/models&quot;) \ .setInputCols([&quot;document&quot;, &quot;token&quot;]) \ .setOutputCol(&quot;ner&quot;) converter = nlp.NerConverterInternal() \ .setInputCols([&quot;document&quot;, &quot;token&quot;, &quot;ner&quot;]) \ .setOutputCol(&quot;ner_chunk&quot;) pipeline = nlp.Pipeline(stages=[ documentAssembler, tokenizer, tokenClassifier, converter ]) data = spark.createDataFrame([[&quot;Il paziente assume aspirina e ibuprofene ogni giorno per il dolore.&quot;]]).toDF(&quot;text&quot;) result = pipeline.fit(data).transform(data) result.selectExpr(&quot;explode(ner_chunk) as chunk&quot;).selectExpr( &quot;chunk.result as text&quot;, &quot;chunk.metadata['entity'] as entity&quot; ).show(truncate=False) import com.johnsnowlabs.nlp.base._ import com.johnsnowlabs.nlp.annotators._ import org.apache.spark.ml.Pipeline val documentAssembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val tokenizer = new Tokenizer() .setInputCols(Array(&quot;document&quot;)) .setOutputCol(&quot;token&quot;) val tokenClassifier = MedicalBertForTokenClassifier .pretrained(&quot;bert_token_classifier_medical_ner_it_onnx&quot;, &quot;it&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;document&quot;, &quot;token&quot;)) .setOutputCol(&quot;ner&quot;) val converter = new NerConverter() .setInputCols(Array(&quot;document&quot;, &quot;token&quot;, &quot;ner&quot;)) .setOutputCol(&quot;ner_chunk&quot;) val pipeline = new Pipeline().setStages(Array( documentAssembler, tokenizer, tokenClassifier, converter )) val data = Seq(&quot;Il paziente assume aspirina e ibuprofene ogni giorno per il dolore.&quot;).toDF(&quot;text&quot;) val result = pipeline.fit(data).transform(data) result.selectExpr(&quot;explode(ner_chunk) as chunk&quot;) .selectExpr(&quot;chunk.result as text&quot;, &quot;chunk.metadata['entity'] as entity&quot;) .show(false) Results +----------+----------+ |text |entity | +----------+----------+ |aspirina |MEDICATION| |ibuprofene|MEDICATION| +----------+----------+ Model Information Model Name: bert_token_classifier_medical_ner_it_onnx Compatibility: Healthcare NLP 6.2.0+ License: Licensed Edition: Official Input Labels: [token, sentence] Output Labels: [ner] Language: it Size: 441.5 MB Case sensitive: true Max sentence length: 128</summary></entry><entry><title type="html">Procedures Named Entity Recognition Italian (Base, ONNX)</title><link href="/2026/01/20/bert_token_classifier_procedure_ner_it_onnx_it.html" rel="alternate" type="text/html" title="Procedures Named Entity Recognition Italian (Base, ONNX)" /><published>2026-01-20T00:00:00+00:00</published><updated>2026-01-20T00:00:00+00:00</updated><id>/2026/01/20/bert_token_classifier_procedure_ner_it_onnx_it</id><content type="html" xml:base="/2026/01/20/bert_token_classifier_procedure_ner_it_onnx_it.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;p&gt;This is a BERT-based NER model for Italian medical text. It identifies medical procedures in clinical sentences and labels them using B-PROCEDURE, I-PROCEDURE, or O. The model is intended for extracting procedure names from notes, reports, and clinical records, and is provided in ONNX format for efficient inference.&lt;/p&gt;
+
+&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
+&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/bert_token_classifier_procedure_ner_it_onnx_it_6.2.0_3.4_1768903212282.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
+&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/bert_token_classifier_procedure_ner_it_onnx_it_6.2.0_3.4_1768903212282.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+
+&lt;div class=&quot;tabs-box&quot;&gt;
+  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;strong&gt;Healthcare NLP&lt;/strong&gt;&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;Python&lt;strong&gt;JohnSnowLabs&lt;/strong&gt;&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
+  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp.base&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp_jsl.annotator&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pyspark.ml&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;documentAssembler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;tokenClassifier&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MedicalBertForTokenClassifier&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;bert_token_classifier_procedure_ner_it_onnx&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;it&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;converter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NerConverterInternal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;ner&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner_chunk&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;documentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;tokenClassifier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;converter&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Il paziente ha subito una gastroscopia e una risonanza magnetica la scorsa settimana.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;selectExpr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;explode(ner_chunk) as chunk&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;selectExpr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&quot;chunk.result as text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&quot;chunk.metadata['entity'] as entity&quot;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;truncate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+
+  &lt;div class=&quot;language-python jsl-block highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;johnsnowlabs&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;medical&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;documentAssembler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;tokenClassifier&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;medical&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MedicalBertForTokenClassifier&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;bert_token_classifier_procedure_ner_it_onnx&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;it&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;converter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NerConverterInternal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;ner&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; \
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner_chunk&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;documentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;tokenClassifier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;converter&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Il paziente ha subito una gastroscopia e una risonanza magnetica la scorsa settimana.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;selectExpr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;explode(ner_chunk) as chunk&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;selectExpr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&quot;chunk.result as text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&quot;chunk.metadata['entity'] as entity&quot;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;truncate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.base._&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.annotators._&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.apache.spark.ml.Pipeline&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;documentAssembler&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;tokenizer&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Tokenizer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;tokenClassifier&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MedicalBertForTokenClassifier&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;bert_token_classifier_procedure_ner_it_onnx&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;it&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;converter&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;NerConverter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;ner&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner_chunk&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setStages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;documentAssembler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;tokenClassifier&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;converter&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Seq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Il paziente ha subito una gastroscopia e una risonanza magnetica la scorsa settimana.&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;nv&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;selectExpr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;explode(ner_chunk) as chunk&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;selectExpr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;chunk.result as text&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;chunk.metadata['entity'] as entity&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
++-------------------+---------+
+|text               |entity   |
++-------------------+---------+
+|gastroscopia       |PROCEDURE|
+|risonanza magnetica|PROCEDURE|
++-------------------+---------+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+
+&lt;table class=&quot;table-model&quot;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Model Name:&lt;/td&gt;
+      &lt;td&gt;bert_token_classifier_procedure_ner_it_onnx&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Compatibility:&lt;/td&gt;
+      &lt;td&gt;Healthcare NLP 6.2.0+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;License:&lt;/td&gt;
+      &lt;td&gt;Licensed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Edition:&lt;/td&gt;
+      &lt;td&gt;Official&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Input Labels:&lt;/td&gt;
+      &lt;td&gt;[token, sentence]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Output Labels:&lt;/td&gt;
+      &lt;td&gt;[ner]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Language:&lt;/td&gt;
+      &lt;td&gt;it&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Size:&lt;/td&gt;
+      &lt;td&gt;441.5 MB&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Case sensitive:&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Max sentence length:&lt;/td&gt;
+      &lt;td&gt;128&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</content><author><name>John Snow Labs</name></author><category term="medical" /><category term="clinical" /><category term="bert" /><category term="ner" /><category term="it" /><category term="licensed" /><category term="onnx" /><summary type="html">Description This is a BERT-based NER model for Italian medical text. It identifies medical procedures in clinical sentences and labels them using B-PROCEDURE, I-PROCEDURE, or O. The model is intended for extracting procedure names from notes, reports, and clinical records, and is provided in ONNX format for efficient inference. Live Demo Open in Colab Download Copy S3 URI How to use PythonHealthcare NLPPythonJohnSnowLabsScalaNLU from sparknlp.base import * from sparknlp_jsl.annotator import * from pyspark.ml import Pipeline documentAssembler = DocumentAssembler() \ .setInputCol(&quot;text&quot;) \ .setOutputCol(&quot;document&quot;) tokenizer = Tokenizer() \ .setInputCols(&quot;document&quot;) \ .setOutputCol(&quot;token&quot;) tokenClassifier = MedicalBertForTokenClassifier \ .pretrained(&quot;bert_token_classifier_procedure_ner_it_onnx&quot;, &quot;it&quot;, &quot;clinical/models&quot;) \ .setInputCols([&quot;document&quot;, &quot;token&quot;]) \ .setOutputCol(&quot;ner&quot;) converter = NerConverterInternal() \ .setInputCols([&quot;document&quot;, &quot;token&quot;, &quot;ner&quot;]) \ .setOutputCol(&quot;ner_chunk&quot;) pipeline = Pipeline(stages=[ documentAssembler, tokenizer, tokenClassifier, converter ]) data = spark.createDataFrame([[&quot;Il paziente ha subito una gastroscopia e una risonanza magnetica la scorsa settimana.&quot;]]).toDF(&quot;text&quot;) result = pipeline.fit(data).transform(data) result.selectExpr(&quot;explode(ner_chunk) as chunk&quot;).selectExpr( &quot;chunk.result as text&quot;, &quot;chunk.metadata['entity'] as entity&quot; ).show(truncate=False) from johnsnowlabs import nlp, medical documentAssembler = nlp.DocumentAssembler() \ .setInputCol(&quot;text&quot;) \ .setOutputCol(&quot;document&quot;) tokenizer = nlp.Tokenizer() \ .setInputCols(&quot;document&quot;) \ .setOutputCol(&quot;token&quot;) tokenClassifier = medical.MedicalBertForTokenClassifier \ .pretrained(&quot;bert_token_classifier_procedure_ner_it_onnx&quot;, &quot;it&quot;, &quot;clinical/models&quot;) \ .setInputCols([&quot;document&quot;, &quot;token&quot;]) \ .setOutputCol(&quot;ner&quot;) converter = nlp.NerConverterInternal() \ .setInputCols([&quot;document&quot;, &quot;token&quot;, &quot;ner&quot;]) \ .setOutputCol(&quot;ner_chunk&quot;) pipeline = nlp.Pipeline(stages=[ documentAssembler, tokenizer, tokenClassifier, converter ]) data = spark.createDataFrame([[&quot;Il paziente ha subito una gastroscopia e una risonanza magnetica la scorsa settimana.&quot;]]).toDF(&quot;text&quot;) result = pipeline.fit(data).transform(data) result.selectExpr(&quot;explode(ner_chunk) as chunk&quot;).selectExpr( &quot;chunk.result as text&quot;, &quot;chunk.metadata['entity'] as entity&quot; ).show(truncate=False) import com.johnsnowlabs.nlp.base._ import com.johnsnowlabs.nlp.annotators._ import org.apache.spark.ml.Pipeline val documentAssembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val tokenizer = new Tokenizer() .setInputCols(Array(&quot;document&quot;)) .setOutputCol(&quot;token&quot;) val tokenClassifier = MedicalBertForTokenClassifier .pretrained(&quot;bert_token_classifier_procedure_ner_it_onnx&quot;, &quot;it&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;document&quot;, &quot;token&quot;)) .setOutputCol(&quot;ner&quot;) val converter = new NerConverter() .setInputCols(Array(&quot;document&quot;, &quot;token&quot;, &quot;ner&quot;)) .setOutputCol(&quot;ner_chunk&quot;) val pipeline = new Pipeline().setStages(Array( documentAssembler, tokenizer, tokenClassifier, converter )) val data = Seq(&quot;Il paziente ha subito una gastroscopia e una risonanza magnetica la scorsa settimana.&quot;).toDF(&quot;text&quot;) val result = pipeline.fit(data).transform(data) result.selectExpr(&quot;explode(ner_chunk) as chunk&quot;) .selectExpr(&quot;chunk.result as text&quot;, &quot;chunk.metadata['entity'] as entity&quot;) .show(false) Results +-------------------+---------+ |text |entity | +-------------------+---------+ |gastroscopia |PROCEDURE| |risonanza magnetica|PROCEDURE| +-------------------+---------+ Model Information Model Name: bert_token_classifier_procedure_ner_it_onnx Compatibility: Healthcare NLP 6.2.0+ License: Licensed Edition: Official Input Labels: [token, sentence] Output Labels: [ner] Language: it Size: 441.5 MB Case sensitive: true Max sentence length: 128</summary></entry><entry><title type="html">Complete OMOP Pipeline for Entity Extraction and Assertion Status</title><link href="/2026/01/16/omop_ner_assertion_pipeline_en.html" rel="alternate" type="text/html" title="Complete OMOP Pipeline for Entity Extraction and Assertion Status" /><published>2026-01-16T00:00:00+00:00</published><updated>2026-01-16T00:00:00+00:00</updated><id>/2026/01/16/omop_ner_assertion_pipeline_en</id><content type="html" xml:base="/2026/01/16/omop_ner_assertion_pipeline_en.html">## Description
 
 A comprehensive medical NLP pipeline designed for clinical entity extraction and assertion status detection from medical text.
 
@@ -1455,703 +1986,4 @@ val dataSetResult = pipeline.transform(text)
 |Output Labels:|[custom_past]|
 |Language:|en|
 |Size:|2.3 KB|
-|Case sensitive:|false|</content><author><name>John Snow Labs</name></author><category term="past" /><category term="en" /><category term="assertion" /><category term="contextual_assertion" /><category term="licensed" /><category term="clinical" /><summary type="html">Description Identifies medical conditions that occurred in the patient’s past medical history. Predicted Entities past Live Demo Open in Colab Download Copy S3 URI How to use PythonHealthcare NLPPythonJohnSnowLabsScalaNLU document_assembler = DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) sentence_detector = SentenceDetector()\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;sentence&quot;) tokenizer = Tokenizer()\ .setInputCols([&quot;sentence&quot;])\ .setOutputCol(&quot;token&quot;) word_embeddings = WordEmbeddingsModel\ .pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;])\ .setOutputCol(&quot;embeddings&quot;) clinical_ner = MedicalNerModel\ .pretrained(&quot;ner_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;])\ .setOutputCol(&quot;ner&quot;) ner_converter = NerConverterInternal()\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;])\ .setOutputCol(&quot;ner_chunk&quot;) contextual_assertion = ContextualAssertion\ .pretrained(&quot;contextual_assertion_past&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols(&quot;sentence&quot;, &quot;token&quot;, &quot;ner_chunk&quot;)\ .setOutputCol(&quot;assertion_past&quot;) flattener = Flattener()\ .setInputCols(&quot;assertion_past&quot;)\ .setExplodeSelectedFields({&quot;assertion_past&quot;: [&quot;metadata.ner_chunk as ner_chunk&quot;, &quot;begin as begin&quot;, &quot;end as end&quot;, &quot;metadata.ner_label as ner_label&quot;, &quot;result&quot;]}) pipeline = Pipeline(stages=[ document_assembler, sentence_detector, tokenizer, word_embeddings, clinical_ner, ner_converter, contextual_assertion, flattener ]) empty_data = spark.createDataFrame([[&quot;&quot;]]).toDF(&quot;text&quot;) model = pipeline.fit(empty_data) text = &quot;&quot;&quot;Patient had pneumonia last year and recovered well. History of appendectomy in 2015.&quot;&quot;&quot; data = spark.createDataFrame([[text]]).toDF('text') result = model.transform(data) document_assembler = nlp.DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) sentence_detector = nlp.SentenceDetector()\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;sentence&quot;) tokenizer = nlp.Tokenizer()\ .setInputCols([&quot;sentence&quot;])\ .setOutputCol(&quot;token&quot;) word_embeddings = nlp.WordEmbeddingsModel\ .pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;])\ .setOutputCol(&quot;embeddings&quot;) clinical_ner = medical.MedicalNerModel\ .pretrained(&quot;ner_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;])\ .setOutputCol(&quot;ner&quot;) ner_converter = medical.NerConverterInternal()\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;])\ .setOutputCol(&quot;ner_chunk&quot;) contextual_assertion = medical.ContextualAssertion\ .pretrained(&quot;contextual_assertion_past&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols(&quot;sentence&quot;, &quot;token&quot;, &quot;ner_chunk&quot;)\ .setOutputCol(&quot;assertion_past&quot;) flattener = medical.Flattener()\ .setInputCols(&quot;assertion_past&quot;)\ .setExplodeSelectedFields({&quot;assertion_past&quot;: [&quot;metadata.ner_chunk as ner_chunk&quot;, &quot;begin as begin&quot;, &quot;end as end&quot;, &quot;metadata.ner_label as ner_label&quot;, &quot;result&quot;]}) pipeline = nlp.Pipeline(stages=[ document_assembler, sentence_detector, tokenizer, word_embeddings, clinical_ner, ner_converter, contextual_assertion, flattener ]) empty_data = spark.createDataFrame([[&quot;&quot;]]).toDF(&quot;text&quot;) model = pipeline.fit(empty_data) text = &quot;&quot;&quot;Patient had pneumonia last year and recovered well. History of appendectomy in 2015.&quot;&quot;&quot; data = spark.createDataFrame([[text]]).toDF('text') result = model.transform(data) val documentAssembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val sentenceDetector = new SentenceDetector() .setInputCols(Array(&quot;document&quot;)) .setOutputCol(&quot;sentences&quot;) val tokenizer = new Tokenizer() .setInputCols(Array(&quot;sentences&quot;)) .setOutputCol(&quot;tokens&quot;) val embedder = WordEmbeddingsModel .pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentences&quot;, &quot;tokens&quot;)) .setOutputCol(&quot;embeddings&quot;) val nerTagger = MedicalNerModel .pretrained(&quot;ner_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentences&quot;, &quot;tokens&quot;, &quot;embeddings&quot;)) .setOutputCol(&quot;nerTags&quot;) val nerConverter = new NerConverterInternal() .setInputCols(Array(&quot;sentences&quot;, &quot;tokens&quot;, &quot;nerTags&quot;)) .setOutputCol(&quot;nerChunks&quot;) val contextualAssertion = ContextualAssertion .pretrained(&quot;contextual_assertion_past&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(&quot;sentences&quot;, &quot;tokens&quot;, &quot;nerChunks&quot;) .setOutputCol(&quot;assertion_past&quot;) val flattener = new Flattener() .setInputCols(&quot;assertion_past&quot;) .setExplodeSelectedFields(Map(&quot;assertion_past&quot; -&amp;gt; Array( &quot;metadata.ner_chunk as ner_chunk&quot;, &quot;begin as begin&quot;, &quot;end as end&quot;, &quot;metadata.ner_label as ner_label&quot;, &quot;result as result&quot; ))) val emptyDataSet = Seq(&quot;&quot;).toDS().toDF(&quot;text&quot;) val pipeline = new Pipeline() .setStages(Array( documentAssembler, sentenceDetector, tokenizer, embedder, nerTagger, nerConverter, contextualAssertion, flattener )).fit(emptyDataSet) val text = Seq(&quot;&quot;&quot;Patient had pneumonia last year and recovered well. History of appendectomy in 2015.&quot;&quot;&quot;).toDS.toDF(&quot;text&quot;) val dataSetResult = pipeline.transform(text) Results +--------------+-------+-----+-----------+-----------+ |ner_chunk |begin |end |ner_label |result | +--------------+-------+-----+-----------+-----------+ |pneumonia |12 |20 |PROBLEM |past | |appendectomy |63 |74 |TREATMENT |past | +--------------+-------+-----+-----------+-----------+ Model Information Model Name: contextual_assertion_past Compatibility: Healthcare NLP 6.2.0+ License: Licensed Edition: Official Input Labels: [sentence, token, ner_chunk] Output Labels: [custom_past] Language: en Size: 2.3 KB Case sensitive: false</summary></entry><entry><title type="html">Detect Planned Assertion Status with Contextual Assertion</title><link href="/2026/01/14/contextual_assertion_planned_en.html" rel="alternate" type="text/html" title="Detect Planned Assertion Status with Contextual Assertion" /><published>2026-01-14T00:00:00+00:00</published><updated>2026-01-14T00:00:00+00:00</updated><id>/2026/01/14/contextual_assertion_planned_en</id><content type="html" xml:base="/2026/01/14/contextual_assertion_planned_en.html">## Description
-
-Identifies medical procedures or treatments that are planned for the future.
-
-## Predicted Entities
-
-`planned`
-
-{:.btn-box}
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/contextual_assertion_planned_en_6.2.0_3.4_1768420471310.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/contextual_assertion_planned_en_6.2.0_3.4_1768420471310.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
-
-## How to use
-
-
-
-&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-  
-```python
-
-document_assembler = DocumentAssembler()\
-    .setInputCol(&quot;text&quot;)\
-    .setOutputCol(&quot;document&quot;)
-
-sentence_detector = SentenceDetector()\
-    .setInputCols([&quot;document&quot;])\
-    .setOutputCol(&quot;sentence&quot;)
-
-tokenizer = Tokenizer()\
-    .setInputCols([&quot;sentence&quot;])\
-    .setOutputCol(&quot;token&quot;)
-
-word_embeddings = WordEmbeddingsModel\
-    .pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
-    .setInputCols([&quot;sentence&quot;, &quot;token&quot;])\
-    .setOutputCol(&quot;embeddings&quot;)
-
-clinical_ner = MedicalNerModel\
-    .pretrained(&quot;ner_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
-    .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;])\
-    .setOutputCol(&quot;ner&quot;)
-
-ner_converter = NerConverterInternal()\
-    .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;])\
-    .setOutputCol(&quot;ner_chunk&quot;)
-
-contextual_assertion = ContextualAssertion\
-    .pretrained(&quot;contextual_assertion_planned&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
-    .setInputCols(&quot;sentence&quot;, &quot;token&quot;, &quot;ner_chunk&quot;)\
-    .setOutputCol(&quot;assertion_planned&quot;)
-
-flattener = Flattener()\
-    .setInputCols(&quot;assertion_planned&quot;)\
-    .setExplodeSelectedFields({&quot;assertion_planned&quot;: [&quot;metadata.ner_chunk as ner_chunk&quot;,
-                                                      &quot;begin as begin&quot;,
-                                                      &quot;end as end&quot;,
-                                                      &quot;metadata.ner_label as ner_label&quot;,
-                                                      &quot;result&quot;]})
-
-pipeline = Pipeline(stages=[
-    document_assembler,
-    sentence_detector,
-    tokenizer,
-    word_embeddings,
-    clinical_ner,
-    ner_converter,
-    contextual_assertion,
-    flattener
-])
-
-empty_data = spark.createDataFrame([[&quot;&quot;]]).toDF(&quot;text&quot;)
-model = pipeline.fit(empty_data)
-
-text = &quot;&quot;&quot;Patient scheduled for knee replacement surgery next month. Will start physical therapy after procedure.&quot;&quot;&quot;
-data = spark.createDataFrame([[text]]).toDF('text')
-result = model.transform(data)
-
-```
-
-{:.jsl-block}
-```python
-
-document_assembler = nlp.DocumentAssembler()\
-    .setInputCol(&quot;text&quot;)\
-    .setOutputCol(&quot;document&quot;)
-
-sentence_detector = nlp.SentenceDetector()\
-    .setInputCols([&quot;document&quot;])\
-    .setOutputCol(&quot;sentence&quot;)
-
-tokenizer = nlp.Tokenizer()\
-    .setInputCols([&quot;sentence&quot;])\
-    .setOutputCol(&quot;token&quot;)
-
-word_embeddings = nlp.WordEmbeddingsModel\
-    .pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
-    .setInputCols([&quot;sentence&quot;, &quot;token&quot;])\
-    .setOutputCol(&quot;embeddings&quot;)
-
-clinical_ner = medical.MedicalNerModel\
-    .pretrained(&quot;ner_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
-    .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;])\
-    .setOutputCol(&quot;ner&quot;)
-
-ner_converter = medical.NerConverterInternal()\
-    .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;])\
-    .setOutputCol(&quot;ner_chunk&quot;)
-
-contextual_assertion = medical.ContextualAssertion\
-    .pretrained(&quot;contextual_assertion_planned&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
-    .setInputCols(&quot;sentence&quot;, &quot;token&quot;, &quot;ner_chunk&quot;)\
-    .setOutputCol(&quot;assertion_planned&quot;)
-
-flattener = medical.Flattener()\
-    .setInputCols(&quot;assertion_planned&quot;)\
-    .setExplodeSelectedFields({&quot;assertion_planned&quot;: [&quot;metadata.ner_chunk as ner_chunk&quot;,
-                                                      &quot;begin as begin&quot;,
-                                                      &quot;end as end&quot;,
-                                                      &quot;metadata.ner_label as ner_label&quot;,
-                                                      &quot;result&quot;]})
-
-pipeline = nlp.Pipeline(stages=[
-    document_assembler,
-    sentence_detector,
-    tokenizer,
-    word_embeddings,
-    clinical_ner,
-    ner_converter,
-    contextual_assertion,
-    flattener
-])
-
-empty_data = spark.createDataFrame([[&quot;&quot;]]).toDF(&quot;text&quot;)
-model = pipeline.fit(empty_data)
-
-text = &quot;&quot;&quot;Patient scheduled for knee replacement surgery next month. Will start physical therapy after procedure.&quot;&quot;&quot;
-data = spark.createDataFrame([[text]]).toDF('text')
-result = model.transform(data)
-
-```
-```scala
-
-val documentAssembler = new DocumentAssembler()
-    .setInputCol(&quot;text&quot;)
-    .setOutputCol(&quot;document&quot;)
-
-val sentenceDetector = new SentenceDetector()
-    .setInputCols(Array(&quot;document&quot;))
-    .setOutputCol(&quot;sentences&quot;)
-
-val tokenizer = new Tokenizer()
-    .setInputCols(Array(&quot;sentences&quot;))
-    .setOutputCol(&quot;tokens&quot;)
-
-val embedder = WordEmbeddingsModel
-    .pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-    .setInputCols(Array(&quot;sentences&quot;, &quot;tokens&quot;))
-    .setOutputCol(&quot;embeddings&quot;)
-
-val nerTagger = MedicalNerModel
-    .pretrained(&quot;ner_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-    .setInputCols(Array(&quot;sentences&quot;, &quot;tokens&quot;, &quot;embeddings&quot;))
-    .setOutputCol(&quot;nerTags&quot;)
-
-val nerConverter = new NerConverterInternal()
-    .setInputCols(Array(&quot;sentences&quot;, &quot;tokens&quot;, &quot;nerTags&quot;))
-    .setOutputCol(&quot;nerChunks&quot;)
-
-val contextualAssertion = ContextualAssertion
-    .pretrained(&quot;contextual_assertion_planned&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-    .setInputCols(&quot;sentences&quot;, &quot;tokens&quot;, &quot;nerChunks&quot;)
-    .setOutputCol(&quot;assertion_planned&quot;)
-
-val flattener = new Flattener()
-    .setInputCols(&quot;assertion_planned&quot;)
-    .setExplodeSelectedFields(Map(&quot;assertion_planned&quot; -&gt; Array(
-        &quot;metadata.ner_chunk as ner_chunk&quot;,
-        &quot;begin as begin&quot;,
-        &quot;end as end&quot;,
-        &quot;metadata.ner_label as ner_label&quot;,
-        &quot;result as result&quot;
-    )))
-
-val emptyDataSet = Seq(&quot;&quot;).toDS().toDF(&quot;text&quot;)
-
-val pipeline = new Pipeline()
-    .setStages(Array(
-        documentAssembler,
-        sentenceDetector,
-        tokenizer,
-        embedder,
-        nerTagger,
-        nerConverter,
-        contextualAssertion,
-        flattener
-    )).fit(emptyDataSet)
-
-val text = Seq(&quot;&quot;&quot;Patient scheduled for knee replacement surgery next month. Will start physical therapy after procedure.&quot;&quot;&quot;).toDS.toDF(&quot;text&quot;)
-val dataSetResult = pipeline.transform(text)
-
-```
-&lt;/div&gt;
-
-## Results
-
-```bash
-
-+--------------------------+-------+-----+-----------+-----------+
-|ner_chunk                 |begin  |end  |ner_label  |result     |
-+--------------------------+-------+-----+-----------+-----------+
-|knee replacement surgery  |22     |45   |TREATMENT  |planned    |
-|physical therapy          |70     |85   |TREATMENT  |planned    |
-|procedure                 |93     |101  |TREATMENT  |planned    |
-+--------------------------+-------+-----+-----------+-----------+
-
-```
-
-{:.model-param}
-## Model Information
-
-{:.table-model}
-|---|---|
-|Model Name:|contextual_assertion_planned|
-|Compatibility:|Healthcare NLP 6.2.0+|
-|License:|Licensed|
-|Edition:|Official|
-|Input Labels:|[sentence, token, ner_chunk]|
-|Output Labels:|[custom_planned]|
-|Language:|en|
-|Size:|1.9 KB|
-|Case sensitive:|false|</content><author><name>John Snow Labs</name></author><category term="planned" /><category term="en" /><category term="assertion" /><category term="contextual_assertion" /><category term="licensed" /><category term="clinical" /><summary type="html">Description Identifies medical procedures or treatments that are planned for the future. Predicted Entities planned Live Demo Open in Colab Download Copy S3 URI How to use PythonHealthcare NLPPythonJohnSnowLabsScalaNLU document_assembler = DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) sentence_detector = SentenceDetector()\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;sentence&quot;) tokenizer = Tokenizer()\ .setInputCols([&quot;sentence&quot;])\ .setOutputCol(&quot;token&quot;) word_embeddings = WordEmbeddingsModel\ .pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;])\ .setOutputCol(&quot;embeddings&quot;) clinical_ner = MedicalNerModel\ .pretrained(&quot;ner_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;])\ .setOutputCol(&quot;ner&quot;) ner_converter = NerConverterInternal()\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;])\ .setOutputCol(&quot;ner_chunk&quot;) contextual_assertion = ContextualAssertion\ .pretrained(&quot;contextual_assertion_planned&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols(&quot;sentence&quot;, &quot;token&quot;, &quot;ner_chunk&quot;)\ .setOutputCol(&quot;assertion_planned&quot;) flattener = Flattener()\ .setInputCols(&quot;assertion_planned&quot;)\ .setExplodeSelectedFields({&quot;assertion_planned&quot;: [&quot;metadata.ner_chunk as ner_chunk&quot;, &quot;begin as begin&quot;, &quot;end as end&quot;, &quot;metadata.ner_label as ner_label&quot;, &quot;result&quot;]}) pipeline = Pipeline(stages=[ document_assembler, sentence_detector, tokenizer, word_embeddings, clinical_ner, ner_converter, contextual_assertion, flattener ]) empty_data = spark.createDataFrame([[&quot;&quot;]]).toDF(&quot;text&quot;) model = pipeline.fit(empty_data) text = &quot;&quot;&quot;Patient scheduled for knee replacement surgery next month. Will start physical therapy after procedure.&quot;&quot;&quot; data = spark.createDataFrame([[text]]).toDF('text') result = model.transform(data) document_assembler = nlp.DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) sentence_detector = nlp.SentenceDetector()\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;sentence&quot;) tokenizer = nlp.Tokenizer()\ .setInputCols([&quot;sentence&quot;])\ .setOutputCol(&quot;token&quot;) word_embeddings = nlp.WordEmbeddingsModel\ .pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;])\ .setOutputCol(&quot;embeddings&quot;) clinical_ner = medical.MedicalNerModel\ .pretrained(&quot;ner_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;])\ .setOutputCol(&quot;ner&quot;) ner_converter = medical.NerConverterInternal()\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;])\ .setOutputCol(&quot;ner_chunk&quot;) contextual_assertion = medical.ContextualAssertion\ .pretrained(&quot;contextual_assertion_planned&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols(&quot;sentence&quot;, &quot;token&quot;, &quot;ner_chunk&quot;)\ .setOutputCol(&quot;assertion_planned&quot;) flattener = medical.Flattener()\ .setInputCols(&quot;assertion_planned&quot;)\ .setExplodeSelectedFields({&quot;assertion_planned&quot;: [&quot;metadata.ner_chunk as ner_chunk&quot;, &quot;begin as begin&quot;, &quot;end as end&quot;, &quot;metadata.ner_label as ner_label&quot;, &quot;result&quot;]}) pipeline = nlp.Pipeline(stages=[ document_assembler, sentence_detector, tokenizer, word_embeddings, clinical_ner, ner_converter, contextual_assertion, flattener ]) empty_data = spark.createDataFrame([[&quot;&quot;]]).toDF(&quot;text&quot;) model = pipeline.fit(empty_data) text = &quot;&quot;&quot;Patient scheduled for knee replacement surgery next month. Will start physical therapy after procedure.&quot;&quot;&quot; data = spark.createDataFrame([[text]]).toDF('text') result = model.transform(data) val documentAssembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val sentenceDetector = new SentenceDetector() .setInputCols(Array(&quot;document&quot;)) .setOutputCol(&quot;sentences&quot;) val tokenizer = new Tokenizer() .setInputCols(Array(&quot;sentences&quot;)) .setOutputCol(&quot;tokens&quot;) val embedder = WordEmbeddingsModel .pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentences&quot;, &quot;tokens&quot;)) .setOutputCol(&quot;embeddings&quot;) val nerTagger = MedicalNerModel .pretrained(&quot;ner_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentences&quot;, &quot;tokens&quot;, &quot;embeddings&quot;)) .setOutputCol(&quot;nerTags&quot;) val nerConverter = new NerConverterInternal() .setInputCols(Array(&quot;sentences&quot;, &quot;tokens&quot;, &quot;nerTags&quot;)) .setOutputCol(&quot;nerChunks&quot;) val contextualAssertion = ContextualAssertion .pretrained(&quot;contextual_assertion_planned&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(&quot;sentences&quot;, &quot;tokens&quot;, &quot;nerChunks&quot;) .setOutputCol(&quot;assertion_planned&quot;) val flattener = new Flattener() .setInputCols(&quot;assertion_planned&quot;) .setExplodeSelectedFields(Map(&quot;assertion_planned&quot; -&amp;gt; Array( &quot;metadata.ner_chunk as ner_chunk&quot;, &quot;begin as begin&quot;, &quot;end as end&quot;, &quot;metadata.ner_label as ner_label&quot;, &quot;result as result&quot; ))) val emptyDataSet = Seq(&quot;&quot;).toDS().toDF(&quot;text&quot;) val pipeline = new Pipeline() .setStages(Array( documentAssembler, sentenceDetector, tokenizer, embedder, nerTagger, nerConverter, contextualAssertion, flattener )).fit(emptyDataSet) val text = Seq(&quot;&quot;&quot;Patient scheduled for knee replacement surgery next month. Will start physical therapy after procedure.&quot;&quot;&quot;).toDS.toDF(&quot;text&quot;) val dataSetResult = pipeline.transform(text) Results +--------------------------+-------+-----+-----------+-----------+ |ner_chunk |begin |end |ner_label |result | +--------------------------+-------+-----+-----------+-----------+ |knee replacement surgery |22 |45 |TREATMENT |planned | |physical therapy |70 |85 |TREATMENT |planned | |procedure |93 |101 |TREATMENT |planned | +--------------------------+-------+-----+-----------+-----------+ Model Information Model Name: contextual_assertion_planned Compatibility: Healthcare NLP 6.2.0+ License: Licensed Edition: Official Input Labels: [sentence, token, ner_chunk] Output Labels: [custom_planned] Language: en Size: 1.9 KB Case sensitive: false</summary></entry><entry><title type="html">Detect Possible Assertion Status with Contextual Assertion</title><link href="/2026/01/14/contextual_assertion_possible_en.html" rel="alternate" type="text/html" title="Detect Possible Assertion Status with Contextual Assertion" /><published>2026-01-14T00:00:00+00:00</published><updated>2026-01-14T00:00:00+00:00</updated><id>/2026/01/14/contextual_assertion_possible_en</id><content type="html" xml:base="/2026/01/14/contextual_assertion_possible_en.html">## Description
-
-Identifies medical conditions that are possible or suspected but not confirmed.
-
-## Predicted Entities
-
-`possible`
-
-{:.btn-box}
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/contextual_assertion_possible_en_6.2.0_3.4_1768420482875.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/contextual_assertion_possible_en_6.2.0_3.4_1768420482875.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
-
-## How to use
-
-
-
-&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-  
-```python
-
-document_assembler = DocumentAssembler()\
-    .setInputCol(&quot;text&quot;)\
-    .setOutputCol(&quot;document&quot;)
-
-sentence_detector = SentenceDetector()\
-    .setInputCols([&quot;document&quot;])\
-    .setOutputCol(&quot;sentence&quot;)
-
-tokenizer = Tokenizer()\
-    .setInputCols([&quot;sentence&quot;])\
-    .setOutputCol(&quot;token&quot;)
-
-word_embeddings = WordEmbeddingsModel\
-    .pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
-    .setInputCols([&quot;sentence&quot;, &quot;token&quot;])\
-    .setOutputCol(&quot;embeddings&quot;)
-
-clinical_ner = MedicalNerModel\
-    .pretrained(&quot;ner_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
-    .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;])\
-    .setOutputCol(&quot;ner&quot;)
-
-ner_converter = NerConverterInternal()\
-    .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;])\
-    .setOutputCol(&quot;ner_chunk&quot;)
-
-contextual_assertion = ContextualAssertion\
-    .pretrained(&quot;contextual_assertion_possible&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
-    .setInputCols(&quot;sentence&quot;, &quot;token&quot;, &quot;ner_chunk&quot;)\
-    .setOutputCol(&quot;assertion_possible&quot;)
-
-flattener = Flattener()\
-    .setInputCols(&quot;assertion_possible&quot;)\
-    .setExplodeSelectedFields({&quot;assertion_possible&quot;: [&quot;metadata.ner_chunk as ner_chunk&quot;,
-                                                      &quot;begin as begin&quot;,
-                                                      &quot;end as end&quot;,
-                                                      &quot;metadata.ner_label as ner_label&quot;,
-                                                      &quot;result&quot;]})
-
-pipeline = Pipeline(stages=[
-    document_assembler,
-    sentence_detector,
-    tokenizer,
-    word_embeddings,
-    clinical_ner,
-    ner_converter,
-    contextual_assertion,
-    flattener
-])
-
-empty_data = spark.createDataFrame([[&quot;&quot;]]).toDF(&quot;text&quot;)
-model = pipeline.fit(empty_data)
-
-text = &quot;&quot;&quot;Possible pneumonia based on chest X-ray. Patient may have early arthritis. Suspected urinary tract infection.&quot;&quot;&quot;
-data = spark.createDataFrame([[text]]).toDF('text')
-result = model.transform(data)
-
-```
-
-{:.jsl-block}
-```python
-
-document_assembler = nlp.DocumentAssembler()\
-    .setInputCol(&quot;text&quot;)\
-    .setOutputCol(&quot;document&quot;)
-
-sentence_detector = nlp.SentenceDetector()\
-    .setInputCols([&quot;document&quot;])\
-    .setOutputCol(&quot;sentence&quot;)
-
-tokenizer = nlp.Tokenizer()\
-    .setInputCols([&quot;sentence&quot;])\
-    .setOutputCol(&quot;token&quot;)
-
-word_embeddings = nlp.WordEmbeddingsModel\
-    .pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
-    .setInputCols([&quot;sentence&quot;, &quot;token&quot;])\
-    .setOutputCol(&quot;embeddings&quot;)
-
-clinical_ner = medical.MedicalNerModel\
-    .pretrained(&quot;ner_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
-    .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;])\
-    .setOutputCol(&quot;ner&quot;)
-
-ner_converter = medical.NerConverterInternal()\
-    .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;])\
-    .setOutputCol(&quot;ner_chunk&quot;)
-
-contextual_assertion = medical.ContextualAssertion\
-    .pretrained(&quot;contextual_assertion_possible&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
-    .setInputCols(&quot;sentence&quot;, &quot;token&quot;, &quot;ner_chunk&quot;)\
-    .setOutputCol(&quot;assertion_possible&quot;)
-
-flattener = medical.Flattener()\
-    .setInputCols(&quot;assertion_possible&quot;)\
-    .setExplodeSelectedFields({&quot;assertion_possible&quot;: [&quot;metadata.ner_chunk as ner_chunk&quot;,
-                                                      &quot;begin as begin&quot;,
-                                                      &quot;end as end&quot;,
-                                                      &quot;metadata.ner_label as ner_label&quot;,
-                                                      &quot;result&quot;]})
-
-pipeline = nlp.Pipeline(stages=[
-    document_assembler,
-    sentence_detector,
-    tokenizer,
-    word_embeddings,
-    clinical_ner,
-    ner_converter,
-    contextual_assertion,
-    flattener
-])
-
-empty_data = spark.createDataFrame([[&quot;&quot;]]).toDF(&quot;text&quot;)
-model = pipeline.fit(empty_data)
-
-text = &quot;&quot;&quot;Possible pneumonia based on chest X-ray. Patient may have early arthritis. Suspected urinary tract infection.&quot;&quot;&quot;
-data = spark.createDataFrame([[text]]).toDF('text')
-result = model.transform(data)
-
-```
-```scala
-
-val documentAssembler = new DocumentAssembler()
-    .setInputCol(&quot;text&quot;)
-    .setOutputCol(&quot;document&quot;)
-
-val sentenceDetector = new SentenceDetector()
-    .setInputCols(Array(&quot;document&quot;))
-    .setOutputCol(&quot;sentences&quot;)
-
-val tokenizer = new Tokenizer()
-    .setInputCols(Array(&quot;sentences&quot;))
-    .setOutputCol(&quot;tokens&quot;)
-
-val embedder = WordEmbeddingsModel
-    .pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-    .setInputCols(Array(&quot;sentences&quot;, &quot;tokens&quot;))
-    .setOutputCol(&quot;embeddings&quot;)
-
-val nerTagger = MedicalNerModel
-    .pretrained(&quot;ner_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-    .setInputCols(Array(&quot;sentences&quot;, &quot;tokens&quot;, &quot;embeddings&quot;))
-    .setOutputCol(&quot;nerTags&quot;)
-
-val nerConverter = new NerConverterInternal()
-    .setInputCols(Array(&quot;sentences&quot;, &quot;tokens&quot;, &quot;nerTags&quot;))
-    .setOutputCol(&quot;nerChunks&quot;)
-
-val contextualAssertion = ContextualAssertion
-    .pretrained(&quot;contextual_assertion_possible&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-    .setInputCols(&quot;sentences&quot;, &quot;tokens&quot;, &quot;nerChunks&quot;)
-    .setOutputCol(&quot;assertion_possible&quot;)
-
-val flattener = new Flattener()
-    .setInputCols(&quot;assertion_possible&quot;)
-    .setExplodeSelectedFields(Map(&quot;assertion_possible&quot; -&gt; Array(
-        &quot;metadata.ner_chunk as ner_chunk&quot;,
-        &quot;begin as begin&quot;,
-        &quot;end as end&quot;,
-        &quot;metadata.ner_label as ner_label&quot;,
-        &quot;result as result&quot;
-    )))
-
-val emptyDataSet = Seq(&quot;&quot;).toDS().toDF(&quot;text&quot;)
-
-val pipeline = new Pipeline()
-    .setStages(Array(
-        documentAssembler,
-        sentenceDetector,
-        tokenizer,
-        embedder,
-        nerTagger,
-        nerConverter,
-        contextualAssertion,
-        flattener
-    )).fit(emptyDataSet)
-
-val text = Seq(&quot;&quot;&quot;Possible pneumonia based on chest X-ray. Patient may have early arthritis. Suspected urinary tract infection.&quot;&quot;&quot;).toDS.toDF(&quot;text&quot;)
-val dataSetResult = pipeline.transform(text)
-
-```
-&lt;/div&gt;
-
-## Results
-
-```bash
-
-+-------------------------+-------+-----+-----------+-----------+
-|ner_chunk                |begin  |end  |ner_label  |result     |
-+-------------------------+-------+-----+-----------+-----------+
-|pneumonia                |9      |17   |PROBLEM    |possible   |
-|chest X-ray              |28     |38   |TEST       |possible   |
-|early arthritis          |58     |72   |PROBLEM    |possible   |
-|urinary tract infection  |85     |107  |PROBLEM    |possible   |
-+-------------------------+-------+-----+-----------+-----------+
-
-```
-
-{:.model-param}
-## Model Information
-
-{:.table-model}
-|---|---|
-|Model Name:|contextual_assertion_possible|
-|Compatibility:|Healthcare NLP 6.2.0+|
-|License:|Licensed|
-|Edition:|Official|
-|Input Labels:|[sentence, token, ner_chunk]|
-|Output Labels:|[custom_possible]|
-|Language:|en|
-|Size:|2.2 KB|
-|Case sensitive:|false|</content><author><name>John Snow Labs</name></author><category term="possible" /><category term="en" /><category term="assertion" /><category term="contextual_assertion" /><category term="licensed" /><category term="clinical" /><summary type="html">Description Identifies medical conditions that are possible or suspected but not confirmed. Predicted Entities possible Live Demo Open in Colab Download Copy S3 URI How to use PythonHealthcare NLPPythonJohnSnowLabsScalaNLU document_assembler = DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) sentence_detector = SentenceDetector()\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;sentence&quot;) tokenizer = Tokenizer()\ .setInputCols([&quot;sentence&quot;])\ .setOutputCol(&quot;token&quot;) word_embeddings = WordEmbeddingsModel\ .pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;])\ .setOutputCol(&quot;embeddings&quot;) clinical_ner = MedicalNerModel\ .pretrained(&quot;ner_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;])\ .setOutputCol(&quot;ner&quot;) ner_converter = NerConverterInternal()\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;])\ .setOutputCol(&quot;ner_chunk&quot;) contextual_assertion = ContextualAssertion\ .pretrained(&quot;contextual_assertion_possible&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols(&quot;sentence&quot;, &quot;token&quot;, &quot;ner_chunk&quot;)\ .setOutputCol(&quot;assertion_possible&quot;) flattener = Flattener()\ .setInputCols(&quot;assertion_possible&quot;)\ .setExplodeSelectedFields({&quot;assertion_possible&quot;: [&quot;metadata.ner_chunk as ner_chunk&quot;, &quot;begin as begin&quot;, &quot;end as end&quot;, &quot;metadata.ner_label as ner_label&quot;, &quot;result&quot;]}) pipeline = Pipeline(stages=[ document_assembler, sentence_detector, tokenizer, word_embeddings, clinical_ner, ner_converter, contextual_assertion, flattener ]) empty_data = spark.createDataFrame([[&quot;&quot;]]).toDF(&quot;text&quot;) model = pipeline.fit(empty_data) text = &quot;&quot;&quot;Possible pneumonia based on chest X-ray. Patient may have early arthritis. Suspected urinary tract infection.&quot;&quot;&quot; data = spark.createDataFrame([[text]]).toDF('text') result = model.transform(data) document_assembler = nlp.DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) sentence_detector = nlp.SentenceDetector()\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;sentence&quot;) tokenizer = nlp.Tokenizer()\ .setInputCols([&quot;sentence&quot;])\ .setOutputCol(&quot;token&quot;) word_embeddings = nlp.WordEmbeddingsModel\ .pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;])\ .setOutputCol(&quot;embeddings&quot;) clinical_ner = medical.MedicalNerModel\ .pretrained(&quot;ner_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;])\ .setOutputCol(&quot;ner&quot;) ner_converter = medical.NerConverterInternal()\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;])\ .setOutputCol(&quot;ner_chunk&quot;) contextual_assertion = medical.ContextualAssertion\ .pretrained(&quot;contextual_assertion_possible&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols(&quot;sentence&quot;, &quot;token&quot;, &quot;ner_chunk&quot;)\ .setOutputCol(&quot;assertion_possible&quot;) flattener = medical.Flattener()\ .setInputCols(&quot;assertion_possible&quot;)\ .setExplodeSelectedFields({&quot;assertion_possible&quot;: [&quot;metadata.ner_chunk as ner_chunk&quot;, &quot;begin as begin&quot;, &quot;end as end&quot;, &quot;metadata.ner_label as ner_label&quot;, &quot;result&quot;]}) pipeline = nlp.Pipeline(stages=[ document_assembler, sentence_detector, tokenizer, word_embeddings, clinical_ner, ner_converter, contextual_assertion, flattener ]) empty_data = spark.createDataFrame([[&quot;&quot;]]).toDF(&quot;text&quot;) model = pipeline.fit(empty_data) text = &quot;&quot;&quot;Possible pneumonia based on chest X-ray. Patient may have early arthritis. Suspected urinary tract infection.&quot;&quot;&quot; data = spark.createDataFrame([[text]]).toDF('text') result = model.transform(data) val documentAssembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val sentenceDetector = new SentenceDetector() .setInputCols(Array(&quot;document&quot;)) .setOutputCol(&quot;sentences&quot;) val tokenizer = new Tokenizer() .setInputCols(Array(&quot;sentences&quot;)) .setOutputCol(&quot;tokens&quot;) val embedder = WordEmbeddingsModel .pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentences&quot;, &quot;tokens&quot;)) .setOutputCol(&quot;embeddings&quot;) val nerTagger = MedicalNerModel .pretrained(&quot;ner_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentences&quot;, &quot;tokens&quot;, &quot;embeddings&quot;)) .setOutputCol(&quot;nerTags&quot;) val nerConverter = new NerConverterInternal() .setInputCols(Array(&quot;sentences&quot;, &quot;tokens&quot;, &quot;nerTags&quot;)) .setOutputCol(&quot;nerChunks&quot;) val contextualAssertion = ContextualAssertion .pretrained(&quot;contextual_assertion_possible&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(&quot;sentences&quot;, &quot;tokens&quot;, &quot;nerChunks&quot;) .setOutputCol(&quot;assertion_possible&quot;) val flattener = new Flattener() .setInputCols(&quot;assertion_possible&quot;) .setExplodeSelectedFields(Map(&quot;assertion_possible&quot; -&amp;gt; Array( &quot;metadata.ner_chunk as ner_chunk&quot;, &quot;begin as begin&quot;, &quot;end as end&quot;, &quot;metadata.ner_label as ner_label&quot;, &quot;result as result&quot; ))) val emptyDataSet = Seq(&quot;&quot;).toDS().toDF(&quot;text&quot;) val pipeline = new Pipeline() .setStages(Array( documentAssembler, sentenceDetector, tokenizer, embedder, nerTagger, nerConverter, contextualAssertion, flattener )).fit(emptyDataSet) val text = Seq(&quot;&quot;&quot;Possible pneumonia based on chest X-ray. Patient may have early arthritis. Suspected urinary tract infection.&quot;&quot;&quot;).toDS.toDF(&quot;text&quot;) val dataSetResult = pipeline.transform(text) Results +-------------------------+-------+-----+-----------+-----------+ |ner_chunk |begin |end |ner_label |result | +-------------------------+-------+-----+-----------+-----------+ |pneumonia |9 |17 |PROBLEM |possible | |chest X-ray |28 |38 |TEST |possible | |early arthritis |58 |72 |PROBLEM |possible | |urinary tract infection |85 |107 |PROBLEM |possible | +-------------------------+-------+-----+-----------+-----------+ Model Information Model Name: contextual_assertion_possible Compatibility: Healthcare NLP 6.2.0+ License: Licensed Edition: Official Input Labels: [sentence, token, ner_chunk] Output Labels: [custom_possible] Language: en Size: 2.2 KB Case sensitive: false</summary></entry><entry><title type="html">Detect SomeoneElse Assertion Status with Contextual Assertion</title><link href="/2026/01/14/contextual_assertion_someoneelse_en.html" rel="alternate" type="text/html" title="Detect SomeoneElse Assertion Status with Contextual Assertion" /><published>2026-01-14T00:00:00+00:00</published><updated>2026-01-14T00:00:00+00:00</updated><id>/2026/01/14/contextual_assertion_someoneelse_en</id><content type="html" xml:base="/2026/01/14/contextual_assertion_someoneelse_en.html">## Description
-
-Identifies medical conditions that belong to someone other than the patient (not family).
-
-## Predicted Entities
-
-`someoneelse`
-
-{:.btn-box}
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/contextual_assertion_someoneelse_en_6.2.0_3.4_1768420494346.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/contextual_assertion_someoneelse_en_6.2.0_3.4_1768420494346.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
-
-## How to use
-
-
-
-&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-  
-```python
-
-document_assembler = DocumentAssembler()\
-    .setInputCol(&quot;text&quot;)\
-    .setOutputCol(&quot;document&quot;)
-
-sentence_detector = SentenceDetector()\
-    .setInputCols([&quot;document&quot;])\
-    .setOutputCol(&quot;sentence&quot;)
-
-tokenizer = Tokenizer()\
-    .setInputCols([&quot;sentence&quot;])\
-    .setOutputCol(&quot;token&quot;)
-
-word_embeddings = WordEmbeddingsModel\
-    .pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
-    .setInputCols([&quot;sentence&quot;, &quot;token&quot;])\
-    .setOutputCol(&quot;embeddings&quot;)
-
-clinical_ner = MedicalNerModel\
-    .pretrained(&quot;ner_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
-    .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;])\
-    .setOutputCol(&quot;ner&quot;)
-
-ner_converter = NerConverterInternal()\
-    .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;])\
-    .setOutputCol(&quot;ner_chunk&quot;)
-
-contextual_assertion = ContextualAssertion\
-    .pretrained(&quot;contextual_assertion_someoneelse&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
-    .setInputCols(&quot;sentence&quot;, &quot;token&quot;, &quot;ner_chunk&quot;)\
-    .setOutputCol(&quot;assertion_someoneelse&quot;)
-
-flattener = Flattener()\
-    .setInputCols(&quot;assertion_someoneelse&quot;)\
-    .setExplodeSelectedFields({&quot;assertion_someoneelse&quot;: [&quot;metadata.ner_chunk as ner_chunk&quot;,
-                                                      &quot;begin as begin&quot;,
-                                                      &quot;end as end&quot;,
-                                                      &quot;metadata.ner_label as ner_label&quot;,
-                                                      &quot;result&quot;]})
-
-pipeline = Pipeline(stages=[
-    document_assembler,
-    sentence_detector,
-    tokenizer,
-    word_embeddings,
-    clinical_ner,
-    ner_converter,
-    contextual_assertion,
-    flattener
-])
-
-empty_data = spark.createDataFrame([[&quot;&quot;]]).toDF(&quot;text&quot;)
-model = pipeline.fit(empty_data)
-
-text = &quot;&quot;&quot;Her friend was diagnosed with hypertension. The nurse mentioned a colleague has influenza.&quot;&quot;&quot;
-data = spark.createDataFrame([[text]]).toDF('text')
-result = model.transform(data)
-
-```
-
-{:.jsl-block}
-```python
-
-document_assembler = nlp.DocumentAssembler()\
-    .setInputCol(&quot;text&quot;)\
-    .setOutputCol(&quot;document&quot;)
-
-sentence_detector = nlp.SentenceDetector()\
-    .setInputCols([&quot;document&quot;])\
-    .setOutputCol(&quot;sentence&quot;)
-
-tokenizer = nlp.Tokenizer()\
-    .setInputCols([&quot;sentence&quot;])\
-    .setOutputCol(&quot;token&quot;)
-
-word_embeddings = nlp.WordEmbeddingsModel\
-    .pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
-    .setInputCols([&quot;sentence&quot;, &quot;token&quot;])\
-    .setOutputCol(&quot;embeddings&quot;)
-
-clinical_ner = medical.MedicalNerModel\
-    .pretrained(&quot;ner_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
-    .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;])\
-    .setOutputCol(&quot;ner&quot;)
-
-ner_converter = medical.NerConverterInternal()\
-    .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;])\
-    .setOutputCol(&quot;ner_chunk&quot;)
-
-contextual_assertion = medical.ContextualAssertion\
-    .pretrained(&quot;contextual_assertion_someoneelse&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
-    .setInputCols(&quot;sentence&quot;, &quot;token&quot;, &quot;ner_chunk&quot;)\
-    .setOutputCol(&quot;assertion_someoneelse&quot;)
-
-flattener = medical.Flattener()\
-    .setInputCols(&quot;assertion_someoneelse&quot;)\
-    .setExplodeSelectedFields({&quot;assertion_someoneelse&quot;: [&quot;metadata.ner_chunk as ner_chunk&quot;,
-                                                      &quot;begin as begin&quot;,
-                                                      &quot;end as end&quot;,
-                                                      &quot;metadata.ner_label as ner_label&quot;,
-                                                      &quot;result&quot;]})
-
-pipeline = nlp.Pipeline(stages=[
-    document_assembler,
-    sentence_detector,
-    tokenizer,
-    word_embeddings,
-    clinical_ner,
-    ner_converter,
-    contextual_assertion,
-    flattener
-])
-
-empty_data = spark.createDataFrame([[&quot;&quot;]]).toDF(&quot;text&quot;)
-model = pipeline.fit(empty_data)
-
-text = &quot;&quot;&quot;Her friend was diagnosed with hypertension. The nurse mentioned a colleague has influenza.&quot;&quot;&quot;
-data = spark.createDataFrame([[text]]).toDF('text')
-result = model.transform(data)
-
-```
-```scala
-
-val documentAssembler = new DocumentAssembler()
-    .setInputCol(&quot;text&quot;)
-    .setOutputCol(&quot;document&quot;)
-
-val sentenceDetector = new SentenceDetector()
-    .setInputCols(Array(&quot;document&quot;))
-    .setOutputCol(&quot;sentences&quot;)
-
-val tokenizer = new Tokenizer()
-    .setInputCols(Array(&quot;sentences&quot;))
-    .setOutputCol(&quot;tokens&quot;)
-
-val embedder = WordEmbeddingsModel
-    .pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-    .setInputCols(Array(&quot;sentences&quot;, &quot;tokens&quot;))
-    .setOutputCol(&quot;embeddings&quot;)
-
-val nerTagger = MedicalNerModel
-    .pretrained(&quot;ner_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-    .setInputCols(Array(&quot;sentences&quot;, &quot;tokens&quot;, &quot;embeddings&quot;))
-    .setOutputCol(&quot;nerTags&quot;)
-
-val nerConverter = new NerConverterInternal()
-    .setInputCols(Array(&quot;sentences&quot;, &quot;tokens&quot;, &quot;nerTags&quot;))
-    .setOutputCol(&quot;nerChunks&quot;)
-
-val contextualAssertion = ContextualAssertion
-    .pretrained(&quot;contextual_assertion_someoneelse&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-    .setInputCols(&quot;sentences&quot;, &quot;tokens&quot;, &quot;nerChunks&quot;)
-    .setOutputCol(&quot;assertion_someoneelse&quot;)
-
-val flattener = new Flattener()
-    .setInputCols(&quot;assertion_someoneelse&quot;)
-    .setExplodeSelectedFields(Map(&quot;assertion_someoneelse&quot; -&gt; Array(
-        &quot;metadata.ner_chunk as ner_chunk&quot;,
-        &quot;begin as begin&quot;,
-        &quot;end as end&quot;,
-        &quot;metadata.ner_label as ner_label&quot;,
-        &quot;result as result&quot;
-    )))
-
-val emptyDataSet = Seq(&quot;&quot;).toDS().toDF(&quot;text&quot;)
-
-val pipeline = new Pipeline()
-    .setStages(Array(
-        documentAssembler,
-        sentenceDetector,
-        tokenizer,
-        embedder,
-        nerTagger,
-        nerConverter,
-        contextualAssertion,
-        flattener
-    )).fit(emptyDataSet)
-
-val text = Seq(&quot;&quot;&quot;Her friend was diagnosed with hypertension. The nurse mentioned a colleague has influenza.&quot;&quot;&quot;).toDS.toDF(&quot;text&quot;)
-val dataSetResult = pipeline.transform(text)
-
-```
-&lt;/div&gt;
-
-## Results
-
-```bash
-
-+--------------+-------+-----+-----------+-------------+
-|ner_chunk     |begin  |end  |ner_label  |result       |
-+--------------+-------+-----+-----------+-------------+
-|hypertension  |30     |41   |PROBLEM    |someoneelse  |
-|influenza     |80     |88   |PROBLEM    |someoneelse  |
-+--------------+-------+-----+-----------+-------------+
-
-```
-
-{:.model-param}
-## Model Information
-
-{:.table-model}
-|---|---|
-|Model Name:|contextual_assertion_someoneelse|
-|Compatibility:|Healthcare NLP 6.2.0+|
-|License:|Licensed|
-|Edition:|Official|
-|Input Labels:|[sentence, token, ner_chunk]|
-|Output Labels:|[custom_someoneelse]|
-|Language:|en|
-|Size:|1.8 KB|
-|Case sensitive:|false|</content><author><name>John Snow Labs</name></author><category term="someoneelse" /><category term="en" /><category term="assertion" /><category term="contextual_assertion" /><category term="licensed" /><category term="clinical" /><summary type="html">Description Identifies medical conditions that belong to someone other than the patient (not family). Predicted Entities someoneelse Live Demo Open in Colab Download Copy S3 URI How to use PythonHealthcare NLPPythonJohnSnowLabsScalaNLU document_assembler = DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) sentence_detector = SentenceDetector()\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;sentence&quot;) tokenizer = Tokenizer()\ .setInputCols([&quot;sentence&quot;])\ .setOutputCol(&quot;token&quot;) word_embeddings = WordEmbeddingsModel\ .pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;])\ .setOutputCol(&quot;embeddings&quot;) clinical_ner = MedicalNerModel\ .pretrained(&quot;ner_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;])\ .setOutputCol(&quot;ner&quot;) ner_converter = NerConverterInternal()\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;])\ .setOutputCol(&quot;ner_chunk&quot;) contextual_assertion = ContextualAssertion\ .pretrained(&quot;contextual_assertion_someoneelse&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols(&quot;sentence&quot;, &quot;token&quot;, &quot;ner_chunk&quot;)\ .setOutputCol(&quot;assertion_someoneelse&quot;) flattener = Flattener()\ .setInputCols(&quot;assertion_someoneelse&quot;)\ .setExplodeSelectedFields({&quot;assertion_someoneelse&quot;: [&quot;metadata.ner_chunk as ner_chunk&quot;, &quot;begin as begin&quot;, &quot;end as end&quot;, &quot;metadata.ner_label as ner_label&quot;, &quot;result&quot;]}) pipeline = Pipeline(stages=[ document_assembler, sentence_detector, tokenizer, word_embeddings, clinical_ner, ner_converter, contextual_assertion, flattener ]) empty_data = spark.createDataFrame([[&quot;&quot;]]).toDF(&quot;text&quot;) model = pipeline.fit(empty_data) text = &quot;&quot;&quot;Her friend was diagnosed with hypertension. The nurse mentioned a colleague has influenza.&quot;&quot;&quot; data = spark.createDataFrame([[text]]).toDF('text') result = model.transform(data) document_assembler = nlp.DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) sentence_detector = nlp.SentenceDetector()\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;sentence&quot;) tokenizer = nlp.Tokenizer()\ .setInputCols([&quot;sentence&quot;])\ .setOutputCol(&quot;token&quot;) word_embeddings = nlp.WordEmbeddingsModel\ .pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;])\ .setOutputCol(&quot;embeddings&quot;) clinical_ner = medical.MedicalNerModel\ .pretrained(&quot;ner_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;])\ .setOutputCol(&quot;ner&quot;) ner_converter = medical.NerConverterInternal()\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;])\ .setOutputCol(&quot;ner_chunk&quot;) contextual_assertion = medical.ContextualAssertion\ .pretrained(&quot;contextual_assertion_someoneelse&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols(&quot;sentence&quot;, &quot;token&quot;, &quot;ner_chunk&quot;)\ .setOutputCol(&quot;assertion_someoneelse&quot;) flattener = medical.Flattener()\ .setInputCols(&quot;assertion_someoneelse&quot;)\ .setExplodeSelectedFields({&quot;assertion_someoneelse&quot;: [&quot;metadata.ner_chunk as ner_chunk&quot;, &quot;begin as begin&quot;, &quot;end as end&quot;, &quot;metadata.ner_label as ner_label&quot;, &quot;result&quot;]}) pipeline = nlp.Pipeline(stages=[ document_assembler, sentence_detector, tokenizer, word_embeddings, clinical_ner, ner_converter, contextual_assertion, flattener ]) empty_data = spark.createDataFrame([[&quot;&quot;]]).toDF(&quot;text&quot;) model = pipeline.fit(empty_data) text = &quot;&quot;&quot;Her friend was diagnosed with hypertension. The nurse mentioned a colleague has influenza.&quot;&quot;&quot; data = spark.createDataFrame([[text]]).toDF('text') result = model.transform(data) val documentAssembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val sentenceDetector = new SentenceDetector() .setInputCols(Array(&quot;document&quot;)) .setOutputCol(&quot;sentences&quot;) val tokenizer = new Tokenizer() .setInputCols(Array(&quot;sentences&quot;)) .setOutputCol(&quot;tokens&quot;) val embedder = WordEmbeddingsModel .pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentences&quot;, &quot;tokens&quot;)) .setOutputCol(&quot;embeddings&quot;) val nerTagger = MedicalNerModel .pretrained(&quot;ner_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentences&quot;, &quot;tokens&quot;, &quot;embeddings&quot;)) .setOutputCol(&quot;nerTags&quot;) val nerConverter = new NerConverterInternal() .setInputCols(Array(&quot;sentences&quot;, &quot;tokens&quot;, &quot;nerTags&quot;)) .setOutputCol(&quot;nerChunks&quot;) val contextualAssertion = ContextualAssertion .pretrained(&quot;contextual_assertion_someoneelse&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(&quot;sentences&quot;, &quot;tokens&quot;, &quot;nerChunks&quot;) .setOutputCol(&quot;assertion_someoneelse&quot;) val flattener = new Flattener() .setInputCols(&quot;assertion_someoneelse&quot;) .setExplodeSelectedFields(Map(&quot;assertion_someoneelse&quot; -&amp;gt; Array( &quot;metadata.ner_chunk as ner_chunk&quot;, &quot;begin as begin&quot;, &quot;end as end&quot;, &quot;metadata.ner_label as ner_label&quot;, &quot;result as result&quot; ))) val emptyDataSet = Seq(&quot;&quot;).toDS().toDF(&quot;text&quot;) val pipeline = new Pipeline() .setStages(Array( documentAssembler, sentenceDetector, tokenizer, embedder, nerTagger, nerConverter, contextualAssertion, flattener )).fit(emptyDataSet) val text = Seq(&quot;&quot;&quot;Her friend was diagnosed with hypertension. The nurse mentioned a colleague has influenza.&quot;&quot;&quot;).toDS.toDF(&quot;text&quot;) val dataSetResult = pipeline.transform(text) Results +--------------+-------+-----+-----------+-------------+ |ner_chunk |begin |end |ner_label |result | +--------------+-------+-----+-----------+-------------+ |hypertension |30 |41 |PROBLEM |someoneelse | |influenza |80 |88 |PROBLEM |someoneelse | +--------------+-------+-----+-----------+-------------+ Model Information Model Name: contextual_assertion_someoneelse Compatibility: Healthcare NLP 6.2.0+ License: Licensed Edition: Official Input Labels: [sentence, token, ner_chunk] Output Labels: [custom_someoneelse] Language: en Size: 1.8 KB Case sensitive: false</summary></entry></feed>
+|Case sensitive:|false|</content><author><name>John Snow Labs</name></author><category term="past" /><category term="en" /><category term="assertion" /><category term="contextual_assertion" /><category term="licensed" /><category term="clinical" /><summary type="html">Description Identifies medical conditions that occurred in the patient’s past medical history. Predicted Entities past Live Demo Open in Colab Download Copy S3 URI How to use PythonHealthcare NLPPythonJohnSnowLabsScalaNLU document_assembler = DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) sentence_detector = SentenceDetector()\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;sentence&quot;) tokenizer = Tokenizer()\ .setInputCols([&quot;sentence&quot;])\ .setOutputCol(&quot;token&quot;) word_embeddings = WordEmbeddingsModel\ .pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;])\ .setOutputCol(&quot;embeddings&quot;) clinical_ner = MedicalNerModel\ .pretrained(&quot;ner_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;])\ .setOutputCol(&quot;ner&quot;) ner_converter = NerConverterInternal()\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;])\ .setOutputCol(&quot;ner_chunk&quot;) contextual_assertion = ContextualAssertion\ .pretrained(&quot;contextual_assertion_past&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols(&quot;sentence&quot;, &quot;token&quot;, &quot;ner_chunk&quot;)\ .setOutputCol(&quot;assertion_past&quot;) flattener = Flattener()\ .setInputCols(&quot;assertion_past&quot;)\ .setExplodeSelectedFields({&quot;assertion_past&quot;: [&quot;metadata.ner_chunk as ner_chunk&quot;, &quot;begin as begin&quot;, &quot;end as end&quot;, &quot;metadata.ner_label as ner_label&quot;, &quot;result&quot;]}) pipeline = Pipeline(stages=[ document_assembler, sentence_detector, tokenizer, word_embeddings, clinical_ner, ner_converter, contextual_assertion, flattener ]) empty_data = spark.createDataFrame([[&quot;&quot;]]).toDF(&quot;text&quot;) model = pipeline.fit(empty_data) text = &quot;&quot;&quot;Patient had pneumonia last year and recovered well. History of appendectomy in 2015.&quot;&quot;&quot; data = spark.createDataFrame([[text]]).toDF('text') result = model.transform(data) document_assembler = nlp.DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) sentence_detector = nlp.SentenceDetector()\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;sentence&quot;) tokenizer = nlp.Tokenizer()\ .setInputCols([&quot;sentence&quot;])\ .setOutputCol(&quot;token&quot;) word_embeddings = nlp.WordEmbeddingsModel\ .pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;])\ .setOutputCol(&quot;embeddings&quot;) clinical_ner = medical.MedicalNerModel\ .pretrained(&quot;ner_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;])\ .setOutputCol(&quot;ner&quot;) ner_converter = medical.NerConverterInternal()\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;])\ .setOutputCol(&quot;ner_chunk&quot;) contextual_assertion = medical.ContextualAssertion\ .pretrained(&quot;contextual_assertion_past&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols(&quot;sentence&quot;, &quot;token&quot;, &quot;ner_chunk&quot;)\ .setOutputCol(&quot;assertion_past&quot;) flattener = medical.Flattener()\ .setInputCols(&quot;assertion_past&quot;)\ .setExplodeSelectedFields({&quot;assertion_past&quot;: [&quot;metadata.ner_chunk as ner_chunk&quot;, &quot;begin as begin&quot;, &quot;end as end&quot;, &quot;metadata.ner_label as ner_label&quot;, &quot;result&quot;]}) pipeline = nlp.Pipeline(stages=[ document_assembler, sentence_detector, tokenizer, word_embeddings, clinical_ner, ner_converter, contextual_assertion, flattener ]) empty_data = spark.createDataFrame([[&quot;&quot;]]).toDF(&quot;text&quot;) model = pipeline.fit(empty_data) text = &quot;&quot;&quot;Patient had pneumonia last year and recovered well. History of appendectomy in 2015.&quot;&quot;&quot; data = spark.createDataFrame([[text]]).toDF('text') result = model.transform(data) val documentAssembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val sentenceDetector = new SentenceDetector() .setInputCols(Array(&quot;document&quot;)) .setOutputCol(&quot;sentences&quot;) val tokenizer = new Tokenizer() .setInputCols(Array(&quot;sentences&quot;)) .setOutputCol(&quot;tokens&quot;) val embedder = WordEmbeddingsModel .pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentences&quot;, &quot;tokens&quot;)) .setOutputCol(&quot;embeddings&quot;) val nerTagger = MedicalNerModel .pretrained(&quot;ner_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentences&quot;, &quot;tokens&quot;, &quot;embeddings&quot;)) .setOutputCol(&quot;nerTags&quot;) val nerConverter = new NerConverterInternal() .setInputCols(Array(&quot;sentences&quot;, &quot;tokens&quot;, &quot;nerTags&quot;)) .setOutputCol(&quot;nerChunks&quot;) val contextualAssertion = ContextualAssertion .pretrained(&quot;contextual_assertion_past&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(&quot;sentences&quot;, &quot;tokens&quot;, &quot;nerChunks&quot;) .setOutputCol(&quot;assertion_past&quot;) val flattener = new Flattener() .setInputCols(&quot;assertion_past&quot;) .setExplodeSelectedFields(Map(&quot;assertion_past&quot; -&amp;gt; Array( &quot;metadata.ner_chunk as ner_chunk&quot;, &quot;begin as begin&quot;, &quot;end as end&quot;, &quot;metadata.ner_label as ner_label&quot;, &quot;result as result&quot; ))) val emptyDataSet = Seq(&quot;&quot;).toDS().toDF(&quot;text&quot;) val pipeline = new Pipeline() .setStages(Array( documentAssembler, sentenceDetector, tokenizer, embedder, nerTagger, nerConverter, contextualAssertion, flattener )).fit(emptyDataSet) val text = Seq(&quot;&quot;&quot;Patient had pneumonia last year and recovered well. History of appendectomy in 2015.&quot;&quot;&quot;).toDS.toDF(&quot;text&quot;) val dataSetResult = pipeline.transform(text) Results +--------------+-------+-----+-----------+-----------+ |ner_chunk |begin |end |ner_label |result | +--------------+-------+-----+-----------+-----------+ |pneumonia |12 |20 |PROBLEM |past | |appendectomy |63 |74 |TREATMENT |past | +--------------+-------+-----+-----------+-----------+ Model Information Model Name: contextual_assertion_past Compatibility: Healthcare NLP 6.2.0+ License: Licensed Edition: Official Input Labels: [sentence, token, ner_chunk] Output Labels: [custom_past] Language: en Size: 2.3 KB Case sensitive: false</summary></entry></feed>
