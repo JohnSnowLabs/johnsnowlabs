@@ -9,7 +9,7 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>JSL_MedS_VLM_Reasoning_v1 (8B - q16) | jsl_meds_vlm_reasoning_8b_q16_v1 | Healthcare NLP 6.2.0</title><meta property="og:title" content=""/>
+<!-- End Google Tag Manager --><title>JSL_MedS_VLM_Reasoning_v1 (8B - q16) | jsl_meds_vlm_reasoning_8b_q16_v1 | Healthcare NLP 6.3.0</title><meta property="og:title" content=""/>
 
 <meta name="description" content="DescriptionThis a vision language model designed for medical document understanding and image based clinical reasoning. It processes medical images and accompanying text to identify clinical findings, summarize content, and answer structured questions.Live DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonHealth...">
 <!-- <link rel="canonical" href="/2026/01/09/jsl_meds_vlm_reasoning_8b_q16_v1_en.html"> -->
@@ -557,7 +557,7 @@ Please reason step-by-step before providing your final answer.
     <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"image"</span><span class="p">)</span> \
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"image_assembler"</span><span class="p">)</span>
 
-<span class="n">medicalVisionLLM</span> <span class="o">=</span> <span class="n">MedicalVisionLLM</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">"jsl_meds_vlm_reasoning_8b_q16_v1"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
+<span class="n">medicalVisionLLM</span> <span class="o">=</span> <span class="n">MedicalVisionLLM</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"jsl_meds_vlm_reasoning_8b_q16_v1"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"caption_document"</span><span class="p">,</span> <span class="s">"image_assembler"</span><span class="p">])</span> \
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"completions"</span><span class="p">)</span>
 
@@ -601,7 +601,7 @@ Please reason step-by-step before providing your final answer.
     <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"image"</span><span class="p">)</span> \
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"image_assembler"</span><span class="p">)</span>
 
-<span class="n">medicalVisionLLM</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">MedicalVisionLLM</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">"jsl_meds_vlm_reasoning_8b_q16_v1"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
+<span class="n">medicalVisionLLM</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">MedicalVisionLLM</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"jsl_meds_vlm_reasoning_8b_q16_v1"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"caption_document"</span><span class="p">,</span> <span class="s">"image_assembler"</span><span class="p">])</span> \
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"completions"</span><span class="p">)</span>
 
@@ -647,7 +647,7 @@ Please reason step-by-step before providing your final answer.
   <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"image_assembler"</span><span class="o">)</span>
 
 <span class="k">val</span> <span class="nv">medicalVisionLLM</span> <span class="k">=</span> <span class="nc">MedicalVisionLLM</span>
-  <span class="o">.</span><span class="py">load</span><span class="o">(</span><span class="s">"jsl_meds_vlm_reasoning_8b_q16_v1"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"jsl_meds_vlm_reasoning_8b_q16_v1"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
   <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"caption_document"</span><span class="o">,</span> <span class="s">"image_assembler"</span><span class="o">))</span>
   <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"completions"</span><span class="o">)</span>
 
@@ -664,61 +664,32 @@ Please reason step-by-step before providing your final answer.
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Step-by-Step Analysis as a Senior Clinical Specialist  
-
-1. Clinical Summary  
-- Primary Diagnoses: Systemic Lupus Erythematosus <span class="o">(</span>SLE<span class="o">)</span> and scleroderma overlap syndrome <span class="o">(</span>explicitly stated: <span class="s2">"Known case of systemic lupus erythematosus and scleroderma overlap with interstitial lung disease"</span><span class="o">)</span><span class="nb">.</span>  
-- Secondary Diagnoses:  
-  - Interstitial lung disease <span class="o">(</span>ILD<span class="o">)</span> <span class="o">(</span>part of the overlap syndrome<span class="o">)</span><span class="nb">.</span>  
-  - Digital ulcers and skin tightening <span class="o">(</span>tightness of skin of the fists and ulcers on the pulp of the fingers—classic manifestations of scleroderma<span class="o">)</span><span class="nb">.</span>  
-- Key Overlap Syndrome: SLE-scleroderma overlap, which increases the risk of severe complications like ILD, Pulmonary Arterial Hypertension <span class="o">(</span>PAH<span class="o">)</span>, and digital ischemia.
-
-2. Medication Analysis Table  
-
-<span class="nt">--------------------------------------------------------------------------------------------------------------------------------------------------</span>
-| Medication Name        | Dosage &amp; Frequency              | Clinical Justification                                                              |
-| :----------------------| :-------------------------------| :-----------------------------------------------------------------------------------|
-| Linzolid               | 600 mg twice daily <span class="k">for </span>5 days   | Conditional use <span class="k">for </span>possible bacterial infection <span class="k">in </span>non-healing finger ulcers.      |
-| Clopidogrel            | 75 mg once daily after meals    | Antiplatelet therapy to prevent thrombosis <span class="k">in </span>vascular complications or vasculitis. |
-| Amlodipine             | 5 mg once daily                 | Vasodilator <span class="k">for </span>hypertension or Raynaud’s phenomenon to improve digital perfusion.  |
-| Domperidone            | 10 mg twice daily before meals  | Antiemetic to manage nausea from immunosuppressants or other GI side effects.       |
-| Omeprazole             | 20 mg twice daily before meal   | Proton pump inhibitor <span class="o">(</span>PPI<span class="o">)</span> to protect gastric mucosa from corticosteroids/NSAIDs.  |
-| Bosentan               | 62.5 mg twice daily             | Endothelin receptor antagonist <span class="k">for </span>PAH <span class="o">(</span>common <span class="k">in </span>scleroderma<span class="o">)</span><span class="nb">.</span>                     |
-| Sildenafil Citrate     | 0.5 mg twice daily after meals  | PDE-5 inhibitor <span class="k">for </span>PAH<span class="p">;</span> dilates pulmonary vasculature to reduce pressure.          |
-| Prednisolone           | 5 mg once daily after breakfast | Corticosteroid to suppress autoimmunity and control inflammation.                   |
-| Mycophenolate Mofetil  | 500 mg twice daily <span class="o">(</span>2 tablets<span class="o">)</span>  | Immunosuppressant to treat SLE and scleroderma disease activity.                    |
-| L-methylfolate Calcium | 400 μg once daily               | Folate supplement to mitigate deficiency from chronic inflammation/medication.      |
-| Ciprofloxacin          | 250 mg twice daily              | Antibiotic <span class="k">for </span>prophylaxis or treatment <span class="k">in </span>an immunocompromised state.              |
-<span class="nt">--------------------------------------------------------------------------------------------------------------------------------------------------</span>
-
-3. Conditional Logic &amp; Alerts  
-
-Prn/Conditional Instructions  
-- Linzolid: <span class="s2">"as advised in detail in case the ulcers of the fingers do not heal"</span> <span class="o">(</span>only to be started <span class="k">if </span>initial management fails<span class="o">)</span><span class="nb">.</span>  
-- Review after 4 weeks: Explicit follow-up to monitor response and safety.  
-
-Medications Requiring Close Monitoring  
-
-<span class="nt">----------------------------------------------------------------------------------------------------</span>
-| Medication            | Monitoring Focus                                                         |
-| :---------------------| :------------------------------------------------------------------------|
-| Bosentan              | Liver <span class="k">function</span> <span class="o">(</span>transaminases<span class="o">)</span>, hemoglobin <span class="o">(</span>anemia<span class="o">)</span>, and blood pressure. |
-| Sildenafil            | Blood pressure <span class="o">(</span>hypotension risk<span class="o">)</span> and liver <span class="k">function</span><span class="nb">.</span>                    |
-| Mycophenolate Mofetil | WBC count <span class="o">(</span>infection risk<span class="o">)</span>, platelet count, and renal <span class="k">function</span><span class="nb">.</span>          |
-| Prednisolone          | Bone density <span class="o">(</span>osteoporosis<span class="o">)</span>, blood glucose, and blood pressure.          |
-| Linzolid              | Liver <span class="k">function </span>and screening <span class="k">for </span>peripheral neuropathy.                  |
-| Ciprofloxacin         | QT interval prolongation and monitoring <span class="k">for </span>tendon pain/inflammation.    |
-<span class="nt">----------------------------------------------------------------------------------------------------</span>
-
-4. Visual Verification  
-- The document is printed text with no handwritten notes or signatures visible. All instructions are part of the official outpatient summary.  
-
-Final Answer  
-1. Clinical Summary: Primary SLE-Scleroderma overlap with ILD and digital ulcers.  
-2. Medication Analysis: Comprehensive regimen targeting inflammation, vascular issues <span class="o">(</span>PAH/Raynaud<span class="s1">'s), and infection control.  
-3. Conditional Logic &amp; Alerts: Linzolid is conditional; high-risk monitoring for Bosentan and Mycophenolate is essential.  
-4. Visual Verification: Printed instructions only; no handwritten modifications.
-</span></code></pre></div></div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">{</span>
+  <span class="s2">"patient"</span>: <span class="o">{</span>
+    <span class="s2">"name"</span>: <span class="s2">"Ms RUKHSANA SHAHEEN"</span>,
+    <span class="s2">"age"</span>: <span class="s2">"56 yrs"</span>,
+    <span class="s2">"sex"</span>: <span class="s2">"Female"</span>,
+    <span class="s2">"hospital_no"</span>: <span class="s2">"MH005990453"</span>,
+    <span class="s2">"episode_no"</span>: <span class="s2">"030000528270"</span>,
+    <span class="s2">"episode_date"</span>: <span class="s2">"02/07/2021 08:31AM"</span>
+  <span class="o">}</span>,
+  <span class="s2">"diagnoses"</span>: <span class="o">[</span><span class="s2">"systemic lupus erythematosus"</span>, <span class="s2">"scleroderma overlap"</span>, <span class="s2">"interstitial lung disease"</span><span class="o">]</span>,
+  <span class="s2">"symptoms"</span>: <span class="o">[</span><span class="s2">"tightness of skin of the fists"</span>, <span class="s2">"ulcers on the pulp of the fingers"</span><span class="o">]</span>,
+  <span class="s2">"treatment"</span>: <span class="o">[</span>
+    <span class="o">{</span><span class="s2">"med"</span>: <span class="s2">"Linezolid"</span>, <span class="s2">"dose"</span>: <span class="s2">"600 mg"</span>, <span class="s2">"freq"</span>: <span class="s2">"twice a day for 5 Days"</span><span class="o">}</span>,
+    <span class="o">{</span><span class="s2">"med"</span>: <span class="s2">"Clopidogrel"</span>, <span class="s2">"dose"</span>: <span class="s2">"75 mg"</span>, <span class="s2">"freq"</span>: <span class="s2">"once a day after meals"</span><span class="o">}</span>,
+    <span class="o">{</span><span class="s2">"med"</span>: <span class="s2">"Amlodipine"</span>, <span class="s2">"dose"</span>: <span class="s2">"5 mg"</span>, <span class="s2">"freq"</span>: <span class="s2">"once a day"</span><span class="o">}</span>,
+    <span class="o">{</span><span class="s2">"med"</span>: <span class="s2">"Domperidone"</span>, <span class="s2">"dose"</span>: <span class="s2">"10 mg"</span>, <span class="s2">"freq"</span>: <span class="s2">"twice a day before meals"</span><span class="o">}</span>,
+    <span class="o">{</span><span class="s2">"med"</span>: <span class="s2">"Omeprazole"</span>, <span class="s2">"dose"</span>: <span class="s2">"20 Mg"</span>, <span class="s2">"freq"</span>: <span class="s2">"Twice a Day before Meal"</span><span class="o">}</span>,
+    <span class="o">{</span><span class="s2">"med"</span>: <span class="s2">"Bosentan"</span>, <span class="s2">"dose"</span>: <span class="s2">"62.5 mg"</span>, <span class="s2">"freq"</span>: <span class="s2">"twice a day after meals"</span><span class="o">}</span>,
+    <span class="o">{</span><span class="s2">"med"</span>: <span class="s2">"Sildenafil Citrate"</span>, <span class="s2">"dose"</span>: <span class="s2">"0.5 mg"</span>, <span class="s2">"freq"</span>: <span class="s2">"twice a day after meals"</span><span class="o">}</span>,
+    <span class="o">{</span><span class="s2">"med"</span>: <span class="s2">"Prednisolone"</span>, <span class="s2">"dose"</span>: <span class="s2">"5 mg"</span>, <span class="s2">"freq"</span>: <span class="s2">"once a day after breakfast"</span><span class="o">}</span>,
+    <span class="o">{</span><span class="s2">"med"</span>: <span class="s2">"Mycophenolate mofetil"</span>, <span class="s2">"dose"</span>: <span class="s2">"500 mg 2 tablets"</span>, <span class="s2">"freq"</span>: <span class="s2">"twice a day"</span><span class="o">}</span>,
+    <span class="o">{</span><span class="s2">"med"</span>: <span class="s2">"L-methylfolate calcium"</span>, <span class="s2">"dose"</span>: <span class="s2">"400 µg 1 tablet"</span>, <span class="s2">"freq"</span>: <span class="s2">"once a day"</span><span class="o">}</span>,
+    <span class="o">{</span><span class="s2">"med"</span>: <span class="s2">"ciprofloxacin"</span>, <span class="s2">"dose"</span>: <span class="s2">"250 mg"</span>, <span class="s2">"freq"</span>: <span class="s2">"twice a day"</span><span class="o">}</span>
+  <span class="o">]</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>
 
@@ -730,7 +701,7 @@ Final Answer
     </tr>
     <tr>
       <td>Compatibility:</td>
-      <td>Healthcare NLP 6.2.0+</td>
+      <td>Healthcare NLP 6.3.0+</td>
     </tr>
     <tr>
       <td>License:</td>

@@ -9,7 +9,7 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>JSL_MedS_VLM_v1 (4B - q4) | jsl_meds_vlm_4b_q4_v1 | Healthcare NLP 6.2.0</title><meta property="og:title" content=""/>
+<!-- End Google Tag Manager --><title>JSL_MedS_VLM_v1 (4B - q4) | jsl_meds_vlm_4b_q4_v1 | Healthcare NLP 6.3.0</title><meta property="og:title" content=""/>
 
 <meta name="description" content="DescriptionThis vision-language model is trained to understand medical images and extract key details such as patient demographics, clinical conditions, and prescribed medications, etc.Live DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonHealthcare NLPPythonJohnSnowLabsScalaNLU  from sparknlp.base import *from...">
 <!-- <link rel="canonical" href="/2026/01/08/jsl_meds_vlm_4b_q4_v1_en.html"> -->
@@ -530,10 +530,16 @@ function wrapWordInSpan(data, wordToWrap) {
 <span class="kn">from</span> <span class="nn">sparknlp_jsl.utils</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">Pipeline</span>
 
-<span class="n">prompt</span> <span class="o">=</span> <span class="s">"""Based only on the information visible in this document, identify the patient’s primary diagnoses,
-current presenting symptoms, and the complete treatment plan.
-For the treatment plan, list each medication with its dose, frequency, timing in relation to meals, and duration if specified.
-Also state the consulting department, consulting doctor, and the recommended follow-up interval."""</span>
+<span class="n">prompt</span> <span class="o">=</span> <span class="s">"""
+Extract from the document and return strictly as JSON:
+
+{
+  "patient": {"name": string, "age": string, "sex": string, "hospital_no": string, "episode_no": string, "episode_date": string},
+  "diagnoses": [string],
+  "symptoms": [string],
+  "treatment": [{"med": string, "dose": string, "freq": string}]
+}
+"""</span>
 
 <span class="n">input_df</span> <span class="o">=</span> <span class="n">vision_llm_preprocessor</span><span class="p">(</span>
     <span class="n">spark</span><span class="o">=</span><span class="n">spark</span><span class="p">,</span>
@@ -550,7 +556,7 @@ Also state the consulting department, consulting doctor, and the recommended fol
     <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"image"</span><span class="p">)</span> \
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"image_assembler"</span><span class="p">)</span>
 
-<span class="n">medicalVisionLLM</span> <span class="o">=</span> <span class="n">MedicalVisionLLM</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">"jsl_meds_vlm_4b_q4_v1"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
+<span class="n">medicalVisionLLM</span> <span class="o">=</span> <span class="n">MedicalVisionLLM</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"jsl_meds_vlm_4b_q4_v1"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"caption_document"</span><span class="p">,</span> <span class="s">"image_assembler"</span><span class="p">])</span> \
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"completions"</span><span class="p">)</span>
 
@@ -567,10 +573,16 @@ Also state the consulting department, consulting doctor, and the recommended fol
   <div class="language-python jsl-block highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span><span class="p">,</span> <span class="n">medical</span>
 <span class="kn">from</span> <span class="nn">sparknlp_jsl.utils</span> <span class="kn">import</span> <span class="n">vision_llm_preprocessor</span>
 
-<span class="n">prompt</span> <span class="o">=</span> <span class="s">"""Based only on the information visible in this document, identify the patient’s primary diagnoses,
-current presenting symptoms, and the complete treatment plan.
-For the treatment plan, list each medication with its dose, frequency, timing in relation to meals, and duration if specified.
-Also state the consulting department, consulting doctor, and the recommended follow-up interval."""</span>
+<span class="n">prompt</span> <span class="o">=</span> <span class="s">"""
+Extract from the document and return strictly as JSON:
+
+{
+  "patient": {"name": string, "age": string, "sex": string, "hospital_no": string, "episode_no": string, "episode_date": string},
+  "diagnoses": [string],
+  "symptoms": [string],
+  "treatment": [{"med": string, "dose": string, "freq": string}]
+}
+"""</span>
 
 <span class="n">input_df</span> <span class="o">=</span> <span class="n">vision_llm_preprocessor</span><span class="p">(</span>
     <span class="n">spark</span><span class="o">=</span><span class="n">spark</span><span class="p">,</span>
@@ -587,7 +599,7 @@ Also state the consulting department, consulting doctor, and the recommended fol
     <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"image"</span><span class="p">)</span> \
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"image_assembler"</span><span class="p">)</span>
 
-<span class="n">medicalVisionLLM</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">MedicalVisionLLM</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">"jsl_meds_vlm_4b_q4_v1"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
+<span class="n">medicalVisionLLM</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">MedicalVisionLLM</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"jsl_meds_vlm_4b_q4_v1"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"caption_document"</span><span class="p">,</span> <span class="s">"image_assembler"</span><span class="p">])</span> \
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"completions"</span><span class="p">)</span>
 
@@ -605,10 +617,16 @@ Also state the consulting department, consulting doctor, and the recommended fol
 <span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.pretrained._</span>
 <span class="k">import</span> <span class="nn">org.apache.spark.ml.Pipeline</span>
 
-<span class="k">val</span> <span class="nv">prompt</span> <span class="k">=</span> <span class="s">"""Based only on the information visible in this document, identify the patient’s primary diagnoses,
-current presenting symptoms, and the complete treatment plan.
-For the treatment plan, list each medication with its dose, frequency, timing in relation to meals, and duration if specified.
-Also state the consulting department, consulting doctor, and the recommended follow-up interval."""</span>
+<span class="k">val</span> <span class="nv">prompt</span> <span class="k">=</span> <span class="s">"""
+Extract from the document and return strictly as JSON:
+
+{
+  "patient": {"name": string, "age": string, "sex": string, "hospital_no": string, "episode_no": string, "episode_date": string},
+  "diagnoses": [string],
+  "symptoms": [string],
+  "treatment": [{"med": string, "dose": string, "freq": string}]
+}
+"""</span>
 
 <span class="k">val</span> <span class="nv">inputDf</span> <span class="k">=</span> <span class="nc">VisionLLMPreprocessor</span><span class="o">(</span>
   <span class="n">spark</span> <span class="k">=</span> <span class="n">spark</span><span class="o">,</span>
@@ -626,7 +644,7 @@ Also state the consulting department, consulting doctor, and the recommended fol
   <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"image_assembler"</span><span class="o">)</span>
 
 <span class="k">val</span> <span class="nv">medicalVisionLLM</span> <span class="k">=</span> <span class="nc">MedicalVisionLLM</span>
-  <span class="o">.</span><span class="py">load</span><span class="o">(</span><span class="s">"jsl_meds_vlm_4b_q4_v1"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"jsl_meds_vlm_4b_q4_v1"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
   <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"caption_document"</span><span class="o">,</span> <span class="s">"image_assembler"</span><span class="o">))</span>
   <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"completions"</span><span class="o">)</span>
 
@@ -643,7 +661,31 @@ Also state the consulting department, consulting doctor, and the recommended fol
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Based on the information visible <span class="k">in </span>the document, the patient has systemic lupus erythematosus with scleroderma overlap and associated interstitial lung disease, is presenting with tightness of the skin of the fists and ulcers on the pulp of the fingers, and has been advised a treatment plan that includes a short 5 day course of linezolid 600 mg twice daily <span class="k">if </span>the finger ulcers <span class="k">do </span>not heal, along with ongoing medications comprising clopidogrel 75 mg once daily after meals, amlodipine 5 mg once daily, domperidone 10 mg twice daily before meals, omeprazole 20 mg twice daily before meals, bosentan 62.5 mg twice daily after meals, sildenafil citrate 0.5 mg twice daily after meals, prednisolone 5 mg once daily after breakfast, mycophenolate mofetil 500 mg two tablets twice daily, L-methylfolate calcium 400 µg once daily, and ciprofloxacin 250 mg twice daily, with care provided by the Rheumatology department under Dr. Darshan Singh Bhakuni and a recommended follow up after four weeks.
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">{</span>
+  <span class="s2">"patient"</span>: <span class="o">{</span>
+    <span class="s2">"name"</span>: <span class="s2">"Ms RUKHSANA SHAHEEN"</span>,
+    <span class="s2">"age"</span>: <span class="s2">"56 yrs"</span>,
+    <span class="s2">"sex"</span>: <span class="s2">"Female"</span>,
+    <span class="s2">"hospital_no"</span>: <span class="s2">"MH005990453"</span>,
+    <span class="s2">"episode_no"</span>: <span class="s2">"030000528270"</span>,
+    <span class="s2">"episode_date"</span>: <span class="s2">"02/07/2021 08:31AM"</span>
+  <span class="o">}</span>,
+  <span class="s2">"diagnoses"</span>: <span class="o">[</span><span class="s2">"systemic lupus erythematosus"</span>, <span class="s2">"scleroderma overlap"</span>, <span class="s2">"interstitial lung disease"</span><span class="o">]</span>,
+  <span class="s2">"symptoms"</span>: <span class="o">[</span><span class="s2">"tightness of skin of the fists"</span>, <span class="s2">"ulcers on the pulp of the fingers"</span><span class="o">]</span>,
+  <span class="s2">"treatment"</span>: <span class="o">[</span>
+    <span class="o">{</span><span class="s2">"med"</span>: <span class="s2">"Linezolid"</span>, <span class="s2">"dose"</span>: <span class="s2">"600 mg"</span>, <span class="s2">"freq"</span>: <span class="s2">"twice a day for 5 Days"</span><span class="o">}</span>,
+    <span class="o">{</span><span class="s2">"med"</span>: <span class="s2">"Clopidogrel"</span>, <span class="s2">"dose"</span>: <span class="s2">"75 mg"</span>, <span class="s2">"freq"</span>: <span class="s2">"once a day after meals"</span><span class="o">}</span>,
+    <span class="o">{</span><span class="s2">"med"</span>: <span class="s2">"Amlodipine"</span>, <span class="s2">"dose"</span>: <span class="s2">"5 mg"</span>, <span class="s2">"freq"</span>: <span class="s2">"once a day"</span><span class="o">}</span>,
+    <span class="o">{</span><span class="s2">"med"</span>: <span class="s2">"Domperidone"</span>, <span class="s2">"dose"</span>: <span class="s2">"10 mg"</span>, <span class="s2">"freq"</span>: <span class="s2">"twice a day before meals"</span><span class="o">}</span>,
+    <span class="o">{</span><span class="s2">"med"</span>: <span class="s2">"Omeprazole"</span>, <span class="s2">"dose"</span>: <span class="s2">"20 Mg"</span>, <span class="s2">"freq"</span>: <span class="s2">"Twice a Day before Meal"</span><span class="o">}</span>,
+    <span class="o">{</span><span class="s2">"med"</span>: <span class="s2">"Bosentan"</span>, <span class="s2">"dose"</span>: <span class="s2">"62.5 mg"</span>, <span class="s2">"freq"</span>: <span class="s2">"twice a day after meals"</span><span class="o">}</span>,
+    <span class="o">{</span><span class="s2">"med"</span>: <span class="s2">"Sildenafil Citrate"</span>, <span class="s2">"dose"</span>: <span class="s2">"0.5 mg"</span>, <span class="s2">"freq"</span>: <span class="s2">"twice a day after meals"</span><span class="o">}</span>,
+    <span class="o">{</span><span class="s2">"med"</span>: <span class="s2">"Prednisolone"</span>, <span class="s2">"dose"</span>: <span class="s2">"5 mg"</span>, <span class="s2">"freq"</span>: <span class="s2">"once a day after breakfast"</span><span class="o">}</span>,
+    <span class="o">{</span><span class="s2">"med"</span>: <span class="s2">"Mycophenolate mofetil"</span>, <span class="s2">"dose"</span>: <span class="s2">"500 mg 2 tablets"</span>, <span class="s2">"freq"</span>: <span class="s2">"twice a day"</span><span class="o">}</span>,
+    <span class="o">{</span><span class="s2">"med"</span>: <span class="s2">"L-methylfolate calcium"</span>, <span class="s2">"dose"</span>: <span class="s2">"400 µg 1 tablet"</span>, <span class="s2">"freq"</span>: <span class="s2">"once a day"</span><span class="o">}</span>,
+    <span class="o">{</span><span class="s2">"med"</span>: <span class="s2">"ciprofloxacin"</span>, <span class="s2">"dose"</span>: <span class="s2">"250 mg"</span>, <span class="s2">"freq"</span>: <span class="s2">"twice a day"</span><span class="o">}</span>
+  <span class="o">]</span>
+<span class="o">}</span>
 </code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>
@@ -656,7 +698,7 @@ Also state the consulting department, consulting doctor, and the recommended fol
     </tr>
     <tr>
       <td>Compatibility:</td>
-      <td>Healthcare NLP 6.2.0+</td>
+      <td>Healthcare NLP 6.3.0+</td>
     </tr>
     <tr>
       <td>License:</td>

@@ -9,7 +9,7 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>JSL_MedS_VLM_Reasoning_v1 (8B - q8) | jsl_meds_vlm_reasoning_8b_q8_v1 | Healthcare NLP 6.2.0</title><meta property="og:title" content=""/>
+<!-- End Google Tag Manager --><title>JSL_MedS_VLM_Reasoning_v1 (8B - q8) | jsl_meds_vlm_reasoning_8b_q8_v1 | Healthcare NLP 6.3.0</title><meta property="og:title" content=""/>
 
 <meta name="description" content="DescriptionThis a vision language model designed for medical document understanding and image based clinical reasoning. It processes medical images and accompanying text to identify clinical findings, summarize content, and answer structured questions.Live DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonHealth...">
 <!-- <link rel="canonical" href="/2026/01/09/jsl_meds_vlm_reasoning_8b_q8_v1_en.html"> -->
@@ -530,9 +530,16 @@ function wrapWordInSpan(data, wordToWrap) {
 <span class="kn">from</span> <span class="nn">sparknlp_jsl.utils</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">Pipeline</span>
 
-<span class="n">prompt</span> <span class="o">=</span> <span class="s">"""Analyze this clinical document. First, identify the primary diagnoses.
-Then, list all prescribed medications and explain the clinical reasoning for why each medication was likely prescribed for this specific patient.
-Finally, note any instructions that are conditional (e.g., 'only if...')."""</span>
+<span class="n">prompt</span> <span class="o">=</span> <span class="s">"""
+Extract from the document and return strictly as JSON:
+
+{
+  "patient": {"name": string, "age": string, "sex": string, "hospital_no": string, "episode_no": string, "episode_date": string},
+  "diagnoses": [string],
+  "symptoms": [string],
+  "treatment": [{"med": string, "dose": string, "freq": string}]
+}
+"""</span>
 
 <span class="n">input_df</span> <span class="o">=</span> <span class="n">vision_llm_preprocessor</span><span class="p">(</span>
     <span class="n">spark</span><span class="o">=</span><span class="n">spark</span><span class="p">,</span>
@@ -549,7 +556,7 @@ Finally, note any instructions that are conditional (e.g., 'only if...')."""</sp
     <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"image"</span><span class="p">)</span> \
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"image_assembler"</span><span class="p">)</span>
 
-<span class="n">medicalVisionLLM</span> <span class="o">=</span> <span class="n">MedicalVisionLLM</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">"jsl_meds_vlm_reasoning_8b_q8_v1"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
+<span class="n">medicalVisionLLM</span> <span class="o">=</span> <span class="n">MedicalVisionLLM</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"jsl_meds_vlm_reasoning_8b_q8_v1"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"caption_document"</span><span class="p">,</span> <span class="s">"image_assembler"</span><span class="p">])</span> \
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"completions"</span><span class="p">)</span>
 
@@ -566,9 +573,16 @@ Finally, note any instructions that are conditional (e.g., 'only if...')."""</sp
   <div class="language-python jsl-block highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span><span class="p">,</span> <span class="n">medical</span>
 <span class="kn">from</span> <span class="nn">sparknlp_jsl.utils</span> <span class="kn">import</span> <span class="n">vision_llm_preprocessor</span>
 
-<span class="n">prompt</span> <span class="o">=</span> <span class="s">"""Analyze this clinical document. First, identify the primary diagnoses.
-Then, list all prescribed medications and explain the clinical reasoning for why each medication was likely prescribed for this specific patient.
-Finally, note any instructions that are conditional (e.g., 'only if...')."""</span>
+<span class="n">prompt</span> <span class="o">=</span> <span class="s">"""
+Extract from the document and return strictly as JSON:
+
+{
+  "patient": {"name": string, "age": string, "sex": string, "hospital_no": string, "episode_no": string, "episode_date": string},
+  "diagnoses": [string],
+  "symptoms": [string],
+  "treatment": [{"med": string, "dose": string, "freq": string}]
+}
+"""</span>
 
 <span class="n">input_df</span> <span class="o">=</span> <span class="n">vision_llm_preprocessor</span><span class="p">(</span>
     <span class="n">spark</span><span class="o">=</span><span class="n">spark</span><span class="p">,</span>
@@ -585,7 +599,7 @@ Finally, note any instructions that are conditional (e.g., 'only if...')."""</sp
     <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"image"</span><span class="p">)</span> \
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"image_assembler"</span><span class="p">)</span>
 
-<span class="n">medicalVisionLLM</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">MedicalVisionLLM</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">"jsl_meds_vlm_reasoning_8b_q8_v1"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
+<span class="n">medicalVisionLLM</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">MedicalVisionLLM</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"jsl_meds_vlm_reasoning_8b_q8_v1"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"caption_document"</span><span class="p">,</span> <span class="s">"image_assembler"</span><span class="p">])</span> \
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"completions"</span><span class="p">)</span>
 
@@ -603,9 +617,16 @@ Finally, note any instructions that are conditional (e.g., 'only if...')."""</sp
 <span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.pretrained._</span>
 <span class="k">import</span> <span class="nn">org.apache.spark.ml.Pipeline</span>
 
-<span class="k">val</span> <span class="nv">prompt</span> <span class="k">=</span> <span class="s">"""Analyze this clinical document. First, identify the primary diagnoses.
-Then, list all prescribed medications and explain the clinical reasoning for why each medication was likely prescribed for this specific patient.
-Finally, note any instructions that are conditional (e.g., 'only if...')."""</span>
+<span class="k">val</span> <span class="nv">prompt</span> <span class="k">=</span> <span class="s">"""
+Extract from the document and return strictly as JSON:
+
+{
+  "patient": {"name": string, "age": string, "sex": string, "hospital_no": string, "episode_no": string, "episode_date": string},
+  "diagnoses": [string],
+  "symptoms": [string],
+  "treatment": [{"med": string, "dose": string, "freq": string}]
+}
+"""</span>
 
 <span class="k">val</span> <span class="nv">inputDf</span> <span class="k">=</span> <span class="nc">VisionLLMPreprocessor</span><span class="o">(</span>
   <span class="n">spark</span> <span class="k">=</span> <span class="n">spark</span><span class="o">,</span>
@@ -623,7 +644,7 @@ Finally, note any instructions that are conditional (e.g., 'only if...')."""</sp
   <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"image_assembler"</span><span class="o">)</span>
 
 <span class="k">val</span> <span class="nv">medicalVisionLLM</span> <span class="k">=</span> <span class="nc">MedicalVisionLLM</span>
-  <span class="o">.</span><span class="py">load</span><span class="o">(</span><span class="s">"jsl_meds_vlm_reasoning_8b_q8_v1"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"jsl_meds_vlm_reasoning_8b_q8_v1"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
   <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"caption_document"</span><span class="o">,</span> <span class="s">"image_assembler"</span><span class="o">))</span>
   <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"completions"</span><span class="o">)</span>
 
@@ -640,38 +661,31 @@ Finally, note any instructions that are conditional (e.g., 'only if...')."""</sp
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Clinical Document Analysis
-
-1. Primary Diagnoses
-The patient presents with a complex overlap of connective tissue diseases, specifically:
-<span class="k">*</span> Systemic Lupus Erythematosus <span class="o">(</span>SLE<span class="o">)</span>
-<span class="k">*</span> Scleroderma Overlap Syndrome <span class="o">(</span>presenting with features of both SLE and Scleroderma<span class="o">)</span>
-<span class="k">*</span> Interstitial Lung Disease <span class="o">(</span>ILD<span class="o">)</span>
-
-Clinical Correlates: Symptoms such as skin tightness <span class="k">in </span>the fists and finger pulp ulcers are classic manifestations of scleroderma-related vascular and cutaneous complications.
-
-2. Medication Summary &amp; Clinical Reasoning
-<span class="nt">-------------------------------------------------------------------------------------------------------------</span>
-| Medication            | Dosage       | Clinical Purpose                                                   |
-| :-------------------- | :----------- | :----------------------------------------------------------------- |
-| Mycophenolate Mofetil | 1000 mg BID  | Core immunosuppression to control autoimmune flares.               |
-| Prednisolone          | 5 mg Daily   | Low-dose corticosteroid <span class="k">for </span>ongoing inflammation management.       |
-| Bosentan              | 62.5 mg BID  | Manages Pulmonary Arterial Hypertension <span class="o">(</span>PAH<span class="o">)</span> associated with ILD. |
-| Sildenafil Citrate    | 0.5 mg BID   | Adjunct therapy to improve vascular blood flow <span class="k">in </span>PAH.             |
-| Clopidogrel           | 75 mg Daily  | Antiplatelet therapy to prevent thrombosis <span class="k">in </span>compromised vessels. |
-| Amlodipine            | 5 mg Daily   | Calcium channel blocker <span class="k">for </span>hypertension and Raynaud’s management. |
-| Linezolid             | 600 mg BID   | Conditional: Short-course antibiotic <span class="k">for </span>infected finger ulcers.   |
-| Ciprofloxacin         | 250 mg BID   | Antibiotic coverage/prophylaxis <span class="k">for </span>immunosuppressed states.       |
-| Omeprazole            | 20 mg BID    | Manages GERD/acid reflux caused by scleroderma-related GI issues.  |
-| Domperidone           | 10 mg BID    | Promotes GI motility to counter esophageal/gastric dysfunction.    |
-| L-methylfolate        | 400 µg Daily | Prevents folate deficiency secondary to long-term MMF use.         |
-<span class="nt">-------------------------------------------------------------------------------------------------------------</span>
-
-3. Critical Instructions
-<span class="k">*</span> Conditional Treatment: Linezolid should only be started <span class="k">if </span>the digital ulcers fail to heal as expected.
-<span class="k">*</span> Follow-up: A clinical review is required <span class="k">in </span>4 weeks to assess treatment efficacy and disease progression.
-
-Summary: This regimen follows a multidisciplinary approach, targeting immune suppression, vascular protection, and symptomatic relief <span class="k">for </span>gastrointestinal complications.
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">{</span>
+  <span class="s2">"patient"</span>: <span class="o">{</span>
+    <span class="s2">"name"</span>: <span class="s2">"Ms RUKHSANA SHAHEEN"</span>,
+    <span class="s2">"age"</span>: <span class="s2">"56 yrs"</span>,
+    <span class="s2">"sex"</span>: <span class="s2">"Female"</span>,
+    <span class="s2">"hospital_no"</span>: <span class="s2">"MH005990453"</span>,
+    <span class="s2">"episode_no"</span>: <span class="s2">"030000528270"</span>,
+    <span class="s2">"episode_date"</span>: <span class="s2">"02/07/2021 08:31AM"</span>
+  <span class="o">}</span>,
+  <span class="s2">"diagnoses"</span>: <span class="o">[</span><span class="s2">"systemic lupus erythematosus"</span>, <span class="s2">"scleroderma overlap"</span>, <span class="s2">"interstitial lung disease"</span><span class="o">]</span>,
+  <span class="s2">"symptoms"</span>: <span class="o">[</span><span class="s2">"tightness of skin of the fists"</span>, <span class="s2">"ulcers on the pulp of the fingers"</span><span class="o">]</span>,
+  <span class="s2">"treatment"</span>: <span class="o">[</span>
+    <span class="o">{</span><span class="s2">"med"</span>: <span class="s2">"Linezolid"</span>, <span class="s2">"dose"</span>: <span class="s2">"600 mg"</span>, <span class="s2">"freq"</span>: <span class="s2">"twice a day for 5 Days"</span><span class="o">}</span>,
+    <span class="o">{</span><span class="s2">"med"</span>: <span class="s2">"Clopidogrel"</span>, <span class="s2">"dose"</span>: <span class="s2">"75 mg"</span>, <span class="s2">"freq"</span>: <span class="s2">"once a day after meals"</span><span class="o">}</span>,
+    <span class="o">{</span><span class="s2">"med"</span>: <span class="s2">"Amlodipine"</span>, <span class="s2">"dose"</span>: <span class="s2">"5 mg"</span>, <span class="s2">"freq"</span>: <span class="s2">"once a day"</span><span class="o">}</span>,
+    <span class="o">{</span><span class="s2">"med"</span>: <span class="s2">"Domperidone"</span>, <span class="s2">"dose"</span>: <span class="s2">"10 mg"</span>, <span class="s2">"freq"</span>: <span class="s2">"twice a day before meals"</span><span class="o">}</span>,
+    <span class="o">{</span><span class="s2">"med"</span>: <span class="s2">"Omeprazole"</span>, <span class="s2">"dose"</span>: <span class="s2">"20 Mg"</span>, <span class="s2">"freq"</span>: <span class="s2">"Twice a Day before Meal"</span><span class="o">}</span>,
+    <span class="o">{</span><span class="s2">"med"</span>: <span class="s2">"Bosentan"</span>, <span class="s2">"dose"</span>: <span class="s2">"62.5 mg"</span>, <span class="s2">"freq"</span>: <span class="s2">"twice a day after meals"</span><span class="o">}</span>,
+    <span class="o">{</span><span class="s2">"med"</span>: <span class="s2">"Sildenafil Citrate"</span>, <span class="s2">"dose"</span>: <span class="s2">"0.5 mg"</span>, <span class="s2">"freq"</span>: <span class="s2">"twice a day after meals"</span><span class="o">}</span>,
+    <span class="o">{</span><span class="s2">"med"</span>: <span class="s2">"Prednisolone"</span>, <span class="s2">"dose"</span>: <span class="s2">"5 mg"</span>, <span class="s2">"freq"</span>: <span class="s2">"once a day after breakfast"</span><span class="o">}</span>,
+    <span class="o">{</span><span class="s2">"med"</span>: <span class="s2">"Mycophenolate mofetil"</span>, <span class="s2">"dose"</span>: <span class="s2">"500 mg 2 tablets"</span>, <span class="s2">"freq"</span>: <span class="s2">"twice a day"</span><span class="o">}</span>,
+    <span class="o">{</span><span class="s2">"med"</span>: <span class="s2">"L-methylfolate calcium"</span>, <span class="s2">"dose"</span>: <span class="s2">"400 µg 1 tablet"</span>, <span class="s2">"freq"</span>: <span class="s2">"once a day"</span><span class="o">}</span>,
+    <span class="o">{</span><span class="s2">"med"</span>: <span class="s2">"ciprofloxacin"</span>, <span class="s2">"dose"</span>: <span class="s2">"250 mg"</span>, <span class="s2">"freq"</span>: <span class="s2">"twice a day"</span><span class="o">}</span>
+  <span class="o">]</span>
+<span class="o">}</span>
 </code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>
@@ -684,7 +698,7 @@ Summary: This regimen follows a multidisciplinary approach, targeting immune sup
     </tr>
     <tr>
       <td>Compatibility:</td>
-      <td>Healthcare NLP 6.2.0+</td>
+      <td>Healthcare NLP 6.3.0+</td>
     </tr>
     <tr>
       <td>License:</td>
