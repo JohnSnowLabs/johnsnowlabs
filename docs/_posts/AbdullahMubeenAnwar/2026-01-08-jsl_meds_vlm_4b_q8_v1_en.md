@@ -7,7 +7,7 @@ date: 2026-01-08
 tags: [medical, clinical, vlm, q8, 4b, en, licensed, llamacpp]
 task: [Summarization, Question Answering]
 language: en
-edition: Healthcare NLP 6.2.0
+edition: Healthcare NLP 6.3.0
 spark_version: 3.4
 supported: true
 engine: llamacpp
@@ -39,10 +39,47 @@ from sparknlp_jsl.annotator import *
 from sparknlp_jsl.utils import *
 from pyspark.ml import Pipeline
 
-prompt = """Based only on the information visible in this document, identify the patient’s primary diagnoses,
-current presenting symptoms, and the complete treatment plan.
-For the treatment plan, list each medication with its dose, frequency, timing in relation to meals, and duration if specified.
-Also state the consulting department, consulting doctor, and the recommended follow-up interval."""
+prompt = """
+Based only on the information visible in this document, extract the following details and return the result strictly as a valid JSON object. Do not include any explanatory text.
+
+The JSON must follow this structure:
+
+{
+  "patient_info": {
+    "name": string,
+    "age": string,
+    "sex": string,
+    "hospital_number": string,
+    "episode_number": string,
+    "episode_date_time": string
+  },
+  "primary_diagnoses": [string],
+  "presenting_symptoms": [string],
+  "treatment_plan": [
+    {
+      "medication_name": string,
+      "dose": string,
+      "frequency": string,
+      "timing_with_meals": string,
+      "duration": string
+    }
+  ],
+  "consultation": {
+    "department": string,
+    "doctor": string
+  },
+  "recommended_follow_up_interval": string
+}
+
+Rules:
+- Use only information explicitly present in the document.
+- Do not infer, assume, or normalize clinical details beyond what is written.
+- Keep medication names, doses, frequencies, and timing exactly as stated in the document.
+- Do not infer indications or durations for medications unless explicitly stated.
+- If a field is not specified in the document, use null.
+- Arrays must be empty ([]) if no items are found.
+- Ensure the output is valid JSON and nothing else.
+"""
 
 input_df = vision_llm_preprocessor(
     spark=spark,
@@ -59,7 +96,7 @@ image_assembler = ImageAssembler() \
     .setInputCol("image") \
     .setOutputCol("image_assembler")
 
-medicalVisionLLM = MedicalVisionLLM.load("jsl_meds_vlm_4b_q8_v1", "en", "clinical/models") \
+medicalVisionLLM = MedicalVisionLLM.pretrained("jsl_meds_vlm_4b_q8_v1", "en", "clinical/models") \
     .setInputCols(["caption_document", "image_assembler"]) \
     .setOutputCol("completions")
 
@@ -78,10 +115,47 @@ result = model.transform(input_df)
 from johnsnowlabs import nlp, medical
 from sparknlp_jsl.utils import vision_llm_preprocessor
 
-prompt = """Based only on the information visible in this document, identify the patient’s primary diagnoses,
-current presenting symptoms, and the complete treatment plan.
-For the treatment plan, list each medication with its dose, frequency, timing in relation to meals, and duration if specified.
-Also state the consulting department, consulting doctor, and the recommended follow-up interval."""
+prompt = """
+Based only on the information visible in this document, extract the following details and return the result strictly as a valid JSON object. Do not include any explanatory text.
+
+The JSON must follow this structure:
+
+{
+  "patient_info": {
+    "name": string,
+    "age": string,
+    "sex": string,
+    "hospital_number": string,
+    "episode_number": string,
+    "episode_date_time": string
+  },
+  "primary_diagnoses": [string],
+  "presenting_symptoms": [string],
+  "treatment_plan": [
+    {
+      "medication_name": string,
+      "dose": string,
+      "frequency": string,
+      "timing_with_meals": string,
+      "duration": string
+    }
+  ],
+  "consultation": {
+    "department": string,
+    "doctor": string
+  },
+  "recommended_follow_up_interval": string
+}
+
+Rules:
+- Use only information explicitly present in the document.
+- Do not infer, assume, or normalize clinical details beyond what is written.
+- Keep medication names, doses, frequencies, and timing exactly as stated in the document.
+- Do not infer indications or durations for medications unless explicitly stated.
+- If a field is not specified in the document, use null.
+- Arrays must be empty ([]) if no items are found.
+- Ensure the output is valid JSON and nothing else.
+"""
 
 input_df = vision_llm_preprocessor(
     spark=spark,
@@ -98,7 +172,7 @@ image_assembler = nlp.ImageAssembler() \
     .setInputCol("image") \
     .setOutputCol("image_assembler")
 
-medicalVisionLLM = medical.MedicalVisionLLM.load("jsl_meds_vlm_4b_q8_v1", "en", "clinical/models") \
+medicalVisionLLM = medical.MedicalVisionLLM.pretrained("jsl_meds_vlm_4b_q8_v1", "en", "clinical/models") \
     .setInputCols(["caption_document", "image_assembler"]) \
     .setOutputCol("completions")
 
@@ -117,10 +191,47 @@ import com.johnsnowlabs.nlp.annotators._
 import com.johnsnowlabs.nlp.pretrained._
 import org.apache.spark.ml.Pipeline
 
-val prompt = """Based only on the information visible in this document, identify the patient’s primary diagnoses,
-current presenting symptoms, and the complete treatment plan.
-For the treatment plan, list each medication with its dose, frequency, timing in relation to meals, and duration if specified.
-Also state the consulting department, consulting doctor, and the recommended follow-up interval."""
+val prompt = """
+Based only on the information visible in this document, extract the following details and return the result strictly as a valid JSON object. Do not include any explanatory text.
+
+The JSON must follow this structure:
+
+{
+  "patient_info": {
+    "name": string,
+    "age": string,
+    "sex": string,
+    "hospital_number": string,
+    "episode_number": string,
+    "episode_date_time": string
+  },
+  "primary_diagnoses": [string],
+  "presenting_symptoms": [string],
+  "treatment_plan": [
+    {
+      "medication_name": string,
+      "dose": string,
+      "frequency": string,
+      "timing_with_meals": string,
+      "duration": string
+    }
+  ],
+  "consultation": {
+    "department": string,
+    "doctor": string
+  },
+  "recommended_follow_up_interval": string
+}
+
+Rules:
+- Use only information explicitly present in the document.
+- Do not infer, assume, or normalize clinical details beyond what is written.
+- Keep medication names, doses, frequencies, and timing exactly as stated in the document.
+- Do not infer indications or durations for medications unless explicitly stated.
+- If a field is not specified in the document, use null.
+- Arrays must be empty ([]) if no items are found.
+- Ensure the output is valid JSON and nothing else.
+"""
 
 val inputDf = VisionLLMPreprocessor(
   spark = spark,
@@ -138,7 +249,7 @@ val imageAssembler = new ImageAssembler()
   .setOutputCol("image_assembler")
 
 val medicalVisionLLM = MedicalVisionLLM
-  .load("jsl_meds_vlm_4b_q8_v1", "en", "clinical/models")
+  .pretrained("jsl_meds_vlm_4b_q8_v1", "en", "clinical/models")
   .setInputCols(Array("caption_document", "image_assembler"))
   .setOutputCol("completions")
 
@@ -156,7 +267,106 @@ val result = model.transform(inputDf)
 ## Results
 
 ```bash
-Based on the information visible in the document, the patient has systemic lupus erythematosus with scleroderma overlap and interstitial lung disease, is currently presenting with tightness of the skin of the fists and ulcers on the pulp of the fingers, and has been advised treatment including linezolid 600 mg twice daily for 5 days if the ulcers do not heal, clopidogrel 75 mg once daily after meals, amlodipine 5 mg once daily, domperidone 10 mg twice daily before meals, omeprazole 20 mg twice daily before meals, bosentan 62.5 mg twice daily after meals, sildenafil citrate 0.5 mg twice daily after meals, prednisolone 5 mg once daily after breakfast, mycophenolate mofetil 500 mg two tablets twice daily, L-methylfolate calcium 400 µg once daily, and ciprofloxacin 250 mg twice daily, with care provided by the Rheumatology department under Dr. Darshan Singh Bhakuni and a recommended follow up after 4 weeks.
+{
+  "patient_info": {
+    "name": "Ms RUKHSANA SHAHEEN",
+    "age": "56 yrs",
+    "sex": "Female",
+    "hospital_number": "MH005990453",
+    "episode_number": "030000528270",
+    "episode_date_time": "02/07/2021 08:31AM"
+  },
+  "primary_diagnoses": [
+    "systemic lupus erythematosus and scleroderma overlap with interstitial lung disease on medication"
+  ],
+  "presenting_symptoms": [
+    "tightness of skin of the fists and ulcers on the pulp of the fingers"
+  ],
+  "treatment_plan": [
+    {
+      "medication_name": "Linezolid",
+      "dose": "600 mg",
+      "frequency": "twice a day",
+      "timing_with_meals": null,
+      "duration": "for 5 Days as advised in detail in case the ulcers of the fingers do not heal"
+    },
+    {
+      "medication_name": "Clopidogrel",
+      "dose": "75 mg",
+      "frequency": "once a day",
+      "timing_with_meals": "after meals",
+      "duration": null
+    },
+    {
+      "medication_name": "Amlodipine",
+      "dose": "5 mg",
+      "frequency": "once a day",
+      "timing_with_meals": null,
+      "duration": null
+    },
+    {
+      "medication_name": "Domperidone",
+      "dose": "10 mg",
+      "frequency": "twice a day",
+      "timing_with_meals": "before meals",
+      "duration": null
+    },
+    {
+      "medication_name": "Omeprazole",
+      "dose": "20 Mg",
+      "frequency": "Twice a Day",
+      "timing_with_meals": "before Meal",
+      "duration": null
+    },
+    {
+      "medication_name": "Bosentan",
+      "dose": "62.5 mg",
+      "frequency": "twice a day",
+      "timing_with_meals": "after meals",
+      "duration": null
+    },
+    {
+      "medication_name": "Sildenafil Citrate",
+      "dose": "0.5 mg",
+      "frequency": "twice a day",
+      "timing_with_meals": "after meals",
+      "duration": null
+    },
+    {
+      "medication_name": "Prednisolone",
+      "dose": "5 mg",
+      "frequency": "once a day",
+      "timing_with_meals": "after breakfast",
+      "duration": null
+    },
+    {
+      "medication_name": "Mycophenolate mofetil",
+      "dose": "500 mg 2 tablets",
+      "frequency": "twice a day",
+      "timing_with_meals": null,
+      "duration": null
+    },
+    {
+      "medication_name": "L-methylfolate calcium",
+      "dose": "400 µg 1 tablet",
+      "frequency": "once a day",
+      "timing_with_meals": null,
+      "duration": null
+    },
+    {
+      "medication_name": "ciprofloxacin",
+      "dose": "250 mg",
+      "frequency": "twice a day",
+      "timing_with_meals": null,
+      "duration": null
+    }
+  ],
+  "consultation": {
+    "department": "RHEUMATOLOGY MHD",
+    "doctor": "DR DARSHAN SINGH BHAKUNI"
+  },
+  "recommended_follow_up_interval": "Review after 4 weeks"
+}
 ```
 
 {:.model-param}
@@ -165,7 +375,7 @@ Based on the information visible in the document, the patient has systemic lupus
 {:.table-model}
 |---|---|
 |Model Name:|jsl_meds_vlm_4b_q8_v1|
-|Compatibility:|Healthcare NLP 6.2.0+|
+|Compatibility:|Healthcare NLP 6.3.0+|
 |License:|Licensed|
 |Edition:|Official|
 |Input Labels:|[image, document]|

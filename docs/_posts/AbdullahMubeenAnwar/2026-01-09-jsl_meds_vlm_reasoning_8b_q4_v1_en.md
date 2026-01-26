@@ -7,7 +7,7 @@ date: 2026-01-09
 tags: [medical, clinical, vlm, q4, 8b, en, licensed, llamacpp]
 task: [Summarization, Question Answering]
 language: en
-edition: Healthcare NLP 6.2.0
+edition: Healthcare NLP 6.3.0
 spark_version: 3.4
 supported: true
 engine: llamacpp
@@ -58,7 +58,7 @@ image_assembler = ImageAssembler() \
     .setInputCol("image") \
     .setOutputCol("image_assembler")
 
-medicalVisionLLM = MedicalVisionLLM.load("jsl_meds_vlm_reasoning_8b_q4_v1", "en", "clinical/models") \
+medicalVisionLLM = MedicalVisionLLM.pretrained("jsl_meds_vlm_reasoning_8b_q4_v1", "en", "clinical/models") \
     .setInputCols(["caption_document", "image_assembler"]) \
     .setOutputCol("completions")
 
@@ -96,7 +96,7 @@ image_assembler = nlp.ImageAssembler() \
     .setInputCol("image") \
     .setOutputCol("image_assembler")
 
-medicalVisionLLM = medical.MedicalVisionLLM.load("jsl_meds_vlm_reasoning_8b_q4_v1", "en", "clinical/models") \
+medicalVisionLLM = medical.MedicalVisionLLM.pretrained("jsl_meds_vlm_reasoning_8b_q4_v1", "en", "clinical/models") \
     .setInputCols(["caption_document", "image_assembler"]) \
     .setOutputCol("completions")
 
@@ -135,7 +135,7 @@ val imageAssembler = new ImageAssembler()
   .setOutputCol("image_assembler")
 
 val medicalVisionLLM = MedicalVisionLLM
-  .load("jsl_meds_vlm_reasoning_8b_q4_v1", "en", "clinical/models")
+  .pretrained("jsl_meds_vlm_reasoning_8b_q4_v1", "en", "clinical/models")
   .setInputCols(Array("caption_document", "image_assembler"))
   .setOutputCol("completions")
 
@@ -189,7 +189,7 @@ The patient presents with an Overlap Syndrome involving:
 {:.table-model}
 |---|---|
 |Model Name:|jsl_meds_vlm_reasoning_8b_q4_v1|
-|Compatibility:|Healthcare NLP 6.2.0+|
+|Compatibility:|Healthcare NLP 6.3.0+|
 |License:|Licensed|
 |Edition:|Official|
 |Input Labels:|[image, document]|
