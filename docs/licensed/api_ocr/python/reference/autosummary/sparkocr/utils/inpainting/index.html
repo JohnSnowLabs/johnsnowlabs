@@ -1,0 +1,1036 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>sparkocr.utils.inpainting &#8212; Spark OCR  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../../../static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../../../static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../../static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="../../../../../static/css/custom.css?v=e1fb877f" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../../../static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../../../static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../static/documentation_options.js?v=b3ba4146"></script>
+    <script src="../../../../../static/doctools.js?v=888ff710"></script>
+    <script src="../../../../../static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../../../../static/toggleprompt.js?v=5801b3bb"></script>
+    <script src="../../../../../static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../../static/copybutton.js?v=6dbb43f8"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'reference/autosummary/sparkocr/utils/inpainting/index';</script>
+    <link rel="icon" href="../../../../../static/fav.ico"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the annotators, functions, and more..."
+         aria-label="Search the annotators, functions, and more..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../../static/logo.png" class="logo__image only-light" alt="Spark OCR  documentation - Home"/>
+    <img src="../../../../../static/logo.png" class="logo__image only-dark pst-js-only" alt="Spark OCR  documentation - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../index.html">
+    API Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../autosummary/sparkocr.html">
+    sparkocr
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../index.html">
+    API Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../autosummary/sparkocr.html">
+    sparkocr
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../craft/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.utils.craft</span></code></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../craft/models/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.utils.craft.models</span></code></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../craft/models/basenet/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.utils.craft.models.basenet</span></code></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../craft/models/basenet/vgg16_bn/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.utils.craft.models.basenet.vgg16_bn</span></code></a></li>
+</ul>
+</details></li>
+<li class="toctree-l3"><a class="reference internal" href="../craft/models/craftnet/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.utils.craft.models.craftnet</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../craft/models/refinenet/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.utils.craft.models.refinenet</span></code></a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../craft/craft_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.utils.craft.craft_utils</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../craft/file_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.utils.craft.file_utils</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../craft/image_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.utils.craft.image_utils</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../craft/predict/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.utils.craft.predict</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../craft/torch_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.utils.craft.torch_utils</span></code></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../svs/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.utils.svs</span></code></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../svs/phi_cleaning/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.utils.svs.phi_cleaning</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../svs/phi_redaction/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.utils.svs.phi_redaction</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../svs/remove-phi/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.utils.svs.remove-phi</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../svs/tiffparser/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.utils.svs.tiffparser</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../svs/tile_extraction/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.utils.svs.tile_extraction</span></code></a></li>
+</ul>
+</details></li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../compat_pkg/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.utils.compat_pkg</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../helpers/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.utils.helpers</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hocr_renderer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.utils.hocr_renderer</span></code></a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.utils.inpainting</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rectangle/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.utils.rectangle</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seqeval/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.utils.seqeval</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../torchutils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.utils.torchutils</span></code></a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.utils.inpainting</span></code></span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="module-sparkocr.utils.inpainting">
+<span id="sparkocr-utils-inpainting"></span><h1><a class="reference internal" href="#module-sparkocr.utils.inpainting" title="sparkocr.utils.inpainting"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.utils.inpainting</span></code></a><a class="headerlink" href="#module-sparkocr.utils.inpainting" title="Permalink to this heading">#</a></h1>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this heading">#</a></h2>
+<section id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparkocr.utils.inpainting.BaseInpaintingTrainingModule" title="sparkocr.utils.inpainting.BaseInpaintingTrainingModule"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BaseInpaintingTrainingModule</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparkocr.utils.inpainting.ConcatTupleLayer" title="sparkocr.utils.inpainting.ConcatTupleLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ConcatTupleLayer</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparkocr.utils.inpainting.FFC" title="sparkocr.utils.inpainting.FFC"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FFC</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparkocr.utils.inpainting.FFCResNetGenerator" title="sparkocr.utils.inpainting.FFCResNetGenerator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FFCResNetGenerator</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparkocr.utils.inpainting.FFCResnetBlock" title="sparkocr.utils.inpainting.FFCResnetBlock"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FFCResnetBlock</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparkocr.utils.inpainting.FFCSE_block" title="sparkocr.utils.inpainting.FFCSE_block"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FFCSE_block</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparkocr.utils.inpainting.FFC_BN_ACT" title="sparkocr.utils.inpainting.FFC_BN_ACT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FFC_BN_ACT</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparkocr.utils.inpainting.FourierUnit" title="sparkocr.utils.inpainting.FourierUnit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierUnit</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparkocr.utils.inpainting.LearnableSpatialTransformWrapper" title="sparkocr.utils.inpainting.LearnableSpatialTransformWrapper"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LearnableSpatialTransformWrapper</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparkocr.utils.inpainting.SELayer" title="sparkocr.utils.inpainting.SELayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SELayer</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparkocr.utils.inpainting.SpectralTransform" title="sparkocr.utils.inpainting.SpectralTransform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SpectralTransform</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparkocr.utils.inpainting.ceil_modulo" title="sparkocr.utils.inpainting.ceil_modulo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ceil_modulo</span></code></a>(x, mod)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparkocr.utils.inpainting.get_activation" title="sparkocr.utils.inpainting.get_activation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_activation</span></code></a>([kind])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparkocr.utils.inpainting.pad_img_to_modulo" title="sparkocr.utils.inpainting.pad_img_to_modulo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pad_img_to_modulo</span></code></a>(img, mod)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparkocr.utils.inpainting.rotate_detector_regions" title="sparkocr.utils.inpainting.rotate_detector_regions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rotate_detector_regions</span></code></a>(x, y, width, height, angle)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparkocr.utils.inpainting.rotate_tensor" title="sparkocr.utils.inpainting.rotate_tensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rotate_tensor</span></code></a>(x, angle_deg)</p></td>
+<td><p>Rotate a batch of tensors by angle_deg (in degrees).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparkocr.utils.inpainting.scale_image" title="sparkocr.utils.inpainting.scale_image"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_image</span></code></a>(img, factor[, interpolation])</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.BaseInpaintingTrainingModule">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">BaseInpaintingTrainingModule</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'cpu'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.inpainting.BaseInpaintingTrainingModule" title="Permalink to this definition">#</a></dt>
+<dd><dl class="py attribute">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.BaseInpaintingTrainingModule.config">
+<span class="sig-name descname"><span class="pre">config</span></span><a class="headerlink" href="#sparkocr.utils.inpainting.BaseInpaintingTrainingModule.config" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.BaseInpaintingTrainingModule.device">
+<span class="sig-name descname"><span class="pre">device</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">'cpu'</span></em><a class="headerlink" href="#sparkocr.utils.inpainting.BaseInpaintingTrainingModule.device" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.BaseInpaintingTrainingModule.generator">
+<span class="sig-name descname"><span class="pre">generator</span></span><a class="headerlink" href="#sparkocr.utils.inpainting.BaseInpaintingTrainingModule.generator" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.BaseInpaintingTrainingModule.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.inpainting.BaseInpaintingTrainingModule.forward" title="Permalink to this definition">#</a></dt>
+<dd><p>Run the model forward to generate inpainted image.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.BaseInpaintingTrainingModule.prepare_batch">
+<span class="sig-name descname"><span class="pre">prepare_batch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">orig</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">PIL.Image.Image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">PIL.Image.Image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resize_dims</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.inpainting.BaseInpaintingTrainingModule.prepare_batch" title="Permalink to this definition">#</a></dt>
+<dd><p>Prepare and pad image and mask tensors for model input.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.ConcatTupleLayer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ConcatTupleLayer</span></span><a class="headerlink" href="#sparkocr.utils.inpainting.ConcatTupleLayer" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.ConcatTupleLayer.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.inpainting.ConcatTupleLayer.forward" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.FFC">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FFC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_channels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_channels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio_gin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio_gout</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stride</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dilation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bias</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enable_lfu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'reflect'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gated</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">spectral_kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.inpainting.FFC" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.FFC.convg2g">
+<span class="sig-name descname"><span class="pre">convg2g</span></span><a class="headerlink" href="#sparkocr.utils.inpainting.FFC.convg2g" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.FFC.convg2l">
+<span class="sig-name descname"><span class="pre">convg2l</span></span><a class="headerlink" href="#sparkocr.utils.inpainting.FFC.convg2l" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.FFC.convl2g">
+<span class="sig-name descname"><span class="pre">convl2g</span></span><a class="headerlink" href="#sparkocr.utils.inpainting.FFC.convl2g" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.FFC.convl2l">
+<span class="sig-name descname"><span class="pre">convl2l</span></span><a class="headerlink" href="#sparkocr.utils.inpainting.FFC.convl2l" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.FFC.gate">
+<span class="sig-name descname"><span class="pre">gate</span></span><a class="headerlink" href="#sparkocr.utils.inpainting.FFC.gate" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.FFC.gated">
+<span class="sig-name descname"><span class="pre">gated</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#sparkocr.utils.inpainting.FFC.gated" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.FFC.global_in_num">
+<span class="sig-name descname"><span class="pre">global_in_num</span></span><a class="headerlink" href="#sparkocr.utils.inpainting.FFC.global_in_num" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.FFC.ratio_gin">
+<span class="sig-name descname"><span class="pre">ratio_gin</span></span><a class="headerlink" href="#sparkocr.utils.inpainting.FFC.ratio_gin" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.FFC.ratio_gout">
+<span class="sig-name descname"><span class="pre">ratio_gout</span></span><a class="headerlink" href="#sparkocr.utils.inpainting.FFC.ratio_gout" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.FFC.stride">
+<span class="sig-name descname"><span class="pre">stride</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#sparkocr.utils.inpainting.FFC.stride" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.FFC.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.inpainting.FFC.forward" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.FFCResNetGenerator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FFCResNetGenerator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kind</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_nc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_nc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ngf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_downsampling</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_blocks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">9</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm_layer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">nn.BatchNorm2d</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'reflect'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">activation_layer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">nn.ReLU</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">up_norm_layer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">nn.BatchNorm2d</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">up_activation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">nn.ReLU(True)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">init_conv_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">downsample_conv_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resnet_conv_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spatial_transform_layers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spatial_transform_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_out_act</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1024</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_ffc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_ffc_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.inpainting.FFCResNetGenerator" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.FFCResNetGenerator.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#sparkocr.utils.inpainting.FFCResNetGenerator.model" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.FFCResNetGenerator.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.inpainting.FFCResNetGenerator.forward" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.FFCResnetBlock">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FFCResnetBlock</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm_layer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">activation_layer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">nn.ReLU</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dilation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spatial_transform_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inline</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">conv_kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.inpainting.FFCResnetBlock" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.FFCResnetBlock.conv1">
+<span class="sig-name descname"><span class="pre">conv1</span></span><a class="headerlink" href="#sparkocr.utils.inpainting.FFCResnetBlock.conv1" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.FFCResnetBlock.conv2">
+<span class="sig-name descname"><span class="pre">conv2</span></span><a class="headerlink" href="#sparkocr.utils.inpainting.FFCResnetBlock.conv2" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.FFCResnetBlock.inline">
+<span class="sig-name descname"><span class="pre">inline</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#sparkocr.utils.inpainting.FFCResnetBlock.inline" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.FFCResnetBlock.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.inpainting.FFCResnetBlock.forward" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.FFCSE_block">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FFCSE_block</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio_g</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.inpainting.FFCSE_block" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.FFCSE_block.avgpool">
+<span class="sig-name descname"><span class="pre">avgpool</span></span><a class="headerlink" href="#sparkocr.utils.inpainting.FFCSE_block.avgpool" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.FFCSE_block.conv1">
+<span class="sig-name descname"><span class="pre">conv1</span></span><a class="headerlink" href="#sparkocr.utils.inpainting.FFCSE_block.conv1" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.FFCSE_block.conv_a2g">
+<span class="sig-name descname"><span class="pre">conv_a2g</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#sparkocr.utils.inpainting.FFCSE_block.conv_a2g" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.FFCSE_block.conv_a2l">
+<span class="sig-name descname"><span class="pre">conv_a2l</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#sparkocr.utils.inpainting.FFCSE_block.conv_a2l" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.FFCSE_block.relu1">
+<span class="sig-name descname"><span class="pre">relu1</span></span><a class="headerlink" href="#sparkocr.utils.inpainting.FFCSE_block.relu1" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.FFCSE_block.sigmoid">
+<span class="sig-name descname"><span class="pre">sigmoid</span></span><a class="headerlink" href="#sparkocr.utils.inpainting.FFCSE_block.sigmoid" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.FFCSE_block.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.inpainting.FFCSE_block.forward" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.FFC_BN_ACT">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FFC_BN_ACT</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_channels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_channels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio_gin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio_gout</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stride</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dilation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bias</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm_layer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">nn.BatchNorm2d</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">activation_layer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">nn.Identity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'reflect'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enable_lfu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.inpainting.FFC_BN_ACT" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.FFC_BN_ACT.act_g">
+<span class="sig-name descname"><span class="pre">act_g</span></span><a class="headerlink" href="#sparkocr.utils.inpainting.FFC_BN_ACT.act_g" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.FFC_BN_ACT.act_l">
+<span class="sig-name descname"><span class="pre">act_l</span></span><a class="headerlink" href="#sparkocr.utils.inpainting.FFC_BN_ACT.act_l" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.FFC_BN_ACT.bn_g">
+<span class="sig-name descname"><span class="pre">bn_g</span></span><a class="headerlink" href="#sparkocr.utils.inpainting.FFC_BN_ACT.bn_g" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.FFC_BN_ACT.bn_l">
+<span class="sig-name descname"><span class="pre">bn_l</span></span><a class="headerlink" href="#sparkocr.utils.inpainting.FFC_BN_ACT.bn_l" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.FFC_BN_ACT.ffc">
+<span class="sig-name descname"><span class="pre">ffc</span></span><a class="headerlink" href="#sparkocr.utils.inpainting.FFC_BN_ACT.ffc" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.FFC_BN_ACT.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.inpainting.FFC_BN_ACT.forward" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.FourierUnit">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FourierUnit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_channels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_channels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spatial_scale_factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spatial_scale_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bilinear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spectral_pos_encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_se</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">se_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ffc3d</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fft_norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ortho'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.inpainting.FourierUnit" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.FourierUnit.bn">
+<span class="sig-name descname"><span class="pre">bn</span></span><a class="headerlink" href="#sparkocr.utils.inpainting.FourierUnit.bn" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.FourierUnit.conv_layer">
+<span class="sig-name descname"><span class="pre">conv_layer</span></span><a class="headerlink" href="#sparkocr.utils.inpainting.FourierUnit.conv_layer" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.FourierUnit.ffc3d">
+<span class="sig-name descname"><span class="pre">ffc3d</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#sparkocr.utils.inpainting.FourierUnit.ffc3d" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.FourierUnit.fft_norm">
+<span class="sig-name descname"><span class="pre">fft_norm</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">'ortho'</span></em><a class="headerlink" href="#sparkocr.utils.inpainting.FourierUnit.fft_norm" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.FourierUnit.groups">
+<span class="sig-name descname"><span class="pre">groups</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#sparkocr.utils.inpainting.FourierUnit.groups" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.FourierUnit.relu">
+<span class="sig-name descname"><span class="pre">relu</span></span><a class="headerlink" href="#sparkocr.utils.inpainting.FourierUnit.relu" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.FourierUnit.spatial_scale_factor">
+<span class="sig-name descname"><span class="pre">spatial_scale_factor</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#sparkocr.utils.inpainting.FourierUnit.spatial_scale_factor" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.FourierUnit.spatial_scale_mode">
+<span class="sig-name descname"><span class="pre">spatial_scale_mode</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">'bilinear'</span></em><a class="headerlink" href="#sparkocr.utils.inpainting.FourierUnit.spatial_scale_mode" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.FourierUnit.spectral_pos_encoding">
+<span class="sig-name descname"><span class="pre">spectral_pos_encoding</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#sparkocr.utils.inpainting.FourierUnit.spectral_pos_encoding" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.FourierUnit.use_se">
+<span class="sig-name descname"><span class="pre">use_se</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#sparkocr.utils.inpainting.FourierUnit.use_se" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.FourierUnit.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.inpainting.FourierUnit.forward" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.LearnableSpatialTransformWrapper">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">LearnableSpatialTransformWrapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">impl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad_coef</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle_init_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">80</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_angle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.inpainting.LearnableSpatialTransformWrapper" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.LearnableSpatialTransformWrapper.angle">
+<span class="sig-name descname"><span class="pre">angle</span></span><a class="headerlink" href="#sparkocr.utils.inpainting.LearnableSpatialTransformWrapper.angle" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.LearnableSpatialTransformWrapper.impl">
+<span class="sig-name descname"><span class="pre">impl</span></span><a class="headerlink" href="#sparkocr.utils.inpainting.LearnableSpatialTransformWrapper.impl" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.LearnableSpatialTransformWrapper.pad_coef">
+<span class="sig-name descname"><span class="pre">pad_coef</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">0.5</span></em><a class="headerlink" href="#sparkocr.utils.inpainting.LearnableSpatialTransformWrapper.pad_coef" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.LearnableSpatialTransformWrapper.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.inpainting.LearnableSpatialTransformWrapper.forward" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.LearnableSpatialTransformWrapper.inverse_transform">
+<span class="sig-name descname"><span class="pre">inverse_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_padded_rotated</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orig_x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.inpainting.LearnableSpatialTransformWrapper.inverse_transform" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.LearnableSpatialTransformWrapper.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.inpainting.LearnableSpatialTransformWrapper.transform" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.SELayer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">SELayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.inpainting.SELayer" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.SELayer.avg_pool">
+<span class="sig-name descname"><span class="pre">avg_pool</span></span><a class="headerlink" href="#sparkocr.utils.inpainting.SELayer.avg_pool" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.SELayer.fc">
+<span class="sig-name descname"><span class="pre">fc</span></span><a class="headerlink" href="#sparkocr.utils.inpainting.SELayer.fc" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.SELayer.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.inpainting.SELayer.forward" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.SpectralTransform">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">SpectralTransform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_channels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_channels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stride</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enable_lfu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">fu_kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.inpainting.SpectralTransform" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.SpectralTransform.conv1">
+<span class="sig-name descname"><span class="pre">conv1</span></span><a class="headerlink" href="#sparkocr.utils.inpainting.SpectralTransform.conv1" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.SpectralTransform.conv2">
+<span class="sig-name descname"><span class="pre">conv2</span></span><a class="headerlink" href="#sparkocr.utils.inpainting.SpectralTransform.conv2" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.SpectralTransform.enable_lfu">
+<span class="sig-name descname"><span class="pre">enable_lfu</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">True</span></em><a class="headerlink" href="#sparkocr.utils.inpainting.SpectralTransform.enable_lfu" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.SpectralTransform.fu">
+<span class="sig-name descname"><span class="pre">fu</span></span><a class="headerlink" href="#sparkocr.utils.inpainting.SpectralTransform.fu" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.SpectralTransform.stride">
+<span class="sig-name descname"><span class="pre">stride</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#sparkocr.utils.inpainting.SpectralTransform.stride" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.SpectralTransform.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.inpainting.SpectralTransform.forward" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.ceil_modulo">
+<span class="sig-name descname"><span class="pre">ceil_modulo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mod</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.inpainting.ceil_modulo" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.get_activation">
+<span class="sig-name descname"><span class="pre">get_activation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'tanh'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.inpainting.get_activation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.pad_img_to_modulo">
+<span class="sig-name descname"><span class="pre">pad_img_to_modulo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">img</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mod</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.inpainting.pad_img_to_modulo" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.rotate_detector_regions">
+<span class="sig-name descname"><span class="pre">rotate_detector_regions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.inpainting.rotate_detector_regions" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.rotate_tensor">
+<span class="sig-name descname"><span class="pre">rotate_tensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle_deg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.inpainting.rotate_tensor" title="Permalink to this definition">#</a></dt>
+<dd><p>Rotate a batch of tensors by angle_deg (in degrees).
+Expects input: [B, C, H, W]</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sparkocr.utils.inpainting.scale_image">
+<span class="sig-name descname"><span class="pre">scale_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">img</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">factor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interpolation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">cv2.INTER_AREA</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.inpainting.scale_image" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.BaseInpaintingTrainingModule"><code class="docutils literal notranslate"><span class="pre">BaseInpaintingTrainingModule</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.BaseInpaintingTrainingModule.config"><code class="docutils literal notranslate"><span class="pre">BaseInpaintingTrainingModule.config</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.BaseInpaintingTrainingModule.device"><code class="docutils literal notranslate"><span class="pre">BaseInpaintingTrainingModule.device</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.BaseInpaintingTrainingModule.generator"><code class="docutils literal notranslate"><span class="pre">BaseInpaintingTrainingModule.generator</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.BaseInpaintingTrainingModule.forward"><code class="docutils literal notranslate"><span class="pre">BaseInpaintingTrainingModule.forward()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.BaseInpaintingTrainingModule.prepare_batch"><code class="docutils literal notranslate"><span class="pre">BaseInpaintingTrainingModule.prepare_batch()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.ConcatTupleLayer"><code class="docutils literal notranslate"><span class="pre">ConcatTupleLayer</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.ConcatTupleLayer.forward"><code class="docutils literal notranslate"><span class="pre">ConcatTupleLayer.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.FFC"><code class="docutils literal notranslate"><span class="pre">FFC</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.FFC.convg2g"><code class="docutils literal notranslate"><span class="pre">FFC.convg2g</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.FFC.convg2l"><code class="docutils literal notranslate"><span class="pre">FFC.convg2l</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.FFC.convl2g"><code class="docutils literal notranslate"><span class="pre">FFC.convl2g</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.FFC.convl2l"><code class="docutils literal notranslate"><span class="pre">FFC.convl2l</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.FFC.gate"><code class="docutils literal notranslate"><span class="pre">FFC.gate</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.FFC.gated"><code class="docutils literal notranslate"><span class="pre">FFC.gated</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.FFC.global_in_num"><code class="docutils literal notranslate"><span class="pre">FFC.global_in_num</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.FFC.ratio_gin"><code class="docutils literal notranslate"><span class="pre">FFC.ratio_gin</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.FFC.ratio_gout"><code class="docutils literal notranslate"><span class="pre">FFC.ratio_gout</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.FFC.stride"><code class="docutils literal notranslate"><span class="pre">FFC.stride</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.FFC.forward"><code class="docutils literal notranslate"><span class="pre">FFC.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.FFCResNetGenerator"><code class="docutils literal notranslate"><span class="pre">FFCResNetGenerator</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.FFCResNetGenerator.model"><code class="docutils literal notranslate"><span class="pre">FFCResNetGenerator.model</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.FFCResNetGenerator.forward"><code class="docutils literal notranslate"><span class="pre">FFCResNetGenerator.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.FFCResnetBlock"><code class="docutils literal notranslate"><span class="pre">FFCResnetBlock</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.FFCResnetBlock.conv1"><code class="docutils literal notranslate"><span class="pre">FFCResnetBlock.conv1</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.FFCResnetBlock.conv2"><code class="docutils literal notranslate"><span class="pre">FFCResnetBlock.conv2</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.FFCResnetBlock.inline"><code class="docutils literal notranslate"><span class="pre">FFCResnetBlock.inline</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.FFCResnetBlock.forward"><code class="docutils literal notranslate"><span class="pre">FFCResnetBlock.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.FFCSE_block"><code class="docutils literal notranslate"><span class="pre">FFCSE_block</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.FFCSE_block.avgpool"><code class="docutils literal notranslate"><span class="pre">FFCSE_block.avgpool</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.FFCSE_block.conv1"><code class="docutils literal notranslate"><span class="pre">FFCSE_block.conv1</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.FFCSE_block.conv_a2g"><code class="docutils literal notranslate"><span class="pre">FFCSE_block.conv_a2g</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.FFCSE_block.conv_a2l"><code class="docutils literal notranslate"><span class="pre">FFCSE_block.conv_a2l</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.FFCSE_block.relu1"><code class="docutils literal notranslate"><span class="pre">FFCSE_block.relu1</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.FFCSE_block.sigmoid"><code class="docutils literal notranslate"><span class="pre">FFCSE_block.sigmoid</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.FFCSE_block.forward"><code class="docutils literal notranslate"><span class="pre">FFCSE_block.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.FFC_BN_ACT"><code class="docutils literal notranslate"><span class="pre">FFC_BN_ACT</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.FFC_BN_ACT.act_g"><code class="docutils literal notranslate"><span class="pre">FFC_BN_ACT.act_g</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.FFC_BN_ACT.act_l"><code class="docutils literal notranslate"><span class="pre">FFC_BN_ACT.act_l</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.FFC_BN_ACT.bn_g"><code class="docutils literal notranslate"><span class="pre">FFC_BN_ACT.bn_g</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.FFC_BN_ACT.bn_l"><code class="docutils literal notranslate"><span class="pre">FFC_BN_ACT.bn_l</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.FFC_BN_ACT.ffc"><code class="docutils literal notranslate"><span class="pre">FFC_BN_ACT.ffc</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.FFC_BN_ACT.forward"><code class="docutils literal notranslate"><span class="pre">FFC_BN_ACT.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.FourierUnit"><code class="docutils literal notranslate"><span class="pre">FourierUnit</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.FourierUnit.bn"><code class="docutils literal notranslate"><span class="pre">FourierUnit.bn</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.FourierUnit.conv_layer"><code class="docutils literal notranslate"><span class="pre">FourierUnit.conv_layer</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.FourierUnit.ffc3d"><code class="docutils literal notranslate"><span class="pre">FourierUnit.ffc3d</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.FourierUnit.fft_norm"><code class="docutils literal notranslate"><span class="pre">FourierUnit.fft_norm</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.FourierUnit.groups"><code class="docutils literal notranslate"><span class="pre">FourierUnit.groups</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.FourierUnit.relu"><code class="docutils literal notranslate"><span class="pre">FourierUnit.relu</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.FourierUnit.spatial_scale_factor"><code class="docutils literal notranslate"><span class="pre">FourierUnit.spatial_scale_factor</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.FourierUnit.spatial_scale_mode"><code class="docutils literal notranslate"><span class="pre">FourierUnit.spatial_scale_mode</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.FourierUnit.spectral_pos_encoding"><code class="docutils literal notranslate"><span class="pre">FourierUnit.spectral_pos_encoding</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.FourierUnit.use_se"><code class="docutils literal notranslate"><span class="pre">FourierUnit.use_se</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.FourierUnit.forward"><code class="docutils literal notranslate"><span class="pre">FourierUnit.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.LearnableSpatialTransformWrapper"><code class="docutils literal notranslate"><span class="pre">LearnableSpatialTransformWrapper</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.LearnableSpatialTransformWrapper.angle"><code class="docutils literal notranslate"><span class="pre">LearnableSpatialTransformWrapper.angle</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.LearnableSpatialTransformWrapper.impl"><code class="docutils literal notranslate"><span class="pre">LearnableSpatialTransformWrapper.impl</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.LearnableSpatialTransformWrapper.pad_coef"><code class="docutils literal notranslate"><span class="pre">LearnableSpatialTransformWrapper.pad_coef</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.LearnableSpatialTransformWrapper.forward"><code class="docutils literal notranslate"><span class="pre">LearnableSpatialTransformWrapper.forward()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.LearnableSpatialTransformWrapper.inverse_transform"><code class="docutils literal notranslate"><span class="pre">LearnableSpatialTransformWrapper.inverse_transform()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.LearnableSpatialTransformWrapper.transform"><code class="docutils literal notranslate"><span class="pre">LearnableSpatialTransformWrapper.transform()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.SELayer"><code class="docutils literal notranslate"><span class="pre">SELayer</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.SELayer.avg_pool"><code class="docutils literal notranslate"><span class="pre">SELayer.avg_pool</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.SELayer.fc"><code class="docutils literal notranslate"><span class="pre">SELayer.fc</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.SELayer.forward"><code class="docutils literal notranslate"><span class="pre">SELayer.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.SpectralTransform"><code class="docutils literal notranslate"><span class="pre">SpectralTransform</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.SpectralTransform.conv1"><code class="docutils literal notranslate"><span class="pre">SpectralTransform.conv1</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.SpectralTransform.conv2"><code class="docutils literal notranslate"><span class="pre">SpectralTransform.conv2</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.SpectralTransform.enable_lfu"><code class="docutils literal notranslate"><span class="pre">SpectralTransform.enable_lfu</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.SpectralTransform.fu"><code class="docutils literal notranslate"><span class="pre">SpectralTransform.fu</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.SpectralTransform.stride"><code class="docutils literal notranslate"><span class="pre">SpectralTransform.stride</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.SpectralTransform.forward"><code class="docutils literal notranslate"><span class="pre">SpectralTransform.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.ceil_modulo"><code class="docutils literal notranslate"><span class="pre">ceil_modulo()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.get_activation"><code class="docutils literal notranslate"><span class="pre">get_activation()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.pad_img_to_modulo"><code class="docutils literal notranslate"><span class="pre">pad_img_to_modulo()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.rotate_detector_regions"><code class="docutils literal notranslate"><span class="pre">rotate_detector_regions()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.rotate_tensor"><code class="docutils literal notranslate"><span class="pre">rotate_tensor()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.inpainting.scale_image"><code class="docutils literal notranslate"><span class="pre">scale_image()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../../static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../../../static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, John Snow Labs.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.1.2.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
