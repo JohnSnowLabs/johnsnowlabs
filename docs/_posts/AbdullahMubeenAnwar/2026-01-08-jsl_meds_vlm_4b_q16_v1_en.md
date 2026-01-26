@@ -7,7 +7,7 @@ date: 2026-01-08
 tags: [medical, clinical, vlm, q16, 4b, en, licensed, llamacpp]
 task: [Summarization, Question Answering]
 language: en
-edition: Healthcare NLP 6.2.0
+edition: Healthcare NLP 6.3.0
 spark_version: 3.4
 supported: true
 engine: llamacpp
@@ -39,10 +39,16 @@ from sparknlp_jsl.annotator import *
 from sparknlp_jsl.utils import *
 from pyspark.ml import Pipeline
 
-prompt = """Based only on the information visible in this document, identify the patient’s primary diagnoses, 
-current presenting symptoms, and the complete treatment plan. 
-For the treatment plan, list each medication with its dose, frequency, timing in relation to meals, and duration if specified. 
-Also state the consulting department, consulting doctor, and the recommended follow-up interval."""
+prompt = """
+Extract from the document and return strictly as JSON:
+
+{
+  "patient": {"name": string, "age": string, "sex": string, "hospital_no": string, "episode_no": string, "episode_date": string},
+  "diagnoses": [string],
+  "symptoms": [string],
+  "treatment": [{"med": string, "dose": string, "freq": string}]
+}
+"""
 
 input_df = vision_llm_preprocessor(
     spark=spark,
@@ -59,7 +65,7 @@ image_assembler = ImageAssembler() \
     .setInputCol("image") \
     .setOutputCol("image_assembler")
 
-medicalVisionLLM = MedicalVisionLLM.load("jsl_meds_vlm_4b_q16_v1", "en", "clinical/models") \
+medicalVisionLLM = MedicalVisionLLM.pretrained("jsl_meds_vlm_4b_q16_v1", "en", "clinical/models") \
     .setInputCols(["caption_document", "image_assembler"]) \
     .setOutputCol("completions")
 
@@ -78,10 +84,16 @@ result = model.transform(input_df)
 from johnsnowlabs import nlp, medical
 from sparknlp_jsl.utils import vision_llm_preprocessor
 
-prompt = """Based only on the information visible in this document, identify the patient’s primary diagnoses, 
-current presenting symptoms, and the complete treatment plan. 
-For the treatment plan, list each medication with its dose, frequency, timing in relation to meals, and duration if specified. 
-Also state the consulting department, consulting doctor, and the recommended follow-up interval."""
+prompt = """
+Extract from the document and return strictly as JSON:
+
+{
+  "patient": {"name": string, "age": string, "sex": string, "hospital_no": string, "episode_no": string, "episode_date": string},
+  "diagnoses": [string],
+  "symptoms": [string],
+  "treatment": [{"med": string, "dose": string, "freq": string}]
+}
+"""
 
 input_df = vision_llm_preprocessor(
     spark=spark,
@@ -98,7 +110,7 @@ image_assembler = nlp.ImageAssembler() \
     .setInputCol("image") \
     .setOutputCol("image_assembler")
 
-medicalVisionLLM = medical.MedicalVisionLLM.load("jsl_meds_vlm_4b_q16_v1", "en", "clinical/models") \
+medicalVisionLLM = medical.MedicalVisionLLM.pretrained("jsl_meds_vlm_4b_q16_v1", "en", "clinical/models") \
     .setInputCols(["caption_document", "image_assembler"]) \
     .setOutputCol("completions")
 
@@ -117,10 +129,16 @@ import com.johnsnowlabs.nlp.annotators._
 import com.johnsnowlabs.nlp.pretrained._
 import org.apache.spark.ml.Pipeline
 
-val prompt = """Based only on the information visible in this document, identify the patient’s primary diagnoses, 
-current presenting symptoms, and the complete treatment plan. 
-For the treatment plan, list each medication with its dose, frequency, timing in relation to meals, and duration if specified. 
-Also state the consulting department, consulting doctor, and the recommended follow-up interval."""
+val prompt = """
+Extract from the document and return strictly as JSON:
+
+{
+  "patient": {"name": string, "age": string, "sex": string, "hospital_no": string, "episode_no": string, "episode_date": string},
+  "diagnoses": [string],
+  "symptoms": [string],
+  "treatment": [{"med": string, "dose": string, "freq": string}]
+}
+"""
 
 val inputDf = VisionLLMPreprocessor(
   spark = spark,
@@ -138,7 +156,7 @@ val imageAssembler = new ImageAssembler()
   .setOutputCol("image_assembler")
 
 val medicalVisionLLM = MedicalVisionLLM
-  .load("jsl_meds_vlm_4b_q16_v1", "en", "clinical/models")
+  .pretrained("jsl_meds_vlm_4b_q16_v1", "en", "clinical/models")
   .setInputCols(Array("caption_document", "image_assembler"))
   .setOutputCol("completions")
 
@@ -156,7 +174,31 @@ val result = model.transform(inputDf)
 ## Results
 
 ```bash
-Based solely on the information visible in this document, the patient is a known case of systemic lupus erythematosus with scleroderma overlap and associated interstitial lung disease, presenting with tightness of the skin of the fists and ulcers on the pulp of the fingers, and has been advised treatment with linezolid 600 mg twice daily for 5 days if finger ulcers do not heal, clopidogrel 75 mg once daily after meals, amlodipine 5 mg once daily, domperidone 10 mg twice daily before meals, omeprazole 20 mg twice daily before meals, bosentan 62.5 mg twice daily after meals, sildenafil citrate 0.5 mg twice daily after meals, prednisolone 5 mg once daily after breakfast, mycophenolate mofetil 500 mg two tablets twice daily, L-methylfolate calcium 400 µg once daily, and ciprofloxacin 250 mg twice daily, with consultation by the Department of Rheumatology under Dr. Darshan Singh Bhakuni and a recommended review after 4 weeks.
+{
+  "patient": {
+    "name": "Ms RUKHSANA SHAHEEN",
+    "age": "56 yrs",
+    "sex": "Female",
+    "hospital_no": "MH005990453",
+    "episode_no": "030000528270",
+    "episode_date": "02/07/2021 08:31AM"
+  },
+  "diagnoses": ["systemic lupus erythematosus", "scleroderma overlap", "interstitial lung disease"],
+  "symptoms": ["tightness of skin of the fists", "ulcers on the pulp of the fingers"],
+  "treatment": [
+    {"med": "Linezolid", "dose": "600 mg", "freq": "twice a day for 5 Days"},
+    {"med": "Clopidogrel", "dose": "75 mg", "freq": "once a day after meals"},
+    {"med": "Amlodipine", "dose": "5 mg", "freq": "once a day"},
+    {"med": "Domperidone", "dose": "10 mg", "freq": "twice a day before meals"},
+    {"med": "Omeprazole", "dose": "20 Mg", "freq": "Twice a Day before Meal"},
+    {"med": "Bosentan", "dose": "62.5 mg", "freq": "twice a day after meals"},
+    {"med": "Sildenafil Citrate", "dose": "0.5 mg", "freq": "twice a day after meals"},
+    {"med": "Prednisolone", "dose": "5 mg", "freq": "once a day after breakfast"},
+    {"med": "Mycophenolate mofetil", "dose": "500 mg 2 tablets", "freq": "twice a day"},
+    {"med": "L-methylfolate calcium", "dose": "400 µg 1 tablet", "freq": "once a day"},
+    {"med": "ciprofloxacin", "dose": "250 mg", "freq": "twice a day"}
+  ]
+}
 ```
 
 {:.model-param}
@@ -165,7 +207,7 @@ Based solely on the information visible in this document, the patient is a known
 {:.table-model}
 |---|---|
 |Model Name:|jsl_meds_vlm_4b_q16_v1|
-|Compatibility:|Healthcare NLP 6.2.0+|
+|Compatibility:|Healthcare NLP 6.3.0+|
 |License:|Licensed|
 |Edition:|Official|
 |Input Labels:|[image, document]|

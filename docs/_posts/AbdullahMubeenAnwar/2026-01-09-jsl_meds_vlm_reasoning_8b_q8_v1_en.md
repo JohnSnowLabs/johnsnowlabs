@@ -7,7 +7,7 @@ date: 2026-01-09
 tags: [medical, clinical, vlm, q8, 8b, en, licensed, llamacpp]
 task: [Summarization, Question Answering]
 language: en
-edition: Healthcare NLP 6.2.0
+edition: Healthcare NLP 6.3.0
 spark_version: 3.4
 supported: true
 engine: llamacpp
@@ -39,9 +39,16 @@ from sparknlp_jsl.annotator import *
 from sparknlp_jsl.utils import *
 from pyspark.ml import Pipeline
 
-prompt = """Analyze this clinical document. First, identify the primary diagnoses.
-Then, list all prescribed medications and explain the clinical reasoning for why each medication was likely prescribed for this specific patient.
-Finally, note any instructions that are conditional (e.g., 'only if...')."""
+prompt = """
+Extract from the document and return strictly as JSON:
+
+{
+  "patient": {"name": string, "age": string, "sex": string, "hospital_no": string, "episode_no": string, "episode_date": string},
+  "diagnoses": [string],
+  "symptoms": [string],
+  "treatment": [{"med": string, "dose": string, "freq": string}]
+}
+"""
 
 input_df = vision_llm_preprocessor(
     spark=spark,
@@ -58,7 +65,7 @@ image_assembler = ImageAssembler() \
     .setInputCol("image") \
     .setOutputCol("image_assembler")
 
-medicalVisionLLM = MedicalVisionLLM.load("jsl_meds_vlm_reasoning_8b_q8_v1", "en", "clinical/models") \
+medicalVisionLLM = MedicalVisionLLM.pretrained("jsl_meds_vlm_reasoning_8b_q8_v1", "en", "clinical/models") \
     .setInputCols(["caption_document", "image_assembler"]) \
     .setOutputCol("completions")
 
@@ -77,9 +84,16 @@ result = model.transform(input_df)
 from johnsnowlabs import nlp, medical
 from sparknlp_jsl.utils import vision_llm_preprocessor
 
-prompt = """Analyze this clinical document. First, identify the primary diagnoses.
-Then, list all prescribed medications and explain the clinical reasoning for why each medication was likely prescribed for this specific patient.
-Finally, note any instructions that are conditional (e.g., 'only if...')."""
+prompt = """
+Extract from the document and return strictly as JSON:
+
+{
+  "patient": {"name": string, "age": string, "sex": string, "hospital_no": string, "episode_no": string, "episode_date": string},
+  "diagnoses": [string],
+  "symptoms": [string],
+  "treatment": [{"med": string, "dose": string, "freq": string}]
+}
+"""
 
 input_df = vision_llm_preprocessor(
     spark=spark,
@@ -96,7 +110,7 @@ image_assembler = nlp.ImageAssembler() \
     .setInputCol("image") \
     .setOutputCol("image_assembler")
 
-medicalVisionLLM = medical.MedicalVisionLLM.load("jsl_meds_vlm_reasoning_8b_q8_v1", "en", "clinical/models") \
+medicalVisionLLM = medical.MedicalVisionLLM.pretrained("jsl_meds_vlm_reasoning_8b_q8_v1", "en", "clinical/models") \
     .setInputCols(["caption_document", "image_assembler"]) \
     .setOutputCol("completions")
 
@@ -115,9 +129,16 @@ import com.johnsnowlabs.nlp.annotators._
 import com.johnsnowlabs.nlp.pretrained._
 import org.apache.spark.ml.Pipeline
 
-val prompt = """Analyze this clinical document. First, identify the primary diagnoses.
-Then, list all prescribed medications and explain the clinical reasoning for why each medication was likely prescribed for this specific patient.
-Finally, note any instructions that are conditional (e.g., 'only if...')."""
+val prompt = """
+Extract from the document and return strictly as JSON:
+
+{
+  "patient": {"name": string, "age": string, "sex": string, "hospital_no": string, "episode_no": string, "episode_date": string},
+  "diagnoses": [string],
+  "symptoms": [string],
+  "treatment": [{"med": string, "dose": string, "freq": string}]
+}
+"""
 
 val inputDf = VisionLLMPreprocessor(
   spark = spark,
@@ -135,7 +156,7 @@ val imageAssembler = new ImageAssembler()
   .setOutputCol("image_assembler")
 
 val medicalVisionLLM = MedicalVisionLLM
-  .load("jsl_meds_vlm_reasoning_8b_q8_v1", "en", "clinical/models")
+  .pretrained("jsl_meds_vlm_reasoning_8b_q8_v1", "en", "clinical/models")
   .setInputCols(Array("caption_document", "image_assembler"))
   .setOutputCol("completions")
 
@@ -153,38 +174,31 @@ val result = model.transform(inputDf)
 ## Results
 
 ```bash
-Clinical Document Analysis
-
-1. Primary Diagnoses
-The patient presents with a complex overlap of connective tissue diseases, specifically:
-* Systemic Lupus Erythematosus (SLE)
-* Scleroderma Overlap Syndrome (presenting with features of both SLE and Scleroderma)
-* Interstitial Lung Disease (ILD)
-
-Clinical Correlates: Symptoms such as skin tightness in the fists and finger pulp ulcers are classic manifestations of scleroderma-related vascular and cutaneous complications.
-
-2. Medication Summary & Clinical Reasoning
--------------------------------------------------------------------------------------------------------------
-| Medication            | Dosage       | Clinical Purpose                                                   |
-| :-------------------- | :----------- | :----------------------------------------------------------------- |
-| Mycophenolate Mofetil | 1000 mg BID  | Core immunosuppression to control autoimmune flares.               |
-| Prednisolone          | 5 mg Daily   | Low-dose corticosteroid for ongoing inflammation management.       |
-| Bosentan              | 62.5 mg BID  | Manages Pulmonary Arterial Hypertension (PAH) associated with ILD. |
-| Sildenafil Citrate    | 0.5 mg BID   | Adjunct therapy to improve vascular blood flow in PAH.             |
-| Clopidogrel           | 75 mg Daily  | Antiplatelet therapy to prevent thrombosis in compromised vessels. |
-| Amlodipine            | 5 mg Daily   | Calcium channel blocker for hypertension and Raynaud’s management. |
-| Linezolid             | 600 mg BID   | Conditional: Short-course antibiotic for infected finger ulcers.   |
-| Ciprofloxacin         | 250 mg BID   | Antibiotic coverage/prophylaxis for immunosuppressed states.       |
-| Omeprazole            | 20 mg BID    | Manages GERD/acid reflux caused by scleroderma-related GI issues.  |
-| Domperidone           | 10 mg BID    | Promotes GI motility to counter esophageal/gastric dysfunction.    |
-| L-methylfolate        | 400 µg Daily | Prevents folate deficiency secondary to long-term MMF use.         |
--------------------------------------------------------------------------------------------------------------
-
-3. Critical Instructions
-* Conditional Treatment: Linezolid should only be started if the digital ulcers fail to heal as expected.
-* Follow-up: A clinical review is required in 4 weeks to assess treatment efficacy and disease progression.
-
-Summary: This regimen follows a multidisciplinary approach, targeting immune suppression, vascular protection, and symptomatic relief for gastrointestinal complications.
+{
+  "patient": {
+    "name": "Ms RUKHSANA SHAHEEN",
+    "age": "56 yrs",
+    "sex": "Female",
+    "hospital_no": "MH005990453",
+    "episode_no": "030000528270",
+    "episode_date": "02/07/2021 08:31AM"
+  },
+  "diagnoses": ["systemic lupus erythematosus", "scleroderma overlap", "interstitial lung disease"],
+  "symptoms": ["tightness of skin of the fists", "ulcers on the pulp of the fingers"],
+  "treatment": [
+    {"med": "Linezolid", "dose": "600 mg", "freq": "twice a day for 5 Days"},
+    {"med": "Clopidogrel", "dose": "75 mg", "freq": "once a day after meals"},
+    {"med": "Amlodipine", "dose": "5 mg", "freq": "once a day"},
+    {"med": "Domperidone", "dose": "10 mg", "freq": "twice a day before meals"},
+    {"med": "Omeprazole", "dose": "20 Mg", "freq": "Twice a Day before Meal"},
+    {"med": "Bosentan", "dose": "62.5 mg", "freq": "twice a day after meals"},
+    {"med": "Sildenafil Citrate", "dose": "0.5 mg", "freq": "twice a day after meals"},
+    {"med": "Prednisolone", "dose": "5 mg", "freq": "once a day after breakfast"},
+    {"med": "Mycophenolate mofetil", "dose": "500 mg 2 tablets", "freq": "twice a day"},
+    {"med": "L-methylfolate calcium", "dose": "400 µg 1 tablet", "freq": "once a day"},
+    {"med": "ciprofloxacin", "dose": "250 mg", "freq": "twice a day"}
+  ]
+}
 ```
 
 {:.model-param}
@@ -193,7 +207,7 @@ Summary: This regimen follows a multidisciplinary approach, targeting immune sup
 {:.table-model}
 |---|---|
 |Model Name:|jsl_meds_vlm_reasoning_8b_q8_v1|
-|Compatibility:|Healthcare NLP 6.2.0+|
+|Compatibility:|Healthcare NLP 6.3.0+|
 |License:|Licensed|
 |Edition:|Official|
 |Input Labels:|[image, document]|
