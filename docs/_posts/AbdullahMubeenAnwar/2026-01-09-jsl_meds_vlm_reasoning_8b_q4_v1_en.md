@@ -39,9 +39,16 @@ from sparknlp_jsl.annotator import *
 from sparknlp_jsl.utils import *
 from pyspark.ml import Pipeline
 
-prompt = """Analyze this clinical document. First, identify the primary diagnoses.
-Then, list all prescribed medications and explain the clinical reasoning for why each medication was likely prescribed for this specific patient.
-Finally, note any instructions that are conditional (e.g., 'only if...')."""
+prompt = """
+Extract from the document and return strictly as JSON:
+
+{
+  "patient": {"name": string, "age": string, "sex": string, "hospital_no": string, "episode_no": string, "episode_date": string},
+  "diagnoses": [string],
+  "symptoms": [string],
+  "treatment": [{"med": string, "dose": string, "freq": string}]
+}
+"""
 
 input_df = vision_llm_preprocessor(
     spark=spark,
@@ -77,9 +84,16 @@ result = model.transform(input_df)
 from johnsnowlabs import nlp, medical
 from sparknlp_jsl.utils import vision_llm_preprocessor
 
-prompt = """Analyze this clinical document. First, identify the primary diagnoses.
-Then, list all prescribed medications and explain the clinical reasoning for why each medication was likely prescribed for this specific patient.
-Finally, note any instructions that are conditional (e.g., 'only if...')."""
+prompt = """
+Extract from the document and return strictly as JSON:
+
+{
+  "patient": {"name": string, "age": string, "sex": string, "hospital_no": string, "episode_no": string, "episode_date": string},
+  "diagnoses": [string],
+  "symptoms": [string],
+  "treatment": [{"med": string, "dose": string, "freq": string}]
+}
+"""
 
 input_df = vision_llm_preprocessor(
     spark=spark,
@@ -115,9 +129,16 @@ import com.johnsnowlabs.nlp.annotators._
 import com.johnsnowlabs.nlp.pretrained._
 import org.apache.spark.ml.Pipeline
 
-val prompt = """Analyze this clinical document. First, identify the primary diagnoses.
-Then, list all prescribed medications and explain the clinical reasoning for why each medication was likely prescribed for this specific patient.
-Finally, note any instructions that are conditional (e.g., 'only if...')."""
+val prompt = """
+Extract from the document and return strictly as JSON:
+
+{
+  "patient": {"name": string, "age": string, "sex": string, "hospital_no": string, "episode_no": string, "episode_date": string},
+  "diagnoses": [string],
+  "symptoms": [string],
+  "treatment": [{"med": string, "dose": string, "freq": string}]
+}
+"""
 
 val inputDf = VisionLLMPreprocessor(
   spark = spark,
@@ -153,34 +174,31 @@ val result = model.transform(inputDf)
 ## Results
 
 ```bash
-Clinical Analysis: SLE & Scleroderma Overlap
-
-1. Primary Diagnoses
-The patient presents with an Overlap Syndrome involving:
-* Systemic Lupus Erythematosus (SLE)
-* Scleroderma (indicated by skin tightness and finger pulp ulcers)
-* Interstitial Lung Disease (ILD) (a secondary complication of the overlap)
-
-2. Medication Summary & Clinical Reasoning
---------------------------------------------------------------------------------------------------------
-| Medication            | Dosage       | Clinical Reasoning                                            |
-| :-------------------- | :----------- | :------------------------------------------------------------ |
-| Mycophenolate Mofetil | 1000 mg BID  | Primary immunosuppressant to prevent organ damage/flares.     |
-| Prednisolone          | 5 mg Daily   | Low-dose steroid to manage active immune inflammation.        |
-| Bosentan              | 62.5 mg BID  | Endothelin antagonist for Pulmonary Hypertension (PAH).       |
-| Sildenafil Citrate    | 0.5 mg BID   | PDE5 inhibitor used as adjunct therapy for PAH management.    |
-| Clopidogrel           | 75 mg Daily  | Antiplatelet to prevent thrombosis in damaged microvessels.   |
-| Amlodipine            | 5 mg Daily   | Vasodilator for Raynaud’s phenomenon and skin ischemia.       |
-| Linezolid             | 600 mg BID   | Conditional: Antibiotic if finger ulcers fail to heal.        |
-| Ciprofloxacin         | 250 mg BID   | Prophylactic antibiotic coverage for immunosuppressed state.  |
-| Omeprazole            | 20 mg BID    | PPI to manage GERD/reflux caused by esophageal involvement.   |
-| Domperidone           | 10 mg BID    | Prokinetic to improve GI motility and reduce nausea.          |
-| L-methylfolate        | 400 µg Daily | Supports cellular health and counters drug-induced deficiency.|
---------------------------------------------------------------------------------------------------------
-
-3. Critical Instructions
-* Conditional Use: Linezolid should only be initiated if the digital ulcers do not show signs of healing.
-* Monitoring: Patient review is required in 4 weeks to evaluate the healing of ulcers and the effectiveness of the PAH/ILD regimen.
+{
+  "patient": {
+    "name": "Ms RUKHSANA SHAHEEN",
+    "age": "56 yrs",
+    "sex": "Female",
+    "hospital_no": "MH005990453",
+    "episode_no": "030000528270",
+    "episode_date": "02/07/2021 08:31AM"
+  },
+  "diagnoses": ["systemic lupus erythematosus", "scleroderma overlap", "interstitial lung disease"],
+  "symptoms": ["tightness of skin of the fists", "ulcers on the pulp of the fingers"],
+  "treatment": [
+    {"med": "Linezolid", "dose": "600 mg", "freq": "twice a day for 5 Days"},
+    {"med": "Clopidogrel", "dose": "75 mg", "freq": "once a day after meals"},
+    {"med": "Amlodipine", "dose": "5 mg", "freq": "once a day"},
+    {"med": "Domperidone", "dose": "10 mg", "freq": "twice a day before meals"},
+    {"med": "Omeprazole", "dose": "20 Mg", "freq": "Twice a Day before Meal"},
+    {"med": "Bosentan", "dose": "62.5 mg", "freq": "twice a day after meals"},
+    {"med": "Sildenafil Citrate", "dose": "0.5 mg", "freq": "twice a day after meals"},
+    {"med": "Prednisolone", "dose": "5 mg", "freq": "once a day after breakfast"},
+    {"med": "Mycophenolate mofetil", "dose": "500 mg 2 tablets", "freq": "twice a day"},
+    {"med": "L-methylfolate calcium", "dose": "400 µg 1 tablet", "freq": "once a day"},
+    {"med": "ciprofloxacin", "dose": "250 mg", "freq": "twice a day"}
+  ]
+}
 ```
 
 {:.model-param}

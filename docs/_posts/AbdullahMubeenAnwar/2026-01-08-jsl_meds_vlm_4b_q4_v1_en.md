@@ -40,45 +40,14 @@ from sparknlp_jsl.utils import *
 from pyspark.ml import Pipeline
 
 prompt = """
-Based only on the information visible in this document, extract the following details and return the result strictly as a valid JSON object. Do not include any explanatory text.
-
-The JSON must follow this structure:
+Extract from the document and return strictly as JSON:
 
 {
-  "patient_info": {
-    "name": string,
-    "age": string,
-    "sex": string,
-    "hospital_number": string,
-    "episode_number": string,
-    "episode_date_time": string
-  },
-  "primary_diagnoses": [string],
-  "presenting_symptoms": [string],
-  "treatment_plan": [
-    {
-      "medication_name": string,
-      "dose": string,
-      "frequency": string,
-      "timing_with_meals": string,
-      "duration": string
-    }
-  ],
-  "consultation": {
-    "department": string,
-    "doctor": string
-  },
-  "recommended_follow_up_interval": string
+  "patient": {"name": string, "age": string, "sex": string, "hospital_no": string, "episode_no": string, "episode_date": string},
+  "diagnoses": [string],
+  "symptoms": [string],
+  "treatment": [{"med": string, "dose": string, "freq": string}]
 }
-
-Rules:
-- Use only information explicitly present in the document.
-- Do not infer, assume, or normalize clinical details beyond what is written.
-- Keep medication names, doses, frequencies, and timing exactly as stated in the document.
-- Do not infer indications or durations for medications unless explicitly stated.
-- If a field is not specified in the document, use null.
-- Arrays must be empty ([]) if no items are found.
-- Ensure the output is valid JSON and nothing else.
 """
 
 input_df = vision_llm_preprocessor(
@@ -116,45 +85,14 @@ from johnsnowlabs import nlp, medical
 from sparknlp_jsl.utils import vision_llm_preprocessor
 
 prompt = """
-Based only on the information visible in this document, extract the following details and return the result strictly as a valid JSON object. Do not include any explanatory text.
-
-The JSON must follow this structure:
+Extract from the document and return strictly as JSON:
 
 {
-  "patient_info": {
-    "name": string,
-    "age": string,
-    "sex": string,
-    "hospital_number": string,
-    "episode_number": string,
-    "episode_date_time": string
-  },
-  "primary_diagnoses": [string],
-  "presenting_symptoms": [string],
-  "treatment_plan": [
-    {
-      "medication_name": string,
-      "dose": string,
-      "frequency": string,
-      "timing_with_meals": string,
-      "duration": string
-    }
-  ],
-  "consultation": {
-    "department": string,
-    "doctor": string
-  },
-  "recommended_follow_up_interval": string
+  "patient": {"name": string, "age": string, "sex": string, "hospital_no": string, "episode_no": string, "episode_date": string},
+  "diagnoses": [string],
+  "symptoms": [string],
+  "treatment": [{"med": string, "dose": string, "freq": string}]
 }
-
-Rules:
-- Use only information explicitly present in the document.
-- Do not infer, assume, or normalize clinical details beyond what is written.
-- Keep medication names, doses, frequencies, and timing exactly as stated in the document.
-- Do not infer indications or durations for medications unless explicitly stated.
-- If a field is not specified in the document, use null.
-- Arrays must be empty ([]) if no items are found.
-- Ensure the output is valid JSON and nothing else.
 """
 
 input_df = vision_llm_preprocessor(
@@ -192,45 +130,14 @@ import com.johnsnowlabs.nlp.pretrained._
 import org.apache.spark.ml.Pipeline
 
 val prompt = """
-Based only on the information visible in this document, extract the following details and return the result strictly as a valid JSON object. Do not include any explanatory text.
-
-The JSON must follow this structure:
+Extract from the document and return strictly as JSON:
 
 {
-  "patient_info": {
-    "name": string,
-    "age": string,
-    "sex": string,
-    "hospital_number": string,
-    "episode_number": string,
-    "episode_date_time": string
-  },
-  "primary_diagnoses": [string],
-  "presenting_symptoms": [string],
-  "treatment_plan": [
-    {
-      "medication_name": string,
-      "dose": string,
-      "frequency": string,
-      "timing_with_meals": string,
-      "duration": string
-    }
-  ],
-  "consultation": {
-    "department": string,
-    "doctor": string
-  },
-  "recommended_follow_up_interval": string
+  "patient": {"name": string, "age": string, "sex": string, "hospital_no": string, "episode_no": string, "episode_date": string},
+  "diagnoses": [string],
+  "symptoms": [string],
+  "treatment": [{"med": string, "dose": string, "freq": string}]
 }
-
-Rules:
-- Use only information explicitly present in the document.
-- Do not infer, assume, or normalize clinical details beyond what is written.
-- Keep medication names, doses, frequencies, and timing exactly as stated in the document.
-- Do not infer indications or durations for medications unless explicitly stated.
-- If a field is not specified in the document, use null.
-- Arrays must be empty ([]) if no items are found.
-- Ensure the output is valid JSON and nothing else.
 """
 
 val inputDf = VisionLLMPreprocessor(
@@ -268,104 +175,29 @@ val result = model.transform(inputDf)
 
 ```bash
 {
-  "patient_info": {
+  "patient": {
     "name": "Ms RUKHSANA SHAHEEN",
     "age": "56 yrs",
     "sex": "Female",
-    "hospital_number": "MH005990453",
-    "episode_number": "030000528270",
-    "episode_date_time": "02/07/2021 08:31AM"
+    "hospital_no": "MH005990453",
+    "episode_no": "030000528270",
+    "episode_date": "02/07/2021 08:31AM"
   },
-  "primary_diagnoses": [
-    "systemic lupus erythematosus and scleroderma overlap with interstitial lung disease on medication"
-  ],
-  "presenting_symptoms": [
-    "tightness of skin of the fists and ulcers on the pulp of the fingers"
-  ],
-  "treatment_plan": [
-    {
-      "medication_name": "Linezolid",
-      "dose": "600 mg",
-      "frequency": "twice a day",
-      "timing_with_meals": null,
-      "duration": "for 5 Days as advised in detail in case the ulcers of the fingers do not heal"
-    },
-    {
-      "medication_name": "Clopidogrel",
-      "dose": "75 mg",
-      "frequency": "once a day",
-      "timing_with_meals": "after meals",
-      "duration": null
-    },
-    {
-      "medication_name": "Amlodipine",
-      "dose": "5 mg",
-      "frequency": "once a day",
-      "timing_with_meals": null,
-      "duration": null
-    },
-    {
-      "medication_name": "Domperidone",
-      "dose": "10 mg",
-      "frequency": "twice a day",
-      "timing_with_meals": "before meals",
-      "duration": null
-    },
-    {
-      "medication_name": "Omeprazole",
-      "dose": "20 Mg",
-      "frequency": "Twice a Day",
-      "timing_with_meals": "before Meal",
-      "duration": null
-    },
-    {
-      "medication_name": "Bosentan",
-      "dose": "62.5 mg",
-      "frequency": "twice a day",
-      "timing_with_meals": "after meals",
-      "duration": null
-    },
-    {
-      "medication_name": "Sildenafil Citrate",
-      "dose": "0.5 mg",
-      "frequency": "twice a day",
-      "timing_with_meals": "after meals",
-      "duration": null
-    },
-    {
-      "medication_name": "Prednisolone",
-      "dose": "5 mg",
-      "frequency": "once a day",
-      "timing_with_meals": "after breakfast",
-      "duration": null
-    },
-    {
-      "medication_name": "Mycophenolate mofetil",
-      "dose": "500 mg 2 tablets",
-      "frequency": "twice a day",
-      "timing_with_meals": null,
-      "duration": null
-    },
-    {
-      "medication_name": "L-methylfolate calcium",
-      "dose": "400 µg 1 tablet",
-      "frequency": "once a day",
-      "timing_with_meals": null,
-      "duration": null
-    },
-    {
-      "medication_name": "ciprofloxacin",
-      "dose": "250 mg",
-      "frequency": "twice a day",
-      "timing_with_meals": null,
-      "duration": null
-    }
-  ],
-  "consultation": {
-    "department": "RHEUMATOLOGY MHD",
-    "doctor": "DR DARSHAN SINGH BHAKUNI"
-  },
-  "recommended_follow_up_interval": "Review after 4 weeks"
+  "diagnoses": ["systemic lupus erythematosus", "scleroderma overlap", "interstitial lung disease"],
+  "symptoms": ["tightness of skin of the fists", "ulcers on the pulp of the fingers"],
+  "treatment": [
+    {"med": "Linezolid", "dose": "600 mg", "freq": "twice a day for 5 Days"},
+    {"med": "Clopidogrel", "dose": "75 mg", "freq": "once a day after meals"},
+    {"med": "Amlodipine", "dose": "5 mg", "freq": "once a day"},
+    {"med": "Domperidone", "dose": "10 mg", "freq": "twice a day before meals"},
+    {"med": "Omeprazole", "dose": "20 Mg", "freq": "Twice a Day before Meal"},
+    {"med": "Bosentan", "dose": "62.5 mg", "freq": "twice a day after meals"},
+    {"med": "Sildenafil Citrate", "dose": "0.5 mg", "freq": "twice a day after meals"},
+    {"med": "Prednisolone", "dose": "5 mg", "freq": "once a day after breakfast"},
+    {"med": "Mycophenolate mofetil", "dose": "500 mg 2 tablets", "freq": "twice a day"},
+    {"med": "L-methylfolate calcium", "dose": "400 µg 1 tablet", "freq": "once a day"},
+    {"med": "ciprofloxacin", "dose": "250 mg", "freq": "twice a day"}
+  ]
 }
 ```
 
