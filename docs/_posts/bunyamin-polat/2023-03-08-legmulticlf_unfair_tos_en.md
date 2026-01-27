@@ -106,7 +106,7 @@ result = light_model.annotate("""we may alter, suspend or discontinue any aspect
 
 ## References
 
-Train dataset available [here](https://github.com/coastalcph/lex-glue)
+Legal documents, scrapped from the Internet, and classified in-house.
 
 ## Benchmarking
 
