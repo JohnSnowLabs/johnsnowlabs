@@ -628,620 +628,1794 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <h2 id="section">6.2.2</h2>
+  <h2 id="section">6.3.0</h2>
 
   <h4 id="highlights">Highlights</h4>
 
-  <p>We are delighted to announce remarkable enhancements and updates in our latest release of Spark NLP for Healthcare. This release introduces a new zero-shot NER chunking annotator, <strong>PretrainedZeroShotNERChunker</strong>, and advanced ZIP obfuscation controls for <strong>Deidentification</strong>, <strong>StructuredDeidentification</strong>, and <strong>LightDeidentification</strong> workflows.</p>
+  <p>We are delighted to announce remarkable enhancements and updates in our latest major release of Healthcare NLP. This release expands broader cloud environment support with Scala 2.13 and Java 17 compatibility, extends support for the latest LLM families, and delivers 9 new Medical Vision LLMs that advance clinical AI with multimodal text and image understanding, alongside 67 new one-liner pretrained pipelines and models for end-to-end clinical document understanding.
+The release also introduces scalable and flexible HL7 CDA (XML) de-identification and a new De-identification MCP Server (Preview) for seamless integration with external AI agents and IDE clients. Comprehensive benchmark evaluations are included, featuring large-scale clinical de-identification speed–accuracy benchmarks across infrastructures and comparative Medical Vision LLM benchmark results against leading foundation models.
+In addition, this version delivers memory-optimized MedicalNer training for large-scale datasets, enhanced entity resolution with new UMLS CUI and LOINC models, expanded rule-based and neural NER coverage, core robustness improvements across the pipeline ecosystem, newly created notebooks, and published technical blog posts and deep dives to further strengthen Healthcare NLP.</p>
 
   <ul>
-    <li>Introducing a new zero-shot NER chunking annotator, <code class="language-plaintext highlighter-rouge">PretrainedZeroShotNERChunker</code>, enabling direct span-level entity extraction without token alignment</li>
-    <li>Advanced ZIP obfuscation controls with the new <code class="language-plaintext highlighter-rouge">setObfuscateZipKeepDigits</code> parameter, now supported across Deidentification, StructuredDeidentification, and LightDeidentification workflows</li>
-    <li>7 new TextMatcher and parser models for enhanced clinical entity recognition, including specialized matchers for drug forms, medical devices, and other clinical concepts</li>
-    <li>A new clinical classification model for identifying sentences containing quantitative measurements</li>
-    <li>4 new entity resolver models using <code class="language-plaintext highlighter-rouge">bge_base_en_v1_5_onnx</code> embeddings and 4 new mapper models for improved accuracy in medical code mapping</li>
-    <li>The addition and update of numerous new clinical models and pipelines continue to reinforce our offering in the healthcare domain</li>
-    <li>Various core improvements, bug fixes, enhanced overall robustness, and reliability of Spark NLP for Healthcare
+    <li>Scala 2.13 &amp; Java 17 Compatibility with Broader Cloud Environment Support</li>
+    <li>9 Medical Vision LLMs Extending Clinical AI to Multimodal Text and Image Understanding</li>
+    <li>Scalable and Flexible CDA (HL7) De-identification Support for XML Clinical Documents</li>
+    <li>De-identification MCP Server (Preview) for Clinical Text De-identification via External AI Agents and IDE Clients</li>
+    <li>Upgraded Llama.cpp Backend with Expanded Compatibility for the Latest LLM Families</li>
+    <li>Memory-Optimized MedicalNer Training for Large-Scale Datasets</li>
+    <li>Clinical De-Identification at Scale: Pipeline Design and Speed–Accuracy Benchmarks Across Infrastructures</li>
+    <li>Comparative Medical Vision LLM Benchmark Results Against Leading Foundation Models</li>
+    <li>Advanced clinical one-liner pretrained pipelines for PHI detection and extraction</li>
+    <li>Enhanced 8 new entity resolver models for mapping clinical terms to standardized UMLS CUI codes and LOINC</li>
+    <li>Introduced 17 new rule-based entity extraction models for identifying structured codes and patterns in clinical texts</li>
+    <li>Introduced 7 new NER models for PHI deidentification and drug entity extraction</li>
+    <li>Enhanced 8 new contextual assertion models to classify clinical entities by assertion status</li>
+    <li>Added new ONNX-based multilingual clinical NER models for Italian, Spanish, and Romanian, covering disease, procedure, medication, and symptom entity extraction</li>
+    <li>New Blog Posts &amp; Technical Deep Dives</li>
+    <li>Various core improvements, bug fixes, enhanced overall robustness and reliability of Healthcare NLP
       <ul>
-        <li>In pipelines that use the splitter component, <code class="language-plaintext highlighter-rouge">NerConverterInternal</code> could, in rare cases, miss tokens when overlapping spans occurred. This issue has been fixed, resulting in more robust handling of overlaps and improved consistency in entity conversion.</li>
+        <li>Improved PipelineTracer coverage by adding support for PretrainedZeroShotNERChunker, ContextualEntityRuler, ContextualEntityFilterer</li>
+        <li>Added replaceDict to AssertionMerger to allow custom replacement of assertion labels.</li>
+        <li>PipelineOutputParser improvements to support mappings output in clinical_deidentification pipelines</li>
       </ul>
     </li>
+    <li>Updated notebooks and demonstrations for making Healthcare NLP easier to navigate and understand
+      <ul>
+        <li>New <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.14.CDA_DeIdentification.ipynb">CDA DeIdentification</a> Notebook</li>
+      </ul>
+    </li>
+    <li>The addition and update of numerous new clinical models and pipelines continue to reinforce our offering in the healthcare domain</li>
   </ul>
 
   <p>These enhancements will elevate your experience with Healthcare NLP, enabling more efficient, accurate, and streamlined analysis of healthcare-related natural language data.</p>
 
-</div>
-<div class="h3-box">
+  <div class="h3-box">
 
-  <h4 id="new-zero-shot-ner-chunking-annotator-pretrainedzeroshotnerchunker">New Zero-Shot NER Chunking Annotator: <code class="language-plaintext highlighter-rouge">PretrainedZeroShotNERChunker</code></h4>
+    <h4 id="scala-213--java-17-compatibility-with-broader-cloud-environment-support">Scala 2.13 &amp; Java 17 Compatibility with Broader Cloud Environment Support</h4>
 
-  <p>A new zero-shot NER annotator, <code class="language-plaintext highlighter-rouge">PretrainedZeroShotNERChunker</code>, has been introduced to simplify entity extraction workflows by producing <strong>direct span-level entity chunks</strong> from raw text. Unlike <code class="language-plaintext highlighter-rouge">PretrainedZeroShotNER</code>, this annotator does not require token alignment and enables fast, lightweight zero-shot entity extraction without any task-specific training data.</p>
+    <p>With Healthcare NLP <strong>6.3.0</strong>, we introduce official support for <strong>Scala 2.13</strong> while continuing to support <strong>Scala 2.12</strong> through a dual-JAR distribution strategy. <strong>Scala 2.13</strong> JAR is built and tested against <strong>Java 17</strong>, enabling smoother adoption of modern JVM runtimes and reducing friction when deploying on managed cloud Spark platforms.</p>
 
-  <p>Key capabilities:</p>
+    <p><strong>Databricks</strong></p>
+    <ul>
+      <li>Recommended runtimes: <strong>Databricks Runtime 16.4 LTS (Scala 2.13 image / Spark 3.5.2)</strong>.<br />
+Databricks provides both <strong>Scala 2.12 and Scala 2.13 images</strong> for this runtime, allowing customers to validate and migrate at their own pace.</li>
+      <li>Fully compatible with Databricks Runtime 16.x (Spark 3.5.x) environments running either Scala 2.12 or Scala 2.13.</li>
+    </ul>
 
-  <ul>
-    <li>Direct chunk-level entity extraction from <code class="language-plaintext highlighter-rouge">DOCUMENT</code> input</li>
-    <li>No token alignment required, reducing pipeline complexity</li>
-    <li>Fully zero-shot architecture—no annotated data needed</li>
-    <li>Ideal for rapid prototyping, weak supervision, and exploratory NER workflows</li>
-  </ul>
+    <p><strong>Google Cloud (Dataproc)</strong></p>
+    <ul>
+      <li><strong>Cluster-based Dataproc</strong>: Compatible with Dataproc <strong>2.x image families (including 2.2 and 2.3)</strong> that provide Scala 2.13 and Java 17.</li>
+      <li><strong>Dataproc Serverless for Spark</strong>: Supported on <strong>2.2 and newer runtimes</strong>, which include <strong>Scala 2.13</strong> and <strong>Java 17</strong> in their execution environment.</li>
+    </ul>
 
-  <p><em>Example</em>:</p>
+    <p>These updates significantly broaden support across cloud environments, enabling Healthcare NLP to run on a wider range of instance types and managed runtime configurations on both AWS and GCP.</p>
 
-  <p>PretrainedZeroShot NER (token-aligned, requires NerConverter)</p>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span><span class="p">,</span> <span class="n">medical</span>
+    <p><strong>Practical notes</strong></p>
+    <ul>
+      <li>Use the <strong>Scala 2.13</strong> JAR on environments that provide Scala 2.13 (e.g. Databricks Scala 2.13 images, Dataproc 2.x runtimes).</li>
+      <li>Use the <strong>Scala 2.12</strong> JAR on environments that are still based on Scala 2.12.</li>
+      <li><strong>Spark 4 is not supported in 6.3.0</strong> and will be addressed in a future release.</li>
+    </ul>
 
-<span class="n">text</span> <span class="o">=</span> <span class="s">"""
-Dr. Eleanor Vance, a neurologist at MountSinaiHospital,NewYorkCity recently consulted with patient JohnDoe.
-Mr.Doe,55yearsold, has an appointment scheduled for October262025, regarding his condition.
+  </div>
+  <div class="h3-box">
+
+    <h4 id="medical-vision-llms-extending-clinical-ai-to-multimodal-text-and-image-understanding">9 Medical Vision LLMs Extending Clinical AI to Multimodal Text and Image Understanding</h4>
+
+    <p>In this release, we are expanding our Medical Vision LLM (VLM) family with additional models specifically finetuned for medical tasks. These models extend large language model capabilities with integrated visual language understanding, enabling multimodal clinical analysis by combining textual and image inputs.</p>
+
+    <p>The new VLMs provide strong performance for tasks such as diagnostic image interpretation, image-to-text summarization, and integrated documentation analysis — continuing our mission to advance clinical AI with robust, domain-specific multimodal solutions.</p>
+
+    <table class="table-model-big">
+      <thead>
+        <tr>
+          <th><strong>Model Name</strong></th>
+          <th><strong>Quantization Options</strong></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>jsl_meds_vlm_7b_v1</td>
+          <td><a href="https://nlp.johnsnowlabs.com/2025/12/17/jsl_meds_vlm_7b_q4_v1_en.html">q4</a>, <a href="https://nlp.johnsnowlabs.com/2025/12/17/jsl_meds_vlm_7b_q8_v1_en.html">q8</a>, <a href="https://nlp.johnsnowlabs.com/2025/12/17/jsl_meds_vlm_7b_q16_v1_en.html">q16</a></td>
+        </tr>
+        <tr>
+          <td>jsl_meds_vlm_4b_v1</td>
+          <td><a href="https://nlp.johnsnowlabs.com/2026/01/08/jsl_meds_vlm_4b_q4_v1_en.html">q4</a>, <a href="https://nlp.johnsnowlabs.com/2026/01/08/jsl_meds_vlm_4b_q8_v1_en.html">q8</a>, <a href="https://nlp.johnsnowlabs.com/2026/01/08/jsl_meds_vlm_4b_q16_v1_en.html">q16</a></td>
+        </tr>
+        <tr>
+          <td>jsl_meds_vlm_reasoning_8b_v1</td>
+          <td><a href="https://nlp.johnsnowlabs.com/2026/01/09/jsl_meds_vlm_reasoning_8b_q4_v1_en.html">q4</a>, <a href="https://nlp.johnsnowlabs.com/2026/01/09/jsl_meds_vlm_reasoning_8b_q8_v1_en.html">q8</a>, <a href="https://nlp.johnsnowlabs.com/2026/01/09/jsl_meds_vlm_reasoning_8b_q16_v1_en.html">q16</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><em>Example</em>: jsl_meds_vlm_reasoning_8b_q4_v1</p>
+
+    <p><img src="https://raw.githubusercontent.com/JohnSnowLabs/spark-nlp-workshop/master/healthcare-nlp/data/ocr/prescription_02.png" alt="Prescription Image" width="400" /></p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">prompt</span> <span class="o">=</span> <span class="s">"""
+Extract madication and demographic patient information from the document and return strictly as JSON:
+
+{
+  "patient": {"name": string, "age": string, "sex": string, "hospital_no": string, "episode_no": string, "episode_date": string},
+  "diagnoses": [string],
+  "symptoms": [string],
+  "treatment": [{"med": string, "dose": string, "freq": string}]
+}
 """</span>
 
-<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s">'DOCTOR'</span><span class="p">,</span> <span class="s">'PATIENT'</span><span class="p">,</span> <span class="s">'AGE'</span><span class="p">,</span> <span class="s">'DATE'</span><span class="p">,</span> <span class="s">'HOSPITAL'</span><span class="p">,</span> <span class="s">'CITY'</span><span class="p">,</span> <span class="s">'STREET'</span><span class="p">,</span> <span class="s">'STATE'</span><span class="p">,</span> <span class="s">'COUNTRY'</span><span class="p">,</span> <span class="s">'PHONE'</span><span class="p">,</span> <span class="s">'IDNUM'</span><span class="p">,</span> <span class="s">'EMAIL'</span><span class="p">,</span><span class="s">'ZIP'</span><span class="p">,</span> <span class="s">'ORGANIZATION'</span><span class="p">,</span> <span class="s">'PROFESSION'</span><span class="p">,</span> <span class="s">'USERNAME'</span><span class="p">]</span>
+<span class="n">input_df</span> <span class="o">=</span> <span class="n">vision_llm_preprocessor</span><span class="p">(</span>
+    <span class="n">spark</span><span class="o">=</span><span class="n">spark</span><span class="p">,</span>
+    <span class="n">images_path</span><span class="o">=</span><span class="s">"images"</span><span class="p">,</span>
+    <span class="n">prompt</span><span class="o">=</span><span class="n">prompt</span><span class="p">,</span>
+    <span class="n">output_col_name</span><span class="o">=</span><span class="s">"prompt"</span>
+<span class="p">)</span>
 
-<span class="n">zeroshot_ner</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">PretrainedZeroShotNER</span><span class="p">()</span> \
-    <span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"zeroshot_ner_deid_subentity_merged_medium"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"document"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_zero_shot"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setPredictionThreshold</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setLabels</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+<span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"prompt"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"caption_document"</span><span class="p">)</span>
 
-<span class="n">ner_converter</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">NerConverter</span><span class="p">()</span> \
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"document"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner_zero_shot"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk_zero_shot"</span><span class="p">)</span>
+<span class="n">image_assembler</span> <span class="o">=</span> <span class="n">ImageAssembler</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"image"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"image_assembler"</span><span class="p">)</span>
 
-</code></pre></div>  </div>
-  <p><em>Results</em></p>
+<span class="n">medicalVisionLLM</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">MedicalVisionLLM</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"jsl_meds_vlm_reasoning_8b_q4_v1"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"caption_document"</span><span class="p">,</span> <span class="s">"image_assembler"</span><span class="p">])</span>
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"completions"</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setNCtx</span><span class="p">(</span><span class="mi">8</span><span class="o">*</span><span class="mi">4096</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setNPredict</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setTemperature</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="p">)</span>
 
-  <table>
-    <thead>
-      <tr>
-        <th>begin</th>
-        <th>end</th>
-        <th>chunk</th>
-        <th>entity</th>
-        <th>confidence</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>4</td>
-        <td>16</td>
-        <td>Eleanor Vance</td>
-        <td>DOCTOR</td>
-        <td>1.0</td>
-      </tr>
-      <tr>
-        <td>99</td>
-        <td>105</td>
-        <td>JohnDoe</td>
-        <td>PATIENT</td>
-        <td>1.0</td>
-      </tr>
-      <tr>
-        <td>160</td>
-        <td>172</td>
-        <td>October262025</td>
-        <td>DATE</td>
-        <td>1.0</td>
-      </tr>
-    </tbody>
-  </table>
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">().</span><span class="n">setStages</span><span class="p">([</span>
+    <span class="n">document_assembler</span><span class="p">,</span>
+    <span class="n">image_assembler</span><span class="p">,</span>
+    <span class="n">medicalVisionLLM</span>
+<span class="p">])</span>
 
-  <p>PretrainedZeroShotNERChunker (direct chunks)</p>
+<span class="n">model</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">input_df</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">input_df</span><span class="p">)</span>
+</code></pre></div>    </div>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s">'DOCTOR'</span><span class="p">,</span> <span class="s">'PATIENT'</span><span class="p">,</span> <span class="s">'AGE'</span><span class="p">,</span> <span class="s">'DATE'</span><span class="p">,</span> <span class="s">'HOSPITAL'</span><span class="p">,</span> <span class="s">'CITY'</span><span class="p">,</span> <span class="s">'STREET'</span><span class="p">,</span> <span class="s">'STATE'</span><span class="p">,</span> <span class="s">'COUNTRY'</span><span class="p">,</span> <span class="s">'PHONE'</span><span class="p">,</span> <span class="s">'IDNUM'</span><span class="p">,</span> <span class="s">'EMAIL'</span><span class="p">,</span><span class="s">'ZIP'</span><span class="p">,</span> <span class="s">'ORGANIZATION'</span><span class="p">,</span> <span class="s">'PROFESSION'</span><span class="p">,</span> <span class="s">'USERNAME'</span><span class="p">]</span>
+    <p><em>Result</em>:</p>
 
-<span class="n">zeroshot_chunker</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">PretrainedZeroShotNERChunker</span><span class="p">()</span> \
-    <span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"zeroshot_ner_deid_subentity_merged_medium"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk_zero_shot"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setPredictionThreshold</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setLabels</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">{</span>
+  <span class="s2">"patient"</span>: <span class="o">{</span>
+    <span class="s2">"name"</span>: <span class="s2">"Ms RUKHSANA SHAHEEN"</span>,
+    <span class="s2">"age"</span>: <span class="s2">"56 yrs"</span>,
+    <span class="s2">"sex"</span>: <span class="s2">"Female"</span>,
+    <span class="s2">"hospital_no"</span>: <span class="s2">"MH005990453"</span>,
+    <span class="s2">"episode_no"</span>: <span class="s2">"030000528270"</span>,
+    <span class="s2">"episode_date"</span>: <span class="s2">"02/07/2021 08:31AM"</span>
+  <span class="o">}</span>,
+  <span class="s2">"diagnoses"</span>: <span class="o">[</span>
+    <span class="s2">"systemic lupus erythematosus"</span>,
+    <span class="s2">"scleroderma overlap"</span>,
+    <span class="s2">"interstitial lung disease"</span>
+  <span class="o">]</span>,
+  <span class="s2">"symptoms"</span>: <span class="o">[</span>
+    <span class="s2">"tightness of skin of the fists"</span>,
+    <span class="s2">"ulcers on the pulp of the fingers"</span>
+  <span class="o">]</span>,
+  <span class="s2">"treatment"</span>: <span class="o">[</span>
+    <span class="o">{</span>
+      <span class="s2">"med"</span>: <span class="s2">"Linezolid"</span>,
+      <span class="s2">"dose"</span>: <span class="s2">"600 mg"</span>,
+      <span class="s2">"freq"</span>: <span class="s2">"twice a day for 5 Days"</span>
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"med"</span>: <span class="s2">"Clopidogrel"</span>,
+      <span class="s2">"dose"</span>: <span class="s2">"75 mg"</span>,
+      <span class="s2">"freq"</span>: <span class="s2">"once a day after meals"</span>
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"med"</span>: <span class="s2">"Amlodipine"</span>,
+      <span class="s2">"dose"</span>: <span class="s2">"5 mg"</span>,
+      <span class="s2">"freq"</span>: <span class="s2">"once a day"</span>
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"med"</span>: <span class="s2">"Domperidone"</span>,
+      <span class="s2">"dose"</span>: <span class="s2">"10 mg"</span>,
+      <span class="s2">"freq"</span>: <span class="s2">"twice a day before meals"</span>
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"med"</span>: <span class="s2">"Omeprazole"</span>,
+      <span class="s2">"dose"</span>: <span class="s2">"20 Mg"</span>,
+      <span class="s2">"freq"</span>: <span class="s2">"Twice a Day before Meal"</span>
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"med"</span>: <span class="s2">"Bosentan"</span>,
+      <span class="s2">"dose"</span>: <span class="s2">"62.5 mg"</span>,
+      <span class="s2">"freq"</span>: <span class="s2">"twice a day after meals"</span>
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"med"</span>: <span class="s2">"Sildenafil Citrate"</span>,
+      <span class="s2">"dose"</span>: <span class="s2">"0.5 mg"</span>,
+      <span class="s2">"freq"</span>: <span class="s2">"twice a day after meals"</span>
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"med"</span>: <span class="s2">"Prednisolone"</span>,
+      <span class="s2">"dose"</span>: <span class="s2">"5 mg"</span>,
+      <span class="s2">"freq"</span>: <span class="s2">"once a day after breakfast"</span>
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"med"</span>: <span class="s2">"Mycophenolate mofetil"</span>,
+      <span class="s2">"dose"</span>: <span class="s2">"500 mg 2 tablets"</span>,
+      <span class="s2">"freq"</span>: <span class="s2">"twice a day"</span>
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"med"</span>: <span class="s2">"L-methylfolate calcium"</span>,
+      <span class="s2">"dose"</span>: <span class="s2">"400 µg 1 tablet"</span>,
+      <span class="s2">"freq"</span>: <span class="s2">"once a day"</span>
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"med"</span>: <span class="s2">"ciprofloxacin"</span>,
+      <span class="s2">"dose"</span>: <span class="s2">"250 mg"</span>,
+      <span class="s2">"freq"</span>: <span class="s2">"twice a day"</span>
+    <span class="o">}</span>
+  <span class="o">]</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+    <p>Overall, this release strengthens our Medical Vision LLM portfolio by enabling robust, production-ready multimodal analysis for real-world clinical documents and images.</p>
 
-</code></pre></div>  </div>
-  <p><em>Results</em></p>
+  </div>
+  <div class="h3-box">
 
-  <table>
-    <thead>
-      <tr>
-        <th>begin</th>
-        <th>end</th>
-        <th>chunk</th>
-        <th>entity</th>
-        <th>confidence</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>4</td>
-        <td>16</td>
-        <td>Eleanor Vance</td>
-        <td>DOCTOR</td>
-        <td>0.99998724</td>
-      </tr>
-      <tr>
-        <td>36</td>
-        <td>53</td>
-        <td>MountSinaiHospital</td>
-        <td>HOSPITAL</td>
-        <td>0.99986887</td>
-      </tr>
-      <tr>
-        <td>55</td>
-        <td>65</td>
-        <td>NewYorkCity</td>
-        <td>CITY</td>
-        <td>0.99928530</td>
-      </tr>
-      <tr>
-        <td>99</td>
-        <td>105</td>
-        <td>JohnDoe</td>
-        <td>PATIENT</td>
-        <td>0.99999845</td>
-      </tr>
-      <tr>
-        <td>111</td>
-        <td>113</td>
-        <td>Doe</td>
-        <td>PATIENT</td>
-        <td>0.99999870</td>
-      </tr>
-      <tr>
-        <td>115</td>
-        <td>124</td>
-        <td>55yearsold</td>
-        <td>AGE</td>
-        <td>0.99999976</td>
-      </tr>
-      <tr>
-        <td>160</td>
-        <td>172</td>
-        <td>October262025</td>
-        <td>DATE</td>
-        <td>1.0</td>
-      </tr>
-    </tbody>
-  </table>
+    <h4 id="scalable-and-flexible-cda-hl7-de-identification-support-for-xml-clinical-documents">Scalable and Flexible CDA (HL7) De-identification Support for XML Clinical Documents</h4>
 
-  <p><strong>Why does <code class="language-plaintext highlighter-rouge">PretrainedZeroShotNERChunker</code> find more entities?</strong></p>
+    <p>We’re introducing <strong>native de-identification support for HL7 CDA (Clinical Document Architecture) reports in XML format</strong> within Healthcare NLP.
+This module enables secure, large-scale processing of CDA R2 documents by combining <strong>structure-aware XML de-identification</strong> with <strong>NLP-based free-text anonymization</strong>, all delivered through a single, scalable Spark transformer.</p>
 
-  <ul>
-    <li>Works <strong>directly at the span level</strong>, not token-by-token</li>
-    <li>Not limited by tokenization (e.g., “55yearsold”, “NewYorkCity”, “MountSinaiHospital”)</li>
-    <li>Detects <strong>nested</strong> or <strong>overlapping</strong> mentions (e.g., “JohnDoe” + “Doe”)</li>
-    <li>Avoids IOB conversion issues caused by Spark NLP Tokenizer</li>
-    <li>Produces more complete chunks because it evaluates the <strong>full text span</strong> rather than individual tokens</li>
-  </ul>
+    <p>Unlike flat text approaches, CDA de-identification operates directly on the <strong>XML document structure</strong>, allowing precise targeting of sensitive fields using <strong>XPath-like path expressions</strong>, while preserving the integrity and schema of the original clinical document.</p>
 
-</div>
-<div class="h3-box">
+    <p><strong>Key Capabilities</strong></p>
 
-  <h4 id="advanced-zip-code-obfuscation-controls-across-all-deidentification-workflows">Advanced ZIP Code Obfuscation Controls Across All Deidentification Workflows</h4>
+    <ul>
+      <li>
+        <p><strong>Path-based CDA de-identification</strong>
+Target and de-identify specific CDA elements using dot (<code class="language-plaintext highlighter-rouge">.</code>) or slash (<code class="language-plaintext highlighter-rouge">/</code>) notation, enabling fine-grained control over clinical fields such as patient demographics, authors, organizations, and identifiers.</p>
+      </li>
+      <li>
+        <p><strong>Attribute-level access</strong>
+Seamlessly de-identify XML attributes (e.g. telecom values and identifiers) using intuitive attribute notation, without requiring manual XML parsing or preprocessing.</p>
+      </li>
+      <li>
+        <p><strong>Namespace-aware processing</strong>
+Automatically handles the HL7 v3 namespace, reducing configuration overhead and simplifying integration with existing CDA workflows.</p>
+      </li>
+      <li>
+        <p><strong>Structured field obfuscation</strong>
+Deterministically or randomly obfuscate structured fields such as names, dates, addresses, phone numbers, and identifiers while preserving XML validity and document structure.</p>
+      </li>
+      <li>
+        <p><strong>NLP-powered free-text de-identification</strong>
+Apply Spark NLP de-identification pipelines to narrative sections (e.g. clinical notes and section text) embedded within CDA documents, ensuring comprehensive PHI coverage across both structured and unstructured content.</p>
+      </li>
+      <li>
+        <p><strong>Unified Spark execution model</strong>
+Fully compatible with Spark pipelines and batch processing workflows, enabling de-identification at scale without separating structured XML processing from free-text NLP pipelines.</p>
+      </li>
+    </ul>
 
-  <p>A new parameter, <code class="language-plaintext highlighter-rouge">setObfuscateZipKeepDigits</code>, has been added to provide finer control over ZIP code masking when applying HIPAA-compliant geographic de-identification. This enhancement allows users to customize how many leading ZIP digits are preserved before the remaining digits are masked.<br />
-The parameter is now supported across <strong>Deidentification</strong>, <strong>StructuredDeidentification</strong>, and <strong>LightDeidentification</strong> workflows, ensuring consistent behavior in all de-identification pipelines.</p>
+    <p><strong>Designed for Real-World CDA Workflows</strong></p>
 
-  <p>Key capabilities:</p>
+    <p>The CDA De-identification module allows organizations to process heterogeneous CDA documents—where structured XML fields and free-text clinical narratives coexist—using a <strong>single, consistent configuration model</strong>.
+By combining XPath-style rules with reusable NLP pipelines, teams can adapt de-identification behavior across document types without rewriting logic or maintaining parallel processing systems.</p>
 
-  <ul>
-    <li>Preserves the first <em>N</em> digits of a ZIP code while masking the remainder</li>
-    <li>Masks all trailing digits—including ZIP+4 extensions—with <code class="language-plaintext highlighter-rouge">*</code></li>
-    <li>Accepts values from <strong>0 to 5</strong> (default: <strong>3</strong>)</li>
-    <li>Overrides the default HIPAA Safe Harbor ZIP generalization pattern</li>
-    <li>Enables customizable expert-determination–aligned obfuscation strategies</li>
-  </ul>
+    <p>This approach delivers <strong>enterprise-grade performance, flexibility, and compliance</strong>, making it ideal for large healthcare data platforms, analytics pipelines, and downstream AI workloads that rely on CDA-formatted clinical data.</p>
 
-  <p><strong>Examples</strong></p>
+    <p><em>Example</em>:</p>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Input ZIP</th>
-        <th>Keep = 3 (default)</th>
-        <th>Keep = 2</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><code class="language-plaintext highlighter-rouge">12345</code></td>
-        <td><code class="language-plaintext highlighter-rouge">123**</code></td>
-        <td><code class="language-plaintext highlighter-rouge">12***</code></td>
-      </tr>
-    </tbody>
-  </table>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">sparknlp_jsl</span>
+<span class="kn">from</span> <span class="nn">sparknlp_jsl.annotator</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
 
-  <p>This new parameter provides significantly more flexibility for organizations seeking to balance privacy protection with analytical utility in their de-identification workflows.</p>
+<span class="n">rules</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"recordTarget.patientRole.patient.name.given"</span><span class="p">:</span> <span class="s">"first_name"</span><span class="p">,</span>
+    <span class="s">"recordTarget.patientRole.patient.name.family"</span><span class="p">:</span> <span class="s">"last_name"</span><span class="p">,</span>
+    <span class="s">"recordTarget.patientRole.addr.streetAddressLine"</span><span class="p">:</span> <span class="s">"Address"</span><span class="p">,</span>
+    <span class="s">"recordTarget.patientRole.telecom.value"</span><span class="p">:</span> <span class="s">"Phone"</span><span class="p">,</span>
+    <span class="s">"author.assignedAuthor.assignedPerson.name.given"</span><span class="p">:</span> <span class="s">"first_name"</span><span class="p">,</span>
+    <span class="s">"author.assignedAuthor.assignedPerson.name.family"</span><span class="p">:</span> <span class="s">"last_name"</span><span class="p">,</span>
+<span class="p">}</span>
 
-</div>
-<div class="h3-box">
-
-  <h4 id="new-textmatcher-and-parser-models-for-enhanced-clinical-entity-recognition-including-specialized-matchers-for-drug-forms-medical-devices-and-other-clinical-concepts">7 New TextMatcher and Parser Models for Enhanced Clinical Entity Recognition, Including Specialized Matchers for Drug Forms, Medical Devices, and Other Clinical Concepts</h4>
-
-  <p>We have added 7 new <code class="language-plaintext highlighter-rouge">TextMatcher</code> and <code class="language-plaintext highlighter-rouge">ContextualParser</code> models that expand our clinical entity recognition capabilities with specialized dictionaries for various healthcare domains. These lightweight, dictionary-based models enable fast and accurate identification of domain-specific entities in clinical text.</p>
-
-  <table class="table-model-big">
-    <thead>
-      <tr>
-        <th>Model Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a href="https://nlp.johnsnowlabs.com/2025/11/30/drug_form_matcher_en.html"><code class="language-plaintext highlighter-rouge">drug_form_matcher</code></a></td>
-        <td>Identify drug form entities in clinical text</td>
-      </tr>
-      <tr>
-        <td><a href="https://nlp.johnsnowlabs.com/2025/11/30/drug_route_matcher_en.html"><code class="language-plaintext highlighter-rouge">drug_route_matcher</code></a></td>
-        <td>Identifies drug administration route entities in clinical text</td>
-      </tr>
-      <tr>
-        <td><a href="https://nlp.johnsnowlabs.com/2025/11/30/drug_strength_parser_en.html"><code class="language-plaintext highlighter-rouge">drug_strength_parser</code></a></td>
-        <td>Identifies drug strength entities in clinical text</td>
-      </tr>
-      <tr>
-        <td><a href="https://nlp.johnsnowlabs.com/2025/11/30/medical_device_matcher_en.html"><code class="language-plaintext highlighter-rouge">medical_device_matcher</code></a></td>
-        <td>Identifies medical device entities in clinical text</td>
-      </tr>
-      <tr>
-        <td><a href="https://nlp.johnsnowlabs.com/2025/11/30/procedure_matcher_en.html"><code class="language-plaintext highlighter-rouge">procedure_matcher</code></a></td>
-        <td>Identifies medical procedure entities in clinical text</td>
-      </tr>
-      <tr>
-        <td><a href="https://nlp.johnsnowlabs.com/2025/11/30/symptom_matcher_en.html"><code class="language-plaintext highlighter-rouge">symptom_matcher</code></a></td>
-        <td>Identify symptom entities in clinical text</td>
-      </tr>
-      <tr>
-        <td><a href="https://nlp.johnsnowlabs.com/2025/11/30/test_result_parser_en.html"><code class="language-plaintext highlighter-rouge">test_result_parser</code></a></td>
-        <td>Identifies test result entities in clinical text</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p><em>Example:</em></p>
-
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">drug_form_matcher</span> <span class="o">=</span> <span class="n">TextMatcherInternalModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"drug_form_matcher"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"matched_drug_form"</span><span class="p">)</span>
+<span class="n">deid_pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"clinical_deidentification_docwise_benchmark_optimized"</span><span class="p">,</span>
+                                   <span class="s">"en"</span><span class="p">,</span>
+                                   <span class="s">"clinical/models"</span><span class="p">)</span>
 
 
-<span class="n">text</span> <span class="o">=</span> <span class="s">"""The patient was started on Metformin 500mg tablet twice daily with meals. For pain, Oxycodone 5mg capsule every 6 hours PRN was prescribed. Insulin glargine injection 20 units subcutaneously at bedtime. Apply Hydrocortisone 1% cream to affected areas twice daily. Fentanyl 25mcg/hr transdermal patch applied every 72 hours. Albuterol solution via nebulizer every 4 hours PRN."""</span>
+<span class="n">cda_deidentification</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">CdaDeIdentification</span><span class="p">()</span>
+      <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+      <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"deid"</span><span class="p">)</span>
+      <span class="p">.</span><span class="n">setMode</span><span class="p">(</span><span class="s">"obfuscate"</span><span class="p">)</span>
+      <span class="p">.</span><span class="n">setMappingRules</span><span class="p">(</span><span class="n">rules</span><span class="p">)</span>
+      <span class="p">.</span><span class="n">setFreeTextPaths</span><span class="p">([</span>
+          <span class="s">"component.structuredBody.component.section.text"</span>
+      <span class="p">])</span>
+      <span class="p">.</span><span class="n">setPipeline</span><span class="p">(</span><span class="n">spark</span><span class="p">,</span> <span class="n">deid_pipeline</span><span class="p">,</span> <span class="s">"obfuscated"</span><span class="p">)</span>
+      <span class="p">.</span><span class="n">setDays</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+      <span class="p">.</span><span class="n">setSeed</span><span class="p">(</span><span class="mi">88</span><span class="p">)</span>
+<span class="p">)</span>
 
-<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="n">text</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-</code></pre></div>  </div>
+<span class="n">result</span> <span class="o">=</span> <span class="n">cda_deidentification</span><span class="p">.</span><span class="n">deidentify</span><span class="p">(</span><span class="n">cda_document</span><span class="p">)</span>
 
-  <p><em>Result</em>:</p>
+</code></pre></div>    </div>
 
-  <table class="table-model-big">
-    <thead>
-      <tr>
-        <th>chunk</th>
-        <th>begin</th>
-        <th>end</th>
-        <th>label</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>tablet</td>
-        <td>44</td>
-        <td>49</td>
-        <td>DRUG_FORM</td>
-      </tr>
-      <tr>
-        <td>capsule</td>
-        <td>97</td>
-        <td>103</td>
-        <td>DRUG_FORM</td>
-      </tr>
-      <tr>
-        <td>injection</td>
-        <td>149</td>
-        <td>157</td>
-        <td>DRUG_FORM</td>
-      </tr>
-      <tr>
-        <td>cream</td>
-        <td>220</td>
-        <td>224</td>
-        <td>DRUG_FORM</td>
-      </tr>
-      <tr>
-        <td>transdermal patch</td>
-        <td>270</td>
-        <td>286</td>
-        <td>DRUG_FORM</td>
-      </tr>
-      <tr>
-        <td>solution</td>
-        <td>330</td>
-        <td>337</td>
-        <td>DRUG_FORM</td>
-      </tr>
-      <tr>
-        <td>nebulizer</td>
-        <td>343</td>
-        <td>351</td>
-        <td>DRUG_FORM</td>
-      </tr>
-    </tbody>
-  </table>
+    <p><em>Original CDA</em>:</p>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;?xml <span class="nv">version</span><span class="o">=</span><span class="s2">"1.0"</span> <span class="nv">encoding</span><span class="o">=</span><span class="s2">"UTF-8"</span>?&gt;
+&lt;ClinicalDocument <span class="nv">xmlns</span><span class="o">=</span><span class="s2">"urn:hl7-org:v3"</span>
+                  xmlns:xsi<span class="o">=</span><span class="s2">"http://www.w3.org/2001/XMLSchema-instance"</span>
+                  xsi:schemaLocation<span class="o">=</span><span class="s2">"urn:hl7-org:v3 CDA.xsd"</span><span class="o">&gt;</span>
 
-</div>
-<div class="h3-box">
+    &lt;<span class="o">!</span><span class="nt">--</span> <span class="o">=====================</span> AUTHOR <span class="o">=====================</span> <span class="nt">--</span><span class="o">&gt;</span>
+    &lt;author&gt;
+        &lt;<span class="nb">time </span><span class="nv">value</span><span class="o">=</span><span class="s2">"20240101113000"</span>/&gt;
+        &lt;assignedAuthor&gt;
+            &lt;<span class="nb">id </span><span class="nv">root</span><span class="o">=</span><span class="s2">"2.16.840.1.113883.4.6"</span> <span class="nv">extension</span><span class="o">=</span><span class="s2">"111223333"</span>/&gt;
+            &lt;assignedPerson&gt;
+                &lt;name&gt;
+                    &lt;given&gt;Emily&lt;/given&gt;
+                    &lt;family&gt;Clark&lt;/family&gt;
+                &lt;/name&gt;
+            &lt;/assignedPerson&gt;
+            &lt;representedOrganization&gt;
+                &lt;<span class="nb">id </span><span class="nv">root</span><span class="o">=</span><span class="s2">"2.16.840.1.113883.19.5"</span> <span class="nv">extension</span><span class="o">=</span><span class="s2">"ORG001"</span>/&gt;
+                &lt;name&gt;Good Health Clinic&lt;/name&gt;
+            &lt;/representedOrganization&gt;
+        &lt;/assignedAuthor&gt;
+    &lt;/author&gt;
 
-  <h4 id="a-new-clinical-classification-model-for-identifying-sentences-containing-quantitative-measurements">A New Clinical Classification Model for Identifying Sentences Containing Quantitative Measurements</h4>
+    &lt;<span class="o">!</span><span class="nt">--</span> <span class="o">=====================</span> BODY <span class="o">=====================</span> <span class="nt">--</span><span class="o">&gt;</span>
+    &lt;component&gt;
+        &lt;structuredBody&gt;
+            &lt;component&gt;
+                &lt;section&gt;
+                    &lt;code <span class="nv">code</span><span class="o">=</span><span class="s2">"10164-2"</span> <span class="nv">codeSystem</span><span class="o">=</span><span class="s2">"2.16.840.1.113883.6.1"</span> <span class="nv">displayName</span><span class="o">=</span><span class="s2">"History of Present Illness"</span>/&gt;
+                    &lt;title&gt;History of Present Illness&lt;/title&gt;
+                    &lt;text&gt;
+                        Patient John Doe presented with chest pain and shortness of breath.
+                        He lives at 456 Main Street, Istanbul. Contact number is +905551112233.
+                    &lt;/text&gt;
+                &lt;/section&gt;
+            &lt;/component&gt;
+        &lt;/structuredBody&gt;
+    &lt;/component&gt;
+&lt;/ClinicalDocument&gt;
 
-  <p>A new binary classification model, <code class="language-plaintext highlighter-rouge">generic_classifier_measurement</code>, has been introduced to identify clinical sentences containing quantitative measurement information. This classifier streamlines the extraction and filtering of measurement-related content from clinical documentation, making it easier to isolate vital signs, lab results, and other numerical health data.</p>
+</code></pre></div>    </div>
+    <p><em>De-identified CDA</em>:</p>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;?xml <span class="nv">version</span><span class="o">=</span><span class="s2">"1.0"</span> <span class="nv">encoding</span><span class="o">=</span><span class="s2">"UTF-8"</span> <span class="nv">standalone</span><span class="o">=</span><span class="s2">"no"</span>?&gt;&lt;ClinicalDocument <span class="nv">xmlns</span><span class="o">=</span><span class="s2">"urn:hl7-org:v3"</span> xmlns:xsi<span class="o">=</span><span class="s2">"http://www.w3.org/2001/XMLSchema-instance"</span> xsi:schemaLocation<span class="o">=</span><span class="s2">"urn:hl7-org:v3 CDA.xsd"</span><span class="o">&gt;</span>
 
-  <p><strong>Classes:</strong></p>
+    &lt;<span class="o">!</span><span class="nt">--</span> <span class="o">=====================</span> AUTHOR <span class="o">=====================</span> <span class="nt">--</span><span class="o">&gt;</span>
+    &lt;author&gt;
+        &lt;<span class="nb">time </span><span class="nv">value</span><span class="o">=</span><span class="s2">"20240101113000"</span>/&gt;
+        &lt;assignedAuthor&gt;
+            &lt;<span class="nb">id </span><span class="nv">extension</span><span class="o">=</span><span class="s2">"111223333"</span> <span class="nv">root</span><span class="o">=</span><span class="s2">"2.16.840.1.113883.4.6"</span>/&gt;
+            &lt;assignedPerson&gt;
+                &lt;name&gt;
+                    &lt;given&gt;Mayford&lt;/given&gt;
+                    &lt;family&gt;Rock&lt;/family&gt;
+                &lt;/name&gt;
+            &lt;/assignedPerson&gt;
+            &lt;representedOrganization&gt;
+                &lt;<span class="nb">id </span><span class="nv">extension</span><span class="o">=</span><span class="s2">"ORG001"</span> <span class="nv">root</span><span class="o">=</span><span class="s2">"2.16.840.1.113883.19.5"</span>/&gt;
+                &lt;name&gt;Good Health Clinic&lt;/name&gt;
+            &lt;/representedOrganization&gt;
+        &lt;/assignedAuthor&gt;
+    &lt;/author&gt;
 
-  <ul>
-    <li><code class="language-plaintext highlighter-rouge">MEASUREMENT</code>: Contains numerical health measurements, vital signs, lab results, or test values</li>
-    <li><code class="language-plaintext highlighter-rouge">OTHER</code>: Doesn’t contain quantitative measurement information</li>
-  </ul>
+    &lt;<span class="o">!</span><span class="nt">--</span> <span class="o">=====================</span> BODY <span class="o">=====================</span> <span class="nt">--</span><span class="o">&gt;</span>
+    &lt;component&gt;
+        &lt;structuredBody&gt;
+            &lt;component&gt;
+                &lt;section&gt;
+                    &lt;code <span class="nv">code</span><span class="o">=</span><span class="s2">"10164-2"</span> <span class="nv">codeSystem</span><span class="o">=</span><span class="s2">"2.16.840.1.113883.6.1"</span> <span class="nv">displayName</span><span class="o">=</span><span class="s2">"History of Present Illness"</span>/&gt;
+                    &lt;title&gt;History of Present Illness&lt;/title&gt;
+                    &lt;text&gt;Patient Valerie Ates presented with chest pain and shortness of breath.
+                        He lives at Pr-2 Ponce By Pass, 13218 Brook Lane Drive. Contact number is +127773334455.
+                    &lt;/text&gt;
+                &lt;/section&gt;
+            &lt;/component&gt;
+        &lt;/structuredBody&gt;
+    &lt;/component&gt;
+&lt;/ClinicalDocument&gt;
 
-  <p><em>Example:</em></p>
+</code></pre></div>    </div>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">generic_classifier</span> <span class="o">=</span> <span class="n">GenericClassifierModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"generic_classifier_measurement"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"features"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"prediction"</span><span class="p">)</span>
+  </div>
+  <div class="h3-box">
 
+    <h4 id="de-identification-mcp-server-preview-for-clinical-text-de-identification-via-external-ai-agents-and-ide-clients">De-identification MCP Server (Preview) for Clinical Text De-identification via External AI Agents and IDE Clients</h4>
 
-<span class="n">sample_texts</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">[</span><span class="s">"This is a 58-year-old male who started out having a toothache in the left lower side of the mouth that is now radiating into his jaw and towards his left ear."</span><span class="p">],</span>
-    <span class="p">[</span><span class="s">"The database was available at this point of time. WBC count is elevated at 19,000 with the left shift, hemoglobin of 17.7, and hematocrit of 55.8 consistent with severe dehydration."</span><span class="p">],</span>
-    <span class="p">[</span><span class="s">"Temperature max is 99, heart rate was 133 to 177, blood pressure is 114/43 (while moving), respiratory rate was 28 to 56 with O2 saturations 97 to 100% on room air."</span><span class="p">],</span>
-    <span class="p">[</span><span class="s">"I will see her back in followup in 3 months, at which time she will be recovering from a shoulder surgery."</span><span class="p">]</span>
-<span class="p">]</span>
+    <p>We are introducing a new Model Context Protocol (MCP) server that enables Spark NLP Healthcare clinical de-identification to be accessed directly from external AI agents and IDE clients.
+This preview release exposes de-identification pipelines through a standardized MCP interface, enabling seamless integration with modern AI tooling and developer workflows.</p>
 
-<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">sample_texts</span><span class="p">).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">clf_pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-</code></pre></div>  </div>
+    <p><strong>Key Features</strong>
+The following capabilities are included in the preview release:</p>
+    <ul>
+      <li>Enables clinical text de-identification via external AI agents and IDE clients using MCP</li>
+      <li>Provides a standardized MCP interface for invoking Spark NLP Healthcare de-identification pipelines</li>
+      <li>Supports configurable output modes:
+        <ul>
+          <li>Masked</li>
+          <li>Obfuscated</li>
+          <li>Masked and Obfuscated</li>
+        </ul>
+      </li>
+      <li>Delivered as a containerized, standalone service suitable for both local and remote deployments</li>
+      <li>Designed for consistent integration across MCP-compatible clients</li>
+    </ul>
 
-  <p><em>Result:</em></p>
+    <p><strong>Reference Implementation</strong></p>
 
-  <table class="table-model-big">
-    <thead>
-      <tr>
-        <th>text</th>
-        <th>prediction</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>This is a 58-year-old male who started out having a toothache…</td>
-        <td>OTHER</td>
-      </tr>
-      <tr>
-        <td>The database was available at this point of time. WBC count is elevated at 19,000…</td>
-        <td>MEASUREMENT</td>
-      </tr>
-      <tr>
-        <td>Temperature max is 99, heart rate was 133 to 177, blood pressure is 114/43…</td>
-        <td>MEASUREMENT</td>
-      </tr>
-      <tr>
-        <td>I will see her back in followup in 3 months…</td>
-        <td>OTHER</td>
-      </tr>
-    </tbody>
-  </table>
+    <p>A reference implementation is available in the Spark NLP Workshop repository:</p>
 
-</div>
-<div class="h3-box">
+    <ul>
+      <li>Repository:
+<a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/agents/mcp_servers/deidentification">https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/agents/mcp_servers/deidentification</a></li>
+      <li>Access the relevant blog here:
+<a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/agents/mcp_servers/deidentification/blog/deid-blog-mcp-server.md">https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/agents/mcp_servers/deidentification/blog/deid-blog-mcp-server.md</a></li>
+    </ul>
 
-  <h4 id="new-entity-resolvers-and-1-mapper-using-by-bgebaseenv15onnx-embeddings-for-improved-accuracy-in-medical-code-mapping">3 New Entity Resolvers and 1 Mapper Using by <code class="language-plaintext highlighter-rouge">bge_base_en_v1_5_onnx</code> Embeddings for Improved Accuracy in Medical Code Mapping</h4>
+    <p><strong>Usage Overview</strong></p>
 
-  <p>We are introducing 3 new entity resolvers and 1 mapper built on the state-of-the-art <code class="language-plaintext highlighter-rouge">bge_base_en_v1_5_onnx</code> embeddings. These models leverage BGE (BAAI General Embeddings) for superior semantic understanding, resulting in more accurate medical code resolution and entity mapping across various healthcare terminologies.</p>
+    <ol>
+      <li>Register the MCP Server in Your Client</li>
+    </ol>
 
-  <table class="table-model-big">
-    <thead>
-      <tr>
-        <th>Model Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a href="https://nlp.johnsnowlabs.com/2025/12/03/bgeresolve_icd10cm_en.html"><code class="language-plaintext highlighter-rouge">bgeresolve_icd10cm</code></a></td>
-        <td>Maps clinical entities to ICD-10-CM codes using <code class="language-plaintext highlighter-rouge">bge_base_en_v1_5_onnx</code> embeddings</td>
-      </tr>
-      <tr>
-        <td><a href="https://nlp.johnsnowlabs.com/2025/12/03/bgeresolve_rxnorm_en.html"><code class="language-plaintext highlighter-rouge">bgeresolve_rxnorm</code></a></td>
-        <td>Maps drug entities to RxNorm codes using <code class="language-plaintext highlighter-rouge">bge_base_en_v1_5_onnx</code> embeddings</td>
-      </tr>
-      <tr>
-        <td><a href="https://nlp.johnsnowlabs.com/2025/12/03/bgeresolve_snomed_en.html"><code class="language-plaintext highlighter-rouge">bgeresolve_snomed</code></a></td>
-        <td>Maps clinical entities to SNOMED codes using <code class="language-plaintext highlighter-rouge">bge_base_en_v1_5_onnx</code> embeddings</td>
-      </tr>
-      <tr>
-        <td><a href="https://nlp.johnsnowlabs.com/2025/12/04/bgeresolve_cpt_en.html"><code class="language-plaintext highlighter-rouge">bgeresolve_cpt</code></a></td>
-        <td>Maps clinical entities to CPT codes using <code class="language-plaintext highlighter-rouge">bge_base_en_v1_5_onnx</code> embeddings</td>
-      </tr>
-      <tr>
-        <td><a href="https://nlp.johnsnowlabs.com/2025/12/04/rxnorm_mapper_en.html"><code class="language-plaintext highlighter-rouge">rxnorm_mapper</code></a></td>
-        <td>Maps drug entities to their corresponding RxNorm codes</td>
-      </tr>
-      <tr>
-        <td><a href="https://nlp.johnsnowlabs.com/2025/12/04/snomed_mapper_en.html"><code class="language-plaintext highlighter-rouge">snomed_mapper</code></a></td>
-        <td>Maps clinical entities to their corresponding SNOMED codes</td>
-      </tr>
-      <tr>
-        <td><a href="https://nlp.johnsnowlabs.com/2025/12/04/icd10cm_mapper_en.html"><code class="language-plaintext highlighter-rouge">icd10cm_mapper</code></a></td>
-        <td>Maps clinical entities to their corresponding ICD10CM codes</td>
-      </tr>
-      <tr>
-        <td><a href="https://nlp.johnsnowlabs.com/2025/12/04/cpt_mapper_en.html"><code class="language-plaintext highlighter-rouge">cpt_mapper</code></a></td>
-        <td>Maps clinical entities to their corresponding CPT codes</td>
-      </tr>
-    </tbody>
-  </table>
+    <p>In an MCP-compatible client (for example, Cursor, VS Code Copilot / Agent, or Claude CLI), register a new MCP server with the following configuration:</p>
 
-  <p><em>Example:</em></p>
+    <ul>
+      <li>URL: <code class="language-plaintext highlighter-rouge">http://localhost:8001/mcp</code></li>
+      <li>Transport: <code class="language-plaintext highlighter-rouge">streamable-http</code></li>
+    </ul>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bge_embeddings</span> <span class="o">=</span> <span class="n">BGEEmbeddings</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"bge_base_en_v1_5_onnx"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">)</span>\
+    <p>This registration pattern is consistent across MCP clients and requires only the server URL and transport type.</p>
+
+    <ol>
+      <li>Send a Tool Request</li>
+    </ol>
+
+    <p>Once connected, the client automatically discovers the tools exposed by the MCP server.</p>
+
+    <p>Example request:</p>
+
+    <blockquote>
+      <p>Use the <code class="language-plaintext highlighter-rouge">deidentify_text</code> tool to de-identify this clinical note with the output mode set to <code class="language-plaintext highlighter-rouge">masked</code> (or <code class="language-plaintext highlighter-rouge">obfuscated</code> or <code class="language-plaintext highlighter-rouge">both</code>) and return the transformed text.</p>
+    </blockquote>
+
+  </div>
+  <div class="h3-box">
+
+    <h4 id="upgraded-llamacpp-backend-with-expanded-compatibility-for-the-latest-llm-families">Upgraded Llama.cpp Backend with Expanded Compatibility for the Latest LLM Families</h4>
+
+    <p>With Healthcare NLP <strong>6.3.0</strong>, we deliver a major upgrade to the LLM backend based on a newer llama.cpp version, improving performance, stability, and compatibility for local and distributed LLM inference. This update enables smoother integration of the latest llama.cpp–compatible models into ingestion and enrichment pipelines, while strengthening support for large-scale, on-prem and cloud-based deployments.</p>
+
+    <p><strong>🚀 Key Improvements</strong></p>
+
+    <ul>
+      <li>
+        <p><strong>Upgraded LLM Backend (llama.cpp)</strong><br />
+The llama.cpp backend has been modernized to benefit from upstream performance optimizations, improved memory handling, and enhanced stability. This results in more efficient and reliable local LLM inference, especially in distributed Spark environments.</p>
+      </li>
+      <li>
+        <p><strong>Expanded Model Compatibility</strong><br />
+Healthcare NLP now supports newer LLM families such as <strong>Qwen3</strong>, allowing customers to adopt the latest generation models with confidence. These models can be seamlessly loaded and used through <strong>MedicalLLM</strong>, <strong>MedicalVisualLLM</strong>, and <strong>LLMLoader</strong>, enabling both text and vision use cases within the same unified framework.</p>
+      </li>
+    </ul>
+
+    <p><strong>Impact</strong></p>
+
+    <p>These enhancements provide faster startup times, improved inference stability, and greater flexibility when working with modern LLMs. Teams can more easily integrate the latest models into their NLP pipelines, build richer multimodal workflows, and scale local LLM inference without increasing operational complexity.</p>
+
+  </div>
+  <div class="h3-box">
+
+    <h4 id="memory-optimized-medicalner-training-for-large-scale-datasets">Memory-Optimized MedicalNer Training for Large-Scale Datasets</h4>
+
+    <p>MedicalNer training is enhanced with additional memory-focused optimizations that improve scalability when working with large datasets. These improvements reduce peak memory usage and help training run more reliably on cloud clusters, enabling larger corpus training without requiring proportionally larger executors.</p>
+
+    <p><strong>Key additions include new training parameters:</strong></p>
+
+    <ul>
+      <li>
+        <p>setEnableMemoryOptimizer(True): Already available in previous versions, this setting activates memory optimization techniques during training to lower memory consumption.</p>
+      </li>
+      <li>
+        <p>setOptimizePartitioning(True): Optionally repartitions the dataset before training to improve data distribution and performance, especially for large or skewed datasets.</p>
+      </li>
+      <li>
+        <p>setPrefetchBatches(n): Number of batches to prefetch during training to improve data loading efficiency.</p>
+      </li>
+    </ul>
+
+    <p>Together, these updates make MedicalNer training more efficient and better suited for large-scale production workflows.</p>
+
+  </div>
+  <div class="h3-box">
+
+    <h4 id="clinical-de-identification-at-scale-pipeline-design-and-speedaccuracy-benchmarks-across-infrastructures">Clinical De-Identification at Scale: Pipeline Design and Speed–Accuracy Benchmarks Across Infrastructures</h4>
+
+    <p>To present a focused update on large-scale clinical de-identification benchmarks, emphasizing pipeline design, execution strategy, and infrastructure-aware performance, we benchmarked how different pipeline architectures - rule-augmented NER, hybrid NER + zero-shot, and zero-shot–centric approaches - behave under realistic Google Colab and Databricks–AWS deployments.</p>
+
+    <ul>
+      <li>Four complementary datasets are used to evaluate clinical de-identification pipelines from different perspectives;
+        <ul>
+          <li>Dataset 1: Paper Dataset - Expert-Annotated</li>
+          <li>Dataset 2: Curated Surrogate Clinical Dataset</li>
+          <li>Dataset 3: Document-Level Clinical De-Identification Context Dataset</li>
+          <li>Dataset 4: Large-Scale Aggregated Clinical NER and De-Identification Dataset</li>
+        </ul>
+      </li>
+      <li>
+        <p>Clinical De-identification – Most Up-to-Date Pipelines</p>
+
+        <ul>
+          <li>Test Environment:
+            <ul>
+              <li>GPU Setup: Google Colab A100 GPU, 48 Spark partitions</li>
+              <li>CPU Setup: Google Colab CPU High-RAM, 32 Spark partitions</li>
+            </ul>
+          </li>
+          <li>Datasets Used:
+            <ul>
+              <li>Dataset 1, Dataset 2 for accuracy benchmark, and</li>
+              <li>Dataset 3 for speed benchmark.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+    <table class="table-model-big db">
+      <thead>
+        <tr>
+          <th>pipeline</th>
+          <th style="text-align: right">GPU<br />wall time</th>
+          <th style="text-align: right">CPU<br />wall time</th>
+          <th style="text-align: right">Paper<br />precision</th>
+          <th style="text-align: right">Paper<br />recall</th>
+          <th style="text-align: right">Paper<br />F1-score</th>
+          <th style="text-align: right">Surrogate<br />precision</th>
+          <th style="text-align: right">Surrogate<br />recall</th>
+          <th style="text-align: right">Surrogate<br />F1-score</th>
+          <th>pipeline content</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>clinical_deidentification_docwise_benchmark_optimized</td>
+          <td style="text-align: right">5 min 15 sec</td>
+          <td style="text-align: right">8 min 55 sec</td>
+          <td style="text-align: right">0.93</td>
+          <td style="text-align: right">0.93</td>
+          <td style="text-align: right">0.93</td>
+          <td style="text-align: right">0.92</td>
+          <td style="text-align: right">0.96</td>
+          <td style="text-align: right">0.94</td>
+          <td>21 rule-based annotators<br />4 NER</td>
+        </tr>
+        <tr>
+          <td>clinical_deidentification_docwise_benchmark_medium</td>
+          <td style="text-align: right">4 min 38 sec</td>
+          <td style="text-align: right">32 min 57 sec</td>
+          <td style="text-align: right">0.90</td>
+          <td style="text-align: right">0.97</td>
+          <td style="text-align: right">0.93</td>
+          <td style="text-align: right">0.87</td>
+          <td style="text-align: right">0.96</td>
+          <td style="text-align: right">0.91</td>
+          <td>21 rule-based annotators<br />3 NER + 1 Zero-shot (medium)</td>
+        </tr>
+        <tr>
+          <td>clinical_deidentification_docwise_benchmark_medium_v2</td>
+          <td style="text-align: right">3 min 42 sec</td>
+          <td style="text-align: right">37 min 56 sec</td>
+          <td style="text-align: right">0.91</td>
+          <td style="text-align: right">0.96</td>
+          <td style="text-align: right">0.93</td>
+          <td style="text-align: right">0.86</td>
+          <td style="text-align: right">0.93</td>
+          <td style="text-align: right">0.90</td>
+          <td>21 rule-based annotators<br />2 NER + Zero-shot Chunker</td>
+        </tr>
+        <tr>
+          <td>clinical_deidentification_docwise_zeroshot_medium</td>
+          <td style="text-align: right">26.7 sec</td>
+          <td style="text-align: right">27 min</td>
+          <td style="text-align: right">0.92</td>
+          <td style="text-align: right">0.94</td>
+          <td style="text-align: right">0.93</td>
+          <td style="text-align: right">0.86</td>
+          <td style="text-align: right">0.90</td>
+          <td style="text-align: right">0.88</td>
+          <td>21 rule-based annotators<br />Zero-shot Chunker (medium)</td>
+        </tr>
+        <tr>
+          <td>clinical_deidentification_docwise_SingleStage_zeroshot_medium</td>
+          <td style="text-align: right">33.1 sec</td>
+          <td style="text-align: right">26 min 41 sec</td>
+          <td style="text-align: right">0.92</td>
+          <td style="text-align: right">0.91</td>
+          <td style="text-align: right">0.92</td>
+          <td style="text-align: right">0.87</td>
+          <td style="text-align: right">0.88</td>
+          <td style="text-align: right">0.88</td>
+          <td>Zero-shot Chunker (medium)</td>
+        </tr>
+        <tr>
+          <td>clinical_deidentification_docwise_benchmark_large</td>
+          <td style="text-align: right">4 min 51 sec</td>
+          <td style="text-align: right">2 h 10 min</td>
+          <td style="text-align: right">0.90</td>
+          <td style="text-align: right">0.97</td>
+          <td style="text-align: right">0.94</td>
+          <td style="text-align: right">0.88</td>
+          <td style="text-align: right">0.96</td>
+          <td style="text-align: right">0.92</td>
+          <td>21 rule-based annotators<br />3 NER + 1 Zero-shot (large)</td>
+        </tr>
+        <tr>
+          <td>clinical_deidentification_docwise_benchmark_large_v2</td>
+          <td style="text-align: right">3 min 46 sec</td>
+          <td style="text-align: right">1 h 32 min</td>
+          <td style="text-align: right">0.92</td>
+          <td style="text-align: right">0.98</td>
+          <td style="text-align: right">0.95</td>
+          <td style="text-align: right">0.87</td>
+          <td style="text-align: right">0.94</td>
+          <td style="text-align: right">0.91</td>
+          <td>21 rule-based annotators<br />2 NER + Zero-shot Chunker</td>
+        </tr>
+        <tr>
+          <td>clinical_deidentification_docwise_zeroshot_large</td>
+          <td style="text-align: right">43.8 sec</td>
+          <td style="text-align: right">1 h 18 min</td>
+          <td style="text-align: right">0.93</td>
+          <td style="text-align: right">0.97</td>
+          <td style="text-align: right">0.95</td>
+          <td style="text-align: right">0.87</td>
+          <td style="text-align: right">0.93</td>
+          <td style="text-align: right">0.90</td>
+          <td>21 rule-based annotators<br />Zero-shot Chunker (large)</td>
+        </tr>
+        <tr>
+          <td>clinical_deidentification_docwise_SingleStage_zeroshot_large</td>
+          <td style="text-align: right">41.1 sec</td>
+          <td style="text-align: right">1 h 15 min</td>
+          <td style="text-align: right">0.93</td>
+          <td style="text-align: right">0.95</td>
+          <td style="text-align: right">0.94</td>
+          <td style="text-align: right">0.88</td>
+          <td style="text-align: right">0.92</td>
+          <td style="text-align: right">0.90</td>
+          <td>Zero-shot Chunker (large)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>This table reports end-to-end runtime and token-level precision, recall, and F1-score for the most up-to-date clinical de-identification pipelines.</p>
+
+    <p>This benchmark results also provide a clear foundation for understanding how modern clinical de-identification systems behave under realistic infrastructure and execution constraints.</p>
+
+    <ul>
+      <li>
+        <p>Deidentification Pipelines Speed Comparison on Databrics-AWS</p>
+
+        <ul>
+          <li>Test Environment:
+            <ul>
+              <li>GPU Setup: Databricks - Worker Type: g4dn.2xlarge[T4] 32 GB Memory, 1 GPU, 8 Workers</li>
+              <li>CPU Setup: Databricks - Worker Type: m5d.2xlarge 32 GB Memory, 8 Cores, 8 Workers</li>
+            </ul>
+          </li>
+          <li>
+            <p>Dataset Used: Dataset 4 for speed benchmark</p>
+          </li>
+          <li>CPU Runtime Comparison of Large, Medium and Optimized Pipelines</li>
+        </ul>
+      </li>
+    </ul>
+
+    <table class="table-model-big">
+      <thead>
+        <tr>
+          <th>Model</th>
+          <th style="text-align: right">Infrastructure</th>
+          <th style="text-align: right">Runtime</th>
+          <th style="text-align: right">Batch Size</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>clinical_deidentification_docwise_benchmark_large_en</td>
+          <td style="text-align: right">CPU</td>
+          <td style="text-align: right">9h 23m 54s</td>
+          <td style="text-align: right">32</td>
+        </tr>
+        <tr>
+          <td>clinical_deidentification_docwise_benchmark_medium_en</td>
+          <td style="text-align: right">CPU</td>
+          <td style="text-align: right">3h 7m 19s</td>
+          <td style="text-align: right">32</td>
+        </tr>
+        <tr>
+          <td>clinical_deidentification_docwise_benchmark_optimized_en</td>
+          <td style="text-align: right">CPU</td>
+          <td style="text-align: right">26m 6s</td>
+          <td style="text-align: right">32</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- CPU &amp; GPU Runtime Comparison of Medium Pipeline
+</code></pre></div>    </div>
+
+    <table class="table-model-big">
+      <thead>
+        <tr>
+          <th>Model</th>
+          <th style="text-align: right">Infrastructure</th>
+          <th style="text-align: right">Runtime</th>
+          <th style="text-align: right">Batch Size</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>clinical_deidentification_docwise_benchmark_medium_en</td>
+          <td style="text-align: right">GPU</td>
+          <td style="text-align: right">1h 2m 35s</td>
+          <td style="text-align: right">8</td>
+        </tr>
+        <tr>
+          <td>clinical_deidentification_docwise_benchmark_medium_en</td>
+          <td style="text-align: right">CPU</td>
+          <td style="text-align: right">3h 7m 19s</td>
+          <td style="text-align: right">32</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>The findings emphasize that pipeline optimization yields greater performance gains than hardware scaling alone, while GPU resources provide additional, complementary speedups when applied to appropriately balanced pipeline configurations</p>
+
+    <ul>
+      <li>
+        <p>Pretrained Zero-Shot Named Entity Recognition (NER) Deidentification Subentity Speed Comparison on Databrics-AWS</p>
+
+        <ul>
+          <li>Test Environment:
+            <ul>
+              <li>GPU Setup: Databricks - Worker Type: g4dn.2xlarge[T4] 32 GB Memory, 1 GPU, 8 Workers</li>
+              <li>CPU Setup: Databricks - Worker Type: m5d.2xlarge 32 GB Memory, 8 Cores, 8 Workers</li>
+            </ul>
+          </li>
+          <li>
+            <p>Dataset Used: Dataset 4 for speed benchmark</p>
+          </li>
+          <li>Zero-shot Medium Model CPU &amp; GPU Runtime Comparison</li>
+        </ul>
+      </li>
+    </ul>
+
+    <table class="table-model-big">
+      <thead>
+        <tr>
+          <th>Model</th>
+          <th style="text-align: right">Infrastructure</th>
+          <th style="text-align: right">Runtime</th>
+          <th style="text-align: right">Batch Size</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>zeroshot_ner_deid_subentity_merged_medium_en</td>
+          <td style="text-align: right">CPU</td>
+          <td style="text-align: right">2h 47m 24s</td>
+          <td style="text-align: right">32</td>
+        </tr>
+        <tr>
+          <td>zeroshot_ner_deid_subentity_merged_medium_en</td>
+          <td style="text-align: right">GPU</td>
+          <td style="text-align: right">6m 26s</td>
+          <td style="text-align: right">32</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- Zero-shot Medium Model Batch Size Comparison via GPU Cluster
+</code></pre></div>    </div>
+
+    <table class="table-model-big">
+      <thead>
+        <tr>
+          <th>Model</th>
+          <th style="text-align: right">Infrastructure</th>
+          <th style="text-align: right">Runtime</th>
+          <th style="text-align: right">Batch Size</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>zeroshot_ner_deid_subentity_merged_medium_en</td>
+          <td style="text-align: right">GPU</td>
+          <td style="text-align: right">6m 26s</td>
+          <td style="text-align: right">32</td>
+        </tr>
+        <tr>
+          <td>zeroshot_ner_deid_subentity_merged_medium_en</td>
+          <td style="text-align: right">GPU</td>
+          <td style="text-align: right">12m 3s</td>
+          <td style="text-align: right">8</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- Zero-shot Medium &amp; Large Models GPU Runtime Comparison
+</code></pre></div>    </div>
+
+    <table class="table-model-big">
+      <thead>
+        <tr>
+          <th>Model</th>
+          <th style="text-align: right">Infrastructure</th>
+          <th style="text-align: right">Runtime</th>
+          <th style="text-align: right">Batch Size</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>zeroshot_ner_deid_subentity_merged_medium_en</td>
+          <td style="text-align: right">GPU</td>
+          <td style="text-align: right">12m 3s</td>
+          <td style="text-align: right">8</td>
+        </tr>
+        <tr>
+          <td>zeroshot_ner_deid_subentity_merged_large_en</td>
+          <td style="text-align: right">GPU</td>
+          <td style="text-align: right">30m 23s</td>
+          <td style="text-align: right">8</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>The findings show that GPU usage is essential for production-scale runs, batch size optimization is critical for maximizing GPU efficiency, and model size should be selected based on the required balance between accuracy and runtime performance.</p>
+
+  </div>
+  <div class="h3-box">
+
+    <h4 id="comparative-medical-vision-llm-benchmark-results-against-leading-foundation-models">Comparative Medical Vision LLM Benchmark Results Against Leading Foundation Models</h4>
+
+    <p>To provide a clear and comparative assessment of our Medical Vision LLMs, we report performance across a diverse set of <strong>medical reasoning, safety, bias, and clinical knowledge benchmarks</strong>, alongside leading proprietary foundation models.</p>
+
+    <p>These benchmarks evaluate capabilities spanning medical calculation, clinical QA, dialog understanding, hallucination resistance, bias robustness, and academic medical knowledge.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th><strong>Benchmark</strong></th>
+          <th style="text-align: right"><strong>Gemini-2.5-Pro</strong></th>
+          <th style="text-align: right"><strong>Sonnet-4</strong></th>
+          <th style="text-align: right"><strong>JSL-MedicalVLM-30B</strong></th>
+          <th style="text-align: right"><strong>JSL-MedicalVLM-7B</strong></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>MedCalc</td>
+          <td style="text-align: right">15.0</td>
+          <td style="text-align: right">14.0</td>
+          <td style="text-align: right">29.0</td>
+          <td style="text-align: right">24.0</td>
+        </tr>
+        <tr>
+          <td>MedBullets</td>
+          <td style="text-align: right">40.0</td>
+          <td style="text-align: right">42.0</td>
+          <td style="text-align: right">47.0</td>
+          <td style="text-align: right">46.0</td>
+        </tr>
+        <tr>
+          <td>ACI-Bench</td>
+          <td style="text-align: right">81.9</td>
+          <td style="text-align: right">82.4</td>
+          <td style="text-align: right">83.01</td>
+          <td style="text-align: right">84.0</td>
+        </tr>
+        <tr>
+          <td>MedicationQA</td>
+          <td style="text-align: right">72.56</td>
+          <td style="text-align: right">72.4</td>
+          <td style="text-align: right">76.8</td>
+          <td style="text-align: right">77.1</td>
+        </tr>
+        <tr>
+          <td>MedDialog</td>
+          <td style="text-align: right">75.1</td>
+          <td style="text-align: right">75.3</td>
+          <td style="text-align: right">77.1</td>
+          <td style="text-align: right">77.5</td>
+        </tr>
+        <tr>
+          <td>PubMedQA</td>
+          <td style="text-align: right">75.0</td>
+          <td style="text-align: right">72.0</td>
+          <td style="text-align: right">77.0</td>
+          <td style="text-align: right">81.0</td>
+        </tr>
+        <tr>
+          <td>RaceBias</td>
+          <td style="text-align: right">70.0</td>
+          <td style="text-align: right">70.0</td>
+          <td style="text-align: right">93.0</td>
+          <td style="text-align: right">78.0</td>
+        </tr>
+        <tr>
+          <td>MedHallu</td>
+          <td style="text-align: right">90.0</td>
+          <td style="text-align: right">90.0</td>
+          <td style="text-align: right">90.0</td>
+          <td style="text-align: right">92.0</td>
+        </tr>
+        <tr>
+          <td>College Biology</td>
+          <td style="text-align: right">95.0</td>
+          <td style="text-align: right">98.6</td>
+          <td style="text-align: right">99.3</td>
+          <td style="text-align: right">92.4</td>
+        </tr>
+        <tr>
+          <td>Medical Genetics</td>
+          <td style="text-align: right">95.0</td>
+          <td style="text-align: right">94.0</td>
+          <td style="text-align: right">95.0</td>
+          <td style="text-align: right">93.0</td>
+        </tr>
+        <tr>
+          <td>Average</td>
+          <td style="text-align: right"><strong>70.96</strong></td>
+          <td style="text-align: right"><strong>71.07</strong></td>
+          <td style="text-align: right"><strong>76.72</strong></td>
+          <td style="text-align: right"><strong>74.5</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><strong>Key takeaways</strong></p>
+    <ul>
+      <li><strong>JSL-MedicalVLM-30B</strong> demonstrates strong and consistent performance across clinical reasoning, academic medical knowledge, and bias-sensitive evaluations, with particularly high scores in <strong>RaceBias</strong>, <strong>College Biology</strong>, and <strong>Medical Genetics</strong>.</li>
+      <li><strong>JSL-MedicalVLM-7B</strong> remains highly competitive relative to larger models, outperforming proprietary alternatives on multiple benchmarks while offering a more efficient deployment footprint.</li>
+      <li>Both JSL MedicalVLM models show robust resistance to hallucinations and strong clinical dialog understanding, supporting their use in real-world medical and multimodal healthcare applications.</li>
+    </ul>
+
+    <p>These results validate the reliability and clinical readiness of JSL Medical VLMs across a broad spectrum of medical evaluation tasks.</p>
+
+  </div>
+  <div class="h3-box">
+
+    <h4 id="advanced-clinical-one-liner-pretrained-pipelines-for-phi-detection-and-extraction">Advanced Clinical One-Liner Pretrained Pipelines for PHI Detection and Extraction</h4>
+
+    <p>We introduce specialized pretrained pipelines designed specifically for Protected Health Information (PHI) detection and de-identification in clinical documents. These pipelines leverage state-of-the-art Named Entity Recognition (NER) models to automatically identify and extract sensitive medical information, ensuring compliance with healthcare privacy regulations.</p>
+
+    <p>Our de-identification pipelines eliminate the complexity of building custom PHI detection systems from scratch. Healthcare organizations and researchers can now deploy robust privacy protection measures with simple one-liner implementations, streamlining the process of sanitizing clinical documents while maintaining high accuracy standards.</p>
+
+    <table class="table-model-big">
+      <thead>
+        <tr>
+          <th>Model Name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2025/12/14/clinical_deidentification_docwise_benchmark_large_v2_en.html"><code class="language-plaintext highlighter-rouge">clinical_deidentification_docwise_benchmark_large_v2</code></a></td>
+          <td>Mask and Obfuscate <code class="language-plaintext highlighter-rouge">DATE</code>, <code class="language-plaintext highlighter-rouge">LOCATION</code>, <code class="language-plaintext highlighter-rouge">PROFESSION</code>, <code class="language-plaintext highlighter-rouge">DOCTOR</code>, <code class="language-plaintext highlighter-rouge">EMAIL</code>, <code class="language-plaintext highlighter-rouge">PATIENT</code>, <code class="language-plaintext highlighter-rouge">URL</code>, <code class="language-plaintext highlighter-rouge">USERNAME</code>, <code class="language-plaintext highlighter-rouge">CITY</code>, <code class="language-plaintext highlighter-rouge">COUNTRY</code>, <code class="language-plaintext highlighter-rouge">DLN</code>, <code class="language-plaintext highlighter-rouge">HOSPITAL</code>, <code class="language-plaintext highlighter-rouge">IDNUM</code>, <code class="language-plaintext highlighter-rouge">MEDICALRECORD</code>, <code class="language-plaintext highlighter-rouge">STATE</code>, <code class="language-plaintext highlighter-rouge">STREET</code>, <code class="language-plaintext highlighter-rouge">ZIP</code>, <code class="language-plaintext highlighter-rouge">AGE</code>, <code class="language-plaintext highlighter-rouge">PHONE</code>, <code class="language-plaintext highlighter-rouge">ORGANIZATION</code>, <code class="language-plaintext highlighter-rouge">SSN</code>, <code class="language-plaintext highlighter-rouge">ACCOUNT</code>, <code class="language-plaintext highlighter-rouge">PLATE</code>, <code class="language-plaintext highlighter-rouge">VIN</code>, <code class="language-plaintext highlighter-rouge">LICENSE</code>, <code class="language-plaintext highlighter-rouge">IP</code> entities.</td>
+        </tr>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2025/12/14/clinical_deidentification_docwise_benchmark_medium_v2_en.html"><code class="language-plaintext highlighter-rouge">clinical_deidentification_docwise_benchmark_medium_v2</code></a></td>
+          <td>Mask and Obfuscate <code class="language-plaintext highlighter-rouge">DATE</code>, <code class="language-plaintext highlighter-rouge">LOCATION</code>, <code class="language-plaintext highlighter-rouge">PROFESSION</code>, <code class="language-plaintext highlighter-rouge">DOCTOR</code>, <code class="language-plaintext highlighter-rouge">EMAIL</code>, <code class="language-plaintext highlighter-rouge">PATIENT</code>, <code class="language-plaintext highlighter-rouge">URL</code>, <code class="language-plaintext highlighter-rouge">USERNAME</code>, <code class="language-plaintext highlighter-rouge">CITY</code>, <code class="language-plaintext highlighter-rouge">COUNTRY</code>, <code class="language-plaintext highlighter-rouge">DLN</code>, <code class="language-plaintext highlighter-rouge">HOSPITAL</code>, <code class="language-plaintext highlighter-rouge">IDNUM</code>, <code class="language-plaintext highlighter-rouge">MEDICALRECORD</code>, <code class="language-plaintext highlighter-rouge">STATE</code>, <code class="language-plaintext highlighter-rouge">STREET</code>, <code class="language-plaintext highlighter-rouge">ZIP</code>, <code class="language-plaintext highlighter-rouge">AGE</code>, <code class="language-plaintext highlighter-rouge">PHONE</code>, <code class="language-plaintext highlighter-rouge">ORGANIZATION</code>, <code class="language-plaintext highlighter-rouge">SSN</code>, <code class="language-plaintext highlighter-rouge">ACCOUNT</code>, <code class="language-plaintext highlighter-rouge">PLATE</code>, <code class="language-plaintext highlighter-rouge">VIN</code>, <code class="language-plaintext highlighter-rouge">LICENSE</code>, <code class="language-plaintext highlighter-rouge">IP</code> entities.</td>
+        </tr>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2025/12/14/clinical_deidentification_docwise_benchmark_optimized_v2_en.html"><code class="language-plaintext highlighter-rouge">clinical_deidentification_docwise_benchmark_optimized_v2</code></a></td>
+          <td>Mask and Obfuscate <code class="language-plaintext highlighter-rouge">NAME</code>, <code class="language-plaintext highlighter-rouge">DATE</code>, <code class="language-plaintext highlighter-rouge">LOCATION</code>, <code class="language-plaintext highlighter-rouge">PROFESSION</code>, <code class="language-plaintext highlighter-rouge">DOCTOR</code>, <code class="language-plaintext highlighter-rouge">EMAIL</code>, <code class="language-plaintext highlighter-rouge">PATIENT</code>, <code class="language-plaintext highlighter-rouge">URL</code>, <code class="language-plaintext highlighter-rouge">USERNAME</code>, <code class="language-plaintext highlighter-rouge">CITY</code>, <code class="language-plaintext highlighter-rouge">COUNTRY</code>, <code class="language-plaintext highlighter-rouge">DLN</code>, <code class="language-plaintext highlighter-rouge">HOSPITAL</code>, <code class="language-plaintext highlighter-rouge">IDNUM</code>, <code class="language-plaintext highlighter-rouge">MEDICALRECORD</code>, <code class="language-plaintext highlighter-rouge">STATE</code>, <code class="language-plaintext highlighter-rouge">STREET</code>, <code class="language-plaintext highlighter-rouge">ZIP</code>, <code class="language-plaintext highlighter-rouge">AGE</code>, <code class="language-plaintext highlighter-rouge">PHONE</code>, <code class="language-plaintext highlighter-rouge">ORGANIZATION</code>, <code class="language-plaintext highlighter-rouge">SSN</code>, <code class="language-plaintext highlighter-rouge">ACCOUNT</code>, <code class="language-plaintext highlighter-rouge">PLATE</code>, <code class="language-plaintext highlighter-rouge">VIN</code>, <code class="language-plaintext highlighter-rouge">LICENSE</code>, <code class="language-plaintext highlighter-rouge">IP</code> entities.</td>
+        </tr>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2025/12/14/clinical_deidentification_docwise_zeroshot_large_en.html"><code class="language-plaintext highlighter-rouge">clinical_deidentification_docwise_zeroshot_large</code></a></td>
+          <td>Mask and Obfuscate <code class="language-plaintext highlighter-rouge">DATE</code>, <code class="language-plaintext highlighter-rouge">PROFESSION</code>, <code class="language-plaintext highlighter-rouge">DOCTOR</code>, <code class="language-plaintext highlighter-rouge">EMAIL</code>, <code class="language-plaintext highlighter-rouge">PATIENT</code>, <code class="language-plaintext highlighter-rouge">URL</code>, <code class="language-plaintext highlighter-rouge">USERNAME</code>, <code class="language-plaintext highlighter-rouge">CITY</code>, <code class="language-plaintext highlighter-rouge">COUNTRY</code>, <code class="language-plaintext highlighter-rouge">DLN</code>, <code class="language-plaintext highlighter-rouge">HOSPITAL</code>, <code class="language-plaintext highlighter-rouge">IDNUM</code>, <code class="language-plaintext highlighter-rouge">MEDICALRECORD</code>, <code class="language-plaintext highlighter-rouge">STATE</code>, <code class="language-plaintext highlighter-rouge">STREET</code>, <code class="language-plaintext highlighter-rouge">ZIP</code>, <code class="language-plaintext highlighter-rouge">AGE</code>, <code class="language-plaintext highlighter-rouge">PHONE</code>, <code class="language-plaintext highlighter-rouge">ORGANIZATION</code>, <code class="language-plaintext highlighter-rouge">SSN</code>, <code class="language-plaintext highlighter-rouge">ACCOUNT</code>, <code class="language-plaintext highlighter-rouge">PLATE</code>, <code class="language-plaintext highlighter-rouge">VIN</code>, <code class="language-plaintext highlighter-rouge">LICENSE</code>, <code class="language-plaintext highlighter-rouge">IP</code> entities.</td>
+        </tr>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2025/12/14/clinical_deidentification_docwise_zeroshot_medium_en.html"><code class="language-plaintext highlighter-rouge">clinical_deidentification_docwise_zeroshot_medium</code></a></td>
+          <td>Mask and Obfuscate <code class="language-plaintext highlighter-rouge">DATE</code>, <code class="language-plaintext highlighter-rouge">PROFESSION</code>, <code class="language-plaintext highlighter-rouge">DOCTOR</code>, <code class="language-plaintext highlighter-rouge">EMAIL</code>, <code class="language-plaintext highlighter-rouge">PATIENT</code>, <code class="language-plaintext highlighter-rouge">URL</code>, <code class="language-plaintext highlighter-rouge">USERNAME</code>, <code class="language-plaintext highlighter-rouge">CITY</code>, <code class="language-plaintext highlighter-rouge">COUNTRY</code>, <code class="language-plaintext highlighter-rouge">DLN</code>, <code class="language-plaintext highlighter-rouge">HOSPITAL</code>, <code class="language-plaintext highlighter-rouge">IDNUM</code>, <code class="language-plaintext highlighter-rouge">MEDICALRECORD</code>, <code class="language-plaintext highlighter-rouge">STATE</code>, <code class="language-plaintext highlighter-rouge">STREET</code>, <code class="language-plaintext highlighter-rouge">ZIP</code>, <code class="language-plaintext highlighter-rouge">AGE</code>, <code class="language-plaintext highlighter-rouge">PHONE</code>, <code class="language-plaintext highlighter-rouge">ORGANIZATION</code>, <code class="language-plaintext highlighter-rouge">SSN</code>, <code class="language-plaintext highlighter-rouge">ACCOUNT</code>, <code class="language-plaintext highlighter-rouge">PLATE</code>, <code class="language-plaintext highlighter-rouge">VIN</code>, <code class="language-plaintext highlighter-rouge">LICENSE</code>, <code class="language-plaintext highlighter-rouge">IP</code> entities.</td>
+        </tr>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2025/12/25/clinical_deidentification_docwise_SingleStage_zeroshot_large_en.html"><code class="language-plaintext highlighter-rouge">clinical_deidentification_docwise_SingleStage_zeroshot_large</code></a></td>
+          <td>Mask and Obfuscate <code class="language-plaintext highlighter-rouge">DOCTOR</code>, <code class="language-plaintext highlighter-rouge">PATIENT</code>, <code class="language-plaintext highlighter-rouge">AGE</code>, <code class="language-plaintext highlighter-rouge">DATE</code>, <code class="language-plaintext highlighter-rouge">HOSPITAL</code>, <code class="language-plaintext highlighter-rouge">CITY</code>, <code class="language-plaintext highlighter-rouge">STREET</code>, <code class="language-plaintext highlighter-rouge">STATE</code>, <code class="language-plaintext highlighter-rouge">COUNTRY</code>, <code class="language-plaintext highlighter-rouge">PHONE</code>, <code class="language-plaintext highlighter-rouge">IDNUM</code>, <code class="language-plaintext highlighter-rouge">EMAIL</code>, <code class="language-plaintext highlighter-rouge">ZIP</code>, <code class="language-plaintext highlighter-rouge">ORGANIZATION</code>, <code class="language-plaintext highlighter-rouge">PROFESSION</code>, <code class="language-plaintext highlighter-rouge">USERNAME</code> entities.</td>
+        </tr>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2025/12/25/clinical_deidentification_docwise_SingleStage_zeroshot_medium_en.html"><code class="language-plaintext highlighter-rouge">clinical_deidentification_docwise_SingleStage_zeroshot_medium</code></a></td>
+          <td>Mask and Obfuscate <code class="language-plaintext highlighter-rouge">DOCTOR</code>, <code class="language-plaintext highlighter-rouge">PATIENT</code>, <code class="language-plaintext highlighter-rouge">AGE</code>, <code class="language-plaintext highlighter-rouge">DATE</code>, <code class="language-plaintext highlighter-rouge">HOSPITAL</code>, <code class="language-plaintext highlighter-rouge">CITY</code>, <code class="language-plaintext highlighter-rouge">STREET</code>, <code class="language-plaintext highlighter-rouge">STATE</code>, <code class="language-plaintext highlighter-rouge">COUNTRY</code>, <code class="language-plaintext highlighter-rouge">PHONE</code>, <code class="language-plaintext highlighter-rouge">IDNUM</code>, <code class="language-plaintext highlighter-rouge">EMAIL</code>, <code class="language-plaintext highlighter-rouge">ZIP</code>, <code class="language-plaintext highlighter-rouge">ORGANIZATION</code>, <code class="language-plaintext highlighter-rouge">PROFESSION</code>, <code class="language-plaintext highlighter-rouge">USERNAME</code> entities.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><em>Example</em>:</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">deid_pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"clinical_deidentification_docwise_zeroshot_medium"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="s">"""Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024.
+The patient’s medical record number is 56467890.
+The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 ."""</span>
+
+<span class="n">deid_result</span> <span class="o">=</span> <span class="n">deid_pipeline</span><span class="p">.</span><span class="n">fullAnnotate</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</code></pre></div>    </div>
+
+    <p><em>Result</em>:</p>
+
+    <table class="table-model-big">
+      <thead>
+        <tr>
+          <th style="text-align: left"><strong>text</strong></th>
+          <th style="text-align: left"><strong>result</strong></th>
+          <th style="text-align: left"><strong>result</strong></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: left">Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024. The patient’s medical record number is 56467890. The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 .</td>
+          <td style="text-align: left">Dr. <DOCTOR>, from <HOSPITAL> in <CITY>, attended to the patient on <DATE>. The patient's medical record number is <IDNUM>. The patient, <PATIENT>, is <AGE>, her Contact number: <PHONE> .</PHONE></AGE></PATIENT></IDNUM></DATE></CITY></HOSPITAL></DOCTOR></td>
+          <td style="text-align: left">Dr. Valerie Aho, from Mercy Hospital Aurora in Berea, attended to the patient on 05/07/2024. The patient’s medical record number is 78689012. The patient, Johnathon Bunde, is 55 years old, her Contact number: 666-678-9012 .</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+  <div class="h3-box">
+
+    <h4 id="enhanced-8-new-entity-resolver-models-for-mapping-clinical-terms-to-standardized-umls-cui-codes-and-loinc">Enhanced 8 New Entity Resolver Models for Mapping Clinical Terms to Standardized UMLS CUI Codes and LOINC</h4>
+
+    <p>These Entity Resolver models map clinical entities to standardized UMLS Concept Unique Identifiers (CUI) using <code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli</code> and <code class="language-plaintext highlighter-rouge">mpnet_embeddings_biolord_2023_c</code> sentence embeddings. Trained on the 2025AB UMLS Metathesaurus releases, they cover diverse semantic categories including diseases, syndromes, clinical drugs, pharmacologic substances, antibiotics, symptoms, procedures, clinical findings, anatomical structures, medical devices, and injuries &amp; poisoning.
+In addition to UMLS CUI mapping, we also introduce a model for mapping medical entities to Logical Observation Identifiers Names and Codes (LOINC), facilitating standardized representation of laboratory and clinical observations.</p>
+
+    <table class="table-model-big">
+      <thead>
+        <tr>
+          <th>Model Name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2025/12/18/sbiobertresolve_umls_findings_en.html"><code class="language-plaintext highlighter-rouge">sbiobertresolve_umls_findings</code></a></td>
+          <td>Maps clinical findings to their corresponding UMLS CUI codes</td>
+        </tr>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2025/12/22/sbiobertresolve_umls_clinical_drugs_en.html"><code class="language-plaintext highlighter-rouge">sbiobertresolve_umls_clinical_drugs</code></a></td>
+          <td>Maps drug entities to UMLS CUI codes</td>
+        </tr>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2025/12/22/sbiobertresolve_umls_disease_syndrome_en.html"><code class="language-plaintext highlighter-rouge">sbiobertresolve_umls_disease_syndrome</code></a></td>
+          <td>Maps clinical entities(“Disease or Syndrome”) to UMLS CUI codes</td>
+        </tr>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2025/12/22/sbiobertresolve_umls_drug_substance_en.html"><code class="language-plaintext highlighter-rouge">sbiobertresolve_umls_drug_substance</code></a></td>
+          <td>Maps drug and substances to UMLS CUI codes</td>
+        </tr>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2025/12/22/sbiobertresolve_umls_general_concepts_en.html"><code class="language-plaintext highlighter-rouge">sbiobertresolve_umls_general_concepts</code></a></td>
+          <td>Maps clinical entities and concepts to the following 4 UMLS CUI code categories: <code class="language-plaintext highlighter-rouge">Disease</code>, <code class="language-plaintext highlighter-rouge">Symptom</code>, <code class="language-plaintext highlighter-rouge">Medication</code> and <code class="language-plaintext highlighter-rouge">Procedure</code></td>
+        </tr>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2025/12/22/sbiobertresolve_umls_major_concepts_en.html"><code class="language-plaintext highlighter-rouge">sbiobertresolve_umls_major_concepts</code></a></td>
+          <td>Maps clinical entities and concepts to 4 major categories of UMLS CUI codes: <code class="language-plaintext highlighter-rouge">Clinical Findings</code>, <code class="language-plaintext highlighter-rouge">Medical Devices</code>, <code class="language-plaintext highlighter-rouge">Anatomical Structures</code>, <code class="language-plaintext highlighter-rouge">Injuries &amp; Poisoning</code> terms</td>
+        </tr>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2025/12/23/biolordresolve_umls_general_concepts_en.html"><code class="language-plaintext highlighter-rouge">biolordresolve_umls_general_concepts</code></a></td>
+          <td>Maps clinical entities to 4 UMLS CUI code categories using mpnet_embeddings_biolord_2023_c embeddings: <code class="language-plaintext highlighter-rouge">Disease</code>, <code class="language-plaintext highlighter-rouge">Symptom</code>, <code class="language-plaintext highlighter-rouge">Medication</code>, and <code class="language-plaintext highlighter-rouge">Procedure</code></td>
+        </tr>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2026/01/08/sbiobertresolve_loinc_en.html"><code class="language-plaintext highlighter-rouge">sbiobertresolve_loinc</code></a></td>
+          <td>Maps extracted medical entities to Logical Observation Identifiers Names and Codes (LOINC)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><em>Example</em>:</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">...</span>
+<span class="n">ner_model</span> <span class="o">=</span> <span class="n">MedicalNerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"ner_posology_greedy"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"posology_ner"</span><span class="p">)</span>
+
+<span class="n">ner_model_converter</span> <span class="o">=</span> <span class="n">NerConverterInternal</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"posology_ner"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"posology_ner_chunk"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setWhiteList</span><span class="p">([</span><span class="s">"DRUG"</span><span class="p">])</span>
+
+<span class="n">chunk2doc</span> <span class="o">=</span> <span class="n">Chunk2Doc</span><span class="p">().</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"posology_ner_chunk"</span><span class="p">).</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk_doc"</span><span class="p">)</span>
+
+<span class="n">sbert_embedder</span> <span class="o">=</span> <span class="n">BertSentenceEmbeddings</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sbiobert_base_cased_mli"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span><span class="s">"clinical/models"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"ner_chunk_doc"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"bge_embeddings"</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sbert_embeddings"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setCaseSensitive</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
 
-<span class="n">icd10cm_resolver</span> <span class="o">=</span> <span class="n">SentenceEntityResolverModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"bgeresolve_icd10cm"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"bge_embeddings"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"icd10cm_code"</span><span class="p">)</span>\
+<span class="n">resolver</span> <span class="o">=</span> <span class="n">SentenceEntityResolverModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sbiobertresolve_umls_clinical_drugs"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sbert_embeddings"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"resolution"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setDistanceFunction</span><span class="p">(</span><span class="s">"EUCLIDEAN"</span><span class="p">)</span>
 
-<span class="n">text</span> <span class="o">=</span> <span class="s">"""A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus (T2DM), one prior episode of HTG-induced pancreatitis three years prior to presentation, associated with acute hepatitis and obesity, presented with a one-week history of polyuria, polydipsia, and vomiting."""</span>
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span> <span class="o">=</span> <span class="p">[</span><span class="n">document_assembler</span><span class="p">,</span> <span class="n">sentenceDetector</span><span class="p">,</span> <span class="n">tokenizer</span><span class="p">,</span> <span class="n">word_embeddings</span><span class="p">,</span> <span class="n">ner_model</span><span class="p">,</span> <span class="n">ner_model_converter</span><span class="p">,</span> <span class="n">chunk2doc</span><span class="p">,</span> <span class="n">sbert_embedder</span><span class="p">,</span> <span class="n">resolver</span><span class="p">])</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"""She was immediately given hydrogen peroxide 30 mg to treat the infection on her leg, and has been advised Neosporin Cream for 5 days. She has a history of taking magnesium hydroxide 100mg/1ml and metformin 1000 mg."""</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+</code></pre></div>    </div>
+
+    <p><em>Result</em>:</p>
+
+    <table class="table-model-big">
+      <thead>
+        <tr>
+          <th>ner_chunk</th>
+          <th>entity</th>
+          <th>umls_code</th>
+          <th>resolution</th>
+          <th>all_k_resolutions</th>
+          <th>all_k_results</th>
+          <th>all_k_distances</th>
+          <th>all_k_cosine_distances</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>hydrogen peroxide 30 mg</td>
+          <td>DRUG</td>
+          <td>C1126248</td>
+          <td>hydrogen peroxide 30 mg/ml</td>
+          <td>hydrogen peroxide 30 mg/ml:::hydrogen peroxide solution 30%:::hydrogen peroxid…</td>
+          <td>C1126248:::C0304655:::C1605252:::C0304656:::C1154260:::C2242362:::C1724195:::…</td>
+          <td>4.3731:::4.7154:::5.3302:::6.2122:::6.8675:::7.2770:::7.4682:::7.8312:::7.858…</td>
+          <td>0.0323:::0.0369:::0.0483:::0.0649:::0.0807:::0.0890:::0.0957:::0.1018:::0.106…</td>
+        </tr>
+        <tr>
+          <td>Neosporin Cream</td>
+          <td>DRUG</td>
+          <td>C0132149</td>
+          <td>neosporin cream</td>
+          <td>neosporin cream:::neomycin sulfate cream:::neosporin topical ointment:::nasep…</td>
+          <td>C0132149:::C4722788:::C0704071:::C0698988:::C1252084:::C3833898:::C0698810:::…</td>
+          <td>0.0000:::7.0688:::7.3112:::7.3482:::7.3820:::7.4605:::7.7285:::7.8918:::7.908…</td>
+          <td>0.0000:::0.0888:::0.0953:::0.0934:::0.0964:::0.0941:::0.1052:::0.1113:::0.108…</td>
+        </tr>
+        <tr>
+          <td>magnesium hydroxide 100mg/1ml</td>
+          <td>DRUG</td>
+          <td>C1134402</td>
+          <td>magnesium hydroxide 100 mg</td>
+          <td>magnesium hydroxide 100 mg:::magnesium hydroxide 100 mg/ml:::magnesium sulph…</td>
+          <td>C1134402:::C1126785:::C4317023:::C4051486:::C4047137:::C1131100:::C1371187:::…</td>
+          <td>4.9759:::5.1251:::5.8597:::6.5641:::6.5735:::6.8202:::6.8606:::6.9799:::7.007…</td>
+          <td>0.0401:::0.0432:::0.0565:::0.0688:::0.0700:::0.0764:::0.0781:::0.0783:::0.079…</td>
+        </tr>
+        <tr>
+          <td>metformin 1000 mg</td>
+          <td>DRUG</td>
+          <td>C0987664</td>
+          <td>metformin 1000 mg</td>
+          <td>metformin 1000 mg:::metformin hydrochloride 1000 mg:::metformin hcl 1000mg ta…</td>
+          <td>C0987664:::C2719784:::C0978482:::C2719786:::C4282269:::C2719794:::C4282270:::…</td>
+          <td>0.0000:::5.2988:::5.3783:::5.9071:::6.1034:::6.3066:::6.6597:::6.6626:::6.782…</td>
+          <td>0.0000:::0.0445:::0.0454:::0.0553:::0.0586:::0.0632:::0.0698:::0.0707:::0.072…</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+  <div class="h3-box">
+
+    <h4 id="introduced-17-new-rule-based-entity-extraction-models-for-identifying-structured-codes-and-patterns-in-clinical-texts">Introduced 17 New Rule-Based Entity Extraction Models for Identifying Structured Codes and Patterns in Clinical Texts</h4>
+
+    <p>These rule-based extraction models identify structured entities and patterns within clinical texts using ContextualParser and RegexMatcherInternal annotators. The models cover a variety of entity types including ICD-10 codes, URLs, vehicle identification numbers (VIN), and other domain-specific patterns, enabling accurate extraction without requiring labeled training data.</p>
+
+    <table class="table-model-big">
+      <thead>
+        <tr>
+          <th>Model Name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2025/12/20/icd10_parser_en.html"><code class="language-plaintext highlighter-rouge">icd10_parser</code></a></td>
+          <td>Extracts icd10 entities</td>
+        </tr>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2025/12/21/account_parser_en.html"><code class="language-plaintext highlighter-rouge">account_parser</code></a></td>
+          <td>Extracts account number entities</td>
+        </tr>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2025/12/21/age_parser_en.html"><code class="language-plaintext highlighter-rouge">age_parser</code></a></td>
+          <td>Extracts age entities</td>
+        </tr>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2025/12/29/date_regex_matcher_en.html"><code class="language-plaintext highlighter-rouge">date_regex_matcher</code></a></td>
+          <td>Extract date entities</td>
+        </tr>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2025/12/21/dln_parser_en.html"><code class="language-plaintext highlighter-rouge">dln_parser</code></a></td>
+          <td>Extracts drive license number entities</td>
+        </tr>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2025/12/21/license_parser_en.html"><code class="language-plaintext highlighter-rouge">license_parser</code></a></td>
+          <td>Extracts license number entities</td>
+        </tr>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2025/12/21/phone_parser_en.html"><code class="language-plaintext highlighter-rouge">phone_parser</code></a></td>
+          <td>Extracts phone number entities</td>
+        </tr>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2025/12/21/plate_parser_en.html"><code class="language-plaintext highlighter-rouge">plate_parser</code></a></td>
+          <td>Extracts plate number entities</td>
+        </tr>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2025/12/21/ssn_parser_en.html"><code class="language-plaintext highlighter-rouge">ssn_parser</code></a></td>
+          <td>Extracts SSN number entities</td>
+        </tr>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2025/12/21/vin_parser_en.html"><code class="language-plaintext highlighter-rouge">vin_parser</code></a></td>
+          <td>Extracts vehicle identifier number entities</td>
+        </tr>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2025/12/22/cpt_parser_en.html"><code class="language-plaintext highlighter-rouge">cpt_parser</code></a></td>
+          <td>Extracts cpt entities</td>
+        </tr>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2025/12/22/email_regex_matcher_en.html"><code class="language-plaintext highlighter-rouge">email_regex_matcher</code></a></td>
+          <td>Extracts emails</td>
+        </tr>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2025/12/22/ip_regex_matcher_en.html"><code class="language-plaintext highlighter-rouge">ip_regex_matcher</code></a></td>
+          <td>Extracts IPs</td>
+        </tr>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2025/12/22/med_parser_en.html"><code class="language-plaintext highlighter-rouge">med_parser</code></a></td>
+          <td>Extracts medical record entities</td>
+        </tr>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2025/12/22/specimen_parser_en.html"><code class="language-plaintext highlighter-rouge">specimen_parser</code></a></td>
+          <td>Extracts specimen entities</td>
+        </tr>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2025/12/22/url_regex_matcher_en.html"><code class="language-plaintext highlighter-rouge">url_regex_matcher</code></a></td>
+          <td>Extracts URLs</td>
+        </tr>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2025/12/29/zip_regex_matcher_en.html"><code class="language-plaintext highlighter-rouge">zip_regex_matcher</code></a></td>
+          <td>Extracts ZIP code entities</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><em>Example</em>:</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dln_contextual_parser</span> <span class="o">=</span> <span class="n">ContextualParserModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"dln_parser"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span><span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"chunk_dln"</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">parserPipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">""</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">))</span>
+
+<span class="n">sample_text</span> <span class="o">=</span><span class="s">"""Name : Hendrickson, Ora, Record date: 2093-01-13, # 719435.
+Dr. John Green, ID: 1231511863, IP 203.120.223.13.
+He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93.
+Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B. Driver's license# 12345678. MY DL# B324567 CDL bs34df45
+Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com."""</span>
+</code></pre></div>    </div>
+
+    <p><em>Result</em>:</p>
+
+    <table class="table-model-big">
+      <thead>
+        <tr>
+          <th style="text-align: left">chunk</th>
+          <th style="text-align: right">begin</th>
+          <th style="text-align: right">end</th>
+          <th style="text-align: left">label</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: left">A334455B</td>
+          <td style="text-align: right">271</td>
+          <td style="text-align: right">278</td>
+          <td style="text-align: left">DLN</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">12345678</td>
+          <td style="text-align: right">299</td>
+          <td style="text-align: right">306</td>
+          <td style="text-align: left">DLN</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">B324567</td>
+          <td style="text-align: right">316</td>
+          <td style="text-align: right">322</td>
+          <td style="text-align: left">DLN</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">bs34df45</td>
+          <td style="text-align: right">328</td>
+          <td style="text-align: right">335</td>
+          <td style="text-align: left">DLN</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+  <div class="h3-box">
+
+    <h4 id="introduced-7-new-ner-models-for-phi-deidentification-and-drug-entity-extraction">Introduced 7 New NER Models for PHI Deidentification and Drug Entity Extraction</h4>
+
+    <p>This release introduces 3 new NER models for clinical entity extraction. Two models focus on PHI (Protected Health Information) detection for deidentification: a generic model detecting broad entity types (DATE, NAME, LOCATION, ID, CONTACT, AGE, PROFESSION) and a subentity model with granular labels (PATIENT, DOCTOR, HOSPITAL, STREET, CITY, ZIP). The third model extracts drug entities by combining dosage, strength, form, and route into a unified Drug label.</p>
+
+    <table class="table-model-big">
+      <thead>
+        <tr>
+          <th>Model Name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2025/12/19/ner_deid_generic_nonMedical_en.html"><code class="language-plaintext highlighter-rouge">ner_deid_generic_nonMedical</code></a></td>
+          <td>Model detects PHI entities such as DATE, NAME, LOCATION, ID, CONTACT, AGE, PROFESSION</td>
+        </tr>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2025/12/19/ner_deid_subentity_nonMedical_en.html"><code class="language-plaintext highlighter-rouge">ner_deid_subentity_nonMedical</code></a></td>
+          <td>Model detects PHI entities with granular labels such as PATIENT, DOCTOR, HOSPITAL, STREET, CITY, ZIP</td>
+        </tr>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2025/12/19/ner_drugs_large_v2_en.html"><code class="language-plaintext highlighter-rouge">ner_drugs_large_v2</code></a></td>
+          <td>Model combines dosage, strength, form, and route into a single entity: Drug</td>
+        </tr>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2025/12/27/zeroshot_ner_deid_generic_nonMedical_large_en.html"><code class="language-plaintext highlighter-rouge">zeroshot_ner_deid_generic_nonMedical_large</code></a></td>
+          <td>The model is designed to support any set of entity labels, allowing users to adapt it to their specific use cases.</td>
+        </tr>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2025/12/28/zeroshot_ner_deid_generic_nonMedical_medium_en.html"><code class="language-plaintext highlighter-rouge">zeroshot_ner_deid_generic_nonMedical_medium</code></a></td>
+          <td>The model is designed to support any set of entity labels, allowing users to adapt it to their specific use cases.</td>
+        </tr>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2025/12/28/zeroshot_ner_deid_subentity_nonMedical_large_en.html"><code class="language-plaintext highlighter-rouge">zeroshot_ner_deid_subentity_nonMedical_large</code></a></td>
+          <td>The model is designed to support any set of entity labels, allowing users to adapt it to their specific use cases.</td>
+        </tr>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2025/12/28/zeroshot_ner_deid_subentity_nonMedical_medium_en.html"><code class="language-plaintext highlighter-rouge">zeroshot_ner_deid_subentity_nonMedical_medium</code></a></td>
+          <td>The model is designed to support any set of entity labels, allowing users to adapt it to their specific use cases.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><em>Example</em>:</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ner_model</span> <span class="o">=</span> <span class="n">MedicalNerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"ner_deid_generic_nonMedical"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>
+
+
+<span class="n">text</span> <span class="o">=</span> <span class="s">"""
+Mr. James Wilson is a 65-year-old male who presented to the emergency department at Boston General Hospital on 10/25/2023. 
+He lives at 123 Oak Street, Springfield, IL 62704. He can be contacted at 555-0199. 
+His SSN is 999-00-1234. Dr. Gregory House is the attending physician.
+"""</span>
 
 <span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="n">text</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-</code></pre></div>  </div>
+</code></pre></div>    </div>
 
-  <p><em>Result:</em></p>
+    <p><em>Result</em>:</p>
 
-  <table class="table-model-big">
-    <thead>
-      <tr>
-        <th>sent_id</th>
-        <th>ner_chunk</th>
-        <th>entity</th>
-        <th>icd10cm_code</th>
-        <th>resolutions</th>
-        <th>all_codes</th>
-        <th>all_resolutions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>0</td>
-        <td>gestational diabetes mellitus</td>
-        <td>PROBLEM</td>
-        <td>O24.4</td>
-        <td>gestational diabetes mellitus</td>
-        <td>[O24.4, O24.41, O24.43, O24.42, O24.414, …]</td>
-        <td>[gestational diabetes mellitus, gestational di…]</td>
-      </tr>
-      <tr>
-        <td>0</td>
-        <td>subsequent type two diabetes mellitus</td>
-        <td>PROBLEM</td>
-        <td>E11</td>
-        <td>type 2 diabetes mellitus</td>
-        <td>[E11, E11.69, E11.6, E11.64, E13, E11.65, …]</td>
-        <td>[type 2 diabetes mellitus, type 2 diabetes mel…]</td>
-      </tr>
-      <tr>
-        <td>0</td>
-        <td>T2DM</td>
-        <td>PROBLEM</td>
-        <td>E11</td>
-        <td>type 2 diabetes mellitus</td>
-        <td>[E11, E11.65, E11.64, E11.9, E11.44, E11.5, …]</td>
-        <td>[type 2 diabetes mellitus, type 2 diabetes mel…]</td>
-      </tr>
-      <tr>
-        <td>0</td>
-        <td>HTG-induced pancreatitis</td>
-        <td>PROBLEM</td>
-        <td>K85.3</td>
-        <td>drug induced acute pancreatitis</td>
-        <td>[K85.3, K86.0, K85.2, K85.31, K85.21, …]</td>
-        <td>[drug induced acute pancreatitis, alcohol-indu…]</td>
-      </tr>
-      <tr>
-        <td>0</td>
-        <td>acute hepatitis</td>
-        <td>PROBLEM</td>
-        <td>B15</td>
-        <td>acute hepatitis a</td>
-        <td>[B15, B16, B17.1, B17, B17.2, B17.9, …]</td>
-        <td>[acute hepatitis a, acute hepatitis b, acute h…]</td>
-      </tr>
-      <tr>
-        <td>0</td>
-        <td>obesity</td>
-        <td>PROBLEM</td>
-        <td>E66</td>
-        <td>overweight and obesity</td>
-        <td>[E66, E66.9, E66.0, E66.8, E66.3, O99.21, …]</td>
-        <td>[overweight and obesity, obesity, unspecified,…]</td>
-      </tr>
-      <tr>
-        <td>0</td>
-        <td>polyuria</td>
-        <td>PROBLEM</td>
-        <td>R35</td>
-        <td>polyuria</td>
-        <td>[R35, R35.89, R35.8, R35.81, R80, R80.8, …]</td>
-        <td>[polyuria, other polyuria, other polyuria, noc…]</td>
-      </tr>
-      <tr>
-        <td>0</td>
-        <td>polydipsia</td>
-        <td>PROBLEM</td>
-        <td>R63.1</td>
-        <td>polydipsia</td>
-        <td>[R63.1, O40, R35, R35.89, R35.8, R63.2, …]</td>
-        <td>[polydipsia, polyhydramnios, polyuria, other p…]</td>
-      </tr>
-      <tr>
-        <td>0</td>
-        <td>vomiting</td>
-        <td>PROBLEM</td>
-        <td>R11.1</td>
-        <td>vomiting</td>
-        <td>[R11.1, R11, R11.12, R11.10, R11.11, R11.13, …]</td>
-        <td>[vomiting, nausea and vomiting, projectile vom…]</td>
-      </tr>
-    </tbody>
-  </table>
+    <table class="table-model-big">
+      <thead>
+        <tr>
+          <th>chunk</th>
+          <th>begin</th>
+          <th>end</th>
+          <th>ner_label</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>James Wilson</td>
+          <td>5</td>
+          <td>16</td>
+          <td>NAME</td>
+        </tr>
+        <tr>
+          <td>65-year-old</td>
+          <td>23</td>
+          <td>33</td>
+          <td>AGE</td>
+        </tr>
+        <tr>
+          <td>Boston General Hospital</td>
+          <td>85</td>
+          <td>107</td>
+          <td>LOCATION</td>
+        </tr>
+        <tr>
+          <td>10/25/2023</td>
+          <td>112</td>
+          <td>121</td>
+          <td>DATE</td>
+        </tr>
+        <tr>
+          <td>123 Oak Street</td>
+          <td>137</td>
+          <td>150</td>
+          <td>LOCATION</td>
+        </tr>
+        <tr>
+          <td>Springfield</td>
+          <td>153</td>
+          <td>163</td>
+          <td>LOCATION</td>
+        </tr>
+        <tr>
+          <td>IL</td>
+          <td>166</td>
+          <td>167</td>
+          <td>LOCATION</td>
+        </tr>
+        <tr>
+          <td>555-0199</td>
+          <td>199</td>
+          <td>206</td>
+          <td>CONTACT</td>
+        </tr>
+        <tr>
+          <td>999-00-1234</td>
+          <td>221</td>
+          <td>231</td>
+          <td>ID</td>
+        </tr>
+        <tr>
+          <td>Gregory House</td>
+          <td>238</td>
+          <td>250</td>
+          <td>NAME</td>
+        </tr>
+      </tbody>
+    </table>
 
-</div>
-<div class="h3-box">
+  </div>
+  <div class="h3-box">
 
-  <h4 id="new-blog-post-">New blog post ?</h4>
+    <h4 id="enhanced-8-new-contextual-assertion-models-to-classify-clinical-entities-by-assertion-status">Enhanced 8 new contextual assertion models to classify clinical entities by assertion status</h4>
 
-</div>
-<div class="h3-box">
+    <p>We introduced 8 new contextual assertion models that classify assertion context for clinical mentions—helping distinguish whether a condition applies to the patient, is denied, historical, conditional, hypothetical, planned, or attributed to someone else.</p>
 
-  <h4 id="updated-notebooks-and-demonstrations-for-making-healthcare-nlp-easier-to-navigate-and-understand-">Updated Notebooks And Demonstrations For making Healthcare NLP Easier To Navigate And Understand ?</h4>
+    <table class="table-model-big">
+      <thead>
+        <tr>
+          <th>Model Name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2026/01/14/contextual_assertion_absent_en.html"><code class="language-plaintext highlighter-rouge">contextual_assertion_absent</code></a></td>
+          <td>Identifies medical conditions that are explicitly absent or denied in the patient</td>
+        </tr>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2026/01/14/contextual_assertion_conditional_en.html"><code class="language-plaintext highlighter-rouge">contextual_assertion_conditional</code></a></td>
+          <td>Identifies medical conditions that are conditional or dependent on certain circumstances</td>
+        </tr>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2026/01/14/contextual_assertion_family_en.html"><code class="language-plaintext highlighter-rouge">contextual_assertion_family</code></a></td>
+          <td>Identifies medical conditions that belong to family members rather than the patient</td>
+        </tr>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2026/01/14/contextual_assertion_hypothetical_en.html"><code class="language-plaintext highlighter-rouge">contextual_assertion_hypothetical</code></a></td>
+          <td>Identifies medical conditions mentioned in hypothetical or uncertain contexts</td>
+        </tr>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2026/01/14/contextual_assertion_past_en.html"><code class="language-plaintext highlighter-rouge">contextual_assertion_past</code></a></td>
+          <td>Identifies medical conditions that occurred in the patient’s past medical history</td>
+        </tr>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2026/01/14/contextual_assertion_planned_en.html"><code class="language-plaintext highlighter-rouge">contextual_assertion_planned</code></a></td>
+          <td>Identifies medical procedures or treatments that are planned for the future</td>
+        </tr>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2026/01/14/contextual_assertion_possible_en.html"><code class="language-plaintext highlighter-rouge">contextual_assertion_possible</code></a></td>
+          <td>Identifies medical conditions that are possible or suspected but not confirmed</td>
+        </tr>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2026/01/14/contextual_assertion_someoneelse_en.html"><code class="language-plaintext highlighter-rouge">contextual_assertion_someoneelse</code></a></td>
+          <td>Identifies medical conditions that belong to someone other than the patient (not family)</td>
+        </tr>
+      </tbody>
+    </table>
 
-</div>
-<div class="h3-box">
+    <p><em>Example</em>:</p>
 
-  <h4 id="we-have-added-and-updated-a-substantial-number-of-new-clinical-models-and-pipelines-further-solidifying-our-offering-in-the-healthcare-domain">We Have Added And Updated A Substantial Number Of New Clinical Models And Pipelines, Further Solidifying Our Offering In The Healthcare Domain.</h4>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">contextual_assertion</span> <span class="o">=</span> <span class="n">ContextualAssertion</span>\
+    <span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"contextual_assertion_absent"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner_chunk"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"assertion_absent"</span><span class="p">)</span>
 
-  <ul>
-    <li><code class="language-plaintext highlighter-rouge">drug_form_matcher</code></li>
-    <li><code class="language-plaintext highlighter-rouge">drug_route_matcher</code></li>
-    <li><code class="language-plaintext highlighter-rouge">drug_strength_parser</code></li>
-    <li><code class="language-plaintext highlighter-rouge">medical_device_matcher</code></li>
-    <li><code class="language-plaintext highlighter-rouge">procedure_matcher</code></li>
-    <li><code class="language-plaintext highlighter-rouge">symptom_matcher</code></li>
-    <li><code class="language-plaintext highlighter-rouge">test_result_parser</code></li>
-    <li><code class="language-plaintext highlighter-rouge">generic_classifier_measurement</code></li>
-    <li><code class="language-plaintext highlighter-rouge">bgeresolve_icd10cm</code></li>
-    <li><code class="language-plaintext highlighter-rouge">bgeresolve_rxnorm</code></li>
-    <li><code class="language-plaintext highlighter-rouge">bgeresolve_snomed</code></li>
-    <li><code class="language-plaintext highlighter-rouge">bgeresolve_cpt</code></li>
-    <li><code class="language-plaintext highlighter-rouge">rxnorm_mapper</code></li>
-    <li><code class="language-plaintext highlighter-rouge">snomed_mapper</code></li>
-    <li><code class="language-plaintext highlighter-rouge">icd10cm_mapper</code></li>
-    <li><code class="language-plaintext highlighter-rouge">cpt_mapper</code></li>
-  </ul>
+<span class="n">text</span> <span class="o">=</span> <span class="s">"""The patient denies any chest pain, shortness of breath, or fever. No history of diabetes or hypertension."""</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="n">text</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">'text'</span><span class="p">)</span>
+</code></pre></div>    </div>
 
-</div>
-<div class="h3-box">
+    <p><em>Result</em>:</p>
 
-  <p>For all Healthcare NLP models, please check: <a href="https://nlp.johnsnowlabs.com/models?edition=Healthcare+NLP">Models Hub Page</a></p>
+    <table class="table-model-big">
+      <thead>
+        <tr>
+          <th>ner_chunk</th>
+          <th>begin</th>
+          <th>end</th>
+          <th>ner_label</th>
+          <th>result</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>any chest pain</td>
+          <td>19</td>
+          <td>32</td>
+          <td>PROBLEM</td>
+          <td>absent</td>
+        </tr>
+        <tr>
+          <td>shortness of breath</td>
+          <td>35</td>
+          <td>53</td>
+          <td>PROBLEM</td>
+          <td>absent</td>
+        </tr>
+        <tr>
+          <td>fever</td>
+          <td>59</td>
+          <td>63</td>
+          <td>PROBLEM</td>
+          <td>absent</td>
+        </tr>
+        <tr>
+          <td>diabetes</td>
+          <td>80</td>
+          <td>87</td>
+          <td>PROBLEM</td>
+          <td>absent</td>
+        </tr>
+        <tr>
+          <td>hypertension</td>
+          <td>92</td>
+          <td>103</td>
+          <td>PROBLEM</td>
+          <td>absent</td>
+        </tr>
+      </tbody>
+    </table>
 
-</div>
-<div class="h3-box">
+  </div>
+  <div class="h3-box">
 
-  <h2 id="previous-versions">Previous versions</h2>
+    <h4 id="added-new-onnx-based-multilingual-clinical-ner-models-for-italian-spanish-and-romanian-covering-disease-procedure-medication-and-symptom-entity-extraction">Added new ONNX-based multilingual clinical NER models for Italian, Spanish, and Romanian, covering disease, procedure, medication, and symptom entity extraction</h4>
 
-</div>
-<ul class="pagination">
+    <p>This release adds several new ONNX-exported NER models for multilingual clinical text mining, enabling faster and more efficient inference while extracting key medical entities from real-world clinical notes and records. The models cover Italian, Spanish, and Romanian medical text and support structured extraction of diseases, procedures, medications, and symptoms using BIO tagging.</p>
+
+    <table class="table-model-big">
+      <thead>
+        <tr>
+          <th>Model Name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2025/12/26/roberta_disease_ner_onnx_en.html"><code class="language-plaintext highlighter-rouge">roberta_disease_ner_onnx</code></a></td>
+          <td>RoBERTa-based token classification model for identifying disease mentions in text</td>
+        </tr>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2025/12/26/roberta_med_ner_onnx_en.html"><code class="language-plaintext highlighter-rouge">roberta_med_ner_onnx</code></a></td>
+          <td>RoBERTa-based token classification model trained to identify medication mentions in clinical and biomedical text</td>
+        </tr>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2025/12/27/roberta_procedure_ner_onnx_en.html"><code class="language-plaintext highlighter-rouge">roberta_procedure_ner_onnx</code></a></td>
+          <td>RoBERTa-based token classification model for extracting symptom mentions from text</td>
+        </tr>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2025/12/27/roberta_symptom_ner_onnx_en.html"><code class="language-plaintext highlighter-rouge">roberta_symptom_ner_onnx</code></a></td>
+          <td>RoBERTa-based token classification model for extracting symptom mentions from text</td>
+        </tr>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2025/12/29/vetclinical_bert_onnx_en.html"><code class="language-plaintext highlighter-rouge">vetclinical_bert_onnx</code></a></td>
+          <td>Trained on large-scale real-world veterinary medical records, this model captures animal-health terminology and note structure to support accurate disease/syndrome classification, information extraction, and clinical text analysis</td>
+        </tr>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2026/01/20/bert_token_classifier_disease_ner_it_onnx_it.html"><code class="language-plaintext highlighter-rouge">bert_token_classifier_disease_ner_it_onnx</code></a></td>
+          <td>BERT-based NER model identifies disease mentions for Italian medical text</td>
+        </tr>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2026/01/20/bert_token_classifier_medical_ner_it_onnx_it.html"><code class="language-plaintext highlighter-rouge">bert_token_classifier_medical_ner_it_onnx</code></a></td>
+          <td>BERT-based NER model detects medication names for Italian medical text</td>
+        </tr>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2026/01/20/bert_token_classifier_procedure_ner_it_onnx_it.html"><code class="language-plaintext highlighter-rouge">bert_token_classifier_procedure_ner_it_onnx</code></a></td>
+          <td>BERT-based NER model identifies medical procedures for Italian medical text</td>
+        </tr>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2026/01/04/roberta_disease_ner_es_onnx_es.html"><code class="language-plaintext highlighter-rouge">roberta_disease_ner_es_onnx</code></a></td>
+          <td>BERT-based NER model identifies disease mentions for Spanish medical text</td>
+        </tr>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2026/01/04/roberta_procedure_ner_es_onnx_es.html"><code class="language-plaintext highlighter-rouge">roberta_procedure_ner_es_onnx</code></a></td>
+          <td>BERT-based NER model identifies medical procedures for Spanish medical text</td>
+        </tr>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2026/01/04/roberta_symptom_ner_es_onnx_es.html"><code class="language-plaintext highlighter-rouge">roberta_symptom_ner_es_onnx</code></a></td>
+          <td>BERT-based NER model identifies symptom mentions for Spanish medical text</td>
+        </tr>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2026/01/04/xlmroberta_medical_ner_ro_onnx_ro.html"><code class="language-plaintext highlighter-rouge">xlmroberta_medical_ner_ro_onnx</code></a></td>
+          <td>XLM-RoBERTa-based NER model identifies medication mentions for Romanian medical text</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><em>Example</em>:</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tokenClassifier</span> <span class="o">=</span> <span class="n">MedicalBertForTokenClassifier</span> \
+    <span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"bert_token_classifier_procedure_ner_it_onnx"</span><span class="p">,</span> <span class="s">"it"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"Il paziente è stato sottoposto a risonanza magnetica e biopsia epatica."</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+</code></pre></div>    </div>
+
+    <p><em>Result</em>:</p>
+
+    <table class="table-model-big">
+      <thead>
+        <tr>
+          <th>text</th>
+          <th>entity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>risonanza magnetica</td>
+          <td>PROCEDURE</td>
+        </tr>
+        <tr>
+          <td>biopsia epatica</td>
+          <td>PROCEDURE</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+  <div class="h3-box">
+
+    <h4 id="new-blog-posts--technical-deep-dives">New Blog Posts &amp; Technical Deep Dives</h4>
+
+    <ul>
+      <li>
+        <p><a href="https://medium.com/john-snow-labs/from-clinical-text-to-knowledge-graphs-with-john-snow-labs-healthcare-nlp-d4b9f62d13c7">From Clinical Text to Knowledge Graphs with John Snow Labs Healthcare NLP</a> This blog post shows how to build an end-to-end clinical knowledge graph from unstructured medical text using John Snow Labs Healthcare NLP library. We’ll start by extracting key clinical entities about medication with Named Entity Recognition, then connect them using Relation Extraction to capture medically meaningful links. Finally, we’ll convert these structured relationships into a knowledge graph that makes complex clinical narratives easier to search, analyze, and interpret.</p>
+      </li>
+      <li>
+        <p><a href="https://medium.com/john-snow-labs/clinical-de-identification-at-scale-pipeline-design-and-speed-accuracy-trade-offs-across-d77a4bbae6e0">Clinical De-Identification at Scale: Pipeline Design and Speed–Accuracy Trade-offs Across Infrastructures</a> This blog post presents a focused update on large-scale clinical de-identification benchmarks, emphasize pipeline design, execution strategy, and infrastructure-aware performance. Rather than treating accuracy as an isolated metric, we analyze how different pipeline architectures - rule-augmented NER, hybrid NER + zero-shot, and zero-shot–centric approaches - behave under realistic Google Colab and Databricks–AWS deployments.</p>
+      </li>
+    </ul>
+
+  </div>
+  <div class="h3-box">
+
+    <h4 id="various-core-improvements-bug-fixes-enhanced-overall-robustness-and-reliability-of-healthcare-nlp">Various core improvements, bug fixes, enhanced overall robustness and reliability of Healthcare NLP</h4>
+
+    <ul>
+      <li>Improved Pipeline Tracer coverage by adding support for PretrainedZeroShotNERChunker (plus ChunkFilterer/CER/CEF) and correctly tracing AssertionMerger replaceDict behavior.</li>
+      <li>Added replaceDict to AssertionMerger to allow custom replacement of assertion labels.</li>
+      <li>PipelineOutputParser improvements to support mappings output in clinical_deidentification pipelines</li>
+    </ul>
+
+  </div>
+  <div class="h3-box">
+
+    <h4 id="updated-notebooks-and-demonstrations-for-making-healthcare-nlp-easier-to-navigate-and-understand">Updated Notebooks And Demonstrations For making Healthcare NLP Easier To Navigate And Understand</h4>
+
+    <ul>
+      <li>New <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.14.CDA_DeIdentification.ipynb">CDA DeIdentification</a> Notebook</li>
+    </ul>
+
+  </div>
+  <div class="h3-box">
+
+    <h4 id="we-have-added-and-updated-a-substantial-number-of-new-clinical-models-and-pipelines-further-solidifying-our-offering-in-the-healthcare-domain">We Have Added And Updated A Substantial Number Of New Clinical Models And Pipelines, Further Solidifying Our Offering In The Healthcare Domain.</h4>
+
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">jsl_meds_vlm_7b_q4_v1_en</code></li>
+      <li><code class="language-plaintext highlighter-rouge">jsl_meds_vlm_7b_q8_v1_en</code></li>
+      <li><code class="language-plaintext highlighter-rouge">jsl_meds_vlm_7b_q16_v1_en</code></li>
+      <li><code class="language-plaintext highlighter-rouge">jsl_meds_vlm_4b_q4_v1_en</code></li>
+      <li><code class="language-plaintext highlighter-rouge">jsl_meds_vlm_4b_q8_v1_en</code></li>
+      <li><code class="language-plaintext highlighter-rouge">jsl_meds_vlm_4b_q16_v1_en</code></li>
+      <li><code class="language-plaintext highlighter-rouge">jsl_meds_vlm_reasoning_8b_q4_v1_en</code></li>
+      <li><code class="language-plaintext highlighter-rouge">jsl_meds_vlm_reasoning_8b_q8_v1_en</code></li>
+      <li><code class="language-plaintext highlighter-rouge">jsl_meds_vlm_reasoning_8b_q16_v1_en</code></li>
+      <li><code class="language-plaintext highlighter-rouge">clinical_deidentification_docwise_benchmark_large_v2</code></li>
+      <li><code class="language-plaintext highlighter-rouge">clinical_deidentification_docwise_benchmark_medium_v2</code></li>
+      <li><code class="language-plaintext highlighter-rouge">clinical_deidentification_docwise_benchmark_optimized_v2</code></li>
+      <li><code class="language-plaintext highlighter-rouge">clinical_deidentification_docwise_zeroshot_large</code></li>
+      <li><code class="language-plaintext highlighter-rouge">clinical_deidentification_docwise_zeroshot_medium</code></li>
+      <li><code class="language-plaintext highlighter-rouge">clinical_deidentification_docwise_SingleStage_zeroshot_large</code></li>
+      <li><code class="language-plaintext highlighter-rouge">clinical_deidentification_docwise_SingleStage_zeroshot_medium</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_umls_findings</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_umls_clinical_drugs</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_umls_disease_syndrome</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_umls_drug_substance</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_umls_general_concepts</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_umls_major_concepts</code></li>
+      <li><code class="language-plaintext highlighter-rouge">biolordresolve_umls_general_concepts</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_loinc</code></li>
+      <li><code class="language-plaintext highlighter-rouge">icd10_parser</code></li>
+      <li><code class="language-plaintext highlighter-rouge">account_parser</code></li>
+      <li><code class="language-plaintext highlighter-rouge">age_parser</code></li>
+      <li><code class="language-plaintext highlighter-rouge">date_regex_matcher</code></li>
+      <li><code class="language-plaintext highlighter-rouge">dln_parser</code></li>
+      <li><code class="language-plaintext highlighter-rouge">license_parser</code></li>
+      <li><code class="language-plaintext highlighter-rouge">phone_parser</code></li>
+      <li><code class="language-plaintext highlighter-rouge">plate_parser</code></li>
+      <li><code class="language-plaintext highlighter-rouge">ssn_parser</code></li>
+      <li><code class="language-plaintext highlighter-rouge">vin_parser</code></li>
+      <li><code class="language-plaintext highlighter-rouge">cpt_parser</code></li>
+      <li><code class="language-plaintext highlighter-rouge">email_regex_matcher</code></li>
+      <li><code class="language-plaintext highlighter-rouge">ip_regex_matcher</code></li>
+      <li><code class="language-plaintext highlighter-rouge">med_parser</code></li>
+      <li><code class="language-plaintext highlighter-rouge">specimen_parser</code></li>
+      <li><code class="language-plaintext highlighter-rouge">url_regex_matcher</code></li>
+      <li><code class="language-plaintext highlighter-rouge">zip_regex_matcher</code></li>
+      <li><code class="language-plaintext highlighter-rouge">ner_deid_generic_nonMedical</code></li>
+      <li><code class="language-plaintext highlighter-rouge">ner_deid_subentity_nonMedical</code></li>
+      <li><code class="language-plaintext highlighter-rouge">ner_drugs_large_v2</code></li>
+      <li><code class="language-plaintext highlighter-rouge">zeroshot_ner_deid_generic_nonMedical_large</code></li>
+      <li><code class="language-plaintext highlighter-rouge">zeroshot_ner_deid_generic_nonMedical_medium</code></li>
+      <li><code class="language-plaintext highlighter-rouge">zeroshot_ner_deid_subentity_nonMedical_large</code></li>
+      <li><code class="language-plaintext highlighter-rouge">zeroshot_ner_deid_subentity_nonMedical_medium</code></li>
+      <li><code class="language-plaintext highlighter-rouge">roberta_disease_ner_onnx</code></li>
+      <li><code class="language-plaintext highlighter-rouge">roberta_med_ner_onnx</code></li>
+      <li><code class="language-plaintext highlighter-rouge">roberta_procedure_ner_onnx</code></li>
+      <li><code class="language-plaintext highlighter-rouge">roberta_symptom_ner_onnx</code></li>
+      <li><code class="language-plaintext highlighter-rouge">vetclinical_bert_onnx</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bert_token_classifier_disease_ner_it_onnx</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bert_token_classifier_medical_ner_it_onnx</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bert_token_classifier_procedure_ner_it_onnx</code></li>
+      <li><code class="language-plaintext highlighter-rouge">roberta_disease_ner_es_onnx</code></li>
+      <li><code class="language-plaintext highlighter-rouge">roberta_procedure_ner_es_onnx</code></li>
+      <li><code class="language-plaintext highlighter-rouge">roberta_symptom_ner_es_onnx</code></li>
+      <li><code class="language-plaintext highlighter-rouge">xlmroberta_medical_ner_ro_onnx</code></li>
+      <li><code class="language-plaintext highlighter-rouge">contextual_assertion_absent</code></li>
+      <li><code class="language-plaintext highlighter-rouge">contextual_assertion_conditional</code></li>
+      <li><code class="language-plaintext highlighter-rouge">contextual_assertion_family</code></li>
+      <li><code class="language-plaintext highlighter-rouge">contextual_assertion_hypothetical</code></li>
+      <li><code class="language-plaintext highlighter-rouge">contextual_assertion_past</code></li>
+      <li><code class="language-plaintext highlighter-rouge">contextual_assertion_planned</code></li>
+      <li><code class="language-plaintext highlighter-rouge">contextual_assertion_possible</code></li>
+      <li><code class="language-plaintext highlighter-rouge">contextual_assertion_someoneelse</code></li>
+    </ul>
+
+  </div>
+  <div class="h3-box">
+
+    <p>For all Healthcare NLP models, please check: <a href="https://nlp.johnsnowlabs.com/models?edition=Healthcare+NLP">Models Hub Page</a></p>
+
+  </div>
+  <div class="h3-box">
+
+    <h2 id="previous-versions">Previous versions</h2>
+
+  </div>
+  <ul class="pagination">
     <li>
         <a href="#">Version <strong id="previosver"></strong></a>
     </li>
@@ -1252,7 +2426,8 @@ The parameter is now supported across <strong>Deidentification</strong>, <strong
         <a href="#">Version <strong id="nextver"></strong></a>
     </li>
 </ul>
-<ul class="pagination owl-carousel pagination_big">
+  <ul class="pagination owl-carousel pagination_big">
+    <li><a href="release_notes_6_3_0">6.3.0</a></li>
     <li><a href="release_notes_6_2_2">6.2.2</a></li>
     <li><a href="release_notes_6_2_1">6.2.1</a></li>
     <li><a href="release_notes_6_2_0">6.2.0</a></li>
@@ -1342,8 +2517,9 @@ The parameter is now supported across <strong>Deidentification</strong>, <strong
     <li><a href="release_notes_2_4_1">2.4.1</a></li>
     <li><a href="release_notes_2_4_0">2.4.0</a></li>
 </ul>
+</div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2025-12-09T00:00:00+00:00">Dec 09, 2025</time>
+      <time itemprop="dateModified" datetime="2026-01-27T00:00:00+00:00">Jan 27, 2026</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
