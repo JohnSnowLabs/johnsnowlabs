@@ -371,6 +371,8 @@ document.write(`
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../fhir/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.fhir</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../fhir/base_fhir_deidentification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.fhir.base_fhir_deidentification</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fhir/cda_deIdentification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.fhir.cda_deIdentification</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fhir/fhir_deIdentification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.fhir.fhir_deIdentification</span></code></a></li>
 </ul>
 </li>
@@ -1780,11 +1782,12 @@ RecursivePipeline</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setMappingsColumn">
-<span class="sig-name descname"><span class="pre">setMappingsColumn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setMappingsColumn" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets the name of mapping column that will return the Annotations chunks with the fake entities</p>
+<span class="sig-name descname"><span class="pre">setMappingsColumn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setMappingsColumn" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the name of mapping column that will return the Annotations chunks with the fake entities.
+You can change the name of the column with this property. Default is ‘aux’.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>s</strong> (<em>str</em>) – Mapping column that will return the Annotations chunks with the fake entities</p>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – Mapping column that will return the Annotations chunks with the fake entities</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2222,11 +2225,11 @@ Default: ‘eu’</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setReturnEntityMappings">
-<span class="sig-name descname"><span class="pre">setReturnEntityMappings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setReturnEntityMappings" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets if you want to return mapping column</p>
+<span class="sig-name descname"><span class="pre">setReturnEntityMappings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setReturnEntityMappings" title="Permalink to this definition">#</a></dt>
+<dd><p>Enable to return mapping column that contains the fake entities.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>s</strong> (<em>bool</em>) – Whether to return the mapping column.</p>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to return the mapping column.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -3494,11 +3497,12 @@ RecursivePipeline</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setMappingsColumn">
-<span class="sig-name descname"><span class="pre">setMappingsColumn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setMappingsColumn" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets the name of mapping column that will return the Annotations chunks with the fake entities</p>
+<span class="sig-name descname"><span class="pre">setMappingsColumn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setMappingsColumn" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the name of mapping column that will return the Annotations chunks with the fake entities.
+You can change the name of the column with this property. Default is ‘aux’.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>s</strong> (<em>str</em>) – Mapping column that will return the Annotations chunks with the fake entities</p>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – Mapping column that will return the Annotations chunks with the fake entities</p>
 </dd>
 </dl>
 </dd></dl>
@@ -3843,11 +3847,11 @@ Default: ‘eu’</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setReturnEntityMappings">
-<span class="sig-name descname"><span class="pre">setReturnEntityMappings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setReturnEntityMappings" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets if you want to return mapping column</p>
+<span class="sig-name descname"><span class="pre">setReturnEntityMappings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setReturnEntityMappings" title="Permalink to this definition">#</a></dt>
+<dd><p>Enable to return mapping column that contains the fake entities.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>s</strong> (<em>bool</em>) – Whether to return the mapping column.</p>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to return the mapping column.</p>
 </dd>
 </dl>
 </dd></dl>

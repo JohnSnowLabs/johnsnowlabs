@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 6.2.2 ScalaDoc  - com.johnsnowlabs.nlp.annotators.deid.fhir</title>
-          <meta name="description" content="Spark NLP 6.2.2 ScalaDoc - com.johnsnowlabs.nlp.annotators.deid.fhir" />
-          <meta name="keywords" content="Spark NLP 6.2.2 ScalaDoc com.johnsnowlabs.nlp.annotators.deid.fhir" />
+          <title>Spark NLP 6.3.0 ScalaDoc  - com.johnsnowlabs.nlp.annotators.deid.fhir</title>
+          <meta name="description" content="Spark NLP 6.3.0 ScalaDoc - com.johnsnowlabs.nlp.annotators.deid.fhir" />
+          <meta name="keywords" content="Spark NLP 6.3.0 ScalaDoc com.johnsnowlabs.nlp.annotators.deid.fhir" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 6.2.2 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 6.3.0 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -182,6 +182,14 @@
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid">deid</a></dd></dl></div>
     </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="class" href="BaseFhirDeIdentification.html" title=""></a>
+                        <a href="BaseFhirDeIdentification.html" title="">BaseFhirDeIdentification</a>
+                      </li><li class="current-entities indented6">
+                        <a class="object" href="CdaDeIdentification$.html" title="This is the companion object of CdaDeIdentification."></a>
+                        <a class="class" href="CdaDeIdentification.html" title="A Spark Transformer for de-identifying HL7 CDA (Clinical Document Architecture) documents using javax.xml DOM parsing."></a>
+                        <a href="CdaDeIdentification.html" title="A Spark Transformer for de-identifying HL7 CDA (Clinical Document Architecture) documents using javax.xml DOM parsing.">CdaDeIdentification</a>
+                      </li><li class="current-entities indented6">
                         <a class="object" href="FhirDeIdentification$.html" title="This is the companion object of FhirDeIdentification."></a>
                         <a class="class" href="FhirDeIdentification.html" title="A Spark Transformer for de-identifying FHIR resources according to configurable privacy rules."></a>
                         <a href="FhirDeIdentification.html" title="A Spark Transformer for de-identifying FHIR resources according to configurable privacy rules.">FhirDeIdentification</a>
@@ -197,6 +205,10 @@
                         <span class="separator"></span>
                         <a class="object" href="FhirVersions$.html" title=""></a>
                         <a href="FhirVersions$.html" title="">FhirVersions</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="trait" href="PretrainedReadableCdaDeIdentification.html" title=""></a>
+                        <a href="PretrainedReadableCdaDeIdentification.html" title="">PretrainedReadableCdaDeIdentification</a>
                       </li><li class="current-entities indented6">
                         <span class="separator"></span>
                         <a class="trait" href="PretrainedReadableFhirDeIdentification.html" title=""></a>
@@ -264,8 +276,78 @@
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="FhirDeIdentificationextendsTransformerwithHasFeatureswithLightDeIdentificationParamswithDeidModelParamswithCheckLicensewithHasInputColwithHasOutputAnnotationColwithParamsAndFeaturesWritable"></a><a id="FhirDeIdentification:FhirDeIdentification"></a>
+              <ol><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="BaseFhirDeIdentificationextendsTransformerwithHasFeatureswithLightDeIdentificationParamswithDeidModelParamswithCheckLicensewithHasInputColwithHasOutputAnnotationColwithParamsAndFeaturesWritable"></a><a id="BaseFhirDeIdentification:BaseFhirDeIdentification"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/BaseFhirDeIdentification.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="BaseFhirDeIdentification.html"><span class="name">BaseFhirDeIdentification</span></a><span class="result"> extends <span class="extype" name="org.apache.spark.ml.Transformer">Transformer</span> with <span class="extype" name="com.johnsnowlabs.nlp.HasFeatures">HasFeatures</span> with <a href="../LightDeIdentificationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.LightDeIdentificationParams">LightDeIdentificationParams</a> with <a href="../DeidModelParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams">DeidModelParams</a> with <span class="extype" name="com.johnsnowlabs.license.CheckLicense">CheckLicense</span> with <span class="extype" name="org.apache.spark.ml.param.shared.HasInputCol">HasInputCol</span> with <span class="extype" name="com.johnsnowlabs.nlp.HasOutputAnnotationCol">HasOutputAnnotationCol</span> with <span class="extype" name="com.johnsnowlabs.nlp.ParamsAndFeaturesWritable">ParamsAndFeaturesWritable</span></span>
+      </span>
+      
+      
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.CdaDeIdentification" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="CdaDeIdentificationextendsBaseFhirDeIdentification"></a><a id="CdaDeIdentification:CdaDeIdentification"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/CdaDeIdentification.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a title="A Spark Transformer for de-identifying HL7 CDA (Clinical Document Architecture) documents using javax.xml DOM parsing." href="CdaDeIdentification.html"><span class="name">CdaDeIdentification</span></a><span class="result"> extends <a href="BaseFhirDeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification">BaseFhirDeIdentification</a></span>
+      </span>
+      
+      <p class="shortcomment cmt">A Spark Transformer for de-identifying HL7 CDA (Clinical Document Architecture) documents
+using javax.xml DOM parsing.</p><div class="fullcomment"><div class="comment cmt"><p>A Spark Transformer for de-identifying HL7 CDA (Clinical Document Architecture) documents
+using javax.xml DOM parsing.</p><h4>Overview</h4><p>Performs field-level and free-text de-identification on CDA R2 XML documents using XPath
+expressions. Supports both structured field obfuscation and NLP-based free-text de-identification.</p><h4>Key Features</h4><p>- **XPath-based de-identification**: Target specific CDA elements using dot notation
+- **Attribute support**: Access XML attributes using @ notation (e.g., &quot;telecom/@value&quot;)
+- **Namespace-aware**: Handles HL7 v3 namespace automatically
+- **Structured field obfuscation**: Replace names, dates, addresses, phone numbers, IDs
+- **Free-text de-identification**: Process narrative sections using NLP pipelines</p><h4>Path Notation</h4><p>Paths support both dot (.) and slash (/) as separators.
+Attributes can be specified with or without @ prefix.
+Free-text container paths (e.g. section.text) apply de-identification recursively to all descendant TEXT_NODEs.</p><pre><span class="cmt">// Element paths (both notations work)</span>
+<span class="lit">"recordTarget.patientRole.patient.name.given"</span>
+<span class="lit">"recordTarget/patientRole/patient/name/given"</span>
+
+<span class="cmt">// Attribute paths (all formats work)</span>
+<span class="lit">"recordTarget.patientRole.telecom/@value"</span>     <span class="cmt">// explicit @</span>
+<span class="lit">"recordTarget.patientRole.telecom.value"</span>      <span class="cmt">// auto-detected</span>
+<span class="lit">"recordTarget/patientRole/telecom/@value"</span>     <span class="cmt">// with slashes</span>
+<span class="lit">"recordTarget.patientRole.id.extension"</span>       <span class="cmt">// known attribute</span>
+
+<span class="cmt">// Nested structures</span>
+<span class="lit">"component.structuredBody.component.section.text"</span>
+<span class="lit">"component/structuredBody/component/section/text"</span></pre><h4>Usage Example</h4><pre><span class="kw">val</span> deid = <span class="kw">new</span> CdaDeIdentification()
+  .setInputCol(<span class="lit">"cda_xml"</span>)
+  .setOutputCol(<span class="lit">"deidentified_cda"</span>)
+  .setMode(<span class="lit">"obfuscate"</span>)
+  .setMappingRules(<span class="std">Map</span>(
+    <span class="lit">"recordTarget.patientRole.patient.name.given"</span> -&gt; <span class="lit">"first_name"</span>,
+    <span class="lit">"recordTarget.patientRole.patient.name.family"</span> -&gt; <span class="lit">"last_name"</span>,
+    <span class="lit">"recordTarget.patientRole.addr.streetAddressLine"</span> -&gt; <span class="lit">"Address"</span>,
+    <span class="lit">"recordTarget.patientRole.telecom/@value"</span> -&gt; <span class="lit">"Phone"</span>,
+    <span class="lit">"author.assignedAuthor.assignedPerson.name.given"</span> -&gt; <span class="lit">"first_name"</span>,
+    <span class="lit">"custodian.assignedCustodian.representedCustodianOrganization.name"</span> -&gt; <span class="lit">"Organization"</span>
+  ))
+  .setFreeTextPaths(<span class="std">Array</span>(
+    <span class="lit">"component.structuredBody.component.section.text"</span>
+  ))
+  .setPipeline(spark, deidPipeline, <span class="lit">"deidentified"</span>)
+
+<span class="kw">val</span> result = deid.deidentify(cdaXmlString)</pre></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="https://www.hl7.org/implement/standards/product_brief.cfm?product_id=7" target="_blank">HL7 CDA Standard</a></p></span><span class="cmt"><p><a href="BaseFhirDeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification">BaseFhirDeIdentification</a> for base de-identification functionality</p></span></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="FhirDeIdentificationextendsBaseFhirDeIdentification"></a><a id="FhirDeIdentification:FhirDeIdentification"></a>
       <span class="permalink">
       <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html" title="Permalink">
         <i class="material-icons"></i>
@@ -276,7 +358,7 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a title="A Spark Transformer for de-identifying FHIR resources according to configurable privacy rules." href="FhirDeIdentification.html"><span class="name">FhirDeIdentification</span></a><span class="result"> extends <span class="extype" name="org.apache.spark.ml.Transformer">Transformer</span> with <span class="extype" name="com.johnsnowlabs.nlp.HasFeatures">HasFeatures</span> with <a href="../LightDeIdentificationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.LightDeIdentificationParams">LightDeIdentificationParams</a> with <a href="../DeidModelParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams">DeidModelParams</a> with <span class="extype" name="com.johnsnowlabs.license.CheckLicense">CheckLicense</span> with <span class="extype" name="org.apache.spark.ml.param.shared.HasInputCol">HasInputCol</span> with <span class="extype" name="com.johnsnowlabs.nlp.HasOutputAnnotationCol">HasOutputAnnotationCol</span> with <span class="extype" name="com.johnsnowlabs.nlp.ParamsAndFeaturesWritable">ParamsAndFeaturesWritable</span></span>
+        <a title="A Spark Transformer for de-identifying FHIR resources according to configurable privacy rules." href="FhirDeIdentification.html"><span class="name">FhirDeIdentification</span></a><span class="result"> extends <a href="BaseFhirDeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification">BaseFhirDeIdentification</a></span>
       </span>
       
       <p class="shortcomment cmt">A Spark Transformer for de-identifying FHIR resources according to configurable privacy rules.</p><div class="fullcomment"><div class="comment cmt"><p>A Spark Transformer for de-identifying FHIR resources according to configurable privacy rules.</p><h4>Overview</h4><p>Performs field-level obfuscation on FHIR JSON documents using FHIR Path expressions.
@@ -291,6 +373,22 @@ Additionally, supports different parser types (JSON, XML) for FHIR resources.
 
 <span class="kw">val</span> pipeline = <span class="kw">new</span> Pipeline().setStages(<span class="std">Array</span>(deid))</pre></li></ol>
             </div><dt>See also</dt><dd><span class="cmt"><p><a href="https://hl7.org/fhir/" target="_blank">FHIR Specification</a></p></span></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.PretrainedReadableCdaDeIdentification" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="PretrainedReadableCdaDeIdentificationextendsParamsAndFeaturesReadable[com.johnsnowlabs.nlp.annotators.deid.fhir.CdaDeIdentification]withHasPretrained[com.johnsnowlabs.nlp.annotators.deid.fhir.CdaDeIdentification]"></a><a id="PretrainedReadableCdaDeIdentification:PretrainedReadableCdaDeIdentification"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/PretrainedReadableCdaDeIdentification.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="PretrainedReadableCdaDeIdentification.html"><span class="name">PretrainedReadableCdaDeIdentification</span></a><span class="result"> extends <span class="extype" name="com.johnsnowlabs.nlp.ParamsAndFeaturesReadable">ParamsAndFeaturesReadable</span>[<a href="CdaDeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.CdaDeIdentification">CdaDeIdentification</a>] with <span class="extype" name="com.johnsnowlabs.nlp.HasPretrained">HasPretrained</span>[<a href="CdaDeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.CdaDeIdentification">CdaDeIdentification</a>]</span>
+      </span>
+      
+      
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.PretrainedReadableFhirDeIdentification" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="PretrainedReadableFhirDeIdentificationextendsParamsAndFeaturesReadable[com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification]withHasPretrained[com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification]"></a><a id="PretrainedReadableFhirDeIdentification:PretrainedReadableFhirDeIdentification"></a>
       <span class="permalink">
@@ -315,7 +413,23 @@ Additionally, supports different parser types (JSON, XML) for FHIR resources.
         <div class="values members">
               <h3>Value Members</h3>
               <ol>
-                <li name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+                <li name="com.johnsnowlabs.nlp.annotators.deid.fhir.CdaDeIdentification" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="CdaDeIdentification"></a><a id="CdaDeIdentification:CdaDeIdentification"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/CdaDeIdentification$.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a title="This is the companion object of CdaDeIdentification." href="CdaDeIdentification$.html"><span class="name">CdaDeIdentification</span></a><span class="result"> extends <a href="PretrainedReadableCdaDeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.PretrainedReadableCdaDeIdentification">PretrainedReadableCdaDeIdentification</a> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">This is the companion object of <a href="CdaDeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.CdaDeIdentification">CdaDeIdentification</a>.</p><div class="fullcomment"><div class="comment cmt"><p>This is the companion object of <a href="CdaDeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.CdaDeIdentification">CdaDeIdentification</a>. Please refer to that class for the documentation.</p></div></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="FhirDeIdentification"></a><a id="FhirDeIdentification:FhirDeIdentification"></a>
       <span class="permalink">
       <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification$.html" title="Permalink">
