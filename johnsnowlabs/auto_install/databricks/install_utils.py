@@ -431,9 +431,11 @@ def install_py_lib_via_pip(
     :return:
     """
     # By not defining repo, we will use default pip index
-    pypi = dict(package=pypi_lib)
+    package = pypi_lib
     if version:
-        pypi["version"] = version
+        package = f"{package}=={version}"
+
+    pypi = dict(package=package)
     payload = [dict(pypi=pypi)]
     db.managed_library.install_libraries(cluster_id=cluster_id, libraries=payload)
     if version:
