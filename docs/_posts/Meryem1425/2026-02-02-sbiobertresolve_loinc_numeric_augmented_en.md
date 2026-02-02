@@ -20,6 +20,10 @@ use_language_switcher: "Python-Scala-Java"
 
 This model maps extracted clinical NER entities to Logical Observation Identifiers Names and Codes(LOINC) codes using `sbiobert_base_cased_mli` Sentence Bert Embeddings. It is trained with the numeric LOINC codes, without the inclusion of LOINC "Document Ontology" codes starting with the letter "L". It also provides the official resolution of the codes within the brackets.
 
+## Predicted Entities
+
+`loinc_code`
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
@@ -32,6 +36,7 @@ This model maps extracted clinical NER entities to Logical Observation Identifie
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+	
 ```python
 
 document_assembler = DocumentAssembler()\
@@ -68,12 +73,12 @@ ner_converter_jsl = NerConverterInternal() \
 	.setOutputCol("ner_chunk_jsl")	.setWhiteList(["Test"])
 
 chunk_merger = ChunkMergeApproach()\
-  .setInputCols("ner_chunk_jsl", "ner_chunk_radiology")\
-  .setOutputCol('merged_ner_chunk')
+    .setInputCols("ner_chunk_jsl", "ner_chunk_radiology")\
+  	.setOutputCol('merged_ner_chunk')
 
 chunk2doc = Chunk2Doc()\
-  .setInputCols("merged_ner_chunk")\
-  .setOutputCol("ner_chunk_doc")
+  	.setInputCols("merged_ner_chunk")\
+  	.setOutputCol("ner_chunk_doc")
 
 sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli","en","clinical/models")\
 	.setInputCols(["ner_chunk_doc"])\
@@ -85,16 +90,15 @@ resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_loinc_numeric
 	.setOutputCol("resolution")\
 	.setDistanceFunction("EUCLIDEAN")
 
-
 nlpPipeline = Pipeline(stages=[document_assembler,
                                sentence_detector,
                                tokenizer,
                                word_embeddings,
                                ner_model,
                                ner_converter,
-															 ner_model_jsl,
-															 ner_converter_jsl,
-															 chunk_merger,
+                               ner_model_jsl,
+                               ner_converter_jsl,
+                               chunk_merger,
                                chunk2doc,
                                sbert_embedder,
                                resolver])
@@ -143,12 +147,12 @@ ner_converter_jsl = medical.NerConverterInternal() \
 	.setWhiteList(["Test"])
 
 chunk_merger = medical.ChunkMergeApproach()\
-  .setInputCols("ner_chunk_jsl", "ner_chunk_radiology")\
-  .setOutputCol('merged_ner_chunk')
+  	.setInputCols("ner_chunk_jsl", "ner_chunk_radiology")\
+  	.setOutputCol('merged_ner_chunk')
 
 chunk2doc = medical.Chunk2Doc()\
-  .setInputCols("merged_ner_chunk")\
-  .setOutputCol("ner_chunk_doc")
+  	.setInputCols("merged_ner_chunk")\
+  	.setOutputCol("ner_chunk_doc")
 
 sbert_embedder = nlp.BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli","en","clinical/models")\
 	.setInputCols(["ner_chunk_doc"])\
@@ -160,16 +164,15 @@ resolver = medical.SentenceEntityResolverModel.pretrained("sbiobertresolve_loinc
 	.setOutputCol("resolution")\
 	.setDistanceFunction("EUCLIDEAN")
 
-
 nlpPipeline = nlp.Pipeline(stages=[document_assembler,
                                sentence_detector,
                                tokenizer,
                                word_embeddings,
                                ner_model,
                                ner_converter,
-															 ner_model_jsl,
-															 ner_converter_jsl,
-															 chunk_merger,
+                               ner_model_jsl,
+                               ner_converter_jsl,
+                               chunk_merger,
                                chunk2doc,
                                sbert_embedder,
                                resolver])
@@ -216,12 +219,12 @@ val ner_converter_jsl = new NerConverterInternal()
 	.setWhiteList(Array("Test"))
 
 val chunk_merger = new ChunkMergeApproach()
-  .setInputCols(Array("ner_chunk_jsl", "ner_chunk_radiology"))
-  .setOutputCol("merged_ner_chunk")
+  	.setInputCols(Array("ner_chunk_jsl", "ner_chunk_radiology"))
+  	.setOutputCol("merged_ner_chunk")
 
 val chunk2doc = new Chunk2Doc()
-  .setInputCols("merged_ner_chunk")
-  .setOutputCol("ner_chunk_doc")
+  	.setInputCols("merged_ner_chunk")
+  	.setOutputCol("ner_chunk_doc")
 
 val sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli","en","clinical/models")
 	.setInputCols("ner_chunk_doc")
@@ -240,9 +243,9 @@ val nlpPipeline = new Pipeline().setStages(Array(
     word_embeddings,
     ner_model,
     ner_converter,
-		ner_model_jsl,
-		ner_converter_jsl,
-		chunk_merger,
+    ner_model_jsl,
+    ner_converter_jsl,
+    chunk_merger,
     chunk2doc,
     sbert_embedder,
     resolver))
@@ -282,3 +285,6 @@ val result = nlpPipeline.fit(data).transform(data)
 |Language:|en|
 |Size:|798.9 MB|
 |Case sensitive:|false|
+
+## References
+This model is trained with augmented version of the LOINC v2.81 dataset
