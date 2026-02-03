@@ -628,99 +628,74 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <h2 id="section">6.0.0</h2>
+  <h2 id="section">6.3.0</h2>
 
-  <p>Release date: 09-05-2025</p>
+  <p>Release date: 02-02-2026</p>
 
-  <h2 id="visual-nlp-600-release-notes-">Visual NLP 6.0.0 Release Notes 🕶️</h2>
+  <h2 id="visual-nlp-630-release-notes-">Visual NLP 6.3.0 Release Notes 🕶️</h2>
 
-  <p><strong>We are glad to announce that Visual NLP 6.0.0, has been released! 📢📢📢</strong></p>
+  <p><strong>We are glad to announce that Visual NLP 6.3.0, has been released! 📢📢📢</strong></p>
 
 </div>
 <div class="h3-box">
 
-  <h2 id="changes-">Changes 🔴</h2>
+  <h2 id="main-changes-">Main Changes 🔴</h2>
 
   <ul>
-    <li>New SVS Image Deidentification capabilities.</li>
-    <li>New improvements for performance and memory consumption in Dicom pipelines.</li>
-    <li>New PDF de-identification and obfuscation pipelines.</li>
-    <li>New Reference dataset for De-identification.</li>
-    <li>New NerOutputCleaner transformer.</li>
-    <li>ImageDrawRegions: improved logic for processing coordinates that extend across multiple lines.</li>
-    <li>BinaryToImage: added support for multipage tif files.</li>
+    <li>Dicom Midi-B benchmarks.</li>
+    <li>New features in: DicomToMetadata and DicomMetadataDeIdentifier.</li>
+    <li>New Blogposts and notebooks.</li>
+    <li>Bug Fixes and Maintenance</li>
   </ul>
 
 </div>
 <div class="h3-box">
-  <h2 id="new-svs-image-deidentification-capabilities">New SVS Image Deidentification capabilities.</h2>
-  <p>Now you can redact metadata together with pixel data in Whole Slide Imaging(WSI) SVS files. For an example of all these capabilities in action, check <a href="https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/SparkOcrWSIDeidentification.ipynb">this notebook</a>.</p>
+  <h2 id="dicom-midi-b-benchmarks">Dicom Midi-B benchmarks</h2>
+  <p>In this release, we tackled the <a href="https://www.cancerimagingarchive.net/collection/midi-b-test-midi-b-validation/">Midi-B dataset for Dicom De-identification</a>. Midi-B is a popular dataset for the Dicom De-Identification Task that appeared in 2025. Today we are releasing benchmarks, and a notebook to reproduce results.</p>
 
 </div>
 <div class="h3-box">
-  <h2 id="new-improvements-for-performance-and-memory-consumption-in-dicom-pipelines">New improvements for performance and memory consumption in Dicom pipelines.</h2>
-  <p>The improvements in Dicom Processing are related to a number of different components:</p>
-  <h3 id="dicomtoimagev3-image-compression">DicomToImageV3 image compression</h3>
+  <h2 id="benchmarks">Benchmarks</h2>
+  <p>The metrics in Midi-B dataset are organized as a set of accuracy numbers across a predefined set of actions. Two different subsets are provided, Validation and Test. We report results for both datasets and each of the actions defined in the dataset.</p>
 
-  <p><code class="language-plaintext highlighter-rouge">DicomToImageV3</code> instead of returning the raw uncompressed dicom frames as images in the dataframe, it can now compress the image frames under the hood to reduce the memory overhead of dicom based pipelines.</p>
+  <p><img src="/assets/images/ocr/midi_b_table_val.png" alt="Validation Report(Validation) MIDI-B." />
+<img src="/assets/images/ocr/midi_b_table_test.png" alt="Validation Report(Test) MIDI-B." /></p>
 
-  <p>You can use it at follows:</p>
+  <h2 id="notebooks">Notebooks</h2>
 
+  <p>You can find all the details for how to run over the MIDI-B dataset in this notebook: <a href="https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/Dicom/SparkOcrMIDIBSolution.ipynb">SparkOcrMIDIBSolution.ipynb</a></p>
+</div>
+<div class="h3-box">
+
+  <h2 id="new-features-in-dicomtometadata-and-dicommetadatadeidentifier">New features in: DicomToMetadata and DicomMetadataDeIdentifier</h2>
+
+  <h3 id="dicomtometadata">DicomToMetadata</h3>
+
+  <p>Exposing tags to enable external NLP to operate on them.</p>
   <ul>
-    <li><code class="language-plaintext highlighter-rouge">DicomToImageV3.setCompressionMode()</code>, either  <code class="language-plaintext highlighter-rouge">enabled</code>, <code class="language-plaintext highlighter-rouge">disabled</code> or <code class="language-plaintext highlighter-rouge">auto</code>,</li>
+    <li>Added support for strategy file-driven configuration via the setStrategyFile parameter: a strategy file is a configuration file that helps in defining actions like the ones described in the charts above.</li>
+    <li>Enabled the extraction of raw metadata tag value for all tags marked with cleanTag in the strategy file. As a result, a String column will be created in the output dataframe. The name of the output column for this raw tag text is configurable via setTagCol. The purpose of this column is to expose the content of the tags that are in natural language so the redaction can be carried out using NLP methods.</li>
+    <li>Enabled extraction of tag mappings for all tags marked with the cleanTag action, as described in the item above, configurable through setTagMappingCol. This output column allows to map the tags values present in the tag column back to the original tag identifiers.</li>
+    <li>Introduced setExtractTagForNer to optionally skip String tag extraction.</li>
   </ul>
 
-  <p>Example,&lt;/br&gt;</p>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="c1"># Every file is compressed with compressionQuality
-</span><span class="n">dicom_to_image</span><span class="p">.</span><span class="n">setCompressionMode</span><span class="p">(</span><span class="s">'enabled'</span><span class="p">)</span>
+</div>
+<div class="h3-box">
 
-<span class="c1"># No file is compressed
-</span><span class="n">dicom_to_image</span><span class="p">.</span><span class="n">setCompressionMode</span><span class="p">(</span><span class="s">'disabled'</span><span class="p">)</span>
+  <h3 id="dicommetadatadeidentifier">DicomMetadataDeidentifier</h3>
 
-<span class="c1"># files are compressed if Megapixel &gt;= compressionThreshold
-</span><span class="n">dicom_to_image</span><span class="p">.</span><span class="n">setCompressionMode</span><span class="p">(</span><span class="s">'auto'</span><span class="p">)</span>
-
-</code></pre></div>  </div>
-
+  <p>DicomMetadataDeidentifier is the component in charge of redacting metadata tags in Dicom files. It can apply a wide variety of actions, some of which are pre-defined, and some of which are user-defined.
+In this release, new actions were added:</p>
   <ul>
-    <li><code class="language-plaintext highlighter-rouge">DicomToImageV3.setCompressionThreshold()</code>, Float or Integer which represents the number of mega-pixels in an image above which compression will be applied on the image, if compressionMode is set to <code class="language-plaintext highlighter-rouge">auto</code> otherwise no effect.&lt;/br&gt;
-Mega-pixel metric is computed using this equation:&lt;/br&gt;
-<code class="language-plaintext highlighter-rouge">Megapixel = image_height * image_width * image_frames / 1048576</code></li>
+    <li>Added a new action shiftTimeByRandom (VR: TM) to randomly shift time values.</li>
+    <li>Added two new actions shiftDateByFixedNbOfDays and shiftDateByRandomNbOfDays (VR: DA, DT) to shift date and datetime values.</li>
+    <li>Added a new action shiftUnixTimeStampRandom (VR: SL, FD) to randomly shift Unix timestamp values.</li>
+    <li>Added a new action ensureTagExists (VR: ALL) to ensure a tag exists with a default value.
+Some other changes,</li>
+    <li>Improved date and datetime handling to support all valid DICOM date formats.</li>
+    <li>Improved hashUID and patientHashID implementations in accordance with DICOM guidelines.</li>
+    <li>Added the ability to remove residual PHI post de-identification, ensuring sensitive metadata is fully cleared from the DICOM file.</li>
   </ul>
-
-  <p>Example,</p>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Set compression threshold to 1 Megapixel
-</span><span class="n">dicom_to_image</span><span class="p">.</span><span class="n">setCompressionThreshold</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</code></pre></div>  </div>
-
-  <ul>
-    <li><code class="language-plaintext highlighter-rouge">DicomToImageV3.setCompressionQuality()</code>, Integer between 1 and 95. This is the  JPG quality parameter used when compressing images.
-Example,
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dicom_to_image</span><span class="p">.</span><span class="n">setCompressionQuality</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
-</code></pre></div>      </div>
-    </li>
-  </ul>
-
-  <h3 id="dicompretrainedpipeline--dicomdrawregions">DicomPretrainedPipeline &amp; DicomDrawRegions</h3>
-  <p>We are introducing a new class: <code class="language-plaintext highlighter-rouge">DicomPretrainedPipeline</code>. You can use this class to run Dicom pipelines optimizing for reduced memory consumption.
-The class will apply optimizations to avoid unnecessary copies of buffers, and execute stages in the most optimal way to avoid memory problems.</p>
-
-  <p>You can construct a <code class="language-plaintext highlighter-rouge">DicomPretrainedPipeline()</code> in the same way you create a <code class="language-plaintext highlighter-rouge">PretrainedPipeline(name, lang, remote_loc, parse_embeddings, disk_location)</code></p>
-
-  <p>For example by providing name, language and bucketname,</p>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparkocr.pretrained</span> <span class="kn">import</span> <span class="n">DicomPretrainedPipeline</span>
-<span class="n">optimized_pipe</span> <span class="o">=</span> <span class="n">DicomPretrainedPipeline</span><span class="p">(</span><span class="s">"dicom_deid_generic_augmented_minimal"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/ocr"</span><span class="p">)</span>
-<span class="n">processed_df</span> <span class="o">=</span> <span class="n">optimized_pipe</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-<span class="n">processed_df</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
-</code></pre></div>  </div>
-
-  <p>Additionally, you can convert a custom pipeline by passing it as first argument to DicomPretrainedPipeline. Only requirement is that the pipeline must contain <code class="language-plaintext highlighter-rouge">DicomToImageV3</code>, <code class="language-plaintext highlighter-rouge">DicomDrawRegions</code> and <code class="language-plaintext highlighter-rouge">PositionFinder</code> stages</p>
-
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pipe</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"dicom_deid_generic_augmented_minimal"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/ocr"</span><span class="p">)</span>
-<span class="n">optimized_pipe</span> <span class="o">=</span> <span class="n">DicomPretrainedPipeline</span><span class="p">(</span><span class="n">pipe</span><span class="p">)</span>
-<span class="n">processed_df</span> <span class="o">=</span> <span class="n">optimized_pipe</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-</code></pre></div>  </div>
 
 </div>
 <div class="h3-box">
@@ -738,40 +713,30 @@ This means that if in page 1, Martha is replace by Janice, any other Martha in t
 </div>
 <div class="h3-box">
 
-  <h2 id="new-reference-dataset-for-de-identification">New Reference dataset for De-identification</h2>
-  <p>The <a href="https://github.com/JohnSnowLabs/pdf-deid-dataset">PDF Deid Dataset</a> is a fully synthetic collection of medical-style PDF documents created for de-identification tasks.
-We provide a collection of original PDF documents containing synthetized PHI elements,  annotations for the entities, metrics for pipelines, and sample result PDFs for the obfuscation case, this is actual documents in which the fake entities have injected.</p>
+  <h2 id="new-blogposts-and-notebooks">New Blogposts and notebooks</h2>
+
+  <ul>
+    <li>Deidentifying Whole Slide Images(WSI) and deploying in SageMaker. Link <a href="https://medium.com/john-snow-labs/de-identifying-whole-slide-images-wsi-deploying-on-sagemaker-part-3-25a4c57805c4">here</a>.</li>
+    <li>JSL-Vision vs. Closed Source Models Comparison. Link <a href="https://medium.com/john-snow-labs/jsl-vision-vs-closed-source-models-document-intelligence-without-compromise-62728afe0c5b">here</a>.</li>
+    <li>JSL-Vision vs. Open-Source Models Comparison. Link <a href="https://medium.com/john-snow-labs/jsl-vision-state-of-the-art-document-understanding-on-your-hardware-f4862f15d9f9">here</a>.</li>
+    <li>De-identifying Dicom files a step-by-step guide . Link <a href="https://medium.com/john-snow-labs/de-identifying-dicom-files-a-step-by-step-guide-with-john-snow-labs-visual-nlp-2c21b60f92a8">here</a>.</li>
+  </ul>
 
 </div>
 <div class="h3-box">
 
-  <h2 id="neroutputcleaner">NerOutputCleaner</h2>
-  <p>NerOutputCleaner is a newly introduced stage that processes the auxiliary mapping generated by the DeIdentification stage. <em>This is important because the auxiliary mapping can contain useful entities that were created using text matching.</em> &lt;/br&gt; 
-It creates unique NER entries with appropriate chunk_ids and metadata required by PositionFinder, enabling the generation of coordinates. This stage also produces a new auxiliary mapping that includes all necessary metadata required by the ImageDrawRegions stages. Additionally, it supports the use of both regex-based and dictionary-based sources for coordinate generation.
-As a result, applying this transformer will enable the creation of <em>very robust NER and De-identification pipelines</em>.
-Example,</p>
+  <h2 id="bug-fixes">Bug Fixes</h2>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cleaner</span> <span class="o">=</span> <span class="n">NerOutputCleaner</span><span class="p">()</span> \
-    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"aux"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"new_aux"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setOutputNerCol</span><span class="p">(</span><span class="s">"positions_ner"</span><span class="p">)</span>
-</code></pre></div>  </div>
+  <ul>
+    <li>Improved support for accessing Python resources across different Python versions.</li>
+    <li>Compatibility with Google Colab.</li>
+  </ul>
 
 </div>
 <div class="h3-box">
 
-  <h2 id="imagedrawregions-improved-logic-for-processing-coordinates-that-extend-across-multiple-lines">ImageDrawRegions: improved logic for processing coordinates that extend across multiple lines.</h2>
-  <p>When ImageDrawRegions is used to render fake entities into the output PDFs, many times we need to replace entities that spawn across multiple lines, this adds to the complexity already present in the task in which we need to approximate the font size and  the general rendering dimensions of the replacement texts.
-This new version is capable of rendering the replacement fake entities across multiple lines to mimic the layout present in the original document.
-For example <code class="language-plaintext highlighter-rouge">Susan Frances Martin</code> at the top of the document is replaced by <code class="language-plaintext highlighter-rouge">Riccardo Chamberlain</code> that will spawn two separate lines.</p>
-
-  <p><img src="/assets/images/multi-line_impainting.png" alt="Improved logic in multi-line." /></p>
-
-  <h2 id="binarytoimage-support-of-multi-page-tiff-files">BinaryToImage support of multi-page tiff files</h2>
-  <p>Now BinaryToImage transformer supports multi-page tiff files. For multi-page tiff files, multiple pages are splitted into separate images. No specific configurations are required.</p>
-
-  <p>This release is compatible with Spark-NLP 6.0.0, and Spark NLP for Healthcare 6.0.0.</p>
-
+  <h2 id="compatibility">Compatibility:</h2>
+  <p>Spark-NLP 6.3.2, and Spark-NLP for Healthcare 6.3.0, LV 1.11.0.</p>
 </div>
 <div class="h3-box">
 
@@ -790,6 +755,7 @@ For example <code class="language-plaintext highlighter-rouge">Susan Frances Mar
   </li>
 </ul>
 <ul class="pagination owl-carousel pagination_big">
+   <li><a href="release_notes_6_3_0">6.3.0</a></li>
    <li><a href="release_notes_6_0_0">6.0.0</a></li>
    <li><a href="release_notes_5_5_0">5.5.0</a></li>
    <li><a href="release_notes_5_4_2">5.4.2</a></li>
