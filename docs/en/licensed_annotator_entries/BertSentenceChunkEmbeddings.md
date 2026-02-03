@@ -11,19 +11,39 @@ This annotator allows aggregating sentence embeddings with ner chunk embeddings 
 
 Parameters:
 
-- `inputCols`: The name of the columns containing the input annotations. It can read either a String column or an Array.
+- `inputCols`: Input annotation columns, typically `["sentence", "chunk"]`. The chunk column provides the text spans, and the sentence column provides contextual information.
 
-- `outputCol`: The name of the column in Document type that is generated. We can specify only one column here.
+- `outputCol`: Name of the output column that will contain the resulting sentence-chunk embeddings.
 
-- `chunkWeight`: Relative weight of chunk embeddings in comparison to sentence embeddings. The value should between 0 and 1. The default is 0.5, which means the chunk and sentence embeddings are given equal weight.
+- `chunkWeight`: Relative weight of chunk embeddings compared to sentence embeddings.  
+  The value should be between 0 and 1.  
+  A value of 0.5 (default) means both chunk and sentence embeddings are given equal weight.
 
-- `setMaxSentenceLength`: Sets max sentence length to process, by default 128.
+- `strategy`: Strategy for computing embeddings. Supported options:
+  - `"sentence_average"`: Averages sentence and chunk embeddings (default).
+  - `"scope_average"`: Averages scope and chunk embeddings, where the scope is defined by the `scopeWindow`.
+  - `"chunk_only"`: Uses only the chunk embeddings.
+  - `"scope_only"`: Uses only the scope embeddings, defined by `scopeWindow`.
 
-- `caseSensitive`: Determines whether the definitions of the white listed entities are case sensitive.
+- `scopeWindow`: A tuple `(left, right)` defining how many tokens before and after the chunk are included when calculating scope embeddings.  
+  Defaults to `(0, 0)` which means no additional context tokens are included.
 
-- `strategy`: Strategy for computing embeddings. Supported strategies are: `sentence_average`, `scope_average`, `chunk_only`, `scope_only`. The default is `sentence_average`.
+- `batchSize`: Number of sentences processed per batch during embedding computation. Affects performance and memory usage.
 
-- `scopeWindow`: cope window to calculate scope embeddings. The scope window is defined by two non-negative integers. The default is [0, 0], which means only the chunk embeddings are used. The first integer defines the number of tokens before the chunk and the second integer defines the number of tokens after the chunk.
+- `caseSensitive`: Whether to preserve case when matching tokens for embedding computation.  
+  Default is `True`.
+
+- `dimension`: The embedding vector dimension (depends on the pretrained model, e.g., 768 for BERT base).
+
+- `storageRef`: Unique reference name identifying the embeddings source, useful when sharing models in pipelines.
+
+- `lazyAnnotator`: Whether the annotator should load resources lazily in a `RecursivePipeline`.  
+  Default is `False`.
+
+- `isLong`: Whether to use `Long` type instead of `Int` for model inputs.  
+  Some BERT models require `Long` tensors (default: `False`).
+
+- `configProtoBytes`: TensorFlow configuration serialized as a byte array, for advanced users who want to fine-tune session settings.
 
 All the parameters can be set using the corresponding set method in camel case. For example, `.setInputCols()`.
 

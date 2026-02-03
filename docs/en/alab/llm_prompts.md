@@ -6,7 +6,7 @@ seotitle: Generative AI Lab | John Snow Labs
 title: LLM Prompts
 permalink: /docs/en/alab/llm_prompts
 key: docs-training
-modify_date: "2023-08-19"
+modify_date: "2025-11-27"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
@@ -17,7 +17,11 @@ sidebar:
 
 ## Entity Extraction and Pre-Annotation via GPT Prompting
 
-The highlight of this release is the integration with an external service provider, Open AI, to expand and deepen the range of prompts available for pre-annotation (in addition to the Zero Shot entity and relation prompts already supported). This feature:.
+Generative AI Lab supports integration with external large language model (LLM) providers such as **OpenAI**, enabling a broader and more flexible range of prompts for pre-annotation.  
+This capability complements the existing **Zero-Shot Entity** and **Relation Prompting** options, allowing users to leverage advanced LLMs to generate high-quality pre-annotations even when no pre-trained model is available.
+
+By combining GPT-based prompting with existing zero-shot and rule-based approaches, users can design more effective annotation workflows, quickly generate entity or relation suggestions, and improve overall annotation efficiency.
+
 
 - **Broadens Prompt Possibilities**: By integrating with Open AI LLM models, users can tap into a more diverse set of prompts, leveraging external expertise to craft pre-annotations, as an alternative pre-annotation solution or when pre-trained models are not available.
 
@@ -46,6 +50,26 @@ Azure:
 
 The Open AI integration allows users to tap into a vast reservoir of external expertise, enhancing the depth and breadth of their projects. We've ensured that the integration process is as intuitive as possible, allowing users to focus on what truly matters: crafting refined and effective pre-annotations.
 
+#### Additional Supported Providers and Configuration Options
+
+Generative AI Lab now supports integration with multiple external LLM providers:  
+- **OpenAI** (ChatGPT, GPT-4 family)  
+- **Azure OpenAI Service**  
+- **Anthropic Claude**  
+- **Amazon SageMaker LLM Endpoints**
+
+Each provider can be added and configured from **System Settings → Integrations** using the same setup process. Users simply supply the required credentials (API key, access token, or endpoint) and validate the connection before linking the provider to specific projects.
+
+Each integration form now includes **generation control parameters** that are consistent across providers:
+
+- **Temperature** – Adjusts the randomness or creativity of the model output.  
+  Lower values (e.g., 0.1) make responses deterministic, while higher ones (e.g., 0.9) yield more varied generations.
+- **Max Tokens** – Limits the maximum number of tokens generated in the response.  
+  This setting helps control the verbosity and ensures annotations remain concise.
+
+These parameters can be configured globally for a provider or fine-tuned per project when defining prompts.  
+They are saved along with the provider configuration and automatically applied during pre-annotation.
+
 </div><div class="h3-box" markdown="1">
 
 ### Prompt Definition and Testing
@@ -57,6 +81,9 @@ Users can generate LLM prompts on the dedicated Prompt page from the Hub of Reso
 
 - **Test in Real-time**: A standout feature is the ability to test ChatGPT prompts at creation time. As you craft your prompt, you can immediately see how it performs on some test data. This not only allows for immediate feedback but also ensures that the final prompt aligns perfectly with the user's objectives.
 
+The testing interface supports **all integrated providers** — users can preview and compare prompt responses from OpenAI, Azure, Anthropic Claude, and SageMaker models within the same workflow.  
+The output display and post-processing are consistent across providers, ensuring parity in prompt behavior and entity alignment.
+
 This streamlined approach ensures that integrating and testing external prompts is as intuitive and efficient as possible.
 
 ![Integration](/assets/images/annotation_lab/5.3.0/2.gif)
@@ -64,13 +91,19 @@ This streamlined approach ensures that integrating and testing external prompts 
 </div><div class="h3-box" markdown="1">
 
 ### Consistent Workflow with LLM Prompts
-Even with the introduction of new features in Generative AI Lab's 5.3.0 release, users can take comfort in the consistent experience offered when working with prompts. The addition of external service provider prompts brings a fresh layer to the annotation process, yet the core workflow you're familiar with stays the same.
 
-- **Familiarity Amidst Innovation**: Despite the new integrations, the process of using available prompts remains as straightforward as ever. Whether you're working with traditional prompts or the newly introduced ones, the experience is smooth and consistent.
+Generative AI Lab maintains a familiar and streamlined experience when working with LLM-based prompts.  
+Even with the addition of new integrations and external LLM providers, the prompt workflow remains intuitive and consistent across all project types.
 
-- **Seamless Transition**: Our commitment to user-centric design means that even as we innovate, we prioritize the ease of use you've come to expect. Transitioning to or incorporating external prompts is made effortless, with the interface and steps for prompt creation, selection, and integration remaining intuitive and unchanged.
+- **Familiar Interface**: The process of creating, selecting, and applying prompts follows the same simple steps users are accustomed to, whether using built-in templates or external LLM-powered prompts.
 
-With Generative AI Lab 5.3.0, you get the best of both worlds: exciting new features and the comfort of a familiar workflow.
+- **Seamless Integration**: External prompt providers can be added without changing existing workflows. The interface for managing and applying prompts remains unified, allowing teams to adopt new capabilities without retraining or workflow disruptions.
+
+- **Saved Parameters and Analytics Support**:  
+  When used in projects, prompts retain their custom Temperature and Max Token settings automatically.  
+  The analytics module also includes LLM-related metadata, allowing reviewers to correlate evaluation results with model configuration for transparency.
+
+With Generative AI Lab, you get the best of both worlds: exciting new features and the comfort of a familiar workflow.
 
 ![Integration](/assets/images/annotation_lab/5.3.0/3.gif)
 

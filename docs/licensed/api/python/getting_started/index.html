@@ -28,7 +28,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../static/graphviz.css?v=eafc0fe6" />
     <link rel="stylesheet" type="text/css" href="../static/css/custom.css?v=e1fb877f" />
@@ -401,12 +401,12 @@ Please refer to <a class="reference external" href="https://spark.apache.org/doc
 <section id="starting-a-spark-nlp-session-from-python">
 <h2>Starting a Spark NLP Session from Python<a class="headerlink" href="#starting-a-spark-nlp-session-from-python" title="Permalink to this heading">#</a></h2>
 <p>You can start the spark session with this simple piece of code.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sparknlp_jsl</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sparknlp_jsl</span>
 <span class="n">spark</span> <span class="o">=</span> <span class="n">sparknlp_jsl</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">secret</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{secret.code}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Or use the SparkSession module for more flexibility:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pyspark.sql</span><span class="w"> </span><span class="kn">import</span> <span class="n">SparkSession</span>
 
 <span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="o">.</span><span class="n">builder</span> \
     <span class="o">.</span><span class="n">appName</span><span class="p">(</span><span class="s2">&quot;Spark NLP Enterprise&quot;</span><span class="p">)</span> \

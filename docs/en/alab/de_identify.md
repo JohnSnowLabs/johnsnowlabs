@@ -6,7 +6,7 @@ seotitle: Generative AI Lab | John Snow Labs
 title: De-Identification
 permalink: /docs/en/alab/de_identify
 key: docs-training
-modify_date: "2024-12-03"
+modify_date: "2025-11-27"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
@@ -15,137 +15,180 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-## Support for De-identification
-Version 6.4 of Generative AI Lab introduces a new de-identification feature, enabling users to anonymize documents containing sensitive information such as PII (Personally Identifiable Information) and PHI (Protected Health Information). This functionality is intended to protect data privacy and ensure compliance with privacy regulations while preserving the data’s usefulness for subsequent analysis and processing.
+## Protect Sensitive Data While Preserving Value
 
-Version 6.7 of Generative AI Lab improves on the original feature to allow for custom methods of de-identification for each entity label and support for the newest John Snow Labs De-identification Pipeline. 
+Working with documents that contain **Personally Identifiable Information (PII)** or **Protected Health Information (PHI)** requires careful handling. Generative AI Lab provides multiple **De-Identification project types** that help detect and transform sensitive data so it can be safely reviewed, shared, and reused for analysis or model training.
 
-**De-identification Projects** When creating a new project in the Generative AI Lab, users can mark it as De-Identification specific. These projects allow the use of manually trained or pre-trained text-based NER models, together with prompts, rules, and custom labels created by the user for identifying sensitive data inside of tasks. Once the sensitive data is identified (either automatically or manually) and validated by human users, it can be exported for further processing. 
-When creating De-identification projects make sure you only target sensitive entities as part of your project configuration and avoid annotating relevant data you need for downstream processing as all those entities will be removed when exporting the project tasks as de-identified documents. The best practice, in this case, is to re-use de-identification specific models combined with custom prompts/rules. 
+Depending on the project type, de-identification can be applied either to **text representations** or directly to **visual documents such as PDFs and images**.
 
-**Exporting De-identified Documents:** The tasks of your project with PII/PHI labeled entities can be exported as de-identified documents. During the export process, labeled entities will be replaced by the label names, or special characters (such as "*"), or obfuscated and replaced with fake data. This ensures that sensitive information is removed and not available for downstream analysis.
+### Why De-Identification Matters
 
-**Re-importing and Further Processing:** The de-identified documents can be re-imported into any text-based project. This allows for further labeling and data preparation for model training/tuning by annotators, ensuring that the de-identified data can be utilized effectively.
-
-</div><div class="h3-box" markdown="1">
-
-### Types of De-identification
-Generative AI Lab supports four kinds of de-identification:
-1.	**Mask with Entity Labels:** Identified tokens are replaced with their respective label names. For instance, in the text " John Davies is a 62 y.o. patient admitted to ICU after an MVA." where John Davies is labeled as Patient and 62 as Age, the de-identified exported text would be: "\<Patient\> is a \<Age\> y.o. patient admitted to ICU after an MVA. "
-2.	**Mask with Characters:** All characters of the identified tokens are replaced by *. For the above example, if John Davies was labeled as Patient and 62 was labeled as Age, then on task export, the resulting text will look like "``****`` ``******`` is a ``**`` y.o. patient admitted to ICU after an MVA." This option ensures the number of characters is kept the same between the original document and the anonymized one.
-3.	**Mask with Fixed Length Characters:** The identified tokens are replaced by ``****`` (4 star characters). For the same example, the output will be "``****`` ``****`` is a ``****`` y.o. patient admitted to ICU after an MVA."
-4.	**Obfuscation:** The identified tokens are replaced by new (fake) tokens. For the above example, the obfuscated result will be "Mark Doe is a 48 y.o. patient admitted to ICU after an MVA. "
-
-</div><div class="h3-box" markdown="1">
-
-### Working with de-identification projects
-
-To create a De-identification project, in the first step ot he Project Configuration wizzard, select the `De-identification` template available under the `TEXT` tab. 
-
-</div><div class="h3-box" markdown="1">
-
-### Creating a De-identification Project
-Users can use the de-identification feature if a valid license is available in the application: 
-1. **Create a New Project**:
-   During the project configuration, select **De-identification** as the project type.
-2. **Automatic Pipeline Download**:
-   A default de-identification pipeline (`clinical_deidentification`) will automatically download if not previously available or it will use the default de-identification project template. All the downloaded pipelines are available on the **Pipeline** page.
-   
-![670image](/assets/images/annotation_lab/6.7.0/1.png)
-
-</div><div class="h3-box" markdown="1">
-
-### New Pipeline Tab and Customization
-In the **Reuse Resource** page, a new **Pipelines Tab** is now available for de-identification projects. Here, all the downloaded de-identification pipelines are listed. Users can also use and apply pre-trained and trained models, rules, and zero-shot prompts.
-
-
-![670image](/assets/images/annotation_lab/6.7.0/2.png)
-
-
-In the **Customize Labels** page, users can first select the overall de-identification strategies to use. Furthermore, it is also possible to specify parand use entity level configurations.
-
-![670image](/assets/images/annotation_lab/6.7.0/3.png)
-
-Users can also upload custom obfuscation configurations in JSON format via the Customize Labels page, enabling the seamless reuse of obfuscation rules across multiple projects.
-
-![670image](/assets/images/annotation_lab/6.7.0/4.gif)
-
-</div><div class="h3-box" markdown="1">
-
-### De-identification Process
-
-The de-identification process is similar to the existing pre-annotation workflow:
-
-1. **Import Tasks**
-
-
-   Initially, tasks are imported, and the `NonDeidentified` tag is automatically added to the tasks. It helps users know which tasks have been deidentified and which are yet to be de-identified.
-
-   ![670image](/assets/images/annotation_lab/6.7.0/5.gif)
-
-2. **Pre-annotate/De-identify**
-
-
-   Click the **De-identification (pre-annotate)** button to deploy the de-identification pipeline and pre-annotate your tasks. During the pre-annotation stage, there is a status indicator (the colored circle) next to each task that changes to either green, red, or grey, just like the pre-annotation status. 
-
-   ![670image](/assets/images/annotation_lab/6.7.0/6.gif)
-
-3. **Labeling Page**
-
-
-   On the labeling page, users can either make corrections or accept the predictions made by the pipeline.
-
-   ![670image](/assets/images/annotation_lab/6.7.0/7.gif)
-
-4. **Re-run De-identification**
-
-
-   After saving and submitting the tasks, users can click the de-identify button again to run the de-identification process. This will change the content of your tasks by applying the specified de-identification configurations on all automatic and manual annotations. You can then view the de-identification results on the labeling page. Users can click the **De-identification View** button (located next to the Compare Completion button), to view the de-identified tasks in comparison with the original version. All de-identified completions will show **(De-identified)** next to the completion ID.
-
-   ![670image](/assets/images/annotation_lab/6.7.0/8.gif)
+- **Stay compliant:** Support privacy requirements such as HIPAA and GDPR
+- **Share data safely:** Collaborate without exposing sensitive information
+- **Enable AI development:** Train models on realistic data without privacy risks
+- **Reduce exposure:** Limit the spread of PII and PHI across systems
 
 </div>
 
-### Exporting De-identified Tasks
+<div class="h3-box" markdown="1">
 
-Only de-identified completions submitted as **ground truth** are exported. Also, if a task has multiple ground truths from different users, the completion from the user with the **highest priority** will be exported.
+## De-Identification Project Types
 
-![670image](/assets/images/annotation_lab/6.7.0/9.gif)
+Generative AI Lab supports two distinct de-identification project types. Both can ingest PDFs, but they differ in **how de-identification is applied** and **what is produced as output**.
 
-These updates are built on top of the current structure, ensuring ease of use and a smooth transition without disrupting productivity. 
+### Text De-Identification (TEXT tab)
 
-> **_HOW TO:_** De-identification projects can be easily identified without opening them. A small de-identification icon is displayed in the bottom left corner of the project card, clearly indicating the project's status.
+Text De-Identification applies transformations to **text content**.
 
+Projects of this type:
+- Are created under the **TEXT** tab
+- Can ingest plain text inputs
+- Can ingest PDFs that are processed through OCR to extract text
+- Apply de-identification to the extracted text representation
+- Produce **text-based outputs**
 
-> **_LIMITATION:_** Projects must be designated as de-identification projects during their initial creation. It is not possible to convert existing projects or newly created non-de-identification projects into de-identification projects.
+This project type is appropriate when working primarily with text and when preserving the original document layout is not required.
 
+### Visual NER De-Identification (PDF / Image tabs)
 
-### Export of De-identified tasks
+Visual NER De-Identification applies masking **directly to the visual document**.
 
-**Submitted Completions:** Pre-annotations alone are not sufficient for exporting de-identified data. Only starred completions are considered during the export of de-identified tasks. This means that each task intended for de-identified export must be validated by a human user, with at least one completion marked with a star by an annotator, reviewer, or manager.
+Projects of this type:
+- Are created under the **PDF** or **Image** tabs
+- Operate on PDFs or images as visual documents
+- Detect sensitive entities using OCR, NER models, and rule-based patterns
+- Apply masking directly on document pages
+- Allow reviewers to preview masked documents
+- Export **de-identified PDFs or images**, with the option to exclude original raw files
 
-**Multiple Completions:** In cases where multiple submissions exist from various annotators, the de-identification process will prioritize the starred completion from the highest priority user as specified on the Teams page. This ensures that de-identification is based on the most relevant and prioritized annotations.
+This project type is intended for document-centric workflows where the visual format must be preserved.
 
-This new de-identification feature significantly enhances data privacy by anonymizing sensitive document information. We are confident that this feature will empower users to handle sensitive data responsibly while maintaining the integrity and usability of their datasets.
+</div>
 
-#### Add demo test project for De-identification project**
+<div class="h3-box" markdown="1">
 
-With Version 6.11, we have created a **Demo De-identification Project**. This is designed to help users familiarize themselves with de-identification workflows without the need for manual project setup.
+## How It Works (Text De-Identification)
 
-Now, users can click the **Import** button and select **Import Demo Projects**, which will automatically add a pre-configured de-identification project to their workspace. This feature provides a practical example, enabling users to explore how de-identification pipelines work, understand labeling structures, and experiment with different de-identification settings before working on actual datasets. Please note that the project will only be imported if a **valid license** is available within the application.
+### 1. Create a Text De-Identification Project
 
-![6110image](/assets/images/annotation_lab/6.11.0/6.gif)
+Create a new project and select the **De-identification** template under the **TEXT** tab.
 
-#### Simplified Export of De-identified tasks**
+This configures the project for text-based de-identification, including:
+- Standard labels for common sensitive entities (names, dates, IDs)
+- De-identification configuration options
+- Export behavior based on reviewed completions
 
-With Version 6.11, manually completing de-identifications before export is no longer necessary. Now, when exporting de-identified tasks, the system automatically determines what to export:
-- If **de-identified submitted completions** are available, they are prioritized for export.
-- If no submitted completions exist, the **de-identified predictions** generated by the model are exported instead.
+<br/>
 
-![6110image](/assets/images/annotation_lab/6.11.0/7.gif)
+![Create De-ID Project](/assets/images/annotation_lab/6.7.0/1.png)
 
-#### Increased Consistency in the De-Identification Process Across De-identification Projects
+<br/>
 
-With Version 6.11, the **De-identify** button now functions uniformly across all de-identification projects, whether using models or pipelines. It seamlessly **pre-annotates and de-identifies predictions** in a single step, ensuring a smoother and more predictable workflow.
+> **Quick Start:** Import the **Demo De-Identification Project** from the Import menu to explore the workflow using sample data.
 
-Users can now rely on a standardized approach, reducing confusion and making the de-identification workflow more intuitive.
+### 2. Choose Your De-Identification Strategy
+
+Each entity type can use a different transformation strategy.
+
+| Strategy | Description | Example |
+|---------|------------|---------|
+| Mask with Entity Labels | Replace text with label names | `<Patient> is a <Age> y.o.` |
+| Mask with Characters | Replace characters with `*` | `**** ****** is a ** y.o.` |
+| Fixed Length Mask | Replace with fixed-length mask | `**** **** is a **** y.o.` |
+| Obfuscation | Replace with realistic synthetic values | `Mark Doe is a 48 y.o.` |
+
+![Choose Strategy](/assets/images/annotation_lab/6.7.0/3.png)
+
+You can upload custom obfuscation rules in JSON format to reuse configurations across projects.
+
+![Upload Config](/assets/images/annotation_lab/6.7.0/4.gif)
+
+### 3. Review and Export Text Outputs
+
+1. Import documents (tasks are tagged as `NonDeidentified`)
+2. Run **De-identify** to generate predictions
+3. Review and correct labels
+4. Submit (star) reviewed completions
+5. Export de-identified text outputs
+
+![De-ID Process](/assets/images/annotation_lab/6.7.0/6.gif)
+
+</div>
+
+<div class="h3-box" markdown="1">
+
+## Visual NER De-Identification for PDFs and Images
+
+Visual NER De-Identification is used when sensitive information must be masked **within the document itself**, rather than only in extracted text.
+
+### How Visual NER De-Identification Works
+
+- PDFs or images are processed using OCR and visual entity detection
+- Sensitive entities are detected using NER models and rule-based patterns
+- Masking is applied directly to document pages
+- Reviewers can preview masked PDFs or images
+- Exports can be configured to include **only de-identified documents**
+
+> **Screenshot needed:** Visual NER project creation for PDF or image de-identification.
+
+### Review with Visual Preview
+
+Reviewers validate masking by viewing the de-identified document before export. This allows verification of masked content while preserving document readability.
+
+> **Screenshot needed:** Visual NER review screen showing masked entities on a PDF page.
+
+### Export De-Identified PDFs or Images
+
+Visual NER De-Identification supports exporting masked PDFs or images. Original raw files can be excluded from the export depending on configuration.
+
+> **Screenshot needed:** Export dialog showing the option to export only de-identified documents.
+
+</div>
+
+<div class="h3-box" markdown="1">
+
+## When to Use Each Project Type
+
+| Requirement | Recommended Project Type |
+|------------|-------------------------|
+| De-identify text content (including OCR-extracted text from PDFs) | Text De-Identification |
+| Produce text-based outputs | Text De-Identification |
+| Mask sensitive information on PDF pages or images | Visual NER De-Identification |
+| Review masking visually before export | Visual NER De-Identification |
+| Export de-identified PDFs or images | Visual NER De-Identification |
+
+</div>
+
+<div class="h3-box" markdown="1">
+
+## Best Practices (Text De-Identification)
+
+- Review predictions before export to ensure accuracy
+- Apply different strategies per entity type where appropriate
+- Use demo projects to understand workflows before processing real data
+- Combine models and rules to improve coverage
+
+</div>
+
+<div class="h3-box" markdown="1">
+
+## Important Notes
+
+> **License Required:** A valid John Snow Labs license is required.
+
+> **Project Type Is Fixed:** The de-identification project type must be selected during project creation. Existing projects cannot be converted to a different de-identification type.
+
+> **Human Review:** Export behavior depends on reviewed completions and project configuration.
+
+</div>
+
+<div class="h3-box" markdown="1">
+
+## Need Help?
+
+- Import the Demo De-Identification Project from the Import menu
+- Upload JSON obfuscation rules from the Customize Labels page
+- Manage pipelines from the Pipelines page
+- Contact [support@johnsnowlabs.com](mailto:support@johnsnowlabs.com)
+
+</div>

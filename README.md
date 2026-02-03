@@ -153,4 +153,6 @@ This library is licensed under the [Apache 2.0](https://github.com/JohnSnowLabs/
 John Snow Labs' paid products are subject to this [End User License Agreement](https://www.johnsnowlabs.com/health-nlp-spark-ocr-libraries-eula/).        
 By calling nlp.install() to add them to your environment, you agree to its terms and conditions.
 
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/JohnSnowLabs/johnsnowlabs)
+
 

@@ -5,7 +5,7 @@ seotitle: NLP Lab | John Snow Labs
 title: NLP Lab Release Notes 4.3.0
 permalink: /docs/en/alab/annotation_labs_releases/release_notes_4_3_0
 key: docs-licensed-release-notes
-modify_date: "2022-12-07"
+modify_date: "2025-11-27"2022-12-07"
 show_nav: true
 sidebar:
   nav: annotation-lab

@@ -6,7 +6,7 @@ seotitle: Generative AI Lab | John Snow Labs
 title: PDF
 permalink: /docs/en/alab/tags_pdf
 key: docs-training
-modify_date: "2023-06-20"
+modify_date: "2025-11-27"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
@@ -39,22 +39,23 @@ The **zoom** and **zoomControl** parameters in the `Image` tag enable you too zo
 </div>
 
 ### Identify and Validate Checkboxes with Precision
-Version 6.9.0 introduces a new project type called **Checkbox Detection**. With the new update, users can now use the model offered by Generative AI Lab to identify checkboxes in the tasks, including the **checked** and **unchecked** status in the respective tasks.
 
-This project type can be selected from the **Content Type** page under the **Image** tab during project setup. The default model associated with Checkbox Detection is automatically downloaded from the **Models Hub** page and added to the project configuration.
+Generative AI Lab includes a dedicated **Checkbox Detection** project type that enables automatic identification of checkboxes within image-based tasks, detecting both **checked** and **unchecked** states.  
+
+This project type can be selected during project setup from the **Content Type** page under the **Image** tab. When chosen, the default model for checkbox detection is automatically downloaded from the **Models Hub** and added to the project configuration, allowing users to get started immediately.  
 
 ![690image](/assets/images/annotation_lab/6.9.0/1.png)
 
-After the project is configured, users can add relevant tasks and leverage the model to detect checkboxes and their respective checked and unchecked statuses.
+Once configured, users can upload PDF or image tasks and use the model to detect checkbox elements and their status directly within the annotation interface.
 
 ![690image](/assets/images/annotation_lab/6.9.0/2.png)
 
-This new update integrates seamlessly with the existing workflow, ensuring no changes or disruptions to the current application processes.
+Checkbox Detection integrates seamlessly with existing annotation workflows and requires no additional setup.  
+**Note:** The Checkbox Detection model currently operates independently and cannot be combined with other models within the same project.
 
-This model can not currently be combined with other models.
 
 ### Detect and Validate Handwritten Text and Signatures
-This update continues with the **Handwritten Text and Signature Detection** project type. This new feature enables the automatic identification and annotation of handwritten text and signatures within documents, using John Snow Lab's Visual NLP Library. The new project type can be selected from the **Content Type** page under **Image** tab during project configuration. Upon selection, the default model for Handwritten Text and Signature Detection is automatically downloaded from the **Models Hub** and integrated into the project configuration.
+The **Handwritten Text and Signature Detection** project type enables the automatic identification and annotation of handwritten text and signatures within documents, using John Snow Lab's Visual NLP Library. The project type can be selected from the **Content Type** page under **Image** tab during project configuration. Upon selection, the default model for Handwritten Text and Signature Detection is automatically downloaded from the **Models Hub** and integrated into the project configuration.
 
 ![690image](/assets/images/annotation_lab/6.9.0/3.png)
 
@@ -64,10 +65,14 @@ Users can then add relevant tasks to the project and use the model to identify a
 
 This feature doesn't change the existing application workflow, and can not be combined with other models at this time.
 
-## View Text alongside images, and Optimized Image Loading in Visual NER
-Generative AI Lab 6.11 brings an Image-Text Side-by-Side Annotation project, allowing users to view the original image or PDF alongside its OCR-extracted text for easier annotation. It also includes optimized Visual NER for faster PDF processing, enhanced zoom functionality, and a new licensing model for on-premises deployments. 
+## View Text Alongside Images and Optimized Image Loading in Visual NER
 
-Other minor improvements have been made to Generative AI Lab, specifically to model training and de-identification.
+Generative AI Lab introduces an **Image-Text Side-by-Side Annotation** project type, enabling users to view the original image or PDF alongside its OCR-extracted text. This dual-view layout simplifies the comparison between visual and textual content, allowing annotators to review and label information more accurately and efficiently.
+
+In addition, **Visual NER performance has been optimized** for faster PDF and image processing. Enhancements include improved zoom and navigation, smoother page transitions, and optimized image loading—especially beneficial for projects handling large, multi-page, or high-resolution documents.
+
+These updates ensure a more responsive and seamless annotation experience. Additional improvements have also been made to **model training** and **de-identification workflows**, enhancing accuracy, performance, and overall usability across project types.
+
 
 ## Annotate while referencing Orginal Documents
 This feature improves visibility for image-based documents by displaying both the image/PDF and its OCR-extracted text side by side. Users can now annotate more efficiently while maintaining a visual reference. While Generative AI Lab has offered annotation on top of Image and PDF formats for quite some time, there was a gap in annotating large amounts of data on top of the original document, as there was not enough space to adequately address more robust annotation projects.
@@ -132,14 +137,16 @@ The second project template is similar to the first but is optimized for speed a
 
 ![6110image](/assets/images/annotation_lab/6.11.0/3.png)
 
-## Support for HCC Coding
-This release introduces support for HCC Coding for text and PDF content. The system now maps detected ICD-10 codes to their corresponding HCC codes, streamlining clinical risk adjustment workflows and insurance claim verification. 
+## HCC Coding for PDF Projects
+Generative AI Lab supports **HCC (Hierarchical Condition Category) Coding** for PDF and text-based projects.  
+These specialized project types enable annotators to link clinical entities detected in PDFs to their corresponding HCC codes, improving efficiency in medical coding and risk adjustment workflows.
 
-**New project types:**
+**Available Templates**
 1. **HCC Coding for Text**
-2. **HCC Coding for PDF and Text (side by side)**
-   
-These project types enable the association of HCC codes with annotated clinical entities using preconfigured lookup datasets, reducing manual input and improving consistency in medical coding.
+2. **HCC Coding for PDF + Text (side-by-side)**
+
+The side-by-side HCC Coding template displays the original PDF document next to its extracted text, allowing annotators to label entities and review mapped codes while maintaining full context of the source material.  
+These projects use preconfigured lookup datasets that automatically map ICD-10 codes to their respective HCC categories, reducing manual data entry and improving coding consistency.
 
 ![700image](/assets/images/annotation_lab/7.0.0/1.png)
 
@@ -148,14 +155,15 @@ To enable **HCC Coding Support**, follow these steps:
 
 To enable HCC Coding Support, follow these steps:
 1. **Project Setup**
-- Select either of the new project templates during project creation. 
+- Select either of the HCC project templates during project creation. 
 - Choose the HCC Coding for PDF and Text (side by side) option if you need a visual representation of the original document while performing HCC coding.
 
 ![700image](/assets/images/annotation_lab/7.0.0/2.png)
 
-2. **Label Customization** - On the Customize Labels page, users can either:
-- Apply a lookup dataset globally, to all labels in your taxonomy at once.
-- Assign Lookup options to specific labels.
+2. **Label Customization**  
+   - On the **Customize Labels** page, you can apply a lookup dataset globally to all labels or assign lookup options individually.  
+   - This setup defines how entities in the document link to their ICD-10 and HCC mappings.
+
 
 ![700image](/assets/images/annotation_lab/7.0.0/3.png)
 
@@ -181,3 +189,14 @@ Once a task is labeled and lookup codes are assigned along with HCC Codes, revie
 Tasks can now include **ranking scores** to support triaging and prioritization, allowing users to manage large annotation datasets more effectively. When importing tasks, users can associate each task with a ranking score that reflects its clinical significance or urgency. These scores are then displayed in the task list and can be used to sort and filter tasks dynamically. This functionality is particularly beneficial in risk adjustment workflows where prioritizing complex or high-impact cases is critical. Ranking scores also integrate with the HCC coding workflow, enabling annotators and reviewers to systematically focus on the most relevant cases for validation.
 
 ![700image](/assets/images/annotation_lab/7.0.0/6.png)
+
+### Fine-Grained OCR Page Control
+
+For image and PDF-based projects that rely on OCR, users can now choose to **exclude specific pages from OCR processing**.  
+This provides finer control when certain pages—such as cover sheets, disclaimers, or scanned tables—don’t require text extraction.
+
+To configure:
+- In the OCR options during import or project setup, deselect the pages you want excluded.  
+- Only the remaining pages will be processed and displayed for annotation, improving accuracy and performance.
+
+This selective OCR feature helps optimize resource usage and ensures annotations focus only on relevant content.

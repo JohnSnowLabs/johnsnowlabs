@@ -5,7 +5,7 @@ header: true
 seotitle: Generative AI Lab | John Snow Labs
 title: Installation
 key: docs-training
-modify_date: "2024-04-22"
+modify_date: "2025-11-27"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
@@ -136,7 +136,7 @@ Visit the [product page on AWS Marketplace](https://aws.amazon.com/marketplace/p
 **Steps to get started:**
 - Subscribe to the product on the AWS Marketplace.
 - Deploy it on a new machine.
-- In Launch an instance configuration attach IAM role to the AMI (IAM role attached to the AMI machine should have access to both `aws-marketplace:MeterUsage` and `ec2:DescribeInstanceTypes` permission)
+- In Launch an instance configuration attach an IAM role to the AMI. The IAM role should include `aws-marketplace:MeterUsage`, `ec2:DescribeInstanceTypes`, and S3 access permissions (`s3:ListBucket`, `s3:GetObject`, `s3:PutObject`) if you plan to import or export data. Generative AI Lab automatically uses the instance’s IAM role for S3 import and export, so no Access Key or Secret Key needs to be entered. 
 
 	![IAM](/assets/images/annotation_lab/iam.png)
 		
@@ -286,6 +286,12 @@ bash -x annotationlab-updater.sh
 ## Azure Marketplace
 
 Visit the [product page on Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.gen_ai_lab?tab=Overview) and follow these steps. Generative AI Lab offers a one-click deployment within your security perimeter using Azure Kubernetes Service (AKS), a fully managed Kubernetes solution that simplifies the deployment, management, and scaling of containerized applications.
+
+Azure Marketplace supports both GPU and CPU deployments.  
+For teams without GPU workloads, a CPU-only option is available to reduce cost while retaining full functionality.  
+Select the CPU instance type during the cluster creation process in Azure to deploy Generative AI Lab on CPU-based infrastructure.  
+
+
 
 1. Click on the "Get It Now" link.
 

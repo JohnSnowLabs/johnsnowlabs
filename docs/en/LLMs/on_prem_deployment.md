@@ -5,7 +5,7 @@ seotitle: Medical LLMs | John Snow Labs
 title: On-premise Deployment
 permalink: /docs/en/LLMs/on_prem_deploy
 key: docs-medical-llm
-modify_date: "2025-07-17"
+modify_date: "2025-09-15"
 show_nav: true
 sidebar:
     nav: medical-llm
@@ -52,22 +52,20 @@ The following models are currently available for on-premise deployments:
 
 | **Model Name** | **Parameters** | **Recommended GPU Memory** | **Max Sequence Length** | **Model Size** | **Max KV-Cache** | **Tensor Parallel Sizes** |
 |----------------------------|------------|--------------|---------------------|------------|--------------|----------------------|
-| Medical-LLM-8B             | 8B         | ~38 GB       | 40K                 | 15 GB      | 23 GB        | 1, 2, 4, 8           |
+| Medical-Visual-LLM-8B  | 8B          | ~64 GB           | 128K              | 15 GB       | 48 GB          | 1, 2, 4               |
 | Medical-LLM-14B            | 14B        | ~40 GB       | 16K                 | 27 GB      | 13 GB        | 1, 2                 |
 | Medical-LLM-Small          | 14B        | ~59 GB       | 40K                 | 28 GB      | 31 GB        | 1, 2, 4, 8           |
 | Medical-LLM-Medium         | 70B        | ~452 GB      | 128K                | 131 GB     | 320 GB       | 4, 8                 |
 | Medical-Reasoning-LLM-32B  | 32B        | ~111 GB      | 40K                 | 61 GB      | 50 GB        | 2, 4, 8              |
-| Medical-VLM-24B            | 24B        | ~145 GB      | 128K                | 45 GB      | 100 GB       | 2, 4, 8              |
-| Spanish-Medical-LLM-24B    | 24B        | ~145 GB      | 128K                | 45 GB      | 100 GB       | 2, 4, 8              |
+| Medical-Visual-LLM-30B     | 30B        | ~150 GB      | 262K                | 58 GB      | 92 GB       | 2, 4, 8              |
+| Medical-Spanish-LLM-24B    | 24B        | ~145 GB      | 128K                | 45 GB      | 100 GB       | 2, 4, 8              |
 
 
 > **Important Notes**
-> 
+>
 > **Memory Calculations:** All memory calculations are based on half-precision (fp16/bf16) weights. Recommended GPU Memory considers the model size and the maximum key-value cache at the model's maximum sequence length. These calculations follow the guidelines from [DJL's LMI Deployment Guide.](https://docs.djl.ai/master/docs/serving/serving/docs/lmi/deployment_guide/instance-type-selection.html)
-> 
-> **Vision Language Model Limitations:** Medical-VLM-24B and Spanish-Medical-LLM-24B currently **only support text inference** for on-premise deployment. For full vision-language capabilities (both text and image processing), please use these models through [AWS SageMaker Marketplace](/docs/en/LLMs/on_aws) where these models support complete multimodal functionality.
 
-</div>
+</div><div class="h3-box" markdown="1">
 
 ### 🪄 Memory Optimization Tips
 
@@ -75,6 +73,7 @@ The following models are currently available for on-premise deployments:
 - Leverage tensor parallelism for large models
 - Select an appropriate model based on your GPU resources
 
+</div><div class="h3-box" markdown="1">
 
 ## Model Interactions
 Once deployed, the container exposes a RESTful API for model interactions.
@@ -88,7 +87,7 @@ Use this endpoint for multi-turn conversational interactions (e.g., clinical ass
 
 ```python
 payload = {
-    "model": "Medical-LLM-8B",
+    "model": "Medical-LLM-Small",
     "messages": [
         {"role": "system", "content": "You are a professional medical assistant"},
         {"role": "user", "content": "Explain symptoms of chronic fatigue syndrome"}
@@ -106,15 +105,11 @@ Use this endpoint for single-turn prompts or generating long-form medical text.
 - **Example Request**:
 ```python
 payload = {
-    "model": "Medical-LLM-8B",
+    "model": "Medical-LLM-Small",
     "prompt": "Provide a detailed explanation of rheumatoid arthritis treatment",
     "temperature": 0.7,
     "max_tokens": 4096
 }
 ```
 
-
-
-
-
-
+</div>

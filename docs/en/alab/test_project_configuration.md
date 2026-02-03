@@ -6,7 +6,7 @@ seotitle: Generative AI Lab | John Snow Labs
 title: Test Project Configuration
 permalink: /docs/en/alab/test_project_configuration
 key: docs-training
-modify_date: "2022-11-24"
+modify_date: "2025-11-27"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:

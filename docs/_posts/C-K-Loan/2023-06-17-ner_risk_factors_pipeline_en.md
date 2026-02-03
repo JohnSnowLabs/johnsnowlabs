@@ -17,7 +17,7 @@ use_language_switcher: "Python-Scala-Java"
 
 deploy:
   sagemaker_link: https://aws.amazon.com/marketplace/pp/prodview-u4jv2pqhkra7i
-  snowflake_link: 
+  snowflake_link: https://app.snowflake.com/marketplace/listing/GZTYZ4386LJCY/john-snow-labs-extract-clinical-risk-factors
   databricks_link: https://marketplace.databricks.com/details/4d973f25-f457-4af7-8ea7-7c3fddaf9493/John-Snow-Labs_Extract-clinical-risk-factors
 
 ---

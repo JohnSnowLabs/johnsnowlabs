@@ -1,7 +1,7 @@
 ---
 layout: landing
 comment: no
-title: 'John Snow Labs <span>State of the Art Natural Language Processing in Python</span>'
+title: 'John Snow Labs <span>State of the Art Natural Language Processing for Healthcare</span>'
 excerpt: John Snow Labs' NLP & LLM ecosystem include software libraries for state-of-the-art AI at scale, Responsible AI, No-Code AI, and access to over 40,000 models for Healthcare, Legal, Finance, and Visual  NLP.
 seotitle: Spark NLP – State of the Art NLP in Python, Java, and Scala – John Snow Labs.
 permalink: /
@@ -134,7 +134,7 @@ data:
             url: https://databricks.com/
         - title:
           image:
-            src: https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/ArcGIS_logo.png/600px-ArcGIS_logo.png
+            src: /assets/images/home/717-7172505_datei-esri-logo-svg.webp
             url: https://www.esri.com/en-us/home
             style: "padding: 20px;"
         - title:
@@ -143,7 +143,7 @@ data:
             url: https://www.shell.com/
         - title:
           image:
-            src: https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Walmart_logo.svg/800px-Walmart_logo.svg.png
+            src: /assets/images/home/Walmart_logo.svg.webp
             url: https://www.walmart.com/
         - title:
           image:
@@ -196,7 +196,7 @@ data:
             url: https://www.oracle.com/index.html
         - title:
           image:
-            src: https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Deloitte.svg/1024px-Deloitte.svg.png
+            src: https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/DeloitteNewLogo.png/1200px-DeloitteNewLogo.png
             url: https://www2.deloitte.com/
         - title:
           image:

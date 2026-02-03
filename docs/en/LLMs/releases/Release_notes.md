@@ -5,13 +5,102 @@ seotitle: Medical LLMs | John Snow Labs
 title: Release Notes
 permalink: /docs/en/LLMs/releases/release_notes
 key: docs-medical-llm
-modify_date: "2025-07-17"
+modify_date: "2025-12-30"
 show_nav: true
 sidebar:
     nav: medical-llm
 ---
 
 <div class="h3-box" markdown="1">
+
+## 12-30-2025
+
+### Model Updates
+
+We're excited to announce an enhanced version of our Medical-Visual-LLM-8B model with improved accuracy and performance across medical benchmarks.
+
+- **Medical-Visual-LLM-8B**: An updated 8B parameter vision-language model that delivers enhanced medical-grade multimodal intelligence. This model combines medical expertise with visual comprehension capabilities, understanding both clinical text and visual content including X-rays, MRIs, pathology slides, medical diagrams, and structured documents. It excels at summarizing clinical information, answering contextual medical questions, and facilitating decision-making. The model is optimized for RAG applications and healthcare integrations, seamlessly processing both visual and textual medical domains.
+
+#### Specifications
+
+| **Model Name**             | **Parameters** | **Recommended GPU Memory** | **Max Sequence Length** | **Model Size** | **Max KV-Cache** | **Tensor Parallel Sizes** |
+|---------------------------|--------------|------------------|-------------------|-------------|----------------|------------------------|
+| Medical-Visual-LLM-8B  | 8B          | ~64 GB           | 128K              | 15 GB       | 48 GB          | 1, 2, 4               |
+
+#### Benchmark Performance
+
+**Medical-Visual-LLM-8B:**
+
+- Achieves 86.2% average across OpenMed benchmarks
+- Scores 86.4% on clinical knowledge assessment
+- Reaches 93% on medical genetics understanding
+- Performs at 92.4% for college biology concepts
+- Processes professional medicine with 93% accuracy
+- Handles medical MCQAs with 88.5% precision
+- Maintains 85.1% accuracy on Anatomy concepts
+
+## 11-03-2025
+
+### Model Updates
+
+We're excited to announce major updates to our vision-language models with enhanced capabilities and improved performance.
+
+- **Medical-Visual-LLM-8B**: An 8B parameter vision-language model that delivers enhanced medical-grade multimodal intelligence. This model combines medical expertise with visual comprehension capabilities, understanding both clinical text and visual content including X-rays, MRIs, pathology slides, medical diagrams, and structured documents. It is optimized for RAG applications and healthcare integrations.
+
+- **Medical-Visual-LLM-30B**: A 30B parameter vision-language model that seamlessly integrates advanced medical reasoning with powerful visual understanding. This model excels at processing both medical images (X-rays, MRIs, CT scans, pathology slides and anatomical diagrams) and text, enabling comprehensive analysis of visual and textual medical data for extended medical reports and multi-image cases.
+
+#### Specifications
+
+| **Model Name**             | **Parameters** | **Recommended GPU Memory** | **Max Sequence Length** | **Model Size** | **Max KV-Cache** | **Tensor Parallel Sizes** |
+|---------------------------|--------------|------------------|-------------------|-------------|----------------|------------------------|
+| Medical-Visual-LLM-8B  | 8B          | ~64 GB           | 262K              | 16 GB       |48 GB          | 1, 2, 4, 8            |
+| Medical-Visual-LLM-30B | 30B         | ~150 GB          | 262K              | 58 GB       | 92 GB         | 2, 4, 8               |
+
+#### Benchmark Performance
+
+**Medical-Visual-LLM-8B:**
+
+- Achieves 77.6% average across OpenMed benchmarks
+- Scores 80.75% on clinical knowledge assessment
+- Reaches 86% on medical genetics understanding
+- Performs at 90.97% for college biology concepts
+- Processes professional medicine with 81.25% accuracy
+- Handles medical MCQAs with 60.87% precision
+- Maintains 66.61% accuracy on MedQA 4-options test
+
+**Medical-Visual-LLM-30B:**
+
+- Achieves 83.5% average across OpenMed benchmarks
+- Scores 85.66% on clinical knowledge assessment
+- Reaches 95% on medical genetics understanding
+- Performs at 93.75% for college biology concepts
+- Processes professional medicine with 89.34% accuracy
+- Handles medical MCQAs with 68.8% precision
+- Maintains 77.61% accuracy on MedQA 4-options test
+
+## 09-15-2025
+
+### Model Updates
+
+We're excited to announce the addition of a new compact yet powerful vision-language model to our Medical LLM lineup.
+
+- **Medical-Visual-LLM-7B**: A vision-language model that delivers medical-grade multimodal intelligence in a compact, efficient format. This model combines medical expertise with visual comprehension capabilities, understanding both clinical text and visual content including X-rays, MRIs, pathology slides, medical diagrams, and structured documents. It's well-suited for RAG applications and healthcare integrations.
+
+#### Specifications
+
+| **Model Name**             | **Parameters** | **Recommended GPU Memory** | **Max Sequence Length** | **Model Size** | **Max KV-Cache** | **Tensor Parallel Sizes** |
+|---------------------------|--------------|------------------|-------------------|-------------|----------------|------------------------|
+| Medical-Visual-LLM-7B  | 7B          | ~64 GB           | 128K              | 15 GB       | 48 GB          | 1, 2, 4               |
+
+#### Benchmark Performance
+
+- Achieves 71.0% average across OpenMed benchmarks
+- Scores 75.85% on clinical knowledge assessment
+- Reaches 81% on medical genetics understanding
+- Performs at 84.72% for college biology concepts
+- Processes professional medicine with 71.69% accuracy
+- Handles medical MCQAs with 55.08% precision
+- Maintains 59.07% accuracy on MedQA 4-options test
 
 ## 08-17-2025
 
@@ -71,25 +160,25 @@ These models are optimized for clinical decision support, medical research, and 
 | Medical-LLM-Small (Previous version)         | 77.04 | 83.02 | 90.28 | 76.30 | 90 | 85.29 | 79.0 |
 | Medical-LLM-Small (Latest version)         | 83.74 | 83.40 | 93.40 | 78.03 | 84 | 85.66 | 77.4 |
 | Medical-Reasoning-LLM-32B (Previous version) | 78.52 | 85.66 | 93.75 | 80.35 | 91 | 87.5 | 75.8 |
-| Medical-Reasoning-LLM-32 (Latest version) | 78. 52 | 85.66 | 94.44 | 83.24 | 92 | 88.6 | 77.8 |
+| Medical-Reasoning-LLM-32B (Latest version) | 78. 52 | 85.66 | 94.44 | 83.24 | 92 | 88.6 | 77.8 |
 
 
 ## 05-19-2025
 
 We are excited to announce the addition of two new powerful models to our Medical LLM lineup.
 
-- **Medical-VLM-24B**: A 24B parameter vision-language model that combines medical expertise with visual comprehension capabilities. This model excels at processing both medical images (X-rays, MRIs, pathology slides) and text, enabling comprehensive analysis of visual and textual medical data.
+- **Medical-Visual-LLM-24B**: A 24B parameter vision-language model that combines medical expertise with visual comprehension capabilities. This model excels at processing both medical images (X-rays, MRIs, pathology slides) and text, enabling comprehensive analysis of visual and textual medical data.
 
-Get more information about the **Medical-VLM-24B** model in this [blog](https://www.johnsnowlabs.com/introducing-medical-vlm-24b-our-first-medical-vision-language-model/).
+Get more information about the **Medical-Visual-LLM-24B** model in this [blog](https://www.johnsnowlabs.com/introducing-medical-vlm-24b-our-first-medical-vision-language-model/).
 
-- **Spanish-Medical-LLM-24B**: A specialized 24B parameter model designed for Spanish-speaking healthcare environments, offering native processing of Spanish medical terminology and clinical documentation. The model maintains high precision in Spanish medical language understanding without requiring translation.
+- **Medical-Spanish-LLM-24B**: A specialized 24B parameter model designed for Spanish-speaking healthcare environments, offering native processing of Spanish medical terminology and clinical documentation. The model maintains high precision in Spanish medical language understanding without requiring translation.
 
 #### Specifications
 
 | **Model Name**             | **Parameters** | **Recommended GPU Memory** | **Max Sequence Length** | **Model Size** | **Max KV-Cache** | **Tensor Parallel Sizes** |
 |---------------------------|--------------|------------------|-------------------|-------------|----------------|------------------------|
-| Medical-VLM-24B           | 24B         | ~145 GB          | 128K              | 45 GB       | 100 GB         | 2, 4, 8               |
-| Spanish-Medical-LLM-24B   | 24B         | ~145 GB          | 128K              | 45 GB       | 100 GB         | 2, 4, 8               |
+| Medical-Visual-LLM-24B           | 24B         | ~145 GB          | 128K              | 45 GB       | 100 GB         | 2, 4, 8               |
+| Medical-Spanish-LLM-24B   | 24B         | ~145 GB          | 128K              | 45 GB       | 100 GB         | 2, 4, 8               |
 
 ## 04-06-2025
 

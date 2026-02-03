@@ -28,7 +28,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../../static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../../../static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../../static/graphviz.css?v=eafc0fe6" />
     <link rel="stylesheet" type="text/css" href="../../../../static/css/custom.css?v=e1fb877f" />
@@ -354,19 +354,22 @@ document.write(`
 <h3>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">#</a></h3>
 <table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.training.AnnotationToolJsonReader" title="sparknlp_jsl.training.AnnotationToolJsonReader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AnnotationToolJsonReader</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.training.Annotation2Training" title="sparknlp_jsl.training.Annotation2Training"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Annotation2Training</span></code></a></p></td>
+<td><p>Converts annotation results from json or csv files to DataFrame suitable for NER training.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.training.AnnotationToolJsonReader" title="sparknlp_jsl.training.AnnotationToolJsonReader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AnnotationToolJsonReader</span></code></a></p></td>
 <td><p>Reads and process the exported json file from NLP Lab.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.training.CantemistReader" title="sparknlp_jsl.training.CantemistReader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CantemistReader</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.training.CantemistReader" title="sparknlp_jsl.training.CantemistReader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CantemistReader</span></code></a></p></td>
 <td><p>Parser for the Cantemist dataset.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.training.CodiEspReader" title="sparknlp_jsl.training.CodiEspReader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CodiEspReader</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.training.CodiEspReader" title="sparknlp_jsl.training.CodiEspReader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CodiEspReader</span></code></a></p></td>
 <td><p>Parser for the CodiEsp dataset.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.training.REDatasetHelper" title="sparknlp_jsl.training.REDatasetHelper"><code class="xref py py-obj docutils literal notranslate"><span class="pre">REDatasetHelper</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.training.REDatasetHelper" title="sparknlp_jsl.training.REDatasetHelper"><code class="xref py py-obj docutils literal notranslate"><span class="pre">REDatasetHelper</span></code></a></p></td>
 <td><p>Class to preprocess RE dataset loaded into Spark Dataframe.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.training.SynonymAugmentationUMLS" title="sparknlp_jsl.training.SynonymAugmentationUMLS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SynonymAugmentationUMLS</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.training.SynonymAugmentationUMLS" title="sparknlp_jsl.training.SynonymAugmentationUMLS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SynonymAugmentationUMLS</span></code></a></p></td>
 <td><p>Augments datasets with synonyms from UMLS.</p></td>
 </tr>
 </tbody>
@@ -384,6 +387,211 @@ document.write(`
 </tr>
 </tbody>
 </table>
+<dl class="py class">
+<dt class="sig sig-object py" id="sparknlp_jsl.training.Annotation2Training">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Annotation2Training</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.SparkSession.html#pyspark.sql.SparkSession" title="(in PySpark vmaster)"><span class="pre">pyspark.sql.SparkSession</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.Annotation2Training" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp.internal.ExtendedJavaWrapper</span></code></p>
+<p>Converts annotation results from json or csv files to DataFrame suitable for NER training.
+Input files must have a structure similar to the one produced by John Snow Labs’ Generative AI annotation tool.</p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sparknlp_jsl.training</span><span class="w"> </span><span class="kn">import</span> <span class="n">Annotation2Training</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sparknlp_jsl.annotator</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sparknlp.annotator</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sparknlp.base</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pyspark.ml</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="go">Create a base pipeline to extract sentences and tokens</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s2">&quot;text&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;document&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sentence_detector</span> <span class="o">=</span> <span class="n">SentenceDetectorDLModel</span><span class="o">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s2">&quot;sentence_detector_dl_healthcare&quot;</span><span class="p">,</span> <span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="s2">&quot;clinical/models&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;document&quot;</span><span class="p">])</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;sentence&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">()</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;sentence&quot;</span><span class="p">])</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;token&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
+<span class="gp">... </span>    <span class="n">document_assembler</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">sentence_detector</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">tokenizer</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pipeline_model</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">spark</span><span class="o">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s2">&quot;&quot;</span><span class="p">]])</span><span class="o">.</span><span class="n">toDF</span><span class="p">(</span><span class="s2">&quot;text&quot;</span><span class="p">))</span>
+<span class="go">Load the annotation2training utility class</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">annotation2training</span> <span class="o">=</span> <span class="n">Annotation2Training</span><span class="p">(</span><span class="n">spark</span><span class="p">)</span>
+<span class="go">Convert a json file to a training dataframe</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">training_df</span> <span class="o">=</span> <span class="n">annotation2training</span><span class="o">.</span><span class="n">convertJson2NerDF</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">json_path</span><span class="o">=</span> <span class="s2">&quot;path/to/annotations.json&quot;</span><span class="p">,</span>  <span class="c1"># Path to GenAI json file</span>
+<span class="gp">... </span>    <span class="n">pipeline_model</span><span class="o">=</span><span class="n">pipeline_model</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">repartition</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span>                <span class="c1"># Number of partitions to use when creating the DataFrame</span>
+<span class="gp">... </span>    <span class="n">token_output_col</span><span class="o">=</span><span class="s2">&quot;token&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">ner_label_col</span><span class="o">=</span><span class="s2">&quot;label&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">training_df</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="go">Returns a Spark DataFrame to train NER models.</span>
+<span class="go">Ready to go for MedicalNerApproach</span>
+</pre></div>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.training.Annotation2Training.java_obj">
+<span class="sig-name descname"><span class="pre">java_obj</span></span><a class="headerlink" href="#sparknlp_jsl.training.Annotation2Training.java_obj" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.training.Annotation2Training.sc">
+<span class="sig-name descname"><span class="pre">sc</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#sparknlp_jsl.training.Annotation2Training.sc" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.training.Annotation2Training.apply">
+<span class="sig-name descname"><span class="pre">apply</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.Annotation2Training.apply" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.training.Annotation2Training.convertCsv2NerDF">
+<span class="sig-name descname"><span class="pre">convertCsv2NerDF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">csv_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pipeline_model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.ml.PipelineModel.html#pyspark.ml.PipelineModel" title="(in PySpark vmaster)"><span class="pre">pyspark.ml.PipelineModel</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">repartition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">32</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">token_output_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'token'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ner_label_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'label'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">white_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">black_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replace_labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.Annotation2Training.convertCsv2NerDF" title="Permalink to this definition">#</a></dt>
+<dd><p>Converts a CSV file with annotation results to a DataFrame suitable for NER training.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>csv_path</strong> (<em>str</em>) – Path to the input CSV file. The file will be read with the spark.read.csv method with header, multiLine, quote and escape options set.</p></li>
+<li><p><strong>pipeline_model</strong> (<em>PipelineModel</em>) – A pre-trained Spark NLP PipelineModel that includes at least a DocumentAssembler, and Tokenizer.
+PipelineModel can also include SentenceDetector, DocumentSplitter, WordEmbeddings, etc.</p></li>
+<li><p><strong>repartition</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of partitions to use when creating the DataFrame (default is 32).</p></li>
+<li><p><strong>token_output_col</strong> (<em>str</em><em>, </em><em>optional</em>) – The name of the column containing token annotations (default is “token”).</p></li>
+<li><p><strong>ner_label_col</strong> (<em>str</em><em>, </em><em>optional</em>) – The name of the output column for NER labels (default is “label”).</p></li>
+<li><p><strong>white_list</strong> (<em>list</em><em>, </em><em>optional</em>) – A list of entity labels to include. If empty, all labels are included. Do not include IOB prefix on labels.</p></li>
+<li><p><strong>black_list</strong> (<em>list</em><em>, </em><em>optional</em>) – A list of entity labels to exclude. If empty, no labels are excluded. Do not include IOB prefix on labels.</p></li>
+<li><p><strong>replace_labels</strong> (<em>dict</em><em>, </em><em>optional</em>) – A dictionary mapping original labels to new labels. replace_labels runs after white_list and black_list filtering.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A Spark DataFrame to train NER models.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.training.Annotation2Training.convertJson2NerDF">
+<span class="sig-name descname"><span class="pre">convertJson2NerDF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">json_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pipeline_model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.ml.PipelineModel.html#pyspark.ml.PipelineModel" title="(in PySpark vmaster)"><span class="pre">pyspark.ml.PipelineModel</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">repartition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">32</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">token_output_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'token'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ner_label_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'label'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">white_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">black_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replace_labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.Annotation2Training.convertJson2NerDF" title="Permalink to this definition">#</a></dt>
+<dd><p>Converts a JSON file with annotation results to a DataFrame suitable for NER training.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>json_path</strong> (<em>str</em>) – Path to the input JSON file. The file will be read with the spark.read.json method with multiLine option set to true.</p></li>
+<li><p><strong>pipeline_model</strong> (<em>PipelineModel</em>) – A pre-trained Spark NLP PipelineModel that includes at least a DocumentAssembler, and Tokenizer.
+PipelineModel can also include SentenceDetector, DocumentSplitter, WordEmbeddings, etc.</p></li>
+<li><p><strong>repartition</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of partitions to use when creating the DataFrame (default is 32).</p></li>
+<li><p><strong>token_output_col</strong> (<em>str</em><em>, </em><em>optional</em>) – The name of the column containing token annotations (default is “token”).</p></li>
+<li><p><strong>ner_label_col</strong> (<em>str</em><em>, </em><em>optional</em>) – The name of the output column for NER labels (default is “label”).</p></li>
+<li><p><strong>white_list</strong> (<em>list</em><em>, </em><em>optional</em>) – A list of entity labels to include. If empty, all labels are included. Do not include IOB prefix on labels.</p></li>
+<li><p><strong>black_list</strong> (<em>list</em><em>, </em><em>optional</em>) – A list of entity labels to exclude. If empty, no labels are excluded. Do not include IOB prefix on labels.</p></li>
+<li><p><strong>replace_labels</strong> (<em>dict</em><em>, </em><em>optional</em>) – A dictionary mapping original labels to new labels. replace_labels runs after white_list and black_list filtering.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A Spark DataFrame to train NER models.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.training.Annotation2Training.generateConll">
+<span class="sig-name descname"><span class="pre">generateConll</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><span class="pre">pyspark.sql.DataFrame</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'label'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doc_id_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'id'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.Annotation2Training.generateConll" title="Permalink to this definition">#</a></dt>
+<dd><p>Generates a CoNLL format file from a DataFrame containing Spark NLP compatible NER (Named Entity Recognition) annotations.</p>
+<p>This method processes a DataFrame with NER labels and writes the output in CoNLL-2003 format,
+which is commonly used for NER tasks. Each document is separated by a <cite>-DOCSTART-</cite> header,
+sentences are separated by blank lines, and each token is written with its corresponding label.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>DataFrame</em>) – The input DataFrame containing NER annotations. Must include:
+- A document ID column (specified by <cite>doc_id_col</cite>)
+- A label column (specified by <cite>label_col</cite>)</p></li>
+<li><p><strong>output_path</strong> (<em>str</em>) – The file system path where the CoNLL file will be written.
+Supports various file systems:
+- Local: <cite>file:///path/to/output.conll</cite>
+- DBFS: <cite>dbfs:/mnt/path/to/output.conll</cite>
+If the file exists, it will be overwritten.</p></li>
+<li><p><strong>label_col</strong> (<em>str</em><em>, </em><em>optional</em>) – The name of the column containing NER label annotations.
+Default is “label”. The column must exist in the DataFrame.</p></li>
+<li><p><strong>doc_id_col</strong> (<em>str</em><em>, </em><em>optional</em>) – The name of the column containing document identifiers.
+Default is “id”. The column must exist in the DataFrame.
+<strong>IMPORTANT</strong>: All document IDs must be unique. Duplicate IDs will cause
+an IllegalArgumentException to be thrown.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sparknlp_jsl.training</span><span class="w"> </span><span class="kn">import</span> <span class="n">Annotation2Training</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">annotation2training</span> <span class="o">=</span> <span class="n">Annotation2Training</span><span class="p">(</span><span class="n">spark</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">annotation2training</span><span class="o">.</span><span class="n">convertJson2NerDF</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">json_path</span><span class="o">=</span> <span class="s2">&quot;path/to/annotations.json&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">pipeline_model</span><span class="o">=</span><span class="n">pipeline_model</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">annotation2training</span><span class="o">.</span><span class="n">generateConll</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s2">&quot;file:///tmp/output.conll&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>The output follows CoNLL-2003 format: <cite>TOKEN -X- -X- LABEL</cite></p></li>
+<li><p>Documents are separated by <cite>-DOCSTART- -X- -DOCID- O</cite> headers</p></li>
+<li><p>Sentences within documents are separated by blank lines</p></li>
+</ul>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.training.Annotation2Training.getDataFrame">
+<span class="sig-name descname"><span class="pre">getDataFrame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jdf</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.Annotation2Training.getDataFrame" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.training.Annotation2Training.new_java_array">
+<span class="sig-name descname"><span class="pre">new_java_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pylist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">java_class</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.Annotation2Training.new_java_array" title="Permalink to this definition">#</a></dt>
+<dd><p>ToDo: Inspired from spark 2.0. Review if spark changes</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.training.Annotation2Training.new_java_array_integer">
+<span class="sig-name descname"><span class="pre">new_java_array_integer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pylist</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.Annotation2Training.new_java_array_integer" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.training.Annotation2Training.new_java_array_string">
+<span class="sig-name descname"><span class="pre">new_java_array_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pylist</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.Annotation2Training.new_java_array_string" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.training.Annotation2Training.new_java_obj">
+<span class="sig-name descname"><span class="pre">new_java_obj</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">java_class</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.Annotation2Training.new_java_obj" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.training.Annotation2Training.showLabelDistributions">
+<span class="sig-name descname"><span class="pre">showLabelDistributions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><span class="pre">pyspark.sql.DataFrame</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">ner_label_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'label'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.Annotation2Training.showLabelDistributions" title="Permalink to this definition">#</a></dt>
+<dd><p>Shows the distribution of entity labels in the training DataFrame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>DataFrame</em>) – The training DataFrame.</p></li>
+<li><p><strong>ner_label_col</strong> (<em>str</em><em>, </em><em>optional</em>) – The name of the column containing NER labels (default is “label”).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.training.Annotation2Training.spark_version">
+<span class="sig-name descname"><span class="pre">spark_version</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.Annotation2Training.spark_version" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl.training.AnnotationToolJsonReader">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AnnotationToolJsonReader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pipeline_model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">assertion_labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">excluded_labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cleanup_mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'disabled'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">split_chars</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context_chars</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scheme</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'IOB'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_chars_tol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_chars_tol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">merge_overlapping</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">SDDLPath</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.AnnotationToolJsonReader" title="Permalink to this definition">#</a></dt>
@@ -405,7 +613,7 @@ instantiating the class:</p>
 </li>
 </ul>
 <dl>
-<dt>Examples:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp_jsl.training</span> <span class="kn">import</span> <span class="n">AnnotationToolJsonReader</span>
+<dt>Examples:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sparknlp_jsl.training</span><span class="w"> </span><span class="kn">import</span> <span class="n">AnnotationToolJsonReader</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">assertion_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;AsPresent&quot;</span><span class="p">,</span><span class="s2">&quot;Absent&quot;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">excluded_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Treatment&quot;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rdr</span> <span class="o">=</span> <span class="n">AnnotationToolJsonReader</span><span class="p">(</span>
@@ -742,7 +950,7 @@ following columns:
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">REDatasetHelper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark_df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><span class="pre">pyspark.sql.DataFrame</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.REDatasetHelper" title="Permalink to this definition">#</a></dt>
 <dd><p>Class to preprocess RE dataset loaded into Spark Dataframe.</p>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp_jsl.training</span> <span class="kn">import</span> <span class="n">REDatasetHelper</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sparknlp_jsl.training</span><span class="w"> </span><span class="kn">import</span> <span class="n">REDatasetHelper</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">PATH</span> <span class="o">=</span> <span class="s2">&quot;/content/i2b2_clinical_rel_dataset.csv&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;header&quot;</span><span class="p">,</span><span class="s2">&quot;true&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;csv&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">PATH</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt;</span>
@@ -950,6 +1158,22 @@ root
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#attributes">Attributes</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.Annotation2Training"><code class="docutils literal notranslate"><span class="pre">Annotation2Training</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.Annotation2Training.java_obj"><code class="docutils literal notranslate"><span class="pre">Annotation2Training.java_obj</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.Annotation2Training.sc"><code class="docutils literal notranslate"><span class="pre">Annotation2Training.sc</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.Annotation2Training.apply"><code class="docutils literal notranslate"><span class="pre">Annotation2Training.apply()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.Annotation2Training.convertCsv2NerDF"><code class="docutils literal notranslate"><span class="pre">Annotation2Training.convertCsv2NerDF()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.Annotation2Training.convertJson2NerDF"><code class="docutils literal notranslate"><span class="pre">Annotation2Training.convertJson2NerDF()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.Annotation2Training.generateConll"><code class="docutils literal notranslate"><span class="pre">Annotation2Training.generateConll()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.Annotation2Training.getDataFrame"><code class="docutils literal notranslate"><span class="pre">Annotation2Training.getDataFrame()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.Annotation2Training.new_java_array"><code class="docutils literal notranslate"><span class="pre">Annotation2Training.new_java_array()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.Annotation2Training.new_java_array_integer"><code class="docutils literal notranslate"><span class="pre">Annotation2Training.new_java_array_integer()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.Annotation2Training.new_java_array_string"><code class="docutils literal notranslate"><span class="pre">Annotation2Training.new_java_array_string()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.Annotation2Training.new_java_obj"><code class="docutils literal notranslate"><span class="pre">Annotation2Training.new_java_obj()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.Annotation2Training.showLabelDistributions"><code class="docutils literal notranslate"><span class="pre">Annotation2Training.showLabelDistributions()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.Annotation2Training.spark_version"><code class="docutils literal notranslate"><span class="pre">Annotation2Training.spark_version()</span></code></a></li>
+</ul>
+</li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.AnnotationToolJsonReader"><code class="docutils literal notranslate"><span class="pre">AnnotationToolJsonReader</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.AnnotationToolJsonReader.java_obj"><code class="docutils literal notranslate"><span class="pre">AnnotationToolJsonReader.java_obj</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.AnnotationToolJsonReader.sc"><code class="docutils literal notranslate"><span class="pre">AnnotationToolJsonReader.sc</span></code></a></li>

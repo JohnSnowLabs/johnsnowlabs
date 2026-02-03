@@ -140,7 +140,8 @@ try:
             RegexMatcherInternal as RegexMatcher,
             RegexMatcherInternalModel as RegexMatcherModel,
             MedicalLLM as AutoGGUFModel,
-            MedicalVisionLLM as AutoGGUFVisionModel
+            MedicalVisionLLM as AutoGGUFVisionModel,
+            MedicalNerDLGraphChecker as NerDLGraphChecker,
         )
         from sparknlp_jsl.compatibility import Compatibility
         from sparknlp_jsl.pretrained import InternalResourceDownloader

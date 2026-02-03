@@ -6,7 +6,7 @@ seotitle: Generative AI Lab | John Snow Labs
 title: Image
 permalink: /docs/en/alab/tags_image
 key: docs-training
-modify_date: "2023-06-21"
+modify_date: "2025-11-27"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
@@ -47,44 +47,51 @@ The **zoom** and **zoomControl** parameters in the `Image` tag enable you too zo
 </div>
 
 ### Identify and Validate Checkboxes with Precision
-Version 6.9.0 introduces a new project type called **Checkbox Detection**. With the new update, users can now use the model offered by Generative AI Lab to identify checkboxes in the tasks, including the **checked** and **unchecked** status in the respective tasks.
 
-This project type can be selected from the **Content Type** page under the **Image** tab during project setup. The default model associated with Checkbox Detection is automatically downloaded from the **Models Hub** page and added to the project configuration.
+Generative AI Lab includes a dedicated **Checkbox Detection** project type that enables users to automatically identify checkboxes within image-based tasks and determine whether they are **checked** or **unchecked**.  
+
+This project type can be selected during project setup from the **Content Type** page under the **Image** tab. When selected, the default model for checkbox detection is automatically downloaded from the **Models Hub** and added to the project configuration, streamlining setup and ensuring readiness for immediate use.
+
+Once the project is configured, users can import relevant image or PDF tasks and run the model to detect and label checkbox elements with their corresponding statuses. The detection results are displayed directly within the annotation interface, following the same intuitive workflow as other Visual NER–style projects.
 
 ![690image](/assets/images/annotation_lab/6.9.0/1.png)
-
-After the project is configured, users can add relevant tasks and leverage the model to detect checkboxes and their respective checked and unchecked statuses.
-
 ![690image](/assets/images/annotation_lab/6.9.0/2.png)
 
-This new update integrates seamlessly with the existing workflow, ensuring no changes or disruptions to the current application processes.
+Checkbox Detection integrates seamlessly into existing annotation and review workflows without requiring any additional configuration.  
+**Note:** At this time, the Checkbox Detection model operates independently and cannot be combined with other models in a single project.
 
-This model can not currently be combined with other models.
 
 ### Detect and Validate Handwritten Text and Signatures
-This update continues with the **Handwritten Text and Signature Detection** project type. This new feature enables the automatic identification and annotation of handwritten text and signatures within documents, using John Snow Lab's Visual NLP Library. The new project type can be selected from the **Content Type** page under **Image** tab during project configuration. Upon selection, the default model for Handwritten Text and Signature Detection is automatically downloaded from the **Models Hub** and integrated into the project configuration.
+
+Generative AI Lab provides a **Handwritten Text and Signature Detection** project type that enables the automatic identification and annotation of handwritten content and signatures within scanned documents or images. This capability is powered by John Snow Labs’ Visual NLP library and designed to streamline document processing tasks involving mixed handwritten and printed text.
+
+The project type can be selected during project setup from the **Content Type** page under the **Image** tab. When selected, the default model for Handwritten Text and Signature Detection is automatically downloaded from the **Models Hub** and added to the project configuration.
 
 ![690image](/assets/images/annotation_lab/6.9.0/3.png)
 
-Users can then add relevant tasks to the project and use the model to identify and annotate handwritten content and signatures in documents efficiently.
+Once the project is configured, users can import image or PDF tasks and run the model to automatically detect handwritten text and signatures, which are then highlighted and labeled within the annotation interface.
 
 ![690image](/assets/images/annotation_lab/6.9.0/4.png)
 
-This feature doesn't change the existing application workflow, and can not be combined with other models at this time.
+This project type integrates seamlessly into existing annotation workflows and requires no additional setup.  
+**Note:** The Handwritten Text and Signature Detection model currently operates independently and cannot be combined with other models in the same project.
 
-## View Text alongside images, and Optimized Image Loading in Visual NER
-Generative AI Lab 6.11 brings an Image-Text Side-by-Side Annotation project, allowing users to view the original image or PDF alongside its OCR-extracted text for easier annotation. It also includes optimized Visual NER for faster PDF processing, enhanced zoom functionality, and a new licensing model for on-premises deployments. 
+## View Text Alongside Images and Optimized Image Loading in Visual NER
 
-Other minor improvements have been made to Generative AI Lab, specifically to model training and de-identification.
+Generative AI Lab includes an **Image-Text Side-by-Side Annotation** project type, which enables users to view the original image or PDF alongside its OCR-extracted text. This layout makes it easier to compare visual and textual content during annotation, improving accuracy and reducing context switching.
+
+In addition, **Visual NER performance has been optimized** for faster PDF and image processing. Enhancements include smoother zoom and navigation controls, efficient image loading, and reduced lag when working with large or multi-page documents. These updates make annotation workflows more responsive and reliable, particularly for projects involving high-resolution or lengthy files.
+
+Other ongoing improvements enhance model training efficiency and de-identification accuracy, ensuring a more streamlined and productive annotation experience across all project types.
 
 ## Annotate while referencing Orginal Documents
-This feature improves visibility for image-based documents by displaying both the image/PDF and its OCR-extracted text side by side. Users can now annotate more efficiently while maintaining a visual reference. While Generative AI Lab has offered annotation on top of Image and PDF formats for quite some time, there was a gap in annotating large amounts of data on top of the original document, as there was not enough space to adequately address more robust annotation projects.
+This feature improves visibility for image-based documents by displaying both the image/PDF and its OCR-extracted text side by side. Users can annotate more efficiently while maintaining a visual reference. While Generative AI Lab has offered annotation on top of Image and PDF formats for quite some time, there was a gap in annotating large amounts of data on top of the original document, as there was not enough space to adequately address more robust annotation projects.
 
-**Image on the Left, OCR Text on the Right**: By Selecting this project type, users can now view the image/PDF document on the left side of the interface and its corresponding OCR-extracted text on the right side.  
+**Image on the Left, OCR Text on the Right**: By Selecting this project type, users can view the image/PDF document on the left side of the interface and its corresponding OCR-extracted text on the right side.  
 
  **Paginated Documents**: All document pages are paginated, allowing users to navigate the document effortlessly. 
 
-Image and PDF documents now support all text-based annotation features—including NER, assertion, relations, resolvers, and lookup code annotation—and allow OCR text annotation.
+Image and PDF documents support all text-based annotation features—including NER, assertion, relations, resolvers, and lookup code annotation—and allow OCR text annotation.
 ### Key Features  
 
 ### How to Configure the Project  

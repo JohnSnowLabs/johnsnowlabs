@@ -11,6 +11,8 @@ sidebar:
     nav: medical-llm
 ---
 
+<div class="h3-box" markdown="1">
+
 The following LLMs are available as Snowflake Endpoints:
 
 [Medical LLM - Medium](https://app.snowflake.com/marketplace/listing/GZTYZ4386LJCU/john-snow-labs-medical-llm-medium)
@@ -21,8 +23,10 @@ The following LLMs are available as Snowflake Endpoints:
 
 [Medical LLM- 7B](https://app.snowflake.com/marketplace/listing/GZTYZ4386LJEW/john-snow-labs-medical-llm-7b)
 
+</div><div class="h3-box" markdown="1">
 
 ## Deployment Instructions
 
-
 <iframe width="853" height="480" src="https://www.youtube.com/embed/DUcbvDxdk3M" title="Medical Language Models as Snowflake API endpoints" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+</div>

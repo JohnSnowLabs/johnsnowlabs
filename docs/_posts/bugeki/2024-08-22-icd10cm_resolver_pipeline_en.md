@@ -14,6 +14,12 @@ annotator: PipelineModel
 article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
+
+deploy:
+  sagemaker_link: https://aws.amazon.com/marketplace/pp/prodview-u52vwvdx4jrbm
+  snowflake_link: 
+  databricks_link: https://marketplace.databricks.com/details/80b9ec4d-c7b8-401c-b177-aa388259f422/John-Snow-Labs_Extract-Clinical-Findings-and-the-corresponding-ICD10CM-codes
+
 ---
 
 ## Description
@@ -31,6 +37,13 @@ ICD-10-CM entities: `PROBLEM`, `CEREBROVASCULAR_DISEASE`, `COMMUNICABLE_DISEASE`
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/06.1.Code_Mapping_Pipelines.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/icd10cm_resolver_pipeline_en_5.4.0_3.4_1724341282868.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/icd10cm_resolver_pipeline_en_5.4.0_3.4_1724341282868.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+
+{% if page.deploy %}
+## Available as Private API Endpoint
+
+{:.tac}
+{% include display_platform_information.html %}
+{% endif %}
 
 ## How to use
 

@@ -6,7 +6,7 @@ seotitle: Generative AI Lab | John Snow Labs
 title: Overview
 permalink: /docs/en/alab/tags_overview
 key: docs-training
-modify_date: "2023-06-20"
+modify_date: "2025-11-27"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
@@ -15,11 +15,25 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-Generative AI Lab enables the utilization of XML-like tags to configure the labeling interface. Generative AI Lab contains three distinct tag types for labeling management:
+Generative AI Lab enables you to configure labeling interfaces using either **XML-like tags** or a **Visual Menu Builder** that automatically generates these configurations through an intuitive UI.  
+This flexibility allows both technical and non-technical users to define how annotation tasks are displayed and labeled.
 
-- `Object tags` serve for data types, presenting labeled elements within a task, which can be labeled as video, audio, HTML, images, PDF, and text.
-- `Control tags` facilitate the annotation of objects. For instance, labels are employed in semantic and named entity tasks, and choices for classification tasks inside Generative AI Lab.
-- `Visual tags` allow for changes to the visual elements of the labelling interface, giving control over the presentation of particular labeling choices or the presence of a header.
+The Lab supports three main types of tags for managing labeling logic and display:
+
+- **Object tags** define the data type to be labeled — such as text, image, audio, video, HTML, or PDF.  
+- **Control tags** define the annotation actions applied to objects — for example, using `Labels` for entity recognition or `Choices` for classification.  
+- **Visual tags** adjust the appearance or structure of the labeling interface, such as adding headers or layout controls.
+
+### Available Project Types
+
+Generative AI Lab supports a wide range of project templates designed to cover diverse annotation and evaluation workflows.  
+These include traditional types such as **Text**, **Image**, **Audio**, **Video**, and **PDF** projects, as well as **De-Identification** projects for anonymizing sensitive data.  
+In addition, specialized templates are available for advanced use cases, including:
+
+- **LLM Evaluation Projects** – for assessing and comparing outputs from different Large Language Models (LLMs) across prompts and criteria such as accuracy, coherence, and safety.  
+- **HCC Risk Adjustment Coding Projects** – for mapping medical findings to Hierarchical Condition Category (HCC) codes, supporting clinical coding and risk adjustment use cases.
+
+These specialized templates expand the Lab’s capabilities beyond standard annotation, allowing teams to perform model evaluation and domain-specific coding within the same unified interface.
 
 </div><div class="h3-box" markdown="1">
 
@@ -46,7 +60,7 @@ When you look on the preview window, you can see the header set on top of the la
 
 ## Configure project using Visual Menu Builder
 
-This version of Generative AI Lab introduces a new way for configuring your projects, removing the need for manual XML configuration. With the Visual Menu Builder, users can easily create, edit, and manage project configurations through a user-friendly interface. This makes the configuration process much more straightforward, especially for those unfamiliar with XML syntax, while also reducing the risk of errors associated with manual coding.
+Generative AI Lab includes a **Visual Menu Builder** that lets you configure projects without writing XML manually. This tool provides a simple, interactive way to add, edit, and organize labeling elements while still following the same XML structure behind the scenes. It’s ideal for users who prefer a no-code interface but still want the flexibility and precision of custom configurations.
 
 To see the structure of a project configuration XML file and the definitions of the supported tag types and various parameters and variables, and to better understand how Visual Menu Builder maps and creates these elements when configuring your project, see [Project Configuration Overview](https://nlp.johnsnowlabs.com/docs/en/alab/tags_overview).
 

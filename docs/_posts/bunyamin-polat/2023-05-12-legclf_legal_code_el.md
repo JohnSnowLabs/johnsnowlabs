@@ -102,7 +102,7 @@ result = model.transform(spark.createDataFrame([[text]]).toDF("text"))
 
 ## References
 
-The dataset is available [here](https://huggingface.co/datasets/greek_legal_code)
+Legal documents, scrapped from the Internet, and classified in-house.
 
 ## Benchmarking
 

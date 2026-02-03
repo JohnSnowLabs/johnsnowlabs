@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 6.1.0 ScalaDoc  - com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification</title>
-          <meta name="description" content="Spark NLP 6.1.0 ScalaDoc - com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification" />
-          <meta name="keywords" content="Spark NLP 6.1.0 ScalaDoc com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification" />
+          <title>Spark NLP 6.3.0 ScalaDoc  - com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification</title>
+          <meta name="description" content="Spark NLP 6.3.0 ScalaDoc - com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification" />
+          <meta name="keywords" content="Spark NLP 6.3.0 ScalaDoc com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 6.1.0 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 6.3.0 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -166,6 +166,14 @@
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid">deid</a></dd></dl></div>
     </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="class" href="BaseFhirDeIdentification.html" title=""></a>
+                        <a href="BaseFhirDeIdentification.html" title="">BaseFhirDeIdentification</a>
+                      </li><li class="current-entities indented6">
+                        <a class="object" href="CdaDeIdentification$.html" title="This is the companion object of CdaDeIdentification."></a>
+                        <a class="class" href="CdaDeIdentification.html" title="A Spark Transformer for de-identifying HL7 CDA (Clinical Document Architecture) documents using javax.xml DOM parsing."></a>
+                        <a href="CdaDeIdentification.html" title="A Spark Transformer for de-identifying HL7 CDA (Clinical Document Architecture) documents using javax.xml DOM parsing.">CdaDeIdentification</a>
+                      </li><li class="current-entities indented6">
                         <a class="object" href="FhirDeIdentification$.html" title="This is the companion object of FhirDeIdentification."></a>
                         <a class="class" href="" title="A Spark Transformer for de-identifying FHIR resources according to configurable privacy rules."></a>
                         <a href="" title="A Spark Transformer for de-identifying FHIR resources according to configurable privacy rules.">FhirDeIdentification</a>
@@ -181,6 +189,10 @@
                         <span class="separator"></span>
                         <a class="object" href="FhirVersions$.html" title=""></a>
                         <a href="FhirVersions$.html" title="">FhirVersions</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="trait" href="PretrainedReadableCdaDeIdentification.html" title=""></a>
+                        <a href="PretrainedReadableCdaDeIdentification.html" title="">PretrainedReadableCdaDeIdentification</a>
                       </li><li class="current-entities indented6">
                         <span class="separator"></span>
                         <a class="trait" href="PretrainedReadableFhirDeIdentification.html" title=""></a>
@@ -210,7 +222,7 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <span class="name">FhirDeIdentification</span><span class="result"> extends <span class="extype" name="org.apache.spark.ml.Transformer">Transformer</span> with <span class="extype" name="com.johnsnowlabs.nlp.HasFeatures">HasFeatures</span> with <a href="../LightDeIdentificationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.LightDeIdentificationParams">LightDeIdentificationParams</a> with <a href="../DeidModelParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams">DeidModelParams</a> with <span class="extype" name="com.johnsnowlabs.license.CheckLicense">CheckLicense</span> with <span class="extype" name="org.apache.spark.ml.param.shared.HasInputCol">HasInputCol</span> with <span class="extype" name="com.johnsnowlabs.nlp.HasOutputAnnotationCol">HasOutputAnnotationCol</span> with <span class="extype" name="com.johnsnowlabs.nlp.ParamsAndFeaturesWritable">ParamsAndFeaturesWritable</span></span>
+        <span class="name">FhirDeIdentification</span><span class="result"> extends <a href="BaseFhirDeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification">BaseFhirDeIdentification</a></span>
       </span>
       </h4>
 
@@ -230,7 +242,7 @@ Additionally, supports different parser types (JSON, XML) for FHIR resources.
           <span class="toggle">
             Linear Supertypes
           </span>
-          <div class="superTypes hiddenContent"><span class="extype" name="com.johnsnowlabs.nlp.ParamsAndFeaturesWritable">ParamsAndFeaturesWritable</span>, <span class="extype" name="org.apache.spark.ml.util.DefaultParamsWritable">DefaultParamsWritable</span>, <span class="extype" name="org.apache.spark.ml.util.MLWritable">MLWritable</span>, <span class="extype" name="com.johnsnowlabs.nlp.HasOutputAnnotationCol">HasOutputAnnotationCol</span>, <span class="extype" name="org.apache.spark.ml.param.shared.HasInputCol">HasInputCol</span>, <span class="extype" name="com.johnsnowlabs.license.CheckLicense">CheckLicense</span>, <a href="../DeidModelParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams">DeidModelParams</a>, <a href="../LightDeIdentificationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.LightDeIdentificationParams">LightDeIdentificationParams</a>, <a href="../MaskingParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.MaskingParams">MaskingParams</a>, <a href="../BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a>, <span class="extype" name="com.johnsnowlabs.nlp.HasFeatures">HasFeatures</span>, <span class="extype" name="org.apache.spark.ml.Transformer">Transformer</span>, <span class="extype" name="org.apache.spark.ml.PipelineStage">PipelineStage</span>, <span class="extype" name="org.apache.spark.internal.Logging">Logging</span>, <span class="extype" name="org.apache.spark.ml.param.Params">Params</span>, <span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="org.apache.spark.ml.util.Identifiable">Identifiable</span>, <a href="../../../../../../scala/index.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="BaseFhirDeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification">BaseFhirDeIdentification</a>, <span class="extype" name="com.johnsnowlabs.nlp.ParamsAndFeaturesWritable">ParamsAndFeaturesWritable</span>, <span class="extype" name="org.apache.spark.ml.util.DefaultParamsWritable">DefaultParamsWritable</span>, <span class="extype" name="org.apache.spark.ml.util.MLWritable">MLWritable</span>, <span class="extype" name="com.johnsnowlabs.nlp.HasOutputAnnotationCol">HasOutputAnnotationCol</span>, <span class="extype" name="org.apache.spark.ml.param.shared.HasInputCol">HasInputCol</span>, <span class="extype" name="com.johnsnowlabs.license.CheckLicense">CheckLicense</span>, <a href="../DeidModelParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams">DeidModelParams</a>, <a href="../LightDeIdentificationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.LightDeIdentificationParams">LightDeIdentificationParams</a>, <a href="../MaskingParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.MaskingParams">MaskingParams</a>, <a href="../BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a>, <span class="extype" name="com.johnsnowlabs.nlp.HasFeatures">HasFeatures</span>, <span class="extype" name="org.apache.spark.ml.Transformer">Transformer</span>, <span class="extype" name="org.apache.spark.ml.PipelineStage">PipelineStage</span>, <span class="extype" name="org.apache.spark.internal.Logging">Logging</span>, <span class="extype" name="org.apache.spark.ml.param.Params">Params</span>, <span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="org.apache.spark.ml.util.Identifiable">Identifiable</span>, <a href="../../../../../../scala/index.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -256,7 +268,7 @@ Additionally, supports different parser types (JSON, XML) for FHIR resources.
                   <span class="filtertype">Inherited<br />
                   </span>
                   <ol id="linearization">
-                    <li class="in" name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification"><span>FhirDeIdentification</span></li><li class="in" name="com.johnsnowlabs.nlp.ParamsAndFeaturesWritable"><span>ParamsAndFeaturesWritable</span></li><li class="in" name="org.apache.spark.ml.util.DefaultParamsWritable"><span>DefaultParamsWritable</span></li><li class="in" name="org.apache.spark.ml.util.MLWritable"><span>MLWritable</span></li><li class="in" name="com.johnsnowlabs.nlp.HasOutputAnnotationCol"><span>HasOutputAnnotationCol</span></li><li class="in" name="org.apache.spark.ml.param.shared.HasInputCol"><span>HasInputCol</span></li><li class="in" name="com.johnsnowlabs.license.CheckLicense"><span>CheckLicense</span></li><li class="in" name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams"><span>DeidModelParams</span></li><li class="in" name="com.johnsnowlabs.nlp.annotators.deid.LightDeIdentificationParams"><span>LightDeIdentificationParams</span></li><li class="in" name="com.johnsnowlabs.nlp.annotators.deid.MaskingParams"><span>MaskingParams</span></li><li class="in" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams"><span>BaseDeidParams</span></li><li class="in" name="com.johnsnowlabs.nlp.HasFeatures"><span>HasFeatures</span></li><li class="in" name="org.apache.spark.ml.Transformer"><span>Transformer</span></li><li class="in" name="org.apache.spark.ml.PipelineStage"><span>PipelineStage</span></li><li class="in" name="org.apache.spark.internal.Logging"><span>Logging</span></li><li class="in" name="org.apache.spark.ml.param.Params"><span>Params</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="org.apache.spark.ml.util.Identifiable"><span>Identifiable</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                    <li class="in" name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification"><span>FhirDeIdentification</span></li><li class="in" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification"><span>BaseFhirDeIdentification</span></li><li class="in" name="com.johnsnowlabs.nlp.ParamsAndFeaturesWritable"><span>ParamsAndFeaturesWritable</span></li><li class="in" name="org.apache.spark.ml.util.DefaultParamsWritable"><span>DefaultParamsWritable</span></li><li class="in" name="org.apache.spark.ml.util.MLWritable"><span>MLWritable</span></li><li class="in" name="com.johnsnowlabs.nlp.HasOutputAnnotationCol"><span>HasOutputAnnotationCol</span></li><li class="in" name="org.apache.spark.ml.param.shared.HasInputCol"><span>HasInputCol</span></li><li class="in" name="com.johnsnowlabs.license.CheckLicense"><span>CheckLicense</span></li><li class="in" name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams"><span>DeidModelParams</span></li><li class="in" name="com.johnsnowlabs.nlp.annotators.deid.LightDeIdentificationParams"><span>LightDeIdentificationParams</span></li><li class="in" name="com.johnsnowlabs.nlp.annotators.deid.MaskingParams"><span>MaskingParams</span></li><li class="in" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams"><span>BaseDeidParams</span></li><li class="in" name="com.johnsnowlabs.nlp.HasFeatures"><span>HasFeatures</span></li><li class="in" name="org.apache.spark.ml.Transformer"><span>Transformer</span></li><li class="in" name="org.apache.spark.ml.PipelineStage"><span>PipelineStage</span></li><li class="in" name="org.apache.spark.internal.Logging"><span>Logging</span></li><li class="in" name="org.apache.spark.ml.param.Params"><span>Params</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="org.apache.spark.ml.util.Identifiable"><span>Identifiable</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                   </ol>
                 </div><div class="ancestors">
               <span class="filtertype"></span>
@@ -549,10 +561,28 @@ When <code>false</code>, <a href="../BaseDeidParams.html#ageRanges:org.apache.sp
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="com.johnsnowlabs.license.CheckLicense#checkValidEnvironment" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="checkValidEnvironment(spark:Option[org.apache.spark.sql.SparkSession],scopes:Seq[String]):Unit"></a><a id="checkValidEnvironment(Option[SparkSession],Seq[String]):Unit"></a>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#blackListEntities" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
+      <a id="blackListEntities:org.apache.spark.ml.param.StringArrayParam"></a><a id="blackListEntities:StringArrayParam"></a>
       <span class="permalink">
-      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#checkValidEnvironment(spark:Option[org.apache.spark.sql.SparkSession],scopes:Seq[String]):Unit" title="Permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#blackListEntities:org.apache.spark.ml.param.StringArrayParam" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">blackListEntities</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.StringArrayParam">StringArrayParam</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">List of entities coming from NER or regex rules that will be ignored for masking or obfuscation.</p><div class="fullcomment"><div class="comment cmt"><p>List of entities coming from NER or regex rules that will be ignored for masking or obfuscation.
+The rest entities will be processed.
+Defaults to an empty array.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.license.CheckLicense#checkValidEnvironment" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="checkValidEnvironment(spark:Option[org.apache.spark.sql.SparkSession],scopes:Seq[String],metadata:Option[Map[String,ujson.Value]]):Unit"></a><a id="checkValidEnvironment(Option[SparkSession],Seq[String],Option[Map[String,Value]]):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#checkValidEnvironment(spark:Option[org.apache.spark.sql.SparkSession],scopes:Seq[String],metadata:Option[Map[String,ujson.Value]]):Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -561,7 +591,7 @@ When <code>false</code>, <a href="../BaseDeidParams.html#ageRanges:org.apache.sp
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">checkValidEnvironment</span><span class="params">(<span name="spark">spark: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="org.apache.spark.sql.SparkSession">SparkSession</span>]</span>, <span name="scopes">scopes: <a href="../../../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">checkValidEnvironment</span><span class="params">(<span name="spark">spark: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="org.apache.spark.sql.SparkSession">SparkSession</span>]</span>, <span name="scopes">scopes: <a href="../../../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="metadata">metadata: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="ujson.Value">Value</span>]]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>CheckLicense</dd></dl></div>
@@ -582,9 +612,9 @@ When <code>false</code>, <a href="../BaseDeidParams.html#ageRanges:org.apache.sp
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>CheckLicense</dd></dl></div>
     </li><li name="com.johnsnowlabs.license.CheckLicense#checkValidScopeAndEnvironment" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="checkValidScopeAndEnvironment(scope:String,spark:Option[org.apache.spark.sql.SparkSession],checkLp:Boolean):Unit"></a><a id="checkValidScopeAndEnvironment(String,Option[SparkSession],Boolean):Unit"></a>
+      <a id="checkValidScopeAndEnvironment(scope:String,spark:Option[org.apache.spark.sql.SparkSession],checkLp:Boolean,metadata:Option[Map[String,ujson.Value]]):Unit"></a><a id="checkValidScopeAndEnvironment(String,Option[SparkSession],Boolean,Option[Map[String,Value]]):Unit"></a>
       <span class="permalink">
-      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#checkValidScopeAndEnvironment(scope:String,spark:Option[org.apache.spark.sql.SparkSession],checkLp:Boolean):Unit" title="Permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#checkValidScopeAndEnvironment(scope:String,spark:Option[org.apache.spark.sql.SparkSession],checkLp:Boolean,metadata:Option[Map[String,ujson.Value]]):Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -593,14 +623,14 @@ When <code>false</code>, <a href="../BaseDeidParams.html#ageRanges:org.apache.sp
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">checkValidScopeAndEnvironment</span><span class="params">(<span name="scope">scope: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="spark">spark: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="org.apache.spark.sql.SparkSession">SparkSession</span>]</span>, <span name="checkLp">checkLp: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">checkValidScopeAndEnvironment</span><span class="params">(<span name="scope">scope: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="spark">spark: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="org.apache.spark.sql.SparkSession">SparkSession</span>]</span>, <span name="checkLp">checkLp: <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="metadata">metadata: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="ujson.Value">Value</span>]]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>CheckLicense</dd></dl></div>
     </li><li name="com.johnsnowlabs.license.CheckLicense#checkValidScopesAndEnvironment" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="checkValidScopesAndEnvironment(scopes:Seq[String],spark:Option[org.apache.spark.sql.SparkSession],checkLp:Boolean):Unit"></a><a id="checkValidScopesAndEnvironment(Seq[String],Option[SparkSession],Boolean):Unit"></a>
+      <a id="checkValidScopesAndEnvironment(scopes:Seq[String],spark:Option[org.apache.spark.sql.SparkSession],checkLp:Boolean,metadata:Option[Map[String,ujson.Value]]):Unit"></a><a id="checkValidScopesAndEnvironment(Seq[String],Option[SparkSession],Boolean,Option[Map[String,Value]]):Unit"></a>
       <span class="permalink">
-      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#checkValidScopesAndEnvironment(scopes:Seq[String],spark:Option[org.apache.spark.sql.SparkSession],checkLp:Boolean):Unit" title="Permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#checkValidScopesAndEnvironment(scopes:Seq[String],spark:Option[org.apache.spark.sql.SparkSession],checkLp:Boolean,metadata:Option[Map[String,ujson.Value]]):Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -609,7 +639,7 @@ When <code>false</code>, <a href="../BaseDeidParams.html#ageRanges:org.apache.sp
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">checkValidScopesAndEnvironment</span><span class="params">(<span name="scopes">scopes: <a href="../../../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="spark">spark: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="org.apache.spark.sql.SparkSession">SparkSession</span>]</span>, <span name="checkLp">checkLp: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">checkValidScopesAndEnvironment</span><span class="params">(<span name="scopes">scopes: <a href="../../../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="spark">spark: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="org.apache.spark.sql.SparkSession">SparkSession</span>]</span>, <span name="checkLp">checkLp: <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="metadata">metadata: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="ujson.Value">Value</span>]]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>CheckLicense</dd></dl></div>
@@ -691,10 +721,10 @@ When set to <code>true</code>, the same transformation or obfuscation will be ap
 of the same name entity, even if those parts appear separately.</p><p>For example, if &quot;John Smith&quot; is obfuscated as &quot;Liam Brown&quot;, then:</p><ul><li>When the full name &quot;John Smith&quot; appears, it will be replaced with &quot;Liam Brown&quot;</li><li>When &quot;John&quot; or &quot;Smith&quot; appear individually, they will still be obfuscated as &quot;Liam&quot; and &quot;Brown&quot; respectively,
    ensuring consistency in name transformation.</li></ul><p>Default: true
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification#copy" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="copy(extra:org.apache.spark.ml.param.ParamMap):com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification"></a><a id="copy(ParamMap):FhirDeIdentification"></a>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification#copy" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="copy(extra:org.apache.spark.ml.param.ParamMap):BaseFhirDeIdentification.this.type"></a><a id="copy(ParamMap):FhirDeIdentification.this.type"></a>
       <span class="permalink">
-      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#copy(extra:org.apache.spark.ml.param.ParamMap):com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification" title="Permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#copy(extra:org.apache.spark.ml.param.ParamMap):BaseFhirDeIdentification.this.type" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -703,10 +733,10 @@ of the same name entity, even if those parts appear separately.</p><p>For exampl
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">copy</span><span class="params">(<span name="extra">extra: <span class="extype" name="org.apache.spark.ml.param.ParamMap">ParamMap</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification">FhirDeIdentification</a></span>
+        <span class="name">copy</span><span class="params">(<span name="extra">extra: <span class="extype" name="org.apache.spark.ml.param.ParamMap">ParamMap</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification">FhirDeIdentification</a>.this.type</span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification">FhirDeIdentification</a> → Transformer → PipelineStage → Params</dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseFhirDeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification">BaseFhirDeIdentification</a> → Transformer → PipelineStage → Params</dd></dl></div>
     </li><li name="org.apache.spark.ml.param.Params#copyValues" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="copyValues[T&lt;:org.apache.spark.ml.param.Params](to:T,extra:org.apache.spark.ml.param.ParamMap):T"></a><a id="copyValues[T&lt;:Params](T,ParamMap):T"></a>
       <span class="permalink">
@@ -813,6 +843,22 @@ specify the entity and the terms to be used for obfuscation.
       
       <p class="shortcomment cmt">Number of days to obfuscate the dates by displacement.</p><div class="fullcomment"><div class="comment cmt"><p>Number of days to obfuscate the dates by displacement. If not provided a random integer between 1 and 60 will be used
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification#deIdentifyInternal" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="deIdentifyInternal(jsonStr:String,rules:Map[String,String]):String"></a><a id="deIdentifyInternal(String,Map[String,String]):String"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#deIdentifyInternal(jsonStr:String,rules:Map[String,String]):String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">deIdentifyInternal</span><span class="params">(<span name="jsonStr">jsonStr: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="rules">rules: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Main entry point for string de-id</p><div class="fullcomment"><div class="comment cmt"><p>Main entry point for string de-id</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification">FhirDeIdentification</a> → <a href="BaseFhirDeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification">BaseFhirDeIdentification</a></dd></dl></div>
     </li><li name="org.apache.spark.ml.param.Params#defaultCopy" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="defaultCopy[T&lt;:org.apache.spark.ml.param.Params](extra:org.apache.spark.ml.param.ParamMap):T"></a><a id="defaultCopy[T&lt;:Params](ParamMap):T"></a>
       <span class="permalink">
@@ -829,23 +875,7 @@ specify the entity and the terms to be used for obfuscation.
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Params</dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification#deidentify" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="deidentify(jsonStr:String,rules:Map[String,String]):String"></a><a id="deidentify(String,Map[String,String]):String"></a>
-      <span class="permalink">
-      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#deidentify(jsonStr:String,rules:Map[String,String]):String" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">deidentify</span><span class="params">(<span name="jsonStr">jsonStr: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="rules">rules: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
-      </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification#deidentify" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification#deidentify" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="deidentify(jsonStr:String):String"></a><a id="deidentify(String):String"></a>
       <span class="permalink">
       <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#deidentify(jsonStr:String):String" title="Permalink">
@@ -860,8 +890,24 @@ specify the entity and the terms to be used for obfuscation.
         <span class="name">deidentify</span><span class="params">(<span name="jsonStr">jsonStr: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseFhirDeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification">BaseFhirDeIdentification</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification#deidentifyWordToReplace" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="deidentifyWordToReplace(wordToReplace:String,entityClass:String,namePartsMemory:scala.collection.mutable.Map[String,String]):String"></a><a id="deidentifyWordToReplace(String,String,Map[String,String]):String"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#deidentifyWordToReplace(wordToReplace:String,entityClass:String,namePartsMemory:scala.collection.mutable.Map[String,String]):String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">deidentifyWordToReplace</span><span class="params">(<span name="wordToReplace">wordToReplace: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="entityClass">entityClass: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="namePartsMemory">namePartsMemory: <span class="extype" name="scala.collection.mutable.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
       
-    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification#deidentify_list" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="BaseFhirDeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification">BaseFhirDeIdentification</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification#deidentify_list" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="deidentify_list(jsonStrs:java.util.ArrayList[String]):java.util.List[String]"></a><a id="deidentify_list(ArrayList[String]):List[String]"></a>
       <span class="permalink">
       <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#deidentify_list(jsonStrs:java.util.ArrayList[String]):java.util.List[String]" title="Permalink">
@@ -876,8 +922,8 @@ specify the entity and the terms to be used for obfuscation.
         <span class="name">deidentify_list</span><span class="params">(<span name="jsonStrs">jsonStrs: <span class="extype" name="java.util.ArrayList">ArrayList</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <span class="extype" name="java.util.List">List</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
       </span>
       
-      
-    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification#deidentify_list" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseFhirDeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification">BaseFhirDeIdentification</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification#deidentify_list" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="deidentify_list(jsonStrs:Array[String]):Array[String]"></a><a id="deidentify_list(Array[String]):Array[String]"></a>
       <span class="permalink">
       <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#deidentify_list(jsonStrs:Array[String]):Array[String]" title="Permalink">
@@ -892,7 +938,7 @@ specify the entity and the terms to be used for obfuscation.
         <span class="name">deidentify_list</span><span class="params">(<span name="jsonStrs">jsonStrs: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
       </span>
       
-      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseFhirDeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification">BaseFhirDeIdentification</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#enableDefaultObfuscationEquivalents" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
       <a id="enableDefaultObfuscationEquivalents:org.apache.spark.ml.param.BooleanParam"></a><a id="enableDefaultObfuscationEquivalents:BooleanParam"></a>
       <span class="permalink">
@@ -976,6 +1022,22 @@ Default: false
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Params</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification#extractDateAndRest" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="extractDateAndRest(wordToReplace:String):(String,String)"></a><a id="extractDateAndRest(String):(String,String)"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#extractDateAndRest(wordToReplace:String):(String,String)" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">extractDateAndRest</span><span class="params">(<span name="wordToReplace">wordToReplace: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: (<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>)</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="BaseFhirDeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification">BaseFhirDeIdentification</a></dd></dl></div>
     </li><li name="org.apache.spark.ml.param.Params#extractParamMap" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="extractParamMap():org.apache.spark.ml.param.ParamMap"></a><a id="extractParamMap():ParamMap"></a>
       <span class="permalink">
@@ -1331,6 +1393,22 @@ obfuscation patterns.</p><p>default: false
       
       <p class="shortcomment cmt">Gets the value of <a href="../BaseDeidParams.html#ageRangesByHipaa:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#ageRangesByHipaa">ageRangesByHipaa</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Gets the value of <a href="../BaseDeidParams.html#ageRangesByHipaa:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#ageRangesByHipaa">ageRangesByHipaa</a>.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#getBlackListEntities" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="getParam">
+      <a id="getBlackListEntities:Array[String]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#getBlackListEntities:Array[String]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getBlackListEntities</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Gets <a href="../BaseDeidParams.html#blackListEntities:org.apache.spark.ml.param.StringArrayParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#blackListEntities">blackListEntities</a> param</p><div class="fullcomment"><div class="comment cmt"><p>Gets <a href="../BaseDeidParams.html#blackListEntities:org.apache.spark.ml.param.StringArrayParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#blackListEntities">blackListEntities</a> param</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <span class="permalink">
@@ -1469,6 +1547,22 @@ obfuscation patterns.</p><p>default: false
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Params</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification#getDefaultDateFormat" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getDefaultDateFormat:String"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#getDefaultDateFormat:String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getDefaultDateFormat</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification">FhirDeIdentification</a> → <a href="BaseFhirDeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification">BaseFhirDeIdentification</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#getDefaultObfuscationEquivalents" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getDefaultObfuscationEquivalents:Array[com.johnsnowlabs.nlp.annotators.deid.faker.StaticObfuscationEntity]"></a><a id="getDefaultObfuscationEquivalents:Array[StaticObfuscationEntity]"></a>
       <span class="permalink">
@@ -1501,6 +1595,22 @@ obfuscation patterns.</p><p>default: false
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams#getDocumentIDFromSentences" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getDocumentIDFromSentences(sentences:Seq[com.johnsnowlabs.nlp.Annotation]):Option[String]"></a><a id="getDocumentIDFromSentences(Seq[Annotation]):Option[String]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#getDocumentIDFromSentences(sentences:Seq[com.johnsnowlabs.nlp.Annotation]):Option[String]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getDocumentIDFromSentences</span><span class="params">(<span name="sentences">sentences: <a href="../../../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="com.johnsnowlabs.nlp.Annotation">Annotation</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../DeidModelParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams">DeidModelParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#getEnableDefaultObfuscationEquivalents" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getEnableDefaultObfuscationEquivalents:Boolean"></a>
       <span class="permalink">
@@ -1731,6 +1841,24 @@ obfuscation patterns.</p><p>default: false
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HasInputCol</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#getIsRandomDateDisplacement" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="getParam">
+      <a id="getIsRandomDateDisplacement:Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#getIsRandomDateDisplacement:Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getIsRandomDateDisplacement</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Gets <a href="../BaseDeidParams.html#isRandomDateDisplacement:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#isRandomDateDisplacement">isRandomDateDisplacement</a> param
+</p><div class="fullcomment"><div class="comment cmt"><p>Gets <a href="../BaseDeidParams.html#isRandomDateDisplacement:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#isRandomDateDisplacement">isRandomDateDisplacement</a> param
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#getKeepMonth" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="getParam">
       <a id="getKeepMonth:Boolean"></a>
       <span class="permalink">
@@ -1802,7 +1930,7 @@ obfuscation patterns.</p><p>default: false
       
       <p class="shortcomment cmt">Gets <a href="../BaseDeidParams.html#language:org.apache.spark.ml.param.Param[String]" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#language">language</a> param.</p><div class="fullcomment"><div class="comment cmt"><p>Gets <a href="../BaseDeidParams.html#language:org.apache.spark.ml.param.Param[String]" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#language">language</a> param.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification#getMappingRules" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification#getMappingRules" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getMappingRules:Map[String,String]"></a>
       <span class="permalink">
       <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#getMappingRules:Map[String,String]" title="Permalink">
@@ -1817,8 +1945,8 @@ obfuscation patterns.</p><p>default: false
         <span class="name">getMappingRules</span><span class="result">: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>]</span>
       </span>
       
-      
-    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification#getMappingRulesAsStr" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseFhirDeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification">BaseFhirDeIdentification</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification#getMappingRulesAsStr" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getMappingRulesAsStr:String"></a>
       <span class="permalink">
       <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#getMappingRulesAsStr:String" title="Permalink">
@@ -1833,7 +1961,7 @@ obfuscation patterns.</p><p>default: false
         <span class="name">getMappingRulesAsStr</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       
-      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseFhirDeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification">BaseFhirDeIdentification</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.MaskingParams#getMaskStatus" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getMaskStatus(entityClass:String):String"></a><a id="getMaskStatus(String):String"></a>
       <span class="permalink">
@@ -1866,6 +1994,24 @@ obfuscation patterns.</p><p>default: false
       </span>
       
       <p class="shortcomment cmt">Gets <a href="../MaskingParams.html#maskingPolicy:org.apache.spark.ml.param.Param[String]" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.MaskingParams#maskingPolicy">maskingPolicy</a> param.</p><div class="fullcomment"><div class="comment cmt"><p>Gets <a href="../MaskingParams.html#maskingPolicy:org.apache.spark.ml.param.Param[String]" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.MaskingParams#maskingPolicy">maskingPolicy</a> param.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../MaskingParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.MaskingParams">MaskingParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#getMaxRandomDisplacementDays" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="getParam">
+      <a id="getMaxRandomDisplacementDays:Int"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#getMaxRandomDisplacementDays:Int" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getMaxRandomDisplacementDays</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Gets <a href="../BaseDeidParams.html#maxRandomDisplacementDays:org.apache.spark.ml.param.IntParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#maxRandomDisplacementDays">maxRandomDisplacementDays</a> param
+</p><div class="fullcomment"><div class="comment cmt"><p>Gets <a href="../BaseDeidParams.html#maxRandomDisplacementDays:org.apache.spark.ml.param.IntParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#maxRandomDisplacementDays">maxRandomDisplacementDays</a> param
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams#getMaxSentence" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getMaxSentence(annotations:Seq[com.johnsnowlabs.nlp.Annotation]):Int"></a><a id="getMaxSentence(Seq[Annotation]):Int"></a>
       <span class="permalink">
@@ -1932,6 +2078,40 @@ obfuscation patterns.</p><p>default: false
       </span>
       
       <p class="shortcomment cmt">Gets <a href="../BaseDeidParams.html#obfuscateRefSource:org.apache.spark.ml.param.Param[String]" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#obfuscateRefSource">obfuscateRefSource</a> param.</p><div class="fullcomment"><div class="comment cmt"><p>Gets <a href="../BaseDeidParams.html#obfuscateRefSource:org.apache.spark.ml.param.Param[String]" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#obfuscateRefSource">obfuscateRefSource</a> param.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#getObfuscateZipByHipaa" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="getParam">
+      <a id="getObfuscateZipByHipaa:Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#getObfuscateZipByHipaa:Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getObfuscateZipByHipaa</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Gets the value of <a href="../BaseDeidParams.html#obfuscateZipByHipaa:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#obfuscateZipByHipaa">obfuscateZipByHipaa</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Gets the value of <a href="../BaseDeidParams.html#obfuscateZipByHipaa:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#obfuscateZipByHipaa">obfuscateZipByHipaa</a>.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#getObfuscateZipKeepDigits" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="getParam">
+      <a id="getObfuscateZipKeepDigits:Int"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#getObfuscateZipKeepDigits:Int" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getObfuscateZipKeepDigits</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Gets the value of <a href="../BaseDeidParams.html#obfuscateZipKeepDigits:org.apache.spark.ml.param.IntParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#obfuscateZipKeepDigits">obfuscateZipKeepDigits</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Gets the value of <a href="../BaseDeidParams.html#obfuscateZipKeepDigits:org.apache.spark.ml.param.IntParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#obfuscateZipKeepDigits">obfuscateZipKeepDigits</a>.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#getObfuscationEquivalents" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="getParam">
       <a id="getObfuscationEquivalents:Option[Array[com.johnsnowlabs.nlp.annotators.deid.faker.StaticObfuscationEntity]]"></a><a id="getObfuscationEquivalents:Option[Array[StaticObfuscationEntity]]"></a>
@@ -2048,6 +2228,22 @@ obfuscation patterns.</p><p>default: false
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification#getScopes" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getScopes:Seq[String]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#getScopes:Seq[String]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getScopes</span><span class="result">: <a href="../../../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="BaseFhirDeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification">BaseFhirDeIdentification</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#getSeed" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getSeed():Int"></a>
       <span class="permalink">
@@ -2259,6 +2455,22 @@ obfuscation patterns.</p><p>default: false
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../DeidModelParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams">DeidModelParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification#handleSelectiveObfuscationModes" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="handleSelectiveObfuscationModes(wordToReplace:String,entityClass:String,namePartsMemory:scala.collection.mutable.Map[String,String]):String"></a><a id="handleSelectiveObfuscationModes(String,String,Map[String,String]):String"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#handleSelectiveObfuscationModes(wordToReplace:String,entityClass:String,namePartsMemory:scala.collection.mutable.Map[String,String]):String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">handleSelectiveObfuscationModes</span><span class="params">(<span name="wordToReplace">wordToReplace: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="entityClass">entityClass: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="namePartsMemory">namePartsMemory: <span class="extype" name="scala.collection.mutable.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="BaseFhirDeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification">BaseFhirDeIdentification</a></dd></dl></div>
     </li><li name="org.apache.spark.ml.param.Params#hasDefault" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hasDefault[T](param:org.apache.spark.ml.param.Param[T]):Boolean"></a><a id="hasDefault[T](Param[T]):Boolean"></a>
       <span class="permalink">
@@ -2470,6 +2682,27 @@ obfuscation patterns.</p><p>default: false
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../DeidModelParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams">DeidModelParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#isRandomDateDisplacement" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
+      <a id="isRandomDateDisplacement:org.apache.spark.ml.param.BooleanParam"></a><a id="isRandomDateDisplacement:BooleanParam"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#isRandomDateDisplacement:org.apache.spark.ml.param.BooleanParam" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isRandomDateDisplacement</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.BooleanParam">BooleanParam</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Use a random displacement days in dates entities,that random number is based on the <a href="../DeIdentificationParams.html#seed:org.apache.spark.ml.param.IntParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams#seed">DeIdentificationParams.seed</a>
+If true use random displacement days in dates entities,if false use the <a href="../DeIdentificationParams.html#days:org.apache.spark.ml.param.IntParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams#days">DeIdentificationParams.days</a>
+The default value is false.</p><div class="fullcomment"><div class="comment cmt"><p>Use a random displacement days in dates entities,that random number is based on the <a href="../DeIdentificationParams.html#seed:org.apache.spark.ml.param.IntParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams#seed">DeIdentificationParams.seed</a>
+If true use random displacement days in dates entities,if false use the <a href="../DeIdentificationParams.html#days:org.apache.spark.ml.param.IntParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams#days">DeIdentificationParams.days</a>
+The default value is false.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
     </li><li name="org.apache.spark.ml.param.Params#isSet" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isSet(param:org.apache.spark.ml.param.Param[_]):Boolean"></a><a id="isSet(Param[_]):Boolean"></a>
       <span class="permalink">
@@ -2787,7 +3020,7 @@ Default:'en'
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Logging</dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification#mappingRules" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification#mappingRules" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
       <a id="mappingRules:com.johnsnowlabs.nlp.serialization.MapFeature[String,String]"></a><a id="mappingRules:MapFeature[String,String]"></a>
       <span class="permalink">
       <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#mappingRules:com.johnsnowlabs.nlp.serialization.MapFeature[String,String]" title="Permalink">
@@ -2804,7 +3037,7 @@ Default:'en'
       
       <p class="shortcomment cmt">FHIR field de-identification rules for primitive type obfuscation.</p><div class="fullcomment"><div class="comment cmt"><p>FHIR field de-identification rules for primitive type obfuscation.</p><h4>Overview</h4><p>Defines how specific FHIR elements should be de-identified using FHIR Path syntax.
 Supports all FHIR primitive types with built-in obfuscation strategies.
-</p></div></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseFhirDeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification">BaseFhirDeIdentification</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.MaskingParams#maskEntity" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="maskEntity(wordToReplace:String,entityClass:String):String"></a><a id="maskEntity(String,String):String"></a>
       <span class="permalink">
@@ -2889,6 +3122,24 @@ Supports all FHIR primitive types with built-in obfuscation strategies.
     asterix without brackets.</li><li>'fixed_length_chars': Replace the obfuscated entity with a masking sequence composed of
     a fixed number of asterisk.</li><li>'entity_labels_without_brackets': Replace the values with the entity value without brackets.</li><li>'same_length_chars_without_brackets': Replace the name with the asterix with same length without brackets.</li><li>Default: 'entity_labels'
 </li></ul></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../MaskingParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.MaskingParams">MaskingParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#maxRandomDisplacementDays" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
+      <a id="maxRandomDisplacementDays:org.apache.spark.ml.param.IntParam"></a><a id="maxRandomDisplacementDays:IntParam"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#maxRandomDisplacementDays:org.apache.spark.ml.param.IntParam" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">maxRandomDisplacementDays</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.IntParam">IntParam</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Maximum number of days for random date displacement.</p><div class="fullcomment"><div class="comment cmt"><p>Maximum number of days for random date displacement. Default is 1825 (5 years).
+If <a href="../BaseDeidParams.html#isRandomDateDisplacement:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#isRandomDateDisplacement">isRandomDateDisplacement</a> is true, a random number of days between 1 and maxRandomDisplacementDays will be used for date displacement.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#mode" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
       <a id="mode:org.apache.spark.ml.param.Param[String]"></a><a id="mode:Param[String]"></a>
       <span class="permalink">
@@ -2999,6 +3250,38 @@ make dateFormats more visible. When setting to <code>true</code>, make sure date
 needs. If the value is true and obfuscation is failed, then <a href="../BaseDeidParams.html#unnormalizedDateMode:org.apache.spark.ml.param.Param[String]" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#unnormalizedDateMode">unnormalizedDateMode</a> will be
 activated. When setting to 'false', then the date will be masked to &lt;DATE&gt;. Default: false
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification#obfuscateDateEntity" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="obfuscateDateEntity(wordToReplace:String):String"></a><a id="obfuscateDateEntity(String):String"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#obfuscateDateEntity(wordToReplace:String):String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">obfuscateDateEntity</span><span class="params">(<span name="wordToReplace">wordToReplace: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="BaseFhirDeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification">BaseFhirDeIdentification</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification#obfuscateEntity" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="obfuscateEntity(wordToReplace:String,entityClass:String,namePartsMemory:scala.collection.mutable.Map[String,String]):String"></a><a id="obfuscateEntity(String,String,Map[String,String]):String"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#obfuscateEntity(wordToReplace:String,entityClass:String,namePartsMemory:scala.collection.mutable.Map[String,String]):String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">obfuscateEntity</span><span class="params">(<span name="wordToReplace">wordToReplace: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="entityClass">entityClass: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="namePartsMemory">namePartsMemory: <span class="extype" name="scala.collection.mutable.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="BaseFhirDeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification">BaseFhirDeIdentification</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams#obfuscateNameEntity" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="obfuscateNameEntity(originalName:String,keepTextSize:Boolean,lengthDeviation:Int,namePartsMemory:scala.collection.mutable.Map[String,String]):String"></a><a id="obfuscateNameEntity(String,Boolean,Int,Map[String,String]):String"></a>
       <span class="permalink">
@@ -3035,6 +3318,62 @@ The values ar the following:
 'file': Takes the entities from the obfuscatorRefFile
 'faker': Takes the entities from the Faker module
 'both': Takes the entities from the obfuscatorRefFile and the faker module randomly.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams#obfuscateZIP" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="obfuscateZIP(wordToReplace:String):String"></a><a id="obfuscateZIP(String):String"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#obfuscateZIP(wordToReplace:String):String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">obfuscateZIP</span><span class="params">(<span name="wordToReplace">wordToReplace: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../DeidModelParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams">DeidModelParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#obfuscateZipByHipaa" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
+      <a id="obfuscateZipByHipaa:org.apache.spark.ml.param.BooleanParam"></a><a id="obfuscateZipByHipaa:BooleanParam"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#obfuscateZipByHipaa:org.apache.spark.ml.param.BooleanParam" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">obfuscateZipByHipaa</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.BooleanParam">BooleanParam</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Whether to apply HIPAA Safe Harbor ZIP code obfuscation rules.</p><div class="fullcomment"><div class="comment cmt"><p>Whether to apply HIPAA Safe Harbor ZIP code obfuscation rules.</p><p>When enabled (<code>true</code>), ZIP/ZIP+4 obfuscation follows the HIPAA Safe Harbor guidance:</p><ol class="decimal"><li>The algorithm extracts the first five digits from the input (accepting formats like &quot;12345&quot;, &quot;12345-6789&quot;, &quot;123456789&quot; and tolerant forms).
+  2. If the first three-digit ZIP prefix is in the HIPAA restricted list (the 17 prefixes derived from 2000 Census data),
+     the ZIP MUST be suppressed to the canonical value <code>&quot;000**&quot;</code>.
+  3. Otherwise, the ZIP is generalized to the first three digits followed by <code>&quot;**&quot;</code> (i.e. <code>XXX**</code>). The +4 portion will be masked with asterisks if present.</li></ol><p>When disabled (<code>false</code>), HIPAA-specific ZIP obfuscation is not applied and the component's default/custom ZIP obfuscation is used instead.</p><p>Implementation notes and cautions:</p><ul><li>The restricted 3-digit list (e.g. &quot;036&quot;, &quot;059&quot;, &quot;063&quot;, ...) is historically based on Census 2000 ZCTA data.</li><li>The implementation should handle malformed or missing inputs defensively; typically inputs that do not
+    contain at least five digits should be suppressed (e.g. return <code>&quot;000**&quot;</code>).</li><li>See HHS guidance for full de-identification context:  <a href="https://www.hhs.gov/hipaa/for-professionals/special-topics/de-identification/index.html" target="_blank">https://www.hhs.gov/hipaa/for-professionals/special-topics/de-identification/index.html</a>
+</li></ul></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#obfuscateZipKeepDigits" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
+      <a id="obfuscateZipKeepDigits:org.apache.spark.ml.param.IntParam"></a><a id="obfuscateZipKeepDigits:IntParam"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#obfuscateZipKeepDigits:org.apache.spark.ml.param.IntParam" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">obfuscateZipKeepDigits</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.IntParam">IntParam</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Number of leading ZIP code digits to preserve when applying HIPAA-based ZIP obfuscation.</p><div class="fullcomment"><div class="comment cmt"><p>Number of leading ZIP code digits to preserve when applying HIPAA-based ZIP obfuscation.
+This parameter is only effective when <a href="../BaseDeidParams.html#obfuscateZipByHipaa:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#obfuscateZipByHipaa">obfuscateZipByHipaa</a> is enabled.</p><p>Behavior:</p><ul><li>Preserves the first <code>value</code> digits of the ZIP code.</li><li>Masks all remaining digits (including the ZIP+4 segment, if present) with asterisks (<code>*</code>).</li><li>Default: 3</li></ul><p>Examples:</p><ul><li>12345 → 123**</li><li>If the preserved digit count is set to 2: 12345 → 12***</li></ul><p>This setting overrides the default HIPAA Safe Harbor ZIP generalization pattern (<code>XXX**</code>)
+by allowing clients to customize how many digits remain unmasked under expert-determination requirements.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#obfuscationEquivalents" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
       <a id="obfuscationEquivalents:com.johnsnowlabs.nlp.serialization.StructFeature[Array[com.johnsnowlabs.nlp.annotators.deid.faker.StaticObfuscationEntity]]"></a><a id="obfuscationEquivalents:StructFeature[Array[StaticObfuscationEntity]]"></a>
@@ -3123,6 +3462,22 @@ different occurrences of sensitive data.
       <p class="shortcomment cmt">parser type to parse the FHIR string.</p><div class="fullcomment"><div class="comment cmt"><p>parser type to parse the FHIR string.
 Supported types are <span class="extype" name="FhirParserTypes.ALL_PARSER_TYPES.mkString(&quot;,">&quot;)</span>.
 </p></div></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification#preventDateToMask" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="preventDateToMask(entityClass:String):Unit"></a><a id="preventDateToMask(String):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#preventDateToMask(entityClass:String):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">preventDateToMask</span><span class="params">(<span name="entityClass">entityClass: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="BaseFhirDeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification">BaseFhirDeIdentification</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#randomDateFormat" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="randomDateFormat:String"></a>
       <span class="permalink">
@@ -3452,6 +3807,22 @@ while age for patients 90 years or younger can remain unchanged.
 </p></div><dl class="paramcmts block"><dt class="param">value</dt><dd class="cmt"><p>If true, age entities larger than 90 will be obfuscated as per HIPAA Privacy Rule, the others will remain unchanged.
              If false, <a href="../BaseDeidParams.html#ageRanges:org.apache.spark.ml.param.IntArrayParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#ageRanges">ageRanges</a> parameter is valid.
              Default: false.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification#setBlackListEntities" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setBlackListEntities(value:Array[String]):BaseFhirDeIdentification.this.type"></a><a id="setBlackListEntities(Array[String]):FhirDeIdentification.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#setBlackListEntities(value:Array[String]):BaseFhirDeIdentification.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setBlackListEntities</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification">FhirDeIdentification</a>.this.type</span>
+      </span>
+      
+      <p class="shortcomment cmt"><a href="BaseFhirDeIdentification.html#blackListEntities:org.apache.spark.ml.param.StringArrayParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification#blackListEntities">blackListEntities</a> param is not supported in FhirDeIdentification.</p><div class="fullcomment"><div class="comment cmt"><p><a href="BaseFhirDeIdentification.html#blackListEntities:org.apache.spark.ml.param.StringArrayParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification#blackListEntities">blackListEntities</a> param is not supported in FhirDeIdentification. Please use <a href="BaseFhirDeIdentification.html#mappingRules:com.johnsnowlabs.nlp.serialization.MapFeature[String,String]" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification#mappingRules">mappingRules</a> instead.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseFhirDeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification">BaseFhirDeIdentification</a> → <a href="../BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd><dt>Exceptions thrown</dt><dd><span class="cmt"></span></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#setConsistentAcrossNameParts" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setConsistentAcrossNameParts(value:Boolean):BaseDeidParams.this.type"></a><a id="setConsistentAcrossNameParts(Boolean):FhirDeIdentification.this.type"></a>
       <span class="permalink">
@@ -3469,10 +3840,10 @@ while age for patients 90 years or younger can remain unchanged.
       
       <p class="shortcomment cmt">Sets the value of <a href="../BaseDeidParams.html#consistentAcrossNameParts:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#consistentAcrossNameParts">consistentAcrossNameParts</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Sets the value of <a href="../BaseDeidParams.html#consistentAcrossNameParts:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#consistentAcrossNameParts">consistentAcrossNameParts</a>.
 </p></div><dl class="paramcmts block"><dt class="param">value</dt><dd class="cmt"><p>Boolean flag to enforce consistency across name parts</p></dd><dt>returns</dt><dd class="cmt"><p>this instance</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#setCountryObfuscation" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
-      <a id="setCountryObfuscation(value:Boolean):BaseDeidParams.this.type"></a><a id="setCountryObfuscation(Boolean):FhirDeIdentification.this.type"></a>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification#setCountryObfuscation" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setCountryObfuscation(value:Boolean):BaseFhirDeIdentification.this.type"></a><a id="setCountryObfuscation(Boolean):FhirDeIdentification.this.type"></a>
       <span class="permalink">
-      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#setCountryObfuscation(value:Boolean):BaseDeidParams.this.type" title="Permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#setCountryObfuscation(value:Boolean):BaseFhirDeIdentification.this.type" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -3484,11 +3855,7 @@ while age for patients 90 years or younger can remain unchanged.
         <span class="name">setCountryObfuscation</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification">FhirDeIdentification</a>.this.type</span>
       </span>
       
-      <p class="shortcomment cmt">Sets whether to obfuscate country entities or not.</p><div class="fullcomment"><div class="comment cmt"><p>Sets whether to obfuscate country entities or not.
-If true, country entities will be obfuscated using the Faker module.
-If false, country entities will be skipped during obfuscation.
-Default: false
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
+      <p class="shortcomment cmt"><a href="BaseFhirDeIdentification.html#countryObfuscation:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification#countryObfuscation">countryObfuscation</a> param is not supported in FhirDeIdentification.</p><div class="fullcomment"><div class="comment cmt"><p><a href="BaseFhirDeIdentification.html#countryObfuscation:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification#countryObfuscation">countryObfuscation</a> param is not supported in FhirDeIdentification. Please use <a href="BaseFhirDeIdentification.html#mappingRules:com.johnsnowlabs.nlp.serialization.MapFeature[String,String]" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification#mappingRules">mappingRules</a> instead.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseFhirDeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification">BaseFhirDeIdentification</a> → <a href="../BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd><dt>Exceptions thrown</dt><dd><span class="cmt"></span></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.LightDeIdentificationParams#setCustomFakers" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setCustomFakers(value:java.util.HashMap[String,java.util.List[String]]):com.johnsnowlabs.nlp.&lt;refinement&gt;.type"></a><a id="setCustomFakers(HashMap[String,List[String]]):FhirDeIdentification.this.type"></a>
       <span class="permalink">
@@ -3773,10 +4140,10 @@ This param effects only names.
 If value is true, it might decrease performance.
 Default: False
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#setGeoConsistency" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
-      <a id="setGeoConsistency(value:Boolean):BaseDeidParams.this.type"></a><a id="setGeoConsistency(Boolean):FhirDeIdentification.this.type"></a>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification#setGeoConsistency" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setGeoConsistency(value:Boolean):BaseFhirDeIdentification.this.type"></a><a id="setGeoConsistency(Boolean):FhirDeIdentification.this.type"></a>
       <span class="permalink">
-      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#setGeoConsistency(value:Boolean):BaseDeidParams.this.type" title="Permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#setGeoConsistency(value:Boolean):BaseFhirDeIdentification.this.type" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -3788,14 +4155,11 @@ Default: False
         <span class="name">setGeoConsistency</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification">FhirDeIdentification</a>.this.type</span>
       </span>
       
-      <p class="shortcomment cmt">Sets the value of <a href="../BaseDeidParams.html#geoConsistency:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#geoConsistency">geoConsistency</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Sets the value of <a href="../BaseDeidParams.html#geoConsistency:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#geoConsistency">geoConsistency</a>.
-When set to <code>true</code>, it enables consistent obfuscation across geographical entities
-such as state, city, street, zip, and phone.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification#setInputCol" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="setInputCol(value:String):FhirDeIdentification.this.type"></a><a id="setInputCol(String):FhirDeIdentification.this.type"></a>
+      <p class="shortcomment cmt"><a href="BaseFhirDeIdentification.html#geoConsistency:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification#geoConsistency">geoConsistency</a> param is not supported in FhirDeIdentification.</p><div class="fullcomment"><div class="comment cmt"><p><a href="BaseFhirDeIdentification.html#geoConsistency:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification#geoConsistency">geoConsistency</a> param is not supported in FhirDeIdentification.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseFhirDeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification">BaseFhirDeIdentification</a> → <a href="../BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd><dt>Exceptions thrown</dt><dd><span class="cmt"></span></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification#setInputCol" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setInputCol(value:String):BaseFhirDeIdentification.this.type"></a><a id="setInputCol(String):FhirDeIdentification.this.type"></a>
       <span class="permalink">
-      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#setInputCol(value:String):FhirDeIdentification.this.type" title="Permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#setInputCol(value:String):BaseFhirDeIdentification.this.type" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -3808,7 +4172,28 @@ such as state, city, street, zip, and phone.
       </span>
       
       <p class="shortcomment cmt">Set the input column name.</p><div class="fullcomment"><div class="comment cmt"><p>Set the input column name. The input column should contain the FHIR string.
-</p></div></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseFhirDeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification">BaseFhirDeIdentification</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#setIsRandomDateDisplacement" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setIsRandomDateDisplacement(s:Boolean):BaseDeidParams.this.type"></a><a id="setIsRandomDateDisplacement(Boolean):FhirDeIdentification.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#setIsRandomDateDisplacement(s:Boolean):BaseDeidParams.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setIsRandomDateDisplacement</span><span class="params">(<span name="s">s: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification">FhirDeIdentification</a>.this.type</span>
+      </span>
+      
+      <p class="shortcomment cmt">Use a random displacement days in dates entities,that random number is based on the <a href="../DeIdentificationParams.html#seed:org.apache.spark.ml.param.IntParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams#seed">DeIdentificationParams.seed</a>
+If true use random displacement days in dates entities, if false use the <a href="../DeIdentificationParams.html#days:org.apache.spark.ml.param.IntParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams#days">DeIdentificationParams.days</a>
+The default value is false.</p><div class="fullcomment"><div class="comment cmt"><p>Use a random displacement days in dates entities,that random number is based on the <a href="../DeIdentificationParams.html#seed:org.apache.spark.ml.param.IntParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams#seed">DeIdentificationParams.seed</a>
+If true use random displacement days in dates entities, if false use the <a href="../DeIdentificationParams.html#days:org.apache.spark.ml.param.IntParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams#days">DeIdentificationParams.days</a>
+The default value is false.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#setKeepMonth" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
       <a id="setKeepMonth(value:Boolean):BaseDeidParams.this.type"></a><a id="setKeepMonth(Boolean):FhirDeIdentification.this.type"></a>
       <span class="permalink">
@@ -3886,10 +4271,10 @@ Default: false.
 'en'(English),'de'(German), 'es'(Spanish), 'fr'(French), 'ar'(Arabic) or 'ro'(Romanian).
 Default:'en'
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification#setMappingRules" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="setMappingRules(value:java.util.HashMap[String,String]):FhirDeIdentification.this.type"></a><a id="setMappingRules(HashMap[String,String]):FhirDeIdentification.this.type"></a>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification#setMappingRules" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setMappingRules(value:java.util.HashMap[String,String]):BaseFhirDeIdentification.this.type"></a><a id="setMappingRules(HashMap[String,String]):FhirDeIdentification.this.type"></a>
       <span class="permalink">
-      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#setMappingRules(value:java.util.HashMap[String,String]):FhirDeIdentification.this.type" title="Permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#setMappingRules(value:java.util.HashMap[String,String]):BaseFhirDeIdentification.this.type" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -3901,11 +4286,11 @@ Default:'en'
         <span class="name">setMappingRules</span><span class="params">(<span name="value">value: <span class="extype" name="java.util.HashMap">HashMap</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification">FhirDeIdentification</a>.this.type</span>
       </span>
       
-      
-    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification#setMappingRules" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
-      <a id="setMappingRules(value:Map[String,String]):FhirDeIdentification.this.type"></a><a id="setMappingRules(Map[String,String]):FhirDeIdentification.this.type"></a>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseFhirDeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification">BaseFhirDeIdentification</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification#setMappingRules" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setMappingRules(value:Map[String,String]):BaseFhirDeIdentification.this.type"></a><a id="setMappingRules(Map[String,String]):FhirDeIdentification.this.type"></a>
       <span class="permalink">
-      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#setMappingRules(value:Map[String,String]):FhirDeIdentification.this.type" title="Permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#setMappingRules(value:Map[String,String]):BaseFhirDeIdentification.this.type" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -3922,7 +4307,7 @@ Supports all FHIR primitive types with built-in obfuscation strategies.</p><h5>R
   <span class="lit">"ResourceType.field.path"</span> -&gt; <span class="lit">"SupportedEntityClass"</span>,
 )</pre></div><dl class="paramcmts block"><dt class="param">value</dt><dd class="cmt"><p>A mapping between FHIR paths and target primitive types.
              Keys must use standard FHIR Path notation (dot-delimited).
-             Values must be one of the supported de-identification entity classes or given as a custom list.</p></dd></dl><dl class="attributes block"> <div class="block">Example:
+             Values must be one of the supported de-identification entity classes or given as a custom list.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseFhirDeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification">BaseFhirDeIdentification</a></dd><div class="block">Example:
                <ol><li class="cmt"><p>Basic Usage</p><pre><span class="kw">new</span> FhirDeIdentification()
   .setMappingRules(<span class="std">Map</span>(
      <span class="lit">"Patient.birthDate"</span> -&gt; <span class="lit">"Date"</span>,
@@ -3954,6 +4339,24 @@ Supports all FHIR primitive types with built-in obfuscation strategies.</p><h5>R
     asterix without brackets.</li><li>'fixed_length_chars': Replace the obfuscated entity with a masking sequence composed of
     a fixed number of asterisk.</li><li>'entity_labels_without_brackets': Replace the values with the entity value without brackets.</li><li>'same_length_chars_without_brackets': Replace the name with the asterix with same length without brackets.</li><li>Default: 'entity_labels'
 </li></ul></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../MaskingParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.MaskingParams">MaskingParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#setMaxRandomDisplacementDays" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setMaxRandomDisplacementDays(value:Int):BaseDeidParams.this.type"></a><a id="setMaxRandomDisplacementDays(Int):FhirDeIdentification.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#setMaxRandomDisplacementDays(value:Int):BaseDeidParams.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setMaxRandomDisplacementDays</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification">FhirDeIdentification</a>.this.type</span>
+      </span>
+      
+      <p class="shortcomment cmt">Sets <a href="../BaseDeidParams.html#maxRandomDisplacementDays:org.apache.spark.ml.param.IntParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#maxRandomDisplacementDays">maxRandomDisplacementDays</a> param
+</p><div class="fullcomment"><div class="comment cmt"><p>Sets <a href="../BaseDeidParams.html#maxRandomDisplacementDays:org.apache.spark.ml.param.IntParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#maxRandomDisplacementDays">maxRandomDisplacementDays</a> param
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#setMode" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
       <a id="setMode(m:String):BaseDeidParams.this.type"></a><a id="setMode(String):FhirDeIdentification.this.type"></a>
       <span class="permalink">
@@ -3974,10 +4377,10 @@ Supports all FHIR primitive types with built-in obfuscation strategies.</p><h5>R
                <ol><li class="cmt"><p>
   Given the following text: &quot;David Hale visited EEUU a couple of years ago&quot;</p><ul><li>Mask mode: &quot;<code>&lt;</code>PERSON<code>&gt;</code> visited <code>&lt;</code>COUNTRY<code>&gt;</code> a couple of years ago&quot;</li><li>Obfuscate mode: &quot;Bryan Johnson visited Japan a couple of years ago&quot;</li></ul></li></ol>
             </div></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification#setObfuscateDate" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
-      <a id="setObfuscateDate(s:Boolean):FhirDeIdentification.this.type"></a><a id="setObfuscateDate(Boolean):FhirDeIdentification.this.type"></a>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification#setObfuscateDate" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setObfuscateDate(s:Boolean):BaseFhirDeIdentification.this.type"></a><a id="setObfuscateDate(Boolean):FhirDeIdentification.this.type"></a>
       <span class="permalink">
-      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#setObfuscateDate(s:Boolean):FhirDeIdentification.this.type" title="Permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#setObfuscateDate(s:Boolean):BaseFhirDeIdentification.this.type" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -3989,7 +4392,7 @@ Supports all FHIR primitive types with built-in obfuscation strategies.</p><h5>R
         <span class="name">setObfuscateDate</span><span class="params">(<span name="s">s: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification">FhirDeIdentification</a>.this.type</span>
       </span>
       
-      <p class="shortcomment cmt"><a href="#obfuscateDate:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification#obfuscateDate">obfuscateDate</a> param is not supported in FhirDeIdentification.</p><div class="fullcomment"><div class="comment cmt"><p><a href="#obfuscateDate:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification#obfuscateDate">obfuscateDate</a> param is not supported in FhirDeIdentification. It is always true.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification">FhirDeIdentification</a> → <a href="../BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd><dt>Exceptions thrown</dt><dd><span class="cmt"></span></dd></dl></div>
+      <p class="shortcomment cmt"><a href="BaseFhirDeIdentification.html#obfuscateDate:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification#obfuscateDate">obfuscateDate</a> param is not supported in FhirDeIdentification.</p><div class="fullcomment"><div class="comment cmt"><p><a href="BaseFhirDeIdentification.html#obfuscateDate:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification#obfuscateDate">obfuscateDate</a> param is not supported in FhirDeIdentification. It is always true.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseFhirDeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification">BaseFhirDeIdentification</a> → <a href="../BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd><dt>Exceptions thrown</dt><dd><span class="cmt"></span></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#setObfuscateRefSource" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
       <a id="setObfuscateRefSource(s:String):BaseDeidParams.this.type"></a><a id="setObfuscateRefSource(String):FhirDeIdentification.this.type"></a>
       <span class="permalink">
@@ -4010,6 +4413,43 @@ The values are the following:
 'file': Takes the fakes from the obfuscatorRefFile
 'faker': Takes the fakes from the Faker module
 'both': Takes the fakes from the obfuscatorRefFile and the faker module randomly.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#setObfuscateZipByHipaa" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setObfuscateZipByHipaa(value:Boolean):BaseDeidParams.this.type"></a><a id="setObfuscateZipByHipaa(Boolean):FhirDeIdentification.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#setObfuscateZipByHipaa(value:Boolean):BaseDeidParams.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setObfuscateZipByHipaa</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification">FhirDeIdentification</a>.this.type</span>
+      </span>
+      
+      <p class="shortcomment cmt">Sets whether HIPAA Safe Harbor ZIP obfuscation rules should be applied.</p><div class="fullcomment"><div class="comment cmt"><p>Sets whether HIPAA Safe Harbor ZIP obfuscation rules should be applied.</p><p>Behavior:</p><ul><li><code>true</code>: Apply HIPAA rules as described in <a href="../BaseDeidParams.html#obfuscateZipByHipaa:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#obfuscateZipByHipaa">obfuscateZipByHipaa</a>: extract five digits, map restricted 3-digit prefixes to \&quot;000**\&quot;,
+    otherwise generalize to <code>XXX**</code>. The +4 portion will be masked with asterisks if present.</li><li><code>false</code>: Do **not** apply HIPAA Safe Harbor behavior; use the component's default/custom ZIP obfuscation instead.</li></ul><p>Implementation &amp; defaults:</p><ul><li>Default: <code>false</code> (HIPAA behavior is opt-in).  If you want HIPAA Safe Harbor behavior by default, change the default value where the parameter is declared.
+</li></ul></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#setObfuscateZipKeepDigits" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setObfuscateZipKeepDigits(value:Int):BaseDeidParams.this.type"></a><a id="setObfuscateZipKeepDigits(Int):FhirDeIdentification.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#setObfuscateZipKeepDigits(value:Int):BaseDeidParams.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setObfuscateZipKeepDigits</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification">FhirDeIdentification</a>.this.type</span>
+      </span>
+      
+      <p class="shortcomment cmt">Sets the number of leading ZIP code digits to preserve when applying HIPAA-based ZIP obfuscation.</p><div class="fullcomment"><div class="comment cmt"><p>Sets the number of leading ZIP code digits to preserve when applying HIPAA-based ZIP obfuscation.
+This parameter is only effective when <a href="../BaseDeidParams.html#obfuscateZipByHipaa:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#obfuscateZipByHipaa">obfuscateZipByHipaa</a> is enabled.</p><p>Behavior:</p><ul><li>Preserves the first <code>value</code> digits of the ZIP code.</li><li>Masks all remaining digits (including the ZIP+4 segment, if present) with asterisks (<code>*</code>).</li><li>Default: 3</li></ul><p>Examples:</p><ul><li>12345 → 123**</li><li>If <code>value = 2</code>: 12345 → 12***</li></ul><p>This setting overrides the default HIPAA Safe Harbor ZIP generalization pattern (<code>XXX**</code>)
+by allowing clients to customize how many digits remain unmasked under expert-determination requirements.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#setObfuscationEquivalents" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setObfuscationEquivalents(equivalents:java.util.ArrayList[java.util.ArrayList[String]]):BaseDeidParams.this.type"></a><a id="setObfuscationEquivalents(ArrayList[ArrayList[String]]):FhirDeIdentification.this.type"></a>
@@ -4105,10 +4545,10 @@ myDeidTransformer.setObfuscationEquivalents(equivalents)</pre></div><dl class="p
       <p class="shortcomment cmt">Sets the value of <a href="#parserType:org.apache.spark.ml.param.Param[String]" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification#parserType">parserType</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Sets the value of <a href="#parserType:org.apache.spark.ml.param.Param[String]" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification#parserType">parserType</a>. The parser type to parse the FHIR string.
 Supported types are <span class="extype" name="FhirParserTypes.ALL_PARSER_TYPES.mkString(&quot;,">&quot;)</span>.
 </p></div></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification#setRegion" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
-      <a id="setRegion(value:String):FhirDeIdentification.this.type"></a><a id="setRegion(String):FhirDeIdentification.this.type"></a>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification#setRegion" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setRegion(value:String):BaseFhirDeIdentification.this.type"></a><a id="setRegion(String):FhirDeIdentification.this.type"></a>
       <span class="permalink">
-      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#setRegion(value:String):FhirDeIdentification.this.type" title="Permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#setRegion(value:String):BaseFhirDeIdentification.this.type" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -4120,7 +4560,7 @@ Supported types are <span class="extype" name="FhirParserTypes.ALL_PARSER_TYPES.
         <span class="name">setRegion</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification">FhirDeIdentification</a>.this.type</span>
       </span>
       
-      <p class="shortcomment cmt"><a href="#region:org.apache.spark.ml.param.Param[String]" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification#region">region</a> param is not supported in FhirDeIdentification.</p><div class="fullcomment"><div class="comment cmt"><p><a href="#region:org.apache.spark.ml.param.Param[String]" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification#region">region</a> param is not supported in FhirDeIdentification. Please use <a href="#dateFormats:org.apache.spark.ml.param.StringArrayParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification#dateFormats">dateFormats</a> instead.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification">FhirDeIdentification</a> → <a href="../BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd><dt>Exceptions thrown</dt><dd><span class="cmt"></span></dd></dl></div>
+      <p class="shortcomment cmt"><a href="BaseFhirDeIdentification.html#region:org.apache.spark.ml.param.Param[String]" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification#region">region</a> param is not supported in FhirDeIdentification.</p><div class="fullcomment"><div class="comment cmt"><p><a href="BaseFhirDeIdentification.html#region:org.apache.spark.ml.param.Param[String]" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification#region">region</a> param is not supported in FhirDeIdentification. Please use <a href="BaseFhirDeIdentification.html#dateFormats:org.apache.spark.ml.param.StringArrayParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification#dateFormats">dateFormats</a> instead.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseFhirDeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification">BaseFhirDeIdentification</a> → <a href="../BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd><dt>Exceptions thrown</dt><dd><span class="cmt"></span></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#setSameLengthFormattedEntities" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
       <a id="setSameLengthFormattedEntities(entities:Array[String]):BaseDeidParams.this.type"></a><a id="setSameLengthFormattedEntities(Array[String]):FhirDeIdentification.this.type"></a>
       <span class="permalink">
@@ -4318,10 +4758,10 @@ The pairs must have exactly 3 elements: [original, entityType, fake].
       <p class="shortcomment cmt">The mode to use if the date is not formatted.</p><div class="fullcomment"><div class="comment cmt"><p>The mode to use if the date is not formatted. Options: [mask, obfuscate, skip] Default:
 obfuscate
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification#setUseShiftDays" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
-      <a id="setUseShiftDays(s:Boolean):FhirDeIdentification.this.type"></a><a id="setUseShiftDays(Boolean):FhirDeIdentification.this.type"></a>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification#setUseShiftDays" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setUseShiftDays(s:Boolean):BaseFhirDeIdentification.this.type"></a><a id="setUseShiftDays(Boolean):FhirDeIdentification.this.type"></a>
       <span class="permalink">
-      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#setUseShiftDays(s:Boolean):FhirDeIdentification.this.type" title="Permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#setUseShiftDays(s:Boolean):BaseFhirDeIdentification.this.type" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -4333,7 +4773,7 @@ obfuscate
         <span class="name">setUseShiftDays</span><span class="params">(<span name="s">s: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification">FhirDeIdentification</a>.this.type</span>
       </span>
       
-      <p class="shortcomment cmt"><a href="#useShiftDays:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification#useShiftDays">useShiftDays</a> param is not supported in FhirDeIdentification.</p><div class="fullcomment"><div class="comment cmt"><p><a href="#useShiftDays:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification#useShiftDays">useShiftDays</a> param is not supported in FhirDeIdentification. Please use <a href="#days:org.apache.spark.ml.param.IntParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification#days">days</a> instead.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification">FhirDeIdentification</a> → <a href="../BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd><dt>Exceptions thrown</dt><dd><span class="cmt"></span></dd></dl></div>
+      <p class="shortcomment cmt"><a href="BaseFhirDeIdentification.html#useShiftDays:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification#useShiftDays">useShiftDays</a> param is not supported in FhirDeIdentification.</p><div class="fullcomment"><div class="comment cmt"><p><a href="BaseFhirDeIdentification.html#useShiftDays:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification#useShiftDays">useShiftDays</a> param is not supported in FhirDeIdentification. Please use <a href="BaseFhirDeIdentification.html#days:org.apache.spark.ml.param.IntParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification#days">days</a> instead.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseFhirDeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification">BaseFhirDeIdentification</a> → <a href="../BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd><dt>Exceptions thrown</dt><dd><span class="cmt"></span></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams#shouldUseConsistentNameParts" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="shouldUseConsistentNameParts(entityClass:String):Boolean"></a><a id="shouldUseConsistentNameParts(String):Boolean"></a>
       <span class="permalink">
@@ -4384,6 +4824,22 @@ Each pair should contain three elements: original, entity type, and fake.
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification#throwUnSupportedError" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="throwUnSupportedError():Nothing"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#throwUnSupportedError():Nothing" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">throwUnSupportedError</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Nothing">Nothing</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="BaseFhirDeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification">BaseFhirDeIdentification</a></dd></dl></div>
     </li><li name="org.apache.spark.ml.util.Identifiable#toString" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toString():String"></a>
       <span class="permalink">
@@ -4400,7 +4856,7 @@ Each pair should contain three elements: original, entity type, and fake.
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Identifiable → AnyRef → Any</dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification#transform" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification#transform" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="transform(dataset:org.apache.spark.sql.Dataset[_]):org.apache.spark.sql.DataFrame"></a><a id="transform(Dataset[_]):DataFrame"></a>
       <span class="permalink">
       <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#transform(dataset:org.apache.spark.sql.Dataset[_]):org.apache.spark.sql.DataFrame" title="Permalink">
@@ -4415,7 +4871,7 @@ Each pair should contain three elements: original, entity type, and fake.
         <span class="name">transform</span><span class="params">(<span name="dataset">dataset: <span class="extype" name="org.apache.spark.sql.Dataset">Dataset</span>[_]</span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span></span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification">FhirDeIdentification</a> → Transformer</dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseFhirDeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification">BaseFhirDeIdentification</a> → Transformer</dd></dl></div>
     </li><li name="org.apache.spark.ml.Transformer#transform" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="transform(dataset:org.apache.spark.sql.Dataset[_],paramMap:org.apache.spark.ml.param.ParamMap):org.apache.spark.sql.DataFrame"></a><a id="transform(Dataset[_],ParamMap):DataFrame"></a>
       <span class="permalink">
@@ -4462,7 +4918,7 @@ Each pair should contain three elements: original, entity type, and fake.
                 <span class="name">@varargs</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification#transformSchema" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification#transformSchema" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="transformSchema(schema:org.apache.spark.sql.types.StructType):org.apache.spark.sql.types.StructType"></a><a id="transformSchema(StructType):StructType"></a>
       <span class="permalink">
       <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification.html#transformSchema(schema:org.apache.spark.sql.types.StructType):org.apache.spark.sql.types.StructType" title="Permalink">
@@ -4477,7 +4933,7 @@ Each pair should contain three elements: original, entity type, and fake.
         <span class="name">transformSchema</span><span class="params">(<span name="schema">schema: <span class="extype" name="org.apache.spark.sql.types.StructType">StructType</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.types.StructType">StructType</span></span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification">FhirDeIdentification</a> → PipelineStage</dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseFhirDeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification">BaseFhirDeIdentification</a> → PipelineStage</dd></dl></div>
     </li><li name="org.apache.spark.ml.PipelineStage#transformSchema" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="transformSchema(schema:org.apache.spark.sql.types.StructType,logging:Boolean):org.apache.spark.sql.types.StructType"></a><a id="transformSchema(StructType,Boolean):StructType"></a>
       <span class="permalink">
@@ -4643,7 +5099,9 @@ obfuscate
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="com.johnsnowlabs.nlp.ParamsAndFeaturesWritable">
+        <div class="parent" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification">
+              <h3>Inherited from <a href="BaseFhirDeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification">BaseFhirDeIdentification</a></h3>
+            </div><div class="parent" name="com.johnsnowlabs.nlp.ParamsAndFeaturesWritable">
               <h3>Inherited from <span class="extype" name="com.johnsnowlabs.nlp.ParamsAndFeaturesWritable">ParamsAndFeaturesWritable</span></h3>
             </div><div class="parent" name="org.apache.spark.ml.util.DefaultParamsWritable">
               <h3>Inherited from <span class="extype" name="org.apache.spark.ml.util.DefaultParamsWritable">DefaultParamsWritable</span></h3>

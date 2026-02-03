@@ -307,6 +307,96 @@ nlpPipeline = Pipeline(stages=[
 
 </div><div class="h3-box" markdown="1">
 
+### Benchmarking ML Model Architectures (TensorFlow • ONNX • OpenVINO) Across CPU and GPU
+
+This benchmark evaluates the performance of Spark NLP for Healthcare models across three different architectures (TensorFlow, ONNX, OpenVINO) on both CPU and GPU hardware. 
+Key findings show ONNX consistently delivers superior performance on GPU environments, while OpenVINO excels in CPU-only scenarios for supported models.
+
+- **Datasets:**
+  - **MTSamples Dataset:** 1,000 clinical texts, ~500 tokens per text
+    - *Usage:* General NER and embedding benchmarks
+  - **Assertion Test Dataset:** 7,570 labeled rows
+    - *Usage:* BertForAssertionClassification evaluation
+- **Versions:**
+  - **spark-nlp Version:** v6.1.1
+  - **spark-nlp-jsl Version :** v6.1.0
+  - **Spark Version :** v3.5.1
+- **Instance Types:**
+  - **CPU Machine:** Colab V6e-1, 173.0 GB RAM, 44 vCPUs
+  - **GPU Machine:** Colab A100, 83.5 GB RAM, 40.0 GB GPU VRAM, 12 vCPUs
+- **Models Tested:**
+  - **BertSentenceEmbeddings** → `sbiobert_base_cased_mli`
+  - **MedicalBertForSequenceClassification** → `bert_sequence_classifier_ade`
+  - **BertForAssertionClassification** → `assertion_bert_classification_oncology`
+  - **MedicalBertForTokenClassifier** → `bert_token_classifier_ner_clinical`
+  - **PretrainedZeroShotNER** → `zeroshot_ner_deid_subentity_merged_medium`
+  - **WordEmbeddings + MedicalNerModel** → `embeddings_clinical` + `ner_deid_subentity_augmented`
+  - **WordEmbeddings + 2 MedicalNerModel** → `embeddings_clinical` + `ner_deid_subentity_augmented` + `ner_deid_generic_docwise`
+
+- **NOTES:**
+  - This benchmark compares Transformer architectures and ML models across CPU and GPU environments
+  - **Hardware Context:** CPU and GPU machines differ in cores and memory; comparisons should consider these hardware variations
+  - **Preprocessing:** DocumentAssembler, SentenceDetector, and Tokenizer stages were pre-processed; reported times reflect pure model execution
+  - **Configuration:** All models executed with default settings
+  - **Timing Methodology:**
+    ```python
+    %%timeit -n 3 -r 1
+    model.write.mode("overwrite").format("noop").save()
+    ```
+  - **Results:** Numbers represent average execution times across runs
+- **Base Pipeline Configuration:**
+  ```python
+  basePipeline = Pipeline(
+      stages=[
+          documentAssembler,
+          sentenceDetector,
+          tokenizer
+      ])
+  ```
+
+</div><div class="h3-box" markdown="1">
+
+#### CPU Benchmarking
+
+{:.table-model-big}
+| Model                                |TensorFlow         | ONNX             | OpenVINO         |
+|:-------------------------------------|------------------:|-----------------:|-----------------:|
+| BertSentenceEmbeddings               |      8 min 37 sec |     4 min 46 sec |     3 min 31 sec |
+| MedicalBertForSequenceClassification |      3 min 30 sec |     2 min 47 sec |              N/A |
+| BertForAssertionClassification       |            57 sec |           33 sec |              N/A |
+| MedicalBertForTokenClassifier        |      3 min 29 sec |     2 min 46 sec |              N/A |
+| PretrainedZeroShotNER                |               N/A |    38 min 10 sec |              N/A |
+| WordEmbeddings + MedicalNerModel     |            25 sec |              N/A |              N/A |
+| WordEmbeddings + 2 MedicalNerModel   |            38 sec |              N/A |              N/A |
+
+</div><div class="h3-box" markdown="1">
+
+#### GPU Benchmarking
+
+{:.table-model-big}
+| Model                                |TensorFlow         | ONNX             | OpenVINO         |
+|:-------------------------------------|------------------:|-----------------:|-----------------:|
+| BertSentenceEmbeddings               |     28 min 50 sec |           12 sec |    18 min 49 sec |
+| MedicalBertForSequenceClassification |     11 min 45 sec |           28 sec |              N/A |
+| BertForAssertionClassification       |      3 min 24 sec |            8 sec |              N/A |
+| MedicalBertForTokenClassifier        |     11 min 47 sec |           26 sec |              N/A |
+| PretrainedZeroShotNER                |               N/A |      1 min 1 sec |              N/A |
+| WordEmbeddings + MedicalNerModel     |      2 min 24 sec |              N/A |              N/A |
+| WordEmbeddings + 2 MedicalNerModel   |       4 min 8 sec |              N/A |              N/A |
+
+</div><div class="h3-box" markdown="1">
+
+#### Key Performance Insights
+
+- **TensorFlow Baseline:** Reference performance with full model support
+- **Model Support:** TensorFlow provides the broadest model compatibility, while ONNX and OpenVINO have selective support
+- **ONNX Advantage:** Consistently fastest on GPU across all supported models
+- **OpenVINO Efficiency:** Best CPU performance for BertSentenceEmbeddings
+- **GPU vs CPU:** ONNX shows dramatic GPU acceleration (e.g., BertSentenceEmbeddings: 28min → 12sec)
+- **Note:** Benchmark results may vary based on hardware specifications, model versions, and system configurations. These results are specific to the tested environment and should be used as a relative performance guide.
+
+</div><div class="h3-box" markdown="1">
+
 ### NER speed benchmarks across various Spark NLP and PySpark versions
 
 This experiment compares the ClinicalNER runtime for different versions of `PySpark` and `Spark NLP`. 
@@ -533,6 +623,36 @@ resolver_pipeline = PipelineModel(
 
 ## Deidentification Benchmarks
 
+### Clinical De-identification – Most Up-to-Date Pipelines
+
+- **GPU setup:**
+  - A100 GPU
+  - 48 Spark partitions
+- **CPU setup:**
+  - Colab CPU High-RAM
+  - 32 Spark partitions
+- **Input Data Count:** 1000 clinical documents
+- **Average Token Count:** 503 tokens per document
+
+> **Note:** The input data count and average token count are used for **end-to-end speed benchmarking** and are consistent across all pipeline configurations to ensure a fair runtime comparison.
+
+{:.table-model-big.db}
+| pipeline                                                             | GPU<br>wall time | CPU<br>wall time | Paper<br>precision | Paper<br>recall | Paper<br>F1-score | Surrogate<br>precision | Surrogate<br>recall | Surrogate<br>F1-score | pipeline content |
+|----------------------------------------------------------------------|------------------:|------------------:|-------------------:|----------------:|------------------:|----------------------:|-------------------:|---------------------:|-----------------|
+| clinical_deidentification_docwise_benchmark_optimized                | 5 min 15 sec     | 8 min 55 sec     | 0.93               | 0.93            | 0.93              | 0.92                  | 0.96               | 0.94                 | 21 rule-based annotators<br>4 NER |
+| clinical_deidentification_docwise_benchmark_medium                   | 4 min 38 sec     | 32 min 57 sec    | 0.90               | 0.97            | 0.93              | 0.87                  | 0.96               | 0.91                 | 21 rule-based annotators<br>3 NER + 1 Zero-shot (medium) |
+| clinical_deidentification_docwise_benchmark_medium_v2                | 3 min 42 sec     | 37 min 56 sec    | 0.91               | 0.96            | 0.93              | 0.86                  | 0.93               | 0.90                 | 21 rule-based annotators<br>2 NER + Zero-shot Chunker |
+| clinical_deidentification_docwise_zeroshot_medium                    | 26.7 sec         | 27 min           | 0.92               | 0.94            | 0.93              | 0.86                  | 0.90               | 0.88                 | 21 rule-based annotators<br>Zero-shot Chunker (medium) |
+| clinical_deidentification_docwise_SingleStage_zeroshot_medium        | 33.1 sec         | 26 min 41 sec    | 0.92               | 0.91            | 0.92              | 0.87                  | 0.88               | 0.88                 | Zero-shot Chunker (medium) |
+| clinical_deidentification_docwise_benchmark_large                    | 4 min 51 sec     | 2 h 10 min       | 0.90               | 0.97            | 0.94              | 0.88                  | 0.96               | 0.92                 | 21 rule-based annotators<br>3 NER + 1 Zero-shot (large) |
+| clinical_deidentification_docwise_benchmark_large_v2                 | 3 min 46 sec     | 1 h 32 min       | 0.92               | 0.98            | 0.95              | 0.87                  | 0.94               | 0.91                 | 21 rule-based annotators<br>2 NER + Zero-shot Chunker |
+| clinical_deidentification_docwise_zeroshot_large                     | 43.8 sec         | 1 h 18 min       | 0.93               | 0.97            | 0.95              | 0.87                  | 0.93               | 0.90                 | 21 rule-based annotators<br>Zero-shot Chunker (large) |
+| clinical_deidentification_docwise_SingleStage_zeroshot_large         | 41.1 sec         | 1 h 15 min       | 0.93               | 0.95            | 0.94              | 0.88                  | 0.92               | 0.90                 | Zero-shot Chunker (large) |
+
+> This table reports end-to-end runtime and token-level precision, recall, and F1-score for the most up-to-date clinical de-identification pipelines.
+
+</div><div class="h3-box" markdown="1">
+
 ### Deidentification Comparison Experiment on Clusters
  
 - **Dataset:** 1000 Clinical Texts from MTSamples, approx. 503 tokens and 6 chunks per text.
@@ -643,6 +763,7 @@ deid_pipeline = Pipeline().setStages([
         -  96 CPU Cores 334GiB RAM (Colab Pro - v2-8 TPU High RAM)
 
 
+</div><div class="h3-box" markdown="1">
 
 ## Processing Time by Partition Size 
 
@@ -816,6 +937,264 @@ Estimated Minimum Costs:
 - EC2 Instance  Optimized Pipeline: partition number: 1024, 10K cost:**$0.18**, 1M cost:**$17.85** 
 - DataBricks Base Pipeline: partition number: 1024, 10K cost:**$0.46**, 1M cost:**$45.76** 
 - DataBricks  Optimized Pipeline: partition number: 1024, 10K cost:**$0.27**, 1M cost:**$27.13** 
+
+</div><div class="h3-box" markdown="1">
+
+## Deidentification Pipelines Speed Comparison on Databrics-AWS
+
+</div><div class="h3-box" markdown="1">
+
+### Deidentification Pipelines Benchmarks
+
+These pipelines can be used to deidentify PHI information from medical texts. The PHI information will be masked and obfuscated. It also provides valuable insights into the efficiency and scalability of deidentification pipelines in different computational environments on Databrics.
+
+</div><div class="h3-box" markdown="1">
+
+### Dataset
+
+Dataset is created by merging 1100 different clinical notes, 360.000+ NER Medical Reports, 110.000+ Masked PII notes.
+
+Total rows: 478527
+
+Avg text length: 152.71
+
+Total token size: 11.705.890
+
+Avg tokens per row: 24,46
+
+</div><div class="h3-box" markdown="1">
+
+### Versions
+
+spark-nlp Version: v6.2.2
+
+spark-nlp-jsl Version: v6.2.1
+
+Databricks Runtime: 16.4 LTS (includes Apache Spark 3.5.2, Scala 2.12)
+
+</div><div class="h3-box" markdown="1">
+
+### Instance Type
+
+Databrics-AWS Config with CPU/GPU Options
+
+- (CPU)
+
+    Worker Type: m5d.2xlarge 32 GB Memory, 8 Cores, 8 Workers
+
+- (GPU)
+
+    Worker Type: g4dn.2xlarge[T4] 32 GB Memory, 1 GPU, 8 Workers
+
+</div><div class="h3-box" markdown="1">
+
+### [Clinical Deidentification Pipeline Benchmark (Document Wise) (Large)](https://nlp.johnsnowlabs.com/2025/07/25/clinical_deidentification_docwise_benchmark_large_en.html)
+
+Included Models
+
+- DocumentAssembler
+- InternalDocumentSplitter
+- 2*TokenizerModel
+- WordEmbeddingsModel
+- **3*MedicalNerModel**
+- 4*NerConverterInternalModel
+- **PretrainedZeroShotNER (large)**
+- 3*ChunkMergeModel
+- 13*ContextualParserModel
+- 4*RegexMatcherInternalModel
+- 2*TextMatcherInternalModel
+- 2*LightDeIdentification
+
+</div><div class="h3-box" markdown="1">
+
+### [Clinical Deidentification Pipeline Benchmark (Document Wise) (Medium)](https://nlp.johnsnowlabs.com/2025/07/31/clinical_deidentification_docwise_benchmark_medium_en.html)
+
+Included Models
+
+- DocumentAssembler
+- InternalDocumentSplitter
+- 2*TokenizerModel
+- WordEmbeddingsModel
+- **3*MedicalNerModel**
+- 4*NerConverterInternalModel
+- **PretrainedZeroShotNER (medium)**
+- 3*ChunkMergeModel
+- 13*ContextualParserModel
+- 4*RegexMatcherInternalModel
+- 2*TextMatcherInternalModel
+- 2*LightDeIdentification
+
+</div><div class="h3-box" markdown="1">
+
+### [Clinical Deidentification Pipeline Benchmark (Document Wise) (Optimized)](https://nlp.johnsnowlabs.com/2025/06/19/clinical_deidentification_docwise_benchmark_optimized_en.html)
+
+Included Models
+
+- DocumentAssembler
+- InternalDocumentSplitter
+- 2*TokenizerModel
+- WordEmbeddingsModel
+- **4*MedicalNerModel**
+- 4*NerConverterInternalModel
+- 3*ChunkMergeModel
+- 13*ContextualParserModel
+- 4*RegexMatcherInternalModel
+- 2*TextMatcherInternalModel
+- 2*LightDeIdentification
+
+</div><div class="h3-box" markdown="1">
+
+### CPU Runtime Comparison of Large, Medium and Optimized Pipelines
+
+{:.table-model-big}
+| Model |  Infrastructure | Runtime | Batch Size |
+|-------|----------------:|--------:|-----------:|
+| clinical_deidentification_docwise_benchmark_large_en | CPU  | 9h 23m 54s | 32 |
+| clinical_deidentification_docwise_benchmark_medium_en | CPU  | 3h 7m 19s | 32 |
+| clinical_deidentification_docwise_benchmark_optimized_en | CPU  | 26m 6s | 32 |
+
+</div><div class="h3-box" markdown="1">
+
+### CPU & GPU Runtime Comparison of Medium Pipeline
+
+{:.table-model-big}
+| Model |  Infrastructure | Runtime | Batch Size |
+|-------|----------------:|--------:|-----------:|
+| clinical_deidentification_docwise_benchmark_medium_en | GPU  | 1h 2m 35s | 8 |
+| clinical_deidentification_docwise_benchmark_medium_en | CPU  | 3h 7m 19s | 32 |
+
+</div><div class="h3-box" markdown="1">
+
+### Run Speed Test and Benchmark Results
+
+- These benchmarks demonstrate the computational impact of pipeline design and infrastructure choice on large-scale clinical deidentification workloads executed on Databricks-AWS. Using a substantial and diverse clinical corpus (~478K documents, ~11.7M tokens), the results highlight clear performance trade-offs.
+
+- Pipeline complexity is the primary driver of runtime. The Large pipeline, with the most extensive model stack, exhibits the highest execution time (9.4 hours on CPU). The Medium pipeline achieves a notable reduction (~3.1 hours on CPU), while the Optimized pipeline delivers a step-change improvement, completing in ~26 minutes on CPU due to architectural simplifications and reduced model overhead.
+
+- GPU acceleration further enhances performance for the Medium pipeline, reducing execution time from ~3.1 hours (CPU) to ~1.0 hour (GPU), even with a smaller batch size. This indicates that GPU utilization effectively mitigates inference bottlenecks in moderately complex NLP pipelines.
+
+**Overall, the findings emphasize that pipeline optimization yields greater performance gains than hardware scaling alone, while GPU resources provide additional, complementary speedups when applied to appropriately balanced pipeline configurations.**
+
+</div><div class="h3-box" markdown="1">
+
+## Pretrained Zero-Shot Named Entity Recognition (NER) Deidentification Subentity Speed Comparison on Databrics-AWS
+
+</div><div class="h3-box" markdown="1">
+
+### Zero-shot NER Run Speed Test
+
+Zero-shot Named Entity Recognition (NER) enables the identification of entities in text with minimal effort. By leveraging pre-trained language models and contextual understanding, zero-shot NER extends entity recognition capabilities to new domains and languages.
+
+This experiment compares the Pretrained Zero-shot NER runtime for CPU and GPU clusters on Databrics-AWS environment.
+
+</div><div class="h3-box" markdown="1">
+
+### Models to be tested
+
+[zeroshot_ner_deid_subentity_merged_medium](https://nlp.johnsnowlabs.com/2024/11/27/zeroshot_ner_deid_subentity_merged_medium_en.html)
+
+[zeroshot_ner_deid_subentity_merged_large](https://nlp.johnsnowlabs.com/2024/12/17/zeroshot_ner_deid_subentity_merged_large_en.html)
+
+</div><div class="h3-box" markdown="1">
+
+### Dataset
+
+Dataset is created by merging 1100 different clinical notes, 360.000+ NER Medical Reports, 110.000+ Masked PII notes.
+
+Total rows: 478527
+
+Avg text length: 152.71
+
+Total token size: 11.705.890
+
+Avg tokens per row: 24,46
+
+</div><div class="h3-box" markdown="1">
+
+### Versions
+
+spark-nlp Version: v6.2.2
+
+spark-nlp-jsl Version: v6.2.1
+
+Databricks Runtime: 16.4 LTS (includes Apache Spark 3.5.2, Scala 2.12)
+
+</div><div class="h3-box" markdown="1">
+
+### Instance Type
+
+Databrics-AWS Config with CPU/GPU Options
+
+- (CPU)
+
+    Worker Type: m5d.2xlarge 32 GB Memory, 8 Cores, 8 Workers
+
+- (GPU)
+
+    Worker Type: g4dn.2xlarge[T4] 32 GB Memory, 1 GPU, 8 Workers
+
+</div><div class="h3-box" markdown="1">
+
+### Spark NLP Pipeline
+
+```
+ nlpPipeline = Pipeline(stages=[
+            DocumentAssembler,
+            InternalDocumentSplitter,
+            Tokenizer,
+            PretrainedZeroShotNER
+            ])
+```
+
+</div><div class="h3-box" markdown="1">
+
+### Zero-shot Medium Model CPU & GPU Runtime Comparison
+
+{:.table-model-big}
+| Model | Infrastructure | Runtime | Batch Size |
+|-------|---------------:|--------:|-----------:|
+| zeroshot_ner_deid_subentity_merged_medium_en | CPU  | 2h 47m 24s | 32 |
+| zeroshot_ner_deid_subentity_merged_medium_en | GPU  | 6m 26s | 32 |
+
+</div><div class="h3-box" markdown="1">
+
+### Zero-shot Medium Model Batch Size Comparison via GPU Cluster
+
+{:.table-model-big}
+| Model | Infrastructure | Runtime | Batch Size |
+|-------|---------------:|--------:|-----------:|
+| zeroshot_ner_deid_subentity_merged_medium_en | GPU  | 6m 26s | 32 |
+| zeroshot_ner_deid_subentity_merged_medium_en | GPU  | 12m 3s | 8 |
+
+</div><div class="h3-box" markdown="1">
+
+### Zero-shot Medium & Large Models GPU Runtime Comparison
+
+{:.table-model-big}
+| Model | Infrastructure | Runtime | Batch Size |
+|-------|---------------:|--------:|-----------:|
+| zeroshot_ner_deid_subentity_merged_medium_en | GPU  | 12m 3s | 8 |
+| zeroshot_ner_deid_subentity_merged_large_en | GPU  | 30m 23s | 8 |
+
+</div><div class="h3-box" markdown="1">
+
+### Run Speed Test Results
+
+These results highlight the significant impact of GPU acceleration, batch size tuning, and model scale on deidentification pipeline runtime.
+
+- CPU vs GPU (Medium model):
+
+GPU execution provides an orders-of-magnitude speedup, reducing runtime from ~2.8 hours on CPU to ~6.5 minutes on GPU at the same batch size. This clearly indicates that the Medium model is compute-bound on CPU and highly optimized for GPU inference.
+
+- GPU batch size comparison (Medium model):
+
+Increasing the batch size from 8 to 32 nearly halves the runtime (from ~12.0 minutes to ~6.4 minutes). This demonstrates that throughput scales efficiently with larger batches on GPU, provided memory constraints are respected.
+
+- Medium vs Large model on GPU:
+
+At the same batch size (8), the Large model requires ~30.4 minutes, compared to ~12.0 minutes for the Medium model. This reflects the expected cost of increased model complexity, confirming a direct trade-off between model capacity and inference speed.
+
+**Overall, the findings show that GPU usage is essential for production-scale runs, batch size optimization is critical for maximizing GPU efficiency, and model size should be selected based on the required balance between accuracy and runtime performance.**
 
 </div><div class="h3-box" markdown="1">
 
@@ -1388,3 +1767,6 @@ These findings unequivocally affirm Spark NLP's superiority for NER extraction t
 *SpaCy with pandas UDFs*: Development might be more straightforward since you're essentially working with Python functions. However, maintaining optimal performance with larger datasets and ensuring scalability can be tricky.
 
 </div>
+
+
+

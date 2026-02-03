@@ -13,9 +13,9 @@ header:
   - title: Demo
     url: /demos
     key: demo
-  - title: '<span style="color: #FF8A00;"><i class = "fas fa-search fa-2x"></i></span>'
+  - title: '<span style="color:#FF8A00;"><i class = "fas fa-search fa-2x"></i></span>'
     url: /search
-  - title: '<span style="color: #FF8A00;"><i class = "fab fa-github fa-2x"></i></span>'
+  - title: '<span style="color:#FF8A00;"><i class = "fab fa-github fa-2x"></i></span>'
     url: https://github.com/JohnSnowLabs/spark-nlp
   - title: '<span style="color: #FF8A00;"><i class="fab fa-slack-hash fa-2x"></i></span>'
     url: https://join.slack.com/t/spark-nlp/shared_invite/zt-198dipu77-L3UWNe_AJ8xqDk0ivmih5Q
@@ -101,6 +101,8 @@ medical-llm:
         url: /docs/en/LLMs/on_aws
       - title: Deploy on Azure
         url: /docs/en/LLMs/on_azure
+      - title: Deploy on Databricks
+        url: /docs/en/LLMs/on_databricks
       - title: Deploy on Snowflake
         url: /docs/en/LLMs/on_snowflake
       - title: Support
@@ -140,7 +142,7 @@ term-server:
       - title: Support
         url: /docs/en/terminology_server/support
       - title: Release Notes
-        url: /docs/en/terminology_server/release_notes
+        url: /docs/en/terminology_server/release/latest_release
 
 annotation-lab:
   - title: Generative AI Lab
@@ -287,12 +289,14 @@ sparknlp-healthcare:
         url: /licensed/api/
       - title: Python API (Sphinx)
         url: /licensed/api/python
+      - title: Healthcare NLP Example Notebooks
+        url: /docs/en/healthcare-nlp-example-notebooks
       - title: Wiki
         url: /docs/en/wiki
       - title: Benchmarks
         url: /docs/en/benchmark   
-      - title: Benchmarks LLM
-        url: /docs/en/benchmark-llm 
+      - title: Medical Small LLMs
+        url: /docs/en/medical-small-llms
       - title: Best Practices Using Pretrained Models Together
         url: /docs/en/best_practices_pretrained_models
       - title: Release Notes 

@@ -31,6 +31,9 @@ Visit the [product page on AWS Marketplace](https://aws.amazon.com/marketplace/p
 
   ![Terminology Service Loading](/assets/images/term_server/loading.png)
 
-  <b>Once the services are up, you will be automatically redirected to the Terminology Server UI where you can start using it.</b>
+
+- Once the services are up, you can login to the Terminology Server UI using the following credentials:
+  - Username: admin@term.server
+  - Password: <<instance_id>> (You can find the instance id in the AWS EC2 console)
 
   ![Terminology Service UI](/assets/images/term_server/ui.png)

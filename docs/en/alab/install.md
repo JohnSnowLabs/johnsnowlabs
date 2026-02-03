@@ -6,7 +6,7 @@ seotitle: Generative AI Lab | John Snow Labs
 title: Installation
 permalink: /docs/en/alab/install
 key: docs-training
-modify_date: "2024-11-15"
+modify_date: "2025-11-27"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
@@ -45,7 +45,7 @@ Visit the [product page on AWS Marketplace](https://aws.amazon.com/marketplace/p
 **Steps to get started:**
 - Subscribe to the product on the AWS Marketplace.
 - Deploy it on a new machine.
-- In Launch an instance configuration attach IAM role to the AMI (IAM role attached to the AMI machine should have access to both `aws-marketplace:MeterUsage` and `ec2:DescribeInstanceTypes` permission)
+- In Launch an instance configuration attach an IAM role to the AMI. The IAM role should include `aws-marketplace:MeterUsage`, `ec2:DescribeInstanceTypes`, and S3 access permissions (`s3:ListBucket`, `s3:GetObject`, `s3:PutObject`) if you plan to import or export data. Generative AI Lab automatically uses the instance’s IAM role for S3 access, so no AWS credentials need to be entered or stored.
 
   ![IAM](/assets/images/annotation_lab/iam.png)
     
@@ -60,6 +60,8 @@ Visit the [product page on AWS Marketplace](https://aws.amazon.com/marketplace/p
 <div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item">{%- include extensions/youtube.html id='tBXM_2nTLwk' -%}<div class="video-descr">Deploy Generative AI Lab via AWS Marketplace</div></div></div>
 
 </div><div class="h3-box" markdown="1">
+
+- Azure Marketplace now also provides a CPU-only deployment option for users who do not require GPU resources. This enables more flexible and cost-efficient deployments while maintaining full functionality. The deployment process and UI remain identical; simply select a CPU-based instance size when creating the cluster.
 
 ## Secure access to Generative AI Lab on AWS
 

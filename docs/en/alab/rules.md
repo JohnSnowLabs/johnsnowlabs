@@ -6,7 +6,7 @@ seotitle: Generative AI Lab | John Snow Labs
 title: Rules
 permalink: /docs/en/alab/rules
 key: docs-training
-modify_date: "2022-12-11"
+modify_date: "2025-11-27"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:

@@ -28,7 +28,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../../../static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../../../../../../static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../../../../../static/graphviz.css?v=eafc0fe6" />
     <link rel="stylesheet" type="text/css" href="../../../../../../../static/css/custom.css?v=e1fb877f" />
@@ -580,15 +580,15 @@ on test/validation dataset or the value of loss.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sparknlp</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp.base</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp_jsl.common</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp.annotator</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp.training</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sparknlp_jsl</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp_jsl.base</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp_jsl.annotator</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">sparknlp</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sparknlp.base</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sparknlp_jsl.common</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sparknlp.annotator</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sparknlp.training</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">sparknlp_jsl</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sparknlp_jsl.base</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sparknlp_jsl.annotator</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pyspark.ml</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pipeline</span>
 </pre></div>
 </div>
 <p>First extract the prerequisites for the NerDLApproach</p>
@@ -747,6 +747,11 @@ on test/validation dataset or the value of loss.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.optimizePartitioning">
+<span class="sig-name descname"><span class="pre">optimizePartitioning</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.optimizePartitioning" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.optionalInputAnnotatorTypes">
 <span class="sig-name descname"><span class="pre">optionalInputAnnotatorTypes</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.optionalInputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -774,6 +779,11 @@ on test/validation dataset or the value of loss.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.po">
 <span class="sig-name descname"><span class="pre">po</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.po" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.prefetchBatches">
+<span class="sig-name descname"><span class="pre">prefetchBatches</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.prefetchBatches" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -1326,6 +1336,15 @@ RecursivePipeline</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setOptimizePartitioning">
+<span class="sig-name descname"><span class="pre">setOptimizePartitioning</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setOptimizePartitioning" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to repartition the dataset before training for optimal performance.
+Has no effect if memory optimizer is disabled.
+:param value: Whether to optimize partitioning
+:type value: bool</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setOutputCol">
 <span class="sig-name descname"><span class="pre">setOutputCol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setOutputCol" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets output column name of annotations.</p>
@@ -1379,6 +1398,15 @@ RecursivePipeline</p>
 <dd class="field-odd"><p><strong>value</strong> (<em>float</em>) – Learning rate decay coefficient</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setPrefetchBatches">
+<span class="sig-name descname"><span class="pre">setPrefetchBatches</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setPrefetchBatches" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets number of batches to prefetch while training using memory optimizer.
+Has no effect if memory optimizer is disabled.
+:param value: Number of batches to prefetch
+:type value: int</p>
 </dd></dl>
 
 <dl class="py method">
@@ -1590,15 +1618,15 @@ the score of the predicted tag, by default False</p></li>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sparknlp</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp.base</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp_jsl.common</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp.annotator</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp.training</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sparknlp_jsl</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp_jsl.base</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp_jsl.annotator</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">sparknlp</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sparknlp.base</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sparknlp_jsl.common</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sparknlp.annotator</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sparknlp.training</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">sparknlp_jsl</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sparknlp_jsl.base</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sparknlp_jsl.annotator</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pyspark.ml</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pipeline</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">documentAssembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span> \
 <span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s2">&quot;text&quot;</span><span class="p">)</span> \
 <span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;document&quot;</span><span class="p">)</span>
@@ -2183,12 +2211,14 @@ If the value is True, the process might be slowed down.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.lr"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.lr</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.maxEpochs"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.maxEpochs</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.minEpochs"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.minEpochs</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.optimizePartitioning"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.optimizePartitioning</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.optionalInputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.optionalInputAnnotatorTypes</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.outputAnnotatorType"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.outputAnnotatorType</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.outputCol"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.outputCol</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.outputLogsPath"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.outputLogsPath</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.overrideExistingTags"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.overrideExistingTags</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.po"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.po</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.prefetchBatches"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.prefetchBatches</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.pretrainedModelPath"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.pretrainedModelPath</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.randomSeed"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.randomSeed</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.randomValidationSplitPerEpoch"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.randomValidationSplitPerEpoch</span></code></a></li>
@@ -2247,11 +2277,13 @@ If the value is True, the process might be slowed down.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setLr"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setLr()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setMaxEpochs"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setMaxEpochs()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setMinEpochs"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setMinEpochs()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setOptimizePartitioning"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setOptimizePartitioning()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setOutputCol"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setOutputCol()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setOutputLogsPath"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setOutputLogsPath()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setOverrideExistingTags"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setOverrideExistingTags()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setParamValue"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setParamValue()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setPo"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setPo()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setPrefetchBatches"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setPrefetchBatches()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setPretrainedModelPath"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setPretrainedModelPath()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setRandomSeed"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setRandomSeed()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setRandomValidationSplitPerEpoch"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setRandomValidationSplitPerEpoch()</span></code></a></li>

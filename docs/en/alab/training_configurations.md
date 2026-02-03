@@ -6,7 +6,7 @@ seotitle: Generative AI Lab | John Snow Labs
 title: Train New Model
 permalink: /docs/en/alab/training_configurations
 key: docs-training
-modify_date: "2022-12-02"
+modify_date: "2025-11-27"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
@@ -47,7 +47,14 @@ Once the training is finished, it is possible to download the training logs by c
 
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.2.0/training_logs.png" style="width:100%;"/>
 
-Starting from version 4.3.0, it is possible to keep track of all previous training activities executed for a project. When pressing the `History` button from the Train page, users are presented with a list of all trainings triggered for the current project. Each training event is characterized by the source (_manual_, _active learning_), data used for training, date of event, and status. Training logs can also be downloaded for each training event.
+## Training History and Logs
+
+Generative AI Lab provides a **Training History** feature that allows users to track all previous training activities executed for a project. By clicking the **History** button on the **Train** page, users can view a complete list of training sessions associated with the current project.
+
+Each training record displays key details such as the **training source** (manual or active learning), the **dataset used**, the **date and time** of the event, and its **status**. For deeper analysis, users can also **download training logs** directly from this view to review training progress, outcomes, and any potential issues.
+
+This feature ensures full transparency of the training process and helps teams monitor model evolution over time.
+
 
 <img class="image image__shadow" src="https://user-images.githubusercontent.com/10126570/203515966-52c37515-ee27-4e94-93f3-79071f15a0cf.gif" style="width:100%;"/>
 
@@ -67,8 +74,14 @@ It is also possible to train a model by using a sublist of tasks with predefined
 
 Generative AI Lab also includes additional filtering options for the training dataset based on the status of completions, either all submitted completions can be used for training or only the reviewed ones.
 
-### Model Versioning when Training Models
-Generative AI Lab 6.9 introduces model versioning for the following project types: Named Entity Recognition (NER), Classification, Assertion, Relation, and Visual NER. In the **TRAINING SETTINGS** section of the **Train** page, a toggle labeled **Enable Versioning** is now available. By default, model versioning is disabled. To enable it, toggle **Enable Versioning** to **on**. 
+### Model Versioning During Training
+
+Generative AI Lab supports **model versioning** for multiple project types, including **Named Entity Recognition (NER)**, **Classification**, **Assertion**, **Relation**, and **Visual NER**.  
+
+Within the **Training Settings** section of the **Train** page, users can enable model versioning by toggling the **Enable Versioning** option. When activated, each new training run creates a distinct version of the model, allowing teams to track model evolution, compare performance, and safely revert to earlier versions if needed.  
+
+By default, model versioning is turned off, giving users flexibility to decide when version tracking is required for their workflow.
+
 
 ![690image](/assets/images/annotation_lab/6.9.0/5.png)
 
