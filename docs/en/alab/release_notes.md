@@ -189,10 +189,6 @@ The completion list in the **Version tab** of the annotation widget now supports
 
 In a project where multiple annotators submit several completions for the same task, the reviewer can view up to three recent completions per annotator at a glance and scroll within a specific annotator’s section to review additional submissions, without losing visibility of other annotators’ work.
 
-### Import Actions and File Handling
-- **[ALAB-6853]** Disable New File Import Actions During Ongoing Import  
-- **[ALAB-6861]** Add pagination for list of projects for exceptions in local Import and export  
-
 ### Disable New File Import Actions During Ongoing Import
 **What’s Improved:**  
 File import behavior has been updated to prevent users from starting a new import while another import is already in progress. Previously, users could trigger multiple imports simultaneously or reopen the file selection dialog, which could lead to confusion or inconsistent states.
@@ -425,8 +421,6 @@ A project manager opens the Analytics Dashboard to assess annotation quality and
   Resolved an issue where exporting tasks removed user permissions in Visual NER De-Identification projects. Project permissions are now preserved after export, and users retain proper access rights.
 
 ---
-
-
 
 ## Versions
 

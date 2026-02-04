@@ -82,7 +82,6 @@ Some other changes,
 * JSL-Vision vs. Open-Source Models Comparison. Link [here](https://medium.com/john-snow-labs/jsl-vision-state-of-the-art-document-understanding-on-your-hardware-f4862f15d9f9).
 * De-identifying Dicom files a step-by-step guide . Link [here](https://medium.com/john-snow-labs/de-identifying-dicom-files-a-step-by-step-guide-with-john-snow-labs-visual-nlp-2c21b60f92a8).
 
-
 </div><div class="h3-box" markdown="1">
 
 ## Bug Fixes
