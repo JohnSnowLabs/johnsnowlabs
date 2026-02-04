@@ -10,9 +10,9 @@ from johnsnowlabs.utils.env_utils import (
 
 # These versions are used for auto-installs and version  checks
 
-raw_version_jsl_lib = "6.2.0"
+raw_version_jsl_lib = "6.3.0"
 
-raw_version_nlp = "6.2.0"
+raw_version_nlp = "6.3.2"
 
 raw_version_nlu = "5.4.1"
 
@@ -20,11 +20,11 @@ raw_version_nlu = "5.4.1"
 raw_version_pyspark = "3.4.0"
 raw_version_nlp_display = "5.0"
 
-raw_version_medical = "6.2.0"
-raw_version_secret_medical = "6.2.0"
+raw_version_medical = "6.3.0"
+raw_version_secret_medical = "6.3.0"
 
-raw_version_secret_ocr = "6.1.0"
-raw_version_ocr = "6.1.0"
+raw_version_secret_ocr = "6.3.0"
+raw_version_ocr = "6.3.0"
 
 raw_version_pydantic = "2"
 
@@ -88,9 +88,9 @@ db_run_name = "John-Snow-Labs-Run 🚀"
 
 # emr settings
 emr_cluster_name = "John-Snow-Labs-EMR-Auto-Cluster🚀"
-emr_release_label = "emr-6.5.0"
+emr_release_label = "emr-7.12.0"
 emr_instance_type = "m4.4xlarge"
-emr_instance_count = 3
+emr_instance_count = 1
 emr_applications = ["Hadoop", "Spark", "Livy", "JupyterEnterpriseGateway"]
 emr_default_instance_profile = "EMR_EC2_DefaultRole"
 emr_default_service_role = "EMR_DefaultRole"
