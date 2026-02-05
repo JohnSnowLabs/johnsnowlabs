@@ -75,23 +75,12 @@ Some other changes,
 
 </div><div class="h3-box" markdown="1">
 
-## New PDF de-identification and obfuscation pipelines.
-We are shipping two new PDF de-identification pipelines, each of them using a mix of several models to achieve top level performance:
-* `pdf_deid_multi_model_context_pipeline`: this one will detect PHI entities from input PDF files, and return de-identified versions of the documents in which the entities have been masked with a black box.
-* `pdf_obfuscation_multi_model_context_pipeline`: this one is similar to the one mentioned above in terms of the set of entities it deals with, with the difference that it will perform obfuscation, that is, entity replacement from original entities to 'fake' versions. This process happens consistently across entities, and across pages of the same document.
-This means that if in page 1, Martha is replace by Janice, any other Martha in the same document will undergo the same transformation. The same for dates or any other entity.
-
-These pipelines can achieve an F-score of .93 and .91 in our [standard reference dataset](https://github.com/JohnSnowLabs/pdf-deid-dataset). More about this on next section.
-
-</div><div class="h3-box" markdown="1">
-
 ## New Blogposts and notebooks
 
 * Deidentifying Whole Slide Images(WSI) and deploying in SageMaker. Link [here](https://medium.com/john-snow-labs/de-identifying-whole-slide-images-wsi-deploying-on-sagemaker-part-3-25a4c57805c4).
 * JSL-Vision vs. Closed Source Models Comparison. Link [here](https://medium.com/john-snow-labs/jsl-vision-vs-closed-source-models-document-intelligence-without-compromise-62728afe0c5b).
 * JSL-Vision vs. Open-Source Models Comparison. Link [here](https://medium.com/john-snow-labs/jsl-vision-state-of-the-art-document-understanding-on-your-hardware-f4862f15d9f9).
 * De-identifying Dicom files a step-by-step guide . Link [here](https://medium.com/john-snow-labs/de-identifying-dicom-files-a-step-by-step-guide-with-john-snow-labs-visual-nlp-2c21b60f92a8).
-
 
 </div><div class="h3-box" markdown="1">
 
