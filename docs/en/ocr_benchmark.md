@@ -8,25 +8,59 @@ key: docs-benchmark
 modify_date: "2024-06-24"
 show_nav: true
 sidebar:
-    nav: sparknlp-healthcare
+  nav: sparknlp-healthcare
 ---
 
 <div class="h3-box" markdown="1">
 
-## Speed Benchmarks
+## Benchmarks
+
+### JSL-Vision Benchmarks
+Speed benchmarks ran on a H100 machine with 112 Cores and 2TB Ram
+
+{:.table-model-big}
+| model                               | Avg Speed |     |
+| ----------------------------------- | --------- | --- |
+| jsl_vision_ocr_1.0_light            | 1.11s     |     |
+| jsl_vision_ocr_1.0                  | 2.53s     |     |
+| jsl_vision_ocr_1.0_structured_light | 13.5s     |     |
+| jsl_vision_ocr_structured_1.0       | 58.64     |     |
+
+
+
+[FUNSD](https://guillaumejaume.github.io/FUNSD/) simple OCR metrics.
+For comparison against [open source see here](https://medium.com/john-snow-labs/jsl-vision-state-of-the-art-document-understanding-on-your-hardware-f4862f15d9f9) and against [closed source see here](https://medium.com/john-snow-labs/jsl-vision-vs-closed-source-models-document-intelligence-without-compromise-62728afe0c5b)
+
+{:.table-model-big}
+| model                    | funsd_OCR_cer (Lower is better) |
+| ------------------------ | ------------------------------- |
+| jsl_vision_ocr_1.0       | 0.147                           |
+| jsl_vision_ocr_1.0_light | 0.203                           |
+
+Metrics on [OmniOCR Benchmark](https://github.com/getomni-ai/benchmark) using Img2Markdown2Json flow.
+For comparison against [open source see here](https://medium.com/john-snow-labs/jsl-vision-state-of-the-art-document-understanding-on-your-hardware-f4862f15d9f9) and against [closed source see here](https://medium.com/john-snow-labs/jsl-vision-vs-closed-source-models-document-intelligence-without-compromise-62728afe0c5b)
+
+{:.table-model-big}
+| model                               | omni_json_accuracy (Higher is better) |
+| ----------------------------------- | ------------------------------------- |
+| jsl_vision_ocr_structured_1.0       | 0.805                                 |
+| jsl_vision_ocr_structured_1.0_light | 0.759                                 |
+
+
+<div class="h3-box" markdown="1">
 
 ### PDF De-identification Benchmark
 
 - **Dataset:** 1000 scanned PDF pages.
-- **Instance :** 
-  - m5n.4xlarge (16 vCPUs, 64 GiB memory) 
-  - m5n.8xlarge (32 vCPUs, 128 GiB memory)
+- **Instance :**
+    - m5n.4xlarge (16 vCPUs, 64 GiB memory)
+    - m5n.8xlarge (32 vCPUs, 128 GiB memory)
 - **AMI:** ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-20240411
 - **Versions:**
-  - **spark-nlp Version:** v5.4.0
-  - **visual-nlp Version:** v5.3.2
-  - **spark-nlp-jsl Version :** v5.3.2
-  - **Spark Version :** v3.4.1
+    - **spark-nlp Version:** v5.4.0
+    - **visual-nlp Version:** v5.3.2
+    - **spark-nlp-jsl Version :** v5.3.2
+    - **Spark Version :** v3.4.1
 - **Visual NLP Pipeline:** 'pdf_deid_subentity_context_augmented_pipeline'
 
 </div><div class="h3-box" markdown="1">
@@ -43,7 +77,7 @@ sidebar:
 </div><div class="h3-box" markdown="1">
 
 ### Dicom De-identification Benchmark
-This section contains benchmarks for de-ideintification of dicom files, both for GPU and CPU. 
+This section contains benchmarks for de-ideintification of dicom files, both for GPU and CPU.
 Note: file sizes are included as reference, but *they are not* the best proxy for estimating running time, as the final figures will depend on image size than in turn depends on the actual compression that is being used in the file.
 The numbers reported are average *time per file*.
 
@@ -105,7 +139,7 @@ Note: don't forget to count multi-frame images.
 </div><div class="h3-box" markdown="1">
 
 #### I don't know the dimensions of my images
-If you don't know the dimensions, but you know that your images are also uncompressed, you can use file size as proxy. 
+If you don't know the dimensions, but you know that your images are also uncompressed, you can use file size as proxy.
 _Keep in mind that if you actually have compressed images you will be underestimating the processing time_.
 
 
@@ -119,7 +153,7 @@ But not all hope is lost, you can work with frames!.
 </div><div class="h3-box" markdown="1">
 
 #### Using total frame count as a proxy for estimation
-If you don't know the size of the images, or the compression, you can estimate the number of frames and use the time it takes for a single frame(like the numbers we've shared in this document) as a proxy. 
+If you don't know the size of the images, or the compression, you can estimate the number of frames and use the time it takes for a single frame(like the numbers we've shared in this document) as a proxy.
 </br>
 Reasons for doing this:
 * You can compute frame count and sizes very efficiently using Visual NLP.
