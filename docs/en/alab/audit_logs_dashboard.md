@@ -15,44 +15,81 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-## System-Wide Visibility, Accountability, and Compliance 
-Since version [7.8](/docs/en/alab/annotation_labs_releases/release_notes_7_8.md), Generative AI Lab introduces the Audit Logs Dashboard, a HIPAA-compliant, system-wide auditing solution that provides centralized visibility into platform activity across projects and users. This feature enables organizations to track critical actions, support compliance requirements, and maintain accountability in regulated environments.
+## Overview
 
-### Audit Logging Overview 
+Organizations working in regulated environments -particularly healthcare -need a reliable way to track who did what, when, and where across their annotation platform. The **Audit Logs Dashboard**, introduced in version [7.8](/docs/en/alab/annotation_labs_releases/release_notes_7_8), brings HIPAA-compliant, system-wide auditing to Generative AI Lab. It provides centralized visibility into platform activity across all projects and users, helping teams meet compliance requirements while maintaining full accountability.
 
-The Audit Logs Dashboard captures and displays system events related to user activity, data access, and platform operations. Logged events include:
+The dashboard can be accessed from the **Audit Dashboards** menu in the left sidebar, available to users with the appropriate administrative privileges.
 
-- User actions across projects.
+</div><div class="h3-box" markdown="1">
 
-- Data access, modifications, deletions, and exports.
+### What Gets Logged
 
-- Project lifecycle events (creation and deletion).
+The Audit Logs Dashboard captures a broad range of system events to give administrators a complete picture of platform activity. Every logged event is recorded with a timestamp and associated user information, ensuring full traceability. The types of events tracked include:
 
-- API usage and system response codes. 
+- **User actions** -Any operation performed by a user across projects, such as creating, editing, or submitting annotations.
+- **Data access and modifications** -Records of when data is viewed, updated, or deleted, providing an audit trail for sensitive content.
+- **Data exports** -Tracking of all export operations, including the project, user, and export type (e.g., local).
+- **Project lifecycle events** -Creation and deletion of projects, including who performed the action and when.
+- **API usage and response codes** -System-level logging of API calls, HTTP status codes, and request volumes, useful for identifying unusual patterns or troubleshooting issues.
 
-All events are recorded with timestamps and associated user information to ensure traceability.
+</div><div class="h3-box" markdown="1">
 
-![78image](/assets/images/annotation_lab/7.8/1.png)
+### Dashboards and Visualizations
 
-### Dashboards and Filtering
+Audit data is presented through a set of built-in dashboards, each designed to surface a different aspect of platform activity. Rather than sifting through raw logs, users can navigate purpose-built views that organize events into meaningful categories.
 
-Audit data is presented through built-in dashboards and visualizations that help users review activity at both project and system levels. Available views include:
+#### Project Lifecycle Dashboard
 
-- Project activity and lifecycle trends.
+The **Project Lifecycle Dashboard** gives a consolidated view of project-level activity. It displays four panels: **Created Projects**, **Deleted Projects**, **Project Exports**, and **Task Exports**. Each panel lists the relevant events with details such as the project name, timestamp, the user who performed the action, and, for exports, the export type. This view is especially useful for tracking how projects evolve over time and for auditing data export activity.
 
-- Export monitoring and tracking.
+![Project Lifecycle Dashboard -Shows created and deleted projects alongside project-level and task-level export history.](/assets/images/annotation_lab/7.8/1.png)
+*<center>Project Lifecycle Dashboard -Shows created and deleted projects alongside project-level and task-level export history.</center>*
 
-- User behavior and access patterns.
+#### User Behavior & Access Dashboard
 
-- System-level usage insights.
+The **User Behavior & Access Dashboard** focuses on who is using the platform and how. It includes a **Top Users by Request Volume** chart that ranks users by their API activity, a **Usage by Hour & Day** heatmap that reveals when the platform is most active, and a **Project Activity per Month** breakdown that shows activity trends across individual projects over time. Together, these visualizations help administrators identify usage patterns, spot anomalies, and support capacity planning.
 
-Users can filter audit data by project, user, event type, and date range to create targeted views for investigation or review.  
+![User Behavior & Access Dashboard -Displays request volume per user, platform usage heatmaps, and monthly project activity trends.](/assets/images/annotation_lab/7.8/2.png)
+*<center>User Behavior & Access Dashboard -Displays request volume per user, platform usage heatmaps, and monthly project activity trends.</center>*
 
-![78image](/assets/images/annotation_lab/7.8/2.png)
+</div><div class="h3-box" markdown="1">
 
-### Data Retention and Configuration
-Audit Logs Dashboard retention is configurable, allowing organizations to align with internal policies and regulatory requirements. Audit logging can be enabled globally during installation or upgrade using an installer flag. Required backend services, including Elasticsearch, are automatically provisioned if not already present.
+### Filtering and Custom Views
 
+All dashboards support flexible filtering to help users zero in on the events that matter most. Audit data can be filtered by:
 
+- **Project** -Focus on activity within a specific project.
+- **User** -Investigate actions performed by a particular user.
+- **Event type** -Isolate specific operations such as deletions or exports.
+- **Date range** -Narrow the view to a specific time window for targeted investigations.
+
+Each dashboard panel includes a **Panel filters** control that allows users to apply filters directly within that view, making it straightforward to create targeted audit reports without leaving the dashboard.
+
+</div><div class="h3-box" markdown="1">
+
+### Enabling Audit Logging
+
+Audit logging is not enabled by default. It can be turned on globally during installation or upgrade using a dedicated installer flag. When enabled, the required backend services -including Elasticsearch -are automatically provisioned if not already present.
+
+**During installation:**
+
+```bash
+./annotationlab-installer.sh --enable-audit-logs
+```
+
+**During upgrade:**
+
+```bash
+./annotationlab-updater.sh --enable-audit-logs
+```
+
+Enabling audit logging during an upgrade does not affect existing data or configurations.
+
+</div><div class="h3-box" markdown="1">
+
+### Data Retention
+
+Audit log retention is configurable, allowing organizations to define how long event data is stored. This makes it possible to align retention periods with internal data governance policies and regulatory requirements such as HIPAA.
 
 </div>

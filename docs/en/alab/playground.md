@@ -56,9 +56,16 @@ This allows you to experiment with a range of variables and see how each one aff
 To improve transparency and usability during experimentation, the Playground provides explicit outcome notifications when a pre-annotation test completes.
 After running a test, the system evaluates the execution result and displays a contextual status message using standardized visual indicators:
 
+![Playground showing a green success notification after a successful pre-annotation test](/assets/images/annotation_lab/7.8/5.png)
+*<center>A green "Pre-Annotated Successfully" message confirms the test completed and generated annotation results.</center>*
+
+
 A green success notification appears when pre-annotation completes and produces results.
 A gray informational notification appears when pre-annotation completes successfully but no results are generated.
 A red failure notification appears when the pre-annotation process fails.
+
+![Playground showing an orange notification when pre-annotation completes with no matches](/assets/images/annotation_lab/7.8/6.png)
+*<center>An orange "No annotations found" message indicates the test completed successfully but produced no results for the given input.</center>*
 
 These notifications are displayed immediately upon completion and do not modify the existing pre-annotation workflow or configuration.
 
