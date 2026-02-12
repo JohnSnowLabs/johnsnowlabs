@@ -249,6 +249,8 @@ annotation-lab:
             url: /docs/en/alab/cluster_management
           - title: HIPAA Compliance
             url: /docs/en/alab/hipaa_compliance
+          - title: Audit Logs Dashboard
+            url: /docs/en/alab/audit_logs_dashboard
       - title: NLP Libraries Integration
         url: /docs/en/alab/healthcare
       - title: Spark Library Version
