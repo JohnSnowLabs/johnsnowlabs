@@ -13,10 +13,11 @@ sidebar:
 
 ## Search
 
-Terminology Server provides two distinct search modes:
+Terminology Server provides three distinct search modes, out of the box:
 
 * **Code Search** – Enables users to locate a specific medical code within the Terminology Server's curated set of medical coding systems.
 * **Concept Search** – Allows users to search for medical terms or concepts using a combination of <ins>**exact text**</ins> matching and <ins>**semantic search**</ins> techniques to return similar or related concepts, as described in the section below.
+* **Context Resolution Search** - Allows users to search for medical concepts by providing a contextual parameter.
 
 
 ## Code Search (code to code mapping)
