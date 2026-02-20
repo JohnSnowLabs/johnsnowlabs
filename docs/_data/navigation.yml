@@ -133,6 +133,8 @@ term-server:
             url: /docs/en/terminology_server/features/concept_maps
           - title: Value Sets
             url: /docs/en/terminology_server/features/value_sets
+          - title: MCP Server
+            url: /docs/en/terminology_server/features/mcp_server
       - subtitle: APIs
         children:
           - title: API Service Access
