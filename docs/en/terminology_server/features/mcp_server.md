@@ -20,4 +20,4 @@ Agents can dynamically select, compose, or orchestrate these tools to build work
 
 By registering Terminology Server search modules as agent tools, organizations empower autonomous systems to take full advantage of advanced terminology intelligence, real-time mapping, and data-driven insights, ensuring operational consistency, precision, and interoperability.
 
-Here is a sample notebook containing how you can use Terminology Server with an AI Agent.
+Here is a sample [notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/products/term_server/terminology_mcp_strands_demo.ipynb) containing how you can use Terminology Server with an AI Agent.
