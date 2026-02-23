@@ -38,6 +38,112 @@ These comprehensive public ValueSets enable standardized mapping and interoperab
 
 ![Public Value Sets](/assets/images/term_server/public_valuesets.png)
 
+## More Code Systems(Vocabulary)
+
+All available Code Systems available via the platform.
+
+- ABMS
+- AMT
+- APC
+- ATC
+- BDPM
+- CDM
+- CMS Place of Service
+- CPT4
+- CVX
+- Cancer Modifier
+- Concept Class
+- Condition Status
+- Condition Type
+- Cost
+- Cost Type
+- Currency
+- DRG
+- Death Type
+- Device Type
+- Domain
+- Drug Type
+- EORTC QLQ
+- EphMRA ATC
+- Episode
+- Episode Type
+- Ethnicity
+- GGR
+- Gender
+- HCPCS
+- HES Specialty
+- HGNC
+- HPO
+- HemOnc
+- ICD10
+- ICD10CM
+- ICD10PCS
+- ICD9CM
+- ICD9Proc
+- ICDO3
+- JMDC
+- KDC
+- Korean Revenue Code
+- LOINC
+- Language
+- MDC
+- MMI
+- MeSH
+- MeSH Veterinary
+- Meas Type
+- MedDRA_LLT
+- MedDRA_PT
+- Medicare Specialty
+- Metadata
+- Multum
+- NAACCR
+- NCIt
+- NDC
+- NFC
+- NUCC
+- Nebraska Lexicon
+- Note Type
+- OMOP Extension
+- OMOP Genomic
+- OMOP Invest Drug
+- OPCS4
+- OSM
+- Obs Period Type
+- Observation Type
+- PCORNet
+- PPI
+- Plan
+- Plan Stop Reason
+- Procedure Type
+- Provider
+- Race
+- Relationship
+- Revenue Code
+- RxNorm
+- RxNorm Extension
+- SMQ
+- SNOMED
+- SNOMED Veterinary
+- SOPT
+- SPL
+- Specimen Type
+- Sponsor
+- Supplier
+- Type Concept
+- UB04 Point of Origin
+- UB04 Pri Typ of Adm
+- UB04 Pt dis status
+- UB04 Typ bill
+- UCUM
+- UMLS
+- US Census
+- VANDF
+- Visit
+- Visit Type
+- Vocabulary
+- dm+d
+
+
 ## Agent Integration via MCP Server
 - Agents (automation bots, clinical support tools, data analytics platforms) can connect directly to the Terminology Server using the Model Context Protocol (MCP) Server and register its search functions as tools for seamless integration.
 - All major Terminology Server search features—Concept Search, Context Resolution, Code Search, Document Search—are accessible as programmable modules for automating workflows and powering decision-support engines.
