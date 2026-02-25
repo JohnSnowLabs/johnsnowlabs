@@ -2,7 +2,7 @@
 layout: docs
 header: true
 seotitle: Generative AI Lab | John Snow Labs
-title: Generative AI Lab 7.8
+title: Generative AI Lab 7.8.1
 permalink: /docs/en/alab/annotation_labs_releases/release_notes_7_8_1
 key: docs-licensed-release-notes
 modify_date: 2026-02-23
@@ -14,8 +14,6 @@ sidebar:
 <div class="h3-box" markdown="1">
 
 
-
-## Generative AI Lab 7.8.1
 
 ### Improvements
 

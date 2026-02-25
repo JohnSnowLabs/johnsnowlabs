@@ -17,7 +17,6 @@ sidebar:
 
 
 
-
 ## Generative AI Lab 7.8.1
 
 ### Improvements
