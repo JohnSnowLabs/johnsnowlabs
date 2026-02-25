@@ -67,8 +67,8 @@ sidebar:
 
 <ul class="pagination owl-carousel pagination_big">
     <li class="active"><a href="annotation_labs_releases/release_notes_7_8_1">7.8.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_7_8">7.8.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_7_7">7.7.0</a></li>
+    <li><a href="annotation_labs_releases/release_notes_7_8">7.8</a></li>
+    <li><a href="annotation_labs_releases/release_notes_7_7">7.7</a></li>
     <li><a href="annotation_labs_releases/release_notes_7_5_1">7.6.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_7_5_1">7.5.1</a></li>
     <li><a href="annotation_labs_releases/release_notes_7_5_0">7.5.0</a></li>
