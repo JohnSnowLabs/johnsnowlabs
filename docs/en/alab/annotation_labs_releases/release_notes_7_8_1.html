@@ -9,12 +9,12 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>NLP Lab Release Notes 2.4.0</title><meta property="og:title" content="NLP Lab | John Snow Labs"/>
+<!-- End Google Tag Manager --><title>Generative AI Lab 7.8.1</title><meta property="og:title" content="Generative AI Lab | John Snow Labs"/>
 
 <meta name="description" content="High Performance NLP with Apache Spark
 ">
-<!-- <link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_2_4_0"> -->
-<link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_2_4_0"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<!-- <link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_7_8_1"> -->
+<link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_7_8_1"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -616,41 +616,73 @@ function wrapWordInSpan(data, wordToWrap) {
 </script><div class="article__header"><div class="header-nav"><div class="main-docs">
   <ul class="breadcrambs">
     <li><a href="/docs">Documentation</a></li>
-    <li>NLP Lab Release Notes 2.4.0</li>
+    <li>Generative AI Lab 7.8.1</li>
   </ul>
 </div></div><header class="main-docs have_subtitle">
-          <h1>NLP Lab Release Notes 2.4.0</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
+          <h1>Generative AI Lab 7.8.1</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
-            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/alab/annotation_labs_releases/release_notes_2_4_0.md">
-            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="NLP Lab Release Notes 2.4.0"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
+            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/alab/annotation_labs_releases/release_notes_7_8_1.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Generative AI Lab 7.8.1"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <h2 id="section">2.4.0</h2>
+  <h3 id="improvements">Improvements</h3>
 
-  <p>Annotation Lab v2.4.0 adds relation creation features for Visual NER projects and redesigns the Spark NLP Pipeline Config on the Project Setup Page. Several bug fixes and stabilizations are also included. Following are the highlights:</p>
-
-  <h3 id="highlights">Highlights</h3>
   <ul>
-    <li>Relations on Visual NER Projects. Annotators can create relations between annotated tokens/regions in Visual NER projects. This functionality is similar to what we already had in text-based projects. It is also possible to assign relation labels using the contextual widget (the “+” sign displayed next to the relation arrow).</li>
-    <li>SparkNLP Pipeline Config page was redesigned. The SparkNLP Pipeline Config in the Setup Page was redesigned to ease filtering, collapsing, and expanding models and labels. For a more intuitive use, the Add Label button was moved to the top right side of the tab and no longer scrolls with the config list.</li>
-    <li>This version also adds many improvements to the new Setup Page. The Training and Active Learning Tabs are only available to projects for which Annotation Lab supports training. When unsaved changes are present in the configuration, the user cannot move to the Training and Active Learning Tab and/or Training cannot be started. When the OCR server was not deployed, imports in the Visual NER project were failing. With this release, when a valid Spark OCR license is present, the OCR server is deployed and the import of pdf and image files is executed.</li>
+    <li>
+      <p><strong>Secure Elasticsearch Communication and S3 Log Backup</strong>
+Elasticsearch jobs now use HTTPS for secure communication, and support has been added for backing up logs to Amazon S3 to improve durability, compliance, and disaster recovery readiness.</p>
+    </li>
+    <li>
+      <p><strong>Improved Backup Lifecycle Management</strong>
+Backup workflows have been enhanced to better handle large backup files and ensure reliable periodic cleanup of older backups, reducing the risk of timeouts and improving storage efficiency.</p>
+    </li>
+    <li>
+      <p><strong>Kibana Support for Azure Marketplace and Air-Gapped Environments</strong>
+Deployment workflows now support Kibana in Azure Marketplace and fully air-gapped environments, enabling operational visibility and compliance without requiring external connectivity.</p>
+    </li>
+    <li>
+      <p><strong>Automated Post-Install Elasticsearch Configuration</strong>
+Elasticsearch post-deployment configuration, including log retention and backup settings, is now applied automatically to ensure consistent setup immediately after installation or upgrade.</p>
+    </li>
+    <li>
+      <p><strong>One-Line Enablement for Audit Logs</strong>
+Audit logging can now be enabled during installation or upgrade using a single command, simplifying setup and reducing configuration overhead.</p>
+    </li>
+    <li>
+      <p><strong>Installation Flag for Kibana Audit Enablement</strong>
+A dedicated installation flag is now available to enable Kibana audit capabilities during deployment or upgrade, streamlining configuration for audit and monitoring workflows.</p>
+    </li>
   </ul>
 
-  <h3 id="bug-fixes">Bug fixes</h3>
+  <h3 id="bug-fixes">Bug Fixes</h3>
+
   <ul>
-    <li>When a login session is timed out and cookies are expired, users had to refresh the page to get the login screen. This known issue has been fixed and the user will be redirected to the login page.</li>
-    <li>When a task was assigned to an annotator who does not have completions for it, the task status was shown incorrectly. This was fixed in this version.</li>
-    <li>While preannotating tasks with some specific types of models, only the first few lines were annotated. We have fixed the Spark NLP pipeline for such models and now the entire document gets preannotations. When Spark NLP for Healthcare license was expired, the deployment was allowed but it used to fail. Now a proper message is shown to Project Owners/Managers and the deployment is not started in such cases.</li>
-    <li>Inconsistencies were present in training logs and some embeddings were not successfully used for models training.</li>
-    <li>Along with these fixes, several UI bugs are also fixed in this release.</li>
+    <li>
+      <p><strong>S3 Task Import Not Creating Tasks</strong>
+In certain scenarios, task imports from S3 could report success while no tasks were created. Import handling has been corrected to ensure tasks are properly created and that import status messages reflect actual results.</p>
+    </li>
+    <li>
+      <p><strong>Annotations Becoming Invisible When Zooming in the Labeling Page</strong>
+Previously, annotations could become invisible on the labeling page when zooming into visual documents. Annotation rendering has been corrected, and annotations now remain visible and intact across zoom levels.</p>
+    </li>
+    <li>
+      <p><strong>External Provider Deletion Validation</strong>
+ In earlier versions, deleting an external provider could fail without indicating that associated projects or prompts were preventing deletion. Deletion behavior has been corrected to provide clear validation messaging when providers are linked to projects or prompts, and providers can now be deleted successfully once dependencies are removed.</p>
+    </li>
+    <li>
+      <p><strong>Pipeline Tab Access for Annotator Role</strong>
+Previously, users with the Annotator role could encounter permission-related issues when accessing the Pipeline tab on the Reuse Resource page. Access controls have been corrected, allowing annotators to view and interact with available pipelines without errors while maintaining proper role-based permissions across other user roles.</p>
+    </li>
+    <li>
+      <p><strong>Move Tool Stability in Visual NER Documents</strong>
+Inconsistent behavior could occur when using the move tool in Visual NER documents, particularly after extended interaction. The move functionality has been stabilized to ensure consistent navigation and positioning during document review.</p>
+    </li>
   </ul>
 
-</div>
-<div class="prev_ver h3-box">
-
+  <hr />
   <h2 id="versions">Versions</h2>
 
 </div>
@@ -730,7 +762,7 @@ function wrapWordInSpan(data, wordToWrap) {
   <li><a href="release_notes_5_1_0">5.1.0</a></li>
 </ul>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2021-07-14T00:00:00+00:00">Jul 14, 2021</time>
+      <time itemprop="dateModified" datetime="2026-02-23T00:00:00+00:00">Feb 23, 2026</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>

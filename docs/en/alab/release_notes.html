@@ -628,494 +628,70 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <h2 id="generative-ai-lab-78-hipaa-compliant-audit-logging">Generative AI Lab 7.8: HIPAA-Compliant Audit Logging</h2>
+  <h2 id="generative-ai-lab-781">Generative AI Lab 7.8.1</h2>
 
-  <p>Generative AI Lab <strong>7.8</strong> brings <strong>HIPAA-compliant audit logging</strong> to the platform alongside a series of usability improvements across NER, Visual NER, and PDF annotation workflows.</p>
-
-  <p>The headline feature is the new <strong>Audit Logs Dashboard</strong>, which gives administrators centralized, real-time visibility into user activity, data exports, project lifecycle events, and API behavior,  directly supporting compliance, security, and operational transparency requirements.</p>
-
-  <p>Beyond auditing, this release delivers improvements to Visual NER document navigation, more reliable pre-annotation deployment feedback, clearer test outcome reporting in the Playground, smarter comment navigation during review, and responsive analytics charts for smaller screens. A broad set of bug fixes addresses issues across imports, annotation, integrations, and system stability.</p>
-
-  <h2 id="audit-logs-dashboard-system-wide-activity-tracking-for-regulated-environments">Audit Logs Dashboard: System-Wide Activity Tracking for Regulated Environments</h2>
-  <p><strong>What’s New</strong></p>
-
-  <p>Generative AI Lab 7.8 introduces the <strong>Audit Logs Dashboard</strong>, a HIPAA-compliant auditing solution that gives administrators real-time, granular visibility into all platform activity. Every user action, data access event, export, and API call is logged with timestamps and user attribution, providing the traceability that regulated environments demand.</p>
-
-  <p><img src="/assets/images/annotation_lab/7.8/1.png" alt="Project Lifecycle Dashboard showing created and deleted projects alongside project and task export history" />
-<em><center>The Project Lifecycle Dashboard displays created and deleted projects alongside project-level and task-level export history, each with timestamps and user attribution.</center></em></p>
-
-  <p>The dashboard is organized into purpose-built views that surface different aspects of platform activity:</p>
-
-  <ul>
-    <li><strong>Project lifecycle tracking</strong> -monitors project creation, deletion, and export activity across the platform</li>
-    <li><strong>User behavior analysis</strong> -ranks users by request volume, visualizes usage patterns by hour and day, and tracks per-project activity over time</li>
-    <li><strong>API and system monitoring</strong> -captures API usage trends, HTTP response codes, and platform-wide usage heatmaps</li>
-    <li><strong>Flexible filtering</strong> -narrows any view by project, user, event type, or date range to support targeted investigations</li>
-  </ul>
-
-  <p><img src="/assets/images/annotation_lab/7.8/2.png" alt="User Behavior &amp; Access Dashboard showing request volume per user, usage heatmaps, and monthly project activity" />
-<em><center>The User Behavior &amp; Access Dashboard surfaces request volume per user, platform usage heatmaps by hour and day, and monthly project activity breakdowns.</center></em></p>
-
-  <p><strong>Technical Details</strong></p>
-
-  <p>Under the hood, the Audit Logs Dashboard relies on an Elasticsearch backend to index and query event data. It is designed to operate transparently alongside existing platform services -once enabled, it begins capturing events without requiring changes to user workflows or project configurations.</p>
-
-  <ul>
-    <li><strong>Activity Tracking:</strong> All critical system events are logged with timestamps tied to specific users, covering actions, data access, modifications, deletions, and exports</li>
-    <li><strong>Data Retention:</strong> Audit log retention is user-configurable, allowing organizations to align with internal policies and regulatory requirements</li>
-    <li><strong>Dashboards &amp; Visualizations:</strong> Built-in views include project activity trends, new/deleted project tracking, export monitoring, API usage charts, HTTP status distributions, and user activity tables</li>
-    <li><strong>Customizable Views:</strong> Each dashboard panel supports filtering by project, user, event type, and date range for targeted audit reports</li>
-    <li><strong>Enablement:</strong> Audit logging is enabled globally via an installer flag; the Elasticsearch backend is automatically provisioned if not already present</li>
-  </ul>
-
-  <p><strong>Steps to Enable During Installation</strong></p>
-
-  <ol>
-    <li>Run the installer with the audit logs flag:</li>
-  </ol>
-
-  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./annotationlab-installer.sh <span class="nt">--enable-audit-logs</span>
-</code></pre></div>  </div>
-  <ol>
-    <li>The system automatically provisions the necessary backend services (including Elasticsearch) if not already present.</li>
-  </ol>
-
-  <p><strong>Steps to Enable During Upgrade</strong></p>
-
-  <ol>
-    <li>Run the updater with the audit logs flag:</li>
-  </ol>
-
-  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./annotationlab-updater.sh <span class="nt">--enable-audit-logs</span>
-</code></pre></div>  </div>
-  <ol>
-    <li>Existing services are updated, and audit logging is enabled without affecting existing data or configurations.</li>
-  </ol>
-
-  <p><strong>User Benefits</strong></p>
-
-  <ul>
-    <li><strong>HIPAA Compliance:</strong> Track access to PHI, modifications, and data exports for regulatory readiness</li>
-    <li><strong>Transparency &amp; Accountability:</strong> Full visibility into user actions across projects and the platform</li>
-    <li><strong>Faster Troubleshooting:</strong> Quickly identify the root cause of issues or suspicious activity</li>
-    <li><strong>Data-Driven Insights:</strong> Monitor platform usage, detect anomalies, and optimize resource planning</li>
-    <li><strong>Easy Enablement:</strong> A single installer flag activates audit logging with automatic backend provisioning</li>
-  </ul>
-
-  <p><strong>Example Use Case</strong></p>
-
-  <p>A compliance officer can use the Audit Logs Dashboard to investigate a spike in project deletions:</p>
-  <ol>
-    <li>Filter by project and date range to identify affected projects</li>
-    <li>See which user performed each deletion and when</li>
-    <li>Check for corresponding exports or modifications</li>
-    <li>Review system-level activity to confirm whether the behavior was expected or anomalous</li>
-  </ol>
-
-  <p>This workflow provides full visibility, accountability, and compliance assurance, reducing risk and simplifying investigations in regulated healthcare environments.</p>
-
-  <h2 id="improvements">Improvements</h2>
-
-  <h3 id="pipelines-now-scoped-to-their-originating-project-type">Pipelines Now Scoped to Their Originating Project Type</h3>
-
-  <p><strong>What’s Improved</strong></p>
-
-  <p>The pre-annotation modal now only lists servers and pipelines that were deployed within the same project type. Previously, a server deployed in one project type (e.g., Visual NER) would also appear as an available option in the pre-annotation modal of other project types (e.g., NER), which could lead to confusion and accidental selection of an incompatible pipeline. With this change, opening the pre-annotation modal in an NER project will only show NER-compatible resources, and the same applies to Visual NER and other project types.</p>
-
-  <p><strong>Technical Details</strong></p>
-
-  <ul>
-    <li>Pipeline visibility is restricted to the project type where the deployment was performed.</li>
-    <li>Cross-project-type pipeline listing has been removed.</li>
-    <li>The filtering logic is applied consistently across all deployment and selection workflows.</li>
-  </ul>
-
-  <p><img src="/assets/images/annotation_lab/7.8/7.png" alt="Cluster page showing all deployed pre-annotation servers" />
-<em><center>The Cluster page lists all deployed pre-annotation servers.</center></em></p>
-
-  <p><img src="/assets/images/annotation_lab/7.8/8.png" alt="Pre-Annotate dialog showing only the server compatible with the current project type" />
-<em><center>The Pre-Annotate dialog displays only servers compatible with the current project type, preventing incompatible pipeline selection.</center></em></p>
-
-  <p><strong>User Benefits</strong></p>
-
-  <ul>
-    <li><strong>Reduced errors:</strong> Prevents accidental selection of incompatible pipelines.</li>
-    <li><strong>Clearer workflow:</strong> Users see only pipelines relevant to the project type they are working in.</li>
-    <li><strong>Better consistency:</strong> Maintains clear separation between NER, Visual NER, and other project workflows.</li>
-  </ul>
-
-  <p><strong>Example Use Case</strong></p>
-
-  <p>A user deploys a Visual NER server for preannotation or OCR of PDF documents. When working in an NER project, this pipeline will no longer appear in the pre-annotation selection list, ensuring that only compatible pipelines are available for use.</p>
-
-  <h3 id="pre-annotation-deployment-now-shows-continuous-progress-feedback">Pre-Annotation Deployment Now Shows Continuous Progress Feedback</h3>
-
-  <p><strong>What’s Improved</strong></p>
-
-  <p>Previously, clicking <strong>Deploy</strong> in the pre-annotation modal would immediately close the dialog, leaving users with no indication of whether the server was still starting up. The modal now remains open throughout the deployment process, displaying real-time status updates until the server is  ready.</p>
-
-  <p><strong>Technical Details</strong></p>
-
-  <ul>
-    <li>The pre-annotation pop-up remains visible while the server is initializing, instead of closing immediately after deployment is triggered.</li>
-    <li>If the pop-up is manually closed, the <strong>Pre-Annotate</strong> button displays a loading indicator to reflect the ongoing deployment state.</li>
-    <li>The button remains interactive and automatically updates once the server is ready, reappearing in its active state to indicate availability.</li>
-    <li>UI state handling has been refined to ensure accurate synchronization between deployment progress and user-facing indicators.</li>
-  </ul>
-
-  <p><img src="/assets/images/annotation_lab/7.8/10.gif" alt="Pre-annotation pop-up remaining open during server deployment" />
-<em><center>The pre-annotation pop-up remains open during server initialization, providing continuous deployment progress feedback.</center></em></p>
-
-  <p><strong>User Benefits</strong></p>
-
-  <ul>
-    <li>Clear, continuous visibility into pre-annotation deployment status.</li>
-    <li>Reduced confusion about whether deployment is still in progress.</li>
-    <li>Consistent and accurate UI feedback, even if the pop-up is closed.</li>
-    <li>Smoother and more transparent pre-annotation workflow.</li>
-  </ul>
-
-  <p><strong>Example Use Case</strong></p>
-
-  <p>A user triggers pre-annotation on a large project and monitors the deployment process. While the server is starting, the pop-up remains open to show progress. If the user closes the pop-up to continue working elsewhere, the <strong>Pre-Annotate</strong> button clearly indicates that deployment is still in progress and updates automatically once the server is ready.</p>
-
-  <h3 id="playground-now-reports-pre-annotation-test-outcomes">Playground Now Reports Pre-Annotation Test Outcomes</h3>
-
-  <p><strong>What’s Improved</strong></p>
-
-  <p>The Playground now provides clear, immediate feedback when a pre-annotation test finishes. Users are explicitly notified whether the test succeeded with results, completed without producing any matches, or failed -removing ambiguity that previously required manual inspection to resolve.</p>
-
-  <p><strong>Technical Details</strong></p>
-
-  <p>The Playground displays outcome-based status notifications after a pre-annotation run finishes. The system evaluates the execution result and surfaces a contextual message using color-coded visual cues:</p>
-
-  <ul>
-    <li>A <strong>green success message</strong> is shown when pre-annotation completes and generates results.</li>
-    <li>An <strong>orange informational message</strong> appears when pre-annotation completes successfully but no annotations are found.</li>
-    <li>A <strong>red failure message</strong> is displayed when the pre-annotation process fails.</li>
-  </ul>
-
-  <p><img src="/assets/images/annotation_lab/7.8/5.png" alt="Playground showing a green success notification after a successful pre-annotation test" />
-<em><center>A green "Pre-Annotated Successfully" message confirms the test completed and generated annotation results.</center></em></p>
-
-  <p><img src="/assets/images/annotation_lab/7.8/6.png" alt="Playground showing an orange notification when pre-annotation completes with no matches" />
-<em><center>An orange "No annotations found" message indicates the test completed successfully but produced no results for the given input.</center></em></p>
-
-  <p>These notifications appear immediately upon completion and do not alter the existing pre-annotation execution flow or configuration.</p>
-
-  <p><strong>User Benefits</strong></p>
-
-  <ul>
-    <li>Clear visibility into whether a pre-annotation test produced results, found nothing, or failed.</li>
-    <li>Faster decision-making about whether to proceed, adjust the input text, or troubleshoot.</li>
-    <li>Reduced confusion when a test completes but produces no output.</li>
-    <li>Improved confidence when experimenting with models, rules, or prompts in the Playground.</li>
-  </ul>
-
-  <p><strong>Example Use Case</strong></p>
-
-  <p>A user runs a pre-annotation test in the Playground to validate a model before adding it to a project. Once the test completes, the Playground clearly indicates the outcome -confirming success with generated results, signaling a successful run with no matches, or highlighting a failure -allowing the user to immediately decide the next step.</p>
-
-  <h3 id="click-to-navigate-behavior-for-comments">Click-to-Navigate Behavior for Comments</h3>
-
-  <p><strong>What’s Improved</strong></p>
-
-  <p>Clicking on a comment now automatically scrolls to and highlights the exact location in the task where the comment was originally placed. This eliminates the need to manually search through a document to find the content a comment refers to, making review workflows significantly faster.</p>
-
-  <p><strong>Technical Details</strong></p>
-
-  <ul>
-    <li>Comment click behavior now includes positional mapping between comments and their associated content.</li>
-    <li>When a comment is selected, the system scrolls to the corresponding section in the task.</li>
-    <li>The relevant text or area is brought into view and visually highlighted to clearly indicate the comment’s context.</li>
-    <li>This enhancement applies to previously added comments without requiring any data migration or user action.</li>
-  </ul>
-
-  <p><img src="/assets/images/annotation_lab/7.8/11.gif" alt="Clicking a comment automatically navigates to and highlights the referenced section" />
-<em><center>Clicking a comment scrolls the task view to the exact location where the comment was placed and highlights the referenced content.</center></em></p>
-
-  <p><strong>User Benefits</strong></p>
-
-  <ul>
-    <li>Instant navigation to the content a comment refers to, without manual searching.</li>
-    <li>Improved review and collaboration experience, especially in long documents.</li>
-    <li>Reduced confusion when navigating tasks with multiple comments.</li>
-    <li>Works with existing comments -no migration or reconfiguration needed.</li>
-  </ul>
-
-  <p><strong>Example Use Case</strong></p>
-
-  <p>During task review, a user clicks on a comment discussing an issue in a specific section of the document. Instead of manually scrolling to locate the referenced content, the system automatically navigates to and highlights the exact section, allowing the user to immediately understand and act on the feedback.</p>
-
-  <h3 id="responsive-analytics-charts-for-smaller-screens">Responsive Analytics Charts for Smaller Screens</h3>
-
-  <p><strong>What’s Improved</strong></p>
-
-  <p>Analytics charts now render correctly on smaller screens and laptops. Chart elements that previously overlapped in constrained viewports -such as labels, legends, and chart regions -are now displayed clearly at standard zoom levels, maintaining readability and visual consistency.</p>
-
-  <p><strong>Technical Details</strong></p>
-
-  <p>The layout and spacing logic for Analytics charts has been refined to better adapt to smaller screen sizes. Chart regions, labels, legends, and visual elements now adjust dynamically to the available screen space, preventing overlap and preserving the intended structure of each visualization.</p>
-
-  <p><img src="/assets/images/annotation_lab/7.8/9.gif" alt="Analytics charts adapting responsively to a smaller viewport" />
-<em><center>Analytics chart elements now adjust dynamically to smaller viewports, preventing label and legend overlap.</center></em></p>
-
-  <p><strong>User Benefits</strong></p>
-
-  <ul>
-    <li>Clear and readable charts on smaller screens and laptops.</li>
-    <li>No overlapping labels, legends, or chart regions at normal zoom levels.</li>
-    <li>More reliable analytics viewing without needing manual zoom or window resizing.</li>
-    <li>Consistent visual experience across devices.</li>
-  </ul>
-
-  <p><strong>Example Use Case</strong></p>
-
-  <p>A user reviews analytics on a laptop or a smaller monitor. With the updated responsive behavior, all chart elements are clearly visible and properly spaced, allowing users to interpret metrics without adjusting the zoom or switching devices.</p>
-
-  <h3 id="scrollbar-navigation-for-visual-ner-documents">Scrollbar Navigation for Visual NER Documents</h3>
-
-  <p><strong>What’s Improved</strong></p>
-
-  <p>The Visual NER document viewer now includes both horizontal and vertical scrollbars, making it easier to navigate large or high-resolution documents without relying solely on the drag-to-reposition feature.</p>
-
-  <p><strong>Technical Details</strong></p>
-
-  <p>The visual document viewer now supports native horizontal and vertical scrolling. Scrollbars appear automatically for documents that extend beyond the visible viewport, enabling smooth navigation in all directions. This enhancement works alongside existing interaction features and does not change the underlying document rendering or annotation behavior.</p>
-
-  <p><img src="/assets/images/annotation_lab/7.8/3.gif" alt="Horizontal and vertical scrollbars in the Visual NER document viewer" />
-<em><center>The Visual NER document viewer now supports horizontal and vertical scrollbars for easier navigation of large documents.</center></em></p>
-
-  <p><strong>User Benefits</strong></p>
-
-  <ul>
-    <li>Easier and more intuitive navigation for large or zoomed-in visual documents.</li>
-    <li>Reduced reliance on the drag-to-reposition feature.</li>
-    <li>Faster access to different areas of a document during review or annotation.</li>
-    <li>Improved usability for complex or high-resolution files.</li>
-  </ul>
-
-  <p><strong>Example Use Case</strong></p>
-
-  <p>An annotator working on a large scanned form needs to review content across multiple sections of the page. With the newly added scrollbars, the annotator can smoothly navigate to any part of the document using standard scrolling, making the review process more efficient.</p>
-
-  <h3 id="updated-zoom-and-pan-controls-for-visual-projects">Updated Zoom and Pan Controls for Visual Projects</h3>
-
-  <p><strong>What’s Improved</strong></p>
-
-  <p>The zoom in, zoom out, and move/pan controls in Visual Projects have been updated with clearer button designs, making them easier to discover and use when working with PDF and image-based documents.</p>
-
-  <p><strong>Technical Details</strong></p>
-
-  <p>The document viewer toolbar for Visual Projects has been enhanced with updated controls for zooming and repositioning content. These controls are now more clearly presented and consistently available when working with PDF and image documents. The underlying zoom and pan functionality remains unchanged, ensuring full backward compatibility with existing workflows.</p>
-
-  <p><img src="/assets/images/annotation_lab/7.8/4.png" alt="Updated zoom and pan controls in the Visual NER document viewer toolbar" />
-<em><center>The updated toolbar provides clearer zoom in, zoom out, and pan controls for Visual NER projects.</center></em></p>
-
-  <p><strong>User Benefits</strong></p>
-
-  <ul>
-    <li>Improved clarity and discoverability of zoom and move controls.</li>
-    <li>Smoother interaction when inspecting PDFs and image documents.</li>
-    <li>Reduced friction when switching between navigation actions.</li>
-    <li>Consistent viewing experience across Visual Projects.</li>
-  </ul>
-
-  <p><strong>Example Use Case</strong></p>
-
-  <p>While reviewing a scanned PDF in a Visual Project, a user frequently zooms in to inspect fine details and repositions the document to continue annotation. With the updated controls, these actions are quicker and more intuitive, allowing the user to stay focused on the review task.</p>
-
-  <h2 id="bug-fixes">Bug Fixes</h2>
-
-  <h3 id="ui--user-experience">UI &amp; User Experience</h3>
+  <h3 id="improvements">Improvements</h3>
 
   <ul>
     <li>
-      <p><strong>Stable UI when renaming a service provider to a duplicate name</strong></p>
-
-      <p>Previously, renaming a service provider to an already existing name could cause brief UI shifts or visual glitches during validation. The interface now remains stable and displays a clear toast error message when a duplicate name is detected.</p>
+      <p><strong>Secure Elasticsearch Communication and S3 Log Backup</strong>
+Elasticsearch jobs now use HTTPS for secure communication, and support has been added for backing up logs to Amazon S3 to improve durability, compliance, and disaster recovery readiness.</p>
     </li>
     <li>
-      <p><strong>Comments no longer trigger a redirect to the error page</strong></p>
-
-      <p>Selecting Comments in the Annotation section could trigger an unintended redirect to a “Something went wrong” page. This has been corrected, and comments can now be accessed reliably.</p>
+      <p><strong>Improved Backup Lifecycle Management</strong>
+Backup workflows have been enhanced to better handle large backup files and ensure reliable periodic cleanup of older backups, reducing the risk of timeouts and improving storage efficiency.</p>
     </li>
     <li>
-      <p><strong>Classification and comments now visible for previously annotated chunks</strong></p>
-
-      <p>In some of the previously configured projects, classifications and comments were not displayed correctly for already annotated chunks. This has been corrected.</p>
-
-      <p>In addition, validation and UI behavior have been strengthened through improved project configuration enforcement:</p>
-
-      <p><strong>Required Field Validation</strong></p>
-
-      <ul>
-        <li>If a classification or NER field is configured as required, the UI now correctly enforces it.</li>
-        <li>Required annotations now properly validate associated required fields, such as comments.</li>
-      </ul>
-
-      <p><strong>Conditional / Dependent Fields</strong></p>
-
-      <ul>
-        <li>Fields that depend on earlier selections are now enforced correctly.</li>
-        <li>Follow-up fields become mandatory only when the preceding field is filled.</li>
-      </ul>
+      <p><strong>Kibana Support for Azure Marketplace and Air-Gapped Environments</strong>
+Deployment workflows now support Kibana in Azure Marketplace and fully air-gapped environments, enabling operational visibility and compliance without requiring external connectivity.</p>
     </li>
     <li>
-      <p><strong>Pagination now visible for long tasks in Comparison and De-Identification views</strong></p>
-
-      <p>Under certain conditions, pagination controls were not visible for longer tasks in the Comparison view and were inconsistently displayed in the De-Identification view. Pagination is now consistently rendered and functions correctly in both views.</p>
+      <p><strong>Automated Post-Install Elasticsearch Configuration</strong>
+Elasticsearch post-deployment configuration, including log retention and backup settings, is now applied automatically to ensure consistent setup immediately after installation or upgrade.</p>
     </li>
     <li>
-      <p><strong>Rating tooltips restored for configurations beyond 5 stars</strong></p>
-
-      <p>When Rate PDF projects were configured with more than five stars, rating tooltips were not displayed as expected. This has been corrected. New Rate PDF projects now default to a five-star configuration, ensuring consistent tooltip behavior.</p>
+      <p><strong>One-Line Enablement for Audit Logs</strong>
+Audit logging can now be enabled during installation or upgrade using a single command, simplifying setup and reducing configuration overhead.</p>
     </li>
     <li>
-      <p><strong>Deploy button no longer flickers after re-deploying the pre-annotation server</strong></p>
-
-      <p>A visual flicker could occur on the deploy/pre-annotation button after re-deploying the pre-annotation server in NER projects. The button now remains visually stable and accurately reflects the current deployment state.</p>
+      <p><strong>Installation Flag for Kibana Audit Enablement</strong>
+A dedicated installation flag is now available to enable Kibana audit capabilities during deployment or upgrade, streamlining configuration for audit and monitoring workflows.</p>
     </li>
   </ul>
 
-  <h3 id="annotation-models--pre-annotation">Annotation, Models &amp; Pre-Annotation</h3>
+  <h3 id="bug-fixes">Bug Fixes</h3>
 
   <ul>
     <li>
-      <p><strong>Faster pre-annotation with combined NER models, rules, and prompts</strong></p>
-
-      <p>Performance degradation was observed when running pre-annotation using a combination of NER models, rules, and prompts. Execution has been optimized and now processes tasks more efficiently.</p>
+      <p><strong>S3 Task Import Not Creating Tasks</strong>
+In certain scenarios, task imports from S3 could report success while no tasks were created. Import handling has been corrected to ensure tasks are properly created and that import status messages reflect actual results.</p>
     </li>
     <li>
-      <p><strong>Multi-line annotation behavior corrected</strong></p>
-
-      <p>In certain scenarios, multi-line annotations did not behave as expected. Automatic clicks no longer expand existing annotations incorrectly, and multiple selections no longer result in inactive grey/red regions.</p>
+      <p><strong>Annotations Becoming Invisible When Zooming in the Labeling Page</strong>
+Previously, annotations could become invisible on the labeling page when zooming into visual documents. Annotation rendering has been corrected, and annotations now remain visible and intact across zoom levels.</p>
     </li>
     <li>
-      <p><strong>Full span highlighting restored in PDF projects</strong></p>
-
-      <p>In PDF projects, annotations previously highlighted individual tokens rather than the full annotated span. Full spans are now highlighted correctly during annotation and review.</p>
+      <p><strong>External Provider Deletion Validation</strong>
+In earlier versions, deleting an external provider could fail without indicating that associated projects or prompts were preventing deletion. Deletion behavior has been corrected to provide clear validation messaging when providers are linked to projects or prompts, and providers can now be deleted successfully once dependencies are removed.</p>
     </li>
     <li>
-      <p><strong>Pre-annotation server deployment fixed for checkbox and handwriting projects</strong></p>
-
-      <p>Deployment failures could occur when starting pre-annotation servers for Checkbox Detection and Handwriting projects. Servers now deploy successfully and support pre-annotation as expected.</p>
+      <p><strong>Pipeline Tab Access for Annotator Role</strong>
+Previously, users with the Annotator role could encounter permission-related issues when accessing the Pipeline tab on the Reuse Resource page. Access controls have been corrected, allowing annotators to view and interact with available pipelines without errors while maintaining proper role-based permissions across other user roles.</p>
     </li>
     <li>
-      <p><strong>Task count now displayed on the Pre-Annotation button</strong></p>
-
-      <p>The Pre-Annotation button did not consistently display the number of tasks being processed during execution. Task count information is now shown correctly.</p>
-    </li>
-    <li>
-      <p><strong>Annotation no longer blocked in PDF+Text projects with “Label All Occurrences” enabled</strong></p>
-
-      <p>When the “Label All Occurrences” option was enabled, annotation actions could be blocked in PDF+Text projects. Annotation now functions correctly with this option enabled.</p>
-    </li>
-  </ul>
-
-  <h3 id="pdf-ocr--imports">PDF, OCR &amp; Imports</h3>
-
-  <ul>
-    <li>
-      <p><strong>PDF files can no longer be imported into Audio and Video projects</strong></p>
-
-      <p>The system previously allowed PDF files to be imported into Audio and Video project types. The OCR import option has been removed for these project types, preventing incompatible imports.</p>
-    </li>
-    <li>
-      <p><strong>Cloud-based PDF import fixed for text-based projects</strong></p>
-
-      <p>Importing PDF files from cloud sources in text-based projects could result in an unexpected “Something went wrong” error. Cloud-based PDF files can now be imported into NER projects without errors.</p>
-    </li>
-    <li>
-      <p><strong>Mixed PDFs (image + text) now supported in text-based projects</strong></p>
-
-      <p>Mixed PDFs containing both image-based and text-based content could cause import failures in text-based projects. Mixed PDFs are now handled correctly.</p>
-    </li>
-    <li>
-      <p><strong>Cloud credentials properly saved during PDF import</strong></p>
-
-      <p>Cloud credentials provided during PDF import were not always saved or refreshed, resulting in outdated credentials being reused. Credentials are now saved and refreshed correctly.</p>
-    </li>
-    <li>
-      <p><strong>OCR Server field now auto-refreshes on the Import page</strong></p>
-
-      <p>The OCR Server field on the Import page did not automatically refresh when the server became ready. The Import page now updates automatically to reflect server readiness.</p>
-    </li>
-    <li>
-      <p><strong>OCR document import restored for NER projects</strong></p>
-
-      <p>OCR documents could not be imported into NER projects under certain conditions. Both local and cloud imports now work as expected.</p>
-    </li>
-  </ul>
-
-  <h3 id="analytics-integrations--system-stability">Analytics, Integrations &amp; System Stability</h3>
-
-  <ul>
-    <li>
-      <p><strong>Annotator comparison chart fixed in Visual NER projects</strong></p>
-
-      <p>The annotator comparison chart did not consistently load or render data correctly in Visual NER projects. This has been resolved.</p>
-    </li>
-    <li>
-      <p><strong>Blind evaluation completions can no longer be edited without creating a new completion</strong></p>
-
-      <p>Submitted completions in Blind Evaluation projects could be edited using keyboard shortcuts without creating a new completion. A new completion is now required before edits can be made.</p>
-    </li>
-    <li>
-      <p><strong>Concurrent imports prevented during active import operations</strong></p>
-
-      <p>Refreshing the page during an active import could allow additional imports to be initiated concurrently. Import actions now remain disabled until the current process completes.</p>
-    </li>
-    <li>
-      <p><strong>Chart update errors eliminated from system logs</strong></p>
-
-      <p>During Analytics Dashboard refresh operations, “Couldn’t update chart” messages were observed in the pod logs. Chart data now updates correctly without generating errors.</p>
-    </li>
-    <li>
-      <p><strong>LLM responses now generated correctly with special characters in response names</strong></p>
-
-      <p>LLM responses failed to generate when response names contained supported special characters. This limitation has been removed.</p>
-    </li>
-    <li>
-      <p><strong>Deletion of integrated external service providers now properly restricted</strong></p>
-
-      <p>Integrated external service providers could previously be deleted without sufficient validation. Deletion behavior has been restricted to prevent unintended configuration loss.</p>
-    </li>
-    <li>
-      <p><strong>Synthetic task generation fixed for integrated LLM providers</strong></p>
-
-      <p>Synthetic task generation could fail when using integrated LLM providers. Synthetic tasks are now generated reliably across supported providers.</p>
-    </li>
-    <li>
-      <p><strong>Stale “Cannot Delete Provider” message no longer persists on the Integration page</strong></p>
-
-      <p>The “Cannot Delete Provider” message could persist on the Integration page even when no deletion error was present. This message is no longer displayed incorrectly.</p>
-    </li>
-    <li>
-      <p><strong>License validation no longer triggered after open-source training</strong></p>
-
-      <p>License-related errors appeared in training server logs after open-source model training completed. License validation is no longer triggered for open-source training workflows.</p>
-    </li>
-    <li>
-      <p><strong>OIDC/SAML login restored after system restore</strong></p>
-
-      <p>After system restore, OIDC/SAML authentication could redirect users to profile update flows instead of completing login. Users are now logged in correctly after restore.</p>
-    </li>
-    <li>
-      <p><strong>Cluster logs accessible without errors</strong></p>
-
-      <p>Accessing cluster logs could result in internal server errors under certain conditions. Cluster logs are now accessible reliably.</p>
+      <p><strong>Move Tool Stability in Visual NER Documents</strong>
+Inconsistent behavior could occur when using the move tool in Visual NER documents, particularly after extended interaction. The move functionality has been stabilized to ensure consistent navigation and positioning during document review.</p>
     </li>
   </ul>
 
   <hr />
-
   <h2 id="versions">Versions</h2>
 
 </div>
 
 <ul class="pagination owl-carousel pagination_big">
-    <li class="active"><a href="annotation_labs_releases/release_notes_7_8">7.8</a></li>
+    <li class="active"><a href="annotation_labs_releases/release_notes_7_8_1">7.8.1</a></li>
+    <li><a href="annotation_labs_releases/release_notes_7_8">7.8</a></li>
     <li><a href="annotation_labs_releases/release_notes_7_7">7.7</a></li>
     <li><a href="annotation_labs_releases/release_notes_7_5_1">7.6.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_7_5_1">7.5.1</a></li>
@@ -1138,7 +714,7 @@ function wrapWordInSpan(data, wordToWrap) {
     <li><a href="annotation_labs_releases/release_notes_6_10_0">6.10.0</a></li>
 </ul>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2026-02-11T00:00:00+00:00">Feb 11, 2026</time>
+      <time itemprop="dateModified" datetime="2026-02-23T00:00:00+00:00">Feb 23, 2026</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
