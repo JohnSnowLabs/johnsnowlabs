@@ -32,11 +32,24 @@ This pipeline, extracts age entities from clinical texts.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
 
 pipeline = PretrainedPipeline("age_parser_pipeline", 'en', 'clinical/models')
+
+sample_text = """Name : Hendrickson, Ora, Record date: 2093-01-13, # 719435.
+Dr. John Green, ID: 1231511863, IP 203.120.223.13.
+He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93.
+Patient's VIN : 1HGBH41JXMN109286, VIN 4Y1SL65848Z411439, VIN 1HGCM82633A123456 - VIN JH4KA7560MC012345 - VIN 5YJSA1E14HF123456
+SSN #333-44-6666, Driver's license no: A334455B, plate 34NLP34. Lic: 12345As. Cert: 12345As
+Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.
+
+A 28 year old female with a history of gestational diabetes mellitus diagnosed 8 years ago.
+3 years ago, he reported an episode of HTG-induced pancreatitis. 5 months old boy with repeated concussions.
+A 45-year-old patient was admitted for routine examination.
+The 72 years old man presented with chest pain."""
 
 result = pipeline.transform(spark.createDataFrame([[sample_text]]).toDF("text"))
 
@@ -49,6 +62,18 @@ from johnsnowlabs import nlp, medical
 
 pipeline = nlp.PretrainedPipeline("age_parser_pipeline", 'en', 'clinical/models')
 
+sample_text = """Name : Hendrickson, Ora, Record date: 2093-01-13, # 719435.
+Dr. John Green, ID: 1231511863, IP 203.120.223.13.
+He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93.
+Patient's VIN : 1HGBH41JXMN109286, VIN 4Y1SL65848Z411439, VIN 1HGCM82633A123456 - VIN JH4KA7560MC012345 - VIN 5YJSA1E14HF123456
+SSN #333-44-6666, Driver's license no: A334455B, plate 34NLP34. Lic: 12345As. Cert: 12345As
+Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.
+
+A 28 year old female with a history of gestational diabetes mellitus diagnosed 8 years ago.
+3 years ago, he reported an episode of HTG-induced pancreatitis. 5 months old boy with repeated concussions.
+A 45-year-old patient was admitted for routine examination.
+The 72 years old man presented with chest pain."""
+
 result = pipeline.transform(spark.createDataFrame([[sample_text]]).toDF("text"))
 
 ```
@@ -56,7 +81,19 @@ result = pipeline.transform(spark.createDataFrame([[sample_text]]).toDF("text"))
 
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
-val pipeline = PretrainedPipeline("age_parser_pipeline", 'en', 'clinical/models')
+val pipeline = PretrainedPipeline("age_parser_pipeline", "en", "clinical/models")
+
+val sample_text = """Name : Hendrickson, Ora, Record date: 2093-01-13, # 719435.
+Dr. John Green, ID: 1231511863, IP 203.120.223.13.
+He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93.
+Patient's VIN : 1HGBH41JXMN109286, VIN 4Y1SL65848Z411439, VIN 1HGCM82633A123456 - VIN JH4KA7560MC012345 - VIN 5YJSA1E14HF123456
+SSN #333-44-6666, Driver's license no: A334455B, plate 34NLP34. Lic: 12345As. Cert: 12345As
+Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.
+
+A 28 year old female with a history of gestational diabetes mellitus diagnosed 8 years ago.
+3 years ago, he reported an episode of HTG-induced pancreatitis. 5 months old boy with repeated concussions.
+A 45-year-old patient was admitted for routine examination.
+The 72 years old man presented with chest pain."""
 
 val result = pipeline.transform(spark.createDataFrame([[sample_text]]).toDF("text"))
 
