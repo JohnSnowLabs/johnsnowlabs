@@ -18,7 +18,7 @@ Terminology Server provides four distinct search modes:
 * **Concept Search** – Allows users to search for medical terms or concepts using a combination of <ins>**exact text**</ins> matching and <ins>**semantic search**</ins> techniques to return similar or related concepts, as described in the section below.
 * **Context Resolution Search** - Allows users to search for medical concepts by providing a contextual parameter.
 * **Code Search** – Enables users to locate a specific medical code within the Terminology Server's curated set of medical coding systems.
-* **Document Search** - Allows users to upload their documents in txt, pdf and doc/docx format and resolve all entities and their medical codes. _This requires a Universal JSL License with 2 credits to be activated._
+* **Document Search** - Allows users to upload their documents in txt, pdf and doc/docx format and resolve all entities and their medical codes. _This requires a JSL License. To get it, contact <a href="mailto:support@johnsnowlabs.com">support@johnsnowlabs.com</a>_
 
 ## Concept Search (Semantic search & Exact match search)
 
