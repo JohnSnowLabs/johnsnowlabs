@@ -32,11 +32,12 @@ This pipeline, extracts driver license number entities from clinical texts.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
 
-pipeline = PretrainedPipeline("dln_parser_pipeline", 'en', 'clinical/models')
+pipeline = PretrainedPipeline("dln_parser_pipeline", "en", "clinical/models")
 
 sample_text ="""Name : Hendrickson, Ora, Record date: 2093-01-13, # 719435.
 Dr. John Green, ID: 1231511863, IP 203.120.223.13.
@@ -53,7 +54,7 @@ result = pipeline.transform(spark.createDataFrame([[sample_text]]).toDF("text"))
 
 from johnsnowlabs import nlp, medical
 
-pipeline = nlp.PretrainedPipeline("dln_parser_pipeline", 'en', 'clinical/models')
+pipeline = nlp.PretrainedPipeline("dln_parser_pipeline", "en", "clinical/models")
 
 sample_text ="""Name : Hendrickson, Ora, Record date: 2093-01-13, # 719435.
 Dr. John Green, ID: 1231511863, IP 203.120.223.13.
@@ -68,7 +69,7 @@ result = pipeline.transform(spark.createDataFrame([[sample_text]]).toDF("text"))
 
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
-val pipeline = PretrainedPipeline("dln_parser_pipeline", 'en', 'clinical/models')
+val pipeline = PretrainedPipeline("dln_parser_pipeline", "en", "clinical/models")
 
 val sample_text ="""Name : Hendrickson, Ora, Record date: 2093-01-13, # 719435.
 Dr. John Green, ID: 1231511863, IP 203.120.223.13.
