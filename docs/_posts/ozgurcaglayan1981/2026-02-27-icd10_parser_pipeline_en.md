@@ -32,11 +32,12 @@ This pipeline, extracts icd10 entities from clinical texts.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
 
-pipeline = PretrainedPipeline("icd10_parser_pipeline", 'en', 'clinical/models')
+pipeline = PretrainedPipeline("icd10_parser_pipeline", "en", "clinical/models")
 
 sample_text = """A . Record date: 2093-01-13, date: 2093-01-13, DATE: 2093-01-13, David Hale, M.D. IP: 203.120.223.13. ID: 1231511863, Des Moines AL 50129-4444, The driver's license no: A334455B. the SSN:324598674 and e-mail: hale@gmail.com. Name : Hendrickson, Ora MR. # 719435 Date : 01/13/93. PCP : Oliveira, 25 years-old. Record date : 2079-11-09, Cocke County Baptist Hospital. 0295 Keats Street. Phone (302) 786-5227.
 Mine is SSN#332255677, The other is ssN: 333-44-6666. the rest ssn:  212-33-4444. his is sSN : 345-33-5666, HER is ssn 332233445.
@@ -55,7 +56,7 @@ result = pipeline.transform(spark.createDataFrame([[sample_text]]).toDF("text"))
 
 from johnsnowlabs import nlp, medical
 
-pipeline = nlp.PretrainedPipeline("icd10_parser_pipeline", 'en', 'clinical/models')
+pipeline = nlp.PretrainedPipeline("icd10_parser_pipeline", "en", "clinical/models")
 
 sample_text = """A . Record date: 2093-01-13, date: 2093-01-13, DATE: 2093-01-13, David Hale, M.D. IP: 203.120.223.13. ID: 1231511863, Des Moines AL 50129-4444, The driver's license no: A334455B. the SSN:324598674 and e-mail: hale@gmail.com. Name : Hendrickson, Ora MR. # 719435 Date : 01/13/93. PCP : Oliveira, 25 years-old. Record date : 2079-11-09, Cocke County Baptist Hospital. 0295 Keats Street. Phone (302) 786-5227.
 Mine is SSN#332255677, The other is ssN: 333-44-6666. the rest ssn:  212-33-4444. his is sSN : 345-33-5666, HER is ssn 332233445.
@@ -72,7 +73,7 @@ result = pipeline.transform(spark.createDataFrame([[sample_text]]).toDF("text"))
 
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
-val pipeline = PretrainedPipeline("icd10_parser_pipeline", 'en', 'clinical/models')
+val pipeline = PretrainedPipeline("icd10_parser_pipeline", "en", "clinical/models")
 
 val sample_text = """A . Record date: 2093-01-13, date: 2093-01-13, DATE: 2093-01-13, David Hale, M.D. IP: 203.120.223.13. ID: 1231511863, Des Moines AL 50129-4444, The driver's license no: A334455B. the SSN:324598674 and e-mail: hale@gmail.com. Name : Hendrickson, Ora MR. # 719435 Date : 01/13/93. PCP : Oliveira, 25 years-old. Record date : 2079-11-09, Cocke County Baptist Hospital. 0295 Keats Street. Phone (302) 786-5227.
 Mine is SSN#332255677, The other is ssN: 333-44-6666. the rest ssn:  212-33-4444. his is sSN : 345-33-5666, HER is ssn 332233445.
