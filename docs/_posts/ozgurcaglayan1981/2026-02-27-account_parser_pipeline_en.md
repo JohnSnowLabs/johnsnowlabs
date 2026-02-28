@@ -32,11 +32,12 @@ This pipeline, extracts account number entities from clinical texts.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
 
-pipeline = PretrainedPipeline("account_parser_pipeline", 'en', 'clinical/models')
+pipeline = PretrainedPipeline("account_parser_pipeline", "en", "clinical/models")
 
 sample_text = """
 Name : Hendrickson, Ora, Record date: 2093-01-13, # 719435.
@@ -58,7 +59,7 @@ result = pipeline.transform(spark.createDataFrame([[sample_text]]).toDF("text"))
 
 from johnsnowlabs import nlp, medical
 
-pipeline = nlp.PretrainedPipeline("account_parser_pipeline", 'en', 'clinical/models')
+pipeline = nlp.PretrainedPipeline("account_parser_pipeline", "en", "clinical/models")
 
 sample_text = """
 Name : Hendrickson, Ora, Record date: 2093-01-13, # 719435.
@@ -78,7 +79,7 @@ result = pipeline.transform(spark.createDataFrame([[sample_text]]).toDF("text"))
 
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
-val pipeline = PretrainedPipeline("account_parser_pipeline", 'en', 'clinical/models')
+val pipeline = PretrainedPipeline("account_parser_pipeline", "en", "clinical/models")
 
 val sample_text = """
 Name : Hendrickson, Ora, Record date: 2093-01-13, # 719435.
