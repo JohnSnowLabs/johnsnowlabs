@@ -4,7 +4,7 @@ title: Sentence Entity Resolver for ICD-10-CM Codes (bge_base_en_v1_5_onnx) - Pi
 author: John Snow Labs
 name: bgeresolve_icd10cm_pipeline
 date: 2026-03-01
-tags: [en, resolver, licensed, clinical, bge, sentence_entity_resolver, pipeline]
+tags: [en, icd10cm, resolver, licensed, clinical, bge, sentence_entity_resolver, pipeline]
 task: [Entity Resolution, Pipeline Healthcare]
 language: en
 edition: Healthcare NLP 6.3.0
