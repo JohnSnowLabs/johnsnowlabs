@@ -1,6 +1,6 @@
 ---
 layout: model
-title: Date of Brith Contexrual Parser - Pipeline
+title: Date of Brith Contextual Parser - Pipeline
 author: John Snow Labs
 name: date_of_birth_parser_pipeline
 date: 2026-03-01
