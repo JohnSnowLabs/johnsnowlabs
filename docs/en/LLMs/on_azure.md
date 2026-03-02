@@ -31,6 +31,10 @@ The list below shows John Snow Labs' Medical LLM models available on Azure marke
 
 [Medical Visual LLM - 30B](https://marketplace.microsoft.com/en-us/product/virtual-machines/johnsnowlabsinc1646051154808.medical_vom_30b?tab=Overview)
 
+[Visual-Language-OCR-LLM]()
+
+[Visual-Language-OCR-Structured-LLM]()
+
 </div><div class="h3-box" markdown="1">
 
 ## Deployment Instructions

@@ -5,13 +5,55 @@ seotitle: Medical LLMs | John Snow Labs
 title: Release Notes
 permalink: /docs/en/LLMs/releases/release_notes
 key: docs-medical-llm
-modify_date: "2025-12-30"
+modify_date: "2026-03-02"
 show_nav: true
 sidebar:
     nav: medical-llm
 ---
 
 <div class="h3-box" markdown="1">
+
+## 02-03-2026
+
+### Model Updates
+
+We're excited to announce an updated version of our existing Medical-Visual-LLM-8B model, along with two new vision OCR models designed for production document understanding.
+
+- **Medical-Visual-LLM-8B**: An enhanced multimodal medical model that delivers advanced clinical reasoning across both text and medical imagery in a highly efficient footprint. Trained on diverse medical thinking and patient-centered datasets, it understands complex clinical narratives while accurately interpreting X-rays, MRIs, CT scans, pathology slides, charts, diagrams, and structured medical records. It provides strong diagnostic support, contextual question answering, structured report summarization, and multimodal evidence synthesis, and is optimized for RAG workflows that integrate with healthcare databases and imaging systems to deliver grounded, data-aware responses.
+
+- **Visual-Language-OCR-LLM**: A vision-language model focused on production-grade optical character recognition with enterprise-level accuracy across diverse document types. It excels at extracting text from forms, invoices, receipts, medical records, legal documents, and complex structured layouts while maintaining high throughput and consistent accuracy in real-world document processing pipelines.
+
+- **Visual-Language-OCR-Structured-LLM**: A vision-language model optimized for structured extraction workflows, balancing accuracy, cost, and performance for production OCR and structured data pipelines. It is designed for mission-critical document processing across financial, medical, legal, and technical content where reliable field-level extraction is required at scale.
+
+#### Specifications
+
+| **Model Name**                    | **Parameters** | **Recommended GPU Memory** | **Max Sequence Length** | **Model Size** | **Max KV-Cache** | **Tensor Parallel Sizes** |
+|-----------------------------------|----------------|----------------------------|-------------------------|----------------|------------------|--------------------------|
+| Medical-Visual-LLM-8B            | 8B             | ~64 GB                     | 128K                    | 16 GB          | 48 GB            | 1, 2, 4                  |
+| Visual-Language-OCR-LLM          | 30B            | ~62 GB                     | 40K                     | 58 GB          | 5 GB             | 2, 4, 8                  |
+| Visual-Language-OCR-Structured-LLM | 30B          | ~62 GB                     | 40K                     | 58 GB          | 5 GB             | 2, 4, 8                  |
+
+#### Benchmark Performance – Medical-Visual-LLM-8B
+
+- Achieves 88.2% average across OpenMed benchmarks
+- Scores 89% on clinical knowledge assessment
+- Reaches 95% on medical genetics understanding
+- Performs at 95.2% for college biology concepts
+- Processes professional medicine with 93% accuracy
+- Handles medical MCQs with 89.4% precision
+- Maintains 88.8% accuracy on Anatomy concepts
+
+#### Vision OCR LLM – Highlights
+
+- **OCR Performance**: Achieves 88% accuracy on OCRBench evaluations; demonstrates a 14.7 Character Error Rate on FUNSD form understanding; handles 20+ languages with consistent accuracy; provides robust text extraction from receipts, invoices, forms, and business documents; delivers excellent performance on complex layouts and structured documents.  
+- **Technical Specifications**: 30B total parameters with 3B active per inference (Mixture-of-Experts architecture); supports image resolution up to 8MP / 4K (3840 × 2160); fast inference through efficient architecture design; supports batch processing for high-volume workflows.  
+- **Document Understanding**: Strong performance on charts and data visualizations; excellent table extraction and structure preservation; reliable text extraction from complex multi-column layouts; handles documents with varying quality and orientations; effective processing of mixed-content documents.  
+
+#### Vision OCR Structured LLM – Highlights
+
+- **Industry-Leading Performance**: Achieves 90% accuracy on OCRBench; demonstrates a 20.3 Character Error Rate on FUNSD (79.7% field-level accuracy); processes 25+ languages with consistent accuracy; offers superior performance on charts, diagrams, tables, and complex layouts; provides exceptional reliability for production-grade document processing.  
+- **Technical Specifications**: 30B total parameters with 3B active per inference (Mixture-of-Experts architecture); image resolution support up to 8MP / 4K (3840 × 2160); advanced training for enhanced reasoning and accuracy; up to 4× inference speedup through optimized deployment architecture.  
+- **Structured Extraction Excellence**: Superior JSON generation from complex document layouts; excellent chart and data visualization comprehension (around 91–93%); advanced table extraction with structure preservation, including nested tables; robust handling of hierarchical data and challenging layouts; reliable key–value extraction for high-volume automated document processing.  
 
 ## 12-30-2025
 
