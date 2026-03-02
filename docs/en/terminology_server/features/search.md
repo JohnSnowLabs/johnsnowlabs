@@ -160,6 +160,30 @@ The platform supports two distinct document search modes with flexible text unde
 
 Both modes operate on the same uploaded documents but apply different interpretation and extraction strategies to fit your requirements and use cases.
 
+
+### Activating Document Search
+
+Document Search is a premium feature that requires explicit activation in your JSL license. Follow these steps to enable it:
+
+#### Prerequisites
+- An active John Snow Labs (JSL) license with Document Search permissions
+- Admin access to your Terminology Server instance
+
+#### Activation Steps
+1. Navigate to the **Licenses** page in your Terminology Server interface
+2. Locate your JSL License in the licenses list
+3. Click the **Enable Document Search** button next to your license
+
+![Terminology Service License](/assets/images/term_server/license_page.png)
+
+#### Post-Activation
+Once enabled, Document Search functionality will be available across your Terminology Server instance, allowing you to:
+- Upload medical documents in txt, pdf and doc/docx format.
+- Perform medical terminology extraction using both Fast Search and Accurate Search modes
+- Apply various filters to refine your search results
+
+**Note:** If you don't see the "Enable Document Search" button, please verify that your JSL license includes Document Search permissions. Contact your system administrator or John Snow Labs support if you need assistance with license upgrades.
+
 ## Additional Filters 
 
 Improve your search outcomes by utilizing additional available filters:

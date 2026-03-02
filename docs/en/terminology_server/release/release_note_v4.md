@@ -147,7 +147,7 @@ The platform has been expanded to include these Code Systems.
 |[UB04 Pt dis status](https://www.resdac.org/cms-data/variables/patient-discharge-status-code)| UB04 Patient Discharge Status Code (CMS) |  |
 |[UB04 Typ bill](https://ushik.ahrq.gov/ViewItemDetails?&system=apcd&itemKey=196987000)| UB04 Type of Bill - Institutional (USHIK) |  |
 |[UCUM](http://aurora.regenstrief.org/~ucum/ucum.html#section-Alphabetic-Index)| Unified Code for Units of Measure (Regenstrief Institute) | Version 1.8.2 |
-|[UMLS](| Unified Medical Language System |  |
+|UMLS| Unified Medical Language System |  |
 |[US Census](https://www.census.gov/geo/maps-data/data/tiger-cart-boundary.html)| Census regions of the United States (USCB) | US Census 2017 Release |
 |[VANDF](http://www.nlm.nih.gov/research/umls/rxnorm/docs/rxnormfiles.html)| Veterans Health Administration National Drug File (VA)) | RxNorm 20240603 |
 |Visit| OMOP Visit | Visit 20211216 |
@@ -155,6 +155,16 @@ The platform has been expanded to include these Code Systems.
 |Vocabulary| OMOP Vocabulary |  |
 |[dm+d](https://isd.hscic.gov.uk/trud3/user/authenticated/group/0/pack/1/subpack/24/releases)| Dictionary of Medicines and Devices (NHS) | DMD 2025-06-02 |
 
+## Licenses Page
+
+A dedicated Licenses page has been introduced to streamline license management and feature activation:
+
+- **License Overview**: View detailed information about your John Snow Labs (JSL) license, including expiration dates
+- **Document Search Activation**: Enable or disable the premium Document Search feature directly from the interface with a simple toggle
+- **License Status**: Display of license validity and feature availability
+- **Self-Service Management**: Reduce dependency on administrative support by allowing users to manage premium features independently
+
+This enhancement provides greater transparency and control over your Terminology Server licensing and premium feature access.
 
 ## Improvements
 
@@ -163,6 +173,9 @@ The platform has been expanded to include these Code Systems.
 * Added endpoint to generate embeddings for medical terms.
 * Added a TopK slider input in the Filters panel.
 * Enhanced query performance for faster search results.
+
+
+![License-Management](/assets/images/term_server/license_management.png)
 
 ## Bugfixes
 
