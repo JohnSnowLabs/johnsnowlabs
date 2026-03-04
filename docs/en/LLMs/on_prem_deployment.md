@@ -59,8 +59,8 @@ The following models are currently available for on-premise deployments:
 | Medical-Reasoning-LLM-32B  | 32B      | ~111 GB      | 40K                 | 61 GB       | 50 GB       | 2, 4, 8         |
 | Medical-Visual-LLM-30B | 30B         | ~150 GB      | 262K                | 58 GB       | 92 GB       | 2, 4, 8         |
 | Medical-Spanish-LLM-24B | 24B        | ~145 GB      | 128K                | 45 GB       | 100 GB      | 2, 4, 8         |
-| Visual-Language-OCR-LLM | 30B        | ~62 GB       | 40K                 | 58 GB       | 5 GB        | 2, 4, 8         |
-| Visual-Language-OCR-Structured-LLM | 30B | ~62 GB    | 40K                 | 58 GB       | 5 GB        | 2, 4, 8         |
+| Vision-OCR-LLM | 30B        | ~62 GB       | 40K                 | 58 GB       | 5 GB        | 2, 4, 8         |
+| Vision-OCR-Structured-LLM | 30B | ~62 GB    | 40K                 | 58 GB       | 5 GB        | 2, 4, 8         |
 
 
 > **Important Notes**
