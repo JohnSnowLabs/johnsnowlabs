@@ -21,17 +21,17 @@ We're excited to announce an updated version of our existing Medical-Visual-LLM-
 
 - **Medical-Visual-LLM-8B**: An enhanced multimodal medical model that delivers advanced clinical reasoning across both text and medical imagery in a highly efficient footprint. Trained on diverse medical thinking and patient-centered datasets, it understands complex clinical narratives while accurately interpreting X-rays, MRIs, CT scans, pathology slides, charts, diagrams, and structured medical records. It provides strong diagnostic support, contextual question answering, structured report summarization, and multimodal evidence synthesis, and is optimized for RAG workflows that integrate with healthcare databases and imaging systems to deliver grounded, data-aware responses.
 
-- **Visual-Language-OCR-LLM**: A vision-language model focused on production-grade optical character recognition with enterprise-level accuracy across diverse document types. It excels at extracting text from forms, invoices, receipts, medical records, legal documents, and complex structured layouts while maintaining high throughput and consistent accuracy in real-world document processing pipelines.
+- **Vision-OCR-LLM**: A vision-language model focused on production-grade optical character recognition with enterprise-level accuracy across diverse document types. It excels at extracting text from forms, invoices, receipts, medical records, legal documents, and complex structured layouts while maintaining high throughput and consistent accuracy in real-world document processing pipelines.
 
-- **Visual-Language-OCR-Structured-LLM**: A vision-language model optimized for structured extraction workflows, balancing accuracy, cost, and performance for production OCR and structured data pipelines. It is designed for mission-critical document processing across financial, medical, legal, and technical content where reliable field-level extraction is required at scale.
+- **Vision-OCR-Structured-LLM**: A vision-language model optimized for structured extraction workflows, balancing accuracy, cost, and performance for production OCR and structured data pipelines. It is designed for mission-critical document processing across financial, medical, legal, and technical content where reliable field-level extraction is required at scale.
 
 #### Specifications
 
 | **Model Name**                    | **Parameters** | **Recommended GPU Memory** | **Max Sequence Length** | **Model Size** | **Max KV-Cache** | **Tensor Parallel Sizes** |
 |-----------------------------------|----------------|----------------------------|-------------------------|----------------|------------------|--------------------------|
 | Medical-Visual-LLM-8B            | 8B             | ~64 GB                     | 128K                    | 16 GB          | 48 GB            | 1, 2, 4                  |
-| Visual-Language-OCR-LLM          | 30B            | ~62 GB                     | 40K                     | 58 GB          | 5 GB             | 2, 4, 8                  |
-| Visual-Language-OCR-Structured-LLM | 30B          | ~62 GB                     | 40K                     | 58 GB          | 5 GB             | 2, 4, 8                  |
+| Vision-OCR-LLM          | 30B            | ~62 GB                     | 40K                     | 58 GB          | 5 GB             | 2, 4, 8                  |
+| Vision-OCR-Structured-LLM | 30B          | ~62 GB                     | 40K                     | 58 GB          | 5 GB             | 2, 4, 8                  |
 
 #### Benchmark Performance – Medical-Visual-LLM-8B
 
