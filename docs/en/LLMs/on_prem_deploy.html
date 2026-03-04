@@ -681,7 +681,7 @@ johnsnowlabs/jsl-llms <span class="se">\</span>
         <td>8B</td>
         <td>~64 GB</td>
         <td>128K</td>
-        <td>15 GB</td>
+        <td>16 GB</td>
         <td>48 GB</td>
         <td>1, 2, 4</td>
       </tr>
@@ -739,6 +739,24 @@ johnsnowlabs/jsl-llms <span class="se">\</span>
         <td>100 GB</td>
         <td>2, 4, 8</td>
       </tr>
+      <tr>
+        <td>Vision-OCR-LLM</td>
+        <td>30B</td>
+        <td>~62 GB</td>
+        <td>40K</td>
+        <td>58 GB</td>
+        <td>5 GB</td>
+        <td>2, 4, 8</td>
+      </tr>
+      <tr>
+        <td>Vision-OCR-Structured-LLM</td>
+        <td>30B</td>
+        <td>~62 GB</td>
+        <td>40K</td>
+        <td>58 GB</td>
+        <td>5 GB</td>
+        <td>2, 4, 8</td>
+      </tr>
     </tbody>
   </table>
 
@@ -746,6 +764,8 @@ johnsnowlabs/jsl-llms <span class="se">\</span>
     <p><strong>Important Notes</strong></p>
 
     <p><strong>Memory Calculations:</strong> All memory calculations are based on half-precision (fp16/bf16) weights. Recommended GPU Memory considers the model size and the maximum key-value cache at the model’s maximum sequence length. These calculations follow the guidelines from <a href="https://docs.djl.ai/master/docs/serving/serving/docs/lmi/deployment_guide/instance-type-selection.html">DJL’s LMI Deployment Guide.</a></p>
+
+    <p><strong>Model Code Requirements:</strong> Both <code class="language-plaintext highlighter-rouge">Visual-Language-OCR-LLM</code> and <code class="language-plaintext highlighter-rouge">Visual-Language-OCR-Structured-LLM</code> must be run with <code class="language-plaintext highlighter-rouge">trust_remote_code=True</code> because their model implementations include custom code.</p>
   </blockquote>
 
 </div>
