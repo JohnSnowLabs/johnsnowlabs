@@ -22,20 +22,24 @@ sidebar:
 ### Important Change
 
 - **Kibana Authentication Requirement**
-  Access to Kibana now requires authentication.
-  Use the elastic username and retrieve the password from the Kubernetes secret using the following command:
 
-  ```bash
-  kubectl get secret annotationlab-elasticsearch-master-credentials --template={{.data.password}} | base64 --decode; echo
+   Access to Kibana now requires authentication.
+   Use the elastic username and retrieve the password from the Kubernetes secret using the following command:
+
+   ```bash
+   kubectl get secret annotationlab-elasticsearch-master-credentials --template={{.data.password}} | base64 --decode; echo
+   ```
 
 
 ### Bug Fixes
 
 - **Kibana Dashboard Access After Upgrade**
-  In certain scenarios, access to Kibana dashboards could become unavailable after upgrading the platform. Dashboard access behavior has been corrected to ensure Kibana remains accessible following upgrades.
+
+   In certain scenarios, access to Kibana dashboards could become unavailable after upgrading the platform. Dashboard access behavior has been corrected to ensure Kibana remains accessible following upgrades.
 
 - **Secured Kibana Ingress Configuration**
-  The Kibana ingress configuration has been updated to strengthen deployment security and ensure safer access to Kibana services within the platform.
+
+   The Kibana ingress configuration has been updated to strengthen deployment security and ensure safer access to Kibana services within the platform.
 
 
 
