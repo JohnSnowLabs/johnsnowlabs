@@ -18,7 +18,7 @@ sidebar:
 ### Important Change
 
 - **Kibana Authentication Requirement**
-  Kibana access now requires authentication.
+  Access to Kibana now requires authentication.
   Use the elastic username and retrieve the password from the Kubernetes secret using the following command:
 
   ```bash
