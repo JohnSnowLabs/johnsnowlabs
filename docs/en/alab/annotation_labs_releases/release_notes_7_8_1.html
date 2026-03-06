@@ -632,28 +632,34 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <ul>
     <li>
-      <p><strong>Secure Elasticsearch Communication and S3 Log Backup</strong>
-Elasticsearch jobs now use HTTPS for secure communication, and support has been added for backing up logs to Amazon S3 to improve durability, compliance, and disaster recovery readiness.</p>
+      <p><strong>Secure Elasticsearch Communication and S3 Log Backup</strong></p>
+
+      <p>Elasticsearch jobs now use HTTPS for secure communication, and support has been added for backing up logs to Amazon S3 to improve durability, compliance, and disaster recovery readiness.</p>
     </li>
     <li>
-      <p><strong>Improved Backup Lifecycle Management</strong>
-Backup workflows have been enhanced to better handle large backup files and ensure reliable periodic cleanup of older backups, reducing the risk of timeouts and improving storage efficiency.</p>
+      <p><strong>Improved Backup Lifecycle Management</strong></p>
+
+      <p>Backup workflows have been enhanced to better handle large backup files and ensure reliable periodic cleanup of older backups, reducing the risk of timeouts and improving storage efficiency.</p>
     </li>
     <li>
-      <p><strong>Kibana Support for Azure Marketplace and Air-Gapped Environments</strong>
-Deployment workflows now support Kibana in Azure Marketplace and fully air-gapped environments, enabling operational visibility and compliance without requiring external connectivity.</p>
+      <p><strong>Kibana Support for Azure Marketplace and Air-Gapped Environments</strong></p>
+
+      <p>Deployment workflows now support Kibana in Azure Marketplace and fully air-gapped environments, enabling operational visibility and compliance without requiring external connectivity.</p>
     </li>
     <li>
-      <p><strong>Automated Post-Install Elasticsearch Configuration</strong>
-Elasticsearch post-deployment configuration, including log retention and backup settings, is now applied automatically to ensure consistent setup immediately after installation or upgrade.</p>
+      <p><strong>Automated Post-Install Elasticsearch Configuration</strong></p>
+
+      <p>Elasticsearch post-deployment configuration, including log retention and backup settings, is now applied automatically to ensure consistent setup immediately after installation or upgrade.</p>
     </li>
     <li>
-      <p><strong>One-Line Enablement for Audit Logs</strong>
-Audit logging can now be enabled during installation or upgrade using a single command, simplifying setup and reducing configuration overhead.</p>
+      <p><strong>One-Line Enablement for Audit Logs</strong></p>
+
+      <p>Audit logging can now be enabled during installation or upgrade using a single command, simplifying setup and reducing configuration overhead.</p>
     </li>
     <li>
-      <p><strong>Installation Flag for Kibana Audit Enablement</strong>
-A dedicated installation flag is now available to enable Kibana audit capabilities during deployment or upgrade, streamlining configuration for audit and monitoring workflows.</p>
+      <p><strong>Installation Flag for Kibana Audit Enablement</strong></p>
+
+      <p>A dedicated installation flag is now available to enable Kibana audit capabilities during deployment or upgrade, streamlining configuration for audit and monitoring workflows.</p>
     </li>
   </ul>
 
@@ -661,24 +667,29 @@ A dedicated installation flag is now available to enable Kibana audit capabiliti
 
   <ul>
     <li>
-      <p><strong>S3 Task Import Not Creating Tasks</strong>
-In certain scenarios, task imports from S3 could report success while no tasks were created. Import handling has been corrected to ensure tasks are properly created and that import status messages reflect actual results.</p>
+      <p><strong>S3 Task Import Not Creating Tasks</strong></p>
+
+      <p>In certain scenarios, task imports from S3 could report success while no tasks were created. Import handling has been corrected to ensure tasks are properly created and that import status messages reflect actual results.</p>
     </li>
     <li>
-      <p><strong>Annotations Becoming Invisible When Zooming in the Labeling Page</strong>
-Previously, annotations could become invisible on the labeling page when zooming into visual documents. Annotation rendering has been corrected, and annotations now remain visible and intact across zoom levels.</p>
+      <p><strong>Annotations Becoming Invisible When Zooming in the Labeling Page</strong></p>
+
+      <p>Previously, annotations could become invisible on the labeling page when zooming into visual documents. Annotation rendering has been corrected, and annotations now remain visible and intact across zoom levels.</p>
     </li>
     <li>
-      <p><strong>External Provider Deletion Validation</strong>
- In earlier versions, deleting an external provider could fail without indicating that associated projects or prompts were preventing deletion. Deletion behavior has been corrected to provide clear validation messaging when providers are linked to projects or prompts, and providers can now be deleted successfully once dependencies are removed.</p>
+      <p><strong>External Provider Deletion Validation</strong></p>
+
+      <p>In earlier versions, deleting an external provider could fail without indicating that associated projects or prompts were preventing deletion. Deletion behavior has been corrected to provide clear validation messaging when providers are linked to projects or prompts, and providers can now be deleted successfully once dependencies are removed.</p>
     </li>
     <li>
-      <p><strong>Pipeline Tab Access for Annotator Role</strong>
-Previously, users with the Annotator role could encounter permission-related issues when accessing the Pipeline tab on the Reuse Resource page. Access controls have been corrected, allowing annotators to view and interact with available pipelines without errors while maintaining proper role-based permissions across other user roles.</p>
+      <p><strong>Pipeline Tab Access for Annotator Role</strong></p>
+
+      <p>Previously, users with the Annotator role could encounter permission-related issues when accessing the Pipeline tab on the Reuse Resource page. Access controls have been corrected, allowing annotators to view and interact with available pipelines without errors while maintaining proper role-based permissions across other user roles.</p>
     </li>
     <li>
-      <p><strong>Move Tool Stability in Visual NER Documents</strong>
-Inconsistent behavior could occur when using the move tool in Visual NER documents, particularly after extended interaction. The move functionality has been stabilized to ensure consistent navigation and positioning during document review.</p>
+      <p><strong>Move Tool Stability in Visual NER Documents</strong></p>
+
+      <p>Inconsistent behavior could occur when using the move tool in Visual NER documents, particularly after extended interaction. The move functionality has been stabilized to ensure consistent navigation and positioning during document review.</p>
     </li>
   </ul>
 
@@ -698,8 +709,9 @@ Inconsistent behavior could occur when using the move tool in Visual NER documen
   </li>
 </ul>
 <ul class="pagination owl-carousel pagination_big">
-  <li><a href="release_notes_7_7">7.8.1</a></li>
-  <li><a href="release_notes_7_6_0">7.8</a></li>	
+  <li><a href="release_notes_7_8_2">7.8.2</a></li>
+  <li><a href="release_notes_7_8_1">7.8.1</a></li>
+  <li><a href="release_notes_7_8">7.8</a></li>	
   <li><a href="release_notes_7_7">7.7</a></li>
   <li><a href="release_notes_7_6_0">7.6.0</a></li>	
   <li><a href="release_notes_7_5_1">7.5.1</a></li>

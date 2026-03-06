@@ -628,34 +628,19 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <h2 id="generative-ai-lab-781">Generative AI Lab 7.8.1</h2>
+  <h2 id="generative-ai-lab-782">Generative AI Lab 7.8.2</h2>
 
-  <h3 id="improvements">Improvements</h3>
+  <h3 id="important-change">Important Change</h3>
 
   <ul>
     <li>
-      <p><strong>Secure Elasticsearch Communication and S3 Log Backup</strong>
-Elasticsearch jobs now use HTTPS for secure communication, and support has been added for backing up logs to Amazon S3 to improve durability, compliance, and disaster recovery readiness.</p>
-    </li>
-    <li>
-      <p><strong>Improved Backup Lifecycle Management</strong>
-Backup workflows have been enhanced to better handle large backup files and ensure reliable periodic cleanup of older backups, reducing the risk of timeouts and improving storage efficiency.</p>
-    </li>
-    <li>
-      <p><strong>Kibana Support for Azure Marketplace and Air-Gapped Environments</strong>
-Deployment workflows now support Kibana in Azure Marketplace and fully air-gapped environments, enabling operational visibility and compliance without requiring external connectivity.</p>
-    </li>
-    <li>
-      <p><strong>Automated Post-Install Elasticsearch Configuration</strong>
-Elasticsearch post-deployment configuration, including log retention and backup settings, is now applied automatically to ensure consistent setup immediately after installation or upgrade.</p>
-    </li>
-    <li>
-      <p><strong>One-Line Enablement for Audit Logs</strong>
-Audit logging can now be enabled during installation or upgrade using a single command, simplifying setup and reducing configuration overhead.</p>
-    </li>
-    <li>
-      <p><strong>Installation Flag for Kibana Audit Enablement</strong>
-A dedicated installation flag is now available to enable Kibana audit capabilities during deployment or upgrade, streamlining configuration for audit and monitoring workflows.</p>
+      <p><strong>Kibana Authentication Requirement</strong></p>
+
+      <p>Access to Kibana now requires authentication.
+ Use the elastic username and retrieve the password from the Kubernetes secret using the following command:</p>
+
+      <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> kubectl get secret annotationlab-elasticsearch-master-credentials <span class="nt">--template</span><span class="o">=</span> | <span class="nb">base64</span> <span class="nt">--decode</span><span class="p">;</span> <span class="nb">echo</span>
+</code></pre></div>      </div>
     </li>
   </ul>
 
@@ -663,24 +648,14 @@ A dedicated installation flag is now available to enable Kibana audit capabiliti
 
   <ul>
     <li>
-      <p><strong>S3 Task Import Not Creating Tasks</strong>
-In certain scenarios, task imports from S3 could report success while no tasks were created. Import handling has been corrected to ensure tasks are properly created and that import status messages reflect actual results.</p>
+      <p><strong>Kibana Dashboard Access After Upgrade</strong></p>
+
+      <p>In certain scenarios, access to Kibana dashboards could become unavailable after upgrading the platform. Dashboard access behavior has been corrected to ensure Kibana remains accessible following upgrades.</p>
     </li>
     <li>
-      <p><strong>Annotations Becoming Invisible When Zooming in the Labeling Page</strong>
-Previously, annotations could become invisible on the labeling page when zooming into visual documents. Annotation rendering has been corrected, and annotations now remain visible and intact across zoom levels.</p>
-    </li>
-    <li>
-      <p><strong>External Provider Deletion Validation</strong>
-In earlier versions, deleting an external provider could fail without indicating that associated projects or prompts were preventing deletion. Deletion behavior has been corrected to provide clear validation messaging when providers are linked to projects or prompts, and providers can now be deleted successfully once dependencies are removed.</p>
-    </li>
-    <li>
-      <p><strong>Pipeline Tab Access for Annotator Role</strong>
-Previously, users with the Annotator role could encounter permission-related issues when accessing the Pipeline tab on the Reuse Resource page. Access controls have been corrected, allowing annotators to view and interact with available pipelines without errors while maintaining proper role-based permissions across other user roles.</p>
-    </li>
-    <li>
-      <p><strong>Move Tool Stability in Visual NER Documents</strong>
-Inconsistent behavior could occur when using the move tool in Visual NER documents, particularly after extended interaction. The move functionality has been stabilized to ensure consistent navigation and positioning during document review.</p>
+      <p><strong>Secured Kibana Ingress Configuration</strong></p>
+
+      <p>The Kibana ingress configuration has been updated to strengthen deployment security and ensure safer access to Kibana services within the platform.</p>
     </li>
   </ul>
 
@@ -690,7 +665,8 @@ Inconsistent behavior could occur when using the move tool in Visual NER documen
 </div>
 
 <ul class="pagination owl-carousel pagination_big">
-    <li class="active"><a href="annotation_labs_releases/release_notes_7_8_1">7.8.1</a></li>
+    <li class="active"><a href="annotation_labs_releases/release_notes_7_8_2">7.8.2</a></li>
+    <li><a href="annotation_labs_releases/release_notes_7_8_1">7.8.1</a></li>
     <li><a href="annotation_labs_releases/release_notes_7_8">7.8</a></li>
     <li><a href="annotation_labs_releases/release_notes_7_7">7.7</a></li>
     <li><a href="annotation_labs_releases/release_notes_7_5_1">7.6.0</a></li>
@@ -714,7 +690,7 @@ Inconsistent behavior could occur when using the move tool in Visual NER documen
     <li><a href="annotation_labs_releases/release_notes_6_10_0">6.10.0</a></li>
 </ul>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2026-02-23T00:00:00+00:00">Feb 23, 2026</time>
+      <time itemprop="dateModified" datetime="2026-03-05T00:00:00+00:00">Mar 05, 2026</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
