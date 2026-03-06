@@ -20,6 +20,11 @@ use_language_switcher: "Python-Scala-Java"
 
 This pretrained model maps UMLS codes to corresponding RxNorm codes.
 
+## Predicted Entities
+
+`rxnorm_code`
+
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
@@ -32,6 +37,7 @@ This pretrained model maps UMLS codes to corresponding RxNorm codes.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 documentAssembler = DocumentAssembler()\
@@ -126,7 +132,8 @@ val resolver2chunk = new Resolution2Chunk()
     .setInputCols(Array("umls_code"))
     .setOutputCol("umls2chunk")
 
-val chunkerMapper = ChunkMapperModel.pretrained("umls_rxnorm_mapper", "en", "clinical/models")    .setInputCols(Array("umls2chunk"))
+val chunkerMapper = ChunkMapperModel.pretrained("umls_rxnorm_mapper", "en", "clinical/models")
+    .setInputCols(Array("umls2chunk"))
     .setOutputCol("mappings")
 
 val mapper_pipeline = new Pipeline().setStages(Array(
