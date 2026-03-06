@@ -208,44 +208,44 @@ val word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical","en",
   .setInputCols(Array("sentence","token"))
   .setOutputCol("embeddings")
 
-val ner_model = MedicalNerModel.pretrained("ner_radiology", "en", "clinical/models")\
- 	.setInputCols(["sentence", "token", "embeddings"])\
+val ner_model = MedicalNerModel.pretrained("ner_radiology", "en", "clinical/models")
+ 	.setInputCols(Array("sentence", "token", "embeddings"))
  	.setOutputCol("ner_radiology")
 
-val ner_converter = new NerConverterInternal()\
-  	  .setInputCols(["sentence", "token", "ner_radiology"])\
- 	  .setOutputCol("ner_chunk_radiology")\
-	  .setWhiteList(["Test"])
+val ner_converter = new NerConverterInternal()
+  	  .setInputCols(Array("sentence", "token", "ner_radiology"))
+ 	  .setOutputCol("ner_chunk_radiology")
+	  .setWhiteList(Array("Test"))
 
-val ner_model_jsl = MedicalNerModel.pretrained("ner_jsl", "en", "clinical/models")\
- 	.setInputCols(["sentence", "token", "embeddings"])\
+val ner_model_jsl = MedicalNerModel.pretrained("ner_jsl", "en", "clinical/models")
+ 	.setInputCols(Array("sentence", "token", "embeddings"))
  	.setOutputCol("ner_jsl")
 
-val ner_converter_jsl = new NerConverterInternal()\
-  	  .setInputCols(["sentence", "token", "ner_jsl"])\
- 	  .setOutputCol("ner_chunk_jsl")\
-	  .setWhiteList(["Test"])
+val ner_converter_jsl = new NerConverterInternal()
+  	  .setInputCols(Array("sentence", "token", "ner_jsl"))
+ 	  .setOutputCol("ner_chunk_jsl")
+	  .setWhiteList(Array("Test"))
 
-val chunk_merger = new ChunkMergeApproach()\
-    .setInputCols("ner_chunk_jsl", "ner_chunk_radiology")\
-    .setOutputCol('merged_ner_chunk')
+val chunk_merger = new ChunkMergeApproach()
+    .setInputCols(Array("ner_chunk_jsl", "ner_chunk_radiology"))
+    .setOutputCol("merged_ner_chunk")
 
-val chunk2doc = new Chunk2Doc()\
-  	.setInputCols("merged_ner_chunk")\
+val chunk2doc = new Chunk2Doc()
+  	.setInputCols("merged_ner_chunk")
   	.setOutputCol("ner_chunk_doc")
 
-val sbert_embedder = BertSentenceEmbeddings.pretrained("sbluebert_base_uncased_mli", "en", "clinical/models")\
-		.setInputCols(["ner_chunk_doc"])\
-		.setOutputCol("sbluebert_embeddings")\
-		.setCaseSensitive(False)
+val sbert_embedder = BertSentenceEmbeddings.pretrained("sbluebert_base_uncased_mli", "en", "clinical/models")
+		.setInputCols("ner_chunk_doc")
+		.setOutputCol("sbluebert_embeddings")
+		.setCaseSensitive(false)
 
-val resolver = SentenceEntityResolverModel.pretrained("sbluebertresolve_loinc_uncased","en", "clinical/models") \
-	.setInputCols(["sbluebert_embeddings"]) \
-	.setOutputCol("resolution")\
+val resolver = SentenceEntityResolverModel.pretrained("sbluebertresolve_loinc_uncased","en", "clinical/models")
+	.setInputCols("sbluebert_embeddings")
+	.setOutputCol("resolution")
 	.setDistanceFunction("EUCLIDEAN")
 
 
-val nlpPipeline = new Pipeline(stages=[document_assembler,
+val nlpPipeline = new Pipeline().setStages(Array(document_assembler,
                                sentence_detector,
                                tokenizer,
                                word_embeddings,
@@ -256,13 +256,13 @@ val nlpPipeline = new Pipeline(stages=[document_assembler,
 							   chunk_merger,
                                chunk2doc,
                                sbert_embedder,
-                               resolver])
+                               resolver))
 
-val data = Seq([["""A 65-year-old woman presents to the office with generalized fatigue for the last 4 months.
+val data = Seq("""A 65-year-old woman presents to the office with generalized fatigue for the last 4 months.
   She used to walk 1 mile each evening but now gets tired after 1-2 blocks. She has a history of Crohn disease and hypertension
   for which she receives appropriate medications. She is married and lives with her husband. She eats a balanced diet that
   includes chicken, fish, pork, fruits, and vegetables. She rarely drinks alcohol and denies tobacco use. A physical examination
-  is unremarkable. Laboratory studies show the following: Hemoglobin: 9.8g/dL, Hematocrit: 32%, Mean Corpuscular Volume: 110 μm3"""]]).toDF("text")
+  is unremarkable. Laboratory studies show the following: Hemoglobin: 9.8g/dL, Hematocrit: 32%, Mean Corpuscular Volume: 110 μm3""").toDF("text")
 
 val result = nlpPipeline.fit(data).transform(data)
 
