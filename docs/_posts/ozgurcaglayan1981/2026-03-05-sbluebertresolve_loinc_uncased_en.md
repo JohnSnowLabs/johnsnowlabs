@@ -33,6 +33,7 @@ It also provides the official resolution of the codes within the brackets.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+	
 ```python
 
 document_assembler = DocumentAssembler()\
@@ -51,19 +52,36 @@ word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "c
 	.setInputCols(["sentence", "token"])\
 	.setOutputCol("embeddings")
 
-ner_model = MedicalNerModel.pretrained("ner_radiology", "en", "clinical/models") 	.setInputCols(["sentence", "token", "embeddings"]) 	.setOutputCol("ner_radiology")
+ner_model = MedicalNerModel.pretrained("ner_radiology", "en", "clinical/models")\
+	.setInputCols(["sentence", "token", "embeddings"])\
+	.setOutputCol("ner_radiology")
 
-ner_converter = NerConverterInternal()  	  .setInputCols(["sentence", "token", "ner_radiology"]) 	  .setOutputCol("ner_chunk_radiology")	  .setWhiteList(["Test"])
+ner_converter = NerConverterInternal()\
+	.setInputCols(["sentence", "token", "ner_radiology"])\
+	.setOutputCol("ner_chunk_radiology")\
+	.setWhiteList(["Test"])
 
-ner_model_jsl = MedicalNerModel.pretrained("ner_jsl", "en", "clinical/models") 	.setInputCols(["sentence", "token", "embeddings"]) 	.setOutputCol("ner_jsl")
+ner_model_jsl = MedicalNerModel.pretrained("ner_jsl", "en", "clinical/models")\
+	.setInputCols(["sentence", "token", "embeddings"])\
+	.setOutputCol("ner_jsl")
 
-ner_converter_jsl = NerConverterInternal()  	  .setInputCols(["sentence", "token", "ner_jsl"]) 	  .setOutputCol("ner_chunk_jsl")	  .setWhiteList(["Test"])
+ner_converter_jsl = NerConverterInternal()\
+	.setInputCols(["sentence", "token", "ner_jsl"])\
+	.setOutputCol("ner_chunk_jsl")\
+	.setWhiteList(["Test"])
 
-chunk_merger = ChunkMergeApproach()    .setInputCols("ner_chunk_jsl", "ner_chunk_radiology")    .setOutputCol('merged_ner_chunk')
+chunk_merger = ChunkMergeApproach()\
+	.setInputCols("ner_chunk_jsl", "ner_chunk_radiology")\
+	.setOutputCol('merged_ner_chunk')
 
-chunk2doc = Chunk2Doc()  	.setInputCols("merged_ner_chunk")  	.setOutputCol("ner_chunk_doc")
+chunk2doc = Chunk2Doc()\
+	.setInputCols("merged_ner_chunk")\
+	.setOutputCol("ner_chunk_doc")
 
-sbert_embedder = BertSentenceEmbeddings.pretrained("sbluebert_base_uncased_mli", "en", "clinical/models")		.setInputCols(["ner_chunk_doc"])		.setOutputCol("sbluebert_embeddings")		.setCaseSensitive(False)
+sbert_embedder = BertSentenceEmbeddings.pretrained("sbluebert_base_uncased_mli", "en", "clinical/models")\
+	.setInputCols(["ner_chunk_doc"])\
+	.setOutputCol("sbluebert_embeddings")\
+	.setCaseSensitive(False)
 
 resolver = SentenceEntityResolverModel.pretrained("sbluebertresolve_loinc_uncased","en", "clinical/models") \
 	.setInputCols(["sbluebert_embeddings"]) \
@@ -72,17 +90,17 @@ resolver = SentenceEntityResolverModel.pretrained("sbluebertresolve_loinc_uncase
 
 
 nlpPipeline = Pipeline(stages=[document_assembler,
-                               sentence_detector,
-                               tokenizer,
-                               word_embeddings,
-                               ner_model,
-                               ner_converter,
-															 ner_model_jsl,
-															 ner_converter_jsl,
-															 chunk_merger,
-                               chunk2doc,
-                               sbert_embedder,
-                               resolver])
+								sentence_detector,
+								tokenizer,
+								word_embeddings,
+								ner_model,
+								ner_converter,
+								ner_model_jsl,
+								ner_converter_jsl,
+								chunk_merger,
+								chunk2doc,
+								sbert_embedder,
+								resolver])
 
 data = spark.createDataFrame([["""A 65-year-old woman presents to the office with generalized fatigue for the last 4 months.
   She used to walk 1 mile each evening but now gets tired after 1-2 blocks. She has a history of Crohn disease and hypertension
@@ -113,19 +131,36 @@ word_embeddings = nlp.WordEmbeddingsModel.pretrained("embeddings_clinical", "en"
 	.setInputCols(["sentence", "token"])\
 	.setOutputCol("embeddings")
 
-ner_model = medical.NerModel.pretrained("ner_radiology", "en", "clinical/models") 	.setInputCols(["sentence", "token", "embeddings"]) 	.setOutputCol("ner_radiology")
+ner_model = medical.NerModel.pretrained("ner_radiology", "en", "clinical/models")\
+ 	.setInputCols(["sentence", "token", "embeddings"])\
+ 	.setOutputCol("ner_radiology")
 
-ner_converter = medical.NerConverterInternal()  	  .setInputCols(["sentence", "token", "ner_radiology"]) 	  .setOutputCol("ner_chunk_radiology")	  .setWhiteList(["Test"])
+ner_converter = medical.NerConverterInternal()\
+  	  .setInputCols(["sentence", "token", "ner_radiology"])\
+ 	  .setOutputCol("ner_chunk_radiology")\
+	  .setWhiteList(["Test"])
 
-ner_model_jsl = medical.NerModel.pretrained("ner_jsl", "en", "clinical/models") 	.setInputCols(["sentence", "token", "embeddings"]) 	.setOutputCol("ner_jsl")
+ner_model_jsl = medical.NerModel.pretrained("ner_jsl", "en", "clinical/models")\
+ 	.setInputCols(["sentence", "token", "embeddings"])\
+ 	.setOutputCol("ner_jsl")
 
-ner_converter_jsl = medical.NerConverterInternal()  	  .setInputCols(["sentence", "token", "ner_jsl"]) 	  .setOutputCol("ner_chunk_jsl")	  .setWhiteList(["Test"])
+ner_converter_jsl = medical.NerConverterInternal()\
+  	  .setInputCols(["sentence", "token", "ner_jsl"])\
+ 	  .setOutputCol("ner_chunk_jsl")\
+	  .setWhiteList(["Test"])
 
-chunk_merger = medical.ChunkMergeApproach()    .setInputCols("ner_chunk_jsl", "ner_chunk_radiology")    .setOutputCol('merged_ner_chunk')
+chunk_merger = medical.ChunkMergeApproach()\
+    .setInputCols("ner_chunk_jsl", "ner_chunk_radiology")\
+    .setOutputCol('merged_ner_chunk')
 
-chunk2doc = medical.Chunk2Doc()  	.setInputCols("merged_ner_chunk")  	.setOutputCol("ner_chunk_doc")
+chunk2doc = medical.Chunk2Doc()\
+  	.setInputCols("merged_ner_chunk")\
+  	.setOutputCol("ner_chunk_doc")
 
-sbert_embedder = nlp.BertSentenceEmbeddings.pretrained("sbluebert_base_uncased_mli", "en", "clinical/models")		.setInputCols(["ner_chunk_doc"])		.setOutputCol("sbluebert_embeddings")		.setCaseSensitive(False)
+sbert_embedder = nlp.BertSentenceEmbeddings.pretrained("sbluebert_base_uncased_mli", "en", "clinical/models")\
+		.setInputCols(["ner_chunk_doc"])\
+		.setOutputCol("sbluebert_embeddings")\
+		.setCaseSensitive(False)
 
 resolver = medical.SentenceEntityResolverModel.pretrained("sbluebertresolve_loinc_uncased","en", "clinical/models") \
 	.setInputCols(["sbluebert_embeddings"]) \
@@ -139,9 +174,9 @@ nlpPipeline = nlp.Pipeline(stages=[document_assembler,
                                word_embeddings,
                                ner_model,
                                ner_converter,
-															 ner_model_jsl,
-															 ner_converter_jsl,
-															 chunk_merger,
+  							   ner_model_jsl,
+							   ner_converter_jsl,
+ 							   chunk_merger,
                                chunk2doc,
                                sbert_embedder,
                                resolver])
@@ -173,19 +208,36 @@ val word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical","en",
   .setInputCols(Array("sentence","token"))
   .setOutputCol("embeddings")
 
-val ner_model = MedicalNerModel.pretrained("ner_radiology", "en", "clinical/models") 	.setInputCols(["sentence", "token", "embeddings"]) 	.setOutputCol("ner_radiology")
+val ner_model = MedicalNerModel.pretrained("ner_radiology", "en", "clinical/models")\
+ 	.setInputCols(["sentence", "token", "embeddings"])\
+ 	.setOutputCol("ner_radiology")
 
-val ner_converter = new NerConverterInternal()  	  .setInputCols(["sentence", "token", "ner_radiology"]) 	  .setOutputCol("ner_chunk_radiology")	  .setWhiteList(["Test"])
+val ner_converter = new NerConverterInternal()\
+  	  .setInputCols(["sentence", "token", "ner_radiology"])\
+ 	  .setOutputCol("ner_chunk_radiology")\
+	  .setWhiteList(["Test"])
 
-val ner_model_jsl = MedicalNerModel.pretrained("ner_jsl", "en", "clinical/models") 	.setInputCols(["sentence", "token", "embeddings"]) 	.setOutputCol("ner_jsl")
+val ner_model_jsl = MedicalNerModel.pretrained("ner_jsl", "en", "clinical/models")\
+ 	.setInputCols(["sentence", "token", "embeddings"])\
+ 	.setOutputCol("ner_jsl")
 
-val ner_converter_jsl = new NerConverterInternal()  	  .setInputCols(["sentence", "token", "ner_jsl"]) 	  .setOutputCol("ner_chunk_jsl")	  .setWhiteList(["Test"])
+val ner_converter_jsl = new NerConverterInternal()\
+  	  .setInputCols(["sentence", "token", "ner_jsl"])\
+ 	  .setOutputCol("ner_chunk_jsl")\
+	  .setWhiteList(["Test"])
 
-val chunk_merger = new ChunkMergeApproach()    .setInputCols("ner_chunk_jsl", "ner_chunk_radiology")    .setOutputCol('merged_ner_chunk')
+val chunk_merger = new ChunkMergeApproach()\
+    .setInputCols("ner_chunk_jsl", "ner_chunk_radiology")\
+    .setOutputCol('merged_ner_chunk')
 
-val chunk2doc = new Chunk2Doc()  	.setInputCols("merged_ner_chunk")  	.setOutputCol("ner_chunk_doc")
+val chunk2doc = new Chunk2Doc()\
+  	.setInputCols("merged_ner_chunk")\
+  	.setOutputCol("ner_chunk_doc")
 
-val sbert_embedder = BertSentenceEmbeddings.pretrained("sbluebert_base_uncased_mli", "en", "clinical/models")		.setInputCols(["ner_chunk_doc"])		.setOutputCol("sbluebert_embeddings")		.setCaseSensitive(False)
+val sbert_embedder = BertSentenceEmbeddings.pretrained("sbluebert_base_uncased_mli", "en", "clinical/models")\
+		.setInputCols(["ner_chunk_doc"])\
+		.setOutputCol("sbluebert_embeddings")\
+		.setCaseSensitive(False)
 
 val resolver = SentenceEntityResolverModel.pretrained("sbluebertresolve_loinc_uncased","en", "clinical/models") \
 	.setInputCols(["sbluebert_embeddings"]) \
@@ -199,9 +251,9 @@ val nlpPipeline = new Pipeline(stages=[document_assembler,
                                word_embeddings,
                                ner_model,
                                ner_converter,
-															 ner_model_jsl,
-															 ner_converter_jsl,
-															 chunk_merger,
+							   ner_model_jsl,
+ 							   ner_converter_jsl,
+							   chunk_merger,
                                chunk2doc,
                                sbert_embedder,
                                resolver])
