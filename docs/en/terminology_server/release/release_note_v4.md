@@ -166,6 +166,9 @@ A dedicated Licenses page has been introduced to streamline license management a
 
 This enhancement provides greater transparency and control over your Terminology Server licensing and premium feature access.
 
+![License-Management](/assets/images/term_server/license_management.png)
+
+
 ## Improvements
 
 * UI Facelift: The Terminology Server UI has been modernized with an improved layout, refreshed color palette, and enhanced navigation. The update brings a more intuitive, responsive design, better accessibility, and a cleaner interface for users.
@@ -173,9 +176,6 @@ This enhancement provides greater transparency and control over your Terminology
 * Added endpoint to generate embeddings for medical terms.
 * Added a TopK slider input in the Filters panel.
 * Enhanced query performance for faster search results.
-
-
-![License-Management](/assets/images/term_server/license_management.png)
 
 ## Bugfixes
 
