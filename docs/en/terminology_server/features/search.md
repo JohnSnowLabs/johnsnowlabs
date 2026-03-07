@@ -13,11 +13,85 @@ sidebar:
 
 ## Search
 
-Terminology Server provides two distinct search modes:
+Terminology Server provides four distinct search modes:
 
-* **Code Search** – Enables users to locate a specific medical code within the Terminology Server's curated set of medical coding systems.
 * **Concept Search** – Allows users to search for medical terms or concepts using a combination of <ins>**exact text**</ins> matching and <ins>**semantic search**</ins> techniques to return similar or related concepts, as described in the section below.
+* **Context Resolution Search** - Allows users to search for medical concepts by providing a contextual parameter.
+* **Code Search** – Enables users to locate a specific medical code within the Terminology Server's curated set of medical coding systems.
+* **Document Search** - Allows users to upload their documents in txt, pdf and doc/docx format and resolve all entities and their medical codes. _This requires a JSL License. To get it, contact <a href="mailto:support@johnsnowlabs.com">support@johnsnowlabs.com</a>_
 
+## Concept Search (Semantic search & Exact match search)
+
+Terminology Server **concept search** capability excels by leveraging associated synonyms, accounting for **misspellings**, and employing both <ins>**string matching**</ins> and <ins>**semantic search**</ins> when seeking **similarity searches** results and when the system returns the best matching concept from the terminology embedding database.
+
+The user can opt for either of the search types, or utilize both in tandem — this is the default setting.
+Terminology Server offers stable and deterministic results. The same term(concept) will always return the same code, thanks to its **reliance on official terminology datasets and carefully curated in-house augmentations**.
+
+Terminology Server performs term-level mapping: searching a term will return the best matching concept from the terminology database.
+
+* It does not infer additional context or concepts beyond the input
+* It does not perform document-level analysis.
+* Providing an entire document as search input might lead to the embeddings becoming diluted, and potential nonsensical results.
+
+![Term-To-Code-Search](/assets/images/term_server/term-to-code-search.png)
+ It is straight forward to choose between the type of search:
+ 1. Click on the Filters icon in the top right corner of the application
+ 2. Select the search type from the options from the Filters panel
+ 3. Exit the Filters panel by clicking anywhere outside
+
+### Boolean Search
+  
+When selecting the **Exact Text Search** option in the Filter panel, the query will allow the use of ```AND:``` and ```OR:``` operators to refine results:
+
+**Using the ```AND:``` operator**:
+
+* Returns results where the document field contains all specified keywords, regardless of their order or position within the text.
+* More than two terms can be inculded, for example: "leg ```AND:``` tendons ```AND:``` muscle" will return results that contain all three terms.
+
+**Using the ```OR:``` operator**:
+
+* Returns results that contain any one or more of the specified keywords.
+* The query supports multiple terms, for example: "diclofenac ```OR:``` Eliquis ```OR:``` clopidogrel" will return results containing any of the listed medications.
+
+![Terminology Service by John Snow Labs](/assets/images/term_server/OR_operator.png)
+
+### Spell Checker
+
+When searching for a medical term, the Terminology Server will present a prommpt if it notice a potential spelling mistake. The user has the option  to accept the suggestion/correction or ignore it. 
+The search results will reflect the choice, retreiving results using the system's suggestion or the original user's input:
+
+![Terminology Service by John Snow Labs](/assets/images/term_server/Spellchecker.png)
+
+![Terminology Service by John Snow Labs](/assets/images/term_server/filter_panel.png)
+
+## Context Resolution Search
+
+This search modality employs **context-aware search** that **considers surrounding text** to find more accurate medical codes by **analyzing the clinical context in which terms appear**. It is a powerful feature that enhances the accuracy and relevance of search results by allowing users to include additional context when searching for medical terms.
+
+Instead of relying solely on the keyword or phrase entered, this feature enables users to specify additional information like intended domain, clinical setting, diagnosis, procedure, medication, etc. By incorporating this context, the system can intelligently prioritize and rank results that are most relevant to the user's specific intent.
+
+This functionality is especially useful when dealing with ambiguous or multi-use terms, helping to
+* Reduce irrelevant results
+* Improve precision for specialized domains
+* Streamline workflows by surfacing the most applicable codes faster
+
+**Context-Based Search** is ideal for clinicians, coders, and researchers who need to retrieve highly specific coding information tailored to their unique healthcare scenarios.
+
+Narrow the search results by filtering by **Term Weight** and/or **Scope** using the User Interface tools as shown in the figure below.
+
+![Terminology Service by John Snow Labs](/assets/images/term_server/context_resolution_search.png)
+
+
+💡 **Tips for Effective Use**
+
+* Use higher term weights when you're confident in your terminology
+* Use lower term weights when context is critical for disambiguation
+* Adjust scope based on how much surrounding context affects meaning
+* Combine with vocabulary filters for more precise results
+
+![Terminology Service by John Snow Labs](/assets/images/term_server/ContextBasedSearch.png)
+
+![Terminology Service by John Snow Labs](/assets/images/term_server/ContextBasedSearchSamples.png)
 
 ## Code Search (code to code mapping)
 
@@ -49,82 +123,66 @@ This filtering helps streamline the results, allowing you to focus only on the c
 
 ![Terminology Service by John Snow Labs](/assets/images/term_server/MapCodes_MainPage.png)
 
-## Concept Search (Semantic search & Exact match search)
-
-Terminology Server **concept search** capability excels by leveraging associated synonyms, accounting for **misspellings**, and employing both <ins>**string matching**</ins> and <ins>**semantic search**</ins> when seeking **similarity searches** results and when the system returns the best matching concept from the terminology embedding database.
-
-The user can opt for either of the search types, or utilize both in tandem — this is the default setting.
-Terminology Server offers stable and deterministic results. The same term(concept) will always return the same code, thanks to its **reliance on official terminology datasets and carefully curated in-house augmentations**.
-
-Terminology Server performs term-level mapping: searching a term will return the best matching concept from the terminology database.
-
-* It does not infer additional context or concepts beyond the input
-* It does not perform document-level analysis.
-* Providing an entire document as search input might lead to the embeddings becoming diluted, and potential nonsensical results.
-
- It is straight forward to choose between the type of search:
- 1. Click on the Filters icon in the top right corner of the application
- 2. Select the search type from the options from the Filters panel
- 3. Exit the Filters panel by clicking anywhere outside
 
 
-![Terminology Service by John Snow Labs](/assets/images/term_server/filter_panel.png)
 
 
-## Context Based Search
 
-THis search modality employs **context-aware search** that **considers surrounding text** to find more accurate medical codes by **analyzing the clinical context in which terms appear**. It is a powerful feature that enhances the accuracy and relevance of search results by allowing users to include additional context when searching for medical terms.
+## Document Search
 
-Instead of relying solely on the keyword or phrase entered, this feature enables users to specify additional information like intended domain, clinical setting, diagnosis, procedure, medication, etc. By incorporating this context, the system can intelligently prioritize and rank results that are most relevant to the user's specific intent.
+> **Note:** Document search feature requires a valid JSL License that includes Healthcare NLP capabilities.
 
-This functionality is especially useful when dealing with ambiguous or multi-use terms, helping to
-* Reduce irrelevant results
-* Improve precision for specialized domains
-* Streamline workflows by surfacing the most applicable codes faster
+The Medical Terminology Server supports document search capabilities, allowing users to upload a wide range of file types, including PDF, TXT, DOCX, and DOC. Once uploaded, the system automatically processes these documents to extract and identify medical entities present in the text. Each recognized medical entity is then resolved and mapped to its appropriate medical terminology (such as SNOMED CT, ICD-10, RxNorm, etc.), helping users quickly understand the clinical concepts contained within their documents and ensuring accurate terminology coding across different file formats.
 
-**Context-Based Search** is ideal for clinicians, coders, and researchers who need to retrieve highly specific coding information tailored to their unique healthcare scenarios.
+The platform supports two distinct document search modes with flexible text understanding strategies:
 
-Narrow the search results by filtering by **Term Weight** and/or **Scope** using the User Interface tools as shown in the figure below.
+### Fast Search
 
-![Terminology Service by John Snow Labs](/assets/images/term_server/context_resolution_search.png)
+**Fast Search** uses a schema-aligned Named Entity Recognition (NER) model. It extracts predefined clinical entities according to a fixed schema, producing consistent and deterministic results. Entities found in documents are mapped directly to well-defined, official code systems—the output is reliable and repeatable for the same input.
 
+![Fast Document Search](/assets/images/term_server/fast-doc-search.png)
 
-💡 **Tips for Effective Use**
+### Accurate Search 
 
-* Use higher term weights when you're confident in your terminology
-* Use lower term weights when context is critical for disambiguation
-* Adjust scope based on how much surrounding context affects meaning
-* Combine with vocabulary filters for more precise results
+**Accurate Search** operates with a pretrained clinical zero-shot entity recognition model. Rather than using only fixed labels, users can define or modify entity labels at runtime, allowing the model to interpret text more flexibly. Entities can be mapped to different code systems based on user mappings, supporting customized and probabilistic extraction tuned to specific workflows or organizational needs.
 
-![Terminology Service by John Snow Labs](/assets/images/term_server/ContextBasedSearch.png)
-
-![Terminology Service by John Snow Labs](/assets/images/term_server/ContextBasedSearchSamples.png)
+![Accurate Document Search](/assets/images/term_server/accurate-doc-search.png)
 
 
-## Boolean Search
-  
-When selecting the **Exact Text Search** option in the Filter panel, the query will allow the use of ```AND``` and ```OR``` operators to refine results:
+| Mode           | Extraction Method                          | Entity Definition         | Determinism    |
+|----------------|--------------------------------------------|--------------------------|---------------|
+| Fast Search    | Schema-aligned NER model (NERDL pipeline)  | Fixed, predefined labels | Deterministic |
+| Accurate Search| Pretrained clinical zero-shot model        | Runtime user-defined     | Probabilistic |
 
-**Using the ```AND``` operator**:
+**Summary:**
+- Fast Search: Best for rapid extraction with fixed schema-aligned entities, consistent output, and standardized mappings.
+- Accurate Search: Best for highly flexible entity extraction, customizing which entities to detect, and mapping labels to code systems at runtime.
 
-* Returns results where the document field contains all specified keywords, regardless of their order or position within the text.
-* More than two terms can be inculded, for example: "leg ```AND``` tendons ```AND``` muscle" will return results that contain all three terms.
-
-**Using the ```OR``` operator**:
-
-* Returns results that contain any one or more of the specified keywords.
-* The query supports multiple terms, for example: "diclofenac ```OR``` Eliquis ```OR``` clopidogrel" will return results containing any of the listed medications.
-
-![Terminology Service by John Snow Labs](/assets/images/term_server/OR_operator.png)
+Both modes operate on the same uploaded documents but apply different interpretation and extraction strategies to fit your requirements and use cases.
 
 
-## Spell Checker
+### Activating Document Search
 
-When searching for a medical term, the Terminology Server will present a prommpt if it notice a potential spelling mistake. The user has the option  to accept the suggestion/correction or ignore it. 
-The search results will reflect the choice, retreiving results using the system's suggestion or the original user's input:
+Document Search is a premium feature that requires explicit activation in your JSL license. Follow these steps to enable it:
 
-![Terminology Service by John Snow Labs](/assets/images/term_server/Spellchecker.png)
+#### Prerequisites
+- An active John Snow Labs (JSL) license with Document Search permissions
+- Admin access to your Terminology Server instance
 
+#### Activation Steps
+1. Navigate to the **Licenses** page in your Terminology Server interface
+2. Locate your JSL License in the licenses list
+3. Click the **Enable Document Search** button next to your license
+
+![Terminology Service License](/assets/images/term_server/license_page.png)
+
+#### Post-Activation
+Once enabled, Document Search functionality will be available across your Terminology Server instance, allowing you to:
+- Upload medical documents in txt, pdf and doc/docx format.
+- Perform medical terminology extraction using both Fast Search and Accurate Search modes
+- Apply various filters to refine your search results
+
+**Note:** If you don't see the "Enable Document Search" button, please verify that your JSL license includes Document Search permissions. Contact your system administrator or John Snow Labs support if you need assistance with license upgrades.
 
 ## Additional Filters 
 

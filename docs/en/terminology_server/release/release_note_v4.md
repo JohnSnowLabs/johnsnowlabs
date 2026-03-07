@@ -3,7 +3,7 @@ layout: docs
 header: true
 seotitle: Release Notes  | Terminology Server | John Snow Labs
 title: Terminology Server Release Notes
-permalink: /docs/en/terminology_server/release/latest_release
+permalink: /docs/en/terminology_server/release/release_note_v4
 key: docs-term-server
 modify_date: "2026-03-01"
 show_nav: true
@@ -11,9 +11,9 @@ sidebar:
     nav: term-server
 ---
 
-<div class="h3-box" markdown="1">
+## Terminology Server v4 Release Notes
 
-<p style="text-align:center;" markdown="1">Release date: {{ page.modify_date | date: '%m-%d-%Y' }}</p>
+<p style="text-align:center;">Release date: {{ page.modify_date | date: '%m-%d-%Y' }}</p>
 
 ## Document Search Functionality
 
@@ -45,6 +45,7 @@ These comprehensive public ValueSets enable standardized mapping and interoperab
 - This empowers organizations to leverage real-time terminology intelligence, mapping, and regulatory compliance through agent-driven access, ensuring both operational consistency and interoperability.
 
 - API access is secured through API keys linked to user accounts, ensuring that only authorized users can interact with the API endpoints.
+
 
 ## Expanded Available Code Systems
 
@@ -175,14 +176,6 @@ This enhancement provides greater transparency and control over your Terminology
 
 
 ![License-Management](/assets/images/term_server/license_management.png)
-## Improvements
-
-* UI Facelift: The Terminology Server UI has been modernized with an improved layout, refreshed color palette, and enhanced navigation. The update brings a more intuitive, responsive design, better accessibility, and a cleaner interface for users.
-  ![Term-To-Code-Search](/assets/images/term_server/term-to-code-search.png)
-* Added endpoint to generate embeddings for medical terms.
-* Added a TopK slider input in the Filters panel.
-* Enhanced query performance for faster search results.
-
 
 ## Bugfixes
 
@@ -196,10 +189,4 @@ This enhancement provides greater transparency and control over your Terminology
 
 </div>
 
-
-<ul class="pagination pagination_big">
-  <li class="active"><a href="release_note_v4">v4</a></li>
-  <li><a href="release_note_v3">v3</a></li>
-  <li><a href="release_note_v2">v2</a></li>
-  <li><a href="release_note_v1">v1</a></li>
-</ul>
+{%- include docs-terminology-pagination.html -%}
