@@ -5,13 +5,34 @@ seotitle: Medical LLMs | John Snow Labs
 title: Release Notes
 permalink: /docs/en/LLMs/releases/release_notes
 key: docs-medical-llm
-modify_date: "2026-03-02"
+modify_date: "2026-03-10"
 show_nav: true
 sidebar:
     nav: medical-llm
 ---
 
 <div class="h3-box" markdown="1">
+
+## 03-10-2026
+
+### Model Updates
+
+We're excited to announce an updated version of our Medical-Reasoning-LLM-32B model, delivering major improvements in structured clinical reasoning and real-time performance.
+
+- **Medical-Reasoning-LLM-32B**: A medical reasoning model designed as a cognitive partner for healthcare professionals, with a strong emphasis on structured clinical decision support rather than simple knowledge retrieval. It analyzes symptoms, diagnostics, and longitudinal patient histories to guide complex diagnostic and treatment decisions in alignment with established clinical guidelines. The model delivers transparent, step-aware decision pathways, evaluates competing hypotheses to reduce diagnostic error, and explicitly communicates uncertainty to support risk-aware clinical judgment. Benchmarking demonstrates state-of-the-art performance across clinical knowledge, professional medicine, and medical education tasks, while achieving nearly the reasoning capability of significantly larger models at substantially lower computational cost.
+
+#### Specifications
+
+| **Model Name**             | **Parameters** | **Recommended GPU Memory** | **Max Sequence Length** | **Model Size** | **Max KV-Cache** | **Tensor Parallel Sizes** |
+|---------------------------|----------------|----------------------------|-------------------------|----------------|------------------|--------------------------|
+| Medical-Reasoning-LLM-32B | 32B            | ~67 GB                     | 262K                    | 51 GB          | 16 GB            | 2, 4, 8                  |
+
+#### Benchmark Performance – Medical-Reasoning-LLM-32B
+
+- MedQA benchmark: 93.5%  
+- Professional Medicine: 95.2%  
+- Medical Genetics: 97.0%  
+- Clinical comprehension: 91.3%, exceeding Med-PaLM-2's 88.3%  
 
 ## 02-03-2026
 
