@@ -67,7 +67,7 @@ The following models are currently available for on-premise deployments:
 >
 > **Memory Calculations:** All memory calculations are based on half-precision (fp16/bf16) weights. Recommended GPU Memory considers the model size and the maximum key-value cache at the model's maximum sequence length. These calculations follow the guidelines from [DJL's LMI Deployment Guide.](https://docs.djl.ai/master/docs/serving/serving/docs/lmi/deployment_guide/instance-type-selection.html)
 >
-> **Model Code Requirements:** Both `Visual-Language-OCR-LLM` and `Visual-Language-OCR-Structured-LLM` must be run with `trust_remote_code=True` because their model implementations include custom code.
+> **Model Code Requirements:** Both `Vision-OCR-LLM` and `Vision-OCR-Structured-LLM` must be run with `trust_remote_code=True` because their model implementations include custom code.
 
 </div><div class="h3-box" markdown="1">
 
