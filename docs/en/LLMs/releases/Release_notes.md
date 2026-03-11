@@ -32,7 +32,7 @@ We're excited to announce an updated version of our Medical-Reasoning-LLM-32B mo
 - MedQA benchmark: 93.5%  
 - Professional Medicine: 95.2%  
 - Medical Genetics: 97.0%  
-- Clinical comprehension: 91.3%, exceeding Med-PaLM-2's 88.3%  
+- Clinical comprehension: 91.3% comparable to top-tier models 
 
 ## 02-03-2026
 
