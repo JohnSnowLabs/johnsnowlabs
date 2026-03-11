@@ -715,10 +715,10 @@ johnsnowlabs/jsl-llms <span class="se">\</span>
       <tr>
         <td>Medical-Reasoning-LLM-32B</td>
         <td>32B</td>
-        <td>~111 GB</td>
-        <td>40K</td>
-        <td>61 GB</td>
-        <td>50 GB</td>
+        <td>~67 GB</td>
+        <td>262K</td>
+        <td>51 GB</td>
+        <td>16 GB</td>
         <td>2, 4, 8</td>
       </tr>
       <tr>
@@ -765,7 +765,7 @@ johnsnowlabs/jsl-llms <span class="se">\</span>
 
     <p><strong>Memory Calculations:</strong> All memory calculations are based on half-precision (fp16/bf16) weights. Recommended GPU Memory considers the model size and the maximum key-value cache at the model’s maximum sequence length. These calculations follow the guidelines from <a href="https://docs.djl.ai/master/docs/serving/serving/docs/lmi/deployment_guide/instance-type-selection.html">DJL’s LMI Deployment Guide.</a></p>
 
-    <p><strong>Model Code Requirements:</strong> Both <code class="language-plaintext highlighter-rouge">Visual-Language-OCR-LLM</code> and <code class="language-plaintext highlighter-rouge">Visual-Language-OCR-Structured-LLM</code> must be run with <code class="language-plaintext highlighter-rouge">trust_remote_code=True</code> because their model implementations include custom code.</p>
+    <p><strong>Model Code Requirements:</strong> Both <code class="language-plaintext highlighter-rouge">Vision-OCR-LLM</code> and <code class="language-plaintext highlighter-rouge">Vision-OCR-Structured-LLM</code> must be run with <code class="language-plaintext highlighter-rouge">trust_remote_code=True</code> because their model implementations include custom code.</p>
   </blockquote>
 
 </div>
