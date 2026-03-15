@@ -32,6 +32,7 @@ This model maps clinical entities and concepts to Snomed codes using sbiobert_ba
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 
