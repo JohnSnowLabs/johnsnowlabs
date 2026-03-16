@@ -233,15 +233,15 @@ val result= nlpPipeline.fit(df).transform(df)
 
 ```bash
 
-| sent_id | ner_chunk                          | entity                    | snomed_code | resolution                        | all_codes                                          | all_resolutions                                    | aux_list |
-|---------|------------------------------------|---------------------------|-------------|-----------------------------------|----------------------------------------------------|----------------------------------------------------|----------|
-| 0       | upper respiratory tract infections | Disease_Syndrome_Disorder | 413585005   | aspiration into respiratory tract | ['413585005', '301186004', '422376000', '301273... | ['aspiration into respiratory tract', 'upper re... | ['']     |
-| 0       | fevers                             | VS_Finding                | 386661006   | fever                             | ['386661006', '77957000', '52715007', '27175100... | ['fever', 'intermittent fever', 'cyclic fever',... | ['']     |
-| 0       | weight loss                        | Symptom                   | 416528001   | intentional weight loss           | ['416528001', '448765001', '267024001', '359649... | ['intentional weight loss', 'involuntary weight... | ['']     |
-| 0       | night sweats                       | Symptom                   | 42984000    | night sweats                      | ['42984000', '423052008', '36163009', '10254900... | ['night sweats', 'frequent night waking', 'nigh... | ['']     |
-| 1       | cachectic                          | Symptom                   | 238108007   | cachectic                         | ['238108007', '422003001', '284529003', '788876... | ['cachectic', 'cachexia associated with aids', ... | ['']     |
-| 1       | hepatosplenomegaly                 | Symptom                   | 94701003    | mottled spleen                    | ['94701003', '169149008', '124961001', '1666430... | ['mottled spleen', 'isotope scan spleen abnorma... | ['']     |
-| 2       | pancytopenia                       | Symptom                   | 124961001   | reticulocytopenia                 | ['124961001', '415116008', '721119004', '165517... | ['reticulocytopenia', 'thrombocytopenia', 'pseu... | ['']     |
+| sent_id | ner_chunk                          | entity                    | snomed_code | resolution                        | all_codes                                          | all_resolutions                                    |
+|---------|------------------------------------|---------------------------|-------------|-----------------------------------|----------------------------------------------------|----------------------------------------------------|
+| 0       | upper respiratory tract infections | Disease_Syndrome_Disorder | 413585005   | aspiration into respiratory tract | ['413585005', '301186004', '422376000', '301273... | ['aspiration into respiratory tract', 'upper re... |
+| 0       | fevers                             | VS_Finding                | 386661006   | fever                             | ['386661006', '77957000', '52715007', '27175100... | ['fever', 'intermittent fever', 'cyclic fever',... |
+| 0       | weight loss                        | Symptom                   | 416528001   | intentional weight loss           | ['416528001', '448765001', '267024001', '359649... | ['intentional weight loss', 'involuntary weight... |
+| 0       | night sweats                       | Symptom                   | 42984000    | night sweats                      | ['42984000', '423052008', '36163009', '10254900... | ['night sweats', 'frequent night waking', 'nigh... |
+| 1       | cachectic                          | Symptom                   | 238108007   | cachectic                         | ['238108007', '422003001', '284529003', '788876... | ['cachectic', 'cachexia associated with aids', ... |
+| 1       | hepatosplenomegaly                 | Symptom                   | 94701003    | mottled spleen                    | ['94701003', '169149008', '124961001', '1666430... | ['mottled spleen', 'isotope scan spleen abnorma... |
+| 2       | pancytopenia                       | Symptom                   | 124961001   | reticulocytopenia                 | ['124961001', '415116008', '721119004', '165517... | ['reticulocytopenia', 'thrombocytopenia', 'pseu... |
 ```
 
 {:.model-param}
