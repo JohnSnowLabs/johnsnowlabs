@@ -23,8 +23,7 @@ This pipeline, extracts CPT entities from clinical texts.
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/cpt_parser_pipeline_en_6.3.0_3.4_1772585997153.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/cpt_parser_pipeline_en_6.3.0_3.4_1772585997153.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+
 
 ## How to use
 
@@ -115,3 +114,7 @@ val result = pipeline.transform(spark.createDataFrame([[sample_text]]).toDF("tex
 - TokenizerModel
 - ContextualParserModel
 - ChunkConverter
+
+## References
+
+**CPT resolver models are removed from the Models Hub due to license restrictions and can only be shared with the users who already have a valid CPT license. If you possess one and wish to use this model, kindly contact us at support@johnsnowlabs.com.**
