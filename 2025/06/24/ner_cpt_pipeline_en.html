@@ -11,7 +11,7 @@
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
 <!-- End Google Tag Manager --><title>Pipeline for Extracting Clinical Entities Related to CPT Codes | ner_cpt_pipeline | Healthcare NLP 6.0.2</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis pipeline is designed to extract all entities mappable to CPT codes.2 NER models are used to achieve those tasks.Live DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonHealthcare NLPPythonJohnSnowLabsScalaNLU  from sparknlp.pretrained import PretrainedPipelinener_pipeline = PretrainedPipeline("ner...">
+<meta name="description" content="DescriptionThis pipeline is designed to extract all entities mappable to CPT codes.2 NER models are used to achieve those tasks.Live DemoOpen in ColabHow to use  PythonHealthcare NLPPythonJohnSnowLabsScalaNLU  from sparknlp.pretrained import PretrainedPipelinener_pipeline = PretrainedPipeline("ner_cpt_pipeline", "en...">
 <!-- <link rel="canonical" href="/2025/06/24/ner_cpt_pipeline_en.html"> -->
 <link rel="canonical" href="/2025/06/24/ner_cpt_pipeline_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
@@ -519,9 +519,7 @@ function wrapWordInSpan(data, wordToWrap) {
 <p>2 NER models are used to achieve those tasks.</p>
 
 <p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
-<a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/07.0.Pretrained_Clinical_Pipelines.ipynb" class="button button-orange button-orange-trans co button-icon">Open in Colab</a>
-<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_cpt_pipeline_en_6.0.2_3.4_1750788966551.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
-<a href="s3://auxdata.johnsnowlabs.com/clinical/models/ner_cpt_pipeline_en_6.0.2_3.4_1750788966551.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
+<a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/07.0.Pretrained_Clinical_Pipelines.ipynb" class="button button-orange button-orange-trans co button-icon">Open in Colab</a></p>
 
 <h2 id="how-to-use">How to use</h2>
 
@@ -610,6 +608,10 @@ At this time, chest tube placement for drainage of the fluid occurred and thorac
   <li>NerConverterInternalModel</li>
   <li>ChunkMergeModel</li>
 </ul>
+
+<h2 id="references">References</h2>
+
+<p><strong>CPT resolver models are removed from the Models Hub due to license restrictions and can only be shared with the users who already have a valid CPT license. If you possess one and wish to use this model, kindly contact us at support@johnsnowlabs.com.</strong></p>
 </div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2025-06-24T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>

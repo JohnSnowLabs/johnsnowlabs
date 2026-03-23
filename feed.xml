@@ -1,109 +1,98 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2026-03-11T21:20:19+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
-</subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">Mapping CPT Codes with Their Corresponding UMLS Codes</title><link href="/2026/03/06/cpt_umls_mapper_en.html" rel="alternate" type="text/html" title="Mapping CPT Codes with Their Corresponding UMLS Codes" /><published>2026-03-06T00:00:00+00:00</published><updated>2026-03-06T00:00:00+00:00</updated><id>/2026/03/06/cpt_umls_mapper_en</id><content type="html" xml:base="/2026/03/06/cpt_umls_mapper_en.html">## Description
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2026-03-23T09:29:44+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
+</subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">Mapping CPT Codes with Their Corresponding UMLS Codes</title><link href="/2026/03/06/cpt_umls_mapper_en.html" rel="alternate" type="text/html" title="Mapping CPT Codes with Their Corresponding UMLS Codes" /><published>2026-03-06T00:00:00+00:00</published><updated>2026-03-06T00:00:00+00:00</updated><id>/2026/03/06/cpt_umls_mapper_en</id><content type="html" xml:base="/2026/03/06/cpt_umls_mapper_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
 
-This pretrained model maps CPT codes to corresponding UMLS codes.
+&lt;p&gt;This pretrained model maps CPT codes to corresponding UMLS codes.&lt;/p&gt;
 
-## Predicted Entities
+&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
 
-`umls_code`
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;umls_code&lt;/code&gt;&lt;/p&gt;
 
+&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;&lt;/p&gt;
 
-{:.btn-box}
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/cpt_umls_mapper_en_6.3.0_3.4_1772786849500.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/cpt_umls_mapper_en_6.3.0_3.4_1772786849500.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
 
-## How to use
+&lt;div class=&quot;tabs-box&quot;&gt;
+  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;strong&gt;Healthcare NLP&lt;/strong&gt;&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;Python&lt;strong&gt;JohnSnowLabs&lt;/strong&gt;&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
 
+  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
+      &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+      &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
+&lt;span class=&quot;n&quot;&gt;chunk_assembler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Doc2Chunk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
+      &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
+      &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;cpt_code&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-  
-```python
+&lt;span class=&quot;n&quot;&gt;mapperModel&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ChunkMapperModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;cpt_umls_mapper&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;cpt_code&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;mappings&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-document_assembler = DocumentAssembler()\
-      .setInputCol(&quot;text&quot;)\
-      .setOutputCol(&quot;document&quot;)
+&lt;span class=&quot;n&quot;&gt;mapper_pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;chunk_assembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;mapperModel&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
 
-chunk_assembler = Doc2Chunk()\
-      .setInputCols([&quot;document&quot;])\
-      .setOutputCol(&quot;cpt_code&quot;)
+&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;2016F&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;48155&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;64823&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;4500F&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-mapperModel = ChunkMapperModel.pretrained(&quot;cpt_umls_mapper&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
-    .setInputCols([&quot;cpt_code&quot;])\
-    .setOutputCol(&quot;mappings&quot;)
+&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mapper_pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-mapper_pipeline = Pipeline(stages=[
-    document_assembler,
-    chunk_assembler,
-    mapperModel
-])
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
 
-data = spark.createDataFrame([[&quot;2016F&quot;],[&quot;48155&quot;],[&quot;64823&quot;],[&quot;4500F&quot;]]).toDF(&quot;text&quot;)
+  &lt;div class=&quot;language-python jsl-block highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
+      &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+      &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-result = mapper_pipeline.fit(data).transform(data)
+&lt;span class=&quot;n&quot;&gt;chunk_assembler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Doc2Chunk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
+      &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
+      &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;cpt_code&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-```
+&lt;span class=&quot;n&quot;&gt;mapperModel&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;medical&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ChunkMapperModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;cpt_umls_mapper&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;cpt_code&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;mappings&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-{:.jsl-block}
-```python
+&lt;span class=&quot;n&quot;&gt;mapper_pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;chunk_assembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;mapperModel&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
 
-document_assembler = nlp.DocumentAssembler()\
-      .setInputCol(&quot;text&quot;)\
-      .setOutputCol(&quot;document&quot;)
+&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;2016F&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;48155&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;64823&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;4500F&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-chunk_assembler = nlp.Doc2Chunk()\
-      .setInputCols([&quot;document&quot;])\
-      .setOutputCol(&quot;cpt_code&quot;)
+&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mapper_pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-mapperModel = medical.ChunkMapperModel.pretrained(&quot;cpt_umls_mapper&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
-    .setInputCols([&quot;cpt_code&quot;])\
-    .setOutputCol(&quot;mappings&quot;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;document_assembler&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 
-mapper_pipeline = nlp.Pipeline(stages=[
-    document_assembler,
-    chunk_assembler,
-    mapperModel
-])
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;chunk_assembler&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Doc2Chunk&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;cpt_code&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 
-data = spark.createDataFrame([[&quot;2016F&quot;],[&quot;48155&quot;],[&quot;64823&quot;],[&quot;4500F&quot;]]).toDF(&quot;text&quot;)
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;chunkerMapper&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ChunkMapperModel&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;cpt_umls_mapper&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;cpt_code&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;mappings&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 
-result = mapper_pipeline.fit(data).transform(data)
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;mapper_pipeline&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setStages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+                                                  &lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
+                                                  &lt;span class=&quot;n&quot;&gt;chunk_assembler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
+                                                  &lt;span class=&quot;n&quot;&gt;chunkerMapper&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
 
-```
-```scala
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Seq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;2016F&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;48155&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;64823&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;4500F&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 
-val document_assembler = new DocumentAssembler()
-      .setInputCol(&quot;text&quot;)
-      .setOutputCol(&quot;document&quot;)
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;mapper_pipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 
-val chunk_assembler = new Doc2Chunk()
-      .setInputCols(&quot;document&quot;)
-      .setOutputCol(&quot;cpt_code&quot;)
-
-val chunkerMapper = ChunkMapperModel
-      .pretrained(&quot;cpt_umls_mapper&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-      .setInputCols(Array(&quot;cpt_code&quot;))
-      .setOutputCol(&quot;mappings&quot;)
-
-val mapper_pipeline = new Pipeline().setStages(Array(
-                                                  document_assembler,
-                                                  chunk_assembler,
-                                                  chunkerMapper))
-
-val data = Seq(&quot;2016F&quot;,&quot;48155&quot;,&quot;64823&quot;,&quot;4500F&quot;).toDF(&quot;text&quot;)
-
-val result = mapper_pipeline.fit(data).transform(data)
-
-```
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
 &lt;/div&gt;
 
-## Results
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
 
-```bash
-
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
 +--------+---------+
 |cpt_code|umls_code|
 +--------+---------+
@@ -113,125 +102,143 @@ val result = mapper_pipeline.fit(data).transform(data)
 |4500F   |C3248301 |
 +--------+---------+
 
-```
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-{:.model-param}
-## Model Information
+&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
 
-{:.table-model}
-|---|---|
-|Model Name:|cpt_umls_mapper|
-|Compatibility:|Healthcare NLP 6.3.0+|
-|License:|Licensed|
-|Edition:|Official|
-|Input Labels:|[ner_chunk]|
-|Output Labels:|[mappings]|
-|Language:|en|
-|Size:|336.5 KB|</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="umls" /><category term="cpt" /><category term="mapping" /><summary type="html">Description This pretrained model maps CPT codes to corresponding UMLS codes. Predicted Entities umls_code Live Demo Open in Colab Download Copy S3 URI How to use PythonHealthcare NLPPythonJohnSnowLabsScalaNLU document_assembler = DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) chunk_assembler = Doc2Chunk()\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;cpt_code&quot;) mapperModel = ChunkMapperModel.pretrained(&quot;cpt_umls_mapper&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;cpt_code&quot;])\ .setOutputCol(&quot;mappings&quot;) mapper_pipeline = Pipeline(stages=[ document_assembler, chunk_assembler, mapperModel ]) data = spark.createDataFrame([[&quot;2016F&quot;],[&quot;48155&quot;],[&quot;64823&quot;],[&quot;4500F&quot;]]).toDF(&quot;text&quot;) result = mapper_pipeline.fit(data).transform(data) document_assembler = nlp.DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) chunk_assembler = nlp.Doc2Chunk()\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;cpt_code&quot;) mapperModel = medical.ChunkMapperModel.pretrained(&quot;cpt_umls_mapper&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;cpt_code&quot;])\ .setOutputCol(&quot;mappings&quot;) mapper_pipeline = nlp.Pipeline(stages=[ document_assembler, chunk_assembler, mapperModel ]) data = spark.createDataFrame([[&quot;2016F&quot;],[&quot;48155&quot;],[&quot;64823&quot;],[&quot;4500F&quot;]]).toDF(&quot;text&quot;) result = mapper_pipeline.fit(data).transform(data) val document_assembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val chunk_assembler = new Doc2Chunk() .setInputCols(&quot;document&quot;) .setOutputCol(&quot;cpt_code&quot;) val chunkerMapper = ChunkMapperModel .pretrained(&quot;cpt_umls_mapper&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;cpt_code&quot;)) .setOutputCol(&quot;mappings&quot;) val mapper_pipeline = new Pipeline().setStages(Array( document_assembler, chunk_assembler, chunkerMapper)) val data = Seq(&quot;2016F&quot;,&quot;48155&quot;,&quot;64823&quot;,&quot;4500F&quot;).toDF(&quot;text&quot;) val result = mapper_pipeline.fit(data).transform(data) Results +--------+---------+ |cpt_code|umls_code| +--------+---------+ |2016F |C3248275 | |48155 |C0040511 | |64823 |C0973430 | |4500F |C3248301 | +--------+---------+ Model Information Model Name: cpt_umls_mapper Compatibility: Healthcare NLP 6.3.0+ License: Licensed Edition: Official Input Labels: [ner_chunk] Output Labels: [mappings] Language: en Size: 336.5 KB</summary></entry><entry><title type="html">Mapping UMLS Codes with Their Corresponding CPT Codes</title><link href="/2026/03/05/umls_cpt_mapper_en.html" rel="alternate" type="text/html" title="Mapping UMLS Codes with Their Corresponding CPT Codes" /><published>2026-03-05T00:00:00+00:00</published><updated>2026-03-05T00:00:00+00:00</updated><id>/2026/03/05/umls_cpt_mapper_en</id><content type="html" xml:base="/2026/03/05/umls_cpt_mapper_en.html">## Description
+&lt;table class=&quot;table-model&quot;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Model Name:&lt;/td&gt;
+      &lt;td&gt;cpt_umls_mapper&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Compatibility:&lt;/td&gt;
+      &lt;td&gt;Healthcare NLP 6.3.0+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;License:&lt;/td&gt;
+      &lt;td&gt;Licensed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Edition:&lt;/td&gt;
+      &lt;td&gt;Official&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Input Labels:&lt;/td&gt;
+      &lt;td&gt;[ner_chunk]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Output Labels:&lt;/td&gt;
+      &lt;td&gt;[mappings]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Language:&lt;/td&gt;
+      &lt;td&gt;en&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Size:&lt;/td&gt;
+      &lt;td&gt;336.5 KB&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 
-This pretrained model maps UMLS codes to corresponding CPT codes.
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
 
-## Predicted Entities
+&lt;p&gt;&lt;strong&gt;CPT resolver models are removed from the Models Hub due to license restrictions and can only be shared with the users who already have a valid CPT license. If you possess one and wish to use this model, kindly contact us at support@johnsnowlabs.com.&lt;/strong&gt;&lt;/p&gt;</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="umls" /><category term="cpt" /><category term="mapping" /><summary type="html">Description This pretrained model maps CPT codes to corresponding UMLS codes. Predicted Entities umls_code Live Demo Open in Colab How to use PythonHealthcare NLPPythonJohnSnowLabsScalaNLU document_assembler = DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) chunk_assembler = Doc2Chunk()\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;cpt_code&quot;) mapperModel = ChunkMapperModel.pretrained(&quot;cpt_umls_mapper&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;cpt_code&quot;])\ .setOutputCol(&quot;mappings&quot;) mapper_pipeline = Pipeline(stages=[ document_assembler, chunk_assembler, mapperModel ]) data = spark.createDataFrame([[&quot;2016F&quot;],[&quot;48155&quot;],[&quot;64823&quot;],[&quot;4500F&quot;]]).toDF(&quot;text&quot;) result = mapper_pipeline.fit(data).transform(data) document_assembler = nlp.DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) chunk_assembler = nlp.Doc2Chunk()\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;cpt_code&quot;) mapperModel = medical.ChunkMapperModel.pretrained(&quot;cpt_umls_mapper&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;cpt_code&quot;])\ .setOutputCol(&quot;mappings&quot;) mapper_pipeline = nlp.Pipeline(stages=[ document_assembler, chunk_assembler, mapperModel ]) data = spark.createDataFrame([[&quot;2016F&quot;],[&quot;48155&quot;],[&quot;64823&quot;],[&quot;4500F&quot;]]).toDF(&quot;text&quot;) result = mapper_pipeline.fit(data).transform(data) val document_assembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val chunk_assembler = new Doc2Chunk() .setInputCols(&quot;document&quot;) .setOutputCol(&quot;cpt_code&quot;) val chunkerMapper = ChunkMapperModel .pretrained(&quot;cpt_umls_mapper&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;cpt_code&quot;)) .setOutputCol(&quot;mappings&quot;) val mapper_pipeline = new Pipeline().setStages(Array( document_assembler, chunk_assembler, chunkerMapper)) val data = Seq(&quot;2016F&quot;,&quot;48155&quot;,&quot;64823&quot;,&quot;4500F&quot;).toDF(&quot;text&quot;) val result = mapper_pipeline.fit(data).transform(data) Results +--------+---------+ |cpt_code|umls_code| +--------+---------+ |2016F |C3248275 | |48155 |C0040511 | |64823 |C0973430 | |4500F |C3248301 | +--------+---------+ Model Information Model Name: cpt_umls_mapper Compatibility: Healthcare NLP 6.3.0+ License: Licensed Edition: Official Input Labels: [ner_chunk] Output Labels: [mappings] Language: en Size: 336.5 KB References CPT resolver models are removed from the Models Hub due to license restrictions and can only be shared with the users who already have a valid CPT license. If you possess one and wish to use this model, kindly contact us at support@johnsnowlabs.com.</summary></entry><entry><title type="html">Mapping UMLS Codes with Their Corresponding CPT Codes</title><link href="/2026/03/05/umls_cpt_mapper_en.html" rel="alternate" type="text/html" title="Mapping UMLS Codes with Their Corresponding CPT Codes" /><published>2026-03-05T00:00:00+00:00</published><updated>2026-03-05T00:00:00+00:00</updated><id>/2026/03/05/umls_cpt_mapper_en</id><content type="html" xml:base="/2026/03/05/umls_cpt_mapper_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
 
-`cpt_code`
+&lt;p&gt;This pretrained model maps UMLS codes to corresponding CPT codes.&lt;/p&gt;
 
+&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
 
-{:.btn-box}
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/umls_cpt_mapper_en_6.3.0_3.4_1772752099401.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/umls_cpt_mapper_en_6.3.0_3.4_1772752099401.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cpt_code&lt;/code&gt;&lt;/p&gt;
 
-## How to use
+&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;&lt;/p&gt;
 
+&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
 
+&lt;div class=&quot;tabs-box&quot;&gt;
+  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;strong&gt;Healthcare NLP&lt;/strong&gt;&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;Python&lt;strong&gt;JohnSnowLabs&lt;/strong&gt;&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
 
-&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-  
-```python
+  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-document_assembler = DocumentAssembler()\
-    .setInputCol(&quot;text&quot;)\
-    .setOutputCol(&quot;document&quot;)
+&lt;span class=&quot;n&quot;&gt;chunk_assembler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Doc2Chunk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;umls_code&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-chunk_assembler = Doc2Chunk()\
-    .setInputCols([&quot;document&quot;])\
-    .setOutputCol(&quot;umls_code&quot;)
+&lt;span class=&quot;n&quot;&gt;mapperModel&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ChunkMapperModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;umls_cpt_mapper&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;umls_code&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;mappings&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-mapperModel = ChunkMapperModel.pretrained(&quot;umls_cpt_mapper&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
-    .setInputCols([&quot;umls_code&quot;])\
-    .setOutputCol(&quot;mappings&quot;)
+&lt;span class=&quot;n&quot;&gt;mapper_pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;chunk_assembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;mapperModel&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
 
-mapper_pipeline = Pipeline(stages=[
-    document_assembler,
-    chunk_assembler,
-    mapperModel
-])
+&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;C3248275&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;C3496535&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;C0973430&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;C3248301&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-data = spark.createDataFrame([[&quot;C3248275&quot;],[&quot;C3496535&quot;],[&quot;C0973430&quot;],[&quot;C3248301&quot;]]).toDF(&quot;text&quot;)
+&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mapper_pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-result = mapper_pipeline.fit(data).transform(data)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
 
-```
+  &lt;div class=&quot;language-python jsl-block highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-{:.jsl-block}
-```python
+&lt;span class=&quot;n&quot;&gt;chunk_assembler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Doc2Chunk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;umls_code&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-document_assembler = nlp.DocumentAssembler()\
-    .setInputCol(&quot;text&quot;)\
-    .setOutputCol(&quot;document&quot;)
+&lt;span class=&quot;n&quot;&gt;mapperModel&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;medical&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ChunkMapperModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;umls_cpt_mapper&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;umls_code&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;mappings&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-chunk_assembler = nlp.Doc2Chunk()\
-    .setInputCols([&quot;document&quot;])\
-    .setOutputCol(&quot;umls_code&quot;)
+&lt;span class=&quot;n&quot;&gt;mapper_pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;chunk_assembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;mapperModel&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
 
-mapperModel = medical.ChunkMapperModel.pretrained(&quot;umls_cpt_mapper&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
-    .setInputCols([&quot;umls_code&quot;])\
-    .setOutputCol(&quot;mappings&quot;)
+&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;C3248275&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;C3496535&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;C0973430&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;C3248301&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-mapper_pipeline = nlp.Pipeline(stages=[
-    document_assembler,
-    chunk_assembler,
-    mapperModel
-])
+&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mapper_pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-data = spark.createDataFrame([[&quot;C3248275&quot;],[&quot;C3496535&quot;],[&quot;C0973430&quot;],[&quot;C3248301&quot;]]).toDF(&quot;text&quot;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;document_assembler&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 
-result = mapper_pipeline.fit(data).transform(data)
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;chunk_assembler&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Doc2Chunk&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;umls_code&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 
-```
-```scala
-
-val document_assembler = new DocumentAssembler()
-      .setInputCol(&quot;text&quot;)
-      .setOutputCol(&quot;document&quot;)
-
-val chunk_assembler = new Doc2Chunk()
-      .setInputCols(&quot;document&quot;)
-      .setOutputCol(&quot;umls_code&quot;)
-
-val chunkerMapper = ChunkMapperModel
-      .pretrained(&quot;umls_cpt_mapper&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-      .setInputCols(Array(&quot;umls_code&quot;))
-      .setOutputCol(&quot;mappings&quot;)
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;chunkerMapper&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ChunkMapperModel&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;umls_cpt_mapper&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;umls_code&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;mappings&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
       
-val mapper_pipeline = Pipeline().setStages(Array(
-                                                  document_assembler,
-                                                  chunk_assembler,
-                                                  chunkerMapper))
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;mapper_pipeline&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setStages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+                                                  &lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
+                                                  &lt;span class=&quot;n&quot;&gt;chunk_assembler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
+                                                  &lt;span class=&quot;n&quot;&gt;chunkerMapper&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
 
-val data = Seq(&quot;C3248275&quot;,&quot;C3496535&quot;,&quot;C0973430&quot;,&quot;C3248301&quot;).toDF(&quot;text&quot;)
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Seq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;C3248275&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;C3496535&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;C0973430&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;C3248301&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 
-val result = mapper_pipeline.fit(data).transform(data)
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;mapper_pipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 
-```
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
 &lt;/div&gt;
 
-## Results
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
 
-```bash
-
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
 +---------+--------+
 |umls_code|cpt_code|
 +---------+--------+
@@ -241,21 +248,50 @@ val result = mapper_pipeline.fit(data).transform(data)
 |C3248301 |4500F   |
 +---------+--------+
 
-```
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-{:.model-param}
-## Model Information
+&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
 
-{:.table-model}
-|---|---|
-|Model Name:|umls_cpt_mapper|
-|Compatibility:|Healthcare NLP 6.3.0+|
-|License:|Licensed|
-|Edition:|Official|
-|Input Labels:|[ner_chunk]|
-|Output Labels:|[mappings]|
-|Language:|en|
-|Size:|634.2 KB|</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="umls" /><category term="cpt" /><category term="mapping" /><summary type="html">Description This pretrained model maps UMLS codes to corresponding CPT codes. Predicted Entities cpt_code Live Demo Open in Colab Download Copy S3 URI How to use PythonHealthcare NLPPythonJohnSnowLabsScalaNLU document_assembler = DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) chunk_assembler = Doc2Chunk()\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;umls_code&quot;) mapperModel = ChunkMapperModel.pretrained(&quot;umls_cpt_mapper&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;umls_code&quot;])\ .setOutputCol(&quot;mappings&quot;) mapper_pipeline = Pipeline(stages=[ document_assembler, chunk_assembler, mapperModel ]) data = spark.createDataFrame([[&quot;C3248275&quot;],[&quot;C3496535&quot;],[&quot;C0973430&quot;],[&quot;C3248301&quot;]]).toDF(&quot;text&quot;) result = mapper_pipeline.fit(data).transform(data) document_assembler = nlp.DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) chunk_assembler = nlp.Doc2Chunk()\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;umls_code&quot;) mapperModel = medical.ChunkMapperModel.pretrained(&quot;umls_cpt_mapper&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;umls_code&quot;])\ .setOutputCol(&quot;mappings&quot;) mapper_pipeline = nlp.Pipeline(stages=[ document_assembler, chunk_assembler, mapperModel ]) data = spark.createDataFrame([[&quot;C3248275&quot;],[&quot;C3496535&quot;],[&quot;C0973430&quot;],[&quot;C3248301&quot;]]).toDF(&quot;text&quot;) result = mapper_pipeline.fit(data).transform(data) val document_assembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val chunk_assembler = new Doc2Chunk() .setInputCols(&quot;document&quot;) .setOutputCol(&quot;umls_code&quot;) val chunkerMapper = ChunkMapperModel .pretrained(&quot;umls_cpt_mapper&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;umls_code&quot;)) .setOutputCol(&quot;mappings&quot;) val mapper_pipeline = Pipeline().setStages(Array( document_assembler, chunk_assembler, chunkerMapper)) val data = Seq(&quot;C3248275&quot;,&quot;C3496535&quot;,&quot;C0973430&quot;,&quot;C3248301&quot;).toDF(&quot;text&quot;) val result = mapper_pipeline.fit(data).transform(data) Results +---------+--------+ |umls_code|cpt_code| +---------+--------+ |C3248275 |2016F | |C3496535 |48155 | |C0973430 |64823 | |C3248301 |4500F | +---------+--------+ Model Information Model Name: umls_cpt_mapper Compatibility: Healthcare NLP 6.3.0+ License: Licensed Edition: Official Input Labels: [ner_chunk] Output Labels: [mappings] Language: en Size: 634.2 KB</summary></entry><entry><title type="html">Sentence Entity Resolver for Logical Observation Identifiers Names and Codes (LOINC) codes (sbluebert_base_uncased_mli embeddings)</title><link href="/2026/03/05/sbluebertresolve_loinc_uncased_en.html" rel="alternate" type="text/html" title="Sentence Entity Resolver for Logical Observation Identifiers Names and Codes (LOINC) codes (sbluebert_base_uncased_mli embeddings)" /><published>2026-03-05T00:00:00+00:00</published><updated>2026-03-05T00:00:00+00:00</updated><id>/2026/03/05/sbluebertresolve_loinc_uncased_en</id><content type="html" xml:base="/2026/03/05/sbluebertresolve_loinc_uncased_en.html">## Description
+&lt;table class=&quot;table-model&quot;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Model Name:&lt;/td&gt;
+      &lt;td&gt;umls_cpt_mapper&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Compatibility:&lt;/td&gt;
+      &lt;td&gt;Healthcare NLP 6.3.0+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;License:&lt;/td&gt;
+      &lt;td&gt;Licensed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Edition:&lt;/td&gt;
+      &lt;td&gt;Official&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Input Labels:&lt;/td&gt;
+      &lt;td&gt;[ner_chunk]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Output Labels:&lt;/td&gt;
+      &lt;td&gt;[mappings]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Language:&lt;/td&gt;
+      &lt;td&gt;en&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Size:&lt;/td&gt;
+      &lt;td&gt;634.2 KB&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;CPT resolver models are removed from the Models Hub due to license restrictions and can only be shared with the users who already have a valid CPT license. If you possess one and wish to use this model, kindly contact us at support@johnsnowlabs.com.&lt;/strong&gt;&lt;/p&gt;</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="umls" /><category term="cpt" /><category term="mapping" /><summary type="html">Description This pretrained model maps UMLS codes to corresponding CPT codes. Predicted Entities cpt_code Live Demo Open in Colab How to use PythonHealthcare NLPPythonJohnSnowLabsScalaNLU document_assembler = DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) chunk_assembler = Doc2Chunk()\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;umls_code&quot;) mapperModel = ChunkMapperModel.pretrained(&quot;umls_cpt_mapper&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;umls_code&quot;])\ .setOutputCol(&quot;mappings&quot;) mapper_pipeline = Pipeline(stages=[ document_assembler, chunk_assembler, mapperModel ]) data = spark.createDataFrame([[&quot;C3248275&quot;],[&quot;C3496535&quot;],[&quot;C0973430&quot;],[&quot;C3248301&quot;]]).toDF(&quot;text&quot;) result = mapper_pipeline.fit(data).transform(data) document_assembler = nlp.DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) chunk_assembler = nlp.Doc2Chunk()\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;umls_code&quot;) mapperModel = medical.ChunkMapperModel.pretrained(&quot;umls_cpt_mapper&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;umls_code&quot;])\ .setOutputCol(&quot;mappings&quot;) mapper_pipeline = nlp.Pipeline(stages=[ document_assembler, chunk_assembler, mapperModel ]) data = spark.createDataFrame([[&quot;C3248275&quot;],[&quot;C3496535&quot;],[&quot;C0973430&quot;],[&quot;C3248301&quot;]]).toDF(&quot;text&quot;) result = mapper_pipeline.fit(data).transform(data) val document_assembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val chunk_assembler = new Doc2Chunk() .setInputCols(&quot;document&quot;) .setOutputCol(&quot;umls_code&quot;) val chunkerMapper = ChunkMapperModel .pretrained(&quot;umls_cpt_mapper&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;umls_code&quot;)) .setOutputCol(&quot;mappings&quot;) val mapper_pipeline = Pipeline().setStages(Array( document_assembler, chunk_assembler, chunkerMapper)) val data = Seq(&quot;C3248275&quot;,&quot;C3496535&quot;,&quot;C0973430&quot;,&quot;C3248301&quot;).toDF(&quot;text&quot;) val result = mapper_pipeline.fit(data).transform(data) Results +---------+--------+ |umls_code|cpt_code| +---------+--------+ |C3248275 |2016F | |C3496535 |48155 | |C0973430 |64823 | |C3248301 |4500F | +---------+--------+ Model Information Model Name: umls_cpt_mapper Compatibility: Healthcare NLP 6.3.0+ License: Licensed Edition: Official Input Labels: [ner_chunk] Output Labels: [mappings] Language: en Size: 634.2 KB References CPT resolver models are removed from the Models Hub due to license restrictions and can only be shared with the users who already have a valid CPT license. If you possess one and wish to use this model, kindly contact us at support@johnsnowlabs.com.</summary></entry><entry><title type="html">Sentence Entity Resolver for Logical Observation Identifiers Names and Codes (LOINC) codes (sbluebert_base_uncased_mli embeddings)</title><link href="/2026/03/05/sbluebertresolve_loinc_uncased_en.html" rel="alternate" type="text/html" title="Sentence Entity Resolver for Logical Observation Identifiers Names and Codes (LOINC) codes (sbluebert_base_uncased_mli embeddings)" /><published>2026-03-05T00:00:00+00:00</published><updated>2026-03-05T00:00:00+00:00</updated><id>/2026/03/05/sbluebertresolve_loinc_uncased_en</id><content type="html" xml:base="/2026/03/05/sbluebertresolve_loinc_uncased_en.html">## Description
 
 This model maps extracted medical entities to Logical Observation Identifiers Names and Codes (LOINC) codes using `sbluebert_base_uncased_mli` Sentence Bert Embeddings.
 It also provides the official resolution of the codes within the brackets.
@@ -1099,96 +1135,114 @@ val result = pipeline.transform(spark.createDataFrame([[sample_text]]).toDF(&quo
 - SentenceDetectorDLModel
 - TokenizerModel
 - ContextualParserModel
-- ChunkConverter</content><author><name>John Snow Labs</name></author><category term="en" /><category term="contextualparser" /><category term="licensed" /><category term="clinical" /><category term="age" /><category term="pipeline" /><summary type="html">Description This pipeline, extracts age entities from clinical texts. Live Demo Open in Colab Download Copy S3 URI How to use PythonHealthcare NLPPythonJohnSnowLabsScalaNLU from sparknlp.pretrained import PretrainedPipeline pipeline = PretrainedPipeline(&quot;age_parser_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) sample_text = &quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, # 719435. Dr. John Green, ID: 1231511863, IP 203.120.223.13. He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93. Patient's VIN : 1HGBH41JXMN109286, VIN 4Y1SL65848Z411439, VIN 1HGCM82633A123456 - VIN JH4KA7560MC012345 - VIN 5YJSA1E14HF123456 SSN #333-44-6666, Driver's license no: A334455B, plate 34NLP34. Lic: 12345As. Cert: 12345As Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com. A 28 year old female with a history of gestational diabetes mellitus diagnosed 8 years ago. 3 years ago, he reported an episode of HTG-induced pancreatitis. 5 months old boy with repeated concussions. A 45-year-old patient was admitted for routine examination. The 72 years old man presented with chest pain.&quot;&quot;&quot; result = pipeline.transform(spark.createDataFrame([[sample_text]]).toDF(&quot;text&quot;)) from johnsnowlabs import nlp, medical pipeline = nlp.PretrainedPipeline(&quot;age_parser_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) sample_text = &quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, # 719435. Dr. John Green, ID: 1231511863, IP 203.120.223.13. He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93. Patient's VIN : 1HGBH41JXMN109286, VIN 4Y1SL65848Z411439, VIN 1HGCM82633A123456 - VIN JH4KA7560MC012345 - VIN 5YJSA1E14HF123456 SSN #333-44-6666, Driver's license no: A334455B, plate 34NLP34. Lic: 12345As. Cert: 12345As Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com. A 28 year old female with a history of gestational diabetes mellitus diagnosed 8 years ago. 3 years ago, he reported an episode of HTG-induced pancreatitis. 5 months old boy with repeated concussions. A 45-year-old patient was admitted for routine examination. The 72 years old man presented with chest pain.&quot;&quot;&quot; result = pipeline.transform(spark.createDataFrame([[sample_text]]).toDF(&quot;text&quot;)) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val pipeline = PretrainedPipeline(&quot;age_parser_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val sample_text = &quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, # 719435. Dr. John Green, ID: 1231511863, IP 203.120.223.13. He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93. Patient's VIN : 1HGBH41JXMN109286, VIN 4Y1SL65848Z411439, VIN 1HGCM82633A123456 - VIN JH4KA7560MC012345 - VIN 5YJSA1E14HF123456 SSN #333-44-6666, Driver's license no: A334455B, plate 34NLP34. Lic: 12345As. Cert: 12345As Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com. A 28 year old female with a history of gestational diabetes mellitus diagnosed 8 years ago. 3 years ago, he reported an episode of HTG-induced pancreatitis. 5 months old boy with repeated concussions. A 45-year-old patient was admitted for routine examination. The 72 years old man presented with chest pain.&quot;&quot;&quot; val result = pipeline.transform(spark.createDataFrame([[sample_text]]).toDF(&quot;text&quot;)) Results | chunk | begin | end | label | |:-------------|--------:|------:|:--------| | 60-year-old | 119 | 129 | AGE | | 28 year old | 501 | 511 | AGE | | 5 months old | 656 | 667 | AGE | | 45-year-old | 702 | 712 | AGE | | 72 years old | 764 | 775 | AGE | Model Information Model Name: age_parser_pipeline Type: pipeline Compatibility: Healthcare NLP 6.3.0+ License: Licensed Edition: Official Language: en Size: 396.6 KB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel ContextualParserModel ChunkConverter</summary></entry><entry><title type="html">Sentence Entity Resolver for CPT Codes (bge_base_en_v1_5_onnx) - Pipeline</title><link href="/2026/03/04/bgeresolve_cpt_pipeline_en.html" rel="alternate" type="text/html" title="Sentence Entity Resolver for CPT Codes (bge_base_en_v1_5_onnx) - Pipeline" /><published>2026-03-04T00:00:00+00:00</published><updated>2026-03-04T00:00:00+00:00</updated><id>/2026/03/04/bgeresolve_cpt_pipeline_en</id><content type="html" xml:base="/2026/03/04/bgeresolve_cpt_pipeline_en.html">## Description
+- ChunkConverter</content><author><name>John Snow Labs</name></author><category term="en" /><category term="contextualparser" /><category term="licensed" /><category term="clinical" /><category term="age" /><category term="pipeline" /><summary type="html">Description This pipeline, extracts age entities from clinical texts. Live Demo Open in Colab Download Copy S3 URI How to use PythonHealthcare NLPPythonJohnSnowLabsScalaNLU from sparknlp.pretrained import PretrainedPipeline pipeline = PretrainedPipeline(&quot;age_parser_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) sample_text = &quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, # 719435. Dr. John Green, ID: 1231511863, IP 203.120.223.13. He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93. Patient's VIN : 1HGBH41JXMN109286, VIN 4Y1SL65848Z411439, VIN 1HGCM82633A123456 - VIN JH4KA7560MC012345 - VIN 5YJSA1E14HF123456 SSN #333-44-6666, Driver's license no: A334455B, plate 34NLP34. Lic: 12345As. Cert: 12345As Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com. A 28 year old female with a history of gestational diabetes mellitus diagnosed 8 years ago. 3 years ago, he reported an episode of HTG-induced pancreatitis. 5 months old boy with repeated concussions. A 45-year-old patient was admitted for routine examination. The 72 years old man presented with chest pain.&quot;&quot;&quot; result = pipeline.transform(spark.createDataFrame([[sample_text]]).toDF(&quot;text&quot;)) from johnsnowlabs import nlp, medical pipeline = nlp.PretrainedPipeline(&quot;age_parser_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) sample_text = &quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, # 719435. Dr. John Green, ID: 1231511863, IP 203.120.223.13. He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93. Patient's VIN : 1HGBH41JXMN109286, VIN 4Y1SL65848Z411439, VIN 1HGCM82633A123456 - VIN JH4KA7560MC012345 - VIN 5YJSA1E14HF123456 SSN #333-44-6666, Driver's license no: A334455B, plate 34NLP34. Lic: 12345As. Cert: 12345As Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com. A 28 year old female with a history of gestational diabetes mellitus diagnosed 8 years ago. 3 years ago, he reported an episode of HTG-induced pancreatitis. 5 months old boy with repeated concussions. A 45-year-old patient was admitted for routine examination. The 72 years old man presented with chest pain.&quot;&quot;&quot; result = pipeline.transform(spark.createDataFrame([[sample_text]]).toDF(&quot;text&quot;)) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val pipeline = PretrainedPipeline(&quot;age_parser_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val sample_text = &quot;&quot;&quot;Name : Hendrickson, Ora, Record date: 2093-01-13, # 719435. Dr. John Green, ID: 1231511863, IP 203.120.223.13. He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93. Patient's VIN : 1HGBH41JXMN109286, VIN 4Y1SL65848Z411439, VIN 1HGCM82633A123456 - VIN JH4KA7560MC012345 - VIN 5YJSA1E14HF123456 SSN #333-44-6666, Driver's license no: A334455B, plate 34NLP34. Lic: 12345As. Cert: 12345As Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com. A 28 year old female with a history of gestational diabetes mellitus diagnosed 8 years ago. 3 years ago, he reported an episode of HTG-induced pancreatitis. 5 months old boy with repeated concussions. A 45-year-old patient was admitted for routine examination. The 72 years old man presented with chest pain.&quot;&quot;&quot; val result = pipeline.transform(spark.createDataFrame([[sample_text]]).toDF(&quot;text&quot;)) Results | chunk | begin | end | label | |:-------------|--------:|------:|:--------| | 60-year-old | 119 | 129 | AGE | | 28 year old | 501 | 511 | AGE | | 5 months old | 656 | 667 | AGE | | 45-year-old | 702 | 712 | AGE | | 72 years old | 764 | 775 | AGE | Model Information Model Name: age_parser_pipeline Type: pipeline Compatibility: Healthcare NLP 6.3.0+ License: Licensed Edition: Official Language: en Size: 396.6 KB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel ContextualParserModel ChunkConverter</summary></entry><entry><title type="html">Sentence Entity Resolver for CPT Codes (bge_base_en_v1_5_onnx) - Pipeline</title><link href="/2026/03/04/bgeresolve_cpt_pipeline_en.html" rel="alternate" type="text/html" title="Sentence Entity Resolver for CPT Codes (bge_base_en_v1_5_onnx) - Pipeline" /><published>2026-03-04T00:00:00+00:00</published><updated>2026-03-04T00:00:00+00:00</updated><id>/2026/03/04/bgeresolve_cpt_pipeline_en</id><content type="html" xml:base="/2026/03/04/bgeresolve_cpt_pipeline_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
 
-This pipeline maps clinical entities (Observation, Procedures, Tests, Treatments, Drug) to their corresponding CPT (Current Procedural Terminology) codes using bge_base_en_v1_5_onnx embeddings. It uses bge_base_en_v1_5_onnx embeddings and provides multiple resolution candidates with confidence scores, making it ideal for accurate procedural code assignment in clinical documentation.
+&lt;p&gt;This pipeline maps clinical entities (Observation, Procedures, Tests, Treatments, Drug) to their corresponding CPT (Current Procedural Terminology) codes using bge_base_en_v1_5_onnx embeddings. It uses bge_base_en_v1_5_onnx embeddings and provides multiple resolution candidates with confidence scores, making it ideal for accurate procedural code assignment in clinical documentation.&lt;/p&gt;
 
-{:.btn-box}
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/bgeresolve_cpt_pipeline_en_6.3.0_3.4_1772644741382.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/bgeresolve_cpt_pipeline_en_6.3.0_3.4_1772644741382.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;&lt;/p&gt;
 
-## How to use
+&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
 
+&lt;div class=&quot;tabs-box&quot;&gt;
+  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;strong&gt;Healthcare NLP&lt;/strong&gt;&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;Python&lt;strong&gt;JohnSnowLabs&lt;/strong&gt;&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
+  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sparknlp.pretrained&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;
 
+&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;bgeresolve_cpt_pipeline&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
+&lt;span class=&quot;n&quot;&gt;sample_text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot; A 28-year-old female underwent episiotomy during vaginal delivery. Pulse oximetry was monitored continuously throughout the procedure. Due to postpartum hemorrhage, blood transfusion was administered. The patient was transferred to the inpatient hospital for overnight observation.&quot;&quot;&quot;&lt;/span&gt;
 
-from sparknlp.pretrained import PretrainedPipeline
+&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sample_text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
 
-pipeline = PretrainedPipeline(&quot;bgeresolve_cpt_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
 
-sample_text = &quot;&quot;&quot; A 28-year-old female underwent episiotomy during vaginal delivery. Pulse oximetry was monitored continuously throughout the procedure. Due to postpartum hemorrhage, blood transfusion was administered. The patient was transferred to the inpatient hospital for overnight observation.&quot;&quot;&quot;
+  &lt;div class=&quot;language-python jsl-block highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;johnsnowlabs&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;medical&lt;/span&gt;
 
-result = pipeline.transform(spark.createDataFrame([[sample_text]]).toDF(&quot;text&quot;))
+&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;bgeresolve_cpt_pipeline&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-```
+&lt;span class=&quot;n&quot;&gt;sample_text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot; A 28-year-old female underwent episiotomy during vaginal delivery. Pulse oximetry was monitored continuously throughout the procedure. Due to postpartum hemorrhage, blood transfusion was administered. The patient was transferred to the inpatient hospital for overnight observation.&quot;&quot;&quot;&lt;/span&gt;
 
-{:.jsl-block}
-```python
+&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sample_text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
 
-from johnsnowlabs import nlp, medical
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.johnsnowlabs.nlp.pretrained.PretrainedPipeline&lt;/span&gt;
 
-pipeline = nlp.PretrainedPipeline(&quot;bgeresolve_cpt_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;PretrainedPipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;bgeresolve_cpt_pipeline&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 
-sample_text = &quot;&quot;&quot; A 28-year-old female underwent episiotomy during vaginal delivery. Pulse oximetry was monitored continuously throughout the procedure. Due to postpartum hemorrhage, blood transfusion was administered. The patient was transferred to the inpatient hospital for overnight observation.&quot;&quot;&quot;
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;sample_text&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot; A 28-year-old female underwent episiotomy during vaginal delivery. Pulse oximetry was monitored continuously throughout the procedure. Due to postpartum hemorrhage, blood transfusion was administered. The patient was transferred to the inpatient hospital for overnight observation.&quot;&quot;&quot;&lt;/span&gt;
 
-result = pipeline.transform(spark.createDataFrame([[sample_text]]).toDF(&quot;text&quot;))
+&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;([[&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;sample_text&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]]).&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
 
-```
-```scala
-
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = PretrainedPipeline(&quot;bgeresolve_cpt_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-
-val sample_text = &quot;&quot;&quot; A 28-year-old female underwent episiotomy during vaginal delivery. Pulse oximetry was monitored continuously throughout the procedure. Due to postpartum hemorrhage, blood transfusion was administered. The patient was transferred to the inpatient hospital for overnight observation.&quot;&quot;&quot;
-
-val result = pipeline.transform(spark.createDataFrame([[sample_text]]).toDF(&quot;text&quot;))
-
-```
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
 &lt;/div&gt;
 
-## Results
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
 
-```bash
-
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
 | sent_id | ner_chunk          | entity        | cpt_code | resolutions        | all_codes                                                                                            | all_resolutions                                                                                      |
 | :------ | :----------------- | :------------ | :------- | :----------------- | :--------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------- |
-| 0       | episiotomy         | Procedure     | 59300    | episiotomy         | [59300, 59409, 59410, 59614, 59612, 59610, 1008583, 1008584, 54700]                                  | [episiotomy, vaginal delivery with episiotomy, vaginal delivery with episiotomy, including postp...] |
-| 1       | Pulse oximetry     | Test          | 94760    | pulse oximetry     | [94760, 99453, 94761, 82810, 94762, 1013256, 82805, 94617]                                           | [pulse oximetry, device pulse oximetry, noninvasive pulse oximetry for oxygen saturation, multip...] |
-| 2       | blood transfusion  | Procedure     | 36430    | blood transfusion  | [36430, 86950, 38243, 36450, 0232T, 36460, 38241, 36516, 36455, 36440]                               | [blood transfusion, white blood cell transfusion, transfusion of bone marrow, whole blood transf...] |
-| 3       | inpatient hospital | Clinical_Dept | 1021881  | inpatient hospital | [1021881, 94003, 1021895, 99236, 1013660, 1013659, 1013682, 1013675, 59855, 1013661, 1021883, 10...] | [inpatient hospital, inpatient care, inpatient psychiatric facility, evaluation and management o...] |
+| 0       | episiotomy         | Procedure     | 59300    | episiotomy         | &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;59300, 59409, 59410, 59614, 59612, 59610, 1008583, 1008584, 54700]                                  | &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;episiotomy, vaginal delivery with episiotomy, vaginal delivery with episiotomy, including postp...] |
+| 1       | Pulse oximetry     | Test          | 94760    | pulse oximetry     | &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;94760, 99453, 94761, 82810, 94762, 1013256, 82805, 94617]                                           | &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pulse oximetry, device pulse oximetry, noninvasive pulse oximetry &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;oxygen saturation, multip...] |
+| 2       | blood transfusion  | Procedure     | 36430    | blood transfusion  | &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;36430, 86950, 38243, 36450, 0232T, 36460, 38241, 36516, 36455, 36440]                               | &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;blood transfusion, white blood cell transfusion, transfusion of bone marrow, whole blood transf...] |
+| 3       | inpatient hospital | Clinical_Dept | 1021881  | inpatient hospital | &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;1021881, 94003, 1021895, 99236, 1013660, 1013659, 1013682, 1013675, 59855, 1013661, 1021883, 10...] | &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;inpatient hospital, inpatient care, inpatient psychiatric facility, evaluation and management o...] |
 
-```
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-{:.model-param}
-## Model Information
+&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
 
-{:.table-model}
-|---|---|
-|Model Name:|bgeresolve_cpt_pipeline|
-|Type:|pipeline|
-|Compatibility:|Healthcare NLP 6.3.0+|
-|License:|Licensed|
-|Edition:|Official|
-|Language:|en|
-|Size:|2.4 GB|
+&lt;table class=&quot;table-model&quot;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Model Name:&lt;/td&gt;
+      &lt;td&gt;bgeresolve_cpt_pipeline&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Type:&lt;/td&gt;
+      &lt;td&gt;pipeline&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Compatibility:&lt;/td&gt;
+      &lt;td&gt;Healthcare NLP 6.3.0+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;License:&lt;/td&gt;
+      &lt;td&gt;Licensed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Edition:&lt;/td&gt;
+      &lt;td&gt;Official&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Language:&lt;/td&gt;
+      &lt;td&gt;en&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Size:&lt;/td&gt;
+      &lt;td&gt;2.4 GB&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 
-## Included Models
+&lt;h2 id=&quot;included-models&quot;&gt;Included Models&lt;/h2&gt;
 
-- DocumentAssembler
-- SentenceDetectorDLModel
-- TokenizerModel
-- WordEmbeddingsModel
-- MedicalNerModel
-- NerConverterInternalModel
-- Chunk2Doc
-- BGEEmbeddings
-- SentenceEntityResolverModel</content><author><name>John Snow Labs</name></author><category term="en" /><category term="cpt" /><category term="resolver" /><category term="licensed" /><category term="clinical" /><category term="bge" /><category term="sentence_entity_resolver" /><category term="pipeline" /><summary type="html">Description This pipeline maps clinical entities (Observation, Procedures, Tests, Treatments, Drug) to their corresponding CPT (Current Procedural Terminology) codes using bge_base_en_v1_5_onnx embeddings. It uses bge_base_en_v1_5_onnx embeddings and provides multiple resolution candidates with confidence scores, making it ideal for accurate procedural code assignment in clinical documentation. Live Demo Open in Colab Download Copy S3 URI How to use PythonHealthcare NLPPythonJohnSnowLabsScalaNLU from sparknlp.pretrained import PretrainedPipeline pipeline = PretrainedPipeline(&quot;bgeresolve_cpt_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) sample_text = &quot;&quot;&quot; A 28-year-old female underwent episiotomy during vaginal delivery. Pulse oximetry was monitored continuously throughout the procedure. Due to postpartum hemorrhage, blood transfusion was administered. The patient was transferred to the inpatient hospital for overnight observation.&quot;&quot;&quot; result = pipeline.transform(spark.createDataFrame([[sample_text]]).toDF(&quot;text&quot;)) from johnsnowlabs import nlp, medical pipeline = nlp.PretrainedPipeline(&quot;bgeresolve_cpt_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) sample_text = &quot;&quot;&quot; A 28-year-old female underwent episiotomy during vaginal delivery. Pulse oximetry was monitored continuously throughout the procedure. Due to postpartum hemorrhage, blood transfusion was administered. The patient was transferred to the inpatient hospital for overnight observation.&quot;&quot;&quot; result = pipeline.transform(spark.createDataFrame([[sample_text]]).toDF(&quot;text&quot;)) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val pipeline = PretrainedPipeline(&quot;bgeresolve_cpt_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val sample_text = &quot;&quot;&quot; A 28-year-old female underwent episiotomy during vaginal delivery. Pulse oximetry was monitored continuously throughout the procedure. Due to postpartum hemorrhage, blood transfusion was administered. The patient was transferred to the inpatient hospital for overnight observation.&quot;&quot;&quot; val result = pipeline.transform(spark.createDataFrame([[sample_text]]).toDF(&quot;text&quot;)) Results | sent_id | ner_chunk | entity | cpt_code | resolutions | all_codes | all_resolutions | | :------ | :----------------- | :------------ | :------- | :----------------- | :--------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------- | | 0 | episiotomy | Procedure | 59300 | episiotomy | [59300, 59409, 59410, 59614, 59612, 59610, 1008583, 1008584, 54700] | [episiotomy, vaginal delivery with episiotomy, vaginal delivery with episiotomy, including postp...] | | 1 | Pulse oximetry | Test | 94760 | pulse oximetry | [94760, 99453, 94761, 82810, 94762, 1013256, 82805, 94617] | [pulse oximetry, device pulse oximetry, noninvasive pulse oximetry for oxygen saturation, multip...] | | 2 | blood transfusion | Procedure | 36430 | blood transfusion | [36430, 86950, 38243, 36450, 0232T, 36460, 38241, 36516, 36455, 36440] | [blood transfusion, white blood cell transfusion, transfusion of bone marrow, whole blood transf...] | | 3 | inpatient hospital | Clinical_Dept | 1021881 | inpatient hospital | [1021881, 94003, 1021895, 99236, 1013660, 1013659, 1013682, 1013675, 59855, 1013661, 1021883, 10...] | [inpatient hospital, inpatient care, inpatient psychiatric facility, evaluation and management o...] | Model Information Model Name: bgeresolve_cpt_pipeline Type: pipeline Compatibility: Healthcare NLP 6.3.0+ License: Licensed Edition: Official Language: en Size: 2.4 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverterInternalModel Chunk2Doc BGEEmbeddings SentenceEntityResolverModel</summary></entry><entry><title type="html">Sentence Entity Resolver for ICD-10-CM Codes (bge_base_en_v1_5_onnx) - Pipeline</title><link href="/2026/03/04/bgeresolve_icd10cm_pipeline_en.html" rel="alternate" type="text/html" title="Sentence Entity Resolver for ICD-10-CM Codes (bge_base_en_v1_5_onnx) - Pipeline" /><published>2026-03-04T00:00:00+00:00</published><updated>2026-03-04T00:00:00+00:00</updated><id>/2026/03/04/bgeresolve_icd10cm_pipeline_en</id><content type="html" xml:base="/2026/03/04/bgeresolve_icd10cm_pipeline_en.html">## Description
+&lt;ul&gt;
+  &lt;li&gt;DocumentAssembler&lt;/li&gt;
+  &lt;li&gt;SentenceDetectorDLModel&lt;/li&gt;
+  &lt;li&gt;TokenizerModel&lt;/li&gt;
+  &lt;li&gt;WordEmbeddingsModel&lt;/li&gt;
+  &lt;li&gt;MedicalNerModel&lt;/li&gt;
+  &lt;li&gt;NerConverterInternalModel&lt;/li&gt;
+  &lt;li&gt;Chunk2Doc&lt;/li&gt;
+  &lt;li&gt;BGEEmbeddings&lt;/li&gt;
+  &lt;li&gt;SentenceEntityResolverModel&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;CPT resolver models are removed from the Models Hub due to license restrictions and can only be shared with the users who already have a valid CPT license. If you possess one and wish to use this model, kindly contact us at support@johnsnowlabs.com.&lt;/strong&gt;&lt;/p&gt;</content><author><name>John Snow Labs</name></author><category term="en" /><category term="cpt" /><category term="resolver" /><category term="licensed" /><category term="clinical" /><category term="bge" /><category term="sentence_entity_resolver" /><category term="pipeline" /><summary type="html">Description This pipeline maps clinical entities (Observation, Procedures, Tests, Treatments, Drug) to their corresponding CPT (Current Procedural Terminology) codes using bge_base_en_v1_5_onnx embeddings. It uses bge_base_en_v1_5_onnx embeddings and provides multiple resolution candidates with confidence scores, making it ideal for accurate procedural code assignment in clinical documentation. Live Demo Open in Colab How to use PythonHealthcare NLPPythonJohnSnowLabsScalaNLU from sparknlp.pretrained import PretrainedPipeline pipeline = PretrainedPipeline(&quot;bgeresolve_cpt_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) sample_text = &quot;&quot;&quot; A 28-year-old female underwent episiotomy during vaginal delivery. Pulse oximetry was monitored continuously throughout the procedure. Due to postpartum hemorrhage, blood transfusion was administered. The patient was transferred to the inpatient hospital for overnight observation.&quot;&quot;&quot; result = pipeline.transform(spark.createDataFrame([[sample_text]]).toDF(&quot;text&quot;)) from johnsnowlabs import nlp, medical pipeline = nlp.PretrainedPipeline(&quot;bgeresolve_cpt_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) sample_text = &quot;&quot;&quot; A 28-year-old female underwent episiotomy during vaginal delivery. Pulse oximetry was monitored continuously throughout the procedure. Due to postpartum hemorrhage, blood transfusion was administered. The patient was transferred to the inpatient hospital for overnight observation.&quot;&quot;&quot; result = pipeline.transform(spark.createDataFrame([[sample_text]]).toDF(&quot;text&quot;)) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val pipeline = PretrainedPipeline(&quot;bgeresolve_cpt_pipeline&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val sample_text = &quot;&quot;&quot; A 28-year-old female underwent episiotomy during vaginal delivery. Pulse oximetry was monitored continuously throughout the procedure. Due to postpartum hemorrhage, blood transfusion was administered. The patient was transferred to the inpatient hospital for overnight observation.&quot;&quot;&quot; val result = pipeline.transform(spark.createDataFrame([[sample_text]]).toDF(&quot;text&quot;)) Results | sent_id | ner_chunk | entity | cpt_code | resolutions | all_codes | all_resolutions | | :------ | :----------------- | :------------ | :------- | :----------------- | :--------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------- | | 0 | episiotomy | Procedure | 59300 | episiotomy | [59300, 59409, 59410, 59614, 59612, 59610, 1008583, 1008584, 54700] | [episiotomy, vaginal delivery with episiotomy, vaginal delivery with episiotomy, including postp...] | | 1 | Pulse oximetry | Test | 94760 | pulse oximetry | [94760, 99453, 94761, 82810, 94762, 1013256, 82805, 94617] | [pulse oximetry, device pulse oximetry, noninvasive pulse oximetry for oxygen saturation, multip...] | | 2 | blood transfusion | Procedure | 36430 | blood transfusion | [36430, 86950, 38243, 36450, 0232T, 36460, 38241, 36516, 36455, 36440] | [blood transfusion, white blood cell transfusion, transfusion of bone marrow, whole blood transf...] | | 3 | inpatient hospital | Clinical_Dept | 1021881 | inpatient hospital | [1021881, 94003, 1021895, 99236, 1013660, 1013659, 1013682, 1013675, 59855, 1013661, 1021883, 10...] | [inpatient hospital, inpatient care, inpatient psychiatric facility, evaluation and management o...] | Model Information Model Name: bgeresolve_cpt_pipeline Type: pipeline Compatibility: Healthcare NLP 6.3.0+ License: Licensed Edition: Official Language: en Size: 2.4 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverterInternalModel Chunk2Doc BGEEmbeddings SentenceEntityResolverModel References CPT resolver models are removed from the Models Hub due to license restrictions and can only be shared with the users who already have a valid CPT license. If you possess one and wish to use this model, kindly contact us at support@johnsnowlabs.com.</summary></entry><entry><title type="html">Sentence Entity Resolver for ICD-10-CM Codes (bge_base_en_v1_5_onnx) - Pipeline</title><link href="/2026/03/04/bgeresolve_icd10cm_pipeline_en.html" rel="alternate" type="text/html" title="Sentence Entity Resolver for ICD-10-CM Codes (bge_base_en_v1_5_onnx) - Pipeline" /><published>2026-03-04T00:00:00+00:00</published><updated>2026-03-04T00:00:00+00:00</updated><id>/2026/03/04/bgeresolve_icd10cm_pipeline_en</id><content type="html" xml:base="/2026/03/04/bgeresolve_icd10cm_pipeline_en.html">## Description
 
 This pipeline, maps clinical entities to ICD-10-CM codes using bge_base_en_v1_5_onnx embeddings. It resolves entities from the following domains: Condition, Observation, Measurement, and Procedure.
 
