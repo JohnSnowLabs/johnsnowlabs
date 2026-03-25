@@ -649,15 +649,31 @@ Before you begin, make sure the following are in place:</p>
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker pull johnsnowlabs/jsl-llms:latest
 </code></pre></div>  </div>
 
-  <p>Use the command below to start the container. Replace <path_to_jsl_license> with the absolute path to your license file on the host machine; replace the <model> with the name of the LLM model you want to deploy (Medical-LLM-Small, Medical-LLM-Medium, etc. see the complete list in the table below):</model></path_to_jsl_license></p>
+  <p>Use one of the commands below to start the container. Replace <code class="language-plaintext highlighter-rouge">&lt;model&gt;</code> with the name of the LLM model you want to deploy (e.g. <code class="language-plaintext highlighter-rouge">Medical-LLM-Small</code>, <code class="language-plaintext highlighter-rouge">Medical-LLM-Medium</code> — see the complete list in the table below).</p>
+
+  <p>You can provide your license in two ways:</p>
+
+  <p><strong>Option 1 — Environment Variable</strong> (recommended for quick setup):</p>
 
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">-d</span> <span class="se">\</span>
 <span class="nt">--gpus</span> all <span class="se">\</span>
-<span class="nt">-v</span> <span class="s2">"&lt;path_to_jsl_license&gt;:/app/license.json"</span> <span class="se">\</span>
+<span class="nt">--env</span> <span class="s2">"SPARK_NLP_LICENSE=your_license_key"</span> <span class="se">\</span>
 <span class="nt">-p</span> 8080:8080 <span class="se">\</span>
 <span class="nt">--ipc</span><span class="o">=</span>host <span class="se">\</span>
 johnsnowlabs/jsl-llms <span class="se">\</span>
-<span class="nt">--model</span> Medical-LLM-10B <span class="se">\</span>
+<span class="nt">--model</span> Medical-LLM-Small <span class="se">\</span>
+<span class="nt">--port</span> 8080
+</code></pre></div>  </div>
+
+  <p><strong>Option 2 — License File</strong> (recommended for more secure license management):</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">-d</span> <span class="se">\</span>
+<span class="nt">--gpus</span> all <span class="se">\</span>
+<span class="nt">-v</span> <span class="s2">"</span><span class="si">$(</span><span class="nb">pwd</span><span class="si">)</span><span class="s2">/license.json:/app/license.json"</span> <span class="se">\</span>
+<span class="nt">-p</span> 8080:8080 <span class="se">\</span>
+<span class="nt">--ipc</span><span class="o">=</span>host <span class="se">\</span>
+johnsnowlabs/jsl-llms <span class="se">\</span>
+<span class="nt">--model</span> Medical-LLM-Small <span class="se">\</span>
 <span class="nt">--port</span> 8080
 </code></pre></div>  </div>
 
@@ -821,6 +837,84 @@ johnsnowlabs/jsl-llms <span class="se">\</span>
 </code></pre></div>      </div>
     </li>
   </ul>
+
+</div>
+<div class="h3-box">
+
+  <h2 id="how-licensing-works-for-on-premise-deployments">How Licensing Works for On-Premise Deployments</h2>
+
+  <p>John Snow Labs Medical LLMs use a <strong>Universal (UV) license</strong> with a credit-based system. Understanding how credits are consumed and released helps you plan your deployments effectively.</p>
+
+  <p>What is a <strong>credit</strong>?
+A credit is simply a running slot - a reservation that says “one container is currently active on your license.”
+Think of it like a key in a key cabinet. Your UV license comes with a fixed number of keys. Every time you start a container, you take a key out. Every time you stop one, you put the key back. The keys aren’t tied to any particular door (machine or model or application) - they just control how many containers can be running at the same time.</p>
+
+  <h3 id="how-credits-are-consumed">How Credits Are Consumed</h3>
+
+  <p>Each running container counts as <strong>one credit</strong>. All Medical LLMs - regardless of size - consume exactly <strong>one credit</strong> per running container.</p>
+
+  <p>A credit is drawn when the container successfully checks in with the John Snow Labs license server at startup. Here is the sequence:</p>
+
+  <ol>
+    <li>Container starts</li>
+    <li>Container checks in with the John Snow Labs license server -&gt; <strong>one credit is drawn from your license</strong></li>
+    <li>Model is streamed directly from John Snow Labs’ secure servers into GPU memory</li>
+    <li>Model begins serving requests</li>
+  </ol>
+
+  <p>If the license check-in fails (e.g. invalid license or no credits available), no credit is consumed and the container will not start.</p>
+
+  <h3 id="deploying-multiple-models">Deploying Multiple Models</h3>
+
+  <p>You can deploy multiple Medical LLMs on the same server, as long as the server has sufficient GPU memory and cores. Each model requires its own container, and each container consumes one credit.</p>
+
+  <blockquote>
+    <p><strong>Example:</strong> Deploying <code class="language-plaintext highlighter-rouge">Medical-LLM-Small</code> and <code class="language-plaintext highlighter-rouge">Medical-LLM-14B</code> on the same server requires two containers and consumes two credits.</p>
+  </blockquote>
+
+  <h3 id="releasing-a-credit">Releasing a Credit</h3>
+
+  <p>To release a credit back to your license pool, stop the container:</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker stop &lt;container_name&gt;
+</code></pre></div>  </div>
+
+  <p>Once the container is stopped, the credit is released back to your license pool within seconds.</p>
+
+  <p>If a container crashes unexpectedly without a <code class="language-plaintext highlighter-rouge">docker stop</code>, the credit is also automatically released within a few seconds — no manual action is needed and credits will never remain permanently stuck.</p>
+
+  <h3 id="license-availability">License Availability</h3>
+
+  <p><img src="/en/LLMs/images/LicenseCreditsMechanism.png" alt="LicenseCreditsMechanism" /></p>
+
+  <p>Your UV license is not locked to a specific machine or model or application. It remains available across all your deployments as long as the license has  enough available (not in use) credits. If all credits are in use, the license will be “locked” (unavailable) until you stop one or more running containers to free up credits of that specific license.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Action</th>
+        <th>Effect on Credits</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Container successfully checks in with license server</td>
+        <td>-1 credit</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">docker stop &lt;container_name&gt;</code></td>
+        <td>+1 credit released within seconds</td>
+      </tr>
+      <tr>
+        <td>Container crashes unexpectedly</td>
+        <td>+1 credit auto-released within seconds</td>
+      </tr>
+      <tr>
+        <td>License check-in fails (invalid license or no credits available)</td>
+        <td>No change</td>
+      </tr>
+    </tbody>
+  </table>
 
 </div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
