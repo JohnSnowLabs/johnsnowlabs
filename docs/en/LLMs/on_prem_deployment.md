@@ -139,14 +139,18 @@ payload = {
 
 John Snow Labs Medical LLMs use a **Universal (UV) license** with a credit-based system. Understanding how credits are consumed and released helps you plan your deployments effectively.
 
+What is a **credit**?
+A credit is simply a running slot - a reservation that says "one container is currently active on your license."
+Think of it like a key in a key cabinet. Your UV license comes with a fixed number of keys. Every time you start a container, you take a key out. Every time you stop one, you put the key back. The keys aren't tied to any particular door (machine or model or application) - they just control how many containers can be running at the same time.
+
 ### How Credits Are Consumed
 
-Each running container counts as **one credit**. All Medical LLMs — regardless of size — consume exactly **one credit** per running container.
+Each running container counts as **one credit**. All Medical LLMs - regardless of size - consume exactly **one credit** per running container.
 
 A credit is drawn when the container successfully checks in with the John Snow Labs license server at startup. Here is the sequence:
 
 1. Container starts
-2. Container checks in with the John Snow Labs license server → **one credit is drawn from your license**
+2. Container checks in with the John Snow Labs license server -> **one credit is drawn from your license**
 3. Model is streamed directly from John Snow Labs' secure servers into GPU memory
 4. Model begins serving requests
 
@@ -172,7 +176,7 @@ If a container crashes unexpectedly without a `docker stop`, the credit is also 
 
 ### License Availability
 
-Your UV license is not locked to a specific machine or model. It remains available across all your deployments as long as you have enough credits. If all credits are in use, the license will be unavailable until you stop one or more running containers to free up credits.
+Your UV license is not locked to a specific machine or model. It remains available across all your deployments as long as the license has  enough available (not in use) credits. If all credits are in use, the license will be unavailable until you stop one or more running containers to free up credits.
 
 | Action | Effect on Credits |
 |---|---|
