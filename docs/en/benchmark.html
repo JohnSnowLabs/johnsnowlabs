@@ -4527,7 +4527,207 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
   <p><em>SpaCy with pandas UDFs</em>: Development might be more straightforward since you’re essentially working with Python functions. However, maintaining optimal performance with larger datasets and ensuring scalability can be tricky.</p>
 
 </div>
+<div class="h3-box">
 
+  <h2 id="small-gguf-llm-speed-benchmarks-on-databricks">Small GGUF LLM Speed Benchmarks on Databricks</h2>
+
+  <p>This benchmark measures the inference speed of small GGUF language models within Healthcare NLP on Databricks (AWS). Two model families were tested (<code class="language-plaintext highlighter-rouge">jsl_meds_4b</code> and <code class="language-plaintext highlighter-rouge">jsl_meds_8b</code>) under different quantizations (q16, q8, q4) using 100 rows of input data. Three clinical NLP tasks were evaluated: <strong>Summarization</strong>, <strong>Named Entity Recognition (NER)</strong>, and <strong>Question Answering</strong>.</p>
+
+  <ul>
+    <li><strong>Dataset:</strong> Clinical texts used for summarization, NER, and question answering tasks.</li>
+    <li><strong>Cluster Configuration:</strong>
+      <ul>
+        <li><strong>CPU Cluster:</strong> i3.4xlarge - 122 GB Memory, 16 Cores</li>
+        <li><strong>GPU Cluster:</strong> g4dn.xlarge [T4] - 16 GB Memory, 4 Cores</li>
+      </ul>
+    </li>
+  </ul>
+
+</div>
+<div class="h3-box">
+
+  <h3 id="summarization-benchmark-jslmeds4b">Summarization Benchmark (jsl_meds_4b)</h3>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th style="text-align: left">Model</th>
+        <th style="text-align: left">Quantization</th>
+        <th style="text-align: left">CPU Cluster</th>
+        <th style="text-align: left">GPU Cluster</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: left">jsl_meds_4b_q16_v5</td>
+        <td style="text-align: left">q16</td>
+        <td style="text-align: left">53 min 6 sec</td>
+        <td style="text-align: left">9 min 51 sec</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">jsl_meds_4b_q8_v5</td>
+        <td style="text-align: left">q8</td>
+        <td style="text-align: left">41 min 8 sec</td>
+        <td style="text-align: left">6 min 11 sec</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">jsl_meds_4b_q4_v5</td>
+        <td style="text-align: left">q4</td>
+        <td style="text-align: left">32 min 17 sec</td>
+        <td style="text-align: left">6 min 34 sec</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>GPU acceleration provides up to a <strong>6.7x speedup</strong> for the Summarization task (q8: 41 min 8 sec on CPU vs 6 min 11 sec on GPU). Lower quantization levels reduce runtimes on CPU (q16 &gt; q8 &gt; q4), while on GPU the differences between q8 and q4 are minimal.</p>
+
+  <p><img src="/assets/images/gguf_bench_summarization_cpu_vs_gpu.png" alt="Summarization CPU vs GPU" /></p>
+
+</div>
+<div class="h3-box">
+
+  <h3 id="ner-benchmark-jslmeds4b">NER Benchmark (jsl_meds_4b)</h3>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th style="text-align: left">Model</th>
+        <th style="text-align: left">Quantization</th>
+        <th style="text-align: left">CPU Cluster</th>
+        <th style="text-align: left">GPU Cluster</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: left">jsl_meds_4b_q16_v5</td>
+        <td style="text-align: left">q16</td>
+        <td style="text-align: left">39 min 32 sec</td>
+        <td style="text-align: left">12 min 5 sec</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">jsl_meds_4b_q8_v5</td>
+        <td style="text-align: left">q8</td>
+        <td style="text-align: left">31 min 39 sec</td>
+        <td style="text-align: left">~8 min 42 sec</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">jsl_meds_4b_q4_v5</td>
+        <td style="text-align: left">q4</td>
+        <td style="text-align: left">27 min 12 sec</td>
+        <td style="text-align: left">~8 min 49 sec</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>NER benefits from GPU acceleration, with a speedup of up to <strong>3.6x</strong> (q8: 31 min 39 sec on CPU vs ~8 min 42 sec on GPU). Lower quantization consistently reduces CPU runtimes, while on GPU, q8 and q4 perform similarly.</p>
+
+  <p><img src="/assets/images/gguf_bench_ner_cpu_vs_gpu.png" alt="NER CPU vs GPU" /></p>
+
+</div>
+<div class="h3-box">
+
+  <h3 id="question-answering-benchmark-jslmeds4b">Question Answering Benchmark (jsl_meds_4b)</h3>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th style="text-align: left">Model</th>
+        <th style="text-align: left">Quantization</th>
+        <th style="text-align: left">CPU Cluster</th>
+        <th style="text-align: left">GPU Cluster</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: left">jsl_meds_4b_q16_v5</td>
+        <td style="text-align: left">q16</td>
+        <td style="text-align: left">41 min 50 sec</td>
+        <td style="text-align: left">7 min 37 sec</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">jsl_meds_4b_q8_v5</td>
+        <td style="text-align: left">q8</td>
+        <td style="text-align: left">34 min 17 sec</td>
+        <td style="text-align: left">4 min 21 sec</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">jsl_meds_4b_q4_v5</td>
+        <td style="text-align: left">q4</td>
+        <td style="text-align: left">31 min 52 sec</td>
+        <td style="text-align: left">3 min 45 sec</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Question Answering benefits strongly from GPU acceleration, achieving up to an <strong>8.5x speedup</strong> (q4: ~32 min on CPU vs ~4 min on GPU).</p>
+
+  <p><img src="/assets/images/gguf_bench_qa_cpu_vs_gpu.png" alt="Question Answering CPU vs GPU" /></p>
+
+</div>
+<div class="h3-box">
+
+  <h3 id="ner-benchmark-jslmeds8b">NER Benchmark (jsl_meds_8b)</h3>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th style="text-align: left">Model</th>
+        <th style="text-align: left">Quantization</th>
+        <th style="text-align: left">CPU Cluster</th>
+        <th style="text-align: left">GPU Cluster</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: left">jsl_meds_8b_q16_v4</td>
+        <td style="text-align: left">q16</td>
+        <td style="text-align: left">1 h 52 min 32 sec</td>
+        <td style="text-align: left">33 min 34 sec</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">jsl_meds_8b_q8_v4</td>
+        <td style="text-align: left">q8</td>
+        <td style="text-align: left">1 h 27 min 57 sec</td>
+        <td style="text-align: left">24 min 12 sec</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">jsl_meds_8b_q4_v4</td>
+        <td style="text-align: left">q4</td>
+        <td style="text-align: left">1 h 6 min 49 sec</td>
+        <td style="text-align: left">24 min 26 sec</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>The 8B model requires longer inference times than the 4B model on both CPU and GPU. At 100 rows, <strong>GPU acceleration provides up to a 3.6x speedup for 8B</strong> (q8: 1 h 27 min 57 sec on CPU vs 24 min 12 sec on GPU). The 4B model is faster than the 8B model on GPU across all quantizations (e.g., q16 at 100 rows: 12 min 5 sec for 4B vs 33 min 34 sec for 8B).</p>
+
+  <p>The figure below compares GPU runtimes between the 4B and 8B models for the NER task at 100 rows:</p>
+
+  <p><img src="/assets/images/gguf_bench_ner_4b_vs_8b_gpu.png" alt="NER 4B vs 8B on GPU" /></p>
+
+</div>
+<div class="h3-box">
+
+  <h3 id="cross-task-comparison-100-rows-q4-jslmeds4b">Cross-Task Comparison (100 rows, q4, jsl_meds_4b)</h3>
+
+  <p>The figure below compares CPU and GPU runtimes across all three tasks using the q4 quantization at 100 rows. All three tasks benefit from GPU acceleration, with Question Answering showing the largest speedup (~8.5x), followed by Summarization (~4.9x) and NER (~3.1x).</p>
+
+  <p><img src="/assets/images/gguf_bench_all_tasks_cpu_vs_gpu.png" alt="All Tasks CPU vs GPU" /></p>
+
+</div>
+<div class="h3-box">
+
+  <h3 id="takeaways">Takeaways</h3>
+
+  <ol class="list1">
+    <li><strong>GPU acceleration</strong> is most impactful for Summarization and Question Answering tasks, where speedups of up to <strong>6.7x</strong> and <strong>8.5x</strong> were observed respectively. NER also benefits with up to <strong>3.6x</strong> speedup;</li>
+    <li><strong>Quantization</strong> generally reduces inference times on CPU, where q4 is the fastest across all tasks. On GPU, q8 and q4 perform similarly for Summarization and NER;</li>
+    <li><strong>NER tasks</strong> benefit from GPU acceleration for both the 4B model (<strong>~3.6x</strong> speedup) and the 8B model (<strong>~3.6x</strong> speedup);</li>
+    <li><strong>Model size</strong>: the 8B models require noticeably longer runtimes than 4B models on both CPU and GPU. The 4B model is faster than the 8B model across all configurations;
+<strong>Note:</strong> Benchmark results may vary based on hardware specifications, model versions, and system configurations. These results are specific to the tested environment and should be used as a relative performance guide.</li>
+  </ol>
+
+</div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
       <time itemprop="dateModified" datetime="2021-10-04T00:00:00+00:00">Oct 04, 2021</time>
     </span><!-- start custom article footer snippet -->
