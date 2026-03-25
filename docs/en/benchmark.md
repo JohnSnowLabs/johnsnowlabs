@@ -1766,7 +1766,96 @@ These findings unequivocally affirm Spark NLP's superiority for NER extraction t
 
 *SpaCy with pandas UDFs*: Development might be more straightforward since you're essentially working with Python functions. However, maintaining optimal performance with larger datasets and ensuring scalability can be tricky.
 
+</div><div class="h3-box" markdown="1">
+
+## Small GGUF LLM Speed Benchmarks on Databricks
+
+This benchmark measures the inference speed of small GGUF language models within Healthcare NLP on Databricks (AWS). Two model families were tested (`jsl_meds_4b` and `jsl_meds_8b`) under different quantizations (q16, q8, q4) using 100 rows of input data. Three clinical NLP tasks were evaluated: **Summarization**, **Named Entity Recognition (NER)**, and **Question Answering**.
+
+- **Dataset:** Clinical texts used for summarization, NER, and question answering tasks.
+- **Cluster Configuration:**
+  - **CPU Cluster:** i3.4xlarge - 122 GB Memory, 16 Cores
+  - **GPU Cluster:** g4dn.xlarge [T4] - 16 GB Memory, 4 Cores
+
+</div><div class="h3-box" markdown="1">
+
+### Summarization Benchmark (jsl_meds_4b)
+
+{:.table-model-big}
+| Model                | Quantization | CPU Cluster      | GPU Cluster      |
+|:---------------------|:-------------|:-----------------|:-----------------|
+| jsl_meds_4b_q16_v5   | q16          | 53 min 6 sec     | 9 min 51 sec     |
+| jsl_meds_4b_q8_v5    | q8           | 41 min 8 sec     | 6 min 11 sec     |
+| jsl_meds_4b_q4_v5    | q4           | 32 min 17 sec    | 6 min 34 sec     |
+
+GPU acceleration provides up to a **6.7x speedup** for the Summarization task (q8: 41 min 8 sec on CPU vs 6 min 11 sec on GPU). Lower quantization levels reduce runtimes on CPU (q16 > q8 > q4), while on GPU the differences between q8 and q4 are minimal.
+
+![Summarization CPU vs GPU](/assets/images/gguf_bench_summarization_cpu_vs_gpu.png)
+
+</div><div class="h3-box" markdown="1">
+
+### NER Benchmark (jsl_meds_4b)
+
+{:.table-model-big}
+| Model                | Quantization | CPU Cluster      | GPU Cluster      |
+|:---------------------|:-------------|:-----------------|:-----------------|
+| jsl_meds_4b_q16_v5   | q16          | 39 min 32 sec    | 12 min 5 sec     |
+| jsl_meds_4b_q8_v5    | q8           | 31 min 39 sec    | ~8 min 42 sec    |
+| jsl_meds_4b_q4_v5    | q4           | 27 min 12 sec    | ~8 min 49 sec    |
+
+NER benefits from GPU acceleration, with a speedup of up to **3.6x** (q8: 31 min 39 sec on CPU vs ~8 min 42 sec on GPU). Lower quantization consistently reduces CPU runtimes, while on GPU, q8 and q4 perform similarly.
+
+![NER CPU vs GPU](/assets/images/gguf_bench_ner_cpu_vs_gpu.png)
+
+</div><div class="h3-box" markdown="1">
+
+### Question Answering Benchmark (jsl_meds_4b)
+
+{:.table-model-big}
+| Model                | Quantization | CPU Cluster      | GPU Cluster      |
+|:---------------------|:-------------|:-----------------|:-----------------|
+| jsl_meds_4b_q16_v5   | q16          | 41 min 50 sec    | 7 min 37 sec     |
+| jsl_meds_4b_q8_v5    | q8           | 34 min 17 sec    | 4 min 21 sec     |
+| jsl_meds_4b_q4_v5    | q4           | 31 min 52 sec    | 3 min 45 sec     |
+
+Question Answering benefits strongly from GPU acceleration, achieving up to an **8.5x speedup** (q4: ~32 min on CPU vs ~4 min on GPU).
+
+![Question Answering CPU vs GPU](/assets/images/gguf_bench_qa_cpu_vs_gpu.png)
+
+</div><div class="h3-box" markdown="1">
+
+### NER Benchmark (jsl_meds_8b)
+
+{:.table-model-big}
+| Model                | Quantization | CPU Cluster        | GPU Cluster      |
+|:---------------------|:-------------|:-------------------|:-----------------|
+| jsl_meds_8b_q16_v4   | q16          | 1 h 52 min 32 sec  | 33 min 34 sec    |
+| jsl_meds_8b_q8_v4    | q8           | 1 h 27 min 57 sec  | 24 min 12 sec    |
+| jsl_meds_8b_q4_v4    | q4           | 1 h 6 min 49 sec   | 24 min 26 sec    |
+
+The 8B model requires longer inference times than the 4B model on both CPU and GPU. At 100 rows, **GPU acceleration provides up to a 3.6x speedup for 8B** (q8: 1 h 27 min 57 sec on CPU vs 24 min 12 sec on GPU). The 4B model is faster than the 8B model on GPU across all quantizations (e.g., q16 at 100 rows: 12 min 5 sec for 4B vs 33 min 34 sec for 8B).
+
+The figure below compares GPU runtimes between the 4B and 8B models for the NER task at 100 rows:
+
+![NER 4B vs 8B on GPU](/assets/images/gguf_bench_ner_4b_vs_8b_gpu.png)
+
+</div><div class="h3-box" markdown="1">
+
+### Cross-Task Comparison (100 rows, q4, jsl_meds_4b)
+
+The figure below compares CPU and GPU runtimes across all three tasks using the q4 quantization at 100 rows. All three tasks benefit from GPU acceleration, with Question Answering showing the largest speedup (~8.5x), followed by Summarization (~4.9x) and NER (~3.1x).
+
+![All Tasks CPU vs GPU](/assets/images/gguf_bench_all_tasks_cpu_vs_gpu.png)
+
+</div><div class="h3-box" markdown="1">
+
+### Takeaways
+
+{:.list1}
+1. **GPU acceleration** is most impactful for Summarization and Question Answering tasks, where speedups of up to **6.7x** and **8.5x** were observed respectively. NER also benefits with up to **3.6x** speedup;
+2. **Quantization** generally reduces inference times on CPU, where q4 is the fastest across all tasks. On GPU, q8 and q4 perform similarly for Summarization and NER;
+3. **NER tasks** benefit from GPU acceleration for both the 4B model (**~3.6x** speedup) and the 8B model (**~3.6x** speedup);
+4. **Model size**: the 8B models require noticeably longer runtimes than 4B models on both CPU and GPU. The 4B model is faster than the 8B model across all configurations;
+**Note:** Benchmark results may vary based on hardware specifications, model versions, and system configurations. These results are specific to the tested environment and should be used as a relative performance guide.
+
 </div>
-
-
-
