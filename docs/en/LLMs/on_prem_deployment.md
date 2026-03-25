@@ -176,7 +176,9 @@ If a container crashes unexpectedly without a `docker stop`, the credit is also 
 
 ### License Availability
 
-Your UV license is not locked to a specific machine or model. It remains available across all your deployments as long as the license has  enough available (not in use) credits. If all credits are in use, the license will be unavailable until you stop one or more running containers to free up credits.
+![LicenseCreditsMechanism](/en/LLMs/images/LicenseCreditsMechanism.png)
+
+Your UV license is not locked to a specific machine or model or application. It remains available across all your deployments as long as the license has  enough available (not in use) credits. If all credits are in use, the license will be "locked" (unavailable) until you stop one or more running containers to free up credits of that specific license.
 
 | Action | Effect on Credits |
 |---|---|
