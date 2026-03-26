@@ -3,17 +3,17 @@ layout: docs
 header: true
 seotitle: Release Notes  | Terminology Server | John Snow Labs
 title: Terminology Server Release Notes
-permalink: /docs/en/terminology_server/release/latest_release
+permalink: /docs/en/terminology_server/release/release_note_v4.0.1
 key: docs-term-server
-modify_date: "2026-03-01"
+modify_date: "2026-04-01"
 show_nav: true
 sidebar:
     nav: term-server
 ---
 
-<div class="h3-box" markdown="1">
+## Terminology Server v4.0.1 Release Notes
 
-<p style="text-align:center;" markdown="1">Release date: {{ page.modify_date | date: '%m-%d-%Y' }}</p>
+<p style="text-align:center;">Release date: {{ page.modify_date | date: '%m-%d-%Y' }}</p>
 
 ## Improvements
 
@@ -26,8 +26,7 @@ sidebar:
 
 ## Bugfixes
 
-* Fixed issue where running setup scripts multiple times reset admin user credentials
-
+* Fixed issue where running setup scripts multiple times would reset admin user credentials
 
 <div class="prev_ver h3-box" markdown="1">
 
@@ -35,10 +34,4 @@ sidebar:
 
 </div>
 
-
-<ul class="pagination pagination_big">
-  <li class="active"><a href="release_note_v4">v4</a></li>
-  <li><a href="release_note_v3">v3</a></li>
-  <li><a href="release_note_v2">v2</a></li>
-  <li><a href="release_note_v1">v1</a></li>
-</ul>
+{%- include docs-terminology-pagination.html -%}
