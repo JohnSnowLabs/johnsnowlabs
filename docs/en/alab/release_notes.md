@@ -17,8 +17,8 @@ sidebar:
 
 
 
-## Generative AI Lab 8 - Medical Terminology Coding and Built-In PDF Extraction for NER
-Generative AI Lab 8 delivers a major advancement in healthcare annotation and document ingestion workflows, introducing native Medical Terminology support and built-in PDF text extraction for NER projects.
+## Generative AI Lab 8.0 - Medical Terminology Coding and Built-In PDF Extraction for NER
+Generative AI Lab 8.0 delivers a major advancement in healthcare annotation and document ingestion workflows, introducing native Medical Terminology support and built-in PDF text extraction for NER projects.
 
 The headline feature is integrated Medical Terminology support, enabling automated code resolution and manual lookup across standards such as ICD-10, LOINC, SNOMED CT, CPT, and more directly within annotation workflows.
 
@@ -30,7 +30,7 @@ In addition, the Cluster Management dashboard has been redesigned to provide imp
 
 ### What’s New
 
-Generative AI Lab 8 introduces **Medical Terminologies** as a core platform capability, enabling standardized clinical annotation using widely adopted coding systems such as **ICD-10, LOINC, CPT, SNOMED CT, RxNorm, and MeSH**.
+Generative AI Lab 8.0 introduces **Medical Terminologies** as a core platform capability, enabling standardized clinical annotation using widely adopted coding systems such as **ICD-10, LOINC, CPT, SNOMED CT, RxNorm, and MeSH**.
 
 This feature supports both:
 
@@ -54,6 +54,7 @@ The **Label Configuration** interface now supports mapping labels to specific me
 -   Click the **Pre-Annotate** button
 -   Select **Create Server** from the dropdown
 -   Click **Deploy**
+
 
 ### Technical Details
 
@@ -86,6 +87,7 @@ _Note: If attempted, the system blocks the action and displays a message indicat
 
 - **Licensing & Credits:** Downloading and deploying terminologies requires a valid license. **Standalone terminology deployments consume 2 floating credits**, while terminology servers deployed alongside an **NER pipeline** within the same project do **not consume additional floating credits**.
 
+
 ### User Benefits
 
 - **Clinical Standardization:** Apply recognized healthcare coding systems directly within annotation workflows for consistent structured outputs
@@ -99,6 +101,7 @@ _Note: If attempted, the system blocks the action and displays a message indicat
 - **Predictable Credit Consumption:** Clear distinction between standalone terminology deployments and zero-cost parallel deployments with NER pipelines
 
 - **Better Interoperability:** Generate outputs aligned with standardized clinical coding systems for downstream healthcare analytics and integrations
+
 
 **Example Use Case**
 
@@ -114,17 +117,21 @@ A healthcare annotation team is building a project to label diagnoses and labora
 
 This workflow improves consistency, reduces manual effort, and ensures clinical annotations remain aligned with standardized healthcare terminologies.
 
+
 ## Free PDF Text Extraction with Structure Preservation for NER projects
 
 ### What’s New
+
 Version **8.0** introduces a new OCR and document ingestion backend for **NER text-based projects**. This enhancement significantly improves how PDF documents and image-based files are processed, resulting in more stable text extraction and better preservation of document structure for annotation.
 
 As part of this update, the **Import experience has also been redesigned** with a clearer interface and a built-in option for extracting text directly from PDFs without requiring a separate OCR server deployment in NER-based projects.
 
+
 ![PDF import with built-in text extraction for NER projects](/assets/images/annotation_lab/8.0.0/2.gif)
 *<center>Users can import PDFs and extract text directly within the platform using the built-in OCR pipeline, simplifying document ingestion for NER workflows.</center>*
 
-### Technical Details
+
+**Technical Details**
 
 - **Out-of-the-Box OCR and Intelligent Document Parsing**
   Text extraction from PDFs, scanned documents, and image-based files is now built into the platform, no external tools or additional setup required. The extracted text is optimized for stability and consistency, making it ready for NER annotation workflows straight away.
@@ -144,7 +151,8 @@ As part of this update, the **Import experience has also been redesigned** with 
   ```xml
   <View style="display: block; font-family: monospace; white-space: pre;">
     <Text name="text" value="$text"/>
-  </View>```
+  </View>
+
 
 ![ConfigurationPage](/assets/images/annotation_lab/8.0.0/1.png)
 *<center>The configuration view highlights the required XML setup for preserving text structure during PDF ingestion, ensuring proper formatting and readability in NER annotation workflows.</center>*
@@ -152,7 +160,9 @@ As part of this update, the **Import experience has also been redesigned** with 
  > **Scope Limitation:**
 This feature is currently available only for text-based NER projects.
 
-### User Benefits
+
+**User Benefits**
+
 - **Improved text extraction for complex PDFs**, especially those with structured layouts such as reports, tables, forms, and multi-section documents
 - **Better preservation of document flow**, making it easier to understand context during NER annotation
 - **More stable and consistent outputs**, reducing variability across repeated imports
@@ -160,10 +170,13 @@ This feature is currently available only for text-based NER projects.
 - **Simplified import experience**, with a clearer UI and built-in PDF text extraction
 - **Seamless integration with existing workflows**, with no changes required in annotation or project setup
 
-### Flexible OCR strategy for different use cases**
+
+**Flexible OCR strategy for different use cases**
+
 Out-of-the-box text extraction handles standard PDF workflows reliably with no additional setup. For teams that need higher precision, such as domain-specific documents, complex layouts, or strict accuracy requirements, advanced OCR capabilities from John Snow Labs are available as a seamless upgrade. This gives teams the flexibility to start simple and scale up to enterprise-grade accuracy when needed.
 
-### Example Use Case
+
+**Example Use Case**
 
 A user imports a collection of PDF documents containing structured reports with headings, sections, and detailed content. Using the redesigned Import page, the user selects the **"Text Extraction from PDFs (free)"** option and uploads the documents.
 
@@ -212,8 +225,10 @@ Version **8.0** introduces a redesigned **Cluster Management Dashboard**, delive
 - **Actionable Controls**
   Users can directly access server logs or remove deployments through clearly visible action buttons, reducing the need for additional navigation.
 
+
 ![Cluster Management Dashboard showing system resources and deployed servers](/assets/images/annotation_lab/8.0.0/3.png)
 *<center>The redesigned Cluster page provides real-time visibility into system resources, deployed servers, and configurations, enabling efficient monitoring and management of platform infrastructure.</center>*
+
 
 **User Benefits**
 
@@ -279,8 +294,10 @@ Version **8.0** introduces the ability to deploy **Medical Terminologies**server
 - The deployed terminology server can be used directly during manual annotation workflows.
 - Existing annotation workflows and project configuration logic remain unchanged.
 
-![Task page showing Medical Terminology server deployment button](/assets/images/annotation_lab/7.8/1.png)
+
+![Task page showing Medical Terminology server deployment button](/assets/images/annotation_lab/8.0.0/4.png)
 *<center>A dedicated action button on the Task page allows users to deploy Medical Terminology servers independently, enabling flexible setup without initiating a pre-annotation server.</center>*
+
 
 **User Benefits**
 - **Faster setup for terminology-based workflows**, without requiring pre-annotation server deployment
@@ -288,6 +305,7 @@ Version **8.0** introduces the ability to deploy **Medical Terminologies**server
 - **Improved efficiency for manual annotation**, with immediate access to terminology support
 - **Greater flexibility**, allowing users to choose deployment based on project needs
 - **No disruption to existing annotation workflows**, ensuring a seamless transition
+
 
 **Example Use Case**
 
@@ -332,7 +350,8 @@ A user working on a medical annotation project needs access to standardized term
 </div>
 
 <ul class="pagination owl-carousel pagination_big">
-    <li class="active"><a href="annotation_labs_releases/release_notes_7_8_2">7.8.2</a></li>
+    <li class="active"><a href="annotation_labs_releases/release_notes_8_0_0">8.0.0</a></li>
+    <li><a href="annotation_labs_releases/release_notes_7_8_2">7.8.2</a></li>
     <li><a href="annotation_labs_releases/release_notes_7_8_1">7.8.1</a></li>
     <li><a href="annotation_labs_releases/release_notes_7_8">7.8</a></li>
     <li><a href="annotation_labs_releases/release_notes_7_7">7.7</a></li>
