@@ -13,8 +13,8 @@
 
 <meta name="description" content="High Performance NLP with Apache Spark
 ">
-<!-- <link rel="canonical" href="/docs/en/terminology_server/release/latest_release"> -->
-<link rel="canonical" href="/docs/en/terminology_server/release/latest_release"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<!-- <link rel="canonical" href="/docs/en/terminology_server/release/release_note_v4.0.1"> -->
+<link rel="canonical" href="/docs/en/terminology_server/release/release_note_v4.0.1"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -398,7 +398,7 @@ connect-src 'self' data: api.github.com sparknlp.org search.modelshub.johnsnowla
 <path d="M20.2658 26.412H8.38867V26.5781H20.2658V26.412Z" fill="#9EDEFA"/>
 </svg>
 -->
-</a><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">Terminology Server</li><li class="toc-h2"><a href="/docs/en/terminology_server/term_server">Getting Started</a></li><li class="toc-subtitle">Installation</li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/on_prem_deploy">Deploy on Premise</a></li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/on_aws">Deploy on AWS</a></li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/on_azure">Deploy on Azure</a></li><li class="toc-subtitle">Features</li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/features/search">Search</a></li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/features/code_systems">Code Systems</a></li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/features/concept_maps">Concept Maps</a></li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/features/value_sets">Value Sets</a></li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/features/mcp_server">MCP Server</a></li><li class="toc-subtitle">APIs</li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/api_service">API Service Access</a></li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/api_docs">API Documentation</a></li><li class="toc-h2"><a href="/docs/en/terminology_server/support">Support</a></li><li class="toc-h2 active"><a href="/docs/en/terminology_server/release/latest_release">Release Notes</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
+</a><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">Terminology Server</li><li class="toc-h2"><a href="/docs/en/terminology_server/term_server">Getting Started</a></li><li class="toc-subtitle">Installation</li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/on_prem_deploy">Deploy on Premise</a></li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/on_aws">Deploy on AWS</a></li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/on_azure">Deploy on Azure</a></li><li class="toc-subtitle">Features</li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/features/search">Search</a></li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/features/code_systems">Code Systems</a></li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/features/concept_maps">Concept Maps</a></li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/features/value_sets">Value Sets</a></li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/features/mcp_server">MCP Server</a></li><li class="toc-subtitle">APIs</li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/api_service">API Service Access</a></li><li class="toc-h2 subtitle_item"><a href="/docs/en/terminology_server/api_docs">API Documentation</a></li><li class="toc-h2"><a href="/docs/en/terminology_server/support">Support</a></li><li class="toc-h2"><a href="/docs/en/terminology_server/release/latest_release">Release Notes</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
 
       <div class="page__main-inner"><div class="page__header d-print-none"><!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-59JLR64"
@@ -622,47 +622,46 @@ function wrapWordInSpan(data, wordToWrap) {
           <h1>Terminology Server Release Notes</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
-            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/terminology_server/release/latest_release.md">
+            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/terminology_server/release/release_note_v4.0.1.md">
             <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Terminology Server Release Notes"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
-<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
+<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="terminology-server-v401-release-notes">Terminology Server v4.0.1 Release Notes</h2>
 
-  <p style="text-align:center;">Release date: 03-01-2026</p>
+<p style="text-align:center;">Release date: 04-01-2026</p>
 
-  <h2 id="improvements">Improvements</h2>
+<h2 id="improvements">Improvements</h2>
 
-  <ul>
-    <li>
-      <p>Added assertion results display to Document Search functionality</p>
+<ul>
+  <li>
+    <p>Added assertion results display to Document Search functionality</p>
 
-      <p><img src="/assets/images/term_server/assertion_result.png" alt="Assertions Results" /></p>
-    </li>
-    <li>Migrated public valueset download scripts to Celery worker for improved performance</li>
-    <li>Dynamic client secret creation during installation</li>
-  </ul>
+    <p><img src="/assets/images/term_server/assertion_result.png" alt="Assertions Results" /></p>
+  </li>
+  <li>Migrated public valueset download scripts to Celery worker for improved performance</li>
+  <li>Dynamic client secret creation during installation</li>
+</ul>
 
-  <h2 id="bugfixes">Bugfixes</h2>
+<h2 id="bugfixes">Bugfixes</h2>
 
-  <ul>
-    <li>Fixed issue where running setup scripts multiple times reset admin user credentials</li>
-  </ul>
+<ul>
+  <li>Fixed issue where running setup scripts multiple times would reset admin user credentials</li>
+</ul>
 
-  <div class="prev_ver h3-box">
+<div class="prev_ver h3-box">
 
-    <h2 id="versions">Versions</h2>
+  <h2 id="versions">Versions</h2>
 
-  </div>
-
-  <ul class="pagination pagination_big">
-  <li class="active"><a href="release_note_v4">v4</a></li>
+</div>
+<ul class="pagination pagination_big">
+  <li><a href="release_note_v4">v4</a></li>
   <li><a href="release_note_v3">v3</a></li>
   <li><a href="release_note_v2">v2</a></li>
   <li><a href="release_note_v1">v1</a></li>
 </ul>
-</div>
+
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2026-03-01T00:00:00+00:00">Mar 01, 2026</time>
+      <time itemprop="dateModified" datetime="2026-04-01T00:00:00+00:00">Apr 01, 2026</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
@@ -848,7 +847,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/docs/en/terminology_server/support">Support</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/docs/en/terminology_server/release/latest_release">Release Notes</a></div></div></div>
 
 </div>
 </div>
