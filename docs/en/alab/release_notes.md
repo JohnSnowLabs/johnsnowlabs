@@ -28,7 +28,7 @@ In addition, the Cluster Management dashboard has been redesigned to provide imp
 
 ## Medical Terminology Automated Lookup with Pre-Annotation for Healthcare Projects
 
-### What’s New
+**What’s New**
 
 Generative AI Lab 8.0 introduces **Medical Terminologies** as a core platform capability, enabling standardized clinical annotation using widely adopted coding systems such as **ICD-10, LOINC, CPT, SNOMED CT, RxNorm, and MeSH**.
 
@@ -56,23 +56,52 @@ The **Label Configuration** interface now supports mapping labels to specific me
 -   Click **Deploy**
 
 
-### Technical Details
+![Project setup page for creating a new Medical Terminology-enabled project](/assets/images/annotation_lab/8.0.0/5.gif)
+*<center>Users can create a new project and configure task settings before enabling Medical Terminologies, forming the foundation for terminology-driven annotation workflows.</center>*
+
+
+
+**Technical Details**
 
 Medical Terminologies are introduced as a new reusable asset type across the **Hub**, **project configuration**, and **cluster deployment** workflows. The feature is designed to integrate seamlessly with existing healthcare annotation pipelines, allowing terminology resolution to be added without disrupting standard project setup or annotation workflows.
 
 - **Terminology Asset Management:** Medical Terminologies are available as a dedicated asset type in the Hub, where users can explore terminology details and manage **downloads, re-downloads, and deletion** of terminology assets.  
 _Note: If a terminology is deployed, an **Active** status is displayed on the corresponding Medical Terminology card._
 
+
+![Navigating to the Medical Terminologies section from the Hub](/assets/images/annotation_lab/8.0.0/6.gif)
+*<center>Users can access Medical Terminologies from the Hub, where all terminology assets are centrally managed and available for reuse across projects.</center>*
+
+
+![Medical Terminologies management page showing available terminology assets](/assets/images/annotation_lab/8.0.0/7.png)
+*<center>The Medical Terminologies page in the Hub allows users to browse, download, and manage terminology assets, with active deployments clearly indicated for reuse across projects.</center>*
+
+
 - **Deployment:** A new **Deploy Medical Terminology Server** button has been added to the **Task** page, allowing users to deploy a standalone Medical Terminology Server based on the project configuration. This deployment is required for users to perform **manual terminology lookup during annotation**.
 _Note:_
 *- If the **Deploy and Save Configuration** button is used while saving configuration that includes Medical Terminologies, only the **Pre-Annotation Server** is deployed*
 *- If deployment is initiated through the **Pre-Annotate** button on the **Task** page, both the **Medical Terminology Server** and the **Pre-Annotation Server** are deployed*
 
+
+![Manual annotation with Medical Terminology lookup in the Task page](/assets/images/annotation_lab/8.0.0/8.gif)
+*<center>After deployment, users can perform manual terminology lookup directly during annotation, enabling accurate code selection and validation within the Task interface.</center>*
+
+
 - **Resource Management:** A new form section has been added to the **Infrastructure** page for configuring resources for the Medical Terminology Server. This allows users to customize the **CPU** and **memory** allocation for the resolver server based on their requirements.  
 _Note: By default, the Medical Terminology Server is configured with **2 CPU cores** and **6 GB memory**._
 
+
+![Resource configuration for Medical Terminology Server in Infrastructure settings](/assets/images/annotation_lab/8.0.0/9.png)
+*<center>The Infrastructure page allows administrators to configure CPU and memory allocation for Medical Terminology servers, enabling controlled resource management based on workload requirements.</center>*
+
+
 - **Redesigned Label Configuration:** The **Customize Label Configuration** interface has been redesigned, and a new toggle switch has been added to support **Map Standard** configuration for Medical Terminologies.  
 _Note: Legacy resolver models have been moved to the **AI Resolver Model** tab._
+
+
+![Updated Customize Label Configuration interface for Medical Terminology mapping](/assets/images/annotation_lab/8.0.0/10.gif)
+*<center>The redesigned Customize Label Configuration interface enables mapping labels to Medical Terminologies through a streamlined UI, improving control over standardized coding during annotation.</center>*
+
 
 - **Configuration Validation:** Adding **legacy resolver pipelines** or **legacy resolver models** is blocked when a **Medical Terminology** is configured, and vice versa, preventing conflicting resolver setups and ensuring consistent entity resolution.
 _Note: If attempted, the system blocks the action and displays a message indicating that **Medical Terminology** and **AI Medical Resolver** cannot be used together._
@@ -88,7 +117,7 @@ _Note: If attempted, the system blocks the action and displays a message indicat
 - **Licensing & Credits:** Downloading and deploying terminologies requires a valid license. **Standalone terminology deployments consume 2 floating credits**, while terminology servers deployed alongside an **NER pipeline** within the same project do **not consume additional floating credits**.
 
 
-### User Benefits
+**User Benefits**
 
 - **Clinical Standardization:** Apply recognized healthcare coding systems directly within annotation workflows for consistent structured outputs
 
@@ -120,7 +149,7 @@ This workflow improves consistency, reduces manual effort, and ensures clinical 
 
 ## Free PDF Text Extraction with Structure Preservation for NER projects
 
-### What’s New
+**What’s New**
 
 Version **8.0** introduces a new OCR and document ingestion backend for **NER text-based projects**. This enhancement significantly improves how PDF documents and image-based files are processed, resulting in more stable text extraction and better preservation of document structure for annotation.
 
@@ -148,10 +177,12 @@ As part of this update, the **Import experience has also been redesigned** with 
 - **Configuration Requirement for Text Rendering**
   To support the improved text formatting, the project configuration must include the following XML setup. Users must replace the existing <text> tag with the following:
 
+
   ```xml
   <View style="display: block; font-family: monospace; white-space: pre;">
     <Text name="text" value="$text"/>
   </View>
+  ```
 
 
 ![ConfigurationPage](/assets/images/annotation_lab/8.0.0/1.png)
@@ -159,6 +190,7 @@ As part of this update, the **Import experience has also been redesigned** with 
 
  > **Scope Limitation:**
 This feature is currently available only for text-based NER projects.
+
 
 
 **User Benefits**
@@ -171,9 +203,11 @@ This feature is currently available only for text-based NER projects.
 - **Seamless integration with existing workflows**, with no changes required in annotation or project setup
 
 
+
 **Flexible OCR strategy for different use cases**
 
 Out-of-the-box text extraction handles standard PDF workflows reliably with no additional setup. For teams that need higher precision, such as domain-specific documents, complex layouts, or strict accuracy requirements, advanced OCR capabilities from John Snow Labs are available as a seamless upgrade. This gives teams the flexibility to start simple and scale up to enterprise-grade accuracy when needed.
+
 
 
 **Example Use Case**
@@ -190,6 +224,7 @@ The built-in ingestion engine extracts text, preserves the original reading orde
 **What's Improved**
 
 Version **8.0** introduces a redesigned **Cluster Management Dashboard**, delivering improved visibility into system resources, deployed servers, and medical terminologies. The updated interface enables administrators and project managers to monitor system health, understand resource allocation, and manage deployments more effectively.
+
 
 **Technical Details**
 
@@ -239,6 +274,7 @@ Version **8.0** introduces a redesigned **Cluster Management Dashboard**, delive
 - **Reduced risk of resource exhaustion**, through proactive usage indicators
 - **More efficient cluster management**, with all critical information accessible in a single view
 
+
 **Example Use Case**
 
 An administrator managing multiple deployments opens the Cluster page to review system usage. The resource summary highlights that memory consumption is approaching capacity. By reviewing the server table, the administrator identifies which deployments are consuming the most resources, including specific models and medical terminologies in use. Based on this insight, the administrator can scale resources, remove unused servers, or delay new deployments to maintain system performance and stability.
@@ -249,12 +285,14 @@ An administrator managing multiple deployments opens the Cluster page to review 
 
 Version **8.0** upgrades the underlying database engine to **PostgreSQL 17.6**, improving performance, reliability, and long-term support. This is a backend enhancement with no impact on installation, upgrade workflows, or existing application behavior.
 
+
 **Technical Details**
 
 - The underlying database engine has been upgraded to **PostgreSQL 17.6**.
 - The upgrade is fully backward compatible with existing schemas and data.
 - No changes are required during installation or upgrade.
 - Application behavior, APIs, and workflows remain unchanged.
+
 
 **Advantages of the Upgrade**
 
@@ -273,6 +311,7 @@ Version **8.0** upgrades the underlying database engine to **PostgreSQL 17.6**, 
 - **Long-Term Support and Compatibility**
   Aligns the platform with a supported PostgreSQL version, ensuring continued compatibility and maintainability.
 
+
 **User Benefits**
 
 - Faster and more responsive system performance
@@ -280,11 +319,13 @@ Version **8.0** upgrades the underlying database engine to **PostgreSQL 17.6**, 
 - No disruption to existing workflows or configurations
 - Increased confidence in data security and platform reliability
 
+
 ### Selective Deployment for Medical Terminology Servers
 
 **What's Improved**
 
 Version **8.0** introduces the ability to deploy **Medical Terminologies**servers independently for projects configured with medical terminologies. A dedicated action button is now available alongside the existing **Pre-Annotate** option, enabling more flexible deployment based on project requirements..
+
 
 **Technical Details**
 
