@@ -5,13 +5,37 @@ seotitle: Medical LLMs | John Snow Labs
 title: Release Notes
 permalink: /docs/en/LLMs/releases/release_notes
 key: docs-medical-llm
-modify_date: "2026-03-10"
+modify_date: "2026-03-26"
 show_nav: true
 sidebar:
     nav: medical-llm
 ---
 
 <div class="h3-box" markdown="1">
+
+## 03-26-2026
+
+### Model Updates
+
+We're excited to announce an updated version of our Medical-Visual-LLM-8B model, delivering major improvements in multimodal medical reasoning, benchmark accuracy, and deployment efficiency.
+
+- **Medical-Visual-LLM-8B**: This 8B parameter multimodal medical model delivers advanced clinical reasoning across both text and medical imagery in a highly efficient footprint. Trained on diverse medical thinking and patient-centered datasets, it understands complex clinical narratives while accurately interpreting X-rays, MRIs, CT scans, pathology slides, charts, diagrams, and structured medical records. Despite its compact size, the model demonstrates strong diagnostic support capabilities, contextual question answering, structured report summarization, and multimodal evidence synthesis. With a 262K context window, it can process long clinical documents and longitudinal patient histories. Optimized for retrieval-augmented generation (RAG) workflows, it integrates seamlessly with healthcare databases and imaging systems to provide grounded, data-aware responses across real-world medical environments.
+
+#### Specifications
+
+| **Model Name**             | **Parameters** | **Recommended GPU Memory** | **Max Sequence Length** | **Model Size** | **Max KV-Cache** | **Tensor Parallel Sizes** |
+|---------------------------|----------------|----------------------------|-------------------------|----------------|------------------|--------------------------|
+| Medical-Visual-LLM-8B     | 8B             | ~25 GB                     | 262K                    | 17 GB          | 8 GB             | 1, 2, 4, 8               |
+
+#### Benchmark Performance – Medical-Visual-LLM-8B
+
+- Achieves 90.8% average across OpenMed benchmarks
+- Scores 87% on clinical knowledge assessment
+- Reaches 98% on medical genetics understanding
+- Performs at 97.8% for college biology concepts
+- Processes professional medicine with 93.5% accuracy
+- Handles medical MCQs with 92% precision
+- Maintains 89.8% accuracy on Anatomy concepts
 
 ## 03-10-2026
 
