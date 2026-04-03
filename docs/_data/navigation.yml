@@ -295,6 +295,8 @@ sparknlp-healthcare:
         url: /licensed/api/python
       - title: Healthcare NLP Example Notebooks
         url: /docs/en/healthcare-nlp-example-notebooks
+      - title: MCP De-identification Server
+        url: /docs/en/mcp_deid_installation
       - title: Wiki
         url: /docs/en/wiki
       - title: Benchmarks
