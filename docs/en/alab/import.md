@@ -163,6 +163,36 @@ progress and confirm successful uploads.
 
 ***Note: Import server created during task import is counted as an active server.***
 
+## PDF Text Extraction for NER Projects
+
+For **NER text-based projects**, the Import page includes a built-in **"Text Extraction from PDFs"** option that extracts text directly from PDFs and image-based documents without requiring a separate OCR server deployment.
+
+![PDF import with built-in text extraction for NER projects](/assets/images/annotation_lab/8.0.0/2.gif "lit_shadow")
+
+This feature provides:
+- **Out-of-the-box text extraction** from PDFs, scanned documents, and image-based files
+- **Preserved document structure** including logical reading order, paragraph boundaries, and sections
+- **Stable and consistent output** optimized for NER annotation workflows
+- **No additional setup required**  extraction happens during the import process
+
+### Configuration Requirement
+
+To support the improved text formatting, the project configuration must include the following XML setup in the **Customize Configuration** view:
+
+```xml
+<View style="display: block; font-family: monospace; white-space: pre;">
+  <Text name="text" value="$text"/>
+</View>
+```
+
+![ConfigurationPage](/assets/images/annotation_lab/8.0.0/1.png "lit_shadow")
+
+> **Note:** This feature is currently available only for text-based NER projects. For Visual NER projects, use the standard PDF import workflow which preserves the visual document format.
+
+### Flexible OCR Strategy
+
+The built-in text extraction handles standard PDF workflows reliably with no additional setup. For teams that need higher precision, such as domain-specific documents, complex layouts, or strict accuracy requirements  advanced OCR capabilities from John Snow Labs are available as a seamless upgrade through licensed OCR servers.
+
 ## Disabled Local Imports
 Administrators can disable local file imports system-wide, complementing existing local export restrictions to create complete data flow control.
 

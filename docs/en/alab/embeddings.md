@@ -13,7 +13,6 @@ sidebar:
     nav: annotation-lab
 ---
 
-# Embeddings
 
 ## Overview
 
