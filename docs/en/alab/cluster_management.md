@@ -61,7 +61,7 @@ Also, if any issues are encountered during server initialization, those are disp
 
 <img class="image image__shadow" src="/assets/images/annotation_lab/serverStatus2.png" style="width:100%;"/>
 
-### Enhanced Cluster Management Dashboard (Version 8.0)
+### Enhanced Cluster Management Dashboard 
 
 Version 8.0 introduces an enhanced Cluster Management Dashboard with improved visibility into system resources and deployed configurations.
 
