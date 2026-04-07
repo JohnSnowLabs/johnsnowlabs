@@ -168,7 +168,9 @@ annotation-lab:
           - title: LLM Prompts (ChatGPT)
             url: /docs/en/alab/llm_prompts   
           - title: Playground
-            url: /docs/en/alab/playground                        
+            url: /docs/en/alab/playground
+          - title: Medical Terminologies
+            url: /docs/en/alab/medical_terminologies                        
       - subtitle: Project and Tasks
         children:
           - title: Dashboard
