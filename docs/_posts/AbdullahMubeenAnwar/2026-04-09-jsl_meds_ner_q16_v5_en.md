@@ -153,7 +153,7 @@ result.select("llm_output").show(false)
 {:.table-model}
 |---|---|
 |Model Name:|jsl_meds_ner_q16_v5|
-|Compatibility:|Healthcare NLP 6.2.0+|
+|Compatibility:|Healthcare NLP 6.3.0+|
 |License:|Licensed|
 |Edition:|Official|
 |Input Labels:|[document]|
