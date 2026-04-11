@@ -7,7 +7,7 @@ date: 2026-04-09
 tags: [medical, clinical, llm, ner, en, licensed, llamacpp]
 task: Named Entity Recognition
 language: en
-edition: Healthcare NLP 6.2.0
+edition: Healthcare NLP 6.3.0
 spark_version: 3.4
 supported: true
 engine: llamacpp
