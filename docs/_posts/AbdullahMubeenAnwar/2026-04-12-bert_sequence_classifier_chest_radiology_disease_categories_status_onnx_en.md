@@ -7,7 +7,7 @@ date: 2026-04-12
 tags: [medical, clinical, public_health, sequence_classification, en, licensed, onnx]
 task: Text Classification
 language: en
-edition: Healthcare NLP 6.2.0
+edition: Healthcare NLP 6.3.0
 spark_version: 3.4
 supported: true
 engine: onnx
@@ -19,7 +19,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model is a BERT based multi-label sequence classifier for broad-category disease classification with clinical status detection in chest radiology reports. It is based on [microsoft/BiomedVLP-CXR-BERT-general](https://huggingface.co/microsoft/BiomedVLP-CXR-BERT-general) and fine-tuned on the StructUtterances dataset, a large corpus of over 1.5 million structured radiology utterances derived from chest X-ray reports (MIMIC-CXR, CheXpert Plus). The model classifies input text into **72 labels** combining 24 broad disease categories with clinical status modifiers (Certain, Uncertain, Absent) following a hierarchical chest radiology ontology covering findings across six anatomical regions: lungs & airways, pleura, cardiovascular, mediastinal, musculoskeletal, and upper abdominal. It is designed to evaluate or analyze free-text radiology report snippets, structured report sections, or individual clinical utterances. This model is the **category-level with status** variant, predicting both broader disease groupings and the radiologist's level of certainty (e.g., *Consolidation (Uncertain)*, *Pleural Effusion (Certain)*, *Cardiomegaly (Absent)*).
+This model is a BERT based multi-label sequence classifier for broad-category disease classification with clinical status detection in chest radiology reports. It is designed to evaluate or analyze free-text radiology report snippets, structured report sections, or individual clinical utterances. This model is the **category-level with status** variant, predicting both broader disease groupings and the radiologist's level of certainty (e.g., *Consolidation (Uncertain)*, *Pleural Effusion (Certain)*, *Cardiomegaly (Absent)*).
 
 ## Predicted Entities
 
@@ -151,7 +151,7 @@ result.select("text", "label.result").show(1, false)
 {:.table-model}
 |---|---|
 |Model Name:|bert_sequence_classifier_chest_radiology_disease_categories_status_onnx|
-|Compatibility:|Healthcare NLP 6.2.0+|
+|Compatibility:|Healthcare NLP 6.3.0+|
 |License:|Licensed|
 |Edition:|Official|
 |Input Labels:|[token, document]|
