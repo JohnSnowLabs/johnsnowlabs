@@ -6,7 +6,7 @@ seotitle: Generative AI Lab | John Snow Labs
 title: Release Notes
 permalink: /docs/en/alab/release_notes
 key: docs-training
-modify_date: "2026-03-27"
+modify_date: "2026-04-13"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
@@ -34,7 +34,6 @@ sidebar:
 - **Pre-Annotation Failure for `assertion_bert_classification_jsl`**
 
    Pre-annotation could fail when using the `assertion_bert_classification_jsl` model due to inconsistencies between document and chunk alignment during processing. The pipeline handling has been corrected, and pre-annotation with this model now completes successfully.
-
 
 
 ---
