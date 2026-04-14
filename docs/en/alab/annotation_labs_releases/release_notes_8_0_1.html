@@ -9,12 +9,12 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Generative AI Lab Release Notes 6.1.0</title><meta property="og:title" content="Generative AI Lab | John Snow Labs"/>
+<!-- End Google Tag Manager --><title>Generative AI Lab 8.0.1</title><meta property="og:title" content="Generative AI Lab | John Snow Labs"/>
 
 <meta name="description" content="High Performance NLP with Apache Spark
 ">
-<!-- <link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_6_1_0"> -->
-<link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_6_1_0"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<!-- <link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_8_0_1"> -->
+<link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_8_0_1"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -616,232 +616,39 @@ function wrapWordInSpan(data, wordToWrap) {
 </script><div class="article__header"><div class="header-nav"><div class="main-docs">
   <ul class="breadcrambs">
     <li><a href="/docs">Documentation</a></li>
-    <li>Generative AI Lab Release Notes 6.1.0</li>
+    <li>Generative AI Lab 8.0.1</li>
   </ul>
 </div></div><header class="main-docs have_subtitle">
-          <h1>Generative AI Lab Release Notes 6.1.0</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
+          <h1>Generative AI Lab 8.0.1</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
-            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/alab/annotation_labs_releases/release_notes_6_1_0.md">
-            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Generative AI Lab Release Notes 6.1.0"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
+            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/alab/annotation_labs_releases/release_notes_8_0_1.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Generative AI Lab 8.0.1"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
-
-  <h2 id="section">6.1.0</h2>
-
-  <p>Release date: <strong>05-14-2024</strong></p>
-
-  <h2 id="project-merging-bulk-pre-annotations-and-ad-hoc-backups-in-the-generative-ai-lab-61">Project Merging, Bulk Pre-Annotations and Ad-hoc backups in the Generative AI Lab 6.1</h2>
-  <p>We’re excited to introduce Generative AI Lab 6.1, featuring several upgrades to enhance your NLP experience. A standout feature is the ability to merge tasks across different projects, which improves annotator agreement analytics and enriches the training models with superior data completions. Additionally, the bulk pre-annotation of incomplete tasks simplifies workflows by removing the need for manual sorting and saves valuable time. The new capability to assign multiple annotators to a single task promotes teamwork. Users also have the option to initiate ad-hoc backups from the backup page, reinforcing data security on demand. Furthermore, the import page has been revamped, now offering separate tabs for cloud and local uploads, creating a cleaner and more user-friendly interface. For a detailed overview, please review the release notes below.</p>
-
-  <h2 id="enhanced-project-collaboration-with-task-merging-capability">Enhanced Project Collaboration with Task Merging Capability</h2>
-  <p>Version 6.1 brings a new feature that enables the merging of tasks from two different projects. This functionality allows the consolidation of annotations created as part of different projects into one project, optimizing the processes for training and analysis.</p>
-
-  <p><strong>Key Features:</strong>
-<strong>Merging Tasks Across Projects:</strong> Users can now combine tasks from two different projects into a single project, provided that the projects share the same configuration and labels. If the tasks and their IDs are identical, their completions will be merged. If not, the imported tasks are added as new, while preserving any existing completions.</p>
-
-  <p><strong>Streamlined Workflow:</strong> Merging tasks is a straightforward process:</p>
-  <ol>
-    <li>Export tasks from one project.</li>
-    <li>Go to the import page of the target project.</li>
-    <li>Import the tasks.</li>
-  </ol>
-
-  <p><img src="/assets/images/annotation_lab/6.1.0/2.gif" alt="zeroPrompt" /></p>
-
-  <p>In previous versions, importing task with task IDs and task contents identical to existing tasks was not possible. With the introduction of this new feature, users can now seamlessly merge projects without having to delete existing tasks or overwrite completions.</p>
-
-  <p>This improvement simplifies project management and enhances collaboration by enabling users to effortlessly consolidate annotations from multiple projects.</p>
-
-  <h2 id="bulk-pre-annotation-of-all-incomplete-tasks">Bulk Pre-Annotation of All Incomplete Tasks</h2>
-  <p>Version 6.1 brings a new feature that facilitates the bulk pre-annotation of all incomplete tasks. This upgrade streamlines the pre-annotation process, enabling users to apply pre-annotations to all incomplete tasks simultaneously, eliminating the need for manual filtering or selection.</p>
-
-  <p><strong>Key Features:</strong></p>
-  <ul>
-    <li><strong>Bulk Pre-Annotation:</strong> Users can now apply pre-annotations to all incomplete tasks in one go.</li>
-    <li><strong>Simplified Workflow:</strong> This feature removes the need to manually filter or select tasks for pre-annotation.</li>
-  </ul>
-
-  <p><img src="/assets/images/annotation_lab/6.1.0/3.png" alt="zeroPrompt" /></p>
-
-  <p>This enhancement not only saves time and effort by removing the need for manual task selection but also boosts efficiency and effectiveness in the pre-annotation process, enhancing overall workflow productivity.</p>
-
-  <h2 id="assign-multiple-annotators-to-tasks">Assign multiple annotators to tasks</h2>
-  <p>Previously, task assignments were restricted to one annotator at a time, requiring repetitive processes to assign multiple annotators to a single task. With version 6.1. the platform offers the possibility to simultaneously assign multiple annotators to a task, greatly reducing time and simplifying the task management work. Assignments are visually confirmed with a tick mark next to each assigned annotator. Clicking on an annotator’s name a second time will remove them from the task. However, the assignment of reviewers has not changed; only one reviewer can be assigned per task.</p>
-
-  <p><img src="/assets/images/annotation_lab/6.1.0/4.gif" alt="zeroPrompt" /></p>
-
-  <h2 id="improvements">Improvements</h2>
-  <h3 id="trigger-ad-hoc-backups">Trigger Ad-hoc backups</h3>
-  <p>Version 6.1 introduces the ability for users to initiate ad-hoc backups directly from the backup page on demand. Previously, triggering backups required manual editing of the cronjob from the backend to manage file and database backups outside of the scheduled times. This update simplifies the process, enabling users to easily start backups with just a click.</p>
-
-  <p><strong>Key Features:</strong>
-<strong>On-Demand Backup:</strong> Users can now trigger ad-hoc backups at any time from the backup page. The backup process involves:</p>
-  <ol>
-    <li>Entering the S3/Azure Blob credentials.</li>
-    <li>Clicking the backup button.</li>
-  </ol>
-
-  <p><img src="/assets/images/annotation_lab/6.1.0/5.png" alt="zeroPrompt" /></p>
-
-  <p><strong>Simplified Interactions:</strong> Prior to this update, initiating backups outside of the scheduled times required manual cronjob modifications. Now, backups can be initiated directly from the UI.</p>
-
-  <p>This enhancement gives users increased flexibility and control, making it easy and efficient to initiate backups whenever necessary with just a click.</p>
-
-  <h3 id="optimized-import-page">Optimized Import Page</h3>
-  <p>Generative AI Lab 6.1 comes with an optimized import page, improving user experience. The page retains all its original functions but now includes separate tabs for cloud imports and local imports, creating a more streamlined and user-friendly layout.</p>
-
-  <p><strong>Key Features:</strong></p>
-  <ul>
-    <li><strong>Optimized User Interface:</strong> The import options for cloud and local uploads are now distinctly separated into different tabs.</li>
-    <li><strong>Cleaner Interface:</strong>  The import page sports a cleaner, more organized design, improving user interaction.</li>
-    <li><strong>Consistent Functionality:</strong> Despite the redesign, all the existing import functionalities remain unchanged, providing users with stability.</li>
-  </ul>
-
-  <p><strong>Local Import</strong></p>
-
-  <p><img src="/assets/images/annotation_lab/6.1.0/6.png" alt="zeroPrompt" /></p>
-
-  <p><strong>Cloud Import</strong></p>
-
-  <p><img src="/assets/images/annotation_lab/6.1.0/7.png" alt="zeroPrompt" /></p>
-
-  <p>This redesign enhances the user experience by offering a more structured and intuitive interface for importing tasks, while preserving all the previous capabilities.</p>
-
-  <h3 id="optimized-team-members-page">Optimized Team Members Page</h3>
-  <ol>
-    <li>Previously, the Team Members Page included already assigned users in the search results, complicating navigation. Now, search results exclusively show unassigned users.</li>
-    <li>The “Dismiss” button on the user card has been removed as it was redundant.</li>
-    <li>The user card design has been refined to use space more efficiently. Although it is smaller overall, it now adjusts its size for larger screens to maintain a uniform and appealing display across various devices.</li>
-    <li>To better accommodate smaller screens, the spacing between elements on the page has been significantly reduced. This adjustment ensures that all components fit well within the screen’s limits, enhancing the user experience on smaller devices.</li>
-  </ol>
-
-  <p><img src="/assets/images/annotation_lab/6.1.0/8.png" alt="zeroPrompt" /></p>
-
-  <h3 id="optimized-relation-widget">Optimized Relation Widget</h3>
-  <p>Previously, the display of relationships in the sidebar only included generic labels such as “from” and “to,” which made it challenging to quickly grasp the specific connections between entities, particularly when multiple relations were involved</p>
-
-  <p>To enhance clarity, the “Relation” widget has been updated to display the actual labeled text for both the “from” and “to” entities, whether positioned on the right side or at the bottom of the interface. Furthermore, if the full labeled text does not fit within the widget, hovering over it will display the complete text, facilitating easier identification of relations in any context. The widget shows more text when positioned at the bottom and less when on the right side.</p>
-
-  <p><img src="/assets/images/annotation_lab/6.1.0/9.gif" alt="zeroPrompt" /></p>
-
-  <h3 id="targeted-tasks-import-from-azure-blob-storage">Targeted Tasks Import from Azure Blob Storage</h3>
-  <p>Previously, task imports from Azure Blob were restricted to using the container name, which affected all tasks within the import. Recent updates have introduced greater flexibility by allowing users to specify individual tasks for import using a detailed syntax: {container_name}/{complete_file_path}.</p>
-
-  <p>This enhancement provides a more precise method for importing tasks, enabling users to selectively import specific tasks from a container instead of indiscriminately importing all tasks.</p>
-
-  <p><img src="/assets/images/annotation_lab/6.1.0/10.gif" alt="zeroPrompt" /></p>
-
-  <h3 id="enhanced-prompt-filters">Enhanced Prompt Filters</h3>
-  <p>The Prompts List Page has been updated to provide users with more refined filtering capabilities. New options include “Open Source” and “External” for filtering by Domain, and “Classification” for filtering by Type. Selecting “Open Source” will display prompts related to the Open Source domain, while choosing “External” will show all prompts from External LLMs. The “Classification” option filters the prompts to show only those related to Classification tasks. Users can easily switch between filters to update the displayed prompts or remove a filter by reselecting the same option, which will show all prompts without any filters.</p>
-
-  <p><img src="/assets/images/annotation_lab/6.1.0/11.gif" alt="zeroPrompt" /></p>
-
-  <h3 id="label-editing-for-uploaded-models">Label Editing for Uploaded Models</h3>
-  <p>Previously, correcting even a single typo in a model’s labels required users to delete and then re-upload the model with the correct prediction entities. Now, admin and supervisor users can edit the labels of uploaded models that are currently not in use in the project.</p>
-
-  <p><img src="/assets/images/annotation_lab/6.1.0/12.gif" alt="zeroPrompt" /></p>
-
-  <h3 id="incorporating-base-model-prediction-labels-in-transfer-learning-training">Incorporating Base Model Prediction Labels in Transfer Learning Training</h3>
-  <p>In previous versions, during transfer learning, only the labels used in the current project configuration were transferred from the base model to the newly trained model. Now, with the introduction of the “Include Base Model Labels” checkbox in the training settings, users have the option to ensure that all labels from the base model are incorporated into the training of the new model when this option is activated..</p>
-
-  <p><img src="/assets/images/annotation_lab/6.0.0/13.png" alt="zeroPrompt" /></p>
-
-  <h3 id="enhanced-search-functionality-on-models-hub-page">Enhanced Search Functionality on Models Hub Page</h3>
-  <p>Version 6.1 brings another improvement to the search capabilities on the ModelHub page, enhancing both efficiency and user experience. By extending the debounce time, the search functionality has become more responsive and effective. Users will now enjoy quicker and more precise search results, facilitating an easier and more streamlined model selection process.</p>
-
-  <p>This enhancement ensures a smoother and more efficient experience for users when searching for models.</p>
 
   <h3 id="bug-fixes">Bug Fixes</h3>
 
   <ul>
     <li>
-      <p><strong>User can see add group to a shared project</strong></p>
+      <p><strong>System Resources Not Displayed on Cluster Page for EKS Deployments</strong></p>
 
-      <p>Previously, the system permitted users to access the “Groups” action for both owned and shared projects. However, if a user tried to assign a group to a shared project, an error message was displayed: “User ‘admin’ not allowed to assign/revoke group from projects(s)!” Moreover, when users selected both owned and shared projects simultaneously for group assignment, the system displayed a success message, but only the owned project was actually assigned to the group.</p>
-
-      <p>Now, the functionality has been updated to allow users to assign groups only to projects they own. The group assignment option is disabled for shared projects, preventing any confusion or error messages.</p>
+      <p>System resource metrics (CPU, memory, and storage) could appear as blank on the Cluster page in EKS deployments. Resource monitoring has been corrected, and metrics are now displayed accurately.</p>
     </li>
     <li>
-      <p><strong>The first token in the dictionary of a rule is not pre-annotated</strong></p>
+      <p><strong>Project Managers with Annotator or Supervisor Role Cannot Edit Project Description When Project Creation Is Disabled</strong></p>
 
-      <p>Previously, the first entity in the dictionary rule was reserved for the name of the rule. However, this reservation has been removed. Now, the first entity in the dictionary rule is pre-annotated.</p>
+      <p>When project creation was disabled in settings, users with Annotator or Supervisor roles were unable to edit the project description, even if assigned as Project Managers. This restriction has been removed, and project description editing is now correctly permitted based on project-level permissions.</p>
     </li>
     <li>
-      <p><strong>Relation prompt is also shown in the list of NER prompts during pre-annotation</strong></p>
+      <p><strong>Pre-Annotation Failure for <code class="language-plaintext highlighter-rouge">assertion_bert_classification_jsl</code></strong></p>
 
-      <p>Previously, the first entity in the dictionary rule was specifically designated as the name of the rule. This requirement has now been eliminated. Currently, the first entity in the dictionary rule is used for pre-annotation.</p>
-    </li>
-    <li>
-      <p><strong>In Visual NER projects the special characters are included along with the texts when labeled, but in NER project only text is labeled</strong></p>
-
-      <p>Previously, in Visual NER projects, special characters were inadvertently included with the text during labeling. In contrast, only the text was labeled in NER projects when tasks were pre-annotated using NER models. This inconsistency has now been addressed. Special characters are no longer included with the tokens, resulting in more accurate predictions in Visual NER projects when utilizing NER models.</p>
-
-      <p><img src="/assets/images/annotation_lab/6.1.0/14.png" alt="zeroPrompt" /></p>
-    </li>
-    <li>
-      <p><strong>Separate texts are labeled as one in Visual NER project when separated by special characters</strong></p>
-
-      <p>Currently, in Visual NER projects, texts separated by a comma were incorrectly labeled as a single entity during pre-annotation with the NER model. This problem has been resolved. Now, tokens separated by special characters are appropriately recognized and labeled as distinct texts.</p>
-    </li>
-    <li>
-      <p><strong>Uppercase words are skipped when pre-annotating tasks in VisualNER project</strong></p>
-
-      <p>Previously, uppercase words were overlooked during prediction. This issue has now been corrected, and tokens are no longer omitted during pre-annotation..</p>
-    </li>
-    <li>
-      <p><strong>Validation for External Service Provider is not working during edit</strong></p>
-
-      <p>In edit mode, the “VALIDATE” option is initially disabled. However, once the user modifies the Secret Key, validation becomes available and is now operating correctly.</p>
-    </li>
-    <li>
-      <p><strong>Relations point to empty tokens when the right sidebar shrinks</strong></p>
-
-      <p>Previously, during the review of pre-annotations, relations would incorrectly point to empty tokens when the left sidebar was minimized. This issue has been addressed, ensuring that relation lines now remain consistent and no longer point to empty tokens, regardless of whether the sidebar is expanded or collapsed.</p>
-    </li>
-    <li>
-      <p><strong>“Server limit reached” dialog box is not shown when trying to deploy the configuration from Customize Labels page</strong></p>
-
-      <p>Previously, when the server limit was reached during an attempt to deploy the configuration from the Customize Labels page, the dialog box that should indicate this did not appear. Now, this dialog box is properly displayed as expected.</p>
-    </li>
-    <li>
-      <p><strong>Hotkey shortcut “m” in labeling page to “Add metadata when region is selected” is not working currently</strong></p>
-
-      <p>Previously, the “m” hotkey shortcut on the labeling page, which was intended to “Add metadata when region is selected,” was malfunctioning. This issue prevented users from efficiently attaching metadata to labeled text. Now, pressing the “m” key while a label is selected will properly activate the text area for adding metadata, allowing users to smoothly input the necessary information.</p>
-    </li>
-    <li>
-      <p><strong>Pressing Hotkey shortcut “alt+tab” in labeling page is not working as expected.</strong></p>
-
-      <p>Previously, the hotkey function “alt+tab” was problematic. Rather than allowing users to navigate between labeled texts within a specific task, pressing “alt+tab” mistakenly triggered navigation across various sections of the webpage, behaving like a typical browser shortcut. This caused users to unintentionally move between different sections of the webpage, rather than navigating through the labeled texts of the task at hand.</p>
-
-      <p>Now, users can press the shortcut key “alt+tab” to navigate between different labeled texts as intended.</p>
-    </li>
-    <li>
-      <p><strong>Same rules are imported multiple times when importing Demo Project</strong></p>
-
-      <p>Previously, importing Demo Projects led to duplicate rule downloads. Now, upon importing a project, its associated rules will only be downloaded once.</p>
-    </li>
-    <li>
-      <p><strong>Tasks are still classified based on labels that were removed from project configuration</strong></p>
-
-      <p>In the past, tasks were categorized according to labels that had been removed from the project configuration. Now, tasks are no longer categorized for labels that are not included in the project configuration.</p>
-    </li>
-    <li>
-      <p><strong>Exporting Tasks without completions include tasks with deleted completions</strong></p>
-
-      <p>Previously, when exporting tasks without completions, it included tasks with deleted completions. This issue has now been fixed.</p>
-    </li>
-    <li>
-      <p><strong>Images/PDFs are not exported for Image Classification and Rate PDF Project type</strong></p>
-
-      <p>Previously, Images/PDFs were not exported for Image Classification and Rate PDF Project types. This issue has now been resolved.</p>
+      <p>Pre-annotation could fail when using the <code class="language-plaintext highlighter-rouge">assertion_bert_classification_jsl</code> model due to inconsistencies between document and chunk alignment during processing. The pipeline handling has been corrected, and pre-annotation with this model now completes successfully.</p>
     </li>
   </ul>
 
-</div>
-<div class="prev_ver h3-box">
-
+  <hr />
   <h2 id="versions">Versions</h2>
 
 </div>
@@ -924,7 +731,7 @@ function wrapWordInSpan(data, wordToWrap) {
   <li><a href="release_notes_5_1_0">5.1.0</a></li>
 </ul>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2024-05-14T00:00:00+00:00">May 14, 2024</time>
+      <time itemprop="dateModified" datetime="2026-04-13T00:00:00+00:00">Apr 13, 2026</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
