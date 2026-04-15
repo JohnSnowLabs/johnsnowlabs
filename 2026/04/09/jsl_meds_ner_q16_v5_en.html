@@ -9,11 +9,11 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Mapping CPT Codes with Their Corresponding UMLS Codes | cpt_umls_mapper | Healthcare NLP 6.3.0</title><meta property="og:title" content=""/>
+<!-- End Google Tag Manager --><title>JSL_MedS_NER (LLM - q16 - v5) | jsl_meds_ner_q16_v5 | Healthcare NLP 6.3.0</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis pretrained model maps CPT codes to corresponding UMLS codes.Predicted Entitiesumls_codeLive DemoOpen in ColabHow to use  PythonHealthcare NLPPythonJohnSnowLabsScalaNLU  document_assembler = DocumentAssembler()\      .setInputCol("text")\      .setOutputCol("document")chunk_assembler = Doc2Chunk()\   ...">
-<!-- <link rel="canonical" href="/2026/03/06/cpt_umls_mapper_en.html"> -->
-<link rel="canonical" href="/2026/03/06/cpt_umls_mapper_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="DescriptionThis LLM model extracts structured entities from clinical trial eligibility criteria. Given unstructured text, it returns JSON with inclusion and exclusion entities. The model supports four entity types: age, lab, condition, and pregnancy. Each entity follows a fixed schema with normalized values and nume...">
+<!-- <link rel="canonical" href="/2026/04/09/jsl_meds_ner_q16_v5_en.html"> -->
+<link rel="canonical" href="/2026/04/09/jsl_meds_ner_q16_v5_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -503,118 +503,135 @@ function wrapWordInSpan(data, wordToWrap) {
 
 </script><div class="article__header"><div class="header-author"><div class="article__info clearfix"><div class="left-col">
             <a class="edit-on-github-btn" target="_blank" rel="alternate"
-               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/Meryem1425/2026-03-06-cpt_umls_mapper_en.md">
+               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/AbdullahMubeenAnwar/2026-04-09-jsl_meds_ner_q16_v5_en.md">
               <span class="fab fa-github"></span>
               <span class="edit-on-github-label">Edit on GitHub</span>
             </a>
-        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Mar 06, 2026</span>
-            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2026-03-06T00:00:00+00:00"></div><header class="main-docs have_subtitle">
-          <h1>Mapping CPT Codes with Their Corresponding UMLS Codes</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Mapping CPT Codes with Their Corresponding UMLS Codes"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>licensed</li><li>en</li><li>umls</li><li>cpt</li><li>mapping</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2026-03-06T00:00:00+00:00">
-    <meta itemprop="keywords" content="licensed,en,umls,cpt,mapping"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
+        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Apr 09, 2026</span>
+            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2026-04-09T00:00:00+00:00"></div><header class="main-docs have_subtitle">
+          <h1>JSL_MedS_NER (LLM - q16 - v5)</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="JSL_MedS_NER (LLM - q16 - v5)"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>medical</li><li>clinical</li><li>llm</li><li>ner</li><li>en</li><li>licensed</li><li>llamacpp</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2026-04-09T00:00:00+00:00">
+    <meta itemprop="keywords" content="medical,clinical,llm,ner,en,licensed,llamacpp"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>This pretrained model maps CPT codes to corresponding UMLS codes.</p>
-
-<h2 id="predicted-entities">Predicted Entities</h2>
-
-<p><code class="language-plaintext highlighter-rouge">umls_code</code></p>
+<p>This LLM model extracts structured entities from clinical trial eligibility criteria. Given unstructured text, it returns JSON with inclusion and exclusion entities. The model supports four entity types: age, lab, condition, and pregnancy. Each entity follows a fixed schema with normalized values and numeric thresholds where applicable. This model is intended for clinical trial eligibility parsing, patient matching, and structured medical information extraction workflows.</p>
 
 <p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
-<button class="button button-orange" disabled="">Open in Colab</button></p>
+<button class="button button-orange" disabled="">Open in Colab</button>
+<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/jsl_meds_ner_q16_v5_en_6.2.0_3.4_1775750133661.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
+<a href="s3://auxdata.johnsnowlabs.com/clinical/models/jsl_meds_ner_q16_v5_en_6.2.0_3.4_1775750133661.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
 <h2 id="how-to-use">How to use</h2>
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python<strong>Healthcare NLP</strong></button><button class="tab-li-model-aproach tab-li-jsl">Python<strong>JohnSnowLabs</strong></button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach tab-li-nlu">NLU</button></div>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp.base</span> <span class="kn">import</span> <span class="n">DocumentAssembler</span>
+<span class="kn">from</span> <span class="nn">sparknlp_jsl.annotator</span> <span class="kn">import</span> <span class="n">MedicalLLM</span>
+<span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">Pipeline</span>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
-      <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
-      <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+<span class="n">documentAssembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
 
-<span class="n">chunk_assembler</span> <span class="o">=</span> <span class="n">Doc2Chunk</span><span class="p">()</span>\
-      <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
-      <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"cpt_code"</span><span class="p">)</span>
+<span class="n">llm</span> <span class="o">=</span> <span class="n">MedicalLLMModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"jsl_meds_ner_q16_v5"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"llm_output"</span><span class="p">)</span>
 
-<span class="n">mapperModel</span> <span class="o">=</span> <span class="n">ChunkMapperModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"cpt_umls_mapper"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"cpt_code"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"mappings"</span><span class="p">)</span>
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span><span class="n">documentAssembler</span><span class="p">,</span> <span class="n">llm</span><span class="p">])</span>
 
-<span class="n">mapper_pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
-    <span class="n">document_assembler</span><span class="p">,</span>
-    <span class="n">chunk_assembler</span><span class="p">,</span>
-    <span class="n">mapperModel</span>
-<span class="p">])</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s">"""Inclusion Criteria:
+Adults aged 18–75 with confirmed type 2 diabetes mellitus. HbA1c 7.0–10.5%. 
+Fasting plasma glucose ≥126 mg/dL. Negative pregnancy test required.
 
-<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"2016F"</span><span class="p">],[</span><span class="s">"48155"</span><span class="p">],[</span><span class="s">"64823"</span><span class="p">],[</span><span class="s">"4500F"</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+Exclusion Criteria:
+Type 1 diabetes mellitus. HbA1c &gt;10.5%. Fasting plasma glucose &gt;300 mg/dL. 
+Pregnant or breastfeeding. Diabetic ketoacidosis. Uncontrolled thyroid disease.
+"""</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="n">text</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="n">mapper_pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-
+<span class="n">model</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </code></pre></div>  </div>
 
-  <div class="language-python jsl-block highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="n">document_assembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span>\
-      <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
-      <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+  <div class="language-python jsl-block highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span><span class="p">,</span> <span class="n">medical</span>
 
-<span class="n">chunk_assembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Doc2Chunk</span><span class="p">()</span>\
-      <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
-      <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"cpt_code"</span><span class="p">)</span>
+<span class="n">documentAssembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
 
-<span class="n">mapperModel</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">ChunkMapperModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"cpt_umls_mapper"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"cpt_code"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"mappings"</span><span class="p">)</span>
+<span class="n">llm</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">MedicalLLMModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"jsl_meds_ner_q16_v5"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"llm_output"</span><span class="p">)</span>
 
-<span class="n">mapper_pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
-    <span class="n">document_assembler</span><span class="p">,</span>
-    <span class="n">chunk_assembler</span><span class="p">,</span>
-    <span class="n">mapperModel</span>
-<span class="p">])</span>
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span><span class="n">documentAssembler</span><span class="p">,</span> <span class="n">llm</span><span class="p">])</span>
 
-<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"2016F"</span><span class="p">],[</span><span class="s">"48155"</span><span class="p">],[</span><span class="s">"64823"</span><span class="p">],[</span><span class="s">"4500F"</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s">"""Inclusion Criteria:
+Adults aged 18–75 with confirmed type 2 diabetes mellitus. HbA1c 7.0–10.5%. 
+Fasting plasma glucose ≥126 mg/dL. Negative pregnancy test required.
 
-<span class="n">result</span> <span class="o">=</span> <span class="n">mapper_pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+Exclusion Criteria:
+Type 1 diabetes mellitus. HbA1c &gt;10.5%. Fasting plasma glucose &gt;300 mg/dL. 
+Pregnant or breastfeeding. Diabetic ketoacidosis. Uncontrolled thyroid disease.
+"""</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="n">text</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
 
+<span class="n">model</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </code></pre></div>  </div>
-  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="k">val</span> <span class="nv">document_assembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
-      <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
-      <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
+  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.base._</span>
+<span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.annotators._</span>
+<span class="k">import</span> <span class="nn">org.apache.spark.ml.Pipeline</span>
+<span class="k">import</span> <span class="nn">spark.implicits._</span>
 
-<span class="k">val</span> <span class="nv">chunk_assembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Doc2Chunk</span><span class="o">()</span>
-      <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
-      <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"cpt_code"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">documentAssembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">chunkerMapper</span> <span class="k">=</span> <span class="nc">ChunkMapperModel</span>
-      <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"cpt_umls_mapper"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
-      <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"cpt_code"</span><span class="o">))</span>
-      <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"mappings"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">llm</span> <span class="k">=</span> <span class="nc">MedicalLLMModel</span>
+  <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"jsl_meds_ner_q16_v5"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">))</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"llm_output"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">mapper_pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
-                                                  <span class="n">document_assembler</span><span class="o">,</span>
-                                                  <span class="n">chunk_assembler</span><span class="o">,</span>
-                                                  <span class="n">chunkerMapper</span><span class="o">))</span>
+<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="n">documentAssembler</span><span class="o">,</span> <span class="n">llm</span><span class="o">))</span>
 
-<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="s">"2016F"</span><span class="o">,</span><span class="s">"48155"</span><span class="o">,</span><span class="s">"64823"</span><span class="o">,</span><span class="s">"4500F"</span><span class="o">).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">text</span> <span class="k">=</span>
+  <span class="s">"""  Inclusion Criteria:
+  Adults aged 18–75 with confirmed type 2 diabetes mellitus. HbA1c 7.0–10.5%.
+  Fasting plasma glucose ≥126 mg/dL. Negative pregnancy test required.
 
-<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">mapper_pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
+  Exclusion Criteria:
+  Type 1 diabetes mellitus. HbA1c &gt;10.5%. Fasting plasma glucose &gt;300 mg/dL.
+  Pregnant or breastfeeding. Diabetic ketoacidosis. Uncontrolled thyroid disease.
+  """</span>
+<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="n">text</span><span class="o">).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
 
+<span class="k">val</span> <span class="nv">model</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">model</span><span class="o">.</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
+
+<span class="nv">result</span><span class="o">.</span><span class="py">select</span><span class="o">(</span><span class="s">"llm_output"</span><span class="o">).</span><span class="py">show</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
 </code></pre></div>  </div>
 </div>
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-+--------+---------+
-|cpt_code|umls_code|
-+--------+---------+
-|2016F   |C3248275 |
-|48155   |C0040511 |
-|64823   |C0973430 |
-|4500F   |C3248301 |
-+--------+---------+
-
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">{</span>
+  <span class="s2">"inclusion"</span>: <span class="o">[</span>
+    <span class="o">{</span><span class="s2">"type"</span>:<span class="s2">"age"</span>,<span class="s2">"min_years"</span>:18,<span class="s2">"max_years"</span>:75<span class="o">}</span>,
+    <span class="o">{</span><span class="s2">"type"</span>:<span class="s2">"condition"</span>,<span class="s2">"name"</span>:<span class="s2">"type 2 diabetes mellitus"</span><span class="o">}</span>,
+    <span class="o">{</span><span class="s2">"type"</span>:<span class="s2">"lab"</span>,<span class="s2">"name"</span>:<span class="s2">"HbA1c"</span>,<span class="s2">"min_percent"</span>:7.0,<span class="s2">"max_percent"</span>:10.5<span class="o">}</span>,
+    <span class="o">{</span><span class="s2">"type"</span>:<span class="s2">"lab"</span>,<span class="s2">"name"</span>:<span class="s2">"fasting plasma glucose"</span>,<span class="s2">"min_value"</span>:126<span class="o">}</span>,
+    <span class="o">{</span><span class="s2">"type"</span>:<span class="s2">"pregnancy"</span>,<span class="s2">"status"</span>:<span class="s2">"negative_pregnancy_test"</span><span class="o">}</span>
+  <span class="o">]</span>,
+  <span class="s2">"exclusion"</span>: <span class="o">[</span>
+    <span class="o">{</span><span class="s2">"type"</span>:<span class="s2">"condition"</span>,<span class="s2">"name"</span>:<span class="s2">"type 1 diabetes mellitus"</span><span class="o">}</span>,
+    <span class="o">{</span><span class="s2">"type"</span>:<span class="s2">"lab"</span>,<span class="s2">"name"</span>:<span class="s2">"HbA1c"</span>,<span class="s2">"max_percent"</span>:10.5<span class="o">}</span>,
+    <span class="o">{</span><span class="s2">"type"</span>:<span class="s2">"lab"</span>,<span class="s2">"name"</span>:<span class="s2">"fasting plasma glucose"</span>,<span class="s2">"max_value"</span>:300<span class="o">}</span>,
+    <span class="o">{</span><span class="s2">"type"</span>:<span class="s2">"pregnancy"</span>,<span class="s2">"status"</span>:<span class="s2">"pregnant_or_lactating"</span><span class="o">}</span>,
+    <span class="o">{</span><span class="s2">"type"</span>:<span class="s2">"condition"</span>,<span class="s2">"name"</span>:<span class="s2">"diabetic ketoacidosis"</span><span class="o">}</span>,
+    <span class="o">{</span><span class="s2">"type"</span>:<span class="s2">"condition"</span>,<span class="s2">"name"</span>:<span class="s2">"uncontrolled thyroid disease"</span><span class="o">}</span>
+  <span class="o">]</span>
+<span class="o">}</span>
 </code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>
@@ -623,7 +640,7 @@ function wrapWordInSpan(data, wordToWrap) {
   <tbody>
     <tr>
       <td>Model Name:</td>
-      <td>cpt_umls_mapper</td>
+      <td>jsl_meds_ner_q16_v5</td>
     </tr>
     <tr>
       <td>Compatibility:</td>
@@ -639,11 +656,11 @@ function wrapWordInSpan(data, wordToWrap) {
     </tr>
     <tr>
       <td>Input Labels:</td>
-      <td>[ner_chunk]</td>
+      <td>[document]</td>
     </tr>
     <tr>
       <td>Output Labels:</td>
-      <td>[mappings]</td>
+      <td>[completions]</td>
     </tr>
     <tr>
       <td>Language:</td>
@@ -651,15 +668,11 @@ function wrapWordInSpan(data, wordToWrap) {
     </tr>
     <tr>
       <td>Size:</td>
-      <td>336.5 KB</td>
+      <td>6.1 GB</td>
     </tr>
   </tbody>
 </table>
-
-<h2 id="references">References</h2>
-
-<p><strong>CPT resolver models are removed from the Models Hub due to license restrictions and can only be shared with the users who already have a valid CPT license. If you possess one and wish to use this model, kindly contact us at support@johnsnowlabs.com.</strong></p>
-</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2026-03-06T00:00:00+00:00"><!-- start custom article footer snippet -->
+</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2026-04-09T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
 
@@ -844,7 +857,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2026/03/05/sbluebertresolve_loinc_uncased_en.html">Sentence Entity Resolver for Logical Observation Identifiers Names and Codes (LOINC) codes (sbluebert_base_uncased_mli embeddings)</a></div><div class="next nav_link"><span>NEXT</span><a href="/2026/03/09/snomed_umls_mapper_en.html">Mapping SNOMED Codes with Their Corresponding UMLS Codes</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2026/03/16/sbiobertresolve_snomed_veterinary_en.html">Sentence Entity Resolver for SNOMED (sbiobertresolve_snomed_veterinary)</a></div><div class="next nav_link"><span>NEXT</span><a href="/2026/04/09/zeroshot_multitask_generic_en.html">ZeroShot Multitask Generic</a></div></div></div>
 
 </div>
 </div>

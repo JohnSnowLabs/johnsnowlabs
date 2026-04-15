@@ -9,11 +9,11 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Mapping CPT Codes with Their Corresponding UMLS Codes | cpt_umls_mapper | Healthcare NLP 6.3.0</title><meta property="og:title" content=""/>
+<!-- End Google Tag Manager --><title>ZeroShot Multitask Generic | zeroshot_multitask_base | Healthcare NLP 6.3.0</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis pretrained model maps CPT codes to corresponding UMLS codes.Predicted Entitiesumls_codeLive DemoOpen in ColabHow to use  PythonHealthcare NLPPythonJohnSnowLabsScalaNLU  document_assembler = DocumentAssembler()\      .setInputCol("text")\      .setOutputCol("document")chunk_assembler = Doc2Chunk()\   ...">
-<!-- <link rel="canonical" href="/2026/03/06/cpt_umls_mapper_en.html"> -->
-<link rel="canonical" href="/2026/03/06/cpt_umls_mapper_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="DescriptionThis ZeroShot model is trained to extract and link entities in a document. Users needs to define entitit labels or an input schema as explained in the example section.Live DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonHealthcare NLPPythonJohnSnowLabsScalaNLU  document_assembler = DocumentAssembler...">
+<!-- <link rel="canonical" href="/2026/04/10/zeroshot_multitask_base_en.html"> -->
+<link rel="canonical" href="/2026/04/10/zeroshot_multitask_base_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -503,117 +503,178 @@ function wrapWordInSpan(data, wordToWrap) {
 
 </script><div class="article__header"><div class="header-author"><div class="article__info clearfix"><div class="left-col">
             <a class="edit-on-github-btn" target="_blank" rel="alternate"
-               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/Meryem1425/2026-03-06-cpt_umls_mapper_en.md">
+               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/Cabir40/2026-04-10-zeroshot_multitask_base_en.md">
               <span class="fab fa-github"></span>
               <span class="edit-on-github-label">Edit on GitHub</span>
             </a>
-        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Mar 06, 2026</span>
-            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2026-03-06T00:00:00+00:00"></div><header class="main-docs have_subtitle">
-          <h1>Mapping CPT Codes with Their Corresponding UMLS Codes</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Mapping CPT Codes with Their Corresponding UMLS Codes"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>licensed</li><li>en</li><li>umls</li><li>cpt</li><li>mapping</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2026-03-06T00:00:00+00:00">
-    <meta itemprop="keywords" content="licensed,en,umls,cpt,mapping"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
+        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Apr 10, 2026</span>
+            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2026-04-10T00:00:00+00:00"></div><header class="main-docs have_subtitle">
+          <h1>ZeroShot Multitask Generic</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="ZeroShot Multitask Generic"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>en</li><li>licensed</li><li>clinical</li><li>medical</li><li>ner</li><li>classification</li><li>relation_extraction</li><li>assertion</li><li>onnx</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2026-04-10T00:00:00+00:00">
+    <meta itemprop="keywords" content="en,licensed,clinical,medical,ner,classification,relation_extraction,assertion,onnx"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>This pretrained model maps CPT codes to corresponding UMLS codes.</p>
-
-<h2 id="predicted-entities">Predicted Entities</h2>
-
-<p><code class="language-plaintext highlighter-rouge">umls_code</code></p>
+<p>This ZeroShot model is trained to extract and link entities in a document. Users needs to define entitit labels or an input schema as explained in the example section.</p>
 
 <p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
-<button class="button button-orange" disabled="">Open in Colab</button></p>
+<button class="button button-orange" disabled="">Open in Colab</button>
+<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/zeroshot_multitask_base_en_6.3.0_3.0_1775814855432.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
+<a href="s3://auxdata.johnsnowlabs.com/clinical/models/zeroshot_multitask_base_en_6.3.0_3.0_1775814855432.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
 <h2 id="how-to-use">How to use</h2>
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python<strong>Healthcare NLP</strong></button><button class="tab-li-model-aproach tab-li-jsl">Python<strong>JohnSnowLabs</strong></button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach tab-li-nlu">NLU</button></div>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
-      <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
-      <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+<span class="n">zero_shot</span> <span class="o">=</span> <span class="n">PretrainedZeroShotMultiTask</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"zeroshot_multitask_base"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"extractions"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setEntityThreshold</span><span class="p">(</span><span class="mf">0.4</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setEntities</span><span class="p">([</span><span class="s">"problem"</span><span class="p">,</span> <span class="s">"treatment"</span><span class="p">,</span> <span class="s">"test"</span><span class="p">,</span> <span class="s">"body_part"</span><span class="p">,</span> <span class="s">"drug_dosage"</span><span class="p">,</span> <span class="s">"severity"</span><span class="p">,</span> <span class="s">"date"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setStructures</span><span class="p">([</span>
+        <span class="p">(</span><span class="s">"problem_info"</span><span class="p">,</span> <span class="p">[</span>
+            <span class="s">"text::str::medical condition, symptom, or diagnosis"</span><span class="p">,</span>
+            <span class="s">"assertion::[present|absent|hypothetical|possible|conditional|associated_with_someone_else]"</span><span class="p">,</span>
+        <span class="p">]),</span>
+        <span class="p">(</span><span class="s">"treatment_info"</span><span class="p">,</span> <span class="p">[</span>
+            <span class="s">"text::str::drug, medication, procedure, or therapy"</span><span class="p">,</span>
+            <span class="s">"assertion::[present|absent|hypothetical|possible|conditional|associated_with_someone_else]"</span><span class="p">,</span>
+        <span class="p">]),</span>
+    <span class="p">])</span>\
+    <span class="p">.</span><span class="n">setClassifications</span><span class="p">([</span>
+        <span class="p">(</span><span class="s">"cancer_type"</span><span class="p">,</span>  <span class="p">[</span><span class="s">"lung"</span><span class="p">,</span> <span class="s">"breast"</span><span class="p">,</span> <span class="s">"colorectal"</span><span class="p">,</span> <span class="s">"other"</span><span class="p">,</span> <span class="s">"not_cancer"</span><span class="p">]),</span>
+        <span class="p">(</span><span class="s">"urgency"</span><span class="p">,</span>      <span class="p">[</span><span class="s">"routine"</span><span class="p">,</span> <span class="s">"urgent"</span><span class="p">,</span> <span class="s">"emergent"</span><span class="p">]),</span>
+    <span class="p">])</span>\
+    <span class="p">.</span><span class="n">setRelations</span><span class="p">([</span>
+        <span class="s">"treatment_improves_problem"</span><span class="p">,</span>
+        <span class="s">"treatment_causes_problem"</span><span class="p">,</span>
+        <span class="s">"treatment_administered_for_problem"</span><span class="p">,</span>
+        <span class="s">"test_reveals_problem"</span><span class="p">,</span>
+        <span class="s">"test_conducted_for_problem"</span><span class="p">,</span>
+    <span class="p">])</span>
 
-<span class="n">chunk_assembler</span> <span class="o">=</span> <span class="n">Doc2Chunk</span><span class="p">()</span>\
-      <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
-      <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"cpt_code"</span><span class="p">)</span>
-
-<span class="n">mapperModel</span> <span class="o">=</span> <span class="n">ChunkMapperModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"cpt_umls_mapper"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"cpt_code"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"mappings"</span><span class="p">)</span>
-
-<span class="n">mapper_pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
-    <span class="n">document_assembler</span><span class="p">,</span>
-    <span class="n">chunk_assembler</span><span class="p">,</span>
-    <span class="n">mapperModel</span>
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span>
+    <span class="n">stages</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">document_assembler</span><span class="p">,</span>
+        <span class="n">zero_shot</span>
 <span class="p">])</span>
 
-<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"2016F"</span><span class="p">],[</span><span class="s">"48155"</span><span class="p">],[</span><span class="s">"64823"</span><span class="p">],[</span><span class="s">"4500F"</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+<span class="n">text</span> <span class="o">=</span> <span class="sa">f</span><span class="s">"""
+Jennifer Smith is 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus (T2DM), one prior episode of HTG-induced pancreatitis three years prior to presentation, and associated with an acute hepatitis, presented with a one-week history of polyuria, poor appetite, and vomiting.
+"""</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="n">mapper_pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="n">text</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
 
+<span class="n">results</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="n">results</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">"completions"</span><span class="p">).</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 </code></pre></div>  </div>
 
-  <div class="language-python jsl-block highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+  <div class="language-python jsl-block highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span><span class="p">,</span> <span class="n">medical</span>
 <span class="n">document_assembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span>\
-      <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
-      <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
 
-<span class="n">chunk_assembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Doc2Chunk</span><span class="p">()</span>\
-      <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
-      <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"cpt_code"</span><span class="p">)</span>
+<span class="n">zero_shot</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">PretrainedZeroShotMultiTask</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"zeroshot_multitask_base"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"extractions"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setEntityThreshold</span><span class="p">(</span><span class="mf">0.4</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setEntities</span><span class="p">([</span><span class="s">"problem"</span><span class="p">,</span> <span class="s">"treatment"</span><span class="p">,</span> <span class="s">"test"</span><span class="p">,</span> <span class="s">"body_part"</span><span class="p">,</span> <span class="s">"drug_dosage"</span><span class="p">,</span> <span class="s">"severity"</span><span class="p">,</span> <span class="s">"date"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setStructures</span><span class="p">([</span>
+        <span class="p">(</span><span class="s">"problem_info"</span><span class="p">,</span> <span class="p">[</span>
+            <span class="s">"text::str::medical condition, symptom, or diagnosis"</span><span class="p">,</span>
+            <span class="s">"assertion::[present|absent|hypothetical|possible|conditional|associated_with_someone_else]"</span><span class="p">,</span>
+        <span class="p">]),</span>
+        <span class="p">(</span><span class="s">"treatment_info"</span><span class="p">,</span> <span class="p">[</span>
+            <span class="s">"text::str::drug, medication, procedure, or therapy"</span><span class="p">,</span>
+            <span class="s">"assertion::[present|absent|hypothetical|possible|conditional|associated_with_someone_else]"</span><span class="p">,</span>
+        <span class="p">]),</span>
+    <span class="p">])</span>\
+    <span class="p">.</span><span class="n">setClassifications</span><span class="p">([</span>
+        <span class="p">(</span><span class="s">"cancer_type"</span><span class="p">,</span>  <span class="p">[</span><span class="s">"lung"</span><span class="p">,</span> <span class="s">"breast"</span><span class="p">,</span> <span class="s">"colorectal"</span><span class="p">,</span> <span class="s">"other"</span><span class="p">,</span> <span class="s">"not_cancer"</span><span class="p">]),</span>
+        <span class="p">(</span><span class="s">"urgency"</span><span class="p">,</span>      <span class="p">[</span><span class="s">"routine"</span><span class="p">,</span> <span class="s">"urgent"</span><span class="p">,</span> <span class="s">"emergent"</span><span class="p">]),</span>
+    <span class="p">])</span>\
+    <span class="p">.</span><span class="n">setRelations</span><span class="p">([</span>
+        <span class="s">"treatment_improves_problem"</span><span class="p">,</span>
+        <span class="s">"treatment_causes_problem"</span><span class="p">,</span>
+        <span class="s">"treatment_administered_for_problem"</span><span class="p">,</span>
+        <span class="s">"test_reveals_problem"</span><span class="p">,</span>
+        <span class="s">"test_conducted_for_problem"</span><span class="p">,</span>
+    <span class="p">])</span>
 
-<span class="n">mapperModel</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">ChunkMapperModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"cpt_umls_mapper"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"cpt_code"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"mappings"</span><span class="p">)</span>
-
-<span class="n">mapper_pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
-    <span class="n">document_assembler</span><span class="p">,</span>
-    <span class="n">chunk_assembler</span><span class="p">,</span>
-    <span class="n">mapperModel</span>
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span>
+    <span class="n">stages</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">document_assembler</span><span class="p">,</span>
+        <span class="n">zero_shot</span>
 <span class="p">])</span>
 
-<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"2016F"</span><span class="p">],[</span><span class="s">"48155"</span><span class="p">],[</span><span class="s">"64823"</span><span class="p">],[</span><span class="s">"4500F"</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+<span class="n">text</span> <span class="o">=</span> <span class="sa">f</span><span class="s">"""
+Jennifer Smith is 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus (T2DM), one prior episode of HTG-induced pancreatitis three years prior to presentation, and associated with an acute hepatitis, presented with a one-week history of polyuria, poor appetite, and vomiting.
+"""</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="n">mapper_pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="n">text</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
 
+<span class="n">results</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="n">results</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">"completions"</span><span class="p">).</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 </code></pre></div>  </div>
-  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="k">val</span> <span class="nv">document_assembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
-      <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
-      <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
+  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">document_assembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">chunk_assembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Doc2Chunk</span><span class="o">()</span>
-      <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
-      <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"cpt_code"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">zero_shot</span> <span class="k">=</span> <span class="nv">PretrainedZeroShotMultiTask</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"zeroshot_multitask_base"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"extractions"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setEntityThreshold</span><span class="o">(</span><span class="mf">0.4</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setEntities</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"problem"</span><span class="o">,</span> <span class="s">"treatment"</span><span class="o">,</span> <span class="s">"test"</span><span class="o">,</span> <span class="s">"body_part"</span><span class="o">,</span> <span class="s">"drug_dosage"</span><span class="o">,</span> <span class="s">"severity"</span><span class="o">,</span> <span class="s">"date"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setStructures</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
+        <span class="o">(</span><span class="s">"problem_info"</span><span class="o">,</span> <span class="nc">Array</span><span class="o">(</span>
+            <span class="s">"text::str::medical condition, symptom, or diagnosis"</span><span class="o">,</span>
+            <span class="s">"assertion::[present|absent|hypothetical|possible|conditional|associated_with_someone_else]"</span>
+        <span class="o">)),</span>
+        <span class="o">(</span><span class="s">"treatment_info"</span><span class="o">,</span> <span class="nc">Array</span><span class="o">(</span>
+            <span class="s">"text::str::drug, medication, procedure, or therapy"</span><span class="o">,</span>
+            <span class="s">"assertion::[present|absent|hypothetical|possible|conditional|associated_with_someone_else]"</span>
+        <span class="o">))</span>
+    <span class="o">))</span>
+    <span class="o">.</span><span class="py">setClassifications</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
+        <span class="o">(</span><span class="s">"cancer_type"</span><span class="o">,</span>  <span class="nc">Array</span><span class="o">(</span><span class="s">"lung"</span><span class="o">,</span> <span class="s">"breast"</span><span class="o">,</span> <span class="s">"colorectal"</span><span class="o">,</span> <span class="s">"other"</span><span class="o">,</span> <span class="s">"not_cancer"</span><span class="o">)),</span>
+        <span class="o">(</span><span class="s">"urgency"</span><span class="o">,</span>      <span class="nc">Array</span><span class="o">(</span><span class="s">"routine"</span><span class="o">,</span> <span class="s">"urgent"</span><span class="o">,</span> <span class="s">"emergent"</span><span class="o">))</span>
+    <span class="o">))</span>
+    <span class="o">.</span><span class="py">setRelations</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
+        <span class="s">"treatment_improves_problem"</span><span class="o">,</span>
+        <span class="s">"treatment_causes_problem"</span><span class="o">,</span>
+        <span class="s">"treatment_administered_for_problem"</span><span class="o">,</span>
+        <span class="s">"test_reveals_problem"</span><span class="o">,</span>
+        <span class="s">"test_conducted_for_problem"</span>
+    <span class="o">))</span>
 
-<span class="k">val</span> <span class="nv">chunkerMapper</span> <span class="k">=</span> <span class="nc">ChunkMapperModel</span>
-      <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"cpt_umls_mapper"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
-      <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"cpt_code"</span><span class="o">))</span>
-      <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"mappings"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
+    <span class="n">document_assembler</span><span class="o">,</span>
+    <span class="n">zero_shot</span>
+<span class="o">))</span>
 
-<span class="k">val</span> <span class="nv">mapper_pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
-                                                  <span class="n">document_assembler</span><span class="o">,</span>
-                                                  <span class="n">chunk_assembler</span><span class="o">,</span>
-                                                  <span class="n">chunkerMapper</span><span class="o">))</span>
+<span class="k">val</span>  <span class="nv">text</span> <span class="k">=</span> <span class="n">f</span><span class="s">"""
+Jennifer Smith is 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus (T2DM), one prior episode of HTG-induced pancreatitis three years prior to presentation, and associated with an acute hepatitis, presented with a one-week history of polyuria, poor appetite, and vomiting.
+"""</span>
 
-<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="s">"2016F"</span><span class="o">,</span><span class="s">"48155"</span><span class="o">,</span><span class="s">"64823"</span><span class="o">,</span><span class="s">"4500F"</span><span class="o">).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="n">text</span><span class="o">).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">mapper_pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
-
+<span class="k">val</span> <span class="nv">results</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
 </code></pre></div>  </div>
 </div>
 
 <h2 id="results">Results</h2>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-+--------+---------+
-|cpt_code|umls_code|
-+--------+---------+
-|2016F   |C3248275 |
-|48155   |C0040511 |
-|64823   |C0973430 |
-|4500F   |C3248301 |
-+--------+---------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|                                                                                                                                                                         extractions|
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|[<span class="o">{</span>chunk, 62, 64, <span class="nv">$99</span>, <span class="o">{</span>sentence -&gt; 0, entity -&gt; drug_dosage, confidence -&gt; 0.54619294<span class="o">}</span>, <span class="o">[]}</span>, <span class="o">{</span>category, 0, 91, other, <span class="o">{</span>sentence -&gt; 0, confidence -&gt; 0.4580742, task -&gt; cancer_typ...|
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 </code></pre></div></div>
 
@@ -623,7 +684,7 @@ function wrapWordInSpan(data, wordToWrap) {
   <tbody>
     <tr>
       <td>Model Name:</td>
-      <td>cpt_umls_mapper</td>
+      <td>zeroshot_multitask_base</td>
     </tr>
     <tr>
       <td>Compatibility:</td>
@@ -638,28 +699,16 @@ function wrapWordInSpan(data, wordToWrap) {
       <td>Official</td>
     </tr>
     <tr>
-      <td>Input Labels:</td>
-      <td>[ner_chunk]</td>
-    </tr>
-    <tr>
-      <td>Output Labels:</td>
-      <td>[mappings]</td>
-    </tr>
-    <tr>
       <td>Language:</td>
       <td>en</td>
     </tr>
     <tr>
       <td>Size:</td>
-      <td>336.5 KB</td>
+      <td>844.4 MB</td>
     </tr>
   </tbody>
 </table>
-
-<h2 id="references">References</h2>
-
-<p><strong>CPT resolver models are removed from the Models Hub due to license restrictions and can only be shared with the users who already have a valid CPT license. If you possess one and wish to use this model, kindly contact us at support@johnsnowlabs.com.</strong></p>
-</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2026-03-06T00:00:00+00:00"><!-- start custom article footer snippet -->
+</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2026-04-10T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
 
@@ -844,7 +893,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2026/03/05/sbluebertresolve_loinc_uncased_en.html">Sentence Entity Resolver for Logical Observation Identifiers Names and Codes (LOINC) codes (sbluebert_base_uncased_mli embeddings)</a></div><div class="next nav_link"><span>NEXT</span><a href="/2026/03/09/snomed_umls_mapper_en.html">Mapping SNOMED Codes with Their Corresponding UMLS Codes</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2026/04/09/zeroshot_multitask_generic_en.html">ZeroShot Multitask Generic</a></div></div></div>
 
 </div>
 </div>
