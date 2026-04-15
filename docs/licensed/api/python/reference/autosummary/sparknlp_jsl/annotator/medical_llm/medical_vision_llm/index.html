@@ -371,6 +371,8 @@ document.write(`
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../fhir/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.fhir</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../fhir/base_fhir_deidentification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.fhir.base_fhir_deidentification</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fhir/cda_deIdentification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.fhir.cda_deIdentification</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fhir/fhir_deIdentification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.fhir.fhir_deIdentification</span></code></a></li>
 </ul>
 </li>
@@ -938,6 +940,11 @@ according to your hardware to avoid out-of-memory errors.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.presencePenalty">
 <span class="sig-name descname"><span class="pre">presencePenalty</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.presencePenalty" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.reasoningBudget">
+<span class="sig-name descname"><span class="pre">reasoningBudget</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.reasoningBudget" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -1627,6 +1634,13 @@ RecursivePipeline</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.setReasoningBudget">
+<span class="sig-name descname"><span class="pre">setReasoningBudget</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reasoningBudget</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.setReasoningBudget" title="Permalink to this definition">#</a></dt>
+<dd><p>Controls the amount of thinking allowed; currently only one of: -1 for unrestricted thinking
+budget, or 0 to disable thinking (default: -1)</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.setRemoveThinkingTag">
 <span class="sig-name descname"><span class="pre">setRemoveThinkingTag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.setRemoveThinkingTag" title="Permalink to this definition">#</a></dt>
 <dd><p>Set a thinking tag (e.g. <cite>think</cite>) to be removed from output.
@@ -1897,6 +1911,7 @@ Will produce the regex: <cite>(?s)&lt;$TAG&gt;.+?&lt;/$TAG&gt;</cite></p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.penaltyPrompt"><code class="docutils literal notranslate"><span class="pre">MedicalVisionLLM.penaltyPrompt</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.poolingType"><code class="docutils literal notranslate"><span class="pre">MedicalVisionLLM.poolingType</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.presencePenalty"><code class="docutils literal notranslate"><span class="pre">MedicalVisionLLM.presencePenalty</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.reasoningBudget"><code class="docutils literal notranslate"><span class="pre">MedicalVisionLLM.reasoningBudget</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.removeThinkingTag"><code class="docutils literal notranslate"><span class="pre">MedicalVisionLLM.removeThinkingTag</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.repeatLastN"><code class="docutils literal notranslate"><span class="pre">MedicalVisionLLM.repeatLastN</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.repeatPenalty"><code class="docutils literal notranslate"><span class="pre">MedicalVisionLLM.repeatPenalty</span></code></a></li>
@@ -1995,6 +2010,7 @@ Will produce the regex: <cite>(?s)&lt;$TAG&gt;.+?&lt;/$TAG&gt;</cite></p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.setPenaltyPrompt"><code class="docutils literal notranslate"><span class="pre">MedicalVisionLLM.setPenaltyPrompt()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.setPoolingType"><code class="docutils literal notranslate"><span class="pre">MedicalVisionLLM.setPoolingType()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.setPresencePenalty"><code class="docutils literal notranslate"><span class="pre">MedicalVisionLLM.setPresencePenalty()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.setReasoningBudget"><code class="docutils literal notranslate"><span class="pre">MedicalVisionLLM.setReasoningBudget()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.setRemoveThinkingTag"><code class="docutils literal notranslate"><span class="pre">MedicalVisionLLM.setRemoveThinkingTag()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.setRepeatLastN"><code class="docutils literal notranslate"><span class="pre">MedicalVisionLLM.setRepeatLastN()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.medical_llm.medical_vision_llm.MedicalVisionLLM.setRepeatPenalty"><code class="docutils literal notranslate"><span class="pre">MedicalVisionLLM.setRepeatPenalty()</span></code></a></li>

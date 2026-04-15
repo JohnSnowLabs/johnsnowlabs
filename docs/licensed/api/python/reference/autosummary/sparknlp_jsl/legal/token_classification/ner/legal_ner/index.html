@@ -750,6 +750,11 @@ on test/validation dataset or the value of loss.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.optimizePartitioning">
+<span class="sig-name descname"><span class="pre">optimizePartitioning</span></span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.optimizePartitioning" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.optionalInputAnnotatorTypes">
 <span class="sig-name descname"><span class="pre">optionalInputAnnotatorTypes</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.optionalInputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -777,6 +782,11 @@ on test/validation dataset or the value of loss.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.po">
 <span class="sig-name descname"><span class="pre">po</span></span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.po" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.prefetchBatches">
+<span class="sig-name descname"><span class="pre">prefetchBatches</span></span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.prefetchBatches" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -1329,6 +1339,15 @@ RecursivePipeline</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.setOptimizePartitioning">
+<span class="sig-name descname"><span class="pre">setOptimizePartitioning</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.setOptimizePartitioning" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to repartition the dataset before training for optimal performance.
+Has no effect if memory optimizer is disabled.
+:param value: Whether to optimize partitioning
+:type value: bool</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.setOutputCol">
 <span class="sig-name descname"><span class="pre">setOutputCol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.setOutputCol" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets output column name of annotations.</p>
@@ -1382,6 +1401,15 @@ RecursivePipeline</p>
 <dd class="field-odd"><p><strong>value</strong> (<em>float</em>) – Learning rate decay coefficient</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.setPrefetchBatches">
+<span class="sig-name descname"><span class="pre">setPrefetchBatches</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.setPrefetchBatches" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets number of batches to prefetch while training using memory optimizer.
+Has no effect if memory optimizer is disabled.
+:param value: Number of batches to prefetch
+:type value: int</p>
 </dd></dl>
 
 <dl class="py method">
@@ -2185,12 +2213,14 @@ If the value is True, the process might be slowed down.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.lr"><code class="docutils literal notranslate"><span class="pre">LegalNerApproach.lr</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.maxEpochs"><code class="docutils literal notranslate"><span class="pre">LegalNerApproach.maxEpochs</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.minEpochs"><code class="docutils literal notranslate"><span class="pre">LegalNerApproach.minEpochs</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.optimizePartitioning"><code class="docutils literal notranslate"><span class="pre">LegalNerApproach.optimizePartitioning</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.optionalInputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">LegalNerApproach.optionalInputAnnotatorTypes</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.outputAnnotatorType"><code class="docutils literal notranslate"><span class="pre">LegalNerApproach.outputAnnotatorType</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.outputCol"><code class="docutils literal notranslate"><span class="pre">LegalNerApproach.outputCol</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.outputLogsPath"><code class="docutils literal notranslate"><span class="pre">LegalNerApproach.outputLogsPath</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.overrideExistingTags"><code class="docutils literal notranslate"><span class="pre">LegalNerApproach.overrideExistingTags</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.po"><code class="docutils literal notranslate"><span class="pre">LegalNerApproach.po</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.prefetchBatches"><code class="docutils literal notranslate"><span class="pre">LegalNerApproach.prefetchBatches</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.pretrainedModelPath"><code class="docutils literal notranslate"><span class="pre">LegalNerApproach.pretrainedModelPath</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.randomSeed"><code class="docutils literal notranslate"><span class="pre">LegalNerApproach.randomSeed</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.randomValidationSplitPerEpoch"><code class="docutils literal notranslate"><span class="pre">LegalNerApproach.randomValidationSplitPerEpoch</span></code></a></li>
@@ -2249,11 +2279,13 @@ If the value is True, the process might be slowed down.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.setLr"><code class="docutils literal notranslate"><span class="pre">LegalNerApproach.setLr()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.setMaxEpochs"><code class="docutils literal notranslate"><span class="pre">LegalNerApproach.setMaxEpochs()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.setMinEpochs"><code class="docutils literal notranslate"><span class="pre">LegalNerApproach.setMinEpochs()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.setOptimizePartitioning"><code class="docutils literal notranslate"><span class="pre">LegalNerApproach.setOptimizePartitioning()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.setOutputCol"><code class="docutils literal notranslate"><span class="pre">LegalNerApproach.setOutputCol()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.setOutputLogsPath"><code class="docutils literal notranslate"><span class="pre">LegalNerApproach.setOutputLogsPath()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.setOverrideExistingTags"><code class="docutils literal notranslate"><span class="pre">LegalNerApproach.setOverrideExistingTags()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.setParamValue"><code class="docutils literal notranslate"><span class="pre">LegalNerApproach.setParamValue()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.setPo"><code class="docutils literal notranslate"><span class="pre">LegalNerApproach.setPo()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.setPrefetchBatches"><code class="docutils literal notranslate"><span class="pre">LegalNerApproach.setPrefetchBatches()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.setPretrainedModelPath"><code class="docutils literal notranslate"><span class="pre">LegalNerApproach.setPretrainedModelPath()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.setRandomSeed"><code class="docutils literal notranslate"><span class="pre">LegalNerApproach.setRandomSeed()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.setRandomValidationSplitPerEpoch"><code class="docutils literal notranslate"><span class="pre">LegalNerApproach.setRandomValidationSplitPerEpoch()</span></code></a></li>

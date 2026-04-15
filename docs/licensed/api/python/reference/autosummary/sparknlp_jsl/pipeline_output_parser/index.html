@@ -469,11 +469,14 @@ list: A list of dictionaries, where each dictionary represents a classification 
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.get_deidentification">
-<span class="sig-name descname"><span class="pre">get_deidentification</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.get_deidentification" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_deidentification</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_deid_mappings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.get_deidentification" title="Permalink to this definition">#</a></dt>
 <dd><p>Extract deidentification text from the pipeline output.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>result</strong> (<em>list</em>) – The output of the pipeline.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>result</strong> (<em>list</em>) – The output of the pipeline.</p></li>
+<li><p><strong>return_deid_mappings</strong> (<em>bool</em>) – Whether to return deidentification mappings.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
@@ -491,7 +494,7 @@ list: A list of dictionaries, where each dictionary represents a classification 
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.get_documents">
-<span class="sig-name descname"><span class="pre">get_documents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.get_documents" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_documents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">documents</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.get_documents" title="Permalink to this definition">#</a></dt>
 <dd><p>Retrieves the document text from the pipeline output.</p>
 <p>Arg:
 result (list): The output of the pipeline from fullAnnotate. This list contains annotations for each document.</p>
@@ -611,19 +614,23 @@ The identifier is then encoded in base64 and truncated to the first 8 characters
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.run">
-<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_relation_entities</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.run" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_relation_entities</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_deid_mappings</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.pipeline_output_parser.PipelineOutputParser.run" title="Permalink to this definition">#</a></dt>
 <dd><p>Parse the pipeline output.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>results</strong> (<em>list</em>) – The output of the pipeline from fullAnnotate.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>results</strong> (<em>list</em>) – The output of the pipeline from fullAnnotate.</p></li>
+<li><p><strong>return_relation_entities</strong> (<em>bool</em>) – Whether to return relation entities. Default is False.</p></li>
+<li><p><strong>return_deid_mappings</strong> (<em>bool</em>) – Whether to return deidentification mappings. Default is False.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><ul class="simple">
+<dd class="field-even"><p><ul>
 <li><p>document_identifier (str): The informations of the document.</p></li>
 <li><p>document_id (str): The ID of the document.</p></li>
 <li><p>document_text (str): The text of the document.</p></li>
 <li><dl class="simple">
-<dt>entities (list): A list of dictionaries, where each dictionary represents a named entity, containing the following keys:</dt><dd><ul>
+<dt>entities (list): A list of dictionaries, where each dictionary represents a named entity, containing the following keys:</dt><dd><ul class="simple">
 <li><p>chunk_id (str): The unique identifier for the chunk.</p></li>
 <li><p>chunk (str): The text of the entity.</p></li>
 <li><p>begin (int): The index of the beginning of the entity in the text.</p></li>
@@ -636,7 +643,7 @@ The identifier is then encoded in base64 and truncated to the first 8 characters
 </dl>
 </li>
 <li><dl class="simple">
-<dt>assertions (list): A list of dictionaries, where each dictionary represents a assertion, containing the following keys:</dt><dd><ul>
+<dt>assertions (list): A list of dictionaries, where each dictionary represents a assertion, containing the following keys:</dt><dd><ul class="simple">
 <li><p>chunk_id (str): The unique identifier for the chunk.</p></li>
 <li><p>chunk (str): The text of the chunk.</p></li>
 <li><p>assertion (str): The assertion status.</p></li>
@@ -647,7 +654,7 @@ The identifier is then encoded in base64 and truncated to the first 8 characters
 </dl>
 </li>
 <li><dl class="simple">
-<dt>resolutions (list): A list of dictionaries, where each dictionary represents a resolutions, containing the following keys:</dt><dd><ul>
+<dt>resolutions (list): A list of dictionaries, where each dictionary represents a resolutions, containing the following keys:</dt><dd><ul class="simple">
 <li><p>vocab (str): The vocablary information about teminology codes.</p></li>
 <li><p>chunk_id (str): The unique identifier for the chunk.</p></li>
 <li><p>chunk (str): The text of the chunk.</p></li>
@@ -663,7 +670,7 @@ The identifier is then encoded in base64 and truncated to the first 8 characters
 </dl>
 </li>
 <li><dl class="simple">
-<dt>relations (list): A list of dictionaries, where each dictionary represents a relation, containing the following keys:</dt><dd><ul>
+<dt>relations (list): A list of dictionaries, where each dictionary represents a relation, containing the following keys:</dt><dd><ul class="simple">
 <li><p>relation (str): The type of relation.</p></li>
 <li><p>entity1 (str): The first entity envolved in the relation.</p></li>
 <li><p>chunk1_id (str): The unique identifier for the first chunk.</p></li>
@@ -681,17 +688,24 @@ The identifier is then encoded in base64 and truncated to the first 8 characters
 </dd>
 </dl>
 </li>
-<li><dl class="simple">
-<dt>deidentifications: (list) A list of dictionaries, where each dictionary represents a deidentification, containing the following keys:</dt><dd><ul>
+<li><dl>
+<dt>deidentifications: (list) A list of dictionaries, where each dictionary represents a deidentification, containing the following keys:</dt><dd><ul class="simple">
 <li><p>original (list): A list of original text.</p></li>
 <li><p>obfuscated (list): A list of deidentified text.</p></li>
 <li><p>masked (list):  A list of masked text.</p></li>
 </ul>
+<dl class="simple">
+<dt>if return_deid_mappings is True, the following keys are also included:</dt><dd><ul class="simple">
+<li><p>obfuscated_mappings (list): A list of dictionaries, where each dictionary represents an obfuscated mapping.</p></li>
+<li><p>masked_mappings (list): A list of dictionaries, where each dictionary represents a masked mapping.</p></li>
+</ul>
+</dd>
+</dl>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>classifications (list):  A list of dictionaries, where each dictionary represents a classification result.</dt><dd><ul>
+<dt>classifications (list):  A list of dictionaries, where each dictionary represents a classification result.</dt><dd><ul class="simple">
 <li><p>category (str): The category of the classification.</p></li>
 <li><p>sentence (str): The sentence from which the classification was made.</p></li>
 <li><p>sentence_id (int): The ID of the sentence.</p></li>

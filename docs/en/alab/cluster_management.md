@@ -60,3 +60,44 @@ This information is also available on the pre-annotation popup when the user sel
 Also, if any issues are encountered during server initialization, those are displayed on the tooltip accessible via mouse-over. Depending on the issue, changes might be required in the infrastructure settings, and the user will have to manually redeploy the training/pre-annotation server.
 
 <img class="image image__shadow" src="/assets/images/annotation_lab/serverStatus2.png" style="width:100%;"/>
+
+### Enhanced Cluster Management Dashboard 
+
+Version 8.0 introduces an enhanced Cluster Management Dashboard with improved visibility into system resources and deployed configurations.
+
+#### System Resource Summary
+
+A new resource summary section appears at the top of the Cluster page, displaying real-time usage for:
+- **Memory:** Consumed vs. total capacity
+- **CPU:** Core usage across active deployments
+- **Storage:** Storage consumption and availability
+
+Resource metrics are calculated dynamically across all active servers, enabling at-a-glance capacity monitoring.
+
+![Cluster Management Dashboard showing system resources and deployed servers](/assets/images/annotation_lab/8.0.0/3.png "lit_shadow")
+
+#### Configuration Visibility
+
+Server configurations are now displayed directly in the Cluster table using inline tags:
+- **Pre-annotation servers:** Show deployed models, rules, and prompts
+- **Medical Terminology servers:** Show deployed terminologies (ICD-10, LOINC, CPT, etc.)
+
+This provides immediate visibility into which assets are deployed on each server without requiring additional navigation.
+
+#### Enhanced License Information
+
+The license banner provides contextual information based on license type:
+- **Airgap License:** No deployment limit (constrained by system resources only)
+- **Floating License:** Shows concurrent job slots with real-time usage
+- **Universal License:** Displays credit-based usage with consumed and available credits
+
+> **Note:** License metrics reflect only servers deployed within the current instance. Usage from other instances is not included.
+
+#### Resource Allocation Details
+
+Each server entry now includes explicit resource allocation:
+- Assigned memory
+- Allocated CPU cores
+- Storage capacity
+
+Combined with the resource summary, this enables administrators to understand how resources are distributed and plan capacity effectively.

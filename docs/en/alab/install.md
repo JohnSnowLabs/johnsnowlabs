@@ -288,40 +288,100 @@ echo "YOUR_APPLICATION_KEY" > LICENSE
 **Step 2: Run the Installation/Upgrade Command**
 
 - Install `latest` version:
-
-```sh
+```
 curl -sSL https://s3.us-east-1.amazonaws.com/artifacts.genailab.johnsnowlabs.com/install.sh | bash
 ```
-
-- Install `latest` version with GPU support
-
-```sh
-curl -sSL https://s3.us-east-1.amazonaws.com/artifacts.genailab.johnsnowlabs.com/install.sh | bash -s GPU
+- Install `latest` version with GPU support:
+```
+curl -sSL https://s3.us-east-1.amazonaws.com/artifacts.genailab.johnsnowlabs.com/install.sh | bash -s -- --gpu
+```
+- Install `latest` version with audit logs (Elasticsearch + Kibana):
+```
+curl -sSL https://s3.us-east-1.amazonaws.com/artifacts.genailab.johnsnowlabs.com/install.sh | bash -s -- --enable-audit-logs
+```
+- Install custom version:
+```
+curl -sSL https://s3.us-east-1.amazonaws.com/artifacts.genailab.johnsnowlabs.com/install.sh | bash -s -- 6.7.1
+```
+- Install custom version with GPU support and audit logs:
+```
+curl -sSL https://s3.us-east-1.amazonaws.com/artifacts.genailab.johnsnowlabs.com/install.sh | bash -s -- 6.7.1 --gpu --enable-audit-logs
 ```
 
-- Install custom version
-
-```sh
-curl -sSL https://s3.us-east-1.amazonaws.com/artifacts.genailab.johnsnowlabs.com/install.sh | bash -s 7.0.0
+- Upgrade to `latest` version:
 ```
-
-- Install custom version with GPU support
-
-```sh
-curl -sSL https://s3.us-east-1.amazonaws.com/artifacts.genailab.johnsnowlabs.com/install.sh | bash -s 7.0.0 GPU
-```
-
-- Upgrade to `latest` version
-
-```sh
 curl -sSL https://s3.us-east-1.amazonaws.com/artifacts.genailab.johnsnowlabs.com/upgrade.sh | bash
 ```
-
-- Upgrade to custom version
-
-```sh
-curl -sSL https://s3.us-east-1.amazonaws.com/artifacts.genailab.johnsnowlabs.com/upgrade.sh | bash -s 7.0.0
+- Upgrade to custom version:
 ```
+curl -sSL https://s3.us-east-1.amazonaws.com/artifacts.genailab.johnsnowlabs.com/upgrade.sh | bash -s -- 6.11.3
+```
+- Upgrade and enable audit logs:
+```
+curl -sSL https://s3.us-east-1.amazonaws.com/artifacts.genailab.johnsnowlabs.com/upgrade.sh | bash -s -- --enable-audit-logs
+```
+- Upgrade and disable audit logs:
+```
+curl -sSL https://s3.us-east-1.amazonaws.com/artifacts.genailab.johnsnowlabs.com/upgrade.sh | bash -s -- --disable-audit-logs
+```
+- Upgrade to custom version and enable audit logs:
+```
+curl -sSL https://s3.us-east-1.amazonaws.com/artifacts.genailab.johnsnowlabs.com/upgrade.sh | bash -s -- 6.11.3 --enable-audit-logs
+```
+
+
+### EKS: Install Generative AI Lab from artifacts
+
+**Prerequisites**
+
+The following packages are required on the system running the script(s):
+- curl
+- helm
+- jq
+- kubectl
+
+These packages are required only if Docker images sync to ECR is needed:
+- aws
+- skopeo
+
+**Install**
+
+The script is fully interactive, no parameters required. Simply run as:
+```
+bash <(curl -sSL https://s3.us-east-1.amazonaws.com/artifacts.genailab.johnsnowlabs.com/install_eks.sh)
+```
+
+**Non-interactive mode (environment variables)**
+
+For automated/CI deployments, the following environment variables can be set:
+
+| Variable | Values | Description |
+|----------|--------|-------------|
+| `AUTO_CONFIRM_CONTEXT` | `true`/`false` | Skip k8s context confirmation |
+| `USE_LATEST_VERSION` | `true`/`false` | Use latest version without prompting |
+| `CUSTOM_VERSION` | `X.Y.Z` | Use a specific version |
+| `ENABLE_GPU` | `true`/`false` | Enable GPU support |
+| `ENABLE_AUDIT_LOGS` | `true`/`false` | Enable audit logs (Elasticsearch + Kibana) |
+| `TARGET_NAMESPACE` | namespace name | Target namespace for installation |
+| `INSTALL_NGINX` | `true`/`false` | Install ingress-nginx |
+| `SYNC_ECR` | `true`/`false` | Sync images to ECR |
+| `ECR_REPOSITORY` | ECR URL | ECR repository URL |
+| `AWS_PROFILE_NAME` | profile name | AWS profile for ECR access |
+| `ENABLE_CLEANUP` | `true`/`false` | Cleanup artifacts after install |
+| `CUSTOM_CONFIG_FILE` | file path | Custom configuration file |
+
+**Upgrade**
+
+The script is fully interactive, no parameters required. Simply run as:
+```
+bash <(curl -sSL https://s3.us-east-1.amazonaws.com/artifacts.genailab.johnsnowlabs.com/upgrade_eks.sh)
+```
+
+The same environment variables listed above apply to the upgrade script. For audit logs specifically:
+- `ENABLE_AUDIT_LOGS=true` enables audit logs
+- `ENABLE_AUDIT_LOGS=false` disables audit logs
+- If unset, the script prompts interactively (with an option to keep the current setting)
+
 
 For more information regarding installation of Generative AI Lab on a dedicated server please contact us at [support@johnsnowlabs.com](mailto:support@johnsnowlabs.com).
 

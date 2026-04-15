@@ -25,8 +25,7 @@ This pipeline is designed to extract all entities mappable to CPT codes.
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/07.0.Pretrained_Clinical_Pipelines.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_cpt_pipeline_en_6.0.2_3.4_1750788966551.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_cpt_pipeline_en_6.0.2_3.4_1750788966551.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+
 
 ## How to use
 
@@ -96,3 +95,8 @@ At this time, chest tube placement for drainage of the fluid occurred and thorac
 - MedicalNerModel
 - NerConverterInternalModel
 - ChunkMergeModel
+
+
+## References
+
+**CPT resolver models are removed from the Models Hub due to license restrictions and can only be shared with the users who already have a valid CPT license. If you possess one and wish to use this model, kindly contact us at support@johnsnowlabs.com.**

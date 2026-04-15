@@ -133,6 +133,8 @@ term-server:
             url: /docs/en/terminology_server/features/concept_maps
           - title: Value Sets
             url: /docs/en/terminology_server/features/value_sets
+          - title: MCP Server
+            url: /docs/en/terminology_server/features/mcp_server
       - subtitle: APIs
         children:
           - title: API Service Access
@@ -166,7 +168,9 @@ annotation-lab:
           - title: LLM Prompts (ChatGPT)
             url: /docs/en/alab/llm_prompts   
           - title: Playground
-            url: /docs/en/alab/playground                        
+            url: /docs/en/alab/playground
+          - title: Medical Terminologies
+            url: /docs/en/alab/medical_terminologies                        
       - subtitle: Project and Tasks
         children:
           - title: Dashboard
@@ -249,6 +253,8 @@ annotation-lab:
             url: /docs/en/alab/cluster_management
           - title: HIPAA Compliance
             url: /docs/en/alab/hipaa_compliance
+          - title: Audit Logs Dashboard
+            url: /docs/en/alab/audit_logs_dashboard
       - title: NLP Libraries Integration
         url: /docs/en/alab/healthcare
       - title: Spark Library Version
@@ -291,6 +297,8 @@ sparknlp-healthcare:
         url: /licensed/api/python
       - title: Healthcare NLP Example Notebooks
         url: /docs/en/healthcare-nlp-example-notebooks
+      - title: MCP De-identification Server
+        url: /docs/en/mcp_deid_installation
       - title: Wiki
         url: /docs/en/wiki
       - title: Benchmarks

@@ -31,6 +31,10 @@ The LLMs listed below are available as AWS Sagemaker Endpoints.
 
 [Medical Visual LLM - 8B](https://aws.amazon.com/marketplace/pp/prodview-fhcd3rwnhxbka)
 
+[Vision-OCR-LLM](https://aws.amazon.com/marketplace/pp/prodview-d7un4r7xpiwje)
+
+[Vision-OCR-Structured-LLM](https://aws.amazon.com/marketplace/pp/prodview-rrpnzcxjmhtfy)
+
 </div><div class="h3-box" markdown="1">
 
 ## Deployment Instructions

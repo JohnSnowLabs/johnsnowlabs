@@ -371,6 +371,8 @@ document.write(`
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../fhir/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.fhir</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../fhir/base_fhir_deidentification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.fhir.base_fhir_deidentification</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fhir/cda_deIdentification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.fhir.cda_deIdentification</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fhir/fhir_deIdentification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.fhir.fhir_deIdentification</span></code></a></li>
 </ul>
 </li>
@@ -1034,6 +1036,20 @@ Default: [‘begin’, ‘length’, ‘source’]</p>
 <dd></dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.assertion.assertion_merger.AssertionMerger.setReplaceDict">
+<span class="sig-name descname"><span class="pre">setReplaceDict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.assertion.assertion_merger.AssertionMerger.setReplaceDict" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets A dictionary used to replace predicted assertion labels with new labels.</p>
+<p>This mapping is applied <strong>after</strong> all filtering-related parameters
+(such as label filtering or confidence thresholds) are executed.</p>
+<p>Labels not present in the dictionary remain unchanged.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>str</em><em>]</em>) – A dictionary used to replace predicted assertion labels with new labels.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.assertion.assertion_merger.AssertionMerger.setSelectionStrategy">
 <span class="sig-name descname"><span class="pre">setSelectionStrategy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.assertion.assertion_merger.AssertionMerger.setSelectionStrategy" title="Permalink to this definition">#</a></dt>
 <dd><p>Determines the strategy for selecting annotations.
@@ -1189,6 +1205,7 @@ Currently, only Sequential and DiverseLonger options are available. Default: Seq
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertion_merger.AssertionMerger.setOutputCol"><code class="docutils literal notranslate"><span class="pre">AssertionMerger.setOutputCol()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertion_merger.AssertionMerger.setParamValue"><code class="docutils literal notranslate"><span class="pre">AssertionMerger.setParamValue()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertion_merger.AssertionMerger.setParams"><code class="docutils literal notranslate"><span class="pre">AssertionMerger.setParams()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertion_merger.AssertionMerger.setReplaceDict"><code class="docutils literal notranslate"><span class="pre">AssertionMerger.setReplaceDict()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertion_merger.AssertionMerger.setSelectionStrategy"><code class="docutils literal notranslate"><span class="pre">AssertionMerger.setSelectionStrategy()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertion_merger.AssertionMerger.setSortByBegin"><code class="docutils literal notranslate"><span class="pre">AssertionMerger.setSortByBegin()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertion_merger.AssertionMerger.setWhiteList"><code class="docutils literal notranslate"><span class="pre">AssertionMerger.setWhiteList()</span></code></a></li>

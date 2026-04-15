@@ -66,6 +66,14 @@ Uploading a custom Value Set is **simple and intuitive**:
 
 🔴 Note: Deleting the last remaining version will remove the entire Value Set from the system.
 
+## Public ValueSets
+
+Public ValueSets from the TUVA projects are now available in the Terminology Server.
+
+These comprehensive public ValueSets enable standardized mapping and interoperability across healthcare systems, support regulatory compliance, and accelerate clinical and analytics workflows by providing consistent reference terminologies out-of-the-box.
+
+![Public Value Sets](/assets/images/term_server/public_valuesets.png)
+
 ## Filtering Search Results with Value Sets
 
 When performing a **medical term search in Terminology Server**, you can apply **custom Value Sets** to filter and refine your results.

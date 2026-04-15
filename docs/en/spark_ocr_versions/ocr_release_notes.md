@@ -13,139 +13,86 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-## 6.0.0
+## 6.3.0
 
-Release date: 09-05-2025
+Release date: 02-02-2026
 
-## Visual NLP 6.0.0 Release Notes 🕶️
+## Visual NLP 6.3.0 Release Notes 🕶️
 
-**We are glad to announce that Visual NLP 6.0.0, has been released! 📢📢📢**
-
-</div><div class="h3-box" markdown="1">
-
-## Changes 🔴
-
-* New SVS Image Deidentification capabilities.
-* New improvements for performance and memory consumption in Dicom pipelines.
-* New PDF de-identification and obfuscation pipelines.
-* New Reference dataset for De-identification.
-* New NerOutputCleaner transformer.
-* ImageDrawRegions: improved logic for processing coordinates that extend across multiple lines.
-* BinaryToImage: added support for multipage tif files.
-
-</div><div class="h3-box" markdown="1">
-## New SVS Image Deidentification capabilities.
-Now you can redact metadata together with pixel data in Whole Slide Imaging(WSI) SVS files. For an example of all these capabilities in action, check [this notebook](https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/SparkOcrWSIDeidentification.ipynb).
-
-</div><div class="h3-box" markdown="1">
-## New improvements for performance and memory consumption in Dicom pipelines.
-The improvements in Dicom Processing are related to a number of different components:
-### DicomToImageV3 image compression
-
-`DicomToImageV3` instead of returning the raw uncompressed dicom frames as images in the dataframe, it can now compress the image frames under the hood to reduce the memory overhead of dicom based pipelines. 
-
-You can use it at follows: 
-
-* `DicomToImageV3.setCompressionMode()`, either  `enabled`, `disabled` or `auto`,
-
-Example,</br>
-```python
-
-# Every file is compressed with compressionQuality
-dicom_to_image.setCompressionMode('enabled')
-
-# No file is compressed
-dicom_to_image.setCompressionMode('disabled')
-
-# files are compressed if Megapixel >= compressionThreshold
-dicom_to_image.setCompressionMode('auto')
-
-```
-
-* `DicomToImageV3.setCompressionThreshold()`, Float or Integer which represents the number of mega-pixels in an image above which compression will be applied on the image, if compressionMode is set to `auto` otherwise no effect.</br>
-Mega-pixel metric is computed using this equation:</br>
-`Megapixel = image_height * image_width * image_frames / 1048576`
-
-Example,
-```python
-# Set compression threshold to 1 Megapixel
-dicom_to_image.setCompressionThreshold(1)
-```
-
-* `DicomToImageV3.setCompressionQuality()`, Integer between 1 and 95. This is the  JPG quality parameter used when compressing images.
-Example,
-```python
-dicom_to_image.setCompressionQuality(60)
-```
-
-
-### DicomPretrainedPipeline & DicomDrawRegions
-We are introducing a new class: `DicomPretrainedPipeline`. You can use this class to run Dicom pipelines optimizing for reduced memory consumption.
-The class will apply optimizations to avoid unnecessary copies of buffers, and execute stages in the most optimal way to avoid memory problems.
-
-You can construct a `DicomPretrainedPipeline()` in the same way you create a `PretrainedPipeline(name, lang, remote_loc, parse_embeddings, disk_location)`
-
-For example by providing name, language and bucketname,
-```python
-from sparkocr.pretrained import DicomPretrainedPipeline
-optimized_pipe = DicomPretrainedPipeline("dicom_deid_generic_augmented_minimal", "en", "clinical/ocr")
-processed_df = optimized_pipe.transform(df)
-processed_df.show()
-```
-
-Additionally, you can convert a custom pipeline by passing it as first argument to DicomPretrainedPipeline. Only requirement is that the pipeline must contain `DicomToImageV3`, `DicomDrawRegions` and `PositionFinder` stages
-
-```python
-pipe = PretrainedPipeline("dicom_deid_generic_augmented_minimal", "en", "clinical/ocr")
-optimized_pipe = DicomPretrainedPipeline(pipe)
-processed_df = optimized_pipe.transform(df)
-```
+**We are glad to announce that Visual NLP 6.3.0, has been released! 📢📢📢**
 
 </div><div class="h3-box" markdown="1">
 
-## New PDF de-identification and obfuscation pipelines.
-We are shipping two new PDF de-identification pipelines, each of them using a mix of several models to achieve top level performance:
-* `pdf_deid_multi_model_context_pipeline`: this one will detect PHI entities from input PDF files, and return de-identified versions of the documents in which the entities have been masked with a black box.
-* `pdf_obfuscation_multi_model_context_pipeline`: this one is similar to the one mentioned above in terms of the set of entities it deals with, with the difference that it will perform obfuscation, that is, entity replacement from original entities to 'fake' versions. This process happens consistently across entities, and across pages of the same document.
-This means that if in page 1, Martha is replace by Janice, any other Martha in the same document will undergo the same transformation. The same for dates or any other entity.
+## Main Changes 🔴
 
-These pipelines can achieve an F-score of .93 and .91 in our [standard reference dataset](https://github.com/JohnSnowLabs/pdf-deid-dataset). More about this on next section.
+* Dicom Midi-B benchmarks.
+* New features in: DicomToMetadata and DicomMetadataDeIdentifier.
+* New Blogposts and notebooks.
+* Bug Fixes and Maintenance
+
+</div><div class="h3-box" markdown="1">
+## Dicom Midi-B benchmarks
+In this release, we tackled the [Midi-B dataset for Dicom De-identification](https://www.cancerimagingarchive.net/collection/midi-b-test-midi-b-validation/). Midi-B is a popular dataset for the Dicom De-Identification Task that appeared in 2025. Today we are releasing benchmarks, and a notebook to reproduce results.
+
+
+</div><div class="h3-box" markdown="1">
+## Benchmarks
+The metrics in Midi-B dataset are organized as a set of accuracy numbers across a predefined set of actions. Two different subsets are provided, Validation and Test. We report results for both datasets and each of the actions defined in the dataset.
+
+![Validation Report(Validation) MIDI-B.](/assets/images/ocr/midi_b_table_val.png)
+![Validation Report(Test) MIDI-B.](/assets/images/ocr/midi_b_table_test.png)
+
+## Notebooks
+
+You can find all the details for how to run over the MIDI-B dataset in this notebook: [SparkOcrMIDIBSolution.ipynb](https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/Dicom/SparkOcrMIDIBSolution.ipynb)
+</div><div class="h3-box" markdown="1">
+
+## New features in: DicomToMetadata and DicomMetadataDeIdentifier
+
+### DicomToMetadata
+
+Exposing tags to enable external NLP to operate on them.
+* Added support for strategy file-driven configuration via the setStrategyFile parameter: a strategy file is a configuration file that helps in defining actions like the ones described in the charts above.
+* Enabled the extraction of raw metadata tag value for all tags marked with cleanTag in the strategy file. As a result, a String column will be created in the output dataframe. The name of the output column for this raw tag text is configurable via setTagCol. The purpose of this column is to expose the content of the tags that are in natural language so the redaction can be carried out using NLP methods.
+* Enabled extraction of tag mappings for all tags marked with the cleanTag action, as described in the item above, configurable through setTagMappingCol. This output column allows to map the tags values present in the tag column back to the original tag identifiers.
+* Introduced setExtractTagForNer to optionally skip String tag extraction.
 
 </div><div class="h3-box" markdown="1">
 
-## New Reference dataset for De-identification
-The [PDF Deid Dataset](https://github.com/JohnSnowLabs/pdf-deid-dataset) is a fully synthetic collection of medical-style PDF documents created for de-identification tasks.
-We provide a collection of original PDF documents containing synthetized PHI elements,  annotations for the entities, metrics for pipelines, and sample result PDFs for the obfuscation case, this is actual documents in which the fake entities have injected.
+### DicomMetadataDeidentifier
+
+DicomMetadataDeidentifier is the component in charge of redacting metadata tags in Dicom files. It can apply a wide variety of actions, some of which are pre-defined, and some of which are user-defined.
+In this release, new actions were added:
+* Added a new action shiftTimeByRandom (VR: TM) to randomly shift time values.
+* Added two new actions shiftDateByFixedNbOfDays and shiftDateByRandomNbOfDays (VR: DA, DT) to shift date and datetime values.
+* Added a new action shiftUnixTimeStampRandom (VR: SL, FD) to randomly shift Unix timestamp values.
+* Added a new action ensureTagExists (VR: ALL) to ensure a tag exists with a default value.
+Some other changes,
+* Improved date and datetime handling to support all valid DICOM date formats.
+* Improved hashUID and patientHashID implementations in accordance with DICOM guidelines.
+* Added the ability to remove residual PHI post de-identification, ensuring sensitive metadata is fully cleared from the DICOM file.
+
 
 </div><div class="h3-box" markdown="1">
 
-## NerOutputCleaner
-NerOutputCleaner is a newly introduced stage that processes the auxiliary mapping generated by the DeIdentification stage. *This is important because the auxiliary mapping can contain useful entities that were created using text matching.* </br> 
-It creates unique NER entries with appropriate chunk_ids and metadata required by PositionFinder, enabling the generation of coordinates. This stage also produces a new auxiliary mapping that includes all necessary metadata required by the ImageDrawRegions stages. Additionally, it supports the use of both regex-based and dictionary-based sources for coordinate generation.
-As a result, applying this transformer will enable the creation of *very robust NER and De-identification pipelines*.
-Example,
+## New Blogposts and notebooks
 
-```python
-cleaner = NerOutputCleaner() \
-    .setInputCol("aux") \
-    .setOutputCol("new_aux") \
-    .setOutputNerCol("positions_ner")
-```
+* Deidentifying Whole Slide Images(WSI) and deploying in SageMaker. Link [here](https://medium.com/john-snow-labs/de-identifying-whole-slide-images-wsi-deploying-on-sagemaker-part-3-25a4c57805c4).
+* JSL-Vision vs. Closed Source Models Comparison. Link [here](https://medium.com/john-snow-labs/jsl-vision-vs-closed-source-models-document-intelligence-without-compromise-62728afe0c5b).
+* JSL-Vision vs. Open-Source Models Comparison. Link [here](https://medium.com/john-snow-labs/jsl-vision-state-of-the-art-document-understanding-on-your-hardware-f4862f15d9f9).
+* De-identifying Dicom files a step-by-step guide . Link [here](https://medium.com/john-snow-labs/de-identifying-dicom-files-a-step-by-step-guide-with-john-snow-labs-visual-nlp-2c21b60f92a8).
 
 </div><div class="h3-box" markdown="1">
 
-## ImageDrawRegions: improved logic for processing coordinates that extend across multiple lines.
-When ImageDrawRegions is used to render fake entities into the output PDFs, many times we need to replace entities that spawn across multiple lines, this adds to the complexity already present in the task in which we need to approximate the font size and  the general rendering dimensions of the replacement texts.
-This new version is capable of rendering the replacement fake entities across multiple lines to mimic the layout present in the original document.
-For example `Susan Frances Martin` at the top of the document is replaced by `Riccardo Chamberlain` that will spawn two separate lines.
+## Bug Fixes
 
-![Improved logic in multi-line.](/assets/images/multi-line_impainting.png)
+* Improved support for accessing Python resources across different Python versions.
+* Compatibility with Google Colab.
 
-## BinaryToImage support of multi-page tiff files
-Now BinaryToImage transformer supports multi-page tiff files. For multi-page tiff files, multiple pages are splitted into separate images. No specific configurations are required.
+</div><div class="h3-box" markdown="1">
 
-This release is compatible with Spark-NLP 6.0.0, and Spark NLP for Healthcare 6.0.0.
-
+## Compatibility: 
+Spark-NLP 6.3.2, and Spark-NLP for Healthcare 6.3.0, LV 1.11.0.
 </div><div class="h3-box" markdown="1">
 
 ## Previous versions

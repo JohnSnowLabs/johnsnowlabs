@@ -426,63 +426,8 @@ A project manager opens the Analytics Dashboard to assess annotation quality and
   Resolved an issue where exporting tasks removed user permissions in Visual NER De-Identification projects. Project permissions are now preserved after export, and users retain proper access rights.
 
 ---
+## Versions
 
-### Features
+</div>
 
-- [ALAB-5756] Support De-identification for Visual NER project
-- [ALAB-6722] Add Ranking for N LLM comparison project
-
-### Improvement
-
-- [ALAB-3883] Make the Default Annotating View to "Horizontal-Sticky" Layout for new Projects
-- [ALAB-4050] Enhance Completion Workflow:  Add Scrollbar for User Completions
-- [ALAB-6853] Disable New File Import Actions During Ongoing Import
-- [ALAB-6855] Blind Evaluation - Implement Star-based Ratings widget
-- [ALAB-6861] Add pagination for list of projects for exceptions in local Import and export
-- [ALAB-6877] Analytics Dashboard Improvement: Add Tooltips, Update titles/subtitles and labels in x-axis and y-axis
-- [ALAB-6878] Use Horizontal grouped bar chart in LLM Response Comparison Section of the Analytics
-- [ALAB-6880] Update existing chart visuals and replace current chart types
-- [ALAB-6905] Default embedding should be selected by default when parameters are updated in train Page
-- [ALAB-6915] Show ratings for Blind Evaluation tasks on a single line in low-resolution screens
-- [ALAB-6916] Restrict users from being able to update the ratings in submitted completions
-
-### Bug Fixes
-
-- [ALAB-2332] User is not able to download uploaded model
-- [ALAB-2661] When the user clicks on models hub of a minimized side panel, the models hub expands with a blank area
-- [ALAB-3085] Support Longer Names with UI Truncation and Hover Preview for prompt
-- [ALAB-4519] 500 Error when trying to save training parameters without Epoch Value
-- [ALAB-5305] Selecting tasks in the Tasks page unbolds the "Tags" dropdown text 
-- [ALAB-5995] Transfer learning, including base model label,s fails for ner_biomarker_langtest
-- [ALAB-6442] Zipped Audio and Video file cannot be imported
-- [ALAB-6524] OpenAI’s endpoint URL is still being sent in the payload
-- [ALAB-6527] Incomplete Chart Data Load on First View for Projects with Large Volumes of Data in Analytics Page
-- [ALAB-6528] Previous Project's Analytics Briefly Displayed When Switching Between Projects
-- [ALAB-6566] First Attempt to Import Zipped Tasks from S3 with Session Token Fails
-- [ALAB-6629] User redirected to project screen instead of current page after session timeout and refresh
-- [ALAB-6782] Incorrect Representation of Labeled Text for Overlapping Annotation in HTML Project
-- [ALAB-6799] Default Names Repeat for Custom Service Providers
-- [ALAB-6809] Region annotated without label when region is selected before label in BBox project
-- [ALAB-6813] Full-screen view of individual section overlapped by sections in the left side of the application
-- [ALAB-6815] Discrepancy observed in the number of Labels in Region section in Blind Evaluation Comparison Project
-- [ALAB-6827] Classification model incorrectly added to NER label when both share the same name
-- [ALAB-6846] Remove Label field name for "Submitted Completions Over Time" Chart
-- [ALAB-6848] Internal Server Error When Switching Project Type After Importing Sample Task in Image B-Box Project
-- [ALAB-6852] User are unable to deploy distilbert_ner_distilbert_base_cased_finetuned_conll03_english in playground
-- [ALAB-6856] Users cannot modify overlapping labels in NER project tasks
-- [ALAB-6859] Annotated Data Reappears After Deleting and Re-Importing a Task in Blind Evaluation Projects
-- [ALAB-6863] Vertical Scrolling Not Working in De-Identification Compare Task View
-- [ALAB-6866] Something went wrong when navigating to different tasks
-- [ALAB-6875] Rating component flickers and becomes unresponsive when selecting 5 stars
-- [ALAB-6917] Error When Editing or Cloning Predictions with “Show Confidence Score in Regions” Enabled
-- [ALAB-6919] Unable to Import Tasks Exported with “Exclude Tasks Without Completions” For Visual Ner Project
-- [ALAB-6922] Issues with Drag-and-Drop Import: File Not Imported via Popup & Multiple Files Imported on Drop
-- [ALAB-6940] Users are not able to import tasks in Blind Evaluation Project
-- [ALAB-6944] Training: The Training banner should always show the training stages after a training is started
-- [ALAB-6957] Project Permissions Removed After Export in Visual NER De-Identification
-
-### Tasks
-- [ALAB-6832] Create and Test OIDC Token Exchange with Amazon Cognito and Azure AD
-- [ALAB-6833] User unable to view benchmark results for trained model
-- [ALAB-6860] Add Element Identifiers to Each Cluster Item dynamically for UI automation
-- [ALAB-6873] Fix Azure Marketplace publishing issue
+{%- include docs-annotation-pagination.html -%}

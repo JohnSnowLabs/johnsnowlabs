@@ -107,7 +107,7 @@ result = model.transform(df)
 
 ## References
 
-Train dataset available [here](https://huggingface.co/datasets/lex_glue)
+Legal documents, scrapped from the Internet, and classified in-house.
 
 ## Benchmarking
 

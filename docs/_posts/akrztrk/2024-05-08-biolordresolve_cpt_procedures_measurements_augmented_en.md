@@ -28,8 +28,7 @@ This model maps medical entities to CPT codes using `mpnet_embeddings_biolord_20
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/biolordresolve_cpt_procedures_measurements_augmented_en_5.3.1_3.4_1715166832452.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/biolordresolve_cpt_procedures_measurements_augmented_en_5.3.1_3.4_1715166832452.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+
 
 ## How to use
 

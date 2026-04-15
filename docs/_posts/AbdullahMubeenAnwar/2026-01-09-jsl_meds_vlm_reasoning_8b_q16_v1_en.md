@@ -7,7 +7,7 @@ date: 2026-01-09
 tags: [medical, clinical, vlm, q16, 8b, en, licensed, llamacpp]
 task: [Summarization, Question Answering]
 language: en
-edition: Healthcare NLP 6.2.0
+edition: Healthcare NLP 6.3.0
 spark_version: 3.4
 supported: true
 engine: llamacpp
@@ -66,7 +66,7 @@ image_assembler = ImageAssembler() \
     .setInputCol("image") \
     .setOutputCol("image_assembler")
 
-medicalVisionLLM = MedicalVisionLLM.load("jsl_meds_vlm_reasoning_8b_q16_v1", "en", "clinical/models") \
+medicalVisionLLM = MedicalVisionLLM.pretrained("jsl_meds_vlm_reasoning_8b_q16_v1", "en", "clinical/models") \
     .setInputCols(["caption_document", "image_assembler"]) \
     .setOutputCol("completions")
 
@@ -112,7 +112,7 @@ image_assembler = nlp.ImageAssembler() \
     .setInputCol("image") \
     .setOutputCol("image_assembler")
 
-medicalVisionLLM = medical.MedicalVisionLLM.load("jsl_meds_vlm_reasoning_8b_q16_v1", "en", "clinical/models") \
+medicalVisionLLM = medical.MedicalVisionLLM.pretrained("jsl_meds_vlm_reasoning_8b_q16_v1", "en", "clinical/models") \
     .setInputCols(["caption_document", "image_assembler"]) \
     .setOutputCol("completions")
 
@@ -159,7 +159,7 @@ val imageAssembler = new ImageAssembler()
   .setOutputCol("image_assembler")
 
 val medicalVisionLLM = MedicalVisionLLM
-  .load("jsl_meds_vlm_reasoning_8b_q16_v1", "en", "clinical/models")
+  .pretrained("jsl_meds_vlm_reasoning_8b_q16_v1", "en", "clinical/models")
   .setInputCols(Array("caption_document", "image_assembler"))
   .setOutputCol("completions")
 
@@ -177,60 +177,31 @@ val result = model.transform(inputDf)
 ## Results
 
 ```bash
-Step-by-Step Analysis as a Senior Clinical Specialist  
-
-1. Clinical Summary  
-- Primary Diagnoses: Systemic Lupus Erythematosus (SLE) and scleroderma overlap syndrome (explicitly stated: "Known case of systemic lupus erythematosus and scleroderma overlap with interstitial lung disease").  
-- Secondary Diagnoses:  
-  - Interstitial lung disease (ILD) (part of the overlap syndrome).  
-  - Digital ulcers and skin tightening (tightness of skin of the fists and ulcers on the pulp of the fingers—classic manifestations of scleroderma).  
-- Key Overlap Syndrome: SLE-scleroderma overlap, which increases the risk of severe complications like ILD, Pulmonary Arterial Hypertension (PAH), and digital ischemia.
-
-2. Medication Analysis Table  
-
---------------------------------------------------------------------------------------------------------------------------------------------------
-| Medication Name        | Dosage & Frequency              | Clinical Justification                                                              |
-| :----------------------| :-------------------------------| :-----------------------------------------------------------------------------------|
-| Linzolid               | 600 mg twice daily for 5 days   | Conditional use for possible bacterial infection in non-healing finger ulcers.      |
-| Clopidogrel            | 75 mg once daily after meals    | Antiplatelet therapy to prevent thrombosis in vascular complications or vasculitis. |
-| Amlodipine             | 5 mg once daily                 | Vasodilator for hypertension or Raynaud’s phenomenon to improve digital perfusion.  |
-| Domperidone            | 10 mg twice daily before meals  | Antiemetic to manage nausea from immunosuppressants or other GI side effects.       |
-| Omeprazole             | 20 mg twice daily before meal   | Proton pump inhibitor (PPI) to protect gastric mucosa from corticosteroids/NSAIDs.  |
-| Bosentan               | 62.5 mg twice daily             | Endothelin receptor antagonist for PAH (common in scleroderma).                     |
-| Sildenafil Citrate     | 0.5 mg twice daily after meals  | PDE-5 inhibitor for PAH; dilates pulmonary vasculature to reduce pressure.          |
-| Prednisolone           | 5 mg once daily after breakfast | Corticosteroid to suppress autoimmunity and control inflammation.                   |
-| Mycophenolate Mofetil  | 500 mg twice daily (2 tablets)  | Immunosuppressant to treat SLE and scleroderma disease activity.                    |
-| L-methylfolate Calcium | 400 μg once daily               | Folate supplement to mitigate deficiency from chronic inflammation/medication.      |
-| Ciprofloxacin          | 250 mg twice daily              | Antibiotic for prophylaxis or treatment in an immunocompromised state.              |
---------------------------------------------------------------------------------------------------------------------------------------------------
-
-3. Conditional Logic & Alerts  
-
-Prn/Conditional Instructions  
-- Linzolid: "as advised in detail in case the ulcers of the fingers do not heal" (only to be started if initial management fails).  
-- Review after 4 weeks: Explicit follow-up to monitor response and safety.  
-
-Medications Requiring Close Monitoring  
-
-----------------------------------------------------------------------------------------------------
-| Medication            | Monitoring Focus                                                         |
-| :---------------------| :------------------------------------------------------------------------|
-| Bosentan              | Liver function (transaminases), hemoglobin (anemia), and blood pressure. |
-| Sildenafil            | Blood pressure (hypotension risk) and liver function.                    |
-| Mycophenolate Mofetil | WBC count (infection risk), platelet count, and renal function.          |
-| Prednisolone          | Bone density (osteoporosis), blood glucose, and blood pressure.          |
-| Linzolid              | Liver function and screening for peripheral neuropathy.                  |
-| Ciprofloxacin         | QT interval prolongation and monitoring for tendon pain/inflammation.    |
-----------------------------------------------------------------------------------------------------
-
-4. Visual Verification  
-- The document is printed text with no handwritten notes or signatures visible. All instructions are part of the official outpatient summary.  
-
-Final Answer  
-1. Clinical Summary: Primary SLE-Scleroderma overlap with ILD and digital ulcers.  
-2. Medication Analysis: Comprehensive regimen targeting inflammation, vascular issues (PAH/Raynaud's), and infection control.  
-3. Conditional Logic & Alerts: Linzolid is conditional; high-risk monitoring for Bosentan and Mycophenolate is essential.  
-4. Visual Verification: Printed instructions only; no handwritten modifications.
+{
+  "patient": {
+    "name": "Ms RUKHSANA SHAHEEN",
+    "age": "56 yrs",
+    "sex": "Female",
+    "hospital_no": "MH005990453",
+    "episode_no": "030000528270",
+    "episode_date": "02/07/2021 08:31AM"
+  },
+  "diagnoses": ["systemic lupus erythematosus", "scleroderma overlap", "interstitial lung disease"],
+  "symptoms": ["tightness of skin of the fists", "ulcers on the pulp of the fingers"],
+  "treatment": [
+    {"med": "Linezolid", "dose": "600 mg", "freq": "twice a day for 5 Days"},
+    {"med": "Clopidogrel", "dose": "75 mg", "freq": "once a day after meals"},
+    {"med": "Amlodipine", "dose": "5 mg", "freq": "once a day"},
+    {"med": "Domperidone", "dose": "10 mg", "freq": "twice a day before meals"},
+    {"med": "Omeprazole", "dose": "20 Mg", "freq": "Twice a Day before Meal"},
+    {"med": "Bosentan", "dose": "62.5 mg", "freq": "twice a day after meals"},
+    {"med": "Sildenafil Citrate", "dose": "0.5 mg", "freq": "twice a day after meals"},
+    {"med": "Prednisolone", "dose": "5 mg", "freq": "once a day after breakfast"},
+    {"med": "Mycophenolate mofetil", "dose": "500 mg 2 tablets", "freq": "twice a day"},
+    {"med": "L-methylfolate calcium", "dose": "400 µg 1 tablet", "freq": "once a day"},
+    {"med": "ciprofloxacin", "dose": "250 mg", "freq": "twice a day"}
+  ]
+}
 ```
 
 {:.model-param}
@@ -239,7 +210,7 @@ Final Answer
 {:.table-model}
 |---|---|
 |Model Name:|jsl_meds_vlm_reasoning_8b_q16_v1|
-|Compatibility:|Healthcare NLP 6.2.0+|
+|Compatibility:|Healthcare NLP 6.3.0+|
 |License:|Licensed|
 |Edition:|Official|
 |Input Labels:|[image, document]|

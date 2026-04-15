@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 6.2.2 ScalaDoc  - com.johnsnowlabs.nlp.annotators.deid.ObfuscatorAnnotatorApproach</title>
-          <meta name="description" content="Spark NLP 6.2.2 ScalaDoc - com.johnsnowlabs.nlp.annotators.deid.ObfuscatorAnnotatorApproach" />
-          <meta name="keywords" content="Spark NLP 6.2.2 ScalaDoc com.johnsnowlabs.nlp.annotators.deid.ObfuscatorAnnotatorApproach" />
+          <title>Spark NLP 6.3.0 ScalaDoc  - com.johnsnowlabs.nlp.annotators.deid.ObfuscatorAnnotatorApproach</title>
+          <meta name="description" content="Spark NLP 6.3.0 ScalaDoc - com.johnsnowlabs.nlp.annotators.deid.ObfuscatorAnnotatorApproach" />
+          <meta name="keywords" content="Spark NLP 6.3.0 ScalaDoc com.johnsnowlabs.nlp.annotators.deid.ObfuscatorAnnotatorApproach" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 6.2.2 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 6.3.0 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -233,6 +233,14 @@
                         <span class="separator"></span>
                         <a class="trait" href="LightDeIdentificationParams.html" title="A trait that contains params that LightDeIdentification has."></a>
                         <a href="LightDeIdentificationParams.html" title="A trait that contains params that LightDeIdentification has.">LightDeIdentificationParams</a>
+                      </li><li class="current-entities indented5">
+                        <span class="separator"></span>
+                        <a class="trait" href="MappingsColumnModel.html" title=""></a>
+                        <a href="MappingsColumnModel.html" title="">MappingsColumnModel</a>
+                      </li><li class="current-entities indented5">
+                        <span class="separator"></span>
+                        <a class="trait" href="MappingsColumnParams.html" title=""></a>
+                        <a href="MappingsColumnParams.html" title="">MappingsColumnParams</a>
                       </li><li class="current-entities indented5">
                         <span class="separator"></span>
                         <a class="trait" href="MaskingParams.html" title=""></a>
@@ -669,6 +677,24 @@ When <code>false</code>, <a href="BaseDeidParams.html#ageRanges:org.apache.spark
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnnotatorApproach</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#blackListEntities" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
+      <a id="blackListEntities:org.apache.spark.ml.param.StringArrayParam"></a><a id="blackListEntities:StringArrayParam"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/ObfuscatorAnnotatorApproach.html#blackListEntities:org.apache.spark.ml.param.StringArrayParam" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">blackListEntities</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.StringArrayParam">StringArrayParam</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">List of entities coming from NER or regex rules that will be ignored for masking or obfuscation.</p><div class="fullcomment"><div class="comment cmt"><p>List of entities coming from NER or regex rules that will be ignored for masking or obfuscation.
+The rest entities will be processed.
+Defaults to an empty array.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.HasInputAnnotationCols#checkSchema" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="checkSchema(schema:org.apache.spark.sql.types.StructType,inputAnnotatorType:String):Boolean"></a><a id="checkSchema(StructType,String):Boolean"></a>
       <span class="permalink">
@@ -1368,6 +1394,22 @@ obfuscation patterns.</p><p>default: false
       
       <p class="shortcomment cmt">Gets the value of <a href="BaseDeidParams.html#ageRangesByHipaa:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#ageRangesByHipaa">ageRangesByHipaa</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Gets the value of <a href="BaseDeidParams.html#ageRangesByHipaa:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#ageRangesByHipaa">ageRangesByHipaa</a>.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#getBlackListEntities" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="getParam">
+      <a id="getBlackListEntities:Array[String]"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/ObfuscatorAnnotatorApproach.html#getBlackListEntities:Array[String]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getBlackListEntities</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Gets <a href="BaseDeidParams.html#blackListEntities:org.apache.spark.ml.param.StringArrayParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#blackListEntities">blackListEntities</a> param</p><div class="fullcomment"><div class="comment cmt"><p>Gets <a href="BaseDeidParams.html#blackListEntities:org.apache.spark.ml.param.StringArrayParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#blackListEntities">blackListEntities</a> param</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <span class="permalink">
@@ -3250,6 +3292,24 @@ while age for patients 90 years or younger can remain unchanged.
 </p></div><dl class="paramcmts block"><dt class="param">value</dt><dd class="cmt"><p>If true, age entities larger than 90 will be obfuscated as per HIPAA Privacy Rule, the others will remain unchanged.
              If false, <a href="BaseDeidParams.html#ageRanges:org.apache.spark.ml.param.IntArrayParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#ageRanges">ageRanges</a> parameter is valid.
              Default: false.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#setBlackListEntities" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setBlackListEntities(value:Array[String]):BaseDeidParams.this.type"></a><a id="setBlackListEntities(Array[String]):ObfuscatorAnnotatorApproach.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/ObfuscatorAnnotatorApproach.html#setBlackListEntities(value:Array[String]):BaseDeidParams.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setBlackListEntities</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.ObfuscatorAnnotatorApproach">ObfuscatorAnnotatorApproach</a>.this.type</span>
+      </span>
+      
+      <p class="shortcomment cmt">Sets the list of entities coming from NER or regex rules that will be ignored for masking or obfuscation.</p><div class="fullcomment"><div class="comment cmt"><p>Sets the list of entities coming from NER or regex rules that will be ignored for masking or obfuscation.
+The rest entities will be processed.
+Defaults to an empty array.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#setConsistentAcrossNameParts" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setConsistentAcrossNameParts(value:Boolean):BaseDeidParams.this.type"></a><a id="setConsistentAcrossNameParts(Boolean):ObfuscatorAnnotatorApproach.this.type"></a>
       <span class="permalink">
