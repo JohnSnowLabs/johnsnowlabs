@@ -9,12 +9,12 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Healthcare NLP v3.2.0 Release Notes</title><meta property="og:title" content="Spark NLP for Healthcare | John Snow Labs"/>
+<!-- End Google Tag Manager --><title>Healthcare NLP v6.4.0 Release Notes</title><meta property="og:title" content="Spark NLP for Healthcare | John Snow Labs"/>
 
 <meta name="description" content="High Performance NLP with Apache Spark
 ">
-<!-- <link rel="canonical" href="/docs/en/spark_nlp_healthcare_versions/release_notes_3_2_0"> -->
-<link rel="canonical" href="/docs/en/spark_nlp_healthcare_versions/release_notes_3_2_0"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<!-- <link rel="canonical" href="/docs/en/spark_nlp_healthcare_versions/release_notes_6_4_0"> -->
+<link rel="canonical" href="/docs/en/spark_nlp_healthcare_versions/release_notes_6_4_0"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -616,740 +616,977 @@ function wrapWordInSpan(data, wordToWrap) {
 </script><div class="article__header"><div class="header-nav"><div class="main-docs">
   <ul class="breadcrambs">
     <li><a href="/docs">Documentation</a></li>
-    <li>Healthcare NLP v3.2.0 Release Notes</li>
+    <li>Healthcare NLP v6.4.0 Release Notes</li>
   </ul>
 </div></div><header class="main-docs have_subtitle">
-          <h1>Healthcare NLP v3.2.0 Release Notes</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
+          <h1>Healthcare NLP v6.4.0 Release Notes</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
-            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/spark_nlp_healthcare_versions/release_notes_3_2_0.md">
-            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Healthcare NLP v3.2.0 Release Notes"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
+            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/spark_nlp_healthcare_versions/release_notes_6_4_0 .md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Healthcare NLP v6.4.0 Release Notes"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <h2 id="section">3.2.0</h2>
-  <p>We are glad to announce that Spark NLP Healthcare 3.2.0 has been released!.</p>
-
-</div>
-<div class="h3-box">
+  <h2 id="section">6.4.0</h2>
 
   <h4 id="highlights">Highlights</h4>
 
+  <p>We are delighted to announce notable enhancements and updates in Healthcare NLP 6.4.0. The headline addition is <strong>Pretrained Zero Shot Multi Task</strong> module, a unified annotator that enables <strong>Named Entity Recognition</strong>, <strong>Text Classification</strong>, <strong>Relation Extraction</strong>, and <strong>Structured Extraction</strong> in a <strong>single forward pass</strong>—eliminating the need for task-specific fine-tuning or labeled datasets while providing flexible, setter-based configuration.
+This release also introduces an optional <strong>Medical NER model</strong> training setting to split multi-sentence rows before training and reduce peak memory usage on long documents; and enables configurable de-identification output wrapping via <strong>markers</strong> (prefix/suffix markers around target PHI entities).
+In parallel, the release delivers <strong>78 new pretrained models and pipelines</strong>, further strengthening coverage across clinical entity recognition, structured extraction, and domain-specific use cases.  Notably, this includes <strong>JSL_MedS NER (LLM — q16 — v5)</strong>, a Medical LLM–based named entity recognition model for structured clinical trial eligibility parsing, and returning them in a standardized JSON format. In addition, we are happy to share new research/ publications spanning medical LLM safety evaluation and dual-level DICOM de-identification with Visual NLP.</p>
+
   <ul>
-    <li>New Sentence Boundary Detection Model for Healthcare text</li>
-    <li>New Assertion Status Models</li>
-    <li>New Sentence Entity Resolver Model</li>
-    <li>Finetuning Sentence Entity Resolvers with Your Data</li>
-    <li>New Clinical NER Models</li>
-    <li>New CMS-HCC risk-adjustment score calculation module</li>
-    <li>New Embedding generation module for entity resolution</li>
+    <li><strong>Pretrained Zero Shot Multi Task</strong> module: unified zero-shot NER, classification, relation, and structured extraction in one forward pass, with flexible configuration and a single output column for all tasks.</li>
+    <li><code class="language-plaintext highlighter-rouge">MedicalNerApproach</code> <code class="language-plaintext highlighter-rouge">explodeSentencesForTraining</code> (optional) to expand multi-sentence rows into sentence-level training examples before training, aimed at lower peak memory on long documents.</li>
+    <li><code class="language-plaintext highlighter-rouge">JSL_MedS NER (LLM — q16 — v5)</code> for Structured Clinical Trial Eligibility Parsing</li>
+    <li><code class="language-plaintext highlighter-rouge">DocumentHashCoder</code> Integration with Light Pipeline to Enable Consistent Hashing in Both Spark Pipeline Transforms and LightPipeline fullAnnotate-Style Inference.</li>
+    <li>De-identification <code class="language-plaintext highlighter-rouge">setDeidMarkers</code> to wrap de-identified spans with configurable prefix/suffix markers in the deidentified text.</li>
+    <li>Obfuscation evaluation: A new utility function to report leakage and success rates when comparing original vs obfuscated columns after structured data.</li>
+    <li>Enhanced 14 New Entity Resolver Models for Mapping Clinical Terms to Standardized SNOMED CT Codes and LOINC</li>
+    <li>New research publications, including a Text2Story 2026 paper on multi-domain red teaming for medical LLM safety evaluation and accepted work on dual-level DICOM de-identification using Visual NLP at <strong>CVC 2026</strong> and <strong>ICHI 2026</strong> (ICHI: <em>Beyond Metadata Scrubbing: Production-Scale Pixel-Level and Metadata-Level DICOM Anonymisation for Healthcare Workflows</em>).</li>
+    <li>New Blog Posts &amp; Technical Deep Dives</li>
+    <li>Updated notebooks and demonstrations for making Healthcare NLP easier to navigate and understand
+      <ul>
+        <li>New <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.8.PretrainedZeroShotMultiTask.ipynb">Pretrained Zero Shot Multi Task</a> Notebook</li>
+      </ul>
+    </li>
+    <li>The addition and update of numerous new clinical models and pipelines continue to reinforce our offering in the healthcare domain</li>
   </ul>
 
-</div>
-<div class="h3-box">
+  <p>These enhancements will elevate your experience with Healthcare NLP, enabling more efficient, accurate, and streamlined analysis of healthcare-related natural language data.</p>
 
-  <h5 id="new-sentence-boundary-detection-model-for-healthcare-text">New Sentence Boundary Detection Model for Healthcare text</h5>
+  <div class="h3-box">
 
-  <p>We are releasing an updated Sentence Boundary detection model to identify complex sentences containing multiple measurements, and punctuations. This model is trained on an in-house dataset.</p>
+    <h4 id="pretrainedzeroshotmultitask-unified-zero-shot-multi-task-inference">PretrainedZeroShotMultiTask: Unified Zero-Shot Multi-Task Inference</h4>
 
-  <p><em>Example</em>:</p>
+    <p><code class="language-plaintext highlighter-rouge">PretrainedZeroShotMultiTask</code> is a unified Spark NLP for Healthcare annotator that runs <strong>Named Entity Recognition</strong>, <strong>Text Classification</strong>, <strong>Relation Extraction</strong>, and <strong>Structured Extraction</strong> in a <strong>single forward pass</strong>, without task-specific fine-tuning or labeled training data. Configure tasks with <code class="language-plaintext highlighter-rouge">setEntities</code>, <code class="language-plaintext highlighter-rouge">setClassifications</code>, <code class="language-plaintext highlighter-rouge">setRelations</code>, and <code class="language-plaintext highlighter-rouge">setStructures</code>; all outputs are written to one output column (by default <code class="language-plaintext highlighter-rouge">extractions</code>) and are distinguished by <code class="language-plaintext highlighter-rouge">annotatorType</code> (<code class="language-plaintext highlighter-rouge">chunk</code>, <code class="language-plaintext highlighter-rouge">category</code>, <code class="language-plaintext highlighter-rouge">struct</code>).
+Because outputs are mixed in one column, use <strong><code class="language-plaintext highlighter-rouge">MultiAnnotationSplitter</code></strong> (for example with <code class="language-plaintext highlighter-rouge">setSplitType("chunk")</code>) before downstream annotators that expect dedicated columns—such as <strong><code class="language-plaintext highlighter-rouge">DeIdentification</code></strong> for de-identification workflows.</p>
 
-  <p><em>Python:</em></p>
-  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
-documenter <span class="o">=</span> DocumentAssembler<span class="o">()</span><span class="se">\</span>
-  .setInputCol<span class="o">(</span><span class="s2">"text"</span><span class="o">)</span><span class="se">\</span>
-  .setOutputCol<span class="o">(</span><span class="s2">"document"</span><span class="o">)</span>
+    <p class="table-model-big"><strong>Pretrained models</strong></p>
+    <p>| Model Name  |      Description            |
+|————-|—————————–|
+| <a href="https://nlp.johnsnowlabs.com/2026/04/09/zeroshot_multitask_generic_en.html"><code class="language-plaintext highlighter-rouge">zeroshot_multitask_generic</code></a> | Zero-shot multitask model for customizable entity extraction, structure filling, classification, and relation prediction over clinical documents. |
+| <a href="https://nlp.johnsnowlabs.com/2026/04/10/zeroshot_multitask_base_en.html"><code class="language-plaintext highlighter-rouge">zeroshot_multitask_base</code></a> | Base variant of the zero-shot multitask model with the same task surface (entities, structures, classifications, relations). |</p>
 
-sentencerDL <span class="o">=</span> SentenceDetectorDLModel
-  .pretrained<span class="o">(</span><span class="s2">"sentence_detector_dl_healthcare"</span>,<span class="s2">"en"</span>,<span class="s2">"clinical/models"</span><span class="o">)</span>
-  .setInputCols<span class="o">([</span><span class="s2">"document"</span><span class="o">])</span>
-  .setOutputCol<span class="o">(</span><span class="s2">"sentences"</span><span class="o">)</span>
+    <p class="table-model-big"><strong>Key parameters</strong></p>
+    <p>| Parameter | Description |
+|———-|————-|
+| <code class="language-plaintext highlighter-rouge">setEntities(list)</code> | NER labels; optional <code class="language-plaintext highlighter-rouge">LABEL::description</code> for guided extraction (e.g., <code class="language-plaintext highlighter-rouge">"DRUG::medication name like aspirin"</code>). |
+| <code class="language-plaintext highlighter-rouge">setClassifications(list)</code> | Tasks as <code class="language-plaintext highlighter-rouge">(task_name, [labels])</code> tuples; one label per document per task. |
+| <code class="language-plaintext highlighter-rouge">setRelations(list)</code> | Relation types between entities (e.g., <code class="language-plaintext highlighter-rouge">"works_for"</code>, <code class="language-plaintext highlighter-rouge">"treatment_administered_for_problem"</code>). |
+| <code class="language-plaintext highlighter-rouge">setStructures(list)</code> | Templates as <code class="language-plaintext highlighter-rouge">(name, [field_definitions])</code> with <code class="language-plaintext highlighter-rouge">field_name::type::description</code>. |
+| <code class="language-plaintext highlighter-rouge">setEntityThreshold(float)</code> | Minimum entity confidence (default <code class="language-plaintext highlighter-rouge">0.4</code>). |</p>
 
-text <span class="o">=</span> <span class="s2">"""He was given boluses of MS04 with some effect.he has since been placed on a PCA . He takes 80 mg. of ativan at home ativan for anxiety,
-with 20 meq kcl po, 30 mmol K-phos iv and 2 gms mag so4 iv.
-Size: Prostate gland measures 10x1.1x 4.9 cm (LS x AP x TS). Estimated volume is
-51.9 ml. and is mildly enlarged in size.Normal delineation pattern of the prostate gland is preserved.
+    <p class="table-model-big"><strong>Output annotation types</strong></p>
+    <p>| annotatorType | Task | Description |
+|—————|——|————-|
+| <code class="language-plaintext highlighter-rouge">chunk</code> | NER | Spans with entity, confidence, offsets |
+| <code class="language-plaintext highlighter-rouge">category</code> | Classification / relation | Classification metadata includes <code class="language-plaintext highlighter-rouge">task</code> where applicable |
+| <code class="language-plaintext highlighter-rouge">struct</code> | Structured extraction | Key-value style fields in metadata |</p>
+
+    <p><em>Example</em>: basic four-task configuration (<code class="language-plaintext highlighter-rouge">zeroshot_multitask_base</code>)</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cancer_text</span> <span class="o">=</span> <span class="s">"""The had previously undergone a left mastectomy and an axillary lymph node dissection for a left breast cancer twenty years ago.
+The tumor was positive for ER and PR. Postoperatively, radiotherapy was administered to her breast.The cancer recurred as a right lung metastasis 13 years later.
+The patient underwent a regimen consisting of adriamycin (60 mg/m2) and cyclophosphamide (600 mg/m2) over six courses, as first line therapy."""</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="n">cancer_text</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+
+<span class="n">document_assembler</span> <span class="o">=</span> <span class="p">(</span>
+   <span class="n">DocumentAssembler</span><span class="p">()</span>
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">PretrainedZeroShotMultiTask</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"zeroshot_multitask_base"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
+<span class="n">zero_shot</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">model</span>
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"extractions"</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setEntities</span><span class="p">([</span>
+            <span class="s">"Cancer_Dx::The exact cancer diagnosis phrase, such as 'left breast cancer' or 'lung cancer'. Extract only the diagnosis phrase itself."</span><span class="p">,</span>
+            <span class="s">"Site::The exact anatomical site phrase, including laterality when present, such as 'left breast' or 'right lung'. Extract only the site phrase itself."</span><span class="p">,</span>
+            <span class="s">"Biomarker::The exact biomarker name, such as 'ER', 'PR', 'HER2', or 'PD-L1'. Extract only the marker name itself."</span><span class="p">,</span>
+            <span class="s">"Biomarker_Result::The exact biomarker result term, such as 'positive', 'negative', 'amplified', 'high', or 'low'. Extract only the result term itself."</span><span class="p">,</span>
+            <span class="s">"Metastasis::The exact metastatic disease phrase including site when present, such as 'right lung metastasis' or 'bone metastasis'. Extract only the metastasis phrase itself."</span><span class="p">,</span>
+            <span class="s">"Cancer_Surgery::The exact cancer surgery phrase, including laterality when present, such as 'left mastectomy' or 'axillary lymph node dissection'. Extract only the procedure phrase itself."</span><span class="p">,</span>
+            <span class="s">"Chemotherapy::The exact chemotherapy drug name or treatment term, such as 'adriamycin', 'cyclophosphamide', or 'chemotherapy'. Extract only the drug or treatment term itself."</span><span class="p">,</span>
+            <span class="s">"Radiotherapy::The exact radiation treatment term, such as 'radiotherapy' or 'radiation therapy'. Extract only the treatment term itself, not surrounding action phrases, recipients, or body sites."</span><span class="p">,</span>
+            <span class="s">"Line_Of_Therapy::The exact treatment-line phrase, such as 'first line therapy' or 'second line treatment'. Extract only the treatment-line phrase itself."</span><span class="p">,</span>
+            <span class="s">"Response_To_Treatment::The exact response or progression term, such as 'recurred', 'progressed', 'improved', or 'stable disease'. Extract only the response term itself."</span><span class="p">,</span>
+            <span class="s">"Dosage::The exact dose expression, such as '60 mg/m2' or '400 mg'. Extract only the dose expression itself."</span><span class="p">,</span>
+            <span class="s">"Relative_Date::The exact relative time phrase, such as 'twenty years ago' or '13 years later'. Extract only the temporal phrase itself."</span>
+    <span class="p">]</span>
+         <span class="p">)</span>
+    <span class="p">.</span><span class="n">setStructures</span><span class="p">([</span>
+    <span class="p">(</span><span class="s">"cancer_case"</span><span class="p">,</span> <span class="p">[</span>
+        <span class="s">"diagnosis::str::The exact cancer diagnosis phrase, such as 'left breast cancer' or 'lung cancer'. Extract only the diagnosis phrase itself."</span><span class="p">,</span>
+        <span class="s">"site::list::The exact anatomical site phrase related to the cancer, including laterality when present, such as 'left breast' or 'right lung'. Extract only the site phrase itself, not the diagnosis phrase."</span><span class="p">,</span>
+        <span class="s">"metastasis::list::The exact metastatic disease phrase, including site when present, such as 'right lung metastasis' or 'bone metastasis'. Extract only the metastasis phrase itself."</span><span class="p">,</span>
+        <span class="s">"surgery::list::The exact cancer-related surgery phrase, including laterality when present, such as 'left mastectomy' or 'axillary lymph node dissection'. Extract only the procedure phrase itself, not surrounding action phrases."</span><span class="p">,</span>
+        <span class="s">"radiotherapy::list::The exact radiation treatment term, such as 'radiotherapy' or 'radiation therapy'. Extract only the treatment term itself, not surrounding action phrases, recipients, or body sites."</span><span class="p">,</span>
+        <span class="s">"line_of_therapy::str::The exact treatment-line phrase, such as 'first line therapy' or 'second line therapy'. Extract only the treatment-line phrase itself."</span><span class="p">,</span>
+        <span class="s">"response::str::The exact response or progression term, such as 'recurred', 'progressed', 'improved', or 'stable disease'. Extract only the response term itself."</span><span class="p">,</span>
+        <span class="s">"relative_date::list::The exact relative time phrase, such as 'twenty years ago' or '13 years later'. Extract only the temporal phrase itself."</span>
+    <span class="p">]),</span>
+    <span class="p">(</span><span class="s">"biomarker_item"</span><span class="p">,</span> <span class="p">[</span>
+        <span class="s">"name::str::The exact biomarker name, such as 'ER', 'PR', 'HER2', or 'PD-L1'. Extract only the biomarker name itself."</span><span class="p">,</span>
+        <span class="s">"result::str::The exact biomarker result term associated with that biomarker, such as 'positive', 'negative', 'amplified', 'high', or 'low'. Extract only the result term itself."</span>
+    <span class="p">]),</span>
+    <span class="p">(</span><span class="s">"chemotherapy_item"</span><span class="p">,</span> <span class="p">[</span>
+        <span class="s">"drug::str::The exact chemotherapy drug name, such as 'adriamycin' or 'cyclophosphamide'. Extract only the drug name itself."</span><span class="p">,</span>
+        <span class="s">"dosage::str::The exact dose expression associated with the drug, such as '60 mg/m2' or '600 mg/m2'. Extract only the dosage expression itself."</span>
+    <span class="p">])</span>
+<span class="p">])</span>
+    <span class="p">.</span><span class="n">setEntityThreshold</span><span class="p">(</span><span class="mf">0.4</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">().</span><span class="n">setStages</span><span class="p">([</span><span class="n">document_assembler</span><span class="p">,</span> <span class="n">zero_shot</span><span class="p">]).</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+</code></pre></div>    </div>
+
+    <p><em>Result</em>:</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+  <span class="s">"cancer_case"</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s">"diagnosis"</span><span class="p">:</span> <span class="s">"left breast cancer"</span><span class="p">,</span>
+      <span class="s">"site"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s">"left breast"</span>
+      <span class="p">],</span>
+      <span class="s">"metastasis"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s">"right lung metastasis"</span>
+      <span class="p">],</span>
+      <span class="s">"surgery"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s">"left mastectomy"</span><span class="p">,</span>
+        <span class="s">"axillary lymph node dissection"</span>
+      <span class="p">],</span>
+      <span class="s">"radiotherapy"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s">"radiotherapy"</span>
+      <span class="p">],</span>
+      <span class="s">"line_of_therapy"</span><span class="p">:</span> <span class="s">"first line therapy"</span><span class="p">,</span>
+      <span class="s">"response"</span><span class="p">:</span> <span class="s">"recurred"</span><span class="p">,</span>
+      <span class="s">"relative_date"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s">"13 years later"</span><span class="p">,</span>
+        <span class="s">"twenty years ago"</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="s">"biomarker_item"</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s">"name"</span><span class="p">:</span> <span class="s">"ER"</span><span class="p">,</span>
+      <span class="s">"result"</span><span class="p">:</span> <span class="s">"positive"</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s">"name"</span><span class="p">:</span> <span class="s">"PR"</span><span class="p">,</span>
+      <span class="s">"result"</span><span class="p">:</span> <span class="s">"positive"</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="s">"chemotherapy_item"</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s">"drug"</span><span class="p">:</span> <span class="s">"adriamycin"</span><span class="p">,</span>
+      <span class="s">"dosage"</span><span class="p">:</span> <span class="s">"60 mg/m2"</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s">"drug"</span><span class="p">:</span> <span class="s">"cyclophosphamide"</span><span class="p">,</span>
+      <span class="s">"dosage"</span><span class="p">:</span> <span class="s">"600 mg/m2"</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+
+    <p>PretrainedZero-Shot Multi-Task models are designed to perform multiple tasks in one pass, but if you only want to run NER, for example, you can simply configure the model with <code class="language-plaintext highlighter-rouge">setEntities</code> and leave other task setters empty.  The output will still be in the same <code class="language-plaintext highlighter-rouge">extractions</code> column, but will only contain <code class="language-plaintext highlighter-rouge">chunk</code> annotations for the NER task. You can then use <code class="language-plaintext highlighter-rouge">MultiAnnotationSplitter</code> to split out the <code class="language-plaintext highlighter-rouge">chunk</code> annotations into a separate column for downstream processing.
+This flexibility allows you to create De-Identification pipelines that leverage the zero-shot NER capabilities of <code class="language-plaintext highlighter-rouge">PretrainedZeroShotMultiTask</code> without needing to configure classification, relation, or structured extraction tasks if they are not needed for your use case.</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">(</span>
+    <span class="p">[[</span><span class="s">"Dr. John Smith works at Google in New York. The product costs $99. Sentiment: very positive."</span><span class="p">]]</span>
+<span class="p">).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+
+<span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">().</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">).</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+
+<span class="n">zero_shot_multi_task</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">PretrainedZeroShotMultiTask</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"zeroshot_multitask_base"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"extractions"</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setEntities</span><span class="p">([</span><span class="s">"NAME::name of person"</span><span class="p">,</span> <span class="s">"LOCATION::city or place name"</span><span class="p">,</span> <span class="s">"ORGANIZATION::company name"</span><span class="p">])</span>
+    <span class="p">.</span><span class="n">setEntityThreshold</span><span class="p">(</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">multi_annotation_splitter</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">MultiAnnotationSplitter</span><span class="p">()</span>
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"extractions"</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setSplitType</span><span class="p">(</span><span class="s">"chunk"</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">light_deid</span> <span class="o">=</span> <span class="n">LightDeIdentification</span><span class="p">().</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"document"</span><span class="p">,</span> <span class="s">"ner_chunk"</span><span class="p">).</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"deid"</span><span class="p">)</span>
+
+<span class="n">full_pipe</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span><span class="n">document_assembler</span><span class="p">,</span> <span class="n">zero_shot_multi_task</span><span class="p">,</span> <span class="n">multi_annotation_splitter</span><span class="p">,</span> <span class="n">light_deid</span><span class="p">]).</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">full_pipe</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">select</span><span class="p">(</span><span class="s">"deid"</span><span class="p">).</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+</code></pre></div>    </div>
+
+    <p><em>Result</em>:</p>
+    <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+------------------------------------------------------------------------------------------------+
+|result                                                                                          |
++------------------------------------------------------------------------------------------------+
+|[&lt;NAME&gt; works at &lt;ORGANIZATION&gt; in &lt;LOCATION&gt;. The product costs $99. Sentiment: very positive.]|
++------------------------------------------------------------------------------------------------+
+</code></pre></div>    </div>
+
+    <p>Please check more detail explanations in the <strong>Workshop notebook</strong></p>
+    <ul>
+      <li><a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.8.PretrainedZeroShotMultiTask.ipynb">1.8.PretrainedZeroShotMultiTask</a></li>
+    </ul>
+
+  </div>
+  <div class="h3-box">
+
+    <h4 id="jslmeds-ner-llm--q16--v5-for-structured-clinical-trial-eligibility-parsing">JSL_MedS NER (LLM — q16 — v5) for Structured Clinical Trial Eligibility Parsing</h4>
+
+    <p>This release adds <strong>JSL_MedS NER (LLM — q16 — v5)</strong>, a Medical LLM–based named entity recognition model that extracts structured entities from clinical trial eligibility criteria. Given unstructured inclusion and exclusion text, it returns JSON with <strong>inclusion</strong> and <strong>exclusion</strong> entity lists. The model supports four entity types — <strong>age</strong>, <strong>lab</strong>, <strong>condition</strong>, and <strong>pregnancy</strong> — each following a fixed schema with normalized values and numeric thresholds where applicable.</p>
+
+    <p>The model is intended for clinical trial eligibility parsing, patient matching, and structured medical information extraction workflows, and runs on the <strong>llama.cpp</strong> engine via the <code class="language-plaintext highlighter-rouge">MedicalLLM</code> family in Healthcare NLP.</p>
+
+    <table class="table-model-big">
+      <thead>
+        <tr>
+          <th><strong>Model Name</strong></th>
+          <th><strong>Description</strong></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="https://nlp.johnsnowlabs.com/2026/04/09/jsl_meds_ner_q16_v5_en.html">jsl_meds_ner_q16_v5</a></td>
+          <td>This LLM model extracts structured entities from clinical trial eligibility criteria. Given unstructured text, it returns JSON with inclusion and exclusion entities. The model supports four entity types: age, lab, condition, and pregnancy. Each entity follows a fixed schema with normalized values and numeric thresholds where applicable. This model is intended for clinical trial eligibility parsing, patient matching, and structured medical information extraction workflows.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><em>Example</em>: jsl_meds_ner_q16_v5</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">documentAssembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+
+<span class="n">llm</span> <span class="o">=</span> <span class="n">MedicalLLM</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"jsl_meds_ner_q16_v5"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"llm_output"</span><span class="p">)</span>
+
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span><span class="n">documentAssembler</span><span class="p">,</span> <span class="n">llm</span><span class="p">])</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="s">"""
+Inclusion Criteria:
+Adults aged 18–75 with confirmed type 2 diabetes mellitus. HbA1c 7.0–10.5%.
+Fasting plasma glucose ≥126 mg/dL. Negative pregnancy test required.
+
+Exclusion Criteria:
+Type 1 diabetes mellitus. HbA1c &gt;10.5%. Fasting plasma glucose &gt;300 mg/dL.
+Pregnant or breastfeeding. Diabetic ketoacidosis. Uncontrolled thyroid disease.
 """</span>
-
-sd_model <span class="o">=</span> LightPipeline<span class="o">(</span>PipelineModel<span class="o">(</span><span class="nv">stages</span><span class="o">=[</span>documenter, sentencerDL]<span class="o">))</span>
-
-result <span class="o">=</span> sd_model.fullAnnotate<span class="o">(</span>text<span class="o">)</span>
-</code></pre></div>  </div>
-
-  <p><em>Results</em>:</p>
-
-  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>| s.no | sentences                                                      |
-|-----:|:---------------------------------------------------------------|
-|    0 | He was given boluses of MS04 with some effect.                 |
-|    1 | he has since been placed on a PCA .                            |
-|    2 | He takes 80 mg. of ativan at home ativan for anxiety,          |
-|      | with 20 meq kcl po, 30 mmol K-phos iv and 2 gms mag so4 iv.    |
-|    3 | Size: Prostate gland measures 10x1.1x 4.9 cm (LS x AP x TS).   |
-|    4 | Estimated volume is                                            |
-|      | 51.9 ml. and is mildly enlarged in size.                       |
-|    5 | Normal delineation pattern of the prostate gland is preserved. |
-
-</code></pre></div>  </div>
-
-</div>
-<div class="h3-box">
-
-  <h5 id="new-assertion-status-models">New Assertion Status Models</h5>
-
-  <p>We are releasing two new Assertion Status Models based on the BiLSTM architecture. Apart from what we released in other assertion models, an in-house annotations on a curated dataset (6K clinical notes) is used to augment the base assertion dataset (2010 i2b2/VA).</p>
-
-  <ul>
-    <li>
-      <p><code class="language-plaintext highlighter-rouge">assertion_jsl</code>: This model can classify the assertions made on given medical concepts as being <code class="language-plaintext highlighter-rouge">Present</code>, <code class="language-plaintext highlighter-rouge">Absent</code>, <code class="language-plaintext highlighter-rouge">Possible</code>, <code class="language-plaintext highlighter-rouge">Planned</code>, <code class="language-plaintext highlighter-rouge">Someoneelse</code>, <code class="language-plaintext highlighter-rouge">Past</code>, <code class="language-plaintext highlighter-rouge">Family</code>, <code class="language-plaintext highlighter-rouge">None</code>, <code class="language-plaintext highlighter-rouge">Hypotetical</code>.</p>
-    </li>
-    <li>
-      <p><code class="language-plaintext highlighter-rouge">assertion_jsl_large</code>: This model can classify the assertions made on given medical concepts as being <code class="language-plaintext highlighter-rouge">present</code>, <code class="language-plaintext highlighter-rouge">absent</code>, <code class="language-plaintext highlighter-rouge">possible</code>, <code class="language-plaintext highlighter-rouge">planned</code>, <code class="language-plaintext highlighter-rouge">someoneelse</code>, <code class="language-plaintext highlighter-rouge">past</code>.</p>
-    </li>
-  </ul>
-
-  <p><em>assertion_dl vs assertion_jsl</em>:</p>
-
-  <table class="table-model-big">
-    <thead>
-      <tr>
-        <th>chunks</th>
-        <th>entities</th>
-        <th>assertion_dl</th>
-        <th>assertion_jsl</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Mesothelioma</td>
-        <td>PROBLEM</td>
-        <td>present</td>
-        <td>Present</td>
-      </tr>
-      <tr>
-        <td>CVA</td>
-        <td>PROBLEM</td>
-        <td>absent</td>
-        <td>Absent</td>
-      </tr>
-      <tr>
-        <td>cancer</td>
-        <td>PROBLEM</td>
-        <td>associated_with_someone_else</td>
-        <td>Family</td>
-      </tr>
-      <tr>
-        <td>her INR</td>
-        <td>TEST</td>
-        <td>present</td>
-        <td>Planned</td>
-      </tr>
-      <tr>
-        <td>Amiodarone</td>
-        <td>TREATMENT</td>
-        <td>hypothetical</td>
-        <td>Hypothetical</td>
-      </tr>
-      <tr>
-        <td>lymphadenopathy</td>
-        <td>PROBLEM</td>
-        <td>absent</td>
-        <td>Absent</td>
-      </tr>
-      <tr>
-        <td>stage III disease</td>
-        <td>PROBLEM</td>
-        <td>possible</td>
-        <td>Possible</td>
-      </tr>
-      <tr>
-        <td>IV piggyback</td>
-        <td>TREATMENT</td>
-        <td>conditional</td>
-        <td>Past</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p><em>Example</em>:</p>
-
-  <p><em>Python:</em></p>
-  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
-clinical_assertion <span class="o">=</span> AssertionDLModel.pretrained<span class="o">(</span><span class="s2">"assertion_jsl"</span>, <span class="s2">"en"</span>, <span class="s2">"clinical/models"</span><span class="o">)</span> <span class="se">\</span>
-    .setInputCols<span class="o">([</span><span class="s2">"sentence"</span>, <span class="s2">"ner_chunk"</span>, <span class="s2">"embeddings"</span><span class="o">])</span> <span class="se">\</span>
-    .setOutputCol<span class="o">(</span><span class="s2">"assertion"</span><span class="o">)</span>
-
-nlpPipeline <span class="o">=</span> Pipeline<span class="o">(</span><span class="nv">stages</span><span class="o">=[</span>documentAssembler, sentenceDetector, tokenizer, word_embeddings, clinical_ner, ner_converter, clinical_assertion]<span class="o">)</span>
-model <span class="o">=</span> nlpPipeline.fit<span class="o">(</span>spark.createDataFrame<span class="o">([[</span><span class="s2">""</span><span class="o">]])</span>.toDF<span class="o">(</span><span class="s2">"text"</span><span class="o">))</span>
-
-result <span class="o">=</span> model.transform<span class="o">(</span>spark.createDataFrame<span class="o">([[</span><span class="s2">"The patient is a 41-year-old and has a nonproductive cough that started last week. She has had right-sided chest pain radiating to her back with fever starting today. She has no nausea. She has a history of pericarditis and pericardectomy in May 2006 and developed cough with right-sided chest pain, and went to an urgent care center and Chest x-ray revealed right-sided pleural effusion. In family history, her father has a colon cancer history."</span><span class="o">]]</span>, <span class="o">[</span><span class="s2">"text"</span><span class="o">])</span>
-</code></pre></div>  </div>
-
-  <p><em>Results</em>:</p>
-
-  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+-------------------+-----+---+-------------------------+-------+---------+
-|chunk              |begin|end|ner_label                |sent_id|assertion|
-+-------------------+-----+---+-------------------------+-------+---------+
-|nonproductive cough|35   |53 |Symptom                  |0      |Present  |
-|last week          |68   |76 |RelativeDate             |0      |Past     |
-|chest pain         |103  |112|Symptom                  |1      |Present  |
-|fever              |141  |145|VS_Finding               |1      |Present  |
-|today              |156  |160|RelativeDate             |1      |Present  |
-|nausea             |174  |179|Symptom                  |2      |Absent   |
-|pericarditis       |203  |214|Disease_Syndrome_Disorder|3      |Past     |
-|pericardectomy     |220  |233|Procedure                |3      |Past     |
-|May 2006           |238  |245|Date                     |3      |Past     |
-|cough              |261  |265|Symptom                  |3      |Past     |
-|chest pain         |284  |293|Symptom                  |3      |Past     |
-|Chest x-ray        |334  |344|Test                     |3      |Past     |
-|pleural effusion   |367  |382|Disease_Syndrome_Disorder|3      |Past     |
-|colon cancer       |421  |432|Oncological              |4      |Family   |
-+-------------------+-----+---+-------------------------+-------+---------+
-</code></pre></div>  </div>
-
-</div>
-<div class="h3-box">
-
-  <h4 id="new-sentence-entity-resolver-model">New Sentence Entity Resolver Model</h4>
-
-  <p>We are releasing <code class="language-plaintext highlighter-rouge">sbiobertresolve_rxnorm_disposition</code> model that maps medication entities (like drugs/ingredients) to RxNorm codes and their dispositions using <code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli</code> Sentence Bert Embeddings. In the result, look for the aux_label parameter in the metadata to get dispositions that were divided by <code class="language-plaintext highlighter-rouge">|</code>.</p>
-
-  <p><em>Example</em>:</p>
-
-  <p><em>Python</em>:</p>
-  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-documentAssembler <span class="o">=</span> DocumentAssembler<span class="o">()</span><span class="se">\</span>
-      .setInputCol<span class="o">(</span><span class="s2">"text"</span><span class="o">)</span><span class="se">\</span>
-      .setOutputCol<span class="o">(</span><span class="s2">"ner_chunk"</span><span class="o">)</span>
-
-sbert_embedder <span class="o">=</span> BertSentenceEmbeddings.pretrained<span class="o">(</span><span class="s1">'sbiobert_base_cased_mli'</span>, <span class="s1">'en'</span>,<span class="s1">'clinical/models'</span><span class="o">)</span><span class="se">\</span>
-      .setInputCols<span class="o">([</span><span class="s2">"ner_chunk"</span><span class="o">])</span><span class="se">\</span>
-      .setOutputCol<span class="o">(</span><span class="s2">"sbert_embeddings"</span><span class="o">)</span>
-
-rxnorm_resolver <span class="o">=</span> SentenceEntityResolverModel.pretrained<span class="o">(</span><span class="s2">"sbiobertresolve_rxnorm_disposition"</span>, <span class="s2">"en"</span>, <span class="s2">"clinical/models"</span><span class="o">)</span> <span class="se">\</span>
-      .setInputCols<span class="o">([</span><span class="s2">"sbert_embeddings"</span><span class="o">])</span> <span class="se">\</span>
-      .setOutputCol<span class="o">(</span><span class="s2">"rxnorm_code"</span><span class="o">)</span><span class="se">\</span>
-      .setDistanceFunction<span class="o">(</span><span class="s2">"EUCLIDEAN"</span><span class="o">)</span>
-
-pipelineModel <span class="o">=</span> PipelineModel<span class="o">(</span>
-    stages <span class="o">=</span> <span class="o">[</span>
-        documentAssembler,
-        sbert_embedder,
-        rxnorm_resolver
-    <span class="o">])</span>
-
-rxnorm_lp <span class="o">=</span> LightPipeline<span class="o">(</span>pipelineModel<span class="o">)</span>
-
-result <span class="o">=</span> rxnorm_lp.fullAnnotate<span class="o">(</span><span class="s2">"belimumab 80 mg/ml injectable solution"</span><span class="o">)</span>
-</code></pre></div>  </div>
-
-  <p><em>Results</em>:</p>
-
-  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>|    | chunks                                | code    | resolutions                                                                                                                                                                                 | all_codes                                         | all_k_aux_labels                                                                            | all_distances                                 |
-|---:|:--------------------------------------|:--------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------|:--------------------------------------------------------------------------------------------|:----------------------------------------------|
-|  0 |belimumab 80 mg/ml injectable solution | 1092440 | [belimumab 80 mg/ml injectable solution, belimumab 80 mg/ml injectable solution [benlysta], ifosfamide 80 mg/ml injectable solution, belimumab 80 mg/ml [benlysta], belimumab 80 mg/ml, ...]| [1092440, 1092444, 107034, 1092442, 1092438, ...] | [Immunomodulator, Immunomodulator, Alkylating agent, Immunomodulator, Immunomodulator, ...] | [0.0000, 0.0145, 0.0479, 0.0619, 0.0636, ...] |
-</code></pre></div>  </div>
-
-</div>
-<div class="h3-box">
-
-  <h4 id="finetuning-sentence-entity-resolvers-with-your-data">Finetuning Sentence Entity Resolvers with Your Data</h4>
-
-  <p>Instead of starting from scratch when training a new Sentence Entity Resolver model, you can train a new model by adding your new data to the pretrained model.</p>
-
-  <p>There’s a new method <code class="language-plaintext highlighter-rouge">setPretrainedModelPath(path)</code>, which allows you to point the training process to an existing model, and allows you to initialize your model with the data from the pretrained model.</p>
-
-  <p>When both the new data and the pretrained model contain the same code, you will see both of the results at the top.</p>
-
-  <p>Here is a sample notebook : <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/13.1.Finetuning_Sentence_Entity_Resolver_Model.ipynb">Finetuning Sentence Entity Resolver Model Notebook</a></p>
-
-  <p><em>Example:</em></p>
-
-  <p>In the example below, we changed the code of <code class="language-plaintext highlighter-rouge">sepsis</code> to <code class="language-plaintext highlighter-rouge">X1234</code> and re-retrain the main ICD10-CM model with this new dataset. So we want to see the <code class="language-plaintext highlighter-rouge">X1234</code> code as a result in the all_codes.</p>
-
-  <p><em>Python:</em></p>
-  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
-bertExtractor <span class="o">=</span> SentenceEntityResolverApproach<span class="o">()</span><span class="se">\</span>
-  .setNeighbours<span class="o">(</span>50<span class="o">)</span><span class="se">\</span>
-  .setThreshold<span class="o">(</span>1000<span class="o">)</span><span class="se">\</span>
-  .setInputCols<span class="o">(</span><span class="s2">"sentence_embeddings"</span><span class="o">)</span><span class="se">\</span>
-  .setNormalizedCol<span class="o">(</span><span class="s2">"description_normalized"</span><span class="o">)</span><span class="se">\ </span>  <span class="c"># concept_name</span>
-  .setLabelCol<span class="o">(</span><span class="s2">"code"</span><span class="o">)</span><span class="se">\ </span>    <span class="c"># concept_code</span>
-  .setOutputCol<span class="o">(</span><span class="s2">"recognized_code"</span><span class="o">)</span><span class="se">\</span>
-  .setDistanceFunction<span class="o">(</span><span class="s2">"EUCLIDEAN"</span><span class="o">)</span><span class="se">\</span>
-  .setCaseSensitive<span class="o">(</span>False<span class="o">)</span><span class="se">\ </span>        
-  .setUseAuxLabel<span class="o">(</span>True<span class="o">)</span><span class="se">\ </span>        <span class="c"># if exist  </span>
-  .setPretrainedModelPath<span class="o">(</span><span class="s2">"path_to_a_pretrained_model"</span><span class="o">)</span>
-
-
-new_model <span class="o">=</span> bertExtractor.fit<span class="o">(</span><span class="s2">"new_dataset"</span><span class="o">)</span>
-new_model.save<span class="o">(</span><span class="s2">"models/new_resolver_model"</span><span class="o">)</span>  <span class="c"># save and use later</span>
-</code></pre></div>  </div>
-
-  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
-resolver_model = SentenceEntityResolverModel.load("models/new_resolver_model") \
-      .setInputCols(["ner_chunk", "sentence_embeddings"]) \
-      .setOutputCol("output_code")
-
-pipelineModel = PipelineModel(
-    stages = [
-        documentAssembler,
-        sentence_embedder,
-        resolver_model])
-
-light_model = LightPipeline(pipelineModel)
-light_model.fullAnnotate("sepsis")
-</code></pre></div>  </div>
-
-  <p><em>Main Model Results</em>:</p>
-
-  <table class="table-model-big">
-    <thead>
-      <tr>
-        <th>chunks</th>
-        <th>begin</th>
-        <th>end</th>
-        <th>code</th>
-        <th>all_codes</th>
-        <th>resolutions</th>
-        <th>all_k_aux_labels</th>
-        <th>all_distances</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>sepsis</td>
-        <td>0</td>
-        <td>5</td>
-        <td>A4189</td>
-        <td>[A4189, L419, A419, A267, E771, …]</td>
-        <td>[sepsis [Other specified sepsis], parapsoriasis [Parapsoriasis, unspecified], postprocedural sepsis [Sepsis, unspecified organism], erysipelothrix sepsis [Erysipelothrix sepsis], fucosidosis [Defects in glycoprotein degradation], … ]</td>
-        <td>[1|1|2, 1|1|2, 1|1|2, 1|1|2, 1|1|23, …]</td>
-        <td>[0.0000, 0.2079, 0.2256, 0.2359, 0.2399,…]</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p><em>Re-Trained Model Results</em>:</p>
-
-  <table class="table-model-big">
-    <thead>
-      <tr>
-        <th>chunks</th>
-        <th>begin</th>
-        <th>end</th>
-        <th>code</th>
-        <th>all_codes</th>
-        <th>resolutions</th>
-        <th>all_k_aux_labels</th>
-        <th>all_distances</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>sepsis</td>
-        <td>0</td>
-        <td>5</td>
-        <td>X1234</td>
-        <td>[X1234, A4189, A419, L419, A267, …]</td>
-        <td>[sepsis [Sepsis, new resolution], sepsis [Other specified sepsis], SEPSIS [Sepsis, unspecified organism], parapsoriasis [Parapsoriasis, unspecified], erysipelothrix sepsis [Erysipelothrix sepsis], … ]</td>
-        <td>[1|1|74, 1|1|2, 1|1|2, 1|1|2, 1|1|2, …]</td>
-        <td>[0.0000, 0.0000, 0.0000, 0.2079, 0.2359, …]</td>
-      </tr>
-    </tbody>
-  </table>
-
-</div>
-<div class="h3-box">
-
-  <h4 id="new-clinical-ner-models">New Clinical NER Models</h4>
-
-  <ul>
-    <li>
-      <p><code class="language-plaintext highlighter-rouge">ner_jsl_slim</code>: This model is trained based on <code class="language-plaintext highlighter-rouge">ner_jsl</code> model with more generalized entities.</p>
-
-      <p>(<code class="language-plaintext highlighter-rouge">Death_Entity</code>, <code class="language-plaintext highlighter-rouge">Medical_Device</code>, <code class="language-plaintext highlighter-rouge">Vital_Sign</code>, <code class="language-plaintext highlighter-rouge">Alergen</code>, <code class="language-plaintext highlighter-rouge">Drug</code>, <code class="language-plaintext highlighter-rouge">Clinical_Dept</code>, <code class="language-plaintext highlighter-rouge">Lifestyle</code>, <code class="language-plaintext highlighter-rouge">Symptom</code>, <code class="language-plaintext highlighter-rouge">Body_Part</code>, <code class="language-plaintext highlighter-rouge">Physical_Measurement</code>, <code class="language-plaintext highlighter-rouge">Admission_Discharge</code>, <code class="language-plaintext highlighter-rouge">Date_Time</code>, <code class="language-plaintext highlighter-rouge">Age</code>, <code class="language-plaintext highlighter-rouge">Birth_Entity</code>, <code class="language-plaintext highlighter-rouge">Header</code>, <code class="language-plaintext highlighter-rouge">Oncological</code>, <code class="language-plaintext highlighter-rouge">Substance_Quantity</code>, <code class="language-plaintext highlighter-rouge">Test_Result</code>, <code class="language-plaintext highlighter-rouge">Test</code>, <code class="language-plaintext highlighter-rouge">Procedure</code>, <code class="language-plaintext highlighter-rouge">Treatment</code>, <code class="language-plaintext highlighter-rouge">Disease_Syndrome_Disorder</code>, <code class="language-plaintext highlighter-rouge">Pregnancy_Newborn</code>, <code class="language-plaintext highlighter-rouge">Demographics</code>)</p>
-    </li>
-  </ul>
-
-  <p><em>ner_jsl vs ner_jsl_slim</em>:</p>
-
-  <table class="table-model-big">
-    <thead>
-      <tr>
-        <th>chunks</th>
-        <th>ner_jsl</th>
-        <th>ner_jsl_slim</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Description:</td>
-        <td>Section_Header</td>
-        <td>Header</td>
-      </tr>
-      <tr>
-        <td>atrial fibrillation</td>
-        <td>Heart_Disease</td>
-        <td>Disease_Syndrome_Disorder</td>
-      </tr>
-      <tr>
-        <td>August 24, 2007</td>
-        <td>Date</td>
-        <td>Date_Time</td>
-      </tr>
-      <tr>
-        <td>transpleural fluoroscopy</td>
-        <td>Procedure</td>
-        <td>Test</td>
-      </tr>
-      <tr>
-        <td>last week</td>
-        <td>RelativeDate</td>
-        <td>Date_Time</td>
-      </tr>
-      <tr>
-        <td>She</td>
-        <td>Gender</td>
-        <td>Demographics</td>
-      </tr>
-      <tr>
-        <td>fever</td>
-        <td>VS_Finding</td>
-        <td>Vital_Sign</td>
-      </tr>
-      <tr>
-        <td>PAST MEDICAL HISTORY:</td>
-        <td>Medical_History_Header</td>
-        <td>Header</td>
-      </tr>
-      <tr>
-        <td>Pericardial window</td>
-        <td>Internal_organ_or_component</td>
-        <td>Body_Part</td>
-      </tr>
-      <tr>
-        <td>FAMILY HISTORY:</td>
-        <td>Family_History_Header</td>
-        <td>Header</td>
-      </tr>
-      <tr>
-        <td>CVA</td>
-        <td>Cerebrovascular_Disease</td>
-        <td>Disease_Syndrome_Disorder</td>
-      </tr>
-      <tr>
-        <td>diabetes</td>
-        <td>Diabetes</td>
-        <td>Disease_Syndrome_Disorder</td>
-      </tr>
-      <tr>
-        <td>married</td>
-        <td>Relationship_Status</td>
-        <td>Demographics</td>
-      </tr>
-      <tr>
-        <td>alcohol</td>
-        <td>Alcohol</td>
-        <td>Lifestyle</td>
-      </tr>
-      <tr>
-        <td>illicit drug</td>
-        <td>Substance</td>
-        <td>Lifestyle</td>
-      </tr>
-      <tr>
-        <td>Coumadin</td>
-        <td>Drug_BrandName</td>
-        <td>Drug</td>
-      </tr>
-      <tr>
-        <td>Blood pressure 123/95</td>
-        <td>Blood_Pressure</td>
-        <td>Vital_Sign</td>
-      </tr>
-      <tr>
-        <td>heart rate 83</td>
-        <td>Pulse</td>
-        <td>Vital_Sign</td>
-      </tr>
-      <tr>
-        <td>anticoagulated</td>
-        <td>Drug_Ingredient</td>
-        <td>Drug</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p><em>Example</em>:</p>
-
-  <p><em>Python</em>:</p>
-
-  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
-embeddings_clinical <span class="o">=</span> WordEmbeddingsModel<span class="o">()</span>.pretrained<span class="o">(</span><span class="s1">'embeddings_clinical'</span>, <span class="s1">'en'</span>, <span class="s1">'clinical/models'</span><span class="o">)</span> <span class="se">\</span>
-    .setInputCols<span class="o">([</span><span class="s1">'sentence'</span>, <span class="s1">'token'</span><span class="o">])</span> <span class="se">\</span>
-    .setOutputCol<span class="o">(</span><span class="s1">'embeddings'</span><span class="o">)</span>
-
-clinical_ner <span class="o">=</span> MedicalNerModel.pretrained<span class="o">(</span><span class="s2">"ner_jsl_slim"</span>, <span class="s2">"en"</span>, <span class="s2">"clinical/models"</span><span class="o">)</span> <span class="se">\</span>
-  .setInputCols<span class="o">([</span><span class="s2">"sentence"</span>, <span class="s2">"token"</span>, <span class="s2">"embeddings"</span><span class="o">])</span> <span class="se">\</span>
-  .setOutputCol<span class="o">(</span><span class="s2">"ner"</span><span class="o">)</span>
-...
-
-nlpPipeline <span class="o">=</span> Pipeline<span class="o">(</span><span class="nv">stages</span><span class="o">=[</span>document_assembler, sentence_detector, tokenizer, embeddings_clinical,  clinical_ner, ner_converter]<span class="o">)</span>
-model <span class="o">=</span> nlpPipeline.fit<span class="o">(</span>spark.createDataFrame<span class="o">([[</span><span class="s2">""</span><span class="o">]])</span>.toDF<span class="o">(</span><span class="s2">"text"</span><span class="o">))</span>
-
-results <span class="o">=</span> model.transform<span class="o">(</span>spark.createDataFrame<span class="o">([[</span><span class="s2">"HISTORY: 30-year-old female presents for digital bilateral mammography secondary to a soft tissue lump palpated by the patient in the upper right shoulder. The patient has a family history of breast cancer within her mother at age 58. Patient denies personal history of breast cancer."</span><span class="o">]]</span>, <span class="o">[</span><span class="s2">"text"</span><span class="o">]))</span>
-</code></pre></div>  </div>
-
-  <p><em>Results</em>:</p>
-  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>|    | chunk            | entity       |
-|---:|:-----------------|:-------------|
-|  0 | HISTORY:         | Header       |
-|  1 | 30-year-old      | Age          |
-|  2 | female           | Demographics |
-|  3 | mammography      | Test         |
-|  4 | soft tissue lump | Symptom      |
-|  5 | shoulder         | Body_Part    |
-|  6 | breast cancer    | Oncological  |
-|  7 | her mother       | Demographics |
-|  8 | age 58           | Age          |
-|  9 | breast cancer    | Oncological  |
-</code></pre></div>  </div>
-
-  <ul>
-    <li>
-      <p><code class="language-plaintext highlighter-rouge">ner_jsl_biobert</code> : This model is the BioBert version of <code class="language-plaintext highlighter-rouge">ner_jsl</code> model and trained with <code class="language-plaintext highlighter-rouge">biobert_pubmed_base_cased</code> embeddings.</p>
-    </li>
-    <li>
-      <p><code class="language-plaintext highlighter-rouge">ner_jsl_greedy_biobert</code> : This model is the BioBert version of <code class="language-plaintext highlighter-rouge">ner_jsl_greedy</code> models and trained with <code class="language-plaintext highlighter-rouge">biobert_pubmed_base_cased</code> embeddings.</p>
-    </li>
-  </ul>
-
-  <p><em>Example</em>:</p>
-
-  <p><em>Python</em>:</p>
-
-  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
-embeddings_clinical <span class="o">=</span> BertEmbeddings.pretrained<span class="o">(</span><span class="s1">'biobert_pubmed_base_cased'</span><span class="o">)</span> <span class="se">\</span>
-    .setInputCols<span class="o">([</span><span class="s1">'sentence'</span>, <span class="s1">'token'</span><span class="o">])</span> <span class="se">\</span>
-    .setOutputCol<span class="o">(</span><span class="s1">'embeddings'</span><span class="o">)</span>
-clinical_ner <span class="o">=</span> MedicalNerModel.pretrained<span class="o">(</span><span class="s2">"ner_jsl_greedy_biobert"</span>, <span class="s2">"en"</span>, <span class="s2">"clinical/models"</span><span class="o">)</span> <span class="se">\</span>
-  .setInputCols<span class="o">([</span><span class="s2">"sentence"</span>, <span class="s2">"token"</span>, <span class="s2">"embeddings"</span><span class="o">])</span> <span class="se">\</span>
-  .setOutputCol<span class="o">(</span><span class="s2">"ner"</span><span class="o">)</span>
-...
-nlpPipeline <span class="o">=</span> Pipeline<span class="o">(</span><span class="nv">stages</span><span class="o">=[</span>document_assembler, sentence_detector, tokenizer, embeddings_clinical,  clinical_ner, ner_converter]<span class="o">)</span>
-model <span class="o">=</span> nlpPipeline.fit<span class="o">(</span>spark.createDataFrame<span class="o">([[</span><span class="s2">""</span><span class="o">]])</span>.toDF<span class="o">(</span><span class="s2">"text"</span><span class="o">))</span>
-results <span class="o">=</span> model.transform<span class="o">(</span>spark.createDataFrame<span class="o">([[</span><span class="s2">"The patient is a 21-day-old Caucasian male here for 2 days of congestion - mom has been suctioning yellow discharge from the patient's nares, plus she has noticed some mild problems with his breathing while feeding (but negative for any perioral cyanosis or retractions). One day ago, mom also noticed a tactile temperature and gave the patient Tylenol. Baby also has had some decreased p.o. intake. His normal breast-feeding is down from 20 minutes q.2h. to 5 to 10 minutes secondary to his respiratory congestion. He sleeps well, but has been more tired and has been fussy over the past 2 days. The parents noticed no improvement with albuterol treatments given in the ER. His urine output has also decreased; normally he has 8 to 10 wet and 5 dirty diapers per 24 hours, now he has down to 4 wet diapers per 24 hours. Mom denies any diarrhea. His bowel movements are yellow colored and soft in nature."</span><span class="o">]]</span>, <span class="o">[</span><span class="s2">"text"</span><span class="o">]))</span>
-</code></pre></div>  </div>
-
-  <p><em>Results</em>:</p>
-
-  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>|    | chunk                                          | entity                       |
-|---:|:-----------------------------------------------|:-----------------------------|
-|  0 | 21-day-old                                     | Age                          |
-|  1 | Caucasian                                      | Race_Ethnicity               |
-|  2 | male                                           | Gender                       |
-|  3 | <span class="k">for </span>2 days                                     | Duration                     |
-|  4 | congestion                                     | Symptom                      |
-|  5 | mom                                            | Gender                       |
-|  6 | suctioning yellow discharge                    | Symptom                      |
-|  7 | nares                                          | External_body_part_or_region |
-|  8 | she                                            | Gender                       |
-|  9 | mild problems with his breathing <span class="k">while </span>feeding | Symptom                      |
-| 10 | perioral cyanosis                              | Symptom                      |
-| 11 | retractions                                    | Symptom                      |
-| 12 | One day ago                                    | RelativeDate                 |
-| 13 | mom                                            | Gender                       |
-| 14 | tactile temperature                            | Symptom                      |
-| 15 | Tylenol                                        | Drug                         |
-| 16 | Baby                                           | Age                          |
-| 17 | decreased p.o. intake                          | Symptom                      |
-| 18 | His                                            | Gender                       |
-| 19 | breast-feeding                                 | External_body_part_or_region |
-| 20 | q.2h                                           | Frequency                    |
-| 21 | to 5 to 10 minutes                             | Duration                     |
-| 22 | his                                            | Gender                       |
-| 23 | respiratory congestion                         | Symptom                      |
-| 24 | He                                             | Gender                       |
-| 25 | tired                                          | Symptom                      |
-| 26 | fussy                                          | Symptom                      |
-| 27 | over the past 2 days                           | RelativeDate                 |
-| 28 | albuterol                                      | Drug                         |
-| 29 | ER                                             | Clinical_Dept                |
-| 30 | His                                            | Gender                       |
-| 31 | urine output has also decreased                | Symptom                      |
-| 32 | he                                             | Gender                       |
-| 33 | per 24 hours                                   | Frequency                    |
-| 34 | he                                             | Gender                       |
-| 35 | per 24 hours                                   | Frequency                    |
-| 36 | Mom                                            | Gender                       |
-| 37 | diarrhea                                       | Symptom                      |
-| 38 | His                                            | Gender                       |
-| 39 | bowel                                          | Internal_organ_or_component  |
-</code></pre></div>  </div>
-
-</div>
-<div class="h3-box">
-
-  <h4 id="new-cms-hcc-risk-adjustment-score-calculation-module">New CMS-HCC risk-adjustment score calculation module</h4>
-
-  <p>We are releasing a new module to calculate medical risk adjusment score by using the Centers for Medicare &amp; Medicaid Service (CMS) risk adjustment model. The main input to this model are ICD codes of the diseases. After getting ICD codes of diseases by Spark NLP Healthcare ICD resolvers, risk score can be calculated by this module in spark environment.
-Current supported version for the model is CMS-HCC V24.</p>
-
-  <p>The model needs following parameters in order to calculate the risk score:</p>
-  <ul>
-    <li>ICD Codes</li>
-    <li>Age</li>
-    <li>Gender</li>
-    <li>The eligibility segment of the patient</li>
-    <li>Original reason for entitlement</li>
-    <li>If the patient is in Medicaid or not</li>
-    <li>If the patient is disabled or not</li>
-  </ul>
-
-  <p><em>Example</em>:</p>
-
-  <p><em>Python:</em></p>
-  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sample_patients.show()
-</code></pre></div>  </div>
-  <p><em>Results</em>:</p>
-  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+----------+------------------------------+---+------+
-|Patient_ID|ICD_codes                     |Age|Gender|
-+----------+------------------------------+---+------+
-|101       |[E1169, I5030, I509, E852]    |64 |F     |
-|102       |[G629, D469, D6181]           |77 |M     |
-|103       |[D473, D473, D473, M069, C969]|16 |F     |
-+----------+------------------------------+---+------+
-</code></pre></div>  </div>
-
-  <p><em>Python:</em></p>
-  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from sparknlp_jsl.functions import profile
-df = df.withColumn("hcc_profile", profile(df.ICD_codes, df.Age, df.Gender))
-
-df = df.withColumn("hcc_profile", F.from_json(F.col("hcc_profile"), schema))
-df= df.withColumn("risk_score", df.hcc_profile.getItem("risk_score"))\
-      .withColumn("hcc_lst", df.hcc_profile.getItem("hcc_map"))\
-      .withColumn("parameters", df.hcc_profile.getItem("parameters"))\
-      .withColumn("details", df.hcc_profile.getItem("details"))\
-
-df.select('Patient_ID', 'risk_score','ICD_codes', 'Age', 'Gender').show(truncate=False )
-
-df.show(truncate=100, vertical=True)
-
-</code></pre></div>  </div>
-
-  <p><em>Results</em>:</p>
-
-  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-+----------+----------+------------------------------+---+------+
-|Patient_ID|risk_score|ICD_codes                     |Age|Gender|
-+----------+----------+------------------------------+---+------+
-|101       |0.827     |[E1169, I5030, I509, E852]    |64 |F     |
-|102       |1.845     |[G629, D469, D6181]           |77 |M     |
-|103       |1.288     |[D473, D473, D473, M069, C969]|16 |F     |
-+----------+----------+------------------------------+---+------+
-
-RECORD 0-------------------------------------------------------------------------------------------------------------------
- Patient_ID          | 101                                                                                                  
- ICD_codes           | [E1169, I5030, I509, E852]                                                                           
- Age                 | 64                                                                                                   
- Gender              | F                                                                                                    
- Eligibility_Segment | CNA                                                                                                  
- OREC                | 0                                                                                                    
- Medicaid            | false                                                                                                 
- Disabled            | false                                                                                                
- hcc_profile         | {{"CNA_HCC18":0.302,"CNA_HCC85":0.331,"CNA_HCC23":0.194,"CNA_D3":0.0,"CNA_HCC85_gDiabetesMellit":...
- risk_score          | 0.827                                                                                                
- hcc_lst             | {"E1169":["HCC18"],"I5030":["HCC85"],"I509":["HCC85"],"E852":["HCC23"]}                              
- parameters          | {"elig":"CNA","age":64,"sex":"F","origds":'0',"disabled":false,"medicaid":false}                   
- details             | {"CNA_HCC18":0.302,"CNA_HCC85":0.331,"CNA_HCC23":0.194,"CNA_D3":0.0,"CNA_HCC85_gDiabetesMellit":0.0}
--RECORD 1-------------------------------------------------------------------------------------------------------------------
- Patient_ID          | 102                                                                                                  
- ICD_codes           | [G629, D469, D6181]                                                                                  
- Age                 | 77                                                                                                   
- Gender              | M                                                                                                    
- Eligibility_Segment | CNA                                                                                                  
- OREC                | 0                                                                                                    
- Medicaid            | false                                                                                                 
- Disabled            | false                                                                                                 
- hcc_profile         | {{"CNA_M75_79":0.473,"CNA_D1":0.0,"CNA_HCC46":1.372}, ["D1","HCC46"], {"D469":["HCC46"]}, {"elig"...
- risk_score          | 1.845                                                                                                
- hcc_lst             | {"D469":["HCC46"]}                                                                                   
- parameters          | {"elig":"CNA","age":77,"sex":"M","origds":'0',"disabled":false,"medicaid":false}                   
- details             | {"CNA_M75_79":0.473,"CNA_D1":0.0,"CNA_HCC46":1.372}                                                  
--RECORD 2-------------------------------------------------------------------------------------------------------------------
- Patient_ID          | 103                                                                                                  
- ICD_codes           | [D473, D473, D473, M069, C969]                                                                       
- Age                 | 16                                                                                                   
- Gender              | F                                                                                                    
- Eligibility_Segment | CNA                                                                                                  
- OREC                | 0                                                                                                    
- Medicaid            | false                                                                                                
- Disabled            | false                                                                                                
- hcc_profile         | {{"CNA_HCC10":0.675,"CNA_HCC40":0.421,"CNA_HCC48":0.192,"CNA_D3":0.0}, ["HCC10","HCC40","HCC48","...
- risk_score          | 1.288                                                                                                
- hcc_lst             | {"D473":["HCC48"],"M069":["HCC40"],"C969":["HCC10"]}                                                 
- parameters          | {"elig":"CNA","age":16,"sex":"F","origds":'0',"disabled":false,"medicaid":false}                   
- details             | {"CNA_HCC10":0.675,"CNA_HCC40":0.421,"CNA_HCC48":0.192,"CNA_D3":0.0}
-</code></pre></div>  </div>
-
-  <p>Here is a sample notebook : <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/3.1.Calculate_Medicare_Risk_Adjustment_Score.ipynb">Calculating Medicare Risk Adjustment Score</a></p>
-
-</div>
-<div class="h3-box">
-
-  <h4 id="new-embedding-generation-module-for-entity-resolution">New Embedding generation module for entity resolution</h4>
-
-  <p>We are releasing a new annotator <code class="language-plaintext highlighter-rouge">BertSentenceChunkEmbeddings</code> to let users aggregate sentence embeddings and ner chunk embeddings to get more specific and accurate resolution codes. It works by averaging context and chunk embeddings to get contextual information. This is specially helpful when ner chunks do not have additional information (like body parts or severity) as explained in the example below. Input to this annotator is the context (sentence) and ner chunks, while the output is embedding for each chunk that can be fed to the resolver model. The <code class="language-plaintext highlighter-rouge">setChunkWeight</code> parameter can be used to control the influence of surrounding context. Example below shows the comparison of old vs new approach.</p>
-
-  <p>Sample Notebook: <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/24.1.Improved_Entity_Resolution_with_SentenceChunkEmbeddings.ipynb">Improved_Entity_Resolution_with_SentenceChunkEmbeddings</a></p>
-
-  <p><em>Example</em>:</p>
-
-  <p><em>Python:</em></p>
-  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
-sentence_chunk_embeddings = BertSentenceChunkEmbeddings\
-    .pretrained("sbiobert_base_cased_mli", "en", "clinical/models")\
-    .setInputCols(["sentences", "ner_chunk"])\
-    .setOutputCol("sentence_chunk_embeddings")\
-    .setChunkWeight(0.5)
-
-resolver = SentenceEntityResolverModel.pretrained('sbiobertresolve_icd10cm', 'en', 'clinical/models')\
-            .setInputCols(["sentence_chunk_embeddings"]) \
-              .setOutputCol("resolution")
-
-text = """A 20 year old female patient badly tripped while going down stairs. She complains of right leg pain.
-Her x-ray showed right hip fracture. Hair line fractures also seen on the left knee joint.
-She also suffered from trauma and slight injury on the head.
-
-OTHER CONDITIONS: She was also recently diagnosed with diabetes, which is of type 2.
-"""
-
-nlpPipeline = Pipeline(stages=[document_assembler, sentence_detector, tokenizer, embeddings_clinical,  clinical_ner, ner_converter, sentence_chunk_embeddings, resolver])
-model = nlpPipeline.fit(spark.createDataFrame([[""]]).toDF("text"))
-results = model.transform(spark.createDataFrame([[text]], ["text"]))
-</code></pre></div>  </div>
-
-  <p><em>Results</em>:</p>
-  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>|    | chunk               | entity              | code_with_old_approach | resolutions_with_old_approach                              | code_with_new_approach | resolutions_with_new_approach                                                                 |
-|---:|:--------------------|:--------------------|:-----------------------|:-----------------------------------------------------------|:-----------------------|:----------------------------------------------------------------------------------------------|
-|  0 | leg pain            | Symptom             | R1033                  | Periumbilical pain                                         | M79661                 | Pain in right lower leg                                                                       |
-|  1 | hip fracture        | Injury_or_Poisoning | M84459S                | Pathological fracture, hip, unspecified, sequela           | M84451S                | Pathological fracture, right femur, sequela                                                   |
-|  2 | Hair line fractures | Injury_or_Poisoning | S070XXS                | Crushing injury of face, sequela                           | S92592P                | Other fracture of left lesser toe(s), subsequent encounter for fracture with malunion         |
-|  3 | trauma              | Injury_or_Poisoning | T794XXS                | Traumatic shock, sequela                                   | S0083XS                | Contusion of other part of head, sequela                                                      |
-|  4 | slight injury       | Injury_or_Poisoning | B03                    | Smallpox                                                   | S0080XD                | Unspecified superficial injury of other part of head, subsequent encounter                    |
-|  5 | diabetes            | Diabetes            | E118                   | Type 2 diabetes mellitus with unspecified complications    | E1169                  | Type 2 diabetes mellitus with other specified complication                                    |
-</code></pre></div>  </div>
-
-  <p><strong>To see more, please check :</strong> <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/tutorials/Certification_Trainings/Healthcare">Spark NLP Healthcare Workshop Repo</a></p>
-
-</div>
-<div class="prev_ver h3-box">
-
-  <h2 id="versions">Versions</h2>
-
-</div>
-<ul class="pagination">
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="n">text</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+</code></pre></div>    </div>
+
+    <p>Result:</p>
+
+    <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"inclusion"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="nl">"type"</span><span class="p">:</span><span class="s2">"age"</span><span class="p">,</span><span class="nl">"min_years"</span><span class="p">:</span><span class="mi">18</span><span class="p">,</span><span class="nl">"max_years"</span><span class="p">:</span><span class="mi">75</span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="nl">"type"</span><span class="p">:</span><span class="s2">"condition"</span><span class="p">,</span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"type 2 diabetes mellitus"</span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="nl">"type"</span><span class="p">:</span><span class="s2">"lab"</span><span class="p">,</span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"HbA1c"</span><span class="p">,</span><span class="nl">"min_percent"</span><span class="p">:</span><span class="mf">7.0</span><span class="p">,</span><span class="nl">"max_percent"</span><span class="p">:</span><span class="mf">10.5</span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="nl">"type"</span><span class="p">:</span><span class="s2">"lab"</span><span class="p">,</span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"fasting plasma glucose"</span><span class="p">,</span><span class="nl">"min_value"</span><span class="p">:</span><span class="mi">126</span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="nl">"type"</span><span class="p">:</span><span class="s2">"pregnancy"</span><span class="p">,</span><span class="nl">"status"</span><span class="p">:</span><span class="s2">"negative_pregnancy_test"</span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"exclusion"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="nl">"type"</span><span class="p">:</span><span class="s2">"condition"</span><span class="p">,</span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"type 1 diabetes mellitus"</span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="nl">"type"</span><span class="p">:</span><span class="s2">"lab"</span><span class="p">,</span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"HbA1c"</span><span class="p">,</span><span class="nl">"max_percent"</span><span class="p">:</span><span class="mf">10.5</span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="nl">"type"</span><span class="p">:</span><span class="s2">"lab"</span><span class="p">,</span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"fasting plasma glucose"</span><span class="p">,</span><span class="nl">"max_value"</span><span class="p">:</span><span class="mi">300</span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="nl">"type"</span><span class="p">:</span><span class="s2">"pregnancy"</span><span class="p">,</span><span class="nl">"status"</span><span class="p">:</span><span class="s2">"pregnant_or_lactating"</span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="nl">"type"</span><span class="p">:</span><span class="s2">"condition"</span><span class="p">,</span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"diabetic ketoacidosis"</span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="nl">"type"</span><span class="p">:</span><span class="s2">"condition"</span><span class="p">,</span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"uncontrolled thyroid disease"</span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>    </div>
+
+    <p>Overall, this release extends our Medical LLM portfolio with a production-oriented model for structured eligibility parsing, helping teams move from free-text trial criteria to machine-readable JSON for downstream matching and analytics.</p>
+
+  </div>
+  <div class="h3-box">
+
+    <h4 id="lower-memory-ner-training-via-explodesentencesfortraining-parameter">Lower-Memory NER Training via <code class="language-plaintext highlighter-rouge">explodeSentencesForTraining</code> Parameter</h4>
+    <p><code class="language-plaintext highlighter-rouge">MedicalNerApproach</code> now supports an optional training-time preprocessing step that splits multi-sentence rows into <strong>one row per sentence</strong> before training. This can reduce <strong>peak memory usage</strong> and improve training efficiency on long documents.
+The new behavior is controlled by <strong><code class="language-plaintext highlighter-rouge">explodeSentencesForTraining</code></strong> and is <strong>disabled by default</strong> (<code class="language-plaintext highlighter-rouge">False</code>).</p>
+
+    <p class="table-model-big"><strong>Performance (example benchmark)</strong>
+<em>Dataset: 30 documents, ~30,000 characters.</em></p>
+    <p>| <strong>explodeSentencesForTraining</strong> | <strong>Approx. training time</strong> | <strong>Approx. peak RAM</strong> |
+|——————————–|————————–:|———————:|
+| <code class="language-plaintext highlighter-rouge">True</code>                         | ~11 minutes               | ~9.3 GB              |
+| <code class="language-plaintext highlighter-rouge">False</code>                        | ~24 minutes               | ~30 GB               |</p>
+
+    <p><em>Note: Results may vary depending on hardware, Spark configuration, dataset characteristics, and model hyperparameters.</em></p>
+
+    <p><strong>What changed</strong></p>
+    <ul>
+      <li>Added <strong><code class="language-plaintext highlighter-rouge">explodeSentencesForTraining</code></strong> to <code class="language-plaintext highlighter-rouge">MedicalNerApproach</code>.</li>
+      <li>Kept validation splitting at <strong>document level first</strong>, then optionally <strong>exploded each split into sentence rows</strong> for training.
+<em>Example</em>:</li>
+    </ul>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">nerTagger</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">MedicalNerApproach</span><span class="p">()</span>
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"splitter"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">])</span>
+    <span class="p">.</span><span class="n">setLabelColumn</span><span class="p">(</span><span class="n">LABEL_COLUMN</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setMaxEpochs</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setBatchSize</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setRandomSeed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setVerbose</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setValidationSplit</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setEvaluationLogExtended</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setEnableOutputLogs</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setIncludeConfidence</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setOutputLogsPath</span><span class="p">(</span><span class="s">"ner_logs"</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setEarlyStoppingCriterion</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setEarlyStoppingPatience</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setUseBestModel</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setExplodeSentencesForTraining</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>  <span class="c1"># default: False; set to True to enable sentence explosion
+</span><span class="p">)</span>
+<span class="n">training_pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span><span class="n">nerDLGraphChecker</span><span class="p">,</span> <span class="n">nerTagger</span><span class="p">])</span>
+<span class="n">ner_model_nosplit</span> <span class="o">=</span> <span class="n">training_pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_df</span><span class="p">)</span>
+
+</code></pre></div>    </div>
+
+    <div class="h3-box">
+
+      <h4 id="documenthashcoder-integration-with-light-pipeline-to-enable-consistent-hashing-in-both-spark-pipeline-transforms-and-lightpipeline-fullannotate-style-inference">DocumentHashCoder Integration with Light Pipeline to Enable Consistent Hashing in Both Spark Pipeline Transforms and LightPipeline fullAnnotate-Style Inference</h4>
+
+      <p>DocumentHashCoder has been updated to be compatible with LightPipeline.
+With this enhancement, the same hashing behavior is preserved across both standard Spark Pipeline flows and low-latency LightPipeline inference.</p>
+
+      <p><em>Example</em>: DocumentHashCoder with transform()</p>
+
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span> <span class="nn">sparknlp.base</span> <span class="kn">import</span> <span class="n">DocumentAssembler</span><span class="p">,</span> <span class="n">LightPipeline</span>
+<span class="kn">from</span> <span class="nn">sparknlp_jsl.annotator</span> <span class="kn">import</span> <span class="n">DocumentHashCoder</span>
+
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">"Patient has diabetes and hypertension."</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s">"No acute cardiopulmonary process detected."</span><span class="p">),</span>
+    <span class="p">],</span>
+    <span class="p">[</span><span class="s">"id"</span><span class="p">,</span> <span class="s">"text"</span><span class="p">],</span>
+<span class="p">)</span>
+
+<span class="n">document_assembler</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">DocumentAssembler</span><span class="p">()</span>
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">document_hasher</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">DocumentHashCoder</span><span class="p">()</span>
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"hashed_document"</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setPatientIdColumn</span><span class="p">(</span><span class="s">"id"</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setRangeDays</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setNewDateShift</span><span class="p">(</span><span class="s">"shift_days"</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setSeed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span><span class="n">document_assembler</span><span class="p">,</span> <span class="n">document_hasher</span><span class="p">])</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># Spark pipeline output
+</span><span class="n">transformed</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">transformed</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">"id"</span><span class="p">,</span> <span class="s">"hashed_document"</span><span class="p">).</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+</code></pre></div>      </div>
+      <p><em>Result</em>:</p>
+
+      <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+---+----------------------------------------------------------------------------------------------------------------------+
+|id |hashed_document                                                                                                       |
++---+----------------------------------------------------------------------------------------------------------------------+
+|1  |[{document, 0, 37, Patient has diabetes and hypertension., {sentence -&gt; 0, patientId -&gt; 1, dateshift -&gt; 47}, []}]     |
+|2  |[{document, 0, 41, No acute cardiopulmonary process detected., {sentence -&gt; 0, patientId -&gt; 2, dateshift -&gt; -26}, []}]|
++---+----------------------------------------------------------------------------------------------------------------------+
+</code></pre></div>      </div>
+
+      <p><em>Example</em>: DocumentHashCoder with fullAnnotate()</p>
+
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># LightPipeline output
+</span><span class="n">texts</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s">"Patient has diabetes and hypertension."</span><span class="p">,</span>
+    <span class="s">"No acute cardiopulmonary process detected."</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="n">light</span> <span class="o">=</span> <span class="n">LightPipeline</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<span class="n">light_out</span> <span class="o">=</span> <span class="n">light</span><span class="p">.</span><span class="n">fullAnnotate</span><span class="p">(</span><span class="n">texts</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s">"id"</span><span class="p">:</span> <span class="p">[</span><span class="s">"1"</span><span class="p">,</span> <span class="s">"2"</span><span class="p">]})</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">light_out</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s">"hashed_document"</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">light_out</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s">"hashed_document"</span><span class="p">])</span>
+
+</code></pre></div>      </div>
+
+      <p><em>Result</em>:</p>
+
+      <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[Annotation(document, 0, 37, Patient has diabetes and hypertension., {'sentence': '0', 'patientId': '1', 'dateshift': '47'}, [])]
+[Annotation(document, 0, 41, No acute cardiopulmonary process detected., {'sentence': '0', 'patientId': '2', 'dateshift': '-26'}, [])]
+</code></pre></div>      </div>
+
+    </div>
+    <div class="h3-box">
+
+      <h4 id="de-identification-setdeidmarkers-to-wrap-de-identified-spans-with-configurable-prefixsuffix-markers-in-the-deidentified-text">De-identification setDeidMarkers to wrap de-identified spans with configurable prefix/suffix markers in the deidentified text.</h4>
+      <p><code class="language-plaintext highlighter-rouge">DeIdentification</code> now supports <strong><code class="language-plaintext highlighter-rouge">setDeidMarkers</code></strong>, which defines the <strong>prefix and suffix markers</strong> used to wrap de-identified entity spans in the output text.</p>
+      <ul>
+        <li>The <strong>first</strong> value is the <strong>prefix</strong> marker and the <strong>second</strong> is the <strong>suffix</strong> marker.<br />
+Example: <code class="language-plaintext highlighter-rouge">("[START]", "[END]")</code> can wrap sensitive spans so the output reads like <code class="language-plaintext highlighter-rouge">[START]...entity text...[END]</code> (depending on mode and pipeline configuration).</li>
+      </ul>
+
+      <p><strong>Parameter formats</strong></p>
+      <ul>
+        <li><strong>List or tuple:</strong> <code class="language-plaintext highlighter-rouge">(prefix, suffix)</code> — e.g. <code class="language-plaintext highlighter-rouge">("&lt;DEID&gt;", "&lt;/DEID&gt;")</code></li>
+        <li><strong>Dict:</strong> keys <strong><code class="language-plaintext highlighter-rouge">start</code></strong> (prefix) and/or <strong><code class="language-plaintext highlighter-rouge">end</code></strong> (suffix). If only one key is provided, the other defaults to <code class="language-plaintext highlighter-rouge">""</code>. Valid keys are <strong><code class="language-plaintext highlighter-rouge">start</code></strong> and <strong><code class="language-plaintext highlighter-rouge">end</code></strong> only.</li>
+      </ul>
+
+      <p><em>Example</em>:</p>
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">light_de_identification</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">LightDeIdentification</span><span class="p">()</span>
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"ner_chunk"</span><span class="p">,</span> <span class="s">"document"</span><span class="p">])</span>
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"dei"</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setMode</span><span class="p">(</span><span class="s">"obfuscate"</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setObfuscateRefSource</span><span class="p">(</span><span class="s">"faker"</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setSeed</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setDeidMarkers</span><span class="p">({</span><span class="s">"start"</span><span class="p">:</span> <span class="s">"[S]"</span><span class="p">,</span> <span class="s">"end"</span><span class="p">:</span> <span class="s">"[E]"</span><span class="p">})</span>
+<span class="p">)</span>
+
+</code></pre></div>      </div>
+
+      <p><em>Result</em>:</p>
+
+      <p>Original document text:</p>
+      <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Patient John Doe was seen in the clinic.
+</code></pre></div>      </div>
+
+      <p>De-identified text (obfuscated), with markers:</p>
+      <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Patient [S]Valerie Aho[E] was seen in the clinic.
+</code></pre></div>      </div>
+
+    </div>
+    <div class="h3-box">
+      <div class="h3-box">
+
+        <h4 id="obfuscation-evaluation-a-new-utility-function-to-report-leakage-and-success-rates-when-comparing-original-vs-obfuscated-columns-after-structured-data">Obfuscation evaluation: A new utility function to report leakage and success rates when comparing original vs obfuscated columns after structured data.</h4>
+
+        <p>A new helper, <strong><code class="language-plaintext highlighter-rouge">evaluate_obfuscation</code></strong>, is available to measure <strong>obfuscation quality</strong> on a Spark <code class="language-plaintext highlighter-rouge">DataFrame</code> by comparing <strong>original</strong> and <strong>obfuscated</strong> column values. It reports <strong>leakage</strong> (rows where sensitive values were unchanged) and <strong>success rate</strong> (complement of leakage rate among evaluated rows).</p>
+
+        <p><strong>Behavior</strong></p>
+
+        <ul>
+          <li>Compares <code class="language-plaintext highlighter-rouge">original_col</code> vs <code class="language-plaintext highlighter-rouge">obfuscated_col</code> row-wise.</li>
+          <li><strong><code class="language-plaintext highlighter-rouge">null_handling</code></strong>: <code class="language-plaintext highlighter-rouge">ignore</code> (skip rows where both sides are null/empty), <code class="language-plaintext highlighter-rouge">equal</code> (treat null as empty string before compare), or <code class="language-plaintext highlighter-rouge">strict</code> (no null normalization). Default: <code class="language-plaintext highlighter-rouge">ignore</code>.</li>
+          <li><strong><code class="language-plaintext highlighter-rouge">normalize_strings</code></strong>: optional whitespace trim before comparison; comparison remains <strong>case-sensitive</strong>. Default: <code class="language-plaintext highlighter-rouge">True</code>.</li>
+        </ul>
+
+        <p><strong>Returns</strong></p>
+
+        <p>A <code class="language-plaintext highlighter-rouge">dict</code> with:</p>
+
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">total_rows</code> — rows included after filtering</li>
+          <li><code class="language-plaintext highlighter-rouge">leakage_count</code> — rows where original equals obfuscated</li>
+          <li><code class="language-plaintext highlighter-rouge">leakage_rate</code> — <code class="language-plaintext highlighter-rouge">leakage_count / total_rows</code></li>
+          <li><code class="language-plaintext highlighter-rouge">success_rate</code> — <code class="language-plaintext highlighter-rouge">1 - leakage_rate</code> (for evaluated rows)</li>
+        </ul>
+
+        <p><em>Example</em> (with <code class="language-plaintext highlighter-rouge">StructuredDeidentification</code>):</p>
+
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp_jsl.utils</span> <span class="kn">import</span> <span class="n">evaluate_obfuscation</span>
+<span class="kn">from</span> <span class="nn">sparknlp_jsl.structured_deidentification</span> <span class="kn">import</span> <span class="n">StructuredDeidentification</span>
+
+<span class="n">obfuscator</span> <span class="o">=</span> <span class="n">StructuredDeidentification</span><span class="p">(</span>
+    <span class="n">spark</span><span class="o">=</span><span class="n">spark</span><span class="p">,</span>
+    <span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s">"NAME"</span><span class="p">:</span> <span class="s">"NAME"</span><span class="p">},</span>
+    <span class="n">obfuscateRefSource</span><span class="o">=</span><span class="s">"faker"</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">obfuscated_df</span> <span class="o">=</span> <span class="n">obfuscator</span><span class="p">.</span><span class="n">obfuscateColumns</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">,</span>
+    <span class="n">outputAsArray</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+    <span class="n">overwrite</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+    <span class="n">suffix</span><span class="o">=</span><span class="s">"_OBFUSCATED"</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">eval_result</span> <span class="o">=</span> <span class="n">evaluate_obfuscation</span><span class="p">(</span>
+    <span class="n">obfuscated_df</span><span class="p">,</span>
+    <span class="n">original_col</span><span class="o">=</span><span class="s">"NAME"</span><span class="p">,</span>
+    <span class="n">obfuscated_col</span><span class="o">=</span><span class="s">"NAME_OBFUSCATED"</span><span class="p">,</span>
+    <span class="n">null_handling</span><span class="o">=</span><span class="s">"strict"</span><span class="p">,</span>
+    <span class="n">normalize_strings</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">eval_result</span><span class="p">)</span>
+
+</code></pre></div>        </div>
+
+        <p><em>Result</em>:</p>
+
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+  <span class="s">"total_rows"</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+  <span class="s">"leakage_count"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s">"leakage_rate"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+  <span class="s">"success_rate"</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre></div>        </div>
+
+        <h4 id="enhanced-14-new-entity-resolver-models-for-mapping-clinical-terms-to-standardized-snomed-ct-codes-and-loinc">Enhanced 14 New Entity Resolver Models for Mapping Clinical Terms to Standardized SNOMED CT Codes and LOINC</h4>
+
+        <p>We are updating our <strong>SentenceEntityResolver</strong> (resolving named entities to medical terminologies) lineup with **four LOINC ** and **ten SNOMED CT ** models, covering laboratory and clinical observation coding (LOINC) and  SNOMED CT concept resolution across multiple semantic slices.</p>
+
+        <p><strong>LOINC resolvers</strong> map extracted clinical entities to <strong>Logical Observation Identifiers Names and Codes (LOINC)</strong> using sentence embeddings; resolutions include the official LOINC description in brackets where applicable. The family is trained against <strong>LOINC v2.81</strong> and follows the same NER → chunk → <code class="language-plaintext highlighter-rouge">BertSentenceEmbeddings</code> → resolver pattern as our existing LOINC resolvers, with variants for <strong>augmented</strong> and <strong>numeric-augmented</strong> training, a <strong>base</strong> SBioBERT-cased model, and an <strong>uncased BlueBERT</strong> (<code class="language-plaintext highlighter-rouge">sbluebertresolve_loinc_uncased</code>) option for case-insensitive matching.</p>
+
+        <p><strong>SNOMED resolvers</strong> map clinical entities and concepts to <strong>SNOMED CT</strong> codes using <strong><code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli</code></strong> sentence embeddings (and <strong><code class="language-plaintext highlighter-rouge">mpnet_embeddings_biolord_2023_c</code></strong> for <a href="https://nlp.johnsnowlabs.com/2026/03/16/biolordresolve_snomed_findings_aux_concepts_en.html"><code class="language-plaintext highlighter-rouge">biolordresolve_snomed_findings_aux_concepts</code></a>), with models specialized by domain (e.g. conditions, drugs, body structure, findings, procedures and measurements, veterinary, auxiliary concepts).</p>
+
+        <p class="table-model-big"><strong>LOINC models</strong></p>
+        <p>| Model Name | Description |
+|————|————-|
+| <a href="https://nlp.johnsnowlabs.com/2026/02/02/sbiobertresolve_loinc_augmented_en.html"><code class="language-plaintext highlighter-rouge">sbiobertresolve_loinc_augmented</code></a> | Maps medical entities to LOINC codes (augmented variant) |
+| <a href="https://nlp.johnsnowlabs.com/2026/02/02/sbiobertresolve_loinc_en.html"><code class="language-plaintext highlighter-rouge">sbiobertresolve_loinc</code></a> | Maps extracted medical entities to LOINC codes using <code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli</code> |
+| <a href="https://nlp.johnsnowlabs.com/2026/02/02/sbiobertresolve_loinc_numeric_augmented_en.html"><code class="language-plaintext highlighter-rouge">sbiobertresolve_loinc_numeric_augmented</code></a> | Maps medical entities to LOINC codes (numeric-augmented variant) |
+| <a href="https://nlp.johnsnowlabs.com/2026/03/05/sbluebertresolve_loinc_uncased_en.html"><code class="language-plaintext highlighter-rouge">sbluebertresolve_loinc_uncased</code></a> | Uncased BlueBERT-based LOINC sentence resolver |</p>
+
+        <p class="table-model-big"><strong>SNOMED models</strong></p>
+        <p>| Model Name | Description |
+|————|————-|
+| <a href="https://nlp.johnsnowlabs.com/2026/03/15/sbiobertresolve_snomed_auxConcepts_en.html"><code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_auxConcepts</code></a> | Maps clinical entities and concepts to SNOMED CT (auxiliary concepts scope) |
+| <a href="https://nlp.johnsnowlabs.com/2026/03/15/sbiobertresolve_snomed_bodyStructure_en.html"><code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_bodyStructure</code></a> | Maps entities to SNOMED CT for body structure concepts |
+| <a href="https://nlp.johnsnowlabs.com/2026/03/15/sbiobertresolve_snomed_conditions_en.html"><code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_conditions</code></a> | Maps entities to SNOMED CT for clinical conditions |
+| <a href="https://nlp.johnsnowlabs.com/2026/03/15/sbiobertresolve_snomed_drug_en.html"><code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_drug</code></a> | Maps entities to SNOMED CT for drug-related concepts |
+| <a href="https://nlp.johnsnowlabs.com/2026/03/16/biolordresolve_snomed_findings_aux_concepts_en.html"><code class="language-plaintext highlighter-rouge">biolordresolve_snomed_findings_aux_concepts</code></a> | SNOMED findings / auxiliary concepts using Biolord sentence embeddings |
+| <a href="https://nlp.johnsnowlabs.com/2026/03/16/sbiobertresolve_snomed_findings_aux_concepts_en.html"><code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_findings_aux_concepts</code></a> | SNOMED findings with auxiliary concepts (SBioBERT) |
+| <a href="https://nlp.johnsnowlabs.com/2026/03/16/sbiobertresolve_snomed_findings_en.html"><code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_findings</code></a> | Maps clinical findings to SNOMED CT |
+| <a href="https://nlp.johnsnowlabs.com/2026/03/16/sbiobertresolve_snomed_no_class_en.html"><code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_no_class</code></a> | SNOMED resolution without a fixed semantic-class constraint |
+| <a href="https://nlp.johnsnowlabs.com/2026/03/16/sbiobertresolve_snomed_procedures_measurements_en.html"><code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_procedures_measurements</code></a> | Maps procedures and measurements to SNOMED CT |
+| <a href="https://nlp.johnsnowlabs.com/2026/03/16/sbiobertresolve_snomed_veterinary_en.html"><code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_veterinary</code></a> | Maps entities to SNOMED CT in a veterinary-focused setting |</p>
+
+        <p><em>Example</em> (LOINC — <code class="language-plaintext highlighter-rouge">sbiobertresolve_loinc</code>):</p>
+
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">document_assembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span>\
+	<span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
+	<span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+
+<span class="n">sentence_detector</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">SentenceDetectorDLModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sentence_detector_dl_healthcare"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
+	<span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span> \
+	<span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>
+
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Tokenizer</span><span class="p">()</span>\
+	<span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">])</span>\
+	<span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
+
+<span class="n">word_embeddings</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">WordEmbeddingsModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"embeddings_clinical"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+	<span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span>\
+	<span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"embeddings"</span><span class="p">)</span>
+
+<span class="n">ner_model</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">NerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"ner_jsl"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
+	<span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">])</span> \
+	<span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>
+
+<span class="n">ner_converter</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">NerConverterInternal</span><span class="p">()</span> \
+ 	<span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner"</span><span class="p">])</span> \
+	<span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>\
+	<span class="p">.</span><span class="n">setWhiteList</span><span class="p">([</span><span class="s">"Test"</span><span class="p">])</span>
+
+<span class="n">chunk2doc</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">Chunk2Doc</span><span class="p">()</span>\
+  <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>\
+  <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk_doc"</span><span class="p">)</span>
+
+<span class="n">sbert_embedder</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">BertSentenceEmbeddings</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sbiobert_base_cased_mli"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span><span class="s">"clinical/models"</span><span class="p">)</span>\
+	<span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"ner_chunk_doc"</span><span class="p">])</span>\
+	<span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sbert_embeddings"</span><span class="p">)</span>\
+	<span class="p">.</span><span class="n">setCaseSensitive</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+
+<span class="n">resolver</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">SentenceEntityResolverModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sbiobertresolve_loinc"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
+	<span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sbert_embeddings"</span><span class="p">])</span> \
+	<span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"resolution"</span><span class="p">)</span>\
+	<span class="p">.</span><span class="n">setDistanceFunction</span><span class="p">(</span><span class="s">"EUCLIDEAN"</span><span class="p">)</span>
+
+<span class="n">nlpPipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span><span class="n">document_assembler</span><span class="p">,</span>
+                               <span class="n">sentence_detector</span><span class="p">,</span>
+                               <span class="n">tokenizer</span><span class="p">,</span>
+                               <span class="n">word_embeddings</span><span class="p">,</span>
+                               <span class="n">ner_model</span><span class="p">,</span>
+                               <span class="n">ner_converter</span><span class="p">,</span>
+                               <span class="n">chunk2doc</span><span class="p">,</span>
+                               <span class="n">sbert_embedder</span><span class="p">,</span>
+                               <span class="n">resolver</span><span class="p">])</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"""A 65-year-old woman presents to the office with generalized fatigue for the last 4 months.
+  She used to walk 1 mile each evening but now gets tired after 1-2 blocks. She has a history of Crohn disease and hypertension
+  for which she receives appropriate medications. She is married and lives with her husband. She eats a balanced diet that
+  includes chicken, fish, pork, fruits, and vegetables. She rarely drinks alcohol and denies tobacco use. A physical examination
+  is unremarkable. Laboratory studies show the following: Hemoglobin: 9.8g/dL, Hematocrit: 32%, Mean Corpuscular Volume: 110 μm3"""</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">nlpPipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+</code></pre></div>        </div>
+
+        <p>Result (LOINC):</p>
+
+        <table class="table-model-big">
+          <thead>
+            <tr>
+              <th>chunk</th>
+              <th>begin</th>
+              <th>end</th>
+              <th>ner_label</th>
+              <th>loinc_code</th>
+              <th>description</th>
+              <th>resolutions</th>
+              <th>all_codes</th>
+              <th>aux_labels</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>physical examination</td>
+              <td>450</td>
+              <td>469</td>
+              <td>Test</td>
+              <td>29544-4</td>
+              <td>Physical findings [Physical findings]</td>
+              <td>Physical findings [Physical findings]:::Physical findings…</td>
+              <td>29544-4:::29545-1:::55286-9:::11435-5:::11384-5:::8709-8:…</td>
+              <td>ACTIVE:::ACTIVE:::ACTIVE:::ACTIVE:::ACTIVE:::ACTIVE:::ACT…</td>
+            </tr>
+            <tr>
+              <td>Laboratory studies</td>
+              <td>490</td>
+              <td>507</td>
+              <td>Test</td>
+              <td>26436-6</td>
+              <td>Laboratory studies (set) [Laboratory studies (set)]</td>
+              <td>Laboratory studies (set) [Laboratory studies (set)]:::Lab…</td>
+              <td>26436-6:::52482-7:::11502-2:::34075-2:::100455-5:::85069-…</td>
+              <td>ACTIVE:::DISCOURAGED:::ACTIVE:::ACTIVE:::ACTIVE:::ACTIVE:…</td>
+            </tr>
+            <tr>
+              <td>Hemoglobin</td>
+              <td>529</td>
+              <td>538</td>
+              <td>Test</td>
+              <td>10346-5</td>
+              <td>Hemoglobin [Hemoglobin A [Units/volume] in Blood by Elect…]</td>
+              <td>Hemoglobin [Hemoglobin A [Units/volume] in Blood by Elect…]</td>
+              <td>10346-5:::109592-6:::11559-2:::2030-5:::34618-9:::38896-7…</td>
+              <td>ACTIVE:::TRIAL:::ACTIVE:::ACTIVE:::ACTIVE:::ACTIVE:::ACTI…</td>
+            </tr>
+            <tr>
+              <td>Hematocrit</td>
+              <td>550</td>
+              <td>559</td>
+              <td>Test</td>
+              <td>11559-2</td>
+              <td>Fractional hemoglobin [Fractional oxyhemoglobin in Blood]</td>
+              <td>Fractional hemoglobin [Fractional oxyhemoglobin in Blood]…</td>
+              <td>11559-2:::10346-5:::41986-1:::48703-3:::55103-6:::8478-0:…</td>
+              <td>ACTIVE:::ACTIVE:::ACTIVE:::ACTIVE:::ACTIVE:::ACTIVE:::ACT…</td>
+            </tr>
+            <tr>
+              <td>Mean Corpuscular Volume</td>
+              <td>567</td>
+              <td>589</td>
+              <td>Test</td>
+              <td>30386-7</td>
+              <td>Erythrocyte mean corpuscular diameter [Length] [Erythrocy…]</td>
+              <td>Erythrocyte mean corpuscular diameter [Length] [Erythrocy…]</td>
+              <td>30386-7:::101864-7:::20161-6:::18033-1:::19853-1:::101150…</td>
+              <td>ACTIVE:::ACTIVE:::ACTIVE:::ACTIVE:::ACTIVE:::ACTIVE:::ACT…</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p><em>Example</em> (SNOMED — sbiobertresolve_snomed_auxConcepts):</p>
+
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">documentAssembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
+      <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
+      <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+
+<span class="n">sentenceDetector</span> <span class="o">=</span> <span class="n">SentenceDetectorDLModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sentence_detector_dl_healthcare"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span><span class="s">"clinical/models"</span><span class="p">)</span>\
+      <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
+      <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>
+
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">()</span>\
+      <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">])</span>\
+      <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
+
+<span class="n">word_embeddings</span> <span class="o">=</span> <span class="n">WordEmbeddingsModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"embeddings_clinical"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+      <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span>\
+      <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"embeddings"</span><span class="p">)</span>
+
+<span class="n">ner_jsl</span> <span class="o">=</span> <span class="n">MedicalNerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"ner_jsl"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+      <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">])</span>\
+      <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_jsl"</span><span class="p">)</span>
+
+<span class="n">ner_jsl_converter</span> <span class="o">=</span> <span class="n">NerConverterInternal</span><span class="p">()</span>\
+      <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner_jsl"</span><span class="p">])</span>\
+      <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_jsl_chunk"</span><span class="p">)</span>\
+      <span class="p">.</span><span class="n">setWhiteList</span><span class="p">([</span><span class="s">"Procedure"</span><span class="p">,</span><span class="s">"Substance"</span><span class="p">,</span><span class="s">"Drug_Ingredient"</span><span class="p">,</span><span class="s">"Internal_organ_or_component"</span><span class="p">,</span><span class="s">"Modifier"</span><span class="p">,</span><span class="s">"BMI"</span><span class="p">,</span><span class="s">"LDL"</span><span class="p">,</span><span class="s">"External_body_part_or_region"</span><span class="p">,</span><span class="s">"Alcohol"</span><span class="p">,</span><span class="s">"Treatment"</span><span class="p">,</span><span class="s">"Test"</span><span class="p">,</span><span class="s">"Smoking"</span><span class="p">])</span>
+
+<span class="n">chunk2doc</span> <span class="o">=</span> <span class="n">Chunk2Doc</span><span class="p">()</span>\
+      <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"ner_jsl_chunk"</span><span class="p">)</span>\
+      <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk_doc"</span><span class="p">)</span>
+
+<span class="n">sbert_embedder</span> <span class="o">=</span> <span class="n">BertSentenceEmbeddings</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sbiobert_base_cased_mli"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span><span class="s">"clinical/models"</span><span class="p">)</span>\
+     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"ner_chunk_doc"</span><span class="p">])</span>\
+     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sbert_embeddings"</span><span class="p">)</span>\
+     <span class="p">.</span><span class="n">setCaseSensitive</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+
+<span class="n">snomed_resolver</span> <span class="o">=</span> <span class="n">SentenceEntityResolverModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sbiobertresolve_snomed_auxConcepts"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span><span class="s">"clinical/models"</span><span class="p">)</span>\
+     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sbert_embeddings"</span><span class="p">])</span>\
+     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"snomed_code"</span><span class="p">)</span>\
+     <span class="p">.</span><span class="n">setDistanceFunction</span><span class="p">(</span><span class="s">"EUCLIDEAN"</span><span class="p">)</span>
+
+<span class="n">nlpPipeline</span><span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
+                              <span class="n">documentAssembler</span><span class="p">,</span>
+                              <span class="n">sentenceDetector</span><span class="p">,</span>
+                              <span class="n">tokenizer</span><span class="p">,</span>
+                              <span class="n">word_embeddings</span><span class="p">,</span>
+                              <span class="n">ner_jsl</span><span class="p">,</span>
+                              <span class="n">ner_jsl_converter</span><span class="p">,</span>
+                              <span class="n">chunk2doc</span><span class="p">,</span>
+                              <span class="n">sbert_embedder</span><span class="p">,</span>
+                              <span class="n">snomed_resolver</span>
+<span class="p">])</span>
+
+<span class="n">sample_text</span> <span class="o">=</span> <span class="s">"""This is an 82-year-old male with a history of prior tobacco use, hypertension, chronic renal insufficiency, COPD, gastritis, and TIA. He initially presented to Braintree with a nonspecific ST-T abnormality and was transferred to St. Margaret’s Center. He underwent cardiac catheterization because of occlusion of the mid left anterior descending coronary artery lesion, which was complicated by hypotension and bradycardia. He required atropine, IV fluids, and dopamine, possibly secondary to a vagal reaction. He was subsequently transferred to the CCU for close monitoring. He was hemodynamically stable at the time of admission to the CCU."""</span>
+
+<span class="n">df</span><span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="n">sample_text</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+
+<span class="n">result</span><span class="o">=</span> <span class="n">nlpPipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+</code></pre></div>        </div>
+
+        <p>Result (SNOMED):</p>
+
+        <table class="table-model-big">
+          <thead>
+            <tr>
+              <th>sent_id</th>
+              <th>ner_chunk</th>
+              <th>entity</th>
+              <th>snomed_code</th>
+              <th>resolution</th>
+              <th>all_codes</th>
+              <th>all_resolutions</th>
+              <th>aux_list</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>0</td>
+              <td>tobacco</td>
+              <td>Smoking</td>
+              <td>57264008</td>
+              <td>tobacco</td>
+              <td>[57264008, 102407002, 39953003, 159882006, 230491000087101, 102408007, 722496004, 38402001, 7110…]</td>
+              <td>[tobacco, tobacco smoke, tobacco - substance, tobacco processor, shisha tobacco, cigarette smoke…]</td>
+              <td>[Organism, Substance, Substance, Social Context, No_Concept_Class, Substance, Physical Object, …]</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>nonspecific</td>
+              <td>Modifier</td>
+              <td>10003008</td>
+              <td>non-specific</td>
+              <td>[10003008, 261992003, 863956004, 300844001, 278001007, 863967003, 236821005, 276119007, 12170110…]</td>
+              <td>[non-specific, non-biological, non-sterile, non-resonant, nonspecific site, non-absorbable, …]</td>
+              <td>[Qualifier Value, Qualifier Value, Qualifier Value, Qualifier Value, Body Structure, Qualifier Value…]</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>cardiac catheterization</td>
+              <td>Procedure</td>
+              <td>41976001</td>
+              <td>cardiac catheterization</td>
+              <td>[41976001, 705923009, 721968000, 467735004, 129085009, 425315000, 128956009, 467525008, 12895700…]</td>
+              <td>[cardiac catheterization, cardiac catheter, cardiac catheterization report, …]</td>
+              <td>[Procedure, Physical Object, Record Artifact, Physical Object, Qualifier Value, Procedure, …]</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>atropine</td>
+              <td>Drug_Ingredient</td>
+              <td>73949004</td>
+              <td>atropine</td>
+              <td>[73949004, 105075009, 349945006, 410493009, 74237004, 50507004, 109207004, 349946007, 34013000…]</td>
+              <td>[atropine, atropine measurement, oral atropine, atropinization, atropine sulfate, …]</td>
+              <td>[Pharma/Biol Product, Procedure, Clinical Drug Form, Procedure, Substance, Substance, …]</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>fluids</td>
+              <td>Drug_Ingredient</td>
+              <td>255765007</td>
+              <td>fluid</td>
+              <td>[255765007, 246498002, 258442002, 251851008, 32457005, 396276007, 406142009, 251840008, 33463005…]</td>
+              <td>[fluid, fluid used, fluid sample, fluid input, body fluid, fluid appearance, …]</td>
+              <td>[Qualifier Value, Attribute, Specimen, Observable Entity, Substance, Observable Entity, …]</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>dopamine</td>
+              <td>Drug_Ingredient</td>
+              <td>59187003</td>
+              <td>dopamine</td>
+              <td>[59187003, 412383006, 37484001, 32779004, 412845004, 713493000, 418222008, 12307008, 384952006…]</td>
+              <td>[dopamine, dopamine agent, dopamine receptor, dopamine measurement, serum dopamine level, …]</td>
+              <td>[Pharma/Biol Product, Substance, Substance, Procedure, Procedure, Substance, …]</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+      <div class="h3-box">
+
+        <h4 id="new-research-publications">New Research Publications</h4>
+
+        <ul>
+          <li>
+            <p><strong><em>A Multi-Domain Red Teaming Framework for Safety, Robustness, and Fairness Evaluation of Medical Large Language Models</em></strong> Presented at <strong>Text2Story 2026</strong>, this work introduces a multi-domain red teaming framework evaluating medical LLMs across hundreds of clinically grounded scenarios spanning multiple domains and subcategories, combining adversarial transformations with a seven-dimension rubric, LLM-assisted scoring, and human-in-the-loop validation. The findings highlight substantial performance variance across models, meaningful worst-case failures even among high aggregate scores, equity-related sensitivity under demographic modifications, and the importance of hybrid (automated + clinician) evaluation for credible safety assessment.</p>
+          </li>
+          <li>
+            <p><strong><em>Comprehensive DICOM Deidentification Using Visual NLP: A Dual-Level Approach to Privacy-Preserving Medical Imaging</em></strong> Accepted at the <strong>Computer Vision Conference (CVC) 2026</strong>, this paper describes a dual-level DICOM de-identification methodology using John Snow Labs Visual NLP to address PHI in both pixel-level image content and DICOM metadata. Evaluated on the MIDI-B dataset, the approach reports strong validation outcomes—including high accuracy for text processing and consistent handling of key metadata operations—while aiming to preserve clinical utility for research-oriented use cases.</p>
+          </li>
+          <li>
+            <p><strong><em>Beyond Metadata Scrubbing: Production-Scale Pixel-Level and Metadata-Level DICOM Anonymisation for Healthcare Workflows</em></strong> Accepted at the <strong>2026 IEEE 14th International Conference on Healthcare Informatics (ICHI)</strong> under this title, covering production-scale DICOM anonymisation at both pixel and metadata levels for healthcare workflows. This entry corresponds to the full contribution summarized under <em>Comprehensive DICOM Deidentification Using Visual NLP: A Dual-Level Approach to Privacy-Preserving Medical Imaging</em>.</p>
+          </li>
+        </ul>
+
+      </div>
+      <div class="h3-box">
+
+        <h4 id="new-blog-posts--technical-deep-dives">New Blog Posts &amp; Technical Deep Dives</h4>
+
+        <ul>
+          <li>
+            <p><a href="https://medium.com/john-snow-labs/running-the-latest-llms-on-spark-llama-cpp-integration-gets-a-major-upgrade-209afc1449aa">Running the Latest LLMs on Spark: Llama.cpp Integration Gets a Major Upgrade</a> This blog post describes how Spark NLP’s Llama.cpp stack was upgraded (including Spark NLP and a newer upstream Llama.cpp release) to support a broader set of modern LLM families—quantized GGUF models and multimodal variants—with faster, more memory-efficient inference on CPUs and typical hardware. It explains how <strong>AutoGGUFModel</strong> and related annotators plug into Spark ML pipelines, how to use pretrained GGUF checkpoints or load your own <code class="language-plaintext highlighter-rouge">.gguf</code> files, and why keeping pace with Llama.cpp helps teams run the latest open models at Spark scale with minimal extra infrastructure.</p>
+          </li>
+          <li>
+            <p><a href="https://medium.com/john-snow-labs/multilingual-clinical-ner-with-onnx-new-models-for-entity-extraction-across-languages-fbd7d0d249ad">Multilingual Clinical NER with ONNX: New Models for Entity Extraction Across Languages</a> This blog post introduces new ONNX-based clinical Named Entity Recognition models for English, Italian, and Spanish in John Snow Labs Healthcare NLP, aimed at extracting core medical entities such as diseases, procedures, medications, and symptoms with production-ready performance. It outlines why ONNX is a practical deployment format for clinical NLP, how these models fit into Spark NLP–style pipelines, and how multilingual coverage supports structured extraction from non-English clinical narratives alongside the existing English foundation.</p>
+          </li>
+        </ul>
+
+      </div>
+      <div class="h3-box">
+
+        <h4 id="updated-notebooks-and-demonstrations-for-making-healthcare-nlp-easier-to-navigate-and-understand">Updated Notebooks And Demonstrations For making Healthcare NLP Easier To Navigate And Understand</h4>
+
+        <ul>
+          <li>New <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.8.PretrainedZeroShotMultiTask.ipynb">Pretrained Zero Shot Multi Task</a> Notebook</li>
+        </ul>
+
+      </div>
+      <div class="h3-box">
+
+        <h4 id="we-have-added-and-updated-a-substantial-number-of-new-clinical-models-and-pipelines-further-solidifying-our-offering-in-the-healthcare-domain">We Have Added And Updated A Substantial Number Of New Clinical Models And Pipelines, Further Solidifying Our Offering In The Healthcare Domain.</h4>
+
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">jsl_meds_ner_q16_v5</code></li>
+          <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_loinc_augmented</code></li>
+          <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_loinc</code></li>
+          <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_loinc_numeric_augmented</code></li>
+          <li><code class="language-plaintext highlighter-rouge">sbluebertresolve_loinc_uncased</code></li>
+          <li><code class="language-plaintext highlighter-rouge">zeroshot_multitask_generic</code></li>
+          <li><code class="language-plaintext highlighter-rouge">zeroshot_multitask_base</code></li>
+          <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_auxConcepts</code></li>
+          <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_bodyStructure</code></li>
+          <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_conditions</code></li>
+          <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_drug</code></li>
+          <li><code class="language-plaintext highlighter-rouge">biolordresolve_snomed_findings_aux_concepts</code></li>
+          <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_findings_aux_concepts</code></li>
+          <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_findings</code></li>
+          <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_no_class</code></li>
+          <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_procedures_measurements</code></li>
+          <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_veterinary</code></li>
+          <li><code class="language-plaintext highlighter-rouge">rxnorm_umls_mapper</code></li>
+          <li><code class="language-plaintext highlighter-rouge">umls_rxnorm_mapper</code></li>
+          <li><code class="language-plaintext highlighter-rouge">umls_cpt_mapper</code></li>
+          <li><code class="language-plaintext highlighter-rouge">cpt_umls_mapper</code></li>
+          <li><code class="language-plaintext highlighter-rouge">snomed_umls_mapper</code></li>
+          <li><code class="language-plaintext highlighter-rouge">umls_snomed_mapper</code></li>
+          <li><code class="language-plaintext highlighter-rouge">account_parser_pipeline</code></li>
+          <li><code class="language-plaintext highlighter-rouge">age_parser_pipeline</code></li>
+          <li><code class="language-plaintext highlighter-rouge">bgeresolve_cpt_pipeline</code></li>
+          <li><code class="language-plaintext highlighter-rouge">bgeresolve_icd10cm_pipeline</code></li>
+          <li><code class="language-plaintext highlighter-rouge">bgeresolve_rxnorm_pipeline</code></li>
+          <li><code class="language-plaintext highlighter-rouge">bgeresolve_snomed_pipeline</code></li>
+          <li><code class="language-plaintext highlighter-rouge">cpt_mapper_pipeline</code></li>
+          <li><code class="language-plaintext highlighter-rouge">cpt_parser_pipeline</code></li>
+          <li><code class="language-plaintext highlighter-rouge">date_of_birth_parser_pipeline</code></li>
+          <li><code class="language-plaintext highlighter-rouge">date_of_death_parser_pipeline</code></li>
+          <li><code class="language-plaintext highlighter-rouge">date_regex_matcher_pipeline</code></li>
+          <li><code class="language-plaintext highlighter-rouge">dln_parser_pipeline</code></li>
+          <li><code class="language-plaintext highlighter-rouge">drug_form_matcher_pipeline</code></li>
+          <li><code class="language-plaintext highlighter-rouge">drug_route_matcher_pipeline</code></li>
+          <li><code class="language-plaintext highlighter-rouge">drug_strength_parser_pipeline</code></li>
+          <li><code class="language-plaintext highlighter-rouge">email_regex_matcher_pipeline</code></li>
+          <li><code class="language-plaintext highlighter-rouge">generic_classifier_measurement_pipeline</code></li>
+          <li><code class="language-plaintext highlighter-rouge">icd10_parser_pipeline</code></li>
+          <li><code class="language-plaintext highlighter-rouge">icd10cm_mapper_pipeline</code></li>
+          <li><code class="language-plaintext highlighter-rouge">icd10cm_umls_mapping</code></li>
+          <li><code class="language-plaintext highlighter-rouge">ip_regex_matcher_pipeline</code></li>
+          <li><code class="language-plaintext highlighter-rouge">license_parser_pipeline</code></li>
+          <li><code class="language-plaintext highlighter-rouge">loinc_umls_mapping</code></li>
+          <li><code class="language-plaintext highlighter-rouge">med_parser_pipeline</code></li>
+          <li><code class="language-plaintext highlighter-rouge">medical_device_matcher_pipeline</code></li>
+          <li><code class="language-plaintext highlighter-rouge">mesh_umls_mapping</code></li>
+          <li><code class="language-plaintext highlighter-rouge">ner_deid_generic_nonMedical_pipeline</code></li>
+          <li><code class="language-plaintext highlighter-rouge">ner_deid_subentity_nonMedical_pipeline</code></li>
+          <li><code class="language-plaintext highlighter-rouge">ner_drugs_large_v2_pipeline</code></li>
+          <li><code class="language-plaintext highlighter-rouge">phone_parser_pipeline</code></li>
+          <li><code class="language-plaintext highlighter-rouge">plate_parser_pipeline</code></li>
+          <li><code class="language-plaintext highlighter-rouge">procedure_matcher_pipeline</code></li>
+          <li><code class="language-plaintext highlighter-rouge">rxnorm_mapper_pipeline</code></li>
+          <li><code class="language-plaintext highlighter-rouge">rxnorm_umls_mapping</code></li>
+          <li><code class="language-plaintext highlighter-rouge">snomed_umls_mapping</code></li>
+          <li><code class="language-plaintext highlighter-rouge">specimen_parser_pipeline</code></li>
+          <li><code class="language-plaintext highlighter-rouge">ssn_parser_pipeline</code></li>
+          <li><code class="language-plaintext highlighter-rouge">symptom_matcher_pipeline</code></li>
+          <li><code class="language-plaintext highlighter-rouge">umls_clinical_drugs_mapping</code></li>
+          <li><code class="language-plaintext highlighter-rouge">umls_clinical_findings_mapping</code></li>
+          <li><code class="language-plaintext highlighter-rouge">umls_disease_syndrome_mapping</code></li>
+          <li><code class="language-plaintext highlighter-rouge">umls_drug_substance_mapping</code></li>
+          <li><code class="language-plaintext highlighter-rouge">umls_icd10cm_mapping</code></li>
+          <li><code class="language-plaintext highlighter-rouge">umls_loinc_mapping</code></li>
+          <li><code class="language-plaintext highlighter-rouge">umls_major_concepts_mapping</code></li>
+          <li><code class="language-plaintext highlighter-rouge">umls_mesh_mapping</code></li>
+          <li><code class="language-plaintext highlighter-rouge">umls_rxnorm_mapping</code></li>
+          <li><code class="language-plaintext highlighter-rouge">umls_snomed_mapping</code></li>
+          <li><code class="language-plaintext highlighter-rouge">url_regex_matcher_pipeline</code></li>
+          <li><code class="language-plaintext highlighter-rouge">vin_parser_pipeline</code></li>
+          <li><code class="language-plaintext highlighter-rouge">zeroshot_ner_deid_generic_nonMedical_large_pipeline</code></li>
+          <li><code class="language-plaintext highlighter-rouge">zeroshot_ner_deid_generic_nonMedical_medium_pipeline</code></li>
+          <li><code class="language-plaintext highlighter-rouge">zeroshot_ner_deid_subentity_nonMedical_large_pipeline</code></li>
+          <li><code class="language-plaintext highlighter-rouge">zeroshot_ner_deid_subentity_nonMedical_medium_pipeline</code></li>
+          <li><code class="language-plaintext highlighter-rouge">zip_regex_matcher_pipeline</code></li>
+        </ul>
+
+      </div>
+      <div class="h3-box">
+
+        <h2 id="versions">Versions</h2>
+
+      </div>
+      <ul class="pagination">
     <li>
         <a href="#">Version <strong id="previosver"></strong></a>
     </li>
@@ -1360,7 +1597,7 @@ results = model.transform(spark.createDataFrame([[text]], ["text"]))
         <a href="#">Version <strong id="nextver"></strong></a>
     </li>
 </ul>
-<ul class="pagination owl-carousel pagination_big">
+      <ul class="pagination owl-carousel pagination_big">
     <li><a href="release_notes_6_4_0">6.4.0</a></li>
     <li><a href="release_notes_6_3_0">6.3.0</a></li>
     <li><a href="release_notes_6_2_2">6.2.2</a></li>
@@ -1452,8 +1689,11 @@ results = model.transform(spark.createDataFrame([[text]], ["text"]))
     <li><a href="release_notes_2_4_1">2.4.1</a></li>
     <li><a href="release_notes_2_4_0">2.4.0</a></li>
 </ul>
+    </div>
+  </div>
+</div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2021-07-14T00:00:00+00:00">Jul 14, 2021</time>
+      <time itemprop="dateModified" datetime="2026-04-17T00:00:00+00:00">Apr 17, 2026</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
