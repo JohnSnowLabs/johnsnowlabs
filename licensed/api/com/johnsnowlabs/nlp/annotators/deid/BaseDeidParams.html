@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 6.3.0 ScalaDoc  - com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams</title>
-          <meta name="description" content="Spark NLP 6.3.0 ScalaDoc - com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams" />
-          <meta name="keywords" content="Spark NLP 6.3.0 ScalaDoc com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams" />
+          <title>Spark NLP 6.4.0 ScalaDoc  - com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams</title>
+          <meta name="description" content="Spark NLP 6.4.0 ScalaDoc - com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams" />
+          <meta name="keywords" content="Spark NLP 6.4.0 ScalaDoc com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 6.3.0 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 6.4.0 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -829,6 +829,24 @@ Default: false
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Params</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#deidMarkers" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
+      <a id="deidMarkers:org.apache.spark.ml.param.StringArrayParam"></a><a id="deidMarkers:StringArrayParam"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/BaseDeidParams.html#deidMarkers:org.apache.spark.ml.param.StringArrayParam" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">deidMarkers</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.StringArrayParam">StringArrayParam</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Tuple of markers to indicate the deidentified entities in the output text.</p><div class="fullcomment"><div class="comment cmt"><p>Tuple of markers to indicate the deidentified entities in the output text. The first element is the prefix marker and the second element is the suffix marker.
+For example, if the markers are set to (&quot;&lt;DEID&gt;&quot;, &quot;&lt;/DEID&gt;&quot;), then an fake like &quot;John Doe&quot; would be transformed to &quot;&lt;DEID&gt;John Doe&lt;/DEID&gt;&quot; in the deidentified text.</p><p>Defaults to (&quot;&quot;, &quot;&quot;) which means no markers will be added.
+</p></div></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#enableDefaultObfuscationEquivalents" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
       <a id="enableDefaultObfuscationEquivalents:org.apache.spark.ml.param.BooleanParam"></a><a id="enableDefaultObfuscationEquivalents:BooleanParam"></a>
       <span class="permalink">
@@ -1360,6 +1378,22 @@ obfuscation patterns.</p><p>default: false
       </span>
       
       
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#getDeidMarkers" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="getParam">
+      <a id="getDeidMarkers:(String,String)"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/BaseDeidParams.html#getDeidMarkers:(String,String)" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getDeidMarkers</span><span class="result">: (<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>)</span>
+      </span>
+      
+      <p class="shortcomment cmt">Gets <a href="#deidMarkers:org.apache.spark.ml.param.StringArrayParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#deidMarkers">deidMarkers</a> param as a tuple of (prefix, suffix).</p>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#getEnableDefaultObfuscationEquivalents" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="getEnableDefaultObfuscationEquivalents:Boolean"></a>
       <span class="permalink">
@@ -2721,6 +2755,24 @@ Default: false
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<span class="extype" name="org.apache.spark.ml">org.apache.spark.ml</span>] </dd><dt>Definition Classes</dt><dd>Params</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#setDeidMarkers" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setDeidMarkers(markers:(String,String)):BaseDeidParams.this.type"></a><a id="setDeidMarkers((String,String)):BaseDeidParams.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/BaseDeidParams.html#setDeidMarkers(markers:(String,String)):BaseDeidParams.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setDeidMarkers</span><span class="params">(<span name="markers">markers: (<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>)</span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a>.this.type</span>
+      </span>
+      
+      <p class="shortcomment cmt">Sets the tuple of markers to wrap the deidentified entities in the output text.</p><div class="fullcomment"><div class="comment cmt"><p>Sets the tuple of markers to wrap the deidentified entities in the output text. The first element is the prefix marker and the second element is the suffix marker.
+For example, if the markers are set to (&quot;&lt;DEID&gt;&quot;, &quot;&lt;/DEID&gt;&quot;), then an fake like &quot;John Doe&quot; would be transformed to &quot;&lt;DEID&gt;John Doe&lt;/DEID&gt;&quot; in the deidentified text.</p><p>Defaults to (&quot;&quot;, &quot;&quot;) which means no markers will be added.
+</p></div></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#setEnableDefaultObfuscationEquivalents" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
       <a id="setEnableDefaultObfuscationEquivalents(value:Boolean):BaseDeidParams.this.type"></a><a id="setEnableDefaultObfuscationEquivalents(Boolean):BaseDeidParams.this.type"></a>
       <span class="permalink">

@@ -402,6 +402,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../../ner/ner_chunker/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.ner_chunker</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ner/ner_converter_internal/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.ner_converter_internal</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ner/ner_template_render/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.ner_template_render</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ner/pretrained_zero_shot_multi_task/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.pretrained_zero_shot_multi_task</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ner/pretrained_zero_shot_ner/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.pretrained_zero_shot_ner</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ner/pretrained_zero_shot_ner_chunker/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.pretrained_zero_shot_ner_chunker</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ner/zero_shot_ner/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.zero_shot_ner</span></code></a></li>
@@ -475,6 +476,7 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="../../flattener/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.flattener</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../handle_exception_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.handle_exception_params</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../metadata_annotation_converter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.metadata_annotation_converter</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../multi_annotation_splitter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.multi_annotation_splitter</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../multi_chunk2_doc/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.multi_chunk2_doc</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../resolution2_chunk/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.resolution2_chunk</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../router/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.router</span></code></a></li>
@@ -681,6 +683,11 @@ rows within the same group.</p></li>
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.deidMarkers">
+<span class="sig-name descname"><span class="pre">deidMarkers</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.deidMarkers" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.enableDefaultObfuscationEquivalents">
 <span class="sig-name descname"><span class="pre">enableDefaultObfuscationEquivalents</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.enableDefaultObfuscationEquivalents" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -865,6 +872,12 @@ rows within the same group.</p></li>
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.getDefaultObfuscationEquivalents">
 <span class="sig-name descname"><span class="pre">getDefaultObfuscationEquivalents</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.getDefaultObfuscationEquivalents" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns the default obfuscation equivalents for common entities.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.getDeidMarkers">
+<span class="sig-name descname"><span class="pre">getDeidMarkers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.getDeidMarkers" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the current deid markers as a tuple (prefix, suffix).</p>
 </dd></dl>
 
 <dl class="py method">
@@ -1089,6 +1102,24 @@ If not provided a random integer between 1 and 60 will be used.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>day</strong> (<em>int</em>) – Number of days to obfuscate by displacement the dates.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setDeidMarkers">
+<span class="sig-name descname"><span class="pre">setDeidMarkers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setDeidMarkers" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the markers used to wrap deidentified entities in the output text.</p>
+<p>The first element is used as the prefix marker and the second as the suffix marker.
+For example, setting markers to (“&lt;DEID&gt;”, “&lt;/DEID&gt;”) will transform
+“John Doe” into “&lt;DEID&gt;John Doe&lt;/DEID&gt;” in the deidentified text.</p>
+<p>Defaults to (“”, “”), meaning no markers are added.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>list</em><em>, </em><em>tuple</em><em>, or </em><em>dict</em>) – A pair of markers (prefix, suffix) as a list/tuple, or a dict with
+‘start’ (prefix) and/or ‘end’ (suffix) keys. If only one key is
+provided, the other defaults to “”.
+Valid dict keys are ‘start’ and ‘end’ only.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1873,6 +1904,7 @@ Options: [mask, obfuscate, skip]. Default: obfuscate.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.dateTag"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.dateTag</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.dateToYear"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.dateToYear</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.days"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.days</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.deidMarkers"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.deidMarkers</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.enableDefaultObfuscationEquivalents"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.enableDefaultObfuscationEquivalents</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.fakerLengthOffset"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.fakerLengthOffset</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.fixedMaskLength"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.fixedMaskLength</span></code></a></li>
@@ -1910,6 +1942,7 @@ Options: [mask, obfuscate, skip]. Default: obfuscate.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.zipCodeTag"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.zipCodeTag</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.getChunkMatching"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.getChunkMatching()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.getDefaultObfuscationEquivalents"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.getDefaultObfuscationEquivalents()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.getDeidMarkers"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.getDeidMarkers()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.getSelectiveObfuscateRefSource"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.getSelectiveObfuscateRefSource()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.getUseShiftDays"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.getUseShiftDays()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setAdditionalDateFormats"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setAdditionalDateFormats()</span></code></a></li>
@@ -1927,6 +1960,7 @@ Options: [mask, obfuscate, skip]. Default: obfuscate.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setDateTag"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setDateTag()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setDateToYear"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setDateToYear()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setDays"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setDays()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setDeidMarkers"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setDeidMarkers()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setEnableDefaultObfuscationEquivalents"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setEnableDefaultObfuscationEquivalents()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setFakerLengthOffset"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setFakerLengthOffset()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setFixedMaskLength"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setFixedMaskLength()</span></code></a></li>
