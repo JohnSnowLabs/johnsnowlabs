@@ -17,7 +17,7 @@ See [Github Releases](https://github.com/JohnSnowLabs/johnsnowlabs/releases) for
 
 
 ## 6.4.0
-Release date: 26-4-2026
+Release date: 29-4-2026
 
 The John Snow Labs 6.4.0 Library released with the following pre-installed and recommended dependencies
 
