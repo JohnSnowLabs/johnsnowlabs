@@ -1,6 +1,6 @@
 ---
 layout: model
-title: ZeroShot Multitask Generic
+title: ZeroShot Multitask Base
 author: John Snow Labs
 name: zeroshot_multitask_base
 date: 2026-04-10
