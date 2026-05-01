@@ -657,6 +657,94 @@ function wrapWordInSpan(data, wordToWrap) {
     <p><img src="/assets/images/term_server/ui.png" alt="Terminology Service UI" /></p>
   </li>
 </ul>
+
+<h2 id="secure-access-to-terminology-server-on-aws">Secure access to Terminology Server on AWS</h2>
+
+<ol>
+  <li>When installed via the AWS Marketplace, Terminology Server has a private IP address and listens on an unsecured HTTP port. You can ask your DevOps department to incorporate the resource to your standard procedures to access from the internet in a secure manner. Alternatively, a Cloud Formation script is available that can be used to create a frontend proxy using (CloudFront). Those resources are Free Tier Eligible.</li>
+  <li>Create the AWS Cloud Formation Script in YAML format, from the listed script cloudformation_https.yaml
+    <ul>
+      <li>
+        <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">   vi cloudformation_https.yaml
+</span></code></pre></div>        </div>
+        <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="na">AWSTemplateFormatVersion</span><span class="pi">:</span> <span class="s1">'</span><span class="s">2010-09-09'</span>
+    <span class="na">Metadata</span><span class="pi">:</span>
+      <span class="na">License</span><span class="pi">:</span> <span class="s">Apache-2.0</span>
+    <span class="na">Description</span><span class="pi">:</span> <span class="s1">'</span><span class="s">AWS</span><span class="nv"> </span><span class="s">CloudFormation</span><span class="nv"> </span><span class="s">To</span><span class="nv"> </span><span class="s">access</span><span class="nv"> </span><span class="s">TerminologyServer</span><span class="nv"> </span><span class="s">via</span><span class="nv"> </span><span class="s">https:</span>
+     <span class="s">Create</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">Amazon</span><span class="nv"> </span><span class="s">EC2</span><span class="nv"> </span><span class="s">instance</span><span class="nv"> </span><span class="s">running</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">TerminologyServer</span><span class="nv"> </span><span class="s">Linux/UNIX</span><span class="nv"> </span><span class="s">AMI.</span><span class="nv"> </span><span class="s">Once</span><span class="nv"> </span><span class="s">the</span>
+     <span class="s">TerminologyServer</span><span class="nv"> </span><span class="s">instance</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">created,</span><span class="nv"> </span><span class="s">provide</span><span class="nv"> </span><span class="s">instance</span><span class="nv"> </span><span class="s">hostname</span><span class="nv"> </span><span class="s">as</span><span class="nv"> </span><span class="s">input.</span><span class="nv"> </span><span class="s">This</span><span class="nv"> </span><span class="s">Cloudfromation</span>
+     <span class="s">Creates</span><span class="nv"> </span><span class="s">Cloudfront.</span><span class="nv"> </span><span class="s">You</span><span class="nv"> </span><span class="s">can</span><span class="nv"> </span><span class="s">use</span><span class="nv"> </span><span class="s">Cloudfront</span><span class="nv"> </span><span class="s">Domain</span><span class="nv"> </span><span class="s">URL</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">access</span><span class="nv"> </span><span class="s">TerminologyServer</span>
+     <span class="s">via</span><span class="nv"> </span><span class="s">https</span><span class="nv"> </span><span class="s">protocol.</span>
+     <span class="s">'</span>
+    <span class="na">Parameters</span><span class="pi">:</span>
+     <span class="na">TsInstanceHostName</span><span class="pi">:</span>
+       <span class="na">Description</span><span class="pi">:</span> <span class="s">HostName of the TerminologyServer InstanceID</span>
+       <span class="na">Type</span><span class="pi">:</span> <span class="s">String</span>
+       <span class="na">ConstraintDescription</span><span class="pi">:</span> <span class="s">HostName of the TerminologyServer InstanceID</span>
+        
+    <span class="na">Resources</span><span class="pi">:</span>
+     <span class="na">CloudFront</span><span class="pi">:</span>
+       <span class="na">Type</span><span class="pi">:</span> <span class="s">AWS::CloudFront::Distribution</span>
+       <span class="na">Properties</span><span class="pi">:</span>
+         <span class="na">DistributionConfig</span><span class="pi">:</span>
+           <span class="na">Enabled</span><span class="pi">:</span> <span class="s">True</span>
+           <span class="na">DefaultCacheBehavior</span><span class="pi">:</span>
+             <span class="na">AllowedMethods</span><span class="pi">:</span>
+               <span class="pi">-</span> <span class="s">DELETE</span>
+               <span class="pi">-</span> <span class="s">GET</span>
+               <span class="pi">-</span> <span class="s">HEAD</span>
+               <span class="pi">-</span> <span class="s">OPTIONS</span>
+               <span class="pi">-</span> <span class="s">PATCH</span>
+               <span class="pi">-</span> <span class="s">POST</span>
+               <span class="pi">-</span> <span class="s">PUT</span>
+             <span class="na">DefaultTTL</span><span class="pi">:</span> <span class="m">0</span>
+             <span class="na">MaxTTL</span><span class="pi">:</span> <span class="m">0</span>
+             <span class="na">MinTTL</span><span class="pi">:</span> <span class="m">0</span>
+             <span class="na">Compress</span><span class="pi">:</span> <span class="s">True</span>
+             <span class="na">ForwardedValues</span><span class="pi">:</span>
+               <span class="na">QueryString</span><span class="pi">:</span> <span class="no">true</span>
+               <span class="na">Headers</span><span class="pi">:</span>
+                 <span class="pi">-</span> <span class="s1">'</span><span class="s">*'</span>
+               <span class="na">Cookies</span><span class="pi">:</span>
+                 <span class="na">Forward</span><span class="pi">:</span> <span class="s">all</span>
+             <span class="na">TargetOriginId</span><span class="pi">:</span> <span class="s">EC2CustomOrigin</span>
+             <span class="na">ViewerProtocolPolicy</span><span class="pi">:</span> <span class="s">redirect-to-https</span>
+           <span class="na">Origins</span><span class="pi">:</span>
+             <span class="pi">-</span> <span class="na">DomainName</span><span class="pi">:</span> <span class="kt">!Ref</span> <span class="s">TsInstanceHostName</span>
+               <span class="na">Id</span><span class="pi">:</span> <span class="s">EC2CustomOrigin</span>
+               <span class="na">CustomOriginConfig</span><span class="pi">:</span>
+                 <span class="na">HTTPPort</span><span class="pi">:</span> <span class="s1">'</span><span class="s">80'</span>
+                 <span class="na">OriginProtocolPolicy</span><span class="pi">:</span> <span class="s">http-only</span>
+    <span class="na">Outputs</span><span class="pi">:</span>
+      <span class="na">CloudfrontURL</span><span class="pi">:</span>
+        <span class="na">Description</span><span class="pi">:</span> <span class="s">Cloudfront URL to access TerminologyServer</span>
+        <span class="na">Value</span><span class="pi">:</span> <span class="kt">!Join</span> <span class="pi">[</span><span class="s2">"</span><span class="s">"</span><span class="pi">,</span> <span class="pi">[</span><span class="s1">'</span><span class="s">https://'</span><span class="pi">,</span> <span class="kt">!GetAtt</span> <span class="pi">[</span><span class="nv">CloudFront</span><span class="pi">,</span> <span class="nv">DomainName</span><span class="pi">]]]</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>Click Create a stack, “Upload a template file”. Give the Stack a name and enter the TerminologyServer instance Hostname(from the EC2 console) as a parameter.
+    <ul>
+      <li><img src="/assets/images/term_server/aws/create_stack.png" alt="createStack" /></li>
+    </ul>
+  </li>
+  <li>Next -&gt; Next -&gt; Acknowledge that AWS CloudFormation might create IAM resources. -&gt; Submit. Wait a few minutes until all resources are created.
+    <ul>
+      <li><img src="/assets/images/term_server/aws/ack.png" alt="ack" /></li>
+    </ul>
+  </li>
+  <li>Once created, go do the Outputs tab and click on the Terminology Server URL. You may need to refresh the view.
+    <ul>
+      <li><img src="/assets/images/term_server/aws/stack-output.png" alt="output" /></li>
+    </ul>
+  </li>
+  <li>Copy the output url.</li>
+  <li>SSH into the ec2 instance where Terminology Server is running.</li>
+  <li>Cd to home dir, Replace the output_url in the cmd below with the url from step 6. Then Execute the cmd in your Terminology Service Instance.</li>
+</ol>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-sSL</span> https://s3.us-east-1.amazonaws.com/artifacts.terminologyservice.johnsnowlabs.com/upgrade.sh | bash <span class="nt">-s</span> <span class="s2">"output_url"</span>
+</code></pre></div></div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
       <time itemprop="dateModified" datetime="2025-04-01T00:00:00+00:00">Apr 01, 2025</time>
     </span><!-- start custom article footer snippet -->

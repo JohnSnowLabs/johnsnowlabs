@@ -1,200 +1,189 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2026-04-30T17:02:57+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
-</subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">ZeroShot Multitask Base</title><link href="/2026/04/10/zeroshot_multitask_base_en.html" rel="alternate" type="text/html" title="ZeroShot Multitask Base" /><published>2026-04-10T00:00:00+00:00</published><updated>2026-04-10T00:00:00+00:00</updated><id>/2026/04/10/zeroshot_multitask_base_en</id><content type="html" xml:base="/2026/04/10/zeroshot_multitask_base_en.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2026-05-01T10:35:06+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
+</subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">ZeroShot Multitask Base</title><link href="/2026/04/10/zeroshot_multitask_base_en.html" rel="alternate" type="text/html" title="ZeroShot Multitask Base" /><published>2026-04-10T00:00:00+00:00</published><updated>2026-04-10T00:00:00+00:00</updated><id>/2026/04/10/zeroshot_multitask_base_en</id><content type="html" xml:base="/2026/04/10/zeroshot_multitask_base_en.html">## Description
 
-&lt;p&gt;This ZeroShot model is trained to extract and link entities in a document. Users needs to define entitit labels or an input schema as explained in the example section.&lt;/p&gt;
+This ZeroShot model is trained to extract and link entities in a document. Users needs to define entitit labels or an input schema as explained in the example section.
 
-&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
-&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/zeroshot_multitask_base_en_6.3.0_3.0_1775814855432.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
-&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/clinical/models/zeroshot_multitask_base_en_6.3.0_3.0_1775814855432.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/zeroshot_multitask_base_en_6.3.0_3.0_1775814855432.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/zeroshot_multitask_base_en_6.3.0_3.0_1775814855432.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+## How to use
 
-&lt;div class=&quot;tabs-box&quot;&gt;
-  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;strong&gt;Healthcare NLP&lt;/strong&gt;&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;Python&lt;strong&gt;JohnSnowLabs&lt;/strong&gt;&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
-  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;zero_shot&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PretrainedZeroShotMultiTask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;zeroshot_multitask_base&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;extractions&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setEntityThreshold&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setEntities&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;problem&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;treatment&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;test&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;body_part&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;drug_dosage&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;severity&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;date&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setStructures&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;problem_info&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;&quot;text::str::medical condition, symptom, or diagnosis&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;&quot;assertion::[present|absent|hypothetical|possible|conditional|associated_with_someone_else]&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;]),&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;treatment_info&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;&quot;text::str::drug, medication, procedure, or therapy&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;&quot;assertion::[present|absent|hypothetical|possible|conditional|associated_with_someone_else]&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;]),&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setClassifications&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;cancer_type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;lung&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;breast&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;colorectal&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;other&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;not_cancer&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]),&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;urgency&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;      &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;routine&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;urgent&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;emergent&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]),&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setRelations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;
-        &lt;span class=&quot;s&quot;&gt;&quot;treatment_improves_problem&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;s&quot;&gt;&quot;treatment_causes_problem&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;s&quot;&gt;&quot;treatment_administered_for_problem&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;s&quot;&gt;&quot;test_reveals_problem&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;s&quot;&gt;&quot;test_conducted_for_problem&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;stages&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;zero_shot&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+```python
+document_assembler = DocumentAssembler()\
+    .setInputCol(&quot;text&quot;)\
+    .setOutputCol(&quot;document&quot;)
 
-&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;sa&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+zero_shot = PretrainedZeroShotMultiTask.pretrained(&quot;zeroshot_multitask_base&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
+    .setInputCols([&quot;document&quot;])\
+    .setOutputCol(&quot;extractions&quot;)\
+    .setEntityThreshold(0.4)\
+    .setEntities([&quot;problem&quot;, &quot;treatment&quot;, &quot;test&quot;, &quot;body_part&quot;, &quot;drug_dosage&quot;, &quot;severity&quot;, &quot;date&quot;])\
+    .setStructures([
+        (&quot;problem_info&quot;, [
+            &quot;text::str::medical condition, symptom, or diagnosis&quot;,
+            &quot;assertion::[present|absent|hypothetical|possible|conditional|associated_with_someone_else]&quot;,
+        ]),
+        (&quot;treatment_info&quot;, [
+            &quot;text::str::drug, medication, procedure, or therapy&quot;,
+            &quot;assertion::[present|absent|hypothetical|possible|conditional|associated_with_someone_else]&quot;,
+        ]),
+    ])\
+    .setClassifications([
+        (&quot;cancer_type&quot;,  [&quot;lung&quot;, &quot;breast&quot;, &quot;colorectal&quot;, &quot;other&quot;, &quot;not_cancer&quot;]),
+        (&quot;urgency&quot;,      [&quot;routine&quot;, &quot;urgent&quot;, &quot;emergent&quot;]),
+    ])\
+    .setRelations([
+        &quot;treatment_improves_problem&quot;,
+        &quot;treatment_causes_problem&quot;,
+        &quot;treatment_administered_for_problem&quot;,
+        &quot;test_reveals_problem&quot;,
+        &quot;test_conducted_for_problem&quot;,
+    ])
+
+pipeline = Pipeline(
+    stages = [
+        document_assembler,
+        zero_shot
+])
+
+text = f&quot;&quot;&quot;
 Jennifer Smith is 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus (T2DM), one prior episode of HTG-induced pancreatitis three years prior to presentation, and associated with an acute hepatitis, presented with a one-week history of polyuria, poor appetite, and vomiting.
-&quot;&quot;&quot;&lt;/span&gt;
+&quot;&quot;&quot;
 
-&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+data = spark.createDataFrame([[text]]).toDF(&quot;text&quot;)
 
-&lt;span class=&quot;n&quot;&gt;results&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+results = pipeline.fit(data).transform(data)
 
-&lt;span class=&quot;n&quot;&gt;results&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;select&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;completions&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;truncate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+results.select(&quot;completions&quot;).show(truncate=False)
+```
 
-  &lt;div class=&quot;language-python jsl-block highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;johnsnowlabs&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;medical&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+{:.jsl-block}
+```python
+from johnsnowlabs import nlp, medical
+document_assembler = nlp.DocumentAssembler()\
+    .setInputCol(&quot;text&quot;)\
+    .setOutputCol(&quot;document&quot;)
 
-&lt;span class=&quot;n&quot;&gt;zero_shot&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;medical&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PretrainedZeroShotMultiTask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;zeroshot_multitask_base&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;extractions&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setEntityThreshold&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setEntities&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;problem&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;treatment&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;test&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;body_part&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;drug_dosage&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;severity&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;date&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setStructures&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;problem_info&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;&quot;text::str::medical condition, symptom, or diagnosis&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;&quot;assertion::[present|absent|hypothetical|possible|conditional|associated_with_someone_else]&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;]),&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;treatment_info&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;&quot;text::str::drug, medication, procedure, or therapy&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;&quot;assertion::[present|absent|hypothetical|possible|conditional|associated_with_someone_else]&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;]),&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setClassifications&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;cancer_type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;lung&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;breast&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;colorectal&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;other&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;not_cancer&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]),&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;urgency&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;      &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;routine&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;urgent&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;emergent&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]),&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setRelations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;
-        &lt;span class=&quot;s&quot;&gt;&quot;treatment_improves_problem&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;s&quot;&gt;&quot;treatment_causes_problem&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;s&quot;&gt;&quot;treatment_administered_for_problem&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;s&quot;&gt;&quot;test_reveals_problem&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;s&quot;&gt;&quot;test_conducted_for_problem&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+zero_shot = medical.PretrainedZeroShotMultiTask.pretrained(&quot;zeroshot_multitask_base&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\
+    .setInputCols([&quot;document&quot;])\
+    .setOutputCol(&quot;extractions&quot;)\
+    .setEntityThreshold(0.4)\
+    .setEntities([&quot;problem&quot;, &quot;treatment&quot;, &quot;test&quot;, &quot;body_part&quot;, &quot;drug_dosage&quot;, &quot;severity&quot;, &quot;date&quot;])\
+    .setStructures([
+        (&quot;problem_info&quot;, [
+            &quot;text::str::medical condition, symptom, or diagnosis&quot;,
+            &quot;assertion::[present|absent|hypothetical|possible|conditional|associated_with_someone_else]&quot;,
+        ]),
+        (&quot;treatment_info&quot;, [
+            &quot;text::str::drug, medication, procedure, or therapy&quot;,
+            &quot;assertion::[present|absent|hypothetical|possible|conditional|associated_with_someone_else]&quot;,
+        ]),
+    ])\
+    .setClassifications([
+        (&quot;cancer_type&quot;,  [&quot;lung&quot;, &quot;breast&quot;, &quot;colorectal&quot;, &quot;other&quot;, &quot;not_cancer&quot;]),
+        (&quot;urgency&quot;,      [&quot;routine&quot;, &quot;urgent&quot;, &quot;emergent&quot;]),
+    ])\
+    .setRelations([
+        &quot;treatment_improves_problem&quot;,
+        &quot;treatment_causes_problem&quot;,
+        &quot;treatment_administered_for_problem&quot;,
+        &quot;test_reveals_problem&quot;,
+        &quot;test_conducted_for_problem&quot;,
+    ])
 
-&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;stages&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;zero_shot&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+pipeline = nlp.Pipeline(
+    stages = [
+        document_assembler,
+        zero_shot
+])
 
-&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;sa&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+text = f&quot;&quot;&quot;
 Jennifer Smith is 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus (T2DM), one prior episode of HTG-induced pancreatitis three years prior to presentation, and associated with an acute hepatitis, presented with a one-week history of polyuria, poor appetite, and vomiting.
-&quot;&quot;&quot;&lt;/span&gt;
+&quot;&quot;&quot;
 
-&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+data = spark.createDataFrame([[text]]).toDF(&quot;text&quot;)
 
-&lt;span class=&quot;n&quot;&gt;results&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+results = pipeline.fit(data).transform(data)
 
-&lt;span class=&quot;n&quot;&gt;results&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;select&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;completions&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;truncate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
-  &lt;div class=&quot;language-scala highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;document_assembler&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+results.select(&quot;completions&quot;).show(truncate=False)
+```
+```scala
+val document_assembler = new DocumentAssembler()
+    .setInputCol(&quot;text&quot;)
+    .setOutputCol(&quot;document&quot;)
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;zero_shot&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;PretrainedZeroShotMultiTask&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;zeroshot_multitask_base&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;clinical/models&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;extractions&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setEntityThreshold&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setEntities&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;problem&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;treatment&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;test&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;body_part&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;drug_dosage&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;severity&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;date&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setStructures&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;problem_info&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;&quot;text::str::medical condition, symptom, or diagnosis&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;&quot;assertion::[present|absent|hypothetical|possible|conditional|associated_with_someone_else]&quot;&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;)),&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;treatment_info&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;&quot;text::str::drug, medication, procedure, or therapy&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;&quot;assertion::[present|absent|hypothetical|possible|conditional|associated_with_someone_else]&quot;&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setClassifications&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;cancer_type&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;nc&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;lung&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;breast&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;colorectal&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;other&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;not_cancer&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)),&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;urgency&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;      &lt;span class=&quot;nc&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;routine&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;urgent&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;emergent&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setRelations&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
-        &lt;span class=&quot;s&quot;&gt;&quot;treatment_improves_problem&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;s&quot;&gt;&quot;treatment_causes_problem&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;s&quot;&gt;&quot;treatment_administered_for_problem&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;s&quot;&gt;&quot;test_reveals_problem&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;s&quot;&gt;&quot;test_conducted_for_problem&quot;&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+val zero_shot = PretrainedZeroShotMultiTask.pretrained(&quot;zeroshot_multitask_base&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
+    .setInputCols(&quot;document&quot;)
+    .setOutputCol(&quot;extractions&quot;)
+    .setEntityThreshold(0.4)
+    .setEntities(Array(&quot;problem&quot;, &quot;treatment&quot;, &quot;test&quot;, &quot;body_part&quot;, &quot;drug_dosage&quot;, &quot;severity&quot;, &quot;date&quot;))
+    .setStructures(Array(
+        (&quot;problem_info&quot;, Array(
+            &quot;text::str::medical condition, symptom, or diagnosis&quot;,
+            &quot;assertion::[present|absent|hypothetical|possible|conditional|associated_with_someone_else]&quot;
+        )),
+        (&quot;treatment_info&quot;, Array(
+            &quot;text::str::drug, medication, procedure, or therapy&quot;,
+            &quot;assertion::[present|absent|hypothetical|possible|conditional|associated_with_someone_else]&quot;
+        ))
+    ))
+    .setClassifications(Array(
+        (&quot;cancer_type&quot;,  Array(&quot;lung&quot;, &quot;breast&quot;, &quot;colorectal&quot;, &quot;other&quot;, &quot;not_cancer&quot;)),
+        (&quot;urgency&quot;,      Array(&quot;routine&quot;, &quot;urgent&quot;, &quot;emergent&quot;))
+    ))
+    .setRelations(Array(
+        &quot;treatment_improves_problem&quot;,
+        &quot;treatment_causes_problem&quot;,
+        &quot;treatment_administered_for_problem&quot;,
+        &quot;test_reveals_problem&quot;,
+        &quot;test_conducted_for_problem&quot;
+    ))
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;setStages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;document_assembler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;zero_shot&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+val pipeline = new Pipeline().setStages(Array(
+    document_assembler,
+    zero_shot
+))
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt;  &lt;span class=&quot;nv&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+val  text = f&quot;&quot;&quot;
 Jennifer Smith is 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus (T2DM), one prior episode of HTG-induced pancreatitis three years prior to presentation, and associated with an acute hepatitis, presented with a one-week history of polyuria, poor appetite, and vomiting.
-&quot;&quot;&quot;&lt;/span&gt;
+&quot;&quot;&quot;
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Seq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;toDF&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+val data = Seq(text).toDF(&quot;text&quot;)
 
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;results&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+val results = pipeline.fit(data).transform(data)
+```
 &lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+## Results
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+```bash
+
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 |                                                                                                                                                                         extractions|
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|[&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;chunk, 62, 64, &lt;span class=&quot;nv&quot;&gt;$99&lt;/span&gt;, &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;sentence -&amp;gt; 0, entity -&amp;gt; drug_dosage, confidence -&amp;gt; 0.54619294&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;, &lt;span class=&quot;o&quot;&gt;[]}&lt;/span&gt;, &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;category, 0, 91, other, &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;sentence -&amp;gt; 0, confidence -&amp;gt; 0.4580742, task -&amp;gt; cancer_typ...|
+|[{chunk, 62, 64, $99, {sentence -&gt; 0, entity -&gt; drug_dosage, confidence -&gt; 0.54619294}, []}, {category, 0, 91, other, {sentence -&gt; 0, confidence -&gt; 0.4580742, task -&gt; cancer_typ...|
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+```
 
-&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+{:.model-param}
+## Model Information
 
-&lt;table class=&quot;table-model&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Model Name:&lt;/td&gt;
-      &lt;td&gt;zeroshot_multitask_base&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Compatibility:&lt;/td&gt;
-      &lt;td&gt;Healthcare NLP 6.3.0+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;License:&lt;/td&gt;
-      &lt;td&gt;Licensed&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Edition:&lt;/td&gt;
-      &lt;td&gt;Official&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Language:&lt;/td&gt;
-      &lt;td&gt;en&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size:&lt;/td&gt;
-      &lt;td&gt;844.4 MB&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="clinical" /><category term="medical" /><category term="ner" /><category term="classification" /><category term="relation_extraction" /><category term="assertion" /><category term="onnx" /><summary type="html">Description This ZeroShot model is trained to extract and link entities in a document. Users needs to define entitit labels or an input schema as explained in the example section. Live Demo Open in Colab Download Copy S3 URI How to use PythonHealthcare NLPPythonJohnSnowLabsScalaNLU document_assembler = DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) zero_shot = PretrainedZeroShotMultiTask.pretrained(&quot;zeroshot_multitask_base&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;extractions&quot;)\ .setEntityThreshold(0.4)\ .setEntities([&quot;problem&quot;, &quot;treatment&quot;, &quot;test&quot;, &quot;body_part&quot;, &quot;drug_dosage&quot;, &quot;severity&quot;, &quot;date&quot;])\ .setStructures([ (&quot;problem_info&quot;, [ &quot;text::str::medical condition, symptom, or diagnosis&quot;, &quot;assertion::[present|absent|hypothetical|possible|conditional|associated_with_someone_else]&quot;, ]), (&quot;treatment_info&quot;, [ &quot;text::str::drug, medication, procedure, or therapy&quot;, &quot;assertion::[present|absent|hypothetical|possible|conditional|associated_with_someone_else]&quot;, ]), ])\ .setClassifications([ (&quot;cancer_type&quot;, [&quot;lung&quot;, &quot;breast&quot;, &quot;colorectal&quot;, &quot;other&quot;, &quot;not_cancer&quot;]), (&quot;urgency&quot;, [&quot;routine&quot;, &quot;urgent&quot;, &quot;emergent&quot;]), ])\ .setRelations([ &quot;treatment_improves_problem&quot;, &quot;treatment_causes_problem&quot;, &quot;treatment_administered_for_problem&quot;, &quot;test_reveals_problem&quot;, &quot;test_conducted_for_problem&quot;, ]) pipeline = Pipeline( stages = [ document_assembler, zero_shot ]) text = f&quot;&quot;&quot; Jennifer Smith is 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus (T2DM), one prior episode of HTG-induced pancreatitis three years prior to presentation, and associated with an acute hepatitis, presented with a one-week history of polyuria, poor appetite, and vomiting. &quot;&quot;&quot; data = spark.createDataFrame([[text]]).toDF(&quot;text&quot;) results = pipeline.fit(data).transform(data) results.select(&quot;completions&quot;).show(truncate=False) from johnsnowlabs import nlp, medical document_assembler = nlp.DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) zero_shot = medical.PretrainedZeroShotMultiTask.pretrained(&quot;zeroshot_multitask_base&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;extractions&quot;)\ .setEntityThreshold(0.4)\ .setEntities([&quot;problem&quot;, &quot;treatment&quot;, &quot;test&quot;, &quot;body_part&quot;, &quot;drug_dosage&quot;, &quot;severity&quot;, &quot;date&quot;])\ .setStructures([ (&quot;problem_info&quot;, [ &quot;text::str::medical condition, symptom, or diagnosis&quot;, &quot;assertion::[present|absent|hypothetical|possible|conditional|associated_with_someone_else]&quot;, ]), (&quot;treatment_info&quot;, [ &quot;text::str::drug, medication, procedure, or therapy&quot;, &quot;assertion::[present|absent|hypothetical|possible|conditional|associated_with_someone_else]&quot;, ]), ])\ .setClassifications([ (&quot;cancer_type&quot;, [&quot;lung&quot;, &quot;breast&quot;, &quot;colorectal&quot;, &quot;other&quot;, &quot;not_cancer&quot;]), (&quot;urgency&quot;, [&quot;routine&quot;, &quot;urgent&quot;, &quot;emergent&quot;]), ])\ .setRelations([ &quot;treatment_improves_problem&quot;, &quot;treatment_causes_problem&quot;, &quot;treatment_administered_for_problem&quot;, &quot;test_reveals_problem&quot;, &quot;test_conducted_for_problem&quot;, ]) pipeline = nlp.Pipeline( stages = [ document_assembler, zero_shot ]) text = f&quot;&quot;&quot; Jennifer Smith is 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus (T2DM), one prior episode of HTG-induced pancreatitis three years prior to presentation, and associated with an acute hepatitis, presented with a one-week history of polyuria, poor appetite, and vomiting. &quot;&quot;&quot; data = spark.createDataFrame([[text]]).toDF(&quot;text&quot;) results = pipeline.fit(data).transform(data) results.select(&quot;completions&quot;).show(truncate=False) val document_assembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val zero_shot = PretrainedZeroShotMultiTask.pretrained(&quot;zeroshot_multitask_base&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(&quot;document&quot;) .setOutputCol(&quot;extractions&quot;) .setEntityThreshold(0.4) .setEntities(Array(&quot;problem&quot;, &quot;treatment&quot;, &quot;test&quot;, &quot;body_part&quot;, &quot;drug_dosage&quot;, &quot;severity&quot;, &quot;date&quot;)) .setStructures(Array( (&quot;problem_info&quot;, Array( &quot;text::str::medical condition, symptom, or diagnosis&quot;, &quot;assertion::[present|absent|hypothetical|possible|conditional|associated_with_someone_else]&quot; )), (&quot;treatment_info&quot;, Array( &quot;text::str::drug, medication, procedure, or therapy&quot;, &quot;assertion::[present|absent|hypothetical|possible|conditional|associated_with_someone_else]&quot; )) )) .setClassifications(Array( (&quot;cancer_type&quot;, Array(&quot;lung&quot;, &quot;breast&quot;, &quot;colorectal&quot;, &quot;other&quot;, &quot;not_cancer&quot;)), (&quot;urgency&quot;, Array(&quot;routine&quot;, &quot;urgent&quot;, &quot;emergent&quot;)) )) .setRelations(Array( &quot;treatment_improves_problem&quot;, &quot;treatment_causes_problem&quot;, &quot;treatment_administered_for_problem&quot;, &quot;test_reveals_problem&quot;, &quot;test_conducted_for_problem&quot; )) val pipeline = new Pipeline().setStages(Array( document_assembler, zero_shot )) val text = f&quot;&quot;&quot; Jennifer Smith is 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus (T2DM), one prior episode of HTG-induced pancreatitis three years prior to presentation, and associated with an acute hepatitis, presented with a one-week history of polyuria, poor appetite, and vomiting. &quot;&quot;&quot; val data = Seq(text).toDF(&quot;text&quot;) val results = pipeline.fit(data).transform(data) Results +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+ | extractions| +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+ |[{chunk, 62, 64, $99, {sentence -&amp;gt; 0, entity -&amp;gt; drug_dosage, confidence -&amp;gt; 0.54619294}, []}, {category, 0, 91, other, {sentence -&amp;gt; 0, confidence -&amp;gt; 0.4580742, task -&amp;gt; cancer_typ...| +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+ Model Information Model Name: zeroshot_multitask_base Compatibility: Healthcare NLP 6.3.0+ License: Licensed Edition: Official Language: en Size: 844.4 MB</summary></entry><entry><title type="html">JSL_MedS_NER (LLM - q16 - v5)</title><link href="/2026/04/09/jsl_meds_ner_q16_v5_en.html" rel="alternate" type="text/html" title="JSL_MedS_NER (LLM - q16 - v5)" /><published>2026-04-09T00:00:00+00:00</published><updated>2026-04-09T00:00:00+00:00</updated><id>/2026/04/09/jsl_meds_ner_q16_v5_en</id><content type="html" xml:base="/2026/04/09/jsl_meds_ner_q16_v5_en.html">## Description
+{:.table-model}
+|---|---|
+|Model Name:|zeroshot_multitask_base|
+|Compatibility:|Healthcare NLP 6.3.0+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|
+|Size:|844.4 MB|</content><author><name>John Snow Labs</name></author><category term="en" /><category term="licensed" /><category term="clinical" /><category term="medical" /><category term="ner" /><category term="classification" /><category term="relation_extraction" /><category term="assertion" /><category term="onnx" /><summary type="html">Description This ZeroShot model is trained to extract and link entities in a document. Users needs to define entitit labels or an input schema as explained in the example section. Live Demo Open in Colab Download Copy S3 URI How to use PythonHealthcare NLPPythonJohnSnowLabsScalaNLU document_assembler = DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) zero_shot = PretrainedZeroShotMultiTask.pretrained(&quot;zeroshot_multitask_base&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;extractions&quot;)\ .setEntityThreshold(0.4)\ .setEntities([&quot;problem&quot;, &quot;treatment&quot;, &quot;test&quot;, &quot;body_part&quot;, &quot;drug_dosage&quot;, &quot;severity&quot;, &quot;date&quot;])\ .setStructures([ (&quot;problem_info&quot;, [ &quot;text::str::medical condition, symptom, or diagnosis&quot;, &quot;assertion::[present|absent|hypothetical|possible|conditional|associated_with_someone_else]&quot;, ]), (&quot;treatment_info&quot;, [ &quot;text::str::drug, medication, procedure, or therapy&quot;, &quot;assertion::[present|absent|hypothetical|possible|conditional|associated_with_someone_else]&quot;, ]), ])\ .setClassifications([ (&quot;cancer_type&quot;, [&quot;lung&quot;, &quot;breast&quot;, &quot;colorectal&quot;, &quot;other&quot;, &quot;not_cancer&quot;]), (&quot;urgency&quot;, [&quot;routine&quot;, &quot;urgent&quot;, &quot;emergent&quot;]), ])\ .setRelations([ &quot;treatment_improves_problem&quot;, &quot;treatment_causes_problem&quot;, &quot;treatment_administered_for_problem&quot;, &quot;test_reveals_problem&quot;, &quot;test_conducted_for_problem&quot;, ]) pipeline = Pipeline( stages = [ document_assembler, zero_shot ]) text = f&quot;&quot;&quot; Jennifer Smith is 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus (T2DM), one prior episode of HTG-induced pancreatitis three years prior to presentation, and associated with an acute hepatitis, presented with a one-week history of polyuria, poor appetite, and vomiting. &quot;&quot;&quot; data = spark.createDataFrame([[text]]).toDF(&quot;text&quot;) results = pipeline.fit(data).transform(data) results.select(&quot;completions&quot;).show(truncate=False) from johnsnowlabs import nlp, medical document_assembler = nlp.DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) zero_shot = medical.PretrainedZeroShotMultiTask.pretrained(&quot;zeroshot_multitask_base&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;extractions&quot;)\ .setEntityThreshold(0.4)\ .setEntities([&quot;problem&quot;, &quot;treatment&quot;, &quot;test&quot;, &quot;body_part&quot;, &quot;drug_dosage&quot;, &quot;severity&quot;, &quot;date&quot;])\ .setStructures([ (&quot;problem_info&quot;, [ &quot;text::str::medical condition, symptom, or diagnosis&quot;, &quot;assertion::[present|absent|hypothetical|possible|conditional|associated_with_someone_else]&quot;, ]), (&quot;treatment_info&quot;, [ &quot;text::str::drug, medication, procedure, or therapy&quot;, &quot;assertion::[present|absent|hypothetical|possible|conditional|associated_with_someone_else]&quot;, ]), ])\ .setClassifications([ (&quot;cancer_type&quot;, [&quot;lung&quot;, &quot;breast&quot;, &quot;colorectal&quot;, &quot;other&quot;, &quot;not_cancer&quot;]), (&quot;urgency&quot;, [&quot;routine&quot;, &quot;urgent&quot;, &quot;emergent&quot;]), ])\ .setRelations([ &quot;treatment_improves_problem&quot;, &quot;treatment_causes_problem&quot;, &quot;treatment_administered_for_problem&quot;, &quot;test_reveals_problem&quot;, &quot;test_conducted_for_problem&quot;, ]) pipeline = nlp.Pipeline( stages = [ document_assembler, zero_shot ]) text = f&quot;&quot;&quot; Jennifer Smith is 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus (T2DM), one prior episode of HTG-induced pancreatitis three years prior to presentation, and associated with an acute hepatitis, presented with a one-week history of polyuria, poor appetite, and vomiting. &quot;&quot;&quot; data = spark.createDataFrame([[text]]).toDF(&quot;text&quot;) results = pipeline.fit(data).transform(data) results.select(&quot;completions&quot;).show(truncate=False) val document_assembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val zero_shot = PretrainedZeroShotMultiTask.pretrained(&quot;zeroshot_multitask_base&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(&quot;document&quot;) .setOutputCol(&quot;extractions&quot;) .setEntityThreshold(0.4) .setEntities(Array(&quot;problem&quot;, &quot;treatment&quot;, &quot;test&quot;, &quot;body_part&quot;, &quot;drug_dosage&quot;, &quot;severity&quot;, &quot;date&quot;)) .setStructures(Array( (&quot;problem_info&quot;, Array( &quot;text::str::medical condition, symptom, or diagnosis&quot;, &quot;assertion::[present|absent|hypothetical|possible|conditional|associated_with_someone_else]&quot; )), (&quot;treatment_info&quot;, Array( &quot;text::str::drug, medication, procedure, or therapy&quot;, &quot;assertion::[present|absent|hypothetical|possible|conditional|associated_with_someone_else]&quot; )) )) .setClassifications(Array( (&quot;cancer_type&quot;, Array(&quot;lung&quot;, &quot;breast&quot;, &quot;colorectal&quot;, &quot;other&quot;, &quot;not_cancer&quot;)), (&quot;urgency&quot;, Array(&quot;routine&quot;, &quot;urgent&quot;, &quot;emergent&quot;)) )) .setRelations(Array( &quot;treatment_improves_problem&quot;, &quot;treatment_causes_problem&quot;, &quot;treatment_administered_for_problem&quot;, &quot;test_reveals_problem&quot;, &quot;test_conducted_for_problem&quot; )) val pipeline = new Pipeline().setStages(Array( document_assembler, zero_shot )) val text = f&quot;&quot;&quot; Jennifer Smith is 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus (T2DM), one prior episode of HTG-induced pancreatitis three years prior to presentation, and associated with an acute hepatitis, presented with a one-week history of polyuria, poor appetite, and vomiting. &quot;&quot;&quot; val data = Seq(text).toDF(&quot;text&quot;) val results = pipeline.fit(data).transform(data) Results +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+ | extractions| +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+ |[{chunk, 62, 64, $99, {sentence -&amp;gt; 0, entity -&amp;gt; drug_dosage, confidence -&amp;gt; 0.54619294}, []}, {category, 0, 91, other, {sentence -&amp;gt; 0, confidence -&amp;gt; 0.4580742, task -&amp;gt; cancer_typ...| +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+ Model Information Model Name: zeroshot_multitask_base Compatibility: Healthcare NLP 6.3.0+ License: Licensed Edition: Official Language: en Size: 844.4 MB</summary></entry><entry><title type="html">JSL_MedS_NER (LLM - q16 - v5)</title><link href="/2026/04/09/jsl_meds_ner_q16_v5_en.html" rel="alternate" type="text/html" title="JSL_MedS_NER (LLM - q16 - v5)" /><published>2026-04-09T00:00:00+00:00</published><updated>2026-04-09T00:00:00+00:00</updated><id>/2026/04/09/jsl_meds_ner_q16_v5_en</id><content type="html" xml:base="/2026/04/09/jsl_meds_ner_q16_v5_en.html">## Description
 
 This LLM model extracts structured entities from clinical trial eligibility criteria. Given unstructured text, it returns JSON with inclusion and exclusion entities. The model supports four entity types: age, lab, condition, and pregnancy. Each entity follows a fixed schema with normalized values and numeric thresholds where applicable. This model is intended for clinical trial eligibility parsing, patient matching, and structured medical information extraction workflows.
 

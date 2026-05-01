@@ -657,6 +657,161 @@ function wrapWordInSpan(data, wordToWrap) {
     <p><img src="/assets/images/term_server/ui.png" alt="Terminology Service UI" /></p>
   </li>
 </ul>
+
+<h3 id="secure-access-to-azure-vm-with-https">Secure access to Azure VM with https</h3>
+
+<ol>
+  <li>Associate Public IP to Azure Virtual Machine Instance. link [https://learn.microsoft.com/en-us/azure/virtual-network/ip-services/associate-public-ip-address-vm?tabs=azure-portal]</li>
+  <li>Copy the public IP address after it has been associated with the VM.</li>
+  <li>Create a Azure Front Door CDN and associate it with the VM we created in the previous step.
+    <ul>
+      <li>Open Azure Portal, search for the service  Deploy custom templates.</li>
+      <li>Select Build your own template in the editor.</li>
+      <li><img src="/assets/images/term_server/build_azure_template.png" alt="Build your template" /></li>
+      <li>
+        <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   arm-template-fd.json
+</code></pre></div>        </div>
+        <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">   </span><span class="p">{</span><span class="w">
+       </span><span class="nl">"$schema"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#"</span><span class="p">,</span><span class="w">
+       </span><span class="nl">"contentVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0.0"</span><span class="p">,</span><span class="w">
+       </span><span class="nl">"parameters"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+           </span><span class="nl">"Resource Name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+               </span><span class="nl">"defaultValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"your resource"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"String"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                   </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Name of the resource."</span><span class="w">
+               </span><span class="p">}</span><span class="w">
+           </span><span class="p">},</span><span class="w">
+           </span><span class="nl">"originHostName"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+               </span><span class="nl">"defaultValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"String"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                   </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The host name or IP address of the origin."</span><span class="w">
+               </span><span class="p">}</span><span class="w">
+           </span><span class="p">}</span><span class="w">
+       </span><span class="p">},</span><span class="w">
+       </span><span class="nl">"variables"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+       </span><span class="nl">"resources"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+           </span><span class="p">{</span><span class="w">
+               </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Microsoft.Cdn/profiles"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"apiVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-09-01-preview"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[parameters('Resource Name')]"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Global"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"sku"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Standard_AzureFrontDoor"</span><span class="w">
+               </span><span class="p">},</span><span class="w">
+               </span><span class="nl">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"frontdoor"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                   </span><span class="nl">"originResponseTimeoutSeconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="w">
+               </span><span class="p">}</span><span class="w">
+           </span><span class="p">},</span><span class="w">
+           </span><span class="p">{</span><span class="w">
+               </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Microsoft.Cdn/profiles/afdendpoints"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"apiVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-09-01-preview"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[concat(parameters('Resource Name'), '/', parameters('Resource Name'))]"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Global"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"dependsOn"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                   </span><span class="s2">"[resourceId('Microsoft.Cdn/profiles', parameters('Resource Name'))]"</span><span class="w">
+               </span><span class="p">],</span><span class="w">
+               </span><span class="nl">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                   </span><span class="nl">"enabledState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Enabled"</span><span class="p">,</span><span class="w">
+                   </span><span class="nl">"enforceMtls"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Disabled"</span><span class="w">
+               </span><span class="p">}</span><span class="w">
+           </span><span class="p">},</span><span class="w">
+           </span><span class="p">{</span><span class="w">
+               </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Microsoft.Cdn/profiles/origingroups"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"apiVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-09-01-preview"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[concat(parameters('Resource Name'), '/', parameters('Resource Name'))]"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"dependsOn"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                   </span><span class="s2">"[resourceId('Microsoft.Cdn/profiles', parameters('Resource Name'))]"</span><span class="w">
+               </span><span class="p">],</span><span class="w">
+               </span><span class="nl">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                   </span><span class="nl">"loadBalancingSettings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                       </span><span class="nl">"sampleSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+                       </span><span class="nl">"successfulSamplesRequired"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+                       </span><span class="nl">"additionalLatencyInMilliseconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+                   </span><span class="p">},</span><span class="w">
+                   </span><span class="nl">"healthProbeSettings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                       </span><span class="nl">"probePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/"</span><span class="p">,</span><span class="w">
+                       </span><span class="nl">"probeRequestType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HEAD"</span><span class="p">,</span><span class="w">
+                       </span><span class="nl">"probeProtocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Http"</span><span class="p">,</span><span class="w">
+                       </span><span class="nl">"probeIntervalInSeconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+                   </span><span class="p">},</span><span class="w">
+                   </span><span class="nl">"sessionAffinityState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Disabled"</span><span class="w">
+               </span><span class="p">}</span><span class="w">
+           </span><span class="p">},</span><span class="w">
+           </span><span class="p">{</span><span class="w">
+               </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Microsoft.Cdn/profiles/origingroups/origins"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"apiVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-09-01-preview"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[concat(parameters('Resource Name'), '/', parameters('Resource Name'), '/ts-v401')]"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"dependsOn"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                   </span><span class="s2">"[resourceId('Microsoft.Cdn/profiles/origingroups', parameters('Resource Name'), parameters('Resource Name'))]"</span><span class="p">,</span><span class="w">
+                   </span><span class="s2">"[resourceId('Microsoft.Cdn/profiles', parameters('Resource Name'))]"</span><span class="w">
+               </span><span class="p">],</span><span class="w">
+               </span><span class="nl">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                   </span><span class="nl">"hostName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[parameters('originHostName')]"</span><span class="p">,</span><span class="w">
+                   </span><span class="nl">"httpPort"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span><span class="w">
+                   </span><span class="nl">"httpsPort"</span><span class="p">:</span><span class="w"> </span><span class="mi">443</span><span class="p">,</span><span class="w">
+                   </span><span class="nl">"priority"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                   </span><span class="nl">"weight"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+                   </span><span class="nl">"enabledState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Enabled"</span><span class="p">,</span><span class="w">
+                   </span><span class="nl">"enforceCertificateNameCheck"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+               </span><span class="p">}</span><span class="w">
+           </span><span class="p">},</span><span class="w">
+           </span><span class="p">{</span><span class="w">
+               </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Microsoft.Cdn/profiles/afdendpoints/routes"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"apiVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-09-01-preview"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[concat(parameters('Resource Name'), '/', parameters('Resource Name'), '/', parameters('Resource Name'))]"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"dependsOn"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                   </span><span class="s2">"[resourceId('Microsoft.Cdn/profiles/afdendpoints', parameters('Resource Name'), parameters('Resource Name'))]"</span><span class="p">,</span><span class="w">
+                   </span><span class="s2">"[resourceId('Microsoft.Cdn/profiles', parameters('Resource Name'))]"</span><span class="p">,</span><span class="w">
+                   </span><span class="s2">"[resourceId('Microsoft.Cdn/profiles/origingroups', parameters('Resource Name'), parameters('Resource Name'))]"</span><span class="p">,</span><span class="w">
+                   </span><span class="s2">"[resourceId('Microsoft.Cdn/profiles/origingroups/origins', parameters('Resource Name'), parameters('Resource Name'), 'ts-v401')]"</span><span class="w">
+               </span><span class="p">],</span><span class="w">
+               </span><span class="nl">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                   </span><span class="nl">"customDomains"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                   </span><span class="nl">"grpcState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Disabled"</span><span class="p">,</span><span class="w">
+                   </span><span class="nl">"originGroup"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                       </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[resourceId('Microsoft.Cdn/profiles/origingroups', parameters('Resource Name'), parameters('Resource Name'))]"</span><span class="w">
+                   </span><span class="p">},</span><span class="w">
+                   </span><span class="nl">"ruleSets"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                   </span><span class="nl">"supportedProtocols"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                       </span><span class="s2">"Https"</span><span class="w">
+                   </span><span class="p">],</span><span class="w">
+                   </span><span class="nl">"patternsToMatch"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                       </span><span class="s2">"/*"</span><span class="w">
+                   </span><span class="p">],</span><span class="w">
+                   </span><span class="nl">"forwardingProtocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HttpOnly"</span><span class="p">,</span><span class="w">
+                   </span><span class="nl">"linkToDefaultDomain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Enabled"</span><span class="p">,</span><span class="w">
+                   </span><span class="nl">"httpsRedirect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Enabled"</span><span class="p">,</span><span class="w">
+                   </span><span class="nl">"enabledState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Enabled"</span><span class="w">
+               </span><span class="p">}</span><span class="w">
+           </span><span class="p">}</span><span class="w">
+       </span><span class="p">]</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span></code></pre></div>        </div>
+      </li>
+      <li>Copy the contents of the file shown above <code class="language-plaintext highlighter-rouge">arm-template-fd.json</code></li>
+      <li>Save the template</li>
+      <li>In the input parameter jsl_res_name, enter the resource name to give to the front door instance.</li>
+      <li>In the input parameter originHostName, enter the public ip address of the vm that was copied before.</li>
+      <li><img src="/assets/images/term_server/fill_azure_template.png" alt="Fill Details" /></li>
+      <li>Select review + create, and create the resources.</li>
+      <li>Once successfully created, the https url will available in the Front Door resource. It may take upto 30 minutes for the https url to work.</li>
+      <li>Copy the URL of the FrontDoor instance</li>
+      <li><img src="/assets/images/term_server/azure_fd_created.png" alt="FD created" /></li>
+    </ul>
+  </li>
+  <li>Update the Terminology Server services in Azure VM instance.
+    <ul>
+      <li>SSH into the VM instance where Terminology Server is running.</li>
+      <li>Cd to home dir, Replace the output_url in the cmd below with the url from step 3, then Execute the cmd in your Terminology Service Instance.</li>
+    </ul>
+  </li>
+</ol>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-sSL</span> https://s3.us-east-1.amazonaws.com/artifacts.terminologyservice.johnsnowlabs.com/upgrade.sh | bash <span class="nt">-s</span> <span class="s2">"output_url"</span>
+</code></pre></div></div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
       <time itemprop="dateModified" datetime="2025-04-01T00:00:00+00:00">Apr 01, 2025</time>
     </span><!-- start custom article footer snippet -->
