@@ -628,9 +628,55 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <h2 id="section">03-26-2026</h2>
+  <h2 id="section">05-11-2026</h2>
 
   <h3 id="model-updates">Model Updates</h3>
+
+  <p>We’re excited to announce a major new version of our Medical-Reasoning-LLM-32B model, representing a significant advancement in AI-powered clinical decision support with enhanced structured medical reasoning capabilities.</p>
+
+  <ul>
+    <li><strong>Medical-Reasoning-LLM-32B</strong>: This updated model is designed as a cognitive partner for healthcare professionals, analyzing symptoms, diagnostics, and longitudinal patient histories to guide complex diagnostic and treatment decisions in alignment with established clinical guidelines. It delivers transparent decision pathways with clear, step-aware explanations, evaluates competing hypotheses to reduce diagnostic error, and explicitly communicates uncertainty to support risk-aware judgment. The model integrates up-to-date medical knowledge within structured reasoning frameworks that mirror experienced clinician workflows, achieving approximately 95–97% of the reasoning capability of significantly larger models at nearly half the computational cost.</li>
+  </ul>
+
+  <h4 id="specifications">Specifications</h4>
+
+  <table>
+    <thead>
+      <tr>
+        <th><strong>Model Name</strong></th>
+        <th><strong>Parameters</strong></th>
+        <th><strong>Recommended GPU Memory</strong></th>
+        <th><strong>Max Sequence Length</strong></th>
+        <th><strong>Model Size</strong></th>
+        <th><strong>Max KV-Cache</strong></th>
+        <th><strong>Tensor Parallel Sizes</strong></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Medical-Reasoning-LLM-32B</td>
+        <td>32B</td>
+        <td>~66 GB</td>
+        <td>262K</td>
+        <td>50 GB</td>
+        <td>16 GB</td>
+        <td>2, 4, 8</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h4 id="benchmark-performance--medical-reasoning-llm-32b">Benchmark Performance – Medical-Reasoning-LLM-32B</h4>
+
+  <ul>
+    <li>Achieves 95.2% accuracy on Professional Medicine</li>
+    <li>Reaches 100% on College Biology concepts</li>
+    <li>Scores 80% on Clinical Knowledge assessment</li>
+    <li>Delivers 98.3% accuracy on Patient Understanding and Accessibility</li>
+  </ul>
+
+  <h2 id="section-1">03-26-2026</h2>
+
+  <h3 id="model-updates-1">Model Updates</h3>
 
   <p>We’re excited to announce an updated version of our Medical-Visual-LLM-8B model, delivering major improvements in multimodal medical reasoning, benchmark accuracy, and deployment efficiency.</p>
 
@@ -638,7 +684,7 @@ function wrapWordInSpan(data, wordToWrap) {
     <li><strong>Medical-Visual-LLM-8B</strong>: This 8B parameter multimodal medical model delivers advanced clinical reasoning across both text and medical imagery in a highly efficient footprint. Trained on diverse medical thinking and patient-centered datasets, it understands complex clinical narratives while accurately interpreting X-rays, MRIs, CT scans, pathology slides, charts, diagrams, and structured medical records. Despite its compact size, the model demonstrates strong diagnostic support capabilities, contextual question answering, structured report summarization, and multimodal evidence synthesis. With a 262K context window, it can process long clinical documents and longitudinal patient histories. Optimized for retrieval-augmented generation (RAG) workflows, it integrates seamlessly with healthcare databases and imaging systems to provide grounded, data-aware responses across real-world medical environments.</li>
   </ul>
 
-  <h4 id="specifications">Specifications</h4>
+  <h4 id="specifications-1">Specifications</h4>
 
   <table>
     <thead>
@@ -677,9 +723,9 @@ function wrapWordInSpan(data, wordToWrap) {
     <li>Maintains 89.8% accuracy on Anatomy concepts</li>
   </ul>
 
-  <h2 id="section-1">03-10-2026</h2>
+  <h2 id="section-2">03-10-2026</h2>
 
-  <h3 id="model-updates-1">Model Updates</h3>
+  <h3 id="model-updates-2">Model Updates</h3>
 
   <p>We’re excited to announce an updated version of our Medical-Reasoning-LLM-32B model, delivering major improvements in structured clinical reasoning and real-time performance.</p>
 
@@ -687,7 +733,7 @@ function wrapWordInSpan(data, wordToWrap) {
     <li><strong>Medical-Reasoning-LLM-32B</strong>: A medical reasoning model designed as a cognitive partner for healthcare professionals, with a strong emphasis on structured clinical decision support rather than simple knowledge retrieval. It analyzes symptoms, diagnostics, and longitudinal patient histories to guide complex diagnostic and treatment decisions in alignment with established clinical guidelines. The model delivers transparent, step-aware decision pathways, evaluates competing hypotheses to reduce diagnostic error, and explicitly communicates uncertainty to support risk-aware clinical judgment. Benchmarking demonstrates state-of-the-art performance across clinical knowledge, professional medicine, and medical education tasks, while achieving nearly the reasoning capability of significantly larger models at substantially lower computational cost.</li>
   </ul>
 
-  <h4 id="specifications-1">Specifications</h4>
+  <h4 id="specifications-2">Specifications</h4>
 
   <table>
     <thead>
@@ -714,7 +760,7 @@ function wrapWordInSpan(data, wordToWrap) {
     </tbody>
   </table>
 
-  <h4 id="benchmark-performance--medical-reasoning-llm-32b">Benchmark Performance – Medical-Reasoning-LLM-32B</h4>
+  <h4 id="benchmark-performance--medical-reasoning-llm-32b-1">Benchmark Performance – Medical-Reasoning-LLM-32B</h4>
 
   <ul>
     <li>MedQA benchmark: 93.5%</li>
@@ -723,9 +769,9 @@ function wrapWordInSpan(data, wordToWrap) {
     <li>Clinical comprehension: 91.3% comparable to top-tier models</li>
   </ul>
 
-  <h2 id="section-2">02-03-2026</h2>
+  <h2 id="section-3">02-03-2026</h2>
 
-  <h3 id="model-updates-2">Model Updates</h3>
+  <h3 id="model-updates-3">Model Updates</h3>
 
   <p>We’re excited to announce an updated version of our existing Medical-Visual-LLM-8B model, along with two new vision OCR models designed for production document understanding.</p>
 
@@ -741,7 +787,7 @@ function wrapWordInSpan(data, wordToWrap) {
     </li>
   </ul>
 
-  <h4 id="specifications-2">Specifications</h4>
+  <h4 id="specifications-3">Specifications</h4>
 
   <table>
     <thead>
@@ -814,9 +860,9 @@ function wrapWordInSpan(data, wordToWrap) {
     <li><strong>Structured Extraction Excellence</strong>: Superior JSON generation from complex document layouts; excellent chart and data visualization comprehension (around 91–93%); advanced table extraction with structure preservation, including nested tables; robust handling of hierarchical data and challenging layouts; reliable key–value extraction for high-volume automated document processing.</li>
   </ul>
 
-  <h2 id="section-3">12-30-2025</h2>
+  <h2 id="section-4">12-30-2025</h2>
 
-  <h3 id="model-updates-3">Model Updates</h3>
+  <h3 id="model-updates-4">Model Updates</h3>
 
   <p>We’re excited to announce an enhanced version of our Medical-Visual-LLM-8B model with improved accuracy and performance across medical benchmarks.</p>
 
@@ -824,7 +870,7 @@ function wrapWordInSpan(data, wordToWrap) {
     <li><strong>Medical-Visual-LLM-8B</strong>: An updated 8B parameter vision-language model that delivers enhanced medical-grade multimodal intelligence. This model combines medical expertise with visual comprehension capabilities, understanding both clinical text and visual content including X-rays, MRIs, pathology slides, medical diagrams, and structured documents. It excels at summarizing clinical information, answering contextual medical questions, and facilitating decision-making. The model is optimized for RAG applications and healthcare integrations, seamlessly processing both visual and textual medical domains.</li>
   </ul>
 
-  <h4 id="specifications-3">Specifications</h4>
+  <h4 id="specifications-4">Specifications</h4>
 
   <table>
     <thead>
@@ -865,9 +911,9 @@ function wrapWordInSpan(data, wordToWrap) {
     <li>Maintains 85.1% accuracy on Anatomy concepts</li>
   </ul>
 
-  <h2 id="section-4">11-03-2025</h2>
+  <h2 id="section-5">11-03-2025</h2>
 
-  <h3 id="model-updates-4">Model Updates</h3>
+  <h3 id="model-updates-5">Model Updates</h3>
 
   <p>We’re excited to announce major updates to our vision-language models with enhanced capabilities and improved performance.</p>
 
@@ -880,7 +926,7 @@ function wrapWordInSpan(data, wordToWrap) {
     </li>
   </ul>
 
-  <h4 id="specifications-4">Specifications</h4>
+  <h4 id="specifications-5">Specifications</h4>
 
   <table>
     <thead>
@@ -942,9 +988,9 @@ function wrapWordInSpan(data, wordToWrap) {
     <li>Maintains 77.61% accuracy on MedQA 4-options test</li>
   </ul>
 
-  <h2 id="section-5">09-15-2025</h2>
+  <h2 id="section-6">09-15-2025</h2>
 
-  <h3 id="model-updates-5">Model Updates</h3>
+  <h3 id="model-updates-6">Model Updates</h3>
 
   <p>We’re excited to announce the addition of a new compact yet powerful vision-language model to our Medical LLM lineup.</p>
 
@@ -952,7 +998,7 @@ function wrapWordInSpan(data, wordToWrap) {
     <li><strong>Medical-Visual-LLM-7B</strong>: A vision-language model that delivers medical-grade multimodal intelligence in a compact, efficient format. This model combines medical expertise with visual comprehension capabilities, understanding both clinical text and visual content including X-rays, MRIs, pathology slides, medical diagrams, and structured documents. It’s well-suited for RAG applications and healthcare integrations.</li>
   </ul>
 
-  <h4 id="specifications-5">Specifications</h4>
+  <h4 id="specifications-6">Specifications</h4>
 
   <table>
     <thead>
@@ -991,13 +1037,13 @@ function wrapWordInSpan(data, wordToWrap) {
     <li>Maintains 59.07% accuracy on MedQA 4-options test</li>
   </ul>
 
-  <h2 id="section-6">08-17-2025</h2>
+  <h2 id="section-7">08-17-2025</h2>
 
-  <h3 id="model-updates-6">Model Updates</h3>
+  <h3 id="model-updates-7">Model Updates</h3>
 
   <p>We’re excited to announce that an updated versions of our Medical-Reasoning-LLM-32B models is now available, delivering significant accuracy improvements across key medical benchmarks.</p>
 
-  <h4 id="specifications-6">Specifications</h4>
+  <h4 id="specifications-7">Specifications</h4>
 
   <table>
     <thead>
@@ -1034,9 +1080,9 @@ function wrapWordInSpan(data, wordToWrap) {
     <li>Medical Genetics: Improved from 92.0% to 93.0% — a +1.0 point increase</li>
   </ul>
 
-  <h2 id="section-7">07-17-2025</h2>
+  <h2 id="section-8">07-17-2025</h2>
 
-  <h3 id="model-updates-7">Model Updates</h3>
+  <h3 id="model-updates-8">Model Updates</h3>
 
   <p>We’re excited to announce that updated versions of our Medical-LLM-8B, Medical-LLM-Small, and Medical-Reasoning-LLM-32B models are now available, delivering significant accuracy improvements across key medical benchmarks.</p>
 
@@ -1052,7 +1098,7 @@ function wrapWordInSpan(data, wordToWrap) {
     </li>
   </ul>
 
-  <h4 id="specifications-7">Specifications</h4>
+  <h4 id="specifications-8">Specifications</h4>
 
   <table>
     <thead>
@@ -1184,7 +1230,7 @@ function wrapWordInSpan(data, wordToWrap) {
     </tbody>
   </table>
 
-  <h2 id="section-8">05-19-2025</h2>
+  <h2 id="section-9">05-19-2025</h2>
 
   <p>We are excited to announce the addition of two new powerful models to our Medical LLM lineup.</p>
 
@@ -1198,7 +1244,7 @@ function wrapWordInSpan(data, wordToWrap) {
     <li><strong>Medical-Spanish-LLM-24B</strong>: A specialized 24B parameter model designed for Spanish-speaking healthcare environments, offering native processing of Spanish medical terminology and clinical documentation. The model maintains high precision in Spanish medical language understanding without requiring translation.</li>
   </ul>
 
-  <h4 id="specifications-8">Specifications</h4>
+  <h4 id="specifications-9">Specifications</h4>
 
   <table>
     <thead>
@@ -1234,7 +1280,7 @@ function wrapWordInSpan(data, wordToWrap) {
     </tbody>
   </table>
 
-  <h2 id="section-9">04-06-2025</h2>
+  <h2 id="section-10">04-06-2025</h2>
 
   <p><strong>Welcome to John Snow Labs Medicall LLMs on premise deployments Documentation and Updates Hub!</strong></p>
 
@@ -1314,7 +1360,7 @@ function wrapWordInSpan(data, wordToWrap) {
 
 </div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2026-03-26T00:00:00+00:00">Mar 26, 2026</time>
+      <time itemprop="dateModified" datetime="2026-05-11T00:00:00+00:00">May 11, 2026</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
