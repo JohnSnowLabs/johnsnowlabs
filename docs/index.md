@@ -270,7 +270,7 @@ data:
           image:
             src: https://www.rand.org/etc/rand/designs/common/images/logo-corp.svg
             url: https://www.rand.org/
-            style: "padding: 29px;"
+            style: "padding: 29px;width: 124px"
 
         - title:
           image:
