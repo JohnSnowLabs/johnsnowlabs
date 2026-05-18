@@ -27,8 +27,6 @@ The LLMs listed below are available as AWS Sagemaker Endpoints.
 
 [Medical Reasoning LLM - 32B](https://aws.amazon.com/marketplace/pp/prodview-x5bfvnroddgfe)
 
-[Medical Spanish LLM - 24B](https://aws.amazon.com/marketplace/pp/prodview-5njzrglnfav6y)
-
 [Medical Visual LLM - 8B](https://aws.amazon.com/marketplace/pp/prodview-fhcd3rwnhxbka)
 
 [Vision-OCR-LLM](https://aws.amazon.com/marketplace/pp/prodview-d7un4r7xpiwje)
