@@ -279,14 +279,11 @@ We are excited to announce the addition of two new powerful models to our Medica
 
 Get more information about the **Medical-Visual-LLM-24B** model in this [blog](https://www.johnsnowlabs.com/introducing-medical-vlm-24b-our-first-medical-vision-language-model/).
 
-- **Medical-Spanish-LLM-24B**: A specialized 24B parameter model designed for Spanish-speaking healthcare environments, offering native processing of Spanish medical terminology and clinical documentation. The model maintains high precision in Spanish medical language understanding without requiring translation.
-
 #### Specifications
 
 | **Model Name**             | **Parameters** | **Recommended GPU Memory** | **Max Sequence Length** | **Model Size** | **Max KV-Cache** | **Tensor Parallel Sizes** |
 |---------------------------|--------------|------------------|-------------------|-------------|----------------|------------------------|
 | Medical-Visual-LLM-24B           | 24B         | ~145 GB          | 128K              | 45 GB       | 100 GB         | 2, 4, 8               |
-| Medical-Spanish-LLM-24B   | 24B         | ~145 GB          | 128K              | 45 GB       | 100 GB         | 2, 4, 8               |
 
 ## 04-06-2025
 
