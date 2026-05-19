@@ -15,7 +15,6 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-## Analytics Dashboard
 
 The Analytics Dashboard provides a centralized workspace for monitoring annotation progress, team productivity, annotation quality, inter-annotator agreement, and LLM evaluation metrics across Generative AI Lab projects.
 
