@@ -6,7 +6,7 @@ seotitle: Generative AI Lab | John Snow Labs
 title: Release Notes
 permalink: /docs/en/alab/release_notes
 key: docs-training
-modify_date: "2026-04-13"
+modify_date: "2026-05-19"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
