@@ -12,6 +12,7 @@ show_nav: true
 sidebar:
   nav: annotation-lab
 
+---
 
 <div class="h3-box" markdown="1">
 
