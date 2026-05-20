@@ -17,7 +17,15 @@ sidebar:
 
 ## Entity Extraction and Pre-Annotation via GPT Prompting
 
-Generative AI Lab supports integration with external large language model (LLM) providers such as **OpenAI**, enabling a broader and more flexible range of prompts for pre-annotation.  
+Generative AI Lab supports integration with external and organization-hosted Large Language Models (LLMs), enabling flexible prompt-based pre-annotation workflows across multiple providers.
+
+Supported integrations include:
+- OpenAI
+- Azure OpenAI Service
+- Anthropic Claude
+- Amazon SageMaker endpoints
+- Custom LLM providers
+
 This capability complements the existing **Zero-Shot Entity** and **Relation Prompting** options, allowing users to leverage advanced LLMs to generate high-quality pre-annotations even when no pre-trained model is available.
 
 By combining GPT-based prompting with existing zero-shot and rule-based approaches, users can design more effective annotation workflows, quickly generate entity or relation suggestions, and improve overall annotation efficiency.
@@ -31,7 +39,7 @@ The following sections explain in detail how to define and use GPT prompts.
 
 </div><div class="h3-box" markdown="1">
 
-### Setting Up the Integration with Open AI service
+### Configuring External and Custom LLM Providers
 Integrating ChatGPT and Azure into the Generative AI Lab has been designed to be a straightforward process, ensuring users can harness the power of external expertise seamlessly. It consists of three easy steps:
 
 **Integrations Page**: Navigate to the Integrations Page located within the System Settings. This is the hub where all external service providers, including Open AI’s GPT Models, can be defined and managed.
@@ -42,11 +50,15 @@ ChatGPT:
 Azure:
 ![OpenAIIntegration](/assets/images/annotation_lab/5.5.0/1.gif)
 
+Custom LLM providers:
+![Custom LLM](/assets/images/annotation_lab/8.1.0/4.gif)
+
+
 **Define the Service Provider**: To initiate the integration, users are required to provide specific details:
 - **Service Provider Name**: This is the identifier for the external service, which in this case would be “ChatGPT” or any other name you prefer to use.
 - **Secret Key**: Every external service comes with a unique Secret Key that ensures secure communication between the platforms. Enter the Secret Key associated with your Open AI subscription here. To ensure the integration process is error-free, users can validate the provided Secret Key directly within the form. This validation step ensures that the connection is secure and that the key is correct.
 
-**Project Association**: Once a successful connection with “ChatGPT” (or any external LLM service provider) is established, it doesn't end there. The integrated service will now be available for association with selected projects. This means users can decide which projects will benefit from the “ChatGPT” integration and enable it accordingly.
+**Project Association**: Once a provider connection is successfully configured, the integration becomes available for association with selected projects. Project managers can enable specific providers for prompt generation, pre-annotation, and evaluation workflows.
 
 The Open AI integration allows users to tap into a vast reservoir of external expertise, enhancing the depth and breadth of their projects. We've ensured that the integration process is as intuitive as possible, allowing users to focus on what truly matters: crafting refined and effective pre-annotations.
 
@@ -57,6 +69,9 @@ Generative AI Lab now supports integration with multiple external LLM providers:
 - **Azure OpenAI Service**  
 - **Anthropic Claude**  
 - **Amazon SageMaker LLM Endpoints**
+- **Custom LLM providers (organization-hosted or external endpoints)**
+
+Custom LLM providers can be configured using organization-specific endpoints and authentication methods, allowing teams to integrate private or self-hosted models directly into prompt workflows alongside supported providers.
 
 Each provider can be added and configured from **System Settings → Integrations** using the same setup process. Users simply supply the required credentials (API key, access token, or endpoint) and validate the connection before linking the provider to specific projects.
 
@@ -73,7 +88,7 @@ They are saved along with the provider configuration and automatically applied d
 </div><div class="h3-box" markdown="1">
 
 ### Prompt Definition and Testing
-Users can generate LLM prompts on the dedicated Prompt page from the Hub of Resources. For ChatGPT and Azure Prompts, Generative AI Lab offers a dedicated definition interface. Here's what to expect when creating a new LLM prompt:
+Users can generate LLM prompts on the dedicated Prompt page from the Hub of Resources. Generative AI Lab provides a unified interface for creating and testing prompts across integrated LLM providers. Here's what to expect when creating a new LLM prompt:
 
 - **Name the Prompt**: Within this new tab, users will first be asked to provide a name for their prompt. This name will be used for pre-annotating identified entities. At this point, we recommend creating one prompt per target entity.
 

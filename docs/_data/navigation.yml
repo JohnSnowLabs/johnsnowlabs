@@ -185,6 +185,8 @@ annotation-lab:
             url: /docs/en/alab/synthetic_task
           - title: Tasks
             url: /docs/en/alab/tasks
+          - title: Analytics
+            url: /docs/en/alab/analytics_dashboard
           - title: Workflows
             url: /docs/en/alab/workflow
       - subtitle: Project Types 
