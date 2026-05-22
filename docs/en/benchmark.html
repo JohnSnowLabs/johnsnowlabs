@@ -3766,6 +3766,85 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
 </div>
 <div class="h3-box">
 
+  <h2 id="pretrained-zero-shot-multi-task-named-entity-recognition-ner-speed-comparison-on-gpu-vs-cpu">Pretrained Zero-Shot Multi-Task Named Entity Recognition (NER) Speed Comparison on GPU vs CPU</h2>
+
+</div>
+<div class="h3-box">
+
+  <p>We benchmarked the <strong>PretrainedZeroShotMultiTask</strong> architecture using the <strong>zeroshot_multitask_base</strong> model on a dataset of ~500 tokens per row.</p>
+
+  <p><strong>Hardware setup:</strong></p>
+
+  <ul>
+    <li><strong>CPU</strong>: 8 cores, 52 GB System RAM</li>
+    <li><strong>GPU</strong>: NVIDIA T4, 24 GB VRAM</li>
+  </ul>
+
+  <p>The workload was tested on two dataset sizes (1k rows and 100 rows), each with 48 repartitions.</p>
+
+  <h3 id="spark-nlp-pipeline-1">Spark NLP Pipeline</h3>
+
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pipeline = Pipeline(
+    stages = [
+        document_assembler,
+        sentence_detector,
+        pretrained_zeroshot_multitask
+])
+</code></pre></div>  </div>
+
+  <h3 id="summary">Summary</h3>
+
+  <ul>
+    <li>The <strong>GPU significantly reduced wall time</strong> compared to CPU.</li>
+    <li>On the 1k dataset, GPU reduced total runtime from <strong>8h 45m → 42m</strong> (~12× faster).</li>
+    <li>On the 100-row dataset, GPU reduced runtime from <strong>51m → 4m</strong> (~12× faster).</li>
+    <li>GPU acceleration scales consistently across dataset sizes.</li>
+  </ul>
+
+  <h3 id="benchmark-results">Benchmark Results</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Hardware</th>
+        <th>Dataset Size</th>
+        <th>Repartition</th>
+        <th>CPU Time (user+sys)</th>
+        <th>Wall Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>CPU (8 core, 52GB RAM)</td>
+        <td>1k rows (~500 tokens)</td>
+        <td>48</td>
+        <td>5.93 s</td>
+        <td>8h 45m 46s</td>
+      </tr>
+      <tr>
+        <td>CPU (8 core, 52GB RAM)</td>
+        <td>100 rows (~500 tokens)</td>
+        <td>48</td>
+        <td>625 ms</td>
+        <td>51m 43s</td>
+      </tr>
+      <tr>
+        <td>GPU (NVIDIA T4, 24GB)</td>
+        <td>1k rows (~500 tokens)</td>
+        <td>48</td>
+        <td>400 ms</td>
+        <td>42m 35s</td>
+      </tr>
+      <tr>
+        <td>GPU (NVIDIA T4, 24GB)</td>
+        <td>100 rows (~500 tokens)</td>
+        <td>48</td>
+        <td>52 ms</td>
+        <td>4m 12s</td>
+      </tr>
+    </tbody>
+  </table>
+
   <h2 id="rxnorm-benchmark-healthcare-nlp--gpt-4--amazon">RxNorm Benchmark: Healthcare NLP &amp; GPT-4 &amp; Amazon</h2>
 
   <h3 id="motivation">Motivation</h3>
