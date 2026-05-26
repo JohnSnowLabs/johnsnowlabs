@@ -689,6 +689,7 @@ johnsnowlabs/jsl-llms <span class="se">\</span>
         <th><strong>Model Size</strong></th>
         <th><strong>Max KV-Cache</strong></th>
         <th><strong>Tensor Parallel Sizes</strong></th>
+        <th><strong>Available Versions</strong></th>
       </tr>
     </thead>
     <tbody>
@@ -700,6 +701,7 @@ johnsnowlabs/jsl-llms <span class="se">\</span>
         <td>17 GB</td>
         <td>8 GB</td>
         <td>1, 2, 4, 8</td>
+        <td>v1, v2, v3, v4</td>
       </tr>
       <tr>
         <td>Medical-LLM-14B</td>
@@ -709,6 +711,7 @@ johnsnowlabs/jsl-llms <span class="se">\</span>
         <td>27 GB</td>
         <td>13 GB</td>
         <td>1, 2</td>
+        <td>v1</td>
       </tr>
       <tr>
         <td>Medical-LLM-Small</td>
@@ -718,6 +721,7 @@ johnsnowlabs/jsl-llms <span class="se">\</span>
         <td>28 GB</td>
         <td>31 GB</td>
         <td>1, 2, 4, 8</td>
+        <td>v1, v2</td>
       </tr>
       <tr>
         <td>Medical-LLM-Medium</td>
@@ -727,6 +731,7 @@ johnsnowlabs/jsl-llms <span class="se">\</span>
         <td>131 GB</td>
         <td>320 GB</td>
         <td>4, 8</td>
+        <td>v1, v2</td>
       </tr>
       <tr>
         <td>Medical-Reasoning-LLM-32B</td>
@@ -736,6 +741,7 @@ johnsnowlabs/jsl-llms <span class="se">\</span>
         <td>50 GB</td>
         <td>16 GB</td>
         <td>2, 4, 8</td>
+        <td>v1, v2, v3, v4, v5</td>
       </tr>
       <tr>
         <td>Medical-Visual-LLM-30B</td>
@@ -745,6 +751,7 @@ johnsnowlabs/jsl-llms <span class="se">\</span>
         <td>58 GB</td>
         <td>92 GB</td>
         <td>2, 4, 8</td>
+        <td>v1</td>
       </tr>
       <tr>
         <td>Vision-OCR-LLM</td>
@@ -754,6 +761,7 @@ johnsnowlabs/jsl-llms <span class="se">\</span>
         <td>58 GB</td>
         <td>5 GB</td>
         <td>2, 4, 8</td>
+        <td>v1</td>
       </tr>
       <tr>
         <td>Vision-OCR-Structured-LLM</td>
@@ -763,6 +771,7 @@ johnsnowlabs/jsl-llms <span class="se">\</span>
         <td>58 GB</td>
         <td>5 GB</td>
         <td>2, 4, 8</td>
+        <td>v1</td>
       </tr>
     </tbody>
   </table>
@@ -772,8 +781,28 @@ johnsnowlabs/jsl-llms <span class="se">\</span>
 
     <p><strong>Memory Calculations:</strong> All memory calculations are based on half-precision (fp16/bf16) weights. Recommended GPU Memory considers the model size and the maximum key-value cache at the model’s maximum sequence length. These calculations follow the guidelines from <a href="https://docs.djl.ai/master/docs/serving/serving/docs/lmi/deployment_guide/instance-type-selection.html">DJL’s LMI Deployment Guide.</a></p>
 
+    <p>All specifications shown are based on the latest version of each model.</p>
+
     <p><strong>Model Code Requirements:</strong> Both <code class="language-plaintext highlighter-rouge">Vision-OCR-LLM</code> and <code class="language-plaintext highlighter-rouge">Vision-OCR-Structured-LLM</code> must be run with <code class="language-plaintext highlighter-rouge">trust_remote_code=True</code> because their model implementations include custom code.</p>
   </blockquote>
+
+</div>
+<div class="h3-box">
+
+  <h2 id="model-versions">Model Versions</h2>
+
+  <p>Each model is versioned. By default, omitting <code class="language-plaintext highlighter-rouge">--model-version</code> loads the latest (most recent) version. Use the flag to pin a specific older version. Available versions for each model are listed in the table above.</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">-d</span> <span class="se">\</span>
+<span class="nt">--gpus</span> all <span class="se">\</span>
+<span class="nt">--env</span> <span class="s2">"SPARK_NLP_LICENSE=your_license_key"</span> <span class="se">\</span>
+<span class="nt">-p</span> 8080:8080 <span class="se">\</span>
+<span class="nt">--ipc</span><span class="o">=</span>host <span class="se">\</span>
+johnsnowlabs/jsl-llms <span class="se">\</span>
+<span class="nt">--model</span> Medical-LLM-Small <span class="se">\</span>
+<span class="nt">--model-version</span> v1 <span class="se">\</span>
+<span class="nt">--port</span> 8080
+</code></pre></div>  </div>
 
 </div>
 <div class="h3-box">
