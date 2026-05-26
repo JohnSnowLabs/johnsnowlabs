@@ -67,23 +67,43 @@ johnsnowlabs/jsl-llms \
 
 The following models are currently available for on-premise deployments:
 
-| **Model Name** | **Parameters** | **Recommended GPU Memory** | **Max Sequence Length** | **Model Size** | **Max KV-Cache** | **Tensor Parallel Sizes** |
-|----------------------------|------------|--------------------------|-------------------------|----------------|------------------|--------------------------|
-| Medical-Visual-LLM-8B  | 8B          | ~25 GB       | 262K                | 17 GB       | 8 GB        | 1, 2, 4, 8      |
-| Medical-LLM-14B        | 14B         | ~40 GB       | 16K                 | 27 GB       | 13 GB       | 1, 2            |
-| Medical-LLM-Small      | 14B         | ~59 GB       | 40K                 | 28 GB       | 31 GB       | 1, 2, 4, 8      |
-| Medical-LLM-Medium     | 70B         | ~452 GB      | 128K                | 131 GB      | 320 GB      | 4, 8            |
-| Medical-Reasoning-LLM-32B  | 32B      | ~66 GB       | 262K                | 50 GB       | 16 GB       | 2, 4, 8         |
-| Medical-Visual-LLM-30B | 30B         | ~150 GB      | 262K                | 58 GB       | 92 GB       | 2, 4, 8         |
-| Vision-OCR-LLM | 30B        | ~62 GB       | 40K                 | 58 GB       | 5 GB        | 2, 4, 8         |
-| Vision-OCR-Structured-LLM | 30B | ~62 GB    | 40K                 | 58 GB       | 5 GB        | 2, 4, 8         |
+| **Model Name** | **Parameters** | **Recommended GPU Memory** | **Max Sequence Length** | **Model Size** | **Max KV-Cache** | **Tensor Parallel Sizes** | **Available Versions** |
+|----------------------------|------------|--------------------------|-------------------------|----------------|------------------|--------------------------|------------------------|
+| Medical-Visual-LLM-8B  | 8B          | ~25 GB       | 262K                | 17 GB       | 8 GB        | 1, 2, 4, 8      | v1, v2, v3, v4 |
+| Medical-LLM-14B        | 14B         | ~40 GB       | 16K                 | 27 GB       | 13 GB       | 1, 2            | v1             |
+| Medical-LLM-Small      | 14B         | ~59 GB       | 40K                 | 28 GB       | 31 GB       | 1, 2, 4, 8      | v1, v2         |
+| Medical-LLM-Medium     | 70B         | ~452 GB      | 128K                | 131 GB      | 320 GB      | 4, 8            | v1, v2         |
+| Medical-Reasoning-LLM-32B  | 32B      | ~66 GB       | 262K                | 50 GB       | 16 GB       | 2, 4, 8         | v1, v2, v3, v4, v5 |
+| Medical-Visual-LLM-30B | 30B         | ~150 GB      | 262K                | 58 GB       | 92 GB       | 2, 4, 8         | v1             |
+| Vision-OCR-LLM | 30B        | ~62 GB       | 40K                 | 58 GB       | 5 GB        | 2, 4, 8         | v1             |
+| Vision-OCR-Structured-LLM | 30B | ~62 GB    | 40K                 | 58 GB       | 5 GB        | 2, 4, 8         | v1             |
 
 
 > **Important Notes**
 >
 > **Memory Calculations:** All memory calculations are based on half-precision (fp16/bf16) weights. Recommended GPU Memory considers the model size and the maximum key-value cache at the model's maximum sequence length. These calculations follow the guidelines from [DJL's LMI Deployment Guide.](https://docs.djl.ai/master/docs/serving/serving/docs/lmi/deployment_guide/instance-type-selection.html)
 >
+> All specifications shown are based on the latest version of each model.
+>
 > **Model Code Requirements:** Both `Vision-OCR-LLM` and `Vision-OCR-Structured-LLM` must be run with `trust_remote_code=True` because their model implementations include custom code.
+
+</div><div class="h3-box" markdown="1">
+
+## Model Versions
+
+Each model is versioned. By default, omitting `--model-version` loads the latest (most recent) version. Use the flag to pin a specific older version. Available versions for each model are listed in the table above.
+
+```bash
+docker run -d \
+--gpus all \
+--env "SPARK_NLP_LICENSE=your_license_key" \
+-p 8080:8080 \
+--ipc=host \
+johnsnowlabs/jsl-llms \
+--model Medical-LLM-Small \
+--model-version v1 \
+--port 8080
+```
 
 </div><div class="h3-box" markdown="1">
 
