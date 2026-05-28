@@ -586,17 +586,18 @@ Version 8.1 introduces several usability improvements for Medical Terminology co
 </div>
 
 <ul class="pagination owl-carousel pagination_big">
-    <li class="active"><a href="annotation_labs_releases/release_notes_8_0_1">8.1.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_8_0_0">8.0.1</a></li>
+    <li><a href="annotation_labs_releases/release_notes_8_1_1">8.1.1</a></li>
+    <li class="active"><a href="annotation_labs_releases/release_notes_8_1_0">8.1.0</a></li>
+    <li><a href="annotation_labs_releases/release_notes_8_0_1">8.0.1</a></li>
     <li><a href="annotation_labs_releases/release_notes_8_0_0">8.0.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_7_8_2">7.8.2</a></li>
     <li><a href="annotation_labs_releases/release_notes_7_8_1">7.8.1</a></li>
     <li><a href="annotation_labs_releases/release_notes_7_8">7.8</a></li>
     <li><a href="annotation_labs_releases/release_notes_7_7">7.7</a></li>
-    <li><a href="annotation_labs_releases/release_notes_7_5_1">7.6.0</a></li>
+    <li><a href="annotation_labs_releases/release_notes_7_6_0">7.6.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_7_5_1">7.5.1</a></li>
     <li><a href="annotation_labs_releases/release_notes_7_5_0">7.5.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_7_3_3">7.4.0</a></li>
+    <li><a href="annotation_labs_releases/release_notes_7_4_0">7.4.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_7_3_3">7.3.3</a></li>
     <li><a href="annotation_labs_releases/release_notes_7_3_1">7.3.1</a></li>
     <li><a href="annotation_labs_releases/release_notes_7_3_0">7.3.0</a></li>
