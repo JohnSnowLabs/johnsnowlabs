@@ -16,8 +16,9 @@ sidebar:
 <div class="h3-box" markdown="1">
 
 
+## Generative AI Lab 8.1.1
 
-## Bug Fixes
+### Bug Fixes
 
 - **Completion Submission Errors in PDF with Text Projects**
 
