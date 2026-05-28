@@ -9,12 +9,12 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Generative AI Lab Release Notes 6.4.1</title><meta property="og:title" content="Generative AI Lab | John Snow Labs"/>
+<!-- End Google Tag Manager --><title>Generative AI Lab 8.1.1</title><meta property="og:title" content="Generative AI Lab | John Snow Labs"/>
 
 <meta name="description" content="High Performance NLP with Apache Spark
 ">
-<!-- <link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_6_5_1"> -->
-<link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_6_5_1"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<!-- <link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_8_1_1"> -->
+<link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_8_1_1"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -616,42 +616,69 @@ function wrapWordInSpan(data, wordToWrap) {
 </script><div class="article__header"><div class="header-nav"><div class="main-docs">
   <ul class="breadcrambs">
     <li><a href="/docs">Documentation</a></li>
-    <li>Generative AI Lab Release Notes 6.4.1</li>
+    <li>Generative AI Lab 8.1.1</li>
   </ul>
 </div></div><header class="main-docs have_subtitle">
-          <h1>Generative AI Lab Release Notes 6.4.1</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
+          <h1>Generative AI Lab 8.1.1</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
-            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/alab/annotation_labs_releases/release_notes_6_5_1.md">
-            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Generative AI Lab Release Notes 6.4.1"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
+            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/alab/annotation_labs_releases/release_notes_8_1_1.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Generative AI Lab 8.1.1"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <h2 id="section">6.5.1</h2>
+  <h2 id="bug-fixes">Bug Fixes</h2>
 
-  <p>Release date: <strong>09-03-2024</strong></p>
-
-  <h3 id="improvements">Improvements</h3>
   <ul>
-    <li>In Visual NER annotation, the selection indication is now cleared when a chunk is selected without a label and then saved.</li>
-    <li>Enhanced the user interface for the Templatic Augmentation option.</li>
+    <li>
+      <p><strong>Completion Submission Errors in PDF with Text Projects</strong></p>
+
+      <p>Completion submission could fail in PDF with Text projects, preventing users from successfully submitting annotation results. Submission workflows have been corrected and verified across PDF with Text Annotation, Visual NER, and Side-by-Side project types.</p>
+    </li>
+    <li>
+      <p><strong>Synthetic Task ADHOC Validation API Compatibility with Custom LLMs</strong></p>
+
+      <p>The Synthetic Task ADHOC validation API was not fully aligned with the updated Custom LLM integration architecture, which could result in validation inconsistencies. Validation workflows have been updated to support the latest Custom LLM configuration behavior.</p>
+    </li>
+    <li>
+      <p><strong>Unable to Upload Authentication Scripts for Custom LLM Providers</strong></p>
+
+      <p>Authentication script uploads could fail during Custom LLM configuration, preventing integrations that require custom authentication logic. Script upload, validation, and Custom LLM authentication workflows now function correctly.</p>
+    </li>
+    <li>
+      <p><strong>Bulk Delete Not Working with “Delete All Occurrences”</strong></p>
+
+      <p>The “Delete All Occurrences” option on the labeling page could fail to remove all matching annotations after entity deletion. Bulk deletion workflows have been corrected and now remove all matching occurrences as expected.</p>
+    </li>
+    <li>
+      <p><strong>IAA Percentage Charts Exceeding Expected Scale</strong></p>
+
+      <p>Percentage-based Inter-Annotator Agreement charts could display values outside the expected percentage range. Chart scaling has been corrected, and percentage charts now use a maximum value of 100%.</p>
+    </li>
+    <li>
+      <p><strong>Incorrect Anthropic Base URL During Configuration</strong></p>
+
+      <p>Selecting Anthropic as an LLM provider could incorrectly populate the OpenAI base URL, causing confusion during provider setup. Provider-specific endpoint handling has been corrected, and URLs now update dynamically based on the selected provider.</p>
+    </li>
+    <li>
+      <p><strong>SageMaker Integration Issues</strong></p>
+
+      <p>Certain SageMaker integrations could fail during synthetic task generation and LLM evaluation workflows. SageMaker provider support has been corrected and validated across supported project types.</p>
+    </li>
+    <li>
+      <p><strong>Custom LLM Authentication Script Access Permissions</strong></p>
+
+      <p>Permission restrictions could prevent Custom LLM integrations from accessing required authentication script resources. Access controls have been updated to support authentication-script-based integrations.</p>
+    </li>
+    <li>
+      <p><strong>Progress Chart Handling for Incomplete Tasks</strong></p>
+
+      <p>Progress chart behavior has been aligned with assignment workflows. Incomplete task counts are now displayed according to task assignment status, ensuring consistent reporting across analytics dashboards.</p>
+    </li>
   </ul>
 
-  <h3 id="bug-fixes">Bug Fixes</h3>
-  <ul>
-    <li>The test status will now correctly display as “pending” when the model-test server is in a pending state.</li>
-    <li>Fixed an issue where XML validation would fail if a user removed a model linked to tasks with labels or choices in a multi-model configuration.</li>
-    <li>Corrected the visibility behavior of the “Show submit button” feature for text areas; it now functions according to the configured settings.</li>
-    <li>Resolved a DB session rollback error appearing in pod logs</li>
-    <li>The “Template Augmentation” option has been renamed to “Templatic Augmentation.”</li>
-    <li>Addressed a bug that prevented adding relations without NER labels during project configuration; relations can now be added in Visual NER projects.</li>
-    <li>Fixed the “list index out of range” error that was occurring on the configuration page for newly created projects.</li>
-  </ul>
-
-</div>
-<div class="prev_ver h3-box">
-
+  <hr />
   <h2 id="versions">Versions</h2>
 
 </div>
@@ -736,7 +763,7 @@ function wrapWordInSpan(data, wordToWrap) {
   <li><a href="release_notes_5_1_0">5.1.0</a></li>
 </ul>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2024-06-21T00:00:00+00:00">Jun 21, 2024</time>
+      <time itemprop="dateModified" datetime="2026-05-27T00:00:00+00:00">May 27, 2026</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
