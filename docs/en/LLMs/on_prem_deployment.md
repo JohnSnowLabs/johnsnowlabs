@@ -69,12 +69,8 @@ The following models are currently available for on-premise deployments:
 
 | **Model Name** | **Parameters** | **Recommended GPU Memory** | **Max Sequence Length** | **Model Size** | **Max KV-Cache** | **Tensor Parallel Sizes** | **Available Versions** |
 |----------------------------|------------|--------------------------|-------------------------|----------------|------------------|--------------------------|------------------------|
-| Medical-Visual-LLM-8B  | 8B          | ~25 GB       | 262K                | 17 GB       | 8 GB        | 1, 2, 4, 8      | v1, v2, v3, v4 |
-| Medical-LLM-14B        | 14B         | ~40 GB       | 16K                 | 27 GB       | 13 GB       | 1, 2            | v1             |
-| Medical-LLM-Small      | 14B         | ~59 GB       | 40K                 | 28 GB       | 31 GB       | 1, 2, 4, 8      | v1, v2         |
 | Medical-LLM-Medium     | 70B         | ~452 GB      | 128K                | 131 GB      | 320 GB      | 4, 8            | v1, v2         |
-| Medical-Reasoning-LLM-32B  | 32B      | ~66 GB       | 262K                | 50 GB       | 16 GB       | 2, 4, 8         | v1, v2, v3, v4, v5 |
-| Medical-Visual-LLM-30B | 30B         | ~150 GB      | 262K                | 58 GB       | 92 GB       | 2, 4, 8         | v1             |
+| Medical-LLM-Small      | 14B         | ~59 GB       | 40K                 | 28 GB       | 31 GB       | 1, 2, 4, 8      | v1, v2         |
 | Vision-OCR-LLM | 30B        | ~62 GB       | 40K                 | 58 GB       | 5 GB        | 2, 4, 8         | v1             |
 | Vision-OCR-Structured-LLM | 30B | ~62 GB    | 40K                 | 58 GB       | 5 GB        | 2, 4, 8         | v1             |
 
