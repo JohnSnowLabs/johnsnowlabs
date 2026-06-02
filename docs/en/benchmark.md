@@ -940,13 +940,13 @@ Estimated Minimum Costs:
 
 </div><div class="h3-box" markdown="1">
 
-## Deidentification Pipelines Speed Comparison on Databrics-AWS
+## Deidentification Pipelines Speed Comparison on Databricks-AWS
 
 </div><div class="h3-box" markdown="1">
 
 ### Deidentification Pipelines Benchmarks
 
-These pipelines can be used to deidentify PHI information from medical texts. The PHI information will be masked and obfuscated. It also provides valuable insights into the efficiency and scalability of deidentification pipelines in different computational environments on Databrics.
+These pipelines can be used to deidentify PHI information from medical texts. The PHI information will be masked and obfuscated. It also provides valuable insights into the efficiency and scalability of deidentification pipelines in different computational environments on Databricks.
 
 </div><div class="h3-box" markdown="1">
 
@@ -976,7 +976,7 @@ Databricks Runtime: 16.4 LTS (includes Apache Spark 3.5.2, Scala 2.12)
 
 ### Instance Type
 
-Databrics-AWS Config with CPU/GPU Options
+Databricks-AWS Config with CPU/GPU Options
 
 - (CPU)
 
@@ -1077,7 +1077,7 @@ Included Models
 
 </div><div class="h3-box" markdown="1">
 
-## Pretrained Zero-Shot Named Entity Recognition (NER) Deidentification Subentity Speed Comparison on Databrics-AWS
+## Pretrained Zero-Shot Named Entity Recognition (NER) Deidentification Subentity Speed Comparison on Databricks-AWS
 
 </div><div class="h3-box" markdown="1">
 
@@ -1085,7 +1085,7 @@ Included Models
 
 Zero-shot Named Entity Recognition (NER) enables the identification of entities in text with minimal effort. By leveraging pre-trained language models and contextual understanding, zero-shot NER extends entity recognition capabilities to new domains and languages.
 
-This experiment compares the Pretrained Zero-shot NER runtime for CPU and GPU clusters on Databrics-AWS environment.
+This experiment compares the Pretrained Zero-shot NER runtime for CPU and GPU clusters on Databricks-AWS environment.
 
 </div><div class="h3-box" markdown="1">
 
@@ -1123,7 +1123,7 @@ Databricks Runtime: 16.4 LTS (includes Apache Spark 3.5.2, Scala 2.12)
 
 ### Instance Type
 
-Databrics-AWS Config with CPU/GPU Options
+Databricks-AWS Config with CPU/GPU Options
 
 - (CPU)
 
