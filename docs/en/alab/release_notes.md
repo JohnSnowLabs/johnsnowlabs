@@ -586,6 +586,7 @@ Version 8.1 introduces several usability improvements for Medical Terminology co
 </div>
 
 <ul class="pagination owl-carousel pagination_big">
+    <li><a href="annotation_labs_releases/release_notes_8_1_2">8.1.2</a></li>
     <li><a href="annotation_labs_releases/release_notes_8_1_1">8.1.1</a></li>
     <li class="active"><a href="annotation_labs_releases/release_notes_8_1_0">8.1.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_8_0_1">8.0.1</a></li>
