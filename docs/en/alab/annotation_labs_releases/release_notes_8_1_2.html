@@ -9,12 +9,12 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>NLP Lab Release Notes 4.8.1</title><meta property="og:title" content="NLP Lab | John Snow Labs"/>
+<!-- End Google Tag Manager --><title>Generative AI Lab 8.1.2</title><meta property="og:title" content="Generative AI Lab | John Snow Labs"/>
 
 <meta name="description" content="High Performance NLP with Apache Spark
 ">
-<!-- <link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_4_8_1"> -->
-<link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_4_8_1"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<!-- <link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_8_1_2"> -->
+<link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_8_1_2"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -616,280 +616,46 @@ function wrapWordInSpan(data, wordToWrap) {
 </script><div class="article__header"><div class="header-nav"><div class="main-docs">
   <ul class="breadcrambs">
     <li><a href="/docs">Documentation</a></li>
-    <li>NLP Lab Release Notes 4.8.1</li>
+    <li>Generative AI Lab 8.1.2</li>
   </ul>
 </div></div><header class="main-docs have_subtitle">
-          <h1>NLP Lab Release Notes 4.8.1</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
+          <h1>Generative AI Lab 8.1.2</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
-            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/alab/annotation_labs_releases/release_notes_4_8_1.md">
-            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="NLP Lab Release Notes 4.8.1"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
+            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/alab/annotation_labs_releases/release_notes_8_1_2.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Generative AI Lab 8.1.2"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <h2 id="section">4.8.1</h2>
+  <h2 id="bug-fixes">Bug Fixes</h2>
 
-  <p>Release date: <strong>22-03-2023</strong></p>
+  <ul>
+    <li>
+      <p><strong>Integration Page Error After Restore</strong></p>
 
-  <h2 id="more-powerful-prompts-new-annotation-gesture-and-enhanced-support-for-floating-licences-in-nlp-lab-48">More Powerful Prompts, New Annotation Gesture, and Enhanced Support for Floating Licences in NLP Lab 4.8</h2>
+      <p>The Integration page could return an Internal Server Error after restoring an instance to version 8.1.1, preventing users from accessing configured integrations.
+ Backup and restore compatibility has been improved, and the Integration page now loads correctly after restore operations across supported versions.</p>
+    </li>
+    <li>
+      <p><strong>LLM Integration Configuration &amp; Validation Improvements</strong></p>
 
-  <p>NLP Lab 4.8 brings more power to the prompts allowing a more efficient text preannotation, it adapts to the user’s preferences in terms of annotation gestures, adds supports for bundles of floating licenses shared across the annotation team for parallel preannotation, training, and experiments in the playground. It also includes a long list of optimizations covering project configuration steps, large projects export, or automatic download of missing resources.  Here are the highlights of this release:</p>
+      <p>Several issues affecting LLM integration workflows have been resolved:</p>
 
-  <h2 id="more-powerful-prompts">More Powerful Prompts</h2>
+      <ul>
+        <li>Editing an existing integrated LLM could redirect users to the “Something Went Wrong” page, preventing configuration updates.</li>
+        <li>Azure OpenAI integrations used overly restrictive api_base validation rules that could block valid endpoint configurations.</li>
+        <li>Authentication scripts could remain cached and be unintentionally included in validation and integration requests for unrelated LLM providers.</li>
+      </ul>
+    </li>
+    <li>
+      <p><strong>Synthetic Task ADHOC Interface Improvements</strong></p>
 
-  <p>NLP Lab 4.8 introduces several new features that enhance prompt-based
-preannotation. One significant improvement is the incorporation of
-negative questions into prompt definitions, which allows users to
-establish characteristics that do not apply to the target entity or
-relation. This version also enables the creation of relation prompts
-using labels from custom models even if trained with different
-embeddings, providing more flexibility for prompt-based preannotation.
-Additionally, the software now automatically downloads prompt
-dependencies and supports prompt import/export. The prompt definition
-page also features a dynamic question count and filters for easy
-navigation.</p>
+      <p>The Request and Response panels within Synthetic Task ADHOC workflows have been repositioned and optimized to provide additional workspace for reviewing and editing generated content.</p>
+    </li>
+  </ul>
 
-  <h3 id="combining-positive-and-negative-questions-for-more-precise-prompts-definition">Combining Positive and Negative Questions for More Precise Prompts Definition</h3>
-
-  <p>NLP Lab 4.8 enhances the precision of entity annotation using prompts
-by incorporating negative questions. On the prompt definition screen,
-users can now specify two categories of questions - <em>Questions that
-establish the characteristics of</em> <em>the target entity</em> and <em>Questions
-that establish the characteristics that do not apply to</em> <em>the entity</em>.
-Both the affirmative and negative definitions will be executed as
-separate prompts, integrated into the same pipeline, enabling users to
-eliminate incorrect entities generated by the prompts. This feature will
-substantially boost the efficiency of prompt-based entity generation and
-streamline the process for our users.</p>
-
-  <p><img src="https://user-images.githubusercontent.com/17021686/226559658-425fee52-1856-4ad2-bf9e-b64092b0e9ef.gif" alt="Screen Recording 2023-03-21 at 2 29 05 PM" /></p>
-
-  <h3 id="relation-prompts-combine-entities-from-models-trained-with-different-embeddings">Relation Prompts Combine Entities from Models Trained with Different Embeddings</h3>
-
-  <p>NLP Lab allows the definition of relation prompts by combining entities
-defined in pre-trained models, rules, and prompts. However, previous
-versions of the software did not allow users to create relation prompts
-using custom-trained models. In this update, users can implement and use
-relation prompts linking 2 entities defined in custom-trained models
-(e.g. trained via the NLP Lab). Moreover, there is no restriction for
-the reference models which can also be trained using different
-embeddings. We are confident that this new feature will enhance the
-power of the prompts and offer more flexibility for prompt-based
-preannotation.</p>
-
-  <h3 id="automatically-download-necessary-prompt-dependencies">Automatically Download Necessary Prompt Dependencies</h3>
-
-  <p>NLP Lab Prompts are created based on Zero Shot models. The later are
-part of the Healthcare, Finance and Legal libraries and are accessible
-only in the presence of a valid license key. The prompt definition
-options are populated according to license availability: e.g. if a
-Healthcare NLP license is available, the Healthcare option will be
-active in the Domain dropdown. As such, when creating a prompt, the user has
-to choose the domain of the prompt, and based on that, NLP Lab will
-infer the Zero Shot model needed by the prompt.</p>
-
-  <p>When users select one of the active domains if the corresponding Zero
-Shot model is not available locally, NLP Lab will automatically download
-it from the NLP Models Hub.</p>
-
-  <p><img src="https://user-images.githubusercontent.com/17021686/226288623-5e1ca39b-b6ce-4fdc-b058-b290e6765ede.gif" alt="Screen Recording 2023-03-20 at 2 23 41 PM" /></p>
-
-  <h3 id="importexport-prompts">Import/Export Prompts</h3>
-
-  <p>Prompts are preannotation resources that users often want to move from
-one instance of the NLP Lab to another or to archive for future
-reference. NLP Lab now supports prompt import and export from the UI.
-The user can import a ZIP/JSON file containing one or several prompt
-definitions. The imported prompts will become available on the Prompts
-page under the Hub menu item.</p>
-
-  <p>Users can also export prompts in JSON format via the burger menu
-available for each prompt.
-<img src="https://user-images.githubusercontent.com/17021686/226291321-1bd5164a-c9e8-459b-a5a4-bbbc2591c54a.gif" alt="Screen Recording 2023-03-20 at 2 38 56 PM" /></p>
-
-  <h3 id="dynamic-count-of-questions-on-the-prompt-definition-page">Dynamic Count of Questions on the Prompt Definition Page</h3>
-
-  <p>Each prompt can include a maximum of 30 positive questions and 30 negative
-questions. For facilitating user actions when defining/updating prompts,
-NLP Lab now includes a count of the number of questions added so far.
-For instance, if two questions have been added while creating a prompt,
-then the UI should show <strong>Questions(2/30)</strong>
-<img src="https://user-images.githubusercontent.com/17021686/226298895-bc06c68e-e9d4-40ce-897a-511731be7a42.png" alt="Screen Shot 2023-02-22 at 2 02 42 PM" /></p>
-
-  <h3 id="filters-in-the-prompt-page">Filters in the prompt page</h3>
-
-  <p>The Prompts page can become crowded very quickly as prompts are quite
-popular and easy to define and use for preannotation, especially by non
-technical users. For helping users quickly identify the prompts they
-need, a search option is available as well as 2 filters. Using the 2
-dropdown menus at the top right side of the page, prompts can be
-filtered based on their Type or Domain.
-<img src="https://user-images.githubusercontent.com/17021686/226298234-fb3ce678-4107-4dfb-8483-7af4c01b89e4.gif" alt="Screen Recording 2023-03-20 at 3 02 44 PM" /></p>
-
-  <h2 id="undo-changes-for-prompt-and-rules-in-the-playground">Undo Changes For Prompt and Rules in the playground</h2>
-
-  <p>We are thrilled to introduce the Undo feature added to the NLP Lab
-Playground. This function enables users to quickly undo any changes made
-during their current experimental session. By selecting the "Undo
-Changes" button, all modifications made to the prompt/rules will be
-reverted to their original state. We are confident that this feature
-will significantly improve the user experience by providing greater
-control over the editing process.</p>
-
-  <h2 id="new-annotation-gesture">New Annotation Gesture</h2>
-
-  <p>Some of our users suggested updating the annotation gesture we
-initially offered, as it was counter-intuitive, especially for users
-accustomed to modern text editing tools. Specifically, the process of
-first selecting the Label and then selecting the chunk to annotate may
-not feel natural anymore, as tools such as MS Word, where you first
-select a text and then have options to format or access contextual menus
-that open next to your selection, have changed the way we all feel about
-text manipulation. We hear you!</p>
-
-  <p>To make NLP Lab more intuitive and user-friendly, NLP Lab now supports a
-new way of annotating text. This new feature allows users to select the
-text first and then choose the label to apply. We believe that this will
-make the annotation process more intuitive and efficient for many users.</p>
-
-  <p>This feature is available for both text projects and Visual NER
-projects. You are now able to switch between the two options: selecting
-text and assigning an entity, or selecting an entity and assigning text.
-Both will work. This way, users can choose the annotation method that
-works best for their project and their personal preferences.
-<img src="https://user-images.githubusercontent.com/33893292/226648116-217fc48e-a333-402c-b857-1e99915a7a9b.gif" alt="annotategesture" /></p>
-
-  <h2 id="optimized-project-configurations">Optimized Project Configurations</h2>
-
-  <h3 id="automatic-model-download-during-project-import">Automatic Model Download During Project Import</h3>
-
-  <p>When a user imports a project in NLP Lab 4.8, the system automatically
-downloads any absent models utilized by the imported project. To enable
-users to check whether the models have been downloaded or not, a new
-section named "Download Models" has been included in the Import
-status. If the required models have been downloaded or are already
-present, a green tick will be displayed. On the other hand, if the
-download process is unsuccessful, a red cross will be shown.</p>
-
-  <p><img src="https://user-images.githubusercontent.com/17021686/226304501-1b96da3f-a998-4eda-a60d-2abad3aac144.png" alt="Screen Shot 2023-03-20 at 3 32 11 PM" /></p>
-
-  <p>When the automatic download of a model/embeddings fails, an error
-message is displayed on the model card in the Hub-&gt;Models page. Users
-can hover over the question mark icon to see the details.</p>
-
-  <p><img src="https://user-images.githubusercontent.com/17021686/226306376-68a66fa7-0096-457d-9195-229ea7548f4a.png" alt="Screen Shot 2023-03-20 at 3 41 59 PM" /></p>
-
-  <h3 id="update-the-behavior-of-the-save-button-on-the-project-configuration-page">Update the behavior of the save button on the Project configuration page</h3>
-
-  <p>While setting up the configuration, the user can now choose to save the
-settings on all configuration sections without being redirected to
-another page or having to deploy a preannotation server. After saving
-the configuration, the user can deploy the pre-annotation server by
-pressing the Pre-Annotate button from the tasks page or navigating to
-the Configuration -&gt; Customize Labels page and save the configuration
-there. Once the server is deployed, the user will either be directed to
-the Tasks page or to the Import page.</p>
-
-  <h3 id="missing-embeddings-warning-in-the-configuration-page">Missing Embeddings Warning in the Configuration Page</h3>
-
-  <p>If embeddings are missing for a model that is part of a project
-configuration, a black warning message was displayed on the
-configuration page to alert the user. This warning message was not
-visible before, but now the displayed text ensures that the user can see
-the error.
-<img src="https://user-images.githubusercontent.com/17021686/226310272-b97051e9-5c6f-411b-8964-0cd7f2fbcee4.png" alt="Screen Shot 2023-03-20 at 3 58 43 PM" /></p>
-
-  <h3 id="efficient-export-for-large-projects">Efficient Export for Large Projects</h3>
-
-  <p>Visual NER projects, pre-annotations, and training have substantially
-increased NLP Lab project sizes. Unfortunately, this growth has made
-importing and exporting tasks or projects time-consuming, especially
-when dealing with large files. The new version of the system has
-addressed this issue by enhancing both project and task exports, making
-it possible to quickly export large files and manage a vast number of
-tasks. This optimization also applies to text-based projects, where the
-export time has been reduced by a factor of ten.</p>
-
-  <p>The current version of the system includes a pop-up message that appears
-before exporting both tasks and projects. This message notifies the user
-that the system is preparing the data for download and advises them to
-remain on the page and avoid enabling pop-ups to prevent any
-interruptions. Once the data preparation is complete, the download will
-start automatically, and the user will not need to take any additional
-steps.</p>
-
-  <p><img width="1480" alt="Screenshot 2023-03-19 at 12 24 03 PM" src="https://user-images.githubusercontent.com/33893292/226158618-0433e661-19da-4785-a723-809335c159ba.png" /></p>
-
-  <h2 id="enhanced-support-for-floating-licenses">Enhanced Support for Floating Licenses</h2>
-
-  <h3 id="support-for-bundles-of-licenses">Support for Bundles of Licenses</h3>
-
-  <p>We are delighted to inform you that NLP Lab now offers support for
-bundles of floating licenses. Those are licenses that enable multiple
-pre-annotation/training servers to run concurrently based on the values
-of the "max_parallel_jobs" parameter. In the previous version, our
-floating license system only allowed for one pre-annotation/training
-server to operate at a time. With this new update, users can enjoy the
-benefits of a single floating license that can support multiple
-pre-annotation/training servers simultaneously.</p>
-
-  <p><img src="https://user-images.githubusercontent.com/10557387/226275799-271aff30-3d8e-4465-860b-45c2c613298a.gif" alt="new_floating-license" /></p>
-
-  <h3 id="display-a-banner-showing-the-number-of-days-remaining-for-the-available-trial-license">Display a banner showing the number of days remaining for the available trial license</h3>
-
-  <p>NLP Lab improves the user experience by providing more accessible
-information about license validity. Currently, users can only check
-their license status on the Licenses page, which may not be convenient
-as it requires manual action. To address this issue, we have added a new
-feature that displays a warning on the user interface before the license
-expires. This notification reminds you to review your subscription
-status or renew your license before it expires. For trial licenses with
-less than 30 days remaining, a banner will be displayed on the UI
-indicating the remaining trial days and a link to create a new
-subscription. This way, you can easily keep track of your trial period
-and take the necessary steps before it ends.</p>
-
-  <p><img width="1264" alt="Screenshot 2023-03-15 at 9 53 36 PM" src="https://user-images.githubusercontent.com/33893292/226554074-90dcc235-6b5b-4fbc-870f-28db4c387af7.png" /></p>
-
-  <h2 id="improvements">Improvements</h2>
-
-  <h3 id="increased-flexibility-in-username-definition">Increased Flexibility in Username Definition</h3>
-  <p>With the latest release of NLP Lab, users can create usernames with increased flexibility and ease.
-Specifically, support has been added for the use of the underscore
-symbol "" in usernames. This enhancement will enable users to create
-unique and more expressive usernames that better represent their
-identity or brand. Furthermore, this feature will allow users to avoid
-any potential conflicts or duplications with other usernames.</p>
-
-  <h3 id="improved-user-experience-with-clearer-relation-prompts">Improved User Experience with Clearer Relation Prompts</h3>
-
-  <p>NLP Lab has recently introduced an improvement to the way relation
-prompts are displayed in the Pre-annotation pop-up. Previously, the
-relation prompts were shown under the generic "Pre-annotation prompts"
-category, which may have caused confusion for users. With this update,
-relation prompts are now shown under a separate sub-heading of "RE
-prompts" or "Relation prompts," providing clearer and more organized
-categorization. This improvement will enable users to manage the
-creation and deployment of relation prompts more intuitively and
-efficiently.</p>
-
-  <h3 id="enhanced-accessibility-and-functionality-of-model-hub-page">Enhanced Accessibility and Functionality of Model Hub Page</h3>
-
-  <p>To improve the accessibility and functionality of the Model Hub page,
-NLP Lab has implemented several changes in its latest version. One such
-improvement is the ability to distinguish between downloadable models
-and license-restricted models. Models that require a license will now be
-disabled when the appropriate license is not available, making it easier
-for users to navigate and select models to reuse. Another enhancement is
-the introduction of a new menu on the model/rules card, which allows
-users to effortlessly download models from Modelshub or open them in the
-playground. This menu provides a more streamlined and convenient way for
-users to access and utilize the available models and resources.</p>
-
-</div>
-<div class="prev_ver h3-box">
-
+  <hr />
   <h2 id="versions">Versions</h2>
 
 </div>
@@ -975,7 +741,7 @@ users to access and utilize the available models and resources.</p>
   <li><a href="release_notes_5_1_0">5.1.0</a></li>
 </ul>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2023-03-23T00:00:00+00:00">Mar 23, 2023</time>
+      <time itemprop="dateModified" datetime="2026-06-04T00:00:00+00:00">Jun 04, 2026</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
