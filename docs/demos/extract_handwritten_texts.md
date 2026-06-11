@@ -20,6 +20,18 @@ data:
           activemenu: extract_handwritten_texts
       source: yes
       source: 
+        - title: Handwritten Prescription OCR and De-ID
+          id: vlm_handwritten_deid
+          image: 
+              src: /assets/images/Detect_Handwritten.svg
+          excerpt: Read handwritten medical prescriptions, de-identify PHI, and extract drug, dose and route linked to RxNorm. The hardest OCR task, on-prem.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/ocr/VLM_WORKSHOP/handwritten-deid
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/vlm-workshop/1.visual_deid.ipynb
         - title: Extract Signatures
           id: extract-signatures-new
           image: 
