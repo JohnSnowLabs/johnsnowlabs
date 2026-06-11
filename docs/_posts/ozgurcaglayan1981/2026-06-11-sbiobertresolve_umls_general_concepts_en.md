@@ -32,6 +32,7 @@ This model maps clinical entities to 4 general categories of UMLS CUI codes usin
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 documentAssembler = DocumentAssembler()\
