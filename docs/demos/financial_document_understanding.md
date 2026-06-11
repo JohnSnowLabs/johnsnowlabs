@@ -21,6 +21,30 @@ data:
           activemenu: financial_document_understanding
       source: yes
       source: 
+        - title: Invoice Extraction and Duplicate Detection (VLM)
+          id: vlm_invoice_processing
+          image: 
+              src: /assets/images/Extract_entities_from_visual_documents.svg
+          excerpt: Extract vendor, line items and totals from invoices with duplicate detection. 99% vendor accuracy, ERP-ready JSON, fully on-prem.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/ocr/VLM_WORKSHOP/invoice-processing
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/vlm-workshop/9.invoice_expense_processing.ipynb
+        - title: Multilingual Receipt Processing
+          id: vlm_multilingual_receipts
+          image: 
+              src: /assets/images/Financial_Visual_NER_on_Receipts.svg
+          excerpt: Detect, translate and categorize expense receipts in 50+ languages with a hybrid policy-violation engine for alcohol and personal items.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/ocr/VLM_WORKSHOP/multilingual-receipts
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/vlm-workshop/9.invoice_expense_processing.ipynb
         - title: Classify Financial Documents 
           id: classify_financial_documents_using_spark_ocr 
           image: 

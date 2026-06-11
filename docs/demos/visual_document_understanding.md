@@ -21,6 +21,30 @@ data:
           activemenu: visual_document_understanding
       source: yes
       source: 
+        - title: Medical Document Mining and Routing
+          id: vlm_document_mining
+          image: 
+              src: /assets/images/Classify_visual_documents.svg
+          excerpt: Classify mixed document images by type, department and clinical urgency in under 5 seconds with enum-constrained JSL-MedVL extraction.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/ocr/VLM_WORKSHOP/document-mining
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/vlm-workshop/2.visual_document_mining_and_routing.ipynb
+        - title: Multilingual ID Document Extraction (KYC)
+          id: vlm_kyc_verification
+          image: 
+              src: /assets/images/Visual_NER_Key-Values_v2.svg
+          excerpt: Extract 21 structured fields from passports and national IDs across 10 countries and scripts, with automatic English transliteration. Fully on-prem.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/ocr/VLM_WORKSHOP/kyc-verification
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/vlm-workshop/8.kyc_id_verification.ipynb
         - title: Visual Document Classification
           id: classify_visual_documents
           image: 
