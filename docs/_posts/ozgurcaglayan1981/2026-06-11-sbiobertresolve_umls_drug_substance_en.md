@@ -32,6 +32,7 @@ This model maps drug and substance mentions to UMLS CUI codes. It is trained on 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 documentAssembler = DocumentAssembler()\
