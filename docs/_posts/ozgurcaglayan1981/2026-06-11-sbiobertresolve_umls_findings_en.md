@@ -32,6 +32,7 @@ This model maps clinical findings to UMLS CUI codes. It is trained on the 2026AA
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 documentAssembler = DocumentAssembler()\
