@@ -28,10 +28,9 @@ This model maps clinical drug entities to UMLS CUI codes. It is trained on the 2
 
 ## How to use
 
-
-
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 documentAssembler = DocumentAssembler()\
