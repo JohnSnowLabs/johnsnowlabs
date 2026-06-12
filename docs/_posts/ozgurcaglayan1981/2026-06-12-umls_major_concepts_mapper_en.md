@@ -32,6 +32,7 @@ This model maps major biomedical concept entities extracted by NER to UMLS CUI c
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
