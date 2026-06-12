@@ -1,6 +1,6 @@
 ---
 layout: model
-title: UMLS to MeSH Code Mapping
+title: Mapping UMLS Codes with Their Corresponding MESH Codes
 author: John Snow Labs
 name: umls_mesh_mapper
 date: 2026-06-12
