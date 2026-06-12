@@ -32,6 +32,7 @@ This model maps drug substance entities extracted by NER to UMLS CUI codes cover
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
