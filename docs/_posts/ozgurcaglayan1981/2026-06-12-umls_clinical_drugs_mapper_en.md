@@ -32,6 +32,7 @@ This model maps clinical drug formulation entities extracted by NER to UMLS CUI 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
