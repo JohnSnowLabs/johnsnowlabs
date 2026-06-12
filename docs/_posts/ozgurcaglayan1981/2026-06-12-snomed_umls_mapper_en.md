@@ -88,7 +88,7 @@ val mapper = ChunkMapperModel.pretrained("snomed_umls_mapper","en","clinical/mod
   .setOutputCol("mappings")
 
 val pipeline = new Pipeline().setStages(Array(documentAssembler, doc2chunk, mapper))
-import spark.implicits._
+
 val data = Seq("73211009","69896004","22298006").toDF("text")
 val result = pipeline.fit(data).transform(data)
 
