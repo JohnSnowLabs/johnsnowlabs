@@ -32,6 +32,7 @@ This model maps UMLS codes to ICD-10-CM codes. It is trained on the 2026AA relea
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
