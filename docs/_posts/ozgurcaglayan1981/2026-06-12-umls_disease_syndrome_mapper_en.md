@@ -32,6 +32,7 @@ This model maps disease and syndrome entities extracted by NER to UMLS CUI codes
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
