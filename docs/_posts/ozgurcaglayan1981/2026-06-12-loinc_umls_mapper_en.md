@@ -115,6 +115,6 @@ val result = pipeline.fit(data).transform(data)
 |License:|Licensed|
 |Edition:|Official|
 |Input Labels:|[ner_chunk]|
-|Output Labels:|[mappings_c2u]|
+|Output Labels:|[mappings]|
 |Language:|en|
 |Size:|3.6 MB|
