@@ -45,9 +45,7 @@ doc2chunk = Doc2Chunk()\
 
 mapper = ChunkMapperModel.pretrained("umls_loinc_mapper","en","clinical/models")\
     .setInputCols(["ner_chunk"])\
-    .setOutputCol("mappings")\
-    .setRels(["loinc_code"])\
-    .setLowerCase(True)
+    .setOutputCol("mappings")
 
 pipeline = Pipeline(stages=[document_assembler, doc2chunk, mapper])
 data = spark.createDataFrame([["C0017725"],["C0364708"],["C0018681"]]).toDF("text")
@@ -68,9 +66,7 @@ doc2chunk = nlp.Doc2Chunk()\
 
 mapper = medical.ChunkMapperModel.pretrained("umls_loinc_mapper","en","clinical/models")\
     .setInputCols(["ner_chunk"])\
-    .setOutputCol("mappings")\
-    .setRels(["loinc_code"])\
-    .setLowerCase(True)
+    .setOutputCol("mappings")
 
 pipeline = nlp.Pipeline(stages=[document_assembler, doc2chunk, mapper])
 data = spark.createDataFrame([["C0017725"],["C0364708"],["C0018681"]]).toDF("text")
