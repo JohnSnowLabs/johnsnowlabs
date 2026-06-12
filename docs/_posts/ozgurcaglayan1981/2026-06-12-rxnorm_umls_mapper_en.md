@@ -1,6 +1,6 @@
 ---
 layout: model
-title: RxNorm to UMLS Code Mapping
+title: Mapping RxNorm Codes with Their Corresponding UMLS Codes
 author: John Snow Labs
 name: rxnorm_umls_mapper
 date: 2026-06-12
