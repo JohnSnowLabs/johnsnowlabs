@@ -46,8 +46,6 @@ doc2chunk = Doc2Chunk()\
 mapper = ChunkMapperModel.pretrained("umls_snomed_mapper","en","clinical/models")\
     .setInputCols(["ner_chunk"])\
     .setOutputCol("mappings")\
-    .setRels(["snomed_code"])\
-    .setLowerCase(True)
 
 pipeline = Pipeline(stages=[document_assembler, doc2chunk, mapper])
 data = spark.createDataFrame([["C0011849"],["C0003873"],["C0042963"]]).toDF("text")
@@ -69,8 +67,6 @@ doc2chunk = nlp.Doc2Chunk()\
 mapper = medical.ChunkMapperModel.pretrained("umls_snomed_mapper","en","clinical/models")\
     .setInputCols(["ner_chunk"])\
     .setOutputCol("mappings")\
-    .setRels(["snomed_code"])\
-    .setLowerCase(True)
 
 pipeline = nlp.Pipeline(stages=[document_assembler, doc2chunk, mapper])
 data = spark.createDataFrame([["C0011849"],["C0003873"],["C0042963"]]).toDF("text")
@@ -90,11 +86,9 @@ val doc2chunk = new Doc2Chunk()
 val mapper = ChunkMapperModel.pretrained("umls_snomed_mapper","en","clinical/models")
   .setInputCols(Array("ner_chunk"))
   .setOutputCol("mappings")
-  .setRels(Array("snomed_code"))
-  .setLowerCase(true)
 
 val pipeline = new Pipeline().setStages(Array(documentAssembler, doc2chunk, mapper))
-import spark.implicits._
+
 val data = Seq("C0011849","C0003873","C0042963").toDF("text")
 val result = pipeline.fit(data).transform(data)
 
