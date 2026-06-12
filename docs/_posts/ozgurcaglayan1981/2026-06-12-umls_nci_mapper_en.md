@@ -32,6 +32,7 @@ This model maps UMLS codes to NCI Thesaurus codes. It is trained on the 2026AA r
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
