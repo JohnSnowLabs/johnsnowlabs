@@ -1,6 +1,6 @@
 ---
 layout: model
-title: UMLS to SNOMED CT Code Mapping
+title: Mapping UMLS Codes with Their Corresponding SNOMED Codes
 author: John Snow Labs
 name: umls_snomed_mapper
 date: 2026-06-12
