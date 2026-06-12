@@ -1,6 +1,6 @@
 ---
 layout: model
-title: MeSH to UMLS Code Mapping
+title: Mapping MESH Codes with Their Corresponding UMLS Codes
 author: John Snow Labs
 name: mesh_umls_mapper
 date: 2026-06-12
@@ -32,6 +32,7 @@ This model maps MeSH codes to UMLS codes. It is trained on the 2026AA release of
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
@@ -113,6 +114,6 @@ val result = pipeline.fit(data).transform(data)
 |License:|Licensed|
 |Edition:|Official|
 |Input Labels:|[ner_chunk]|
-|Output Labels:|[mappings_c2u]|
+|Output Labels:|[mappings]|
 |Language:|en|
 |Size:|5.5 MB|
