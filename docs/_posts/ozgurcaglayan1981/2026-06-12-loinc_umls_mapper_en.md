@@ -1,6 +1,6 @@
 ---
 layout: model
-title: LOINC to UMLS Code Mapping
+title: Mapping LOINC Codes with Their Corresponding UMLS Codes
 author: John Snow Labs
 name: loinc_umls_mapper
 date: 2026-06-12
