@@ -86,11 +86,9 @@ val doc2chunk = new Doc2Chunk()
 val mapper = ChunkMapperModel.pretrained("umls_loinc_mapper","en","clinical/models")
   .setInputCols(Array("ner_chunk"))
   .setOutputCol("mappings")
-  .setRels(Array("loinc_code"))
-  .setLowerCase(true)
 
 val pipeline = new Pipeline().setStages(Array(documentAssembler, doc2chunk, mapper))
-import spark.implicits._
+
 val data = Seq("C0017725","C0364708","C0018681").toDF("text")
 val result = pipeline.fit(data).transform(data)
 
