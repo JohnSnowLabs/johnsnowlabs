@@ -32,6 +32,7 @@ This model maps HPO codes to UMLS codes. It is trained on the 2026AA release of 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
@@ -113,6 +114,6 @@ val result = pipeline.fit(data).transform(data)
 |License:|Licensed|
 |Edition:|Official|
 |Input Labels:|[ner_chunk]|
-|Output Labels:|[mappings_c2u]|
+|Output Labels:|[mappings]|
 |Language:|en|
 |Size:|256.3 KB|
