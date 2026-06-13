@@ -23,8 +23,6 @@ This model maps UMLS codes to MedDRA codes. It is trained on the 2026AA release 
 {:.btn-box}
 [Live Demo](https://nlp.johnsnowlabs.com/resolve_entities_codes){:.button.button-orange}
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/06.0.Chunk_Mapping.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/umls_meddra_mapper_en_6.4.0_3.4_1781381293547.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/umls_meddra_mapper_en_6.4.0_3.4_1781381293547.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -32,6 +30,7 @@ This model maps UMLS codes to MedDRA codes. It is trained on the 2026AA release 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
