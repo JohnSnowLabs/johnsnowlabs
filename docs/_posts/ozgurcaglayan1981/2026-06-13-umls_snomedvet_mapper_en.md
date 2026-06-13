@@ -32,6 +32,7 @@ This model maps UMLS codes to SNOMED CT Veterinary codes. It is trained on the 2
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
