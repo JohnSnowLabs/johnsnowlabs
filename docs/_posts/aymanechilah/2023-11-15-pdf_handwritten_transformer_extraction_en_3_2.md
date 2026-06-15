@@ -16,6 +16,12 @@ annotator: PipelineModel
 article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
+
+deploy:
+  sagemaker_link: 
+  snowflake_link: 
+  databricks_link: 
+
 ---
 
 ## Description
@@ -29,6 +35,13 @@ This is a pretrained pipeline designed to extract handwritten text from document
 [Live Demo](https://demo.johnsnowlabs.com/ocr/PP_PDF_HANDWRITTEN_TRANSFORMER_EXTRACTION/){:.button.button-orange.button-orange-trans.co.button-icon}
 [Open in Colab](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/Cards/SparkOcrPretrainedPipelinesPdfHandwrittenTransformerExtraction.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/pdf_handwritten_transformer_extraction_en_5.0.2_3.0_1699469925000.zip){:.button.button-orange.button-orange-trans.arr.button-icon}
+
+{% if page.deploy %}
+## Available as Private API Endpoint
+
+{:.tac}
+{% include display_platform_information.html %}
+{% endif %}
 
 ## How to use
 
