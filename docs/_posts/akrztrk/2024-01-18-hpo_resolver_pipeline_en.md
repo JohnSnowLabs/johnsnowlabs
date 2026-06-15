@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 deploy:
   sagemaker_link: 
   snowflake_link: 
-  databricks_link: https://marketplace.databricks.com/details/d07d7654-d483-4f1d-bb26-13b02197b87f/John-Snow-Labs_Extract-phenotypic-abnormalities-and-the-coresponding-HPO-codes
+  databricks_link: https://marketplace.databricks.com/details/d07d7654-d483-4f1d-bb26-13b02197b87f/John-Snow-Labs_Extract-phenotypic-abnormalities-and-the-corresponding-HPO-codes
 
 ---
 
