@@ -14,6 +14,12 @@ annotator: PipelineModel
 article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
+
+deploy:
+  sagemaker_link: 
+  snowflake_link: 
+  databricks_link: 
+
 ---
 
 ## Description
@@ -23,6 +29,13 @@ This pipeline extracts `Procedure` and `Measurement` entities and maps them to c
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/07.0.Pretrained_Clinical_Pipelines.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
+
+{% if page.deploy %}
+## Available as Private API Endpoint
+
+{:.tac}
+{% include display_platform_information.html %}
+{% endif %}
 
 ## How to use
 
