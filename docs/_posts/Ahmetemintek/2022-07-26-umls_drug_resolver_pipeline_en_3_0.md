@@ -19,7 +19,7 @@ use_language_switcher: "Python-Scala-Java"
 deploy:
   sagemaker_link: 
   snowflake_link: 
-  databricks_link: https://marketplace.databricks.com/details/10de7650-8e88-461e-bea4-6c38bb3f0d00/John-Snow-Labs_Extract-Drugs-and-Substances-and-their-UMLS-Codes
+  databricks_link: https://marketplace.databricks.com/details/bfb569e4-69a2-4f4b-8d6e-e306982e4a95/John-Snow-Labs_Extract-Drugs-and-their-UMLS-Codes
 
 ---
 
