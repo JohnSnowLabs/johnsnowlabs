@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 deploy:
   sagemaker_link: 
   snowflake_link: 
-  databricks_link: https://marketplace.databricks.com/details/80b9ec4d-c7b8-401c-b177-aa388259f422/John-Snow-Labs_Extract-Clinical-Findings-and-the-corresponding-ICD10CM-codes
+  databricks_link: 
 
 ---
 
