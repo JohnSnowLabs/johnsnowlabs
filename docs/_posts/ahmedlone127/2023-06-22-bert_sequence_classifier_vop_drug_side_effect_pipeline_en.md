@@ -16,7 +16,7 @@ article_header:
 use_language_switcher: "Python-Scala-Java"
 
 deploy:
-  sagemaker_link: https://aws.amazon.com/marketplace/pp/prodview-sqj6oymvmv27k
+  sagemaker_link: 
   snowflake_link: 
   databricks_link: https://marketplace.databricks.com/details/48daa468-2417-437a-b59d-0a06a8935d99/John-Snow-Labs_Detect-Drug-Side-Effect-Narratives
 
