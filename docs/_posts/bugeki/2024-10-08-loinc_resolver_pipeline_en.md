@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 deploy:
   sagemaker_link: https://aws.amazon.com/marketplace/pp/prodview-idfcekbznwtlq
   snowflake_link: https://app.snowflake.com/marketplace/listing/GZTYZ4386LJDV/john-snow-labs-loinc-sentence-entity-resolver
-  databricks_link: 
+  databricks_link: https://marketplace.databricks.com/details/a299884a-7a95-4ddf-96e0-b8594c4290d3/John-Snow-Labs_LOINC-Clinical-Terminology-Mapper
 
 ---
 
