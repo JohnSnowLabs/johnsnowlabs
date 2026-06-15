@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 deploy:
   sagemaker_link: 
   snowflake_link: 
-  databricks_link: https://marketplace.databricks.com/details/0ee92a5c-35f1-40c9-a7b3-0282e67d9bd1/John-Snow-Labs_-ICD10CM-to-UMLS-Code-Mapper
+  databricks_link: https://marketplace.databricks.com/details/0ee92a5c-35f1-40c9-a7b3-0282e67d9bd1/John-Snow-Labs_ICD10CM-to-UMLS-Code-Mapper
 
 ---
 
