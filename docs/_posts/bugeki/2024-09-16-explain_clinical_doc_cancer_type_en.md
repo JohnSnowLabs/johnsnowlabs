@@ -16,7 +16,7 @@ article_header:
 use_language_switcher: "Python-Scala-Java"
 
 deploy:
-  sagemaker_link: https://aws.amazon.com/marketplace/pp/prodview-7ttmxi3lwei3o
+  sagemaker_link: 
   snowflake_link: https://app.snowflake.com/marketplace/listing/GZTYZ4386LJA8/john-snow-labs-extract-oncological-entities
   databricks_link: 
 
