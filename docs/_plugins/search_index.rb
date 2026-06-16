@@ -264,6 +264,15 @@ class BulkIndexer
 
   def index(id, data)
     @buffer << { update: { _id: id, data: {doc: data, doc_as_upsert: true}} }
+    unless data.has_key?(:marketplace)
+      @buffer << { update: { _id: id }}
+      @buffer << {
+        script: {
+          source: 'if (ctx._source.containsKey("marketplace")) { ctx._source.remove("marketplace") }',
+          lang: 'painless'
+        }
+      } 
+    end
     self.execute if @buffer.length >= 100
   end
 
