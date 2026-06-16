@@ -15,11 +15,6 @@ article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
 
-deploy:
-  sagemaker_link: 
-  snowflake_link: 
-  databricks_link: https://marketplace.databricks.com/details/7418db61-8ff0-49db-ae87-756fc17382fc/John-Snow-Labs_Extract-Living-Species
-
 ---
 
 ## Description
