@@ -16,9 +16,9 @@ article_header:
 use_language_switcher: "Python-Scala-Java"
 
 deploy:
-  sagemaker_link: https://aws.amazon.com/marketplace/pp/prodview-jrbejiv7kujfw
+  sagemaker_link: 
   snowflake_link: 
-  databricks_link: https://marketplace.databricks.com/details/2b8709b8-4a42-406b-bd93-43172eae07b9/John-Snow-Labs_Extract-Drugs-and-the-correspondingt-RXNORM-codes
+  databricks_link: https://marketplace.databricks.com/details/2b8709b8-4a42-406b-bd93-43172eae07b9/John-Snow-Labs_Extract-Drugs-and-the-corresponding-RXNORM-codes
 
 ---
 

@@ -14,6 +14,12 @@ annotator: PipelineModel
 article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
+
+deploy:
+  sagemaker_link: 
+  snowflake_link: https://app.snowflake.com/marketplace/listing/GZTYZ4386LJCE/john-snow-labs-healthcare-common-procedure-resolver
+  databricks_link: https://marketplace.databricks.com/details/30a45cec-f7fe-4c7b-86d5-30d125d61166/John-Snow-Labs_Healthcare-Common-Procedure-Clinical-Terminology-Mapper
+
 ---
 
 ## Description
@@ -30,6 +36,13 @@ This pipeline extracts `PROCEDURE` entities and maps them to their corresponding
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/07.0.Pretrained_Clinical_Pipelines.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/hcpcs_resolver_pipeline_en_5.2.1_3.0_1706632001298.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/hcpcs_resolver_pipeline_en_5.2.1_3.0_1706632001298.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+
+{% if page.deploy %}
+## Available as Private API Endpoint
+
+{:.tac}
+{% include display_platform_information.html %}
+{% endif %}
 
 ## How to use
 

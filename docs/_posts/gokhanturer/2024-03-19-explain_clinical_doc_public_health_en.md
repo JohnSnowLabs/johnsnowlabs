@@ -16,7 +16,7 @@ article_header:
 use_language_switcher: "Python-Scala-Java"
 
 deploy:
-  sagemaker_link: https://aws.amazon.com/marketplace/pp/prodview-ajcem2e7qhq3u
+  sagemaker_link: 
   snowflake_link: https://app.snowflake.com/marketplace/listing/GZTYZ4386LJ86/john-snow-labs-extract-entities-from-public-health-data
   databricks_link: 
 

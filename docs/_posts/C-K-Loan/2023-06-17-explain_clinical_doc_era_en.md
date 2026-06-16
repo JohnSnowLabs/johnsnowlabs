@@ -16,7 +16,7 @@ article_header:
 use_language_switcher: "Python-Scala-Java"
 
 deploy:
-  sagemaker_link: https://aws.amazon.com/marketplace/pp/prodview-lyjbnaatocbxe
+  sagemaker_link: 
   snowflake_link: https://app.snowflake.com/marketplace/listing/GZTYZ4386LJ9N/john-snow-labs-extract-clinical-events-and-relations
   databricks_link: https://marketplace.databricks.com/details/2a078943-c56d-48b1-a99d-3addb38d688f/John-Snow-Labs_Extract-clinical-events-and-find-temporal-relations
 
