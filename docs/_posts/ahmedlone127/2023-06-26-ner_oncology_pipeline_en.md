@@ -15,11 +15,6 @@ article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
 
-deploy:
-  sagemaker_link: https://aws.amazon.com/marketplace/pp/prodview-jjrar26fcq7pg
-  snowflake_link: 
-  databricks_link: https://marketplace.databricks.com/details/00affefe-d268-4bd2-9fa1-8d3a07199be0/John-Snow-Labs_Extract-oncological-entities-and-relations
-
 ---
 
 ## Description
