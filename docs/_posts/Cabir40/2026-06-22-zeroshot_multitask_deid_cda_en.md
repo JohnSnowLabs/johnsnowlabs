@@ -33,6 +33,7 @@ PHI de-identification NER model for clinical CDA/XML documents. Extracts persona
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
@@ -43,10 +44,10 @@ zero_shot = PretrainedZeroShotMultiTask.pretrained("zeroshot_multitask_deid_cda"
     .setOutputCol("extractions")\
     .setEntityThreshold(0.4)\
     .setEntities([
-        "PERSON::All mentions of person names, including patients, providers, family members, or other individuals named in the record",
-        "DATE::Dates in any format, including birth dates, encounter dates, and other chronological references",
-        "ADDRESS::Street addresses, cities, states, postal codes, or other location identifiers",
-        "PHONE::Telephone numbers in any format, including extensions and international codes",
+        "PATIENT_NAME::str::All mentions of person names, including patients, providers, family members, or other individuals named in the record. Examples: 'Alice Jones', 'Dr. Smith', 'John Doe', etc.",
+        "DATE_or_Time::str::Any mention of dates, including birth dates, admission dates, and other chronological references. Examples: '05/01/1970', 'May 1, 1970', '2020-05-01', '5/1/70', 'May 2020', '2020', etc.",
+        "LOCATION::str::Any mention of street addresses, cities, states, postal codes, or other location identifiers. Examples: '123 Main St', 'Apt 4B', 'New York, NY 10001', etc.",
+        "TELECOM::str::Any mention of telephone numbers in any format, including extensions and international codes. Examples: '+1(555)-777-1234', '(555)-723-1544'",
     ])
 
 pipeline = Pipeline(
@@ -153,10 +154,10 @@ zero_shot = medical.PretrainedZeroShotMultiTask.pretrained("zeroshot_multitask_d
     .setOutputCol("extractions")\
     .setEntityThreshold(0.4)\
     .setEntities([
-        "PERSON::All mentions of person names, including patients, providers, family members, or other individuals named in the record",
-        "DATE::Dates in any format, including birth dates, encounter dates, and other chronological references",
-        "ADDRESS::Street addresses, cities, states, postal codes, or other location identifiers",
-        "PHONE::Telephone numbers in any format, including extensions and international codes",
+        "PATIENT_NAME::str::All mentions of person names, including patients, providers, family members, or other individuals named in the record. Examples: 'Alice Jones', 'Dr. Smith', 'John Doe', etc.",
+        "DATE_or_Time::str::Any mention of dates, including birth dates, admission dates, and other chronological references. Examples: '05/01/1970', 'May 1, 1970', '2020-05-01', '5/1/70', 'May 2020', '2020', etc.",
+        "LOCATION::str::Any mention of street addresses, cities, states, postal codes, or other location identifiers. Examples: '123 Main St', 'Apt 4B', 'New York, NY 10001', etc.",
+        "TELECOM::str::Any mention of telephone numbers in any format, including extensions and international codes. Examples: '+1(555)-777-1234', '(555)-723-1544'",
     ])
 
 pipeline = nlp.Pipeline(
@@ -260,10 +261,10 @@ val zero_shot = PretrainedZeroShotMultiTask.pretrained("zeroshot_multitask_deid_
     .setOutputCol("extractions")
     .setEntityThreshold(0.4)
     .setEntities(Array(
-        "PERSON::All mentions of person names, including patients, providers, family members, or other individuals named in the record",
-        "DATE::Dates in any format, including birth dates, encounter dates, and other chronological references",
-        "ADDRESS::Street addresses, cities, states, postal codes, or other location identifiers",
-        "PHONE::Telephone numbers in any format, including extensions and international codes"
+        "PATIENT_NAME::str::All mentions of person names, including patients, providers, family members, or other individuals named in the record. Examples: 'Alice Jones', 'Dr. Smith', 'John Doe', etc.",
+        "DATE_or_Time::str::Any mention of dates, including birth dates, admission dates, and other chronological references. Examples: '05/01/1970', 'May 1, 1970', '2020-05-01', '5/1/70', 'May 2020', '2020', etc.",
+        "LOCATION::str::Any mention of street addresses, cities, states, postal codes, or other location identifiers. Examples: '123 Main St', 'Apt 4B', 'New York, NY 10001', etc.",
+        "TELECOM::str::Any mention of telephone numbers in any format, including extensions and international codes. Examples: '+1(555)-777-1234', '(555)-723-1544'",
     ))
 
 val pipeline = new Pipeline().setStages(Array(
@@ -360,12 +361,13 @@ val results = pipeline.fit(data).transform(data)
 
 ```bash
 Entities
-|    |   idx |   begin |   end | chunk      |   sentence | ner_source   | entity   |   confidence |
-|---:|------:|--------:|------:|:-----------|-----------:|:-------------|:---------|-------------:|
-|  0 |     0 |     108 |   114 | T-10118    |          0 | extractions  | PHONE    |     0.406762 |
-|  1 |     0 |    1182 |  1191 | 2015-08-01 |          0 | extractions  | DATE     |     0.988932 |
-|  2 |     0 |    1540 |  1547 | 19800510   |          0 | extractions  | PERSON   |     0.783176 |
-|  3 |     0 |    2124 |  2131 | 19800510   |          0 | extractions  | ADDRESS  |     0.82408  |
+|    |   idx |   begin |   end | chunk         |   sentence | ner_source   | entity       |   confidence |
+|---:|------:|--------:|------:|:--------------|-----------:|:-------------|:-------------|-------------:|
+|  0 |     0 |     198 |   210 | 1357 Amber Dr |          1 | extractions  | LOCATION     |     0.937517 |
+|  1 |     0 |     595 |   599 | Alice         |          4 | extractions  | PATIENT_NAME |     1        |
+|  2 |     0 |     968 |   975 | 19700501      |          6 | extractions  | DATE_or_Time |     0.999151 |
+|  3 |     0 |    1540 |  1547 | 19800510      |          7 | extractions  | DATE_or_Time |     0.999768 |
+|  4 |     0 |    2124 |  2131 | 19800510      |          8 | extractions  | DATE_or_Time |     0.999941 |
 
 
 ```
