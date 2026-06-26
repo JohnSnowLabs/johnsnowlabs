@@ -2,8 +2,8 @@
 layout: docs
 header: true
 seotitle: Spark NLP for Healthcare | John Snow Labs
-title: Healthcare NLP Release Notes
-permalink: /docs/en/spark_nlp_healthcare_versions/licensed_release_notes
+title: Healthcare NLP v6.4.1 Release Notes
+permalink: /docs/en/spark_nlp_healthcare_versions/release_notes_6_4_1
 key: docs-licensed-release-notes
 modify_date: 2026-06-26
 show_nav: true
@@ -793,7 +793,6 @@ result = pipeline.fit(data).transform(data)
 #### Updated Notebooks And Demonstrations For Making Healthcare NLP Easier To Navigate And Understand
 
 - New [MedicalLLMEntityExtractor](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/46.2.MedicalLLMEntityExtractor.ipynb) Notebook
-  
   This notebook introduces JSL’s LLM-based clinical NER annotator with grammar-enforced JSON, runtime-defined entity types, and CHUNK outputs with character offsets. Five end-to-end examples: default clinical NER, medication fields, PHI de-identification, oncology few-shot, and custom ADR prompts. Requires Spark NLP Healthcare license and supported JSL MedS/MedM GGUF models.
 
 - New [Benchmarking John Snow Labs Healthcare NLP Pipelines for Optimal Spark Config at Million-Doc Scale](https://dbc-f4eb4bcb-4ef3.cloud.databricks.com/marketplace/provider/listings/99415605-a24c-4bd8-b4da-892a70b71769?o=5522619299734643) Databricks Solution Accelerator Notebook
@@ -875,8 +874,7 @@ result = pipeline.fit(data).transform(data)
 
 </div><div class="h3-box" markdown="1">
 
-
-## Previous versions
+## Versions
 
 </div>
 {%- include docs-healthcare-pagination.html -%}
