@@ -15,17 +15,9 @@ sidebar:
 
 The LLMs listed below are available on Databricks Marketplace as Model Serving Endpoints.
 
-[Medical Visual LLM - 8B](https://marketplace.databricks.com/details/1d43c199-9ab5-4723-804f-004e2ce058c0/John-Snow-Labs_Medical-Visual-LLM-8B)
-
-[Medical-LLM-14B](https://marketplace.databricks.com/details/49313e71-8feb-4159-b79b-8ec30c5e3759/John-Snow-Labs_MedicalLLM14B)
+[Medical-LLM-Medium](https://marketplace.databricks.com/details/6955d25d-2dda-4517-8a26-5dc3239e6995/John-Snow-Labs_MedicalLLMMedium)
 
 [Medical LLM - Small](https://marketplace.databricks.com/details/2d3cabaf-e93e-45e0-a954-82202000afd8/John-Snow-Labs_Medical-LLM-Small)
-
-[Medical-Visual-LLM-30B](https://marketplace.databricks.com/details/06015a8a-17df-41ba-a2c0-06345833044d/John-Snow-Labs_MedicalVisualLLM30B)
-
-[Medical-Reasoning-LLM-32B](https://marketplace.databricks.com/details/309ba238-15ed-4edf-b8d2-a99b302b3a26/John-Snow-Labs_MedicalReasoningLLM32B)
-
-[Medical-LLM-Medium](https://marketplace.databricks.com/details/6955d25d-2dda-4517-8a26-5dc3239e6995/John-Snow-Labs_MedicalLLMMedium)
 
 </div><div class="h3-box" markdown="1">
 

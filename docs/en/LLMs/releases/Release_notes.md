@@ -5,13 +5,34 @@ seotitle: Medical LLMs | John Snow Labs
 title: Release Notes
 permalink: /docs/en/LLMs/releases/release_notes
 key: docs-medical-llm
-modify_date: "2026-03-26"
+modify_date: "2026-05-11"
 show_nav: true
 sidebar:
     nav: medical-llm
 ---
 
 <div class="h3-box" markdown="1">
+
+## 05-11-2026
+
+### Model Updates
+
+We're excited to announce a major new version of our Medical-Reasoning-LLM-32B model, representing a significant advancement in AI-powered clinical decision support with enhanced structured medical reasoning capabilities.
+
+- **Medical-Reasoning-LLM-32B**: This updated model is designed as a cognitive partner for healthcare professionals, analyzing symptoms, diagnostics, and longitudinal patient histories to guide complex diagnostic and treatment decisions in alignment with established clinical guidelines. It delivers transparent decision pathways with clear, step-aware explanations, evaluates competing hypotheses to reduce diagnostic error, and explicitly communicates uncertainty to support risk-aware judgment. The model integrates up-to-date medical knowledge within structured reasoning frameworks that mirror experienced clinician workflows, achieving approximately 95–97% of the reasoning capability of significantly larger models at nearly half the computational cost.
+
+#### Specifications
+
+| **Model Name**             | **Parameters** | **Recommended GPU Memory** | **Max Sequence Length** | **Model Size** | **Max KV-Cache** | **Tensor Parallel Sizes** |
+|---------------------------|----------------|----------------------------|-------------------------|----------------|------------------|--------------------------|
+| Medical-Reasoning-LLM-32B | 32B            | ~66 GB                     | 262K                    | 50 GB          | 16 GB            | 2, 4, 8                  |
+
+#### Benchmark Performance – Medical-Reasoning-LLM-32B
+
+- Achieves 95.2% accuracy on Professional Medicine
+- Reaches 100% on College Biology concepts
+- Scores 80% on Clinical Knowledge assessment
+- Delivers 98.3% accuracy on Patient Understanding and Accessibility
 
 ## 03-26-2026
 
@@ -258,14 +279,11 @@ We are excited to announce the addition of two new powerful models to our Medica
 
 Get more information about the **Medical-Visual-LLM-24B** model in this [blog](https://www.johnsnowlabs.com/introducing-medical-vlm-24b-our-first-medical-vision-language-model/).
 
-- **Medical-Spanish-LLM-24B**: A specialized 24B parameter model designed for Spanish-speaking healthcare environments, offering native processing of Spanish medical terminology and clinical documentation. The model maintains high precision in Spanish medical language understanding without requiring translation.
-
 #### Specifications
 
 | **Model Name**             | **Parameters** | **Recommended GPU Memory** | **Max Sequence Length** | **Model Size** | **Max KV-Cache** | **Tensor Parallel Sizes** |
 |---------------------------|--------------|------------------|-------------------|-------------|----------------|------------------------|
 | Medical-Visual-LLM-24B           | 24B         | ~145 GB          | 128K              | 45 GB       | 100 GB         | 2, 4, 8               |
-| Medical-Spanish-LLM-24B   | 24B         | ~145 GB          | 128K              | 45 GB       | 100 GB         | 2, 4, 8               |
 
 ## 04-06-2025
 

@@ -47,7 +47,7 @@ For comparison against [open source see here](https://medium.com/john-snow-labs/
 | jsl_vision_ocr_structured_1.0_light | 0.759                                 |
 
 
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ### PDF De-identification Benchmark
 
@@ -77,6 +77,7 @@ For comparison against [open source see here](https://medium.com/john-snow-labs/
 </div><div class="h3-box" markdown="1">
 
 ### Dicom De-identification Benchmark
+
 This section contains benchmarks for de-ideintification of dicom files, both for GPU and CPU.
 Note: file sizes are included as reference, but *they are not* the best proxy for estimating running time, as the final figures will depend on image size than in turn depends on the actual compression that is being used in the file.
 The numbers reported are average *time per file*.
@@ -103,7 +104,9 @@ The numbers reported are average *time per file*.
 </div><div class="h3-box" markdown="1">
 
 #### How to use this data
+
 ##### GPU vs. CPU
+
 These are the models you want to use for a serious project:
 * **ImageTextDetector - MemOpt (Scala) + ImageToTextV2 - Base (Scala)**
 * **ImageTextDetector - MemOpt (Scala) + ImageToTextV3 (Scala)**
@@ -123,6 +126,7 @@ Here we see that for this workload the cheaper option is to go with GPU.
 </div><div class="h3-box" markdown="1">
 
 #### Using the data as a proxy for estimation
+
 What governs the processing time is image size. Let's take a look at some figures for this dataset,
 * *Transfer Syntax:* 1.2.840.10008.1.2.1(Uncompressed).
 * *Average Width:* 558.20 pixels
@@ -139,6 +143,7 @@ Note: don't forget to count multi-frame images.
 </div><div class="h3-box" markdown="1">
 
 #### I don't know the dimensions of my images
+
 If you don't know the dimensions, but you know that your images are also uncompressed, you can use file size as proxy.
 _Keep in mind that if you actually have compressed images you will be underestimating the processing time_.
 
@@ -146,6 +151,7 @@ _Keep in mind that if you actually have compressed images you will be underestim
 </div><div class="h3-box" markdown="1">
 
 #### Why the numbers are related to uncompressed images
+
 The variation of the effective compression levels in real datasets makes it impractical to use such a metric in an estimation. Some datasets with low density of information can get compression levels up to 30X, while some others can have lower compressions, so picking a reference dataset is very difficult for the general case. </br>
 But not all hope is lost, you can work with frames!.
 
@@ -153,8 +159,9 @@ But not all hope is lost, you can work with frames!.
 </div><div class="h3-box" markdown="1">
 
 #### Using total frame count as a proxy for estimation
+
 If you don't know the size of the images, or the compression, you can estimate the number of frames and use the time it takes for a single frame(like the numbers we've shared in this document) as a proxy.
-</br>
+
 Reasons for doing this:
 * You can compute frame count and sizes very efficiently using Visual NLP.
 * Even if not all frames are of the same dimensions, you can resize them prior to feeding them to the ML models in the pipeline.

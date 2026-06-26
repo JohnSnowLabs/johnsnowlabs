@@ -540,6 +540,8 @@ epoch, but it can be useful if the dataset is too large to fit in memory.</p>
 <p>If the training data can fit to memory, then it is recommended to set this
 option to False (default value).</p>
 </p></li>
+<li><p><strong>explodeSentencesForTraining</strong> – Whether to split multi-sentence training rows into one row per sentence
+before training, by default False.</p></li>
 <li><p><strong>tagsMapping</strong> – A map specifying how old tags are mapped to new ones as a list of comma-separated
 entities, where the first entity is the old tag and the second entity is
 the new tag. For example, if the map is set to [“OLDTAG,NEWTAG”, “B-PER,B-VIP”,
@@ -682,6 +684,11 @@ on test/validation dataset or the value of loss.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.evaluationLogExtended">
 <span class="sig-name descname"><span class="pre">evaluationLogExtended</span></span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.evaluationLogExtended" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.explodeSentencesForTraining">
+<span class="sig-name descname"><span class="pre">explodeSentencesForTraining</span></span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.explodeSentencesForTraining" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -1203,6 +1210,17 @@ Displays time and evaluation of each label.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>v</strong> (<em>bool</em>) – Whether logs for validation to be extended</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.setExplodeSentencesForTraining">
+<span class="sig-name descname"><span class="pre">setExplodeSentencesForTraining</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.setExplodeSentencesForTraining" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to split multi-sentence training rows into one row per sentence before training.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to split multi-sentence training rows into one row per sentence before training.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2200,6 +2218,7 @@ If the value is True, the process might be slowed down.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.engine"><code class="docutils literal notranslate"><span class="pre">LegalNerApproach.engine</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.entities"><code class="docutils literal notranslate"><span class="pre">LegalNerApproach.entities</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.evaluationLogExtended"><code class="docutils literal notranslate"><span class="pre">LegalNerApproach.evaluationLogExtended</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.explodeSentencesForTraining"><code class="docutils literal notranslate"><span class="pre">LegalNerApproach.explodeSentencesForTraining</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.getter_attrs"><code class="docutils literal notranslate"><span class="pre">LegalNerApproach.getter_attrs</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.graphFile"><code class="docutils literal notranslate"><span class="pre">LegalNerApproach.graphFile</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.graphFolder"><code class="docutils literal notranslate"><span class="pre">LegalNerApproach.graphFolder</span></code></a></li>
@@ -2267,6 +2286,7 @@ If the value is True, the process might be slowed down.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.setEnableOutputLogs"><code class="docutils literal notranslate"><span class="pre">LegalNerApproach.setEnableOutputLogs()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.setEntities"><code class="docutils literal notranslate"><span class="pre">LegalNerApproach.setEntities()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.setEvaluationLogExtended"><code class="docutils literal notranslate"><span class="pre">LegalNerApproach.setEvaluationLogExtended()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.setExplodeSentencesForTraining"><code class="docutils literal notranslate"><span class="pre">LegalNerApproach.setExplodeSentencesForTraining()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.setForceInputTypeValidation"><code class="docutils literal notranslate"><span class="pre">LegalNerApproach.setForceInputTypeValidation()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.setGraphFile"><code class="docutils literal notranslate"><span class="pre">LegalNerApproach.setGraphFile()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach.setGraphFolder"><code class="docutils literal notranslate"><span class="pre">LegalNerApproach.setGraphFolder()</span></code></a></li>

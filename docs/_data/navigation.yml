@@ -110,6 +110,36 @@ medical-llm:
       - title: Release Notes
         url: /docs/en/LLMs/releases/release_notes
 
+literature-review:
+  - title: Literature Review Agent
+    children:
+      - title: Getting Started
+        url: /docs/en/literature_review/literature_review
+      - subtitle: Installation
+        children:
+          - title: Deploy on AWS
+            url: /docs/en/literature_review/on_aws
+      - subtitle: Features
+        children:
+          - title: Search Articles
+            url: /docs/en/literature_review/features/search
+          - title: Data Points & Criteria
+            url: /docs/en/literature_review/features/extraction
+          - title: Run & Monitor
+            url: /docs/en/literature_review/features/run_monitor
+          - title: Literature QA
+            url: /docs/en/literature_review/features/literature_qa
+          - title: Custom Sources
+            url: /docs/en/literature_review/features/custom_sources
+      - subtitle: APIs
+        children:
+          - title: API Reference
+            url: /docs/en/literature_review/api_service
+      - title: Support
+        url: /docs/en/literature_review/support
+      - title: Release Notes
+        url: /docs/en/literature_review/release/latest_release
+
 term-server:
   - title: Terminology Server
     children:
@@ -185,6 +215,8 @@ annotation-lab:
             url: /docs/en/alab/synthetic_task
           - title: Tasks
             url: /docs/en/alab/tasks
+          - title: Analytics
+            url: /docs/en/alab/analytics_dashboard
           - title: Workflows
             url: /docs/en/alab/workflow
       - subtitle: Project Types 

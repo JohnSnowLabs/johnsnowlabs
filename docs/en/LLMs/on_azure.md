@@ -21,16 +21,6 @@ The list below shows John Snow Labs' Medical LLM models available on Azure marke
 
 [Medical LLM - Small](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.medical_llm_small?tab=Overview)
 
-[Medical LLM - 14B](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.medical_llm_14b?tab=Overview)
-
-[Medical Reasoning LLM - 32B](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.medical_reasoning_llm_32b?tab=Overview)
-
-[Medical Spanish LLM - 24B](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.spanish_medical_llm_24b?tab=Overview)
-
-[Medical Visual LLM - 8B](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.medical_vlm_7b?tab=Overview)
-
-[Medical Visual LLM - 30B](https://marketplace.microsoft.com/en-us/product/virtual-machines/johnsnowlabsinc1646051154808.medical_vom_30b?tab=Overview)
-
 [Vision-OCR-LLM](https://marketplace.microsoft.com/en-us/product/virtual-machine/johnsnowlabsinc1646051154808.visual_language_ocr_llm?tab=Overview)
 
 [Vision-OCR-Structured-LLM](https://marketplace.microsoft.com/en-us/product/virtual-machine/johnsnowlabsinc1646051154808.visual_language_ocr_structured_llm?tab=Overview)

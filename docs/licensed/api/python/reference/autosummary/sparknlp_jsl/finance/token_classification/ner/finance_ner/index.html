@@ -537,6 +537,8 @@ epoch, but it can be useful if the dataset is too large to fit in memory.</p>
 <p>If the training data can fit to memory, then it is recommended to set this
 option to False (default value).</p>
 </p></li>
+<li><p><strong>explodeSentencesForTraining</strong> – Whether to split multi-sentence training rows into one row per sentence
+before training, by default False.</p></li>
 <li><p><strong>tagsMapping</strong> – A map specifying how old tags are mapped to new ones as a list of comma-separated
 entities, where the first entity is the old tag and the second entity is
 the new tag. For example, if the map is set to [“OLDTAG,NEWTAG”, “B-PER,B-VIP”,
@@ -679,6 +681,11 @@ on test/validation dataset or the value of loss.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.evaluationLogExtended">
 <span class="sig-name descname"><span class="pre">evaluationLogExtended</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.evaluationLogExtended" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.explodeSentencesForTraining">
+<span class="sig-name descname"><span class="pre">explodeSentencesForTraining</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.explodeSentencesForTraining" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -1200,6 +1207,17 @@ Displays time and evaluation of each label.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>v</strong> (<em>bool</em>) – Whether logs for validation to be extended</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setExplodeSentencesForTraining">
+<span class="sig-name descname"><span class="pre">setExplodeSentencesForTraining</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setExplodeSentencesForTraining" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to split multi-sentence training rows into one row per sentence before training.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to split multi-sentence training rows into one row per sentence before training.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2198,6 +2216,7 @@ If the value is True, the process might be slowed down.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.engine"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.engine</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.entities"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.entities</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.evaluationLogExtended"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.evaluationLogExtended</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.explodeSentencesForTraining"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.explodeSentencesForTraining</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.getter_attrs"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.getter_attrs</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.graphFile"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.graphFile</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.graphFolder"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.graphFolder</span></code></a></li>
@@ -2265,6 +2284,7 @@ If the value is True, the process might be slowed down.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setEnableOutputLogs"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setEnableOutputLogs()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setEntities"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setEntities()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setEvaluationLogExtended"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setEvaluationLogExtended()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setExplodeSentencesForTraining"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setExplodeSentencesForTraining()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setForceInputTypeValidation"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setForceInputTypeValidation()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setGraphFile"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setGraphFile()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setGraphFolder"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setGraphFolder()</span></code></a></li>

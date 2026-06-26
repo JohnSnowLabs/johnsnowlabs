@@ -940,13 +940,13 @@ Estimated Minimum Costs:
 
 </div><div class="h3-box" markdown="1">
 
-## Deidentification Pipelines Speed Comparison on Databrics-AWS
+## Deidentification Pipelines Speed Comparison on Databricks-AWS
 
 </div><div class="h3-box" markdown="1">
 
 ### Deidentification Pipelines Benchmarks
 
-These pipelines can be used to deidentify PHI information from medical texts. The PHI information will be masked and obfuscated. It also provides valuable insights into the efficiency and scalability of deidentification pipelines in different computational environments on Databrics.
+These pipelines can be used to deidentify PHI information from medical texts. The PHI information will be masked and obfuscated. It also provides valuable insights into the efficiency and scalability of deidentification pipelines in different computational environments on Databricks.
 
 </div><div class="h3-box" markdown="1">
 
@@ -976,7 +976,7 @@ Databricks Runtime: 16.4 LTS (includes Apache Spark 3.5.2, Scala 2.12)
 
 ### Instance Type
 
-Databrics-AWS Config with CPU/GPU Options
+Databricks-AWS Config with CPU/GPU Options
 
 - (CPU)
 
@@ -1077,7 +1077,7 @@ Included Models
 
 </div><div class="h3-box" markdown="1">
 
-## Pretrained Zero-Shot Named Entity Recognition (NER) Deidentification Subentity Speed Comparison on Databrics-AWS
+## Pretrained Zero-Shot Named Entity Recognition (NER) Deidentification Subentity Speed Comparison on Databricks-AWS
 
 </div><div class="h3-box" markdown="1">
 
@@ -1085,7 +1085,7 @@ Included Models
 
 Zero-shot Named Entity Recognition (NER) enables the identification of entities in text with minimal effort. By leveraging pre-trained language models and contextual understanding, zero-shot NER extends entity recognition capabilities to new domains and languages.
 
-This experiment compares the Pretrained Zero-shot NER runtime for CPU and GPU clusters on Databrics-AWS environment.
+This experiment compares the Pretrained Zero-shot NER runtime for CPU and GPU clusters on Databricks-AWS environment.
 
 </div><div class="h3-box" markdown="1">
 
@@ -1123,7 +1123,7 @@ Databricks Runtime: 16.4 LTS (includes Apache Spark 3.5.2, Scala 2.12)
 
 ### Instance Type
 
-Databrics-AWS Config with CPU/GPU Options
+Databricks-AWS Config with CPU/GPU Options
 
 - (CPU)
 
@@ -1197,6 +1197,49 @@ At the same batch size (8), the Large model requires ~30.4 minutes, compared to 
 **Overall, the findings show that GPU usage is essential for production-scale runs, batch size optimization is critical for maximizing GPU efficiency, and model size should be selected based on the required balance between accuracy and runtime performance.**
 
 </div><div class="h3-box" markdown="1">
+
+## Pretrained Zero-Shot Multi-Task Named Entity Recognition (NER) Speed Comparison on GPU vs CPU
+
+</div><div class="h3-box" markdown="1">
+
+We benchmarked the **PretrainedZeroShotMultiTask** architecture using the **zeroshot_multitask_base** model on a dataset of ~500 tokens per row.
+
+**Hardware setup:**
+
+- **CPU**: 8 cores, 52 GB System RAM
+- **GPU**: NVIDIA T4, 24 GB VRAM
+
+The workload was tested on two dataset sizes (1k rows and 100 rows), each with 48 repartitions.
+
+### Spark NLP Pipeline
+
+```
+pipeline = Pipeline(
+    stages = [
+        document_assembler,
+        sentence_detector,
+        pretrained_zeroshot_multitask
+])
+```
+
+### Summary
+
+- The **GPU significantly reduced wall time** compared to CPU.
+- On the 1k dataset, GPU reduced total runtime from **8h 45m → 42m** (~12× faster).
+- On the 100-row dataset, GPU reduced runtime from **51m → 4m** (~12× faster).
+- GPU acceleration scales consistently across dataset sizes.
+
+
+### Benchmark Results
+
+| Hardware               | Dataset Size | Repartition | CPU Time (user+sys) | Wall Time   |
+|------------------------|--------------|-------------|---------------------|--------------|
+| CPU (8 core, 52GB RAM) | 1k rows (~500 tokens)  | 48 | 5.93 s  | 8h 45m 46s |
+| CPU (8 core, 52GB RAM) | 100 rows (~500 tokens) | 48 | 625 ms  | 51m 43s    |
+| GPU (NVIDIA T4, 24GB)  | 1k rows (~500 tokens)  | 48 | 400 ms  | 42m 35s    |
+| GPU (NVIDIA T4, 24GB)  | 100 rows (~500 tokens) | 48 | 52 ms   | 4m 12s     |
+
+
 
 ## RxNorm Benchmark: Healthcare NLP & GPT-4 & Amazon
 

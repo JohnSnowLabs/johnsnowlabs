@@ -386,7 +386,10 @@ document.write(`
 <tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.deidentification_utils.dict_to_annotation_converter" title="sparknlp_jsl.utils.deidentification_utils.dict_to_annotation_converter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict_to_annotation_converter</span></code></a>(spark, data[, ...])</p></td>
 <td><p>This method is used to convert a list of dictionaries to a Spark DataFrame. The returned DataFrame will contain chunk and document columns that are compatible with Spark NLP and can be used for deidentification.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.deidentification_utils.structured_deidentifier" title="sparknlp_jsl.utils.deidentification_utils.structured_deidentifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">structured_deidentifier</span></code></a>(spark[, input_file_path, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.deidentification_utils.evaluate_obfuscation" title="sparknlp_jsl.utils.deidentification_utils.evaluate_obfuscation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">evaluate_obfuscation</span></code></a>(df, original_col, obfuscated_col)</p></td>
+<td><p>Evaluate obfuscation quality based on leakage detection and success rate.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.deidentification_utils.structured_deidentifier" title="sparknlp_jsl.utils.deidentification_utils.structured_deidentifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">structured_deidentifier</span></code></a>(spark[, input_file_path, ...])</p></td>
 <td><p>This method is used to deidentify structured data. It takes the input as a file path and returns a deidentified dataframe and a file in csv/json format.</p></td>
 </tr>
 </tbody>
@@ -559,6 +562,80 @@ All dictionaries must have a ‘document_metadata’ key if the ‘document_meta
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.utils.deidentification_utils.evaluate_obfuscation">
+<span class="sig-name descname"><span class="pre">evaluate_obfuscation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">original_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obfuscated_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">null_handling</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ignore'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize_strings</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.utils.deidentification_utils.evaluate_obfuscation" title="Permalink to this definition">#</a></dt>
+<dd><p>Evaluate obfuscation quality based on leakage detection and success rate.</p>
+<p>This function compares original and obfuscated values in a Spark DataFrame
+to measure how often sensitive information was preserved (leakage) versus
+successfully obfuscated.</p>
+<p>The evaluation supports configurable null handling strategies and optional
+string normalization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><em>pyspark.sql.DataFrame</em></a>) – Input Spark DataFrame containing the columns to evaluate.</p></li>
+<li><p><strong>original_col</strong> (<em>str</em>) – Name of the column containing original (sensitive) values.</p></li>
+<li><p><strong>obfuscated_col</strong> (<em>str</em>) – Name of the column containing obfuscated (masked/generated) values.</p></li>
+<li><p><strong>null_handling</strong> (<em>str</em><em>, </em><em>optional</em>) – <p>Strategy for handling null and empty values during comparison.</p>
+<dl class="simple">
+<dt>Options:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;ignore&quot;</span></code>:
+Excludes rows where both original and obfuscated values are
+null or empty from evaluation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;equal&quot;</span></code>:
+Treats null values as empty strings (“”) before comparison.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;strict&quot;</span></code>:
+Performs direct comparison without null transformation.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Default is <code class="docutils literal notranslate"><span class="pre">&quot;ignore&quot;</span></code>.</p>
+</p></li>
+<li><p><strong>normalize_strings</strong> (<em>bool</em><em>, </em><em>optional</em>) – <p>If True, applies string normalization (trim whitespace) before comparison.</p>
+<dl class="simple">
+<dt>Note:</dt><dd><p>Comparison remains case-sensitive.</p>
+</dd>
+</dl>
+<p>Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><p>Dictionary containing evaluation metrics:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">total_rows</span></code> (int):
+Number of evaluated rows after filtering rules.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">leakage_count</span></code> (int):
+Number of rows where original and obfuscated values are identical.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">leakage_rate</span></code> (float):
+Ratio of leakage_count to total_rows.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">success_rate</span></code> (float):
+Ratio of successfully obfuscated rows (1 - leakage_rate).</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – If input DataFrame is invalid, required columns are missing,
+or null_handling has an unsupported value.</p></li>
+<li><p><strong>RuntimeError</strong> – If Spark aggregation fails during execution.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sparknlp_jsl.utils</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sparknlp_jsl.structured_deidentification</span><span class="w"> </span><span class="kn">import</span> <span class="n">StructuredDeidentification</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">obfuscator</span> <span class="o">=</span> <span class="n">StructuredDeidentification</span><span class="p">(</span><span class="n">spark</span><span class="o">=</span><span class="n">spark</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;NAME&quot;</span><span class="p">:</span> <span class="s2">&quot;NAME&quot;</span><span class="p">},</span> <span class="n">obfuscateRefSource</span><span class="o">=</span><span class="s2">&quot;faker&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">obfuscated_df</span> <span class="o">=</span> <span class="n">obfuscator</span><span class="o">.</span><span class="n">obfuscateColumns</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">outputAsArray</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s2">&quot;_OBFUSCATED&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">eval_result</span> <span class="o">=</span> <span class="n">evaluate_obfuscation</span><span class="p">(</span><span class="n">obfuscated_df</span><span class="p">,</span> <span class="n">original_col</span><span class="o">=</span><span class="s2">&quot;NAME&quot;</span><span class="p">,</span> <span class="n">obfuscated_col</span><span class="o">=</span><span class="s2">&quot;NAME_OBFUSCATED&quot;</span><span class="p">,</span> <span class="n">null_handling</span><span class="o">=</span><span class="s2">&quot;strict&quot;</span><span class="p">,</span> <span class="n">normalize_strings</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="sparknlp_jsl.utils.deidentification_utils.structured_deidentifier">
 <span class="sig-name descname"><span class="pre">structured_deidentifier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_file_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_file_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'deidentified.csv'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">separator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">','</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns_dict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ref_source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'faker'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obfuscateRefFile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns_seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shift_days</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date_formats</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">language</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_column</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.utils.deidentification_utils.structured_deidentifier" title="Permalink to this definition">#</a></dt>
 <dd><p>This method is used to deidentify structured data. It takes the input as a file path and returns a deidentified dataframe and a file in csv/json format.</p>
@@ -618,6 +695,7 @@ All dictionaries must have a ‘document_metadata’ key if the ‘document_meta
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.deidentification_utils.dict_to_annotation_converter"><code class="docutils literal notranslate"><span class="pre">dict_to_annotation_converter()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.deidentification_utils.evaluate_obfuscation"><code class="docutils literal notranslate"><span class="pre">evaluate_obfuscation()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.deidentification_utils.structured_deidentifier"><code class="docutils literal notranslate"><span class="pre">structured_deidentifier()</span></code></a></li>
 </ul>
 </li>

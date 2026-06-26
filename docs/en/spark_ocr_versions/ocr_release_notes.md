@@ -5,7 +5,7 @@ seotitle: Spark OCR | John Snow Labs
 title: Spark OCR release notes
 permalink: /docs/en/spark_ocr_versions/ocr_release_notes
 key: docs-ocr-release-notes
-modify_date: "2025-05-09"
+modify_date: "28-04-2026"
 show_nav: true
 sidebar:
     nav: sparknlp-healthcare
@@ -13,86 +13,124 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-## 6.3.0
+## 6.4.0
 
-Release date: 02-02-2026
+Release date: 28-04-2026
 
-## Visual NLP 6.3.0 Release Notes 🕶️
+## Visual NLP 6.4.0 Release Notes 🕶️
 
-**We are glad to announce that Visual NLP 6.3.0, has been released! 📢📢📢**
+**We are glad to announce that Visual NLP 6.4.0 has been released! Dicom improvements, a new OCR engine, and much more. 📢📢📢**
 
 </div><div class="h3-box" markdown="1">
 
 ## Main Changes 🔴
 
-* Dicom Midi-B benchmarks.
-* New features in: DicomToMetadata and DicomMetadataDeIdentifier.
-* New Blogposts and notebooks.
-* Bug Fixes and Maintenance
+* Dicom Processing Improvements
+* New Optimized Fast Dicom Pipeline
+* New V4 OCR engine
+* New Yolo based Layout analysis model
+* New OpenVino Text Detector model
+* Two new AWS Marketplace listings
 
 </div><div class="h3-box" markdown="1">
-## Dicom Midi-B benchmarks
-In this release, we tackled the [Midi-B dataset for Dicom De-identification](https://www.cancerimagingarchive.net/collection/midi-b-test-midi-b-validation/). Midi-B is a popular dataset for the Dicom De-Identification Task that appeared in 2025. Today we are releasing benchmarks, and a notebook to reproduce results.
 
+## Dicom Processing Improvements
 
-</div><div class="h3-box" markdown="1">
-## Benchmarks
-The metrics in Midi-B dataset are organized as a set of accuracy numbers across a predefined set of actions. Two different subsets are provided, Validation and Test. We report results for both datasets and each of the actions defined in the dataset.
+Dicom processing pipelines now support sampling of the frames in each study. This new strategy allows pipelines to run faster by looking into only a subset of all the frames in the study. The changes are spread across different components.
 
-![Validation Report(Validation) MIDI-B.](/assets/images/ocr/midi_b_table_val.png)
-![Validation Report(Test) MIDI-B.](/assets/images/ocr/midi_b_table_test.png)
+### DicomToImageV3 Changes
 
-## Notebooks
+* Added a new param `setFrameSamplingStrategy()`. Valid values are `['Consecutive', 'Stride', 'Random', 'Middle']` for sub-sampling the frames.
+* Added a new param `setFrameDimsCol()`, which contains metadata information about the image.
+* Fixed the selection of frames via `setInputCols()`: `DicomToImageV3` accepts a column `parts`, which is a per-dicom-file integer list representing a cherry-picked list of frame ids.
 
-You can find all the details for how to run over the MIDI-B dataset in this notebook: [SparkOcrMIDIBSolution.ipynb](https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/Dicom/SparkOcrMIDIBSolution.ipynb)
-</div><div class="h3-box" markdown="1">
+```python
+DicomToImageV3.setInputCols(['content', 'parts'])
+```
 
-## New features in: DicomToMetadata and DicomMetadataDeIdentifier
+Some corner cases were fixed in this feature.
 
-### DicomToMetadata
+* Added page number information in the `pagenum` col.
 
-Exposing tags to enable external NLP to operate on them.
-* Added support for strategy file-driven configuration via the setStrategyFile parameter: a strategy file is a configuration file that helps in defining actions like the ones described in the charts above.
-* Enabled the extraction of raw metadata tag value for all tags marked with cleanTag in the strategy file. As a result, a String column will be created in the output dataframe. The name of the output column for this raw tag text is configurable via setTagCol. The purpose of this column is to expose the content of the tags that are in natural language so the redaction can be carried out using NLP methods.
-* Enabled extraction of tag mappings for all tags marked with the cleanTag action, as described in the item above, configurable through setTagMappingCol. This output column allows to map the tags values present in the tag column back to the original tag identifiers.
-* Introduced setExtractTagForNer to optionally skip String tag extraction.
+### DicomDrawRegion Changes
 
-</div><div class="h3-box" markdown="1">
+* This component renders the regions into the frames of the input dicoms. When frame sampling was performed in previous stages, this component will now perform the extrapolation of the regions that were analyzed to all the frames in the dicom file.
 
 ### DicomMetadataDeidentifier
 
-DicomMetadataDeidentifier is the component in charge of redacting metadata tags in Dicom files. It can apply a wide variety of actions, some of which are pre-defined, and some of which are user-defined.
-In this release, new actions were added:
-* Added a new action shiftTimeByRandom (VR: TM) to randomly shift time values.
-* Added two new actions shiftDateByFixedNbOfDays and shiftDateByRandomNbOfDays (VR: DA, DT) to shift date and datetime values.
-* Added a new action shiftUnixTimeStampRandom (VR: SL, FD) to randomly shift Unix timestamp values.
-* Added a new action ensureTagExists (VR: ALL) to ensure a tag exists with a default value.
-Some other changes,
-* Improved date and datetime handling to support all valid DICOM date formats.
-* Improved hashUID and patientHashID implementations in accordance with DICOM guidelines.
-* Added the ability to remove residual PHI post de-identification, ensuring sensitive metadata is fully cleared from the DICOM file.
+* Added guardrails for `remove`, `delete`, and `replaceWithLiteral` actions when applied to VR SQ.
+* Added support for removing or deleting group tags through a group strategy file via `setGroupStrategyFile("group_strategy.csv")`, for example deletion of all overlay tags in group `60xx`.
+* Improved private tag removal with `setRemovePrivateTags(True)` to consistently delete private tags from the DICOM file.
+* Improved tracking of DICOM object references to better preserve and trace metadata tag operations.
 
+If you do not want to build from scratch, but want to leverage this and other optimizations, check the next section.
 
 </div><div class="h3-box" markdown="1">
 
-## New Blogposts and notebooks
+## New Optimized Fast Dicom Pipeline
 
-* Deidentifying Whole Slide Images(WSI) and deploying in SageMaker. Link [here](https://medium.com/john-snow-labs/de-identifying-whole-slide-images-wsi-deploying-on-sagemaker-part-3-25a4c57805c4).
-* JSL-Vision vs. Closed Source Models Comparison. Link [here](https://medium.com/john-snow-labs/jsl-vision-vs-closed-source-models-document-intelligence-without-compromise-62728afe0c5b).
-* JSL-Vision vs. Open-Source Models Comparison. Link [here](https://medium.com/john-snow-labs/jsl-vision-state-of-the-art-document-understanding-on-your-hardware-f4862f15d9f9).
-* De-identifying Dicom files a step-by-step guide . Link [here](https://medium.com/john-snow-labs/de-identifying-dicom-files-a-step-by-step-guide-with-john-snow-labs-visual-nlp-2c21b60f92a8).
+This new pipeline leverages image re-scaling, compression, and frame sub-sampling for improved performance. Just call it like this:
 
-</div><div class="h3-box" markdown="1">
-
-## Bug Fixes
-
-* Improved support for accessing Python resources across different Python versions.
-* Compatibility with Google Colab.
+```python
+from sparkocr.pretrained import DicomPretrainedPipeline
+dcm_pipe = DicomPretrainedPipeline("dicom_deid_fully_optimized")
+clean_dcm_df = dcm_pipe.transform(dicom_df)
+```
 
 </div><div class="h3-box" markdown="1">
 
-## Compatibility: 
-Spark-NLP 6.3.2, and Spark-NLP for Healthcare 6.3.0, LV 1.11.0.
+## New V4 OCR engine
+
+This model is a new OCR model that operates with an external Text Detector for high-recall use cases such as de-identification. Contrary to V2 families, which were Transformer-based, this one is CNN-based, which allows it to deliver reasonable throughput even on CPU. The model is competitive accuracy-wise as well.
+
+```python
+text_detector = ImageTextDetectorCraft()\
+  .pretrained("text_detection_v4", "en", "clinical/ocr")\
+  .setInputCol("image")\
+  .setOutputCol("regions")\
+  .setSizeThreshold(10)\
+  .setLinkThreshold(0.3)\
+  .setTextThreshold(0.4)\
+  .setWithRefiner(False)
+
+text_extractor = ImageToTextV4()\
+  .pretrained("text_recognition_v4", "en", "clinical/ocr")\
+  .setInputCols(["image", "regions"])\
+  .setOutputCol("text")
+```
+
+</div><div class="h3-box" markdown="1">
+
+## New Yolo based Layout analysis model
+
+This new model can detect layout entities `{Text, Title, List, Table, Figure}`. It is similar in accuracy to other DiT-based models in the library, but with a speed-up of up to 10X over DiT options such as `ImageLayoutAnalyzerDit`.
+
+This is how you use it:
+
+```python
+doc_layout = DocumentLayoutAnalyzer \
+    .pretrained("doc_layout_jsl", "en", "clinical/ocr")
+```
+
+</div><div class="h3-box" markdown="1">
+
+## New OpenVino Text Detector model
+
+Our `ImageTextDetector` annotator, which is used in many OCR and de-identification pipelines, now supports checkpoints with OpenVino. To use it, call the annotator exactly the same way, but pass the `image_text_detector_open_vino` model name like this:
+
+```python
+ImageTextDetector.pretrained("image_text_detector_open_vino", "clinical/ocr", "en")
+```
+
+This model delivers a speed-up of around `2.2X` when used on CPUs that support AI acceleration features such as `AVX-512`, `VNNI`, and `bfloat16`. For example, AWS's [C7a family](https://aws.amazon.com/ec2/instance-types/c7a/).
+
+</div><div class="h3-box" markdown="1">
+
+## Two new AWS Marketplace listings
+
+* [Vision OCR LLM](https://aws.amazon.com/marketplace/pp/prodview-d7un4r7xpiwje): highly accurate text extraction model.
+* [Vision OCR Structured LLM](https://aws.amazon.com/marketplace/pp/prodview-rrpnzcxjmhtfy): a highly accurate VLM-based text extraction model that can handle text and tables.
+
 </div><div class="h3-box" markdown="1">
 
 ## Previous versions

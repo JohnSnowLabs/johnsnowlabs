@@ -120,7 +120,7 @@ data:
             style: "padding: 25px;"
         - title:
           image:
-            src: https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Intel_logo_%282020%2C_light_blue%29.svg/200px-Intel_logo_%282020%2C_light_blue%29.svg.png
+            src: https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Intel_logo_2023.svg/1280px-Intel_logo_2023.svg.png
             url: https://www.intel.com/
             style: "padding: 25px;"
         - title:
@@ -152,15 +152,15 @@ data:
             style: "padding: 17px;"
         - title:
           image:
-            src: https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/DaimlerLogo.svg/1200px-DaimlerLogo.svg.png
+            src: https://upload.wikimedia.org/wikipedia/commons/1/1b/Daimler_logo.jpg
             url: https://www.daimler.com/en/
         - title:
           image:
-            src: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Nuance_Communications_logo_2018.svg/640px-Nuance_Communications_logo_2018.svg.png
+            src: https://dragon.nuance.com/shared/images/store-logo-02.png
             url: https://www.nuance.com/index.html
         - title:
           image:
-            src: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/The_Trade_Desk.svg/220px-The_Trade_Desk.svg.png
+            src: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/The_Trade_Desk.svg/1280px-The_Trade_Desk.svg.png
             url: https://www.thetradedesk.com/us
         - title:
           image:
@@ -176,7 +176,7 @@ data:
             url: https://www.infosys.com/
         - title:
           image:
-            src: https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Novartis-Logo.svg/800px-Novartis-Logo.svg.png
+            src: https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Novartis-Logo.svg/1280px-Novartis-Logo.svg.png
             url: https://www.novartis.com/
         - title:
           image:
@@ -196,7 +196,7 @@ data:
             url: https://www.oracle.com/index.html
         - title:
           image:
-            src: https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/DeloitteNewLogo.png/1200px-DeloitteNewLogo.png
+            src: https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Logo_of_Deloitte.svg/3840px-Logo_of_Deloitte.svg.png
             url: https://www2.deloitte.com/
         - title:
           image:
@@ -242,7 +242,7 @@ data:
             style: "padding: 25px;"
         - title:
           image:
-            src: https://selectdata.com/wp-content/uploads/2019/12/logo.png
+            src: https://selectdata.com/assets/selectdata-logo-rUxfKfbB.jpg
             url: https://selectdata.com/
             style: "padding: 10px;"
         - title:
@@ -256,21 +256,21 @@ data:
 
         - title:
           image:
-            src: https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/1_Heart_Aetna_logo_sm_rgb_violet.png/800px-1_Heart_Aetna_logo_sm_rgb_violet.png
+            src: https://upload.wikimedia.org/wikipedia/commons/f/f4/Aetna_logo_2012.png
             url: https://www.aetna.com/
         - title:
           image:
-            src: https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/DocuSign_logo.png/800px-DocuSign_logo.png
+            src: https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Docusign_Full_Color.svg/3840px-Docusign_Full_Color.svg.png
             url: https://www.docusign.fr/
         - title:
           image:
-            src: https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/UCLA-HealthSystem-Logo-RGB.png/800px-UCLA-HealthSystem-Logo-RGB.png
+            src: https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/UCLA_Health_logo.svg/1280px-UCLA_Health_logo.svg.png
             url: https://www.uclahealth.org/
         - title:
           image:
-            src: https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Rand_Corporation_logo.svg/600px-Rand_Corporation_logo.svg.png
+            src: https://www.rand.org/etc/rand/designs/common/images/logo-corp.svg
             url: https://www.rand.org/
-            style: "padding: 29px;"
+            style: "padding: 29px;width: 124px"
 
         - title:
           image:
@@ -300,7 +300,7 @@ data:
             style: "padding: 25px;"
         - title:
           image:
-            src: https://upload.wikimedia.org/wikipedia/en/thumb/7/79/University_of_Chicago_shield.svg/1200px-University_of_Chicago_shield.svg.png
+            src: https://upload.wikimedia.org/wikipedia/commons/c/cd/University_of_Chicago_Coat_of_arms.png
             url: https://www.uchicago.edu/
             style: "padding: 29px;"
         - title:

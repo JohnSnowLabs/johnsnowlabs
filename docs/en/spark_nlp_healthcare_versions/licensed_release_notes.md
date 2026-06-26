@@ -5,7 +5,7 @@ seotitle: Spark NLP for Healthcare | John Snow Labs
 title: Healthcare NLP Release Notes
 permalink: /docs/en/spark_nlp_healthcare_versions/licensed_release_notes
 key: docs-licensed-release-notes
-modify_date: 2026-01-27
+modify_date: 2026-06-26
 show_nav: true
 sidebar:
     nav: sparknlp-healthcare
@@ -13,35 +13,31 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-## 6.3.0
+## 6.4.1
 
 #### Highlights
 
-We are delighted to announce remarkable enhancements and updates in our latest major release of Healthcare NLP. This release expands broader cloud environment support with Scala 2.13 and Java 17 compatibility, extends support for the latest LLM families, and delivers 9 new Medical Vision LLMs that advance clinical AI with multimodal text and image understanding, alongside 67 new one-liner pretrained pipelines and models for end-to-end clinical document understanding.
-The release also introduces scalable and flexible HL7 CDA (XML) de-identification and a new De-identification MCP Server (Preview) for seamless integration with external AI agents and IDE clients. Comprehensive benchmark evaluations are included, featuring large-scale clinical de-identification speed–accuracy benchmarks across infrastructures and comparative Medical Vision LLM benchmark results against leading foundation models.
-In addition, this version delivers memory-optimized MedicalNer training for large-scale datasets, enhanced entity resolution with new UMLS CUI and LOINC models, expanded rule-based and neural NER coverage, core robustness improvements across the pipeline ecosystem, newly created notebooks, and published technical blog posts and deep dives to further strengthen Healthcare NLP.
+We are delighted to announce notable enhancements and updates in Healthcare NLP 6.4.1. The headline addition is **LLM-Based Structured Clinical Entity Extraction** module, an end-to-end LLM-powered entity extraction annotator for healthcare and clinical text, built on top of the `MedicalLLM` models. This module enables unified extraction of structured clinical entities directly from unstructured medical text, streamlining clinical NLP workflows by removing the need for task-specific pipelines.
 
-- Scala 2.13 & Java 17 Compatibility with Broader Cloud Environment Support
-- 9 Medical Vision LLMs Extending Clinical AI to Multimodal Text and Image Understanding
-- Scalable and Flexible CDA (HL7) De-identification Support for XML Clinical Documents
-- De-identification MCP Server (Preview) for Clinical Text De-identification via External AI Agents and IDE Clients
-- Upgraded Llama.cpp Backend with Expanded Compatibility for the Latest LLM Families
-- Memory-Optimized MedicalNer Training for Large-Scale Datasets
-- Clinical De-Identification at Scale: Pipeline Design and Speed–Accuracy Benchmarks Across Infrastructures
-- Comparative Medical Vision LLM Benchmark Results Against Leading Foundation Models
-- Advanced clinical one-liner pretrained pipelines for PHI detection and extraction
-- Enhanced 8 new entity resolver models for mapping clinical terms to standardized UMLS CUI codes and LOINC
-- Introduced 17 new rule-based entity extraction models for identifying structured codes and patterns in clinical texts
-- Introduced 7 new NER models for PHI deidentification and drug entity extraction
-- Enhanced 8 new contextual assertion models to classify clinical entities by assertion status
-- Added new ONNX-based multilingual clinical NER models for Italian, Spanish, and Romanian, covering disease, procedure, medication, and symptom entity extraction
+This release also introduces important improvements in CDA de-identification through enhancements to the CDA DeIdentification module, featuring a table-aware, dual-model de-identification framework designed to jointly handle structured tabular data and unstructured clinical text, improving PHI detection accuracy in complex real-world CDA documents. 
+
+In addition, StructuredDeIdentification has been extended with native support for TIMESTAMP and TIMESTAMP_WITH_TIMEZONE entities, enabling deterministic time shifting in structured medical tables with configurable seconds-based offsets and flexible timestamp format parsing.
+
+This release also delivers a comprehensive UMLS 2026AA Metathesaurus refresh, encompassing 7 updated Entity Resolver models and an expanded ChunkMapper suite of 36 models — including 17 new mappers extending coverage to 8 additional medical coding systems — enabling broader and more current clinical concept mapping across standardized terminologies.
+
+This release is further complemented by new benchmarking results and applied research contributions across clinical NLP and LLM-based healthcare extraction. Internal benchmarks demonstrate improved domain-specific PHI detection performance and CPU efficiency compared to general-purpose privacy filters. New notebooks introduce end-to-end workflows for LLM-based structured extraction, oncology entity recognition, and large-scale Spark NLP benchmarking on Databricks, leveraging MedicalLLM models and Medallion architecture (a bronze/silver/gold lakehouse pattern) for production-grade Healthcare NLP pipelines.
+
+
+- LLM-Based Structured Clinical Entity Extraction with Constrained Decoding
+- Table-Aware, Free-Text Extended CDA De-Identification with Improved PHI Accuracy in CDA Tables
+- Pretrained Zero-Shot Multi-Task Named Entity Recognition (NER) Speed Comparison on GPU vs CPU Benchmark
+- StructuredDeIdentification – Timestamp Support & Time Shift Enhancement
+- Updated 7 UMLS Entity Resolver Models and 19 ChunkMapper Models to the UMLS 2026AA Metathesaurus and Introduced 17 New ChunkMapper Models Covering 8 Additional Medical Coding Systems
 - New Blog Posts & Technical Deep Dives
-- Various core improvements, bug fixes, enhanced overall robustness and reliability of Healthcare NLP
-    - Improved PipelineTracer coverage by adding support for PretrainedZeroShotNERChunker, ContextualEntityRuler, ContextualEntityFilterer
-    - Added replaceDict to AssertionMerger to allow custom replacement of assertion labels.
-    - PipelineOutputParser improvements to support mappings output in clinical_deidentification pipelines
 - Updated notebooks and demonstrations for making Healthcare NLP easier to navigate and understand
-    - New [CDA DeIdentification](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.14.CDA_DeIdentification.ipynb) Notebook
+  - New [MedicalLLMEntityExtractor](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/46.2.MedicalLLMEntityExtractor.ipynb) Notebook
+  - New [LLM-Based Oncology Entity Extraction](https://dbc-f4eb4bcb-4ef3.cloud.databricks.com/marketplace/provider/listings/8711812a-c05d-4246-bd90-dabc7f7a0073?o=5522619299734643) Databricks Solution Accelerator Notebook
+  - New [Benchmarking John Snow Labs Healthcare NLP Pipelines for Optimal Spark Config at Million-Doc Scale](https://dbc-f4eb4bcb-4ef3.cloud.databricks.com/marketplace/provider/listings/99415605-a24c-4bd8-b4da-892a70b71769?o=5522619299734643) Databricks Solution Accelerator Notebook
 - The addition and update of numerous new clinical models and pipelines continue to reinforce our offering in the healthcare domain
 
 These enhancements will elevate your experience with Healthcare NLP, enabling more efficient, accurate, and streamlined analysis of healthcare-related natural language data.
@@ -49,278 +45,214 @@ These enhancements will elevate your experience with Healthcare NLP, enabling mo
 
 <div class="h3-box" markdown="1">
 
-#### Scala 2.13 & Java 17 Compatibility with Broader Cloud Environment Support
+#### LLM-Based Structured Clinical Entity Extraction with Constrained Decoding
 
-With Healthcare NLP **6.3.0**, we introduce official support for **Scala 2.13** while continuing to support **Scala 2.12** through a dual-JAR distribution strategy. **Scala 2.13** JAR is built and tested against **Java 17**, enabling smoother adoption of modern JVM runtimes and reducing friction when deploying on managed cloud Spark platforms.
+`MedicalLLMEntityExtractor` is an end-to-end **LLM-powered entity extraction annotator for healthcare and clinical text**, built on top of the `MedicalLLM` models. It leverages **GGUF-format Large Language Models** (via llama.cpp backend) and enforces **strict structured Spark NLP outputs using BNF grammars**, ensuring deterministic and schema-compliant extraction results.
 
-**Databricks**
-- Recommended runtimes: **Databricks Runtime 16.4 LTS (Scala 2.13 image / Spark 3.5.2)**.  
-  Databricks provides both **Scala 2.12 and Scala 2.13 images** for this runtime, allowing customers to validate and migrate at their own pace.
-- Fully compatible with Databricks Runtime 16.x (Spark 3.5.x) environments running either Scala 2.12 or Scala 2.13.
+The annotator follows:
 
-**Google Cloud (Dataproc)**
-- **Cluster-based Dataproc**: Compatible with Dataproc **2.x image families (including 2.2 and 2.3)** that provide Scala 2.13 and Java 17.
-- **Dataproc Serverless for Spark**: Supported on **2.2 and newer runtimes**, which include **Scala 2.13** and **Java 17** in their execution environment.
+* Few-shot prompting for domain adaptation
+* Constrained decoding via grammar rules (BNF)
+* Post-processing alignment using string matching for accurate character offsets (`begin`, `end`)
 
-These updates significantly broaden support across cloud environments, enabling Healthcare NLP to run on a wider range of instance types and managed runtime configurations on both AWS and GCP.
+This enables reliable extraction of clinically relevant entities such as **DRUG, DOSAGE, ROUTE, FREQUENCY, DURATION**, and other configurable entity types, with precise span alignment back to the source document.
 
-**Practical notes**
-- Use the **Scala 2.13** JAR on environments that provide Scala 2.13 (e.g. Databricks Scala 2.13 images, Dataproc 2.x runtimes).
-- Use the **Scala 2.12** JAR on environments that are still based on Scala 2.12.
-- **Spark 4 is not supported in 6.3.0** and will be addressed in a future release.
+Unlike traditional NER models, `MedicalLLMEntityExtractor` is **model-agnostic within the Medical LLM ecosystem**, meaning it can load and run **any compatible Medical LLM annotator model (GGUF-based)** from the Healthcare NLP model hub. Users can simply select a pretrained model, configure inference parameters, and define extraction schema dynamically.
 
+This makes it suitable for:
 
-</div><div class="h3-box" markdown="1">
+* Rapid prototyping of clinical extraction pipelines
+* Custom entity schema design without retraining
+* Replacement or augmentation of traditional NER pipelines
 
-#### 9 Medical Vision LLMs Extending Clinical AI to Multimodal Text and Image Understanding
+**Pretrained Model Example**
 
-In this release, we are expanding our Medical Vision LLM (VLM) family with additional models specifically finetuned for medical tasks. These models extend large language model capabilities with integrated visual language understanding, enabling multimodal clinical analysis by combining textual and image inputs.
-
-The new VLMs provide strong performance for tasks such as diagnostic image interpretation, image-to-text summarization, and integrated documentation analysis — continuing our mission to advance clinical AI with robust, domain-specific multimodal solutions.
-
+MedicalLLMEntityExtractor can be used with any compatible MedicalLLM model.
 
 {:.table-model-big}
-| **Model Name**             | **Quantization Options**   |
-| -------------------------- | -------------------------- |
-| jsl_meds_vlm_7b_v1         | [q4](https://nlp.johnsnowlabs.com/2025/12/17/jsl_meds_vlm_7b_q4_v1_en.html), [q8](https://nlp.johnsnowlabs.com/2025/12/17/jsl_meds_vlm_7b_q8_v1_en.html), [q16](https://nlp.johnsnowlabs.com/2025/12/17/jsl_meds_vlm_7b_q16_v1_en.html) |
-| jsl_meds_vlm_4b_v1         | [q4](https://nlp.johnsnowlabs.com/2026/01/08/jsl_meds_vlm_4b_q4_v1_en.html), [q8](https://nlp.johnsnowlabs.com/2026/01/08/jsl_meds_vlm_4b_q8_v1_en.html), [q16](https://nlp.johnsnowlabs.com/2026/01/08/jsl_meds_vlm_4b_q16_v1_en.html) |
-| jsl_meds_vlm_reasoning_8b_v1  | [q4](https://nlp.johnsnowlabs.com/2026/01/09/jsl_meds_vlm_reasoning_8b_q4_v1_en.html), [q8](https://nlp.johnsnowlabs.com/2026/01/09/jsl_meds_vlm_reasoning_8b_q8_v1_en.html), [q16](https://nlp.johnsnowlabs.com/2026/01/09/jsl_meds_vlm_reasoning_8b_q16_v1_en.html) |
 
-*Example*: jsl_meds_vlm_reasoning_8b_q4_v1 
+| Model Name                                            | Description                                                                                                                                               |
+| ----------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`jsl_meds_4b_q16_v5`](https://nlp.johnsnowlabs.com/2025/08/05/jsl_meds_4b_q16_v5_en.html) | General-purpose medical LLM (4B quantized) optimized for clinical entity extraction, summarization, and structured information retrieval tasks. |
 
-<img src="https://raw.githubusercontent.com/JohnSnowLabs/spark-nlp-workshop/master/healthcare-nlp/data/ocr/prescription_02.png" 
-     alt="Prescription Image" 
-     width="400"/>
+
+**Example Pipeline**
 
 ```python
-prompt = """
-Extract madication and demographic patient information from the document and return strictly as JSON:
-
-{
-  "patient": {"name": string, "age": string, "sex": string, "hospital_no": string, "episode_no": string, "episode_date": string},
-  "diagnoses": [string],
-  "symptoms": [string],
-  "treatment": [{"med": string, "dose": string, "freq": string}]
-}
-"""
-
-input_df = vision_llm_preprocessor(
-    spark=spark,
-    images_path="images",
-    prompt=prompt,
-    output_col_name="prompt"
-)
-
 document_assembler = DocumentAssembler() \
-    .setInputCol("prompt") \
-    .setOutputCol("caption_document")
+    .setInputCol("text") \
+    .setOutputCol("document")
 
-image_assembler = ImageAssembler() \
-    .setInputCol("image") \
-    .setOutputCol("image_assembler")
-
-medicalVisionLLM = (
-    MedicalVisionLLM.pretrained("jsl_meds_vlm_reasoning_8b_q4_v1", "en", "clinical/models")
-    .setInputCols(["caption_document", "image_assembler"])
-    .setOutputCol("completions")
-    .setNCtx(8*4096)
-    .setNPredict(-1)
-    .setTemperature(0.1)
-)
-
-pipeline = Pipeline().setStages([
-    document_assembler,
-    image_assembler,
-    medicalVisionLLM
-])
-
-model = pipeline.fit(input_df)
-result = model.transform(input_df)
+entity_extractor = MedicalLLMEntityExtractor.pretrained(
+    "jsl_meds_4b_q16_v5", "en", "clinical/models"
+) \
+    .setInputCols(["document"]) \
+    .setOutputCol("entities") \
+    .setNGpuLayers(99) \
+    .setNCtx(4096) \
+    .setNPredict(500) \
+    .setTemperature(0.1) \
+    .setBatchSize(4) \
+    .setTopK(40) \
+    .setTopP(0.9)
 ```
 
-*Result*:
+**Few-Shot Configuration Example**
 
-```bash
-{
-  "patient": {
-    "name": "Ms RUKHSANA SHAHEEN",
-    "age": "56 yrs",
-    "sex": "Female",
-    "hospital_no": "MH005990453",
-    "episode_no": "030000528270",
-    "episode_date": "02/07/2021 08:31AM"
-  },
-  "diagnoses": [
-    "systemic lupus erythematosus",
-    "scleroderma overlap",
-    "interstitial lung disease"
-  ],
-  "symptoms": [
-    "tightness of skin of the fists",
-    "ulcers on the pulp of the fingers"
-  ],
-  "treatment": [
-    {
-      "med": "Linezolid",
-      "dose": "600 mg",
-      "freq": "twice a day for 5 Days"
-    },
-    {
-      "med": "Clopidogrel",
-      "dose": "75 mg",
-      "freq": "once a day after meals"
-    },
-    {
-      "med": "Amlodipine",
-      "dose": "5 mg",
-      "freq": "once a day"
-    },
-    {
-      "med": "Domperidone",
-      "dose": "10 mg",
-      "freq": "twice a day before meals"
-    },
-    {
-      "med": "Omeprazole",
-      "dose": "20 Mg",
-      "freq": "Twice a Day before Meal"
-    },
-    {
-      "med": "Bosentan",
-      "dose": "62.5 mg",
-      "freq": "twice a day after meals"
-    },
-    {
-      "med": "Sildenafil Citrate",
-      "dose": "0.5 mg",
-      "freq": "twice a day after meals"
-    },
-    {
-      "med": "Prednisolone",
-      "dose": "5 mg",
-      "freq": "once a day after breakfast"
-    },
-    {
-      "med": "Mycophenolate mofetil",
-      "dose": "500 mg 2 tablets",
-      "freq": "twice a day"
-    },
-    {
-      "med": "L-methylfolate calcium",
-      "dose": "400 µg 1 tablet",
-      "freq": "once a day"
-    },
-    {
-      "med": "ciprofloxacin",
-      "dose": "250 mg",
-      "freq": "twice a day"
-    }
-  ]
-}
+```python
+medication_few_shot = [
+    (
+        "Patient prescribed amoxicillin 500mg PO TID for 10 days.",
+        '{"extractions": [{"entity": "DRUG", "text": "amoxicillin"}, '
+        '{"entity": "DOSAGE", "text": "500mg"}, '
+        '{"entity": "ROUTE", "text": "PO"}, '
+        '{"entity": "FREQUENCY", "text": "TID"}, '
+        '{"entity": "DURATION", "text": "10 days"}]}'
+    ),
+    (
+        "Vancomycin 1.25g IV Q12H x 7 days for MRSA bacteremia.",
+        '{"extractions": [{"entity": "DRUG", "text": "Vancomycin"}, '
+        '{"entity": "DOSAGE", "text": "1.25g"}, '
+        '{"entity": "ROUTE", "text": "IV"}, '
+        '{"entity": "FREQUENCY", "text": "Q12H"}, '
+        '{"entity": "DURATION", "text": "7 days"}]}'
+    ),
+    (
+        "Metformin 1000mg PO twice daily with meals and lisinopril 10mg PO once daily.",
+        '{"extractions": [{"entity": "DRUG", "text": "Metformin"}, '
+        '{"entity": "DOSAGE", "text": "1000mg"}, '
+        '{"entity": "ROUTE", "text": "PO"}, '
+        '{"entity": "FREQUENCY", "text": "twice daily"}, '
+        '{"entity": "DRUG", "text": "lisinopril"}, '
+        '{"entity": "DOSAGE", "text": "10mg"}, '
+        '{"entity": "ROUTE", "text": "PO"}, '
+        '{"entity": "FREQUENCY", "text": "once daily"}]}'
+    ),
+]
+
+entity_extractor.setFewShotExamples(medication_few_shot)
 ```
-Overall, this release strengthens our Medical Vision LLM portfolio by enabling robust, production-ready multimodal analysis for real-world clinical documents and images.
 
+**Entity Schema Definition**
+
+```python
+entity_extractor.setEntityTypes([
+  "DRUG::The exact medication or drug name as written in the text. Examples: aspirin, metformin, vancomycin.",
+  "DOSAGE::The exact dose amount including units. Examples: 500mg, 1.25g, 40mg, 0.1 mcg/kg/min.",
+  "ROUTE::The administration route. Examples: PO, IV, SQ, IM, inhaled, sublingual, topical.",
+  "FREQUENCY::The dosing schedule or timing. Examples: BID, TID, Q12H, daily, PRN, twice daily.",
+  "DURATION::The treatment duration. Examples: 7 days, 6 weeks, 3 months, until follow-up.",
+]) 
+```
+
+**Result**:
+
+```text
++-----+-------------+---------+
+|begin|chunk        |label    |
++-----+-------------+---------+
+|26   |Metformin    |DRUG     |
+|36   |1000mg       |DOSAGE   |
+|43   |PO           |ROUTE    |
+|46   |BID          |FREQUENCY|
+|65   |Lisinopril   |DRUG     |
+|76   |10mg         |DOSAGE   |
+|81   |PO           |ROUTE    |
+|84   |daily        |FREQUENCY|
+|94   |Atorvastatin |DRUG     |
+|107  |40mg         |DOSAGE   |
+|112  |PO           |ROUTE    |
+|115  |at bedtime   |FREQUENCY|
+|130  |Aspirin      |DRUG     |
+|138  |81mg         |DOSAGE   |
+|143  |PO           |ROUTE    |
+|146  |daily        |FREQUENCY|
+|156  |Empagliflozin|DRUG     |
+|170  |10mg         |DOSAGE   |
++-----+-------------+---------+
+```
 
 </div><div class="h3-box" markdown="1">
 
-#### Scalable and Flexible CDA (HL7) De-identification Support for XML Clinical Documents
 
-We’re introducing **native de-identification support for HL7 CDA (Clinical Document Architecture) reports in XML format** within Healthcare NLP.
-This module enables secure, large-scale processing of CDA R2 documents by combining **structure-aware XML de-identification** with **NLP-based free-text anonymization**, all delivered through a single, scalable Spark transformer.
+#### Table-Aware, Free-Text Extended CDA De-Identification with Improved PHI Accuracy in CDA Tables
+`CDADeIdentification` is a **CDA (Clinical Document Architecture) de-identification transformer for Healthcare NLP pipelines**, designed to anonymize both **structured XML nodes and embedded free-text narratives such as `section.text`** using Healthcare NLP models and pretrained de-identification pipelines.
 
-Unlike flat text approaches, CDA de-identification operates directly on the **XML document structure**, allowing precise targeting of sensitive fields using **XPath-like path expressions**, while preserving the integrity and schema of the original clinical document.
+The new generation of `CDADeIdentification` introduces **a context-aware table processing mechanism with header-aware semantics**, where structured elements such as HTML tables and definition lists are no longer treated as isolated text nodes. Instead, cell values are enriched with their corresponding headers (e.g., `"header : value"`) before being sent to the de-identification pipeline, enabling significantly better entity recognition in compact clinical fields.
 
-**Key Capabilities**
+This approach substantially improves **PHI detection accuracy in structured clinical tables**, particularly in cases where traditional de-identification methods fail due to the absence of contextual signals in short text cells (e.g., lab values, patient attributes, billing records).
 
-* **Path-based CDA de-identification**
-  Target and de-identify specific CDA elements using dot (`.`) or slash (`/`) notation, enabling fine-grained control over clinical fields such as patient demographics, authors, organizations, and identifiers.
+By combining:
 
-* **Attribute-level access**
-  Seamlessly de-identify XML attributes (e.g. telecom values and identifiers) using intuitive attribute notation, without requiring manual XML parsing or preprocessing.
+* header-aware table parsing
+* structured XML path de-identification
+* free-text NLP pipeline integration
 
-* **Namespace-aware processing**
-  Automatically handles the HL7 v3 namespace, reducing configuration overhead and simplifying integration with existing CDA workflows.
-
-* **Structured field obfuscation**
-  Deterministically or randomly obfuscate structured fields such as names, dates, addresses, phone numbers, and identifiers while preserving XML validity and document structure.
-
-* **NLP-powered free-text de-identification**
-  Apply Spark NLP de-identification pipelines to narrative sections (e.g. clinical notes and section text) embedded within CDA documents, ensuring comprehensive PHI coverage across both structured and unstructured content.
-
-* **Unified Spark execution model**
-  Fully compatible with Spark pipelines and batch processing workflows, enabling de-identification at scale without separating structured XML processing from free-text NLP pipelines.
-
-**Designed for Real-World CDA Workflows**
-
-The CDA De-identification module allows organizations to process heterogeneous CDA documents—where structured XML fields and free-text clinical narratives coexist—using a **single, consistent configuration model**.
-By combining XPath-style rules with reusable NLP pipelines, teams can adapt de-identification behavior across document types without rewriting logic or maintaining parallel processing systems.
-
-This approach delivers **enterprise-grade performance, flexibility, and compliance**, making it ideal for large healthcare data platforms, analytics pipelines, and downstream AI workloads that rely on CDA-formatted clinical data.
-
-*Example*:
-
-```python
-import sparknlp_jsl
-from sparknlp_jsl.annotator import *
-from sparknlp.pretrained import PretrainedPipeline
-
-rules = {
-    "recordTarget.patientRole.patient.name.given": "first_name",
-    "recordTarget.patientRole.patient.name.family": "last_name",
-    "recordTarget.patientRole.addr.streetAddressLine": "Address",
-    "recordTarget.patientRole.telecom.value": "Phone",
-    "author.assignedAuthor.assignedPerson.name.given": "first_name",
-    "author.assignedAuthor.assignedPerson.name.family": "last_name",
-}
-
-deid_pipeline = PretrainedPipeline("clinical_deidentification_docwise_benchmark_optimized",
-                                   "en",
-                                   "clinical/models")
+`CDADeIdentification` achieves **higher recall and more consistent PHI masking across mixed structured and unstructured CDA documents**, while preserving the original clinical document structure and readability.
 
 
-cda_deidentification = (
-    CdaDeIdentification()
-      .setInputCol("text")
-      .setOutputCol("deid")
-      .setMode("obfuscate")
-      .setMappingRules(rules)
-      .setFreeTextPaths([
-          "component.structuredBody.component.section.text"
-      ])
-      .setPipeline(spark, deid_pipeline, "obfuscated")
-      .setDays(20)
-      .setSeed(88)
-)
+**New Pretrained Models**
 
-result = cda_deidentification.deidentify(cda_document)
+{:.table-model-big}
+
+| Model Name                              | Description                                                                                                                                                                                 |
+| --------------------------------------- |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `cda_deidentification_patient`          | De-identifies patient-related CDA XML paths including identifiers, demographics, and structured patient metadata while preserving CDA schema integrity.                                     |
+| `cda_deidentification_extend_free_text` | Extends de-identification to CDA free-text sections (e.g., `section.text`, narrative blocks) by applying a full Healthcare NLP de-identification pipeline to unstructured clinical content. |
+
+
+
+**Table-Aware De-Identification (Major Enhancement)**
+
+**Table Handling Control**
+
+With `setTableHandling(True)` (default behavior), CDA tables are processed using **semantic header-value pairing** instead of independent node processing.
+
+- How it works:
+
+Instead of treating each `<td>` independently, the system constructs:
 
 ```
+"<header> : <cell value>"
+```
 
-*Original CDA*:
-```bash
-<?xml version="1.0" encoding="UTF-8"?>
-<ClinicalDocument xmlns="urn:hl7-org:v3"
-                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                  xsi:schemaLocation="urn:hl7-org:v3 CDA.xsd">
+and sends it through the Healthcare NLP de-identification pipeline.
 
-    <!-- ===================== AUTHOR ===================== -->
-    <author>
-        <time value="20240101113000"/>
-        <assignedAuthor>
-            <id root="2.16.840.1.113883.4.6" extension="111223333"/>
-            <assignedPerson>
-                <name>
-                    <given>Emily</given>
-                    <family>Clark</family>
-                </name>
-            </assignedPerson>
-            <representedOrganization>
-                <id root="2.16.840.1.113883.19.5" extension="ORG001"/>
-                <name>Good Health Clinic</name>
-            </representedOrganization>
-        </assignedAuthor>
-    </author>
+**Free-Text Exclusion Control**
 
+| Parameter                      | Description                                                                                                                                                                             |
+| ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `setExcludeFreeTextTags(list)` | Defines XML tags whose subtree is fully excluded from NLP processing (no tokenization or inference). Useful for preserving footnotes, superscripts, or custom clinical metadata blocks. |
+
+**Backward Compatibility**
+* Disable table-aware processing:
+```python
+.setTableHandling(False)
+```
+
+**Pipeline Integration Example**
+
+```python
+deid_pipeline = PretrainedPipeline(
+    "clinical_deidentification_docwise_benchmark_medium_v2",
+    "en",
+    "clinical/models"
+)
+
+cda_deidentification = (
+    CdaDeIdentification
+    .pretrained("cda_deidentification_extend_free_text", "en", "clinical/models")
+    .setSeed(42)
+    .setDays(2)
+    .setTableHandling(True)
+    .setPipeline(spark, deid_pipeline, "masked")
+)
+```
+
+**Example Input**
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?><ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:hl7-org:v3 CDA.xsd">
     <!-- ===================== BODY ===================== -->
     <component>
         <structuredBody>
@@ -329,38 +261,72 @@ result = cda_deidentification.deidentify(cda_document)
                     <code code="10164-2" codeSystem="2.16.840.1.113883.6.1" displayName="History of Present Illness"/>
                     <title>History of Present Illness</title>
                     <text>
-                        Patient John Doe presented with chest pain and shortness of breath.
-                        He lives at 456 Main Street, Istanbul. Contact number is +905551112233.
+                      <table>
+                        <thead>
+                          <tr>
+                            <th>Patient Name</th>
+                            <th>Patient ID</th>
+                            <th>Primary Diagnosis</th>
+                            <th>Date of Birth</th>
+                            <th>Contact Number</th>
+                            <th>Home Address</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Michael Thompson</td>
+                            <td>458921</td>
+                            <td>Type 2 Diabetes Mellitus</td>
+                            <td>08/14/1975</td>
+                            <td>+1 212-555-0198</td>
+                            <td>45 Park Avenue, New York, NY 10016</td>
+                          </tr>
+                          <tr>
+                            <td>Emily Rodriguez</td>
+                            <td>771204</td>
+                            <td>Hypertension</td>
+                            <td>11/22/1980</td>
+                            <td>+1 415-555-0133</td>
+                            <td>78 Sunset Blvd, Los Angeles, CA 90028</td>
+                          </tr>
+                          <tr>
+                            <td>David Chen</td>
+                            <td>993817</td>
+                            <td>Chronic Kidney Disease</td>
+                            <td>03/09/1972</td>
+                            <td>+1 646-555-0177</td>
+                            <td>1200 Market Street, San Francisco, CA 94102</td>
+                          </tr>
+                          <tr>
+                            <td>Sophia Patel</td>
+                            <td>224581</td>
+                            <td>Asthma</td>
+                            <td>07/30/1990</td>
+                            <td>+1 770-900-0455</td>
+                            <td>22 Baker Street, London NW1 6XE</td>
+                          </tr>
+                          <tr>
+                            <td>James Wilson</td>
+                            <td>665432</td>
+                            <td>Coronary Artery Disease</td>
+                            <td>01/18/1965</td>
+                            <td>+61 412 345 678</td>
+                            <td>89 George Street, Sydney NSW 2000</td>
+                          </tr>
+                        </tbody>
+                      </table>
                     </text>
                 </section>
             </component>
         </structuredBody>
     </component>
-</ClinicalDocument>
-
+</ClinicalDocument>"""
 ```
-*De-identified CDA*:
-```bash
+
+**Result**:
+
+```xml
 <?xml version="1.0" encoding="UTF-8" standalone="no"?><ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:hl7-org:v3 CDA.xsd">
-
-    <!-- ===================== AUTHOR ===================== -->
-    <author>
-        <time value="20240101113000"/>
-        <assignedAuthor>
-            <id extension="111223333" root="2.16.840.1.113883.4.6"/>
-            <assignedPerson>
-                <name>
-                    <given>Mayford</given>
-                    <family>Rock</family>
-                </name>
-            </assignedPerson>
-            <representedOrganization>
-                <id extension="ORG001" root="2.16.840.1.113883.19.5"/>
-                <name>Good Health Clinic</name>
-            </representedOrganization>
-        </assignedAuthor>
-    </author>
-
     <!-- ===================== BODY ===================== -->
     <component>
         <structuredBody>
@@ -368,586 +334,501 @@ result = cda_deidentification.deidentify(cda_document)
                 <section>
                     <code code="10164-2" codeSystem="2.16.840.1.113883.6.1" displayName="History of Present Illness"/>
                     <title>History of Present Illness</title>
-                    <text>Patient Valerie Ates presented with chest pain and shortness of breath.
-                        He lives at Pr-2 Ponce By Pass, 13218 Brook Lane Drive. Contact number is +127773334455.
+                    <text>
+                      <table>
+                        <thead>
+                          <tr>
+                            <th>Patient Name</th>
+                            <th>Patient ID</th>
+                            <th>Primary Diagnosis</th>
+                            <th>Date of Birth</th>
+                            <th>Contact Number</th>
+                            <th>Home Address</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>PATIENT</td>
+                            <td>IDNUM</td>
+                            <td>Type 2 Diabetes Mellitus</td>
+                            <td>DATE</td>
+                            <td>PHONE</td>
+                            <td>STREET, STATE, STATE ZIP</td>
+                          </tr>
+                          <tr>
+                            <td>PATIENT</td>
+                            <td>IDNUM</td>
+                            <td>Hypertension</td>
+                            <td>DATE</td>
+                            <td>PHONE</td>
+                            <td>STREET, CITY, STATE ZIP</td>
+                          </tr>
+                          <tr>
+                            <td>PATIENT</td>
+                            <td>IDNUM</td>
+                            <td>Chronic Kidney Disease</td>
+                            <td>DATE</td>
+                            <td>PHONE</td>
+                            <td>STREET, CITY, STATE ZIP</td>
+                          </tr>
+                          <tr>
+                            <td>PATIENT</td>
+                            <td>IDNUM</td>
+                            <td>Asthma</td>
+                            <td>DATE</td>
+                            <td>PHONE</td>
+                            <td>STREET, CITY ZIP</td>
+                          </tr>
+                          <tr>
+                            <td>PATIENT</td>
+                            <td>IDNUM</td>
+                            <td>Coronary Artery Disease</td>
+                            <td>DATE</td>
+                            <td>PHONE</td>
+                            <td>STREET, CITY STATE ZIP</td>
+                          </tr>
+                        </tbody>
+                      </table>
                     </text>
                 </section>
             </component>
         </structuredBody>
     </component>
 </ClinicalDocument>
-
 ```
 
-
 </div><div class="h3-box" markdown="1">
 
-#### De-identification MCP Server (Preview) for Clinical Text De-identification via External AI Agents and IDE Clients
+#### Pretrained Zero-Shot Multi-Task Named Entity Recognition (NER) Speed Comparison on GPU vs CPU Benchmark
 
-We are introducing a new Model Context Protocol (MCP) server that enables Spark NLP Healthcare clinical de-identification to be accessed directly from external AI agents and IDE clients.
-This preview release exposes de-identification pipelines through a standardized MCP interface, enabling seamless integration with modern AI tooling and developer workflows.
+We benchmarked the **PretrainedZeroShotMultiTask** architecture using the **zeroshot_multitask_base** model on a dataset of ~500 tokens per row.
 
-**Key Features**
-The following capabilities are included in the preview release:
-- Enables clinical text de-identification via external AI agents and IDE clients using MCP
-- Provides a standardized MCP interface for invoking Spark NLP Healthcare de-identification pipelines
-- Supports configurable output modes:
-    * Masked
-    * Obfuscated
-    * Masked and Obfuscated
-- Delivered as a containerized, standalone service suitable for both local and remote deployments
-- Designed for consistent integration across MCP-compatible clients
+**Hardware setup:**
 
-**Reference Implementation**
+- **CPU**: 8 cores, 52 GB System RAM
+- **GPU**: NVIDIA T4, 24 GB VRAM
 
-A reference implementation is available in the Spark NLP Workshop repository:
+The workload was tested on two dataset sizes (1k rows and 100 rows), each with 48 repartitions.
 
-- Repository:
-  [https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/agents/mcp_servers/deidentification](https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/agents/mcp_servers/deidentification)
-- Access the relevant blog here:
-  [https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/agents/mcp_servers/deidentification/blog/deid-blog-mcp-server.md](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/agents/mcp_servers/deidentification/blog/deid-blog-mcp-server.md)
+**Spark NLP Pipeline**
 
-**Usage Overview**
-
-1. Register the MCP Server in Your Client
-
-In an MCP-compatible client (for example, Cursor, VS Code Copilot / Agent, or Claude CLI), register a new MCP server with the following configuration:
-
-- URL: `http://localhost:8001/mcp`
-- Transport: `streamable-http`
-
-This registration pattern is consistent across MCP clients and requires only the server URL and transport type.
-
-2. Send a Tool Request
-
-Once connected, the client automatically discovers the tools exposed by the MCP server.
-
-Example request:
-
-> Use the `deidentify_text` tool to de-identify this clinical note with the output mode set to `masked` (or `obfuscated` or `both`) and return the transformed text.
-
-</div><div class="h3-box" markdown="1">
-
-#### Upgraded Llama.cpp Backend with Expanded Compatibility for the Latest LLM Families
-
-With Healthcare NLP **6.3.0**, we deliver a major upgrade to the LLM backend based on a newer llama.cpp version, improving performance, stability, and compatibility for local and distributed LLM inference. This update enables smoother integration of the latest llama.cpp–compatible models into ingestion and enrichment pipelines, while strengthening support for large-scale, on-prem and cloud-based deployments.
-
-**🚀 Key Improvements**
-
-- **Upgraded LLM Backend (llama.cpp)**  
-  The llama.cpp backend has been modernized to benefit from upstream performance optimizations, improved memory handling, and enhanced stability. This results in more efficient and reliable local LLM inference, especially in distributed Spark environments.
-
-- **Expanded Model Compatibility**  
-  Healthcare NLP now supports newer LLM families such as **Qwen3**, allowing customers to adopt the latest generation models with confidence. These models can be seamlessly loaded and used through **MedicalLLM**, **MedicalVisualLLM**, and **LLMLoader**, enabling both text and vision use cases within the same unified framework.
-
-**Impact**
-
-These enhancements provide faster startup times, improved inference stability, and greater flexibility when working with modern LLMs. Teams can more easily integrate the latest models into their NLP pipelines, build richer multimodal workflows, and scale local LLM inference without increasing operational complexity.
-
-</div><div class="h3-box" markdown="1">
-
-#### Memory-Optimized MedicalNer Training for Large-Scale Datasets
-
-MedicalNer training is enhanced with additional memory-focused optimizations that improve scalability when working with large datasets. These improvements reduce peak memory usage and help training run more reliably on cloud clusters, enabling larger corpus training without requiring proportionally larger executors.
-
-**Key additions include new training parameters:**
-
-- setEnableMemoryOptimizer(True): Already available in previous versions, this setting activates memory optimization techniques during training to lower memory consumption.
-
-- setOptimizePartitioning(True): Optionally repartitions the dataset before training to improve data distribution and performance, especially for large or skewed datasets.
-
-- setPrefetchBatches(n): Number of batches to prefetch during training to improve data loading efficiency.
-
-Together, these updates make MedicalNer training more efficient and better suited for large-scale production workflows.
-
-
-</div><div class="h3-box" markdown="1">
-
-#### Clinical De-Identification at Scale: Pipeline Design and Speed–Accuracy Benchmarks Across Infrastructures
-
-To present a focused update on large-scale clinical de-identification benchmarks, emphasizing pipeline design, execution strategy, and infrastructure-aware performance, we benchmarked how different pipeline architectures - rule-augmented NER, hybrid NER + zero-shot, and zero-shot–centric approaches - behave under realistic Google Colab and Databricks–AWS deployments.
-
-- Four complementary datasets are used to evaluate clinical de-identification pipelines from different perspectives;
-  - Dataset 1: Paper Dataset - Expert-Annotated
-  - Dataset 2: Curated Surrogate Clinical Dataset
-  - Dataset 3: Document-Level Clinical De-Identification Context Dataset
-  - Dataset 4: Large-Scale Aggregated Clinical NER and De-Identification Dataset
-
-- Clinical De-identification – Most Up-to-Date Pipelines
-
-    - Test Environment:
-        - GPU Setup: Google Colab A100 GPU, 48 Spark partitions
-        - CPU Setup: Google Colab CPU High-RAM, 32 Spark partitions
-    - Datasets Used: 
-        - Dataset 1, Dataset 2 for accuracy benchmark, and 
-        - Dataset 3 for speed benchmark.
-
-{:.table-model-big.db}
-| pipeline                                                             | GPU<br>wall time | CPU<br>wall time | Paper<br>precision | Paper<br>recall | Paper<br>F1-score | Surrogate<br>precision | Surrogate<br>recall | Surrogate<br>F1-score | pipeline content |
-|----------------------------------------------------------------------|------------------:|------------------:|-------------------:|----------------:|------------------:|----------------------:|-------------------:|---------------------:|-----------------|
-| clinical_deidentification_docwise_benchmark_optimized                | 5 min 15 sec     | 8 min 55 sec     | 0.93               | 0.93            | 0.93              | 0.92                  | 0.96               | 0.94                 | 21 rule-based annotators<br>4 NER |
-| clinical_deidentification_docwise_benchmark_medium                   | 4 min 38 sec     | 32 min 57 sec    | 0.90               | 0.97            | 0.93              | 0.87                  | 0.96               | 0.91                 | 21 rule-based annotators<br>3 NER + 1 Zero-shot (medium) |
-| clinical_deidentification_docwise_benchmark_medium_v2                | 3 min 42 sec     | 37 min 56 sec    | 0.91               | 0.96            | 0.93              | 0.86                  | 0.93               | 0.90                 | 21 rule-based annotators<br>2 NER + Zero-shot Chunker |
-| clinical_deidentification_docwise_zeroshot_medium                    | 26.7 sec         | 27 min           | 0.92               | 0.94            | 0.93              | 0.86                  | 0.90               | 0.88                 | 21 rule-based annotators<br>Zero-shot Chunker (medium) |
-| clinical_deidentification_docwise_SingleStage_zeroshot_medium        | 33.1 sec         | 26 min 41 sec    | 0.92               | 0.91            | 0.92              | 0.87                  | 0.88               | 0.88                 | Zero-shot Chunker (medium) |
-| clinical_deidentification_docwise_benchmark_large                    | 4 min 51 sec     | 2 h 10 min       | 0.90               | 0.97            | 0.94              | 0.88                  | 0.96               | 0.92                 | 21 rule-based annotators<br>3 NER + 1 Zero-shot (large) |
-| clinical_deidentification_docwise_benchmark_large_v2                 | 3 min 46 sec     | 1 h 32 min       | 0.92               | 0.98            | 0.95              | 0.87                  | 0.94               | 0.91                 | 21 rule-based annotators<br>2 NER + Zero-shot Chunker |
-| clinical_deidentification_docwise_zeroshot_large                     | 43.8 sec         | 1 h 18 min       | 0.93               | 0.97            | 0.95              | 0.87                  | 0.93               | 0.90                 | 21 rule-based annotators<br>Zero-shot Chunker (large) |
-| clinical_deidentification_docwise_SingleStage_zeroshot_large         | 41.1 sec         | 1 h 15 min       | 0.93               | 0.95            | 0.94              | 0.88                  | 0.92               | 0.90                 | Zero-shot Chunker (large) |
-
-This table reports end-to-end runtime and token-level precision, recall, and F1-score for the most up-to-date clinical de-identification pipelines.
-
-This benchmark results also provide a clear foundation for understanding how modern clinical de-identification systems behave under realistic infrastructure and execution constraints.
-
-
-- Deidentification Pipelines Speed Comparison on Databrics-AWS
-
-    - Test Environment:
-        - GPU Setup: Databricks - Worker Type: g4dn.2xlarge[T4] 32 GB Memory, 1 GPU, 8 Workers
-        - CPU Setup: Databricks - Worker Type: m5d.2xlarge 32 GB Memory, 8 Cores, 8 Workers
-    - Dataset Used: Dataset 4 for speed benchmark
-
-    - CPU Runtime Comparison of Large, Medium and Optimized Pipelines
-
-{:.table-model-big}
-| Model |  Infrastructure | Runtime | Batch Size |
-|-------|----------------:|--------:|-----------:|
-| clinical_deidentification_docwise_benchmark_large_en | CPU  | 9h 23m 54s | 32 |
-| clinical_deidentification_docwise_benchmark_medium_en | CPU  | 3h 7m 19s | 32 |
-| clinical_deidentification_docwise_benchmark_optimized_en | CPU  | 26m 6s | 32 |
-
-    - CPU & GPU Runtime Comparison of Medium Pipeline
-
-{:.table-model-big}
-| Model |  Infrastructure | Runtime | Batch Size |
-|-------|----------------:|--------:|-----------:|
-| clinical_deidentification_docwise_benchmark_medium_en | GPU  | 1h 2m 35s | 8 |
-| clinical_deidentification_docwise_benchmark_medium_en | CPU  | 3h 7m 19s | 32 |
-
-The findings emphasize that pipeline optimization yields greater performance gains than hardware scaling alone, while GPU resources provide additional, complementary speedups when applied to appropriately balanced pipeline configurations
-
-- Pretrained Zero-Shot Named Entity Recognition (NER) Deidentification Subentity Speed Comparison on Databrics-AWS
-
-    - Test Environment:
-        - GPU Setup: Databricks - Worker Type: g4dn.2xlarge[T4] 32 GB Memory, 1 GPU, 8 Workers
-        - CPU Setup: Databricks - Worker Type: m5d.2xlarge 32 GB Memory, 8 Cores, 8 Workers
-    - Dataset Used: Dataset 4 for speed benchmark
-
-    - Zero-shot Medium Model CPU & GPU Runtime Comparison
-
-{:.table-model-big}
-| Model | Infrastructure | Runtime | Batch Size |
-|-------|---------------:|--------:|-----------:|
-| zeroshot_ner_deid_subentity_merged_medium_en | CPU  | 2h 47m 24s | 32 |
-| zeroshot_ner_deid_subentity_merged_medium_en | GPU  | 6m 26s | 32 |
-
-    - Zero-shot Medium Model Batch Size Comparison via GPU Cluster
-
-{:.table-model-big}
-| Model | Infrastructure | Runtime | Batch Size |
-|-------|---------------:|--------:|-----------:|
-| zeroshot_ner_deid_subentity_merged_medium_en | GPU  | 6m 26s | 32 |
-| zeroshot_ner_deid_subentity_merged_medium_en | GPU  | 12m 3s | 8 |
-
-    - Zero-shot Medium & Large Models GPU Runtime Comparison
-
-{:.table-model-big}
-| Model | Infrastructure | Runtime | Batch Size |
-|-------|---------------:|--------:|-----------:|
-| zeroshot_ner_deid_subentity_merged_medium_en | GPU  | 12m 3s | 8 |
-| zeroshot_ner_deid_subentity_merged_large_en | GPU  | 30m 23s | 8 |
-
-The findings show that GPU usage is essential for production-scale runs, batch size optimization is critical for maximizing GPU efficiency, and model size should be selected based on the required balance between accuracy and runtime performance.
-
-</div><div class="h3-box" markdown="1">
-
-#### Comparative Medical Vision LLM Benchmark Results Against Leading Foundation Models
-
-To provide a clear and comparative assessment of our Medical Vision LLMs, we report performance across a diverse set of **medical reasoning, safety, bias, and clinical knowledge benchmarks**, alongside leading proprietary foundation models.
-
-These benchmarks evaluate capabilities spanning medical calculation, clinical QA, dialog understanding, hallucination resistance, bias robustness, and academic medical knowledge.
-
-
-| **Benchmark** | **Gemini-2.5-Pro** | **Sonnet-4** | **JSL-MedicalVLM-30B** | **JSL-MedicalVLM-7B** |
-|--------------|------------------:|------------:|----------------------:|---------------------:|
-| MedCalc | 15.0 | 14.0 | 29.0 | 24.0 |
-| MedBullets | 40.0 | 42.0 | 47.0 | 46.0 |
-| ACI-Bench | 81.9 | 82.4 | 83.01 | 84.0 |
-| MedicationQA | 72.56 | 72.4 | 76.8 | 77.1 |
-| MedDialog | 75.1 | 75.3 | 77.1 | 77.5 |
-| PubMedQA | 75.0 | 72.0 | 77.0 | 81.0 |
-| RaceBias | 70.0 | 70.0 | 93.0 | 78.0 |
-| MedHallu | 90.0 | 90.0 | 90.0 | 92.0 |
-| College Biology | 95.0 | 98.6 | 99.3 | 92.4 |
-| Medical Genetics | 95.0 | 94.0 | 95.0 | 93.0 |
-| Average | **70.96** | **71.07** | **76.72** | **74.5** |
-
-
-**Key takeaways**
-- **JSL-MedicalVLM-30B** demonstrates strong and consistent performance across clinical reasoning, academic medical knowledge, and bias-sensitive evaluations, with particularly high scores in **RaceBias**, **College Biology**, and **Medical Genetics**.
-- **JSL-MedicalVLM-7B** remains highly competitive relative to larger models, outperforming proprietary alternatives on multiple benchmarks while offering a more efficient deployment footprint.
-- Both JSL MedicalVLM models show robust resistance to hallucinations and strong clinical dialog understanding, supporting their use in real-world medical and multimodal healthcare applications.
-
-These results validate the reliability and clinical readiness of JSL Medical VLMs across a broad spectrum of medical evaluation tasks.
-
-</div><div class="h3-box" markdown="1">
-
-
-#### Advanced Clinical One-Liner Pretrained Pipelines for PHI Detection and Extraction
-
-We introduce specialized pretrained pipelines designed specifically for Protected Health Information (PHI) detection and de-identification in clinical documents. These pipelines leverage state-of-the-art Named Entity Recognition (NER) models to automatically identify and extract sensitive medical information, ensuring compliance with healthcare privacy regulations.
-
-Our de-identification pipelines eliminate the complexity of building custom PHI detection systems from scratch. Healthcare organizations and researchers can now deploy robust privacy protection measures with simple one-liner implementations, streamlining the process of sanitizing clinical documents while maintaining high accuracy standards.
-
-
-{:.table-model-big}
-| Model Name  |      Description            |
-|-------------|-----------------------------|
-| [`clinical_deidentification_docwise_benchmark_large_v2`](https://nlp.johnsnowlabs.com/2025/12/14/clinical_deidentification_docwise_benchmark_large_v2_en.html) | Mask and Obfuscate `DATE`, `LOCATION`, `PROFESSION`, `DOCTOR`, `EMAIL`, `PATIENT`, `URL`, `USERNAME`, `CITY`, `COUNTRY`, `DLN`, `HOSPITAL`, `IDNUM`, `MEDICALRECORD`, `STATE`, `STREET`, `ZIP`, `AGE`, `PHONE`, `ORGANIZATION`, `SSN`, `ACCOUNT`, `PLATE`, `VIN`, `LICENSE`, `IP` entities. |
-| [`clinical_deidentification_docwise_benchmark_medium_v2`](https://nlp.johnsnowlabs.com/2025/12/14/clinical_deidentification_docwise_benchmark_medium_v2_en.html) | Mask and Obfuscate `DATE`, `LOCATION`, `PROFESSION`, `DOCTOR`, `EMAIL`, `PATIENT`, `URL`, `USERNAME`, `CITY`, `COUNTRY`, `DLN`, `HOSPITAL`, `IDNUM`, `MEDICALRECORD`, `STATE`, `STREET`, `ZIP`, `AGE`, `PHONE`, `ORGANIZATION`, `SSN`, `ACCOUNT`, `PLATE`, `VIN`, `LICENSE`, `IP` entities. |
-| [`clinical_deidentification_docwise_benchmark_optimized_v2`](https://nlp.johnsnowlabs.com/2025/12/14/clinical_deidentification_docwise_benchmark_optimized_v2_en.html) | Mask and Obfuscate `NAME`, `DATE`, `LOCATION`, `PROFESSION`, `DOCTOR`, `EMAIL`, `PATIENT`, `URL`, `USERNAME`, `CITY`, `COUNTRY`, `DLN`, `HOSPITAL`, `IDNUM`, `MEDICALRECORD`, `STATE`, `STREET`, `ZIP`, `AGE`, `PHONE`, `ORGANIZATION`, `SSN`, `ACCOUNT`, `PLATE`, `VIN`, `LICENSE`, `IP` entities. |
-| [`clinical_deidentification_docwise_zeroshot_large`](https://nlp.johnsnowlabs.com/2025/12/14/clinical_deidentification_docwise_zeroshot_large_en.html) | Mask and Obfuscate `DATE`, `PROFESSION`, `DOCTOR`, `EMAIL`, `PATIENT`, `URL`, `USERNAME`, `CITY`, `COUNTRY`, `DLN`, `HOSPITAL`, `IDNUM`, `MEDICALRECORD`, `STATE`, `STREET`, `ZIP`, `AGE`, `PHONE`, `ORGANIZATION`, `SSN`, `ACCOUNT`, `PLATE`, `VIN`, `LICENSE`, `IP` entities. |
-| [`clinical_deidentification_docwise_zeroshot_medium`](https://nlp.johnsnowlabs.com/2025/12/14/clinical_deidentification_docwise_zeroshot_medium_en.html) | Mask and Obfuscate `DATE`, `PROFESSION`, `DOCTOR`, `EMAIL`, `PATIENT`, `URL`, `USERNAME`, `CITY`, `COUNTRY`, `DLN`, `HOSPITAL`, `IDNUM`, `MEDICALRECORD`, `STATE`, `STREET`, `ZIP`, `AGE`, `PHONE`, `ORGANIZATION`, `SSN`, `ACCOUNT`, `PLATE`, `VIN`, `LICENSE`, `IP` entities. |
-| [`clinical_deidentification_docwise_SingleStage_zeroshot_large`](https://nlp.johnsnowlabs.com/2025/12/25/clinical_deidentification_docwise_SingleStage_zeroshot_large_en.html) | Mask and Obfuscate `DOCTOR`, `PATIENT`, `AGE`, `DATE`, `HOSPITAL`, `CITY`, `STREET`, `STATE`, `COUNTRY`, `PHONE`, `IDNUM`, `EMAIL`, `ZIP`, `ORGANIZATION`, `PROFESSION`, `USERNAME` entities. |
-| [`clinical_deidentification_docwise_SingleStage_zeroshot_medium`](https://nlp.johnsnowlabs.com/2025/12/25/clinical_deidentification_docwise_SingleStage_zeroshot_medium_en.html) | Mask and Obfuscate `DOCTOR`, `PATIENT`, `AGE`, `DATE`, `HOSPITAL`, `CITY`, `STREET`, `STATE`, `COUNTRY`, `PHONE`, `IDNUM`, `EMAIL`, `ZIP`, `ORGANIZATION`, `PROFESSION`, `USERNAME` entities. |
-
-
-
-*Example*:
-
-```python
-deid_pipeline = PretrainedPipeline("clinical_deidentification_docwise_zeroshot_medium", "en", "clinical/models")
-
-text = """Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024.
-The patient’s medical record number is 56467890.
-The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 ."""
-
-deid_result = deid_pipeline.fullAnnotate(text)
+```
+pipeline = Pipeline(
+    stages = [
+        document_assembler,
+        sentence_detector,
+        pretrained_zeroshot_multitask
+])
 ```
 
+**Summary**
 
-*Result*:
+- The **GPU significantly reduced wall time** compared to CPU.
+- On the 1k dataset, GPU reduced total runtime from **8h 45m → 42m** (~12× faster).
+- On the 100-row dataset, GPU reduced runtime from **51m → 4m** (~12× faster).
+- GPU acceleration scales consistently across dataset sizes.
 
-{:.table-model-big}
-| **text** | **result** | **result** |
-|:---|:---|:---|
-| Dr. John Lee, from Royal Medical Clinic in Chicago, attended to the patient on 11/05/2024. The patient's medical record number is 56467890. The patient, Emma Wilson, is 50 years old, her Contact number: 444-456-7890 . | Dr. <DOCTOR>, from <HOSPITAL> in <CITY>, attended to the patient on <DATE>. The patient's medical record number is <IDNUM>. The patient, <PATIENT>, is <AGE>, her Contact number: <PHONE> . | Dr. Valerie Aho, from Mercy Hospital Aurora in Berea, attended to the patient on 05/07/2024. The patient's medical record number is 78689012. The patient, Johnathon Bunde, is 55 years old, her Contact number: 666-678-9012 . |
 
+**Benchmark Results**
+
+| Hardware               | Dataset Size | Repartition | CPU Time (user+sys) | Wall Time   |
+|------------------------|--------------|-------------|---------------------|--------------|
+| CPU (8 core, 52GB RAM) | 1k rows (~500 tokens)  | 48 | 5.93 s  | 8h 45m 46s |
+| CPU (8 core, 52GB RAM) | 100 rows (~500 tokens) | 48 | 625 ms  | 51m 43s    |
+| GPU (NVIDIA T4, 24GB)  | 1k rows (~500 tokens)  | 48 | 400 ms  | 42m 35s    |
+| GPU (NVIDIA T4, 24GB)  | 100 rows (~500 tokens) | 48 | 52 ms   | 4m 12s     |
 
 
 </div><div class="h3-box" markdown="1">
 
-#### Enhanced 8 New Entity Resolver Models for Mapping Clinical Terms to Standardized UMLS CUI Codes and LOINC
+#### StructuredDeIdentification – Timestamp Support & Time Shift Enhancement
 
-These Entity Resolver models map clinical entities to standardized UMLS Concept Unique Identifiers (CUI) using `sbiobert_base_cased_mli` and `mpnet_embeddings_biolord_2023_c` sentence embeddings. Trained on the 2025AB UMLS Metathesaurus releases, they cover diverse semantic categories including diseases, syndromes, clinical drugs, pharmacologic substances, antibiotics, symptoms, procedures, clinical findings, anatomical structures, medical devices, and injuries & poisoning.
-In addition to UMLS CUI mapping, we also introduce a model for mapping medical entities to Logical Observation Identifiers Names and Codes (LOINC), facilitating standardized representation of laboratory and clinical observations.
+**Overview**
 
-{:.table-model-big}
-| Model Name  |      Description            |
-|-------------|-----------------------------|
-| [`sbiobertresolve_umls_findings`](https://nlp.johnsnowlabs.com/2025/12/18/sbiobertresolve_umls_findings_en.html) | Maps clinical findings to their corresponding UMLS CUI codes |
-| [`sbiobertresolve_umls_clinical_drugs`](https://nlp.johnsnowlabs.com/2025/12/22/sbiobertresolve_umls_clinical_drugs_en.html) | Maps drug entities to UMLS CUI codes |
-| [`sbiobertresolve_umls_disease_syndrome`](https://nlp.johnsnowlabs.com/2025/12/22/sbiobertresolve_umls_disease_syndrome_en.html) | Maps clinical entities(“Disease or Syndrome”) to UMLS CUI codes |
-| [`sbiobertresolve_umls_drug_substance`](https://nlp.johnsnowlabs.com/2025/12/22/sbiobertresolve_umls_drug_substance_en.html) | Maps drug and substances to UMLS CUI codes |
-| [`sbiobertresolve_umls_general_concepts`](https://nlp.johnsnowlabs.com/2025/12/22/sbiobertresolve_umls_general_concepts_en.html) | Maps clinical entities and concepts to the following 4 UMLS CUI code categories: `Disease`, `Symptom`, `Medication` and `Procedure` |
-| [`sbiobertresolve_umls_major_concepts`](https://nlp.johnsnowlabs.com/2025/12/22/sbiobertresolve_umls_major_concepts_en.html) | Maps clinical entities and concepts to 4 major categories of UMLS CUI codes: `Clinical Findings`, `Medical Devices`, `Anatomical Structures`, `Injuries & Poisoning` terms |
-| [`biolordresolve_umls_general_concepts`](https://nlp.johnsnowlabs.com/2025/12/23/biolordresolve_umls_general_concepts_en.html) | Maps clinical entities to 4 UMLS CUI code categories using mpnet_embeddings_biolord_2023_c embeddings: `Disease`, `Symptom`, `Medication`, and `Procedure` |
-| [`sbiobertresolve_loinc`](https://nlp.johnsnowlabs.com/2026/01/08/sbiobertresolve_loinc_en.html) | Maps extracted medical entities to Logical Observation Identifiers Names and Codes (LOINC) |
+The `StructuredDeIdentification` module has been enhanced to support **timestamp-based de-identification for structured medical tables**, enabling more realistic temporal obfuscation in clinical datasets.
+
+This improvement allows clients to safely shift temporal information in structured healthcare data while preserving schema consistency and analytical usability.
+
+**Timestamp Entity Support**
+
+`StructuredDeIdentification` now supports the following timestamp entity types:
+
+* `TIMESTAMP`
+* `TIMESTAMP_WITH_TIMEZONE`
+
+This enables time-based obfuscation for structured medical records such as admissions, lab events, prescriptions, and encounter logs.
+
+**Time Shifting Capability**
+
+Timestamp values can now be shifted forward or backward in time using a configurable offset.
+
+This is particularly useful for:
+
+* De-identifying medical timelines
+* Preserving temporal relationships without exposing real dates
+* Enabling synthetic cohort generation with realistic time progression
 
 
-*Example*:
+**New Parameters**
+
+**timeStampFormats: list[str]**
+
+Optional list of timestamp patterns used to parse string-based `TIMESTAMP` or `TIMESTAMP_WITH_TIMEZONE` entities.
+
+* If provided, formats are evaluated sequentially in order
+* The first matching format is used for both parsing and formatting
+* If empty, a predefined set of common timestamp formats is applied automatically
+
+**Example formats:**
+
+* `"yyyy-MM-dd HH:mm:ss"`
+* `"yyyy-MM-dd'T'HH:mm:ss"`
+* `"yyyy-MM-dd HH:mm:ss.SSS"`
+
+**seconds: int**
+
+Defines the number of seconds used to shift timestamp entities during obfuscation. Seconds-based offset provides the finest granularity while supporting all larger units via conversion.
+
+* Positive values shift timestamps forward in time
+* Negative values shift timestamps backward in time
+* Default value: `0` (no shift applied)
+
+**Medical Use Case Enhancement**
+
+This feature significantly improves support for **clinical structured tables**, where timestamp fields such as:
+
+* Admission time
+* Discharge time
+* Medication administration time
+* Lab sampling time
+
+must be preserved structurally while being anonymized.
+
+**Example Usage**
 
 ```python
-...
-ner_model = MedicalNerModel.pretrained("ner_posology_greedy", "en", "clinical/models")\
-    .setInputCols(["sentence", "token", "embeddings"])\
-    .setOutputCol("posology_ner")
+from sparknlp_jsl.structured_deidentification import StructuredDeIdentification
 
-ner_model_converter = NerConverterInternal()\
-    .setInputCols(["sentence", "token", "posology_ner"])\
-    .setOutputCol("posology_ner_chunk")\
-    .setWhiteList(["DRUG"])
+data = [
+    (1001, "2026-06-01 08:15:22"),
+    (1002, "2026-06-01 14:42:10"),
+    (1003, "N/A"),
+    (1004, "2026-06-02 18:27:31"),
+    (1005, "2026-06-03 11:58:04"),
+]
 
-chunk2doc = Chunk2Doc().setInputCols("posology_ner_chunk").setOutputCol("ner_chunk_doc")
+df = spark.createDataFrame(data, ["patient_id", "admission_timestamp"])
 
-sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli","en","clinical/models")\
-    .setInputCols(["ner_chunk_doc"])\
-    .setOutputCol("sbert_embeddings")\
+obfuscator = StructuredDeIdentification(
+    spark=spark,
+    columns={"admission_timestamp": "TIMESTAMP"},
+    obfuscateRefSource="faker",
+    timeStampFormats=["yyyy-MM-dd HH:mm:ss"],
+    seconds=43200
+)
+
+result = obfuscator.obfuscateColumns(
+    df,
+    outputAsArray=False,
+    overwrite=False,
+    suffix="_deid"
+)
+
+result.show(truncate=False)
+```
+
+**Result**:
+
+```text
++----------+-------------------+------------------------+
+|patient_id|admission_timestamp|admission_timestamp_deid|
++----------+-------------------+------------------------+
+|1001      |2026-06-01 08:15:22|2026-06-01 20:15:22     |
+|1002      |2026-06-01 14:42:10|2026-06-02 02:42:10     |
+|1003      |N/A                |N/A                     |
+|1004      |2026-06-02 18:27:31|2026-06-03 06:27:31     |
+|1005      |2026-06-03 11:58:04|2026-06-03 23:58:04     |
++----------+-------------------+------------------------+
+```
+
+</div><div class="h3-box" markdown="1">
+
+#### Updated 7 UMLS Entity Resolver Models and 19 ChunkMapper Models to the UMLS 2026AA Metathesaurus and Introduced 17 New ChunkMapper Models Covering 8 Additional Medical Coding Systems
+
+We are delivering a full refresh of our UMLS model suite, now trained on the **UMLS 2026AA Metathesaurus**. This includes updated versions of all 7 UMLS Entity Resolver models and a significantly expanded ChunkMapper suite — 19 updated models retrained on 2026AA data and 17 new models covering 8 additional medical coding systems.
+
+**Updated UMLS 2026AA Entity Resolver Models**
+
+These models map clinical entities to **UMLS Concept Unique Identifiers (CUI)** using `sbiobert_base_cased_mli_onnx` sentence embeddings (ONNX, CPU-compatible), retrained on the UMLS 2026AA Metathesaurus. The `biolordresolve_umls_general_concepts` model uses `mpnet_embeddings_biolord_2023_c` embeddings.
+
+{:.table-model-big}
+| Model Name | Description |
+|---|---|
+| `sbiobertresolve_umls_findings` | Maps clinical finding entities to their corresponding UMLS CUI codes |
+| `sbiobertresolve_umls_clinical_drugs` | Maps drug entities to UMLS CUI codes |
+| `sbiobertresolve_umls_disease_syndrome` | Maps clinical entities ("Disease or Syndrome") to UMLS CUI codes |
+| `sbiobertresolve_umls_drug_substance` | Maps drug and substance entities to UMLS CUI codes |
+| `sbiobertresolve_umls_general_concepts` | Maps clinical entities and concepts to the following 4 UMLS CUI code categories: `Disease`, `Symptom`, `Medication` and `Procedure` |
+| `sbiobertresolve_umls_major_concepts` | Maps clinical entities and concepts to 4 major categories of UMLS CUI codes: `Clinical Findings`, `Medical Devices`, `Anatomical Structures`, `Injuries & Poisoning` terms |
+| `biolordresolve_umls_general_concepts` | Maps clinical entities to 4 UMLS CUI code categories using `mpnet_embeddings_biolord_2023_c` embeddings: `Disease`, `Symptom`, `Medication`, and `Procedure` |
+
+
+**Updated UMLS 2026AA ChunkMapper Models (19 Models)**
+
+These models are retrained on UMLS 2026AA data. The bidirectional code mappers use a `DocumentAssembler → Doc2Chunk → ChunkMapper` pipeline. The NER-based mappers apply a full NER pipeline before mapping.
+
+> ⚠️ CPT mapper models are available only to users with a valid AMA license. Contact support@johnsnowlabs.com for access.
+
+{:.table-model-big}
+| UMLS → Code | Code → UMLS | Coding System |
+|---|---|---|
+| `umls_rxnorm_mapper` | `rxnorm_umls_mapper` | RxNorm |
+| `umls_snomed_mapper` | `snomed_umls_mapper` | SNOMED CT (US Edition) |
+| `umls_loinc_mapper` | `loinc_umls_mapper` | LOINC |
+| `umls_mesh_mapper` | `mesh_umls_mapper` | MeSH |
+| `umls_icd10cm_mapper` | `icd10cm_umls_mapper` | ICD-10-CM |
+| `umls_hpo_mapper` | `hpo_umls_mapper` | Human Phenotype Ontology |
+| `umls_cpt_mapper` ⚠️ | `cpt_umls_mapper` ⚠️ | CPT |
+
+{:.table-model-big}
+| Model Name | NER Model | Description |
+|---|---|---|
+| `umls_clinical_findings_mapper` | `ner_clinical_large` | Maps clinical findings (PROBLEM, TEST, TREATMENT) to UMLS CUI codes |
+| `umls_disease_syndrome_mapper` | `ner_clinical_large` | Maps disease and syndrome entities to UMLS CUI codes |
+| `umls_drug_substance_mapper` | `ner_posology_greedy` | Maps drug substance entities to UMLS CUI codes |
+| `umls_clinical_drugs_mapper` | `ner_posology_greedy` | Maps clinical drug entities to UMLS CUI codes |
+| `umls_major_concepts_mapper` | `ner_medmentions_coarse` | Maps body parts, devices, injuries, and findings to UMLS CUI codes |
+
+
+**New UMLS 2026AA ChunkMapper Models (17 Models)**
+
+These models are introduced for the first time, covering 8 additional medical coding systems and one new NER-based domain.
+
+> ⚠️ MedDRA mapper models are available only to users with a valid license. Contact support@johnsnowlabs.com for access.
+
+{:.table-model-big}
+| UMLS → Code | Code → UMLS | Coding System |
+|---|---|---|
+| `umls_icd10pcs_mapper` | `icd10pcs_umls_mapper` | ICD-10-PCS |
+| `umls_nci_mapper` | `nci_umls_mapper` | NCI Thesaurus |
+| `umls_icd9cm_mapper` | `icd9cm_umls_mapper` | ICD-9-CM |
+| `umls_hgnc_mapper` | `hgnc_umls_mapper` | HGNC Gene Nomenclature |
+| `umls_atc_mapper` | `atc_umls_mapper` | WHO ATC |
+| `umls_hcpcs_mapper` | `hcpcs_umls_mapper` | HCPCS |
+| `umls_snomedvet_mapper` | `snomedvet_umls_mapper` | SNOMED CT Veterinary |
+| `umls_meddra_mapper` ⚠️ | `meddra_umls_mapper` ⚠️ | MedDRA |
+
+{:.table-model-big}
+| Model Name | NER Model | Description |
+|---|---|---|
+| `umls_general_concepts_mapper` | `ner_clinical` | Maps general clinical concepts (Disease, Symptom, Device, Procedure) to UMLS CUI codes |
+
+*Example* (entity resolution — `sbiobertresolve_umls_disease_syndrome`):
+
+```python
+documentAssembler = DocumentAssembler() \
+    .setInputCol("text") \
+    .setOutputCol("document")
+
+sentenceDetector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare", "en", "clinical/models") \
+    .setInputCols(["document"]) \
+    .setOutputCol("sentence")
+
+tokenizer = Tokenizer() \
+    .setInputCols(["sentence"]) \
+    .setOutputCol("token")
+
+word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models") \
+    .setInputCols(["sentence", "token"]) \
+    .setOutputCol("embeddings")
+
+ner_model = MedicalNerModel.pretrained("ner_jsl", "en", "clinical/models") \
+    .setInputCols(["sentence", "token", "embeddings"]) \
+    .setOutputCol("ner_jsl")
+
+ner_converter = NerConverterInternal() \
+    .setInputCols(["sentence", "token", "ner_jsl"]) \
+    .setOutputCol("ner_chunk") \
+    .setWhiteList(["Disease_Syndrome_Disorder", "Symptom"])
+
+chunk2doc = Chunk2Doc() \
+    .setInputCols("ner_chunk") \
+    .setOutputCol("ner_chunk_doc")
+
+sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli_onnx", "en", "clinical/models") \
+    .setInputCols(["ner_chunk_doc"]) \
+    .setOutputCol("sbert_embeddings") \
     .setCaseSensitive(False)
 
-resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_umls_clinical_drugs","en", "clinical/models") \
+resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_umls_disease_syndrome", "en", "clinical/models") \
     .setInputCols(["sbert_embeddings"]) \
-    .setOutputCol("resolution")\
+    .setOutputCol("resolution") \
     .setDistanceFunction("EUCLIDEAN")
 
-pipeline = Pipeline(stages = [document_assembler, sentenceDetector, tokenizer, word_embeddings, ner_model, ner_model_converter, chunk2doc, sbert_embedder, resolver])
+pipeline = Pipeline(stages=[
+    documentAssembler, sentenceDetector, tokenizer, word_embeddings,
+    ner_model, ner_converter, chunk2doc, sbert_embedder, resolver
+])
 
-data = spark.createDataFrame([["""She was immediately given hydrogen peroxide 30 mg to treat the infection on her leg, and has been advised Neosporin Cream for 5 days. She has a history of taking magnesium hydroxide 100mg/1ml and metformin 1000 mg."""]]).toDF("text")
+data = spark.createDataFrame([[
+    "The patient has a history of systemic lupus erythematosus, multiple sclerosis, and fibromyalgia. "
+    "She was admitted with sepsis secondary to bacterial pneumonia and developed acute respiratory distress syndrome. "
+    "Imaging showed findings consistent with pulmonary sarcoidosis and Crohn's disease."
+]]).toDF("text")
+
+result = pipeline.fit(data).transform(data)
 ```
 
-
-*Result*:
-
+*Result*
 {:.table-model-big}
-| ner_chunk                     | entity | umls_code | resolution                 | all_k_resolutions                                                                | all_k_results                                                                    | all_k_distances                                                                  | all_k_cosine_distances                                                           |
-|-------------------------------|--------|-----------|----------------------------|----------------------------------------------------------------------------------|----------------------------------------------------------------------------------|----------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
-| hydrogen peroxide 30 mg       | DRUG   | C1126248  | hydrogen peroxide 30 mg/ml | hydrogen peroxide 30 mg/ml:::hydrogen peroxide solution 30%:::hydrogen peroxid... | C1126248:::C0304655:::C1605252:::C0304656:::C1154260:::C2242362:::C1724195:::... | 4.3731:::4.7154:::5.3302:::6.2122:::6.8675:::7.2770:::7.4682:::7.8312:::7.858... | 0.0323:::0.0369:::0.0483:::0.0649:::0.0807:::0.0890:::0.0957:::0.1018:::0.106... |
-| Neosporin Cream               | DRUG   | C0132149  | neosporin cream            | neosporin cream:::neomycin sulfate cream:::neosporin topical ointment:::nasep... | C0132149:::C4722788:::C0704071:::C0698988:::C1252084:::C3833898:::C0698810:::... | 0.0000:::7.0688:::7.3112:::7.3482:::7.3820:::7.4605:::7.7285:::7.8918:::7.908... | 0.0000:::0.0888:::0.0953:::0.0934:::0.0964:::0.0941:::0.1052:::0.1113:::0.108... |
-| magnesium hydroxide 100mg/1ml | DRUG   | C1134402  | magnesium hydroxide 100 mg | magnesium hydroxide 100 mg:::magnesium hydroxide 100 mg/ml:::magnesium sulph... | C1134402:::C1126785:::C4317023:::C4051486:::C4047137:::C1131100:::C1371187:::... | 4.9759:::5.1251:::5.8597:::6.5641:::6.5735:::6.8202:::6.8606:::6.9799:::7.007... | 0.0401:::0.0432:::0.0565:::0.0688:::0.0700:::0.0764:::0.0781:::0.0783:::0.079... |
-| metformin 1000 mg             | DRUG   | C0987664  | metformin 1000 mg          | metformin 1000 mg:::metformin hydrochloride 1000 mg:::metformin hcl 1000mg ta... | C0987664:::C2719784:::C0978482:::C2719786:::C4282269:::C2719794:::C4282270:::... | 0.0000:::5.2988:::5.3783:::5.9071:::6.1034:::6.3066:::6.6597:::6.6626:::6.782... | 0.0000:::0.0445:::0.0454:::0.0553:::0.0586:::0.0632:::0.0698:::0.0707:::0.072... |
+| ner_chunk | entity | umls_code | resolution | all_k_results | all_k_distances | all_k_cosine_distances | all_k_resolutions |
+|---|---|---|---|---|---|---|---|
+| systemic lupus erythematosus | Disease_Syndrome_Disorder | C0024141 | systemic lupus erythematosus | C0024141:::C0409974:::C0024137:::C1274838:::C6022675:::C0409977:::C0409976:::C07... | 0.0067:::3.4325:::4.0055:::4.4309:::4.4907:::4.5642:::4.5922:::4.6192:::4.6675::... | 0.0000:::0.0184:::0.0251:::0.0308:::0.0317:::0.0322:::0.0328:::0.0336:::0.0334::... | systemic lupus erythematosus:::lupus erythematosus:::cutaneous lupus erythematos... |
+| sclerosis | Disease_Syndrome_Disorder | C0036412 | sclera disease | C0036412:::C0263009:::C0036421:::C0007795:::C0237854:::C0004712:::C0036416:::C00... | 6.4563:::6.5690:::6.7129:::6.8109:::6.8550:::6.9680:::7.2263:::7.5483:::7.5862::... | 0.0689:::0.0695:::0.0752:::0.0738:::0.0762:::0.0792:::0.0860:::0.0915:::0.0957::... | sclera disease:::sclerosis skin:::system; sclerosis:::diffuse sclerosis:::sclero... |
+| fibromyalgia | Disease_Syndrome_Disorder | C0016053 | fibromyalgia | C0016053:::C0751153:::C0751152:::C0015674:::C4703320 | 0.0070:::3.9297:::4.7923:::6.1085:::7.4228 | 0.0000:::0.0242:::0.0364:::0.0572:::0.0843 | fibromyalgia:::secondary fibromyalgia:::fibromyalgia primary:::chronic fatigue-f... |
+| sepsis | Disease_Syndrome_Disorder | C0036690 | sepsis | C0036690:::C3164780:::C0242966:::C0152965:::C1141927:::C0684256:::C1141926:::C17... | 0.0084:::4.0589:::4.4404:::4.9625:::5.2109:::5.7252:::5.8590:::5.9812:::5.9983::... | 0.0000:::0.0260:::0.0316:::0.0396:::0.0428:::0.0522:::0.0539:::0.0546:::0.0564::... | sepsis:::clinical sepsis:::syndrome sepsis:::staph sepsis:::wound sepsis:::sepsi... |
+| bacterial pneumonia | Disease_Syndrome_Disorder | C0004626 | bacterial pneumonia | C0004626:::C0339952:::C0276523:::C0339951:::C1443238:::C0264386:::C0155860:::C05... | 0.0078:::4.8777:::6.3237:::6.3566:::6.6580:::6.8243:::6.8403:::6.8537:::6.8800::... | 0.0000:::0.0377:::0.0640:::0.0656:::0.0706:::0.0734:::0.0762:::0.0770:::0.0777::... | bacterial pneumonia:::bacterial pneumonia secondary:::aids with bacterial pneumo... |
+| respiratory distress syndrome | Disease_Syndrome_Disorder | C0035220 | respiratory distress syndrome | C0035220:::C0852283:::C0035222:::C0158940:::C0877339:::C5420230:::C3810183:::C54... | 0.0062:::4.0045:::4.1765:::5.1745:::6.0413:::6.2379:::6.2459:::6.4251:::6.4578::... | 0.0000:::0.0239:::0.0259:::0.0397:::0.0535:::0.0576:::0.0574:::0.0608:::0.0607::... | respiratory distress syndrome:::respiratory distress syndromes:::acquired respir... |
+| pulmonary sarcoidosis | Disease_Syndrome_Disorder | C0036205 | pulmonary sarcoidosis | C0036205:::C0036202:::C0406396:::C1302844:::C0396073:::C0036206:::C0340201:::C13... | 0.0074:::4.8495:::5.0965:::5.2098:::5.3056:::5.3212:::5.4128:::5.4719:::5.5281::... | 0.0000:::0.0373:::0.0412:::0.0433:::0.0452:::0.0452:::0.0470:::0.0479:::0.0488::... | pulmonary sarcoidosis:::sarcoidosis:::nodular sarcoidosis:::skin sarcoidosis:::l... |
+| Crohn's disease | Disease_Syndrome_Disorder | C0010346 | crohn's disease | C0010346:::C0399497:::C0156147:::C1301260:::C0941042:::C1301261:::C5686651:::C60... | 0.0071:::4.6627:::5.2420:::5.2609:::5.6188:::5.6324:::5.6705:::5.6709:::6.0026 | 0.0000:::0.0340:::0.0424:::0.0428:::0.0487:::0.0486:::0.0508:::0.0501:::0.0560 | crohn's disease:::orofacial crohn's disease:::crohn's colitis:::gastrointestinal... |
 
 
-
-
-</div><div class="h3-box" markdown="1">
-
-#### Introduced 17 New Rule-Based Entity Extraction Models for Identifying Structured Codes and Patterns in Clinical Texts
-
-These rule-based extraction models identify structured entities and patterns within clinical texts using ContextualParser and RegexMatcherInternal annotators. The models cover a variety of entity types including ICD-10 codes, URLs, vehicle identification numbers (VIN), and other domain-specific patterns, enabling accurate extraction without requiring labeled training data.
-
-{:.table-model-big}
-| Model Name  |      Description            |
-|-------------|-----------------------------|
-| [`icd10_parser`](https://nlp.johnsnowlabs.com/2025/12/20/icd10_parser_en.html) | Extracts icd10 entities |
-| [`account_parser`](https://nlp.johnsnowlabs.com/2025/12/21/account_parser_en.html) | Extracts account number entities |
-| [`age_parser`](https://nlp.johnsnowlabs.com/2025/12/21/age_parser_en.html) | Extracts age entities |
-| [`date_regex_matcher`](https://nlp.johnsnowlabs.com/2025/12/29/date_regex_matcher_en.html) | Extract date entities |
-| [`dln_parser`](https://nlp.johnsnowlabs.com/2025/12/21/dln_parser_en.html) | Extracts drive license number entities |
-| [`license_parser`](https://nlp.johnsnowlabs.com/2025/12/21/license_parser_en.html) | Extracts license number entities |
-| [`phone_parser`](https://nlp.johnsnowlabs.com/2025/12/21/phone_parser_en.html) | Extracts phone number entities |
-| [`plate_parser`](https://nlp.johnsnowlabs.com/2025/12/21/plate_parser_en.html) | Extracts plate number entities |
-| [`ssn_parser`](https://nlp.johnsnowlabs.com/2025/12/21/ssn_parser_en.html) | Extracts SSN number entities |
-| [`vin_parser`](https://nlp.johnsnowlabs.com/2025/12/21/vin_parser_en.html) | Extracts vehicle identifier number entities |
-| [`cpt_parser`](https://nlp.johnsnowlabs.com/2025/12/22/cpt_parser_en.html) | Extracts cpt entities |
-| [`email_regex_matcher`](https://nlp.johnsnowlabs.com/2025/12/22/email_regex_matcher_en.html) | Extracts emails |
-| [`ip_regex_matcher`](https://nlp.johnsnowlabs.com/2025/12/22/ip_regex_matcher_en.html) | Extracts IPs |
-| [`med_parser`](https://nlp.johnsnowlabs.com/2025/12/22/med_parser_en.html) | Extracts medical record entities |
-| [`specimen_parser`](https://nlp.johnsnowlabs.com/2025/12/22/specimen_parser_en.html) | Extracts specimen entities |
-| [`url_regex_matcher`](https://nlp.johnsnowlabs.com/2025/12/22/url_regex_matcher_en.html) | Extracts URLs |
-| [`zip_regex_matcher`](https://nlp.johnsnowlabs.com/2025/12/29/zip_regex_matcher_en.html) | Extracts ZIP code entities |
-
-
-*Example*:
+*Example* (code-level mapping — `umls_rxnorm_mapper`):
 
 ```python
-dln_contextual_parser = ContextualParserModel.pretrained("dln_parser","en","clinical/models")\
-    .setInputCols(["sentence", "token"])\
-    .setOutputCol("chunk_dln")
+document_assembler = DocumentAssembler() \
+    .setInputCol("text") \
+    .setOutputCol("doc")
 
-model = parserPipeline.fit(spark.createDataFrame([[""]]).toDF("text"))
+doc2chunk = Doc2Chunk() \
+    .setInputCols(["doc"]) \
+    .setOutputCol("ner_chunk")
 
-sample_text ="""Name : Hendrickson, Ora, Record date: 2093-01-13, # 719435.
-Dr. John Green, ID: 1231511863, IP 203.120.223.13.
-He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93.
-Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B. Driver's license# 12345678. MY DL# B324567 CDL bs34df45
-Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com."""
+mapper = ChunkMapperModel.pretrained("umls_rxnorm_mapper", "en", "clinical/models") \
+    .setInputCols(["ner_chunk"]) \
+    .setOutputCol("mappings")
+
+pipeline = Pipeline(stages=[document_assembler, doc2chunk, mapper])
+
+data = spark.createDataFrame([["C1126248"], ["C0978482"], ["C0691677"]]).toDF("text")
+
+result = pipeline.fit(data).transform(data)
 ```
 
-
-*Result*:
-
+*Result*
 {:.table-model-big}
-| chunk    |   begin |   end | label   |
-|:---------|--------:|------:|:--------|
-| A334455B |     271 |   278 | DLN     |
-| 12345678 |     299 |   306 | DLN     |
-| B324567  |     316 |   322 | DLN     |
-| bs34df45 |     328 |   335 | DLN     |
+| umls_code | rxnorm_code |
+|---|---|
+| C1126248 | 330565 |
+| C0978482 | 861004 |
+| C0691677 | 198776 |
 
-
-
-</div><div class="h3-box" markdown="1">
-
-#### Introduced 7 New NER Models for PHI Deidentification and Drug Entity Extraction
-
-This release introduces 3 new NER models for clinical entity extraction. Two models focus on PHI (Protected Health Information) detection for deidentification: a generic model detecting broad entity types (DATE, NAME, LOCATION, ID, CONTACT, AGE, PROFESSION) and a subentity model with granular labels (PATIENT, DOCTOR, HOSPITAL, STREET, CITY, ZIP). The third model extracts drug entities by combining dosage, strength, form, and route into a unified Drug label.
-
-
-{:.table-model-big}
-| Model Name  |      Description            |
-|-------------|-----------------------------|
-| [`ner_deid_generic_nonMedical`](https://nlp.johnsnowlabs.com/2025/12/19/ner_deid_generic_nonMedical_en.html) | Model detects PHI entities such as DATE, NAME, LOCATION, ID, CONTACT, AGE, PROFESSION |
-| [`ner_deid_subentity_nonMedical`](https://nlp.johnsnowlabs.com/2025/12/19/ner_deid_subentity_nonMedical_en.html) | Model detects PHI entities with granular labels such as PATIENT, DOCTOR, HOSPITAL, STREET, CITY, ZIP |
-| [`ner_drugs_large_v2`](https://nlp.johnsnowlabs.com/2025/12/19/ner_drugs_large_v2_en.html) | Model combines dosage, strength, form, and route into a single entity: Drug |
-| [`zeroshot_ner_deid_generic_nonMedical_large`](https://nlp.johnsnowlabs.com/2025/12/27/zeroshot_ner_deid_generic_nonMedical_large_en.html) | The model is designed to support any set of entity labels, allowing users to adapt it to their specific use cases. |
-| [`zeroshot_ner_deid_generic_nonMedical_medium`](https://nlp.johnsnowlabs.com/2025/12/28/zeroshot_ner_deid_generic_nonMedical_medium_en.html) | The model is designed to support any set of entity labels, allowing users to adapt it to their specific use cases. |
-| [`zeroshot_ner_deid_subentity_nonMedical_large`](https://nlp.johnsnowlabs.com/2025/12/28/zeroshot_ner_deid_subentity_nonMedical_large_en.html) | The model is designed to support any set of entity labels, allowing users to adapt it to their specific use cases. |
-| [`zeroshot_ner_deid_subentity_nonMedical_medium`](https://nlp.johnsnowlabs.com/2025/12/28/zeroshot_ner_deid_subentity_nonMedical_medium_en.html) | The model is designed to support any set of entity labels, allowing users to adapt it to their specific use cases. |
-
-
-
-*Example*:
+*Example* (NER-based mapping — `umls_general_concepts_mapper`):
 
 ```python
-ner_model = MedicalNerModel.pretrained("ner_deid_generic_nonMedical", "en", "clinical/models")\
-    .setInputCols(["sentence", "token", "embeddings"])\
-    .setOutputCol("ner")
+document_assembler = DocumentAssembler() \
+    .setInputCol("text") \
+    .setOutputCol("document")
 
+sentence_detector = SentenceDetector() \
+    .setInputCols(["document"]) \
+    .setOutputCol("sentence")
 
-text = """
-Mr. James Wilson is a 65-year-old male who presented to the emergency department at Boston General Hospital on 10/25/2023. 
-He lives at 123 Oak Street, Springfield, IL 62704. He can be contacted at 555-0199. 
-His SSN is 999-00-1234. Dr. Gregory House is the attending physician.
-"""
+tokenizer = Tokenizer() \
+    .setInputCols(["sentence"]) \
+    .setOutputCol("token")
 
-data = spark.createDataFrame([[text]]).toDF("text")
+word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models") \
+    .setInputCols(["sentence", "token"]) \
+    .setOutputCol("embeddings")
+
+ner_model = MedicalNerModel.pretrained("ner_clinical", "en", "clinical/models") \
+    .setInputCols(["sentence", "token", "embeddings"]) \
+    .setOutputCol("clinical_ner")
+
+ner_converter = NerConverterInternal() \
+    .setInputCols(["sentence", "token", "clinical_ner"]) \
+    .setOutputCol("ner_chunk")
+
+mapper = ChunkMapperModel.pretrained("umls_general_concepts_mapper", "en", "clinical/models") \
+    .setInputCols(["ner_chunk"]) \
+    .setOutputCol("mappings") \
+    .setRels(["umls_code"]) \
+    .setLowerCase(True)
+
+pipeline = Pipeline(stages=[
+    document_assembler, sentence_detector, tokenizer,
+    word_embeddings, ner_model, ner_converter, mapper
+])
+
+data = spark.createDataFrame([[
+    "The patient presents with dyspnea and fever due to pneumonia. "
+    "Treatment includes bronchoscopy, catheter placement, and chemotherapy."
+]]).toDF("text")
+
+result = pipeline.fit(data).transform(data)
 ```
 
-
-*Result*:
-
+*Result*
 {:.table-model-big}
-|chunk                  |begin|end|ner_label|
-|-----------------------|-----|---|---------|
-|James Wilson           |5    |16 |NAME     |
-|65-year-old            |23   |33 |AGE      |
-|Boston General Hospital|85   |107|LOCATION |
-|10/25/2023             |112  |121|DATE     |
-|123 Oak Street         |137  |150|LOCATION |
-|Springfield            |153  |163|LOCATION |
-|IL                     |166  |167|LOCATION |
-|555-0199               |199  |206|CONTACT  |
-|999-00-1234            |221  |231|ID       |
-|Gregory House          |238  |250|NAME     |
-
-
-</div><div class="h3-box" markdown="1">
-
-#### Enhanced 8 new contextual assertion models to classify clinical entities by assertion status
-
-We introduced 8 new contextual assertion models that classify assertion context for clinical mentions—helping distinguish whether a condition applies to the patient, is denied, historical, conditional, hypothetical, planned, or attributed to someone else.
-
-{:.table-model-big}
-| Model Name  |      Description            |
-|-------------|-----------------------------|
-| [`contextual_assertion_absent`](https://nlp.johnsnowlabs.com/2026/01/14/contextual_assertion_absent_en.html) | Identifies medical conditions that are explicitly absent or denied in the patient |
-| [`contextual_assertion_conditional`](https://nlp.johnsnowlabs.com/2026/01/14/contextual_assertion_conditional_en.html) | Identifies medical conditions that are conditional or dependent on certain circumstances |
-| [`contextual_assertion_family`](https://nlp.johnsnowlabs.com/2026/01/14/contextual_assertion_family_en.html) | Identifies medical conditions that belong to family members rather than the patient |
-| [`contextual_assertion_hypothetical`](https://nlp.johnsnowlabs.com/2026/01/14/contextual_assertion_hypothetical_en.html) | Identifies medical conditions mentioned in hypothetical or uncertain contexts |
-| [`contextual_assertion_past`](https://nlp.johnsnowlabs.com/2026/01/14/contextual_assertion_past_en.html) | Identifies medical conditions that occurred in the patient's past medical history |
-| [`contextual_assertion_planned`](https://nlp.johnsnowlabs.com/2026/01/14/contextual_assertion_planned_en.html) | Identifies medical procedures or treatments that are planned for the future |
-| [`contextual_assertion_possible`](https://nlp.johnsnowlabs.com/2026/01/14/contextual_assertion_possible_en.html) | Identifies medical conditions that are possible or suspected but not confirmed |
-| [`contextual_assertion_someoneelse`](https://nlp.johnsnowlabs.com/2026/01/14/contextual_assertion_someoneelse_en.html) | Identifies medical conditions that belong to someone other than the patient (not family) |
-
-
-
-*Example*:
-
-```python
-contextual_assertion = ContextualAssertion\
-    .pretrained("contextual_assertion_absent", "en", "clinical/models")\
-    .setInputCols("sentence", "token", "ner_chunk")\
-    .setOutputCol("assertion_absent")
-
-text = """The patient denies any chest pain, shortness of breath, or fever. No history of diabetes or hypertension."""
-data = spark.createDataFrame([[text]]).toDF('text')
-```
-
-*Result*:
-
-{:.table-model-big}
-|ner_chunk            |begin  |end  |ner_label  |result     |
-|---------------------|-------|-----|-----------|-----------|
-|any chest pain       |19     |32   |PROBLEM    |absent     |
-|shortness of breath  |35     |53   |PROBLEM    |absent     |
-|fever                |59     |63   |PROBLEM    |absent     |
-|diabetes             |80     |87   |PROBLEM    |absent     |
-|hypertension         |92     |103  |PROBLEM    |absent     |
-
-</div><div class="h3-box" markdown="1">
-
-#### Added new ONNX-based multilingual clinical NER models for Italian, Spanish, and Romanian, covering disease, procedure, medication, and symptom entity extraction
-
-This release adds several new ONNX-exported NER models for multilingual clinical text mining, enabling faster and more efficient inference while extracting key medical entities from real-world clinical notes and records. The models cover Italian, Spanish, and Romanian medical text and support structured extraction of diseases, procedures, medications, and symptoms using BIO tagging.
-
-
-{:.table-model-big}
-| Model Name  |      Description            |
-|-------------|-----------------------------|
-| [`roberta_disease_ner_onnx`](https://nlp.johnsnowlabs.com/2025/12/26/roberta_disease_ner_onnx_en.html) | RoBERTa-based token classification model for identifying disease mentions in text |
-| [`roberta_med_ner_onnx`](https://nlp.johnsnowlabs.com/2025/12/26/roberta_med_ner_onnx_en.html) | RoBERTa-based token classification model trained to identify medication mentions in clinical and biomedical text |
-| [`roberta_procedure_ner_onnx`](https://nlp.johnsnowlabs.com/2025/12/27/roberta_procedure_ner_onnx_en.html) | RoBERTa-based token classification model for extracting symptom mentions from text |
-| [`roberta_symptom_ner_onnx`](https://nlp.johnsnowlabs.com/2025/12/27/roberta_symptom_ner_onnx_en.html) | RoBERTa-based token classification model for extracting symptom mentions from text |
-| [`vetclinical_bert_onnx`](https://nlp.johnsnowlabs.com/2025/12/29/vetclinical_bert_onnx_en.html) | Trained on large-scale real-world veterinary medical records, this model captures animal-health terminology and note structure to support accurate disease/syndrome classification, information extraction, and clinical text analysis |
-| [`bert_token_classifier_disease_ner_it_onnx`](https://nlp.johnsnowlabs.com/2026/01/20/bert_token_classifier_disease_ner_it_onnx_it.html) | BERT-based NER model identifies disease mentions for Italian medical text |
-| [`bert_token_classifier_medical_ner_it_onnx`](https://nlp.johnsnowlabs.com/2026/01/20/bert_token_classifier_medical_ner_it_onnx_it.html) | BERT-based NER model detects medication names for Italian medical text |
-| [`bert_token_classifier_procedure_ner_it_onnx`](https://nlp.johnsnowlabs.com/2026/01/20/bert_token_classifier_procedure_ner_it_onnx_it.html) | BERT-based NER model identifies medical procedures for Italian medical text |
-| [`roberta_disease_ner_es_onnx`](https://nlp.johnsnowlabs.com/2026/01/04/roberta_disease_ner_es_onnx_es.html) | BERT-based NER model identifies disease mentions for Spanish medical text |
-| [`roberta_procedure_ner_es_onnx`](https://nlp.johnsnowlabs.com/2026/01/04/roberta_procedure_ner_es_onnx_es.html) | BERT-based NER model identifies medical procedures for Spanish medical text |
-| [`roberta_symptom_ner_es_onnx`](https://nlp.johnsnowlabs.com/2026/01/04/roberta_symptom_ner_es_onnx_es.html) | BERT-based NER model identifies symptom mentions for Spanish medical text |
-| [`xlmroberta_medical_ner_ro_onnx`](https://nlp.johnsnowlabs.com/2026/01/04/xlmroberta_medical_ner_ro_onnx_ro.html) | XLM-RoBERTa-based NER model identifies medication mentions for Romanian medical text |
-
-
-
-*Example*:
-
-```python
-tokenClassifier = MedicalBertForTokenClassifier \
-    .pretrained("bert_token_classifier_procedure_ner_it_onnx", "it", "clinical/models") \
-    .setInputCols(["document", "token"]) \
-    .setOutputCol("ner")
-
-data = spark.createDataFrame([["Il paziente è stato sottoposto a risonanza magnetica e biopsia epatica."]]).toDF("text")
-```
-
-
-
-*Result*:
-
-{:.table-model-big}
-|text               |entity   |
-|-------------------|---------|
-|risonanza magnetica|PROCEDURE|
-|biopsia epatica    |PROCEDURE|
-
-
-
+| ner_chunk | umls_code |
+|---|---|
+| dyspnea | C0013404 |
+| fever | C0015967 |
+| pneumonia | C0032285 |
+| bronchoscopy | C5979970 |
+| catheter placement | C0883301 |
+| chemotherapy | C0013216 |
 
 </div><div class="h3-box" markdown="1">
 
 #### New Blog Posts & Technical Deep Dives
 
-- [From Clinical Text to Knowledge Graphs with John Snow Labs Healthcare NLP](https://medium.com/john-snow-labs/from-clinical-text-to-knowledge-graphs-with-john-snow-labs-healthcare-nlp-d4b9f62d13c7) This blog post shows how to build an end-to-end clinical knowledge graph from unstructured medical text using John Snow Labs Healthcare NLP library. We’ll start by extracting key clinical entities about medication with Named Entity Recognition, then connect them using Relation Extraction to capture medically meaningful links. Finally, we’ll convert these structured relationships into a knowledge graph that makes complex clinical narratives easier to search, analyze, and interpret.
+- [John Snow Labs detects 54% more clinical PHI than OpenAI’s Privacy Filter, at 5.8× the speed on CPU](https://medium.com/john-snow-labs/john-snow-labs-detects-54-more-clinical-phi-than-openais-privacy-filter-at-5-8-the-speed-on-cpu-d460df795eb1) : This blog post benchmarks the OpenAI Privacy Filter against a healthcare-specific de-identification pipeline from John Snow Labs on nearly 382K tokens of real clinical text. It explains how the John Snow Labs pipeline achieved substantially higher PHI detection accuracy (0.95 F1 vs. 0.55) while also running 5.8× faster on CPU, highlighting the importance of domain-specific clinical NLP over general-purpose PII detection. The article also covers strict label-mapping methodology, benchmark design, CPU-optimized deployment pipelines, and practical challenges in healthcare de-identification such as identifying hospital names, medical IDs, and clinical abbreviations in real-world notes.
 
-- [Clinical De-Identification at Scale: Pipeline Design and Speed–Accuracy Trade-offs Across Infrastructures]( https://medium.com/john-snow-labs/clinical-de-identification-at-scale-pipeline-design-and-speed-accuracy-trade-offs-across-d77a4bbae6e0) This blog post presents a focused update on large-scale clinical de-identification benchmarks, emphasize pipeline design, execution strategy, and infrastructure-aware performance. Rather than treating accuracy as an isolated metric, we analyze how different pipeline architectures - rule-augmented NER, hybrid NER + zero-shot, and zero-shot–centric approaches - behave under realistic Google Colab and Databricks–AWS deployments.
 
 </div><div class="h3-box" markdown="1">
 
-#### Various core improvements, bug fixes, enhanced overall robustness and reliability of Healthcare NLP
 
-- Improved Pipeline Tracer coverage by adding support for PretrainedZeroShotNERChunker (plus ChunkFilterer/CER/CEF) and correctly tracing AssertionMerger replaceDict behavior.
-- Added replaceDict to AssertionMerger to allow custom replacement of assertion labels.
-- PipelineOutputParser improvements to support mappings output in clinical_deidentification pipelines
+#### Updated Notebooks And Demonstrations For Making Healthcare NLP Easier To Navigate And Understand
 
-</div><div class="h3-box" markdown="1">
+- New [MedicalLLMEntityExtractor](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/46.2.MedicalLLMEntityExtractor.ipynb) Notebook
+  
+  This notebook introduces JSL’s LLM-based clinical NER annotator with grammar-enforced JSON, runtime-defined entity types, and CHUNK outputs with character offsets. Five end-to-end examples: default clinical NER, medication fields, PHI de-identification, oncology few-shot, and custom ADR prompts. Requires Spark NLP Healthcare license and supported JSL MedS/MedM GGUF models.
 
-#### Updated Notebooks And Demonstrations For making Healthcare NLP Easier To Navigate And Understand
- 
-- New [CDA DeIdentification](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.14.CDA_DeIdentification.ipynb) Notebook
+- New [Benchmarking John Snow Labs Healthcare NLP Pipelines for Optimal Spark Config at Million-Doc Scale](https://dbc-f4eb4bcb-4ef3.cloud.databricks.com/marketplace/provider/listings/99415605-a24c-4bd8-b4da-892a70b71769?o=5522619299734643) Databricks Solution Accelerator Notebook
+  - This accelerator benchmarks five pretrained John Snow Labs Healthcare NLP pipelines to identify the most efficient Apache Spark configurations for large-scale document processing.
+  - The notebook performs million-document throughput testing across multiple Healthcare NLP pipelines, evaluating how different Spark settings impact performance, scalability, and resource utilization.
+  - By comparing execution times, parallelism strategies, and cluster tuning parameters, this benchmark helps users determine the optimal Spark configuration for maximum NLP throughput in enterprise-scale healthcare and clinical text processing workloads.
+  - Utilizing a Medallion architecture (Bronze, Silver, Gold layers) and crash-safe checkpoints, the accelerator demonstrates how to efficiently fine-tune key Spark parameters across various complex clinical NLP tasks. Its main benefit is enabling data teams to significantly reduce processing times and compute costs when deploying healthcare NLP models on Databricks clusters.
+  - Use cases
+    - Optimizing Apache Spark configurations (shuffle_partitions, default_parallelism, and repartition_count) for high-throughput clinical NLP processing.
+    - Benchmarking the performance, execution time, and stability of John Snow Labs Healthcare NLP pipelines at varying data scales (10 to 1,000,000 rows).
+    - Fast and balanced Protected Health Information (PHI) de-identification for massive volumes of medical documents.
+    - Granular clinical Named Entity Recognition (NER) and specialized oncology entity extraction from clinical text.
+    - High-volume, large-scale ICD-10-CM code resolution from raw medical transcriptions.
 
-
+- New [LLM-Based Oncology Entity Extraction](https://dbc-f4eb4bcb-4ef3.cloud.databricks.com/marketplace/provider/listings/8711812a-c05d-4246-bd90-dabc7f7a0073?o=5522619299734643) Databricks Solution Accelerator Notebook
+  - This solution accelerator demonstrates an end-to-end LLM-based oncology entity extraction pipeline built on the Databricks Lakehouse using Spark NLP Healthcare by John Snow Labs.
+  - It ingests raw clinical oncology notes, extracts 43 structured entity types using a locally running LLM (qwen3_4b), resolves extracted entities to ICD-O codes via biomedical sentence embeddings, and publishes curated Delta tables following the Medallion architecture (Bronze → Silver → Gold).
+  - All inference runs on-cluster with no external API calls, ensuring full data privacy and HIPAA-aligned processing.
+  - Use cases
+    - Automated cancer registry abstraction from unstructured clinical notes
+    - Structured oncology entity extraction (diagnoses, treatments, biomarkers, staging, tumor findings) for downstream analytics
+    - ICD-O code assignment to free-text oncology concepts using semantic similarity
+    - PHI-safe clinical NLP pipeline with optional de-identification before LLM processing
+    - Foundation for real-world evidence (RWE) generation from electronic health records
 
 </div><div class="h3-box" markdown="1">
 
 #### We Have Added And Updated A Substantial Number Of New Clinical Models And Pipelines, Further Solidifying Our Offering In The Healthcare Domain.
 
-
-+ `jsl_meds_vlm_7b_q4_v1_en`
-+ `jsl_meds_vlm_7b_q8_v1_en`
-+ `jsl_meds_vlm_7b_q16_v1_en`
-+ `jsl_meds_vlm_4b_q4_v1_en`
-+ `jsl_meds_vlm_4b_q8_v1_en`
-+ `jsl_meds_vlm_4b_q16_v1_en`
-+ `jsl_meds_vlm_reasoning_8b_q4_v1_en`
-+ `jsl_meds_vlm_reasoning_8b_q8_v1_en`
-+ `jsl_meds_vlm_reasoning_8b_q16_v1_en`
-+ `clinical_deidentification_docwise_benchmark_large_v2`
-+ `clinical_deidentification_docwise_benchmark_medium_v2`
-+ `clinical_deidentification_docwise_benchmark_optimized_v2`
-+ `clinical_deidentification_docwise_zeroshot_large`
-+ `clinical_deidentification_docwise_zeroshot_medium`
-+ `clinical_deidentification_docwise_SingleStage_zeroshot_large`
-+ `clinical_deidentification_docwise_SingleStage_zeroshot_medium`          
++ `clinical_deidentification_docwise_benchmark_multitask`
++ `clinical_deidentification_subentity_optimized_scala3`
++ `zeroshot_multitask_oncology`
++ `zeroshot_multitask_oncology_generic`
++ `cda_deidentification_extend_free_text`
++ `cda_deidentification_patient`
 + `sbiobertresolve_umls_findings`
 + `sbiobertresolve_umls_clinical_drugs`
 + `sbiobertresolve_umls_disease_syndrome`
@@ -955,58 +836,42 @@ data = spark.createDataFrame([["Il paziente è stato sottoposto a risonanza magn
 + `sbiobertresolve_umls_general_concepts`
 + `sbiobertresolve_umls_major_concepts`
 + `biolordresolve_umls_general_concepts`
-+ `sbiobertresolve_loinc`
-+ `icd10_parser`
-+ `account_parser`
-+ `age_parser`
-+ `date_regex_matcher`
-+ `dln_parser`
-+ `license_parser`
-+ `phone_parser`
-+ `plate_parser`
-+ `ssn_parser`
-+ `vin_parser`
-+ `cpt_parser`
-+ `email_regex_matcher`
-+ `ip_regex_matcher`
-+ `med_parser`
-+ `specimen_parser`
-+ `url_regex_matcher`
-+ `zip_regex_matcher`
-+ `ner_deid_generic_nonMedical`
-+ `ner_deid_subentity_nonMedical`
-+ `ner_drugs_large_v2`
-+ `zeroshot_ner_deid_generic_nonMedical_large`
-+ `zeroshot_ner_deid_generic_nonMedical_medium`
-+ `zeroshot_ner_deid_subentity_nonMedical_large`
-+ `zeroshot_ner_deid_subentity_nonMedical_medium`
-+ `roberta_disease_ner_onnx`
-+ `roberta_med_ner_onnx`
-+ `roberta_procedure_ner_onnx`
-+ `roberta_symptom_ner_onnx`
-+ `vetclinical_bert_onnx`
-+ `bert_token_classifier_disease_ner_it_onnx`
-+ `bert_token_classifier_medical_ner_it_onnx`
-+ `bert_token_classifier_procedure_ner_it_onnx`
-+ `roberta_disease_ner_es_onnx`
-+ `roberta_procedure_ner_es_onnx`
-+ `roberta_symptom_ner_es_onnx`
-+ `xlmroberta_medical_ner_ro_onnx`
-+ `contextual_assertion_absent`
-+ `contextual_assertion_conditional`
-+ `contextual_assertion_family`
-+ `contextual_assertion_hypothetical`
-+ `contextual_assertion_past`
-+ `contextual_assertion_planned`
-+ `contextual_assertion_possible`
-+ `contextual_assertion_someoneelse`
-
-
-
-</div><div class="h3-box" markdown="1">
-
-For all Healthcare NLP models, please check: [Models Hub Page](https://nlp.johnsnowlabs.com/models?edition=Healthcare+NLP)
-
++ `umls_rxnorm_mapper`
++ `rxnorm_umls_mapper`
++ `umls_snomed_mapper`
++ `snomed_umls_mapper`
++ `umls_snomedvet_mapper`
++ `snomedvet_umls_mapper`
++ `umls_loinc_mapper`
++ `loinc_umls_mapper`
++ `umls_mesh_mapper`
++ `mesh_umls_mapper`
++ `umls_icd10cm_mapper`
++ `icd10cm_umls_mapper`
++ `umls_icd10pcs_mapper`
++ `icd10pcs_umls_mapper`
++ `umls_icd9cm_mapper`
++ `icd9cm_umls_mapper`
++ `umls_nci_mapper`
++ `nci_umls_mapper`
++ `umls_hpo_mapper`
++ `hpo_umls_mapper`
++ `umls_hgnc_mapper`
++ `hgnc_umls_mapper`
++ `umls_atc_mapper`
++ `atc_umls_mapper`
++ `umls_hcpcs_mapper`
++ `hcpcs_umls_mapper`
++ `umls_cpt_mapper`
++ `cpt_umls_mapper`
++ `umls_meddra_mapper`
++ `meddra_umls_mapper`
++ `umls_clinical_findings_mapper`
++ `umls_disease_syndrome_mapper`
++ `umls_drug_substance_mapper`
++ `umls_clinical_drugs_mapper`
++ `umls_major_concepts_mapper`
++ `umls_general_concepts_mapper`
 
 </div><div class="h3-box" markdown="1">
 
