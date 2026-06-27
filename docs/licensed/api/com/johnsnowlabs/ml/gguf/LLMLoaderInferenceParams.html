@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 6.4.0 ScalaDoc  - com.johnsnowlabs.ml.gguf.LLMLoaderInferenceParams</title>
-          <meta name="description" content="Spark NLP 6.4.0 ScalaDoc - com.johnsnowlabs.ml.gguf.LLMLoaderInferenceParams" />
-          <meta name="keywords" content="Spark NLP 6.4.0 ScalaDoc com.johnsnowlabs.ml.gguf.LLMLoaderInferenceParams" />
+          <title>Spark NLP 6.4.1 ScalaDoc  - com.johnsnowlabs.ml.gguf.LLMLoaderInferenceParams</title>
+          <meta name="description" content="Spark NLP 6.4.1 ScalaDoc - com.johnsnowlabs.ml.gguf.LLMLoaderInferenceParams" />
+          <meta name="keywords" content="Spark NLP 6.4.1 ScalaDoc com.johnsnowlabs.ml.gguf.LLMLoaderInferenceParams" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 6.4.0 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 6.4.1 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -868,25 +868,6 @@
       </span>
       
       
-    </li><li name="com.johnsnowlabs.ml.gguf.LLMLoaderInferenceParams#setPenaltyPrompt" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="setPenaltyPrompt(tokens:Array[Int]):T"></a><a id="setPenaltyPrompt(Array[Int]):T"></a>
-      <span class="permalink">
-      <a href="../../../../com/johnsnowlabs/ml/gguf/LLMLoaderInferenceParams.html#setPenaltyPrompt(tokens:Array[Int]):T" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">setPenaltyPrompt</span><span class="params">(<span name="tokens">tokens: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>)</span><span class="result">: <span class="extype" name="com.johnsnowlabs.ml.gguf.LLMLoaderInferenceParams.T">T</span></span>
-      </span>
-      
-      <p class="shortcomment cmt">Override which tokens to penalize for repetition.</p><div class="fullcomment"><div class="comment cmt"><p>Override which tokens to penalize for repetition.
-E.g. if original prompt is &quot;Alice: Hello!&quot; and penaltyPrompt corresponds to the token ids of &quot;Hello!&quot;, only the
-latter will be penalized if repeated.
-</p></div></div>
     </li><li name="com.johnsnowlabs.ml.gguf.LLMLoaderInferenceParams#setPenaltyPrompt" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="setPenaltyPrompt(penaltyPrompt:String):T"></a><a id="setPenaltyPrompt(String):T"></a>
       <span class="permalink">
@@ -903,6 +884,25 @@ latter will be penalized if repeated.
       </span>
       
       <p class="shortcomment cmt">Override which part of the prompt is penalized for repetition.</p>
+    </li><li name="com.johnsnowlabs.ml.gguf.LLMLoaderInferenceParams#setPenaltyPromptTokens" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setPenaltyPromptTokens(tokens:Array[Int]):T"></a><a id="setPenaltyPromptTokens(Array[Int]):T"></a>
+      <span class="permalink">
+      <a href="../../../../com/johnsnowlabs/ml/gguf/LLMLoaderInferenceParams.html#setPenaltyPromptTokens(tokens:Array[Int]):T" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setPenaltyPromptTokens</span><span class="params">(<span name="tokens">tokens: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>)</span><span class="result">: <span class="extype" name="com.johnsnowlabs.ml.gguf.LLMLoaderInferenceParams.T">T</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Override which tokens to penalize for repetition.</p><div class="fullcomment"><div class="comment cmt"><p>Override which tokens to penalize for repetition.
+E.g. if original prompt is &quot;Alice: Hello!&quot; and penaltyPrompt corresponds to the token ids of &quot;Hello!&quot;, only the
+latter will be penalized if repeated.
+</p></div></div>
     </li><li name="com.johnsnowlabs.ml.gguf.LLMLoaderInferenceParams#setPresencePenalty" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="setPresencePenalty(presencePenalty:Float):T"></a><a id="setPresencePenalty(Float):T"></a>
       <span class="permalink">
