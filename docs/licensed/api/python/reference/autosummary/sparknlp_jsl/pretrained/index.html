@@ -355,7 +355,7 @@ document.write(`
 <table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.pretrained.InternalResourceDownloader" title="sparknlp_jsl.pretrained.InternalResourceDownloader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InternalResourceDownloader</span></code></a></p></td>
-<td><p>Downlod internal resources from S3</p></td>
+<td><p>Download internal resources from S3</p></td>
 </tr>
 </tbody>
 </table>
@@ -373,10 +373,10 @@ document.write(`
 <dt class="sig sig-object py" id="sparknlp_jsl.pretrained.InternalResourceDownloader">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">InternalResourceDownloader</span></span><a class="headerlink" href="#sparknlp_jsl.pretrained.InternalResourceDownloader" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Downlod internal resources from S3</p>
+<p>Download internal resources from S3</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.pretrained.InternalResourceDownloader.downloadModel">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">downloadModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">language</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">j_dwn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'InternalsPythonResourceDownloader'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.pretrained.InternalResourceDownloader.downloadModel" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">downloadModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">language</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">j_dwn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'InternalsPythonResourceDownloader'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">engine</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'onnx'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip_preferred_engine</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.pretrained.InternalResourceDownloader.downloadModel" title="Permalink to this definition">#</a></dt>
 <dd><p>Download a model from S3.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>

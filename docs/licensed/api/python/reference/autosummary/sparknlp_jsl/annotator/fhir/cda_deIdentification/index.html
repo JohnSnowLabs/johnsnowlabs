@@ -387,6 +387,7 @@ document.write(`
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../medical_llm/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.medical_llm</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../medical_llm/medical_llm/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.medical_llm.medical_llm</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../medical_llm/medical_llm_entity_extractor/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.medical_llm.medical_llm_entity_extractor</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../medical_llm/medical_vision_llm/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.medical_llm.medical_vision_llm</span></code></a></li>
 </ul>
 </li>
@@ -683,6 +684,11 @@ recursively to all descendant TEXT_NODEs.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.excludeFreeTextTags">
+<span class="sig-name descname"><span class="pre">excludeFreeTextTags</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.excludeFreeTextTags" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.fakerLengthOffset">
 <span class="sig-name descname"><span class="pre">fakerLengthOffset</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.fakerLengthOffset" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -815,6 +821,11 @@ recursively to all descendant TEXT_NODEs.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.seed">
 <span class="sig-name descname"><span class="pre">seed</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.seed" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.tableHandling">
+<span class="sig-name descname"><span class="pre">tableHandling</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.tableHandling" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -1213,6 +1224,31 @@ Default is False.</p>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to enable default obfuscation equivalents for common entities.
 Default is False.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setExcludeFreeTextTags">
+<span class="sig-name descname"><span class="pre">setExcludeFreeTextTags</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tags</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setExcludeFreeTextTags" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets a list of tag local names whose subtree must be completely skipped during
+free-text de-identification. Skipped elements are kept exactly as they appear in
+the input document (no token is ever sent to the pipeline for them).</p>
+<p>Names are matched case-insensitively against the element’s local name (namespace
+prefix, if any, is ignored). Independent of <a class="reference internal" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setTableHandling" title="sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setTableHandling"><code class="xref py py-meth docutils literal notranslate"><span class="pre">setTableHandling()</span></code></a> - when
+<code class="docutils literal notranslate"><span class="pre">tableHandling</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;th&gt;</span></code> / <code class="docutils literal notranslate"><span class="pre">&lt;dt&gt;</span></code> cells are already preserved
+as part of the table handling logic, so they do not need to be listed here.
+This parameter is for additional, user-defined exclusions (e.g. footnotes,
+superscripts, custom report labels you want to keep verbatim).</p>
+<p class="rubric">Examples</p>
+<p>Preserve <code class="docutils literal notranslate"><span class="pre">&lt;footnote&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;sup&gt;</span></code> elements verbatim while still processing
+the rest of the free-text block:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">deid</span><span class="o">.</span><span class="n">setExcludeFreeTextTags</span><span class="p">([</span><span class="s2">&quot;footnote&quot;</span><span class="p">,</span> <span class="s2">&quot;sup&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>tags</strong> (<em>list</em>) – List of tag local names (strings) to skip during free-text de-identification.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1785,6 +1821,33 @@ The pairs must have exactly 3 elements: [original, entityType, fake].</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setTableHandling">
+<span class="sig-name descname"><span class="pre">setTableHandling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setTableHandling" title="Permalink to this definition">#</a></dt>
+<dd><p>Enables or disables header-aware processing of structured narrative elements
+(HTML/CDA tables and definition lists) found inside free-text blocks.</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">True</span></code> (the default), the de-identification pipeline is no longer invoked on
+column or row header cells (<code class="docutils literal notranslate"><span class="pre">&lt;th&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;dt&gt;</span></code>, anything inside <code class="docutils literal notranslate"><span class="pre">&lt;thead&gt;</span></code> such as
+<code class="docutils literal notranslate"><span class="pre">&lt;caption&gt;</span></code> / <code class="docutils literal notranslate"><span class="pre">&lt;colgroup&gt;</span></code> / <code class="docutils literal notranslate"><span class="pre">&lt;col&gt;</span></code>). Instead, every data cell (<code class="docutils literal notranslate"><span class="pre">&lt;td&gt;</span></code> or
+<code class="docutils literal notranslate"><span class="pre">&lt;dd&gt;</span></code>) is sent to the pipeline together with its label, formatted as
+<code class="docutils literal notranslate"><span class="pre">&quot;&lt;header&gt;</span> <span class="pre">:</span> <span class="pre">&lt;cell</span> <span class="pre">value&gt;&quot;</span></code>, so the model receives enough context to identify
+the entity correctly. The obfuscated cell value is then extracted from the pipeline
+output and <strong>only</strong> the cell content is rewritten; the header stays intact in the
+document.</p>
+<p>Row-label tables are also supported: when a data row begins with a <code class="docutils literal notranslate"><span class="pre">&lt;th&gt;</span></code>
+(e.g. <code class="docutils literal notranslate"><span class="pre">&quot;Blood</span> <span class="pre">Pressure&quot;</span></code> followed by a <code class="docutils literal notranslate"><span class="pre">&lt;td&gt;</span></code> value), that label is used as
+the per-row context instead of the column header.</p>
+<p>Set this to <code class="docutils literal notranslate"><span class="pre">False</span></code> to restore the legacy behaviour that recursively
+de-identifies every text node inside the free-text block uniformly, without any
+special treatment for tables or definition lists.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> to enable header-aware table/definition-list handling (default),
+<code class="docutils literal notranslate"><span class="pre">False</span></code> to fall back to plain recursive text-node obfuscation.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setUnnormalizedDateMode">
 <span class="sig-name descname"><span class="pre">setUnnormalizedDateMode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setUnnormalizedDateMode" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets the mode to use if the date is not formatted.
@@ -1878,6 +1941,7 @@ Options: [mask, obfuscate, skip]. Default: obfuscate.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.days"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.days</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.deidMarkers"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.deidMarkers</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.enableDefaultObfuscationEquivalents"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.enableDefaultObfuscationEquivalents</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.excludeFreeTextTags"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.excludeFreeTextTags</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.fakerLengthOffset"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.fakerLengthOffset</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.fixedMaskLength"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.fixedMaskLength</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.freeTextPaths"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.freeTextPaths</span></code></a></li>
@@ -1905,6 +1969,7 @@ Options: [mask, obfuscate, skip]. Default: obfuscate.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.returnEntityMappings"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.returnEntityMappings</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.sameLengthFormattedEntities"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.sameLengthFormattedEntities</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.seed"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.seed</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.tableHandling"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.tableHandling</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.uid"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.uid</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.unnormalizedDateMode"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.unnormalizedDateMode</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.useShiftDays"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.useShiftDays</span></code></a></li>
@@ -1946,6 +2011,7 @@ Options: [mask, obfuscate, skip]. Default: obfuscate.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setDays"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.setDays()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setDeidMarkers"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.setDeidMarkers()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setEnableDefaultObfuscationEquivalents"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.setEnableDefaultObfuscationEquivalents()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setExcludeFreeTextTags"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.setExcludeFreeTextTags()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setFakerLengthOffset"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.setFakerLengthOffset()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setFixedMaskLength"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.setFixedMaskLength()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setFreeTextPaths"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.setFreeTextPaths()</span></code></a></li>
@@ -1978,6 +2044,7 @@ Options: [mask, obfuscate, skip]. Default: obfuscate.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setSelectiveObfuscateRefSource"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.setSelectiveObfuscateRefSource()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setSelectiveObfuscationModes"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.setSelectiveObfuscationModes()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setStaticObfuscationPairs"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.setStaticObfuscationPairs()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setTableHandling"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.setTableHandling()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setUnnormalizedDateMode"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.setUnnormalizedDateMode()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setUseShiftDays"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.setUseShiftDays()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.transform"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.transform()</span></code></a></li>
