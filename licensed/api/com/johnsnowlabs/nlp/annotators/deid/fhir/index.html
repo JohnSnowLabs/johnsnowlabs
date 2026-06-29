@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 6.4.0 ScalaDoc  - com.johnsnowlabs.nlp.annotators.deid.fhir</title>
-          <meta name="description" content="Spark NLP 6.4.0 ScalaDoc - com.johnsnowlabs.nlp.annotators.deid.fhir" />
-          <meta name="keywords" content="Spark NLP 6.4.0 ScalaDoc com.johnsnowlabs.nlp.annotators.deid.fhir" />
+          <title>Spark NLP 6.4.1 ScalaDoc  - com.johnsnowlabs.nlp.annotators.deid.fhir</title>
+          <meta name="description" content="Spark NLP 6.4.1 ScalaDoc - com.johnsnowlabs.nlp.annotators.deid.fhir" />
+          <meta name="keywords" content="Spark NLP 6.4.1 ScalaDoc com.johnsnowlabs.nlp.annotators.deid.fhir" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 6.4.0 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 6.4.1 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -345,7 +345,32 @@ Free-text container paths (e.g. section.text) apply de-identification recursivel
   ))
   .setPipeline(spark, deidPipeline, <span class="lit">"deidentified"</span>)
 
-<span class="kw">val</span> result = deid.deidentify(cdaXmlString)</pre></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="https://www.hl7.org/implement/standards/product_brief.cfm?product_id=7" target="_blank">HL7 CDA Standard</a></p></span><span class="cmt"><p><a href="BaseFhirDeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification">BaseFhirDeIdentification</a> for base de-identification functionality</p></span></dd></dl></div>
+<span class="kw">val</span> result = deid.deidentify(cdaXmlString)</pre><h4>Structured Narrative Handling (Tables, Definition Lists)</h4><p>When <code>tableHandling</code> is <code>true</code> (the default), structured elements inside free-text blocks
+are processed with header-aware context so the NLP pipeline receives a longer, more
+informative input instead of a single short cell. The following structures are recognized:</p><ul><li><code><table>`: column headers (`<th>` inside the header row) are preserved verbatim and
+   each data cell (`<td>`) is sent to the pipeline as `"<header> : <cell value>"`. The
+   obfuscated cell value is then extracted from the pipeline output and written back into
+   the document. When a data row begins with a row-label `<th>` (e.g. "Blood Pressure"),
+   that label is used as the per-row context instead of the column header. For tables
+   without a strict `<th>`-only header row, the first row of a multi-row, multi-column
+   table is automatically promoted to column headers.
+ - Inline cell labels: when a `<td>` (or `<dd>`) starts with a styling element such as
+   `<content styleCode="Bold">Title:</content>`, that element is treated as the cell's
+   own label (overrides any external header) and is preserved verbatim - only the text
+   after it is obfuscated.
+ - `<br/>` line splitting: a cell's value text is split on top-level `<br/>` elements and
+   each line is processed independently, so multi-paragraph narrative cells keep their
+   line layout and never produce concatenated tokens like `Hgb12.5`.
+ - `<dl>` / `<dt>` / `<dd>`: each `<dd>` is processed with its preceding `<dt>` as context.
+
+`<th>` and `<dt>` (and the rest of `<thead>`) are never obfuscated under this mode, which
+prevents column/row labels from being mutated and improves accuracy on cell values. Set
+`tableHandling` to `false` to fall back to the legacy recursive obfuscation that walks
+every descendant text node uniformly.
+
+Use `excludeFreeTextTags` to fully skip any additional element by local name (case
+insensitive) during free-text recursion, e.g. `Array("sup", "footnote")`.
+</code></li></ul></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="https://www.hl7.org/implement/standards/product_brief.cfm?product_id=7" target="_blank">HL7 CDA Standard</a></p></span><span class="cmt"><p><a href="BaseFhirDeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification">BaseFhirDeIdentification</a> for base de-identification functionality</p></span></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="FhirDeIdentificationextendsBaseFhirDeIdentification"></a><a id="FhirDeIdentification:FhirDeIdentification"></a>
       <span class="permalink">
