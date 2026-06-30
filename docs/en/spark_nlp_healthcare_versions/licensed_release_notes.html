@@ -1520,17 +1520,104 @@ function wrapWordInSpan(data, wordToWrap) {
 <span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </code></pre></div>    </div>
 
-    <p class="table-model-big"><em>Result</em></p>
-    <p>| ner_chunk | entity | umls_code | resolution | all_k_results | all_k_distances | all_k_cosine_distances | all_k_resolutions |
-|—|—|—|—|—|—|—|—|
-| systemic lupus erythematosus | Disease_Syndrome_Disorder | C0024141 | systemic lupus erythematosus | C0024141:::C0409974:::C0024137:::C1274838:::C6022675:::C0409977:::C0409976:::C07… | 0.0067:::3.4325:::4.0055:::4.4309:::4.4907:::4.5642:::4.5922:::4.6192:::4.6675::… | 0.0000:::0.0184:::0.0251:::0.0308:::0.0317:::0.0322:::0.0328:::0.0336:::0.0334::… | systemic lupus erythematosus:::lupus erythematosus:::cutaneous lupus erythematos… |
-| sclerosis | Disease_Syndrome_Disorder | C0036412 | sclera disease | C0036412:::C0263009:::C0036421:::C0007795:::C0237854:::C0004712:::C0036416:::C00… | 6.4563:::6.5690:::6.7129:::6.8109:::6.8550:::6.9680:::7.2263:::7.5483:::7.5862::… | 0.0689:::0.0695:::0.0752:::0.0738:::0.0762:::0.0792:::0.0860:::0.0915:::0.0957::… | sclera disease:::sclerosis skin:::system; sclerosis:::diffuse sclerosis:::sclero… |
-| fibromyalgia | Disease_Syndrome_Disorder | C0016053 | fibromyalgia | C0016053:::C0751153:::C0751152:::C0015674:::C4703320 | 0.0070:::3.9297:::4.7923:::6.1085:::7.4228 | 0.0000:::0.0242:::0.0364:::0.0572:::0.0843 | fibromyalgia:::secondary fibromyalgia:::fibromyalgia primary:::chronic fatigue-f… |
-| sepsis | Disease_Syndrome_Disorder | C0036690 | sepsis | C0036690:::C3164780:::C0242966:::C0152965:::C1141927:::C0684256:::C1141926:::C17… | 0.0084:::4.0589:::4.4404:::4.9625:::5.2109:::5.7252:::5.8590:::5.9812:::5.9983::… | 0.0000:::0.0260:::0.0316:::0.0396:::0.0428:::0.0522:::0.0539:::0.0546:::0.0564::… | sepsis:::clinical sepsis:::syndrome sepsis:::staph sepsis:::wound sepsis:::sepsi… |
-| bacterial pneumonia | Disease_Syndrome_Disorder | C0004626 | bacterial pneumonia | C0004626:::C0339952:::C0276523:::C0339951:::C1443238:::C0264386:::C0155860:::C05… | 0.0078:::4.8777:::6.3237:::6.3566:::6.6580:::6.8243:::6.8403:::6.8537:::6.8800::… | 0.0000:::0.0377:::0.0640:::0.0656:::0.0706:::0.0734:::0.0762:::0.0770:::0.0777::… | bacterial pneumonia:::bacterial pneumonia secondary:::aids with bacterial pneumo… |
-| respiratory distress syndrome | Disease_Syndrome_Disorder | C0035220 | respiratory distress syndrome | C0035220:::C0852283:::C0035222:::C0158940:::C0877339:::C5420230:::C3810183:::C54… | 0.0062:::4.0045:::4.1765:::5.1745:::6.0413:::6.2379:::6.2459:::6.4251:::6.4578::… | 0.0000:::0.0239:::0.0259:::0.0397:::0.0535:::0.0576:::0.0574:::0.0608:::0.0607::… | respiratory distress syndrome:::respiratory distress syndromes:::acquired respir… |
-| pulmonary sarcoidosis | Disease_Syndrome_Disorder | C0036205 | pulmonary sarcoidosis | C0036205:::C0036202:::C0406396:::C1302844:::C0396073:::C0036206:::C0340201:::C13… | 0.0074:::4.8495:::5.0965:::5.2098:::5.3056:::5.3212:::5.4128:::5.4719:::5.5281::… | 0.0000:::0.0373:::0.0412:::0.0433:::0.0452:::0.0452:::0.0470:::0.0479:::0.0488::… | pulmonary sarcoidosis:::sarcoidosis:::nodular sarcoidosis:::skin sarcoidosis:::l… |
-| Crohn’s disease | Disease_Syndrome_Disorder | C0010346 | crohn’s disease | C0010346:::C0399497:::C0156147:::C1301260:::C0941042:::C1301261:::C5686651:::C60… | 0.0071:::4.6627:::5.2420:::5.2609:::5.6188:::5.6324:::5.6705:::5.6709:::6.0026 | 0.0000:::0.0340:::0.0424:::0.0428:::0.0487:::0.0486:::0.0508:::0.0501:::0.0560 | crohn’s disease:::orofacial crohn’s disease:::crohn’s colitis:::gastrointestinal… |</p>
+    <p><em>Result</em></p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ner_chunk</th>
+          <th>entity</th>
+          <th>umls_code</th>
+          <th>resolution</th>
+          <th>all_k_results</th>
+          <th>all_k_distances</th>
+          <th>all_k_cosine_distances</th>
+          <th>all_k_resolutions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>systemic lupus erythematosus</td>
+          <td>Disease_Syndrome_Disorder</td>
+          <td>C0024141</td>
+          <td>systemic lupus erythematosus</td>
+          <td>C0024141:::C0409974:::C0024137:::C1274838:::C6022675:::C0409977:::C0409976:::C07…</td>
+          <td>0.0067:::3.4325:::4.0055:::4.4309:::4.4907:::4.5642:::4.5922:::4.6192:::4.6675::…</td>
+          <td>0.0000:::0.0184:::0.0251:::0.0308:::0.0317:::0.0322:::0.0328:::0.0336:::0.0334::…</td>
+          <td>systemic lupus erythematosus:::lupus erythematosus:::cutaneous lupus erythematos…</td>
+        </tr>
+        <tr>
+          <td>sclerosis</td>
+          <td>Disease_Syndrome_Disorder</td>
+          <td>C0036412</td>
+          <td>sclera disease</td>
+          <td>C0036412:::C0263009:::C0036421:::C0007795:::C0237854:::C0004712:::C0036416:::C00…</td>
+          <td>6.4563:::6.5690:::6.7129:::6.8109:::6.8550:::6.9680:::7.2263:::7.5483:::7.5862::…</td>
+          <td>0.0689:::0.0695:::0.0752:::0.0738:::0.0762:::0.0792:::0.0860:::0.0915:::0.0957::…</td>
+          <td>sclera disease:::sclerosis skin:::system; sclerosis:::diffuse sclerosis:::sclero…</td>
+        </tr>
+        <tr>
+          <td>fibromyalgia</td>
+          <td>Disease_Syndrome_Disorder</td>
+          <td>C0016053</td>
+          <td>fibromyalgia</td>
+          <td>C0016053:::C0751153:::C0751152:::C0015674:::C4703320</td>
+          <td>0.0070:::3.9297:::4.7923:::6.1085:::7.4228</td>
+          <td>0.0000:::0.0242:::0.0364:::0.0572:::0.0843</td>
+          <td>fibromyalgia:::secondary fibromyalgia:::fibromyalgia primary:::chronic fatigue-f…</td>
+        </tr>
+        <tr>
+          <td>sepsis</td>
+          <td>Disease_Syndrome_Disorder</td>
+          <td>C0036690</td>
+          <td>sepsis</td>
+          <td>C0036690:::C3164780:::C0242966:::C0152965:::C1141927:::C0684256:::C1141926:::C17…</td>
+          <td>0.0084:::4.0589:::4.4404:::4.9625:::5.2109:::5.7252:::5.8590:::5.9812:::5.9983::…</td>
+          <td>0.0000:::0.0260:::0.0316:::0.0396:::0.0428:::0.0522:::0.0539:::0.0546:::0.0564::…</td>
+          <td>sepsis:::clinical sepsis:::syndrome sepsis:::staph sepsis:::wound sepsis:::sepsi…</td>
+        </tr>
+        <tr>
+          <td>bacterial pneumonia</td>
+          <td>Disease_Syndrome_Disorder</td>
+          <td>C0004626</td>
+          <td>bacterial pneumonia</td>
+          <td>C0004626:::C0339952:::C0276523:::C0339951:::C1443238:::C0264386:::C0155860:::C05…</td>
+          <td>0.0078:::4.8777:::6.3237:::6.3566:::6.6580:::6.8243:::6.8403:::6.8537:::6.8800::…</td>
+          <td>0.0000:::0.0377:::0.0640:::0.0656:::0.0706:::0.0734:::0.0762:::0.0770:::0.0777::…</td>
+          <td>bacterial pneumonia:::bacterial pneumonia secondary:::aids with bacterial pneumo…</td>
+        </tr>
+        <tr>
+          <td>respiratory distress syndrome</td>
+          <td>Disease_Syndrome_Disorder</td>
+          <td>C0035220</td>
+          <td>respiratory distress syndrome</td>
+          <td>C0035220:::C0852283:::C0035222:::C0158940:::C0877339:::C5420230:::C3810183:::C54…</td>
+          <td>0.0062:::4.0045:::4.1765:::5.1745:::6.0413:::6.2379:::6.2459:::6.4251:::6.4578::…</td>
+          <td>0.0000:::0.0239:::0.0259:::0.0397:::0.0535:::0.0576:::0.0574:::0.0608:::0.0607::…</td>
+          <td>respiratory distress syndrome:::respiratory distress syndromes:::acquired respir…</td>
+        </tr>
+        <tr>
+          <td>pulmonary sarcoidosis</td>
+          <td>Disease_Syndrome_Disorder</td>
+          <td>C0036205</td>
+          <td>pulmonary sarcoidosis</td>
+          <td>C0036205:::C0036202:::C0406396:::C1302844:::C0396073:::C0036206:::C0340201:::C13…</td>
+          <td>0.0074:::4.8495:::5.0965:::5.2098:::5.3056:::5.3212:::5.4128:::5.4719:::5.5281::…</td>
+          <td>0.0000:::0.0373:::0.0412:::0.0433:::0.0452:::0.0452:::0.0470:::0.0479:::0.0488::…</td>
+          <td>pulmonary sarcoidosis:::sarcoidosis:::nodular sarcoidosis:::skin sarcoidosis:::l…</td>
+        </tr>
+        <tr>
+          <td>Crohn’s disease</td>
+          <td>Disease_Syndrome_Disorder</td>
+          <td>C0010346</td>
+          <td>crohn’s disease</td>
+          <td>C0010346:::C0399497:::C0156147:::C1301260:::C0941042:::C1301261:::C5686651:::C60…</td>
+          <td>0.0071:::4.6627:::5.2420:::5.2609:::5.6188:::5.6324:::5.6705:::5.6709:::6.0026</td>
+          <td>0.0000:::0.0340:::0.0424:::0.0428:::0.0487:::0.0486:::0.0508:::0.0501:::0.0560</td>
+          <td>crohn’s disease:::orofacial crohn’s disease:::crohn’s colitis:::gastrointestinal…</td>
+        </tr>
+      </tbody>
+    </table>
 
     <p><em>Example</em> (code-level mapping — <code class="language-plaintext highlighter-rouge">umls_rxnorm_mapper</code>):</p>
 
@@ -1553,12 +1640,30 @@ function wrapWordInSpan(data, wordToWrap) {
 <span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </code></pre></div>    </div>
 
-    <p class="table-model-big"><em>Result</em></p>
-    <p>| umls_code | rxnorm_code |
-|—|—|
-| C1126248 | 330565 |
-| C0978482 | 861004 |
-| C0691677 | 198776 |</p>
+    <p><em>Result</em></p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>umls_code</th>
+          <th>rxnorm_code</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>C1126248</td>
+          <td>330565</td>
+        </tr>
+        <tr>
+          <td>C0978482</td>
+          <td>861004</td>
+        </tr>
+        <tr>
+          <td>C0691677</td>
+          <td>198776</td>
+        </tr>
+      </tbody>
+    </table>
 
     <p><em>Example</em> (NER-based mapping — <code class="language-plaintext highlighter-rouge">umls_general_concepts_mapper</code>):</p>
 
@@ -1605,15 +1710,42 @@ function wrapWordInSpan(data, wordToWrap) {
 <span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </code></pre></div>    </div>
 
-    <p class="table-model-big"><em>Result</em></p>
-    <p>| ner_chunk | umls_code |
-|—|—|
-| dyspnea | C0013404 |
-| fever | C0015967 |
-| pneumonia | C0032285 |
-| bronchoscopy | C5979970 |
-| catheter placement | C0883301 |
-| chemotherapy | C0013216 |</p>
+    <p><em>Result</em></p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ner_chunk</th>
+          <th>umls_code</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>dyspnea</td>
+          <td>C0013404</td>
+        </tr>
+        <tr>
+          <td>fever</td>
+          <td>C0015967</td>
+        </tr>
+        <tr>
+          <td>pneumonia</td>
+          <td>C0032285</td>
+        </tr>
+        <tr>
+          <td>bronchoscopy</td>
+          <td>C5979970</td>
+        </tr>
+        <tr>
+          <td>catheter placement</td>
+          <td>C0883301</td>
+        </tr>
+        <tr>
+          <td>chemotherapy</td>
+          <td>C0013216</td>
+        </tr>
+      </tbody>
+    </table>
 
   </div>
   <div class="h3-box">
@@ -1682,6 +1814,8 @@ function wrapWordInSpan(data, wordToWrap) {
       <li><code class="language-plaintext highlighter-rouge">zeroshot_multitask_oncology_generic</code></li>
       <li><code class="language-plaintext highlighter-rouge">cda_deidentification_extend_free_text</code></li>
       <li><code class="language-plaintext highlighter-rouge">cda_deidentification_patient</code></li>
+      <li><code class="language-plaintext highlighter-rouge">zeroshot_multitask_deid_cda</code></li>
+      <li><code class="language-plaintext highlighter-rouge">zeroshot_multitask_deid_cda_large</code></li>
       <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_umls_findings</code></li>
       <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_umls_clinical_drugs</code></li>
       <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_umls_disease_syndrome</code></li>
