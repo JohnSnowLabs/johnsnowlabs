@@ -32,6 +32,7 @@ This model maps clinical entities and concepts to ICD11 codes to ICD10 codes.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
@@ -42,7 +43,7 @@ doc2chunk = Doc2Chunk()\
     .setInputCols(["document"])\
     .setOutputCol("ner_chunk")
 
-mapper = ChunkMapperModel.pretrained("icd11_icd10_mapper","en","clinical/models")\
+mapper = ChunkMapperModel.pretrained("icd11_icd10_mapper", "en", "clinical/models")\
     .setInputCols(["ner_chunk"])\
     .setOutputCol("mappings")
 
@@ -69,7 +70,7 @@ doc2chunk = nlp.Doc2Chunk()\
     .setInputCols(["document"])\
     .setOutputCol("ner_chunk")
 
-mapper = nlp.ChunkMapperModel.pretrained("icd11_icd10_mapper","en","clinical/models")\
+mapper = nlp.ChunkMapperModel.pretrained("icd11_icd10_mapper", "en", "clinical/models")\
     .setInputCols(["ner_chunk"])\
     .setOutputCol("mappings")
 
@@ -104,7 +105,7 @@ val pipeline = new Pipeline().setStages(Array(
     mapper
 ))
 
-val data = Seq("""[["3A00.01"],["7A00"],["3A00.01"],["BA00.0"]]""").toDF("text")
+val data = Seq(Array("3A00.01","7A00","3A00.01","BA00.0")).toDF("text")
 
 val result = pipeline.fit(data).transform(data)
 
