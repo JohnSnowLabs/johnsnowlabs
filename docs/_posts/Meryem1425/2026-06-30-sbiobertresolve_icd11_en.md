@@ -20,6 +20,10 @@ use_language_switcher: "Python-Scala-Java"
 
 This model maps clinical entities and concepts to ICD11 codes using `sbiobert_base_cased_mli_onnx` sentence bert embeddings. It also returns the official resolution text within the brackets inside the metadata.
 
+## Predicted Entities
+
+`ICD11 Code`
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
@@ -32,6 +36,7 @@ This model maps clinical entities and concepts to ICD11 codes using `sbiobert_ba
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
