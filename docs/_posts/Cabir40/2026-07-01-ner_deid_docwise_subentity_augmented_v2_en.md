@@ -23,8 +23,8 @@ Named Entity Recognition model that detects PHI (Protected Health Information) e
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_deid_docwise_subentity_augmented_v2_en_6.4.1_3.0_1782946285387.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_deid_docwise_subentity_augmented_v2_en_6.4.1_3.0_1782946285387.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_deid_docwise_subentity_augmented_v2_en_6.4.1_3.0_1782946571763.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_deid_docwise_subentity_augmented_v2_en_6.4.1_3.0_1782946571763.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -172,11 +172,22 @@ val result = pipeline.fit(data).transform(data)
 
 ```bash
 
-+-----------+------+
-|chunk_text |entity|
-+-----------+------+
-|            |      |
-+-----------+------+
++-----------------------+-----+---+--------+
+|chunk                  |begin|end|entity  |
++-----------------------+-----+---+--------+
+|James                  |5    |9  |PATIENT |
+|Wilson                 |11   |16 |PATIENT |
+|Boston General Hospital|85   |107|HOSPITAL|
+|10/25/2023             |112  |121|DATE    |
+|123 Oak Street         |136  |149|STREET  |
+|Springfield            |152  |162|CITY    |
+|IL                     |165  |166|STATE   |
+|62704                  |168  |172|ZIP     |
+|555-0199               |198  |205|PHONE   |
+|999-00-1234            |219  |229|SSN     |
+|Gregory                |236  |242|PATIENT |
+|House                  |244  |248|PATIENT |
++-----------------------+-----+---+--------+
 
 ```
 
