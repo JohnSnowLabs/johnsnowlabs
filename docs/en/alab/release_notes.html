@@ -628,670 +628,553 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <h2 id="generative-ai-lab-81-custom-llm-integration-and-next-generation-multi-tab-analytics-dashboard">Generative AI Lab 8.1: Custom LLM Integration and Next-Generation Multi-Tab Analytics Dashboard</h2>
+  <h2 id="native-dicom-image-support-and-intelligent-data-import-in-generative-ai-lab-82">Native DICOM Image Support and Intelligent Data Import in Generative AI Lab 8.2</h2>
 
-  <p>Generative AI Lab 8.1 introduces major enhancements focused on analytics visibility, custom LLM integration, annotation workflow efficiency, and healthcare terminology management.</p>
+  <p>Generative AI Lab 8.2 introduces major enhancements for healthcare AI workflows, medical imaging, and annotation efficiency. The headline feature is <strong>native DICOM image support</strong>, enabling organizations to import, annotate, review, and de-identify medical images directly within the platform while preserving associated metadata and protecting sensitive patient information.</p>
 
-  <p>The headline feature of this release is the redesigned multi-tab Analytics Dashboard, which provides project managers and annotation teams with a more scalable and structured way to monitor project progress, team productivity, annotation quality, inter-annotator agreement, and LLM evaluation metrics. The new analytics experience improves discoverability and navigation by organizing operational insights into dedicated dashboard sections and contextual tabs.</p>
+  <p>This release also introduces <strong>intelligent JSON label mapping</strong>, making it easier to import annotation datasets created in other projects or external tools. Labels are automatically matched to the target project, significantly reducing manual configuration and simplifying the reuse of pre-annotated data.</p>
 
-  <p>Version 8.1 also introduces Custom LLM Integration support, enabling organizations to connect external, private, or self-hosted Large Language Models directly into Generative AI Lab workflows. Teams can now use organization-specific models alongside supported providers across evaluation, annotation, response comparison, and synthetic task generation workflows.</p>
+  <p>In addition, Generative AI Lab 8.2 delivers a range of usability and workflow improvements across annotation and review experiences, including enhanced relation navigation and sorting, more precise Test Suite controls, configurable text trimming options, and backend optimizations that improve terminology resolver performance and stability during large-scale pre-annotation workflows.</p>
 
-  <p>In addition, this release delivers multiple usability and workflow improvements across Visual NER, annotation management, relation extraction, and Medical Terminology workflows. Enhancements such as Zero-Shot prompt support for Visual NER De-Identification projects, improved annotation workspace responsiveness, faster terminology lookup performance, and safer Medical Terminology management further improve operational efficiency across enterprise annotation projects.</p>
+  <h2 id="native-dicom-image-support-annotation-and-de-identification-for-medical-images">Native DICOM Image Support: Annotation and De-Identification for Medical Images</h2>
 
-  <p>Together, these updates improve scalability, analytics visibility, workflow flexibility, and overall annotation efficiency across complex AI and healthcare data workflows.</p>
+  <h3 id="whats-new">What’s New</h3>
 
-  <h2 id="redesigned-multi-tab-analytics-dashboard">Redesigned Multi-Tab Analytics Dashboard</h2>
+  <p>Generative AI Lab now provides <strong>native support for DICOM (Digital Imaging and Communications in Medicine)</strong>, allowing healthcare organizations to upload, annotate, review, compare, and de-identify medical images directly within the platform. Users no longer need to convert DICOM studies into JPEG or PNG before annotation, preserving image quality, clinical metadata, and existing annotation workflows.</p>
 
-  <p>Version <strong>8.1</strong> introduces a completely redesigned <strong>Analytics Dashboard</strong> experience for Generative AI Lab, providing project managers, reviewers, and annotation teams with a centralized and scalable interface for monitoring project activity, productivity, annotation quality, and inter-annotator agreement.</p>
+  <p>This release also introduces dedicated <strong>DICOM De-Identification projects</strong>, enabling users to de-identify both image content and supported DICOM metadata using configurable masking rules. Original and de-identified images can be reviewed side by side together with metadata changes, making it easier to validate de-identification results before exporting.</p>
 
-  <p>Previously, analytics charts, tables, and metrics were displayed together within a single scrolling page, which could become difficult to navigate as projects increased in size and complexity. The new analytics experience reorganizes reporting capabilities into structured analytics pages with dynamic horizontal tabs, allowing users to quickly locate relevant insights without excessive scrolling or manual filtering.</p>
+  <p><img src="/assets/images/annotation_lab/8.2.0/DICOM_Project_setup_and_Task_import.gif" alt="Creating a DICOM project and importing medical images" /> 
+<em><center>Users can create dedicated DICOM projects and import medical images directly in DICOM format without requiring image conversion.</center></em></p>
 
-  <p><img src="/assets/images/annotation_lab/8.1.0/5.gif" alt="Redesigned Analytics Dashboard with multi-tab navigation" />
-<em><center>The redesigned Analytics Dashboard organizes operational insights into dedicated analytics sections and contextual tabs, improving navigation and scalability across large annotation projects.</center></em></p>
+  <p><img src="/assets/images/annotation_lab/8.2.0/Metadata_Pop_Up.gif" alt="Viewing DICOM metadata within the annotation workspace" /> 
+<em><center>The metadata viewer provides quick access to supported DICOM metadata during annotation and review workflows.</center></em></p>
 
-  <p>The redesigned dashboard introduces dedicated sections for:</p>
+  <blockquote>
+    <p><strong>Supported metadata fields for masking:</strong> Institution Name, Patient ID, Patient Name, and Study Date.</p>
+  </blockquote>
 
-  <ul>
-    <li>Project overview and task monitoring</li>
-    <li>Label distribution and data quality analysis</li>
-    <li>Team productivity and review statistics</li>
-    <li>Inter-Annotator Agreement (IAA) analysis</li>
-    <li>LLM response comparison analytics</li>
-  </ul>
+  <p><img src="/assets/images/annotation_lab/8.2.0/Masking_Settings.png" alt="Supported DICOM metadata masking entities" />
+<em><center>DICOM De-Identification projects support configurable masking rules for selected DICOM metadata fields.</center></em></p>
 
-  <p>This update significantly improves discoverability, navigation efficiency, scalability, and overall usability across large annotation projects.</p>
-
-  <p><em><center>The redesigned Analytics Dashboard introduces a multi-tab navigation experience that organizes project insights into dedicated analytics sections for improved visibility and usability.</center></em></p>
-
-  <h2 id="technical-details">Technical Details</h2>
-
-  <h3 id="navigation-architecture">Navigation Architecture</h3>
-
-  <p>The Analytics module now uses a hierarchical navigation structure integrated directly within the project sidebar:</p>
-
-  <ul>
-    <li>Projects → Project Name → Analytics</li>
-    <li>Expandable analytics categories</li>
-    <li>Collapsible sidebar navigation</li>
-    <li>Dynamic horizontal tabs that change based on selected analytics page</li>
-  </ul>
-
-  <p>The following analytics pages are now available:</p>
-
-  <ul>
-    <li><strong>Overview</strong></li>
-    <li><strong>Labels &amp; Data Quality</strong></li>
-    <li><strong>Team Productivity</strong></li>
-    <li><strong>Inter-Annotator Agreement</strong></li>
-    <li><strong>LLM Response Comparison</strong></li>
-  </ul>
-
-  <p>Each analytics page includes dedicated tab groups optimized for the selected analytics workflow.</p>
-
-  <p><img src="/assets/images/annotation_lab/8.1.0/6.png" alt="Analytics sidebar navigation and dashboard structure" />
-<em><center>The Analytics sidebar provides structured navigation across multiple analytics categories, enabling faster access to project insights and operational metrics.</center></em></p>
-
-  <h3 id="global-dashboard-ui-improvements">Global Dashboard UI Improvements</h3>
-
-  <p>The Analytics Dashboard UI has been refined to provide a cleaner and more consistent visual experience across all analytics pages.</p>
-
-  <h4 id="ui-and-styling-improvements">UI and Styling Improvements</h4>
-  <ul>
-    <li>Dashboard typography now uses the <strong>Inter</strong> font family for improved readability and consistency.</li>
-    <li>Borders and shadows have been removed from chart containers to provide a cleaner and more minimal interface.</li>
-    <li>Chart heights have been reduced to improve dashboard density and reduce unnecessary scrolling.</li>
-  </ul>
-
-  <h4 id="layout-and-responsiveness">Layout and Responsiveness</h4>
-  <ul>
-    <li>Grid alignment and spacing have been standardized across all analytics dashboards.</li>
-    <li>Controls, titles, and charts now maintain consistent spacing and alignment.</li>
-    <li>Inline filters and controls have been optimized to prevent layout wrapping issues.</li>
-    <li>Scroll behavior has been improved to ensure dashboards remain responsive across different viewport sizes.</li>
-  </ul>
-
-  <h4 id="analytics-header-cleanup">Analytics Header Cleanup</h4>
-  <ul>
-    <li>The visible <strong>Last updated</strong> and <strong>Updated by</strong> labels have been removed from analytics headers to reduce UI clutter.</li>
-    <li>Underlying update metadata is still retained internally and is now displayed through hover tooltips on the <strong>Update Analytics</strong> button.</li>
-  </ul>
-
-  <h4 id="interactive-chart-range-slider">Interactive Chart Range Slider</h4>
-  <p>Charts with large datasets now support an interactive range slider that allows users to define visible x-axis ranges dynamically. This improves readability and navigation when analyzing high-volume datasets.</p>
-
-  <p><img src="/assets/images/annotation_lab/8.1.0/7.gif" alt="Interactive analytics chart range slider" />
-<em><center>Interactive range sliders allow users to dynamically focus on specific subsets of analytics data, improving readability and navigation across large datasets.</center></em></p>
-
-  <h3 id="overview-dashboard-redesign">Overview Dashboard Redesign</h3>
-
-  <p>The <strong>Overview</strong> page has been redesigned to provide analytics data at a glance across:</p>
-  <ul>
-    <li>Task Summary</li>
-    <li>Productivity</li>
-    <li>Inter-Annotator Agreement</li>
-  </ul>
-
-  <p>The page now acts as a centralized high-level project analytics view for project managers and reviewers.</p>
-
-  <p><img src="/assets/images/annotation_lab/8.1.0/8.gif" alt="Overview analytics dashboard with KPI widgets and operational insights" />
-<em><center>The redesigned Overview dashboard centralizes KPI widgets, productivity metrics, and inter-annotator agreement insights into a unified operational analytics experience.</center></em></p>
-
-  <h4 id="task-summary-section">Task Summary Section</h4>
-
-  <p>The Task Summary section includes multiple KPI cards and status visualizations designed to provide quick operational visibility.</p>
-
-  <h5 id="kpi-cards">KPI Cards</h5>
-  <p>The following KPI widgets are available:</p>
+  <h3 id="technical-details">Technical Details</h3>
 
   <ul>
     <li>
-      <p><strong>Total Tasks</strong>
-Displays the total number of imported tasks along with a side indicator showing the number of tasks imported within the last 30 days.</p>
+      <p><strong>Native DICOM Support</strong></p>
+
+      <p>Upload <strong>.dcm</strong> files directly through the user interface or supported APIs without requiring external conversion tools.</p>
     </li>
     <li>
-      <p><strong>Completion Rate</strong>
-Displays the percentage of submitted tasks relative to all imported tasks.</p>
+      <p><strong>Automatic Medical Image Rendering</strong></p>
+
+      <p>DICOM images are rendered automatically within the annotation workspace while preserving their original image quality.</p>
     </li>
     <li>
-      <p><strong>Reviewed Rate</strong>
-Displays the percentage of reviewed tasks relative to all submitted tasks.</p>
+      <p><strong>Annotation Compatibility</strong></p>
+
+      <p>Existing image annotation tools and workflows are fully supported within DICOM projects, allowing teams to use familiar annotation capabilities without modification.</p>
     </li>
     <li>
-      <p><strong>Total Completions</strong>
-Displays the total number of submitted completions across all annotators.</p>
+      <p><strong>Metadata Preservation</strong></p>
 
-      <p>Additional side indicators display:</p>
-      <ul>
-        <li>Number of starred completions</li>
-        <li>Number of draft completions</li>
-      </ul>
-
-      <p>A time-period filter allows users to analyze completion data across different time ranges.</p>
+      <p>Supported DICOM metadata is retained throughout the workflow and processed according to the configured de-identification settings.</p>
     </li>
-  </ul>
-
-  <p><em><center>The Overview dashboard provides centralized visibility into task progress, completion activity, and annotation performance through consolidated KPI widgets and operational charts.</center></em></p>
-
-  <h4 id="productivity-section">Productivity Section</h4>
-
-  <p>The Productivity tab includes:</p>
-  <ul>
-    <li>Submitted completions timeline analytics</li>
-    <li>Average task length analysis by annotator</li>
-  </ul>
-
-  <h4 id="inter-annotator-agreement-section">Inter-Annotator Agreement Section</h4>
-
-  <p>The Inter-Annotator Agreement section includes:</p>
-  <ul>
-    <li>Annotator comparison dropdown filters</li>
-    <li>Entity type selection</li>
-    <li>NER and Assertion agreement analysis</li>
-    <li>Chunk-level agreement comparison charts</li>
-  </ul>
-
-  <p><em><center>The Overview dashboard consolidates project KPIs, productivity insights, and inter-annotator agreement metrics into a unified analytics experience.</center></em></p>
-
-  <h3 id="labels--data-quality-dashboard">Labels &amp; Data Quality Dashboard</h3>
-
-  <p>A dedicated <strong>Labels &amp; Data Quality</strong> page has been added to support annotation quality analysis and label distribution monitoring.</p>
-
-  <h4 id="label-frequency-analytics">Label Frequency Analytics</h4>
-  <p>The Label Frequency section includes:</p>
-  <ul>
-    <li>Ground Truth completion-based calculations</li>
-    <li>Label distribution visualizations</li>
-    <li>Team-level label frequency analysis</li>
-  </ul>
-
-  <h4 id="label-variability-analytics">Label Variability Analytics</h4>
-  <p>The Label Variability section includes:</p>
-  <ul>
-    <li>Total vs distinct value analysis</li>
-    <li>Average token distribution per label</li>
-    <li>Variability tracking across annotations</li>
-  </ul>
-
-  <p><em><center>The Labels &amp; Data Quality page provides dedicated analytics for label distribution, variability analysis, and annotation consistency monitoring.</center></em></p>
-
-  <h3 id="team-productivity-dashboard">Team Productivity Dashboard</h3>
-
-  <p>The <strong>Team Productivity</strong> page organizes productivity analytics into dedicated tabs:</p>
-
-  <ul>
-    <li>Completions</li>
-    <li>Time Metrics</li>
-    <li>Review</li>
-  </ul>
-
-  <p><img src="/assets/images/annotation_lab/8.1.0/9.png" alt="Team Productivity analytics dashboard with completion and review metrics" />
-<em><center>The Team Productivity dashboard organizes completion trends, review analytics, and time-based productivity metrics into dedicated tabs for improved operational visibility.</center></em></p>
-
-  <h4 id="completions-tab">Completions Tab</h4>
-  <p>The dashboard now focuses primarily on completion trend analysis.</p>
-
-  <p>The following items were removed from this tab to reduce duplication:</p>
-  <ul>
-    <li>Total Completions widget row</li>
-    <li>Completions by Status chart</li>
-    <li>Time Period selector</li>
-  </ul>
-
-  <h4 id="review-metrics">Review Metrics</h4>
-  <p>The Review section includes:</p>
-  <ul>
-    <li>Average tokens for submitted and reviewed tasks</li>
-    <li>Average reviews per annotator</li>
-    <li>Submitted vs reviewed task ratios</li>
-    <li>Total tokens across submitted and reviewed tasks</li>
-  </ul>
-
-  <h4 id="time-metrics">Time Metrics</h4>
-  <p>The Time Metrics section includes:</p>
-  <ul>
-    <li>Average time spent per task</li>
-    <li>Average edit time per task</li>
-    <li>Average number of edits per task</li>
-  </ul>
-
-  <p><em><center>The Team Productivity page provides structured visibility into annotation throughput, editing activity, and review efficiency across teams.</center></em></p>
-
-  <h3 id="inter-annotator-agreement-dashboard">Inter-Annotator Agreement Dashboard</h3>
-
-  <p>The <strong>Inter-Annotator Agreement</strong> dashboard has been redesigned into dedicated analytical sections for agreement analysis.</p>
-
-  <p><img src="/assets/images/annotation_lab/8.1.0/10.png" alt="Inter-Annotator Agreement dashboard with chunk-level comparison analytics" />
-<em><center>The redesigned Inter-Annotator Agreement dashboard provides detailed agreement analysis, chunk-level comparison metrics, and disagreement tracking across annotation teams.</center></em></p>
-
-  <h4 id="overview-tab">Overview Tab</h4>
-  <p>The Overview tab includes:</p>
-  <ul>
-    <li>Annotator comparison filters</li>
-    <li>Entity type selection</li>
-    <li>NER and Assertion agreement metrics</li>
-    <li>Chunk-level agreement visualization</li>
-    <li>Detailed agreement tables for common tasks</li>
-  </ul>
-
-  <h4 id="chunk-level-analysis">Chunk Level Analysis</h4>
-  <p>The section includes:</p>
-  <ul>
-    <li>Chunk extraction tables by annotator</li>
-    <li>Chunk frequency analysis</li>
-    <li>Label-based chunk cross-reference tables</li>
-  </ul>
-
-  <p><em><center>The redesigned Inter-Annotator Agreement dashboard enables detailed comparison of annotator agreement, disagreement trends, and chunk-level analysis.</center></em></p>
-
-  <h3 id="llm-response-comparison-dashboard">LLM Response Comparison Dashboard</h3>
-
-  <p>The <strong>LLM Response Comparison</strong> dashboard has been redesigned with a dedicated tabbed analytics experience optimized for LLM evaluation workflows.</p>
-
-  <p>The dashboard now includes the following dynamic tabs:</p>
-
-  <ul>
-    <li><strong>LLM Choices</strong></li>
-    <li><strong>Labels</strong></li>
-    <li><strong>Quality Ratings</strong></li>
-  </ul>
-
-  <p>The active tab is highlighted visually, and switching tabs updates dashboard content dynamically without requiring page reloads.</p>
-
-  <p><img src="/assets/images/annotation_lab/8.1.0/11.png" alt="LLM Response Comparison dashboard with LLM choice analytics" />
-<em><center>The LLM Choices tab visualizes annotator preferences across multiple LLM responses through result summaries and provider selection frequency analytics.</center></em></p>
-
-  <h4 id="llm-choices-tab">LLM Choices Tab</h4>
-  <p>The LLM Choices tab includes:</p>
-
-  <h5 id="result-summary">Result Summary</h5>
-  <ul>
-    <li>Donut chart visualization showing the percentage distribution of selected LLM responses based on annotator selections.</li>
-  </ul>
-
-  <h5 id="choice-frequency-by-annotator">Choice Frequency by Annotator</h5>
-  <ul>
     <li>
-      <p>Dynamic bar chart showing:</p>
+      <p><strong>Metadata Comparison</strong></p>
 
-      <blockquote>
-        <p>{LLM Name} – Choice Frequency by Annotator</p>
-      </blockquote>
+      <p>The DICOM comparison view supports both <strong>Image Comparison</strong> and <strong>Metadata Comparison</strong>, enabling reviewers to validate image modifications alongside metadata changes before exporting.</p>
     </li>
-    <li>Includes an LLM selector dropdown populated dynamically from configured project LLMs.</li>
-    <li>The chart updates automatically when a different LLM is selected.</li>
+    <li>
+      <p><strong>Configurable Metadata Masking</strong></p>
+
+      <p>DICOM De-Identification projects include a dedicated <strong>Metadata Masking Settings</strong> section where masking behavior can be configured independently for each supported metadata field.</p>
+    </li>
   </ul>
 
-  <h4 id="labels-insights-tab">Labels Insights Tab</h4>
-  <p>The Labels Insights tab consolidates all label-related charts into a dedicated section.</p>
+  <p>Supported masking methods include:</p>
 
-  <p><img src="/assets/images/annotation_lab/8.1.0/12.png" alt="LLM label insights analytics dashboard" />
-<em><center>The Label Insights tab centralizes label-based evaluation analytics, enabling comparison of hallucination patterns, citation issues, and response quality indicators across LLM providers.</center></em></p>
+  <ul>
+    <li>Masked with Characters</li>
+    <li>Masked with Fixed-Length Characters</li>
+    <li>Obfuscation</li>
+    <li>None</li>
+  </ul>
 
-  <h4 id="quality-score-tab">Quality Score Tab</h4>
-  <p>The Quality Score tab groups all quality rating analytics into a dedicated section.</p>
+  <blockquote>
+    <p><strong>Note:</strong> Selecting <strong>None</strong> removes the value from the corresponding metadata field in the de-identified DICOM file.</p>
+  </blockquote>
 
-  <p><img src="/assets/images/annotation_lab/8.1.0/13.png" alt="LLM quality score analytics dashboard" />
-<em><center>The Quality Scores tab provides structured analytics for reference quality, coherence, relevance, and coverage ratings across evaluated LLM providers.</center></em></p>
+  <p><img src="/assets/images/annotation_lab/8.2.0/DICOM_De-identification_Project_Setup.gif" alt="Complete DICOM de-identification workflow" /> 
+<em><center>DICOM De-Identification projects support end-to-end workflows, from project configuration through image and metadata de-identification.</center></em></p>
 
-  <h2 id="user-benefits">User Benefits</h2>
+  <p><img src="/assets/images/annotation_lab/8.2.0/DICOM_De-identification_Metadata_Comparison.gif" alt="Side-by-side DICOM metadata comparison" /> 
+<em><center>Reviewers can compare original and de-identified metadata side by side to validate masking results before export.</center></em></p>
+
+  <h3 id="user-benefits">User Benefits</h3>
 
   <ul>
     <li>
-      <p><strong>Improved Analytics Discoverability</strong>
-Quickly locate relevant charts, KPIs, and tables through structured navigation and contextual tabs.</p>
+      <p><strong>End-to-End Medical Imaging Workflows</strong> — Upload, annotate, compare, and de-identify DICOM images without external conversion.</p>
     </li>
     <li>
-      <p><strong>Better Scalability for Large Projects</strong>
-Organized dashboard sections reduce clutter and improve usability for projects with extensive analytics data.</p>
+      <p><strong>Comprehensive De-Identification</strong> — Protect both image content and supported DICOM metadata using configurable masking methods.</p>
     </li>
     <li>
-      <p><strong>Cleaner and More Focused UI</strong>
-Reduced chart clutter, standardized layouts, and simplified dashboards improve readability and reduce cognitive overhead.</p>
+      <p><strong>Improved Validation</strong> — Compare original and de-identified images together with metadata changes before exporting.</p>
     </li>
     <li>
-      <p><strong>Faster Decision-Making</strong>
-Centralized analytics and interactive filtering provide quicker access to operational insights and quality metrics.</p>
+      <p><strong>Preserved Clinical Quality</strong> — Maintain original image quality while applying configurable metadata de-identification.</p>
     </li>
     <li>
-      <p><strong>Enhanced Annotation Oversight</strong>
-Monitor project progress, team productivity, review activity, and inter-annotator agreement from a unified interface.</p>
-    </li>
-    <li>
-      <p><strong>Improved Quality Analysis</strong>
-Dedicated data quality and agreement sections enable better identification of annotation inconsistencies and disagreement patterns.</p>
-    </li>
-    <li>
-      <p><strong>Optimized LLM Evaluation Workflows</strong>
-Specialized analytics for LLM-comparison projects provide structured visibility into model evaluation trends.</p>
-    </li>
-    <li>
-      <p><strong>More Efficient Navigation</strong>
-Multi-tab navigation eliminates excessive scrolling and improves movement between analytics categories.</p>
-    </li>
-    <li>
-      <p><strong>Improved Responsiveness</strong>
-Standardized layouts and responsive controls improve usability across different screen sizes and dashboard configurations.</p>
+      <p><strong>Reduced Operational Overhead</strong> — Eliminate third-party conversion tools and simplify medical imaging workflows within a single platform.</p>
     </li>
   </ul>
 
-  <h2 id="example-use-case">Example Use Case</h2>
+  <h3 id="example-use-case">Example Use Case</h3>
 
-  <p>A project manager overseeing a large healthcare annotation project opens the redesigned Analytics Dashboard to review project progress.</p>
+  <p>A hospital imaging team imports MRI and CT studies directly into a DICOM De-Identification project. After configuring metadata masking rules, reviewers compare the original and de-identified images alongside metadata changes to verify that patient information has been removed while preserving the clinical quality required for research and AI model development.</p>
 
-  <p>Using the new sidebar navigation, the manager switches between:</p>
-  <ul>
-    <li><strong>Overview</strong> to monitor task completion and submission trends</li>
-    <li><strong>Team Productivity</strong> to identify annotator throughput and review performance</li>
-    <li><strong>Labels &amp; Data Quality</strong> to analyze label imbalance and annotation consistency</li>
-    <li><strong>Inter-Annotator Agreement</strong> to investigate disagreement patterns between reviewers</li>
-    <li><strong>LLM Response Comparison</strong> to evaluate annotator preferences across multiple LLM responses</li>
-  </ul>
+  <h2 id="flexible-label-matching--mapping-for-json-uploads">Flexible Label Matching &amp; Mapping for JSON Uploads</h2>
 
-  <p>Instead of scrolling through a single analytics page, the manager can quickly navigate through dedicated tabs and filtered views to locate specific operational insights. This enables faster decision-making, improved project oversight, and more efficient quality management across large annotation teams.</p>
+  <h3 id="whats-new-1">What’s New</h3>
 
-  <h2 id="custom-llm-integration-connect-private-and-self-hosted-models">Custom LLM Integration: Connect Private and Self-Hosted Models</h2>
-  <p>Generative AI Lab now supports <strong>Custom LLM Integration</strong>, allowing organizations to connect and use their own external or locally hosted Large Language Models within the platform. Teams can add organization-specific models alongside existing supported providers and use them across evaluation, annotation, response comparison, synthetic task generation, and external prompt workflows.</p>
+  <p>Generative AI Lab now introduces <strong>Flexible Label Matching &amp; Mapping</strong>, making it easier to reuse annotation datasets across projects without modifying the original JSON files.</p>
 
-  <p>Custom LLMs can be configured directly within the platform using options such as <strong>Authentication Scripts</strong>, <strong>Custom Credentials</strong>, <strong>Temperature</strong>, and <strong>Maximum Tokens</strong>.</p>
+  <p>Previously, importing pre-annotated tasks or previously exported annotations required every label name in the uploaded JSON to exactly match the labels configured within the destination project. Even minor differences in capitalization or naming conventions prevented the import and required users to manually edit their datasets.</p>
 
-  <p><img src="/assets/images/annotation_lab/8.1.0/1.gif" alt="Custom LLM integration via Integration Page" />
-<em><center>Users can configure and connect custom external or self-hosted LLM providers directly within Generative AI Lab, enabling organization-specific models to be integrated into annotation and evaluation workflows.</center></em></p>
+  <p>With Flexible Label Matching &amp; Mapping, the platform automatically detects label discrepancies during import, suggests appropriate mappings, and allows users to review, approve, or customize mappings before the upload is completed. This significantly reduces manual preparation while ensuring imported annotations remain consistent with the destination project’s label configuration.</p>
 
-  <p><img src="/assets/images/annotation_lab/8.1.0/2.gif" alt="Custom LLM selection during project configuration" />
-<em><center>Custom LLM providers can be selected alongside supported providers during project setup, allowing teams to include organization-specific models in evaluation and response comparison workflows.</center></em></p>
+  <p><img src="/assets/images/annotation_lab/8.2.0/Label_Matching.png" alt="Flexible Label Mapping during JSON import" /> 
+<em><center>Users can review unmatched labels, accept suggested mappings, or manually define mappings before completing the import.</center></em></p>
 
   <h3 id="technical-details-1">Technical Details</h3>
 
-  <p><strong>Custom LLM Configuration:</strong> 
-A new <strong>Add Custom LLM</strong> option is available within the <strong>Integration</strong> and <strong>Project Settings</strong> sections, allowing users to configure custom LLM endpoints directly from the UI.</p>
+  <h4 id="automatic-label-detection">Automatic Label Detection</h4>
 
-  <p><strong>Supported Configuration Fields:</strong> 
-Users can configure:</p>
+  <p>During JSON import, Generative AI Lab automatically compares labels contained in the uploaded file with the labels configured for the selected project.</p>
+
+  <p>Instead of rejecting the upload when differences are detected, the platform identifies unmatched labels and presents them for review.</p>
+
+  <h4 id="intelligent-label-matching">Intelligent Label Matching</h4>
+
+  <p>To reduce manual effort, the system automatically suggests mappings for labels that closely resemble existing project labels using:</p>
+
   <ul>
-    <li>Model Name</li>
-    <li>Base URL / Endpoint</li>
-    <li>API Key or Authentication Token</li>
-    <li>Optional parameters such as Temperature and Maximum Tokens</li>
+    <li>Case-insensitive matching</li>
+    <li>Normalized label comparison</li>
+    <li>Minor string similarity detection</li>
   </ul>
 
-  <p><strong>Proxy-Based Routing &amp; Connection Validation:</strong> 
-All LLM requests are routed through a centralized proxy server to ensure secure and standardized communication across providers. The proxy server is responsible for authentication handling, API key management, request logging, rate limiting, and request/response normalization.
-Before saving the configuration, the system validates connectivity through the proxy server. If an endpoint is invalid or authentication fails, users are shown clear error messages to help identify and resolve connection issues quickly.</p>
+  <p>For example:</p>
 
-  <p><strong>Project- and User-Level Scope:</strong> Custom LLMs can be configured at either the project or user level</p>
+  <p><img src="/assets/images/annotation_lab/8.2.0/Automatic_mapping.png" alt="Automatic label mapping suggestion" /> 
+<em><center>The platform automatically suggests mapping the uploaded label <code>Problem</code> to the existing project label <code>PROBLEM</code>.</center></em></p>
 
-  <p><strong>Permissions &amp; Access Control:</strong> Only users with <strong>Admin</strong> or <strong>Supervisor</strong> roles can add, edit, or delete Custom LLM configurations. Regular users can use approved models within projects but cannot modify configurations.</p>
+  <p>These suggestions resolve common naming inconsistencies without requiring users to modify the original JSON dataset.</p>
 
-  <p><strong>Multi-Model Support:</strong> Projects can reference multiple LLMs simultaneously, including both default integrated providers and organization-specific custom models.</p>
+  <h4 id="interactive-mapping-interface">Interactive Mapping Interface</h4>
 
-  <p><strong>Supported Workflows:</strong> 
-Custom LLMs are available alongside existing integrated providers in:</p>
+  <p>When unmatched labels are detected, a dedicated mapping interface allows users to:</p>
+
   <ul>
-    <li>LLM Evaluation</li>
-    <li>Response Comparison</li>
-    <li>Annotation Workflows</li>
-    <li>Synthetic Task Generation</li>
-    <li>External Prompt Workflows</li>
+    <li>Review detected label mismatches</li>
+    <li>Accept automatically suggested mappings</li>
+    <li>Map labels to any existing project label</li>
+    <li>Ignore labels that should not be imported</li>
   </ul>
 
-  <p><img src="/assets/images/annotation_lab/8.1.0/3.gif" alt="Generating response using Custom LLM for LLM Evaluation" />
-<em><center>Custom LLMs can generate responses directly within LLM evaluation workflows, enabling side-by-side comparison between private models and integrated providers.</center></em></p>
+  <p><img src="/assets/images/annotation_lab/8.2.0/Create_new_labels.png" alt="Manual label mapping interface" /> 
+<em><center>Users can override suggested mappings and manually assign uploaded labels to existing project labels before importing.</center></em></p>
 
-  <p><img src="/assets/images/annotation_lab/8.1.0/4.gif" alt="Custom LLM used in External prompt" />
-<em><center>External prompt workflows support custom LLM providers, allowing teams to generate and evaluate responses using organization-specific models within the same interface.</center></em></p>
+  <p>This ensures users remain in full control over how imported annotations are interpreted.</p>
+
+  <h4 id="automatic-mapping-during-import">Automatic Mapping During Import</h4>
+
+  <p>Once mappings have been confirmed, Generative AI Lab automatically applies them throughout the import process.</p>
+
+  <p>The uploaded JSON file remains unchanged while imported annotations are aligned with the destination project’s configured labels.</p>
+
+  <h4 id="broad-annotation-support">Broad Annotation Support</h4>
+
+  <p>Flexible Label Matching &amp; Mapping is supported across:</p>
+
+  <ul>
+    <li>Named Entity Recognition (NER)</li>
+    <li>Classification</li>
+    <li>Relation annotations</li>
+  </ul>
+
+  <p>The feature is available for both <strong>Text NER</strong> and <strong>Visual NER</strong> projects, providing a consistent import experience across annotation workflows.</p>
+
+  <h4 id="validation--error-handling">Validation &amp; Error Handling</h4>
+
+  <p>Imports proceed successfully once all label discrepancies have been resolved through approved mappings.</p>
+
+  <p>If unmatched labels remain unresolved, the platform presents clear validation messages identifying the remaining labels that require user attention.</p>
+
+  <p><img src="/assets/images/annotation_lab/8.2.0/Label_mapping_validation.png" alt="Validation for unresolved label mappings" /> 
+<em><center>Validation messages clearly identify unresolved labels before the import can be completed.</center></em></p>
 
   <h3 id="user-benefits-1">User Benefits</h3>
 
-  <p><strong>Bring Your Own Models:</strong> Use organization-specific, private, or self-hosted LLMs directly within Generative AI Lab alongside existing supported providers.</p>
-
-  <p><strong>Centralized &amp; Secure Management:</strong> Configure and manage external LLM connections from a single interface while securely handling credentials and model communication through centralized proxy routing.</p>
-
-  <p><strong>Flexible Multi-Model Workflows:</strong> Use multiple custom and integrated LLMs across evaluation, annotation, comparison, synthetic task generation, and response generation workflows within the same project.</p>
-
-  <p><strong>Reduced Operational Overhead:</strong> Simplify external LLM integration and management without requiring additional infrastructure configuration or disconnected tooling.</p>
+  <ul>
+    <li>
+      <p><strong>Reuse Existing Annotation Datasets</strong> — Import pre-annotated tasks and previously exported annotations without modifying the original JSON files.</p>
+    </li>
+    <li>
+      <p><strong>Reduced Manual Preparation</strong> — Automatically resolve common label naming differences through intelligent mapping suggestions.</p>
+    </li>
+    <li>
+      <p><strong>Improved Import Success</strong> — Prevent unnecessary import failures caused by capitalization differences or minor naming inconsistencies.</p>
+    </li>
+    <li>
+      <p><strong>Greater User Control</strong> — Review, approve, or customize every detected label mapping before importing data.</p>
+    </li>
+    <li>
+      <p><strong>Consistent Workflows Across Projects</strong> — Apply the same import experience across Text NER and Visual NER projects supporting NER, Classification, and Relation annotations.</p>
+    </li>
+  </ul>
 
   <h3 id="example-use-case-1">Example Use Case</h3>
-  <p>An enterprise AI team wants to evaluate responses generated from an internally hosted healthcare LLM alongside OpenAI and Claude models.</p>
 
-  <p>A Project Admin adds the organization’s private LLM endpoint through the <strong>Add Custom LLM</strong> configuration page, validates the connection, and enables the model for the project. Annotators and reviewers can then use the custom model alongside other providers during evaluation and comparison workflows without requiring direct access to external infrastructure or credentials.</p>
+  <p>A healthcare annotation team wants to reuse a collection of pre-annotated clinical documents created for an earlier project. During import, Generative AI Lab detects that the uploaded dataset contains the label <code class="language-plaintext highlighter-rouge">diagnosis</code>, while the destination project uses <code class="language-plaintext highlighter-rouge">Diagnosis</code>.</p>
+
+  <p>Instead of rejecting the upload, the platform automatically suggests the appropriate mapping. After reviewing and confirming the suggested mappings, the team imports the dataset without modifying either the original JSON files or the destination project’s label configuration, allowing previously annotated data to be reused with minimal effort.</p>
 
   <h2 id="improvements">Improvements</h2>
 
-  <h3 id="zero-shot-prompt-support-for-visual-ner-de-identification">Zero-Shot Prompt Support for Visual NER De-Identification</h3>
-  <p><strong>What’s Improved</strong>
-Visual NER De-Identification projects now support <strong>Zero-Shot prompts</strong> during project configuration and pre-annotation workflows. Previously, users were unable to use Zero-Shot prompts within the Visual NER De-Identification flow, limiting prompt-based entity detection capabilities for visual documents.</p>
+  <h3 id="relation-list-sorting-for-improved-review-workflow">Relation List Sorting for Improved Review Workflow</h3>
 
-  <p>This improvement enables users to configure and use JSL-based Zero-Shot prompts seamlessly alongside Visual NER De-Identification pipelines for images and PDFs.</p>
+  <p><strong>What’s Improved</strong></p>
 
-  <p><img src="/assets/images/annotation_lab/8.1.0/14.gif" alt="Zero-shot prompt support for Visual NER de-identification projects" />
-<em><center>Visual NER De-Identification projects now support Zero-Shot prompts during configuration and pre-annotation workflows for image and PDF-based tasks.</center></em></p>
+  <p>The <strong>Relations</strong> panel now supports multiple sorting options, making it easier to review and navigate annotation tasks containing large numbers of relations. Previously, relations were displayed only in the order they were created, requiring reviewers to manually search through long relation lists during validation.</p>
+
+  <p>Users can now sort relations by <strong>Creation Order</strong>, <strong>Alphabetical Order</strong>, or <strong>Entity Type</strong>, with the selected sorting preference preserved throughout the review session. This enhancement is available in both <strong>NER</strong> and <strong>Visual NER</strong> projects, providing a more efficient and consistent review experience.</p>
+
+  <p><img src="/assets/images/annotation_lab/8.2.0/Relation_Sorting_NER.gif" alt="Relation sorting in NER projects" /> 
+<em><center>Reviewers can sort relations by creation order, alphabetical order, or entity type to simplify navigation through large relation sets in NER projects.</center></em></p>
+
+  <p><img src="/assets/images/annotation_lab/8.2.0/Relation_Sorting_Visual_NER.gif" alt="Relation sorting in Visual NER projects" /> 
+<em><center>The same relation sorting options are available in Visual NER projects, improving navigation and validation of complex document annotations.</center></em></p>
 
   <p><strong>Technical Details</strong></p>
+
   <ul>
-    <li>Enabled compatibility with <strong>Zero Shot Prompt</strong> during project configuration and pre-annotation.</li>
-    <li>Zero-Shot prompts can now be used with both <strong>image</strong> and <strong>PDF-based</strong> Visual NER De-Identification projects.</li>
-    <li>Improved validation and workflow handling to support prompt-based entity extraction within the Visual NER pipeline.</li>
+    <li>
+      <p><strong>Multiple Sorting Options</strong></p>
+
+      <p>The Relations panel now supports three sorting methods:</p>
+      <ul>
+        <li>Creation Order</li>
+        <li>Alphabetical Order</li>
+        <li>Entity Type (grouped by the first entity’s label)</li>
+      </ul>
+    </li>
+    <li>
+      <p><strong>Persistent Sorting Preference</strong></p>
+
+      <p>The selected sorting option is retained throughout the review session, eliminating the need to repeatedly reapply the preferred view.</p>
+    </li>
+    <li>
+      <p><strong>Support Across Project Types</strong></p>
+
+      <p>Relation sorting is available in both <strong>NER</strong> and <strong>Visual NER</strong> projects, providing a consistent experience across annotation workflows.</p>
+    </li>
   </ul>
 
   <p><strong>User Benefits</strong></p>
+
   <ul>
-    <li><strong>Expanded Prompt Support</strong> – Users can now use Zero-Shot prompts in Visual NER De-Identification projects.</li>
-    <li><strong>Improved Flexibility</strong> – Supports prompt-based entity detection alongside existing de-identification workflows.</li>
-    <li><strong>Better Workflow Consistency</strong> – Aligns Visual NER De-Identification capabilities with other supported NER workflows.</li>
-  </ul>
-
-  <p><strong>Example Use Case</strong>
-A healthcare team creates a Visual NER De-Identification project for scanned medical documents and configures a Zero-Shot prompt to identify patient names. During pre-annotation, the system successfully applies the prompt and detects sensitive entities directly from images and PDFs.</p>
-
-  <h3 id="performance-gains-for-annotation-and-visual-ner-workflows">Performance Gains for Annotation and Visual NER Workflows</h3>
-  <p><strong>What’s Improved</strong>
-Generative AI Lab introduces performance improvements for terminology lookup and Visual NER annotation workflows. Initial terminology lookup during manual annotation is now significantly faster, and Visual NER projects now handle repeated zoom interactions more reliably without freezing or hiding task content.</p>
-
-  <p>These enhancements provide a smoother and more responsive annotation experience, especially for healthcare and document-heavy workflows.</p>
-
-  <p><img src="/assets/images/annotation_lab/8.1.0/19.gif" alt="Faster terminology lookup during annotation" />
-<em><center>Terminology datasets are now preloaded during deployment, significantly improving the speed of initial manual terminology lookup actions.</center></em></p>
-
-  <p><strong>Technical Details</strong></p>
-  <ul>
-    <li>Lookup datasets are preloaded during <strong>Terminology Server deployment</strong> based on project configuration.</li>
-    <li>Improved initialization handling reduces delays during the first manual lookup action.</li>
-    <li>Enhanced zoom handling and rendering stability in Visual NER projects and fixed issues causing task content to disappear or the annotation page to freeze during repeated zoom actions.</li>
-  </ul>
-
-  <p><strong>User Benefits</strong></p>
-  <ul>
-    <li><strong>Faster terminology lookup</strong> during annotation.</li>
-    <li><strong>More stable Visual NER interaction</strong> during zoom operations.</li>
-    <li><strong>Improved responsiveness</strong> for image and document-based annotation workflows.</li>
-  </ul>
-
-  <p><strong>Example Use Case</strong>
-A healthcare annotator reviewing a Visual NER task can quickly perform terminology lookups while repeatedly zooming into document regions without experiencing startup delays, UI freezes, or disappearing task content.</p>
-
-  <h3 id="smart-ui-components-for-improved-annotation-workspace">Smart UI Components for Improved Annotation Workspace</h3>
-  <p><strong>What’s Improved</strong>
-Generative AI Lab introduces multiple UI improvements to create a more responsive and efficient annotation workspace. The Meta section on the right-side panel now dynamically adjusts when users resize the Annotation widget, while the Regions and Relations side panel now supports expandable and collapsible views for smaller screens.</p>
-
-  <p>Previously, resizing annotation panels could leave excessive blank space in the Meta section, and only a limited number of relations were visible on smaller displays. These enhancements improve layout consistency, space utilization, and navigation when working with large annotation and relation sets.</p>
-
-  <p><img src="/assets/images/annotation_lab/8.1.0/15.gif" alt="Expandable Regions and Relations side panel" />
-<em><center>The Regions and Relations side panel now supports expandable and collapsible views, improving visibility and navigation for large annotation sets.</center></em></p>
-
-  <p><img src="/assets/images/annotation_lab/8.1.0/16.gif" alt="Dynamic Meta section resizing during annotation" />
-<em><center>The Meta section dynamically adjusts based on annotation panel resizing, improving layout balance and reducing unused screen space.</center></em></p>
-
-  <p><strong>Technical Details</strong></p>
-  <ul>
-    <li>Added dynamic resizing behavior for the <strong>Meta</strong> section based on Annotation widget size changes.</li>
-    <li>Automatically adjusts Meta section height and positioning to reduce unused blank space.</li>
-    <li>Added expand and collapse functionality for the <strong>Regions and Relations</strong> side panel.</li>
-    <li>Expanded view supports scrolling through large relation and region lists on smaller screens.</li>
-    <li>Improved overall layout responsiveness and usability for annotation projects with large numbers of annotations and relations.</li>
-  </ul>
-
-  <p><strong>User Benefits</strong></p>
-  <ul>
-    <li><strong>Improved Layout Consistency</strong> – Maintains a cleaner and more balanced annotation interface.</li>
-    <li><strong>Better Space Utilization</strong> – Dynamically uses available screen space more efficiently.</li>
-    <li><strong>Enhanced Visibility</strong> – Allows users to view more relations and regions on smaller screens.</li>
-    <li><strong>Improved Navigation</strong> – Easier scrolling and review of large annotation and relation lists.</li>
-    <li><strong>Responsive Annotation Workspace</strong> – Provides a more responsive and efficient annotation experience across complex annotation workflows.</li>
+    <li>
+      <p><strong>Faster Navigation</strong> — Locate specific relations more quickly using the most appropriate sorting method.</p>
+    </li>
+    <li>
+      <p><strong>Improved Review Efficiency</strong> — Group related entities together to simplify validation and reduce time spent searching through large relation lists.</p>
+    </li>
+    <li>
+      <p><strong>Consistent Review Experience</strong> — Preserve sorting preferences throughout the review session for uninterrupted navigation.</p>
+    </li>
   </ul>
 
   <p><strong>Example Use Case</strong></p>
 
-  <p>A reviewer working on a laptop expands the Annotation panel while reviewing a task with multiple entity relations. The Meta section automatically resizes to fit the available space, while the expandable Relations panel allows the reviewer to scroll through longer relation lists without affecting the main annotation area.</p>
+  <p>A reviewer opens a document containing hundreds of entity relations and selects <strong>Entity Type</strong> sorting to group similar relationships together. Instead of scrolling through relations in creation order, related entities are organized into logical groups, making validation faster and improving overall review efficiency.</p>
 
-  <h3 id="bulk-management-for-relations">Bulk Management for Relations</h3>
-  <p><strong>What’s Improved</strong>
-Generative AI Lab introduces new bulk management controls for Relations, making it easier to review and manage large relation sets during annotation workflows. Users can now delete all relations in a single action or hide specific relations individually for a cleaner and more focused review experience.</p>
-
-  <p>Previously, relations had to be deleted one by one, and users could only hide all relations at once. These improvements reduce manual cleanup effort and provide more granular visibility control when working with large or overlapping relation sets.</p>
-
-  <p><img src="/assets/images/annotation_lab/8.1.0/17.gif" alt="Bulk relation deletion workflow" />
-<em><center>Users can now remove all relations in a single action, simplifying cleanup of incorrect or unnecessary relation sets.</center></em></p>
-
-  <p><img src="/assets/images/annotation_lab/8.1.0/18.gif" alt="Individual relation visibility controls" />
-<em><center>Specific relations can now be hidden individually, allowing annotators to focus on relevant connections without hiding the entire relation set.</center></em></p>
-
-  <p><strong>Technical Details</strong></p>
-  <ul>
-    <li>Added a <strong>Delete All Relations</strong> action with confirmation before deletion.</li>
-    <li>Added an individual <strong>Hide</strong> option for each relation. Users can now hide selected relations without affecting other visible relations.</li>
-    <li>Existing <strong>Hide All</strong> functionality remains supported.</li>
-  </ul>
-
-  <p><strong>User Benefits</strong></p>
-  <ul>
-    <li><strong>Faster cleanup</strong> of incorrect or unnecessary relations.</li>
-    <li><strong>Improved visibility control</strong> during relation review.</li>
-    <li><strong>More efficient annotation workflow</strong> when working with large relation sets.</li>
-  </ul>
-
-  <p><strong>Example Use Case</strong>
-An annotator reviewing a task with many overlapping relations can quickly remove all incorrect relations or hide only selected ones to focus on the most relevant connections.</p>
-
-  <h3 id="medical-terminology-workflow-improvements">Medical Terminology Workflow Improvements</h3>
+  <h3 id="quick-navigation-and-highlighting-for-selected-relations">Quick Navigation and Highlighting for Selected Relations</h3>
 
   <p><strong>What’s Improved</strong></p>
 
-  <p>Version 8.1 introduces several usability improvements for Medical Terminology configuration and management workflows.</p>
+  <p>Selecting a relation from the <strong>Relations</strong> panel now automatically navigates to the corresponding entities within the document, making it easier to review and validate relationships. Previously, reviewers had to manually search for the related entities after selecting a relation, which could be time-consuming in documents containing large numbers of annotations.</p>
+
+  <p>When a relation is selected, the annotation view automatically scrolls to the relevant location and highlights both associated entities, providing immediate visual context for faster and more efficient review.</p>
+
+  <p><img src="/assets/images/annotation_lab/8.2.0/Relation_Navigation.gif" alt="Automatic navigation to selected relations" /> 
+<em><center>Selecting a relation from the Relations panel automatically navigates to the corresponding entities and highlights them within the document, streamlining relation review.</center></em></p>
+
+  <p><strong>Technical Details</strong></p>
 
   <ul>
-    <li><strong>Terminology UX:</strong> Added proper display names for Medical Terminology databases across the Project Configuration and Medical Terminology pages, replacing previously displayed raw database identifiers for improved readability and usability.</li>
+    <li>
+      <p><strong>Automatic Navigation</strong></p>
+
+      <p>Selecting a relation from the <strong>Relations</strong> panel automatically scrolls the document to the associated entities.</p>
+    </li>
+    <li>
+      <p><strong>Entity Highlighting</strong></p>
+
+      <p>Both entities participating in the selected relation are highlighted, making it easier to identify and validate the relationship.</p>
+    </li>
+    <li>
+      <p><strong>Optimized Review Workflow</strong></p>
+
+      <p>Eliminates the need to manually search through the document, reducing the time required to review relation-heavy annotation tasks.</p>
+    </li>
   </ul>
 
-  <p><img src="/assets/images/annotation_lab/8.1.0/20.png" alt="Improved Medical Terminology display names" />
-<em><center>Medical Terminology databases now display user-friendly names across configuration and terminology management workflows.</center></em></p>
+  <blockquote>
+    <p><strong>Note:</strong> This enhancement is currently available for <strong>NER</strong> projects. Support for <strong>Visual NER</strong> projects will be introduced in a future release.</p>
+  </blockquote>
+
+  <p><strong>User Benefits</strong></p>
 
   <ul>
-    <li><strong>Delete Confirmation for Medical Terminologies:</strong> Added a confirmation pop-up when deleting Medical Terminologies to help prevent accidental deletions. Users are now prompted to confirm or cancel the delete action before the terminology is removed.</li>
+    <li>
+      <p><strong>Faster Navigation</strong> — Jump directly to the selected relation without manually searching through the document.</p>
+    </li>
+    <li>
+      <p><strong>Improved Visibility</strong> — Instantly identify related entities through automatic highlighting.</p>
+    </li>
+    <li>
+      <p><strong>More Efficient Reviews</strong> — Validate complex relation annotations more quickly, particularly in documents containing large numbers of relations.</p>
+    </li>
   </ul>
 
-  <p><img src="/assets/images/annotation_lab/8.1.0/21.png" alt="Delete confirmation dialog for Medical Terminologies" />
-<em><center>A confirmation dialog is now displayed before deleting Medical Terminologies, helping prevent accidental removal of terminology resources.</center></em></p>
+  <p><strong>Example Use Case</strong></p>
+
+  <p>A reviewer selects a relation from the <strong>Relations</strong> panel while validating a clinical document containing hundreds of entity relationships. The document automatically navigates to the corresponding location and highlights both related entities, allowing the reviewer to verify the relationship immediately without manually searching the document.</p>
+
+  <h3 id="improved-range-validation-for-test-suite-threshold-controls">Improved Range Validation for Test Suite Threshold Controls</h3>
+
+  <p><strong>What’s Improved</strong></p>
+
+  <p>The Test Suite threshold controls now provide more precise and predictable numeric input, making it easier to configure evaluation thresholds accurately. Previously, threshold values could be adjusted beyond the supported range or required less precise input, increasing the likelihood of configuration errors.</p>
+
+  <p>The updated numeric control enforces the valid input range while supporting finer adjustment increments, helping users configure threshold values with greater precision and confidence.</p>
+
+  <p><img src="/assets/images/annotation_lab/8.2.0/Range_Validation_Test_Suite.gif" alt="Threshold range validation and precision controls" /> 
+<em><center>The threshold control enforces the valid range of 0 to 1 while supporting finer adjustment increments for more precise configuration.</center></em></p>
+
+  <p><strong>Technical Details</strong></p>
+
+  <ul>
+    <li>
+      <p><strong>Restricted Input Range</strong></p>
+
+      <p>Threshold values are now restricted to the supported range of <strong>0 to 1</strong>. Values outside this range can no longer be entered using either the numeric control or manual input.</p>
+    </li>
+    <li>
+      <p><strong>Improved Adjustment Precision</strong></p>
+
+      <p>The increment and decrement step size has been reduced to approximately <strong>0.1</strong>, allowing more precise threshold configuration.</p>
+    </li>
+    <li>
+      <p><strong>Built-in Input Validation</strong></p>
+
+      <p>Range validation is applied directly within the numeric input control, preventing unsupported values and reducing configuration errors.</p>
+    </li>
+  </ul>
+
+  <p><img src="/assets/images/annotation_lab/8.2.0/Validation_Numeric_Value.png" alt="Threshold input validation" /> 
+<em><center>Threshold values outside the supported range are automatically prevented, ensuring valid Test Suite configuration.</center></em></p>
+
+  <p><strong>User Benefits</strong></p>
+
+  <ul>
+    <li>
+      <p><strong>Accurate Configuration</strong> — Restrict threshold values to the supported range of <strong>0 to 1</strong>.</p>
+    </li>
+    <li>
+      <p><strong>Greater Precision</strong> — Fine-grained adjustment steps simplify tuning of evaluation thresholds.</p>
+    </li>
+    <li>
+      <p><strong>Improved User Experience</strong> — Numeric controls behave consistently and prevent unsupported input.</p>
+    </li>
+    <li>
+      <p><strong>Reduced Configuration Errors</strong> — Built-in validation eliminates accidental selection of invalid values.</p>
+    </li>
+  </ul>
+
+  <p><strong>Example Use Case</strong></p>
+
+  <p>A project manager configures threshold values for a Test Suite evaluation. Using the updated numeric control, they fine-tune the threshold with small incremental adjustments while the platform automatically restricts values to the supported range of <strong>0 to 1</strong>, ensuring accurate configuration without additional validation.</p>
+
+  <h3 id="independent-space-and-punctuation-trimming-controls">Independent Space and Punctuation Trimming Controls</h3>
+
+  <p><strong>What’s Improved</strong></p>
+
+  <p>Generative AI Lab now provides independent controls for trimming whitespace and punctuation during annotation. Previously, both behaviors were combined into a single setting, making it impossible to remove unwanted spaces without also removing punctuation that could be clinically or semantically significant.</p>
+
+  <p>The updated configuration separates these behaviors into two independent options, giving annotation teams greater control over text selection while preserving important symbols when required.</p>
+
+  <p><img src="/assets/images/annotation_lab/8.2.0/Space_and_Punctuation_Trimming.png" alt="Independent trimming settings for whitespace and punctuation" /> 
+<em><center>Whitespace trimming and punctuation trimming can now be configured independently, providing greater flexibility during text annotation.</center></em></p>
+
+  <p><strong>Technical Details</strong></p>
+
+  <ul>
+    <li>
+      <p><strong>Independent Trimming Controls</strong></p>
+
+      <p>The previous <strong>Trim spaces and punctuation marks</strong> setting has been replaced with two independent configuration options:</p>
+
+      <ul>
+        <li><strong>Trim leading/trailing spaces</strong></li>
+        <li><strong>Trim punctuation marks</strong></li>
+      </ul>
+
+      <p>Each option can be enabled or disabled independently.</p>
+    </li>
+    <li>
+      <p><strong>Whitespace Trimming</strong></p>
+
+      <p>When enabled, <strong>Trim leading/trailing spaces</strong> automatically removes surrounding whitespace while preserving punctuation and symbols. This improves double-click and rapid span selection workflows without modifying annotated content.</p>
+    </li>
+    <li>
+      <p><strong>Punctuation Trimming</strong></p>
+
+      <p>When enabled, <strong>Trim punctuation marks</strong> removes punctuation characters from the boundaries of selected text. When disabled, symbols such as <code class="language-plaintext highlighter-rouge">%</code>, <code class="language-plaintext highlighter-rouge">+</code>, <code class="language-plaintext highlighter-rouge">/</code>, and <code class="language-plaintext highlighter-rouge">-</code> are preserved, helping maintain clinically significant values and expressions.</p>
+    </li>
+    <li>
+      <p><strong>Automatic Settings Migration</strong></p>
+
+      <p>Existing projects retain their previous behavior after upgrading. Projects that had the original combined setting enabled will automatically have both new options enabled, while projects with the setting disabled will continue with both options disabled.</p>
+    </li>
+  </ul>
+
+  <p><strong>User Benefits</strong></p>
+
+  <ul>
+    <li>
+      <p><strong>Greater Annotation Control</strong> — Configure whitespace and punctuation trimming independently to match project requirements.</p>
+    </li>
+    <li>
+      <p><strong>Preserved Clinical Context</strong> — Retain clinically significant symbols while removing unwanted whitespace.</p>
+    </li>
+    <li>
+      <p><strong>Faster Text Selection</strong> — Improve annotation speed during span selection without compromising annotation accuracy.</p>
+    </li>
+    <li>
+      <p><strong>Seamless Upgrade Experience</strong> — Existing project behavior is preserved automatically through configuration migration.</p>
+    </li>
+  </ul>
+
+  <p><strong>Example Use Case</strong></p>
+
+  <p>A healthcare annotation team is labeling laboratory results containing values such as <strong>98%</strong> and <strong>Na+/K+</strong>. By enabling <strong>Trim leading/trailing spaces</strong> while leaving <strong>Trim punctuation marks</strong> disabled, annotators can remove accidental whitespace without affecting clinically significant symbols, resulting in faster and more accurate annotations.</p>
 
   <h2 id="bug-fixes">Bug Fixes</h2>
+
   <h3 id="critical-bug-fixes--stability">Critical Bug Fixes &amp; Stability</h3>
 
   <ul>
     <li>
-      <p><strong>Users Redirected to “Something Went Wrong” Page During Login</strong></p>
+      <p><strong>Error When Selecting Auto-Draft Saved Regions in Visual NER Projects</strong></p>
 
-      <p>Login attempts could unexpectedly redirect users to the “Something Went Wrong” page, preventing successful authentication and access to the platform. Login workflow handling has been stabilized, and users can now authenticate successfully without unexpected redirects or error pages.</p>
+      <p>Selecting a region that had been automatically saved using the auto-draft feature could redirect users to a “Something Went Wrong” page, preventing further interaction with the annotation.
+Auto-draft regions now open correctly, allowing users to continue editing and save annotations without interruption.</p>
     </li>
     <li>
-      <p><strong>PDF Text Extraction Corrupts Table Structure</strong></p>
+      <p><strong>Annotations Become Invisible After Zooming in Side-by-Side Projects</strong></p>
 
-      <p>PDF text extraction could corrupt table formatting during ingestion workflows, causing values to appear in incorrect columns, numeric values to be omitted, and structured table layouts to become unusable. Table extraction handling has been improved to preserve original structure, alignment, and numeric content more accurately during PDF processing.</p>
+      <p>Annotations could disappear after zooming and selecting an annotation in Side-by-Side projects, making review and editing difficult.
+Annotation rendering has been improved to ensure annotations remain visible and correctly highlighted during zoom operations.</p>
     </li>
     <li>
-      <p><strong>Annotation Page Freezes After Aggressive Zooming in Visual NER Projects</strong></p>
+      <p><strong>Annotations Disappear When Selecting Labels in Side-by-Side Projects</strong></p>
 
-      <p>Repeated or aggressive zoom interactions in Visual NER projects could cause annotation pages to freeze or task content to disappear, requiring a manual page refresh to recover. Zoom handling and rendering stability have been improved, allowing Visual NER annotation pages to remain responsive during repeated zoom operations.</p>
+      <p>Selecting annotated labels in Side-by-Side projects could temporarily hide existing annotations, disrupting the annotation workflow.
+Annotation visibility has been corrected so annotations remain visible throughout label selection.</p>
     </li>
     <li>
-      <p><strong>Error on Labeling Page for Annotator and Reviewer Users</strong></p>
+      <p><strong>Relations Hidden When Label Visibility Is Set to Hidden</strong></p>
 
-      <p>Annotator and Reviewer users could encounter unexpected errors when opening tasks on the labeling page, interrupting annotation and review workflows. Access and labeling page handling for these roles has been corrected, and tasks now open successfully without labeling page errors.</p>
+      <p>Relations associated with annotations could disappear from the Annotation Widget when label visibility was disabled, making relation review difficult.
+Relation rendering has been updated so relations remain visible and behave correctly regardless of the label visibility setting.</p>
     </li>
     <li>
-      <p><strong>Internal Server Error When Deleting Downloaded Embeddings</strong></p>
+      <p><strong>Unable to Import Zipped Audio and Video Files</strong></p>
 
-      <p>Deleting downloaded embeddings could trigger an internal server error because embedding usage validation was not properly handled before deletion.
-Embedding deletion workflows now validate active usage before removal:</p>
-
-      <ul>
-        <li>If the embedding is currently in use, a clear validation message is displayed.</li>
-        <li>If the embedding is unused, deletion completes successfully.</li>
-      </ul>
+      <p>ZIP archives containing audio or video tasks could fail during import, even when uploaded into the corresponding project type.
+Import handling has been updated to support ZIP-based Audio and Video task imports successfully.</p>
     </li>
     <li>
-      <p><strong>Unable to Generate Augmented Tasks with OpenAI After External Service Integration</strong></p>
+      <p><strong>“License Not Found” Error When Saving Healthcare Training with Universal License</strong></p>
 
-      <p>Augmented task generation with OpenAI could fail even after a valid External Service Provider was properly configured and integrated into the platform. Integration and generation workflows have been corrected, and augmented task generation now functions successfully with supported OpenAI integrations.</p>
+      <p>Saving Healthcare Training configurations could incorrectly display a “License not found” error despite a valid Universal License being available.
+License validation has been corrected so Healthcare Training configurations save successfully when supported licenses are present.</p>
     </li>
   </ul>
+
+  <hr />
 
   <h3 id="core-functional-improvements">Core Functional Improvements</h3>
 
   <ul>
     <li>
-      <p><strong>Unable to Export External Prompts While Zero-Shot Prompts Export Successfully</strong></p>
+      <p><strong>Last Task Import Status Missing for Audio, Video, and Visual NER Projects</strong></p>
 
-      <p>External prompt export workflows could fail even though zero-shot prompts exported correctly, creating inconsistent behavior between supported prompt types. Export and import functionality for external prompts has been corrected, allowing teams to manage all prompt types consistently across projects.</p>
+      <p>The most recent task import status was not displayed for Audio, Video, and Visual NER projects, making it difficult to verify import progress.
+Import status reporting has been corrected so the latest import activity is displayed consistently across supported project types.</p>
     </li>
     <li>
-      <p><strong>“License in Use” Error When Deploying TS While HC Model Is Already Deployed</strong></p>
+      <p><strong>False “Something Went Wrong” Error After Successfully Importing Rules</strong></p>
 
-      <p>Deploying a Terminology Server (TS) could incorrectly trigger a “License in use” error when a Healthcare (HC) model or NER model was already deployed using the same floating or universal license credits, even when sufficient credits were available.</p>
-
-      <p>License validation logic has been updated to correctly support shared usage scenarios, allowing:</p>
-      <ul>
-        <li>Parallel deployment of model servers and Terminology Servers using the same available credits</li>
-        <li>Deployment of NER models in one project while deploying Terminology Server independently in another project</li>
-      </ul>
+      <p>Rules could be imported successfully in the background while the interface incorrectly displayed a “Something Went Wrong” message until the page was refreshed.
+Import status reporting now accurately reflects successful rule imports without displaying false error messages.</p>
     </li>
     <li>
-      <p><strong>Annotator Role Unable to Access Medical Terminology in Self-Created Projects</strong></p>
+      <p><strong>Missing “Click Here” Navigation in Maximum Server Limit Popup</strong></p>
 
-      <p>Annotator users could encounter access restrictions when attempting to use Medical Terminology functionality inside projects they created themselves. Permission handling has been corrected, and Annotator users can now access Medical Terminology features as expected within self-created projects.</p>
+      <p>When the maximum server limit was reached, the notification dialog did not provide a direct way to navigate to the Cluster page.
+The dialog now includes a <strong>Click Here</strong> action that opens the Cluster page for faster server management.</p>
     </li>
     <li>
-      <p><strong>Deployed External Prompts Missing from Configuration</strong></p>
+      <p><strong>Error When Accessing Settings for “Generate Augmented Templates with OpenAI”</strong></p>
 
-      <p>Previously deployed external prompts were not always displayed in the Configuration section on the Cluster page after deployment. Visibility of deployed prompts has been corrected, ensuring deployed external prompts now appear consistently within Configuration workflows.</p>
+      <p>Opening the settings for <strong>Generate Augmented Templates with OpenAI</strong> could redirect users to a “Something Went Wrong” page instead of displaying the configuration dialog.
+Settings navigation has been corrected, allowing template generation options to be accessed and configured normally.</p>
     </li>
     <li>
-      <p><strong>Selecting Medical Terminology Redirects User to AI Resolver Model Tab</strong></p>
+      <p><strong>Previously Selected LLM Not Preserved When Editing External Prompts</strong></p>
 
-      <p>Selecting the Medical Terminology section during configuration workflows could incorrectly redirect users to the AI Resolver Model tab, interrupting navigation flow. Navigation behavior has been corrected so users now remain within the Medical Terminology workflow as expected.</p>
-    </li>
-    <li>
-      <p><strong>Model Download Status Does Not Refresh Automatically</strong></p>
-
-      <p>Downloaded models could remain stuck in the “Downloading” state until the page was manually refreshed, even after downloads completed successfully. Status synchronization has been improved so model states now update automatically to “Downloaded” immediately after completion.</p>
-    </li>
-    <li>
-      <p><strong>Incorrect Data Displayed in “Average Number of Edits per Task” Analytics Chart</strong></p>
-
-      <p>The “Average Number of Edits Per Task” analytics chart could display inaccurate values because calculations were incorrectly based on time metrics instead of edit counts. Chart calculations have been corrected, and the visualization now accurately reflects the number of edits performed per task.</p>
+      <p>Editing an existing external prompt could replace the previously selected LLM with a newly created or default model.
+External prompt editing now preserves the originally selected LLM, ensuring existing configurations remain unchanged.</p>
     </li>
   </ul>
+
+  <hr />
 
   <h3 id="uiux--visual-enhancements">UI/UX &amp; Visual Enhancements</h3>
 
   <ul>
     <li>
-      <p><strong>Relations Between Annotations Overlap in UI</strong></p>
+      <p><strong>Zoom Level Remains Stuck After Switching from De-Identification to Annotation View</strong></p>
 
-      <p>Relation lines between annotations could overlap with each other and surrounding interface elements, reducing readability during annotation and review workflows. Relation rendering has been improved to provide clearer visual separation and better usability when working with complex relation sets.</p>
+      <p>After switching from the De-Identification view back to the Annotation view, the zoom level could remain locked, preventing users from returning to the default zoom level.
+Zoom state management has been corrected so users can freely zoom in and out after changing views.</p>
     </li>
     <li>
-      <p><strong>Inconsistent Breadcrumb Styling Across Pages</strong></p>
+      <p><strong>Hex Color Code Field Accepts Unlimited Characters</strong></p>
 
-      <p>Breadcrumb styling could appear inconsistent across different pages due to variations in font size, separators, and notation styles. Breadcrumb components have been standardized across the application, improving visual consistency and navigation clarity throughout the platform.</p>
+      <p>The hexadecimal color input in the <strong>Edit Label</strong> dialog accepted unrestricted text input, allowing invalid color values to be entered.
+Input validation now limits hexadecimal color values to six characters, ensuring valid color configuration.</p>
+    </li>
+    <li>
+      <p><strong>Unable to Unhide Individual Labels When Bulk Hide Is Enabled</strong></p>
+
+      <p>Individual labels could not be restored after enabling the <strong>Hide All Regions</strong> option, limiting users to an all-or-nothing visibility workflow.
+Label visibility controls have been corrected so individual labels can be shown independently while preserving bulk hide functionality.</p>
     </li>
   </ul>
 
@@ -1301,10 +1184,11 @@ Embedding deletion workflows now validate active usage before removal:</p>
 </div>
 
 <ul class="pagination owl-carousel pagination_big">
+    <li class="active"><a href="annotation_labs_releases/release_notes_8_2_0">8.2.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_8_1_3">8.1.3</a></li>
     <li><a href="annotation_labs_releases/release_notes_8_1_2">8.1.2</a></li>
     <li><a href="annotation_labs_releases/release_notes_8_1_1">8.1.1</a></li>
-    <li class="active"><a href="annotation_labs_releases/release_notes_8_1_0">8.1.0</a></li>
+    <li><a href="annotation_labs_releases/release_notes_8_1_0">8.1.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_8_0_1">8.0.1</a></li>
     <li><a href="annotation_labs_releases/release_notes_8_0_0">8.0.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_7_8_2">7.8.2</a></li>
@@ -1332,7 +1216,7 @@ Embedding deletion workflows now validate active usage before removal:</p>
     <li><a href="annotation_labs_releases/release_notes_6_10_0">6.10.0</a></li>
 </ul>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2026-05-19T00:00:00+00:00">May 19, 2026</time>
+      <time itemprop="dateModified" datetime="2026-07-03T00:00:00+00:00">Jul 03, 2026</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
