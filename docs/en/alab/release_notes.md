@@ -213,7 +213,7 @@ Users can now sort relations by **Creation Order**, **Alphabetical Order**, or *
 ![Relation sorting in Visual NER projects](/assets/images/annotation_lab/8.2.0/Relation_Sorting_Visual_NER.gif) 
 *<center>The same relation sorting options are available in Visual NER projects, improving navigation and validation of complex document annotations.</center>*
 
-### Technical Details
+**Technical Details**
 
 - **Multiple Sorting Options**
   
@@ -230,7 +230,7 @@ Users can now sort relations by **Creation Order**, **Alphabetical Order**, or *
   
   Relation sorting is available in both **NER** and **Visual NER** projects, providing a consistent experience across annotation workflows.
 
-### User Benefits
+ **User Benefits**
 
 - **Faster Navigation** — Locate specific relations more quickly using the most appropriate sorting method.
 
@@ -238,7 +238,7 @@ Users can now sort relations by **Creation Order**, **Alphabetical Order**, or *
 
 - **Consistent Review Experience** — Preserve sorting preferences throughout the review session for uninterrupted navigation.
 
-### Example Use Case
+**Example Use Case**
 
 A reviewer opens a document containing hundreds of entity relations and selects **Entity Type** sorting to group similar relationships together. Instead of scrolling through relations in creation order, related entities are organized into logical groups, making validation faster and improving overall review efficiency.
 
@@ -254,7 +254,7 @@ When a relation is selected, the annotation view automatically scrolls to the re
 ![Automatic navigation to selected relations](/assets/images/annotation_lab/8.2.0/Relation_Navigation.gif) 
 *<center>Selecting a relation from the Relations panel automatically navigates to the corresponding entities and highlights them within the document, streamlining relation review.</center>*
 
-### Technical Details
+**Technical Details**
 
 - **Automatic Navigation**
 
@@ -270,7 +270,7 @@ When a relation is selected, the annotation view automatically scrolls to the re
 
 > **Note:** This enhancement is currently available for **NER** projects. Support for **Visual NER** projects will be introduced in a future release.
 
-### User Benefits
+**User Benefits**
 
 - **Faster Navigation** — Jump directly to the selected relation without manually searching through the document.
 
@@ -278,7 +278,7 @@ When a relation is selected, the annotation view automatically scrolls to the re
 
 - **More Efficient Reviews** — Validate complex relation annotations more quickly, particularly in documents containing large numbers of relations.
 
-### Example Use Case
+**Example Use Case**
 
 A reviewer selects a relation from the **Relations** panel while validating a clinical document containing hundreds of entity relationships. The document automatically navigates to the corresponding location and highlights both related entities, allowing the reviewer to verify the relationship immediately without manually searching the document.
 
@@ -294,7 +294,7 @@ The updated numeric control enforces the valid input range while supporting fine
 ![Threshold range validation and precision controls](/assets/images/annotation_lab/8.2.0/Range_Validation_Test_Suite.gif) 
 *<center>The threshold control enforces the valid range of 0 to 1 while supporting finer adjustment increments for more precise configuration.</center>*
 
-### Technical Details
+**Technical Details**
 
 - **Restricted Input Range**
 
@@ -311,7 +311,7 @@ The updated numeric control enforces the valid input range while supporting fine
 ![Threshold input validation](/assets/images/annotation_lab/8.2.0/Validation_Numeric_Value.png) 
 *<center>Threshold values outside the supported range are automatically prevented, ensuring valid Test Suite configuration.</center>*
 
-### User Benefits
+**User Benefits**
 
 - **Accurate Configuration** — Restrict threshold values to the supported range of **0 to 1**.
 
@@ -321,7 +321,7 @@ The updated numeric control enforces the valid input range while supporting fine
 
 - **Reduced Configuration Errors** — Built-in validation eliminates accidental selection of invalid values.
 
-### Example Use Case
+**Example Use Case**
 
 A project manager configures threshold values for a Test Suite evaluation. Using the updated numeric control, they fine-tune the threshold with small incremental adjustments while the platform automatically restricts values to the supported range of **0 to 1**, ensuring accurate configuration without additional validation.
 
@@ -337,7 +337,7 @@ The updated configuration separates these behaviors into two independent options
 ![Independent trimming settings for whitespace and punctuation](/assets/images/annotation_lab/8.2.0/Space_and_Punctuation_Trimming.png) 
 *<center>Whitespace trimming and punctuation trimming can now be configured independently, providing greater flexibility during text annotation.</center>*
 
-### Technical Details
+**Technical Details**
 
 - **Independent Trimming Controls**
 
@@ -360,7 +360,7 @@ The updated configuration separates these behaviors into two independent options
 
   Existing projects retain their previous behavior after upgrading. Projects that had the original combined setting enabled will automatically have both new options enabled, while projects with the setting disabled will continue with both options disabled.
 
-### User Benefits
+**User Benefits**
 
 - **Greater Annotation Control** — Configure whitespace and punctuation trimming independently to match project requirements.
 
@@ -370,7 +370,7 @@ The updated configuration separates these behaviors into two independent options
 
 - **Seamless Upgrade Experience** — Existing project behavior is preserved automatically through configuration migration.
 
-### Example Use Case
+**Example Use Case**
 
 A healthcare annotation team is labeling laboratory results containing values such as **98%** and **Na+/K+**. By enabling **Trim leading/trailing spaces** while leaving **Trim punctuation marks** disabled, annotators can remove accidental whitespace without affecting clinically significant symbols, resulting in faster and more accurate annotations.
 
