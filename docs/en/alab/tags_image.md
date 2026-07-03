@@ -151,3 +151,22 @@ The second project template is similar to the first but is optimized for speed a
 - **Model Training:** Train NER, assertion, and relation models seamlessly in both project types.
 - **Rule-Based & Prompt-Based Annotation:** Utilize rules and prompts for efficient labeling.
 - **Support for Resolvers & ICD-10 Coding:** Ensures compatibility with all text-based annotation features.
+
+
+## Native DICOM Support for Medical Imaging
+
+Generative AI Lab provides **native support for DICOM (Digital Imaging and Communications in Medicine)**, allowing healthcare organizations to work directly with medical images without converting them to standard image formats such as JPEG or PNG.
+
+DICOM images can be uploaded directly into **Visual NER** and **DICOM De-Identification** projects, where they can be annotated, reviewed, compared, and de-identified using the same intuitive workflows available for other image-based projects.
+
+### Supported Capabilities
+
+- **Native DICOM Upload** – Import `.dcm` files directly through the user interface or supported APIs without external conversion.
+- **Image Annotation** – Use existing Visual NER annotation tools to label medical images while preserving original image quality.
+- **Metadata Viewing** – Inspect supported DICOM metadata directly within the annotation interface.
+- **Image & Metadata De-Identification** – Configure masking rules for both image content and supported DICOM metadata fields.
+- **Comparison View** – Compare original and de-identified images alongside metadata changes before exporting.
+
+> **Supported metadata fields for masking:** Institution Name, Patient ID, Patient Name, and Study Date.
+
+DICOM support integrates seamlessly into existing image annotation workflows, allowing healthcare teams to work with clinical imaging data while maintaining patient privacy and preserving the metadata required for downstream review and research.

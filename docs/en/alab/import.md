@@ -54,6 +54,35 @@ When importing tasks that already contain annotations (e.g. exported from anothe
 
 > **NOTE:** When importing tasks from different projects with the purpose of combining them in one project, users should take care of the overlaps existing between tasks IDs. Generative AI Lab will simply overwrite tasks with the same ID.
 
+### Flexible Label Matching & Mapping
+
+When importing annotated JSON files, label names no longer need to exactly match the labels configured in the destination project.
+
+During import, Generative AI Lab automatically compares the labels in the uploaded JSON with the project's configured labels. If differences are detected—such as variations in capitalization or naming conventions—the system presents an interactive mapping interface instead of rejecting the import.
+
+Users can:
+
+- Review unmatched labels
+- Accept automatically suggested mappings
+- Map uploaded labels to existing project labels
+- Ignore labels that are not needed
+
+Suggested mappings are generated automatically using case-insensitive comparison, normalized label matching, and string similarity detection.
+
+For example, an uploaded label named `Problem` can be automatically mapped to an existing project label named `PROBLEM`, allowing the import to proceed without modifying the original JSON file.
+
+![Flexible Label Mapping during JSON Import](/assets/images/annotation_lab/8.2.0/Label_Matching.png "lit_shadow")
+
+This feature is supported for:
+
+- Text NER projects
+- Visual NER projects
+- Named Entity Recognition (NER)
+- Classification
+- Relation annotations
+
+> **Note:** Label mappings are applied only during the import process. The uploaded JSON file is not modified, and the destination project's label configuration remains unchanged.
+
 ## Dynamic Task Pagination
 
 Dynamic pagination allows annotators and reviewers to control how large documents are displayed during annotation.  
