@@ -23,8 +23,8 @@ Named Entity Recognition model that detects PHI (Protected Health Information) e
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_deid_docwise_generic_augmented_v1_en_6.4.1_3.0_1783080961470.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_deid_docwise_generic_augmented_v1_en_6.4.1_3.0_1783080961470.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_deid_docwise_generic_augmented_v1_en_6.4.1_3.0_1783081116514.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_deid_docwise_generic_augmented_v1_en_6.4.1_3.0_1783081116514.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -172,23 +172,19 @@ val result = pipeline.fit(data).transform(data)
 
 ```bash
 
-+-----------------------+-----+---+----------+
-|chunk                  |begin|end|entity    |
-+-----------------------+-----+---+----------+
-|James                  |5    |9  |NAME      |
-|Wilson                 |11   |16 |NAME      |
-|Boston General Hospital|85   |107|LOCATION  |
-|10/25/2023             |112  |121|DATE      |
-|123 Oak Street         |136  |149|LOCATION  |
-|Springfield            |152  |162|LOCATION  |
-|IL                     |165  |166|LOCATION  |
-|62704                  |168  |172|LOCATION  |
-|555-0199               |198  |205|CONTACT   |
-|999-00-1234            |219  |229|ID        |
-|Gregory                |236  |242|NAME      |
-|House                  |244  |248|NAME      |
-|attending physician    |257  |275|PROFESSION|
-+-----------------------+-----+---+----------+
++-----------------------+-----+---+--------+
+|chunk                  |begin|end|entity  |
++-----------------------+-----+---+--------+
+|James Wilson           |5    |16 |NAME    |
+|Boston General Hospital|85   |107|LOCATION|
+|10/25/2023             |112  |121|DATE    |
+|123 Oak Street         |136  |149|LOCATION|
+|Springfield            |152  |162|LOCATION|
+|IL 62704               |165  |172|LOCATION|
+|555-0199               |198  |205|CONTACT |
+|999-00-1234            |219  |229|ID      |
+|Gregory House          |236  |248|NAME    |
++-----------------------+-----+---+--------+
 
 ```
 
