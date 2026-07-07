@@ -329,7 +329,8 @@ Jekyll::Hooks.register :posts, :pre_render do |post|
     predicted_entities: extractor.predicted_entities || [],
     type: doc_type,
     annotator: post.data['annotator'] || "",
-    deprecated: !!post.data['deprecated']
+    deprecated: !!post.data['deprecated'],
+    tpj_compatible: !!post.data['tpj_compatible']
   }
 
   benchmarking_info = extractor.benchmarking_results(post.url)
@@ -362,6 +363,7 @@ Jekyll::Hooks.register :posts, :post_render do |post|
   supported = !!post.data['supported']
   deprecated = !!post.data['deprecated']
   recommended = !!post.data['recommended']
+  tpj_compatible = !!post.data['tpj_compatible']
   key = "#{post.data['name']}_#{post.data['language']}_#{post.data['edition']}_#{post.data["spark_version"]}"
 
   model = {
@@ -381,6 +383,7 @@ Jekyll::Hooks.register :posts, :post_render do |post|
     body: body,
     url: post.url,
     recommended: recommended,
+    tpj_compatible: tpj_compatible,
     annotator: post.data['annotator'],
     uniq_key: key,
     origin: post.data["origin"],
@@ -520,6 +523,9 @@ unless ENV['ELASTICSEARCH_URL'].to_s.empty?
               "type": "integer"
             },
             "recommended": {
+              "type": "boolean"
+            },
+            "tpj_compatible": {
               "type": "boolean"
             },
             "annotator": {
