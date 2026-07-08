@@ -628,13 +628,13 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <h2 id="section">6.4.0</h2>
+  <h2 id="section">6.4.2</h2>
 
-  <p>Release date: 28-04-2026</p>
+  <p>Release date: 08-07-2026</p>
 
-  <h2 id="visual-nlp-640-release-notes-">Visual NLP 6.4.0 Release Notes 🕶️</h2>
+  <h2 id="visual-nlp-642-release-notes-">Visual NLP 6.4.2 Release Notes 🕶️</h2>
 
-  <p><strong>We are glad to announce that Visual NLP 6.4.0 has been released! Dicom improvements, a new OCR engine, and much more. 📢📢📢</strong></p>
+  <p><strong>We are glad to announce that Visual NLP 6.4.2 has been released! This new release comes with new models, new pipelines, sample notebooks, bug fixes and more! 📢📢📢</strong></p>
 
 </div>
 <div class="h3-box">
@@ -642,123 +642,156 @@ function wrapWordInSpan(data, wordToWrap) {
   <h2 id="main-changes-">Main Changes 🔴</h2>
 
   <ul>
-    <li>Dicom Processing Improvements</li>
-    <li>New Optimized Fast Dicom Pipeline</li>
-    <li>New V4 OCR engine</li>
-    <li>New Yolo based Layout analysis model</li>
-    <li>New OpenVino Text Detector model</li>
-    <li>Two new AWS Marketplace listings</li>
+    <li>New MedicalVisionLLM checkpoints</li>
+    <li>New OpenVino Text Detection + OCR models</li>
+    <li>New OpenVino Layout Analyzer model</li>
+    <li>New Document Pretrained Pipelines</li>
+    <li>New Notebooks</li>
+    <li>Bug Fixes</li>
   </ul>
 
 </div>
 <div class="h3-box">
 
-  <h2 id="dicom-processing-improvements">Dicom Processing Improvements</h2>
+  <h2 id="new-models">New Models</h2>
 
-  <p>Dicom processing pipelines now support sampling of the frames in each study. This new strategy allows pipelines to run faster by looking into only a subset of all the frames in the study. The changes are spread across different components.</p>
-
-  <h3 id="dicomtoimagev3-changes">DicomToImageV3 Changes</h3>
+  <p>We have two new checkpoints for MedicalVisionLLM,</p>
 
   <ul>
-    <li>Added a new param <code class="language-plaintext highlighter-rouge">setFrameSamplingStrategy()</code>. Valid values are <code class="language-plaintext highlighter-rouge">['Consecutive', 'Stride', 'Random', 'Middle']</code> for sub-sampling the frames.</li>
-    <li>Added a new param <code class="language-plaintext highlighter-rouge">setFrameDimsCol()</code>, which contains metadata information about the image.</li>
-    <li>Fixed the selection of frames via <code class="language-plaintext highlighter-rouge">setInputCols()</code>: <code class="language-plaintext highlighter-rouge">DicomToImageV3</code> accepts a column <code class="language-plaintext highlighter-rouge">parts</code>, which is a per-dicom-file integer list representing a cherry-picked list of frame ids.</li>
+    <li><code class="language-plaintext highlighter-rouge">jsl-ocr-gguf-vlm1</code>: this is a small VLM model supporting tasks such as text with coordinates, structured JSON output, and OCR. It is applicable to Document Processing and Deidentification pipelines.</li>
+    <li><code class="language-plaintext highlighter-rouge">jsl-ocr-gguf-vlm2</code>: this is a small VLM model supporting tasks such as OCR and structured JSON output. The difference with <code class="language-plaintext highlighter-rouge">jsl-ocr-gguf-vlm1</code> is that this model is slightly more accurate in OCR, but it cannot return coordinates for the text.</li>
   </ul>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">DicomToImageV3</span><span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">'content'</span><span class="p">,</span> <span class="s">'parts'</span><span class="p">])</span>
-</code></pre></div>  </div>
+  <p>Check this <a href="https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/SparkOCRMultiModelVLM.ipynb">sample notebook</a>.</p>
 
-  <p>Some corner cases were fixed in this feature.</p>
+  <p>We are releasing a new pair of OpenVino Text Detection + OCR models, which you can use separately or combined.</p>
 
   <ul>
-    <li>Added page number information in the <code class="language-plaintext highlighter-rouge">pagenum</code> col.</li>
-  </ul>
-
-  <h3 id="dicomdrawregion-changes">DicomDrawRegion Changes</h3>
-
-  <ul>
-    <li>This component renders the regions into the frames of the input dicoms. When frame sampling was performed in previous stages, this component will now perform the extrapolation of the regions that were analyzed to all the frames in the dicom file.</li>
-  </ul>
-
-  <h3 id="dicommetadatadeidentifier">DicomMetadataDeidentifier</h3>
-
-  <ul>
-    <li>Added guardrails for <code class="language-plaintext highlighter-rouge">remove</code>, <code class="language-plaintext highlighter-rouge">delete</code>, and <code class="language-plaintext highlighter-rouge">replaceWithLiteral</code> actions when applied to VR SQ.</li>
-    <li>Added support for removing or deleting group tags through a group strategy file via <code class="language-plaintext highlighter-rouge">setGroupStrategyFile("group_strategy.csv")</code>, for example deletion of all overlay tags in group <code class="language-plaintext highlighter-rouge">60xx</code>.</li>
-    <li>Improved private tag removal with <code class="language-plaintext highlighter-rouge">setRemovePrivateTags(True)</code> to consistently delete private tags from the DICOM file.</li>
-    <li>Improved tracking of DICOM object references to better preserve and trace metadata tag operations.</li>
-  </ul>
-
-  <p>If you do not want to build from scratch, but want to leverage this and other optimizations, check the next section.</p>
-
-</div>
-<div class="h3-box">
-
-  <h2 id="new-optimized-fast-dicom-pipeline">New Optimized Fast Dicom Pipeline</h2>
-
-  <p>This new pipeline leverages image re-scaling, compression, and frame sub-sampling for improved performance. Just call it like this:</p>
-
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparkocr.pretrained</span> <span class="kn">import</span> <span class="n">DicomPretrainedPipeline</span>
-<span class="n">dcm_pipe</span> <span class="o">=</span> <span class="n">DicomPretrainedPipeline</span><span class="p">(</span><span class="s">"dicom_deid_fully_optimized"</span><span class="p">)</span>
-<span class="n">clean_dcm_df</span> <span class="o">=</span> <span class="n">dcm_pipe</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">dicom_df</span><span class="p">)</span>
-</code></pre></div>  </div>
-
-</div>
-<div class="h3-box">
-
-  <h2 id="new-v4-ocr-engine">New V4 OCR engine</h2>
-
-  <p>This model is a new OCR model that operates with an external Text Detector for high-recall use cases such as de-identification. Contrary to V2 families, which were Transformer-based, this one is CNN-based, which allows it to deliver reasonable throughput even on CPU. The model is competitive accuracy-wise as well.</p>
-
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">text_detector</span> <span class="o">=</span> <span class="n">ImageTextDetectorCraft</span><span class="p">()</span>\
-  <span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"text_detection_v4"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/ocr"</span><span class="p">)</span>\
-  <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"image"</span><span class="p">)</span>\
-  <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"regions"</span><span class="p">)</span>\
-  <span class="p">.</span><span class="n">setSizeThreshold</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>\
-  <span class="p">.</span><span class="n">setLinkThreshold</span><span class="p">(</span><span class="mf">0.3</span><span class="p">)</span>\
-  <span class="p">.</span><span class="n">setTextThreshold</span><span class="p">(</span><span class="mf">0.4</span><span class="p">)</span>\
-  <span class="p">.</span><span class="n">setWithRefiner</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
-
-<span class="n">text_extractor</span> <span class="o">=</span> <span class="n">ImageToTextV4</span><span class="p">()</span>\
-  <span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"text_recognition_v4"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/ocr"</span><span class="p">)</span>\
-  <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"image"</span><span class="p">,</span> <span class="s">"regions"</span><span class="p">])</span>\
+    <li><code class="language-plaintext highlighter-rouge">text_detection_v4_ov</code>:
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ImageTextDetector</span><span class="p">()</span> \
+  <span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"text_detection_v4_ov"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/ocr"</span><span class="p">)</span> \
+  <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"image"</span><span class="p">)</span> \
+  <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"regions"</span><span class="p">)</span> \
+  <span class="p">.</span><span class="n">setSizeThreshold</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> \
+  <span class="p">.</span><span class="n">setLinkThreshold</span><span class="p">(</span><span class="mf">0.3</span><span class="p">)</span> \
+  <span class="p">.</span><span class="n">setTextThreshold</span><span class="p">(</span><span class="mf">0.4</span><span class="p">)</span>
+</code></pre></div>      </div>
+    </li>
+    <li><code class="language-plaintext highlighter-rouge">text_recognition_v4_ov</code>:
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ImageToTextV4</span><span class="p">()</span> \
+  <span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"text_recognition_v4_ov"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/ocr"</span><span class="p">)</span> \
+  <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"image"</span><span class="p">,</span> <span class="s">"regions"</span><span class="p">])</span> \
   <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
-</code></pre></div>  </div>
+</code></pre></div>      </div>
+    </li>
+  </ul>
+
+  <p>These two models are used in pretrained pipelines <code class="language-plaintext highlighter-rouge">doc_data_loader_digital_easy</code>, and <code class="language-plaintext highlighter-rouge">doc_data_loader_digital_hybrid</code>.</p>
 
 </div>
 <div class="h3-box">
 
-  <h2 id="new-yolo-based-layout-analysis-model">New Yolo based Layout analysis model</h2>
+  <h2 id="new-openvino-layout-analyzer-model">New OpenVino Layout Analyzer Model</h2>
 
-  <p>This new model can detect layout entities <code class="language-plaintext highlighter-rouge">{Text, Title, List, Table, Figure}</code>. It is similar in accuracy to other DiT-based models in the library, but with a speed-up of up to 10X over DiT options such as <code class="language-plaintext highlighter-rouge">ImageLayoutAnalyzerDit</code>.</p>
+  <p>This new OpenVino based detection model can return bounding boxes for the following classes: “Caption”, “Footnote”, “Formula”, “List-item”, “Page-footer”, “Page-header”, “Picture”, “Section-header”, “Table”, “Text”, “Title”.</p>
 
-  <p>This is how you use it:</p>
-
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">doc_layout</span> <span class="o">=</span> <span class="n">DocumentLayoutAnalyzer</span> \
-    <span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"doc_layout_jsl"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/ocr"</span><span class="p">)</span>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">layout_detector</span> <span class="o">=</span> <span class="n">ImageLayoutDetector</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"image_layout_detector_ov"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/ocr"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"image"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"region"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setScoreThreshold</span><span class="p">(</span><span class="mf">0.4</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setIouThreshold</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setPredictionLabels</span><span class="p">(</span><span class="n">prediction_classes</span><span class="p">)</span>
 </code></pre></div>  </div>
 
-</div>
-<div class="h3-box">
-
-  <h2 id="new-openvino-text-detector-model">New OpenVino Text Detector model</h2>
-
-  <p>Our <code class="language-plaintext highlighter-rouge">ImageTextDetector</code> annotator, which is used in many OCR and de-identification pipelines, now supports checkpoints with OpenVino. To use it, call the annotator exactly the same way, but pass the <code class="language-plaintext highlighter-rouge">image_text_detector_open_vino</code> model name like this:</p>
-
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ImageTextDetector</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"image_text_detector_open_vino"</span><span class="p">,</span> <span class="s">"clinical/ocr"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">)</span>
-</code></pre></div>  </div>
-
-  <p>This model delivers a speed-up of around <code class="language-plaintext highlighter-rouge">2.2X</code> when used on CPUs that support AI acceleration features such as <code class="language-plaintext highlighter-rouge">AVX-512</code>, <code class="language-plaintext highlighter-rouge">VNNI</code>, and <code class="language-plaintext highlighter-rouge">bfloat16</code>. For example, AWS’s <a href="https://aws.amazon.com/ec2/instance-types/c7a/">C7a family</a>.</p>
-
-</div>
-<div class="h3-box">
-
-  <h2 id="two-new-aws-marketplace-listings">Two new AWS Marketplace listings</h2>
+  <p><strong>API:</strong></p>
 
   <ul>
-    <li><a href="https://aws.amazon.com/marketplace/pp/prodview-d7un4r7xpiwje">Vision OCR LLM</a>: highly accurate text extraction model.</li>
-    <li><a href="https://aws.amazon.com/marketplace/pp/prodview-rrpnzcxjmhtfy">Vision OCR Structured LLM</a>: a highly accurate VLM-based text extraction model that can handle text and tables.</li>
+    <li><code class="language-plaintext highlighter-rouge">setScoreThreshold(0.4)</code>: score threshold by which detected regions are filtered before being returned, the intuition is that the larger this score the more results you will get. Defaults to 0.4.</li>
+    <li><code class="language-plaintext highlighter-rouge">setIouThreshold(0.1)</code>: threshold for the Non-Maximum Suppression (NMS) algorithm to eliminate redundant, overlapping bounding boxes predicted for the same object.</li>
+    <li><code class="language-plaintext highlighter-rouge">setPredictionLabels(prediction_classes)</code>: a list of the classes to whitelist in the returned results, like <code class="language-plaintext highlighter-rouge">["Formula", "Title"]</code>.</li>
   </ul>
+
+</div>
+<div class="h3-box">
+
+  <h2 id="new-document-pretrained-pipelines">New Document Pretrained Pipelines</h2>
+
+  <p>We are releasing an initial set of 4 pipelines that provide different options to parse document collections containing different complexity levels. These pipelines support all popular image types, scanned PDFs, and digital PDFs, all the routing happens internally and is transparent to the user.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Pipeline</th>
+        <th>Digital PDF</th>
+        <th>Simple Page</th>
+        <th>Complex Page</th>
+        <th>Tables</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>doc_data_loader_digital_easy</strong></td>
+        <td>PdfToText</td>
+        <td>ImageToTextV4</td>
+        <td>ImageToTextV4</td>
+        <td>N/A</td>
+      </tr>
+      <tr>
+        <td><strong>doc_data_loader_digital_hybrid</strong></td>
+        <td>PdfToText</td>
+        <td>ImageToTextV1</td>
+        <td>ImageToTextV4</td>
+        <td>N/A</td>
+      </tr>
+      <tr>
+        <td><strong>doc_data_loader_digital_hybrid_tables_vlm1</strong></td>
+        <td>PdfToText</td>
+        <td>ImageToText</td>
+        <td>VLM1</td>
+        <td>VLM1</td>
+      </tr>
+      <tr>
+        <td><strong>doc_data_loader_digital_hybrid_tables_vlm2</strong></td>
+        <td>PdfToText</td>
+        <td>ImageToText</td>
+        <td>VLM2</td>
+        <td>VLM2</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>For examples on how to use please check this <a href="https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/SparkOcrDocDataLoaderPipelines.ipynb">sample notebook</a>.</p>
+
+</div>
+<div class="h3-box">
+
+  <h2 id="new-notebooks">New Notebooks</h2>
+
+  <ul>
+    <li><a href="https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/SparkOCRMultiModelVLM.ipynb">New Small VLMs</a>. Check this notebook to learn about new small VLMs along with supported tasks such as JSON extraction, OCR, and Table Extraction.</li>
+    <li><a href="https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/SparkOcrDocDataLoaderPipelines.ipynb">Document Pretrained Pipelines</a>. Check this notebook to learn about new document pretrained pipelines. New pipelines can handle multiple input formats, and can extract text, process tables, and forms.</li>
+    <li><a href="https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/SparkOCRDocumentLayoutAnalyzer.ipynb">SparkOCRDocumentLayoutAnalyzer has been updated</a>. Check this notebook to learn how to use the new OpenVino layout analyzer.</li>
+    <li><a href="https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/Dicom/SparkOcrDicomVLM.ipynb">SparkOcrDicomVLM.ipynb</a>. Check this notebook to learn about using VLMs for Dicom de-identification.</li>
+    <li><a href="https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/deid-and-obfuscation/SparkOCRVLMDeIdentification.ipynb">SparkOCRVLMDeIdentification</a>. Check this notebook for Document de-identification (PDF and images) with VLMs.</li>
+  </ul>
+
+</div>
+<div class="h3-box">
+
+  <h2 id="bug-fixes">Bug Fixes</h2>
+
+  <ul>
+    <li>LP crashed when used in multi-threading settings.</li>
+    <li>Handling of empty regions in DicomDrawRegions.</li>
+    <li>Fixes for DicomMetadataDeIdentifier cleanTag action behavior.</li>
+    <li>DicomDrawRegions general improvements.</li>
+  </ul>
+
+</div>
+<div class="h3-box">
+
+  <h2 id="compatibility">Compatibility:</h2>
+  <p>Spark-NLP 6.4.2, and Spark-NLP for Healthcare 6.4.1.</p>
 
 </div>
 <div class="h3-box">
@@ -778,6 +811,8 @@ function wrapWordInSpan(data, wordToWrap) {
   </li>
 </ul>
 <ul class="pagination owl-carousel pagination_big">
+   <li><a href="release_notes_6_4_2">6.4.2</a></li>
+   <li><a href="release_notes_6_4_0">6.4.0</a></li>
    <li><a href="release_notes_6_3_0">6.3.0</a></li>
    <li><a href="release_notes_6_0_0">6.0.0</a></li>
    <li><a href="release_notes_5_5_0">5.5.0</a></li>
