@@ -67,12 +67,12 @@ johnsnowlabs/jsl-llms \
 
 The following models are currently available for on-premise deployments:
 
-| **Model Name** | **Parameters** | **Recommended GPU Memory** | **Max Sequence Length** | **Model Size** | **Max KV-Cache** | **Tensor Parallel Sizes** | **Available Versions** |
-|----------------------------|------------|--------------------------|-------------------------|----------------|------------------|--------------------------|------------------------|
-| Medical-LLM-Medium     | 70B         | ~452 GB      | 128K                | 131 GB      | 320 GB      | 4, 8            | v1, v2         |
-| Medical-LLM-Small      | 14B         | ~59 GB       | 40K                 | 28 GB       | 31 GB       | 1, 2, 4, 8      | v1, v2         |
-| Vision-OCR-LLM | 30B        | ~62 GB       | 40K                 | 58 GB       | 5 GB        | 2, 4, 8         | v1             |
-| Vision-OCR-Structured-LLM | 30B | ~62 GB    | 40K                 | 58 GB       | 5 GB        | 2, 4, 8         | v1             |
+| **Model Name** | **Recommended GPU Memory** | **Max Sequence Length** | **Model Size** | **Max KV-Cache** | **Tensor Parallel Sizes** | **Available Versions** |
+|----------------------------|--------------------------|-------------------------|----------------|------------------|--------------------------|------------------------|
+| Medical-LLM-Medium     | ~452 GB      | 128K                | 131 GB      | 320 GB      | 4, 8            | v1, v2         |
+| Medical-LLM-Small      | ~59 GB       | 40K                 | 28 GB       | 31 GB       | 1, 2, 4, 8      | v1, v2         |
+| Vision-OCR-LLM | ~62 GB       | 40K                 | 58 GB       | 5 GB        | 2, 4, 8         | v1             |
+| Vision-OCR-Structured-LLM | ~62 GB    | 40K                 | 58 GB       | 5 GB        | 2, 4, 8         | v1             |
 
 
 > **Important Notes**

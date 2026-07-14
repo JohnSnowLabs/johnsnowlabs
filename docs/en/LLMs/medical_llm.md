@@ -22,12 +22,12 @@ Our models are designed to deliver best-in-class performance across a wide range
 ## Medical LLMs Offering
 
 {:.table-model-big}
-| Model Name | Parameters | Recommended GPU Memory | Max Sequence Length | Model Size | Max KV-Cache | Tensor Parallel Sizes |
-|---|---|---|---|---|---|---|
-| Medical-LLM-Medium | 70B | ~452 GB | 128K | 131 GB | 320 GB | 4, 8 |
-| Medical-LLM-Small | 14B | ~59 GB | 40K | 28 GB | 31 GB | 1, 2, 4, 8 |
-| Vision-OCR-LLM | 30B | ~62 GB | 40K | 58 GB | 5 GB | 2, 4, 8 |
-| Vision-OCR-Structured-LLM | 30B | ~62 GB | 40K | 58 GB | 5 GB | 2, 4, 8 |
+| Model Name | Recommended GPU Memory | Max Sequence Length | Model Size | Max KV-Cache | Tensor Parallel Sizes |
+|---|---|---|---|---|---|
+| Medical-LLM-Medium |~452 GB | 128K | 131 GB | 320 GB | 4, 8 |
+| Medical-LLM-Small | ~59 GB | 40K | 28 GB | 31 GB | 1, 2, 4, 8 |
+| Vision-OCR-LLM | ~62 GB | 40K | 58 GB | 5 GB | 2, 4, 8 |
+| Vision-OCR-Structured-LLM | ~62 GB | 40K | 58 GB | 5 GB | 2, 4, 8 |
 
 *Note: All memory calculations are based on half-precision (fp16/bf16) weights. Recommended GPU Memory considers the model size and the maximum key-value cache at the model's maximum sequence length. These calculations follow the guidelines from [DJL's LMI Deployment Guide](https://docs.djl.ai/master/docs/serving/serving/docs/lmi/deployment_guide/instance-type-selection.html).*
 
