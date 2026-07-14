@@ -19,6 +19,10 @@ The following LLMs are available as Snowflake Endpoints:
 
 [Medical LLM - Small](https://app.snowflake.com/marketplace/listing/GZTYZ4386LJIC/john-snow-labs-medical-llm-small)
 
+[Vision OCR LLM](https://app.snowflake.com/marketplace/listing/GZTYZ4386LJXB/john-snow-labs-vision-ocr-llm)
+
+[Vision OCR Structured LLM](https://app.snowflake.com/marketplace/listing/GZTYZ4386LJXF/john-snow-labs-vision-ocr-structured-llm)
+
 </div><div class="h3-box" markdown="1">
 
 ## Deployment Instructions
