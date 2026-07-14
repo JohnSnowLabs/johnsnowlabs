@@ -128,7 +128,7 @@ To reduce manual effort, the system automatically suggests mappings for labels t
 
 - Case-insensitive matching
 - Normalized label comparison
-- Minor string similarity detection
+- String similarity detection
 
 For example:
 
