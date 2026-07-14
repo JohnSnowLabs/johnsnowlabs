@@ -19,6 +19,10 @@ The LLMs listed below are available on Databricks Marketplace as Model Serving E
 
 [Medical LLM - Small](https://marketplace.databricks.com/details/2d3cabaf-e93e-45e0-a954-82202000afd8/John-Snow-Labs_Medical-LLM-Small)
 
+[Vision OCR LLM](https://marketplace.databricks.com/details/c90c05de-8957-443d-8e1d-b73358d82b67/John-Snow-Labs_Vision-OCR-LLM)
+
+[Vision OCR Structured LLM](https://marketplace.databricks.com/details/e5063101-57bb-4523-baa0-48da9cf6d4ab/John-Snow-Labs_Vision-OCR-Structured)
+
 </div><div class="h3-box" markdown="1">
 
 ## Deployment Instructions
