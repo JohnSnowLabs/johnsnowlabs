@@ -6,7 +6,7 @@ seotitle: Generative AI Lab | John Snow Labs
 title: Release Notes
 permalink: /docs/en/alab/release_notes
 key: docs-training
-modify_date: "2026-07-03"
+modify_date: "2026-07-14"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
@@ -130,7 +130,7 @@ To reduce manual effort, the system automatically suggests mappings for labels t
 
 - Case-insensitive matching
 - Normalized label comparison
-- Minor string similarity detection
+- String similarity detection
 
 For example:
 
@@ -463,6 +463,7 @@ A healthcare annotation team is labeling laboratory results containing values su
 </div>
 
 <ul class="pagination owl-carousel pagination_big">
+    <li><a href="annotation_labs_releases/release_notes_8_2_1">8.2.1</a></li>
     <li class="active"><a href="annotation_labs_releases/release_notes_8_2_0">8.2.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_8_1_3">8.1.3</a></li>
     <li><a href="annotation_labs_releases/release_notes_8_1_2">8.1.2</a></li>
