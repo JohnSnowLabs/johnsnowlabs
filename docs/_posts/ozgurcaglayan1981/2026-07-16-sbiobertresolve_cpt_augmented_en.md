@@ -18,13 +18,16 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model maps clinical procedure and measurement entities to CPT codes using `sbiobert_base_cased_mli_onnx` embeddings. Training data: this model is trained on current CPT data, further augmented by John Snow Labs for broader coverage. CPT resolver models are removed from the Models Hub due to license restrictions and can only be shared with users who already have a valid CPT license. Contact support@johnsnowlabs.com for access.
+This model maps clinical procedure and measurement entities to CPT codes using `sbiobert_base_cased_mli_onnx` embeddings. 
+
+Training data: this model is trained on current CPT data, further augmented by John Snow Labs for broader coverage. 
+
+CPT resolver models are removed from the Models Hub due to license restrictions and can only be shared with users who already have a valid CPT license. Contact support@johnsnowlabs.com for access.
 
 {:.btn-box}
 [Live Demo](https://nlp.johnsnowlabs.com/resolve_entities_codes){:.button.button-orange}
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/24.Improved_Entity_Resolvers_in_SparkNLP_with_sBert.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/sbiobertresolve_cpt_augmented_en_6.4.0_3.4_1784231718189.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/sbiobertresolve_cpt_augmented_en_6.4.0_3.4_1784231718189.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+
 
 ## How to use
 
@@ -32,6 +35,7 @@ This model maps clinical procedure and measurement entities to CPT codes using `
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 documentAssembler = DocumentAssembler()\
