@@ -18,13 +18,15 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model maps clinical entities (procedures, tests, treatments) to their corresponding CPT codes without requiring embeddings for accurate procedural code mapping. Training data: current CPT data, further augmented by John Snow Labs for broader coverage. CPT mapper models are removed from the Models Hub due to license restrictions and can only be shared with users who already have a valid CPT license. Please contact support@johnsnowlabs.com for access.
+This model maps clinical entities (procedures, tests, treatments) to their corresponding CPT codes without requiring embeddings for accurate procedural code mapping. 
+
+Training data: current CPT data, further augmented by John Snow Labs for broader coverage. 
+
+CPT mapper models are removed from the Models Hub due to license restrictions and can only be shared with users who already have a valid CPT license. Please contact support@johnsnowlabs.com for access.
 
 {:.btn-box}
 [Live Demo](https://nlp.johnsnowlabs.com/resolve_entities_codes){:.button.button-orange}
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/06.0.Chunk_Mapping.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/cpt_mapper_en_6.4.0_3.4_1784228614171.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/cpt_mapper_en_6.4.0_3.4_1784228614171.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -32,6 +34,7 @@ This model maps clinical entities (procedures, tests, treatments) to their corre
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
