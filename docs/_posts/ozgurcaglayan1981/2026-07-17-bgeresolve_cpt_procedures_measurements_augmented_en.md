@@ -27,8 +27,7 @@ CPT resolver models are removed from the Models Hub due to license restrictions 
 {:.btn-box}
 [Live Demo](https://nlp.johnsnowlabs.com/resolve_entities_codes){:.button.button-orange}
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/24.Improved_Entity_Resolvers_in_SparkNLP_with_sBert.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/bgeresolve_cpt_procedures_measurements_augmented_en_6.4.0_3.4_1784247267170.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/bgeresolve_cpt_procedures_measurements_augmented_en_6.4.0_3.4_1784247267170.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+
 
 ## How to use
 
@@ -36,6 +35,7 @@ CPT resolver models are removed from the Models Hub due to license restrictions 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 documentAssembler = DocumentAssembler()\
