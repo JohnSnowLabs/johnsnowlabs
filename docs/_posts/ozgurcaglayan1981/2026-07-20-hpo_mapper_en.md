@@ -32,6 +32,7 @@ This model maps extracted phenotype entities from clinical or biomedical text to
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
