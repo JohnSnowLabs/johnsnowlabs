@@ -32,6 +32,7 @@ This model maps HPO phenotype terms found in free text to their exact, related, 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
