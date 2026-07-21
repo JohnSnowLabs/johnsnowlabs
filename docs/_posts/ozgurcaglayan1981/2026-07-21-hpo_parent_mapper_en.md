@@ -32,6 +32,7 @@ This model maps HPO codes to their full ancestor hierarchy in the Human Phenotyp
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
