@@ -32,6 +32,7 @@ This model maps phenotypic abnormalities and medical terms associated with hered
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 documentAssembler = DocumentAssembler()\
