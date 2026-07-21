@@ -32,6 +32,7 @@ This model maps gene symbols to their associated HPO code(s), based on gene-phen
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
