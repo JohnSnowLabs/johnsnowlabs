@@ -329,7 +329,8 @@ Jekyll::Hooks.register :posts, :pre_render do |post|
     predicted_entities: extractor.predicted_entities || [],
     type: doc_type,
     annotator: post.data['annotator'] || "",
-    deprecated: !!post.data['deprecated']
+    deprecated: !!post.data['deprecated'],
+    tpj_compatible: !!post.data['tpj_compatible']
   }
 
   benchmarking_info = extractor.benchmarking_results(post.url)
@@ -362,7 +363,7 @@ Jekyll::Hooks.register :posts, :post_render do |post|
   supported = !!post.data['supported']
   deprecated = !!post.data['deprecated']
   recommended = !!post.data['recommended']
-  key = "#{post.data['name']}_#{post.data['language']}_#{post.data['edition']}_#{post.data["spark_version"]}"
+  key ="#{post.data['name']}_#{post.data['language']}_#{post.data['edition']}_#{post.data["spark_version"]}"
 
   model = {
     id: post.url,
