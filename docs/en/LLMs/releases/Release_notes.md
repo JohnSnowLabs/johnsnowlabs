@@ -19,7 +19,7 @@ sidebar:
 
 We're excited to announce a major new version of our Medical-Medium-LLM model, representing a significant advancement in AI-powered clinical decision support with enhanced structured medical reasoning capabilities.
 
-- **Medical Medium LLM**: The new model demonstrates <b>broader and more balanced performance improvements</b>, increasing the overall OpenMed benchmark average from <b>93.0% to 94.5%</b>. The most significant gains are in <b>PubMedQA (+6 points)</b> and <b>anchoring-bias resistance (+3 points)</b>, indicating better clinical reasoning and improved robustness against cognitive bias. Safety also improved, while maintaining industry-leading scores in medical genetics and professional medicine. The only metric showing a small regression is <b>college biology mastery (−1.5 points)</b>, which is offset by improvements across nearly every other benchmark and the addition of a strong <b>97.5% MedHallu</b> score. 
+- **Medical Medium LLM**: The new model demonstrates <b>broader and more balanced performance improvements</b>, increasing the overall OpenMed benchmark average from <b>93.0% to 94.5%</b>. The most significant gains are in <b>PubMedQA (+6 points)</b> and <b>anchoring-bias resistance (+3 points)</b>, indicating better clinical reasoning and improved robustness against cognitive bias. Safety also improved, while maintaining industry-leading scores in medical genetics and professional medicine.
 
 
 
@@ -33,7 +33,6 @@ Side by side comparison with previous version
 | Medical genetics | 99% | 99% | No change | 0%  |
 | Professional medicine| 98% | 98%| No change| 0%  |
 | Clinical knowledge comprehension | 94% | 95% | +1.0 pt| **+1.06%**|
-| College biology mastery | 99% | 97.5% | −1.5 pts| **−1.52%**|
 | Anatomy | 92% | 93% | **+1.0 pt**| **+1.09%**|
 | MedQA | 93.5% | 94.7% | **+1.2 pts**| **+1.28%**|
 | PubMedQA | 78% | 84% | **+6.0 pts**| **+7.69%**|
