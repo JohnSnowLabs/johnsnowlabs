@@ -5,7 +5,7 @@ seotitle: Medical LLMs | John Snow Labs
 title: Release Notes
 permalink: /docs/en/LLMs/releases/release_notes
 key: docs-medical-llm
-modify_date: "2026-05-11"
+modify_date: "2026-07-23"
 show_nav: true
 sidebar:
     nav: medical-llm
@@ -13,293 +13,54 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-## 05-11-2026
+## 07-23-2026
 
 ### Model Updates
 
-We're excited to announce a major new version of our Medical-Reasoning-LLM-32B model, representing a significant advancement in AI-powered clinical decision support with enhanced structured medical reasoning capabilities.
+We're excited to announce a major new version of our Medical-Medium-LLM model, representing a significant advancement in AI-powered clinical decision support with enhanced structured medical reasoning capabilities.
 
-- **Medical-Reasoning-LLM-32B**: This updated model is designed as a cognitive partner for healthcare professionals, analyzing symptoms, diagnostics, and longitudinal patient histories to guide complex diagnostic and treatment decisions in alignment with established clinical guidelines. It delivers transparent decision pathways with clear, step-aware explanations, evaluates competing hypotheses to reduce diagnostic error, and explicitly communicates uncertainty to support risk-aware judgment. The model integrates up-to-date medical knowledge within structured reasoning frameworks that mirror experienced clinician workflows, achieving approximately 95–97% of the reasoning capability of significantly larger models at nearly half the computational cost.
+- **Medical Medium LLM**: The new model demonstrates <b>broader and more balanced performance improvements</b>, increasing the overall OpenMed benchmark average from <b>93.0% to 94.5%</b>. The most significant gains are in <b>PubMedQA (+6 points)</b> and <b>anchoring-bias resistance (+3 points)</b>, indicating better clinical reasoning and improved robustness against cognitive bias. Safety also improved, while maintaining industry-leading scores in medical genetics and professional medicine. The only metric showing a small regression is <b>college biology mastery (−1.5 points)</b>, which is offset by improvements across nearly every other benchmark and the addition of a strong <b>97.5% MedHallu</b> score. 
 
-#### Specifications
 
-| **Model Name**             | **Parameters** | **Recommended GPU Memory** | **Max Sequence Length** | **Model Size** | **Max KV-Cache** | **Tensor Parallel Sizes** |
-|---------------------------|----------------|----------------------------|-------------------------|----------------|------------------|--------------------------|
-| Medical-Reasoning-LLM-32B | 32B            | ~66 GB                     | 262K                    | 50 GB          | 16 GB            | 2, 4, 8                  |
 
-#### Benchmark Performance – Medical-Reasoning-LLM-32B
+Side by side comparison with previous version
 
-- Achieves 95.2% accuracy on Professional Medicine
-- Reaches 100% on College Biology concepts
-- Scores 80% on Clinical Knowledge assessment
-- Delivers 98.3% accuracy on Patient Understanding and Accessibility
 
-## 03-26-2026
+{:.table-model-big}
+| **Metric**             | **Old** | **New** | **Absolute Change** | **Relative Change** |
+|---------------------------|----------------|----------------------------|-------------------------|--------------------------|
+| **OpenMed average** | 93.0% | 94.5% | **+1.5 pts** |**+1.61%**  |
+| Medical genetics | 99% | 99% | No change | 0%  |
+| Professional medicine| 98% | 98%| No change| 0%  |
+| Clinical knowledge comprehension | 94% | 95% | +1.0 pt| **+1.06%**|
+| College biology mastery | 99% | 97.5% | −1.5 pts| **−1.52%**|
+| Anatomy | 92% | 93% | **+1.0 pt**| **+1.09%**|
+| MedQA | 93.5% | 94.7% | **+1.2 pts**| **+1.28%**|
+| PubMedQA | 78% | 84% | **+6.0 pts**| **+7.69%**|
+| Safety & reliability| 94.5% | 95.5% | **+1.0 pt**| **+1.06%**|
+| Name bias | 98% | 98%  | No change|  0%  |
+| Racial bias | 93% | 94% | **+1.0 pt**| **+1.08%**|
+| Anchoring-bias resistance | 91.67% | 94.67% | **+3.0 pts**| **+3.27%**|
 
-### Model Updates
+##### Summary of improvements
 
-We're excited to announce an updated version of our Medical-Visual-LLM-8B model, delivering major improvements in multimodal medical reasoning, benchmark accuracy, and deployment efficiency.
+**Major improvements**
 
-- **Medical-Visual-LLM-8B**: This 8B parameter multimodal medical model delivers advanced clinical reasoning across both text and medical imagery in a highly efficient footprint. Trained on diverse medical thinking and patient-centered datasets, it understands complex clinical narratives while accurately interpreting X-rays, MRIs, CT scans, pathology slides, charts, diagrams, and structured medical records. Despite its compact size, the model demonstrates strong diagnostic support capabilities, contextual question answering, structured report summarization, and multimodal evidence synthesis. With a 262K context window, it can process long clinical documents and longitudinal patient histories. Optimized for retrieval-augmented generation (RAG) workflows, it integrates seamlessly with healthcare databases and imaging systems to provide grounded, data-aware responses across real-world medical environments.
+- PubMedQA: +6.0 percentage points (7.7% relative improvement)  
 
-#### Specifications
+- Anchoring-bias resistance: +3.0 percentage points  
 
-| **Model Name**             | **Parameters** | **Recommended GPU Memory** | **Max Sequence Length** | **Model Size** | **Max KV-Cache** | **Tensor Parallel Sizes** |
-|---------------------------|----------------|----------------------------|-------------------------|----------------|------------------|--------------------------|
-| Medical-Visual-LLM-8B     | 8B             | ~25 GB                     | 262K                    | 17 GB          | 8 GB             | 1, 2, 4, 8               |
+- OpenMed overall average: +1.5 percentage points  
 
-#### Benchmark Performance – Medical-Visual-LLM-8B
+**General improvements**
 
-- Achieves 90.8% average across OpenMed benchmarks
-- Scores 87% on clinical knowledge assessment
-- Reaches 98% on medical genetics understanding
-- Performs at 97.8% for college biology concepts
-- Processes professional medicine with 93.5% accuracy
-- Handles medical MCQs with 92% precision
-- Maintains 89.8% accuracy on Anatomy concepts
+- Clinical knowledge comprehension: +1.0 point  
 
-## 03-10-2026
+- Anatomy: +1.0 point  
 
-### Model Updates
+- MedQA: +1.2 points  
 
-We're excited to announce an updated version of our Medical-Reasoning-LLM-32B model, delivering major improvements in structured clinical reasoning and real-time performance.
+- Safety & reliability: +1.0 point  
 
-- **Medical-Reasoning-LLM-32B**: A medical reasoning model designed as a cognitive partner for healthcare professionals, with a strong emphasis on structured clinical decision support rather than simple knowledge retrieval. It analyzes symptoms, diagnostics, and longitudinal patient histories to guide complex diagnostic and treatment decisions in alignment with established clinical guidelines. The model delivers transparent, step-aware decision pathways, evaluates competing hypotheses to reduce diagnostic error, and explicitly communicates uncertainty to support risk-aware clinical judgment. Benchmarking demonstrates state-of-the-art performance across clinical knowledge, professional medicine, and medical education tasks, while achieving nearly the reasoning capability of significantly larger models at substantially lower computational cost.
+- Racial bias detection: +1.0 point
 
-#### Specifications
-
-| **Model Name**             | **Parameters** | **Recommended GPU Memory** | **Max Sequence Length** | **Model Size** | **Max KV-Cache** | **Tensor Parallel Sizes** |
-|---------------------------|----------------|----------------------------|-------------------------|----------------|------------------|--------------------------|
-| Medical-Reasoning-LLM-32B | 32B            | ~67 GB                     | 262K                    | 51 GB          | 16 GB            | 2, 4, 8                  |
-
-#### Benchmark Performance – Medical-Reasoning-LLM-32B
-
-- MedQA benchmark: 93.5%  
-- Professional Medicine: 95.2%  
-- Medical Genetics: 97.0%  
-- Clinical comprehension: 91.3% comparable to top-tier models 
-
-## 02-03-2026
-
-### Model Updates
-
-We're excited to announce an updated version of our existing Medical-Visual-LLM-8B model, along with two new vision OCR models designed for production document understanding.
-
-- **Medical-Visual-LLM-8B**: An enhanced multimodal medical model that delivers advanced clinical reasoning across both text and medical imagery in a highly efficient footprint. Trained on diverse medical thinking and patient-centered datasets, it understands complex clinical narratives while accurately interpreting X-rays, MRIs, CT scans, pathology slides, charts, diagrams, and structured medical records. It provides strong diagnostic support, contextual question answering, structured report summarization, and multimodal evidence synthesis, and is optimized for RAG workflows that integrate with healthcare databases and imaging systems to deliver grounded, data-aware responses.
-
-- **Vision-OCR-LLM**: A vision-language model focused on production-grade optical character recognition with enterprise-level accuracy across diverse document types. It excels at extracting text from forms, invoices, receipts, medical records, legal documents, and complex structured layouts while maintaining high throughput and consistent accuracy in real-world document processing pipelines.
-
-- **Vision-OCR-Structured-LLM**: A vision-language model optimized for structured extraction workflows, balancing accuracy, cost, and performance for production OCR and structured data pipelines. It is designed for mission-critical document processing across financial, medical, legal, and technical content where reliable field-level extraction is required at scale.
-
-#### Specifications
-
-| **Model Name**                    | **Parameters** | **Recommended GPU Memory** | **Max Sequence Length** | **Model Size** | **Max KV-Cache** | **Tensor Parallel Sizes** |
-|-----------------------------------|----------------|----------------------------|-------------------------|----------------|------------------|--------------------------|
-| Medical-Visual-LLM-8B            | 8B             | ~64 GB                     | 128K                    | 16 GB          | 48 GB            | 1, 2, 4                  |
-| Vision-OCR-LLM          | 30B            | ~62 GB                     | 40K                     | 58 GB          | 5 GB             | 2, 4, 8                  |
-| Vision-OCR-Structured-LLM | 30B          | ~62 GB                     | 40K                     | 58 GB          | 5 GB             | 2, 4, 8                  |
-
-#### Benchmark Performance – Medical-Visual-LLM-8B
-
-- Achieves 88.2% average across OpenMed benchmarks
-- Scores 89% on clinical knowledge assessment
-- Reaches 95% on medical genetics understanding
-- Performs at 95.2% for college biology concepts
-- Processes professional medicine with 93% accuracy
-- Handles medical MCQs with 89.4% precision
-- Maintains 88.8% accuracy on Anatomy concepts
-
-#### Vision OCR LLM – Highlights
-
-- **OCR Performance**: Achieves 88% accuracy on OCRBench evaluations; demonstrates a 14.7 Character Error Rate on FUNSD form understanding; handles 20+ languages with consistent accuracy; provides robust text extraction from receipts, invoices, forms, and business documents; delivers excellent performance on complex layouts and structured documents.  
-- **Technical Specifications**: 30B total parameters with 3B active per inference (Mixture-of-Experts architecture); supports image resolution up to 8MP / 4K (3840 × 2160); fast inference through efficient architecture design; supports batch processing for high-volume workflows.  
-- **Document Understanding**: Strong performance on charts and data visualizations; excellent table extraction and structure preservation; reliable text extraction from complex multi-column layouts; handles documents with varying quality and orientations; effective processing of mixed-content documents.  
-
-#### Vision OCR Structured LLM – Highlights
-
-- **Industry-Leading Performance**: Achieves 90% accuracy on OCRBench; demonstrates a 20.3 Character Error Rate on FUNSD (79.7% field-level accuracy); processes 25+ languages with consistent accuracy; offers superior performance on charts, diagrams, tables, and complex layouts; provides exceptional reliability for production-grade document processing.  
-- **Technical Specifications**: 30B total parameters with 3B active per inference (Mixture-of-Experts architecture); image resolution support up to 8MP / 4K (3840 × 2160); advanced training for enhanced reasoning and accuracy; up to 4× inference speedup through optimized deployment architecture.  
-- **Structured Extraction Excellence**: Superior JSON generation from complex document layouts; excellent chart and data visualization comprehension (around 91–93%); advanced table extraction with structure preservation, including nested tables; robust handling of hierarchical data and challenging layouts; reliable key–value extraction for high-volume automated document processing.  
-
-## 12-30-2025
-
-### Model Updates
-
-We're excited to announce an enhanced version of our Medical-Visual-LLM-8B model with improved accuracy and performance across medical benchmarks.
-
-- **Medical-Visual-LLM-8B**: An updated 8B parameter vision-language model that delivers enhanced medical-grade multimodal intelligence. This model combines medical expertise with visual comprehension capabilities, understanding both clinical text and visual content including X-rays, MRIs, pathology slides, medical diagrams, and structured documents. It excels at summarizing clinical information, answering contextual medical questions, and facilitating decision-making. The model is optimized for RAG applications and healthcare integrations, seamlessly processing both visual and textual medical domains.
-
-#### Specifications
-
-| **Model Name**             | **Parameters** | **Recommended GPU Memory** | **Max Sequence Length** | **Model Size** | **Max KV-Cache** | **Tensor Parallel Sizes** |
-|---------------------------|--------------|------------------|-------------------|-------------|----------------|------------------------|
-| Medical-Visual-LLM-8B  | 8B          | ~64 GB           | 128K              | 15 GB       | 48 GB          | 1, 2, 4               |
-
-#### Benchmark Performance
-
-**Medical-Visual-LLM-8B:**
-
-- Achieves 86.2% average across OpenMed benchmarks
-- Scores 86.4% on clinical knowledge assessment
-- Reaches 93% on medical genetics understanding
-- Performs at 92.4% for college biology concepts
-- Processes professional medicine with 93% accuracy
-- Handles medical MCQAs with 88.5% precision
-- Maintains 85.1% accuracy on Anatomy concepts
-
-## 11-03-2025
-
-### Model Updates
-
-We're excited to announce major updates to our vision-language models with enhanced capabilities and improved performance.
-
-- **Medical-Visual-LLM-8B**: An 8B parameter vision-language model that delivers enhanced medical-grade multimodal intelligence. This model combines medical expertise with visual comprehension capabilities, understanding both clinical text and visual content including X-rays, MRIs, pathology slides, medical diagrams, and structured documents. It is optimized for RAG applications and healthcare integrations.
-
-- **Medical-Visual-LLM-30B**: A 30B parameter vision-language model that seamlessly integrates advanced medical reasoning with powerful visual understanding. This model excels at processing both medical images (X-rays, MRIs, CT scans, pathology slides and anatomical diagrams) and text, enabling comprehensive analysis of visual and textual medical data for extended medical reports and multi-image cases.
-
-#### Specifications
-
-| **Model Name**             | **Parameters** | **Recommended GPU Memory** | **Max Sequence Length** | **Model Size** | **Max KV-Cache** | **Tensor Parallel Sizes** |
-|---------------------------|--------------|------------------|-------------------|-------------|----------------|------------------------|
-| Medical-Visual-LLM-8B  | 8B          | ~64 GB           | 262K              | 16 GB       |48 GB          | 1, 2, 4, 8            |
-| Medical-Visual-LLM-30B | 30B         | ~150 GB          | 262K              | 58 GB       | 92 GB         | 2, 4, 8               |
-
-#### Benchmark Performance
-
-**Medical-Visual-LLM-8B:**
-
-- Achieves 77.6% average across OpenMed benchmarks
-- Scores 80.75% on clinical knowledge assessment
-- Reaches 86% on medical genetics understanding
-- Performs at 90.97% for college biology concepts
-- Processes professional medicine with 81.25% accuracy
-- Handles medical MCQAs with 60.87% precision
-- Maintains 66.61% accuracy on MedQA 4-options test
-
-**Medical-Visual-LLM-30B:**
-
-- Achieves 83.5% average across OpenMed benchmarks
-- Scores 85.66% on clinical knowledge assessment
-- Reaches 95% on medical genetics understanding
-- Performs at 93.75% for college biology concepts
-- Processes professional medicine with 89.34% accuracy
-- Handles medical MCQAs with 68.8% precision
-- Maintains 77.61% accuracy on MedQA 4-options test
-
-## 09-15-2025
-
-### Model Updates
-
-We're excited to announce the addition of a new compact yet powerful vision-language model to our Medical LLM lineup.
-
-- **Medical-Visual-LLM-7B**: A vision-language model that delivers medical-grade multimodal intelligence in a compact, efficient format. This model combines medical expertise with visual comprehension capabilities, understanding both clinical text and visual content including X-rays, MRIs, pathology slides, medical diagrams, and structured documents. It's well-suited for RAG applications and healthcare integrations.
-
-#### Specifications
-
-| **Model Name**             | **Parameters** | **Recommended GPU Memory** | **Max Sequence Length** | **Model Size** | **Max KV-Cache** | **Tensor Parallel Sizes** |
-|---------------------------|--------------|------------------|-------------------|-------------|----------------|------------------------|
-| Medical-Visual-LLM-7B  | 7B          | ~64 GB           | 128K              | 15 GB       | 48 GB          | 1, 2, 4               |
-
-#### Benchmark Performance
-
-- Achieves 71.0% average across OpenMed benchmarks
-- Scores 75.85% on clinical knowledge assessment
-- Reaches 81% on medical genetics understanding
-- Performs at 84.72% for college biology concepts
-- Processes professional medicine with 71.69% accuracy
-- Handles medical MCQAs with 55.08% precision
-- Maintains 59.07% accuracy on MedQA 4-options test
-
-## 08-17-2025
-
-### Model Updates
-
-We’re excited to announce that an updated versions of our Medical-Reasoning-LLM-32B models is now available, delivering significant accuracy improvements across key medical benchmarks.
-
-#### Specifications
-
-| **Model Name**             | **Parameters** | **Recommended GPU Memory** | **Max Sequence Length** | **Model Size** | **Max KV-Cache** | **Tensor Parallel Sizes** |
-|---------------------------|--------------|------------------|-------------------|-------------|----------------|------------------------|
-| Medical-Reasoning-LLM-32B | 32B         | ~111 GB          | 40K               | 61 GB       | 50 GB          | 2, 4, 8               |
-
-#### Benchmark Accuracy Comparison with previous versions
-
-Medical-Reasoning-LLM-32B leads with refined gains in:
-
-- Clinical Knowledge: Improved from 86.66% to 87.04% — a +0.38 point increase
-- Professional Medicine: Improved from 89.24% to 90.07% — a +0.83 point increase
-- Medical Genetics: Improved from 92.0% to 93.0% — a +1.0 point increase
-
-
-## 07-17-2025
-
-### Model Updates
-
-We're excited to announce that updated versions of our Medical-LLM-8B, Medical-LLM-Small, and Medical-Reasoning-LLM-32B models are now available, delivering significant accuracy improvements across key medical benchmarks.
-
-- **Medical-LLM-8B**: A new 8B parameter model that delivers enhanced clinical reasoning capabilities while maintaining deployment efficiency. This model introduces **dedicated reasoning mode with multi-step clinical logic** and improved performance in differential diagnosis and care planning.
-
-- **Medical-LLM-Small**: Updated with **advanced reasoning capabilities** and expanded medical knowledge processing. The enhanced model now features improved chain-of-thought supervision and better performance in complex medical case analysis.
-
-- **Medical-Reasoning-LLM-32B**: Significantly enhanced with focus on clinical reasoning and diagnostic decision support. The updated model provides transparent decision pathways, considers multiple hypotheses, and offers structured reasoning patterns aligned with clinical guidelines.
-
-#### Specifications
-
-| **Model Name**             | **Parameters** | **Recommended GPU Memory** | **Max Sequence Length** | **Model Size** | **Max KV-Cache** | **Tensor Parallel Sizes** |
-|---------------------------|--------------|------------------|-------------------|-------------|----------------|------------------------|
-| Medical-LLM-8B            | 8B          | ~38 GB           | 40K               | 15 GB       | 23 GB          | 1, 2, 4, 8            |
-| Medical-LLM-Small         | 14B         | ~59 GB           | 40K               | 28 GB       | 31 GB          | 1, 2, 4, 8            |
-| Medical-Reasoning-LLM-32B | 32B         | ~111 GB          | 40K               | 61 GB       | 50 GB          | 2, 4, 8               |
-
-
-
-#### Benchmark Accuracy Comparison with previous versions
-
-* Medical-LLM-8B shows a notable boost in Anatomy (8.88 pts), Clinical Knowledge (6.41 pts), and College Medicine (9.83 pts).
-* Medical-LLM-Small delivers higher precision in Anatomy (6.7 pts), College Biology (3.12 pts), while maintaining top-tier performance in compact deployments
-* Medical-Reasoning-LLM-32B  leads with refined gains in College Medicine (+2.89 pts), Professional Medicine (+1.1 pts), and PubMedQA (+2.0 pts).
-
-These models are optimized for clinical decision support, medical research, and education use cases, offering best-in-class accuracy with each new release.
-
-| **Model Name**             | **Anatomy** | **Clinical Knowledge** | **College Biology** | **College Medicine** | **Medical Genetics** | **Professional Medicine** | **PubMedQA**  |
-|---------------------------|--------------|------------------|-------------------|-------------|----------------|------------------------|----|
-| Medical-LLM-8B  (Previous version)           | 65.19 | 73.21 | 86.81 | 64.74 | 77 | 72.43 | 75.6 |
-| Medical-LLM-8B (Latest version)            | 74.07 | 79.62 | 86.81 | 74.57 | 82 | 79.78 | 76.6 |
-| Medical-LLM-Small (Previous version)         | 77.04 | 83.02 | 90.28 | 76.30 | 90 | 85.29 | 79.0 |
-| Medical-LLM-Small (Latest version)         | 83.74 | 83.40 | 93.40 | 78.03 | 84 | 85.66 | 77.4 |
-| Medical-Reasoning-LLM-32B (Previous version) | 78.52 | 85.66 | 93.75 | 80.35 | 91 | 87.5 | 75.8 |
-| Medical-Reasoning-LLM-32B (Latest version) | 78. 52 | 85.66 | 94.44 | 83.24 | 92 | 88.6 | 77.8 |
-
-
-## 05-19-2025
-
-We are excited to announce the addition of two new powerful models to our Medical LLM lineup.
-
-- **Medical-Visual-LLM-24B**: A 24B parameter vision-language model that combines medical expertise with visual comprehension capabilities. This model excels at processing both medical images (X-rays, MRIs, pathology slides) and text, enabling comprehensive analysis of visual and textual medical data.
-
-Get more information about the **Medical-Visual-LLM-24B** model in this [blog](https://www.johnsnowlabs.com/introducing-medical-vlm-24b-our-first-medical-vision-language-model/).
-
-#### Specifications
-
-| **Model Name**             | **Parameters** | **Recommended GPU Memory** | **Max Sequence Length** | **Model Size** | **Max KV-Cache** | **Tensor Parallel Sizes** |
-|---------------------------|--------------|------------------|-------------------|-------------|----------------|------------------------|
-| Medical-Visual-LLM-24B           | 24B         | ~145 GB          | 128K              | 45 GB       | 100 GB         | 2, 4, 8               |
-
-## 04-06-2025
-
-**Welcome to John Snow Labs Medicall LLMs on premise deployments Documentation and Updates Hub!**
-
-We are excited to announce the launch of the on premise deplyment of our Medical LLM models page, a centralized repository for all the latest features, enhancements, and resolutions of known issues within the. This dedicated space is designed to keep users informed of the most recent developments, enabling seamless testing and facilitating the provision of valuable feedback. Our commitment is to ensure that users have immediate access to the latest information, empowering them to leverage the full capabilities of out Medical LLM models effectively. Stay updated with us as we continue to improve and expand the functionalities of our Medical LLMs to meet and exceed your expectations.
-
-### Supported Medical LLM Models
-
-| **Model Name** | **Parameters** | **Recommended GPU Memory** | **Max Sequence Length** | **Model Size** | **Max KV-Cache** | **Tensor Parallel Sizes** |
-|----------------------------|------------|--------------|---------------------|------------|--------------|----------------------|
-| Medical-LLM-7B             | 7B         | ~25 GB       | 32K                 | 14 GB      | 11 GB        | 1, 2, 4              |
-| Medical-LLM-14B            | 14B        | ~40 GB       | 16K                 | 27 GB      | 13 GB        | 1, 2                 |
-| Medical-LLM-24B            | 24B        | ~69 GB       | 32K                 | 44 GB      | 25 GB        | 1, 2, 4, 8           |
-| Medical-LLM-Small          | 14B        | ~58 GB       | 32K                 | 28 GB      | 30 GB        | 1, 2, 4, 8           |
-| Medical-LLM-Medium         | 70B        | ~452 GB      | 128K                | 131 GB     | 320 GB       | 4, 8                 |
-| Medical-Reasoning-LLM-32B  | 32B        | ~222 GB      | 128K                | 61 GB      | 160 GB       | 2, 4, 8              |
-
-</div>
