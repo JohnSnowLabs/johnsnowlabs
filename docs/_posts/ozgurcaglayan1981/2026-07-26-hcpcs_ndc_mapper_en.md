@@ -32,6 +32,7 @@ This pretrained model establishes connections between HCPCS codes and their corr
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
