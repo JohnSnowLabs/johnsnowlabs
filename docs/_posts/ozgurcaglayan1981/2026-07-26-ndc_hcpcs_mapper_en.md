@@ -32,6 +32,7 @@ This pretrained model establishes mappings between National Drug Codes and their
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
