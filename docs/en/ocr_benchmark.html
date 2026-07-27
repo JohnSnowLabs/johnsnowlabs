@@ -907,6 +907,163 @@ But not all hope is lost, you can work with frames!.</p>
   </ul>
 
 </div>
+<div class="h3-box">
+
+  <h1 id="aws-dicom-pipeline-benchmarks">AWS Dicom Pipeline Benchmarks</h1>
+
+  <p>In this section, we provide figures for specific AWS instances.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Infra</th>
+        <th>Pipeline</th>
+        <th>Image size (avg)</th>
+        <th>Time (s) for test batch</th>
+        <th>Infra Price (1000 images)</th>
+        <th>Time (1000 images)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>CPU – c7a.4xlarge</strong></td>
+        <td>mem_opt (onnx, open-vino) + ner_deid_sd</td>
+        <td>600x600</td>
+        <td>18, 16</td>
+        <td>$0.37</td>
+        <td>0.45 hs</td>
+      </tr>
+      <tr>
+        <td> </td>
+        <td>VLM1 + ner_deid_sd</td>
+        <td>680x680</td>
+        <td>65</td>
+        <td>$1.34</td>
+        <td>1.64 hs</td>
+      </tr>
+      <tr>
+        <td><strong>GPU – g6.2xlarge</strong></td>
+        <td>mem_opt (onnx) + ner_deid_sd</td>
+        <td>600x600</td>
+        <td>24</td>
+        <td>$0.59</td>
+        <td>0.6 hs</td>
+      </tr>
+      <tr>
+        <td> </td>
+        <td>VLM1 + ner_deid_sd</td>
+        <td>680x680</td>
+        <td>35</td>
+        <td>$0.86</td>
+        <td>0.88 hs</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Notes:</strong></p>
+  <ul>
+    <li>Test batch of 11 DICOMs.</li>
+    <li>c7a.4xlarge: 16 vCPUs, 32 GiB RAM — $0.821/h</li>
+    <li>g6.2xlarge: 8 vCPUs, 32 GiB RAM — $0.98/h</li>
+  </ul>
+
+  <h1 id="aws-dicom-pipeline-benchmarks--transformers">AWS Dicom Pipeline Benchmarks — Transformers</h1>
+  <p>In this section we provide the specific list of Transformers that were used for the experiments of previous section.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>OCR Pipeline (<code class="language-plaintext highlighter-rouge">dicom_deid_ocr_pipeline.py</code>)</th>
+        <th>VLM Pipeline (<code class="language-plaintext highlighter-rouge">dicom_deid_vlm_pipeline.py</code>)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>DicomToMetadata</td>
+        <td>DicomToImageV3</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>DicomToImageV3</td>
+        <td>DocumentAssembler (caption)</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>ImageTextDetector</td>
+        <td>ImageSchemaConverter</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>ImageToTextV3</td>
+        <td>MedicalVisionLLM</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>DicomDeidentifier</td>
+        <td>DocumentCoordinatesToText</td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td>DocumentAssembler</td>
+        <td>DocumentAssembler</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>DocumentNormalizer</td>
+        <td>DocumentNormalizer</td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td>SentenceDetector</td>
+        <td>SentenceDetector</td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td>Tokenizer</td>
+        <td>Tokenizer</td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td>WordEmbeddingsModel</td>
+        <td>WordEmbeddingsModel</td>
+      </tr>
+      <tr>
+        <td>11</td>
+        <td>MedicalNerModel</td>
+        <td>MedicalNerModel</td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td>NerConverter</td>
+        <td>NerConverter</td>
+      </tr>
+      <tr>
+        <td>13</td>
+        <td>ChunkMergeApproach</td>
+        <td>RegexMatcherInternalModel</td>
+      </tr>
+      <tr>
+        <td>14</td>
+        <td>PositionFinder</td>
+        <td>ChunkMergeApproach</td>
+      </tr>
+      <tr>
+        <td>15</td>
+        <td>DicomDrawRegions</td>
+        <td>PositionFinder</td>
+      </tr>
+      <tr>
+        <td>16</td>
+        <td>DicomMetadataDeidentifier</td>
+        <td>DicomDrawRegions</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
       <time itemprop="dateModified" datetime="2024-06-24T00:00:00+00:00">Jun 24, 2024</time>
     </span><!-- start custom article footer snippet -->
