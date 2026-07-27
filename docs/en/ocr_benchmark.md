@@ -167,4 +167,47 @@ Reasons for doing this:
 * Even if not all frames are of the same dimensions, you can resize them prior to feeding them to the ML models in the pipeline.
 * This way, each frame will have a fixed size processing time.
 
+</div><div class="h3-box" markdown="1">
+
+# AWS Dicom Pipeline Benchmarks
+
+In this section, we provide figures for specific AWS instances.
+
+| Infra | Pipeline | Image size (avg) | Time (s) for test batch | Infra Price (1000 images) | Time (1000 images) |
+|---|---|---|---|---|---|
+| **CPU – c7a.4xlarge** | mem_opt (onnx, open-vino) + ner_deid_sd | 600x600 | 18, 16 | $0.37 | 0.45 hs |
+| | VLM1 + ner_deid_sd | 680x680 | 65 | $1.34 | 1.64 hs |
+| **GPU – g6.2xlarge** | mem_opt (onnx) + ner_deid_sd | 600x600 | 24 | $0.59 | 0.6 hs |
+| | VLM1 + ner_deid_sd | 680x680 | 35 | $0.86 | 0.88 hs |
+
+**Notes:**
+- Test batch of 11 DICOMs.
+- c7a.4xlarge: 16 vCPUs, 32 GiB RAM — $0.821/h
+- g6.2xlarge: 8 vCPUs, 32 GiB RAM — $0.98/h
+
+
+# AWS Dicom Pipeline Benchmarks — Transformers
+In this section we provide the specific list of Transformers that were used for the experiments of previous section.
+
+| # | OCR Pipeline (`dicom_deid_ocr_pipeline.py`) | VLM Pipeline (`dicom_deid_vlm_pipeline.py`) |
+|---|---|---|
+| 1 | DicomToMetadata | DicomToImageV3 |
+| 2 | DicomToImageV3 | DocumentAssembler (caption) |
+| 3 | ImageTextDetector | ImageSchemaConverter |
+| 4 | ImageToTextV3 | MedicalVisionLLM |
+| 5 | DicomDeidentifier | DocumentCoordinatesToText |
+| 6 | DocumentAssembler | DocumentAssembler |
+| 7 | DocumentNormalizer | DocumentNormalizer |
+| 8 | SentenceDetector | SentenceDetector |
+| 9 | Tokenizer | Tokenizer |
+| 10 | WordEmbeddingsModel | WordEmbeddingsModel |
+| 11 | MedicalNerModel | MedicalNerModel |
+| 12 | NerConverter | NerConverter |
+| 13 | ChunkMergeApproach | RegexMatcherInternalModel |
+| 14 | PositionFinder | ChunkMergeApproach |
+| 15 | DicomDrawRegions | PositionFinder |
+| 16 | DicomMetadataDeidentifier | DicomDrawRegions |
+
+
 </div>
+
