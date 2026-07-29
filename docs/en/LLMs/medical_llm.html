@@ -644,6 +644,7 @@ function wrapWordInSpan(data, wordToWrap) {
         <th>Max Sequence Length</th>
         <th>Max KV-Cache</th>
         <th>Tensor Parallel Sizes</th>
+        <th>Supported Platforms</th>
       </tr>
     </thead>
     <tbody>
@@ -653,6 +654,7 @@ function wrapWordInSpan(data, wordToWrap) {
         <td>256K</td>
         <td>69 GB</td>
         <td>2, 4</td>
+        <td><a href="https://nlp.johnsnowlabs.com/docs/en/LLMs/on_prem_deploy">On-Premise</a> <br /> <a href="https://aws.amazon.com/marketplace/pp/prodview-z4jqmczvwgtby">AWS</a> <br /> <a href="https://marketplace.microsoft.com/en-us/product/johnsnowlabsinc1646051154808.medical_llm_medium?tab=Overview">Azure</a> <br /> <a href="https://marketplace.databricks.com/details/6955d25d-2dda-4517-8a26-5dc3239e6995/John-Snow-Labs_MedicalLLMMedium">Databricks</a> <br /> <a href="https://app.snowflake.com/marketplace/listing/GZTYZ4386LJI8/john-snow-labs-medical-llm-medium">Snowflake</a></td>
       </tr>
       <tr>
         <td>Medical LLM Small</td>
@@ -660,6 +662,7 @@ function wrapWordInSpan(data, wordToWrap) {
         <td>256K</td>
         <td>34 GB</td>
         <td>1, 2, 4</td>
+        <td><a href="https://nlp.johnsnowlabs.com/docs/en/LLMs/on_prem_deploy">On-Premise</a> <br /> <a href="https://aws.amazon.com/marketplace/pp/prodview-yrajldynampw4">AWS</a> <br /> <a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.medical_llm_small?tab=Overview">Azure</a> <br /> <a href="https://marketplace.databricks.com/details/2d3cabaf-e93e-45e0-a954-82202000afd8/John-Snow-Labs_Medical-LLM-Small">Databricks</a> <br /> <a href="https://app.snowflake.com/marketplace/listing/GZTYZ4386LJIC/john-snow-labs-medical-llm-small">Snowflake</a></td>
       </tr>
       <tr>
         <td>Vision-OCR-LLM</td>
@@ -667,6 +670,7 @@ function wrapWordInSpan(data, wordToWrap) {
         <td>40K</td>
         <td>5 GB</td>
         <td>2, 4, 8</td>
+        <td><a href="https://nlp.johnsnowlabs.com/docs/en/LLMs/on_prem_deploy">On-Premise</a> <br /> <a href="https://aws.amazon.com/marketplace/pp/prodview-d7un4r7xpiwje">AWS</a> <br /> <a href="https://marketplace.microsoft.com/en-us/product/virtual-machine/johnsnowlabsinc1646051154808.visual_language_ocr_llm?tab=Overview">Azure</a> <br /> <a href="https://marketplace.databricks.com/details/c90c05de-8957-443d-8e1d-b73358d82b67/John-Snow-Labs_Vision-OCR-LLM">Databricks</a> <br /> <a href="https://app.snowflake.com/marketplace/listing/GZTYZ4386LJXB/john-snow-labs-vision-ocr-llm">Snowflake</a></td>
       </tr>
       <tr>
         <td>Vision-OCR-Structured-LLM</td>
@@ -674,6 +678,7 @@ function wrapWordInSpan(data, wordToWrap) {
         <td>40K</td>
         <td>5 GB</td>
         <td>2, 4, 8</td>
+        <td><a href="https://nlp.johnsnowlabs.com/docs/en/LLMs/on_prem_deploy">On-Premise</a> <br /> <a href="https://aws.amazon.com/marketplace/pp/prodview-rrpnzcxjmhtfy">AWS</a> <br /> <a href="https://marketplace.microsoft.com/en-us/product/virtual-machine/johnsnowlabsinc1646051154808.visual_language_ocr_structured_llm?tab=Overview">Azure</a> <br /> <a href="https://marketplace.databricks.com/details/e5063101-57bb-4523-baa0-48da9cf6d4ab/John-Snow-Labs_Vision-OCR-Structured">Databricks</a> <br />  <a href="https://app.snowflake.com/marketplace/listing/GZTYZ4386LJXF/john-snow-labs-vision-ocr-structured-llm">Snowflake</a></td>
       </tr>
     </tbody>
   </table>
@@ -684,6 +689,140 @@ function wrapWordInSpan(data, wordToWrap) {
     <li><strong>Medical LLM Small</strong> — <em>Compact.</em> A compact medical LLM that outperforms much larger general models on MedHELM while running on a single commodity GPU.</li>
     <li><strong>Medical LLM Medium</strong> — <em>Flagship.</em> Our best model — the #1 MedHELM mean win rate in this comparison, leading frontier closed models on OpenMed.</li>
   </ul>
+
+  <h2 id="medical-small-llms">Medical Small LLMs</h2>
+
+  <p>John Snow Labs offers a curated portfolio of <strong>specialized small language models (1B-10B parameters), alongside larger, more capable models</strong>. Designed for real-world deployment, these models are <strong>quantized for efficiency and can run on standard CPU-based hardware without requiring a GPU</strong>, while also supporting GPU acceleration for improved performance. They integrate seamlessly with the <strong>Healthcare NLP library</strong>, just like any other component, and are fully included under the <strong>Healthcare NLP license</strong>.</p>
+
+  <table class="table-model-big db">
+    <thead>
+      <tr>
+        <th>Model Name</th>
+        <th>Disk Size</th>
+        <th>Model Size</th>
+        <th>Modality</th>
+        <th>Available quantizations</th>
+        <th>GPU Memory <br /> Required</th>
+        <th>Token/sec</th>
+        <th>Max Context <br /> Window</th>
+        <th>Tasks</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>JSL_MedM_v3</td>
+        <td>[8.2G, 14G, 21.9G]</td>
+        <td>14B</td>
+        <td>text-only</td>
+        <td>[<a href="https://nlp.johnsnowlabs.com/2024/10/06/jsl_medm_q4_v3_en.html">q4</a>, <a href="https://nlp.johnsnowlabs.com/2024/10/08/jsl_medm_q8_v3_en.html">q8</a>, <a href="https://nlp.johnsnowlabs.com/2024/10/23/jsl_medm_q16_v3_en.html">q16</a>]</td>
+        <td>24GB</td>
+        <td>[79, 84, 253]</td>
+        <td>32,768</td>
+        <td>Summarization, Q&amp;A, RAG, and Chat</td>
+      </tr>
+      <tr>
+        <td>JSL_MedS_v3</td>
+        <td>[2.2G, 3.7G, 5.6G]</td>
+        <td>3.5B</td>
+        <td>text-only</td>
+        <td>[<a href="https://nlp.johnsnowlabs.com/2024/10/05/jsl_meds_q4_v3_en.html">q4</a>, <a href="https://nlp.johnsnowlabs.com/2024/10/05/jsl_meds_q8_v3_en.html">q8</a>, <a href="https://nlp.johnsnowlabs.com/2024/10/05/jsl_meds_q16_v3_en.html">q16</a>]</td>
+        <td>10GB</td>
+        <td>[28.5, 18.7, 50.2]</td>
+        <td>131,072</td>
+        <td>Summarization, Q&amp;A, RAG</td>
+      </tr>
+      <tr>
+        <td>JSL_MedS_4B_v5</td>
+        <td>[2.4G, 4.0G, 6.1G]</td>
+        <td>4B</td>
+        <td>text-only</td>
+        <td>[<a href="https://nlp.johnsnowlabs.com/2025/08/05/jsl_meds_4b_q4_v5_en.html">q4</a>, <a href="https://nlp.johnsnowlabs.com/2025/08/05/jsl_meds_4b_q8_v5_en.html">q8</a>, <a href="https://nlp.johnsnowlabs.com/2025/08/05/jsl_meds_4b_q16_v5_en.html">q16</a>]</td>
+        <td>16GB</td>
+        <td>[40, 32, 95]</td>
+        <td>32,768</td>
+        <td>Summarization, Q&amp;A, RAG</td>
+      </tr>
+      <tr>
+        <td>JSL_MedS_8B_v4</td>
+        <td>[4.6G, 7.8G, 12.2G]</td>
+        <td>8B</td>
+        <td>text-only</td>
+        <td>[<a href="https://nlp.johnsnowlabs.com/2025/08/05/jsl_meds_8b_q4_v4_en.html">q4</a>, <a href="https://nlp.johnsnowlabs.com/2025/08/05/jsl_meds_8b_q8_v4_en.html">q8</a>, <a href="https://nlp.johnsnowlabs.com/2025/08/05/jsl_meds_8b_q16_v4_en.html">q16</a>]</td>
+        <td>16GB</td>
+        <td>[83, 84, 272]</td>
+        <td>32,768</td>
+        <td>Summarization, Q&amp;A, RAG</td>
+      </tr>
+      <tr>
+        <td>JSL_MedS_NER_v4</td>
+        <td>[2.2G, 3.7G, 6.0]</td>
+        <td>3.5B</td>
+        <td>text-only</td>
+        <td>[<a href="https://nlp.johnsnowlabs.com/2025/07/01/jsl_meds_ner_q4_v4_en.html">q4</a>, <a href="https://nlp.johnsnowlabs.com/2025/07/01/jsl_meds_ner_q8_v4_en.html">q8</a>, <a href="https://nlp.johnsnowlabs.com/2025/07/01/jsl_meds_ner_q16_v4_en.html">q16</a>]</td>
+        <td>10GB</td>
+        <td>[28.5, 18.7]</td>
+        <td>131,072</td>
+        <td>Extract and link medical named entities</td>
+      </tr>
+      <tr>
+        <td>JSL_MedS_NER_v5</td>
+        <td>6.0G</td>
+        <td>3.5B</td>
+        <td>text-only</td>
+        <td><a href="https://nlp.johnsnowlabs.com/2026/04/09/jsl_meds_ner_q16_v5_en.html">q16</a></td>
+        <td>10GB</td>
+        <td>—</td>
+        <td>131,072</td>
+        <td>Clinical trial eligibility parsing</td>
+      </tr>
+      <tr>
+        <td>JSL_MedS_RAG_v1</td>
+        <td>[2.2G, 3.7G, 5.6G]</td>
+        <td>3B</td>
+        <td>text-only</td>
+        <td>[<a href="https://nlp.johnsnowlabs.com/2024/10/05/jsl_meds_rag_q4_v1_en.html">q4</a>, <a href="https://nlp.johnsnowlabs.com/2024/10/05/jsl_meds_rag_q8_v1_en.html">q8</a>, <a href="https://nlp.johnsnowlabs.com/2024/10/05/jsl_meds_rag_q16_v1_en.html">q16</a>]</td>
+        <td>10GB</td>
+        <td>[30, 20, 53]</td>
+        <td>32,768</td>
+        <td>LLM component of Retrieval Augmented Generation (RAG)</td>
+      </tr>
+      <tr>
+        <td>JSL_MedS_Text2SOAP_v1</td>
+        <td>2.2G</td>
+        <td>3B</td>
+        <td>text-only</td>
+        <td><a href="https://nlp.johnsnowlabs.com/2025/04/09/jsl_meds_text2soap_v1_en.html">base</a></td>
+        <td>10GB</td>
+        <td>53</td>
+        <td>32,768</td>
+        <td>Generate structured SOAP (Subjective, Objective, Assessment, Plan) summaries</td>
+      </tr>
+      <tr>
+        <td>JSL_MedS_VLM_3B_v1</td>
+        <td>[2.5G, 3.6G, 5.6G]</td>
+        <td>3B</td>
+        <td>multimodal</td>
+        <td>[<a href="https://nlp.johnsnowlabs.com/2025/08/08/jsl_meds_vlm_3b_q8_v1_en.html">q4</a>, <a href="https://nlp.johnsnowlabs.com/2025/08/08/jsl_meds_vlm_3b_q4_v1_en.html">q8</a>, <a href="https://nlp.johnsnowlabs.com/2025/08/08/jsl_meds_vlm_3b_q16_v1_en.html">q16</a>]</td>
+        <td>10GB</td>
+        <td>[8, 11, 40.1]</td>
+        <td>128,000</td>
+        <td>Extract and link structured medical named entities</td>
+      </tr>
+      <tr>
+        <td>JSL_MedS_NER_VLM_2B_v2</td>
+        <td>[1.5G, 2.1G, 3.3G]</td>
+        <td>2B</td>
+        <td>multimodal</td>
+        <td>[<a href="https://nlp.johnsnowlabs.com/2025/08/10/jsl_meds_ner_vlm_2b_q4_v2_en.html">q4</a>, <a href="https://nlp.johnsnowlabs.com/2025/08/10/jsl_meds_ner_vlm_2b_q8_v2_en.html">q8</a>, <a href="https://nlp.johnsnowlabs.com/2025/08/10/jsl_meds_ner_vlm_2b_q16_v2_en.html">q16</a>]</td>
+        <td>10GB</td>
+        <td>[25.5, 13.7, 48.9]</td>
+        <td>32,768</td>
+        <td>Extract and link structured medical named entities</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>You can explore these models on our</strong> <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/36.0.Loading_Medical_and_Open_Source_LLMs.ipynb" title="https://colab.research.google.com/github/johnsnowlabs/spark-nlp-workshop/blob/master/healthcare-nlp/36.0.loading_medical_and_open_source_llms.ipynb">Colab notebook</a> <strong>and see how these models can enhance your healthcare workflows.</strong></p>
 
   <h2 id="introduction">Introduction</h2>
 

@@ -658,170 +658,93 @@ function wrapWordInSpan(data, wordToWrap) {
         <th>Disk Size</th>
         <th>Model Size</th>
         <th>Modality</th>
-        <th>Available <br /> Quantizations</th>
+        <th>Available quantizations</th>
         <th>GPU Memory <br /> Required</th>
-        <th>Token/Sec</th>
-        <th>Max Context <br /> Window*</th>
+        <th>Token/sec</th>
+        <th>Max Context <br /> Window</th>
         <th>Tasks</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><strong>JSL_MedM_v3</strong></td>
-        <td>8.2G</td>
+        <td>JSL_MedM_v3</td>
+        <td>[8.2G, 14G, 21.9G]</td>
         <td>14B</td>
         <td>text-only</td>
-        <td><a href="https://nlp.johnsnowlabs.com/2024/10/06/jsl_medm_q4_v3_en.html">q4</a></td>
+        <td>[<a href="https://nlp.johnsnowlabs.com/2024/10/06/jsl_medm_q4_v3_en.html">q4</a>, <a href="https://nlp.johnsnowlabs.com/2024/10/08/jsl_medm_q8_v3_en.html">q8</a>, <a href="https://nlp.johnsnowlabs.com/2024/10/23/jsl_medm_q16_v3_en.html">q16</a>]</td>
         <td>24GB</td>
-        <td>79</td>
+        <td>[79, 84, 253]</td>
         <td>32,768</td>
         <td>Summarization, Q&amp;A, RAG, and Chat</td>
       </tr>
       <tr>
-        <td> </td>
-        <td>14G</td>
-        <td>14B</td>
-        <td>text-only</td>
-        <td><a href="https://nlp.johnsnowlabs.com/2024/10/08/jsl_medm_q8_v3_en.html">q8</a></td>
-        <td>24GB</td>
-        <td>84</td>
-        <td>32,768</td>
-        <td>Summarization, Q&amp;A, RAG, and Chat</td>
-      </tr>
-      <tr>
-        <td> </td>
-        <td>21.9G</td>
-        <td>14B</td>
-        <td>text-only</td>
-        <td><a href="https://nlp.johnsnowlabs.com/2024/10/23/jsl_medm_q16_v3_en.html">q16</a></td>
-        <td>24GB</td>
-        <td>253</td>
-        <td>32,768</td>
-        <td>Summarization, Q&amp;A, RAG, and Chat</td>
-      </tr>
-      <tr>
-        <td><strong>JSL_MedS_v3</strong></td>
-        <td>2.2G</td>
+        <td>JSL_MedS_v3</td>
+        <td>[2.2G, 3.7G, 5.6G]</td>
         <td>3.5B</td>
         <td>text-only</td>
-        <td><a href="https://nlp.johnsnowlabs.com/2024/10/05/jsl_meds_q4_v3_en.html">q4</a></td>
+        <td>[<a href="https://nlp.johnsnowlabs.com/2024/10/05/jsl_meds_q4_v3_en.html">q4</a>, <a href="https://nlp.johnsnowlabs.com/2024/10/05/jsl_meds_q8_v3_en.html">q8</a>, <a href="https://nlp.johnsnowlabs.com/2024/10/05/jsl_meds_q16_v3_en.html">q16</a>]</td>
         <td>10GB</td>
-        <td>28.5</td>
+        <td>[28.5, 18.7, 50.2]</td>
         <td>131,072</td>
         <td>Summarization, Q&amp;A, RAG</td>
       </tr>
       <tr>
-        <td> </td>
-        <td>3.7G</td>
-        <td>3.5B</td>
+        <td>JSL_MedS_4B_v5</td>
+        <td>[2.4G, 4.0G, 6.1G]</td>
+        <td>4B</td>
         <td>text-only</td>
-        <td><a href="https://nlp.johnsnowlabs.com/2024/10/05/jsl_meds_q8_v3_en.html">q8</a></td>
-        <td>10GB</td>
-        <td>18.7</td>
-        <td>131,072</td>
-        <td>Summarization, Q&amp;A, RAG</td>
-      </tr>
-      <tr>
-        <td> </td>
-        <td>5.6G</td>
-        <td>3.5B</td>
-        <td>text-only</td>
-        <td><a href="https://nlp.johnsnowlabs.com/2024/10/05/jsl_meds_q16_v3_en.html">q16</a></td>
-        <td>10GB</td>
-        <td>50.2</td>
-        <td>131,072</td>
-        <td>Summarization, Q&amp;A, RAG</td>
-      </tr>
-      <tr>
-        <td><strong>JSL_MedS_8B_v4</strong></td>
-        <td>4.6G</td>
-        <td>8B</td>
-        <td>text-only</td>
-        <td><a href="https://nlp.johnsnowlabs.com/2025/08/05/jsl_meds_8b_q4_v4_en.html">q4</a></td>
+        <td>[<a href="https://nlp.johnsnowlabs.com/2025/08/05/jsl_meds_4b_q4_v5_en.html">q4</a>, <a href="https://nlp.johnsnowlabs.com/2025/08/05/jsl_meds_4b_q8_v5_en.html">q8</a>, <a href="https://nlp.johnsnowlabs.com/2025/08/05/jsl_meds_4b_q16_v5_en.html">q16</a>]</td>
         <td>16GB</td>
-        <td>83</td>
+        <td>[40, 32, 95]</td>
         <td>32,768</td>
         <td>Summarization, Q&amp;A, RAG</td>
       </tr>
       <tr>
-        <td> </td>
-        <td>7.8G</td>
+        <td>JSL_MedS_8B_v4</td>
+        <td>[4.6G, 7.8G, 12.2G]</td>
         <td>8B</td>
         <td>text-only</td>
-        <td><a href="https://nlp.johnsnowlabs.com/2025/08/05/jsl_meds_8b_q8_v4_en.html">q8</a></td>
+        <td>[<a href="https://nlp.johnsnowlabs.com/2025/08/05/jsl_meds_8b_q4_v4_en.html">q4</a>, <a href="https://nlp.johnsnowlabs.com/2025/08/05/jsl_meds_8b_q8_v4_en.html">q8</a>, <a href="https://nlp.johnsnowlabs.com/2025/08/05/jsl_meds_8b_q16_v4_en.html">q16</a>]</td>
         <td>16GB</td>
-        <td>84</td>
+        <td>[83, 84, 272]</td>
         <td>32,768</td>
         <td>Summarization, Q&amp;A, RAG</td>
       </tr>
       <tr>
-        <td> </td>
-        <td>12.2G</td>
-        <td>8B</td>
-        <td>text-only</td>
-        <td><a href="https://nlp.johnsnowlabs.com/2025/08/05/jsl_meds_8b_q16_v4_en.html">q16</a></td>
-        <td>16GB</td>
-        <td>272</td>
-        <td>32,768</td>
-        <td>Summarization, Q&amp;A, RAG</td>
-      </tr>
-      <tr>
-        <td><strong>JSL_MedS_NER_v4</strong></td>
-        <td>2.2G</td>
+        <td>JSL_MedS_NER_v4</td>
+        <td>[2.2G, 3.7G, 6.0]</td>
         <td>3.5B</td>
         <td>text-only</td>
-        <td><a href="https://nlp.johnsnowlabs.com/2025/07/01/jsl_meds_ner_q4_v4_en.html">q4</a></td>
+        <td>[<a href="https://nlp.johnsnowlabs.com/2025/07/01/jsl_meds_ner_q4_v4_en.html">q4</a>, <a href="https://nlp.johnsnowlabs.com/2025/07/01/jsl_meds_ner_q8_v4_en.html">q8</a>, <a href="https://nlp.johnsnowlabs.com/2025/07/01/jsl_meds_ner_q16_v4_en.html">q16</a>]</td>
         <td>10GB</td>
-        <td>28.5</td>
+        <td>[28.5, 18.7]</td>
         <td>131,072</td>
         <td>Extract and link medical named entities</td>
       </tr>
       <tr>
-        <td> </td>
-        <td>3.7G</td>
+        <td>JSL_MedS_NER_v5</td>
+        <td>6.0G</td>
         <td>3.5B</td>
         <td>text-only</td>
-        <td><a href="https://nlp.johnsnowlabs.com/2025/07/01/jsl_meds_ner_q8_v4_en.html">q8</a></td>
+        <td><a href="https://nlp.johnsnowlabs.com/2026/04/09/jsl_meds_ner_q16_v5_en.html">q16</a></td>
         <td>10GB</td>
-        <td>18.7</td>
+        <td>—</td>
         <td>131,072</td>
-        <td>Extract and link medical named entities</td>
+        <td>Clinical trial eligibility parsing</td>
       </tr>
       <tr>
-        <td><strong>JSL_MedS_RAG_v1</strong></td>
-        <td>2.2G</td>
+        <td>JSL_MedS_RAG_v1</td>
+        <td>[2.2G, 3.7G, 5.6G]</td>
         <td>3B</td>
         <td>text-only</td>
-        <td><a href="https://nlp.johnsnowlabs.com/2024/10/05/jsl_meds_rag_q4_v1_en.html">q4</a></td>
+        <td>[<a href="https://nlp.johnsnowlabs.com/2024/10/05/jsl_meds_rag_q4_v1_en.html">q4</a>, <a href="https://nlp.johnsnowlabs.com/2024/10/05/jsl_meds_rag_q8_v1_en.html">q8</a>, <a href="https://nlp.johnsnowlabs.com/2024/10/05/jsl_meds_rag_q16_v1_en.html">q16</a>]</td>
         <td>10GB</td>
-        <td>30</td>
+        <td>[30, 20, 53]</td>
         <td>32,768</td>
         <td>LLM component of Retrieval Augmented Generation (RAG)</td>
       </tr>
       <tr>
-        <td> </td>
-        <td>3.7G</td>
-        <td>3B</td>
-        <td>text-only</td>
-        <td><a href="https://nlp.johnsnowlabs.com/2024/10/05/jsl_meds_rag_q8_v1_en.html">q8</a></td>
-        <td>10GB</td>
-        <td>20</td>
-        <td>32,768</td>
-        <td>LLM component of Retrieval Augmented Generation (RAG)</td>
-      </tr>
-      <tr>
-        <td> </td>
-        <td>5.6G</td>
-        <td>3B</td>
-        <td>text-only</td>
-        <td><a href="https://nlp.johnsnowlabs.com/2024/10/05/jsl_meds_rag_q16_v1_en.html">q16</a></td>
-        <td>10GB</td>
-        <td>53</td>
-        <td>32,768</td>
-        <td>LLM component of Retrieval Augmented Generation (RAG)</td>
-      </tr>
-      <tr>
-        <td><strong>JSL_MedS_Text2SOAP_v1</strong></td>
+        <td>JSL_MedS_Text2SOAP_v1</td>
         <td>2.2G</td>
         <td>3B</td>
         <td>text-only</td>
@@ -832,68 +755,24 @@ function wrapWordInSpan(data, wordToWrap) {
         <td>Generate structured SOAP (Subjective, Objective, Assessment, Plan) summaries</td>
       </tr>
       <tr>
-        <td><strong>JSL_MedS_VLM_3B_v1</strong></td>
-        <td>2.5G</td>
+        <td>JSL_MedS_VLM_3B_v1</td>
+        <td>[2.5G, 3.6G, 5.6G]</td>
         <td>3B</td>
         <td>multimodal</td>
-        <td><a href="https://nlp.johnsnowlabs.com/2025/08/08/jsl_meds_vlm_3b_q4_v1_en.html">q4</a></td>
+        <td>[<a href="https://nlp.johnsnowlabs.com/2025/08/08/jsl_meds_vlm_3b_q8_v1_en.html">q4</a>, <a href="https://nlp.johnsnowlabs.com/2025/08/08/jsl_meds_vlm_3b_q4_v1_en.html">q8</a>, <a href="https://nlp.johnsnowlabs.com/2025/08/08/jsl_meds_vlm_3b_q16_v1_en.html">q16</a>]</td>
         <td>10GB</td>
-        <td>8</td>
+        <td>[8, 11, 40.1]</td>
         <td>128,000</td>
         <td>Extract and link structured medical named entities</td>
       </tr>
       <tr>
-        <td> </td>
-        <td>3.6G</td>
-        <td>3B</td>
-        <td>multimodal</td>
-        <td><a href="https://nlp.johnsnowlabs.com/2025/08/08/jsl_meds_vlm_3b_q8_v1_en.html">q8</a></td>
-        <td>10GB</td>
-        <td>11</td>
-        <td>128,000</td>
-        <td>Extract and link structured medical named entities</td>
-      </tr>
-      <tr>
-        <td> </td>
-        <td>5.6G</td>
-        <td>3B</td>
-        <td>multimodal</td>
-        <td><a href="https://nlp.johnsnowlabs.com/2025/08/08/jsl_meds_vlm_3b_q16_v1_en.html">q16</a></td>
-        <td>10GB</td>
-        <td>40.1</td>
-        <td>128,000</td>
-        <td>Extract and link structured medical named entities</td>
-      </tr>
-      <tr>
-        <td><strong>JSL_MedS_NER_VLM_2B_v2</strong></td>
-        <td>1.5G</td>
+        <td>JSL_MedS_NER_VLM_2B_v2</td>
+        <td>[1.5G, 2.1G, 3.3G]</td>
         <td>2B</td>
         <td>multimodal</td>
-        <td><a href="https://nlp.johnsnowlabs.com/2025/08/10/jsl_meds_ner_vlm_2b_q4_v2_en.html">q4</a></td>
+        <td>[<a href="https://nlp.johnsnowlabs.com/2025/08/10/jsl_meds_ner_vlm_2b_q4_v2_en.html">q4</a>, <a href="https://nlp.johnsnowlabs.com/2025/08/10/jsl_meds_ner_vlm_2b_q8_v2_en.html">q8</a>, <a href="https://nlp.johnsnowlabs.com/2025/08/10/jsl_meds_ner_vlm_2b_q16_v2_en.html">q16</a>]</td>
         <td>10GB</td>
-        <td>25.5</td>
-        <td>32,768</td>
-        <td>Extract and link structured medical named entities</td>
-      </tr>
-      <tr>
-        <td> </td>
-        <td>2.1G</td>
-        <td>2B</td>
-        <td>multimodal</td>
-        <td><a href="https://nlp.johnsnowlabs.com/2025/08/10/jsl_meds_ner_vlm_2b_q8_v2_en.html">q8</a></td>
-        <td>10GB</td>
-        <td>13.7</td>
-        <td>32,768</td>
-        <td>Extract and link structured medical named entities</td>
-      </tr>
-      <tr>
-        <td> </td>
-        <td>3.3G</td>
-        <td>2B</td>
-        <td>multimodal</td>
-        <td><a href="https://nlp.johnsnowlabs.com/2025/08/10/jsl_meds_ner_vlm_2b_q16_v2_en.html">q16</a></td>
-        <td>10GB</td>
-        <td>48.9</td>
+        <td>[25.5, 13.7, 48.9]</td>
         <td>32,768</td>
         <td>Extract and link structured medical named entities</td>
       </tr>
