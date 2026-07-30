@@ -32,6 +32,7 @@ This model maps drug entities extracted from clinical text to their correspondin
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
