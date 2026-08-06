@@ -32,6 +32,7 @@ This model maps entities extracted from text to their corresponding HCPCS (Healt
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 document_assembler = DocumentAssembler()\
