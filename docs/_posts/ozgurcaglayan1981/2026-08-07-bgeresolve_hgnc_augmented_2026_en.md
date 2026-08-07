@@ -23,8 +23,8 @@ This model maps gene symbols, official names, and their known alias/previous sym
 {:.btn-box}
 [Live Demo](https://nlp.johnsnowlabs.com/resolve_entities_codes){:.button.button-orange}
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/3.Clinical_Entity_Resolvers.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/bgeresolve_hgnc_augmented_2026_en_6.4.1_3.4_1786109830398.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/bgeresolve_hgnc_augmented_2026_en_6.4.1_3.4_1786109830398.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/bgeresolve_hgnc_augmented_2026_en_6.4.1_3.4_1786110230304.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/bgeresolve_hgnc_augmented_2026_en_6.4.1_3.4_1786110230304.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
