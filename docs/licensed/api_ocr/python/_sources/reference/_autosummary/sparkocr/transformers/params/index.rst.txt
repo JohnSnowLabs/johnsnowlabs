@@ -1,0 +1,565 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.transformers.params`
+======================================
+
+.. py:module:: sparkocr.transformers.params
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.transformers.params.CompressOutputImage
+   sparkocr.transformers.params.HasForceProcessing
+   sparkocr.transformers.params.HasImageType
+   sparkocr.transformers.params.HasKeepInput
+   sparkocr.transformers.params.HasOcr
+
+
+
+
+.. py:class:: CompressOutputImage
+
+   Bases: :py:obj:`pyspark.ml.param.Params`
+
+   Components that take parameters. This also provides an internal
+   param map to store parameter values attached to the instance.
+
+   .. versionadded:: 1.3.0
+
+   .. py:attribute:: compressImage
+      
+
+      
+
+   .. py:attribute:: uid
+      :annotation: = ''
+
+      
+
+   .. py:method:: clear(param: Param) -> None
+
+      Clears a param from the param map if it has been explicitly set.
+
+
+   .. py:method:: copy(extra: Optional[pyspark.ml._typing.ParamMap] = None) -> P
+
+      Creates a copy of this instance with the same uid and some
+      extra params. The default implementation creates a
+      shallow copy using :py:func:`copy.copy`, and then copies the
+      embedded and extra parameters over and returns the copy.
+      Subclasses should override this method if the default approach
+      is not sufficient.
+
+      :param extra: Extra parameters to copy to the new instance
+      :type extra: dict, optional
+
+      :returns: Copy of this instance
+      :rtype: :py:class:`Params`
+
+
+   .. py:method:: explainParam(param: Union[str, Param]) -> str
+
+      Explains a single param and returns its name, doc, and optional
+      default value and user-supplied value in a string.
+
+
+   .. py:method:: explainParams() -> str
+
+      Returns the documentation of all params with their optionally
+      default values and user-supplied values.
+
+
+   .. py:method:: extractParamMap(extra: Optional[pyspark.ml._typing.ParamMap] = None) -> pyspark.ml._typing.ParamMap
+
+      Extracts the embedded default param values and user-supplied
+      values, and then merges them with extra values from input into
+      a flat param map, where the latter value is used if there exist
+      conflicts, i.e., with ordering: default param values <
+      user-supplied values < extra.
+
+      :param extra: extra param values
+      :type extra: dict, optional
+
+      :returns: merged param map
+      :rtype: dict
+
+
+   .. py:method:: getCompressImage()
+
+      Gets the value of :py:attr:`compressImage`.
+
+
+   .. py:method:: getOrDefault(param: str) -> Any
+               getOrDefault(param: Param[T]) -> T
+
+      Gets the value of a param in the user-supplied param map or its
+      default value. Raises an error if neither is set.
+
+
+   .. py:method:: getParam(paramName: str) -> Param
+
+      Gets a param by its name.
+
+
+   .. py:method:: hasDefault(param: Union[str, Param[Any]]) -> bool
+
+      Checks whether a param has a default value.
+
+
+   .. py:method:: hasParam(paramName: str) -> bool
+
+      Tests whether this instance contains a param with a given
+      (string) name.
+
+
+   .. py:method:: isDefined(param: Union[str, Param[Any]]) -> bool
+
+      Checks whether a param is explicitly set by user or has
+      a default value.
+
+
+   .. py:method:: isSet(param: Union[str, Param[Any]]) -> bool
+
+      Checks whether a param is explicitly set by user.
+
+
+   .. py:method:: set(param: Param, value: Any) -> None
+
+      Sets a parameter in the embedded param map.
+
+
+   .. py:method:: setCompressImage(value)
+
+      Sets the value of :py:attr:`compressImage`.
+
+
+
+.. py:class:: HasForceProcessing
+
+   .. py:attribute:: forceProcessing
+      
+
+      
+
+   .. py:method:: exploding_wrap(func)
+
+
+   .. py:method:: setForceProcessing(value)
+
+      Sets the value of :py:attr:`forceProcessing`.
+
+
+
+.. py:class:: HasImageType
+
+   Bases: :py:obj:`pyspark.ml.param.Params`
+
+   Components that take parameters. This also provides an internal
+   param map to store parameter values attached to the instance.
+
+   .. versionadded:: 1.3.0
+
+   .. py:attribute:: imageType
+      
+
+      
+
+   .. py:attribute:: uid
+      :annotation: = ''
+
+      
+
+   .. py:method:: clear(param: Param) -> None
+
+      Clears a param from the param map if it has been explicitly set.
+
+
+   .. py:method:: copy(extra: Optional[pyspark.ml._typing.ParamMap] = None) -> P
+
+      Creates a copy of this instance with the same uid and some
+      extra params. The default implementation creates a
+      shallow copy using :py:func:`copy.copy`, and then copies the
+      embedded and extra parameters over and returns the copy.
+      Subclasses should override this method if the default approach
+      is not sufficient.
+
+      :param extra: Extra parameters to copy to the new instance
+      :type extra: dict, optional
+
+      :returns: Copy of this instance
+      :rtype: :py:class:`Params`
+
+
+   .. py:method:: explainParam(param: Union[str, Param]) -> str
+
+      Explains a single param and returns its name, doc, and optional
+      default value and user-supplied value in a string.
+
+
+   .. py:method:: explainParams() -> str
+
+      Returns the documentation of all params with their optionally
+      default values and user-supplied values.
+
+
+   .. py:method:: extractParamMap(extra: Optional[pyspark.ml._typing.ParamMap] = None) -> pyspark.ml._typing.ParamMap
+
+      Extracts the embedded default param values and user-supplied
+      values, and then merges them with extra values from input into
+      a flat param map, where the latter value is used if there exist
+      conflicts, i.e., with ordering: default param values <
+      user-supplied values < extra.
+
+      :param extra: extra param values
+      :type extra: dict, optional
+
+      :returns: merged param map
+      :rtype: dict
+
+
+   .. py:method:: getOrDefault(param: str) -> Any
+               getOrDefault(param: Param[T]) -> T
+
+      Gets the value of a param in the user-supplied param map or its
+      default value. Raises an error if neither is set.
+
+
+   .. py:method:: getParam(paramName: str) -> Param
+
+      Gets a param by its name.
+
+
+   .. py:method:: hasDefault(param: Union[str, Param[Any]]) -> bool
+
+      Checks whether a param has a default value.
+
+
+   .. py:method:: hasParam(paramName: str) -> bool
+
+      Tests whether this instance contains a param with a given
+      (string) name.
+
+
+   .. py:method:: isDefined(param: Union[str, Param[Any]]) -> bool
+
+      Checks whether a param is explicitly set by user or has
+      a default value.
+
+
+   .. py:method:: isSet(param: Union[str, Param[Any]]) -> bool
+
+      Checks whether a param is explicitly set by user.
+
+
+   .. py:method:: set(param: Param, value: Any) -> None
+
+      Sets a parameter in the embedded param map.
+
+
+   .. py:method:: setImageType(value)
+
+      Sets the value of :py:attr:`imageType`.
+
+
+
+.. py:class:: HasKeepInput
+
+   Bases: :py:obj:`pyspark.ml.param.Params`
+
+   Components that take parameters. This also provides an internal
+   param map to store parameter values attached to the instance.
+
+   .. versionadded:: 1.3.0
+
+   .. py:attribute:: keepInput
+      
+
+      
+
+   .. py:attribute:: uid
+      :annotation: = ''
+
+      
+
+   .. py:method:: clear(param: Param) -> None
+
+      Clears a param from the param map if it has been explicitly set.
+
+
+   .. py:method:: copy(extra: Optional[pyspark.ml._typing.ParamMap] = None) -> P
+
+      Creates a copy of this instance with the same uid and some
+      extra params. The default implementation creates a
+      shallow copy using :py:func:`copy.copy`, and then copies the
+      embedded and extra parameters over and returns the copy.
+      Subclasses should override this method if the default approach
+      is not sufficient.
+
+      :param extra: Extra parameters to copy to the new instance
+      :type extra: dict, optional
+
+      :returns: Copy of this instance
+      :rtype: :py:class:`Params`
+
+
+   .. py:method:: explainParam(param: Union[str, Param]) -> str
+
+      Explains a single param and returns its name, doc, and optional
+      default value and user-supplied value in a string.
+
+
+   .. py:method:: explainParams() -> str
+
+      Returns the documentation of all params with their optionally
+      default values and user-supplied values.
+
+
+   .. py:method:: extractParamMap(extra: Optional[pyspark.ml._typing.ParamMap] = None) -> pyspark.ml._typing.ParamMap
+
+      Extracts the embedded default param values and user-supplied
+      values, and then merges them with extra values from input into
+      a flat param map, where the latter value is used if there exist
+      conflicts, i.e., with ordering: default param values <
+      user-supplied values < extra.
+
+      :param extra: extra param values
+      :type extra: dict, optional
+
+      :returns: merged param map
+      :rtype: dict
+
+
+   .. py:method:: getOrDefault(param: str) -> Any
+               getOrDefault(param: Param[T]) -> T
+
+      Gets the value of a param in the user-supplied param map or its
+      default value. Raises an error if neither is set.
+
+
+   .. py:method:: getParam(paramName: str) -> Param
+
+      Gets a param by its name.
+
+
+   .. py:method:: hasDefault(param: Union[str, Param[Any]]) -> bool
+
+      Checks whether a param has a default value.
+
+
+   .. py:method:: hasParam(paramName: str) -> bool
+
+      Tests whether this instance contains a param with a given
+      (string) name.
+
+
+   .. py:method:: isDefined(param: Union[str, Param[Any]]) -> bool
+
+      Checks whether a param is explicitly set by user or has
+      a default value.
+
+
+   .. py:method:: isSet(param: Union[str, Param[Any]]) -> bool
+
+      Checks whether a param is explicitly set by user.
+
+
+   .. py:method:: set(param: Param, value: Any) -> None
+
+      Sets a parameter in the embedded param map.
+
+
+   .. py:method:: setKeepInput(value)
+
+      Sets the value of :py:attr:`keepInput`.
+
+
+
+.. py:class:: HasOcr
+
+   Bases: :py:obj:`pyspark.ml.param.Params`
+
+   Components that take parameters. This also provides an internal
+   param map to store parameter values attached to the instance.
+
+   .. versionadded:: 1.3.0
+
+   .. py:attribute:: downloadModelData
+      
+
+      
+
+   .. py:attribute:: language
+      
+
+      
+
+   .. py:attribute:: modelData
+      
+
+      
+
+   .. py:attribute:: modelType
+      
+
+      
+
+   .. py:attribute:: ocrEngineMode
+      
+
+      
+
+   .. py:attribute:: pageIteratorLevel
+      
+
+      
+
+   .. py:attribute:: pageSegMode
+      
+
+      
+
+   .. py:attribute:: uid
+      :annotation: = ''
+
+      
+
+   .. py:attribute:: useTess4j
+      
+
+      
+
+   .. py:method:: clear(param: Param) -> None
+
+      Clears a param from the param map if it has been explicitly set.
+
+
+   .. py:method:: copy(extra: Optional[pyspark.ml._typing.ParamMap] = None) -> P
+
+      Creates a copy of this instance with the same uid and some
+      extra params. The default implementation creates a
+      shallow copy using :py:func:`copy.copy`, and then copies the
+      embedded and extra parameters over and returns the copy.
+      Subclasses should override this method if the default approach
+      is not sufficient.
+
+      :param extra: Extra parameters to copy to the new instance
+      :type extra: dict, optional
+
+      :returns: Copy of this instance
+      :rtype: :py:class:`Params`
+
+
+   .. py:method:: explainParam(param: Union[str, Param]) -> str
+
+      Explains a single param and returns its name, doc, and optional
+      default value and user-supplied value in a string.
+
+
+   .. py:method:: explainParams() -> str
+
+      Returns the documentation of all params with their optionally
+      default values and user-supplied values.
+
+
+   .. py:method:: extractParamMap(extra: Optional[pyspark.ml._typing.ParamMap] = None) -> pyspark.ml._typing.ParamMap
+
+      Extracts the embedded default param values and user-supplied
+      values, and then merges them with extra values from input into
+      a flat param map, where the latter value is used if there exist
+      conflicts, i.e., with ordering: default param values <
+      user-supplied values < extra.
+
+      :param extra: extra param values
+      :type extra: dict, optional
+
+      :returns: merged param map
+      :rtype: dict
+
+
+   .. py:method:: getOrDefault(param: str) -> Any
+               getOrDefault(param: Param[T]) -> T
+
+      Gets the value of a param in the user-supplied param map or its
+      default value. Raises an error if neither is set.
+
+
+   .. py:method:: getParam(paramName: str) -> Param
+
+      Gets a param by its name.
+
+
+   .. py:method:: hasDefault(param: Union[str, Param[Any]]) -> bool
+
+      Checks whether a param has a default value.
+
+
+   .. py:method:: hasParam(paramName: str) -> bool
+
+      Tests whether this instance contains a param with a given
+      (string) name.
+
+
+   .. py:method:: isDefined(param: Union[str, Param[Any]]) -> bool
+
+      Checks whether a param is explicitly set by user or has
+      a default value.
+
+
+   .. py:method:: isSet(param: Union[str, Param[Any]]) -> bool
+
+      Checks whether a param is explicitly set by user.
+
+
+   .. py:method:: set(param: Param, value: Any) -> None
+
+      Sets a parameter in the embedded param map.
+
+
+   .. py:method:: setDownloadModelData(value)
+
+      Sets the value of :py:attr:`downloadModelData`.
+
+
+   .. py:method:: setLanguage(value)
+
+      Sets the value of :py:attr:`language`.
+
+
+   .. py:method:: setModelData(value)
+
+      Sets the value of :py:attr:`modelData`.
+
+
+   .. py:method:: setModelType(value)
+
+      Sets the value of :py:attr:`modelData`.
+
+
+   .. py:method:: setOcrEngineMode(value)
+
+      Sets the value of :py:attr:`ocrEngineMode`.
+
+
+   .. py:method:: setPageIteratorLevel(value)
+
+      Sets the value of :py:attr:`pageIteratorLevel`.
+
+
+   .. py:method:: setPageSegMode(value)
+
+      Sets the value of :py:attr:`pageSegMode`.
+
+
+   .. py:method:: setUseTess4j(value)
+
+      Sets the value of :py:attr:`useTess4j`.
+
+
+

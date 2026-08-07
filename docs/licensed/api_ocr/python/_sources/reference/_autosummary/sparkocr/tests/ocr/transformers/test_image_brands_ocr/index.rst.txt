@@ -1,0 +1,31 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.test_image_brands_ocr`
+===============================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.test_image_brands_ocr
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.test_image_brands_ocr.TestImageBrandsOcr
+
+
+
+
+.. py:class:: TestImageBrandsOcr
+
+   .. py:method:: test_tesseract_ocr_with_brands(spark_session, image_brand_df)
+
+
+   .. py:method:: test_whole_image_ocr(spark_session, image_df)
+
+
+

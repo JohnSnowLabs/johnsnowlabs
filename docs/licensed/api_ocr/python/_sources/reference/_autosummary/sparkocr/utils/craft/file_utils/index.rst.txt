@@ -1,0 +1,87 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.utils.craft.file_utils`
+=========================================
+
+.. py:module:: sparkocr.utils.craft.file_utils
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.utils.craft.file_utils.create_dir
+   sparkocr.utils.craft.file_utils.crop_poly
+   sparkocr.utils.craft.file_utils.download
+   sparkocr.utils.craft.file_utils.export_detected_region
+   sparkocr.utils.craft.file_utils.export_detected_regions
+   sparkocr.utils.craft.file_utils.export_extra_results
+   sparkocr.utils.craft.file_utils.get_files
+   sparkocr.utils.craft.file_utils.list_files
+   sparkocr.utils.craft.file_utils.rectify_poly
+
+
+
+.. py:function:: create_dir(_dir)
+
+   Creates given directory if it is not present.
+
+
+.. py:function:: crop_poly(image, poly)
+
+
+.. py:function:: download(url: str, save_path: str)
+
+   Downloads file from gdrive, shows progress.
+   Example inputs:
+       url: 'ftp://smartengines.com/midv-500/dataset/01_alb_id.zip'
+       save_path: 'data/file.zip'
+
+
+.. py:function:: export_detected_region(image, poly, file_path, rectify=True)
+
+   :param image: full image
+   :param points: bbox or poly points
+   :param file_path: path to be exported
+   :param rectify: rectify detected polygon by affine transform
+
+
+.. py:function:: export_detected_regions(image, regions, file_name: str = 'image', output_dir: str = 'output/', rectify: bool = False)
+
+   :param image: path to the image to be processed or numpy array or PIL image
+   :param regions: list of bboxes or polys
+   :param file_name: export image file name
+   :type file_name: str
+   :param output_dir: folder to be exported
+   :param rectify: rectify detected polygon by affine transform
+
+
+.. py:function:: export_extra_results(image, regions, heatmaps, file_name: str = 'image', output_dir='output/', verticals=None, texts=None)
+
+   save text detection result one by one
+   :param image: path to the image to be processed or numpy array or PIL image
+   :param file_name: export image file name
+   :type file_name: str
+   :param boxes: array of result file
+                 Shape: [num_detections, 4] for BB output / [num_detections, 4]
+                 for QUAD output
+   :type boxes: array
+
+   :returns: None
+
+
+.. py:function:: get_files(img_dir)
+
+
+.. py:function:: list_files(in_path)
+
+
+.. py:function:: rectify_poly(img, poly)
+
+

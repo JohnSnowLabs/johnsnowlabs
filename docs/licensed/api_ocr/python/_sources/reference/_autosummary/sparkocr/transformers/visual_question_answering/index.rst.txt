@@ -1,0 +1,29 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.transformers.visual_question_answering`
+=========================================================
+
+.. py:module:: sparkocr.transformers.visual_question_answering
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.transformers.visual_question_answering.VisualQuestionAnswering
+
+
+
+
+.. py:class:: VisualQuestionAnswering
+
+   .. py:method:: pretrained(name, lang='en', remote_loc='clinical/ocr')
+      :staticmethod:
+
+
+

@@ -1,0 +1,82 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.transformers.readers.sroie_reader`
+====================================================
+
+.. py:module:: sparkocr.transformers.readers.sroie_reader
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.transformers.readers.sroie_reader.SROIEReader
+
+
+
+
+.. py:class:: SROIEReader(**kwargs)
+
+   This dataset is not case sensitive. The images have case information but the annotations dont.
+
+   SROIEReader(
+   spark_session=spark,
+   root_work_dir="./Result/SROIE_Process/",
+   target_dir="./Result/SROIE_Result/",
+   clean_up=True)()
+
+   .. py:attribute:: SROIE_TEST
+      :annotation: = ['https://doctr-static.mindee.com/models?id=v0.1.1/sroie2019_test.zip&src=0', 'test.zip', 'test']
+
+      
+
+   .. py:attribute:: SROIE_TRAIN
+      :annotation: = ['https://doctr-static.mindee.com/models?id=v0.1.1/sroie2019_train_task1.zip&src=0',...
+
+      
+
+   .. py:attribute:: clean_up
+      
+
+      
+
+   .. py:attribute:: root_work_dir
+      
+
+      
+
+   .. py:attribute:: schema
+      
+
+      
+
+   .. py:attribute:: spark
+      
+
+      
+
+   .. py:attribute:: target_dir
+      
+
+      
+
+   .. py:method:: create_file_identifier(file_path)
+      :staticmethod:
+
+
+   .. py:method:: download_and_extract(train=True)
+
+
+   .. py:method:: process_sroie_split(load_dir)
+
+
+   .. py:method:: sroie_reader(combined_bytes, combined_extension, combined_path)
+      :staticmethod:
+
+
+

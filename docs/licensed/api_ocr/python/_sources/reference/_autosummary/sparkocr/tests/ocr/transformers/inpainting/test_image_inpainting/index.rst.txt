@@ -1,0 +1,34 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.inpainting.test_image_inpainting`
+==========================================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.inpainting.test_image_inpainting
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.inpainting.test_image_inpainting.TestImageInpainting
+
+
+
+
+.. py:class:: TestImageInpainting
+
+   .. py:method:: test_model_io_operation(spark_session)
+
+
+   .. py:method:: test_pretrained_io_operation(spark_session)
+
+
+   .. py:method:: test_with_regions(spark_session)
+
+
+

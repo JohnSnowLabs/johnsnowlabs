@@ -1,0 +1,1186 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.transformers.medical_vision_llm`
+==================================================
+
+.. py:module:: sparkocr.transformers.medical_vision_llm
+
+.. autoapi-nested-parse::
+
+   Contains classes for the MedicalVisionLLM.
+
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.transformers.medical_vision_llm.MedicalVisionLLM
+
+
+
+
+.. py:class:: MedicalVisionLLM(classname='com.johnsnowlabs.ocr.transformers.MedicalVisionLLM', java_model=None)
+
+   Bases: :py:obj:`sparknlp.annotator.AutoGGUFVisionModel`
+
+   Multimodal annotator to generate text completions with large
+   language models. It supports ingesting images for captioning.
+
+   At the moment only CLIP based models are supported.
+
+   If the parameters are not set, the annotator will default to use the parameters provided by
+   the model.
+
+   This annotator expects a column of annotator type AnnotationImage for the image and
+   Annotation for the caption. Note that the image bytes in the image annotation need to be
+   raw image bytes without preprocessing. We provide the helper function
+   ImageAssembler.loadImagesAsBytes to load the image bytes from a directory.
+
+   Pretrained models can be loaded with ``pretrained`` of the companion object:
+
+   .. code-block:: python
+
+       medical_vision_llm = MedicalVisionLLM.pretrained() \
+           .setInputCols(["image", "document"]) \
+           .setOutputCol("completions")
+
+   ====================== ======================
+   Input Annotation types Output Annotation type
+   ====================== ======================
+   ``IMAGE, DOCUMENT``    ``DOCUMENT``
+   ====================== ======================
+
+   :param nThreads: Set the number of threads to use during generation
+   :param nThreadsDraft: Set the number of threads to use during draft generation
+   :param nThreadsBatch: Set the number of threads to use during batch and prompt processing
+   :param nThreadsBatchDraft: Set the number of threads to use during batch and prompt processing
+   :param nCtx: Set the size of the prompt context
+   :param nBatch: Set the logical batch size for prompt processing (must be >=32 to use BLAS)
+   :param nUbatch: Set the physical batch size for prompt processing (must be >=32 to use BLAS)
+   :param nDraft: Set the number of tokens to draft for speculative decoding
+   :param nChunks: Set the maximal number of chunks to process
+   :param nSequences: Set the number of sequences to decode
+   :param pSplit: Set the speculative decoding split probability
+   :param nGpuLayers: Set the number of layers to store in VRAM (-1 - use default)
+   :param nGpuLayersDraft: Set the number of layers to store in VRAM for the draft model (-1 - use default)
+   :param gpuSplitMode: Set how to split the model across GPUs
+   :param mainGpu: Set the main GPU that is used for scratch and small tensors.
+   :param tensorSplit: Set how split tensors should be distributed across GPUs
+   :param grpAttnN: Set the group-attention factor
+   :param grpAttnW: Set the group-attention width
+   :param ropeFreqBase: Set the RoPE base frequency, used by NTK-aware scaling
+   :param ropeFreqScale: Set the RoPE frequency scaling factor, expands context by a factor of 1/N
+   :param yarnExtFactor: Set the YaRN extrapolation mix factor
+   :param yarnAttnFactor: Set the YaRN scale sqrt(t) or attention magnitude
+   :param yarnBetaFast: Set the YaRN low correction dim or beta
+   :param yarnBetaSlow: Set the YaRN high correction dim or alpha
+   :param yarnOrigCtx: Set the YaRN original context size of model
+   :param defragmentationThreshold: Set the KV cache defragmentation threshold
+   :param numaStrategy: Set optimization strategies that help on some NUMA systems (if available)
+   :param ropeScalingType: Set the RoPE frequency scaling method, defaults to linear unless specified by the model
+   :param poolingType: Set the pooling type for embeddings, use model default if unspecified
+   :param modelDraft: Set the draft model for speculative decoding
+   :param modelAlias: Set a model alias
+   :param lookupCacheStaticFilePath: Set path to static lookup cache to use for lookup decoding (not updated by generation)
+   :param lookupCacheDynamicFilePath: Set path to dynamic lookup cache to use for lookup decoding (updated by generation)
+   :param embedding: Whether to load model with embedding support
+   :param flashAttention: Whether to enable Flash Attention
+   :param inputPrefixBos: Whether to add prefix BOS to user inputs, preceding the `--in-prefix` string
+   :param useMmap: Whether to use memory-map model (faster load but may increase pageouts if not using mlock)
+   :param useMlock: Whether to force the system to keep model in RAM rather than swapping or compressing
+   :param noKvOffload: Whether to disable KV offload
+   :param systemPrompt: Set a system prompt to use
+   :param chatTemplate: The chat template to use
+   :param inputPrefix: Set the prompt to start generation with
+   :param inputSuffix: Set a suffix for infilling
+   :param cachePrompt: Whether to remember the prompt to avoid reprocessing it
+   :param nPredict: Set the number of tokens to predict
+   :param topK: Set top-k sampling
+   :param topP: Set top-p sampling
+   :param minP: Set min-p sampling
+   :param tfsZ: Set tail free sampling, parameter z
+   :param typicalP: Set locally typical sampling, parameter p
+   :param temperature: Set the temperature
+   :param dynatempRange: Set the dynamic temperature range
+   :param dynatempExponent: Set the dynamic temperature exponent
+   :param repeatLastN: Set the last n tokens to consider for penalties
+   :param repeatPenalty: Set the penalty of repeated sequences of tokens
+   :param frequencyPenalty: Set the repetition alpha frequency penalty
+   :param presencePenalty: Set the repetition alpha presence penalty
+   :param miroStat: Set MiroStat sampling strategies.
+   :param mirostatTau: Set the MiroStat target entropy, parameter tau
+   :param mirostatEta: Set the MiroStat learning rate, parameter eta
+   :param penalizeNl: Whether to penalize newline tokens
+   :param nKeep: Set the number of tokens to keep from the initial prompt
+   :param seed: Set the RNG seed
+   :param nProbs: Set the amount top tokens probabilities to output if greater than 0.
+   :param minKeep: Set the amount of tokens the samplers should return at least (0 = disabled)
+   :param grammar: Set BNF-like grammar to constrain generations
+   :param penaltyPrompt: Override which part of the prompt is penalized for repetition.
+   :param ignoreEos: Set whether to ignore end of stream token and continue generating (implies --logit-bias 2-inf)
+   :param disableTokenIds: Set the token ids to disable in the completion
+   :param stopStrings: Set strings upon seeing which token generation is stopped
+   :param samplers: Set which samplers to use for token generation in the given order
+   :param useChatTemplate: Set whether or not generate should apply a chat template
+
+   .. rubric:: Notes
+
+   To use GPU inference with this annotator, make sure to use the Spark NLP GPU package and set
+   the number of GPU layers with the `setNGpuLayers` method.
+
+   When using larger models, we recommend adjusting GPU usage with `setNCtx` and `setNGpuLayers`
+   according to your hardware to avoid out-of-memory errors.
+
+   Examples
+   >>> import sparknlp
+   >>> import sparknlp_jsl
+   >>> from sparknlp.base import *
+   >>> from sparknlp.annotator import *
+   >>> from sparknlp_jsl.annotator import *
+   >>> from pyspark.ml import Pipeline
+   >>> from pyspark.sql.functions import lit
+   >>> documentAssembler = DocumentAssembler() \
+   ...     .setInputCol("caption") \
+   ...     .setOutputCol("caption_document")
+   >>> imageAssembler = ImageAssembler() \
+   ...     .setInputCol("image") \
+   ...     .setOutputCol("image_assembler")
+   >>> imagesPath = "IMAGES_PATH"
+   >>> data = ImageAssembler \
+   ...     .loadImagesAsBytes(spark, imagesPath) \
+   ...     .withColumn("caption", lit("Caption this image."))
+   >>> model = MedicalVisionLLM.pretrained() \
+   ...     .setInputCols(["caption_document", "image_assembler"]) \
+   ...     .setOutputCol("completions") \
+   ...     .setBatchSize(4) \
+   ...     .setNGpuLayers(99) \
+   ...     .setNCtx(4096) \
+   ...     .setMinKeep(0) \
+   ...     .setMinP(0.05) \
+   ...     .setNPredict(40) \
+   ...     .setNProbs(0) \
+   ...     .setPenalizeNl(False) \
+   ...     .setRepeatLastN(256) \
+   ...     .setRepeatPenalty(1.18) \
+   ...     .setStopStrings(["</s>", "Llama:", "User:"]) \
+   ...     .setTemperature(0.05) \
+   ...     .setTfsZ(1) \
+   ...     .setTypicalP(1) \
+   ...     .setTopK(40) \
+   ...     .setTopP(0.95)
+   >>> pipeline = Pipeline().setStages([documentAssembler, imageAssembler, model])
+   >>> pipeline.fit(data).transform(data) \
+   ...     .selectExpr("reverse(split(image.origin, '/'))[0] as image_name", "completions.result") \
+   ...     .show(truncate = False)
+   +-----------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   |image_name       |result                                                                                                                                                                                        |
+   +-----------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   |palace.JPEG      |[ The image depicts a large, ornate room with high ceilings and beautifully decorated walls. There are several chairs placed throughout the space, some of which have cushions]               |
+   |egyptian_cat.jpeg|[ The image features two cats lying on a pink surface, possibly a bed or sofa. One cat is positioned towards the left side of the scene and appears to be sleeping while holding]             |
+   |hippopotamus.JPEG|[ A large brown hippo is swimming in a body of water, possibly an aquarium. The hippo appears to be enjoying its time in the water and seems relaxed as it floats]                            |
+   |hen.JPEG         |[ The image features a large chicken standing next to several baby chickens. In total, there are five birds in the scene: one adult and four young ones. They appear to be gathered together] |
+   |ostrich.JPEG     |[ The image features a large, long-necked bird standing in the grass. It appears to be an ostrich or similar species with its head held high and looking around. In addition to]              |
+   |junco.JPEG       |[ A small bird with a black head and white chest is standing on the snow. It appears to be looking at something, possibly food or another animal in its vicinity. The scene takes place out]  |
+   |bluetick.jpg     |[ A dog with a red collar is sitting on the floor, looking at something. The dog appears to be staring into the distance or focusing its attention on an object in front of it.]              |
+   |chihuahua.jpg    |[ A small brown dog wearing a sweater is sitting on the floor. The dog appears to be looking at something, possibly its owner or another animal in the room. It seems comfortable and relaxed]|
+   |tractor.JPEG     |[ A man is sitting in the driver's seat of a green tractor, which has yellow wheels and tires. The tractor appears to be parked on top of an empty field with]                                |
+   |ox.JPEG          |[ A large bull with horns is standing in a grassy field.]                                                                                                                                     |
+   +-----------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------
+
+   .. py:attribute:: batchSize
+      
+
+      
+
+   .. py:attribute:: cachePrompt
+      
+
+      
+
+   .. py:attribute:: chatTemplate
+      
+
+      
+
+   .. py:attribute:: defragmentationThreshold
+      
+
+      
+
+   .. py:attribute:: disableLog
+      
+
+      
+
+   .. py:attribute:: disableTokenIds
+      
+
+      
+
+   .. py:attribute:: dynamicTemperatureExponent
+      
+
+      
+
+   .. py:attribute:: dynamicTemperatureRange
+      
+
+      
+
+   .. py:attribute:: embedding
+      
+
+      
+
+   .. py:attribute:: flashAttention
+      
+
+      
+
+   .. py:attribute:: frequencyPenalty
+      
+
+      
+
+   .. py:attribute:: getter_attrs
+      :annotation: = []
+
+      
+
+   .. py:attribute:: gpuSplitMode
+      
+
+      
+
+   .. py:attribute:: grammar
+      
+
+      
+
+   .. py:attribute:: ignoreEos
+      
+
+      
+
+   .. py:attribute:: inputAnnotatorTypes
+      
+
+      
+
+   .. py:attribute:: inputCols
+      
+
+      
+
+   .. py:attribute:: inputPrefix
+      
+
+      
+
+   .. py:attribute:: inputSuffix
+      
+
+      
+
+   .. py:attribute:: lazyAnnotator
+      
+
+      
+
+   .. py:attribute:: logVerbosity
+      
+
+      
+
+   .. py:attribute:: mainGpu
+      
+
+      
+
+   .. py:attribute:: minKeep
+      
+
+      
+
+   .. py:attribute:: minP
+      
+
+      
+
+   .. py:attribute:: miroStat
+      
+
+      
+
+   .. py:attribute:: miroStatEta
+      
+
+      
+
+   .. py:attribute:: miroStatTau
+      
+
+      
+
+   .. py:attribute:: modelAlias
+      
+
+      
+
+   .. py:attribute:: modelDraft
+      
+
+      
+
+   .. py:attribute:: nBatch
+      
+
+      
+
+   .. py:attribute:: nCtx
+      
+
+      
+
+   .. py:attribute:: nDraft
+      
+
+      
+
+   .. py:attribute:: nGpuLayers
+      
+
+      
+
+   .. py:attribute:: nGpuLayersDraft
+      
+
+      
+
+   .. py:attribute:: nKeep
+      
+
+      
+
+   .. py:attribute:: nPredict
+      
+
+      
+
+   .. py:attribute:: nProbs
+      
+
+      
+
+   .. py:attribute:: nThreads
+      
+
+      
+
+   .. py:attribute:: nThreadsBatch
+      
+
+      
+
+   .. py:attribute:: nUbatch
+      
+
+      
+
+   .. py:attribute:: name
+      :annotation: = 'MedicalVisionLLM'
+
+      
+
+   .. py:attribute:: noKvOffload
+      
+
+      
+
+   .. py:attribute:: numaStrategy
+      
+
+      
+
+   .. py:attribute:: optionalInputAnnotatorTypes
+      :annotation: = []
+
+      
+
+   .. py:attribute:: outputAnnotatorType
+      :annotation: = 'document'
+
+      
+
+   .. py:attribute:: outputCol
+      
+
+      
+
+   .. py:attribute:: penalizeNl
+      
+
+      
+
+   .. py:attribute:: penaltyPrompt
+      
+
+      
+
+   .. py:attribute:: poolingType
+      
+
+      
+
+   .. py:attribute:: presencePenalty
+      
+
+      
+
+   .. py:attribute:: reasoningBudget
+      
+
+      
+
+   .. py:attribute:: removeThinkingTag
+      
+
+      
+
+   .. py:attribute:: repeatLastN
+      
+
+      
+
+   .. py:attribute:: repeatPenalty
+      
+
+      
+
+   .. py:attribute:: ropeFreqBase
+      
+
+      
+
+   .. py:attribute:: ropeFreqScale
+      
+
+      
+
+   .. py:attribute:: ropeScalingType
+      
+
+      
+
+   .. py:attribute:: samplers
+      
+
+      
+
+   .. py:attribute:: seed
+      
+
+      
+
+   .. py:attribute:: stopStrings
+      
+
+      
+
+   .. py:attribute:: systemPrompt
+      
+
+      
+
+   .. py:attribute:: temperature
+      
+
+      
+
+   .. py:attribute:: tfsZ
+      
+
+      
+
+   .. py:attribute:: topK
+      
+
+      
+
+   .. py:attribute:: topP
+      
+
+      
+
+   .. py:attribute:: typicalP
+      
+
+      
+
+   .. py:attribute:: uid
+      :annotation: = ''
+
+      
+
+   .. py:attribute:: useChatTemplate
+      
+
+      
+
+   .. py:attribute:: useMlock
+      
+
+      
+
+   .. py:attribute:: useMmap
+      
+
+      
+
+   .. py:attribute:: yarnAttnFactor
+      
+
+      
+
+   .. py:attribute:: yarnBetaFast
+      
+
+      
+
+   .. py:attribute:: yarnBetaSlow
+      
+
+      
+
+   .. py:attribute:: yarnExtFactor
+      
+
+      
+
+   .. py:attribute:: yarnOrigCtx
+      
+
+      
+
+   .. py:method:: clear(param: pyspark.ml.param.Param) -> None
+
+      Clears a param from the param map if it has been explicitly set.
+
+
+   .. py:method:: close()
+
+      Closes the llama.cpp model backend freeing resources. The model is reloaded when used again.
+
+
+
+   .. py:method:: copy(extra: Optional[pyspark.ml._typing.ParamMap] = None) -> JP
+
+      Creates a copy of this instance with the same uid and some
+      extra params. This implementation first calls Params.copy and
+      then make a copy of the companion Java pipeline component with
+      extra params. So both the Python wrapper and the Java pipeline
+      component get copied.
+
+      :param extra: Extra parameters to copy to the new instance
+      :type extra: dict, optional
+
+      :returns: Copy of this instance
+      :rtype: :py:class:`JavaParams`
+
+
+   .. py:method:: explainParam(param: Union[str, Param]) -> str
+
+      Explains a single param and returns its name, doc, and optional
+      default value and user-supplied value in a string.
+
+
+   .. py:method:: explainParams() -> str
+
+      Returns the documentation of all params with their optionally
+      default values and user-supplied values.
+
+
+   .. py:method:: extractParamMap(extra: Optional[pyspark.ml._typing.ParamMap] = None) -> pyspark.ml._typing.ParamMap
+
+      Extracts the embedded default param values and user-supplied
+      values, and then merges them with extra values from input into
+      a flat param map, where the latter value is used if there exist
+      conflicts, i.e., with ordering: default param values <
+      user-supplied values < extra.
+
+      :param extra: extra param values
+      :type extra: dict, optional
+
+      :returns: merged param map
+      :rtype: dict
+
+
+   .. py:method:: getBatchSize()
+
+      Gets current batch size.
+
+      :returns: Current batch size
+      :rtype: int
+
+
+   .. py:method:: getInputCols()
+
+      Gets current column names of input annotations.
+
+
+   .. py:method:: getLazyAnnotator()
+
+      Gets whether Annotator should be evaluated lazily in a
+      RecursivePipeline.
+
+
+   .. py:method:: getMetadata()
+
+      Gets the metadata of the model
+
+
+   .. py:method:: getOrDefault(param: str) -> Any
+               getOrDefault(param: Param[T]) -> T
+
+      Gets the value of a param in the user-supplied param map or its
+      default value. Raises an error if neither is set.
+
+
+   .. py:method:: getOutputCol()
+
+      Gets output column name of annotations.
+
+
+   .. py:method:: getParam(paramName: str) -> Param
+
+      Gets a param by its name.
+
+
+   .. py:method:: getParamValue(paramName)
+
+      Gets the value of a parameter.
+
+      :param paramName: Name of the parameter
+      :type paramName: str
+
+
+   .. py:method:: getRemoveThinkingTag()
+
+      Get the thinking tag to be removed from output.
+
+
+   .. py:method:: getSystemPrompt()
+
+      Get the system prompt.
+
+
+   .. py:method:: hasDefault(param: Union[str, Param[Any]]) -> bool
+
+      Checks whether a param has a default value.
+
+
+   .. py:method:: hasParam(paramName: str) -> bool
+
+      Tests whether this instance contains a param with a given
+      (string) name.
+
+
+   .. py:method:: inputColsValidation(value)
+
+
+   .. py:method:: isDefined(param: Union[str, Param[Any]]) -> bool
+
+      Checks whether a param is explicitly set by user or has
+      a default value.
+
+
+   .. py:method:: isSet(param: Union[str, Param[Any]]) -> bool
+
+      Checks whether a param is explicitly set by user.
+
+
+   .. py:method:: load(path: str) -> RL
+      :classmethod:
+
+      Reads an ML instance from the input path, a shortcut of `read().load(path)`.
+
+
+   .. py:method:: loadSavedModel(modelPath, mmprojPath, spark_session)
+      :staticmethod:
+
+      Loads a locally saved modelPath.
+
+      :param modelPath: Path to the modelPath file
+      :type modelPath: str
+      :param mmprojPath: Path to the mmprojPath file
+      :type mmprojPath: str
+      :param spark_session: The current SparkSession
+      :type spark_session: pyspark.sql.SparkSession
+
+      :returns: The restored modelPath
+      :rtype: MedicalVisionLLM
+
+
+   .. py:method:: pretrained(name, lang='en', remote_loc=None)
+      :staticmethod:
+
+      Downloads and loads a pretrained model.
+
+      :param name: Name of the pretrained model, by default "Qwen2.5_VL_3B_Instruct_Q4_K_M_gguf"
+      :type name: str, optional
+      :param lang: Language of the pretrained model, by default "en"
+      :type lang: str, optional
+      :param remote_loc: Optional remote address of the resource, by default None. Will use
+                         Spark NLPs repositories otherwise.
+      :type remote_loc: str, optional
+
+      :returns: The restored model
+      :rtype: AutoGGUFVisionModel
+
+
+   .. py:method:: read()
+      :classmethod:
+
+      Returns an MLReader instance for this class.
+
+
+   .. py:method:: save(path: str) -> None
+
+      Save this ML instance to the given path, a shortcut of 'write().save(path)'.
+
+
+   .. py:method:: set(param: Param, value: Any) -> None
+
+      Sets a parameter in the embedded param map.
+
+
+   .. py:method:: setBatchSize(v)
+
+      Sets batch size.
+
+      :param v: Batch size
+      :type v: int
+
+
+   .. py:method:: setCachePrompt(cachePrompt: bool)
+
+      Whether to remember the prompt to avoid reprocessing it
+
+
+   .. py:method:: setChatTemplate(chatTemplate: str)
+
+      The chat template to use
+
+
+   .. py:method:: setDefragmentationThreshold(defragmentationThreshold: float)
+
+      Set the KV cache defragmentation threshold
+
+
+   .. py:method:: setDisableLog(disableLog)
+
+      Whether to disable logging
+
+
+   .. py:method:: setDisableTokenIds(disableTokenIds: List[int])
+
+      Set the token ids to disable in the completion
+
+
+   .. py:method:: setDynamicTemperatureExponent(dynamicTemperatureExponent: float)
+
+      Set the dynamic temperature exponent
+
+
+   .. py:method:: setDynamicTemperatureRange(dynamicTemperatureRange: float)
+
+      Set the dynamic temperature range
+
+
+   .. py:method:: setFlashAttention(flashAttention: bool)
+
+      Whether to enable Flash Attention
+
+
+   .. py:method:: setFrequencyPenalty(frequencyPenalty: float)
+
+      Set the repetition alpha frequency penalty
+
+
+   .. py:method:: setGpuSplitMode(gpuSplitMode: str)
+
+      Set how to split the model across GPUs
+
+
+   .. py:method:: setGrammar(grammar: str)
+
+      Set BNF-like grammar to constrain generations
+
+
+   .. py:method:: setIgnoreEos(ignoreEos: bool)
+
+      Set whether to ignore end of stream token and continue generating (implies --logit-bias 2-inf)
+
+
+   .. py:method:: setInputCols(*value)
+
+      Sets column names of input annotations.
+
+      :param \*value: Input columns for the annotator
+      :type \*value: List[str]
+
+
+   .. py:method:: setInputPrefix(inputPrefix: str)
+
+      Set the prompt to start generation with
+
+
+   .. py:method:: setInputSuffix(inputSuffix: str)
+
+      Set a suffix for infilling
+
+
+   .. py:method:: setLazyAnnotator(value)
+
+      Sets whether Annotator should be evaluated lazily in a
+      RecursivePipeline.
+
+      :param value: Whether Annotator should be evaluated lazily in a
+                    RecursivePipeline
+      :type value: bool
+
+
+   .. py:method:: setLogVerbosity(logVerbosity: int)
+
+      Set the log verbosity level
+
+
+   .. py:method:: setMainGpu(mainGpu: int)
+
+      Set the main GPU that is used for scratch and small tensors.
+
+
+   .. py:method:: setMinKeep(minKeep: int)
+
+      Set the amount of tokens the samplers should return at least (0 = disabled)
+
+
+   .. py:method:: setMinP(minP: float)
+
+      Set min-p sampling
+
+
+   .. py:method:: setMiroStat(miroStat: str)
+
+      Set MiroStat sampling strategies.
+
+
+   .. py:method:: setMiroStatEta(miroStatEta: float)
+
+      Set the MiroStat learning rate, parameter eta
+
+
+   .. py:method:: setMiroStatTau(miroStatTau: float)
+
+      Set the MiroStat target entropy, parameter tau
+
+
+   .. py:method:: setModelAlias(modelAlias: str)
+
+      Set a model alias
+
+
+   .. py:method:: setModelDraft(modelDraft: str)
+
+      Set the draft model for speculative decoding
+
+
+   .. py:method:: setNBatch(nBatch: int)
+
+      Set the logical batch size for prompt processing (must be >=32 to use BLAS)
+
+
+   .. py:method:: setNCtx(nCtx: int)
+
+      Set the size of the prompt context
+
+
+   .. py:method:: setNDraft(nDraft: int)
+
+      Set the number of tokens to draft for speculative decoding
+
+
+   .. py:method:: setNGpuLayers(nGpuLayers: int)
+
+      Set the number of layers to store in VRAM (-1 - use default)
+
+
+   .. py:method:: setNGpuLayersDraft(nGpuLayersDraft: int)
+
+      Set the number of layers to store in VRAM for the draft model (-1 - use default)
+
+
+   .. py:method:: setNKeep(nKeep: int)
+
+      Set the number of tokens to keep from the initial prompt
+
+
+   .. py:method:: setNParallel(nParallel: int)
+
+      Sets the number of parallel processes for decoding. This is an alias for `setBatchSize`.
+
+
+   .. py:method:: setNPredict(nPredict: int)
+
+      Set the number of tokens to predict
+
+
+   .. py:method:: setNProbs(nProbs: int)
+
+      Set the amount top tokens probabilities to output if greater than 0.
+
+
+   .. py:method:: setNThreads(nThreads: int)
+
+      Set the number of threads to use during generation
+
+
+   .. py:method:: setNThreadsBatch(nThreadsBatch: int)
+
+      Set the number of threads to use during batch and prompt processing
+
+
+   .. py:method:: setNUbatch(nUbatch: int)
+
+      Set the physical batch size for prompt processing (must be >=32 to use BLAS)
+
+
+   .. py:method:: setNoKvOffload(noKvOffload: bool)
+
+      Whether to disable KV offload
+
+
+   .. py:method:: setNumaStrategy(numaStrategy: str)
+
+      Set optimization strategies that help on some NUMA systems (if available)
+
+      Possible values:
+
+      - DISABLED: No NUMA optimizations
+      - DISTRIBUTE: spread execution evenly over all
+      - ISOLATE: only spawn threads on CPUs on the node that execution started on
+      - NUMA_CTL: use the CPU map provided by numactl
+      - MIRROR: Mirrors the model across NUMA nodes
+
+
+   .. py:method:: setOutputCol(value)
+
+      Sets output column name of annotations.
+
+      :param value: Name of output column
+      :type value: str
+
+
+   .. py:method:: setParamValue(paramName)
+
+      Sets the value of a parameter.
+
+      :param paramName: Name of the parameter
+      :type paramName: str
+
+
+   .. py:method:: setParams()
+
+
+   .. py:method:: setPenalizeNl(penalizeNl: bool)
+
+      Whether to penalize newline tokens
+
+
+   .. py:method:: setPenaltyPrompt(penaltyPrompt: str)
+
+      Override which part of the prompt is penalized for repetition.
+
+
+   .. py:method:: setPoolingType(poolingType: str)
+
+      Set the pooling type for embeddings, use model default if unspecified
+
+      Possible values:
+
+      - MEAN: Mean Pooling
+      - CLS: CLS Pooling
+      - LAST: Last token pooling
+      - RANK: For reranked models
+
+
+   .. py:method:: setPresencePenalty(presencePenalty: float)
+
+      Set the repetition alpha presence penalty
+
+
+   .. py:method:: setReasoningBudget(reasoningBudget: int)
+
+      Controls the amount of thinking allowed; currently only one of: -1 for unrestricted thinking
+      budget, or 0 to disable thinking (default: -1)
+
+
+   .. py:method:: setRemoveThinkingTag(value: str)
+
+      Set a thinking tag (e.g. `think`) to be removed from output.
+      Will produce the regex: `(?s)<$TAG>.+?</$TAG>`
+
+
+   .. py:method:: setRepeatLastN(repeatLastN: int)
+
+      Set the last n tokens to consider for penalties
+
+
+   .. py:method:: setRepeatPenalty(repeatPenalty: float)
+
+      Set the penalty of repeated sequences of tokens
+
+
+   .. py:method:: setRopeFreqBase(ropeFreqBase: float)
+
+      Set the RoPE base frequency, used by NTK-aware scaling
+
+
+   .. py:method:: setRopeFreqScale(ropeFreqScale: float)
+
+      Set the RoPE frequency scaling factor, expands context by a factor of 1/N
+
+
+   .. py:method:: setRopeScalingType(ropeScalingType: str)
+
+      Set the RoPE frequency scaling method, defaults to linear unless specified by the model.
+
+      Possible values:
+
+      - NONE: Don't use any scaling
+      - LINEAR: Linear scaling
+      - YARN: YaRN RoPE scaling
+
+
+   .. py:method:: setSamplers(samplers: List[str])
+
+      Set which samplers to use for token generation in the given order
+
+
+   .. py:method:: setSeed(seed: int)
+
+      Set the RNG seed
+
+
+   .. py:method:: setStopStrings(stopStrings: List[str])
+
+      Set strings upon seeing which token generation is stopped
+
+
+   .. py:method:: setSystemPrompt(systemPrompt)
+
+      Set a system prompt to use.
+
+
+   .. py:method:: setTemperature(temperature: float)
+
+      Set the temperature
+
+
+   .. py:method:: setTfsZ(tfsZ: float)
+
+      Set tail free sampling, parameter z
+
+
+   .. py:method:: setTokenBias(tokenBias: Dict[str, float])
+
+      Set token id bias
+
+
+   .. py:method:: setTokenIdBias(tokenIdBias: Dict[int, float])
+
+      Set token id bias
+
+
+   .. py:method:: setTopK(topK: int)
+
+      Set top-k sampling
+
+
+   .. py:method:: setTopP(topP: float)
+
+      Set top-p sampling
+
+
+   .. py:method:: setTypicalP(typicalP: float)
+
+      Set locally typical sampling, parameter p
+
+
+   .. py:method:: setUseChatTemplate(useChatTemplate: bool)
+
+      Set whether generate should apply a chat template
+
+
+   .. py:method:: setUseMlock(useMlock: bool)
+
+      Whether to force the system to keep model in RAM rather than swapping or compressing
+
+
+   .. py:method:: setUseMmap(useMmap: bool)
+
+      Whether to use memory-map model (faster load but may increase pageouts if not using mlock)
+
+
+   .. py:method:: setYarnAttnFactor(yarnAttnFactor: float)
+
+      Set the YaRN scale sqrt(t) or attention magnitude
+
+
+   .. py:method:: setYarnBetaFast(yarnBetaFast: float)
+
+      Set the YaRN low correction dim or beta
+
+
+   .. py:method:: setYarnBetaSlow(yarnBetaSlow: float)
+
+      Set the YaRN high correction dim or alpha
+
+
+   .. py:method:: setYarnExtFactor(yarnExtFactor: float)
+
+      Set the YaRN extrapolation mix factor
+
+
+   .. py:method:: setYarnOrigCtx(yarnOrigCtx: int)
+
+      Set the YaRN original context size of model
+
+
+   .. py:method:: transform(dataset: pyspark.sql.dataframe.DataFrame, params: Optional[pyspark.ml._typing.ParamMap] = None) -> pyspark.sql.dataframe.DataFrame
+
+      Transforms the input dataset with optional parameters.
+
+      .. versionadded:: 1.3.0
+
+      :param dataset: input dataset
+      :type dataset: :py:class:`pyspark.sql.DataFrame`
+      :param params: an optional param map that overrides embedded params.
+      :type params: dict, optional
+
+      :returns: transformed dataset
+      :rtype: :py:class:`pyspark.sql.DataFrame`
+
+
+   .. py:method:: write() -> JavaMLWriter
+
+      Returns an MLWriter instance for this ML instance.
+
+
+

@@ -1,0 +1,59 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.test_image_table_detector`
+===================================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.test_image_table_detector
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.test_image_table_detector.TestImageTableDetector
+
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.test_image_table_detector.tmpModelFolder
+
+
+.. py:class:: TestImageTableDetector
+
+   .. py:method:: test_image_table_detector_apply_correction(spark_session, image_table_document_corrected_df)
+
+
+   .. py:method:: test_image_table_detector_apply_scaling(spark_session, image_table_document_corrected_df)
+
+
+   .. py:method:: test_image_table_detector_load(spark_session, image_table_document_df)
+
+
+   .. py:method:: test_image_table_detector_loadonnx(spark_session, image_table_document_df)
+
+
+   .. py:method:: test_image_table_detector_pretrained(spark_session, image_table_document_df)
+
+
+   .. py:method:: test_image_table_detector_save(spark_session, image_table_document_df)
+
+
+   .. py:method:: test_image_table_detector_savepipeline(spark_session, image_table_document_df)
+
+
+
+.. py:data:: tmpModelFolder
+   :annotation: = 'tmp_model'
+
+   
+

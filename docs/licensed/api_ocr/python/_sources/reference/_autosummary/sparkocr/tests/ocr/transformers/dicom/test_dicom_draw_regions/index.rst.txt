@@ -1,0 +1,116 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.dicom.test_dicom_draw_regions`
+=======================================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.dicom.test_dicom_draw_regions
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.dicom.test_dicom_draw_regions.TestDicomDrawRegions
+
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.dicom.test_dicom_draw_regions.get_draw_regions
+
+
+
+.. py:class:: TestDicomDrawRegions
+
+   .. py:attribute:: SAVE_DIR
+      :annotation: = './'
+
+      
+
+   .. py:method:: test_DeflatedExplicitVRLittleEndian_non_compression(spark_session)
+
+
+   .. py:method:: test_DrawRegions(spark_session, dicom_single_image_df, dicom_image_df)
+
+
+   .. py:method:: test_ExplicitVRBigEndian_non_compression(spark_session)
+
+
+   .. py:method:: test_ExplicitVRLittleEndian_non_compression(spark_session)
+
+
+   .. py:method:: test_ImplicitVRLittleEndian_non_compression(spark_session)
+
+
+   .. py:method:: test_empty_coordinates_returns_original_throws_warning(spark_session)
+
+
+   .. py:method:: test_empty_regions_from_v1_detector_throws_no_region_exception(spark_session)
+
+
+   .. py:method:: test_empty_regions_from_v2_detector_throws_no_region_exception(spark_session)
+
+
+   .. py:method:: test_format_exception_from_traceback(spark_session)
+
+
+   .. py:method:: test_jpeg2000_lossless_compression(spark_session)
+
+
+   .. py:method:: test_jpeg_12_bit_compression(spark_session)
+
+
+   .. py:method:: test_jpeg_2000_compression(spark_session)
+
+
+   .. py:method:: test_jpegls_lossless_compression(spark_session)
+
+
+   .. py:method:: test_jpegls_near_lossless_compression(spark_session)
+
+
+   .. py:method:: test_regions_from_image_text_detector_v1(spark_session)
+
+
+   .. py:method:: test_regions_from_image_text_detector_v2(spark_session)
+
+
+   .. py:method:: test_regions_from_v1(spark_session)
+
+
+   .. py:method:: test_regions_from_v2_with_no_refiner(spark_session)
+
+
+   .. py:method:: test_regions_from_v2_with_refiner(spark_session)
+
+
+   .. py:method:: test_reject_badVR(spark_session)
+
+
+   .. py:method:: test_reject_dicom_with_no_pixel_data(spark_session)
+
+
+   .. py:method:: test_rle_compression(spark_session)
+
+
+   .. py:method:: test_rle_reject_ybr_full_422(spark_session)
+
+
+   .. py:method:: test_ybr_full_422_8Bit_compression(spark_session)
+
+
+   .. py:method:: test_ybr_full_422_no_compression(spark_session)
+
+
+
+.. py:function:: get_draw_regions(inputCol='path')
+
+

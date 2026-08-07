@@ -1,0 +1,83 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.utils.rectangle`
+==================================
+
+.. py:module:: sparkocr.utils.rectangle
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.utils.rectangle.Point
+   sparkocr.utils.rectangle.Rectangle
+
+
+
+
+.. py:class:: Point(x=0, y=0)
+
+   .. py:attribute:: x
+      :annotation: = 0
+
+      
+
+   .. py:attribute:: y
+      :annotation: = 0
+
+      
+
+
+.. py:class:: Rectangle(bottom_left, top_right, top_left, bottom_right)
+
+   .. py:attribute:: bottom_left
+      
+
+      
+
+   .. py:attribute:: bottom_right
+      
+
+      
+
+   .. py:attribute:: top_left
+      
+
+      
+
+   .. py:attribute:: top_right
+      
+
+      
+
+   .. py:method:: from_box(box)
+      :staticmethod:
+
+
+   .. py:method:: get_height()
+
+
+   .. py:method:: intersects(other)
+
+
+   .. py:method:: intersects_horizontal(other, tolerance_x=5)
+
+
+   .. py:method:: merge_intersects(rectangles, line_tolerance)
+      :staticmethod:
+
+
+   .. py:method:: merge_rects(rect1, rect2)
+      :staticmethod:
+
+
+   .. py:method:: to_region()
+
+
+

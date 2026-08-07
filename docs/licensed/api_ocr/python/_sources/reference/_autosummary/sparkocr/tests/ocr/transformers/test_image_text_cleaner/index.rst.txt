@@ -1,0 +1,41 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.test_image_text_cleaner`
+=================================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.test_image_text_cleaner
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.test_image_text_cleaner.TestImageTextCleaner
+
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.test_image_text_cleaner.tmpModelFolder
+
+
+.. py:class:: TestImageTextCleaner
+
+   .. py:method:: test_image_text_detector(spark_session, image_noised_df)
+
+
+
+.. py:data:: tmpModelFolder
+   :annotation: = 'tmp_model'
+
+   
+

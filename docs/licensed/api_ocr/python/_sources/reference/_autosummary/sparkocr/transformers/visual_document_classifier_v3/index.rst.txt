@@ -1,0 +1,264 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.transformers.visual_document_classifier_v3`
+=============================================================
+
+.. py:module:: sparkocr.transformers.visual_document_classifier_v3
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.transformers.visual_document_classifier_v3.VisualDocumentClassifierV3
+
+
+
+
+.. py:class:: VisualDocumentClassifierV3(classname='com.johnsnowlabs.ocr.transformers.VisualDocumentClassifierv3', java_model=None)
+
+   Bases: :py:obj:`pyspark.ml.wrapper.JavaTransformer`, :py:obj:`pyspark.ml.param.shared.HasInputCols`, :py:obj:`pyspark.ml.param.shared.HasOutputCol`, :py:obj:`pyspark.ml.util.JavaMLReadable`, :py:obj:`pyspark.ml.util.JavaMLWritable`
+
+   Base class for :py:class:`Transformer`s that wrap Java/Scala
+   implementations. Subclasses should ensure they have the transformer Java object
+   available as _java_obj.
+
+   .. py:attribute:: evalSize
+      
+
+      
+
+   .. py:attribute:: inputCols
+      
+
+      
+
+   .. py:attribute:: labels
+      
+
+      
+
+   .. py:attribute:: name
+      :annotation: = 'VisualDocumentClassifierV3'
+
+      
+
+   .. py:attribute:: outputCol
+      
+
+      
+
+   .. py:attribute:: trainBatchSize
+      
+
+      
+
+   .. py:attribute:: trainEpochs
+      
+
+      
+
+   .. py:attribute:: uid
+      :annotation: = ''
+
+      
+
+   .. py:attribute:: vocabulary
+      :annotation: = []
+
+      
+
+   .. py:method:: clear(param: pyspark.ml.param.Param) -> None
+
+      Clears a param from the param map if it has been explicitly set.
+
+
+   .. py:method:: copy(extra: Optional[pyspark.ml._typing.ParamMap] = None) -> JP
+
+      Creates a copy of this instance with the same uid and some
+      extra params. This implementation first calls Params.copy and
+      then make a copy of the companion Java pipeline component with
+      extra params. So both the Python wrapper and the Java pipeline
+      component get copied.
+
+      :param extra: Extra parameters to copy to the new instance
+      :type extra: dict, optional
+
+      :returns: Copy of this instance
+      :rtype: :py:class:`JavaParams`
+
+
+   .. py:method:: explainParam(param: Union[str, Param]) -> str
+
+      Explains a single param and returns its name, doc, and optional
+      default value and user-supplied value in a string.
+
+
+   .. py:method:: explainParams() -> str
+
+      Returns the documentation of all params with their optionally
+      default values and user-supplied values.
+
+
+   .. py:method:: extractParamMap(extra: Optional[pyspark.ml._typing.ParamMap] = None) -> pyspark.ml._typing.ParamMap
+
+      Extracts the embedded default param values and user-supplied
+      values, and then merges them with extra values from input into
+      a flat param map, where the latter value is used if there exist
+      conflicts, i.e., with ordering: default param values <
+      user-supplied values < extra.
+
+      :param extra: extra param values
+      :type extra: dict, optional
+
+      :returns: merged param map
+      :rtype: dict
+
+
+   .. py:method:: fit(dataset, base_model='dit-base-224-p16-500k-62d53a.pth', validate=False, atol=0.01, base_model_path=None)
+
+
+   .. py:method:: getInputCols() -> List[str]
+
+      Gets the value of inputCols or its default value.
+
+
+   .. py:method:: getOrDefault(param: str) -> Any
+               getOrDefault(param: Param[T]) -> T
+
+      Gets the value of a param in the user-supplied param map or its
+      default value. Raises an error if neither is set.
+
+
+   .. py:method:: getOutputCol() -> str
+
+      Gets the value of outputCol or its default value.
+
+
+   .. py:method:: getParam(paramName: str) -> Param
+
+      Gets a param by its name.
+
+
+   .. py:method:: hasDefault(param: Union[str, Param[Any]]) -> bool
+
+      Checks whether a param has a default value.
+
+
+   .. py:method:: hasParam(paramName: str) -> bool
+
+      Tests whether this instance contains a param with a given
+      (string) name.
+
+
+   .. py:method:: isDefined(param: Union[str, Param[Any]]) -> bool
+
+      Checks whether a param is explicitly set by user or has
+      a default value.
+
+
+   .. py:method:: isSet(param: Union[str, Param[Any]]) -> bool
+
+      Checks whether a param is explicitly set by user.
+
+
+   .. py:method:: load(folder)
+      :staticmethod:
+
+      Loads a onnx graph and setups model
+      :param folder: location of onnx model
+      :return:
+
+
+   .. py:method:: loadONNXModel(model_path, spark_session)
+      :staticmethod:
+
+      Loads a onnx graph and setups model
+      :param folder: location of onnx model
+      :param spark_session: Spark session
+      :return:
+
+
+   .. py:method:: pretrained(name, lang='en', remote_loc=None)
+      :staticmethod:
+
+
+   .. py:method:: read() -> JavaMLReader[RL]
+      :classmethod:
+
+      Returns an MLReader instance for this class.
+
+
+   .. py:method:: save(path: str) -> None
+
+      Save this ML instance to the given path, a shortcut of 'write().save(path)'.
+
+
+   .. py:method:: saveModel(model_path)
+
+      Saves model
+      :param model_path: location of saved model
+      :return:
+
+
+   .. py:method:: set(param: Param, value: Any) -> None
+
+      Sets a parameter in the embedded param map.
+
+
+   .. py:method:: setEvalSize(value)
+
+      Sets the value of :py:attr:`evalSize`.
+
+
+   .. py:method:: setInputCols(value)
+
+      Sets the value of :py:attr:`inputCols`.
+
+
+   .. py:method:: setLabels(value)
+
+      Sets document class labels.
+
+
+   .. py:method:: setOutputCol(value)
+
+      Sets the value of :py:attr:`outputCol`.
+
+
+   .. py:method:: setTrainBatchSize(value)
+
+      Sets the value of :py:attr:`outputCol`.
+
+
+   .. py:method:: setTrainEpochs(value)
+
+      Sets the value of :py:attr:`trainEpochs`.
+
+
+   .. py:method:: transform(dataset: pyspark.sql.dataframe.DataFrame, params: Optional[pyspark.ml._typing.ParamMap] = None) -> pyspark.sql.dataframe.DataFrame
+
+      Transforms the input dataset with optional parameters.
+
+      .. versionadded:: 1.3.0
+
+      :param dataset: input dataset
+      :type dataset: :py:class:`pyspark.sql.DataFrame`
+      :param params: an optional param map that overrides embedded params.
+      :type params: dict, optional
+
+      :returns: transformed dataset
+      :rtype: :py:class:`pyspark.sql.DataFrame`
+
+
+   .. py:method:: write() -> JavaMLWriter
+
+      Returns an MLWriter instance for this ML instance.
+
+
+

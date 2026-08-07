@@ -1,0 +1,28 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.dicom.test_dicom_deidentifier`
+=======================================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.dicom.test_dicom_deidentifier
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.dicom.test_dicom_deidentifier.TestDicomDeidentifier
+
+
+
+
+.. py:class:: TestDicomDeidentifier
+
+   .. py:method:: test_dicom_deidentifier(spark_session, dicom_image_with_metadata_df)
+
+
+

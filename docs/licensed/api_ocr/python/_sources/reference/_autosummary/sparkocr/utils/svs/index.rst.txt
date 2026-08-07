@@ -1,0 +1,22 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.utils.svs`
+============================
+
+.. py:module:: sparkocr.utils.svs
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   phi_cleaning/index.rst
+   phi_redaction/index.rst
+   remove-phi/index.rst
+   tiffparser/index.rst
+   tile_extraction/index.rst
+
+

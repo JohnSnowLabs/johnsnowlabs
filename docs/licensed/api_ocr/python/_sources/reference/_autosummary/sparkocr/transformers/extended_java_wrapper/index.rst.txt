@@ -1,0 +1,56 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.transformers.extended_java_wrapper`
+=====================================================
+
+.. py:module:: sparkocr.transformers.extended_java_wrapper
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.transformers.extended_java_wrapper.ExtendedJavaWrapper
+
+
+
+
+.. py:class:: ExtendedJavaWrapper(java_obj, *args)
+
+   Bases: :py:obj:`pyspark.ml.wrapper.JavaWrapper`
+
+   Wrapper class for a Java companion object
+
+   .. py:attribute:: java_obj
+      
+
+      
+
+   .. py:attribute:: sc
+      :annotation: = None
+
+      
+
+   .. py:method:: apply()
+
+
+   .. py:method:: new_java_array(pylist, java_class)
+
+      ToDo: Inspired from spark 2.0. Review if spark changes
+
+
+   .. py:method:: new_java_array_integer(pylist)
+
+
+   .. py:method:: new_java_array_string(pylist)
+
+
+   .. py:method:: new_java_obj(java_class, *args)
+
+
+

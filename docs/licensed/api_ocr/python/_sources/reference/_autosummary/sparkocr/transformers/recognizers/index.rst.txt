@@ -1,0 +1,22 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.transformers.recognizers`
+===========================================
+
+.. py:module:: sparkocr.transformers.recognizers
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   image_to_text_modelserving/index.rst
+   image_to_text_v2/index.rst
+   image_to_text_v3/index.rst
+   image_to_text_v4/index.rst
+   image_to_text_web/index.rst
+
+

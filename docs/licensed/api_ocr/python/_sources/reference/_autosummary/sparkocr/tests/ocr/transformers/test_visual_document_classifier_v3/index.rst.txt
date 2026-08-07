@@ -1,0 +1,28 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.test_visual_document_classifier_v3`
+============================================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.test_visual_document_classifier_v3
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.test_visual_document_classifier_v3.TestVisualDocumentClassifierV3
+
+
+
+
+.. py:class:: TestVisualDocumentClassifierV3
+
+   .. py:method:: test_pretrained(spark_session, visual_document_classifier_v3_df)
+
+
+

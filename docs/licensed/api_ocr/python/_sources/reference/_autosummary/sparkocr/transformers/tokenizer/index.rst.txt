@@ -1,0 +1,20 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.transformers.tokenizer`
+=========================================
+
+.. py:module:: sparkocr.transformers.tokenizer
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   bros_hocr_tokenizer/index.rst
+   hocr_document_assembler/index.rst
+   hocr_tokenizer/index.rst
+
+

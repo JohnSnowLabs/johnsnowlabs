@@ -1,0 +1,24 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.detectors`
+===================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.detectors
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   test_image_checkbox_detector/index.rst
+   test_image_document_region_detector/index.rst
+   test_image_layout_analyzer_dit/index.rst
+   test_image_layout_detector/index.rst
+   test_image_text_detector/index.rst
+   test_image_text_detector_craft/index.rst
+   test_image_text_detector_v2/index.rst
+
+

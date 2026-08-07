@@ -1,0 +1,28 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.test_image_signature_detector`
+=======================================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.test_image_signature_detector
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.test_image_signature_detector.TestImageSignatureDetector
+
+
+
+
+.. py:class:: TestImageSignatureDetector
+
+   .. py:method:: test_image_signature_detector(spark_session, image_signature_df, torch_fake_model)
+
+
+

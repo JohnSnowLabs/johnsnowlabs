@@ -1,0 +1,40 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.utils.compat_pkg`
+===================================
+
+.. py:module:: sparkocr.utils.compat_pkg
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.utils.compat_pkg.resource_filename
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.utils.compat_pkg.parse_version
+
+
+.. py:function:: resource_filename(package: str, resource: str) -> str
+
+   Use importlib_resources to get a real path for a resource.
+
+
+.. py:data:: parse_version
+   
+
+   
+

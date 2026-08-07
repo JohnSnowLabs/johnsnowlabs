@@ -1,0 +1,28 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.detectors.test_image_document_region_detector`
+=======================================================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.detectors.test_image_document_region_detector
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.detectors.test_image_document_region_detector.TestImageDocumentRegionDetector
+
+
+
+
+.. py:class:: TestImageDocumentRegionDetector
+
+   .. py:method:: test_image_region_detector_pretrained(spark_session, image_table_document_df)
+
+
+

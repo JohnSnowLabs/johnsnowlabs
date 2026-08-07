@@ -1,0 +1,48 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.pretrained.dicom_pretrained_pipeline`
+=======================================================
+
+.. py:module:: sparkocr.pretrained.dicom_pretrained_pipeline
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.pretrained.dicom_pretrained_pipeline.DicomPretrainedPipeline
+
+
+
+
+.. py:class:: DicomPretrainedPipeline(name_or_pipeline=None, lang='en', remote_loc='clinical/ocr', parse_embeddings=False, disk_location=None)
+
+   .. py:attribute:: dicom_to_image_pipe
+      :annotation: = []
+
+      
+
+   .. py:attribute:: draw_regions_pipe
+      :annotation: = []
+
+      
+
+   .. py:attribute:: iterable_stages
+      :annotation: = None
+
+      
+
+   .. py:attribute:: region_col
+      :annotation: = None
+
+      
+
+   .. py:method:: transform(data, keep_all_cols=False)
+
+
+

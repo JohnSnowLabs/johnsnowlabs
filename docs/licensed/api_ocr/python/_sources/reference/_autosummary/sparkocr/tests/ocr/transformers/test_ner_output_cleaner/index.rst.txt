@@ -1,0 +1,28 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.test_ner_output_cleaner`
+=================================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.test_ner_output_cleaner
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.test_ner_output_cleaner.TestNerOutputCleaner
+
+
+
+
+.. py:class:: TestNerOutputCleaner
+
+   .. py:method:: test_stage_serializes(spark_session)
+
+
+

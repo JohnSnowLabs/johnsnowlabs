@@ -1,0 +1,2105 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.utils.svs.tiffparser`
+=======================================
+
+.. py:module:: sparkocr.utils.svs.tiffparser
+
+.. autoapi-nested-parse::
+
+   Read TIFF(r) file (meta)data.
+
+
+   Data can be read from TIFF, BigTIFF, OME-TIFF, STK, LSM, SGI,
+   NIHImage, ImageJ, MicroManager, FluoView, ScanImage, SEQ, GEL, SVS, SCN, SIS,
+   ZIF, QPTIFF, NDPI, and GeoTIFF files.
+
+   :Author:
+     `Christoph Gohlke <https://www.lfd.uci.edu/~gohlke/>`_
+
+   :Organization:
+     Laboratory for Fluorescence Dynamics, University of California, Irvine
+
+   :License: BSD 3-Clause
+
+   :Version: 2020.2.16
+
+
+   .. rubric:: References
+
+   1.  TIFF 6.0 Specification and Supplements. Adobe Systems Incorporated.
+       https://www.adobe.io/open/standards/TIFF.html
+   2.  TIFF File Format FAQ. https://www.awaresystems.be/imaging/tiff/faq.html
+   3.  MetaMorph Stack (STK) Image File Format.
+       http://mdc.custhelp.com/app/answers/detail/a_id/18862
+   4.  Image File Format Description LSM 5/7 Release 6.0 (ZEN 2010).
+       Carl Zeiss MicroImaging GmbH. BioSciences. May 10, 2011
+   5.  The OME-TIFF format.
+       https://docs.openmicroscopy.org/ome-model/5.6.4/ome-tiff/
+   6.  UltraQuant(r) Version 6.0 for Windows Start-Up Guide.
+       http://www.ultralum.com/images%20ultralum/pdf/UQStart%20Up%20Guide.pdf
+   7.  Micro-Manager File Formats.
+       https://micro-manager.org/wiki/Micro-Manager_File_Formats
+   8.  Tags for TIFF and Related Specifications. Digital Preservation.
+       https://www.loc.gov/preservation/digital/formats/content/tiff_tags.shtml
+   9.  ScanImage BigTiff Specification - ScanImage 2016.
+       http://scanimage.vidriotechnologies.com/display/SI2016/
+       ScanImage+BigTiff+Specification
+   10. CIPA DC-008-2016: Exchangeable image file format for digital still cameras:
+       Exif Version 2.31.
+       http://www.cipa.jp/std/documents/e/DC-008-Translation-2016-E.pdf
+   11. ZIF, the Zoomable Image File format. http://zif.photo/
+   12. GeoTIFF File Format https://gdal.org/drivers/raster/gtiff.html
+
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.utils.svs.tiffparser.FileHandle
+   sparkocr.utils.svs.tiffparser.FileSequence
+   sparkocr.utils.svs.tiffparser.LazyConst
+   sparkocr.utils.svs.tiffparser.NullContext
+   sparkocr.utils.svs.tiffparser.OpenFileCache
+   sparkocr.utils.svs.tiffparser.TIFF
+   sparkocr.utils.svs.tiffparser.TiffFile
+   sparkocr.utils.svs.tiffparser.TiffFrame
+   sparkocr.utils.svs.tiffparser.TiffPage
+   sparkocr.utils.svs.tiffparser.TiffPageSeries
+   sparkocr.utils.svs.tiffparser.TiffPages
+   sparkocr.utils.svs.tiffparser.TiffTag
+   sparkocr.utils.svs.tiffparser.TiffTags
+   sparkocr.utils.svs.tiffparser.dtype
+   sparkocr.utils.svs.tiffparser.lazyattr
+
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.utils.svs.tiffparser.apply_colormap
+   sparkocr.utils.svs.tiffparser.asbool
+   sparkocr.utils.svs.tiffparser.askopenfilename
+   sparkocr.utils.svs.tiffparser.astype
+   sparkocr.utils.svs.tiffparser.byteorder_isnative
+   sparkocr.utils.svs.tiffparser.bytes2str
+   sparkocr.utils.svs.tiffparser.bytestr
+   sparkocr.utils.svs.tiffparser.clean_whitespace
+   sparkocr.utils.svs.tiffparser.create_output
+   sparkocr.utils.svs.tiffparser.enumarg
+   sparkocr.utils.svs.tiffparser.enumstr
+   sparkocr.utils.svs.tiffparser.excel_datetime
+   sparkocr.utils.svs.tiffparser.fluoview_description_metadata
+   sparkocr.utils.svs.tiffparser.format_size
+   sparkocr.utils.svs.tiffparser.getdtype
+   sparkocr.utils.svs.tiffparser.hexdump
+   sparkocr.utils.svs.tiffparser.identityfunc
+   sparkocr.utils.svs.tiffparser.imagej_description
+   sparkocr.utils.svs.tiffparser.imagej_description_metadata
+   sparkocr.utils.svs.tiffparser.imagej_metadata
+   sparkocr.utils.svs.tiffparser.imagej_metadata_tag
+   sparkocr.utils.svs.tiffparser.imagej_shape
+   sparkocr.utils.svs.tiffparser.imshow
+   sparkocr.utils.svs.tiffparser.isprintable
+   sparkocr.utils.svs.tiffparser.json_description
+   sparkocr.utils.svs.tiffparser.json_description_metadata
+   sparkocr.utils.svs.tiffparser.julian_datetime
+   sparkocr.utils.svs.tiffparser.log_warning
+   sparkocr.utils.svs.tiffparser.lsm2bin
+   sparkocr.utils.svs.tiffparser.matlabstr2py
+   sparkocr.utils.svs.tiffparser.metaseries_description_metadata
+   sparkocr.utils.svs.tiffparser.natural_sorted
+   sparkocr.utils.svs.tiffparser.nullfunc
+   sparkocr.utils.svs.tiffparser.olympusini_metadata
+   sparkocr.utils.svs.tiffparser.parse_filenames
+   sparkocr.utils.svs.tiffparser.parse_kwargs
+   sparkocr.utils.svs.tiffparser.pformat
+   sparkocr.utils.svs.tiffparser.pformat_xml
+   sparkocr.utils.svs.tiffparser.pilatus_description_metadata
+   sparkocr.utils.svs.tiffparser.product
+   sparkocr.utils.svs.tiffparser.read_bytes
+   sparkocr.utils.svs.tiffparser.read_colormap
+   sparkocr.utils.svs.tiffparser.read_cz_lsminfo
+   sparkocr.utils.svs.tiffparser.read_cz_sem
+   sparkocr.utils.svs.tiffparser.read_exif_ifd
+   sparkocr.utils.svs.tiffparser.read_fei_metadata
+   sparkocr.utils.svs.tiffparser.read_gps_ifd
+   sparkocr.utils.svs.tiffparser.read_interoperability_ifd
+   sparkocr.utils.svs.tiffparser.read_json
+   sparkocr.utils.svs.tiffparser.read_lsm_channelcolors
+   sparkocr.utils.svs.tiffparser.read_lsm_eventlist
+   sparkocr.utils.svs.tiffparser.read_lsm_floatpairs
+   sparkocr.utils.svs.tiffparser.read_lsm_positions
+   sparkocr.utils.svs.tiffparser.read_lsm_scaninfo
+   sparkocr.utils.svs.tiffparser.read_lsm_timestamps
+   sparkocr.utils.svs.tiffparser.read_metaseries_catalog
+   sparkocr.utils.svs.tiffparser.read_micromanager_metadata
+   sparkocr.utils.svs.tiffparser.read_mm_header
+   sparkocr.utils.svs.tiffparser.read_mm_stamp
+   sparkocr.utils.svs.tiffparser.read_nih_image_header
+   sparkocr.utils.svs.tiffparser.read_numpy
+   sparkocr.utils.svs.tiffparser.read_scanimage_metadata
+   sparkocr.utils.svs.tiffparser.read_sis
+   sparkocr.utils.svs.tiffparser.read_sis_ini
+   sparkocr.utils.svs.tiffparser.read_tags
+   sparkocr.utils.svs.tiffparser.read_tvips_header
+   sparkocr.utils.svs.tiffparser.read_uic1tag
+   sparkocr.utils.svs.tiffparser.read_uic2tag
+   sparkocr.utils.svs.tiffparser.read_uic3tag
+   sparkocr.utils.svs.tiffparser.read_uic4tag
+   sparkocr.utils.svs.tiffparser.read_uic_image_property
+   sparkocr.utils.svs.tiffparser.read_uic_tag
+   sparkocr.utils.svs.tiffparser.read_utf8
+   sparkocr.utils.svs.tiffparser.recarray2dict
+   sparkocr.utils.svs.tiffparser.reorient
+   sparkocr.utils.svs.tiffparser.repeat_nd
+   sparkocr.utils.svs.tiffparser.reshape_axes
+   sparkocr.utils.svs.tiffparser.reshape_nd
+   sparkocr.utils.svs.tiffparser.scanimage_artist_metadata
+   sparkocr.utils.svs.tiffparser.scanimage_description_metadata
+   sparkocr.utils.svs.tiffparser.sequence
+   sparkocr.utils.svs.tiffparser.snipstr
+   sparkocr.utils.svs.tiffparser.squeeze_axes
+   sparkocr.utils.svs.tiffparser.stack_pages
+   sparkocr.utils.svs.tiffparser.stk_description_metadata
+   sparkocr.utils.svs.tiffparser.stripascii
+   sparkocr.utils.svs.tiffparser.stripnull
+   sparkocr.utils.svs.tiffparser.svs_description_metadata
+   sparkocr.utils.svs.tiffparser.transpose_axes
+   sparkocr.utils.svs.tiffparser.unpack_rgb
+   sparkocr.utils.svs.tiffparser.update_kwargs
+   sparkocr.utils.svs.tiffparser.validate_jhove
+   sparkocr.utils.svs.tiffparser.xml2dict
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.utils.svs.tiffparser.itemsizes
+
+
+.. py:exception:: TiffFileError
+
+   Bases: :py:obj:`Exception`
+
+   Exception to indicate invalid TIFF structure.
+
+
+.. py:exception:: TiffParserError
+
+   Bases: :py:obj:`Exception`
+
+   Exception to indicate parser functionality exceeded
+
+
+.. py:class:: FileHandle(file, mode='rb', name=None, offset=None, size=None)
+
+   Binary file handle.
+
+   A limited, special purpose file handle that can:
+
+   * handle embedded files (for CZI within CZI files)
+   * re-open closed files (for multi-file formats, such as OME-TIFF)
+   * read and write numpy arrays and records from file like objects
+
+   Only 'rb' and 'wb' modes are supported. Concurrently reading and writing
+   of the same stream is untested.
+
+   When initialized from another file handle, do not use it unless this
+   FileHandle is closed.
+
+   .. attribute:: name
+
+      Name of the file.
+
+      :type: str
+
+   .. attribute:: path
+
+      Absolute path to file.
+
+      :type: str
+
+   .. attribute:: size
+
+      Size of file in bytes.
+
+      :type: int
+
+   .. attribute:: is_file
+
+      If True, file has a filno and can be memory-mapped.
+
+      :type: bool
+
+   .. attribute:: All attributes are read-only.
+
+
+
+   .. py:attribute:: is_file
+      :annotation: = False
+
+      
+
+   .. py:method:: close()
+
+      Close file.
+
+
+   .. py:method:: flush()
+
+      Flush write buffers if applicable.
+
+
+   .. py:method:: memmap_array(dtype, shape, offset=0, mode='r', order='C')
+
+
+   .. py:method:: open()
+
+      Open or re-open file.
+
+
+   .. py:method:: read(size=-1)
+
+      Read 'size' bytes from file, or until EOF is reached.
+
+
+   .. py:method:: read_array(dtype, count=-1, out=None)
+
+
+   .. py:method:: read_record(dtype, shape=1, byteorder=None)
+
+      Return numpy record from file.
+
+
+   .. py:method:: read_segments(offsets, bytecounts, indices=None, sort=True, lock=None, buffersize=None)
+
+
+   .. py:method:: readinto(b)
+
+      Read up to len(b) bytes into b, and return number of bytes read.
+
+
+   .. py:method:: seek(offset, whence=0)
+
+      Set file's current position.
+
+
+   .. py:method:: tell()
+
+      Return file's current position.
+
+
+   .. py:method:: write(bytestring)
+
+      Write bytes to file.
+
+
+   .. py:method:: write_array(data)
+
+      Write numpy array to binary file.
+
+
+   .. py:method:: write_empty(size)
+
+      Append size bytes to file. Position must be at end of file.
+
+
+
+.. py:class:: FileSequence(fromfile, files, container=None, sort=None, pattern=None, axesorder=None)
+
+   Series of files containing array data of compatible shape and data type.
+
+   .. attribute:: files
+
+      List of file names.
+
+      :type: list
+
+   .. attribute:: shape
+
+      Shape of file series. Excludes shape of individual arrays.
+
+      :type: tuple
+
+   .. attribute:: axes
+
+      Labels of axes in shape.
+
+      :type: str
+
+   .. py:attribute:: axes
+      :annotation: = ''
+
+      
+
+   .. py:attribute:: files
+      
+
+      
+
+   .. py:attribute:: fromfile
+      
+
+      
+
+   .. py:attribute:: pattern
+      
+
+      
+
+   .. py:attribute:: shape
+      
+
+      
+
+   .. py:method:: asarray(file=None, ioworkers=1, out=None, **kwargs)
+
+      Read image data from files and return as numpy array.
+
+      Raise IndexError or ValueError if array shapes do not match.
+
+      :param file: Index or name of single file to read.
+      :type file: int or None
+      :param ioworkers: Maximum number of threads to execute the array read function
+                        asynchronously. Default: 1.
+                        If None, default to the number of processors multiplied by 5.
+                        Using threads can significantly improve runtime when
+                        reading many small files from a network share.
+      :type ioworkers: int or None
+      :param out: Buffer where image data will be saved.
+                  If None (default), a new array will be created.
+                  If numpy.ndarray, a writable array of compatible dtype and shape.
+                  If 'memmap', create a memory-mapped array in a temporary file.
+                  If str or open file, the file name or file object used to
+                  create a memory-map to an array stored in a binary file on disk.
+      :type out: numpy.ndarray, str, or file-like object
+      :param kwargs: Additional parameters passed to the array read function.
+      :type kwargs: dict
+
+
+   .. py:method:: close()
+
+
+
+.. py:class:: LazyConst(cls)
+
+   Class whose attributes are computed on first access from its methods.
+
+
+.. py:class:: NullContext
+
+   Null context manager.
+
+   >>> with NullContext():
+   ...     pass
+
+
+
+.. py:class:: OpenFileCache(size, lock=None)
+
+   Keep files open.
+
+   .. py:attribute:: files
+      
+
+      
+
+   .. py:attribute:: lock
+      
+
+      
+
+   .. py:attribute:: past
+      :annotation: = []
+
+      
+
+   .. py:attribute:: size
+      
+
+      
+
+   .. py:method:: clear()
+
+      Close all opened files if not in use.
+
+
+   .. py:method:: close(filehandle)
+
+      Close openend file if no longer used.
+
+
+   .. py:method:: open(filehandle)
+
+      Re-open file if necessary.
+
+
+
+.. py:class:: TIFF
+
+   Namespace for module constants.
+
+   .. py:method:: ALLOCATIONGRANULARITY()
+
+
+   .. py:method:: AXES_LABELS()
+
+
+   .. py:method:: BIG_BE()
+
+
+   .. py:method:: BIG_LE()
+
+
+   .. py:method:: CLASSIC_BE()
+
+
+   .. py:method:: CLASSIC_LE()
+
+
+   .. py:method:: COLORRESPONSEUNIT()
+
+
+   .. py:method:: COMPESSORS()
+
+
+   .. py:method:: COMPRESSION()
+
+
+   .. py:method:: CZ_LSMINFO()
+
+
+   .. py:method:: CZ_LSMINFO_DATATYPES()
+
+
+   .. py:method:: CZ_LSMINFO_DIMENSIONS()
+
+
+   .. py:method:: CZ_LSMINFO_READERS()
+
+
+   .. py:method:: CZ_LSMINFO_SCANINFO_ARRAYS()
+
+
+   .. py:method:: CZ_LSMINFO_SCANINFO_ATTRIBUTES()
+
+
+   .. py:method:: CZ_LSMINFO_SCANINFO_STRUCTS()
+
+
+   .. py:method:: CZ_LSMINFO_SCANTYPE()
+
+
+   .. py:method:: CZ_LSMINFO_TYPEOFDATA()
+
+
+   .. py:method:: DATATYPES()
+
+
+   .. py:method:: DATA_DTYPES()
+
+
+   .. py:method:: DATA_FORMATS()
+
+
+   .. py:method:: DECOMPESSORS()
+
+
+   .. py:method:: EXIF_TAGS()
+
+
+   .. py:method:: EXTRASAMPLE()
+
+
+   .. py:method:: FILEOPEN_FILTER()
+
+
+   .. py:method:: FILETYPE()
+
+
+   .. py:method:: FILE_EXTENSIONS()
+
+
+   .. py:method:: FILE_FLAGS()
+
+
+   .. py:method:: FILLORDER()
+
+
+   .. py:method:: FRAME_ATTRS()
+
+
+   .. py:method:: GEO_CODES()
+
+
+   .. py:method:: GEO_KEYS()
+
+
+   .. py:method:: GPS_TAGS()
+
+
+   .. py:method:: GRAYRESPONSEUNIT()
+
+
+   .. py:method:: GROUP4OPT()
+
+
+   .. py:method:: IOP_TAGS()
+
+
+   .. py:method:: MAXWORKERS()
+
+
+   .. py:method:: MM_DIMENSIONS()
+
+
+   .. py:method:: MM_HEADER()
+
+
+   .. py:method:: NDPI_LE()
+
+
+   .. py:method:: NDPI_TAGS()
+
+
+   .. py:method:: NIH_COLORTABLE_TYPE()
+
+
+   .. py:method:: NIH_CURVEFIT_TYPE()
+
+
+   .. py:method:: NIH_IMAGE_HEADER()
+
+
+   .. py:method:: NIH_LUTMODE_TYPE()
+
+
+   .. py:method:: NIH_UNITS_TYPE()
+
+
+   .. py:method:: OFILETYPE()
+
+
+   .. py:method:: ORIENTATION()
+
+
+   .. py:method:: PHOTOMETRIC()
+
+
+   .. py:method:: PILATUS_HEADER()
+
+
+   .. py:method:: PLANARCONFIG()
+
+
+   .. py:method:: PREDICTOR()
+
+
+   .. py:method:: PREDICTORS()
+
+
+   .. py:method:: RESUNIT()
+
+
+   .. py:method:: SAMPLEFORMAT()
+
+
+   .. py:method:: SAMPLE_DTYPES()
+
+
+   .. py:method:: TAGS()
+
+
+   .. py:method:: TAG_ATTRIBUTES()
+
+
+   .. py:method:: TAG_ENUM()
+
+
+   .. py:method:: TAG_READERS()
+
+
+   .. py:method:: TAG_TUPLE()
+
+
+   .. py:method:: THRESHHOLD()
+
+
+   .. py:method:: TVIPS_HEADER_V1()
+
+
+   .. py:method:: TVIPS_HEADER_V2()
+
+
+   .. py:method:: UIC_TAGS()
+
+
+   .. py:method:: UNPREDICTORS()
+
+
+
+.. py:class:: TiffFile(arg, name=None, offset=None, size=None, multifile=True, _useframes=None, **kwargs)
+
+   Read image and metadata from TIFF file.
+
+   TiffFile instances must be closed using the 'close' method, which is
+   automatically called when using the 'with' context manager.
+
+   TiffFile instances are not thread-safe.
+
+   .. attribute:: pages
+
+      Sequence of TIFF pages in file.
+
+      :type: TiffPages
+
+   .. attribute:: series
+
+      Sequences of closely related TIFF pages. These are computed
+      from OME, LSM, ImageJ, etc. metadata or based on similarity
+      of page properties such as shape, dtype, and compression.
+
+      :type: list of TiffPageSeries
+
+   .. attribute:: is_flag
+
+      If True, file is of a certain format.
+      Flags are: bigtiff, uniform, shaped, ome, imagej, stk, lsm, fluoview,
+      nih, vista, micromanager, metaseries, mdgel, mediacy, tvips, fei,
+      sem, scn, svs, scanimage, andor, epics, ndpi, pilatus, qpi.
+
+      :type: bool
+
+   .. attribute:: All attributes are read-only.
+
+
+
+   .. py:method:: asarray(key=None, series=None, out=None, maxworkers=None)
+
+
+   .. py:method:: close()
+
+      Close open file handle(s).
+
+
+   .. py:method:: fei_metadata()
+
+      Return FEI metadata from SFEG or HELIOS tags as dict.
+
+
+   .. py:method:: flags()
+
+      Return set of file flags.
+
+
+   .. py:method:: fluoview_metadata()
+
+      Return consolidated FluoView metadata as dict.
+
+
+   .. py:method:: fstat()
+
+      Return status of file handle as stat_result object.
+
+
+   .. py:method:: imagej_metadata()
+
+      Return consolidated ImageJ metadata as dict.
+
+
+   .. py:method:: is_mdgel()
+
+      File has MD Gel format.
+
+
+   .. py:method:: is_uniform()
+
+      Return if file contains a uniform series of pages.
+
+
+   .. py:method:: mdgel_metadata()
+
+      Return consolidated metadata from MD GEL tags as dict.
+
+
+   .. py:method:: metaseries_metadata()
+
+      Return MetaSeries metadata from image description as dict.
+
+
+   .. py:method:: micromanager_metadata()
+
+      Return consolidated MicroManager metadata as dict.
+
+
+   .. py:method:: nih_metadata()
+
+      Return NIH Image metadata from NIHImageHeader tag as dict.
+
+
+   .. py:method:: pilatus_metadata()
+
+      Return Pilatus metadata from image description as dict.
+
+
+   .. py:method:: scanimage_metadata()
+
+      Return ScanImage non-varying frame and ROI metadata as dict.
+
+
+   .. py:method:: series()
+
+      Return related pages as TiffPageSeries.
+
+      Side effect: after calling this function, TiffFile.pages might contain
+      TiffPage and TiffFrame instances.
+
+
+
+   .. py:method:: shaped_metadata()
+
+      Return tifffile metadata from JSON descriptions as dicts.
+
+
+   .. py:method:: sis_metadata()
+
+      Return Olympus SIS metadata from SIS and INI tags as dict.
+
+
+   .. py:method:: stk_metadata()
+
+      Return STK metadata from UIC tags as dict.
+
+
+
+.. py:class:: TiffFrame(parent, index, offset=None, keyframe=None, offsets=None, bytecounts=None)
+
+   Lightweight TIFF image file directory (IFD).
+
+   Only a limited number of tag values are read from file, e.g. StripOffsets,
+   and StripByteCounts. Other tag values are assumed to be identical with a
+   specified TiffPage instance, the keyframe.
+
+   TiffFrame is intended to reduce resource usage and speed up reading image
+   data from file, not for introspection of metadata.
+
+
+   .. py:attribute:: index
+      
+
+      
+
+   .. py:attribute:: is_mdgel
+      :annotation: = False
+
+      
+
+   .. py:attribute:: offset
+      :annotation: = None
+
+      
+
+   .. py:attribute:: pages
+      :annotation: = None
+
+      
+
+   .. py:attribute:: parent
+      
+
+      
+
+   .. py:method:: asarray(*args, **kwargs)
+
+      Read image data from file and return as numpy array.
+
+
+   .. py:method:: aspage()
+
+      Return TiffPage from file.
+
+
+   .. py:method:: asrgb(*args, **kwargs)
+
+      Read image data from file and return RGB image as numpy array.
+
+
+
+.. py:class:: TiffPage(parent, index, keyframe=None)
+
+   TIFF image file directory (IFD).
+
+   .. attribute:: index
+
+      Index of the page in file.
+
+      :type: int
+
+   .. attribute:: dtype
+
+      Data type (native byte order) of the image in IFD.
+
+      :type: numpy.dtype or None
+
+   .. attribute:: shape
+
+      Dimensions of the image in IFD, as returned by asarray.
+
+      :type: tuple of int
+
+   .. attribute:: axes
+
+      Axes label codes for each dimension in shape:
+      'X' width,
+      'Y' height,
+      'S' sample,
+      'I' image series|page|plane,
+      'Z' depth,
+      'C' color|em-wavelength|channel,
+      'E' ex-wavelength|lambda,
+      'T' time,
+      'R' region|tile,
+      'A' angle,
+      'P' phase,
+      'H' lifetime,
+      'L' exposure,
+      'V' event,
+      'Q' unknown,
+      '_' missing
+
+      :type: str
+
+   .. attribute:: tags
+
+      Multidict like interface to tags in IFD.
+
+      :type: TiffTags
+
+   .. attribute:: colormap
+
+      Color look up table, if exists.
+
+      :type: numpy.ndarray
+
+   .. attribute:: shaped
+
+      Normalized 6 dimensional shape of the image in IFD:
+      0 : number planes (stk), images (ij), or 1.
+      1 : separate samplesperpixel or 1.
+      2 : imagedepth Z (sgi) or 1.
+      3 : imagelength Y.
+      4 : imagewidth X.
+      5 : contig samplesperpixel or 1.
+
+      :type: tuple of int
+
+   .. attribute:: All attributes are read-only.
+
+
+
+   .. py:attribute:: axes
+      :annotation: = ''
+
+      
+
+   .. py:attribute:: bitspersample
+      :annotation: = 1
+
+      
+
+   .. py:attribute:: colormap
+      :annotation: = None
+
+      
+
+   .. py:attribute:: compression
+      :annotation: = 1
+
+      
+
+   .. py:attribute:: databytecounts
+      :annotation: = ()
+
+      
+
+   .. py:attribute:: dataoffsets
+      :annotation: = ()
+
+      
+
+   .. py:attribute:: description
+      :annotation: = ''
+
+      
+
+   .. py:attribute:: description1
+      :annotation: = ''
+
+      
+
+   .. py:attribute:: dtype
+      :annotation: = None
+
+      
+
+   .. py:attribute:: extrasamples
+      :annotation: = 1
+
+      
+
+   .. py:attribute:: fillorder
+      :annotation: = 1
+
+      
+
+   .. py:attribute:: imagedepth
+      :annotation: = 1
+
+      
+
+   .. py:attribute:: imagelength
+      :annotation: = 0
+
+      
+
+   .. py:attribute:: imagewidth
+      :annotation: = 0
+
+      
+
+   .. py:attribute:: index
+      
+
+      
+
+   .. py:attribute:: nodata
+      :annotation: = 0
+
+      
+
+   .. py:attribute:: offset
+      
+
+      
+
+   .. py:attribute:: parent
+      
+
+      
+
+   .. py:attribute:: photometric
+      :annotation: = 0
+
+      
+
+   .. py:attribute:: planarconfig
+      :annotation: = 1
+
+      
+
+   .. py:attribute:: predictor
+      :annotation: = 1
+
+      
+
+   .. py:attribute:: rowsperstrip
+      :annotation: = 4294967295
+
+      
+
+   .. py:attribute:: sampleformat
+      :annotation: = 1
+
+      
+
+   .. py:attribute:: samplesperpixel
+      :annotation: = 1
+
+      
+
+   .. py:attribute:: shape
+      :annotation: = ()
+
+      
+
+   .. py:attribute:: shaped
+      :annotation: = ()
+
+      
+
+   .. py:attribute:: software
+      :annotation: = ''
+
+      
+
+   .. py:attribute:: subfiletype
+      :annotation: = 0
+
+      
+
+   .. py:attribute:: tiledepth
+      :annotation: = 1
+
+      
+
+   .. py:attribute:: tilelength
+      :annotation: = 0
+
+      
+
+   .. py:attribute:: tilewidth
+      :annotation: = 0
+
+      
+
+   .. py:method:: andor_tags()
+
+      Return consolidated metadata from Andor tags as dict.
+
+
+   .. py:method:: asarray(out=None, squeeze=True, lock=None, reopen=True, maxsize=None, maxworkers=None)
+
+
+   .. py:method:: aspage()
+
+      Return self.
+
+
+   .. py:method:: asrgb(uint8=False, alpha=None, colormap=None, dmin=None, dmax=None, **kwargs)
+
+
+   .. py:method:: decode()
+
+
+   .. py:method:: epics_tags()
+
+      Return consolidated metadata from EPICS areaDetector tags as dict.
+
+
+
+
+   .. py:method:: flags()
+
+      Return set of flags.
+
+
+   .. py:method:: geotiff_tags()
+
+      Return consolidated metadata from GeoTIFF tags as dict.
+
+
+   .. py:method:: hash()
+
+      Return checksum to identify pages in same series.
+
+      Pages with the same hash can use the same decode function.
+
+
+
+   .. py:method:: is_contiguous()
+
+      Return offset and size of contiguous data, else None.
+
+      Excludes prediction and fill_order.
+
+
+
+   .. py:method:: is_final()
+
+      Return if page's image data are stored in final form.
+
+      Excludes byte-swapping.
+
+
+
+   .. py:method:: is_imagej()
+
+      Return ImageJ description if exists, else None.
+
+
+   .. py:method:: is_memmappable()
+
+      Return if page's image data in file can be memory-mapped.
+
+
+   .. py:method:: is_ndpi()
+
+      Page contains NDPI metadata.
+
+
+   .. py:method:: is_shaped()
+
+      Return description containing array shape if exists, else None.
+
+
+   .. py:method:: maxworkers()
+
+      Return maximum number of threads for decoding strips ot tiles.
+
+
+   .. py:method:: ndpi_tags()
+
+      Return consolidated metadata from Hamamatsu NDPI as dict.
+
+
+   .. py:method:: pages()
+
+      Return sequence of sub-pages (SubIFDs).
+
+
+
+.. py:class:: TiffPageSeries(pages, shape, dtype, axes, parent=None, name=None, transform=None, kind=None, truncated=False)
+
+   Series of TIFF pages with compatible shape and data type.
+
+   .. attribute:: pages
+
+      Sequence of TiffPages in series.
+
+      :type: list of TiffPage
+
+   .. attribute:: dtype
+
+      Data type (native byte order) of the image array in series.
+
+      :type: numpy.dtype
+
+   .. attribute:: shape
+
+      Dimensions of the image array in series.
+
+      :type: tuple
+
+   .. attribute:: axes
+
+      Labels of axes in shape. See TiffPage.axes.
+
+      :type: str
+
+   .. attribute:: offset
+
+      Position of image data in file if memory-mappable, else None.
+
+      :type: int or None
+
+   .. py:attribute:: axes
+      :annotation: = ''
+
+      
+
+   .. py:attribute:: dtype
+      
+
+      
+
+   .. py:attribute:: index
+      :annotation: = 0
+
+      
+
+   .. py:attribute:: kind
+      :annotation: = ''
+
+      
+
+   .. py:attribute:: name
+      :annotation: = ''
+
+      
+
+   .. py:attribute:: shape
+      
+
+      
+
+   .. py:attribute:: transform
+      :annotation: = None
+
+      
+
+   .. py:method:: asarray(**kwargs)
+
+      Return image data from series of TIFF pages as numpy array.
+
+
+   .. py:method:: offset()
+
+      Return offset to series data in file, if any.
+
+
+
+.. py:class:: TiffPages(parent)
+
+   Sequence of TIFF image file directories (IFD chain).
+
+   Instances of TiffPages have a state (cache, keyframe, etc.) and are not
+   thread-safe.
+
+
+   .. py:attribute:: pages
+      :annotation: = []
+
+      
+
+   .. py:attribute:: parent
+      :annotation: = None
+
+      
+
+
+.. py:class:: TiffTag(parent, tagheader, tagoffset)
+
+   TIFF tag structure.
+
+   .. attribute:: name
+
+      Name of tag, TIFF.TAGS[code].
+
+      :type: string
+
+   .. attribute:: code
+
+      Decimal code of tag.
+
+      :type: int
+
+   .. attribute:: dtype
+
+      Datatype of tag data. One of TIFF DATA_FORMATS.
+
+      :type: str
+
+   .. attribute:: count
+
+      Number of values.
+
+      :type: int
+
+   .. attribute:: value
+
+      Tag data as Python object.
+
+      :type: various types
+
+   .. attribute:: offset
+
+      Location of tag structure in file.
+
+      :type: int
+
+   .. attribute:: valueoffset
+
+      Location of value in file.
+
+      :type: int
+
+   .. attribute:: All attributes are read-only.
+
+
+
+   .. py:attribute:: code
+      
+
+      
+
+   .. py:attribute:: count
+      
+
+      
+
+   .. py:attribute:: dtype
+      
+
+      
+
+   .. py:attribute:: offset
+      
+
+      
+
+   .. py:attribute:: value
+      
+
+      
+
+   .. py:attribute:: valueoffset
+      
+
+      
+
+
+.. py:class:: TiffTags
+
+   Multidict like interface to TiffTag instances in TiffPage.
+
+   Differences to a regular dict:
+
+   * values are instances of TiffTag.
+   * keys are TiffTag.code (int).
+   * multiple values can be stored per key.
+   * can be indexed with TiffTag.name (str), although slower than by key.
+   * iter() returns values instead of keys.
+   * values() and items() contain all values sorted by offset stored in file.
+   * len() returns the number of all values.
+   * get() takes an optional index argument.
+   * some functions are not implemented, e.g. update, setdefault, pop.
+
+
+   .. py:method:: add(tag)
+
+      Add a tag.
+
+
+   .. py:method:: get(key, default=None, index=None)
+
+      Return tag of code or name if exists, else default.
+
+
+   .. py:method:: getall(key, default=None)
+
+      Return list of all tags of code or name if exists, else default.
+
+
+   .. py:method:: items()
+
+      Return all (code, tag) pairs in order tags are stored in file.
+
+
+   .. py:method:: keys()
+
+      Return new view of all codes.
+
+
+   .. py:method:: values()
+
+      Return all tags in order they are stored in file.
+
+
+
+.. py:class:: dtype(s)
+
+   Bases: :py:obj:`object`
+
+   .. py:attribute:: itemsize
+      
+
+      
+
+
+.. py:class:: lazyattr(func)
+
+   Attribute whose value is computed on first access.
+
+   .. py:attribute:: func
+      
+
+      
+
+
+.. py:function:: apply_colormap(image, colormap, contig=True)
+
+
+.. py:function:: asbool(value, true=(b'true', 'true'), false=(b'false', 'false'))
+
+   Return string as bool if possible, else raise TypeError.
+
+   >>> asbool(b' False ')
+   False
+
+
+
+.. py:function:: askopenfilename(**kwargs)
+
+
+.. py:function:: astype(value, types=None)
+
+   Return argument as one of types if possible.
+
+   >>> astype('42')
+   42
+   >>> astype('3.14')
+   3.14
+   >>> astype('True')
+   True
+   >>> astype(b'Neee-Wom')
+   'Neee-Wom'
+
+
+
+.. py:function:: byteorder_isnative(byteorder)
+
+   Return if byteorder matches the system's byteorder.
+
+   >>> byteorder_isnative('=')
+   True
+
+
+
+.. py:function:: bytes2str(b, encoding=None, errors='strict')
+
+   Return unicode string from encoded bytes.
+
+
+.. py:function:: bytestr(s, encoding='cp1252')
+
+   Return bytes from unicode string, else pass through.
+
+
+.. py:function:: clean_whitespace(string, compact=False)
+
+   Return string with compressed whitespace.
+
+
+.. py:function:: create_output(out, shape, dtype, mode='w+', suffix=None)
+
+
+.. py:function:: enumarg(enum, arg)
+
+   Return enum member from its name or value.
+
+   >>> enumarg(TIFF.PHOTOMETRIC, 2)
+   <PHOTOMETRIC.RGB: 2>
+   >>> enumarg(TIFF.PHOTOMETRIC, 'RGB')
+   <PHOTOMETRIC.RGB: 2>
+
+
+
+.. py:function:: enumstr(enum)
+
+   Return short string representation of Enum instance.
+
+
+.. py:function:: excel_datetime(timestamp, epoch=None)
+
+   Return datetime object from timestamp in Excel serial format.
+
+   Convert LSM time stamps.
+
+   >>> excel_datetime(40237.029999999795)
+   datetime.datetime(2010, 2, 28, 0, 43, 11, 999982)
+
+
+
+.. py:function:: fluoview_description_metadata(description, ignoresections=None)
+
+   Return metatata from FluoView image description as dict.
+
+   The FluoView image description format is unspecified. Expect failures.
+
+   >>> descr = ('[Intensity Mapping]\nMap Ch0: Range=00000 to 02047\n'
+   ...          '[Intensity Mapping End]')
+   >>> fluoview_description_metadata(descr)
+   {'Intensity Mapping': {'Map Ch0: Range': '00000 to 02047'}}
+
+
+
+.. py:function:: format_size(size, threshold=1536)
+
+   Return file size as string from byte size.
+
+   >>> format_size(1234)
+   '1234 B'
+   >>> format_size(12345678901)
+   '11.50 GiB'
+
+
+
+.. py:function:: getdtype(d)
+
+
+.. py:function:: hexdump(bytestr, width=75, height=24, snipat=-2, modulo=2, ellipsis=None)
+
+   Return hexdump representation of bytes.
+
+   >>> hexdump(binascii.unhexlify('49492a00080000000e00fe0004000100'))
+   '49 49 2a 00 08 00 00 00 0e 00 fe 00 04 00 01 00 II*.............'
+
+
+
+.. py:function:: identityfunc(arg, *args, **kwargs)
+
+   Single argument identity function.
+
+   >>> identityfunc('arg')
+   'arg'
+
+
+
+.. py:function:: imagej_description(shape, rgb=None, colormaped=False, version=None, hyperstack=None, mode=None, loop=None, **kwargs)
+
+   Return ImageJ image description from data shape.
+
+   ImageJ can handle up to 6 dimensions in order TZCYXS.
+
+   >>> imagej_description((51, 5, 2, 196, 171))  # doctest: +SKIP
+   ImageJ=1.11a
+   images=510
+   channels=2
+   slices=5
+   frames=51
+   hyperstack=true
+   mode=grayscale
+   loop=false
+
+
+
+.. py:function:: imagej_description_metadata(description)
+
+   Return metatata from ImageJ image description as dict.
+
+   Raise ValueError if not a valid ImageJ description.
+
+   >>> description = 'ImageJ=1.11a\nimages=510\nhyperstack=true\n'
+   >>> imagej_description_metadata(description)  # doctest: +SKIP
+   {'ImageJ': '1.11a', 'images': 510, 'hyperstack': True}
+
+
+
+.. py:function:: imagej_metadata(data, bytecounts, byteorder)
+
+   Return IJMetadata tag value as dict.
+
+   The 'Info' string can have multiple formats, e.g. OIF or ScanImage,
+   that might be parsed into dicts using the matlabstr2py or
+   oiffile.SettingsFile functions.
+   'ROI' and 'Overlays' are returned as bytes, which can be parsed with the
+   ImagejRoi.frombytes() function of the roifile package.
+
+
+
+.. py:function:: imagej_metadata_tag(metadata, byteorder)
+
+   Return IJMetadata and IJMetadataByteCounts tags from metadata dict.
+
+   The tags can be passed to TiffWriter.save() as extratags.
+
+   The metadata dict may contain the following keys and values:
+
+       Info : str
+           Human-readable information as string.
+       Labels : sequence of str
+           Human-readable labels for each channel.
+       Ranges : sequence of doubles
+           Lower and upper values for each channel.
+       LUTs : sequence of (3, 256) uint8 ndarrays
+           Color palettes for each channel.
+       Plot : bytes
+           Undocumented ImageJ internal format.
+       ROI: bytes
+           Undocumented ImageJ internal region of interest format.
+       Overlays : bytes
+           Undocumented ImageJ internal format.
+
+
+
+.. py:function:: imagej_shape(shape, rgb=None)
+
+   Return shape normalized to 6D ImageJ hyperstack TZCYXS.
+
+   Raise ValueError if not a valid ImageJ hyperstack shape.
+
+   >>> imagej_shape((2, 3, 4, 5, 3), False)
+   (2, 3, 4, 5, 3, 1)
+
+
+
+.. py:function:: imshow(data, photometric=None, planarconfig=None, bitspersample=None, nodata=0, interpolation=None, cmap=None, vmin=None, vmax=None, figure=None, title=None, dpi=96, subplot=None, maxdim=None, **kwargs)
+
+
+.. py:function:: isprintable(string)
+
+   Return if all characters in string are printable.
+
+   >>> isprintable('abc')
+   True
+   >>> isprintable(b'')
+   False
+
+
+
+.. py:function:: json_description(shape, **metadata)
+
+   Return JSON image description from data shape and other metadata.
+
+   Return UTF-8 encoded JSON.
+
+   >>> json_description((256, 256, 3), axes='YXS')  # doctest: +SKIP
+   b'{"shape": [256, 256, 3], "axes": "YXS"}'
+
+
+
+.. py:function:: json_description_metadata(description)
+
+   Return metatata from JSON formated image description as dict.
+
+   Raise ValuError if description is of unknown format.
+
+   >>> description = '{"shape": [256, 256, 3], "axes": "YXS"}'
+   >>> json_description_metadata(description)  # doctest: +SKIP
+   {'shape': [256, 256, 3], 'axes': 'YXS'}
+   >>> json_description_metadata('shape=(256, 256, 3)')
+   {'shape': (256, 256, 3)}
+
+
+
+.. py:function:: julian_datetime(julianday, milisecond=0)
+
+   Return datetime from days since 1/1/4713 BC and ms since midnight.
+
+   Convert Julian dates according to MetaMorph.
+
+   >>> julian_datetime(2451576, 54362783)
+   datetime.datetime(2000, 2, 2, 15, 6, 2, 783)
+
+
+
+.. py:function:: log_warning(msg, *args, **kwargs)
+
+   Log message with level WARNING.
+
+
+.. py:function:: lsm2bin(lsmfile, binfile=None, tile=None, verbose=True)
+
+
+.. py:function:: matlabstr2py(string)
+
+
+.. py:function:: metaseries_description_metadata(description)
+
+   Return metatata from MetaSeries image description as dict.
+
+
+.. py:function:: natural_sorted(iterable)
+
+   Return human sorted list of strings.
+
+   E.g. for sorting file names.
+
+   >>> natural_sorted(['f1', 'f2', 'f10'])
+   ['f1', 'f2', 'f10']
+
+
+
+.. py:function:: nullfunc(*args, **kwargs)
+
+   Null function.
+
+   >>> nullfunc('arg', kwarg='kwarg')
+
+
+
+.. py:function:: olympusini_metadata(inistr)
+
+   Return OlympusSIS metadata from INI string.
+
+   No documentation is available.
+
+
+
+.. py:function:: parse_filenames(files, pattern, axesorder=None)
+
+
+.. py:function:: parse_kwargs(kwargs, *keys, **keyvalues)
+
+   Return dict with keys from keys|keyvals and values from kwargs|keyvals.
+
+   Existing keys are deleted from kwargs.
+
+   >>> kwargs = {'one': 1, 'two': 2, 'four': 4}
+   >>> kwargs2 = parse_kwargs(kwargs, 'two', 'three', four=None, five=5)
+   >>> kwargs == {'one': 1}
+   True
+   >>> kwargs2 == {'two': 2, 'four': 4, 'five': 5}
+   True
+
+
+
+.. py:function:: pformat(arg, width=79, height=24, compact=True)
+
+
+.. py:function:: pformat_xml(xml)
+
+   Return pretty formatted XML.
+
+
+.. py:function:: pilatus_description_metadata(description)
+
+   Return metatata from Pilatus image description as dict.
+
+   Return metadata from Pilatus pixel array detectors by Dectris, created
+   by camserver or TVX software.
+
+   >>> pilatus_description_metadata('# Pixel_size 172e-6 m x 172e-6 m')
+   {'Pixel_size': (0.000172, 0.000172)}
+
+
+
+.. py:function:: product(iterable)
+
+   Return product of sequence of numbers.
+
+   Equivalent of functools.reduce(operator.mul, iterable, 1).
+   Multiplying numpy integers might overflow.
+
+   >>> product([2**8, 2**30])
+   274877906944
+   >>> product([])
+   1
+
+
+
+.. py:function:: read_bytes(fh, byteorder, dtype, count, offsetsize)
+
+   Read tag data from file and return as bytes.
+
+
+.. py:function:: read_colormap(fh, byteorder, dtype, count, offsetsize)
+
+   Read ColorMap data from file and return as numpy array.
+
+
+.. py:function:: read_cz_lsminfo(fh, byteorder, dtype, count, offsetsize)
+
+   Read CZ_LSMINFO tag from file and return as dict.
+
+
+.. py:function:: read_cz_sem(fh, byteorder, dtype, count, offsetsize)
+
+   Read Zeiss SEM tag and return as dict.
+
+   See https://sourceforge.net/p/gwyddion/mailman/message/29275000/ for
+   unnamed values.
+
+
+
+.. py:function:: read_exif_ifd(fh, byteorder, dtype, count, offsetsize)
+
+   Read EXIF tags from file and return as dict.
+
+
+.. py:function:: read_fei_metadata(fh, byteorder, dtype, count, offsetsize)
+
+   Read FEI SFEG/HELIOS headers and return as dict.
+
+
+.. py:function:: read_gps_ifd(fh, byteorder, dtype, count, offsetsize)
+
+   Read GPS tags from file and return as dict.
+
+
+.. py:function:: read_interoperability_ifd(fh, byteorder, dtype, count, offsetsize)
+
+   Read Interoperability tags from file and return as dict.
+
+
+.. py:function:: read_json(fh, byteorder, dtype, count, offsetsize)
+
+   Read JSON tag data from file and return as object.
+
+
+.. py:function:: read_lsm_channelcolors(fh)
+
+   Read LSM ChannelColors structure from file and return as dict.
+
+
+.. py:function:: read_lsm_eventlist(fh)
+
+   Read LSM events from file and return as list of (time, type, text).
+
+
+.. py:function:: read_lsm_floatpairs(fh)
+
+   Read LSM sequence of float pairs from file and return as list.
+
+
+.. py:function:: read_lsm_positions(fh)
+
+   Read LSM positions from file and return as list.
+
+
+.. py:function:: read_lsm_scaninfo(fh)
+
+   Read LSM ScanInfo structure from file and return as dict.
+
+
+.. py:function:: read_lsm_timestamps(fh)
+
+   Read LSM time stamps from file and return as list.
+
+
+.. py:function:: read_metaseries_catalog(fh)
+
+   Read MetaSeries non-TIFF hint catalog from file.
+
+   Raise ValueError if the file does not contain a valid hint catalog.
+
+
+
+.. py:function:: read_micromanager_metadata(fh)
+
+   Read MicroManager non-TIFF settings from open file and return as dict.
+
+   The settings can be used to read image data without parsing the TIFF file.
+
+   Raise ValueError if the file does not contain valid MicroManager metadata.
+
+
+
+.. py:function:: read_mm_header(fh, byteorder, dtype, count, offsetsize)
+
+   Read FluoView mm_header tag from file and return as dict.
+
+
+.. py:function:: read_mm_stamp(fh, byteorder, dtype, count, offsetsize)
+
+   Read FluoView mm_stamp tag from file and return as numpy.ndarray.
+
+
+.. py:function:: read_nih_image_header(fh, byteorder, dtype, count, offsetsize)
+
+   Read NIH_IMAGE_HEADER tag from file and return as dict.
+
+
+.. py:function:: read_numpy(fh, byteorder, dtype, count, offsetsize)
+
+   Read tag data from file and return as numpy array.
+
+
+.. py:function:: read_scanimage_metadata(fh)
+
+   Read ScanImage BigTIFF v3 static and ROI metadata from open file.
+
+   Return non-varying frame data as dict and ROI group data as JSON.
+
+   The settings can be used to read image data and metadata without parsing
+   the TIFF file.
+
+   Raise ValueError if file does not contain valid ScanImage v3 metadata.
+
+
+
+.. py:function:: read_sis(fh, byteorder, dtype, count, offsetsize)
+
+   Read OlympusSIS structure and return as dict.
+
+   No specification is avaliable. Only few fields are known.
+
+
+
+.. py:function:: read_sis_ini(fh, byteorder, dtype, count, offsetsize)
+
+   Read OlympusSIS INI string and return as dict.
+
+
+.. py:function:: read_tags(fh, byteorder, offsetsize, tagnames, customtags=None, maxifds=None)
+
+   Read tags from chain of IFDs and return as list of dicts.
+
+   The file handle position must be at a valid IFD header.
+
+
+
+.. py:function:: read_tvips_header(fh, byteorder, dtype, count, offsetsize)
+
+   Read TVIPS EM-MENU headers and return as dict.
+
+
+.. py:function:: read_uic1tag(fh, byteorder, dtype, count, offsetsize, planecount=None)
+
+   Read MetaMorph STK UIC1Tag from file and return as dict.
+
+   Return empty dictionary if planecount is unknown.
+
+
+
+.. py:function:: read_uic2tag(fh, byteorder, dtype, planecount, offsetsize)
+
+   Read MetaMorph STK UIC2Tag from file and return as dict.
+
+
+.. py:function:: read_uic3tag(fh, byteorder, dtype, planecount, offsetsize)
+
+   Read MetaMorph STK UIC3Tag from file and return as dict.
+
+
+.. py:function:: read_uic4tag(fh, byteorder, dtype, planecount, offsetsize)
+
+   Read MetaMorph STK UIC4Tag from file and return as dict.
+
+
+.. py:function:: read_uic_image_property(fh)
+
+   Read UIC ImagePropertyEx tag from file and return as dict.
+
+
+.. py:function:: read_uic_tag(fh, tagid, planecount, offset)
+
+   Read a single UIC tag value from file and return tag name and value.
+
+   UIC1Tags use an offset.
+
+
+
+.. py:function:: read_utf8(fh, byteorder, dtype, count, offsetsize)
+
+   Read tag data from file and return as unicode string.
+
+
+.. py:function:: recarray2dict(recarray)
+
+   Return numpy.recarray as dict.
+
+
+.. py:function:: reorient(image, orientation)
+
+
+.. py:function:: repeat_nd(a, repeats)
+
+
+.. py:function:: reshape_axes(axes, shape, newshape, unknown=None)
+
+
+.. py:function:: reshape_nd(data_or_shape, ndim)
+
+
+.. py:function:: scanimage_artist_metadata(artist)
+
+   Return metatata from ScanImage artist tag as dict.
+
+
+.. py:function:: scanimage_description_metadata(description)
+
+   Return metatata from ScanImage image description as dict.
+
+
+.. py:function:: sequence(value)
+
+   Return tuple containing value if value is not a tuple or list.
+
+   >>> sequence(1)
+   (1,)
+   >>> sequence([1])
+   [1]
+   >>> sequence('ab')
+   ('ab',)
+
+
+
+.. py:function:: snipstr(string, width=79, snipat=None, ellipsis=None)
+
+   Return string cut to specified length.
+
+   >>> snipstr('abcdefghijklmnop', 8)
+   'abc...op'
+
+
+
+.. py:function:: squeeze_axes(shape, axes, skip=None)
+
+
+.. py:function:: stack_pages(pages, out=None, maxworkers=None, **kwargs)
+
+
+.. py:function:: stk_description_metadata(description)
+
+   Return metadata from MetaMorph image description as list of dict.
+
+   The MetaMorph image description format is unspecified. Expect failures.
+
+
+
+.. py:function:: stripascii(string)
+
+   Return string truncated at last byte that is 7-bit ASCII.
+
+   Clean NULL separated and terminated TIFF strings.
+
+   >>> stripascii(b'string\x00string\n\x01\x00')
+   b'string\x00string\n'
+   >>> stripascii(b'\x00')
+   b''
+
+
+
+.. py:function:: stripnull(string, null=b'\x00')
+
+   Return string truncated at first null character.
+
+   Clean NULL terminated C strings. For unicode strings use null='\0'.
+
+   >>> stripnull(b'string\x00')
+   b'string'
+   >>> stripnull('string\x00', null='\0')
+   'string'
+
+
+
+.. py:function:: svs_description_metadata(description)
+
+   Return metatata from Aperio image description as dict.
+
+   The Aperio image description format is unspecified. Expect failures.
+
+   >>> svs_description_metadata('Aperio Image Library v1.0')
+   {'Aperio Image Library': 'v1.0'}
+
+
+
+.. py:function:: transpose_axes(image, axes, asaxes=None)
+
+
+.. py:function:: unpack_rgb(data, dtype=None, bitspersample=None, rescale=True)
+
+
+.. py:function:: update_kwargs(kwargs, **keyvalues)
+
+   Update dict with keys and values if keys do not already exist.
+
+   >>> kwargs = {'one': 1, }
+   >>> update_kwargs(kwargs, one=None, two=2)
+   >>> kwargs == {'one': 1, 'two': 2}
+   True
+
+
+
+.. py:function:: validate_jhove(filename, jhove=None, ignore=None)
+
+   Validate TIFF file using jhove -m TIFF-hul.
+
+   Raise ValueError if jhove outputs an error message unless the message
+   contains one of the strings in 'ignore'.
+
+   JHOVE does not support bigtiff or more than 50 IFDs.
+
+   See `JHOVE TIFF-hul Module <http://jhove.sourceforge.net/tiff-hul.html>`_
+
+
+
+.. py:function:: xml2dict(xml, sanitize=True, prefix=None)
+
+   Return XML as dict.
+
+   >>> xml2dict('<?xml version="1.0" ?><root attr="name"><key>1</key></root>')
+   {'root': {'key': 1, 'attr': 'name'}}
+   >>> xml2dict('<level1><level2>3.5322</level2></level1>')
+   {'level1': {'level2': 3.5322}}
+
+
+
+.. py:data:: itemsizes
+   
+
+   
+

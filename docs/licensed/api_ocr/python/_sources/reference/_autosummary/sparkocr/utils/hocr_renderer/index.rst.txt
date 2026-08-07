@@ -1,0 +1,91 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.utils.hocr_renderer`
+======================================
+
+.. py:module:: sparkocr.utils.hocr_renderer
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.utils.hocr_renderer.HocrRenderer
+
+
+
+
+.. py:class:: HocrRenderer(htmlid=None, ocr_class=None, lang='en', baseline='0 -5', page_height=None, page_width=None, content=None, box=None, title='')
+
+   .. py:attribute:: baseline
+      :annotation: = '0 -5'
+
+      
+
+   .. py:attribute:: htmlid
+      :annotation: = None
+
+      
+
+   .. py:attribute:: lang
+      :annotation: = 'en'
+
+      
+
+   .. py:attribute:: ocr_class
+      :annotation: = None
+
+      
+
+   .. py:attribute:: page_height
+      :annotation: = None
+
+      
+
+   .. py:attribute:: page_width
+      :annotation: = None
+
+      
+
+   .. py:attribute:: templates
+      
+
+      
+
+   .. py:attribute:: title
+      :annotation: = ''
+
+      
+
+   .. py:attribute:: x0
+      :annotation: = 0
+
+      
+
+   .. py:attribute:: x1
+      :annotation: = 0
+
+      
+
+   .. py:attribute:: y0
+      :annotation: = 0
+
+      
+
+   .. py:attribute:: y1
+      :annotation: = 0
+
+      
+
+   .. py:method:: maximize_bbox()
+
+
+   .. py:method:: render()
+
+
+

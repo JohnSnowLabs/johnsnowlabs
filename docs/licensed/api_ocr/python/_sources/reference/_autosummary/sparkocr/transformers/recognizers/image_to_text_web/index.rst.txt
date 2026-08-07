@@ -1,0 +1,337 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.transformers.recognizers.image_to_text_web`
+=============================================================
+
+.. py:module:: sparkocr.transformers.recognizers.image_to_text_web
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.transformers.recognizers.image_to_text_web.ImageToTextWeb
+
+
+
+
+.. py:class:: ImageToTextWeb(classname='com.johnsnowlabs.ocr.transformers.ImageToTextWeb', java_model=None)
+
+   Bases: :py:obj:`pyspark.ml.wrapper.JavaTransformer`, :py:obj:`pyspark.ml.param.shared.HasInputCol`, :py:obj:`pyspark.ml.param.shared.HasOutputCol`, :py:obj:`sparkocr.transformers.params.HasOcr`
+
+   Base class for :py:class:`Transformer`s that wrap Java/Scala
+   implementations. Subclasses should ensure they have the transformer Java object
+   available as _java_obj.
+
+   .. py:attribute:: downloadModelData
+      
+
+      
+
+   .. py:attribute:: inputCol
+      :annotation: :Param[str]
+
+      
+
+   .. py:attribute:: language
+      
+
+      
+
+   .. py:attribute:: modelData
+      
+
+      
+
+   .. py:attribute:: modelType
+      
+
+      
+
+   .. py:attribute:: name
+      :annotation: = 'ImageToTextWeb'
+
+      
+
+   .. py:attribute:: ocrEngineMode
+      
+
+      
+
+   .. py:attribute:: outputCol
+      :annotation: :Param[str]
+
+      
+
+   .. py:attribute:: outputFormat
+      
+
+      
+
+   .. py:attribute:: pageIteratorLevel
+      
+
+      
+
+   .. py:attribute:: pageSegMode
+      
+
+      
+
+   .. py:attribute:: prompt
+      
+
+      
+
+   .. py:attribute:: regionsCol
+      
+
+      
+
+   .. py:attribute:: serverAddress
+      
+
+      
+
+   .. py:attribute:: serverPath
+      
+
+      
+
+   .. py:attribute:: serverPort
+      
+
+      
+
+   .. py:attribute:: serverScheme
+      
+
+      
+
+   .. py:attribute:: serverToken
+      
+
+      
+
+   .. py:attribute:: systemPrompt
+      
+
+      
+
+   .. py:attribute:: uid
+      :annotation: = ''
+
+      
+
+   .. py:attribute:: useTess4j
+      
+
+      
+
+   .. py:method:: clear(param: pyspark.ml.param.Param) -> None
+
+      Clears a param from the param map if it has been explicitly set.
+
+
+   .. py:method:: copy(extra: Optional[pyspark.ml._typing.ParamMap] = None) -> JP
+
+      Creates a copy of this instance with the same uid and some
+      extra params. This implementation first calls Params.copy and
+      then make a copy of the companion Java pipeline component with
+      extra params. So both the Python wrapper and the Java pipeline
+      component get copied.
+
+      :param extra: Extra parameters to copy to the new instance
+      :type extra: dict, optional
+
+      :returns: Copy of this instance
+      :rtype: :py:class:`JavaParams`
+
+
+   .. py:method:: explainParam(param: Union[str, Param]) -> str
+
+      Explains a single param and returns its name, doc, and optional
+      default value and user-supplied value in a string.
+
+
+   .. py:method:: explainParams() -> str
+
+      Returns the documentation of all params with their optionally
+      default values and user-supplied values.
+
+
+   .. py:method:: extractParamMap(extra: Optional[pyspark.ml._typing.ParamMap] = None) -> pyspark.ml._typing.ParamMap
+
+      Extracts the embedded default param values and user-supplied
+      values, and then merges them with extra values from input into
+      a flat param map, where the latter value is used if there exist
+      conflicts, i.e., with ordering: default param values <
+      user-supplied values < extra.
+
+      :param extra: extra param values
+      :type extra: dict, optional
+
+      :returns: merged param map
+      :rtype: dict
+
+
+   .. py:method:: getInputCol() -> str
+
+      Gets the value of inputCol or its default value.
+
+
+   .. py:method:: getOrDefault(param: str) -> Any
+               getOrDefault(param: Param[T]) -> T
+
+      Gets the value of a param in the user-supplied param map or its
+      default value. Raises an error if neither is set.
+
+
+   .. py:method:: getOutputCol() -> str
+
+      Gets the value of outputCol or its default value.
+
+
+   .. py:method:: getParam(paramName: str) -> Param
+
+      Gets a param by its name.
+
+
+   .. py:method:: hasDefault(param: Union[str, Param[Any]]) -> bool
+
+      Checks whether a param has a default value.
+
+
+   .. py:method:: hasParam(paramName: str) -> bool
+
+      Tests whether this instance contains a param with a given
+      (string) name.
+
+
+   .. py:method:: isDefined(param: Union[str, Param[Any]]) -> bool
+
+      Checks whether a param is explicitly set by user or has
+      a default value.
+
+
+   .. py:method:: isSet(param: Union[str, Param[Any]]) -> bool
+
+      Checks whether a param is explicitly set by user.
+
+
+   .. py:method:: set(param: Param, value: Any) -> None
+
+      Sets a parameter in the embedded param map.
+
+
+   .. py:method:: setDownloadModelData(value)
+
+      Sets the value of :py:attr:`downloadModelData`.
+
+
+   .. py:method:: setInputCol(value)
+
+      Sets the value of :py:attr:`inputCol`.
+
+
+   .. py:method:: setLanguage(value)
+
+      Sets the value of :py:attr:`language`.
+
+
+   .. py:method:: setModelData(value)
+
+      Sets the value of :py:attr:`modelData`.
+
+
+   .. py:method:: setModelType(value)
+
+      Sets the value of :py:attr:`modelData`.
+
+
+   .. py:method:: setOcrEngineMode(value)
+
+      Sets the value of :py:attr:`ocrEngineMode`.
+
+
+   .. py:method:: setOutputCol(value)
+
+      Sets the value of :py:attr:`outputCol`.
+
+
+   .. py:method:: setOutputFormat(value)
+
+      Sets the value of :py:attr:`outputFormat`.
+
+
+   .. py:method:: setPageIteratorLevel(value)
+
+      Sets the value of :py:attr:`pageIteratorLevel`.
+
+
+   .. py:method:: setPageSegMode(value)
+
+      Sets the value of :py:attr:`pageSegMode`.
+
+
+   .. py:method:: setPrompt(value)
+
+      Sets the value of :py:attr:`prompt`.
+
+
+   .. py:method:: setServerAddress(value)
+
+      Sets the value of :py:attr:`serverAddress`.
+
+
+   .. py:method:: setServerPath(value)
+
+      Sets the value of :py:attr:`serverPath`.
+
+
+   .. py:method:: setServerPort(value)
+
+      Sets the value of :py:attr:`serverPort`.
+
+
+   .. py:method:: setServerScheme(value)
+
+      Sets the value of :py:attr:`serverPath`.
+
+
+   .. py:method:: setServerToken(value)
+
+      Sets the value of :py:attr:`serverToken`.
+
+
+   .. py:method:: setSystemPrompt(value)
+
+      Sets the value of :py:attr:`systemPrompt`.
+
+
+   .. py:method:: setUseTess4j(value)
+
+      Sets the value of :py:attr:`useTess4j`.
+
+
+   .. py:method:: transform(dataset: pyspark.sql.dataframe.DataFrame, params: Optional[pyspark.ml._typing.ParamMap] = None) -> pyspark.sql.dataframe.DataFrame
+
+      Transforms the input dataset with optional parameters.
+
+      .. versionadded:: 1.3.0
+
+      :param dataset: input dataset
+      :type dataset: :py:class:`pyspark.sql.DataFrame`
+      :param params: an optional param map that overrides embedded params.
+      :type params: dict, optional
+
+      :returns: transformed dataset
+      :rtype: :py:class:`pyspark.sql.DataFrame`
+
+
+

@@ -1,0 +1,28 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.test_hocr_merger`
+==========================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.test_hocr_merger
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.test_hocr_merger.TestHocrMerger
+
+
+
+
+.. py:class:: TestHocrMerger
+
+   .. py:method:: test_hocr_merger(spark_session, image_checkbox_document_df)
+
+
+

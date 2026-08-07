@@ -1,0 +1,27 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.utils.seqeval`
+================================
+
+.. py:module:: sparkocr.utils.seqeval
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.utils.seqeval.Seqeval
+
+
+
+
+.. py:class:: Seqeval
+
+   Bases: :py:obj:`evaluate.Metric`
+
+

@@ -1,0 +1,176 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.transformers.ocr_resource_downloader`
+=======================================================
+
+.. py:module:: sparkocr.transformers.ocr_resource_downloader
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.transformers.ocr_resource_downloader.OcrResourceDownloader
+
+
+
+
+.. py:class:: OcrResourceDownloader
+
+   Bases: :py:obj:`sparknlp.pretrained.ResourceDownloader`
+
+   Downloads and manages resources, pretrained models/pipelines.
+
+   Usually you will not need to use this class directly. It is called by the
+   `pretrained()` function of annotators.
+
+   However, you can use this class to list the available pretrained resources.
+
+   .. rubric:: Examples
+
+   If you want to list all NerDLModels for the english language you can run:
+
+   >>> ResourceDownloader.showPublicModels("NerDLModel", "en")
+   +-------------+------+---------+
+   | Model       | lang | version |
+   +-------------+------+---------+
+   | onto_100    | en   | 2.1.0   |
+   | onto_300    | en   | 2.1.0   |
+   | ner_dl_bert | en   | 2.2.0   |
+   |  ...        | ...  | ...     |
+
+   Similarly for Pipelines:
+
+   >>> ResourceDownloader.showPublicPipelines("en")
+   +------------------+------+---------+
+   | Pipeline         | lang | version |
+   +------------------+------+---------+
+   | dependency_parse | en   | 2.0.2   |
+   | check_spelling   | en   | 2.1.0   |
+   | match_datetime   | en   | 2.1.0   |
+   |  ...             | ...  | ...     |
+
+
+   .. py:method:: clearCache(name, language, remote_loc=None)
+      :staticmethod:
+
+      Clears the cache entry of a model.
+
+      :param name: Name of the model
+      :type name: str
+      :param language: Language of the model
+      :type language: en
+      :param remote_loc: Directory of the remote Spark NLP Folder, by default None
+      :type remote_loc: str, optional
+
+
+   .. py:method:: downloadEndpointModel(fileName, modelType)
+      :staticmethod:
+
+
+   .. py:method:: downloadModel(reader, name, language, remote_loc=None, j_dwn='OcrPythonResourceDownloader')
+      :staticmethod:
+
+      Downloads and loads a model with the default downloader. Usually this method
+      does not need to be called directly, as it is called by the `pretrained()`
+      method of the annotator.
+
+      :param reader: Class to read the model for
+      :type reader: obj
+      :param name: Name of the pretrained model
+      :type name: str
+      :param language: Language of the model
+      :type language: str
+      :param remote_loc: Directory of the Spark NLP Folder, by default None
+      :type remote_loc: str, optional
+      :param engine: Preferred Deep Learning engine used to resolve and download the model,
+                     by default "onnx"
+      :type engine: str, optional
+      :param skip_preferred_engine: Whether to skip the preferred engine resolution and use the default
+                                    engine priority, by default False
+      :type skip_preferred_engine: bool, optional
+      :param j_dwn: Which java downloader to use, by default 'PythonResourceDownloader'
+      :type j_dwn: str, optional
+
+      :returns: Loaded pretrained annotator/pipeline
+      :rtype: AnnotatorModel
+
+
+   .. py:method:: downloadModelDirectly(name, remote_loc='public/models', unzip=True)
+      :staticmethod:
+
+      Downloads a model directly to the cache folder.
+      You can use to copy-paste the s3 URI from the model hub  and download the model.
+      For available s3 URI and models, please see the `Models Hub <https://sparknlp.org/models>`__.
+      :param name: Name of the model or s3 URI
+      :type name: str
+      :param remote_loc: Directory of the remote Spark NLP Folder, by default "public/models"
+      :type remote_loc: str, optional
+      :param unzip: Used to unzip model, by default 'True'
+      :type unzip: Bool, optional
+
+
+   .. py:method:: downloadPipeline(name, language, remote_loc=None)
+      :staticmethod:
+
+      Downloads and loads a pipeline with the default downloader.
+
+      :param name: Name of the pipeline
+      :type name: str
+      :param language: Language of the pipeline
+      :type language: str
+      :param remote_loc: Directory of the remote Spark OCR Folder, by default None
+      :type remote_loc: str, optional
+
+      :returns: The loaded pipeline
+      :rtype: PipelineModel
+
+
+   .. py:method:: showAvailableAnnotators()
+      :staticmethod:
+
+      Shows all available annotators in Spark NLP.
+
+
+
+   .. py:method:: showPublicModels(annotator=None, lang=None, version=None)
+      :staticmethod:
+
+      Prints all pretrained models for a particular annotator model, that are
+      compatible with a version of Spark NLP. If any of the optional arguments are not
+      set, the filter is not considered.
+
+      :param annotator: Name of the annotator to filer, by default None
+      :type annotator: str, optional
+      :param lang: Language of the models to filter, by default None
+      :type lang: str, optional
+      :param version: Version of Spark NLP to filter, by default None
+      :type version: str, optional
+
+
+   .. py:method:: showPublicPipelines(lang=None, version=None)
+      :staticmethod:
+
+      Prints all pretrained models for a particular annotator model, that are
+      compatible with a version of Spark NLP. If any of the optional arguments are not
+      set, the filter is not considered.
+
+      :param lang: Language of the models to filter, by default None
+      :type lang: str, optional
+      :param version: Version of Spark NLP to filter, by default None
+      :type version: str, optional
+
+
+   .. py:method:: showUnCategorizedResources()
+      :staticmethod:
+
+      Shows models or pipelines in the metadata which has not been categorized yet.
+
+
+
+

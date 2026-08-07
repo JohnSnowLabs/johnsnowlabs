@@ -1,0 +1,87 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.eval_hunyuan_funsd`
+=====================================
+
+.. py:module:: sparkocr.eval_hunyuan_funsd
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.eval_hunyuan_funsd.clean_repeated_substrings
+   sparkocr.eval_hunyuan_funsd.parse_hunyuan_output
+   sparkocr.eval_hunyuan_funsd.process_image
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.eval_hunyuan_funsd.FUNSD_ROOT
+   sparkocr.eval_hunyuan_funsd.MAX_NEW_TOKENS
+   sparkocr.eval_hunyuan_funsd.MODEL_NAME
+   sparkocr.eval_hunyuan_funsd.OUTPUT_DIR
+   sparkocr.eval_hunyuan_funsd.model
+   sparkocr.eval_hunyuan_funsd.processor
+   sparkocr.eval_hunyuan_funsd.split_dir
+
+
+.. py:function:: clean_repeated_substrings(text)
+
+
+.. py:function:: parse_hunyuan_output(text)
+
+   Convert:
+     "Hello world(10,20),(50,60)Another text(70,80),(120,140)"
+   into:
+     [{"text": "...", "coordinates": [x1,y1,x2,y2]}, ...]
+
+
+.. py:function:: process_image(img_path)
+
+
+.. py:data:: FUNSD_ROOT
+   :annotation: = './dataset/images'
+
+   
+
+.. py:data:: MAX_NEW_TOKENS
+   :annotation: = 16384
+
+   
+
+.. py:data:: MODEL_NAME
+   :annotation: = 'tencent/HunyuanOCR'
+
+   
+
+.. py:data:: OUTPUT_DIR
+   :annotation: = './funsd_hunyuan_outputs'
+
+   
+
+.. py:data:: model
+   
+
+   
+
+.. py:data:: processor
+   
+
+   
+
+.. py:data:: split_dir
+   
+
+   
+

@@ -1,0 +1,34 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.test_binary_to_image`
+==============================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.test_binary_to_image
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.test_binary_to_image.TestBinaryToImage
+
+
+
+
+.. py:class:: TestBinaryToImage
+
+   .. py:method:: test_binary_to_image(spark_session, raw_image_df)
+
+
+   .. py:method:: test_binary_to_jpeg2k_image(spark_session, raw_jpeg2k_df)
+
+
+   .. py:method:: test_binary_to_tiff_image(spark_session, raw_tiff_df)
+
+
+

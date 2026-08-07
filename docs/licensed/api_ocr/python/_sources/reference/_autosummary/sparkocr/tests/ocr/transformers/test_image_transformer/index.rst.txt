@@ -1,0 +1,28 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.test_image_transformer`
+================================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.test_image_transformer
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.test_image_transformer.TestImageOperation
+
+
+
+
+.. py:class:: TestImageOperation
+
+   .. py:method:: test_image_transform(spark_session, image_noised_df, image_noised_text)
+
+
+

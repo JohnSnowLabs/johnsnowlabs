@@ -1,0 +1,112 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.eval_hunyuan`
+===============================
+
+.. py:module:: sparkocr.eval_hunyuan
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.eval_hunyuan.clean_repeated_substrings
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.eval_hunyuan.device
+   sparkocr.eval_hunyuan.generated_ids_trimmed
+   sparkocr.eval_hunyuan.image_inputs
+   sparkocr.eval_hunyuan.img_path
+   sparkocr.eval_hunyuan.input_ids
+   sparkocr.eval_hunyuan.inputs
+   sparkocr.eval_hunyuan.messages
+   sparkocr.eval_hunyuan.messages1
+   sparkocr.eval_hunyuan.model
+   sparkocr.eval_hunyuan.model_name_or_path
+   sparkocr.eval_hunyuan.output_texts
+   sparkocr.eval_hunyuan.processor
+   sparkocr.eval_hunyuan.texts
+
+
+.. py:function:: clean_repeated_substrings(text)
+
+   Clean repeated substrings in text
+
+
+.. py:data:: device
+   
+
+   
+
+.. py:data:: generated_ids_trimmed
+   
+
+   
+
+.. py:data:: image_inputs
+   
+
+   
+
+.. py:data:: img_path
+   :annotation: = './cropped_3.png'
+
+   
+
+.. py:data:: input_ids
+   
+
+   
+
+.. py:data:: inputs
+   
+
+   
+
+.. py:data:: messages
+   
+
+   
+
+.. py:data:: messages1
+   
+
+   
+
+.. py:data:: model
+   
+
+   
+
+.. py:data:: model_name_or_path
+   :annotation: = 'tencent/HunyuanOCR'
+
+   
+
+.. py:data:: output_texts
+   
+
+   
+
+.. py:data:: processor
+   
+
+   
+
+.. py:data:: texts
+   
+
+   
+

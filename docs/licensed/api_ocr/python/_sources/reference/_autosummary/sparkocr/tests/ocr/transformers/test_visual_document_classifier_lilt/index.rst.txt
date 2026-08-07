@@ -1,0 +1,62 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.test_visual_document_classifier_lilt`
+==============================================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.test_visual_document_classifier_lilt
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.test_visual_document_classifier_lilt.TestVisualDocumentClassifierLilt
+
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.test_visual_document_classifier_lilt.DELIMITER
+   sparkocr.tests.ocr.transformers.test_visual_document_classifier_lilt.tmp_dataset_dir
+   sparkocr.tests.ocr.transformers.test_visual_document_classifier_lilt.vocab
+   sparkocr.tests.ocr.transformers.test_visual_document_classifier_lilt.vocab_file
+
+
+.. py:class:: TestVisualDocumentClassifierLilt
+
+   .. py:method:: test_preprocessing(spark_session, visual_document_classifier_lilt_df)
+
+
+   .. py:method:: test_pretrained(spark_session, visual_document_classifier_lilt_df)
+
+
+
+.. py:data:: DELIMITER
+   :annotation: = ','
+
+   
+
+.. py:data:: tmp_dataset_dir
+   :annotation: = './sample_data'
+
+   
+
+.. py:data:: vocab
+   
+
+   
+
+.. py:data:: vocab_file
+   :annotation: = './sparkocr/resources/models/lilt_rvl_cdip_model/vocabulary.txt'
+
+   
+

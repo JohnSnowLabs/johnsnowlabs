@@ -1,0 +1,47 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.test_position_finder`
+==============================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.test_position_finder
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.test_position_finder.TestPositionFinder
+
+
+
+
+.. py:class:: TestPositionFinder
+
+   .. py:attribute:: entitySchema
+      
+
+      
+
+   .. py:attribute:: postionSchema
+      
+
+      
+
+   .. py:method:: get_pipeline()
+
+
+   .. py:method:: test_position_finder_serializes_well(spark_session)
+
+
+   .. py:method:: test_position_finder_throws_exceptions(spark_session, pdf_text_multipage_df)
+
+
+   .. py:method:: test_without_split_by_page(spark_session, pdf_text_multipage_df)
+
+
+

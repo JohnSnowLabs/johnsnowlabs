@@ -1,0 +1,18 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.eval.icdar`
+=======================================
+
+.. py:module:: sparkocr.tests.ocr.eval.icdar
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   icdar_table_extractor/index.rst
+
+

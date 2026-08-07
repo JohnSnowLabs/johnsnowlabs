@@ -1,0 +1,310 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.pretrained.anonymization_pipeline_builder`
+============================================================
+
+.. py:module:: sparkocr.pretrained.anonymization_pipeline_builder
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.pretrained.anonymization_pipeline_builder.AnonymizationPipelineBuilder
+
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.pretrained.anonymization_pipeline_builder.logger
+
+
+.. py:class:: AnonymizationPipelineBuilder(hc_pipeline='', language='en', remote_loc='clinical/models', task='deid', input_type='pdf', **kwargs)
+
+   Builder class for constructing Spark OCR + Spark NLP Healthcare
+   deidentification or obfuscation pipelines.
+
+   This class automates the process of creating an end-to-end pipeline for
+   processing PDF or image inputs, extracting text via OCR, applying clinical
+   deidentification models, and generating redacted/obfuscated outputs.
+
+   The pipeline consists of:
+       - Pre-NLP stages (OCR and text preparation)
+       - Pretrained Healthcare NLP pipeline
+       - Post-NLP stages (deidentification, coordinate finding, visualization, PDF/image reconstruction)
+
+   Inputs:
+       hc_pipeline (str): Name of the pretrained Healthcare NLP pipeline.
+       language (str): Language of the pretrained pipeline (default: "en").
+       remote_loc (str): Remote location for models (default: "clinical/models").
+       task (str): Either "deid" (deidentification) or "obfuscate". Obfuscation is disabled for Dicom.
+       input_type (str): Input type, either "pdf", "image" or "dicom".
+       ocr (str): OCR version, one of ["v1", "v2", "v3"].
+       use_gpu (bool): Whether to use GPU acceleration for OCR.
+       keep_memory (bool): Whether to preserve auxiliary mappings for consistent obfuscation. keep_memory is disabled for Dicom.
+       default_matcher_threshold (float): Default threshold for entity matchers.
+       matcher_dict (dict): Dictionary of entity-specific thresholds {ENTITY: threshold}.
+       finalizer (bool): Whether to include image_to_pdf destroying intermediate results.
+
+   :raises ValueError: If invalid arguments are passed or pretrained pipeline contains unsupported stages.
+   :raises Exception: If pretrained pipeline cannot be loaded.
+
+   .. rubric:: Example
+
+   >>> builder = AnonymizationPipelineBuilder(
+   ...     hc_pipeline="clinical_deidentification",
+   ...     input_type="pdf",
+   ...     task="obfuscate",
+   ...     ocr="v1",
+   ...     use_gpu=False,
+   ...     keep_memory=True,
+   ...     default_matcher_threshold=0.7,
+   ...     matcher_dict={"NAME":0.9, "DATE":0.8}
+   ... )
+   >>>
+   >>> pipeline_model = builder.build()
+   >>>
+   >>> # Load input PDFs
+   >>> input_df = spark.read.format("binaryFile").load("/content/*.pdf")
+   >>> result_df = pipeline_model.fit(input_df).transform(input_df)
+   >>>
+   >>> # Display results
+   >>> from sparkocr.utils import display_pdf
+   >>> display_pdf(result_df, "pdf")
+
+   End-to-end usage with configuration update and PDF display:
+
+       >>> builder = AnonymizationPipelineBuilder(
+       ...     hc_pipeline="clinical_deidentification_docwise_wip_v2",
+       ...     input_type="pdf",
+       ...     ocr="v1",
+       ...     use_gpu=False,
+       ...     language="en",
+       ...     task="deid",
+       ...     keep_memory=True,
+       ...     default_matcher_threshold=0.5,
+       ...     remote_loc="clinical/models"
+       ... )
+       >>>
+       >>> # Update configuration
+       >>> config = builder.get_config()
+       >>> config["pdfToImage"]["imageType"] = ImageType.TYPE_3BYTE_BGR
+       >>> config["imageDrawRegions"]["rectColor"] = Color.red
+       >>> builder.update_config(config)
+       >>>
+       >>> # Build pipeline
+       >>> pipeline_model = builder.build()
+       >>>
+       >>> # Load input PDFs
+       >>> input_df = spark.read.format("binaryFile").load("/content/*.pdf")
+       >>> result_df = pipeline_model.fit(input_df).transform(input_df)
+       >>>
+       >>> # Display results
+       >>> from sparkocr.utils import display_pdf
+       >>> display_pdf(result_df, "pdf")
+
+   .. py:attribute:: default_matcher_threshold
+      
+
+      
+
+   .. py:attribute:: finalizer
+      
+
+      
+
+   .. py:attribute:: hc_pipeline
+      :annotation: = ''
+
+      
+
+   .. py:attribute:: individual_stage_settings
+      
+
+      
+
+   .. py:attribute:: input_type
+      :annotation: = 'pdf'
+
+      
+
+   .. py:attribute:: keep_memory
+      
+
+      
+
+   .. py:attribute:: language
+      :annotation: = 'en'
+
+      
+
+   .. py:attribute:: matcher_dict
+      
+
+      
+
+   .. py:attribute:: ocr
+      
+
+      
+
+   .. py:attribute:: remote_loc
+      :annotation: = 'clinical/models'
+
+      
+
+   .. py:attribute:: stage_config
+      
+
+      
+
+   .. py:attribute:: task
+      :annotation: = 'deid'
+
+      
+
+   .. py:attribute:: use_gpu
+      
+
+      
+
+   .. py:method:: build()
+
+      Builds the full deidentification pipeline.
+
+      Steps:
+          1. Initialize empty stage list.
+          2. Extract pretrained NLP stages (`nlp_builder`).
+          3. Build OCR/pre-processing stages (`pre_nlp_stages`) Order does not
+          matter here as the pre nlp stages are added in front of nlp_stage.
+          ( not appending. )
+          4. Build post-processing stages (`post_nlp_stages`).
+          5. Return assembled Spark ML `Pipeline`.
+
+      :returns: Configured Spark ML pipeline object.
+      :rtype: pyspark.ml.Pipeline
+
+
+   .. py:method:: build_deidentification_branch()
+
+      DeIdentification of Image, PDF
+      KeepMemory can be used to toggle the settings
+
+
+   .. py:method:: build_dicom_branch()
+
+      DeIdentification of Dicom
+      KeepMemory needs to be disabled
+
+
+   .. py:method:: build_memory_branch()
+
+      Memory Builder, Can be used with Deidentification/Obfuscation
+      In case of Dicom, Skipped
+
+
+   .. py:method:: build_obfuscation_branch()
+
+      Obfuscation of Image, PDF
+      KeepMemory needs to be enabled
+
+
+   .. py:method:: check_pretrained_pipeline()
+
+      Validates that the pretrained pipeline contains only NLP components.
+
+      Ensures no visual/image-related or DICOM stages are included.
+
+      :raises ValueError: If visual or DICOM stages are detected in the pipeline.
+
+
+   .. py:method:: get_config()
+
+      Retrieves the current stage configuration.
+
+      :returns: Deep copy of `stage_config`.
+      :rtype: dict
+
+
+   .. py:method:: get_matcher_entities()
+
+      Builds matcher dictionary for the deidentification stage.
+
+      Uses PipelineTracer to extract possible entities from the pretrained pipeline
+      and applies either custom thresholds (from matcher_dict) or the default threshold.
+
+      :returns: {ENTITY: threshold} mapping for all detected entities.
+      :rtype: dict
+
+
+   .. py:method:: get_names_from_uid(stages)
+      :staticmethod:
+
+      Extracts normalized stage names from Spark ML pipeline stages.
+
+      :param stages: List of Spark ML pipeline stages.
+      :type stages: list
+
+      :returns: Normalized (lowercase) stage names.
+      :rtype: list[str]
+
+
+   .. py:method:: nlp_builder()
+
+      Extracts NLP stages from the pretrained pipeline.
+
+      :raises ValueError: If required stages (e.g., DocumentAssembler, RegexTokenizer) are missing.
+
+
+   .. py:method:: post_nlp_stages()
+
+      Constructs post-NLP stages for deidentification/obfuscation.
+
+
+   .. py:method:: pre_nlp_stages()
+
+      Constructs pre-NLP OCR stages depending on input type and OCR version.
+
+      :returns: None (updates `self.stages` internally).
+
+
+   .. py:method:: reset_config()
+
+      Resets the stage configuration back to class defaults.
+
+
+   .. py:method:: show_config()
+
+      Pretty Prints configurations
+
+
+   .. py:method:: update_config(config)
+
+      Updates the stage configuration.
+
+      :param config: New configuration dictionary to replace current settings.
+      :type config: dict
+
+
+   .. py:method:: validate_matchers()
+
+      Validates matcher dictionary thresholds and entity naming rules.
+
+      :raises ValueError: If thresholds are outside (0.0, 1.0) or entities are not uppercase.
+
+
+
+.. py:data:: logger
+   :annotation: = None
+
+   
+

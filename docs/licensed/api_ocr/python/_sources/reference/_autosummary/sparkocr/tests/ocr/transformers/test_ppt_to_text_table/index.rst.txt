@@ -1,0 +1,34 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.test_ppt_to_text_table`
+================================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.test_ppt_to_text_table
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.test_ppt_to_text_table.TestPptToTextTable
+
+
+
+
+.. py:class:: TestPptToTextTable
+
+   .. py:method:: test_ppt_without_split_by_page(spark_session, ppt_table_df)
+
+
+   .. py:method:: test_pptx_without_split_by_page(spark_session, pptx_table_df)
+
+
+   .. py:method:: test_should_save_and_load(spark_session)
+
+
+

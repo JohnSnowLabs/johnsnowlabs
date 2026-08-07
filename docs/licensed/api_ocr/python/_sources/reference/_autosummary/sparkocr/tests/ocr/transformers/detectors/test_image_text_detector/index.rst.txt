@@ -1,0 +1,31 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.detectors.test_image_text_detector`
+============================================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.detectors.test_image_text_detector
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.detectors.test_image_text_detector.TestImageTextDetector
+
+
+
+
+.. py:class:: TestImageTextDetector
+
+   .. py:method:: test_image_text_detector_craft(spark_session)
+
+
+   .. py:method:: test_image_text_detector_dit(spark_session)
+
+
+

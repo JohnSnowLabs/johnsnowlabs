@@ -1,0 +1,146 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.dicom.test_dicom_metadata_deidentifier`
+================================================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.dicom.test_dicom_metadata_deidentifier
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.dicom.test_dicom_metadata_deidentifier.TestDicomMetadataDeidentifier
+
+
+
+
+.. py:class:: TestDicomMetadataDeidentifier
+
+   .. py:attribute:: last_names_file
+      
+
+      
+
+   .. py:attribute:: names_file
+      
+
+      
+
+   .. py:method:: test_Age_Obfuscator(spark_session)
+
+
+   .. py:method:: test_DateTime_Obfuscator(spark_session)
+
+
+   .. py:method:: test_Date_Obfuscator(spark_session)
+
+
+   .. py:method:: test_Name_Obfuscator(spark_session)
+
+
+   .. py:method:: test_PatientID_Obfuscator(spark_session)
+
+
+   .. py:method:: test_SQ_VR_delete(spark_session)
+
+
+   .. py:method:: test_SQ_VR_ensureTagExists(spark_session)
+
+
+   .. py:method:: test_SQ_VR_nested_operations(spark_session)
+
+
+   .. py:method:: test_SQ_VR_remove(spark_session)
+
+
+   .. py:method:: test_SQ_VR_replaceWithLiteral(spark_session)
+
+
+   .. py:method:: test_Time_Obfuscator(spark_session)
+
+
+   .. py:method:: test_UID_Obfuscator(spark_session, dicom_single_image_df)
+
+
+   .. py:method:: test_all_clean_tag_action_with_deid_options(spark_session)
+
+
+   .. py:method:: test_all_clean_tag_action_with_mask_options(spark_session)
+
+
+   .. py:method:: test_all_clean_tag_action_with_remove_options(spark_session)
+
+
+   .. py:method:: test_all_delete_actions(spark_session)
+
+
+   .. py:method:: test_all_ensureTagExists_actions(spark_session)
+
+
+   .. py:method:: test_all_remove_actions(spark_session)
+
+
+   .. py:method:: test_cleanTag_action_phi_modes_cleaning(spark_session)
+
+
+   .. py:method:: test_dicom_basic_obfuscator(spark_session, all_dicoms_df)
+
+
+   .. py:method:: test_exsistence_of_path_column(spark_session)
+
+
+   .. py:method:: test_keep_input(spark_session)
+
+
+   .. py:method:: test_mapping_cols_existence(spark_session)
+
+
+   .. py:method:: test_medtronic_age_generation(spark_session)
+
+
+   .. py:method:: test_ner_deidentification(spark_session)
+
+
+   .. py:method:: test_remove_all_60_group_tags(spark_session)
+
+
+   .. py:method:: test_remove_all_private_tags(spark_session, dicom_single_image_df)
+
+
+   .. py:method:: test_replaceWithLiteral_VR_Bytes(spark_session)
+
+
+   .. py:method:: test_replaceWithLiteral_VR_FD(spark_session)
+
+
+   .. py:method:: test_replaceWithLiteral_VR_FL(spark_session)
+
+
+   .. py:method:: test_replaceWithLiteral_VR_SL(spark_session)
+
+
+   .. py:method:: test_replaceWithLiteral_VR_SS(spark_session)
+
+
+   .. py:method:: test_replaceWithLiteral_VR_SV(spark_session)
+
+
+   .. py:method:: test_replaceWithLiteral_VR_UL(spark_session)
+
+
+   .. py:method:: test_replaceWithLiteral_VR_US(spark_session)
+
+
+   .. py:method:: test_replaceWithLiteral_VR_UV(spark_session)
+
+
+   .. py:method:: test_series_generation(spark_session, dicom_single_image_df)
+
+
+

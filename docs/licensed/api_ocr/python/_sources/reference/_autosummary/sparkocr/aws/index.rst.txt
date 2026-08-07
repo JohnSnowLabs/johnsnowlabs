@@ -1,0 +1,18 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.aws`
+======================
+
+.. py:module:: sparkocr.aws
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   lambda_function/index.rst
+
+

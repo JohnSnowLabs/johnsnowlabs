@@ -1,0 +1,31 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.test_image_cropper`
+============================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.test_image_cropper
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.test_image_cropper.TestImageCropper
+
+
+
+
+.. py:class:: TestImageCropper
+
+   .. py:method:: test_image_cropper(spark_session, image_cropped_df)
+
+
+   .. py:method:: test_image_cropper_with_provide_square(spark_session, image_cropped_df)
+
+
+

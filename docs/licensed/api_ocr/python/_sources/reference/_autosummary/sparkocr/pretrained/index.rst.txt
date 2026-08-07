@@ -1,0 +1,38 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.pretrained`
+=============================
+
+.. py:module:: sparkocr.pretrained
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   anonymization_pipeline_builder/index.rst
+   dicom_pretrained_pipeline/index.rst
+   pretrained_pipeline/index.rst
+
+
+Package Contents
+----------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.pretrained.AnonymizationPipelineBuilder
+   sparkocr.pretrained.DicomPretrainedPipeline
+   sparkocr.pretrained.PretrainedPipeline
+
+
+
+
+
+
+

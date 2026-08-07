@@ -1,0 +1,118 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.base.light_pipelines`
+=======================================
+
+.. py:module:: sparkocr.base.light_pipelines
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.base.light_pipelines.AnnotationTypeInt
+   sparkocr.base.light_pipelines.LightPipeline
+
+
+
+
+.. py:class:: AnnotationTypeInt
+
+
+.. py:class:: LightPipeline(pipelineModel: pyspark.ml.pipeline.PipelineModel)
+
+   Creates a LightPipeline from a Spark OCR PipelineModel.
+
+   LightPipeline is a Spark OCR specific Pipeline class equivalent to Spark
+   ML Pipeline. The difference is that it’s execution does not hold to
+   Spark principles, instead it computes everything locally (but in
+   parallel) in order to achieve fast results when dealing with small
+   amounts of data. This means, we do not input a Spark Dataframe, but a
+   string or an Array of strings instead, to be annotated. To create Light
+   Pipelines, you need to pass an already trained (fit) Spark ML Pipeline.
+
+
+   :param pipelineModel: The PipelineModel containing Spark OCR Annotators
+   :type pipelineModel: :class:`pyspark.ml.PipelineModel`
+
+   .. rubric:: Notes
+
+   Use :meth:`.fullAnnotate` to also output the result as
+   :class:`.Annotation`, with metadata.
+
+   .. rubric:: Examples
+
+   >>> from sparkocr.base import LightPipeline
+   >>> light = LightPipeline(pipeline.fit(data))
+   >>> light.fromLocalPath("./documents/pdfs")
+
+   .. py:attribute:: pipeline_model
+      
+
+      
+
+   .. py:method:: fromBinary(buffer)
+
+      Runs the provided pipeline against in memory buffer.
+
+      The buffer must be byte array of PDFs, DOCX, or images.
+
+
+
+   .. py:method:: fromLocalPath(local_folder)
+
+      Runs the provided pipeline against files in local_folder.
+
+      The files can be PDFs, DOCX, or images.
+
+      :param local_folder: The data to be annotated
+      :type local_folder: list or str
+
+      :returns: Ocr Output as a Spark NLP Annotation ? Can be :)
+      :rtype: List[Annotation]
+
+
+   .. py:method:: fromString(buffer)
+
+      Runs the provided pipeline against in memory buffer.
+
+      The buffer must be base64 encoding of PDFs, DOCX, or images.
+
+
+
+   .. py:method:: getIgnoreUnsupported()
+
+      Gets whether to ignore unsupported AnnotatorModels.
+
+      :returns: Whether to ignore unsupported AnnotatorModels.
+      :rtype: bool
+
+
+   .. py:method:: setIgnoreUnsupported(value)
+
+      Sets whether to ignore unsupported AnnotatorModels.
+
+      :param value: Whether to ignore unsupported AnnotatorModels.
+      :type value: bool
+
+      :returns: The current LightPipeline
+      :rtype: LightPipeline
+
+
+   .. py:method:: transform(dataframe)
+
+      Transforms a dataframe provided with the stages of the LightPipeline.
+
+      :param dataframe: The Dataframe to be transformed
+      :type dataframe: :class:`pyspark.sql.DataFrame`
+
+      :returns: The transformed DataFrame
+      :rtype: :class:`pyspark.sql.DataFrame`
+
+
+

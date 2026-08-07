@@ -1,0 +1,313 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.transformers.dicom.dicom_to_metadata`
+=======================================================
+
+.. py:module:: sparkocr.transformers.dicom.dicom_to_metadata
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.transformers.dicom.dicom_to_metadata.DicomToMetadata
+
+
+
+
+.. py:class:: DicomToMetadata
+
+   Bases: :py:obj:`pyspark.ml.Transformer`, :py:obj:`pyspark.ml.param.shared.HasInputCol`, :py:obj:`pyspark.ml.param.shared.HasOutputCol`, :py:obj:`sparkocr.transformers.params.HasKeepInput`, :py:obj:`pyspark.ml.util.DefaultParamsReadable`, :py:obj:`pyspark.ml.util.DefaultParamsWritable`, :py:obj:`sparkocr.transformers.params.HasForceProcessing`, :py:obj:`sparkocr.transformers.dicom.base_dicom.BaseDicom`
+
+   Transform Dicom Binary Content to Image
+
+   .. py:attribute:: documentNumCol
+      
+
+      
+
+   .. py:attribute:: extractTagForNer
+      
+
+      
+
+   .. py:attribute:: forceProcessing
+      
+
+      
+
+   .. py:attribute:: inputCol
+      :annotation: :Param[str]
+
+      
+
+   .. py:attribute:: keepInput
+      
+
+      
+
+   .. py:attribute:: originCol
+      
+
+      
+
+   .. py:attribute:: outputCol
+      :annotation: :Param[str]
+
+      
+
+   .. py:attribute:: output_schema
+      
+
+      
+
+   .. py:attribute:: partitionNum
+      
+
+      
+
+   .. py:attribute:: readMaxBytes
+      
+
+      
+
+   .. py:attribute:: splitNumBatch
+      
+
+      
+
+   .. py:attribute:: splittingStategy
+      
+
+      
+
+   .. py:attribute:: strategyFileContent
+      
+
+      
+
+   .. py:attribute:: tagCol
+      
+
+      
+
+   .. py:attribute:: tagMappingCol
+      
+
+      
+
+   .. py:attribute:: uid
+      :annotation: = ''
+
+      
+
+   .. py:method:: clean_tag_name(tag)
+      :staticmethod:
+
+
+   .. py:method:: clear(param: Param) -> None
+
+      Clears a param from the param map if it has been explicitly set.
+
+
+   .. py:method:: copy(extra: Optional[pyspark.ml._typing.ParamMap] = None) -> P
+
+      Creates a copy of this instance with the same uid and some
+      extra params. The default implementation creates a
+      shallow copy using :py:func:`copy.copy`, and then copies the
+      embedded and extra parameters over and returns the copy.
+      Subclasses should override this method if the default approach
+      is not sufficient.
+
+      :param extra: Extra parameters to copy to the new instance
+      :type extra: dict, optional
+
+      :returns: Copy of this instance
+      :rtype: :py:class:`Params`
+
+
+   .. py:method:: explainParam(param: Union[str, Param]) -> str
+
+      Explains a single param and returns its name, doc, and optional
+      default value and user-supplied value in a string.
+
+
+   .. py:method:: explainParams() -> str
+
+      Returns the documentation of all params with their optionally
+      default values and user-supplied values.
+
+
+   .. py:method:: exploding_wrap(func)
+
+
+   .. py:method:: extractParamMap(extra: Optional[pyspark.ml._typing.ParamMap] = None) -> pyspark.ml._typing.ParamMap
+
+      Extracts the embedded default param values and user-supplied
+      values, and then merges them with extra values from input into
+      a flat param map, where the latter value is used if there exist
+      conflicts, i.e., with ordering: default param values <
+      user-supplied values < extra.
+
+      :param extra: extra param values
+      :type extra: dict, optional
+
+      :returns: merged param map
+      :rtype: dict
+
+
+   .. py:method:: flatten_dicom(json_dict, include_binary=False, parent_path=None)
+
+
+   .. py:method:: getInputCol() -> str
+
+      Gets the value of inputCol or its default value.
+
+
+   .. py:method:: getOrDefault(param: str) -> Any
+               getOrDefault(param: Param[T]) -> T
+
+      Gets the value of a param in the user-supplied param map or its
+      default value. Raises an error if neither is set.
+
+
+   .. py:method:: getOutputCol() -> str
+
+      Gets the value of outputCol or its default value.
+
+
+   .. py:method:: getParam(paramName: str) -> Param
+
+      Gets a param by its name.
+
+
+   .. py:method:: getRules(rulesFileContent)
+
+
+   .. py:method:: get_elements_by_tag(graph, tag_id)
+      :staticmethod:
+
+
+   .. py:method:: get_s3_creds(sql_ctx)
+
+
+   .. py:method:: hasDefault(param: Union[str, Param[Any]]) -> bool
+
+      Checks whether a param has a default value.
+
+
+   .. py:method:: hasParam(paramName: str) -> bool
+
+      Tests whether this instance contains a param with a given
+      (string) name.
+
+
+   .. py:method:: isDefined(param: Union[str, Param[Any]]) -> bool
+
+      Checks whether a param is explicitly set by user or has
+      a default value.
+
+
+   .. py:method:: isSet(param: Union[str, Param[Any]]) -> bool
+
+      Checks whether a param is explicitly set by user.
+
+
+   .. py:method:: load(path: str) -> RL
+      :classmethod:
+
+      Reads an ML instance from the input path, a shortcut of `read().load(path)`.
+
+
+   .. py:method:: read() -> DefaultParamsReader[RL]
+      :classmethod:
+
+      Returns a DefaultParamsReader instance for this class.
+
+
+   .. py:method:: read_dicom(dicom, params, read_max_bytes, origin='', stop_before_pixels=True)
+      :staticmethod:
+
+
+   .. py:method:: save(path: str) -> None
+
+      Save this ML instance to the given path, a shortcut of 'write().save(path)'.
+
+
+   .. py:method:: set(param: Param, value: Any) -> None
+
+      Sets a parameter in the embedded param map.
+
+
+   .. py:method:: setExtractTagForNer(value)
+
+      Sets the value of :py:attr:`extractTagForNer`.
+
+
+   .. py:method:: setForceProcessing(value)
+
+      Sets the value of :py:attr:`forceProcessing`.
+
+
+   .. py:method:: setInputCol(value)
+
+      Sets the value of :py:attr:`inputCol`.
+
+
+   .. py:method:: setKeepInput(value)
+
+      Sets the value of :py:attr:`keepInput`.
+
+
+   .. py:method:: setOutputCol(value)
+
+      Sets the value of :py:attr:`outputCol`.
+
+
+   .. py:method:: setReadMaxBytes(value)
+
+      Sets the value of :py:attr:`readMaxBytes`.
+
+
+   .. py:method:: setStrategyFile(value)
+
+
+   .. py:method:: setTagCol(value)
+
+      Sets the value of :py:attr:`tagCol`.
+
+
+   .. py:method:: setTagMappingCol(value)
+
+      Sets the value of :py:attr:`tagMappingCol`.
+
+
+   .. py:method:: transform(dataset: pyspark.sql.dataframe.DataFrame, params: Optional[pyspark.ml._typing.ParamMap] = None) -> pyspark.sql.dataframe.DataFrame
+
+      Transforms the input dataset with optional parameters.
+
+      .. versionadded:: 1.3.0
+
+      :param dataset: input dataset
+      :type dataset: :py:class:`pyspark.sql.DataFrame`
+      :param params: an optional param map that overrides embedded params.
+      :type params: dict, optional
+
+      :returns: transformed dataset
+      :rtype: :py:class:`pyspark.sql.DataFrame`
+
+
+   .. py:method:: transform_dicom(dicom, params, exception)
+
+
+   .. py:method:: write() -> MLWriter
+
+      Returns a DefaultParamsWriter instance for this class.
+
+
+

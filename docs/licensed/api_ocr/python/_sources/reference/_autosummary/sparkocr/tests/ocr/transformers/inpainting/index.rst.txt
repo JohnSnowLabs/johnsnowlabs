@@ -1,0 +1,18 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.inpainting`
+====================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.inpainting
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   test_image_inpainting/index.rst
+
+

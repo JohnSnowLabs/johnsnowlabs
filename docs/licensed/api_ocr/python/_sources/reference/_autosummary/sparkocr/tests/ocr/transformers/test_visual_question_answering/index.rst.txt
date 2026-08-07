@@ -1,0 +1,53 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.test_visual_question_answering`
+========================================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.test_visual_question_answering
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.test_visual_question_answering.TestVisualQuestionAnswering
+
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.test_visual_question_answering.cachedir
+
+
+.. py:class:: TestVisualQuestionAnswering
+
+   .. py:method:: test_question_answering_donut(visual_qa_df)
+
+
+   .. py:method:: test_question_answering_donut_loadable(visual_qa_df)
+
+
+   .. py:method:: test_question_answering_pix2struct(visual_qa_df)
+
+
+   .. py:method:: test_question_answering_pix2struct_from_pieces(spark_session, visual_qa_df)
+
+
+   .. py:method:: test_question_answering_pix2struct_loadable(visual_qa_df)
+
+
+
+.. py:data:: cachedir
+   
+
+   
+

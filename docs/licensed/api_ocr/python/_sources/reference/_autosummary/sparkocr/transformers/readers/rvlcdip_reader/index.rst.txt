@@ -1,0 +1,58 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.transformers.readers.rvlcdip_reader`
+======================================================
+
+.. py:module:: sparkocr.transformers.readers.rvlcdip_reader
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.transformers.readers.rvlcdip_reader.RvlCdipReader
+
+
+
+
+.. py:class:: RvlCdipReader
+
+   .. py:method:: readTestDataset(spark, path, partitions=8, storage_level=pyspark.StorageLevel.DISK_ONLY)
+
+      Reads the RVL-CDP train dataset from an external resource.
+
+      :param spark: Initiated Spark Session with Spark NLP
+      :type spark: :class:`pyspark.sql.SparkSession`
+      :param path: the path where you unzip the files for RvlCdip Test
+      :type path: str
+      :param partitions:
+      :type partitions: sets the minimum number of partitions for the case of lifting multiple files in parallel into a single dataframe. Defaults to 8.
+      :param storage_level:
+      :type storage_level: sets the persistence level according to PySpark definitions. Defaults to StorageLevel.DISK_ONLY.
+
+      :returns: Spark Dataframe with the data
+      :rtype: :class:`pyspark.sql.DataFrame`
+
+
+   .. py:method:: readTrainDataset(spark, labels_path, images_path, partitions=8, storage_level=pyspark.StorageLevel.DISK_ONLY)
+
+      Reads the dataset from an external resource.
+
+      :param spark: Initiated Spark Session with Spark NLP
+      :type spark: :class:`pyspark.sql.SparkSession`
+      :param labels_path: The path to the labels file, i.e., labels/train.txt
+      :type labels_path: str
+      :param images_path:    the path where you unzipped the files for RvlCdip Train Images
+                          partitions : int
+                             sets the minimum number of partitions for the case of lifting multiple files in parallel into a single dataframe. Defaults to 8.
+      :type images_path: str
+      :param storage_level:
+      :type storage_level: sets the persistence level according to PySpark definitions. Defaults to StorageLevel.DISK_ONLY.
+
+
+

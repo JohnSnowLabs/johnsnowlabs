@@ -1,0 +1,28 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.test_image_morphology_operation`
+=========================================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.test_image_morphology_operation
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.test_image_morphology_operation.TestImageMorphologyOperation
+
+
+
+
+.. py:class:: TestImageMorphologyOperation
+
+   .. py:method:: test_image_morphology_opening(spark_session, image_noised_df, image_noised_text)
+
+
+
