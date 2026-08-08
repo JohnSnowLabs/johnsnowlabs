@@ -1,0 +1,44 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.detectors.test_image_text_detector_craft`
+==================================================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.detectors.test_image_text_detector_craft
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.detectors.test_image_text_detector_craft.TestImageTextDetectorCraft
+
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.detectors.test_image_text_detector_craft.tmpModelFolder
+
+
+.. py:class:: TestImageTextDetectorCraft
+
+   .. py:method:: test_image_text_detector(spark_session, image_noised_df)
+
+
+   .. py:method:: test_loading_from_disk(spark_session)
+
+
+
+.. py:data:: tmpModelFolder
+   :annotation: = 'tmp_model'
+
+   
+

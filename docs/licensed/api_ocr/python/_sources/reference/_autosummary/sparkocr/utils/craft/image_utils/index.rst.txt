@@ -1,0 +1,47 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.utils.craft.image_utils`
+==========================================
+
+.. py:module:: sparkocr.utils.craft.image_utils
+
+.. autoapi-nested-parse::
+
+   Copyright (c) 2019-present NAVER Corp.
+   MIT License
+
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.utils.craft.image_utils.cvt2HeatmapImg
+   sparkocr.utils.craft.image_utils.denormalizeMeanVariance
+   sparkocr.utils.craft.image_utils.normalizeMeanVariance
+   sparkocr.utils.craft.image_utils.read_image
+   sparkocr.utils.craft.image_utils.resize_aspect_ratio
+
+
+
+.. py:function:: cvt2HeatmapImg(img)
+
+
+.. py:function:: denormalizeMeanVariance(in_img, mean=(0.485, 0.456, 0.406), variance=(0.229, 0.224, 0.225))
+
+
+.. py:function:: normalizeMeanVariance(in_img, mean=(0.485, 0.456, 0.406), variance=(0.229, 0.224, 0.225))
+
+
+.. py:function:: read_image(image)
+
+
+.. py:function:: resize_aspect_ratio(img, long_size, interpolation)
+
+

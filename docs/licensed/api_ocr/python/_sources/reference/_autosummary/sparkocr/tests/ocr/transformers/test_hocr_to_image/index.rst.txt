@@ -1,0 +1,28 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.test_hocr_to_image`
+============================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.test_hocr_to_image
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.test_hocr_to_image.TestHocrToImage
+
+
+
+
+.. py:class:: TestHocrToImage
+
+   .. py:method:: test_hocr_to_image(spark_session)
+
+
+

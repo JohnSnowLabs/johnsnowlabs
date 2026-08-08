@@ -1,0 +1,25 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.transformers.readers`
+=======================================
+
+.. py:module:: sparkocr.transformers.readers
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   alab_readers/index.rst
+   docvqa_reader/index.rst
+   funsd_reader/index.rst
+   iam_reader/index.rst
+   mixed_iterator/index.rst
+   rvlcdip_reader/index.rst
+   sroie_reader/index.rst
+   tacd_reader/index.rst
+
+

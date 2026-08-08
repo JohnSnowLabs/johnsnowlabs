@@ -1,0 +1,45 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.utils.craft.predict`
+======================================
+
+.. py:module:: sparkocr.utils.craft.predict
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.utils.craft.predict.get_prediction
+
+
+
+.. py:function:: get_prediction(image, craft_net, refine_net=None, text_threshold: float = 0.7, link_threshold: float = 0.4, low_text: float = 0.4, cuda: bool = False, long_size: int = 1280, poly: bool = True)
+
+   :param image: path to the image to be processed or numpy array or PIL image
+   :param output_dir: path to the results to be exported
+   :param craft_net: craft net model
+   :param refine_net: refine net model
+   :param text_threshold: text confidence threshold
+   :param link_threshold: link confidence threshold
+   :param low_text: text low-bound score
+   :param cuda: Use cuda for inference
+   :param canvas_size: image size for inference
+   :param long_size: desired longest image size for inference
+   :param poly: enable polygon type
+
+   Output:
+       {"masks": lists of predicted masks 2d as bool array,
+        "boxes": list of coords of points of predicted boxes,
+        "boxes_as_ratios": list of coords of points of predicted boxes as ratios of image size,
+        "polys_as_ratios": list of coords of points of predicted polys as ratios of image size,
+        "heatmaps": visualizations of the detected characters/links,
+        "times": elapsed times of the sub modules, in seconds}
+
+

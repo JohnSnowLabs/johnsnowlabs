@@ -1,0 +1,28 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.ner.test_visual_document_ner_geo`
+==========================================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.ner.test_visual_document_ner_geo
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.ner.test_visual_document_ner_geo.TestVisualDocumentNerGeo
+
+
+
+
+.. py:class:: TestVisualDocumentNerGeo
+
+   .. py:method:: test_inference(visual_document_ner_v2_df, spark_session)
+
+
+

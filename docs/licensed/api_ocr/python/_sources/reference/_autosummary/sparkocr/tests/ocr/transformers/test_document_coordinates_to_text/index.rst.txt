@@ -1,0 +1,34 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.test_document_coordinates_to_text`
+===========================================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.test_document_coordinates_to_text
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.test_document_coordinates_to_text.TestDocumentCoordinatesToText
+
+
+
+
+.. py:class:: TestDocumentCoordinatesToText
+
+   .. py:method:: test_hunyan_completions(spark_session, doc_coordinate_to_text_input_df)
+
+
+   .. py:method:: test_image_drops_with_keep_input(spark_session, doc_coordinate_to_text_input_df)
+
+
+   .. py:method:: test_serialization(spark_session, doc_coordinate_to_text_input_df)
+
+
+

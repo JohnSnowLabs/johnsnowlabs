@@ -1,0 +1,56 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.utils.svs.tile_extraction`
+============================================
+
+.. py:module:: sparkocr.utils.svs.tile_extraction
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.utils.svs.tile_extraction.chunk
+   sparkocr.utils.svs.tile_extraction.extract_tile
+   sparkocr.utils.svs.tile_extraction.find_thumbnail_page
+   sparkocr.utils.svs.tile_extraction.get_mid_level_tiles
+   sparkocr.utils.svs.tile_extraction.get_optimal_workers_and_batch
+   sparkocr.utils.svs.tile_extraction.process_svs
+   sparkocr.utils.svs.tile_extraction.svs_to_tiles
+
+
+
+.. py:function:: chunk(lst, n)
+
+   Yield successive n-sized chunks from lst.
+
+
+.. py:function:: extract_tile(args)
+
+
+.. py:function:: find_thumbnail_page(tif)
+
+   Finds the thumbnail page using Aperio SVS conventions.
+
+
+.. py:function:: get_mid_level_tiles(flat_tiles_folder, output_folder=None)
+
+
+.. py:function:: get_optimal_workers_and_batch(mem_per_worker_gb=1.5, ram_fraction=0.75, min_batch=1, max_batch=8)
+
+   Calculate optimal number of workers and batch size based on system memory and CPU.
+   Leaves headroom (e.g., 35%) to avoid saturation.
+
+
+.. py:function:: process_svs(svs_file, output_root, num_workers, level='auto', thumbnail=False)
+
+
+.. py:function:: svs_to_tiles(input_path, output_root, level='auto', thumbnail=False)
+
+

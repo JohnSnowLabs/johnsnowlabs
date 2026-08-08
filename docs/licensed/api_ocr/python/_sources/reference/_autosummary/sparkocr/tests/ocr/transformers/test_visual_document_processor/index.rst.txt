@@ -1,0 +1,58 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.test_visual_document_processor`
+========================================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.test_visual_document_processor
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.test_visual_document_processor.TestVisualDocumentProcessor
+
+
+
+
+.. py:class:: TestVisualDocumentProcessor
+
+   .. py:method:: test_visual_document_processor(spark_session, image_table_document_df)
+
+
+   .. py:method:: test_visual_document_processor_docx(spark_session, doc_text_multipage_df)
+
+
+   .. py:method:: test_visual_document_processor_freeTextOnly(spark_session, image_table_document_df)
+
+
+   .. py:method:: test_visual_document_processor_html(spark_session, html_df)
+
+
+   .. py:method:: test_visual_document_processor_json(spark_session, image_table_document_df)
+
+
+   .. py:method:: test_visual_document_processor_notformattedtext(spark_session, image_table_document_df)
+
+
+   .. py:method:: test_visual_document_processor_pdf(spark_session, digital_pdf_df)
+
+
+   .. py:method:: test_visual_document_processor_pptx(spark_session, pptx_table_df)
+
+
+   .. py:method:: test_visual_document_processor_table(spark_session, image_table_document_df)
+
+
+   .. py:method:: test_visual_document_processor_tablecvs(spark_session, image_table_document_df)
+
+
+   .. py:method:: test_visual_document_processor_userapidocr(spark_session, image_table_document_df)
+
+
+

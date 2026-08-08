@@ -1,0 +1,98 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.transformers.readers.tacd_reader`
+===================================================
+
+.. py:module:: sparkocr.transformers.readers.tacd_reader
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.transformers.readers.tacd_reader.TACDReader
+
+
+
+
+.. py:class:: TACDReader(**kwargs)
+
+   TACDReader(
+       spark_session=spark,
+       root_work_dir="./Result/TACD_Process",
+       target_dir="./Result/TACD_Result",
+       clean_up=True,
+       AWS_ACCESS_KEY_ID = 'AWS_ACCESS_KEY_ID',
+       AWS_SECRET_ACCESS_KEY = 'AWS_SECRET_ACCESS_KEY',
+       AWS_SESSION_TOKEN = 'AWS_SESSION_TOKEN')()
+
+   .. py:attribute:: AWS_KEY_ID
+      
+
+      
+
+   .. py:attribute:: AWS_SECRET_KEY
+      
+
+      
+
+   .. py:attribute:: AWS_SESSION_TOKEN
+      
+
+      
+
+   .. py:attribute:: FILE_NAME
+      
+
+      
+
+   .. py:attribute:: S3_URI
+      :annotation: = 's3://dev.johnsnowlabs.com/ocr/datasets/TACD.zip'
+
+      
+
+   .. py:attribute:: clean_up
+      
+
+      
+
+   .. py:attribute:: root_work_dir
+      
+
+      
+
+   .. py:attribute:: schema
+      
+
+      
+
+   .. py:attribute:: spark
+      
+
+      
+
+   .. py:attribute:: target_dir
+      
+
+      
+
+   .. py:method:: create_file_identifier(file_path)
+      :staticmethod:
+
+
+   .. py:method:: download_and_extract()
+
+
+   .. py:method:: process_tacd_split(load_dir)
+
+
+   .. py:method:: tacd_reader(combined_bytes, combined_extension)
+      :staticmethod:
+
+
+

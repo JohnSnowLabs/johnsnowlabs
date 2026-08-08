@@ -1,0 +1,321 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.transformers`
+===============================
+
+.. py:module:: sparkocr.transformers
+
+
+Subpackages
+-----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 2
+
+   annotators/index.rst
+   detectors/index.rst
+   dicom/index.rst
+   embeddings/index.rst
+   inpainting/index.rst
+   ner/index.rst
+   pdf/index.rst
+   readers/index.rst
+   recognizers/index.rst
+   tokenizer/index.rst
+   visual_encoder_decoder/index.rst
+   vqa/index.rst
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   base64_to_binary/index.rst
+   base64_to_image/index.rst
+   binary_to_image/index.rst
+   chart_to_text_table/index.rst
+   dataset_reader/index.rst
+   dicom_to_image/index.rst
+   doc_to_pdf/index.rst
+   doc_to_text/index.rst
+   doc_to_text_table/index.rst
+   document_coordinates_to_text/index.rst
+   extended_java_wrapper/index.rst
+   foundationone_parser/index.rst
+   hocr_merger/index.rst
+   hocr_to_image/index.rst
+   hocr_to_text_table/index.rst
+   image_adaptive_binarizer/index.rst
+   image_adaptive_scaler/index.rst
+   image_adaptive_thresholding/index.rst
+   image_base_transformer/index.rst
+   image_binarizer/index.rst
+   image_brands_ocr/index.rst
+   image_cells_to_text_table/index.rst
+   image_cropper/index.rst
+   image_draw_annotations/index.rst
+   image_draw_regions/index.rst
+   image_enhance_contrast/index.rst
+   image_erosion/index.rst
+   image_gpu_transform/index.rst
+   image_handwritten_detector/index.rst
+   image_handwritten_text_recognizer/index.rst
+   image_homogenize_light/index.rst
+   image_layout_analyzer/index.rst
+   image_morphology_operartion1/index.rst
+   image_morphology_operation/index.rst
+   image_noise_scorer/index.rst
+   image_remove_background/index.rst
+   image_remove_glare/index.rst
+   image_remove_objects/index.rst
+   image_scaler/index.rst
+   image_schema_converter/index.rst
+   image_skew_corrector/index.rst
+   image_split_regions/index.rst
+   image_table_cell_detector/index.rst
+   image_table_detector/index.rst
+   image_text_cleaner/index.rst
+   image_to_dicom/index.rst
+   image_to_hocr/index.rst
+   image_to_text/index.rst
+   image_transformer/index.rst
+   medical_vision_llm/index.rst
+   ner_output_cleaner/index.rst
+   ocr_resource_downloader/index.rst
+   params/index.rst
+   position_finder/index.rst
+   ppt_to_pdf/index.rst
+   ppt_to_text_table/index.rst
+   regions_filterer/index.rst
+   regions_merger/index.rst
+   update_text_position/index.rst
+   visual_document_classifier/index.rst
+   visual_document_classifier_lilt/index.rst
+   visual_document_classifier_v3/index.rst
+   visual_document_processor/index.rst
+   visual_question_answering/index.rst
+
+
+Package Contents
+----------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.transformers.Base64ToBinary
+   sparkocr.transformers.Base64ToImage
+   sparkocr.transformers.BinaryToImage
+   sparkocr.transformers.BrosHocrTokenizer
+   sparkocr.transformers.ChartToTextTable
+   sparkocr.transformers.DatasetReader
+   sparkocr.transformers.DicomDeidentifier
+   sparkocr.transformers.DicomDrawRegions
+   sparkocr.transformers.DicomMetadataDeidentifier
+   sparkocr.transformers.DicomSplitter
+   sparkocr.transformers.DicomToImage
+   sparkocr.transformers.DicomToImageV2
+   sparkocr.transformers.DicomToImageV3
+   sparkocr.transformers.DicomToMetadata
+   sparkocr.transformers.DicomToPdf
+   sparkocr.transformers.DicomUpdatePdf
+   sparkocr.transformers.DocToPdf
+   sparkocr.transformers.DocToText
+   sparkocr.transformers.DocToTextTable
+   sparkocr.transformers.DocumentCoordinatesToText
+   sparkocr.transformers.DocumentLayoutAnalyzer
+   sparkocr.transformers.FormRelationExtractor
+   sparkocr.transformers.FoundationOneReportParser
+   sparkocr.transformers.GPUImageTransformer
+   sparkocr.transformers.GeoRelationExtractor
+   sparkocr.transformers.HocrDocumentAssembler
+   sparkocr.transformers.HocrMerger
+   sparkocr.transformers.HocrToFeatures
+   sparkocr.transformers.HocrToImage
+   sparkocr.transformers.HocrToTextTable
+   sparkocr.transformers.HocrTokenizer
+   sparkocr.transformers.ImageAdaptiveBinarizer
+   sparkocr.transformers.ImageAdaptiveScaler
+   sparkocr.transformers.ImageAdaptiveThresholding
+   sparkocr.transformers.ImageBinarizer
+   sparkocr.transformers.ImageBrandsToText
+   sparkocr.transformers.ImageCellsToTextTable
+   sparkocr.transformers.ImageCheckBoxDetector
+   sparkocr.transformers.ImageCropper
+   sparkocr.transformers.ImageDocumentRegionDetector
+   sparkocr.transformers.ImageDrawAnnotations
+   sparkocr.transformers.ImageDrawRegions
+   sparkocr.transformers.ImageEnhanceContrast
+   sparkocr.transformers.ImageErosion
+   sparkocr.transformers.ImageHandwrittenDetector
+   sparkocr.transformers.ImageHandwrittenTextRecognizer
+   sparkocr.transformers.ImageHomogenizeLight
+   sparkocr.transformers.ImageInpainting
+   sparkocr.transformers.ImageLayoutAnalyzer
+   sparkocr.transformers.ImageMorphologyOperation
+   sparkocr.transformers.ImageMorphologyOperation1
+   sparkocr.transformers.ImageNoiseScorer
+   sparkocr.transformers.ImageRemoveBackground
+   sparkocr.transformers.ImageRemoveGlare
+   sparkocr.transformers.ImageRemoveObjects
+   sparkocr.transformers.ImageScaler
+   sparkocr.transformers.ImageSchemaConverter
+   sparkocr.transformers.ImageSkewCorrector
+   sparkocr.transformers.ImageSplitRegions
+   sparkocr.transformers.ImageTableCellDetector
+   sparkocr.transformers.ImageTableDetector
+   sparkocr.transformers.ImageTextCleaner
+   sparkocr.transformers.ImageTextDetector
+   sparkocr.transformers.ImageTextDetectorCraft
+   sparkocr.transformers.ImageTextDetectorDit
+   sparkocr.transformers.ImageTextDetectorV2
+   sparkocr.transformers.ImageToDicom
+   sparkocr.transformers.ImageToHocr
+   sparkocr.transformers.ImageToPdf
+   sparkocr.transformers.ImageToText
+   sparkocr.transformers.ImageToTextModelServing
+   sparkocr.transformers.ImageToTextPdf
+   sparkocr.transformers.ImageToTextV2
+   sparkocr.transformers.ImageToTextV3
+   sparkocr.transformers.ImageToTextV4
+   sparkocr.transformers.ImageToTextWeb
+   sparkocr.transformers.ImageTransformer
+   sparkocr.transformers.MedicalVisionLLM
+   sparkocr.transformers.NerOutputCleaner
+   sparkocr.transformers.PdfAssembler
+   sparkocr.transformers.PdfDrawRegions
+   sparkocr.transformers.PdfToForm
+   sparkocr.transformers.PdfToHocr
+   sparkocr.transformers.PdfToImage
+   sparkocr.transformers.PdfToText
+   sparkocr.transformers.PdfToTextTable
+   sparkocr.transformers.PptToPdf
+   sparkocr.transformers.PptToTextTable
+   sparkocr.transformers.RegionsFilterer
+   sparkocr.transformers.RegionsMerger
+   sparkocr.transformers.TextToPdf
+   sparkocr.transformers.UpdateTextPosition
+   sparkocr.transformers.VisualDocumentClassifier
+   sparkocr.transformers.VisualDocumentClassifierLilt
+   sparkocr.transformers.VisualDocumentClassifierV3
+   sparkocr.transformers.VisualDocumentNer
+   sparkocr.transformers.VisualDocumentNerGeo
+   sparkocr.transformers.VisualDocumentNerLayoutLMv1
+   sparkocr.transformers.VisualDocumentNerLilt
+   sparkocr.transformers.VisualDocumentProcessor
+   sparkocr.transformers.VisualQuestionAnswering
+   sparkocr.transformers.VisualQuestionAnsweringDonut
+   sparkocr.transformers.VisualQuestionAnsweringPix2Struct
+   sparkocr.transformers.VitImageEmbeddings
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

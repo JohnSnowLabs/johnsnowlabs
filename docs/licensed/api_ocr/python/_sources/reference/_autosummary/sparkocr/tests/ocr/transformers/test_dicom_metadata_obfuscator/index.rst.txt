@@ -1,0 +1,30 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.test_dicom_metadata_obfuscator`
+========================================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.test_dicom_metadata_obfuscator
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.test_dicom_metadata_obfuscator.TestDicomMetadataObfuscator
+
+
+
+
+.. py:class:: TestDicomMetadataObfuscator
+
+   .. py:method:: test_dicom_basic_obfuscator(spark_session, all_dicoms_df)
+
+      Let's try all the Dicom files we have against all the CSVs
+
+
+

@@ -1,0 +1,31 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.dicom.test_dicom_splitter`
+===================================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.dicom.test_dicom_splitter
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.dicom.test_dicom_splitter.TestDicomSplitter
+
+
+
+
+.. py:class:: TestDicomSplitter
+
+   .. py:method:: test_fixed_number_partition(spark_session)
+
+
+   .. py:method:: test_fixed_size_partition(spark_session)
+
+
+

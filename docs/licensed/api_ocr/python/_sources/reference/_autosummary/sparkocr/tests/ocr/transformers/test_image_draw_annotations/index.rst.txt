@@ -1,0 +1,39 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.test_image_draw_annotations`
+=====================================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.test_image_draw_annotations
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.test_image_draw_annotations.TestImageDrawAnnotations
+
+
+
+
+.. py:class:: TestImageDrawAnnotations
+
+   .. py:attribute:: imagePath
+      
+
+      
+
+   .. py:method:: returnPipeline()
+
+
+   .. py:method:: test_using_wildcard_in_colorMap(spark_session)
+
+
+   .. py:method:: test_with_missing_label_in_colorMap(spark_session)
+
+
+

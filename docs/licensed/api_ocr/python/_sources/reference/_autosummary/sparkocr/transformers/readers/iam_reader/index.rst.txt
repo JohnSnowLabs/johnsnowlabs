@@ -1,0 +1,92 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.transformers.readers.iam_reader`
+==================================================
+
+.. py:module:: sparkocr.transformers.readers.iam_reader
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.transformers.readers.iam_reader.IAMReader
+
+
+
+
+.. py:class:: IAMReader(**kwargs)
+
+   IAMReader(
+   spark_session=spark,
+   root_work_dir="./Result/IAM_Process",
+   target_dir="./Result/IAM_Result",
+   clean_up=True,
+   AWS_ACCESS_KEY_ID = 'AWS_ACCESS_KEY_ID',
+   AWS_SECRET_ACCESS_KEY = 'AWS_SECRET_ACCESS_KEY',
+   AWS_SESSION_TOKEN = 'AWS_SESSION_TOKEN')()
+
+   .. py:attribute:: AWS_KEY_ID
+      
+
+      
+
+   .. py:attribute:: AWS_SECRET_KEY
+      
+
+      
+
+   .. py:attribute:: AWS_SESSION_TOKEN
+      
+
+      
+
+   .. py:attribute:: FILE_NAME
+      
+
+      
+
+   .. py:attribute:: S3_URI
+      :annotation: = 's3://dev.johnsnowlabs.com/ocr/datasets/IAM.zip'
+
+      
+
+   .. py:attribute:: clean_up
+      
+
+      
+
+   .. py:attribute:: root_work_dir
+      
+
+      
+
+   .. py:attribute:: spark
+      
+
+      
+
+   .. py:attribute:: target_dir
+      
+
+      
+
+   .. py:method:: download_and_extract()
+
+
+   .. py:method:: extract_file_name(file_path)
+      :staticmethod:
+
+
+   .. py:method:: iam_reader(load_dir)
+
+
+   .. py:method:: read_annotation_files()
+
+
+

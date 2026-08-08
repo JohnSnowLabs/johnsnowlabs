@@ -1,0 +1,1676 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.enums`
+========================
+
+.. py:module:: sparkocr.enums
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.enums.AdaptiveThresholdingMethod
+   sparkocr.enums.AdaptiveThresholdingMode
+   sparkocr.enums.CellDetectionAlgos
+   sparkocr.enums.Color
+   sparkocr.enums.CompressionType
+   sparkocr.enums.CropSquareType
+   sparkocr.enums.DatasetType
+   sparkocr.enums.DetectorOutputFormat
+   sparkocr.enums.DicomCompression
+   sparkocr.enums.EngineMode
+   sparkocr.enums.FontStyle
+   sparkocr.enums.FrameSamplingStrategy
+   sparkocr.enums.ImageSchemaConversion
+   sparkocr.enums.ImageType
+   sparkocr.enums.KernelShape
+   sparkocr.enums.Language
+   sparkocr.enums.ModelType
+   sparkocr.enums.MorphologyOperationType
+   sparkocr.enums.NoiseMethod
+   sparkocr.enums.OcrOutputFormat
+   sparkocr.enums.PageIteratorLevel
+   sparkocr.enums.PageSegmentationMode
+   sparkocr.enums.RelationOutputFormat
+   sparkocr.enums.SplittingStrategy
+   sparkocr.enums.TableOutputFormat
+   sparkocr.enums.TextStripperType
+   sparkocr.enums.ThresholdingMethod
+   sparkocr.enums.TokenizerType
+   sparkocr.enums.VisualDocumentProcessorOcrEngines
+
+
+
+
+.. py:class:: AdaptiveThresholdingMethod
+
+   Bases: :py:obj:`enum.Enum`
+
+   Method used to determine adaptive threshold for local neighbourhood in
+           weighted mean image.
+       * 'gaussian': apply gaussian filter
+       * 'mean': apply arithmetic mean filter
+       * 'median': apply median rank filter
+
+   .. py:attribute:: GAUSSIAN
+      :annotation: = 'gaussian'
+
+      
+
+   .. py:attribute:: MEAN
+      :annotation: = 'mean'
+
+      
+
+   .. py:attribute:: MEDIAN
+      :annotation: = 'median'
+
+      
+
+   .. py:attribute:: SINGH
+      :annotation: = 'singh'
+
+      
+
+   .. py:attribute:: WOLF
+      :annotation: = 'wolf'
+
+      
+
+
+.. py:class:: AdaptiveThresholdingMode
+
+   Bases: :py:obj:`enum.Enum`
+
+   The mode parameter determines how the array borders are handled, where
+   cval is the value when mode is equal to 'constant'.
+
+   .. py:attribute:: CONSTANT
+      :annotation: = 'constant'
+
+      
+
+   .. py:attribute:: MIRROR
+      :annotation: = 'mirror'
+
+      
+
+   .. py:attribute:: NEAREST
+      :annotation: = 'nearest'
+
+      
+
+   .. py:attribute:: REFLECT
+      :annotation: = 'reflect'
+
+      
+
+   .. py:attribute:: WRAP
+      :annotation: = 'wrap'
+
+      
+
+
+.. py:class:: CellDetectionAlgos
+
+   Bases: :py:obj:`str`, :py:obj:`enum.Enum`
+
+   str(object='') -> str
+   str(bytes_or_buffer[, encoding[, errors]]) -> str
+
+   Create a new string object from the given object. If encoding or
+   errors is specified, then the object must expose a data buffer
+   that will be decoded using the given encoding and error handler.
+   Otherwise, returns the result of object.__str__() (if defined)
+   or repr(object).
+   encoding defaults to sys.getdefaultencoding().
+   errors defaults to 'strict'.
+
+   .. py:attribute:: CONTOURS
+      :annotation: = 'contours'
+
+      
+
+   .. py:attribute:: MORPHOPS
+      :annotation: = 'morphops'
+
+      
+
+
+.. py:class:: Color
+
+   Bases: :py:obj:`enum.Enum`
+
+   Generic enumeration.
+
+   Derive from this class to define new enumerations.
+
+   .. py:attribute:: aliceblue
+      :annotation: = (240, 248, 255)
+
+      
+
+   .. py:attribute:: antiquewhite
+      :annotation: = (250, 235, 215)
+
+      
+
+   .. py:attribute:: aqua
+      :annotation: = (0, 255, 255)
+
+      
+
+   .. py:attribute:: aquamarine
+      :annotation: = (127, 255, 212)
+
+      
+
+   .. py:attribute:: azure
+      :annotation: = (240, 255, 255)
+
+      
+
+   .. py:attribute:: beige
+      :annotation: = (245, 245, 220)
+
+      
+
+   .. py:attribute:: bisque
+      :annotation: = (255, 228, 196)
+
+      
+
+   .. py:attribute:: black
+      :annotation: = (0, 0, 0)
+
+      
+
+   .. py:attribute:: blanchedalmond
+      :annotation: = (255, 235, 205)
+
+      
+
+   .. py:attribute:: blue
+      :annotation: = (0, 0, 255)
+
+      
+
+   .. py:attribute:: blueviolet
+      :annotation: = (138, 43, 226)
+
+      
+
+   .. py:attribute:: brown
+      :annotation: = (165, 42, 42)
+
+      
+
+   .. py:attribute:: burlywood
+      :annotation: = (222, 184, 135)
+
+      
+
+   .. py:attribute:: cadetblue
+      :annotation: = (95, 158, 160)
+
+      
+
+   .. py:attribute:: chartreuse
+      :annotation: = (127, 255, 0)
+
+      
+
+   .. py:attribute:: chocolate
+      :annotation: = (210, 105, 30)
+
+      
+
+   .. py:attribute:: coral
+      :annotation: = (255, 127, 80)
+
+      
+
+   .. py:attribute:: cornflowerblue
+      :annotation: = (100, 149, 237)
+
+      
+
+   .. py:attribute:: cornsilk
+      :annotation: = (255, 248, 220)
+
+      
+
+   .. py:attribute:: crimson
+      :annotation: = (220, 20, 60)
+
+      
+
+   .. py:attribute:: cyan
+      :annotation: = (0, 255, 255)
+
+      
+
+   .. py:attribute:: darkblue
+      :annotation: = (0, 0, 139)
+
+      
+
+   .. py:attribute:: darkcyan
+      :annotation: = (0, 139, 139)
+
+      
+
+   .. py:attribute:: darkgoldenrod
+      :annotation: = (184, 134, 11)
+
+      
+
+   .. py:attribute:: darkgray
+      :annotation: = (169, 169, 169)
+
+      
+
+   .. py:attribute:: darkgreen
+      :annotation: = (0, 100, 0)
+
+      
+
+   .. py:attribute:: darkkhaki
+      :annotation: = (189, 183, 107)
+
+      
+
+   .. py:attribute:: darkmagenta
+      :annotation: = (139, 0, 139)
+
+      
+
+   .. py:attribute:: darkolivegreen
+      :annotation: = (85, 107, 47)
+
+      
+
+   .. py:attribute:: darkorange
+      :annotation: = (255, 140, 0)
+
+      
+
+   .. py:attribute:: darkorchid
+      :annotation: = (153, 50, 204)
+
+      
+
+   .. py:attribute:: darkred
+      :annotation: = (139, 0, 0)
+
+      
+
+   .. py:attribute:: darksalmon
+      :annotation: = (233, 150, 122)
+
+      
+
+   .. py:attribute:: darkseagreen
+      :annotation: = (143, 188, 143)
+
+      
+
+   .. py:attribute:: darkslateblue
+      :annotation: = (72, 61, 139)
+
+      
+
+   .. py:attribute:: darkslategray
+      :annotation: = (47, 79, 79)
+
+      
+
+   .. py:attribute:: darkturquoise
+      :annotation: = (0, 206, 209)
+
+      
+
+   .. py:attribute:: darkviolet
+      :annotation: = (148, 0, 211)
+
+      
+
+   .. py:attribute:: deeppink
+      :annotation: = (255, 20, 147)
+
+      
+
+   .. py:attribute:: deepskyblue
+      :annotation: = (0, 191, 255)
+
+      
+
+   .. py:attribute:: dimgray
+      :annotation: = (105, 105, 105)
+
+      
+
+   .. py:attribute:: dodgerblue
+      :annotation: = (30, 144, 255)
+
+      
+
+   .. py:attribute:: firebrick
+      :annotation: = (178, 34, 34)
+
+      
+
+   .. py:attribute:: floralwhite
+      :annotation: = (255, 250, 240)
+
+      
+
+   .. py:attribute:: forestgreen
+      :annotation: = (34, 139, 34)
+
+      
+
+   .. py:attribute:: fuchsia
+      :annotation: = (255, 0, 255)
+
+      
+
+   .. py:attribute:: gainsboro
+      :annotation: = (220, 220, 220)
+
+      
+
+   .. py:attribute:: ghostwhite
+      :annotation: = (248, 248, 255)
+
+      
+
+   .. py:attribute:: gold
+      :annotation: = (255, 215, 0)
+
+      
+
+   .. py:attribute:: goldenrod
+      :annotation: = (218, 165, 32)
+
+      
+
+   .. py:attribute:: gray
+      :annotation: = (128, 128, 128)
+
+      
+
+   .. py:attribute:: green
+      :annotation: = (0, 128, 0)
+
+      
+
+   .. py:attribute:: greenyellow
+      :annotation: = (173, 255, 47)
+
+      
+
+   .. py:attribute:: honeydew
+      :annotation: = (240, 255, 240)
+
+      
+
+   .. py:attribute:: hotpink
+      :annotation: = (255, 105, 180)
+
+      
+
+   .. py:attribute:: indianred
+      :annotation: = (205, 92, 92)
+
+      
+
+   .. py:attribute:: indigo
+      :annotation: = (75, 0, 130)
+
+      
+
+   .. py:attribute:: ivory
+      :annotation: = (255, 255, 240)
+
+      
+
+   .. py:attribute:: khaki
+      :annotation: = (240, 230, 140)
+
+      
+
+   .. py:attribute:: lavender
+      :annotation: = (230, 230, 250)
+
+      
+
+   .. py:attribute:: lavenderblush
+      :annotation: = (255, 240, 245)
+
+      
+
+   .. py:attribute:: lawngreen
+      :annotation: = (124, 252, 0)
+
+      
+
+   .. py:attribute:: lemonchiffon
+      :annotation: = (255, 250, 205)
+
+      
+
+   .. py:attribute:: lightblue
+      :annotation: = (173, 216, 230)
+
+      
+
+   .. py:attribute:: lightcoral
+      :annotation: = (240, 128, 128)
+
+      
+
+   .. py:attribute:: lightcyan
+      :annotation: = (224, 255, 255)
+
+      
+
+   .. py:attribute:: lightgoldenrodyellow
+      :annotation: = (250, 250, 210)
+
+      
+
+   .. py:attribute:: lightgreen
+      :annotation: = (144, 238, 144)
+
+      
+
+   .. py:attribute:: lightgrey
+      :annotation: = (211, 211, 211)
+
+      
+
+   .. py:attribute:: lightpink
+      :annotation: = (255, 182, 193)
+
+      
+
+   .. py:attribute:: lightsalmon
+      :annotation: = (255, 160, 122)
+
+      
+
+   .. py:attribute:: lightseagreen
+      :annotation: = (32, 178, 170)
+
+      
+
+   .. py:attribute:: lightskyblue
+      :annotation: = (135, 206, 250)
+
+      
+
+   .. py:attribute:: lightslategray
+      :annotation: = (119, 136, 153)
+
+      
+
+   .. py:attribute:: lightsteelblue
+      :annotation: = (176, 196, 222)
+
+      
+
+   .. py:attribute:: lightyellow
+      :annotation: = (255, 255, 224)
+
+      
+
+   .. py:attribute:: lime
+      :annotation: = (0, 255, 0)
+
+      
+
+   .. py:attribute:: limegreen
+      :annotation: = (50, 205, 50)
+
+      
+
+   .. py:attribute:: linen
+      :annotation: = (250, 240, 230)
+
+      
+
+   .. py:attribute:: magenta
+      :annotation: = (255, 0, 255)
+
+      
+
+   .. py:attribute:: maroon
+      :annotation: = (128, 0, 0)
+
+      
+
+   .. py:attribute:: mediumaquamarine
+      :annotation: = (102, 205, 170)
+
+      
+
+   .. py:attribute:: mediumblue
+      :annotation: = (0, 0, 205)
+
+      
+
+   .. py:attribute:: mediumorchid
+      :annotation: = (186, 85, 211)
+
+      
+
+   .. py:attribute:: mediumpurple
+      :annotation: = (147, 112, 219)
+
+      
+
+   .. py:attribute:: mediumseagreen
+      :annotation: = (60, 179, 113)
+
+      
+
+   .. py:attribute:: mediumslateblue
+      :annotation: = (123, 104, 238)
+
+      
+
+   .. py:attribute:: mediumspringgreen
+      :annotation: = (0, 250, 154)
+
+      
+
+   .. py:attribute:: mediumturquoise
+      :annotation: = (72, 209, 204)
+
+      
+
+   .. py:attribute:: mediumvioletred
+      :annotation: = (199, 21, 133)
+
+      
+
+   .. py:attribute:: midnightblue
+      :annotation: = (25, 25, 112)
+
+      
+
+   .. py:attribute:: mintcream
+      :annotation: = (245, 255, 250)
+
+      
+
+   .. py:attribute:: mistyrose
+      :annotation: = (255, 228, 225)
+
+      
+
+   .. py:attribute:: moccasin
+      :annotation: = (255, 228, 181)
+
+      
+
+   .. py:attribute:: navajowhite
+      :annotation: = (255, 222, 173)
+
+      
+
+   .. py:attribute:: navy
+      :annotation: = (0, 0, 128)
+
+      
+
+   .. py:attribute:: oldlace
+      :annotation: = (253, 245, 230)
+
+      
+
+   .. py:attribute:: olive
+      :annotation: = (128, 128, 0)
+
+      
+
+   .. py:attribute:: olivedrab
+      :annotation: = (107, 142, 35)
+
+      
+
+   .. py:attribute:: orange
+      :annotation: = (255, 165, 0)
+
+      
+
+   .. py:attribute:: orangered
+      :annotation: = (255, 69, 0)
+
+      
+
+   .. py:attribute:: orchid
+      :annotation: = (218, 112, 214)
+
+      
+
+   .. py:attribute:: palegoldenrod
+      :annotation: = (238, 232, 170)
+
+      
+
+   .. py:attribute:: palegreen
+      :annotation: = (152, 251, 152)
+
+      
+
+   .. py:attribute:: paleturquoise
+      :annotation: = (175, 238, 238)
+
+      
+
+   .. py:attribute:: palevioletred
+      :annotation: = (219, 112, 147)
+
+      
+
+   .. py:attribute:: papayawhip
+      :annotation: = (255, 239, 213)
+
+      
+
+   .. py:attribute:: peachpuff
+      :annotation: = (255, 218, 185)
+
+      
+
+   .. py:attribute:: peru
+      :annotation: = (205, 133, 63)
+
+      
+
+   .. py:attribute:: pink
+      :annotation: = (255, 192, 203)
+
+      
+
+   .. py:attribute:: plum
+      :annotation: = (221, 160, 221)
+
+      
+
+   .. py:attribute:: powderblue
+      :annotation: = (176, 224, 230)
+
+      
+
+   .. py:attribute:: purple
+      :annotation: = (128, 0, 128)
+
+      
+
+   .. py:attribute:: red
+      :annotation: = (255, 0, 0)
+
+      
+
+   .. py:attribute:: rosybrown
+      :annotation: = (188, 143, 143)
+
+      
+
+   .. py:attribute:: royalblue
+      :annotation: = (65, 105, 225)
+
+      
+
+   .. py:attribute:: saddlebrown
+      :annotation: = (139, 69, 19)
+
+      
+
+   .. py:attribute:: salmon
+      :annotation: = (250, 128, 114)
+
+      
+
+   .. py:attribute:: sandybrown
+      :annotation: = (244, 164, 96)
+
+      
+
+   .. py:attribute:: seagreen
+      :annotation: = (46, 139, 87)
+
+      
+
+   .. py:attribute:: seashell
+      :annotation: = (255, 245, 238)
+
+      
+
+   .. py:attribute:: sienna
+      :annotation: = (160, 82, 45)
+
+      
+
+   .. py:attribute:: silver
+      :annotation: = (192, 192, 192)
+
+      
+
+   .. py:attribute:: skyblue
+      :annotation: = (135, 206, 235)
+
+      
+
+   .. py:attribute:: slateblue
+      :annotation: = (106, 90, 205)
+
+      
+
+   .. py:attribute:: slategray
+      :annotation: = (112, 128, 144)
+
+      
+
+   .. py:attribute:: snow
+      :annotation: = (255, 250, 250)
+
+      
+
+   .. py:attribute:: springgreen
+      :annotation: = (0, 255, 127)
+
+      
+
+   .. py:attribute:: steelblue
+      :annotation: = (70, 130, 180)
+
+      
+
+   .. py:attribute:: tan
+      :annotation: = (210, 180, 140)
+
+      
+
+   .. py:attribute:: teal
+      :annotation: = (0, 128, 128)
+
+      
+
+   .. py:attribute:: thistle
+      :annotation: = (216, 191, 216)
+
+      
+
+   .. py:attribute:: tomato
+      :annotation: = (255, 99, 71)
+
+      
+
+   .. py:attribute:: turquoise
+      :annotation: = (64, 224, 208)
+
+      
+
+   .. py:attribute:: violet
+      :annotation: = (238, 130, 238)
+
+      
+
+   .. py:attribute:: wheat
+      :annotation: = (245, 222, 179)
+
+      
+
+   .. py:attribute:: white
+      :annotation: = (255, 255, 255)
+
+      
+
+   .. py:attribute:: whitesmoke
+      :annotation: = (245, 245, 245)
+
+      
+
+   .. py:attribute:: yellow
+      :annotation: = (255, 255, 0)
+
+      
+
+   .. py:attribute:: yellowgreen
+      :annotation: = (154, 205, 50)
+
+      
+
+
+.. py:class:: CompressionType
+
+   Bases: :py:obj:`str`, :py:obj:`enum.Enum`
+
+   str(object='') -> str
+   str(bytes_or_buffer[, encoding[, errors]]) -> str
+
+   Create a new string object from the given object. If encoding or
+   errors is specified, then the object must expose a data buffer
+   that will be decoded using the given encoding and error handler.
+   Otherwise, returns the result of object.__str__() (if defined)
+   or repr(object).
+   encoding defaults to sys.getdefaultencoding().
+   errors defaults to 'strict'.
+
+   .. py:attribute:: JPEG
+      :annotation: = 'JPEG'
+
+      
+
+   .. py:attribute:: LOSSLESS
+      :annotation: = 'LOSSLESS'
+
+      
+
+
+.. py:class:: CropSquareType
+
+   Bases: :py:obj:`enum.Enum`
+
+   Generic enumeration.
+
+   Derive from this class to define new enumerations.
+
+   .. py:attribute:: BOTTOM_CENTER
+      :annotation: = 8
+
+      
+
+   .. py:attribute:: BOTTOM_LEFT
+      :annotation: = 7
+
+      
+
+   .. py:attribute:: BOTTOM_RIGHT
+      :annotation: = 9
+
+      
+
+   .. py:attribute:: CENTER
+      :annotation: = 5
+
+      
+
+   .. py:attribute:: CENTER_LEFT
+      :annotation: = 4
+
+      
+
+   .. py:attribute:: CENTER_RIGHT
+      :annotation: = 6
+
+      
+
+   .. py:attribute:: TOP_CENTER
+      :annotation: = 2
+
+      
+
+   .. py:attribute:: TOP_LEFT
+      :annotation: = 1
+
+      
+
+   .. py:attribute:: TOP_RIGHT
+      :annotation: = 3
+
+      
+
+
+.. py:class:: DatasetType
+
+   Bases: :py:obj:`str`, :py:obj:`enum.Enum`
+
+   str(object='') -> str
+   str(bytes_or_buffer[, encoding[, errors]]) -> str
+
+   Create a new string object from the given object. If encoding or
+   errors is specified, then the object must expose a data buffer
+   that will be decoded using the given encoding and error handler.
+   Otherwise, returns the result of object.__str__() (if defined)
+   or repr(object).
+   encoding defaults to sys.getdefaultencoding().
+   errors defaults to 'strict'.
+
+   .. py:attribute:: BASIC
+      :annotation: = 'basic'
+
+      
+
+   .. py:attribute:: ITERABLE
+      :annotation: = 'iterable'
+
+      
+
+
+.. py:class:: DetectorOutputFormat
+
+   Bases: :py:obj:`str`, :py:obj:`enum.Enum`
+
+   str(object='') -> str
+   str(bytes_or_buffer[, encoding[, errors]]) -> str
+
+   Create a new string object from the given object. If encoding or
+   errors is specified, then the object must expose a data buffer
+   that will be decoded using the given encoding and error handler.
+   Otherwise, returns the result of object.__str__() (if defined)
+   or repr(object).
+   encoding defaults to sys.getdefaultencoding().
+   errors defaults to 'strict'.
+
+   .. py:attribute:: HOCR
+      :annotation: = 'hocr'
+
+      
+
+   .. py:attribute:: REGIONS
+      :annotation: = 'regions'
+
+      
+
+
+.. py:class:: DicomCompression
+
+   Bases: :py:obj:`str`, :py:obj:`enum.Enum`
+
+   str(object='') -> str
+   str(bytes_or_buffer[, encoding[, errors]]) -> str
+
+   Create a new string object from the given object. If encoding or
+   errors is specified, then the object must expose a data buffer
+   that will be decoded using the given encoding and error handler.
+   Otherwise, returns the result of object.__str__() (if defined)
+   or repr(object).
+   encoding defaults to sys.getdefaultencoding().
+   errors defaults to 'strict'.
+
+   .. py:attribute:: JPEGBaseline8Bit
+      :annotation: = 'JPEGBaseline8Bit'
+
+      
+
+   .. py:attribute:: JPEGLSLossless
+      :annotation: = 'JPEGLSLossless'
+
+      
+
+   .. py:attribute:: RLELossless
+      :annotation: = 'RLELossless'
+
+      
+
+
+.. py:class:: EngineMode
+
+   Bases: :py:obj:`enum.IntEnum`
+
+   Enum where members are also (and must be) ints
+
+   .. py:attribute:: DEFAULT
+      :annotation: = 3
+
+      
+
+   .. py:attribute:: LSTM_ONLY
+      :annotation: = 1
+
+      
+
+   .. py:attribute:: TESSERACT_LSTM_COMBINED
+      :annotation: = 2
+
+      
+
+   .. py:attribute:: TESSERACT_ONLY
+      :annotation: = 0
+
+      
+
+
+.. py:class:: FontStyle
+
+   Bases: :py:obj:`str`, :py:obj:`enum.Enum`
+
+   str(object='') -> str
+   str(bytes_or_buffer[, encoding[, errors]]) -> str
+
+   Create a new string object from the given object. If encoding or
+   errors is specified, then the object must expose a data buffer
+   that will be decoded using the given encoding and error handler.
+   Otherwise, returns the result of object.__str__() (if defined)
+   or repr(object).
+   encoding defaults to sys.getdefaultencoding().
+   errors defaults to 'strict'.
+
+   .. py:attribute:: AUTO
+      :annotation: = 'Auto'
+
+      
+
+   .. py:attribute:: BOLD
+      :annotation: = 'Bold'
+
+      
+
+   .. py:attribute:: PLAIN
+      :annotation: = 'Plain'
+
+      
+
+
+.. py:class:: FrameSamplingStrategy
+
+   Bases: :py:obj:`str`, :py:obj:`enum.Enum`
+
+   str(object='') -> str
+   str(bytes_or_buffer[, encoding[, errors]]) -> str
+
+   Create a new string object from the given object. If encoding or
+   errors is specified, then the object must expose a data buffer
+   that will be decoded using the given encoding and error handler.
+   Otherwise, returns the result of object.__str__() (if defined)
+   or repr(object).
+   encoding defaults to sys.getdefaultencoding().
+   errors defaults to 'strict'.
+
+   .. py:attribute:: CONSECUTIVE
+      :annotation: = 'Consecutive'
+
+      
+
+   .. py:attribute:: MIDDLE
+      :annotation: = 'Middle'
+
+      
+
+   .. py:attribute:: RANDOM
+      :annotation: = 'Random'
+
+      
+
+   .. py:attribute:: STRIDE
+      :annotation: = 'Stride'
+
+      
+
+
+.. py:class:: ImageSchemaConversion
+
+   Bases: :py:obj:`str`, :py:obj:`enum.Enum`
+
+   str(object='') -> str
+   str(bytes_or_buffer[, encoding[, errors]]) -> str
+
+   Create a new string object from the given object. If encoding or
+   errors is specified, then the object must expose a data buffer
+   that will be decoded using the given encoding and error handler.
+   Otherwise, returns the result of object.__str__() (if defined)
+   or repr(object).
+   encoding defaults to sys.getdefaultencoding().
+   errors defaults to 'strict'.
+
+   .. py:attribute:: ASSEMBLER
+      :annotation: = 'assembler'
+
+      
+
+   .. py:attribute:: INTERNAL
+      :annotation: = 'internal'
+
+      
+
+
+.. py:class:: ImageType
+
+   Bases: :py:obj:`enum.IntEnum`
+
+   Enum where members are also (and must be) ints
+
+   .. py:attribute:: TYPE_3BYTE_BGR
+      :annotation: = 5
+
+      
+
+   .. py:attribute:: TYPE_4BYTE_ABGR
+      :annotation: = 6
+
+      
+
+   .. py:attribute:: TYPE_BYTE_BINARY
+      :annotation: = 12
+
+      
+
+   .. py:attribute:: TYPE_BYTE_GRAY
+      :annotation: = 10
+
+      
+
+   .. py:attribute:: TYPE_JPEG
+      :annotation: = 13
+
+      
+
+   .. py:attribute:: TYPE_USHORT_GRAY
+      :annotation: = 11
+
+      
+
+
+.. py:class:: KernelShape
+
+   Bases: :py:obj:`enum.Enum`
+
+   Generic enumeration.
+
+   Derive from this class to define new enumerations.
+
+   .. py:attribute:: DIAMOND
+      :annotation: = 'diamond'
+
+      
+
+   .. py:attribute:: DISK
+      :annotation: = 'disk'
+
+      
+
+   .. py:attribute:: OCTAGON
+      :annotation: = 'octagon'
+
+      
+
+   .. py:attribute:: OCTAHEDRON
+      :annotation: = 'octahedron'
+
+      
+
+   .. py:attribute:: SQUARE
+      :annotation: = 'square'
+
+      
+
+   .. py:attribute:: STAR
+      :annotation: = 'star'
+
+      
+
+
+.. py:class:: Language
+
+   Bases: :py:obj:`enum.Enum`
+
+   Generic enumeration.
+
+   Derive from this class to define new enumerations.
+
+   .. py:attribute:: ARA
+      :annotation: = 'ara'
+
+      
+
+   .. py:attribute:: CHI
+      :annotation: = 'chi_sim'
+
+      
+
+   .. py:attribute:: DAN
+      :annotation: = 'dan'
+
+      
+
+   .. py:attribute:: DEU
+      :annotation: = 'deu'
+
+      
+
+   .. py:attribute:: ENG
+      :annotation: = 'eng'
+
+      
+
+   .. py:attribute:: FRA
+      :annotation: = 'fra'
+
+      
+
+   .. py:attribute:: ITA
+      :annotation: = 'ita'
+
+      
+
+   .. py:attribute:: KOR
+      :annotation: = 'kor'
+
+      
+
+   .. py:attribute:: RUS
+      :annotation: = 'rus'
+
+      
+
+   .. py:attribute:: SPA
+      :annotation: = 'spa'
+
+      
+
+   .. py:attribute:: TUR
+      :annotation: = 'tur'
+
+      
+
+   .. py:attribute:: VIE
+      :annotation: = 'vie'
+
+      
+
+
+.. py:class:: ModelType
+
+   Bases: :py:obj:`enum.Enum`
+
+   Generic enumeration.
+
+   Derive from this class to define new enumerations.
+
+   .. py:attribute:: BASE
+      :annotation: = 'base'
+
+      
+
+   .. py:attribute:: BEST
+      :annotation: = 'best'
+
+      
+
+   .. py:attribute:: FAST
+      :annotation: = 'fast'
+
+      
+
+
+.. py:class:: MorphologyOperationType
+
+   Bases: :py:obj:`enum.Enum`
+
+   The morphological operation type
+
+   .. py:attribute:: CLOSING
+      :annotation: = 'closing'
+
+      
+
+   .. py:attribute:: DILATION
+      :annotation: = 'dilation'
+
+      
+
+   .. py:attribute:: EROSION
+      :annotation: = 'erosion'
+
+      
+
+   .. py:attribute:: OPENING
+      :annotation: = 'opening'
+
+      
+
+
+.. py:class:: NoiseMethod
+
+   Bases: :py:obj:`enum.Enum`
+
+   Generic enumeration.
+
+   Derive from this class to define new enumerations.
+
+   .. py:attribute:: RATIO
+      :annotation: = 'ratio'
+
+      
+
+   .. py:attribute:: VARIANCE
+      :annotation: = 'variance'
+
+      
+
+
+.. py:class:: OcrOutputFormat
+
+   Bases: :py:obj:`str`, :py:obj:`enum.Enum`
+
+   str(object='') -> str
+   str(bytes_or_buffer[, encoding[, errors]]) -> str
+
+   Create a new string object from the given object. If encoding or
+   errors is specified, then the object must expose a data buffer
+   that will be decoded using the given encoding and error handler.
+   Otherwise, returns the result of object.__str__() (if defined)
+   or repr(object).
+   encoding defaults to sys.getdefaultencoding().
+   errors defaults to 'strict'.
+
+   .. py:attribute:: FORMATTED_TEXT
+      :annotation: = 'formatted_text'
+
+      
+
+   .. py:attribute:: HOCR
+      :annotation: = 'hocr'
+
+      
+
+   .. py:attribute:: JSON
+      :annotation: = 'json'
+
+      
+
+   .. py:attribute:: TEXT
+      :annotation: = 'text'
+
+      
+
+   .. py:attribute:: TEXT_WITH_POSITIONS
+      :annotation: = 'text_with_positions'
+
+      
+
+
+.. py:class:: PageIteratorLevel
+
+   Bases: :py:obj:`enum.IntEnum`
+
+   Enum where members are also (and must be) ints
+
+   .. py:attribute:: BLOCK
+      :annotation: = 0
+
+      
+
+   .. py:attribute:: PARAGRAPH
+      :annotation: = 1
+
+      
+
+   .. py:attribute:: SYMBOL
+      :annotation: = 4
+
+      
+
+   .. py:attribute:: TEXTLINE
+      :annotation: = 2
+
+      
+
+   .. py:attribute:: WORD
+      :annotation: = 3
+
+      
+
+
+.. py:class:: PageSegmentationMode
+
+   Bases: :py:obj:`enum.IntEnum`
+
+   Enum where members are also (and must be) ints
+
+   .. py:attribute:: AUTO
+      :annotation: = 3
+
+      
+
+   .. py:attribute:: AUTO_ONLY
+      :annotation: = 2
+
+      
+
+   .. py:attribute:: AUTO_OSD
+      :annotation: = 1
+
+      
+
+   .. py:attribute:: CIRCLE_WORD
+      :annotation: = 9
+
+      
+
+   .. py:attribute:: OSD_ONLY
+      :annotation: = 0
+
+      
+
+   .. py:attribute:: SINGLE_BLOCK
+      :annotation: = 6
+
+      
+
+   .. py:attribute:: SINGLE_BLOCK_VERT_TEXT
+      :annotation: = 5
+
+      
+
+   .. py:attribute:: SINGLE_CHAR
+      :annotation: = 10
+
+      
+
+   .. py:attribute:: SINGLE_COLUMN
+      :annotation: = 4
+
+      
+
+   .. py:attribute:: SINGLE_LINE
+      :annotation: = 7
+
+      
+
+   .. py:attribute:: SINGLE_WORD
+      :annotation: = 8
+
+      
+
+   .. py:attribute:: SPARSE_TEXT
+      :annotation: = 11
+
+      
+
+   .. py:attribute:: SPARSE_TEXT_OSD
+      :annotation: = 12
+
+      
+
+
+.. py:class:: RelationOutputFormat
+
+   Bases: :py:obj:`str`, :py:obj:`enum.Enum`
+
+   str(object='') -> str
+   str(bytes_or_buffer[, encoding[, errors]]) -> str
+
+   Create a new string object from the given object. If encoding or
+   errors is specified, then the object must expose a data buffer
+   that will be decoded using the given encoding and error handler.
+   Otherwise, returns the result of object.__str__() (if defined)
+   or repr(object).
+   encoding defaults to sys.getdefaultencoding().
+   errors defaults to 'strict'.
+
+   .. py:attribute:: ANNOTATIONS
+      :annotation: = 'annotations'
+
+      
+
+   .. py:attribute:: JSON
+      :annotation: = 'json'
+
+      
+
+
+.. py:class:: SplittingStrategy
+
+   Bases: :py:obj:`enum.Enum`
+
+   Generic enumeration.
+
+   Derive from this class to define new enumerations.
+
+   .. py:attribute:: FIXED_NUMBER_OF_PARTITIONS
+      :annotation: = 0
+
+      
+
+   .. py:attribute:: FIXED_SIZE_OF_PARTITION
+      :annotation: = 1
+
+      
+
+
+.. py:class:: TableOutputFormat
+
+   Bases: :py:obj:`str`, :py:obj:`enum.Enum`
+
+   str(object='') -> str
+   str(bytes_or_buffer[, encoding[, errors]]) -> str
+
+   Create a new string object from the given object. If encoding or
+   errors is specified, then the object must expose a data buffer
+   that will be decoded using the given encoding and error handler.
+   Otherwise, returns the result of object.__str__() (if defined)
+   or repr(object).
+   encoding defaults to sys.getdefaultencoding().
+   errors defaults to 'strict'.
+
+   .. py:attribute:: CSV
+      :annotation: = 'csv'
+
+      
+
+   .. py:attribute:: TABLE
+      :annotation: = 'table'
+
+      
+
+
+.. py:class:: TextStripperType
+
+   Bases: :py:obj:`enum.Enum`
+
+   Text Stripper Type
+
+   .. py:attribute:: PDF_LAYOUT_TEXT_STRIPPER
+      :annotation: = 'PDFLayoutTextStripper'
+
+      
+
+   .. py:attribute:: PDF_TEXT_STRIPPER
+      :annotation: = 'PDFTextStripper'
+
+      
+
+
+.. py:class:: ThresholdingMethod
+
+   Bases: :py:obj:`enum.Enum`
+
+   Generic enumeration.
+
+   Derive from this class to define new enumerations.
+
+   .. py:attribute:: GAUSSIAN
+      :annotation: = 'gaussian'
+
+      
+
+   .. py:attribute:: OTSU
+      :annotation: = 'otsu'
+
+      
+
+   .. py:attribute:: SAUVOLA
+      :annotation: = 'sauvola'
+
+      
+
+
+.. py:class:: TokenizerType
+
+   Bases: :py:obj:`str`, :py:obj:`enum.Enum`
+
+   str(object='') -> str
+   str(bytes_or_buffer[, encoding[, errors]]) -> str
+
+   Create a new string object from the given object. If encoding or
+   errors is specified, then the object must expose a data buffer
+   that will be decoded using the given encoding and error handler.
+   Otherwise, returns the result of object.__str__() (if defined)
+   or repr(object).
+   encoding defaults to sys.getdefaultencoding().
+   errors defaults to 'strict'.
+
+   .. py:attribute:: BASIC
+      :annotation: = 'basic'
+
+      
+
+   .. py:attribute:: SIMPLE
+      :annotation: = 'simple'
+
+      
+
+
+.. py:class:: VisualDocumentProcessorOcrEngines
+
+   Bases: :py:obj:`str`, :py:obj:`enum.Enum`
+
+   str(object='') -> str
+   str(bytes_or_buffer[, encoding[, errors]]) -> str
+
+   Create a new string object from the given object. If encoding or
+   errors is specified, then the object must expose a data buffer
+   that will be decoded using the given encoding and error handler.
+   Otherwise, returns the result of object.__str__() (if defined)
+   or repr(object).
+   encoding defaults to sys.getdefaultencoding().
+   errors defaults to 'strict'.
+
+   .. py:attribute:: EASYOCR
+      :annotation: = 'EasyOcr'
+
+      
+
+   .. py:attribute:: OCRMAC
+      :annotation: = 'OcrMac'
+
+      
+
+   .. py:attribute:: RAPIDOCR
+      :annotation: = 'RapidOcr'
+
+      
+
+   .. py:attribute:: TESSERACT
+      :annotation: = 'TesseractOcr'
+
+      
+
+   .. py:attribute:: TESSERACTCLI
+      :annotation: = 'TesseractCliOcrOptions'
+
+      
+
+

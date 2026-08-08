@@ -1,0 +1,28 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.test_image_binarizer`
+==============================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.test_image_binarizer
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.test_image_binarizer.TestImageBinarizer
+
+
+
+
+.. py:class:: TestImageBinarizer
+
+   .. py:method:: test_image_binarazer(spark_session, image_df)
+
+
+

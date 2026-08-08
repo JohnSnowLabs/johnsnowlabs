@@ -353,6 +353,8 @@ sparknlp-healthcare:
         url: /docs/en/ocr
       - title: Installation
         url: /docs/en/ocr_install
+      - title: Python API (Sphinx)
+        url: /licensed/api_ocr/python
       - title: Version Compatibility
         url: /docs/en/version_compatibility
       - title: Pipeline components

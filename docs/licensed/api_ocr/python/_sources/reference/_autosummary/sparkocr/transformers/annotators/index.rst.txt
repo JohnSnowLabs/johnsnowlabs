@@ -1,0 +1,19 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.transformers.annotators`
+==========================================
+
+.. py:module:: sparkocr.transformers.annotators
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   form_relation_extractor/index.rst
+   geo_relation_extractor/index.rst
+
+

@@ -1,0 +1,33 @@
+﻿sparkocr
+========
+
+.. automodule:: sparkocr
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      info
+      load_license_validator
+      retry
+      start
+      version
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+

@@ -1,0 +1,91 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.transformers.readers.funsd_reader`
+====================================================
+
+.. py:module:: sparkocr.transformers.readers.funsd_reader
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.transformers.readers.funsd_reader.FunsdReader
+
+
+
+
+.. py:class:: FunsdReader(**kwargs)
+
+   FunsdReader(
+   spark_session=spark,
+   root_work_dir="./Result/FUNSD_PROCESS/",
+   target_dir="./Result/FUNSD_RESULT/",
+   supported_labels="all",
+   clean_up=True)()
+
+   .. py:attribute:: EXTRACTED
+      :annotation: = 'funsd'
+
+      
+
+   .. py:attribute:: FILENAME
+      :annotation: = 'funsd.zip'
+
+      
+
+   .. py:attribute:: RESULT
+      :annotation: = 'funsd_processed'
+
+      
+
+   .. py:attribute:: URL
+      :annotation: = 'https://guillaumejaume.github.io/FUNSD/dataset.zip'
+
+      
+
+   .. py:attribute:: clean_up
+      
+
+      
+
+   .. py:attribute:: root_work_dir
+      
+
+      
+
+   .. py:attribute:: schema
+      
+
+      
+
+   .. py:attribute:: spark
+      
+
+      
+
+   .. py:attribute:: target_dir
+      
+
+      
+
+   .. py:method:: create_file_identifier(file_path)
+      :staticmethod:
+
+
+   .. py:method:: download_and_extract()
+
+
+   .. py:method:: funsd_reader(combined_bytes, combined_extension)
+      :staticmethod:
+
+
+   .. py:method:: process_funsd_split(load_dir)
+
+
+

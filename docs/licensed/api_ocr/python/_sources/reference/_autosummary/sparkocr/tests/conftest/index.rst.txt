@@ -1,0 +1,293 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.conftest`
+=================================
+
+.. py:module:: sparkocr.tests.conftest
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.conftest.all_dicoms_df
+   sparkocr.tests.conftest.dicom_image_df
+   sparkocr.tests.conftest.dicom_image_with_metadata_df
+   sparkocr.tests.conftest.dicom_pdf_df
+   sparkocr.tests.conftest.dicom_single_image_df
+   sparkocr.tests.conftest.digital_pdf_df
+   sparkocr.tests.conftest.doc_coordinate_to_text_input_df
+   sparkocr.tests.conftest.doc_text_multipage_df
+   sparkocr.tests.conftest.form1_expected_output
+   sparkocr.tests.conftest.form_df
+   sparkocr.tests.conftest.genomic_json
+   sparkocr.tests.conftest.hocr_table_df
+   sparkocr.tests.conftest.html_df
+   sparkocr.tests.conftest.htr_span_fake_model
+   sparkocr.tests.conftest.image_brand_df
+   sparkocr.tests.conftest.image_cells_header_df
+   sparkocr.tests.conftest.image_check_df
+   sparkocr.tests.conftest.image_check_full_df
+   sparkocr.tests.conftest.image_check_hocr
+   sparkocr.tests.conftest.image_checkbox_document_df
+   sparkocr.tests.conftest.image_cropped_df
+   sparkocr.tests.conftest.image_df
+   sparkocr.tests.conftest.image_df_draw
+   sparkocr.tests.conftest.image_df_keeplayout
+   sparkocr.tests.conftest.image_handwritten_text_df
+   sparkocr.tests.conftest.image_kor_df
+   sparkocr.tests.conftest.image_multi_dicom_df
+   sparkocr.tests.conftest.image_noised_df
+   sparkocr.tests.conftest.image_noised_text
+   sparkocr.tests.conftest.image_signature_df
+   sparkocr.tests.conftest.image_table_cells_document_df
+   sparkocr.tests.conftest.image_table_cells_testdocument_df
+   sparkocr.tests.conftest.image_table_df
+   sparkocr.tests.conftest.image_table_document_corrected_df
+   sparkocr.tests.conftest.image_table_document_df
+   sparkocr.tests.conftest.image_table_hocr_cells_img_df
+   sparkocr.tests.conftest.image_text_lines_df
+   sparkocr.tests.conftest.pdf_df
+   sparkocr.tests.conftest.pdf_fonts_df
+   sparkocr.tests.conftest.pdf_genomic_df
+   sparkocr.tests.conftest.pdf_rotated_df
+   sparkocr.tests.conftest.pdf_rotated_text
+   sparkocr.tests.conftest.pdf_table_hocr_df
+   sparkocr.tests.conftest.pdf_table_hocr_nonascii_df
+   sparkocr.tests.conftest.pdf_table_image_df
+   sparkocr.tests.conftest.pdf_text_multipage_df
+   sparkocr.tests.conftest.pdf_text_tables_df
+   sparkocr.tests.conftest.pdf_with_acro_form_df
+   sparkocr.tests.conftest.pdf_with_xfa_form_df
+   sparkocr.tests.conftest.ppt_table_df
+   sparkocr.tests.conftest.ppt_text_multipage_df
+   sparkocr.tests.conftest.pptx_table_df
+   sparkocr.tests.conftest.pptx_text_multipage_df
+   sparkocr.tests.conftest.raw_image_df
+   sparkocr.tests.conftest.raw_jpeg2k_df
+   sparkocr.tests.conftest.raw_png_df
+   sparkocr.tests.conftest.raw_tiff_df
+   sparkocr.tests.conftest.regions_merger_df
+   sparkocr.tests.conftest.torch_fake_model
+   sparkocr.tests.conftest.updated_text_multipage_df
+   sparkocr.tests.conftest.visual_document_classifier_lilt_df
+   sparkocr.tests.conftest.visual_document_classifier_v2_df
+   sparkocr.tests.conftest.visual_document_classifier_v3_df
+   sparkocr.tests.conftest.visual_document_df
+   sparkocr.tests.conftest.visual_document_ner_df
+   sparkocr.tests.conftest.visual_document_ner_v2_df
+   sparkocr.tests.conftest.visual_document_ner_v2_train_df
+   sparkocr.tests.conftest.visual_qa_df
+
+
+
+.. py:function:: all_dicoms_df(spark_session)
+
+
+.. py:function:: dicom_image_df(spark_session)
+
+
+.. py:function:: dicom_image_with_metadata_df(spark_session)
+
+
+.. py:function:: dicom_pdf_df(spark_session)
+
+
+.. py:function:: dicom_single_image_df(spark_session)
+
+
+.. py:function:: digital_pdf_df(spark_session)
+
+
+.. py:function:: doc_coordinate_to_text_input_df(spark_session)
+
+
+.. py:function:: doc_text_multipage_df(spark_session)
+
+
+.. py:function:: form1_expected_output()
+
+
+.. py:function:: form_df(spark_session)
+
+
+.. py:function:: genomic_json(spark_session)
+
+
+.. py:function:: hocr_table_df(spark_session)
+
+
+.. py:function:: html_df(spark_session)
+
+
+.. py:function:: htr_span_fake_model(spark_session)
+
+
+.. py:function:: image_brand_df(spark_session)
+
+
+.. py:function:: image_cells_header_df(spark_session)
+
+
+.. py:function:: image_check_df(spark_session)
+
+
+.. py:function:: image_check_full_df(spark_session)
+
+
+.. py:function:: image_check_hocr(spark_session)
+
+
+.. py:function:: image_checkbox_document_df(spark_session)
+
+
+.. py:function:: image_cropped_df(spark_session)
+
+
+.. py:function:: image_df(spark_session)
+
+
+.. py:function:: image_df_draw(spark_session)
+
+
+.. py:function:: image_df_keeplayout(spark_session)
+
+
+.. py:function:: image_handwritten_text_df(spark_session)
+
+
+.. py:function:: image_kor_df(spark_session)
+
+
+.. py:function:: image_multi_dicom_df(spark_session)
+
+
+.. py:function:: image_noised_df(spark_session)
+
+
+.. py:function:: image_noised_text(spark_session)
+
+
+.. py:function:: image_signature_df(spark_session)
+
+
+.. py:function:: image_table_cells_document_df(spark_session)
+
+
+.. py:function:: image_table_cells_testdocument_df(spark_session)
+
+
+.. py:function:: image_table_df(spark_session)
+
+
+.. py:function:: image_table_document_corrected_df(spark_session)
+
+
+.. py:function:: image_table_document_df(spark_session)
+
+
+.. py:function:: image_table_hocr_cells_img_df(spark_session)
+
+
+.. py:function:: image_text_lines_df(spark_session)
+
+
+.. py:function:: pdf_df(spark_session)
+
+
+.. py:function:: pdf_fonts_df(spark_session)
+
+
+.. py:function:: pdf_genomic_df(spark_session)
+
+
+.. py:function:: pdf_rotated_df(spark_session)
+
+
+.. py:function:: pdf_rotated_text(spark_session)
+
+
+.. py:function:: pdf_table_hocr_df(spark_session)
+
+
+.. py:function:: pdf_table_hocr_nonascii_df(spark_session)
+
+
+.. py:function:: pdf_table_image_df(spark_session)
+
+
+.. py:function:: pdf_text_multipage_df(spark_session)
+
+
+.. py:function:: pdf_text_tables_df(spark_session)
+
+
+.. py:function:: pdf_with_acro_form_df(spark_session)
+
+
+.. py:function:: pdf_with_xfa_form_df(spark_session)
+
+
+.. py:function:: ppt_table_df(spark_session)
+
+
+.. py:function:: ppt_text_multipage_df(spark_session)
+
+
+.. py:function:: pptx_table_df(spark_session)
+
+
+.. py:function:: pptx_text_multipage_df(spark_session)
+
+
+.. py:function:: raw_image_df(spark_session)
+
+
+.. py:function:: raw_jpeg2k_df(spark_session)
+
+
+.. py:function:: raw_png_df(spark_session)
+
+
+.. py:function:: raw_tiff_df(spark_session)
+
+
+.. py:function:: regions_merger_df(spark_session)
+
+
+.. py:function:: torch_fake_model(spark_session)
+
+
+.. py:function:: updated_text_multipage_df(spark_session)
+
+
+.. py:function:: visual_document_classifier_lilt_df(spark_session)
+
+
+.. py:function:: visual_document_classifier_v2_df(spark_session)
+
+
+.. py:function:: visual_document_classifier_v3_df(spark_session)
+
+
+.. py:function:: visual_document_df(spark_session)
+
+
+.. py:function:: visual_document_ner_df(spark_session)
+
+
+.. py:function:: visual_document_ner_v2_df(spark_session)
+
+
+.. py:function:: visual_document_ner_v2_train_df(spark_session)
+
+
+.. py:function:: visual_qa_df(spark_session)
+
+

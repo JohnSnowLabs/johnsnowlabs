@@ -1,0 +1,31 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.test_pdf_draw_regions`
+===============================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.test_pdf_draw_regions
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.test_pdf_draw_regions.TestPdfDrawRegions
+
+
+
+
+.. py:class:: TestPdfDrawRegions
+
+   .. py:method:: get_pipeline()
+
+
+   .. py:method:: test_draw_regions(spark_session, pdf_text_multipage_df)
+
+
+

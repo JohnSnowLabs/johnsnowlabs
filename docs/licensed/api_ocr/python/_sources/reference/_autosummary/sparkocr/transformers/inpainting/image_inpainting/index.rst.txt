@@ -1,0 +1,443 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.transformers.inpainting.image_inpainting`
+===========================================================
+
+.. py:module:: sparkocr.transformers.inpainting.image_inpainting
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.transformers.inpainting.image_inpainting.ImageInpainting
+   sparkocr.transformers.inpainting.image_inpainting.ImageInpaintingWriter
+
+
+
+
+.. py:class:: ImageInpainting(classname='sparkocr.transformers.inpainting.ImageInpainting', java_model=None)
+
+   Bases: :py:obj:`pyspark.ml.wrapper.JavaTransformer`, :py:obj:`pyspark.ml.param.shared.HasInputCol`, :py:obj:`pyspark.ml.param.shared.HasOutputCol`, :py:obj:`sparkocr.transformers.params.HasForceProcessing`, :py:obj:`sparkocr.transformers.params.HasKeepInput`, :py:obj:`pyspark.ml.util.DefaultParamsReadable`, :py:obj:`ImageInpaintingWriter`, :py:obj:`pyspark.ml.util.JavaMLReadable`, :py:obj:`pyspark.ml.util.JavaMLWritable`
+
+   Image inpainting.
+
+   .. py:attribute:: InferenceCls
+      :annotation: = None
+
+      
+
+   .. py:attribute:: forceProcessing
+      
+
+      
+
+   .. py:attribute:: height
+      
+
+      
+
+   .. py:attribute:: inputCol
+      :annotation: :Param[str]
+
+      
+
+   .. py:attribute:: inputRegionsCol
+      
+
+      
+
+   .. py:attribute:: instance
+      
+
+      
+
+   .. py:attribute:: keepInput
+      
+
+      
+
+   .. py:attribute:: name
+      :annotation: = 'ImageInpainting'
+
+      
+
+   .. py:attribute:: optionMap
+      :annotation: :Dict[str, Any]
+
+      
+
+   .. py:attribute:: originCol
+      
+
+      
+
+   .. py:attribute:: outputCol
+      :annotation: :Param[str]
+
+      
+
+   .. py:attribute:: shouldOverwrite
+      :annotation: :bool = False
+
+      
+
+   .. py:attribute:: uid
+      :annotation: = ''
+
+      
+
+   .. py:attribute:: useGPU
+      
+
+      
+
+   .. py:attribute:: width
+      
+
+      
+
+   .. py:method:: clear(param: pyspark.ml.param.Param) -> None
+
+      Clears a param from the param map if it has been explicitly set.
+
+
+   .. py:method:: copy(extra: Optional[pyspark.ml._typing.ParamMap] = None) -> JP
+
+      Creates a copy of this instance with the same uid and some
+      extra params. This implementation first calls Params.copy and
+      then make a copy of the companion Java pipeline component with
+      extra params. So both the Python wrapper and the Java pipeline
+      component get copied.
+
+      :param extra: Extra parameters to copy to the new instance
+      :type extra: dict, optional
+
+      :returns: Copy of this instance
+      :rtype: :py:class:`JavaParams`
+
+
+   .. py:method:: explainParam(param: Union[str, Param]) -> str
+
+      Explains a single param and returns its name, doc, and optional
+      default value and user-supplied value in a string.
+
+
+   .. py:method:: explainParams() -> str
+
+      Returns the documentation of all params with their optionally
+      default values and user-supplied values.
+
+
+   .. py:method:: exploding_wrap(func)
+
+
+   .. py:method:: extractJsonParams(instance: pyspark.ml.base.Params, skipParams: Sequence[str]) -> Dict[str, Any]
+      :staticmethod:
+
+
+   .. py:method:: extractParamMap(extra: Optional[pyspark.ml._typing.ParamMap] = None) -> pyspark.ml._typing.ParamMap
+
+      Extracts the embedded default param values and user-supplied
+      values, and then merges them with extra values from input into
+      a flat param map, where the latter value is used if there exist
+      conflicts, i.e., with ordering: default param values <
+      user-supplied values < extra.
+
+      :param extra: extra param values
+      :type extra: dict, optional
+
+      :returns: merged param map
+      :rtype: dict
+
+
+   .. py:method:: getInputCol() -> str
+
+      Gets the value of inputCol or its default value.
+
+
+   .. py:method:: getModelPath()
+
+      Saves model
+      :param model_path: location of saved model
+      :return:
+
+
+   .. py:method:: getOrDefault(param: str) -> Any
+               getOrDefault(param: Param[T]) -> T
+
+      Gets the value of a param in the user-supplied param map or its
+      default value. Raises an error if neither is set.
+
+
+   .. py:method:: getOutputCol() -> str
+
+      Gets the value of outputCol or its default value.
+
+
+   .. py:method:: getParam(paramName: str) -> Param
+
+      Gets a param by its name.
+
+
+   .. py:method:: hasDefault(param: Union[str, Param[Any]]) -> bool
+
+      Checks whether a param has a default value.
+
+
+   .. py:method:: hasParam(paramName: str) -> bool
+
+      Tests whether this instance contains a param with a given
+      (string) name.
+
+
+   .. py:method:: inpaint_image(regions, original, params)
+      :staticmethod:
+
+
+   .. py:method:: isDefined(param: Union[str, Param[Any]]) -> bool
+
+      Checks whether a param is explicitly set by user or has
+      a default value.
+
+
+   .. py:method:: isSet(param: Union[str, Param[Any]]) -> bool
+
+      Checks whether a param is explicitly set by user.
+
+
+   .. py:method:: load(folder)
+      :staticmethod:
+
+      Loads a spark model
+      :param folder: location of spark model
+      :return:
+
+
+   .. py:method:: load_model_objects(params)
+      :staticmethod:
+
+
+   .. py:method:: option(key: str, value: Any) -> MLWriter
+
+      Adds an option to the underlying MLWriter. See the documentation for the specific model's
+      writer for possible options. The option name (key) is case-insensitive.
+
+
+   .. py:method:: overwrite() -> MLWriter
+
+      Overwrites if the output path already exists.
+
+
+   .. py:method:: pretrained(name, lang='en', remote_loc=None)
+      :staticmethod:
+
+
+   .. py:method:: process_region_information(boxes)
+      :staticmethod:
+
+
+   .. py:method:: read() -> DefaultParamsReader[RL]
+      :classmethod:
+
+      Returns a DefaultParamsReader instance for this class.
+
+
+   .. py:method:: save(path: str) -> None
+
+      Save the ML instance to the input path.
+
+
+   .. py:method:: saveImpl(path: str) -> None
+
+      save() handles overwriting and then calls this method.  Subclasses should override this
+      method to implement the actual saving of the instance.
+
+
+   .. py:method:: saveMetadata(instance: pyspark.ml.base.Params, path: str, sc: pyspark.SparkContext, extraMetadata: Optional[Dict[str, Any]] = None, paramMap: Optional[Dict[str, Any]] = None) -> None
+      :staticmethod:
+
+      Saves metadata + Params to: path + "/metadata"
+
+      - class
+      - timestamp
+      - sparkVersion
+      - uid
+      - paramMap
+      - defaultParamMap (since 2.4.0)
+      - (optionally, extra metadata)
+
+      :param extraMetadata: Extra metadata to be saved at same level as uid, paramMap, etc.
+      :type extraMetadata: dict, optional
+      :param paramMap: If given, this is saved in the "paramMap" field.
+      :type paramMap: dict, optional
+
+
+   .. py:method:: saveModel(model_path)
+
+      Saves model
+      :param model_path: location of saved model
+      :return:
+
+
+   .. py:method:: session(sparkSession: pyspark.sql.SparkSession) -> RW
+
+      Sets the Spark Session to use for saving/loading.
+
+
+   .. py:method:: set(param: Param, value: Any) -> None
+
+      Sets a parameter in the embedded param map.
+
+
+   .. py:method:: setForceProcessing(value)
+
+      Sets the value of :py:attr:`forceProcessing`.
+
+
+   .. py:method:: setHeight(value)
+
+      Sets the value of :py:attr:`height`.
+
+
+   .. py:method:: setInputCol(value)
+
+      Sets the value of :py:attr:`inputCol`.
+
+
+   .. py:method:: setInputRegionsCol(value)
+
+      Sets the value of :py:attr:`inputRegionsCol`.
+
+
+   .. py:method:: setKeepInput(value)
+
+      Sets the value of :py:attr:`keepInput`.
+
+
+   .. py:method:: setOriginCol(value)
+
+      Sets the value of :py:attr:`originCol`.
+
+
+   .. py:method:: setOutputCol(value)
+
+      Sets the value of :py:attr:`outputCol`.
+
+
+   .. py:method:: setUseGPU(value)
+
+      Sets the value of :py:attr:`useGPU`.
+
+
+   .. py:method:: setWidth(value)
+
+      Sets the value of :py:attr:`width`.
+
+
+   .. py:method:: transform(dataset: pyspark.sql.dataframe.DataFrame, params: Optional[pyspark.ml._typing.ParamMap] = None) -> pyspark.sql.dataframe.DataFrame
+
+      Transforms the input dataset with optional parameters.
+
+      .. versionadded:: 1.3.0
+
+      :param dataset: input dataset
+      :type dataset: :py:class:`pyspark.sql.DataFrame`
+      :param params: an optional param map that overrides embedded params.
+      :type params: dict, optional
+
+      :returns: transformed dataset
+      :rtype: :py:class:`pyspark.sql.DataFrame`
+
+
+   .. py:method:: transform_image(image, output, regions, inputs, exception)
+      :staticmethod:
+
+
+   .. py:method:: write() -> JavaMLWriter
+
+      Returns an MLWriter instance for this ML instance.
+
+
+
+.. py:class:: ImageInpaintingWriter(instance: pyspark.ml.base.Params)
+
+   Bases: :py:obj:`pyspark.ml.util.DefaultParamsWriter`
+
+   Specialization of :py:class:`MLWriter` for :py:class:`Params` types
+
+   Class for writing Estimators and Transformers whose parameters are JSON-serializable.
+
+   .. versionadded:: 2.3.0
+
+   .. py:attribute:: instance
+      
+
+      
+
+   .. py:attribute:: optionMap
+      :annotation: :Dict[str, Any]
+
+      
+
+   .. py:attribute:: shouldOverwrite
+      :annotation: :bool = False
+
+      
+
+   .. py:method:: extractJsonParams(instance: pyspark.ml.base.Params, skipParams: Sequence[str]) -> Dict[str, Any]
+      :staticmethod:
+
+
+   .. py:method:: option(key: str, value: Any) -> MLWriter
+
+      Adds an option to the underlying MLWriter. See the documentation for the specific model's
+      writer for possible options. The option name (key) is case-insensitive.
+
+
+   .. py:method:: overwrite() -> MLWriter
+
+      Overwrites if the output path already exists.
+
+
+   .. py:method:: save(path: str) -> None
+
+      Save the ML instance to the input path.
+
+
+   .. py:method:: saveImpl(path: str) -> None
+
+      save() handles overwriting and then calls this method.  Subclasses should override this
+      method to implement the actual saving of the instance.
+
+
+   .. py:method:: saveMetadata(instance: pyspark.ml.base.Params, path: str, sc: pyspark.SparkContext, extraMetadata: Optional[Dict[str, Any]] = None, paramMap: Optional[Dict[str, Any]] = None) -> None
+      :staticmethod:
+
+      Saves metadata + Params to: path + "/metadata"
+
+      - class
+      - timestamp
+      - sparkVersion
+      - uid
+      - paramMap
+      - defaultParamMap (since 2.4.0)
+      - (optionally, extra metadata)
+
+      :param extraMetadata: Extra metadata to be saved at same level as uid, paramMap, etc.
+      :type extraMetadata: dict, optional
+      :param paramMap: If given, this is saved in the "paramMap" field.
+      :type paramMap: dict, optional
+
+
+   .. py:method:: session(sparkSession: pyspark.sql.SparkSession) -> RW
+
+      Sets the Spark Session to use for saving/loading.
+
+
+

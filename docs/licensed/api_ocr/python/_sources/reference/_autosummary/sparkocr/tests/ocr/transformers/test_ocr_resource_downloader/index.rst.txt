@@ -1,0 +1,42 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.test_ocr_resource_downloader`
+======================================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.test_ocr_resource_downloader
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.test_ocr_resource_downloader.TestOcrResourceDownloader
+
+
+
+
+.. py:class:: TestOcrResourceDownloader
+
+   .. py:attribute:: LEVENSHTEIN_DISTANCE_THRESHOLD
+      :annotation: = 2
+
+      
+
+   .. py:method:: test_download_model(spark_session)
+
+      For Purpose of testing this model there is a small zip file
+      1024_test.zip (<1MB) file. To test it with pix2struct model
+      checkpoint use 1024_uniform.zip / 1024_general.zip
+
+      There are no assert conditions for this test case
+
+
+   .. py:method:: test_handling_non_existent_model(spark_session)
+
+
+

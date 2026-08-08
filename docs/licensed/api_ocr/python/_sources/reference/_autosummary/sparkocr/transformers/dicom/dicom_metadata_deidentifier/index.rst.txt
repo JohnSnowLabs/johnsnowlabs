@@ -1,0 +1,506 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.transformers.dicom.dicom_metadata_deidentifier`
+=================================================================
+
+.. py:module:: sparkocr.transformers.dicom.dicom_metadata_deidentifier
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.transformers.dicom.dicom_metadata_deidentifier.DicomMetadataDeidentifier
+   sparkocr.transformers.dicom.dicom_metadata_deidentifier.Obfuscator
+
+
+
+
+.. py:class:: DicomMetadataDeidentifier
+
+   Bases: :py:obj:`pyspark.ml.Transformer`, :py:obj:`pyspark.ml.param.shared.HasInputCols`, :py:obj:`pyspark.ml.param.shared.HasOutputCol`, :py:obj:`pyspark.ml.util.DefaultParamsReadable`, :py:obj:`pyspark.ml.util.DefaultParamsWritable`, :py:obj:`sparkocr.transformers.params.HasKeepInput`, :py:obj:`sparkocr.transformers.dicom.base_dicom.BaseDicom`
+
+   De-identify metadata of dicom document.
+
+   .. py:attribute:: groupStrategyFileContent
+      
+
+      
+
+   .. py:attribute:: inputCols
+      :annotation: :Param[List[str]]
+
+      
+
+   .. py:attribute:: keepInput
+      
+
+      
+
+   .. py:attribute:: keepMapping
+      
+
+      
+
+   .. py:attribute:: outputCol
+      :annotation: :Param[str]
+
+      
+
+   .. py:attribute:: placeholderText
+      
+
+      
+
+   .. py:attribute:: readMaxBytes
+      
+
+      
+
+   .. py:attribute:: regenerateSeries
+      
+
+      
+
+   .. py:attribute:: removePrivateTags
+      
+
+      
+
+   .. py:attribute:: strategyFileContent
+      
+
+      
+
+   .. py:attribute:: tagCleaned
+      
+
+      
+
+   .. py:attribute:: tagMapping
+      
+
+      
+
+   .. py:attribute:: uid
+      :annotation: = ''
+
+      
+
+   .. py:attribute:: userSeed
+      
+
+      
+
+   .. py:attribute:: valid_actions
+      
+
+      
+
+   .. py:attribute:: valid_group_actions
+      
+
+      
+
+   .. py:method:: add_tag(tag_str, vr, value)
+      :staticmethod:
+
+
+   .. py:method:: build_dicom_reference_map(ds, parent_path=None, parent=None, refs=None)
+
+
+   .. py:method:: clean_tag_name(tag)
+      :staticmethod:
+
+
+   .. py:method:: clear(param: Param) -> None
+
+      Clears a param from the param map if it has been explicitly set.
+
+
+   .. py:method:: copy(extra: Optional[pyspark.ml._typing.ParamMap] = None) -> P
+
+      Creates a copy of this instance with the same uid and some
+      extra params. The default implementation creates a
+      shallow copy using :py:func:`copy.copy`, and then copies the
+      embedded and extra parameters over and returns the copy.
+      Subclasses should override this method if the default approach
+      is not sufficient.
+
+      :param extra: Extra parameters to copy to the new instance
+      :type extra: dict, optional
+
+      :returns: Copy of this instance
+      :rtype: :py:class:`Params`
+
+
+   .. py:method:: explainParam(param: Union[str, Param]) -> str
+
+      Explains a single param and returns its name, doc, and optional
+      default value and user-supplied value in a string.
+
+
+   .. py:method:: explainParams() -> str
+
+      Returns the documentation of all params with their optionally
+      default values and user-supplied values.
+
+
+   .. py:method:: extractParamMap(extra: Optional[pyspark.ml._typing.ParamMap] = None) -> pyspark.ml._typing.ParamMap
+
+      Extracts the embedded default param values and user-supplied
+      values, and then merges them with extra values from input into
+      a flat param map, where the latter value is used if there exist
+      conflicts, i.e., with ordering: default param values <
+      user-supplied values < extra.
+
+      :param extra: extra param values
+      :type extra: dict, optional
+
+      :returns: merged param map
+      :rtype: dict
+
+
+   .. py:method:: generate_series_number(old_study_uid, old_series_uid)
+      :staticmethod:
+
+
+   .. py:method:: getInputCols() -> List[str]
+
+      Gets the value of inputCols or its default value.
+
+
+   .. py:method:: getOrDefault(param: str) -> Any
+               getOrDefault(param: Param[T]) -> T
+
+      Gets the value of a param in the user-supplied param map or its
+      default value. Raises an error if neither is set.
+
+
+   .. py:method:: getOutputCol() -> str
+
+      Gets the value of outputCol or its default value.
+
+
+   .. py:method:: getParam(paramName: str) -> Param
+
+      Gets a param by its name.
+
+
+   .. py:method:: getRules(rulesFileContent)
+
+
+   .. py:method:: get_all_values_by_tag_and_vr(tag_str, vr)
+
+
+   .. py:method:: get_all_values_private_or_group(ds, type='private', group_prefix=None)
+
+
+   .. py:method:: get_input_col(dataset, col_type, required=False, position=0)
+
+
+   .. py:method:: get_reference_from_map(path, return_parent=False)
+
+
+   .. py:method:: get_s3_creds(sql_ctx)
+
+
+   .. py:method:: hasDefault(param: Union[str, Param[Any]]) -> bool
+
+      Checks whether a param has a default value.
+
+
+   .. py:method:: hasParam(paramName: str) -> bool
+
+      Tests whether this instance contains a param with a given
+      (string) name.
+
+
+   .. py:method:: isDefined(param: Union[str, Param[Any]]) -> bool
+
+      Checks whether a param is explicitly set by user or has
+      a default value.
+
+
+   .. py:method:: isSet(param: Union[str, Param[Any]]) -> bool
+
+      Checks whether a param is explicitly set by user.
+
+
+   .. py:method:: load(path: str) -> RL
+      :classmethod:
+
+      Reads an ML instance from the input path, a shortcut of `read().load(path)`.
+
+
+   .. py:method:: read() -> DefaultParamsReader[RL]
+      :classmethod:
+
+      Returns a DefaultParamsReader instance for this class.
+
+
+   .. py:method:: read_dicom(dicom, params, read_max_bytes, origin='', stop_before_pixels=True)
+      :staticmethod:
+
+
+   .. py:method:: save(path: str) -> None
+
+      Save this ML instance to the given path, a shortcut of 'write().save(path)'.
+
+
+   .. py:method:: set(param: Param, value: Any) -> None
+
+      Sets a parameter in the embedded param map.
+
+
+   .. py:method:: setGroupStrategyFile(value)
+
+      Sets the value of :py:attr:`groupStrategyFileContent`.
+
+
+   .. py:method:: setInputCols(value)
+
+      Sets the value of :py:attr:`inputCols`.
+
+
+   .. py:method:: setKeepInput(value)
+
+      Sets the value of :py:attr:`keepInput`.
+
+
+   .. py:method:: setKeepMappingCols(value)
+
+      Sets the value of :py:attr:`keepMapping`.
+
+
+   .. py:method:: setOutputCol(value)
+
+      Sets the value of :py:attr:`outputCol`.
+
+
+   .. py:method:: setPlaceholderText(value)
+
+      Sets the value of :py:attr:`placeholderText`.
+
+
+   .. py:method:: setReadMaxBytes(value)
+
+      Sets the value of :py:attr:`readMaxBytes`.
+
+
+   .. py:method:: setRegenerateSeries(value)
+
+      Sets the value of :py:attr:`regenerateSeries`.
+
+
+   .. py:method:: setRemovePrivateTags(value)
+
+      Sets the value of :py:attr:`removePrivateTags`.
+
+
+   .. py:method:: setStrategyFile(value)
+
+      Sets the value of :py:attr:`strategyFileContent`.
+
+
+   .. py:method:: setTagCleanedCol(value)
+
+      Sets the value of :py:attr:`tagCleaned`.
+
+
+   .. py:method:: setTagMappingCol(value)
+
+      Sets the value of :py:attr:`tagMapping`.
+
+
+   .. py:method:: setUserSeed(value)
+
+      Sets the value of :py:attr:`userSeed`.
+
+
+   .. py:method:: transform(dataset: pyspark.sql.dataframe.DataFrame, params: Optional[pyspark.ml._typing.ParamMap] = None) -> pyspark.sql.dataframe.DataFrame
+
+      Transforms the input dataset with optional parameters.
+
+      .. versionadded:: 1.3.0
+
+      :param dataset: input dataset
+      :type dataset: :py:class:`pyspark.sql.DataFrame`
+      :param params: an optional param map that overrides embedded params.
+      :type params: dict, optional
+
+      :returns: transformed dataset
+      :rtype: :py:class:`pyspark.sql.DataFrame`
+
+
+   .. py:method:: transform_dicom(dicom, exception, tag_mapping, cleaned_ner)
+
+
+   .. py:method:: write() -> MLWriter
+
+      Returns a DefaultParamsWriter instance for this class.
+
+
+
+.. py:class:: Obfuscator(names_file_path, surnames_file_path, placeholder=None, user_seed=None)
+
+   Bases: :py:obj:`object`
+
+   .. py:attribute:: default_value
+      
+
+      
+
+   .. py:method:: add_empty_tag(tag, vr, value, option=None)
+
+      If the tag exists and has a value NO_ACTION is returned.
+      If the tag exists but is empty we return a default value.
+      If the tag is missing value should be None, so we return the default for that VR
+
+
+   .. py:method:: cap_age(tag, vr, value, option=None)
+
+      Medtronic CST Profile requires that if Age is greater than 90
+      Set it to 99 else leave the age as is. In case the age from medtronic
+      is not aligned with Dicom Standard will generate random age.
+
+
+   .. py:method:: clean_phi(tag, vr, value, option=None)
+
+
+   .. py:method:: clean_tag(tag, vr, value, option=None)
+      :staticmethod:
+
+
+   .. py:method:: delete_tag(tag, vr, value, option=None)
+      :staticmethod:
+
+
+   .. py:method:: dummy_graphic_annotation_sequence(tag, vr, value, option=None)
+
+
+   .. py:method:: dummy_person_identification_code_sequence(tag, vr, value, option=None)
+
+
+   .. py:method:: dummy_verifying_observer_identification_sequence(tag, vr, value, option=None)
+
+
+   .. py:method:: generate_delta(date_format, range=60)
+      :staticmethod:
+
+      Generates a delta for DA and DT VR tags.
+      In case when VR is DA, and value is YYYY, YYYYMM the delta should be large enough
+      In all other cases the above should not be a problem.
+
+      date_format is a string representing the format of the date_value
+
+
+   .. py:method:: generate_random_dates(vr)
+
+      In case Value for DA/DT VR is not valid, date parsing failed or delta date generation failed
+      We fallback here, and based on VR we generate a random date
+
+
+   .. py:method:: generate_random_string(tag, vr, value, option=None)
+
+
+   .. py:method:: generate_random_time(tag, vr, value, option='')
+
+      Generates a random DICOM Time for VR TM
+      If Option is fractional we generate the fractional part of the TM
+
+
+   .. py:method:: get_random_name(tag, vr, value, option=None)
+
+
+   .. py:method:: get_random_name_with_seed(tag, vr, value, option='coherent')
+
+
+   .. py:method:: hash_uid(tag, vr, value, option=None)
+
+
+   .. py:method:: infer_date_format(value, date_length)
+      :staticmethod:
+
+      # https://dicom.nema.org/dicom/2013/output/chtml/part05/sect_6.2.html
+      Infers the date format based on the length of the value passed, used for both DA and DT VR
+      In case the value itself is not present DicomToMetadata will set it to <EMPTY>
+
+
+   .. py:method:: literal(tag, vr, value, option=None)
+      :staticmethod:
+
+
+   .. py:method:: patient_hash_gen(tag, vr, value, option)
+
+
+   .. py:method:: read_newline_separated(filename)
+      :staticmethod:
+
+
+   .. py:method:: remove_binary(tag, vr, value, option=None)
+      :staticmethod:
+
+      Removes binary VRs by replacing with empty bytes.
+      OB, OD, OF, OW, UN.
+
+
+   .. py:method:: remove_date(tag, vr, value, option=None)
+      :staticmethod:
+
+
+   .. py:method:: remove_numeric(tag, vr, value, option=None)
+      :staticmethod:
+
+      Removes numeric VRs by replacing them with zero.
+      Works for SL, SS, UL, US, FL, FD, AT, etc.
+
+
+   .. py:method:: remove_sequence(tag, vr, value, option=None)
+      :staticmethod:
+
+
+   .. py:method:: remove_str(tag, vr, value, option=None)
+
+
+   .. py:method:: resolve_method(vr, action)
+
+      resolve the method to be called according to CSV configs
+
+
+   .. py:method:: return_empty_if_value_empty()
+
+
+   .. py:method:: shift_age_randomly(tag, vr, value, option=None)
+
+
+   .. py:method:: shift_date_or_time_fixed(tag, vr, value, option=None)
+
+      Works for both DA and DT VR
+      In case the date_format is None, either the value is empty or we failed to handle the format
+      Option is carried from the strategy file
+
+
+   .. py:method:: shift_date_or_time_random(tag, vr, value, option=None)
+
+      Works for both DA and DT VR
+      In case the date_format is None, either the value is empty or we failed to handle the format.
+      Option is carried from the strategy file
+
+
+   .. py:method:: shift_date_time_days(tag, vr, value, option, dt_format=None)
+
+      Generates a new date based on value, option (range) and inferred date format
+
+
+   .. py:method:: shift_past_unix_timestamp(tag, vr, value, option=None)
+
+      Generates a random past unix timestamp based on the input.
+
+
+

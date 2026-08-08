@@ -1,0 +1,37 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.detectors.test_image_layout_detector`
+==============================================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.detectors.test_image_layout_detector
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.detectors.test_image_layout_detector.TestImageLayoutDetector
+
+
+
+
+.. py:class:: TestImageLayoutDetector
+
+   .. py:method:: test_filter_prediction_classes(spark_session)
+
+
+   .. py:method:: test_onnx_layout_serialization(spark_session)
+
+
+   .. py:method:: test_openvino_layout_serialization(spark_session)
+
+
+   .. py:method:: test_write_mode(spark_session)
+
+
+

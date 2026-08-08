@@ -1,0 +1,296 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.utils`
+========================
+
+.. py:module:: sparkocr.utils
+
+
+Subpackages
+-----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 2
+
+   craft/index.rst
+   svs/index.rst
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   compat_pkg/index.rst
+   helpers/index.rst
+   hocr_renderer/index.rst
+   inpainting/index.rst
+   rectangle/index.rst
+   seqeval/index.rst
+   torchutils/index.rst
+
+
+Package Contents
+----------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.utils.display_pdf_file
+
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.utils.compare_versions
+   sparkocr.utils.display_dicom
+   sparkocr.utils.display_image
+   sparkocr.utils.display_images
+   sparkocr.utils.display_images_horizontal
+   sparkocr.utils.display_markup
+   sparkocr.utils.display_pdf
+   sparkocr.utils.display_table
+   sparkocr.utils.display_tables
+   sparkocr.utils.display_xmls
+   sparkocr.utils.ensure_packages_installed
+   sparkocr.utils.generate_dicom_mapping
+   sparkocr.utils.get_name
+   sparkocr.utils.get_packbits_func
+   sparkocr.utils.get_pixel_handler_func
+   sparkocr.utils.get_read_dicom_func
+   sparkocr.utils.get_vocabulary_dict
+   sparkocr.utils.get_xml
+   sparkocr.utils.polygon_mask
+   sparkocr.utils.remove_dependency_from_traceback
+   sparkocr.utils.remove_large_objects
+   sparkocr.utils.rotate_boxes
+   sparkocr.utils.save_table_to_csv
+   sparkocr.utils.save_tables_to_csv
+   sparkocr.utils.singh_threshold
+   sparkocr.utils.split_bylen
+   sparkocr.utils.to_opencv_image
+   sparkocr.utils.to_pil_image
+   sparkocr.utils.to_xml
+   sparkocr.utils.wolf_threshold
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.utils.IMAGE_MODE_DISPLAY_MAP
+   sparkocr.utils.IMAGE_MODE_MAP
+
+
+.. py:class:: display_pdf_file(pdf, size=(600, 500))
+
+   Bases: :py:obj:`object`
+
+   .. py:attribute:: pdf
+      :annotation: = './tmp/pdf.pdf'
+
+      
+
+   .. py:attribute:: size
+      :annotation: = (600, 500)
+
+      
+
+
+.. py:function:: compare_versions(version1: str, version2: str) -> int
+
+   Compare two version strings using the packaging module.
+
+   :param version1: First version string (e.g. "3.2.1")
+   :param version2: Second version string (e.g. "3.3.0")
+   :return: -1 if version1 is older, 1 if version1 is newer, 0 if both versions are equal
+
+
+.. py:function:: display_dicom(df, fields='content', limit=5, width=700, show_meta=True, only_meta=False, desc_width=70, limit_frame=5)
+
+
+.. py:function:: display_image(image, width=600, show_meta=True, id=0)
+
+
+.. py:function:: display_images(df, field='image', limit=5, width=600, show_meta=True)
+
+
+.. py:function:: display_images_horizontal(df, fields='image', limit=5, width=700, show_meta=True)
+
+
+.. py:function:: display_markup(df)
+
+
+.. py:function:: display_pdf(df, field='content', limit=5, width=700, show_meta=True)
+
+
+.. py:function:: display_table(table_col, chunks, empty_val='Empty')
+
+
+.. py:function:: display_tables(df, table_col='table', table_index_col=None, empty_val='Empty')
+
+   Display table.
+
+   Keyword arguments:
+   table_col -- name of column with table data
+   table_index_col -- name of column with table index on that page
+
+
+.. py:function:: display_xmls(df, table_col='table', table_index_col=None, empty_val='Empty')
+
+
+.. py:function:: ensure_packages_installed(packages)
+
+   Ensure a list of packages (or a single package) is installed.
+
+
+.. py:function:: generate_dicom_mapping(df, original_col, final_col)
+
+   Return mapping of old and new dicom identifiers.
+
+   :param df : Dataframe containing original and cleaned metadata
+   :param original_col : Dataframe column containing original metadata
+   :param final_col : Dataframe column containing cleaned metadata
+   :return {"uid_mapping" : {old_uid:new_uid}, "patient_mapping" : {old_patid:new_patid}
+
+
+.. py:function:: get_name(path, keep_subfolder_level=0)
+
+
+.. py:function:: get_packbits_func()
+
+
+.. py:function:: get_pixel_handler_func()
+
+
+.. py:function:: get_read_dicom_func()
+
+
+.. py:function:: get_vocabulary_dict(filename: str, delimeter: str)
+
+
+.. py:function:: get_xml(df, table_col='table', table_index_col=None, empty_val='Empty')
+
+
+.. py:function:: polygon_mask(shape, polygon)
+
+   Helper function to generate final bbox coordinates and mask for rotated/non-rotated angles.
+   Applied in DicomDrawRegions after rotate_boxes() function.
+
+
+.. py:function:: remove_dependency_from_traceback(exception_string)
+
+
+.. py:function:: remove_large_objects(ar, max_size=64, connectivity=1, in_place=False)
+
+   Remove objects greater than the specified size.
+
+   Expects ar to be an array with labeled objects, and removes objects
+   largest than max_size. If `ar` is bool, the image is first labeled.
+   This leads to potentially different behavior for bool and 0-and-1
+   arrays.
+
+   :param ar: The array containing the objects of interest. If the array type is
+              int, the ints must be non-negative.
+   :type ar: ndarray (arbitrary shape, int or bool type)
+   :param max_size: The largest allowable object size.
+   :type max_size: int, optional (default: 64)
+   :param connectivity: The connectivity defining the neighborhood of a pixel. Used during
+                        labelling if `ar` is bool.
+   :type connectivity: int, {1, 2, ..., ar.ndim}, optional (default: 1)
+   :param in_place: If ``True``, remove the objects in the input array itself.
+                    Otherwise, make a copy.
+   :type in_place: bool, optional (default: False)
+
+   :returns: **out** -- The input array with small connected components removed.
+   :rtype: ndarray, same shape and type as input `ar`
+
+
+.. py:function:: rotate_boxes(cx, cy, width, height, angle)
+
+   Helper function to rotate boxes from ImageTextDetector and ImageTextDetectorV2.
+
+
+.. py:function:: save_table_to_csv(df, fname)
+
+
+.. py:function:: save_tables_to_csv(df)
+
+
+.. py:function:: singh_threshold(img, w_size=15, k=0.85)
+
+   Runs the Singh thresholding algorithm
+
+   Reference:
+   Singh, O. I., Sinam, T., James, O., & Singh, T. R. (2012). Local contrast
+   and mean based thresholding technique in image binarization. International
+   Journal of Computer Applications, 51, 5-10.
+   Modifications: Using integral images to compute local mean
+       and standard deviation
+   @param img: The input image
+   @type img: ndarray
+   @param w_size: The size of the local window to compute
+       each pixel threshold. Should be and odd value
+   @type w_size: int
+   @param k: Controls the value of the local threshold. It lies in the
+       interval [0, 1]
+   @type k: float
+   @return: The estimated local threshold for each pixel
+   @rtype: ndarray
+
+
+.. py:function:: split_bylen(item, maxlen)
+
+   3
+   Requires item to be sliceable (with __getitem__ defined)
+
+
+.. py:function:: to_opencv_image(image)
+
+
+.. py:function:: to_pil_image(image, mode)
+
+
+.. py:function:: to_xml(chunks, empty_val='Empty')
+
+
+.. py:function:: wolf_threshold(img, w_size=15, k=0.5)
+
+   Runs the Wolf's thresholding algorithm.
+   Reference:
+   C. Wolf, J-M. Jolion, “Extraction and Recognition
+   of Artificial Text in Multimedia Documents”, Pattern Analysis and
+   Applications, 6(4):309-326, (2003).
+   Modifications: Using integral images to compute the local mean and the
+   standard deviation
+   @param img: The input image
+   @type img: ndarray
+   @param w_size: The size of the local window to compute
+       each pixel threshold. Should be and odd value
+   @type w_size: int
+   @param k: Controls the value of the local threshold.
+   @type k: float
+
+   @return: The estimated local threshold for each pixel
+   @rtype: ndarray
+
+
+.. py:data:: IMAGE_MODE_DISPLAY_MAP
+   
+
+   
+
+.. py:data:: IMAGE_MODE_MAP
+   
+
+   
+

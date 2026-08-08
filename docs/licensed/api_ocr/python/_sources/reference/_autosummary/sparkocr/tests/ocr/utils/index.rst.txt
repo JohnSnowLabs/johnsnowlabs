@@ -1,0 +1,45 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.utils`
+==================================
+
+.. py:module:: sparkocr.tests.ocr.utils
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.utils.dicom_to_disk
+   sparkocr.tests.ocr.utils.generate_all_dicom_dt_examples
+   sparkocr.tests.ocr.utils.generate_test_dicom
+   sparkocr.tests.ocr.utils.intersection_over_union
+   sparkocr.tests.ocr.utils.is_private_tag
+   sparkocr.tests.ocr.utils.matchCoordinates
+
+
+
+.. py:function:: dicom_to_disk(save_path, result)
+
+
+.. py:function:: generate_all_dicom_dt_examples()
+
+
+.. py:function:: generate_test_dicom(spark_session, photometric, compression)
+
+
+.. py:function:: intersection_over_union(boxA, boxB)
+
+
+.. py:function:: is_private_tag(tag_hex)
+
+
+.. py:function:: matchCoordinates(boxA, boxB, atolIoU=0.1, atolScore=0.1)
+
+

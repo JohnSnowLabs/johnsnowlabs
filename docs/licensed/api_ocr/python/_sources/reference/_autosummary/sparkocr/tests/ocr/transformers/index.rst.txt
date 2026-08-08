@@ -1,0 +1,94 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers`
+=========================================
+
+.. py:module:: sparkocr.tests.ocr.transformers
+
+
+Subpackages
+-----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 2
+
+   annotators/index.rst
+   detectors/index.rst
+   dicom/index.rst
+   embeddings/index.rst
+   inpainting/index.rst
+   ner/index.rst
+   readers/index.rst
+   recognizers/index.rst
+   tokenizer/index.rst
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   test_binary_to_image/index.rst
+   test_datasetreader/index.rst
+   test_dicom_metadata_obfuscator/index.rst
+   test_dicom_to_image/index.rst
+   test_display_table/index.rst
+   test_doc_to_pdf/index.rst
+   test_doc_to_text/index.rst
+   test_doc_to_text_table/index.rst
+   test_document_coordinates_to_text/index.rst
+   test_foundationone_parser/index.rst
+   test_hocr_merger/index.rst
+   test_hocr_to_image/index.rst
+   test_hocr_to_text_table/index.rst
+   test_image_adaptive_binarizer/index.rst
+   test_image_adaptive_thresholding/index.rst
+   test_image_binarizer/index.rst
+   test_image_brands_ocr/index.rst
+   test_image_cells_to_text_table/index.rst
+   test_image_cropper/index.rst
+   test_image_draw_annotations/index.rst
+   test_image_draw_regions/index.rst
+   test_image_erosion/index.rst
+   test_image_gpu_transform/index.rst
+   test_image_handwritten_text_recognizer/index.rst
+   test_image_layout_analyzer/index.rst
+   test_image_morphology_operation/index.rst
+   test_image_noise_scorer/index.rst
+   test_image_regions_merger/index.rst
+   test_image_remove_objects/index.rst
+   test_image_schema_converter/index.rst
+   test_image_signature_detector/index.rst
+   test_image_skew_corrector/index.rst
+   test_image_split_regions/index.rst
+   test_image_table_cells_detector/index.rst
+   test_image_table_detector/index.rst
+   test_image_text_cleaner/index.rst
+   test_image_to_dicom/index.rst
+   test_image_to_hocr/index.rst
+   test_image_to_pdf/index.rst
+   test_image_to_text/index.rst
+   test_image_transformer/index.rst
+   test_ner_output_cleaner/index.rst
+   test_ocr_resource_downloader/index.rst
+   test_pdf_assembler/index.rst
+   test_pdf_draw_regions/index.rst
+   test_pdf_to_form/index.rst
+   test_pdf_to_hocr/index.rst
+   test_pdf_to_image/index.rst
+   test_pdf_to_text/index.rst
+   test_pdf_to_text_table/index.rst
+   test_position_finder/index.rst
+   test_ppt_to_pdf/index.rst
+   test_ppt_to_text_table/index.rst
+   test_text_to_pdf/index.rst
+   test_update_text_position/index.rst
+   test_visual_document_classifier/index.rst
+   test_visual_document_classifier_lilt/index.rst
+   test_visual_document_classifier_v3/index.rst
+   test_visual_document_processor/index.rst
+   test_visual_question_answering/index.rst
+
+

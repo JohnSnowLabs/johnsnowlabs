@@ -1,0 +1,18 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.readers`
+=================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.readers
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   test_alab_readers/index.rst
+
+

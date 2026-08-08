@@ -1,0 +1,31 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.test_text_to_pdf`
+==========================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.test_text_to_pdf
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.test_text_to_pdf.TestTextToPdf
+
+
+
+
+.. py:class:: TestTextToPdf
+
+   .. py:method:: get_pipeline()
+
+
+   .. py:method:: test_render_to_pdf(spark_session, pdf_table_image_df)
+
+
+

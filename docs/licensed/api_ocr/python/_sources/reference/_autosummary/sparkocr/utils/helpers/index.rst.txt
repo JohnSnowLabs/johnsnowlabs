@@ -1,0 +1,43 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.utils.helpers`
+================================
+
+.. py:module:: sparkocr.utils.helpers
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.utils.helpers.cluster
+   sparkocr.utils.helpers.get_size
+   sparkocr.utils.helpers.write_dataset_to_bytes
+
+
+
+.. py:function:: cluster(items, maxgap, key=lambda x: x)
+
+   Arrange data into groups where successive elements
+   differ by no more than *maxgap*
+
+    >>> cluster([1, 6, 9, 100, 102, 105, 109, 134, 139], maxgap=10)
+    [[1, 6, 9], [100, 102, 105, 109], [134, 139]]
+
+    >>> cluster([1, 6, 9, 99, 100, 102, 105, 134, 139, 141], maxgap=10)
+    [[1, 6, 9], [99, 100, 102, 105], [134, 139, 141]]
+
+
+
+.. py:function:: get_size(items, key=lambda x: x)
+
+
+.. py:function:: write_dataset_to_bytes(dataset)
+
+

@@ -1,0 +1,88 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.pretrained.pretrained_pipeline`
+=================================================
+
+.. py:module:: sparkocr.pretrained.pretrained_pipeline
+
+.. autoapi-nested-parse::
+
+   Contains classes for the PretrainedPipeline.
+
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.pretrained.pretrained_pipeline.PretrainedPipeline
+
+
+
+
+.. py:class:: PretrainedPipeline(name, lang='en', remote_loc=None, parse_embeddings=False, disk_location=None)
+
+   Loads a fully constructed and trained Spark OCR/NLP pipeline,
+   ready to be used.
+
+   This way, a whole pipeline can be defined in 1 line. Additionally, the
+   :class:`.LightPipeline` version of the model can be retrieved with member
+   :attr:`.light_model`.
+
+   :param name: Name of the PretrainedPipeline. These can be gathered from the Pipelines
+                Page.
+   :type name: str
+   :param lang: Langauge of the model, by default 'en'
+   :type lang: str, optional
+   :param remote_loc: Link to the remote location of the model (if it was already downloaded),
+                      by default None
+   :type remote_loc: str, optional
+   :param parse_embeddings: Whether to parse embeddings, by default False
+   :type parse_embeddings: bool, optional
+   :param disk_location: Path to locally stored PretrainedPipeline, by default None
+   :type disk_location: str , optional
+
+   .. py:method:: fromLocalPath(local_folder)
+
+      Runs the provided pipeline against files in local_folder.
+
+      The files can be PDFs, DOCX, or images.
+
+      :param local_folder: The data to be annotated
+      :type local_folder: list or str
+
+      :rtype: List[Annotation]
+
+
+   .. py:method:: from_disk(path, parse_embeddings=False)
+      :staticmethod:
+
+
+   .. py:method:: supports_lp(pipeline)
+
+      Check whether a pipeline supports light pipelines.
+
+      :param pipeline: The pipeline to check.
+      :type pipeline: PipelineModel
+
+      :returns: True if pipeline supports light pipeline, False otherwise.
+      :rtype: bool
+
+
+   .. py:method:: transform(data)
+
+      Transforms the input dataset with Spark.
+
+      :param data: input dataset
+      :type data: :class:`pyspark.sql.DataFrame`
+
+      :returns: transformed dataset
+      :rtype: :class:`pyspark.sql.DataFrame`
+
+
+

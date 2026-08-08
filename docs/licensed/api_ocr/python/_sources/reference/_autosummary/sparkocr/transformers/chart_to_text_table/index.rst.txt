@@ -1,0 +1,33 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.transformers.chart_to_text_table`
+===================================================
+
+.. py:module:: sparkocr.transformers.chart_to_text_table
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.transformers.chart_to_text_table.ChartToTextTable
+
+
+
+
+.. py:class:: ChartToTextTable
+
+   .. py:method:: load(path)
+      :staticmethod:
+
+
+   .. py:method:: pretrained(name, lang='en', remote_loc='clinical/ocr')
+      :staticmethod:
+
+
+

@@ -1,0 +1,50 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.transformers.readers.alab_readers`
+====================================================
+
+.. py:module:: sparkocr.transformers.readers.alab_readers
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.transformers.readers.alab_readers.AlabReaders
+   sparkocr.transformers.readers.alab_readers.AlabReadersV1
+
+
+
+
+.. py:class:: AlabReaders
+
+   .. py:method:: dataLabeler(spark, jsonPath, imageFolderPath)
+
+
+   .. py:method:: getPreparedDataItem(item, result, ind)
+      :staticmethod:
+
+
+   .. py:method:: get_words(hocr)
+      :staticmethod:
+
+
+   .. py:method:: isRectangleOverlap(R1, R2)
+      :staticmethod:
+
+
+   .. py:method:: jsonReader(spark, json_path='./sparkocr/resources/ocr/data/llmv2_Alab_data/result.json')
+
+
+
+.. py:class:: AlabReadersV1
+
+   .. py:method:: dataLabeler(spark, path, doc_type='pdf')
+
+
+

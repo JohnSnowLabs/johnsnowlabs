@@ -1,0 +1,44 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.aws.lambda_function`
+======================================
+
+.. py:module:: sparkocr.aws.lambda_function
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.aws.lambda_function.lambda_handler
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.aws.lambda_function.logger
+
+
+.. py:function:: lambda_handler(event, context)
+
+   Main Lambda handler function
+   :param event: Dict containing the Lambda function event data
+   :param context: Lambda runtime context
+
+   :returns: Dict containing status message
+
+
+.. py:data:: logger
+   :annotation: = None
+
+   
+

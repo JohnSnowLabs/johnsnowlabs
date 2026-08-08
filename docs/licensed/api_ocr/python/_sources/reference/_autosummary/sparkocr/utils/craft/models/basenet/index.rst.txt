@@ -1,0 +1,18 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.utils.craft.models.basenet`
+=============================================
+
+.. py:module:: sparkocr.utils.craft.models.basenet
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   vgg16_bn/index.rst
+
+

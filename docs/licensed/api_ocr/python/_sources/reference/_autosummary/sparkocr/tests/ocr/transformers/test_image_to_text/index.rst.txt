@@ -1,0 +1,34 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.test_image_to_text`
+============================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.test_image_to_text
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.test_image_to_text.TestImageToText
+
+
+
+
+.. py:class:: TestImageToText
+
+   .. py:method:: test_image_to_text(spark_session, image_df)
+
+
+   .. py:method:: test_image_to_text_keep_layout(spark_session, image_df_keeplayout)
+
+
+   .. py:method:: test_image_to_text_kor(spark_session, image_kor_df)
+
+
+

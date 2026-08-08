@@ -1,0 +1,31 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.test_image_split_regions`
+==================================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.test_image_split_regions
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.test_image_split_regions.TestImageSplitRegions
+
+
+
+
+.. py:class:: TestImageSplitRegions
+
+   .. py:method:: test_split_by_region_after_layout_analyzer(spark_session, image_df)
+
+
+   .. py:method:: test_split_by_region_after_table_detector(spark_session, image_table_document_df)
+
+
+

@@ -1,0 +1,40 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.test_image_table_cells_detector`
+=========================================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.test_image_table_cells_detector
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.test_image_table_cells_detector.TestImageTableCellDetector
+
+
+
+
+.. py:class:: TestImageTableCellDetector
+
+   .. py:method:: test_cell_detector_contours(spark_session, image_table_df)
+
+
+   .. py:method:: test_cell_detector_cut_header(spark_session, image_cells_header_df)
+
+
+   .. py:method:: test_cell_detector_morphops_default_params(spark_session, image_table_df)
+
+
+   .. py:method:: test_cell_detector_morphops_params_dict(spark_session, image_table_df)
+
+
+   .. py:method:: test_cell_detector_morphops_params_str(spark_session, image_table_df)
+
+
+

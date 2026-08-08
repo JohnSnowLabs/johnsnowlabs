@@ -1,0 +1,28 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.embeddings.test_vit_image_embeddings`
+==============================================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.embeddings.test_vit_image_embeddings
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.embeddings.test_vit_image_embeddings.TestVitImageEmbeddings
+
+
+
+
+.. py:class:: TestVitImageEmbeddings
+
+   .. py:method:: test_vit_image_embeddings(spark_session, image_noised_df)
+
+
+

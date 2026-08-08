@@ -1,0 +1,28 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.test_image_handwritten_text_recognizer`
+================================================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.test_image_handwritten_text_recognizer
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.test_image_handwritten_text_recognizer.TestImageHandwrittenTextRecognizer
+
+
+
+
+.. py:class:: TestImageHandwrittenTextRecognizer
+
+   .. py:method:: test_image_handwritten_text_recognizer(spark_session, image_handwritten_text_df, htr_span_fake_model)
+
+
+

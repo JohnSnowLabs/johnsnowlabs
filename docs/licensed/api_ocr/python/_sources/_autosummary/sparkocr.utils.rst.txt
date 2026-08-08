@@ -1,0 +1,64 @@
+﻿sparkocr.utils
+==============
+
+.. automodule:: sparkocr.utils
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      compare_versions
+      display_dicom
+      display_image
+      display_images
+      display_images_horizontal
+      display_markup
+      display_pdf
+      display_table
+      display_tables
+      display_xmls
+      ensure_packages_installed
+      generate_dicom_mapping
+      get_name
+      get_packbits_func
+      get_pixel_handler_func
+      get_read_dicom_func
+      get_vocabulary_dict
+      get_xml
+      polygon_mask
+      remove_dependency_from_traceback
+      remove_large_objects
+      rotate_boxes
+      save_table_to_csv
+      save_tables_to_csv
+      singh_threshold
+      split_bylen
+      to_opencv_image
+      to_pil_image
+      to_xml
+      wolf_threshold
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      display_pdf_file
+   
+   
+
+   
+   
+   
+
+
+

@@ -1,0 +1,34 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.test_pdf_to_text`
+==========================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.test_pdf_to_text
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.test_pdf_to_text.TestPdfToImage
+
+
+
+
+.. py:class:: TestPdfToImage
+
+   .. py:method:: test_pipeline_serialization(spark_session, pdf_text_multipage_df)
+
+
+   .. py:method:: test_split_by_page(spark_session, pdf_text_multipage_df)
+
+
+   .. py:method:: test_without_split_by_page(spark_session, pdf_text_multipage_df)
+
+
+

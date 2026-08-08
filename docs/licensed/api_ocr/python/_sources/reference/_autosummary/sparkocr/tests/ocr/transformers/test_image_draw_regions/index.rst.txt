@@ -1,0 +1,46 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.test_image_draw_regions`
+=================================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.test_image_draw_regions
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.test_image_draw_regions.TestImageDrawRegions
+
+
+
+
+.. py:class:: TestImageDrawRegions
+
+   .. py:method:: test_exception_thrown_empty_annotation(spark_session)
+
+
+   .. py:method:: test_exception_thrown_empty_coordinates(spark_session)
+
+
+   .. py:method:: test_for_display(spark_session)
+
+
+   .. py:method:: test_no_color_serialization(spark_session, image_df_draw)
+
+
+   .. py:method:: test_redaction_mixed_obfuscation(spark_session)
+
+
+   .. py:method:: test_split_by_region(spark_session, image_df)
+
+
+   .. py:method:: test_with_color_serialization(spark_session, image_df_draw)
+
+
+

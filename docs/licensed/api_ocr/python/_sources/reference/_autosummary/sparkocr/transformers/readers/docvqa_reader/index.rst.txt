@@ -1,0 +1,82 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.transformers.readers.docvqa_reader`
+=====================================================
+
+.. py:module:: sparkocr.transformers.readers.docvqa_reader
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.transformers.readers.docvqa_reader.DocVQA
+
+
+
+
+.. py:class:: DocVQA(questionsCol='questions')
+
+   Bases: :py:obj:`sparknlp.internal.ExtendedJavaWrapper`
+
+   Reads Doc VQA datasets{train, valid, test} into a Spark
+   Dataframe to be consume by Visual NLP
+
+   .. py:attribute:: java_obj
+      
+
+      
+
+   .. py:attribute:: sc
+      :annotation: = None
+
+      
+
+   .. py:method:: apply()
+
+
+   .. py:method:: getDataFrame(spark, jdf)
+
+
+   .. py:method:: new_java_array(pylist, java_class)
+
+      ToDo: Inspired from spark 2.0. Review if spark changes
+
+
+   .. py:method:: new_java_array_integer(pylist)
+
+
+   .. py:method:: new_java_array_string(pylist)
+
+
+   .. py:method:: new_java_obj(java_class, *args)
+
+
+   .. py:method:: readDataset(spark, jsonPath, imagesFolder, partitions=8, storage_level=pyspark.StorageLevel.DISK_ONLY)
+
+      Reads the dataset from an external resource.
+
+      :param spark: Initiated Spark Session with Spark NLP
+      :type spark: :class:`pyspark.sql.SparkSession`
+      :param jsonPath: the path where you unzip the files for DocVQA
+      :type jsonPath: str
+      :param imagesFolder: the folder containing all the images
+      :type imagesFolder: str
+      :param partitions:
+      :type partitions: sets the minimum number of partitions for the case of lifting multiple files in parallel into a single dataframe. Defaults to 8.
+      :param storage_level:
+      :type storage_level: sets the persistence level according to PySpark definitions. Defaults to StorageLevel.DISK_ONLY.
+
+      :returns: Spark Dataframe with the data
+      :rtype: :class:`pyspark.sql.DataFrame`
+
+
+   .. py:method:: spark_version()
+
+
+

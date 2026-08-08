@@ -1,0 +1,22 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.utils.svs.remove-phi`
+=======================================
+
+.. py:module:: sparkocr.utils.svs.remove-phi
+
+
+Module Contents
+---------------
+
+.. py:data:: input_path
+   :annotation: = '/home/jose/spark-ocr/notebooks/mskcc/1620696.svs'
+
+   
+
+.. py:data:: output_path
+   :annotation: = '/home/jose/spark-ocr/notebooks/mskcc/results/1620696.svs'
+
+   
+

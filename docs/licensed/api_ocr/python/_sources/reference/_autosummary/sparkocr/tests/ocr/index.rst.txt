@@ -1,0 +1,30 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr`
+============================
+
+.. py:module:: sparkocr.tests.ocr
+
+
+Subpackages
+-----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 2
+
+   eval/index.rst
+   pipelines/index.rst
+   transformers/index.rst
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   test_start/index.rst
+   utils/index.rst
+
+

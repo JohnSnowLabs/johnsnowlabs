@@ -1,0 +1,354 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.transformers.dicom.dicom_to_image_v3`
+=======================================================
+
+.. py:module:: sparkocr.transformers.dicom.dicom_to_image_v3
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.transformers.dicom.dicom_to_image_v3.DicomToImageV3
+
+
+
+
+.. py:class:: DicomToImageV3
+
+   Bases: :py:obj:`pyspark.ml.Transformer`, :py:obj:`pyspark.ml.param.shared.HasInputCols`, :py:obj:`pyspark.ml.param.shared.HasOutputCol`, :py:obj:`sparkocr.transformers.params.HasKeepInput`, :py:obj:`pyspark.ml.util.DefaultParamsReadable`, :py:obj:`pyspark.ml.util.DefaultParamsWritable`, :py:obj:`sparkocr.transformers.dicom.base_dicom.BaseDicom`
+
+   Transform Dicom Binary Content to Image
+
+   .. py:attribute:: compressImage
+      
+
+      
+
+   .. py:attribute:: compressionMode
+      
+
+      
+
+   .. py:attribute:: compressionQuality
+      
+
+      
+
+   .. py:attribute:: compressionThreshold
+      
+
+      
+
+   .. py:attribute:: frameDimsCol
+      
+
+      
+
+   .. py:attribute:: frameLimit
+      
+
+      
+
+   .. py:attribute:: frameSamplingStrategy
+      
+
+      
+
+   .. py:attribute:: inputCols
+      :annotation: :Param[List[str]]
+
+      
+
+   .. py:attribute:: keepInput
+      
+
+      
+
+   .. py:attribute:: memoryOptimized
+      
+
+      
+
+   .. py:attribute:: metadataCol
+      
+
+      
+
+   .. py:attribute:: originCol
+      
+
+      
+
+   .. py:attribute:: outputCol
+      :annotation: :Param[str]
+
+      
+
+   .. py:attribute:: pageNumCol
+      
+
+      
+
+   .. py:attribute:: readMaxBytes
+      
+
+      
+
+   .. py:attribute:: scale
+      
+
+      
+
+   .. py:attribute:: uid
+      :annotation: = ''
+
+      
+
+   .. py:method:: add_image(arr, ds, f, origin)
+
+
+   .. py:method:: clear(param: Param) -> None
+
+      Clears a param from the param map if it has been explicitly set.
+
+
+   .. py:method:: copy(extra: Optional[pyspark.ml._typing.ParamMap] = None) -> P
+
+      Creates a copy of this instance with the same uid and some
+      extra params. The default implementation creates a
+      shallow copy using :py:func:`copy.copy`, and then copies the
+      embedded and extra parameters over and returns the copy.
+      Subclasses should override this method if the default approach
+      is not sufficient.
+
+      :param extra: Extra parameters to copy to the new instance
+      :type extra: dict, optional
+
+      :returns: Copy of this instance
+      :rtype: :py:class:`Params`
+
+
+   .. py:method:: explainParam(param: Union[str, Param]) -> str
+
+      Explains a single param and returns its name, doc, and optional
+      default value and user-supplied value in a string.
+
+
+   .. py:method:: explainParams() -> str
+
+      Returns the documentation of all params with their optionally
+      default values and user-supplied values.
+
+
+   .. py:method:: extractParamMap(extra: Optional[pyspark.ml._typing.ParamMap] = None) -> pyspark.ml._typing.ParamMap
+
+      Extracts the embedded default param values and user-supplied
+      values, and then merges them with extra values from input into
+      a flat param map, where the latter value is used if there exist
+      conflicts, i.e., with ordering: default param values <
+      user-supplied values < extra.
+
+      :param extra: extra param values
+      :type extra: dict, optional
+
+      :returns: merged param map
+      :rtype: dict
+
+
+   .. py:method:: generate_image_row(arr, origin, f, compression, quality, resolution=0)
+
+
+   .. py:method:: getInputCols() -> List[str]
+
+      Gets the value of inputCols or its default value.
+
+
+   .. py:method:: getOrDefault(param: str) -> Any
+               getOrDefault(param: Param[T]) -> T
+
+      Gets the value of a param in the user-supplied param map or its
+      default value. Raises an error if neither is set.
+
+
+   .. py:method:: getOutputCol() -> str
+
+      Gets the value of outputCol or its default value.
+
+
+   .. py:method:: getParam(paramName: str) -> Param
+
+      Gets a param by its name.
+
+
+   .. py:method:: get_input_col(dataset, col_type, required=False, position=0)
+
+
+   .. py:method:: get_s3_creds(sql_ctx)
+
+
+   .. py:method:: hasDefault(param: Union[str, Param[Any]]) -> bool
+
+      Checks whether a param has a default value.
+
+
+   .. py:method:: hasParam(paramName: str) -> bool
+
+      Tests whether this instance contains a param with a given
+      (string) name.
+
+
+   .. py:method:: isDefined(param: Union[str, Param[Any]]) -> bool
+
+      Checks whether a param is explicitly set by user or has
+      a default value.
+
+
+   .. py:method:: isSet(param: Union[str, Param[Any]]) -> bool
+
+      Checks whether a param is explicitly set by user.
+
+
+   .. py:method:: load(path: str) -> RL
+      :classmethod:
+
+      Reads an ML instance from the input path, a shortcut of `read().load(path)`.
+
+
+   .. py:method:: read() -> DefaultParamsReader[RL]
+      :classmethod:
+
+      Returns a DefaultParamsReader instance for this class.
+
+
+   .. py:method:: read_dicom(dicom, params, read_max_bytes, origin='', stop_before_pixels=True)
+      :staticmethod:
+
+
+   .. py:method:: save(path: str) -> None
+
+      Save this ML instance to the given path, a shortcut of 'write().save(path)'.
+
+
+   .. py:method:: set(param: Param, value: Any) -> None
+
+      Sets a parameter in the embedded param map.
+
+
+   .. py:method:: setCompressImage(value)
+
+      Sets the value of :py:attr:`compressImage`.
+
+
+   .. py:method:: setCompressionMode(value)
+
+      Sets the value of :py:attr:`compressionMode`.
+
+
+   .. py:method:: setCompressionQuality(value)
+
+      Sets the value of :py:attr:`compressionQuality`.
+
+
+   .. py:method:: setCompressionThreshold(value)
+
+      Sets the value of :py:attr:`compressionThreshold`.
+
+
+   .. py:method:: setFrameDimsCol(value)
+
+      Sets the value of :py:attr:`frameDimsCol`.
+
+
+   .. py:method:: setFrameLimit(value)
+
+      Sets the value of :py:attr:`frameLimit`.
+
+
+   .. py:method:: setFrameSamplingStrategy(value)
+
+      Sets the value of :py:attr:`frameSamplingStrategy`.
+
+
+   .. py:method:: setInputCols(value)
+
+      Sets the value of :py:attr:`inputCol`.
+
+
+   .. py:method:: setKeepInput(value)
+
+      Sets the value of :py:attr:`keepInput`.
+
+
+   .. py:method:: setMemoryOptimized(value)
+
+      Sets the value of :py:attr:`memoryOptimized`.
+
+
+   .. py:method:: setMetadataCol(value)
+
+      Sets the value of :py:attr:`metadataCol`.
+
+
+   .. py:method:: setOriginCol(value)
+
+      Sets the value of :py:attr:`originCol`.
+
+
+   .. py:method:: setOutputCol(value)
+
+      Sets the value of :py:attr:`outputCol`.
+
+
+   .. py:method:: setPageNumCol(value)
+
+      Sets the value of :py:attr:`pageNumCol`.
+
+
+   .. py:method:: setReadMaxBytes(value)
+
+      Sets the value of :py:attr:`readMaxBytes`.
+
+
+   .. py:method:: setScale(value)
+
+      Sets the value of :py:attr:`inputCol`.
+
+
+   .. py:method:: transform(dataset: pyspark.sql.dataframe.DataFrame, params: Optional[pyspark.ml._typing.ParamMap] = None) -> pyspark.sql.dataframe.DataFrame
+
+      Transforms the input dataset with optional parameters.
+
+      .. versionadded:: 1.3.0
+
+      :param dataset: input dataset
+      :type dataset: :py:class:`pyspark.sql.DataFrame`
+      :param params: an optional param map that overrides embedded params.
+      :type params: dict, optional
+
+      :returns: transformed dataset
+      :rtype: :py:class:`pyspark.sql.DataFrame`
+
+
+   .. py:method:: transform_dicom(origin, parts, dicom, params)
+
+      Extract frames(images) from the dicom file
+
+      @param origin: Path to the file (generated by the binaryFile spark datasource)
+      @param parts: List of the frames for extract
+      @param dicom: Binary data or path to the local file
+      @return: Rows with image, exception and number of frame for each item
+
+
+   .. py:method:: write() -> MLWriter
+
+      Returns a DefaultParamsWriter instance for this class.
+
+
+

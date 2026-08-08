@@ -1,0 +1,28 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.test_image_adaptive_binarizer`
+=======================================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.test_image_adaptive_binarizer
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.test_image_adaptive_binarizer.TestImageAdaptiveBinarizer
+
+
+
+
+.. py:class:: TestImageAdaptiveBinarizer
+
+   .. py:method:: test_image_adaptive_thresholding(spark_session, image_noised_df, image_noised_text)
+
+
+

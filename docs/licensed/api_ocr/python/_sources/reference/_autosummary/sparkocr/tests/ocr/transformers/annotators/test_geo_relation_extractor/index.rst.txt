@@ -1,0 +1,28 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.annotators.test_geo_relation_extractor`
+================================================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.annotators.test_geo_relation_extractor
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.annotators.test_geo_relation_extractor.TestVisualDocumentNerGeo
+
+
+
+
+.. py:class:: TestVisualDocumentNerGeo
+
+   .. py:method:: test_inference(visual_document_ner_v2_df, spark_session)
+
+
+

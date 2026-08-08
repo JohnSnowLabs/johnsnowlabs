@@ -1,0 +1,42 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.transformers.dicom.base_dicom`
+================================================
+
+.. py:module:: sparkocr.transformers.dicom.base_dicom
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.transformers.dicom.base_dicom.BaseDicom
+
+
+
+
+.. py:class:: BaseDicom
+
+   .. py:attribute:: readMaxBytes
+      
+
+      
+
+   .. py:method:: get_s3_creds(sql_ctx)
+
+
+   .. py:method:: read_dicom(dicom, params, read_max_bytes, origin='', stop_before_pixels=True)
+      :staticmethod:
+
+
+   .. py:method:: setReadMaxBytes(value)
+
+      Sets the value of :py:attr:`readMaxBytes`.
+
+
+

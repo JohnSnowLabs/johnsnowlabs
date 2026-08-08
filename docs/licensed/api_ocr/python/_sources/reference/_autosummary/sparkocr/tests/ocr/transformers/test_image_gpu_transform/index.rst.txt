@@ -1,0 +1,28 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.test_image_gpu_transform`
+==================================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.test_image_gpu_transform
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.test_image_gpu_transform.TestImageGpuOperation
+
+
+
+
+.. py:class:: TestImageGpuOperation
+
+   .. py:method:: test_image_gpu_transform(spark_session, image_noised_df, image_noised_text)
+
+
+

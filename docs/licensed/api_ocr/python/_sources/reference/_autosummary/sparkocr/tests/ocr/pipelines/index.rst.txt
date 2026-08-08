@@ -1,0 +1,18 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.pipelines`
+======================================
+
+.. py:module:: sparkocr.tests.ocr.pipelines
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   test_pdf/index.rst
+
+

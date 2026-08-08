@@ -1,0 +1,28 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.detectors.test_image_checkbox_detector`
+================================================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.detectors.test_image_checkbox_detector
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.detectors.test_image_checkbox_detector.TestImageCheckboxDetector
+
+
+
+
+.. py:class:: TestImageCheckboxDetector
+
+   .. py:method:: test_image_checkbox_detector_pretrained(spark_session, image_checkbox_document_df)
+
+
+

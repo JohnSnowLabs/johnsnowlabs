@@ -1,0 +1,18 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.eval`
+=================================
+
+.. py:module:: sparkocr.tests.ocr.eval
+
+
+Subpackages
+-----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 2
+
+   icdar/index.rst
+
+

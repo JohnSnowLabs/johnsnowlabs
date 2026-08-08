@@ -1,0 +1,31 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.test_update_text_position`
+===================================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.test_update_text_position
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.test_update_text_position.TestUpdateTextPosition
+
+
+
+
+.. py:class:: TestUpdateTextPosition
+
+   .. py:method:: get_pipeline()
+
+
+   .. py:method:: test_update_position_render_to_pdf(spark_session, updated_text_multipage_df)
+
+
+

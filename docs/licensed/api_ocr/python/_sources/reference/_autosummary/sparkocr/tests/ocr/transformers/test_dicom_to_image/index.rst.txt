@@ -1,0 +1,34 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.test_dicom_to_image`
+=============================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.test_dicom_to_image
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.test_dicom_to_image.TestDicomToImage
+
+
+
+
+.. py:class:: TestDicomToImage
+
+   .. py:method:: test_deidentified_metadata_dicom_to_image(spark_session, dicom_image_df)
+
+
+   .. py:method:: test_dicom_to_image(spark_session, dicom_image_df)
+
+
+   .. py:method:: test_metadata_dicom_to_image(spark_session, dicom_image_df)
+
+
+

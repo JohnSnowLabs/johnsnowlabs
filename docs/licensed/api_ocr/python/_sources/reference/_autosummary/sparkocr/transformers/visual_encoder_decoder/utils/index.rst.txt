@@ -1,0 +1,187 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.transformers.visual_encoder_decoder.utils`
+============================================================
+
+.. py:module:: sparkocr.transformers.visual_encoder_decoder.utils
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.transformers.visual_encoder_decoder.utils.MetricLogger
+   sparkocr.transformers.visual_encoder_decoder.utils.NativeScalerWithGradNormCount
+   sparkocr.transformers.visual_encoder_decoder.utils.SmoothedValue
+   sparkocr.transformers.visual_encoder_decoder.utils.TensorboardLogger
+
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.transformers.visual_encoder_decoder.utils.auto_load_model
+   sparkocr.transformers.visual_encoder_decoder.utils.cosine_scheduler
+   sparkocr.transformers.visual_encoder_decoder.utils.create_ds_config
+   sparkocr.transformers.visual_encoder_decoder.utils.get_grad_norm_
+   sparkocr.transformers.visual_encoder_decoder.utils.get_rank
+   sparkocr.transformers.visual_encoder_decoder.utils.get_world_size
+   sparkocr.transformers.visual_encoder_decoder.utils.init_distributed_mode
+   sparkocr.transformers.visual_encoder_decoder.utils.is_dist_avail_and_initialized
+   sparkocr.transformers.visual_encoder_decoder.utils.is_main_process
+   sparkocr.transformers.visual_encoder_decoder.utils.load_state_dict
+   sparkocr.transformers.visual_encoder_decoder.utils.save_model
+   sparkocr.transformers.visual_encoder_decoder.utils.save_on_master
+   sparkocr.transformers.visual_encoder_decoder.utils.setup_for_distributed
+
+
+
+.. py:class:: MetricLogger(delimiter='\t')
+
+   Bases: :py:obj:`object`
+
+   .. py:attribute:: delimiter
+      :annotation: = '\t'
+
+      
+
+   .. py:attribute:: meters
+      
+
+      
+
+   .. py:method:: add_meter(name, meter)
+
+
+   .. py:method:: log_every(iterable, print_freq, header=None)
+
+
+   .. py:method:: synchronize_between_processes()
+
+
+   .. py:method:: update(**kwargs)
+
+
+
+.. py:class:: NativeScalerWithGradNormCount
+
+   .. py:attribute:: state_dict_key
+      :annotation: = 'amp_scaler'
+
+      
+
+   .. py:method:: load_state_dict(state_dict)
+
+
+   .. py:method:: state_dict()
+
+
+
+.. py:class:: SmoothedValue(window_size=20, fmt=None)
+
+   Bases: :py:obj:`object`
+
+   Track a series of values and provide access to smoothed values over a
+   window or the global series average.
+
+   .. py:attribute:: count
+      :annotation: = 0
+
+      
+
+   .. py:attribute:: deque
+      
+
+      
+
+   .. py:attribute:: fmt
+      :annotation: = None
+
+      
+
+   .. py:attribute:: total
+      :annotation: = 0.0
+
+      
+
+   .. py:method:: synchronize_between_processes()
+
+      Warning: does not synchronize the deque!
+
+
+   .. py:method:: update(value, n=1)
+
+
+
+.. py:class:: TensorboardLogger(log_dir)
+
+   Bases: :py:obj:`object`
+
+   .. py:attribute:: step
+      :annotation: = 0
+
+      
+
+   .. py:attribute:: writer
+      
+
+      
+
+   .. py:method:: flush()
+
+
+   .. py:method:: set_step(step=None)
+
+
+   .. py:method:: update(head='scalar', step=None, **kwargs)
+
+
+
+.. py:function:: auto_load_model(args, model, model_without_ddp, optimizer, loss_scaler, model_ema=None)
+
+
+.. py:function:: cosine_scheduler(base_value, final_value, epochs, niter_per_ep, warmup_epochs=0, start_warmup_value=0, warmup_steps=-1)
+
+
+.. py:function:: create_ds_config(args)
+
+
+.. py:function:: get_grad_norm_(parameters, norm_type: float = 2.0) -> torch.Tensor
+
+
+.. py:function:: get_rank()
+
+
+.. py:function:: get_world_size()
+
+
+.. py:function:: init_distributed_mode(args)
+
+
+.. py:function:: is_dist_avail_and_initialized()
+
+
+.. py:function:: is_main_process()
+
+
+.. py:function:: load_state_dict(model, state_dict, prefix='', ignore_missing='relative_position_index')
+
+
+.. py:function:: save_model(args, epoch, model, model_without_ddp, optimizer, loss_scaler, model_ema=None)
+
+
+.. py:function:: save_on_master(*args, **kwargs)
+
+
+.. py:function:: setup_for_distributed(is_master)
+
+   This function disables printing when not in master process
+
+
