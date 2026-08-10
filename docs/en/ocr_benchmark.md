@@ -169,10 +169,11 @@ Reasons for doing this:
 
 </div><div class="h3-box" markdown="1">
 
-# AWS Dicom Pipeline Benchmarks
+### AWS Dicom Pipeline Benchmarks
 
 In this section, we provide figures for specific AWS instances.
 
+{:.table-model-big}
 | Infra | Pipeline | Image size (avg) | Time (s) for test batch | Infra Price (1000 images) | Time (1000 images) |
 |---|---|---|---|---|---|
 | **CPU – c7a.4xlarge** | mem_opt (onnx, open-vino) + ner_deid_sd | 600x600 | 18, 16 | $0.37 | 0.45 hs |
@@ -186,9 +187,12 @@ In this section, we provide figures for specific AWS instances.
 - g6.2xlarge: 8 vCPUs, 32 GiB RAM — $0.98/h
 
 
-# AWS Dicom Pipeline Benchmarks — Transformers
+</div><div class="h3-box" markdown="1">
+
+### AWS Dicom Pipeline Benchmarks - Transformers
 In this section we provide the specific list of Transformers that were used for the experiments of previous section.
 
+{:.table-model-big}
 | # | OCR Pipeline (`dicom_deid_ocr_pipeline.py`) | VLM Pipeline (`dicom_deid_vlm_pipeline.py`) |
 |---|---|---|
 | 1 | DicomToMetadata | DicomToImageV3 |
