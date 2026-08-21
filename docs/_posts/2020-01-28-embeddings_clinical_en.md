@@ -11,7 +11,7 @@ date: 2020-01-28
 task: Embeddings
 edition: Healthcare NLP 2.4.0
 spark_version: 2.4
-tags: [clinical,licensed,embeddings,en]
+tags: [clinical,licensed,embeddings,en, pji-compatible]
 supported: true
 annotator: WordEmbeddingsModel
 article_header:
