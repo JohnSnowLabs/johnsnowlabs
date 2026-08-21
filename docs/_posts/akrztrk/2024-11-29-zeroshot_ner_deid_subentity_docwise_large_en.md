@@ -4,7 +4,7 @@ title: Pretrained Zero-Shot PHI Detection for Deidentification (Zero-shot - Larg
 author: John Snow Labs
 name: zeroshot_ner_deid_subentity_docwise_large
 date: 2024-11-29
-tags: [licensed, en, ner, deid, zeroshot]
+tags: [licensed, en, ner, deid, zeroshot, pji-compatible]
 task: Named Entity Recognition
 language: en
 edition: Healthcare NLP 5.5.1
