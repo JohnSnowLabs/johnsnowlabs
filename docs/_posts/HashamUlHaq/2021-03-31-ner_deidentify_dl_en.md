@@ -4,7 +4,7 @@ title: Detect PHI for Deidentification (ner_deidentification_dl)
 author: John Snow Labs
 name: ner_deidentify_dl
 date: 2021-03-31
-tags: [ner, clinical, licensed, en]
+tags: [ner, clinical, licensed, en, pji-compatible]
 task: [Named Entity Recognition, De-identification]
 language: en
 nav_key: models

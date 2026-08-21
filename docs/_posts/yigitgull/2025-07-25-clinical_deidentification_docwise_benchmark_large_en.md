@@ -4,7 +4,7 @@ title: Clinical Deidentification Pipeline (Document Wise)
 author: John Snow Labs
 name: clinical_deidentification_docwise_benchmark_large
 date: 2025-07-25
-tags: [deidentification, deid, en, licensed, clinical, pipeline, docwise]
+tags: [deidentification, deid, en, licensed, clinical, pipeline, docwise, pji-compatible]
 task: [De-identification, Pipeline Healthcare]
 language: en
 edition: Healthcare NLP 6.0.4

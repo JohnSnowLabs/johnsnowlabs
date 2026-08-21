@@ -4,7 +4,7 @@ title: Оcr large for printed text v2 optimized
 author: John Snow Labs
 name: ocr_large_printed_v2_opt
 date: 2024-03-15
-tags: [en, licensed]
+tags: [en, licensed, pji-compatible]
 task: OCR Text Detection & Recognition 
 language: en
 nav_key: models
