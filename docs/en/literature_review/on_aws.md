@@ -17,7 +17,7 @@ sidebar:
 
 The quickest way to get up and running is through the **AWS Marketplace**. A few clicks and the full appliance is deployed on an EC2 instance in **your own AWS account** — nothing leaves your environment.
 
-Visit the [product page on AWS Marketplace](https://aws.amazon.com/marketplace/) and follow the steps below.
+Visit the [product page on AWS Marketplace](https://aws.amazon.com/marketplace/pp/prodview-ipry3linqywdu) and follow the steps below.
 
 **Getting started:**
 
