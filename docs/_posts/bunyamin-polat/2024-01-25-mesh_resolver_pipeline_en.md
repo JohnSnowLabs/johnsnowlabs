@@ -17,7 +17,7 @@ use_language_switcher: "Python-Scala-Java"
 
 deploy:
   sagemaker_link: 
-  snowflake_link: https://app.snowflake.com/marketplace/listing/GZTYZ4386LJDR/john-snow-labs-mesh-sentence-entity-resolver
+  snowflake_link: 
   databricks_link: https://marketplace.databricks.com/details/f518953c-602c-4b9e-9a9a-9746c17a07c0/John-Snow-Labs_MeSH-Clinical-Terminology-Mapper
 
 ---
