@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 deploy:
   sagemaker_link: https://aws.amazon.com/marketplace/pp/prodview-jju2zifvlabdy
-  snowflake_link: 
+  snowflake_link: https://app.snowflake.com/marketplace/listing/GZTYZ4386LLMY/john-snow-labs-clinical-obfuscation-for-pdf-en
   databricks_link: 
 
 ---
