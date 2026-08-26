@@ -15,11 +15,6 @@ article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
 
-deploy:
-  sagemaker_link: 
-  snowflake_link: https://app.snowflake.com/marketplace/listing/GZTYZ4386LJ7T/john-snow-labs-extract-biomarkers
-  databricks_link: 
-
 ---
 
 ## Description
