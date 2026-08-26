@@ -17,7 +17,7 @@ use_language_switcher: "Python-Scala-Java"
 
 deploy:
   sagemaker_link: 
-  snowflake_link: https://app.snowflake.com/marketplace/listing/GZTYZ4386LJCE/john-snow-labs-healthcare-common-procedure-resolver
+  snowflake_link: 
   databricks_link: https://marketplace.databricks.com/details/30a45cec-f7fe-4c7b-86d5-30d125d61166/John-Snow-Labs_Healthcare-Common-Procedure-Clinical-Terminology-Mapper
 
 ---
