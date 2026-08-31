@@ -463,6 +463,7 @@ A healthcare annotation team is labeling laboratory results containing values su
 </div>
 
 <ul class="pagination owl-carousel pagination_big">
+    <li><a href="annotation_labs_releases/release_notes_8_2_5">8.2.5</a></li>
     <li><a href="annotation_labs_releases/release_notes_8_2_1">8.2.1</a></li>
     <li class="active"><a href="annotation_labs_releases/release_notes_8_2_0">8.2.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_8_1_3">8.1.3</a></li>
