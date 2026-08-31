@@ -1,0 +1,330 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.schemas`
+==========================
+
+.. py:module:: sparkocr.schemas
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.schemas.AnswersOutput
+   sparkocr.schemas.Base64File
+   sparkocr.schemas.BinaryFile
+   sparkocr.schemas.Coordinate
+   sparkocr.schemas.Height
+   sparkocr.schemas.Image
+   sparkocr.schemas.ImageOutput
+   sparkocr.schemas.LightPipelineException
+   sparkocr.schemas.PageNum
+   sparkocr.schemas.Path
+   sparkocr.schemas.PdfBase64File
+   sparkocr.schemas.PositionsOutput
+   sparkocr.schemas.Width
+
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.schemas.BinaryFields
+   sparkocr.schemas.BinarySchema
+   sparkocr.schemas.CoordinateFields
+   sparkocr.schemas.CoordinateSchema
+   sparkocr.schemas.ImageFields
+   sparkocr.schemas.ImageSchema
+   sparkocr.schemas.mappingSchema
+   sparkocr.schemas.pageMatrixSchema
+   sparkocr.schemas.regionSchema
+   sparkocr.schemas.tableContainerSchema
+   sparkocr.schemas.textChunkCoordinateType
+
+
+.. py:class:: AnswersOutput(question_answers)
+
+   Bases: :py:obj:`object`
+
+   .. py:attribute:: questions_and_answers
+      
+
+      
+
+
+.. py:class:: Base64File(file_description)
+
+   Bases: :py:obj:`object`
+
+   .. py:attribute:: desc
+      
+
+      
+
+
+.. py:class:: BinaryFile(file_description)
+
+   Bases: :py:obj:`object`
+
+   .. py:attribute:: desc
+      
+
+      
+
+
+.. py:class:: Coordinate(index=0, page=0, x=0, y=0, width=0, height=0, score=0.0, label='', angle=0.0, text='')
+
+   Bases: :py:obj:`object`
+
+   .. py:attribute:: angle
+      :annotation: = 0.0
+
+      
+
+   .. py:attribute:: height
+      :annotation: = 0
+
+      
+
+   .. py:attribute:: index
+      :annotation: = 0
+
+      
+
+   .. py:attribute:: label
+      :annotation: = ''
+
+      
+
+   .. py:attribute:: page
+      :annotation: = 0
+
+      
+
+   .. py:attribute:: score
+      :annotation: = 0.0
+
+      
+
+   .. py:attribute:: text
+      :annotation: = ''
+
+      
+
+   .. py:attribute:: width
+      :annotation: = 0
+
+      
+
+   .. py:attribute:: x
+      :annotation: = 0
+
+      
+
+   .. py:attribute:: y
+      :annotation: = 0
+
+      
+
+   .. py:method:: merge(region)
+
+
+
+.. py:class:: Height(value)
+
+   Bases: :py:obj:`object`
+
+   .. py:attribute:: value
+      
+
+      
+
+
+.. py:class:: Image(origin, height, width, nChannels, mode, resolution, data)
+
+   Bases: :py:obj:`object`
+
+   .. py:attribute:: data
+      
+
+      
+
+   .. py:attribute:: height
+      
+
+      
+
+   .. py:attribute:: mode
+      
+
+      
+
+   .. py:attribute:: nChannels
+      
+
+      
+
+   .. py:attribute:: origin
+      
+
+      
+
+   .. py:attribute:: resolution
+      
+
+      
+
+   .. py:attribute:: width
+      
+
+      
+
+
+.. py:class:: ImageOutput(path, exception, image='')
+
+   Bases: :py:obj:`object`
+
+   .. py:attribute:: exception
+      
+
+      
+
+   .. py:attribute:: image
+      :annotation: = ''
+
+      
+
+   .. py:attribute:: path
+      
+
+      
+
+
+.. py:class:: LightPipelineException(message)
+
+   Bases: :py:obj:`object`
+
+   .. py:attribute:: message
+      
+
+      
+
+
+.. py:class:: PageNum(value)
+
+   Bases: :py:obj:`object`
+
+   .. py:attribute:: value
+      
+
+      
+
+
+.. py:class:: Path(value)
+
+   Bases: :py:obj:`object`
+
+   .. py:attribute:: value
+      
+
+      
+
+
+.. py:class:: PdfBase64File(annotator, file_content)
+
+   Bases: :py:obj:`object`
+
+   .. py:attribute:: annotator
+      
+
+      
+
+   .. py:attribute:: file
+      
+
+      
+
+
+.. py:class:: PositionsOutput(mappings)
+
+   Bases: :py:obj:`object`
+
+   .. py:attribute:: mappings
+      
+
+      
+
+
+.. py:class:: Width(value)
+
+   Bases: :py:obj:`object`
+
+   .. py:attribute:: value
+      
+
+      
+
+
+.. py:data:: BinaryFields
+   :annotation: = ['path', 'modificationTime', 'length', 'content']
+
+   
+
+.. py:data:: BinarySchema
+   
+
+   
+
+.. py:data:: CoordinateFields
+   :annotation: = ['index', 'page', 'x', 'y', 'width', 'height', 'score', 'label', 'angle', 'rotated']
+
+   
+
+.. py:data:: CoordinateSchema
+   
+
+   
+
+.. py:data:: ImageFields
+   :annotation: = ['origin', 'height', 'width', 'nChannels', 'mode', 'resolution', 'data']
+
+   
+
+.. py:data:: ImageSchema
+   
+
+   
+
+.. py:data:: mappingSchema
+   
+
+   
+
+.. py:data:: pageMatrixSchema
+   
+
+   
+
+.. py:data:: regionSchema
+   
+
+   
+
+.. py:data:: tableContainerSchema
+   
+
+   
+
+.. py:data:: textChunkCoordinateType
+   
+
+   
+

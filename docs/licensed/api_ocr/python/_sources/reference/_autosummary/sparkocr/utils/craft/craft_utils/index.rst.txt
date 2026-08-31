@@ -1,0 +1,72 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.utils.craft.craft_utils`
+==========================================
+
+.. py:module:: sparkocr.utils.craft.craft_utils
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.utils.craft.craft_utils.adjustResultCoordinates
+   sparkocr.utils.craft.craft_utils.copyStateDict
+   sparkocr.utils.craft.craft_utils.getDetBoxes
+   sparkocr.utils.craft.craft_utils.getDetBoxes_core
+   sparkocr.utils.craft.craft_utils.getPoly_core
+   sparkocr.utils.craft.craft_utils.load_craftnet_model
+   sparkocr.utils.craft.craft_utils.load_refinenet_model
+   sparkocr.utils.craft.craft_utils.warpCoord
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.utils.craft.craft_utils.CRAFT_GDRIVE_URL
+   sparkocr.utils.craft.craft_utils.REFINENET_GDRIVE_URL
+
+
+.. py:function:: adjustResultCoordinates(polys, ratio_w, ratio_h, ratio_net=2)
+
+
+.. py:function:: copyStateDict(state_dict)
+
+
+.. py:function:: getDetBoxes(textmap, linkmap, text_threshold, link_threshold, low_text, poly=False)
+
+
+.. py:function:: getDetBoxes_core(textmap, linkmap, text_threshold, link_threshold, low_text)
+
+
+.. py:function:: getPoly_core(boxes, labels, mapper, linkmap)
+
+
+.. py:function:: load_craftnet_model(cuda: bool = False, weight_path: Optional[Union[str, pathlib.Path]] = None)
+
+
+.. py:function:: load_refinenet_model(cuda: bool = False, weight_path: Optional[Union[str, pathlib.Path]] = None)
+
+
+.. py:function:: warpCoord(Minv, pt)
+
+
+.. py:data:: CRAFT_GDRIVE_URL
+   :annotation: = 'https://drive.google.com/uc?id=1bupFXqT-VU6Jjeul13XP7yx2Sg5IHr4J'
+
+   
+
+.. py:data:: REFINENET_GDRIVE_URL
+   :annotation: = 'https://drive.google.com/uc?id=1xcE9qpJXp4ofINwXWVhhQIh9S8Z7cuGj'
+
+   
+

@@ -1,0 +1,31 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.test_image_regions_merger`
+===================================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.test_image_regions_merger
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.test_image_regions_merger.TestImageRegionsMerger
+
+
+
+
+.. py:class:: TestImageRegionsMerger
+
+   .. py:method:: test_merge_regions_keeptxt(spark_session, regions_merger_df)
+
+
+   .. py:method:: test_merge_regions_mergetocells(spark_session, regions_merger_df)
+
+
+

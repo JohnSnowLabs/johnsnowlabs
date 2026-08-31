@@ -1,0 +1,31 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.test_ppt_to_pdf`
+=========================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.test_ppt_to_pdf
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.test_ppt_to_pdf.TestPptToPdf
+
+
+
+
+.. py:class:: TestPptToPdf
+
+   .. py:method:: test_ppt_without_split_by_page(spark_session, ppt_text_multipage_df)
+
+
+   .. py:method:: test_pptx_without_split_by_page(spark_session, pptx_text_multipage_df)
+
+
+

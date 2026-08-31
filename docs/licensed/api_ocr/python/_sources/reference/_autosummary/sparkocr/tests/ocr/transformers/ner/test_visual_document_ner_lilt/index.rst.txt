@@ -1,0 +1,34 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.ner.test_visual_document_ner_lilt`
+===========================================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.ner.test_visual_document_ner_lilt
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.ner.test_visual_document_ner_lilt.TestVisualDocumentNerLilt
+
+
+
+
+.. py:class:: TestVisualDocumentNerLilt
+
+   .. py:method:: test_visual_document_ner_lilt_inference(visual_document_ner_df, spark_session)
+
+
+   .. py:method:: test_visual_document_ner_lilt_train(visual_document_ner_df, spark_session)
+
+
+   .. py:method:: visual_document_ner_lilt_from_datasets(visual_document_ner_df, spark_session)
+
+
+

@@ -1,0 +1,70 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.transformers.visual_encoder_decoder.optim_factory`
+====================================================================
+
+.. py:module:: sparkocr.transformers.visual_encoder_decoder.optim_factory
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.transformers.visual_encoder_decoder.optim_factory.LayerDecayValueAssigner
+
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.transformers.visual_encoder_decoder.optim_factory.create_optimizer
+   sparkocr.transformers.visual_encoder_decoder.optim_factory.get_num_layer_for_vit
+   sparkocr.transformers.visual_encoder_decoder.optim_factory.get_parameter_groups
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.transformers.visual_encoder_decoder.optim_factory.has_apex
+
+
+.. py:class:: LayerDecayValueAssigner(values)
+
+   Bases: :py:obj:`object`
+
+   .. py:attribute:: values
+      
+
+      
+
+   .. py:method:: get_layer_id(var_name)
+
+
+   .. py:method:: get_scale(layer_id)
+
+
+
+.. py:function:: create_optimizer(args, model, get_num_layer=None, get_layer_scale=None, filter_bias_and_bn=True, skip_list=None)
+
+
+.. py:function:: get_num_layer_for_vit(var_name, num_max_layer)
+
+
+.. py:function:: get_parameter_groups(model, weight_decay=1e-05, skip_list=(), get_num_layer=None, get_layer_scale=None)
+
+
+.. py:data:: has_apex
+   :annotation: = True
+
+   
+

@@ -1,0 +1,42 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.pipelines.test_pdf`
+===============================================
+
+.. py:module:: sparkocr.tests.ocr.pipelines.test_pdf
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.pipelines.test_pdf.TestPdfOcrPipeline
+
+
+
+
+.. py:class:: TestPdfOcrPipeline
+
+   .. py:attribute:: PIPELINE_PATH
+      :annotation: = 'pdf_ocr_pipeline'
+
+      
+
+   .. py:method:: get_pipeline(auto_skew_correction=False)
+
+
+   .. py:method:: teardown_method(method)
+
+
+   .. py:method:: test_ocr_with_skew_correction(spark_session, pdf_rotated_df, pdf_rotated_text)
+
+
+   .. py:method:: test_saving_and_loading_pipeline(spark_session, pdf_rotated_df, pdf_rotated_text)
+
+
+

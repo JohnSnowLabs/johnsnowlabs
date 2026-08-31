@@ -1,0 +1,482 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.transformers.dicom.dicom_draw_regions`
+========================================================
+
+.. py:module:: sparkocr.transformers.dicom.dicom_draw_regions
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.transformers.dicom.dicom_draw_regions.DicomCleaner
+   sparkocr.transformers.dicom.dicom_draw_regions.DicomDrawRegions
+
+
+
+
+.. py:exception:: NoImage
+
+   Bases: :py:obj:`Exception`
+
+   Common base class for all non-exit exceptions.
+
+
+.. py:class:: DicomCleaner
+
+   Bases: :py:obj:`sparkocr.transformers.dicom.base_dicom.BaseDicom`
+
+   .. py:attribute:: OVERLAY_TAG
+      :annotation: = 24576
+
+      
+
+   .. py:attribute:: cleaned_overlay_data
+      :annotation: = None
+
+      
+
+   .. py:attribute:: frame_numbers
+      :annotation: = None
+
+      
+
+   .. py:attribute:: htj2k_color_space
+      
+
+      
+
+   .. py:attribute:: htj2k_lossless_color_space
+      
+
+      
+
+   .. py:attribute:: htj2k_lossless_rpcl_color_space
+      
+
+      
+
+   .. py:attribute:: is_compressed
+      :annotation: = False
+
+      
+
+   .. py:attribute:: jpeg_2000_color_space
+      
+
+      
+
+   .. py:attribute:: jpeg_2000_lossless_color_space
+      
+
+      
+
+   .. py:attribute:: jpeg_baseline_8bit_color_space
+      
+
+      
+
+   .. py:attribute:: jpeg_extended_12_bit_color_space
+      
+
+      
+
+   .. py:attribute:: jpeg_lossless_p14_color_space
+      
+
+      
+
+   .. py:attribute:: jpeg_lossless_sv1_color_space
+      
+
+      
+
+   .. py:attribute:: jpeg_ls_lossless_color_space
+      
+
+      
+
+   .. py:attribute:: jpeg_ls_near_lossless_color_space
+      
+
+      
+
+   .. py:attribute:: original
+      :annotation: = None
+
+      
+
+   .. py:attribute:: overlay_data
+      :annotation: = None
+
+      
+
+   .. py:attribute:: readMaxBytes
+      
+
+      
+
+   .. py:attribute:: results
+      :annotation: = None
+
+      
+
+   .. py:attribute:: rle_color_space
+      
+
+      
+
+   .. py:attribute:: transfer_syntaxes
+      
+
+      
+
+   .. py:attribute:: version
+      
+
+      
+
+   .. py:method:: add_compression_ratio(dicom, original, updated)
+
+
+   .. py:method:: clean(fix_interpretation=True, pixel_data_attribute='PixelData')
+
+
+   .. py:method:: clean_frame(index, regions)
+
+
+   .. py:method:: extract_pixel_using_handler(handler)
+
+
+   .. py:method:: generate_candidate_regions()
+
+
+   .. py:method:: get_s3_creds(sql_ctx)
+
+
+   .. py:method:: get_transfer_syntax_based_on_dicom_tags(**kwargs)
+      :classmethod:
+
+      Tries to find if the original file syntax is supported for encoding of the pixels.
+      All the listed transfer syntax is supported for decoding, but for encoding they can vary depending on pydicom version.
+      To overcome this gap for support of all transfer syntax we try to
+          1. Check if the original transfer syntax is supported.
+          2. If any other transfer syntax can be used instead keeping the compression type same.
+          3. Else we change the compression type (lossy -> lossless)
+          4. Else we fail to find a match
+
+      :returns:
+
+                - String if there are errors.
+                - Tuple if there are no errors, the contents and length of all cases are same except the first index.
+                    1. (Compresssion, _, _, ... )
+                    2. (Non-Compression, _, _, ... )
+                    3. (Failed-Match, _, _, ... )
+
+
+   .. py:method:: infer_reshape_size(frames, rows, cols, samples)
+      :staticmethod:
+
+
+   .. py:method:: open(dicom_file, path, regions, scaleFactor, forceOutput, compressionQuality)
+
+
+   .. py:method:: read_dicom(dicom, params, read_max_bytes, origin='', stop_before_pixels=True)
+      :staticmethod:
+
+
+   .. py:method:: resolve_compression_quality(compression)
+      :classmethod:
+
+
+   .. py:method:: save_dicom()
+
+
+   .. py:method:: setReadMaxBytes(value)
+
+      Sets the value of :py:attr:`readMaxBytes`.
+
+
+   .. py:method:: validate_input_dicom_tags(**kwargs)
+      :classmethod:
+
+      Validates basic attributes of the DICOM file such as Photometric Interpretation,
+      Transfer Syntax, Samples Per Pixel, and other relevant metadata.
+
+      :param - pydicom_version: Version of pydicom in use.
+      :param - force: If True, forces use of a default compression type for unsupported Transfer Syntax.
+      :param - kwargs: DICOM attributes to validate, including 'PhotometricInterpretation', 'TransferSyntaxUID',
+                       'SamplesPerPixel', 'BitsAllocated', 'BitsStored', 'HighBit', and others.
+
+      :returns:
+
+                - String if there are missing or invalid tags.
+                - Boolean True if the compression is supported.
+                - Boolean False if the compression is not supported.
+
+
+
+.. py:class:: DicomDrawRegions
+
+   Bases: :py:obj:`pyspark.ml.wrapper.JavaTransformer`, :py:obj:`pyspark.ml.param.shared.HasInputCol`, :py:obj:`pyspark.ml.param.shared.HasOutputCol`, :py:obj:`pyspark.ml.util.DefaultParamsReadable`, :py:obj:`pyspark.ml.util.DefaultParamsWritable`, :py:obj:`sparkocr.transformers.params.HasKeepInput`
+
+   Draw regions to dicom.
+
+   .. py:attribute:: aggCols
+      
+
+      
+
+   .. py:attribute:: compressionQuality
+      
+
+      
+
+   .. py:attribute:: forceOutput
+      
+
+      
+
+   .. py:attribute:: inputCol
+      :annotation: :Param[str]
+
+      
+
+   .. py:attribute:: inputRegionsCol
+      
+
+      
+
+   .. py:attribute:: keepInput
+      
+
+      
+
+   .. py:attribute:: memoryOptimized
+      
+
+      
+
+   .. py:attribute:: originCol
+      
+
+      
+
+   .. py:attribute:: outputCol
+      :annotation: :Param[str]
+
+      
+
+   .. py:attribute:: outputPartitionSize
+      
+
+      
+
+   .. py:attribute:: scaleFactor
+      
+
+      
+
+   .. py:attribute:: uid
+      :annotation: = ''
+
+      
+
+   .. py:method:: clear(param: pyspark.ml.param.Param) -> None
+
+      Clears a param from the param map if it has been explicitly set.
+
+
+   .. py:method:: copy(extra: Optional[pyspark.ml._typing.ParamMap] = None) -> JP
+
+      Creates a copy of this instance with the same uid and some
+      extra params. This implementation first calls Params.copy and
+      then make a copy of the companion Java pipeline component with
+      extra params. So both the Python wrapper and the Java pipeline
+      component get copied.
+
+      :param extra: Extra parameters to copy to the new instance
+      :type extra: dict, optional
+
+      :returns: Copy of this instance
+      :rtype: :py:class:`JavaParams`
+
+
+   .. py:method:: explainParam(param: Union[str, Param]) -> str
+
+      Explains a single param and returns its name, doc, and optional
+      default value and user-supplied value in a string.
+
+
+   .. py:method:: explainParams() -> str
+
+      Returns the documentation of all params with their optionally
+      default values and user-supplied values.
+
+
+   .. py:method:: extractParamMap(extra: Optional[pyspark.ml._typing.ParamMap] = None) -> pyspark.ml._typing.ParamMap
+
+      Extracts the embedded default param values and user-supplied
+      values, and then merges them with extra values from input into
+      a flat param map, where the latter value is used if there exist
+      conflicts, i.e., with ordering: default param values <
+      user-supplied values < extra.
+
+      :param extra: extra param values
+      :type extra: dict, optional
+
+      :returns: merged param map
+      :rtype: dict
+
+
+   .. py:method:: getInputCol() -> str
+
+      Gets the value of inputCol or its default value.
+
+
+   .. py:method:: getOrDefault(param: str) -> Any
+               getOrDefault(param: Param[T]) -> T
+
+      Gets the value of a param in the user-supplied param map or its
+      default value. Raises an error if neither is set.
+
+
+   .. py:method:: getOutputCol() -> str
+
+      Gets the value of outputCol or its default value.
+
+
+   .. py:method:: getParam(paramName: str) -> Param
+
+      Gets a param by its name.
+
+
+   .. py:method:: hasDefault(param: Union[str, Param[Any]]) -> bool
+
+      Checks whether a param has a default value.
+
+
+   .. py:method:: hasParam(paramName: str) -> bool
+
+      Tests whether this instance contains a param with a given
+      (string) name.
+
+
+   .. py:method:: isDefined(param: Union[str, Param[Any]]) -> bool
+
+      Checks whether a param is explicitly set by user or has
+      a default value.
+
+
+   .. py:method:: isSet(param: Union[str, Param[Any]]) -> bool
+
+      Checks whether a param is explicitly set by user.
+
+
+   .. py:method:: load(path: str) -> RL
+      :classmethod:
+
+      Reads an ML instance from the input path, a shortcut of `read().load(path)`.
+
+
+   .. py:method:: read() -> DefaultParamsReader[RL]
+      :classmethod:
+
+      Returns a DefaultParamsReader instance for this class.
+
+
+   .. py:method:: save(path: str) -> None
+
+      Save this ML instance to the given path, a shortcut of 'write().save(path)'.
+
+
+   .. py:method:: set(param: Param, value: Any) -> None
+
+      Sets a parameter in the embedded param map.
+
+
+   .. py:method:: setAggCols(value)
+
+      Sets the value of :py:attr:`setAggCols`.
+
+
+   .. py:method:: setCompressionQuality(value)
+
+      Sets the value of :py:attr:`compressionQuality`.
+
+
+   .. py:method:: setForceOutput(value)
+
+      Sets the value of :py:attr:`forceOutput`.
+
+
+   .. py:method:: setInputCol(value)
+
+      Sets the value of :py:attr:`inputCol`.
+
+
+   .. py:method:: setInputRegionsCol(value)
+
+      Sets the value of :py:attr:`inputRegionsCol`.
+
+
+   .. py:method:: setKeepInput(value)
+
+      Sets the value of :py:attr:`keepInput`.
+
+
+   .. py:method:: setMemoryOptimized(value)
+
+      Sets the value of :py:attr:`memoryOptimized`.
+
+
+   .. py:method:: setOriginCol(value)
+
+      Sets the value of :py:attr:`inputCol`.
+
+
+   .. py:method:: setOutputCol(value)
+
+      Sets the value of :py:attr:`outputCol`.
+
+
+   .. py:method:: setOutputPartitionSize(value)
+
+      Sets the value of :py:attr:`outputPartitionSize`.
+
+
+   .. py:method:: setScaleFactor(value)
+
+      Sets the value of :py:attr:`scaleFactor`.
+
+
+   .. py:method:: transform(dataset: pyspark.sql.dataframe.DataFrame, params: Optional[pyspark.ml._typing.ParamMap] = None) -> pyspark.sql.dataframe.DataFrame
+
+      Transforms the input dataset with optional parameters.
+
+      .. versionadded:: 1.3.0
+
+      :param dataset: input dataset
+      :type dataset: :py:class:`pyspark.sql.DataFrame`
+      :param params: an optional param map that overrides embedded params.
+      :type params: dict, optional
+
+      :returns: transformed dataset
+      :rtype: :py:class:`pyspark.sql.DataFrame`
+
+
+   .. py:method:: transform_dicom(dicom, path, regions, exceptions)
+
+
+   .. py:method:: write() -> MLWriter
+
+      Returns a DefaultParamsWriter instance for this class.
+
+
+

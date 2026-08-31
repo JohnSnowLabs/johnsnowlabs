@@ -1,0 +1,29 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.transformers.detectors.image_text_detector`
+=============================================================
+
+.. py:module:: sparkocr.transformers.detectors.image_text_detector
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.transformers.detectors.image_text_detector.ImageTextDetector
+
+
+
+
+.. py:class:: ImageTextDetector
+
+   .. py:method:: pretrained(name, lang='en', remote_loc='clinical/ocr')
+      :staticmethod:
+
+
+

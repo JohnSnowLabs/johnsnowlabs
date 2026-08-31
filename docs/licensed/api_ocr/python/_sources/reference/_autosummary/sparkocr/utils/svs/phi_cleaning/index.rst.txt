@@ -1,0 +1,207 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.utils.svs.phi_cleaning`
+=========================================
+
+.. py:module:: sparkocr.utils.svs.phi_cleaning
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.utils.svs.phi_cleaning.CopyOp
+
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.utils.svs.phi_cleaning.add_description
+   sparkocr.utils.svs.phi_cleaning.check_free_space
+   sparkocr.utils.svs.phi_cleaning.copy_and_strip
+   sparkocr.utils.svs.phi_cleaning.copy_and_strip_all
+   sparkocr.utils.svs.phi_cleaning.delete_associated_image
+   sparkocr.utils.svs.phi_cleaning.delete_associated_metadata
+   sparkocr.utils.svs.phi_cleaning.detect_format
+   sparkocr.utils.svs.phi_cleaning.do_strip_in_place
+   sparkocr.utils.svs.phi_cleaning.file_progress
+   sparkocr.utils.svs.phi_cleaning.generate_unique_id
+   sparkocr.utils.svs.phi_cleaning.get_config_path
+   sparkocr.utils.svs.phi_cleaning.get_csv_message
+   sparkocr.utils.svs.phi_cleaning.get_dir
+   sparkocr.utils.svs.phi_cleaning.get_dir_
+   sparkocr.utils.svs.phi_cleaning.get_filename
+   sparkocr.utils.svs.phi_cleaning.get_files
+   sparkocr.utils.svs.phi_cleaning.get_files_
+   sparkocr.utils.svs.phi_cleaning.get_files_structure
+   sparkocr.utils.svs.phi_cleaning.get_inplace_dir
+   sparkocr.utils.svs.phi_cleaning.get_inplace_files
+   sparkocr.utils.svs.phi_cleaning.get_inplace_info
+   sparkocr.utils.svs.phi_cleaning.inplace_info
+   sparkocr.utils.svs.phi_cleaning.parse_csv
+   sparkocr.utils.svs.phi_cleaning.parse_files
+   sparkocr.utils.svs.phi_cleaning.parse_inplace_files
+   sparkocr.utils.svs.phi_cleaning.remove_phi
+   sparkocr.utils.svs.phi_cleaning.remove_tag_section
+   sparkocr.utils.svs.phi_cleaning.resource_path
+   sparkocr.utils.svs.phi_cleaning.test_file_dialog
+   sparkocr.utils.svs.phi_cleaning.track_copy_progress
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.utils.svs.phi_cleaning.predefined_tags
+
+
+.. py:class:: CopyOp(start=[])
+
+   Bases: :py:obj:`object`
+
+   .. py:attribute:: lock
+      
+
+      
+
+   .. py:attribute:: original
+      :annotation: = []
+
+      
+
+   .. py:attribute:: value
+      :annotation: = []
+
+      
+
+   .. py:method:: read()
+
+
+   .. py:method:: update(index, val)
+
+
+
+.. py:function:: add_description(f)
+
+
+.. py:function:: check_free_space(directory)
+
+
+.. py:function:: copy_and_strip(file, copyop, index, tags, verbose)
+
+
+.. py:function:: copy_and_strip_all(files, copyop, tags, verbose)
+
+
+.. py:function:: delete_associated_image(slide_path, image_type, log)
+
+
+.. py:function:: delete_associated_metadata(slide_path, tags, log)
+
+
+.. py:function:: detect_format(filename)
+
+
+.. py:function:: do_strip_in_place(file)
+
+
+.. py:function:: file_progress(b)
+
+
+.. py:function:: generate_unique_id()
+
+
+.. py:function:: get_config_path(dlgtype='native', path='')
+
+
+.. py:function:: get_csv_message()
+
+
+.. py:function:: get_dir(dlgtype='native', path='')
+
+
+.. py:function:: get_dir_(dlgtype='native', path='path')
+
+
+.. py:function:: get_filename(f)
+
+
+.. py:function:: get_files(dlgtype='native', path='')
+
+
+.. py:function:: get_files_(dlgtype='native', path='')
+
+
+.. py:function:: get_files_structure(input: str, output: str, rename: bool)
+
+
+.. py:function:: get_inplace_dir(dlgtype='native', path='')
+
+
+.. py:function:: get_inplace_files(dlgtype='native', path='')
+
+
+.. py:function:: get_inplace_info(fs)
+
+
+.. py:function:: inplace_info(f)
+
+
+.. py:function:: parse_csv(file, filelist, invalid)
+
+
+.. py:function:: parse_files(files)
+
+
+.. py:function:: parse_inplace_files(files)
+
+
+.. py:function:: remove_phi(input, output, tags=predefined_tags, append_tags=[], rename=False, verbose=False)
+
+   Remove label images, macro images, and specified metadata from SVS files.
+
+   This function processes SVS files to remove sensitive metadata and associated images.
+   By default, it removes specific metadata tags: "ImageDescription.Filename",
+   "ImageDescription.Date", "ImageDescription.Time", and "ImageDescription.User".
+
+   Parameters:
+   - input (str): The file path or directory containing the SVS files to be de-identified.
+   - output (str): The file path or directory where the de-identified files will be saved.
+   - tags (list, optional): A list of metadata tags to remove, replacing the default tags if provided.
+   - append_tags (list, optional): Additional tags to remove, added to the defaults without overriding them.
+   - rename (bool, optional): whether to rename the output svs file. Default is False.
+   - verbose (bool, optional): whether to plot detailed logs or not. Default is False.
+
+   Returns:
+   - None
+
+
+.. py:function:: remove_tag_section(input_string, tag)
+
+
+.. py:function:: resource_path(relative_path)
+
+   Get absolute path to resource, works for dev and for PyInstaller
+
+
+.. py:function:: test_file_dialog(dlgtype, path='')
+
+
+.. py:function:: track_copy_progress(copyop)
+
+
+.. py:data:: predefined_tags
+   :annotation: = ['ImageDescription.Filename', 'ImageDescription.Date', 'ImageDescription.Time', 'ImageDescription.User']
+
+   
+

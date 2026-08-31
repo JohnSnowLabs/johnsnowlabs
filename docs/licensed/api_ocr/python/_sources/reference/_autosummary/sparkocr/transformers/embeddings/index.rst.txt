@@ -1,0 +1,18 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.transformers.embeddings`
+==========================================
+
+.. py:module:: sparkocr.transformers.embeddings
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   vit_image_embeddings/index.rst
+
+

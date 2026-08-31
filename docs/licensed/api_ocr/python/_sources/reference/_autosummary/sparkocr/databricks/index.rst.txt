@@ -1,0 +1,52 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.databricks`
+=============================
+
+.. py:module:: sparkocr.databricks
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.databricks.create_init_script_for_tesseract
+   sparkocr.databricks.display_images
+   sparkocr.databricks.isRunningInDatabricks
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.databricks.INIT_SCRIPT_PATH
+   sparkocr.databricks.OCR_MODEL_DIR
+
+
+.. py:function:: create_init_script_for_tesseract()
+
+
+.. py:function:: display_images(df, displayHTML, field='image', limit=5, width='800', show_meta=True)
+
+
+.. py:function:: isRunningInDatabricks()
+
+
+.. py:data:: INIT_SCRIPT_PATH
+   :annotation: = '/dbfs/databricks/init/'
+
+   
+
+.. py:data:: OCR_MODEL_DIR
+   :annotation: = '/dbfs/ocr/models'
+
+   
+

@@ -1,0 +1,28 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.test_image_skew_corrector`
+===================================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.test_image_skew_corrector
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.test_image_skew_corrector.TestImageSkewCorrector
+
+
+
+
+.. py:class:: TestImageSkewCorrector
+
+   .. py:method:: test_base_skew_corrector(spark_session, image_df)
+
+
+

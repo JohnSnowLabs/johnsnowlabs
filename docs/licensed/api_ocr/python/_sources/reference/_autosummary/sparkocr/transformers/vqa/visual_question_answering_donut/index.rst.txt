@@ -1,0 +1,420 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.transformers.vqa.visual_question_answering_donut`
+===================================================================
+
+.. py:module:: sparkocr.transformers.vqa.visual_question_answering_donut
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.transformers.vqa.visual_question_answering_donut.VisualQuestionAnsweringDonut
+
+
+
+
+.. py:class:: VisualQuestionAnsweringDonut(classname='com.johnsnowlabs.ocr.transformers.VisualQuestionAnsweringDonut', java_model=None)
+
+   Bases: :py:obj:`pyspark.ml.wrapper.JavaTransformer`, :py:obj:`pyspark.ml.param.shared.HasInputCols`, :py:obj:`pyspark.ml.param.shared.HasOutputCol`, :py:obj:`sparkocr.transformers.params.HasKeepInput`, :py:obj:`sparkocr.transformers.params.HasForceProcessing`, :py:obj:`pyspark.ml.util.DefaultParamsReadable`, :py:obj:`pyspark.ml.util.DefaultParamsWritable`
+
+   Base class for :py:class:`Transformer`s that wrap Java/Scala
+   implementations. Subclasses should ensure they have the transformer Java object
+   available as _java_obj.
+
+   .. py:attribute:: answerEndMarker
+      
+
+      
+
+   .. py:attribute:: answerStartMarker
+      
+
+      
+
+   .. py:attribute:: encoderHiddenStateDim1
+      
+
+      
+
+   .. py:attribute:: encoderHiddenStateDim2
+      
+
+      
+
+   .. py:attribute:: endTokenId
+      
+
+      
+
+   .. py:attribute:: forceProcessing
+      
+
+      
+
+   .. py:attribute:: height
+      
+
+      
+
+   .. py:attribute:: includeConfidence
+      
+
+      
+
+   .. py:attribute:: inputCols
+      :annotation: :Param[List[str]]
+
+      
+
+   .. py:attribute:: keepInput
+      
+
+      
+
+   .. py:attribute:: maxSeqLength
+      
+
+      
+
+   .. py:attribute:: name
+      :annotation: = 'VisualQuestionAnsweringDonut'
+
+      
+
+   .. py:attribute:: normMean
+      
+
+      
+
+   .. py:attribute:: normStd
+      
+
+      
+
+   .. py:attribute:: numChannels
+      
+
+      
+
+   .. py:attribute:: outputCol
+      :annotation: :Param[str]
+
+      
+
+   .. py:attribute:: padTokenId
+      
+
+      
+
+   .. py:attribute:: questionEndMarker
+      
+
+      
+
+   .. py:attribute:: questionStartMarker
+      
+
+      
+
+   .. py:attribute:: questions
+      
+
+      
+
+   .. py:attribute:: questionsCol
+      
+
+      
+
+   .. py:attribute:: spaceEncoding
+      
+
+      
+
+   .. py:attribute:: startTokenId
+      
+
+      
+
+   .. py:attribute:: taskEndMarker
+      
+
+      
+
+   .. py:attribute:: taskStartMarker
+      
+
+      
+
+   .. py:attribute:: uid
+      :annotation: = ''
+
+      
+
+   .. py:attribute:: width
+      
+
+      
+
+   .. py:method:: clear(param: pyspark.ml.param.Param) -> None
+
+      Clears a param from the param map if it has been explicitly set.
+
+
+   .. py:method:: copy(extra: Optional[pyspark.ml._typing.ParamMap] = None) -> JP
+
+      Creates a copy of this instance with the same uid and some
+      extra params. This implementation first calls Params.copy and
+      then make a copy of the companion Java pipeline component with
+      extra params. So both the Python wrapper and the Java pipeline
+      component get copied.
+
+      :param extra: Extra parameters to copy to the new instance
+      :type extra: dict, optional
+
+      :returns: Copy of this instance
+      :rtype: :py:class:`JavaParams`
+
+
+   .. py:method:: explainParam(param: Union[str, Param]) -> str
+
+      Explains a single param and returns its name, doc, and optional
+      default value and user-supplied value in a string.
+
+
+   .. py:method:: explainParams() -> str
+
+      Returns the documentation of all params with their optionally
+      default values and user-supplied values.
+
+
+   .. py:method:: exploding_wrap(func)
+
+
+   .. py:method:: extractParamMap(extra: Optional[pyspark.ml._typing.ParamMap] = None) -> pyspark.ml._typing.ParamMap
+
+      Extracts the embedded default param values and user-supplied
+      values, and then merges them with extra values from input into
+      a flat param map, where the latter value is used if there exist
+      conflicts, i.e., with ordering: default param values <
+      user-supplied values < extra.
+
+      :param extra: extra param values
+      :type extra: dict, optional
+
+      :returns: merged param map
+      :rtype: dict
+
+
+   .. py:method:: getInputCols() -> List[str]
+
+      Gets the value of inputCols or its default value.
+
+
+   .. py:method:: getOrDefault(param: str) -> Any
+               getOrDefault(param: Param[T]) -> T
+
+      Gets the value of a param in the user-supplied param map or its
+      default value. Raises an error if neither is set.
+
+
+   .. py:method:: getOutputCol() -> str
+
+      Gets the value of outputCol or its default value.
+
+
+   .. py:method:: getParam(paramName: str) -> Param
+
+      Gets a param by its name.
+
+
+   .. py:method:: hasDefault(param: Union[str, Param[Any]]) -> bool
+
+      Checks whether a param has a default value.
+
+
+   .. py:method:: hasParam(paramName: str) -> bool
+
+      Tests whether this instance contains a param with a given
+      (string) name.
+
+
+   .. py:method:: isDefined(param: Union[str, Param[Any]]) -> bool
+
+      Checks whether a param is explicitly set by user or has
+      a default value.
+
+
+   .. py:method:: isSet(param: Union[str, Param[Any]]) -> bool
+
+      Checks whether a param is explicitly set by user.
+
+
+   .. py:method:: load(folder)
+      :staticmethod:
+
+      Loads a spark model
+      :param folder: location of spark model
+      :return:
+
+
+   .. py:method:: pretrained(name, lang='en', remote_loc=None)
+      :staticmethod:
+
+
+   .. py:method:: read() -> DefaultParamsReader[RL]
+      :classmethod:
+
+      Returns a DefaultParamsReader instance for this class.
+
+
+   .. py:method:: save(path: str) -> None
+
+      Save this ML instance to the given path, a shortcut of 'write().save(path)'.
+
+
+   .. py:method:: saveModel(model_path)
+
+      Saves model
+      :param model_path: location of saved model
+      :return:
+
+
+   .. py:method:: set(param: Param, value: Any) -> None
+
+      Sets a parameter in the embedded param map.
+
+
+   .. py:method:: setEndTokenId(value)
+
+      Sets the value of :py:attr:`endTokenId`.
+
+
+   .. py:method:: setForceProcessing(value)
+
+      Sets the value of :py:attr:`forceProcessing`.
+
+
+   .. py:method:: setHeight(value)
+
+      Sets the value of :py:attr:`height`.
+
+
+   .. py:method:: setIncludeConfidence(value)
+
+      Sets the value of :py:attr:`includeConfidence`.
+
+
+   .. py:method:: setInputCol(value)
+
+      Sets the value of :py:attr:`inputCol`.
+
+
+   .. py:method:: setKeepInput(value)
+
+      Sets the value of :py:attr:`keepInput`.
+
+
+   .. py:method:: setMaxSeqLength(value)
+
+      Sets the value of :py:attr:`maxSeqLength`.
+
+
+   .. py:method:: setNormMean(value)
+
+      Sets the value of :py:attr:`normMean`.
+
+
+   .. py:method:: setNormStd(value)
+
+      Sets the value of :py:attr:`normStd`.
+
+
+   .. py:method:: setNumChannels(value)
+
+      Sets the value of :py:attr:`numChannels`.
+
+
+   .. py:method:: setOutputCol(value)
+
+      Sets the value of :py:attr:`outputCol`.
+
+
+   .. py:method:: setPadTokenId(value)
+
+      Sets the value of :py:attr:`endTokenId`.
+
+
+   .. py:method:: setQuestionEndMarker(value)
+
+      Sets the value of :py:attr:`questionEndMarker`.
+
+
+   .. py:method:: setQuestionStartMarker(value)
+
+      Sets the value of :py:attr:`questionStartMarker`.
+
+
+   .. py:method:: setQuestions(value)
+
+      Sets the value of :py:attr:`questions`.
+
+
+   .. py:method:: setQuestionsCol(value)
+
+      Sets the value of :py:attr:`questionsCol`.
+
+
+   .. py:method:: setSpaceEncoding(value)
+
+      Sets the value of :py:attr:`spaceEncoding`.
+
+
+   .. py:method:: setStartTokenId(value)
+
+      Sets the value of :py:attr:`startTokenId`.
+
+
+   .. py:method:: setTaskEndMarker(value)
+
+      Sets the value of :py:attr:`taskEndMarker`.
+
+
+   .. py:method:: setTaskStartMarker(value)
+
+      Sets the value of :py:attr:`questionsCol`.
+
+
+   .. py:method:: setWidth(value)
+
+      Sets the value of :py:attr:`width`.
+
+
+   .. py:method:: transform(dataset: pyspark.sql.dataframe.DataFrame, params: Optional[pyspark.ml._typing.ParamMap] = None) -> pyspark.sql.dataframe.DataFrame
+
+      Transforms the input dataset with optional parameters.
+
+      .. versionadded:: 1.3.0
+
+      :param dataset: input dataset
+      :type dataset: :py:class:`pyspark.sql.DataFrame`
+      :param params: an optional param map that overrides embedded params.
+      :type params: dict, optional
+
+      :returns: transformed dataset
+      :rtype: :py:class:`pyspark.sql.DataFrame`
+
+
+   .. py:method:: write() -> MLWriter
+
+      Returns a DefaultParamsWriter instance for this class.
+
+
+

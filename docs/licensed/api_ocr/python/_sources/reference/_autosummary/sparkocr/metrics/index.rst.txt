@@ -1,0 +1,46 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.metrics`
+==========================
+
+.. py:module:: sparkocr.metrics
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.metrics.OcrMetrics
+
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.metrics.score
+
+
+
+.. py:class:: OcrMetrics
+
+   Bases: :py:obj:`pyspark.ml.wrapper.JavaWrapper`
+
+   Wrapper class for a Java companion object
+
+   .. py:method:: levenshtein_distance(str1, str2)
+
+
+   .. py:method:: score(str1, str2)
+
+
+
+.. py:function:: score(correct, detected)
+
+

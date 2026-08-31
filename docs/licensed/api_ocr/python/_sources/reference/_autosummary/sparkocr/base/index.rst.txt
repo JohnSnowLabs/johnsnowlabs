@@ -1,0 +1,18 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.base`
+=======================
+
+.. py:module:: sparkocr.base
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   light_pipelines/index.rst
+
+

@@ -1,0 +1,31 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.test_image_remove_objects`
+===================================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.test_image_remove_objects
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.test_image_remove_objects.TestImageRemoveObjects
+
+
+
+
+.. py:class:: TestImageRemoveObjects
+
+   .. py:method:: test_image_remove_objects(spark_session, image_noised_df, image_noised_text)
+
+
+   .. py:method:: test_image_remove_objects_with_min_font_size(spark_session, pdf_fonts_df)
+
+
+

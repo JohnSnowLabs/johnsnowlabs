@@ -1,0 +1,143 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.transformers.visual_encoder_decoder.Dit`
+==========================================================
+
+.. py:module:: sparkocr.transformers.visual_encoder_decoder.Dit
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.transformers.visual_encoder_decoder.Dit.Dit
+   sparkocr.transformers.visual_encoder_decoder.Dit.DitDatasetIterable
+
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.transformers.visual_encoder_decoder.Dit.normalize_bbox
+
+
+
+.. py:class:: Dit(base_model_path, params)
+
+   .. py:attribute:: base_model_path
+      
+
+      
+
+   .. py:attribute:: batch_size
+      
+
+      
+
+   .. py:attribute:: checkpoint_model
+      
+
+      
+
+   .. py:attribute:: device
+      
+
+      
+
+   .. py:attribute:: label2id
+      
+
+      
+
+   .. py:attribute:: model
+      
+
+      
+
+   .. py:attribute:: params
+      
+
+      
+
+   .. py:attribute:: patch_size
+      
+
+      
+
+   .. py:attribute:: smoothing
+      :annotation: = 0.1
+
+      
+
+   .. py:attribute:: window_size
+      
+
+      
+
+   .. py:method:: finish_model(checkpoint_model)
+
+
+   .. py:method:: to_onnx(onnx_model_path, validate=False, atol=0.01)
+
+
+   .. py:method:: train(df)
+
+
+   .. py:method:: update_config_labels(labels)
+
+
+
+.. py:class:: DitDatasetIterable(df, image_col='image', labels_col='label', n_width=224, n_height=224, label2id={})
+
+   Bases: :py:obj:`torch.utils.data.IterableDataset`
+
+   Creates an IterableDataset from a PySpark Dataframe
+   It returns images and labels.
+
+
+   .. py:attribute:: dataset
+      
+
+      
+
+   .. py:attribute:: df
+      
+
+      
+
+   .. py:attribute:: image_col
+      :annotation: = 'image'
+
+      
+
+   .. py:attribute:: label2id
+      
+
+      
+
+   .. py:attribute:: label_col
+      :annotation: = 'label'
+
+      
+
+   .. py:attribute:: n_height
+      :annotation: = 224
+
+      
+
+   .. py:attribute:: n_width
+      :annotation: = 224
+
+      
+
+
+.. py:function:: normalize_bbox(bbox, width, height)
+
+

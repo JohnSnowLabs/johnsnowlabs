@@ -19,7 +19,7 @@ use_language_switcher: "Python-Scala-Java"
 
 deploy:
   sagemaker_link: https://aws.amazon.com/marketplace/pp/prodview-y6of2kcxqt7ta
-  snowflake_link: 
+  snowflake_link: https://app.snowflake.com/marketplace/listing/GZTYZ4386LJFP/john-snow-labs-dicom-de-identification-base
   databricks_link: 
 
 ---

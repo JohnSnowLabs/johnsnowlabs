@@ -1,0 +1,34 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.test_pdf_to_hocr`
+==========================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.test_pdf_to_hocr
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.test_pdf_to_hocr.TestPdfToHocr
+
+
+
+
+.. py:class:: TestPdfToHocr
+
+   .. py:method:: test_pdf_to_hocr(spark_session, pdf_table_hocr_df)
+
+
+   .. py:method:: test_pdf_to_hocr_nonascii(spark_session, pdf_table_hocr_nonascii_df)
+
+
+   .. py:method:: test_pdf_to_hocr_nonascii_keepencoding(spark_session, pdf_table_hocr_nonascii_df)
+
+
+

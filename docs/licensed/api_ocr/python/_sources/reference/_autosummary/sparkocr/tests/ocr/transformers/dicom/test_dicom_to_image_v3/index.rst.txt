@@ -1,0 +1,46 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.dicom.test_dicom_to_image_v3`
+======================================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.dicom.test_dicom_to_image_v3
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.dicom.test_dicom_to_image_v3.TestDicomToImageV3
+
+
+
+
+.. py:class:: TestDicomToImageV3
+
+   .. py:method:: test_all_photometric_compression_raw_vs_image(spark_session)
+
+
+   .. py:method:: test_all_photometric_non_compression_raw_vs_image(spark_session)
+
+
+   .. py:method:: test_dicom_all_sub_sampling(spark_session)
+
+
+   .. py:method:: test_dicom_to_image(spark_session, dicom_image_df)
+
+
+   .. py:method:: test_dicom_with_compressed_image_assembler(spark_session)
+
+
+   .. py:method:: test_dicom_with_non_compressed_image_assembler(spark_session)
+
+
+   .. py:method:: test_frame_extraction_with_0_sub_sampling_enabled(spark_session)
+
+
+

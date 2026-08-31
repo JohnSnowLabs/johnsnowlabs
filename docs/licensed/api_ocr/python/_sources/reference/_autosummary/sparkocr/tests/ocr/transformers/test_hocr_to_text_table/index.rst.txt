@@ -1,0 +1,31 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.test_hocr_to_text_table`
+=================================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.test_hocr_to_text_table
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.test_hocr_to_text_table.TestHocrToTextTable
+
+
+
+
+.. py:class:: TestHocrToTextTable
+
+   .. py:method:: test_hocr_to_text_table_using_cells(spark_session, image_table_hocr_cells_img_df)
+
+
+   .. py:method:: test_hocr_to_text_table_using_cells_regions(spark_session, image_table_hocr_cells_img_df)
+
+
+

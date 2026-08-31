@@ -17,7 +17,7 @@ use_language_switcher: "Python-Scala-Java"
 
 deploy:
   sagemaker_link: 
-  snowflake_link: https://app.snowflake.com/marketplace/listing/GZTYZ4386LJE8/john-snow-labs-ncit-sentence-entity-resolver
+  snowflake_link: 
   databricks_link: https://marketplace.databricks.com/details/cc31eb7f-a785-41dc-8023-314b44b1cd11/John-Snow-Labs_NCIT-Clinical-Terminology-Mapper
 
 ---

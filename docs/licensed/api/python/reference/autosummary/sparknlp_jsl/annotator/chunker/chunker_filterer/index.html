@@ -387,6 +387,7 @@ document.write(`
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../medical_llm/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.medical_llm</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../medical_llm/medical_llm/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.medical_llm.medical_llm</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../medical_llm/medical_llm_entity_extractor/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.medical_llm.medical_llm_entity_extractor</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../medical_llm/medical_vision_llm/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.medical_llm.medical_vision_llm</span></code></a></li>
 </ul>
 </li>
@@ -1198,6 +1199,11 @@ threshold to filter the chunks.</p></li>
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFiltererApproach.entitiesConfidence">
+<span class="sig-name descname"><span class="pre">entitiesConfidence</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFiltererApproach.entitiesConfidence" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFiltererApproach.entitiesConfidenceResource">
 <span class="sig-name descname"><span class="pre">entitiesConfidenceResource</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFiltererApproach.entitiesConfidenceResource" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -1234,7 +1240,7 @@ threshold to filter the chunks.</p></li>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFiltererApproach.name">
-<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">'ChunksFilterApproach'</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFiltererApproach.name" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">'ChunkFiltererApproach'</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFiltererApproach.name" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -1548,6 +1554,18 @@ Processing continues with the next one. This comes with a performance penalty.</
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFiltererApproach.setEntitiesConfidence">
+<span class="sig-name descname"><span class="pre">setEntitiesConfidence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entities_confidence</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFiltererApproach.setEntitiesConfidence" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the entitiesConfidence parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>entities_confidence</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>float</em><em>]</em>) – Pairs (entity,confidenceThreshold) to filter the chunks with  entities
+which have confidence lower than the confidence threshold.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFiltererApproach.setEntitiesConfidenceResource">
 <span class="sig-name descname"><span class="pre">setEntitiesConfidenceResource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">read_as</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">ReadAs.TEXT</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFiltererApproach.setEntitiesConfidenceResource" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets the entitiesConfidenceResource parameter.</p>
@@ -1774,6 +1792,7 @@ RecursivePipeline</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFiltererApproach.caseSensitive"><code class="docutils literal notranslate"><span class="pre">ChunkFiltererApproach.caseSensitive</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFiltererApproach.criteria"><code class="docutils literal notranslate"><span class="pre">ChunkFiltererApproach.criteria</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFiltererApproach.doExceptionHandling"><code class="docutils literal notranslate"><span class="pre">ChunkFiltererApproach.doExceptionHandling</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFiltererApproach.entitiesConfidence"><code class="docutils literal notranslate"><span class="pre">ChunkFiltererApproach.entitiesConfidence</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFiltererApproach.entitiesConfidenceResource"><code class="docutils literal notranslate"><span class="pre">ChunkFiltererApproach.entitiesConfidenceResource</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFiltererApproach.entitiesConfidenceResourceAsJsonString"><code class="docutils literal notranslate"><span class="pre">ChunkFiltererApproach.entitiesConfidenceResourceAsJsonString</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFiltererApproach.filterValue"><code class="docutils literal notranslate"><span class="pre">ChunkFiltererApproach.filterValue</span></code></a></li>
@@ -1816,6 +1835,7 @@ RecursivePipeline</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFiltererApproach.setCriteria"><code class="docutils literal notranslate"><span class="pre">ChunkFiltererApproach.setCriteria()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFiltererApproach.setDenyList"><code class="docutils literal notranslate"><span class="pre">ChunkFiltererApproach.setDenyList()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFiltererApproach.setDoExceptionHandling"><code class="docutils literal notranslate"><span class="pre">ChunkFiltererApproach.setDoExceptionHandling()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFiltererApproach.setEntitiesConfidence"><code class="docutils literal notranslate"><span class="pre">ChunkFiltererApproach.setEntitiesConfidence()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFiltererApproach.setEntitiesConfidenceResource"><code class="docutils literal notranslate"><span class="pre">ChunkFiltererApproach.setEntitiesConfidenceResource()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFiltererApproach.setEntitiesConfidenceResourceAsJsonString"><code class="docutils literal notranslate"><span class="pre">ChunkFiltererApproach.setEntitiesConfidenceResourceAsJsonString()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFiltererApproach.setFilterEntity"><code class="docutils literal notranslate"><span class="pre">ChunkFiltererApproach.setFilterEntity()</span></code></a></li>

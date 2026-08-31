@@ -1,0 +1,40 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.recognizers.test_image_to_text_v2`
+===========================================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.recognizers.test_image_to_text_v2
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.recognizers.test_image_to_text_v2.TestImageToTextV2
+
+
+
+
+.. py:class:: TestImageToTextV2
+
+   .. py:method:: test_batch_image_to_formatted_text(spark_session, image_check_df)
+
+
+   .. py:method:: test_batch_image_to_hocr(spark_session, image_check_df, image_check_hocr)
+
+
+   .. py:method:: test_image_to_text(spark_session, image_text_lines_df)
+
+
+   .. py:method:: test_load_models(spark_session, image_text_lines_df)
+
+
+   .. py:method:: test_regions_with_confidence(spark_session)
+
+
+

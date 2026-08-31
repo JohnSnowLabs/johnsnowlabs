@@ -15,11 +15,6 @@ article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
 
-deploy:
-  sagemaker_link: 
-  snowflake_link: https://app.snowflake.com/marketplace/listing/GZTYZ4386LJ9V/john-snow-labs-extract-entities-from-patient-narratives
-  databricks_link: 
-
 ---
 
 ## Description

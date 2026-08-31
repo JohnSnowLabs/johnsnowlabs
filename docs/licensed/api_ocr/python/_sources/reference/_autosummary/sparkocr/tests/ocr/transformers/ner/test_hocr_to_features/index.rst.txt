@@ -1,0 +1,28 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.ner.test_hocr_to_features`
+===================================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.ner.test_hocr_to_features
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.ner.test_hocr_to_features.TestHocrToFeatures
+
+
+
+
+.. py:class:: TestHocrToFeatures
+
+   .. py:method:: test_inference(visual_document_ner_df, spark_session)
+
+
+

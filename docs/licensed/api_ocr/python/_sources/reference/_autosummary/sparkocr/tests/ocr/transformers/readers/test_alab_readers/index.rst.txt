@@ -1,0 +1,28 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.readers.test_alab_readers`
+===================================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.readers.test_alab_readers
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.readers.test_alab_readers.TestAlabReaders
+
+
+
+
+.. py:class:: TestAlabReaders
+
+   .. py:method:: test_json_reader_v1(spark_session)
+
+
+

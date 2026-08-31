@@ -1,0 +1,31 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.tokenizer.test_hocr_tokenizer`
+=======================================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.tokenizer.test_hocr_tokenizer
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.tokenizer.test_hocr_tokenizer.TestHocrTokenizer
+
+
+
+
+.. py:class:: TestHocrTokenizer
+
+   .. py:method:: get_pipeline()
+
+
+   .. py:method:: test_hoct_tokenizzer(spark_session, pdf_text_multipage_df)
+
+
+

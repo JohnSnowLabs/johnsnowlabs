@@ -1,0 +1,128 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.utils.svs.phi_redaction`
+==========================================
+
+.. py:module:: sparkocr.utils.svs.phi_redaction
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.utils.svs.phi_redaction.calculate_actual_level_height
+   sparkocr.utils.svs.phi_redaction.calculate_actual_level_width
+   sparkocr.utils.svs.phi_redaction.calculate_max_group_mem_gb
+   sparkocr.utils.svs.phi_redaction.chunk_list
+   sparkocr.utils.svs.phi_redaction.dataframe_to_detections
+   sparkocr.utils.svs.phi_redaction.detect_tile_level
+   sparkocr.utils.svs.phi_redaction.detections_to_dataframe
+   sparkocr.utils.svs.phi_redaction.df2list
+   sparkocr.utils.svs.phi_redaction.estimate_svs_memory_gb
+   sparkocr.utils.svs.phi_redaction.extract_base_name
+   sparkocr.utils.svs.phi_redaction.extract_svs_name_from_tiles
+   sparkocr.utils.svs.phi_redaction.find_intersecting_tiles
+   sparkocr.utils.svs.phi_redaction.find_thumbnail_index
+   sparkocr.utils.svs.phi_redaction.get_existing_extension
+   sparkocr.utils.svs.phi_redaction.get_svs_info_from_images
+   sparkocr.utils.svs.phi_redaction.get_tile_position_and_size
+   sparkocr.utils.svs.phi_redaction.group_svs_files_by_memory
+   sparkocr.utils.svs.phi_redaction.prepare_thumbnail_deid
+   sparkocr.utils.svs.phi_redaction.process_file
+   sparkocr.utils.svs.phi_redaction.redact_phi_in_tiles
+   sparkocr.utils.svs.phi_redaction.scale_boxes_to_all_levels
+   sparkocr.utils.svs.phi_redaction.setup_logging
+
+
+
+.. py:function:: calculate_actual_level_height(level_info)
+
+
+.. py:function:: calculate_actual_level_width(level_info)
+
+
+.. py:function:: calculate_max_group_mem_gb(mem_per_worker_gb=1.5, ram_fraction=0.75, overhead_mem_gb=2.0)
+
+
+.. py:function:: chunk_list(lst, n)
+
+
+.. py:function:: dataframe_to_detections(detections_df)
+
+
+.. py:function:: detect_tile_level(folder_path)
+
+
+.. py:function:: detections_to_dataframe(detections_dict, dir_path, svs_name, level)
+
+
+.. py:function:: df2list(tiles_deid)
+
+   Convert a list of dictionaries (with stringified 'coordinates') into a standard format.
+   Returns a list of dicts with keys 'file_path' and 'bbox' (list of (x, y, w, h) tuples).
+
+
+.. py:function:: estimate_svs_memory_gb(svs_path)
+
+
+.. py:function:: extract_base_name(tile_path)
+
+   Extract base name from a tile file path, supporting both PNG and JPG (case-insensitive).
+   Extracts everything before '_L<digits>_T<digits>.<ext>'
+
+
+.. py:function:: extract_svs_name_from_tiles(files_path)
+
+
+.. py:function:: find_intersecting_tiles(x1, y1, x2, y2, level_info)
+
+
+.. py:function:: find_thumbnail_index(tif)
+
+   Find the thumbnail page index using Aperio SVS conventions.
+
+
+.. py:function:: get_existing_extension(dir_path, svs_name, level, tile_num)
+
+
+.. py:function:: get_svs_info_from_images(files_path)
+
+
+.. py:function:: get_tile_position_and_size(tile_index, level_info)
+
+
+.. py:function:: group_svs_files_by_memory(svs_files, max_group_mem_gb=6.0)
+
+
+.. py:function:: prepare_thumbnail_deid(only_thumbnail_deid, main_folder)
+
+
+.. py:function:: process_file(svs_path, tiles_deid, thumbnail_deid, output_svs_path=None, create_new_svs_file=False)
+
+
+.. py:function:: redact_phi_in_tiles(svs_path, tiles_deid, main_folder, output_svs_path=None, create_new_svs_file=False)
+
+   Modifies tiles in an SVS file to remove sensitive information by drawing black rectangles.
+   Can operate on a single SVS file or a directory containing multiple SVS files.
+   The function will first scale the detections to all pyramid levels before applying deidentification.
+   Parameters:
+   - svs_path (str): Path to a single SVS file or a directory containing SVS files.
+   - tiles_deid (list or DataFrame): List of dictionaries or a PySpark DataFrame containing the de-identification instructions.
+   - main_folder (str): Path to folder containing tile directories.
+   - output_svs_path (str, optional): Path where the new de-identified SVS file(s) will be saved.
+   - create_new_svs_file (bool): If True, creates new SVS files instead of modifying originals.
+   - max_group_mem_gb (float): Max memory per group for batching files.
+
+
+.. py:function:: scale_boxes_to_all_levels(detections_df, main_folder)
+
+
+.. py:function:: setup_logging()
+
+

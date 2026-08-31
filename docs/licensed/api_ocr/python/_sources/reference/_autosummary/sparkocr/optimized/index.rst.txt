@@ -1,0 +1,9 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.optimized`
+============================
+
+.. py:module:: sparkocr.optimized
+
+

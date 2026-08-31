@@ -1,0 +1,37 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.test_image_schema_converter`
+=====================================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.test_image_schema_converter
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.test_image_schema_converter.TestImageSchemaConverter
+
+
+
+
+.. py:class:: TestImageSchemaConverter
+
+   .. py:method:: test_assembler_to_internal(spark_session, raw_image_df)
+
+
+   .. py:method:: test_internal_to_assembler(spark_session, raw_image_df)
+
+
+   .. py:method:: test_pdf_internal_to_assembler(spark_session, pdf_df)
+
+
+   .. py:method:: test_serialization(spark_session, raw_image_df)
+
+
+

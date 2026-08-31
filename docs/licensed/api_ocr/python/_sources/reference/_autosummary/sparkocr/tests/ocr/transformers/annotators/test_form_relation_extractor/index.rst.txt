@@ -1,0 +1,33 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.annotators.test_form_relation_extractor`
+=================================================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.annotators.test_form_relation_extractor
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.annotators.test_form_relation_extractor.TestFormRelationExtraction
+
+
+
+
+.. py:class:: TestFormRelationExtraction
+
+   .. py:attribute:: distanceThreshold
+      :annotation: = 15
+
+      
+
+   .. py:method:: test_new_form_relation_logic(spark_session, form1_expected_output)
+
+
+

@@ -1,0 +1,29 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.transformers.ner.visual_document_ner`
+=======================================================
+
+.. py:module:: sparkocr.transformers.ner.visual_document_ner
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.transformers.ner.visual_document_ner.VisualDocumentNer
+
+
+
+
+.. py:class:: VisualDocumentNer
+
+   .. py:method:: pretrained(name, lang='en', remote_loc='clinical/ocr')
+      :staticmethod:
+
+
+

@@ -1,0 +1,27 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests`
+========================
+
+.. py:module:: sparkocr.tests
+
+
+Subpackages
+-----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 2
+
+   ocr/index.rst
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   conftest/index.rst
+
+

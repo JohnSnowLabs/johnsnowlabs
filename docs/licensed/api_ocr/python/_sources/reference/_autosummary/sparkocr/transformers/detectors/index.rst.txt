@@ -1,0 +1,39 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.transformers.detectors`
+=========================================
+
+.. py:module:: sparkocr.transformers.detectors
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   document_layout_analyzer/index.rst
+   image_checkbox_detector/index.rst
+   image_document_region_detector/index.rst
+   image_layout_detector/index.rst
+   image_text_detector/index.rst
+   image_text_detector_craft/index.rst
+   image_text_detector_dit/index.rst
+   image_text_detector_v2/index.rst
+
+
+Package Contents
+----------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.transformers.detectors.ImageTextDetectorV2
+
+
+
+
+

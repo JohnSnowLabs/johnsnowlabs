@@ -1,0 +1,192 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.utils.craft`
+==============================
+
+.. py:module:: sparkocr.utils.craft
+
+
+Subpackages
+-----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 2
+
+   models/index.rst
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   craft_utils/index.rst
+   file_utils/index.rst
+   image_utils/index.rst
+   predict/index.rst
+   torch_utils/index.rst
+
+
+Package Contents
+----------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.utils.craft.Craft
+
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.utils.craft.empty_cuda_cache
+   sparkocr.utils.craft.export_detected_regions
+   sparkocr.utils.craft.export_extra_results
+   sparkocr.utils.craft.get_prediction
+   sparkocr.utils.craft.load_craftnet_model
+   sparkocr.utils.craft.load_refinenet_model
+   sparkocr.utils.craft.read_image
+
+
+.. py:class:: Craft(output_dir=None, rectify=True, export_extra=True, text_threshold=0.7, link_threshold=0.4, low_text=0.4, cuda=False, long_size=1280, refiner=True, crop_type='poly', weight_path_craft_net: Optional[str] = None, weight_path_refine_net: Optional[str] = None)
+
+   .. py:attribute:: craft_net
+      :annotation: = None
+
+      
+
+   .. py:attribute:: crop_type
+      :annotation: = 'poly'
+
+      
+
+   .. py:attribute:: cuda
+      :annotation: = False
+
+      
+
+   .. py:attribute:: export_extra
+      :annotation: = True
+
+      
+
+   .. py:attribute:: link_threshold
+      :annotation: = 0.4
+
+      
+
+   .. py:attribute:: long_size
+      :annotation: = 1280
+
+      
+
+   .. py:attribute:: low_text
+      :annotation: = 0.4
+
+      
+
+   .. py:attribute:: output_dir
+      :annotation: = None
+
+      
+
+   .. py:attribute:: rectify
+      :annotation: = True
+
+      
+
+   .. py:attribute:: refine_net
+      :annotation: = None
+
+      
+
+   .. py:attribute:: refiner
+      :annotation: = True
+
+      
+
+   .. py:attribute:: text_threshold
+      :annotation: = 0.7
+
+      
+
+   .. py:method:: detect_text(image, image_path=None)
+
+      :param image: path to the image to be processed or numpy array or PIL image
+
+      Output:
+          {
+              "masks": lists of predicted masks 2d as bool array,
+              "boxes": list of coords of points of predicted boxes,
+              "boxes_as_ratios": list of coords of points of predicted boxes as ratios of image size,
+              "polys_as_ratios": list of coords of points of predicted polys as ratios of image size,
+              "heatmaps": visualization of the detected characters/links,
+              "text_crop_paths": list of paths of the exported text boxes/polys,
+              "times": elapsed times of the sub modules, in seconds
+          }
+
+
+   .. py:method:: load_craftnet_model(weight_path: Optional[str] = None)
+
+      Loads craftnet model
+
+
+   .. py:method:: load_refinenet_model(weight_path: Optional[str] = None)
+
+      Loads refinenet model
+
+
+   .. py:method:: unload_craftnet_model()
+
+      Unloads craftnet model
+
+
+   .. py:method:: unload_refinenet_model()
+
+      Unloads refinenet model
+
+
+
+.. py:data:: empty_cuda_cache
+   
+
+   
+
+.. py:data:: export_detected_regions
+   
+
+   
+
+.. py:data:: export_extra_results
+   
+
+   
+
+.. py:data:: get_prediction
+   
+
+   
+
+.. py:data:: load_craftnet_model
+   
+
+   
+
+.. py:data:: load_refinenet_model
+   
+
+   
+
+.. py:data:: read_image
+   
+
+   
+

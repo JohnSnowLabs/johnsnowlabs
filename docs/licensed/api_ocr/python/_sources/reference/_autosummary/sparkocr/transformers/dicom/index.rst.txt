@@ -1,0 +1,27 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.transformers.dicom`
+=====================================
+
+.. py:module:: sparkocr.transformers.dicom
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   base_dicom/index.rst
+   dicom_deidentifier/index.rst
+   dicom_draw_regions/index.rst
+   dicom_metadata_deidentifier/index.rst
+   dicom_splitter/index.rst
+   dicom_to_image_v2/index.rst
+   dicom_to_image_v3/index.rst
+   dicom_to_metadata/index.rst
+   dicom_to_pdf/index.rst
+   dicom_update_pdf/index.rst
+
+

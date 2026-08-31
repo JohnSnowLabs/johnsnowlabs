@@ -1,0 +1,32 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.transformers.inpainting`
+==========================================
+
+.. py:module:: sparkocr.transformers.inpainting
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   image_inpainting/index.rst
+
+
+Package Contents
+----------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.transformers.inpainting.ImageInpainting
+
+
+
+
+

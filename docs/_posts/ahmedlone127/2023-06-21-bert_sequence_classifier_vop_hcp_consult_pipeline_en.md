@@ -17,7 +17,7 @@ use_language_switcher: "Python-Scala-Java"
 
 deploy:
   sagemaker_link: 
-  snowflake_link: https://app.snowflake.com/marketplace/listing/GZTYZ4386LJDF/john-snow-labs-detect-healthcare-professional-consult
+  snowflake_link: 
   databricks_link: https://marketplace.databricks.com/details/f29c9e93-8f2d-4969-b472-f3524bdfd883/John-Snow-Labs_Detect-Healthcare-Professional-Consult-documents
 
 ---

@@ -1,0 +1,28 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.ner.test_visual_document_ner`
+======================================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.ner.test_visual_document_ner
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.ner.test_visual_document_ner.TestVisualDocumentNer
+
+
+
+
+.. py:class:: TestVisualDocumentNer
+
+   .. py:method:: test_visual_document_ner(visual_document_ner_df)
+
+
+

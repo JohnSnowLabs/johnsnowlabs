@@ -17,7 +17,7 @@ use_language_switcher: "Python-Scala-Java"
 
 deploy:
   sagemaker_link: 
-  snowflake_link: https://app.snowflake.com/marketplace/listing/GZTYZ4386LJC2/john-snow-labs-anatomic-therapeutic-chemical-resolver
+  snowflake_link: 
   databricks_link: https://marketplace.databricks.com/details/8173f8e2-1175-4635-b115-657646a3c6e2/John-Snow-Labs_Anatomic-therapeutic-chemical-resolver
 
 ---

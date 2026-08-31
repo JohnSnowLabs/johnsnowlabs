@@ -1,0 +1,21 @@
+#############
+API Reference
+#############
+
+This page lists an overview of all Spark OCR modules, classes, functions and methods.
+
+Modules
+---------------
+
+.. toctree::
+   :caption: Real Pages
+   :maxdepth: 1
+
+
+.. autosummary::
+   :toctree: _autosummary/
+   :caption: Modules
+
+
+    sparkocr
+    sparkocr.utils

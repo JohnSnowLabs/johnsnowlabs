@@ -1,0 +1,130 @@
+
+.. INDEX
+
+:py:mod:`sparkocr`
+==================
+
+.. py:module:: sparkocr
+
+
+Subpackages
+-----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 2
+
+   aws/index.rst
+   base/index.rst
+   internal/index.rst
+   optimized/index.rst
+   pretrained/index.rst
+   tests/index.rst
+   transformers/index.rst
+   utils/index.rst
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   databricks/index.rst
+   enums/index.rst
+   eval_hunyuan/index.rst
+   eval_hunyuan_funsd/index.rst
+   metrics/index.rst
+   schemas/index.rst
+
+
+Package Contents
+----------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.info
+   sparkocr.load_license_validator
+   sparkocr.retry
+   sparkocr.start
+   sparkocr.version
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.johnsnowlabs_module
+   sparkocr.spark32
+   sparkocr.spark_version
+   sparkocr.with_spark_nlp
+   sparkocr.with_spark_nlp_jsl
+   sparkocr.with_spark_nlp_jsl
+
+
+.. py:function:: info()
+
+
+.. py:function:: load_license_validator()
+
+
+.. py:function:: retry(fun, max_tries=10)
+
+
+.. py:function:: start(secret=None, jar_path=None, extra_conf=None, master_url='local[*]', nlp_version='6.4.0', nlp_internal=False, nlp_jsl=False, nlp_secret=None, m1=False, keys_file='keys.json', logLevel='WARN', use_gpu=False, apple_silicon=False)
+
+   Create SparkSession with Spark OCR
+   @param secret: Secret for get jar file from John Snow Labs server.
+   @param jar_path: Local path to the jar file.
+   @param extra_conf: Instance of SparkConf or dict with extra configuration.
+   @param master_url: Master URL.
+   @param nlp_version: Spark NLP version. If None run without Spark NLP.
+   @param nlp_internal: Run with Spark NLP Internal.
+   @param nlp_jsl: Run with Spark NLP JSL/Healthcare. Value may be version of NLP JSL or simply boolean
+   @param nlp_secret: Secret for get Spark NLP Internal jar
+   @param m1: Whether to enable M1 support for macOS
+   @param keys_file: the path to a JSON file containing your keys and secret. Defaults to 'keys.json'
+   @param logLevel: the log level for the Spark session.
+   @param use_gpu: whether to use GPU or not. Applies to Spark NLP. Defaults to 'False'.
+   @apple_silicon: whether to use Apple Silicon binaries or not. Defaults to 'False'.
+   @return: SparkSession
+
+
+.. py:function:: version()
+
+
+.. py:data:: johnsnowlabs_module
+   
+
+   
+
+.. py:data:: spark32
+   :annotation: = False
+
+   
+
+.. py:data:: spark_version
+   :annotation: = ''
+
+   
+
+.. py:data:: with_spark_nlp
+   :annotation: = False
+
+   
+
+.. py:data:: with_spark_nlp_jsl
+   :annotation: = False
+
+   
+
+.. py:data:: with_spark_nlp_jsl
+   :annotation: = True
+
+   
+

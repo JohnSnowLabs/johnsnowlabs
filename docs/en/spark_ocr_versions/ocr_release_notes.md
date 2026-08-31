@@ -13,123 +13,118 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-## 6.4.0
+## 6.4.2
 
-Release date: 28-04-2026
+Release date: 08-07-2026
 
-## Visual NLP 6.4.0 Release Notes 🕶️
+## Visual NLP 6.4.2 Release Notes 🕶️
 
-**We are glad to announce that Visual NLP 6.4.0 has been released! Dicom improvements, a new OCR engine, and much more. 📢📢📢**
+**We are glad to announce that Visual NLP 6.4.2 has been released! This new release comes with new models, new pipelines, sample notebooks, bug fixes and more! 📢📢📢**
 
 </div><div class="h3-box" markdown="1">
 
 ## Main Changes 🔴
 
-* Dicom Processing Improvements
-* New Optimized Fast Dicom Pipeline
-* New V4 OCR engine
-* New Yolo based Layout analysis model
-* New OpenVino Text Detector model
-* Two new AWS Marketplace listings
+* New MedicalVisionLLM checkpoints
+* New OpenVino Text Detection + OCR models
+* New OpenVino Layout Analyzer model
+* New Document Pretrained Pipelines
+* New Notebooks
+* Bug Fixes
 
 </div><div class="h3-box" markdown="1">
 
-## Dicom Processing Improvements
+## New Models
 
-Dicom processing pipelines now support sampling of the frames in each study. This new strategy allows pipelines to run faster by looking into only a subset of all the frames in the study. The changes are spread across different components.
+We have two new checkpoints for MedicalVisionLLM,
 
-### DicomToImageV3 Changes
+* `jsl-ocr-gguf-vlm1`: this is a small VLM model supporting tasks such as text with coordinates, structured JSON output, and OCR. It is applicable to Document Processing and Deidentification pipelines.
+* `jsl-ocr-gguf-vlm2`: this is a small VLM model supporting tasks such as OCR and structured JSON output. The difference with `jsl-ocr-gguf-vlm1` is that this model is slightly more accurate in OCR, but it cannot return coordinates for the text.
 
-* Added a new param `setFrameSamplingStrategy()`. Valid values are `['Consecutive', 'Stride', 'Random', 'Middle']` for sub-sampling the frames.
-* Added a new param `setFrameDimsCol()`, which contains metadata information about the image.
-* Fixed the selection of frames via `setInputCols()`: `DicomToImageV3` accepts a column `parts`, which is a per-dicom-file integer list representing a cherry-picked list of frame ids.
+Check this [sample notebook](https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/SparkOCRMultiModelVLM.ipynb).
 
+We are releasing a new pair of OpenVino Text Detection + OCR models, which you can use separately or combined.
+
+* `text_detection_v4_ov`:
 ```python
-DicomToImageV3.setInputCols(['content', 'parts'])
+ImageTextDetector() \
+    .pretrained("text_detection_v4_ov", "en", "clinical/ocr") \
+    .setInputCol("image") \
+    .setOutputCol("regions") \
+    .setSizeThreshold(10) \
+    .setLinkThreshold(0.3) \
+    .setTextThreshold(0.4)
 ```
 
-Some corner cases were fixed in this feature.
-
-* Added page number information in the `pagenum` col.
-
-### DicomDrawRegion Changes
-
-* This component renders the regions into the frames of the input dicoms. When frame sampling was performed in previous stages, this component will now perform the extrapolation of the regions that were analyzed to all the frames in the dicom file.
-
-### DicomMetadataDeidentifier
-
-* Added guardrails for `remove`, `delete`, and `replaceWithLiteral` actions when applied to VR SQ.
-* Added support for removing or deleting group tags through a group strategy file via `setGroupStrategyFile("group_strategy.csv")`, for example deletion of all overlay tags in group `60xx`.
-* Improved private tag removal with `setRemovePrivateTags(True)` to consistently delete private tags from the DICOM file.
-* Improved tracking of DICOM object references to better preserve and trace metadata tag operations.
-
-If you do not want to build from scratch, but want to leverage this and other optimizations, check the next section.
-
-</div><div class="h3-box" markdown="1">
-
-## New Optimized Fast Dicom Pipeline
-
-This new pipeline leverages image re-scaling, compression, and frame sub-sampling for improved performance. Just call it like this:
-
+* `text_recognition_v4_ov`:
 ```python
-from sparkocr.pretrained import DicomPretrainedPipeline
-dcm_pipe = DicomPretrainedPipeline("dicom_deid_fully_optimized")
-clean_dcm_df = dcm_pipe.transform(dicom_df)
+ImageToTextV4() \
+    .pretrained("text_recognition_v4_ov", "en", "clinical/ocr") \
+    .setInputCols(["image", "regions"]) \
+    .setOutputCol("text")
 ```
 
+These two models are used in pretrained pipelines `doc_data_loader_digital_easy`, and `doc_data_loader_digital_hybrid`.
+
 </div><div class="h3-box" markdown="1">
 
-## New V4 OCR engine
+## New OpenVino Layout Analyzer Model
 
-This model is a new OCR model that operates with an external Text Detector for high-recall use cases such as de-identification. Contrary to V2 families, which were Transformer-based, this one is CNN-based, which allows it to deliver reasonable throughput even on CPU. The model is competitive accuracy-wise as well.
+This new OpenVino based detection model can return bounding boxes for the following classes: "Caption", "Footnote", "Formula", "List-item", "Page-footer", "Page-header", "Picture", "Section-header", "Table", "Text", "Title".
 
 ```python
-text_detector = ImageTextDetectorCraft()\
-  .pretrained("text_detection_v4", "en", "clinical/ocr")\
-  .setInputCol("image")\
-  .setOutputCol("regions")\
-  .setSizeThreshold(10)\
-  .setLinkThreshold(0.3)\
-  .setTextThreshold(0.4)\
-  .setWithRefiner(False)
-
-text_extractor = ImageToTextV4()\
-  .pretrained("text_recognition_v4", "en", "clinical/ocr")\
-  .setInputCols(["image", "regions"])\
-  .setOutputCol("text")
+layout_detector = ImageLayoutDetector.pretrained("image_layout_detector_ov", "en", "clinical/ocr") \
+    .setInputCol("image") \
+    .setOutputCol("region") \
+    .setScoreThreshold(0.4) \
+    .setIouThreshold(0.1) \
+    .setPredictionLabels(prediction_classes)
 ```
+
+**API:**
+
+* `setScoreThreshold(0.4)`: score threshold by which detected regions are filtered before being returned, the intuition is that the larger this score the more results you will get. Defaults to 0.4.
+* `setIouThreshold(0.1)`: threshold for the Non-Maximum Suppression (NMS) algorithm to eliminate redundant, overlapping bounding boxes predicted for the same object.
+* `setPredictionLabels(prediction_classes)`: a list of the classes to whitelist in the returned results, like `["Formula", "Title"]`.
 
 </div><div class="h3-box" markdown="1">
 
-## New Yolo based Layout analysis model
+## New Document Pretrained Pipelines
 
-This new model can detect layout entities `{Text, Title, List, Table, Figure}`. It is similar in accuracy to other DiT-based models in the library, but with a speed-up of up to 10X over DiT options such as `ImageLayoutAnalyzerDit`.
+We are releasing an initial set of 4 pipelines that provide different options to parse document collections containing different complexity levels. These pipelines support all popular image types, scanned PDFs, and digital PDFs, all the routing happens internally and is transparent to the user.
 
-This is how you use it:
+| Pipeline | Digital PDF | Simple Page | Complex Page | Tables |
+|------------|-----------------|-------------------|---------------------|-----------|
+| **doc_data_loader_digital_easy** | PdfToText | ImageToTextV4 | ImageToTextV4 | N/A |
+| **doc_data_loader_digital_hybrid** | PdfToText | ImageToTextV1 | ImageToTextV4 | N/A |
+| **doc_data_loader_digital_hybrid_tables_vlm1** | PdfToText | ImageToText | VLM1 | VLM1 |
+| **doc_data_loader_digital_hybrid_tables_vlm2** | PdfToText | ImageToText | VLM2 | VLM2 |
 
-```python
-doc_layout = DocumentLayoutAnalyzer \
-    .pretrained("doc_layout_jsl", "en", "clinical/ocr")
-```
-
-</div><div class="h3-box" markdown="1">
-
-## New OpenVino Text Detector model
-
-Our `ImageTextDetector` annotator, which is used in many OCR and de-identification pipelines, now supports checkpoints with OpenVino. To use it, call the annotator exactly the same way, but pass the `image_text_detector_open_vino` model name like this:
-
-```python
-ImageTextDetector.pretrained("image_text_detector_open_vino", "clinical/ocr", "en")
-```
-
-This model delivers a speed-up of around `2.2X` when used on CPUs that support AI acceleration features such as `AVX-512`, `VNNI`, and `bfloat16`. For example, AWS's [C7a family](https://aws.amazon.com/ec2/instance-types/c7a/).
+For examples on how to use please check this [sample notebook](https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/SparkOcrDocDataLoaderPipelines.ipynb).
 
 </div><div class="h3-box" markdown="1">
 
-## Two new AWS Marketplace listings
+## New Notebooks
 
-* [Vision OCR LLM](https://aws.amazon.com/marketplace/pp/prodview-d7un4r7xpiwje): highly accurate text extraction model.
-* [Vision OCR Structured LLM](https://aws.amazon.com/marketplace/pp/prodview-rrpnzcxjmhtfy): a highly accurate VLM-based text extraction model that can handle text and tables.
+* [New Small VLMs](https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/SparkOCRMultiModelVLM.ipynb). Check this notebook to learn about new small VLMs along with supported tasks such as JSON extraction, OCR, and Table Extraction.
+* [Document Pretrained Pipelines](https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/SparkOcrDocDataLoaderPipelines.ipynb). Check this notebook to learn about new document pretrained pipelines. New pipelines can handle multiple input formats, and can extract text, process tables, and forms.
+* [SparkOCRDocumentLayoutAnalyzer has been updated](https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/SparkOCRDocumentLayoutAnalyzer.ipynb). Check this notebook to learn how to use the new OpenVino layout analyzer.
+* [SparkOcrDicomVLM.ipynb](https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/Dicom/SparkOcrDicomVLM.ipynb). Check this notebook to learn about using VLMs for Dicom de-identification.
+* [SparkOCRVLMDeIdentification](https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/deid-and-obfuscation/SparkOCRVLMDeIdentification.ipynb). Check this notebook for Document de-identification (PDF and images) with VLMs.
+
+</div><div class="h3-box" markdown="1">
+
+## Bug Fixes
+
+* LP crashed when used in multi-threading settings.
+* Handling of empty regions in DicomDrawRegions.
+* Fixes for DicomMetadataDeIdentifier cleanTag action behavior.
+* DicomDrawRegions general improvements.
+
+</div><div class="h3-box" markdown="1">
+
+## Compatibility:
+Spark-NLP 6.4.2, and Spark-NLP for Healthcare 6.4.1.
 
 </div><div class="h3-box" markdown="1">
 

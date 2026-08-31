@@ -1,0 +1,31 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.test_image_to_dicom`
+=============================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.test_image_to_dicom
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.test_image_to_dicom.TestImageToDicom
+
+
+
+
+.. py:class:: TestImageToDicom
+
+   .. py:method:: get_pipeline()
+
+
+   .. py:method:: test_metadata_image_to_dicom(spark_session, image_multi_dicom_df)
+
+
+

@@ -1,0 +1,332 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.transformers.image_table_cell_detector`
+=========================================================
+
+.. py:module:: sparkocr.transformers.image_table_cell_detector
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.transformers.image_table_cell_detector.ImageTableCellDetector
+
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.transformers.image_table_cell_detector.cut_header
+   sparkocr.transformers.image_table_cell_detector.detect_lines
+   sparkocr.transformers.image_table_cell_detector.get_cells_opencv
+   sparkocr.transformers.image_table_cell_detector.normalize_image_size
+   sparkocr.transformers.image_table_cell_detector.remove_lines
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.transformers.image_table_cell_detector.morph_default_params
+
+
+.. py:class:: ImageTableCellDetector
+
+   Bases: :py:obj:`pyspark.ml.Transformer`, :py:obj:`pyspark.ml.param.shared.HasInputCol`, :py:obj:`pyspark.ml.param.shared.HasOutputCol`, :py:obj:`pyspark.ml.util.DefaultParamsReadable`, :py:obj:`pyspark.ml.util.DefaultParamsWritable`, :py:obj:`sparkocr.transformers.params.HasKeepInput`
+
+   Abstract class for transformers that transform one dataset into another.
+
+   .. versionadded:: 1.3.0
+
+   .. py:attribute:: CELL_DETECTION_ALGOS
+      
+
+      
+
+   .. py:attribute:: algoParams
+      
+
+      
+
+   .. py:attribute:: algoType
+      
+
+      
+
+   .. py:attribute:: drawDetectedLines
+      
+
+      
+
+   .. py:attribute:: inputCol
+      :annotation: :Param[str]
+
+      
+
+   .. py:attribute:: keepInput
+      
+
+      
+
+   .. py:attribute:: keepOriginalLines
+      
+
+      
+
+   .. py:attribute:: name
+      :annotation: = 'ImageTableCellDetector'
+
+      
+
+   .. py:attribute:: outputCol
+      :annotation: :Param[str]
+
+      
+
+   .. py:attribute:: outputImageCol
+      
+
+      
+
+   .. py:attribute:: uid
+      :annotation: = ''
+
+      
+
+   .. py:method:: clear(param: Param) -> None
+
+      Clears a param from the param map if it has been explicitly set.
+
+
+   .. py:method:: copy(extra: Optional[pyspark.ml._typing.ParamMap] = None) -> P
+
+      Creates a copy of this instance with the same uid and some
+      extra params. The default implementation creates a
+      shallow copy using :py:func:`copy.copy`, and then copies the
+      embedded and extra parameters over and returns the copy.
+      Subclasses should override this method if the default approach
+      is not sufficient.
+
+      :param extra: Extra parameters to copy to the new instance
+      :type extra: dict, optional
+
+      :returns: Copy of this instance
+      :rtype: :py:class:`Params`
+
+
+   .. py:method:: createTransformFunc(debug=False)
+
+
+   .. py:method:: explainParam(param: Union[str, Param]) -> str
+
+      Explains a single param and returns its name, doc, and optional
+      default value and user-supplied value in a string.
+
+
+   .. py:method:: explainParams() -> str
+
+      Returns the documentation of all params with their optionally
+      default values and user-supplied values.
+
+
+   .. py:method:: extractParamMap(extra: Optional[pyspark.ml._typing.ParamMap] = None) -> pyspark.ml._typing.ParamMap
+
+      Extracts the embedded default param values and user-supplied
+      values, and then merges them with extra values from input into
+      a flat param map, where the latter value is used if there exist
+      conflicts, i.e., with ordering: default param values <
+      user-supplied values < extra.
+
+      :param extra: extra param values
+      :type extra: dict, optional
+
+      :returns: merged param map
+      :rtype: dict
+
+
+   .. py:method:: getAlgoParams()
+
+      Returns dict of params
+
+
+   .. py:method:: getAlgoType()
+
+
+   .. py:method:: getDrawDetectedLines()
+
+
+   .. py:method:: getInputCol() -> str
+
+      Gets the value of inputCol or its default value.
+
+
+   .. py:method:: getKeepOriginalLines()
+
+
+   .. py:method:: getOrDefault(param: str) -> Any
+               getOrDefault(param: Param[T]) -> T
+
+      Gets the value of a param in the user-supplied param map or its
+      default value. Raises an error if neither is set.
+
+
+   .. py:method:: getOutputCol() -> str
+
+      Gets the value of outputCol or its default value.
+
+
+   .. py:method:: getOutputImageCol()
+
+
+   .. py:method:: getParam(paramName: str) -> Param
+
+      Gets a param by its name.
+
+
+   .. py:method:: get_cells(image, debug=False)
+
+
+   .. py:method:: get_cells_morph(image, debug=False)
+
+
+   .. py:method:: hasDefault(param: Union[str, Param[Any]]) -> bool
+
+      Checks whether a param has a default value.
+
+
+   .. py:method:: hasParam(paramName: str) -> bool
+
+      Tests whether this instance contains a param with a given
+      (string) name.
+
+
+   .. py:method:: isDefined(param: Union[str, Param[Any]]) -> bool
+
+      Checks whether a param is explicitly set by user or has
+      a default value.
+
+
+   .. py:method:: isSet(param: Union[str, Param[Any]]) -> bool
+
+      Checks whether a param is explicitly set by user.
+
+
+   .. py:method:: load(path: str) -> RL
+      :classmethod:
+
+      Reads an ML instance from the input path, a shortcut of `read().load(path)`.
+
+
+   .. py:method:: read() -> DefaultParamsReader[RL]
+      :classmethod:
+
+      Returns a DefaultParamsReader instance for this class.
+
+
+   .. py:method:: save(path: str) -> None
+
+      Save this ML instance to the given path, a shortcut of 'write().save(path)'.
+
+
+   .. py:method:: set(param: Param, value: Any) -> None
+
+      Sets a parameter in the embedded param map.
+
+
+   .. py:method:: setAlgoParams(value)
+
+      Sets the value of :py:attr:`algoParams`.
+      Supports setting by:
+      - list of strings
+      - dict of key:value pairs
+
+
+   .. py:method:: setAlgoType(value)
+
+      Sets the value of :py:attr:`algoType`.
+
+
+   .. py:method:: setDrawDetectedLines(value)
+
+      Sets the value of :py:attr:`drawDetectedLines`.
+
+
+   .. py:method:: setInputCol(value)
+
+      Sets the value of :py:attr:`inputCol`.
+
+
+   .. py:method:: setKeepInput(value)
+
+      Sets the value of :py:attr:`keepInput`.
+
+
+   .. py:method:: setKeepOriginalLines(value)
+
+      Sets the value of :py:attr:`keepOriginalLines`.
+
+
+   .. py:method:: setOutputCol(value)
+
+      Sets the value of :py:attr:`outputCol`.
+
+
+   .. py:method:: setOutputImageCol(value)
+
+      Sets the value of :py:attr:`outputImageCol`.
+
+
+   .. py:method:: transform(dataset: pyspark.sql.dataframe.DataFrame, params: Optional[pyspark.ml._typing.ParamMap] = None) -> pyspark.sql.dataframe.DataFrame
+
+      Transforms the input dataset with optional parameters.
+
+      .. versionadded:: 1.3.0
+
+      :param dataset: input dataset
+      :type dataset: :py:class:`pyspark.sql.DataFrame`
+      :param params: an optional param map that overrides embedded params.
+      :type params: dict, optional
+
+      :returns: transformed dataset
+      :rtype: :py:class:`pyspark.sql.DataFrame`
+
+
+   .. py:method:: write() -> MLWriter
+
+      Returns a DefaultParamsWriter instance for this class.
+
+
+
+.. py:function:: cut_header(image)
+
+
+.. py:function:: detect_lines(image, axis=1, treshold=0.05, treshold_wide=1.0, min_wide=5)
+
+   Detect lines in preprocessed image.
+   It finds texts and lines segments along selected axe
+
+
+.. py:function:: get_cells_opencv(image)
+
+
+.. py:function:: normalize_image_size(img, NORM_MAX_SHAPE)
+
+
+.. py:function:: remove_lines(image)
+
+
+.. py:data:: morph_default_params
+   
+
+   
+

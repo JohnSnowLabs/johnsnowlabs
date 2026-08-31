@@ -1,0 +1,33 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.test_start`
+=======================================
+
+.. py:module:: sparkocr.tests.ocr.test_start
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.test_start.TestStart
+
+
+
+
+.. py:class:: TestStart
+
+   .. py:attribute:: LIB_PATH
+      :annotation: = '../python/lib/'
+
+      
+
+   .. py:method:: test_start()
+
+
+

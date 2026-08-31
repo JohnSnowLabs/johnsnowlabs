@@ -1,0 +1,28 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.utils.craft.models`
+=====================================
+
+.. py:module:: sparkocr.utils.craft.models
+
+
+Subpackages
+-----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 2
+
+   basenet/index.rst
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   craftnet/index.rst
+   refinenet/index.rst
+
+

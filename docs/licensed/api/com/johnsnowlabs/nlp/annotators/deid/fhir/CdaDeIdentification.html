@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 6.4.0 ScalaDoc  - com.johnsnowlabs.nlp.annotators.deid.fhir.CdaDeIdentification</title>
-          <meta name="description" content="Spark NLP 6.4.0 ScalaDoc - com.johnsnowlabs.nlp.annotators.deid.fhir.CdaDeIdentification" />
-          <meta name="keywords" content="Spark NLP 6.4.0 ScalaDoc com.johnsnowlabs.nlp.annotators.deid.fhir.CdaDeIdentification" />
+          <title>Spark NLP 6.4.1 ScalaDoc  - com.johnsnowlabs.nlp.annotators.deid.fhir.CdaDeIdentification</title>
+          <meta name="description" content="Spark NLP 6.4.1 ScalaDoc - com.johnsnowlabs.nlp.annotators.deid.fhir.CdaDeIdentification" />
+          <meta name="keywords" content="Spark NLP 6.4.1 ScalaDoc com.johnsnowlabs.nlp.annotators.deid.fhir.CdaDeIdentification" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 6.4.0 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 6.4.1 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -264,7 +264,32 @@ Free-text container paths (e.g. section.text) apply de-identification recursivel
   ))
   .setPipeline(spark, deidPipeline, <span class="lit">"deidentified"</span>)
 
-<span class="kw">val</span> result = deid.deidentify(cdaXmlString)</pre></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="https://www.hl7.org/implement/standards/product_brief.cfm?product_id=7" target="_blank">HL7 CDA Standard</a></p></span><span class="cmt"><p><a href="BaseFhirDeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification">BaseFhirDeIdentification</a> for base de-identification functionality</p></span></dd></dl><div class="toggleContainer block">
+<span class="kw">val</span> result = deid.deidentify(cdaXmlString)</pre><h4>Structured Narrative Handling (Tables, Definition Lists)</h4><p>When <code>tableHandling</code> is <code>true</code> (the default), structured elements inside free-text blocks
+are processed with header-aware context so the NLP pipeline receives a longer, more
+informative input instead of a single short cell. The following structures are recognized:</p><ul><li><code><table>`: column headers (`<th>` inside the header row) are preserved verbatim and
+   each data cell (`<td>`) is sent to the pipeline as `"<header> : <cell value>"`. The
+   obfuscated cell value is then extracted from the pipeline output and written back into
+   the document. When a data row begins with a row-label `<th>` (e.g. "Blood Pressure"),
+   that label is used as the per-row context instead of the column header. For tables
+   without a strict `<th>`-only header row, the first row of a multi-row, multi-column
+   table is automatically promoted to column headers.
+ - Inline cell labels: when a `<td>` (or `<dd>`) starts with a styling element such as
+   `<content styleCode="Bold">Title:</content>`, that element is treated as the cell's
+   own label (overrides any external header) and is preserved verbatim - only the text
+   after it is obfuscated.
+ - `<br/>` line splitting: a cell's value text is split on top-level `<br/>` elements and
+   each line is processed independently, so multi-paragraph narrative cells keep their
+   line layout and never produce concatenated tokens like `Hgb12.5`.
+ - `<dl>` / `<dt>` / `<dd>`: each `<dd>` is processed with its preceding `<dt>` as context.
+
+`<th>` and `<dt>` (and the rest of `<thead>`) are never obfuscated under this mode, which
+prevents column/row labels from being mutated and improves accuracy on cell values. Set
+`tableHandling` to `false` to fall back to the legacy recursive obfuscation that walks
+every descendant text node uniformly.
+
+Use `excludeFreeTextTags` to fully skip any additional element by local name (case
+insensitive) during free-text recursion, e.g. `Array("sup", "footnote")`.
+</code></li></ul></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="https://www.hl7.org/implement/standards/product_brief.cfm?product_id=7" target="_blank">HL7 CDA Standard</a></p></span><span class="cmt"><p><a href="BaseFhirDeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification">BaseFhirDeIdentification</a> for base de-identification functionality</p></span></dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
@@ -1034,6 +1059,28 @@ Default: false
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.CdaDeIdentification#excludeFreeTextTags" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
+      <a id="excludeFreeTextTags:org.apache.spark.ml.param.StringArrayParam"></a><a id="excludeFreeTextTags:StringArrayParam"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/CdaDeIdentification.html#excludeFreeTextTags:org.apache.spark.ml.param.StringArrayParam" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">excludeFreeTextTags</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.StringArrayParam">StringArrayParam</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Tag local names (case insensitive) whose subtree should be completely skipped during
+free-text de-identification.</p><div class="fullcomment"><div class="comment cmt"><p>Tag local names (case insensitive) whose subtree should be completely skipped during
+free-text de-identification. Useful to preserve specific narrative elements verbatim
+(e.g. superscripts, footnotes, custom report labels) without the pipeline rewriting them.</p><p>Independent of <code>tableHandling</code>: when <code>tableHandling</code> is <code>true</code>, <code><th>` / `<dt>` cells are
+already preserved as part of the table handling logic, so they do not need to be listed
+here. This parameter is for additional, user-defined exclusions.
+</code></p></div></div>
     </li><li name="org.apache.spark.ml.param.Params#explainParam" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="explainParam(param:org.apache.spark.ml.param.Param[_]):String"></a><a id="explainParam(Param[_]):String"></a>
       <span class="permalink">
@@ -1738,6 +1785,22 @@ obfuscation patterns.</p><p>default: false
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../DeidModelParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams">DeidModelParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.CdaDeIdentification#getExcludeFreeTextTags" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="getParam">
+      <a id="getExcludeFreeTextTags:Array[String]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/CdaDeIdentification.html#getExcludeFreeTextTags:Array[String]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getExcludeFreeTextTags</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Gets <a href="#excludeFreeTextTags:org.apache.spark.ml.param.StringArrayParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.fhir.CdaDeIdentification#excludeFreeTextTags">excludeFreeTextTags</a> parameter value.</p>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams#getExternalFakers" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getExternalFakers(entityClass:String,customFakers:Map[String,List[String]],wordToReplace:String):List[String]"></a><a id="getExternalFakers(String,Map[String,List[String]],String):List[String]"></a>
       <span class="permalink">
@@ -2417,6 +2480,22 @@ obfuscation patterns.</p><p>default: false
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.CdaDeIdentification#getTableHandling" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="getParam">
+      <a id="getTableHandling:Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/CdaDeIdentification.html#getTableHandling:Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getTableHandling</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Gets <a href="#tableHandling:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.fhir.CdaDeIdentification#tableHandling">tableHandling</a> parameter value.</p>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#getUnnormalizedDateMode" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="getParam">
       <a id="getUnnormalizedDateMode:String"></a>
       <span class="permalink">
@@ -4125,6 +4204,22 @@ For example, if the markers are set to (&quot;&lt;DEID&gt;&quot;, &quot;&lt;/DEI
 This parameter allows the system to automatically include a set of predefined common English name equivalents.
 Default: false
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.CdaDeIdentification#setExcludeFreeTextTags" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="setParam">
+      <a id="setExcludeFreeTextTags(tags:Array[String]):CdaDeIdentification.this.type"></a><a id="setExcludeFreeTextTags(Array[String]):CdaDeIdentification.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/CdaDeIdentification.html#setExcludeFreeTextTags(tags:Array[String]):CdaDeIdentification.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setExcludeFreeTextTags</span><span class="params">(<span name="tags">tags: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.CdaDeIdentification">CdaDeIdentification</a>.this.type</span>
+      </span>
+      
+      <p class="shortcomment cmt">Set additional tag names to skip during free-text de-identification.</p>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#setFakerLengthOffset" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setFakerLengthOffset(value:Int):BaseDeidParams.this.type"></a><a id="setFakerLengthOffset(Int):CdaDeIdentification.this.type"></a>
       <span class="permalink">
@@ -4815,6 +4910,22 @@ multi-mode deidentification.</p><ul><li>'obfuscate': Replace the values with ran
 Each pair should contain three elements: original, entity type, and fake.
 The pairs must have exactly 3 elements: [original, entityType, fake].
 </p></div><dl class="paramcmts block"><dt class="param">pairs</dt><dd class="cmt"><p>An array of arrays containing the static obfuscation pairs.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.CdaDeIdentification#setTableHandling" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="setParam">
+      <a id="setTableHandling(value:Boolean):CdaDeIdentification.this.type"></a><a id="setTableHandling(Boolean):CdaDeIdentification.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/CdaDeIdentification.html#setTableHandling(value:Boolean):CdaDeIdentification.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setTableHandling</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.CdaDeIdentification">CdaDeIdentification</a>.this.type</span>
+      </span>
+      
+      <p class="shortcomment cmt">Set whether to enable structured table / definition-list aware processing.</p>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#setUnnormalizedDateMode" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
       <a id="setUnnormalizedDateMode(mode:String):BaseDeidParams.this.type"></a><a id="setUnnormalizedDateMode(String):CdaDeIdentification.this.type"></a>
       <span class="permalink">
@@ -4899,6 +5010,33 @@ Each pair should contain three elements: original, entity type, and fake.
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.CdaDeIdentification#tableHandling" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
+      <a id="tableHandling:org.apache.spark.ml.param.BooleanParam"></a><a id="tableHandling:BooleanParam"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/CdaDeIdentification.html#tableHandling:org.apache.spark.ml.param.BooleanParam" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">tableHandling</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.BooleanParam">BooleanParam</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Enable header-aware processing of structured narrative elements (tables, definition lists)
+found inside free-text blocks.</p><div class="fullcomment"><div class="comment cmt"><p>Enable header-aware processing of structured narrative elements (tables, definition lists)
+found inside free-text blocks.</p><p>When <code>true</code> (default), the de-identification pipeline is no longer invoked on column or
+row header cells (<code><th>`, `<dt>`, anything inside `<thead>`). Instead, each data cell
+(`<td>`, `<dd>`) is sent to the pipeline together with its label, formatted as
+`"<header> : <cell value>"`, so the model has enough context to identify the entity
+correctly. The cell value is then post-processed from the pipeline output and the cell's
+text content is replaced with the obfuscated portion only - the header stays intact.
+
+Set to `false` to restore the legacy behavior that recursively de-identifies every text
+node inside the free-text block uniformly.
+</code></p></div></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification#throwUnSupportedError" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="throwUnSupportedError():Nothing"></a>
       <span class="permalink">

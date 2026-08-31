@@ -1,0 +1,31 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.test_pdf_assembler`
+============================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.test_pdf_assembler
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.test_pdf_assembler.TestPdfAssembler
+
+
+
+
+.. py:class:: TestPdfAssembler
+
+   .. py:method:: get_pipeline()
+
+
+   .. py:method:: test_pdf_assembler(spark_session, pdf_text_multipage_df)
+
+
+

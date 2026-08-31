@@ -1,0 +1,28 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.tests.ocr.transformers.test_image_erosion`
+============================================================
+
+.. py:module:: sparkocr.tests.ocr.transformers.test_image_erosion
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   sparkocr.tests.ocr.transformers.test_image_erosion.TestImageErosion
+
+
+
+
+.. py:class:: TestImageErosion
+
+   .. py:method:: test_image_erosion(spark_session, image_df)
+
+
+

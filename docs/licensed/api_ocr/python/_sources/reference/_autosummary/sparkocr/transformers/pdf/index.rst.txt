@@ -1,0 +1,27 @@
+
+.. INDEX
+
+:py:mod:`sparkocr.transformers.pdf`
+===================================
+
+.. py:module:: sparkocr.transformers.pdf
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   image_to_pdf/index.rst
+   image_to_text_pdf/index.rst
+   pdf_assembler/index.rst
+   pdf_draw_regions/index.rst
+   pdf_to_form/index.rst
+   pdf_to_hocr/index.rst
+   pdf_to_image/index.rst
+   pdf_to_text/index.rst
+   pdf_to_text_table/index.rst
+   text_to_pdf/index.rst
+
+

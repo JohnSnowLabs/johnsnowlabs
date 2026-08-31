@@ -4,7 +4,7 @@ title: Image Deidentification Multi Model Context
 author: John Snow Labs
 name: image_deid_multi_model_context_pipeline
 date: 2025-07-23
-tags: [en, licensed]
+tags: [en, licensed, pji-compatible]
 task: De-identification
 language: en
 nav_key: models
