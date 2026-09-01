@@ -15,11 +15,6 @@ article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
 
-deploy:
-  sagemaker_link: 
-  snowflake_link: 
-  databricks_link: https://marketplace.databricks.com/details/f29c9e93-8f2d-4969-b472-f3524bdfd883/John-Snow-Labs_Detect-Healthcare-Professional-Consult-documents
-
 ---
 
 ## Description
