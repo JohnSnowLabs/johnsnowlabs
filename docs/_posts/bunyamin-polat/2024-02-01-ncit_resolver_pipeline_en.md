@@ -15,11 +15,6 @@ article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
 
-deploy:
-  sagemaker_link: 
-  snowflake_link: 
-  databricks_link: https://marketplace.databricks.com/details/cc31eb7f-a785-41dc-8023-314b44b1cd11/John-Snow-Labs_NCIT-Clinical-Terminology-Mapper
-
 ---
 
 ## Description
