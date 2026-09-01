@@ -16,11 +16,6 @@ article_header:
 type: cover
 use_language_switcher: "Python-Scala-Java"
 
-deploy:
-  sagemaker_link: 
-  snowflake_link: 
-  databricks_link: https://marketplace.databricks.com/details/074bbfa7-20ad-4444-8e0a-bc05ff07d6ea/John-Snow-Labs_Resolve-Oncology-terminology-with-ICDO-Taxonomy
-
 ---
 
 ## Description
