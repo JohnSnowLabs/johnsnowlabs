@@ -15,11 +15,6 @@ article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
 
-deploy:
-  sagemaker_link: 
-  snowflake_link: 
-  databricks_link: https://marketplace.databricks.com/details/4d973f25-f457-4af7-8ea7-7c3fddaf9493/John-Snow-Labs_Extract-clinical-risk-factors
-
 ---
 
 ## Description
