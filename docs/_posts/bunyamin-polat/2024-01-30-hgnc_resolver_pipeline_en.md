@@ -15,11 +15,6 @@ article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
 
-deploy:
-  sagemaker_link: 
-  snowflake_link: 
-  databricks_link: https://marketplace.databricks.com/details/472dc014-33dd-4026-8ee6-e345e0475aa7/John-Snow-Labs_HGNC-Clinical-Terminology-Mapper
-
 ---
 
 ## Description
