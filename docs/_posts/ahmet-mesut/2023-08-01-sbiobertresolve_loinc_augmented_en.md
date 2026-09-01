@@ -15,11 +15,6 @@ article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
 
-deploy:
-  sagemaker_link: 
-  snowflake_link: 
-  databricks_link: https://marketplace.databricks.com/details/a299884a-7a95-4ddf-96e0-b8594c4290d3/John-Snow-Labs_Extract-Laboratory-Observations-and-the-corresponding-LOINC-codes
-
 ---
 
 ## Description
