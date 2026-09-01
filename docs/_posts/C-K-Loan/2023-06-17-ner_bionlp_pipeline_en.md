@@ -15,11 +15,6 @@ article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
 
-deploy:
-  sagemaker_link: 
-  snowflake_link: 
-  databricks_link: https://marketplace.databricks.com/details/0a5aebb4-6f73-4af6-96d4-f8d2acfce25d/John-Snow-Labs_Detect-Cancer-Genetics
-
 ---
 
 ## Description
