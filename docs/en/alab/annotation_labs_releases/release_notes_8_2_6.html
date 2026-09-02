@@ -9,12 +9,12 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>NLP Lab Release Notes 5.5.1</title><meta property="og:title" content="NLP Lab | John Snow Labs"/>
+<!-- End Google Tag Manager --><title>Generative AI Lab 8.2.6</title><meta property="og:title" content="Generative AI Lab | John Snow Labs"/>
 
 <meta name="description" content="High Performance NLP with Apache Spark
 ">
-<!-- <link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_5_5_1"> -->
-<link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_5_5_1"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<!-- <link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_8_2_6"> -->
+<link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_8_2_6"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -616,40 +616,46 @@ function wrapWordInSpan(data, wordToWrap) {
 </script><div class="article__header"><div class="header-nav"><div class="main-docs">
   <ul class="breadcrambs">
     <li><a href="/docs">Documentation</a></li>
-    <li>NLP Lab Release Notes 5.5.1</li>
+    <li>Generative AI Lab 8.2.6</li>
   </ul>
 </div></div><header class="main-docs have_subtitle">
-          <h1>NLP Lab Release Notes 5.5.1</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
+          <h1>Generative AI Lab 8.2.6</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
-            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/alab/annotation_labs_releases/release_notes_5_5_1.md">
-            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="NLP Lab Release Notes 5.5.1"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
+            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/alab/annotation_labs_releases/release_notes_8_2_6.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Generative AI Lab 8.2.6"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <h2 id="section">5.5.1</h2>
+  <p><strong>Generative AI Lab 8.2.6</strong> is an improvement release focused on DICOM processing and usability. This release expands DICOM OCR compatibility, improves zoom and pan interactions for medical images, and increases the supported task file name length to accommodate longer file names commonly found in DICOM and other medical documents.</p>
 
-  <p>Release date: <strong>10-13-2023</strong></p>
+  <h2 id="improvements">Improvements</h2>
 
-  <p>We are delighted to announce release of NLP Lab 5.5.1</p>
+  <h3 id="increased-task-file-name-length">Increased Task File Name Length</h3>
 
-  <h3 id="additional-meta-data-on-ner-label">Additional Meta Data on NER Label</h3>
+  <p><strong>What’s Improved</strong></p>
 
-  <p>In an NER project, users have the capability to include multiple pieces of metadata for each extraction. While annotating a text document, users can now incorporate metadata in either the “String” or “Key Value” format. It is now possible to attach multiple entries of metadata to a single label during the annotation process.</p>
+  <p>The maximum supported task file name length has been increased to 150 characters, allowing files with longer names to be imported and processed without exceeding the previous file name restriction.
+This is particularly useful for DICOM files and other medical documents, where file names may contain longer identifiers or descriptive information.</p>
 
-  <p><img src="/assets/images/annotation_lab/5.5.0/111.png" alt="metadata" /></p>
+  <h3 id="expanded-dicom-ocr-compatibility">Expanded DICOM OCR Compatibility</h3>
 
-  <h3 id="bug-fixes">Bug Fixes:</h3>
-  <ul>
-    <li>Eliminated the occurrence of multiple entries of the same model in the models.json file across all containers (annotation, training, pre-annotation).</li>
-    <li>Addressed a problem where deploying a free rule in the playground and performing pre-annotation resulted in a server crash.</li>
-    <li>Resolved the issue where the “Remove Duplicates” button is now accessible exclusively to users with the role of “Annotator.”</li>
-  </ul>
+  <p><strong>What’s Improved</strong></p>
 
-</div>
-<div class="prev_ver h3-box">
+  <p>The DICOM OCR import pipeline has been enhanced to support a broader range of valid DICOM images and encoding scenarios.</p>
 
+  <p>DICOM processing now provides improved handling of JPEG Lossless pixel data, missing overlay information, and image extraction conditions that could previously interrupt OCR processing. These changes improve compatibility across different DICOM sources and make the import pipeline more resilient when processing heterogeneous medical imaging datasets.</p>
+
+  <h3 id="improved-zoom-and-pan-for-dicom-images">Improved Zoom and Pan for DICOM Images</h3>
+
+  <p><strong>What’s Improved</strong></p>
+
+  <p>Zoom and pan interactions have been improved for DICOM images, providing smoother and more reliable navigation when inspecting medical images within annotation tasks.</p>
+
+  <p>Users can more easily enlarge image regions and reposition the image while reviewing detailed visual content.</p>
+
+  <hr />
   <h2 id="versions">Versions</h2>
 
 </div>
@@ -740,7 +746,7 @@ function wrapWordInSpan(data, wordToWrap) {
   <li><a href="release_notes_5_1_0">5.1.0</a></li>
 </ul>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2023-11-13T00:00:00+00:00">Nov 13, 2023</time>
+      <time itemprop="dateModified" datetime="2026-09-02T00:00:00+00:00">Sep 02, 2026</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
