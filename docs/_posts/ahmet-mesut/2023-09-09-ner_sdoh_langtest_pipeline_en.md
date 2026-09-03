@@ -15,11 +15,6 @@ article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
 
-deploy:
-  sagemaker_link: 
-  snowflake_link: 
-  databricks_link: https://marketplace.databricks.com/details/c23fe435-9461-4d0e-a829-d64f6fecb659/John-Snow-Labs_Extract-Social-Determinants-of-Health
-
 ---
 
 ## Description
