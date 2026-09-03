@@ -15,11 +15,6 @@ article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
 
-deploy:
-  sagemaker_link: 
-  snowflake_link: 
-  databricks_link: https://marketplace.databricks.com/details/379d172e-cc3f-4c17-ae25-6c83f91e2e6a/John-Snow-Labs_RxNorm-to-UMLS-Code-Mapper
-
 ---
 
 ## Description
