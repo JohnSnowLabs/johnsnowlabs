@@ -15,11 +15,6 @@ article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
 
-deploy:
-  sagemaker_link: 
-  snowflake_link: 
-  databricks_link: https://marketplace.databricks.com/details/c2469843-c104-4201-9db5-ba1542823448/John-Snow-Labs_Extract-Clinical-Findings-and-the-corresponding-ICD-9-codes
-
 ---
 
 ## Description
