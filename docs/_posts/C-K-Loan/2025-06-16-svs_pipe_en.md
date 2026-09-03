@@ -15,8 +15,6 @@ article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
 
-deploy:
-  sagemaker_link: https://aws.amazon.com/marketplace/pp/prodview-kh7vsfj4pwxry
 ---
 
 
