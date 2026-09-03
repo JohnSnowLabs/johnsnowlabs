@@ -15,11 +15,6 @@ article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
 
-deploy:
-  sagemaker_link: 
-  snowflake_link: 
-  databricks_link: https://marketplace.databricks.com/details/b1a7c3ca-3d76-4434-a979-7ed9ad720530/John-Snow-Labs_RxNorm-to-MeSH-Code-Mapper
-
 ---
 
 ## Description
