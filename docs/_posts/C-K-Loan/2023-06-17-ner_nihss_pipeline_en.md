@@ -15,11 +15,6 @@ article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
 
-deploy:
-  sagemaker_link: 
-  snowflake_link: 
-  databricks_link: https://marketplace.databricks.com/details/7afe6ca0-ad66-489b-b2d0-b31b0644d053/John-Snow-Labs_Extract-neurologic-deficits-related-to-Stroke-Scale-NIHSS
-
 ---
 
 ## Description
