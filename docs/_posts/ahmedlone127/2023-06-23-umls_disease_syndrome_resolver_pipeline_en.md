@@ -15,11 +15,6 @@ article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
 
-deploy:
-  sagemaker_link: 
-  snowflake_link: 
-  databricks_link: https://marketplace.databricks.com/details/cf968e18-d8d8-4b9f-b79a-fc4e4a3337a7/John-Snow-Labs_Extract-Disease-and-Syndrom-entities-and-their-UMLS-Codes
-
 ---
 
 ## Description
