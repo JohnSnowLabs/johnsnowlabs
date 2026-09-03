@@ -15,11 +15,6 @@ article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
 
-deploy:
-  sagemaker_link: 
-  snowflake_link: 
-  databricks_link: https://marketplace.databricks.com/details/7487be7b-0f6d-4aaf-82ef-ea2b1833685a/John-Snow-Labs_Extract-Anatomical-Structures
-
 ---
 
 ## Description
