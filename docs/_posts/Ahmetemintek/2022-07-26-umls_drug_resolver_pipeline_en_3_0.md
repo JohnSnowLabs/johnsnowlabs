@@ -16,11 +16,6 @@ article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
 
-deploy:
-  sagemaker_link: 
-  snowflake_link: 
-  databricks_link: https://marketplace.databricks.com/details/bfb569e4-69a2-4f4b-8d6e-e306982e4a95/John-Snow-Labs_Extract-Drugs-and-their-UMLS-Codes
-
 ---
 
 ## Description
