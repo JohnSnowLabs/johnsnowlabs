@@ -15,11 +15,6 @@ article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
 
-deploy:
-  sagemaker_link: 
-  snowflake_link: 
-  databricks_link: https://marketplace.databricks.com/details/5b4cc372-b9b5-4632-9090-89ddfbef7fe5/John-Snow-Labs_MeSH-to-UMLS-Code-Mapper
-
 ---
 
 ## Description
