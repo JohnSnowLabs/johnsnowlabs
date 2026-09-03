@@ -15,11 +15,6 @@ article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
 
-deploy:
-  sagemaker_link: 
-  snowflake_link: 
-  databricks_link: https://marketplace.databricks.com/details/30a45cec-f7fe-4c7b-86d5-30d125d61166/John-Snow-Labs_Healthcare-Common-Procedure-Clinical-Terminology-Mapper
-
 ---
 
 ## Description
