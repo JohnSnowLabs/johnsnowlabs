@@ -16,11 +16,6 @@ article_header:
 type: cover
 use_language_switcher: "Python-Scala-Java"
 
-deploy:
-  sagemaker_link: 
-  snowflake_link: 
-  databricks_link: https://marketplace.databricks.com/details/e3d2930b-b3bc-4f26-9d35-e81fa9fdd161/John-Snow-Labs_SNOMED-Codes-to-ICDO-Codes-Mapper
-
 ---
 
 ## Description
