@@ -15,11 +15,6 @@ article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
 
-deploy:
-  sagemaker_link: 
-  snowflake_link: 
-  databricks_link: https://marketplace.databricks.com/details/5c645046-e195-4164-a5f5-d3015a7f7647/John-Snow-Labs_ICD10-to-ICD9-Code-Converter
-
 ---
 
 ## Description
