@@ -69,10 +69,10 @@ The following models are currently available for on-premise deployments:
 
 | **Model Name** | **Recommended GPU Memory** | **Max Sequence Length** | **Max KV-Cache** | **Tensor Parallel Sizes** | **Available Versions** |
 |----------------------------|--------------------------|----------------|------------------|--------------------------|------------------------|
-| Medical-LLM-Medium     | ~452 GB      | 128K                | 320 GB      | 4, 8            | v1, v2         |
-| Medical-LLM-Small      | ~59 GB       | 40K                 |31 GB       | 1, 2, 4, 8      | v1, v2         |
-| Vision-OCR-LLM | ~62 GB       | 40K                 | 5 GB        | 2, 4, 8         | v1             |
-| Vision-OCR-Structured-LLM | ~62 GB    | 40K                 | 5 GB        | 2, 4, 8         | v1             |
+| Medical-LLM-Medium     | ~66 GB      | 262K                | 16 GB      | 2, 4, 8            | v1, v2         |
+| Medical-LLM-Small      | ~25 GB       | 262K                 |8 GB       | 1, 2, 4, 8      | v1, v2         |
+| Vision-OCR-LLM | ~6 GB       | 32K                 | 4 GB        | 1, 2, 4        | v1             |
+| Vision-OCR-Structured-LLM | ~32 GB    | 128K                 | 17 GB        | 1, 2, 4         | v1             |
 
 
 > **Important Notes**
