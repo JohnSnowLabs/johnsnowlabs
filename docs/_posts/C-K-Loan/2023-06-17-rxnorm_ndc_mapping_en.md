@@ -15,11 +15,6 @@ article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
 
-deploy:
-  sagemaker_link: 
-  snowflake_link: 
-  databricks_link: https://marketplace.databricks.com/details/bf4cd2a7-55b5-40fa-b010-c89f54b29ab8/John-Snow-Labs_RxNorm-to-NDC-Code-Converter
-
 ---
 
 ## Description
