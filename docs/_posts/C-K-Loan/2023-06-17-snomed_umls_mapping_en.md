@@ -15,11 +15,6 @@ article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
 
-deploy:
-  sagemaker_link: 
-  snowflake_link: 
-  databricks_link: https://marketplace.databricks.com/details/83306cbb-ac15-46e4-86a1-43036dd0c1ec/John-Snow-Labs_SNOMED-to-UMLS-Code-Mapper
-
 ---
 
 ## Description
