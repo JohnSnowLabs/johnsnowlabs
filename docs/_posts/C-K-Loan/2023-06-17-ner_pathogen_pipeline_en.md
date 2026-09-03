@@ -15,11 +15,6 @@ article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
 
-deploy:
-  sagemaker_link: 
-  snowflake_link: 
-  databricks_link: https://marketplace.databricks.com/details/f52c1b80-794f-457f-bb94-51c5df3ee4be/John-Snow-Labs_Detect-Pathogen-Medical-Condition-and-Medicine
-
 ---
 
 ## Description
