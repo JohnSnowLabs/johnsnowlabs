@@ -15,11 +15,6 @@ article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
 
-deploy:
-  sagemaker_link: 
-  snowflake_link: 
-  databricks_link: https://marketplace.databricks.com/details/c0511f92-316e-4106-b09c-b3f55fcca24f/John-Snow-Labs_Medication-Coder
-
 ---
 
 ## Description
