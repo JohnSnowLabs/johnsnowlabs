@@ -16,11 +16,6 @@ article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
 
-deploy:
-  sagemaker_link: 
-  snowflake_link: 
-  databricks_link: https://marketplace.databricks.com/details/29d9158d-33ed-4805-ad4b-92ff210e808b/John-Snow-Labs_Extract-Clinical-Findings-and-their-UMLS-Codes
-
 ---
 
 ## Description
