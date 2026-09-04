@@ -15,11 +15,6 @@ article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
 
-deploy:
-  sagemaker_link: 
-  snowflake_link: https://app.snowflake.com/marketplace/listing/GZTYZ4386LJ5F/john-snow-labs-extract-findings-in-radiology-reports
-  databricks_link: 
-
 ---
 
 ## Description
