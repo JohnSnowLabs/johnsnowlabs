@@ -2174,6 +2174,198 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
 </div>
 <div class="h3-box">
 
+  <h3 id="oncology-ner-and-entity-resolver-pipelines-speed-benchmark">Oncology NER and Entity Resolver Pipelines Speed Benchmark</h3>
+
+  <p>This experiment measures the end-to-end write time of one clinical <strong>NER</strong> pipeline and five <strong>Sentence Entity Resolver</strong> pipelines, each executed over the same 1,000-document input on a single CPU-only Azure VM. All runs share identical hardware, software and Spark settings, so timing differences reflect the pipelines themselves.</p>
+
+  <ul>
+    <li><strong>Dataset:</strong> Surrogate test set from the i2b2 de-identification challenge. 220 base records were replicated 5× to build a 1,000-row DataFrame.
+      <ul>
+        <li><strong>Source:</strong> <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/data/deid_surrogate_test_all_groundtruth_version2.xml">deid_surrogate_test_all_groundtruth_version2.xml</a></li>
+        <li><strong>Total rows:</strong> 1,000</li>
+        <li><strong>Total characters:</strong> 4,360,197</li>
+        <li><strong>Average characters per document:</strong> 4,360.2</li>
+        <li><strong>Total tokens:</strong> 780,532</li>
+        <li><strong>Average tokens per document:</strong> 780.5</li>
+      </ul>
+    </li>
+    <li><strong>Instance Type:</strong>
+      <ul>
+        <li>Microsoft Azure VM — Standard D64ds v5</li>
+        <li>64 vCPUs, 256 GiB memory (251.8 GiB usable)</li>
+        <li><strong>OS:</strong> Ubuntu 24.04 LTS</li>
+        <li><strong>Accelerator:</strong> none (CPU only)</li>
+      </ul>
+    </li>
+    <li><strong>Versions:</strong>
+      <ul>
+        <li><strong>Java:</strong> 11.0.32</li>
+        <li><strong>Python:</strong> 3.12.3</li>
+        <li><strong>PySpark Version:</strong> v3.5.1</li>
+        <li><strong>spark-nlp Version:</strong> v6.4.2</li>
+        <li><strong>spark-nlp-jsl Version:</strong> v6.4.1</li>
+      </ul>
+    </li>
+    <li><strong>Spark NLP Pipelines:</strong></li>
+  </ul>
+
+  <p>NER Pipeline:</p>
+
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ner_pipeline = Pipeline(stages = [
+        document_assembler,
+        sentence_detector,
+        tokenizer,
+        word_embeddings,
+        ner_oncology,
+        ner_converter])
+</code></pre></div>  </div>
+
+  <p>Sentence Entity Resolver Pipeline (each resolver was built as shown in its model card):</p>
+
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>resolver_pipeline = Pipeline(stages = [
+        document_assembler,
+        sentence_detector,
+        tokenizer,
+        word_embeddings,
+        ner_oncology,
+        ner_converter,
+        chunk2doc,
+        sbert_embeddings,   # sbiobert_base_cased_mli (sbluebert_base_uncased_mli for LOINC)
+        resolver])          # e.g. sbiobertresolve_snomed_findings
+</code></pre></div>  </div>
+
+  <p>Read, transform and timed write:</p>
+
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>df = spark.read.parquet(df_path).repartition(128)
+result_df = pipeline_model.transform(df)
+
+start = time.perf_counter()
+result_df.write.mode("overwrite").parquet(OUTPUT_PATH)
+elapsed = time.perf_counter() - start
+</code></pre></div>  </div>
+
+  <p><strong>NOTES:</strong></p>
+
+  <ul>
+    <li>
+      <p>Since Spark is lazy, <code class="language-plaintext highlighter-rouge">transform()</code> only builds the execution plan; the timer wraps the <code class="language-plaintext highlighter-rouge">write.parquet()</code> action, which is what forces the full pipeline to run across all partitions.</p>
+    </li>
+    <li>
+      <p>Every pipeline was run on the identical 1,000-row input with a fixed repartition of <strong>128</strong> (2× the vCPU count), so the dataset profile (characters, tokens) is constant and only the model stage differs between runs.</p>
+    </li>
+    <li>
+      <p>Each resolver pipeline runs a full NER pass, then embeds every extracted chunk with <code class="language-plaintext highlighter-rouge">BertSentenceEmbeddings</code> before a nearest-neighbour lookup against the terminology index. This embedding-plus-resolution stage is the dominant cost, which is why resolver timings are higher than the NER-only pipeline.</p>
+    </li>
+    <li>
+      <p>The <strong>LOINC</strong> and <strong>HGNC</strong> runs extract an identical 17,172 chunks (same upstream NER), so their elapsed times isolate the resolver stage against each other directly.</p>
+    </li>
+    <li>
+      <p>The 1,000 rows are 220 unique surrogate notes duplicated 5×; throughput figures are valid (every row is processed independently) but the set is not 1,000 distinct notes.</p>
+    </li>
+    <li>
+      <p>All figures are single CPU-only runs.</p>
+    </li>
+  </ul>
+
+  <h4 id="benchmark-table">Benchmark Table</h4>
+
+  <ul>
+    <li>Instance: Azure Standard D64ds v5, 64 vCPU, 256 GiB RAM, CPU only</li>
+    <li>Repartition: 128</li>
+    <li>Input Data Count: 1000</li>
+  </ul>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Pipeline</th>
+        <th>Type</th>
+        <th>Total Chunks</th>
+        <th>Avg Chunks</th>
+        <th>Elapsed (sec)</th>
+        <th>Elapsed</th>
+        <th>Rows/sec</th>
+        <th>Tokens/sec</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2024/06/10/ner_oncology_wip_en.html">ner_oncology_wip</a></td>
+        <td>NER</td>
+        <td>53,513</td>
+        <td>53.5</td>
+        <td>57.33</td>
+        <td>57.3 sec</td>
+        <td>17.4</td>
+        <td>13,614.5</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2021/07/02/sbiobertresolve_icdo_base_en.html">sbiobertresolve_icdo_base</a></td>
+        <td>Resolver</td>
+        <td>1,792</td>
+        <td>1.8</td>
+        <td>78.80</td>
+        <td>1 min 18.8 sec</td>
+        <td>12.7</td>
+        <td>9,905.4</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2026/03/16/sbiobertresolve_snomed_findings_en.html">sbiobertresolve_snomed_findings</a></td>
+        <td>Resolver</td>
+        <td>28,459</td>
+        <td>28.5</td>
+        <td>223.79</td>
+        <td>3 min 43.8 sec</td>
+        <td>4.5</td>
+        <td>3,487.8</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2026/03/05/sbluebertresolve_loinc_uncased_en.html">sbluebertresolve_loinc_uncased</a></td>
+        <td>Resolver</td>
+        <td>17,172</td>
+        <td>17.2</td>
+        <td>398.56</td>
+        <td>6 min 38.6 sec</td>
+        <td>2.5</td>
+        <td>1,958.4</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2026/08/07/sbiobertresolve_hgnc_2026_en.html">sbiobertresolve_hgnc_2026</a></td>
+        <td>Resolver</td>
+        <td>17,172</td>
+        <td>17.2</td>
+        <td>382.31</td>
+        <td>6 min 22.3 sec</td>
+        <td>2.6</td>
+        <td>2,041.6</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2026/07/30/sbiobertresolve_atc_en.html">sbiobertresolve_atc</a></td>
+        <td>Resolver</td>
+        <td>13,814</td>
+        <td>13.8</td>
+        <td>86.26</td>
+        <td>1 min 26.3 sec</td>
+        <td>11.6</td>
+        <td>9,049.0</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Notes:</strong></p>
+
+  <ul>
+    <li>
+      <p>Benchmark results may vary based on hardware specifications, model versions, and system configurations. These results are specific to the tested environment and should be used as a relative performance guide.</p>
+    </li>
+    <li>
+      <p>For faster resolver runs, switch the resolver embeddings to the ONNX variant — replace <code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli</code> with <code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli_onnx</code>. The ONNX Runtime backend delivers meaningfully better CPU throughput for the sentence-embedding stage, which is the dominant cost in every resolver run. Reference: <a href="https://nlp.johnsnowlabs.com/docs/en/benchmark#cpu-benchmarking">CPU Benchmarking</a></p>
+    </li>
+  </ul>
+
+</div>
+<div class="h3-box">
+
   <h3 id="onnx-and-base-embeddings-in-resolver">ONNX and Base Embeddings in Resolver</h3>
 
   <ul>
@@ -2685,7 +2877,7 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
 </div>
 <div class="h3-box">
 
-  <h2 id="processing-time-by-partition-size">Processing Time by Partition Size</h2>
+  <h3 id="processing-time-by-partition-size">Processing Time by Partition Size</h3>
 
   <table class="table-model-big db">
     <thead>
@@ -3134,7 +3326,7 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
     </tbody>
   </table>
 
-  <h2 id="notes">Notes</h2>
+  <h4 id="notes">Notes</h4>
 
   <ul>
     <li>Lower values indicate better performance</li>
