@@ -1446,6 +1446,114 @@ Therefore, **Healthcare NLP is almost 5 times cheaper than its closest alternati
 
 </div><div class="h3-box" markdown="1">
 
+## Medical Terminology Mapping Benchmark: Healthcare NLP & Claude & GPT & Gemini
+
+### Motivation
+
+Accurately mapping clinical text to standard medical codes, kept current with each new release of the target vocabulary, is crucial for several reasons like accurate billing, safe care coordination, and reliable population health reporting, etc. In this benchmark, you can find Healthcare NLP's resolver models compared against general-purpose LLMs across four coding systems: SNOMED CT, RxNorm, ICD-10-CM, and ICD-O.
+
+### Ground Truth
+
+To ensure a fair comparison of these tools, 100 items per system were selected using an independent, vendor-neutral process grounded in clinical domain knowledge. Each item's gold code was queried from the system's live, current-release database view and confirmed active. An additional 10 items per system (5 codes newly added in the current release, 5 codes retired since the prior release) were scored separately, to test whether a model knows about vocabulary changes it wasn't trained on.
+
+### Benchmark Tools
+
+- **Healthcare NLP:** One resolver per system, the live JSL Models Hub `.pretrained()` build trained on the broadest available data for that system (not a domain-restricted variant).
+  - [sbiobertresolve_snomed_findings_aux_concepts](https://nlp.johnsnowlabs.com/models): SNOMED CT 20260301.
+  - [sbiobertresolve_rxnorm_augmented_v2](https://nlp.johnsnowlabs.com/models): RxNorm 20260601.
+  - [sbiobertresolve_icd10cm_augmented](https://nlp.johnsnowlabs.com/models): ICD-10-CM 20260401.
+  - [sbiobertresolve_icdo_augmented_2026](https://nlp.johnsnowlabs.com/models): ICD-O 3.2 2026 update.
+
+- **Claude:** *Opus 5*, *Sonnet 5*, and *Fable 5*.
+
+- **GPT:** *GPT-5.6*.
+
+- **Gemini:** *Gemini 3.6 Flash*.
+
+### Evaluation Notes
+
+- All models, resolver and LLMs alike, received the identical bare phrase as input, closed-book: no tools, no web search, no database access. Each item was answered as an independent, isolated call, one run per model.
+- Only one approach was used: **Top-1** exact-code match. Healthcare NLP resolvers can return a ranked list of candidates, but general-purpose LLMs were prompted for a single best answer per item, so comparing anything beyond the top result would not be a fair, symmetric comparison across all six tools.
+- For the 10 currency items per system: a "new" item is correct only on an exact match; a "retired" item is correct if the model declines, states the code is no longer valid, or returns any documented successor code, and wrong only if it returns the retired code itself as if still current.
+- Declining ("RETIRED" / "NO LONGER VALID") was an offered, allowed answer for every item, not only the currency ones.
+
+### Accuracy Results
+
+- Top-1 Results, 110 items per system (100 headline + 10 currency):
+
+![medical_terminology_mapping_benchmark_accuracy](/assets/images/medical_terminology_mapping_benchmark_accuracy.png)
+
+### Price Analysis Of The Tools
+
+Out of scope for this benchmark — only accuracy was measured. No per-document cost or infrastructure comparison was run. For an indicative sense of the economics, see the RxNorm price analysis above: at scale, Healthcare NLP came out meaningfully cheaper than the closest alternative. The same licensing and infrastructure model applies across SNOMED CT, ICD-10-CM, and ICD-O, so a similar cost advantage should carry over to these systems as well.
+
+### Conclusion
+
+Based on the evaluation results:
+- Healthcare NLP's resolvers **won on all four systems**, ahead of every LLM tested in every case.
+- The margin tracks how memorable a coding system's own codes are: on SNOMED CT and RxNorm, where codes are long numeric strings no one can reason their way to, the gap runs as high as 25 points over the best LLM. On ICD-10-CM and ICD-O, where codes are shorter and partly mnemonic, every model closes in.
+- General-purpose LLMs shared common failure patterns: confusing concept types (returning a related but wrong kind of code), missing codes added since their training cutoff, and, on multiple systems, returning codes that don't exist in the vocabulary at all.
+
+**Accuracy Table**
+
+<table class="table-model-big">
+    <thead>
+      <tr>
+        <th></th>
+        <th>SNOMED CT</th>
+        <th>RxNorm</th>
+        <th>ICD-10-CM</th>
+        <th>ICD-O 3.2</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Healthcare NLP</td>
+        <td>76.4%</td>
+        <td>91.8%</td>
+        <td>95.5%</td>
+        <td>96.4%</td>
+      </tr>
+      <tr>
+        <td>Claude Opus 5</td>
+        <td>72.7%</td>
+        <td>66.4%</td>
+        <td>89.1%</td>
+        <td>93.6%</td>
+      </tr>
+      <tr>
+        <td>Claude Sonnet 5</td>
+        <td>54.5%</td>
+        <td>56.4%</td>
+        <td>87.3%</td>
+        <td>90.0%</td>
+      </tr>
+      <tr>
+        <td>Claude Fable 5</td>
+        <td>55.5%</td>
+        <td>51.8%</td>
+        <td>90.9%</td>
+        <td>87.3%</td>
+      </tr>
+      <tr>
+        <td>GPT-5.6</td>
+        <td>41.8%</td>
+        <td>27.3%</td>
+        <td>88.2%</td>
+        <td>87.3%</td>
+      </tr>
+      <tr>
+        <td>Gemini 3.6 Flash</td>
+        <td>50.0%</td>
+        <td>45.5%</td>
+        <td>87.3%</td>
+        <td>90.0%</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div><div class="h3-box" markdown="1">
+
 ## AWS EMR Cluster Benchmark
 
 - **Dataset:** 340 Custom Clinical Texts, approx. 235 tokens per text
