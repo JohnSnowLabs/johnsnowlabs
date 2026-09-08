@@ -1458,11 +1458,11 @@ To ensure a fair comparison of these tools, 100 items per system were selected u
 
 ### Benchmark Tools
 
-- **Healthcare NLP:** One resolver per system, the live JSL Models Hub `.pretrained()` build trained on the broadest available data for that system (not a domain-restricted variant).
-  - [sbiobertresolve_snomed_findings_aux_concepts](https://nlp.johnsnowlabs.com/models): SNOMED CT 20260301.
-  - [sbiobertresolve_rxnorm_augmented_v2](https://nlp.johnsnowlabs.com/models): RxNorm 20260601.
-  - [sbiobertresolve_icd10cm_augmented](https://nlp.johnsnowlabs.com/models): ICD-10-CM 20260401.
-  - [sbiobertresolve_icdo_augmented_2026](https://nlp.johnsnowlabs.com/models): ICD-O 3.2 2026 update.
+- **Healthcare NLP:** One resolver per system, the live JSL Models Hub `.pretrained()` build trained on the broadest available data for that system.
+  - [sbiobertresolve_snomed_findings_aux_concepts](https://nlp.johnsnowlabs.com/2026/03/16/sbiobertresolve_snomed_findings_aux_concepts_en.html): SNOMED CT 20260301.
+  - [sbiobertresolve_rxnorm_augmented_v2](https://nlp.johnsnowlabs.com/2026/07/11/sbiobertresolve_rxnorm_augmented_v2_en.html): RxNorm 20260601.
+  - [sbiobertresolve_icd10cm_augmented](https://nlp.johnsnowlabs.com/2026/07/14/sbiobertresolve_icd10cm_augmented_en.html): ICD-10-CM 20260401.
+  - [sbiobertresolve_icdo_augmented_2026](https://nlp.johnsnowlabs.com/2026/08/09/sbiobertresolve_icdo_augmented_2026_en.html): ICD-O 3.2 2026 update.
 
 - **Claude:** *Opus 5*, *Sonnet 5*, and *Fable 5*.
 
