@@ -58,7 +58,8 @@ ner_jsl = MedicalNerModel.pretrained("ner_jsl","en","clinical/models")\
 ner_jsl_converter = NerConverterInternal()\
     .setInputCols(["sentence","token","ner_jsl_tags"])\
     .setOutputCol("ner_chunk_jsl")\
-    .setWhiteList(["Disease_Syndrome_Disorder", "External_body_part_or_region"])
+    .setWhiteList(["Disease_Syndrome_Disorder", "External_body_part_or_region"])\
+    .setReplaceLabels({"Disease_Syndrome_Disorder": "BodyPart", "External_body_part_or_region": "BodyPart"})
 
 ner_anatomy = MedicalNerModel.pretrained("ner_anatomy_coarse","en","clinical/models")\
     .setInputCols(["sentence","token","embeddings"])\
@@ -66,10 +67,20 @@ ner_anatomy = MedicalNerModel.pretrained("ner_anatomy_coarse","en","clinical/mod
 
 ner_anatomy_converter = NerConverterInternal()\
     .setInputCols(["sentence","token","ner_anatomy_tags"])\
-    .setOutputCol("ner_chunk_anatomy")
+    .setOutputCol("ner_chunk_anatomy")\
+    .setReplaceLabels({"Anatomy": "BodyPart"})
+
+ner_oncology_anatomy = MedicalNerModel.pretrained("ner_oncology_anatomy_general","en","clinical/models")\
+    .setInputCols(["sentence","token","embeddings"])\
+    .setOutputCol("ner_oncology_anatomy_tags")
+
+ner_oncology_anatomy_converter = NerConverterInternal()\
+    .setInputCols(["sentence","token","ner_oncology_anatomy_tags"])\
+    .setOutputCol("ner_chunk_oncology_anatomy")\
+    .setReplaceLabels({"Anatomical_Site": "BodyPart"})
 
 chunk_merger = ChunkMergeApproach()\
-    .setInputCols(["ner_chunk_jsl", "ner_chunk_anatomy"])\
+    .setInputCols(["ner_chunk_jsl", "ner_chunk_anatomy", "ner_chunk_oncology_anatomy"])\
     .setOutputCol("ner_chunk")
 
 chunk2doc = Chunk2Doc()\
@@ -88,7 +99,7 @@ resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_snomed_bodySt
     .setThreshold(1000)
 
 pipeline = Pipeline(stages=[\
-    documentAssembler, sentenceDetectorDL, tokenizer, word_embeddings, ner_jsl, ner_jsl_converter, ner_anatomy, ner_anatomy_converter, chunk_merger, chunk2doc, embedder, resolver\
+    documentAssembler, sentenceDetectorDL, tokenizer, word_embeddings, ner_jsl, ner_jsl_converter, ner_anatomy, ner_anatomy_converter, ner_oncology_anatomy, ner_oncology_anatomy_converter, chunk_merger, chunk2doc, embedder, resolver\
 ])
 
 data = spark.createDataFrame([["The patient is a 30-year-old female with coronary artery disease and swelling affecting the kidney and lower limb."]]).toDF("text")
@@ -120,7 +131,8 @@ ner_jsl = medical.NerModel.pretrained("ner_jsl","en","clinical/models")\
 ner_jsl_converter = medical.NerConverterInternal()\
     .setInputCols(["sentence","token","ner_jsl_tags"])\
     .setOutputCol("ner_chunk_jsl")\
-    .setWhiteList(["Disease_Syndrome_Disorder", "External_body_part_or_region"])
+    .setWhiteList(["Disease_Syndrome_Disorder", "External_body_part_or_region"])\
+    .setReplaceLabels({"Disease_Syndrome_Disorder": "BodyPart", "External_body_part_or_region": "BodyPart"})
 
 ner_anatomy = medical.NerModel.pretrained("ner_anatomy_coarse","en","clinical/models")\
     .setInputCols(["sentence","token","embeddings"])\
@@ -128,10 +140,20 @@ ner_anatomy = medical.NerModel.pretrained("ner_anatomy_coarse","en","clinical/mo
 
 ner_anatomy_converter = medical.NerConverterInternal()\
     .setInputCols(["sentence","token","ner_anatomy_tags"])\
-    .setOutputCol("ner_chunk_anatomy")
+    .setOutputCol("ner_chunk_anatomy")\
+    .setReplaceLabels({"Anatomy": "BodyPart"})
+
+ner_oncology_anatomy = medical.NerModel.pretrained("ner_oncology_anatomy_general","en","clinical/models")\
+    .setInputCols(["sentence","token","embeddings"])\
+    .setOutputCol("ner_oncology_anatomy_tags")
+
+ner_oncology_anatomy_converter = medical.NerConverterInternal()\
+    .setInputCols(["sentence","token","ner_oncology_anatomy_tags"])\
+    .setOutputCol("ner_chunk_oncology_anatomy")\
+    .setReplaceLabels({"Anatomical_Site": "BodyPart"})
 
 chunk_merger = medical.ChunkMergeApproach()\
-    .setInputCols(["ner_chunk_jsl", "ner_chunk_anatomy"])\
+    .setInputCols(["ner_chunk_jsl", "ner_chunk_anatomy", "ner_chunk_oncology_anatomy"])\
     .setOutputCol("ner_chunk")
 
 chunk2doc = nlp.Chunk2Doc()\
@@ -150,7 +172,7 @@ resolver = medical.SentenceEntityResolverModel.pretrained("sbiobertresolve_snome
     .setThreshold(1000)
 
 pipeline = nlp.Pipeline(stages=[\
-    documentAssembler, sentenceDetectorDL, tokenizer, word_embeddings, ner_jsl, ner_jsl_converter, ner_anatomy, ner_anatomy_converter, chunk_merger, chunk2doc, embedder, resolver\
+    documentAssembler, sentenceDetectorDL, tokenizer, word_embeddings, ner_jsl, ner_jsl_converter, ner_anatomy, ner_anatomy_converter, ner_oncology_anatomy, ner_oncology_anatomy_converter, chunk_merger, chunk2doc, embedder, resolver\
 ])
 
 data = spark.createDataFrame([["The patient is a 30-year-old female with coronary artery disease and swelling affecting the kidney and lower limb."]]).toDF("text")
@@ -185,6 +207,7 @@ val ner_jsl_converter = new NerConverterInternal()
     .setInputCols(Array("sentence", "token", "ner_jsl_tags"))
     .setOutputCol("ner_chunk_jsl")
     .setWhiteList(Array("Disease_Syndrome_Disorder", "External_body_part_or_region"))
+    .setReplaceLabels(Map("Disease_Syndrome_Disorder" -> "BodyPart", "External_body_part_or_region" -> "BodyPart"))
 
 val ner_anatomy = MedicalNerModel
     .pretrained("ner_anatomy_coarse", "en", "clinical/models")
@@ -194,9 +217,20 @@ val ner_anatomy = MedicalNerModel
 val ner_anatomy_converter = new NerConverterInternal()
     .setInputCols(Array("sentence", "token", "ner_anatomy_tags"))
     .setOutputCol("ner_chunk_anatomy")
+    .setReplaceLabels(Map("Anatomy" -> "BodyPart"))
+
+val ner_oncology_anatomy = MedicalNerModel
+    .pretrained("ner_oncology_anatomy_general", "en", "clinical/models")
+    .setInputCols(Array("sentence", "token", "embeddings"))
+    .setOutputCol("ner_oncology_anatomy_tags")
+
+val ner_oncology_anatomy_converter = new NerConverterInternal()
+    .setInputCols(Array("sentence", "token", "ner_oncology_anatomy_tags"))
+    .setOutputCol("ner_chunk_oncology_anatomy")
+    .setReplaceLabels(Map("Anatomical_Site" -> "BodyPart"))
 
 val chunk_merger = new ChunkMergeApproach()
-    .setInputCols(Array("ner_chunk_jsl", "ner_chunk_anatomy"))
+    .setInputCols(Array("ner_chunk_jsl", "ner_chunk_anatomy", "ner_chunk_oncology_anatomy"))
     .setOutputCol("ner_chunk")
 
 val chunk2doc = new Chunk2Doc()
@@ -217,7 +251,7 @@ val resolver = SentenceEntityResolverModel
     .setThreshold(1000)
 
 val pipeline = new Pipeline().setStages(Array(
-    documentAssembler, sentenceDetectorDL, tokenizer, word_embeddings, ner_jsl, ner_jsl_converter, ner_anatomy, ner_anatomy_converter, chunk_merger, chunk2doc, embedder, resolver
+    documentAssembler, sentenceDetectorDL, tokenizer, word_embeddings, ner_jsl, ner_jsl_converter, ner_anatomy, ner_anatomy_converter, ner_oncology_anatomy, ner_oncology_anatomy_converter, chunk_merger, chunk2doc, embedder, resolver
 ))
 
 val data = Seq("The patient is a 30-year-old female with coronary artery disease and swelling affecting the kidney and lower limb.").toDF("text")
