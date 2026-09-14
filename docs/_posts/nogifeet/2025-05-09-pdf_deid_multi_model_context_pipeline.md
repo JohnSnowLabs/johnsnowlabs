@@ -15,6 +15,12 @@ annotator: PipelineModel
 article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
+
+deploy:
+  sagemaker_link: https://aws.amazon.com/marketplace/pp/prodview-ddhtngof3o6fa
+  snowflake_link: https://app.snowflake.com/marketplace/listing/GZTYZ4386LJAS/john-snow-labs-clinical-de-identification-for-pdf
+  databricks_link: 
+
 ---
 
 ## Description
@@ -30,6 +36,13 @@ The output is a PDF document, similar to the one at the input, but with black bo
 [Live Demo](https://demo.johnsnowlabs.com/ocr/PP_PDF_DEIDENTIFICATION/){:.button.button-orange.button-orange-trans.co.button-icon}
 [Open in Colab](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrPdfDeIdentificationPipelines.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/pdf_deid_multi_model_context_pipeline_en_6.0.0_3.0_1746569926000.zip){:.button.button-orange.button-orange-trans.arr.button-icon}
+
+{% if page.deploy %}
+## Available as Private API Endpoint
+
+{:.tac}
+{% include display_platform_information.html %}
+{% endif %}
 
 ## How to use
 
