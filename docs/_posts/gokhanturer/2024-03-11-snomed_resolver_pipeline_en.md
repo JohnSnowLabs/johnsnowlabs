@@ -16,9 +16,9 @@ article_header:
 use_language_switcher: "Python-Scala-Java"
 
 deploy:
-  sagemaker_link: 
-  snowflake_link: 
-  databricks_link: 
+  sagemaker_link: https://aws.amazon.com/marketplace/pp/prodview-ziyo3a3wgeq62
+  snowflake_link: https://app.snowflake.com/marketplace/listing/GZTYZ4386LKDM/john-snow-labs-snomed-clinical-terminology-mapper
+  databricks_link: https://marketplace.databricks.com/details/de82227b-b6d2-4243-857f-071c4b860e8b/John-Snow-Labs_SNOMED-Clinical-Terminology-Mapper
 
 ---
 
