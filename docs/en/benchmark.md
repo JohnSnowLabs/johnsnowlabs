@@ -1459,7 +1459,7 @@ To ensure a fair comparison of these tools, 100 items per system were selected u
 ### Benchmark Tools
 
 - **Healthcare NLP:** One resolver per system, the live JSL Models Hub `.pretrained()` build trained on the broadest available data for that system.
-  - [sbiobertresolve_snomed_findings_aux_concepts](https://nlp.johnsnowlabs.com/2026/03/16/sbiobertresolve_snomed_findings_aux_concepts_en.html): SNOMED CT 20260301.
+  - [sbiobertresolve_snomed_auxConcepts_20260901](https://nlp.johnsnowlabs.com/2026/09/11/sbiobertresolve_snomed_auxConcepts_20260901_en.html): SNOMED CT 20260901.
   - [sbiobertresolve_rxnorm_augmented_v2](https://nlp.johnsnowlabs.com/2026/07/11/sbiobertresolve_rxnorm_augmented_v2_en.html): RxNorm 20260601.
   - [sbiobertresolve_icd10cm_augmented](https://nlp.johnsnowlabs.com/2026/07/14/sbiobertresolve_icd10cm_augmented_en.html): ICD-10-CM 20260401.
   - [sbiobertresolve_icdo_augmented_2026](https://nlp.johnsnowlabs.com/2026/08/09/sbiobertresolve_icdo_augmented_2026_en.html): ICD-O 3.2 2026 update.
@@ -1491,7 +1491,7 @@ Out of scope for this benchmark — only accuracy was measured. No per-document 
 
 Based on the evaluation results:
 - Healthcare NLP's resolvers **won on all four systems**, ahead of every LLM tested in every case.
-- The margin tracks how memorable a coding system's own codes are: on SNOMED CT and RxNorm, where codes are long numeric strings no one can reason their way to, the gap runs as high as 25 points over the best LLM. On ICD-10-CM and ICD-O, where codes are shorter and partly mnemonic, every model closes in.
+- The margin tracks how memorable a coding system's own codes are: on SNOMED CT and RxNorm, where codes are long numeric strings no one can reason their way to, the gap runs as high as 9 points over the best LLM. On ICD-10-CM and ICD-O, where codes are shorter and partly mnemonic, every model closes to within a few points.
 - General-purpose LLMs shared common failure patterns: confusing concept types (returning a related but wrong kind of code), missing codes added since their training cutoff, and, on multiple systems, returning codes that don't exist in the vocabulary at all.
 
 **Accuracy Table**
@@ -1509,45 +1509,45 @@ Based on the evaluation results:
     <tbody>
       <tr>
         <td>Healthcare NLP</td>
-        <td>76.4%</td>
+        <td>87.3%</td>
         <td>91.8%</td>
         <td>95.5%</td>
         <td>96.4%</td>
       </tr>
       <tr>
         <td>Claude Opus 5</td>
-        <td>72.7%</td>
-        <td>66.4%</td>
-        <td>89.1%</td>
+        <td>76.4%</td>
+        <td>63.6%</td>
+        <td>94.5%</td>
         <td>93.6%</td>
       </tr>
       <tr>
         <td>Claude Sonnet 5</td>
-        <td>54.5%</td>
-        <td>56.4%</td>
+        <td>55.5%</td>
+        <td>52.7%</td>
         <td>87.3%</td>
-        <td>90.0%</td>
+        <td>90.9%</td>
       </tr>
       <tr>
         <td>Claude Fable 5</td>
-        <td>55.5%</td>
-        <td>51.8%</td>
-        <td>90.9%</td>
-        <td>87.3%</td>
+        <td>80.0%</td>
+        <td>82.7%</td>
+        <td>93.6%</td>
+        <td>92.7%</td>
       </tr>
       <tr>
         <td>GPT-5.6</td>
         <td>41.8%</td>
-        <td>27.3%</td>
-        <td>88.2%</td>
-        <td>87.3%</td>
+        <td>35.5%</td>
+        <td>92.7%</td>
+        <td>47.3%</td>
       </tr>
       <tr>
         <td>Gemini 3.6 Flash</td>
-        <td>50.0%</td>
-        <td>45.5%</td>
-        <td>87.3%</td>
-        <td>90.0%</td>
+        <td>51.8%</td>
+        <td>40.9%</td>
+        <td>90.9%</td>
+        <td>90.9%</td>
       </tr>
     </tbody>
   </table>
