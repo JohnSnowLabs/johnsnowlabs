@@ -5,13 +5,37 @@ seotitle: Medical LLMs | John Snow Labs
 title: Release Notes
 permalink: /docs/en/LLMs/releases/release_notes
 key: docs-medical-llm
-modify_date: "2026-07-23"
+modify_date: "2026-09-14"
 show_nav: true
 sidebar:
     nav: medical-llm
 ---
 
 <div class="h3-box" markdown="1">
+
+## 09-14-2026
+
+### Model Updates
+
+We're excited to announce an updated version of our Medical-LLM-Medium model, delivering enhanced structured medical reasoning and multimodal capabilities.
+
+- **Medical-LLM-Medium**: This model is an advanced clinical decision-support system built for structured medical reasoning rather than simple knowledge retrieval. It analyzes symptoms, diagnostics, and longitudinal patient histories to guide complex diagnostic and treatment decisions in line with established clinical guidelines. With multimodal vision capabilities, it can also interpret medical images and visual documents alongside text, broadening the range of clinical inputs it can reason over. Now grounded in curated, specialty-specific medical knowledge bases, it anchors conclusions to vetted clinical evidence for greater factual reliability. It delivers transparent, step-aware reasoning, weighs competing hypotheses, and communicates uncertainty to support risk-aware clinical judgment.
+
+#### Specifications
+
+| **Model Name**             | **Parameters** | **Recommended GPU Memory** | **Max Sequence Length** | **Model Size** | **Max KV-Cache** | **Tensor Parallel Sizes** |
+|---------------------------|----------------|----------------------------|-------------------------|----------------|------------------|--------------------------|
+| Medical-LLM-Medium | 27B            | ~67 GB                     | 262K                    | 51 GB          | 16 GB            | 2, 4, 8                  |
+
+#### Benchmark Performance – Medical-LLM-Medium
+
+- Achieves 95.5% average across OpenMed benchmarks
+- Medical genetics: 99%; Professional medicine: 98%
+- Clinical knowledge comprehension: 96%; College biology mastery: 98%
+- RaceBias: 96%; Anatomy: 95%
+- Achieves 76% on Medec and 84% on PubMedQA
+- Safety & reliability: 96.7% on hallucination detection, inappropriate-content avoidance, and refusal of unethical or illegal requests
+- Fairness & bias: 98% pass rate on name bias, 95% on racial bias detection, and 96% on anchoring-bias resistance
 
 ## 07-23-2026
 
