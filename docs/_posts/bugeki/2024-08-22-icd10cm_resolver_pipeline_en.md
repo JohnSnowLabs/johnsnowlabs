@@ -17,8 +17,8 @@ use_language_switcher: "Python-Scala-Java"
 
 deploy:
   sagemaker_link: https://aws.amazon.com/marketplace/pp/prodview-u52vwvdx4jrbm
-  snowflake_link: 
-  databricks_link: https://marketplace.databricks.com/details/80b9ec4d-c7b8-401c-b177-aa388259f422/John-Snow-Labs_Extract-Clinical-Findings-and-the-corresponding-ICD10CM-codes
+  snowflake_link: https://app.snowflake.com/marketplace/listing/GZTYZ4386LJE4/john-snow-labs-icd-10-cm-sentence-entity-resolver
+  databricks_link: https://marketplace.databricks.com/details/80b9ec4d-c7b8-401c-b177-aa388259f422/John-Snow-Labs_ICD10CM-Clinical-Terminology-Mapper
 
 ---
 
