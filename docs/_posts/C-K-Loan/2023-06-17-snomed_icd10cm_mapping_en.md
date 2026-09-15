@@ -15,11 +15,6 @@ article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
 
-deploy:
-  sagemaker_link: 
-  snowflake_link: 
-  databricks_link: https://marketplace.databricks.com/details/5e6f0af1-bcc7-4aa6-a1de-21ca58638fce/John-Snow-Labs_SNOMED-to-ICD10CM-Code-Mapper
-
 ---
 
 ## Description
