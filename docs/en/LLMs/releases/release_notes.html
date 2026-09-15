@@ -628,9 +628,58 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <h2 id="section">07-23-2026</h2>
+  <h2 id="section">09-14-2026</h2>
 
   <h3 id="model-updates">Model Updates</h3>
+
+  <p>We’re excited to announce an updated version of our Medical-LLM-Medium model, delivering enhanced structured medical reasoning and multimodal capabilities.</p>
+
+  <ul>
+    <li><strong>Medical-LLM-Medium</strong>: This model is an advanced clinical decision-support system built for structured medical reasoning rather than simple knowledge retrieval. It analyzes symptoms, diagnostics, and longitudinal patient histories to guide complex diagnostic and treatment decisions in line with established clinical guidelines. With multimodal vision capabilities, it can also interpret medical images and visual documents alongside text, broadening the range of clinical inputs it can reason over. Now grounded in curated, specialty-specific medical knowledge bases, it anchors conclusions to vetted clinical evidence for greater factual reliability. It delivers transparent, step-aware reasoning, weighs competing hypotheses, and communicates uncertainty to support risk-aware clinical judgment.</li>
+  </ul>
+
+  <h4 id="specifications">Specifications</h4>
+
+  <table>
+    <thead>
+      <tr>
+        <th><strong>Model Name</strong></th>
+        <th><strong>Parameters</strong></th>
+        <th><strong>Recommended GPU Memory</strong></th>
+        <th><strong>Max Sequence Length</strong></th>
+        <th><strong>Model Size</strong></th>
+        <th><strong>Max KV-Cache</strong></th>
+        <th><strong>Tensor Parallel Sizes</strong></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Medical-LLM-Medium</td>
+        <td>27B</td>
+        <td>~67 GB</td>
+        <td>262K</td>
+        <td>51 GB</td>
+        <td>16 GB</td>
+        <td>2, 4, 8</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h4 id="benchmark-performance--medical-llm-medium">Benchmark Performance – Medical-LLM-Medium</h4>
+
+  <ul>
+    <li>Achieves 95.5% average across OpenMed benchmarks</li>
+    <li>Medical genetics: 99%; Professional medicine: 98%</li>
+    <li>Clinical knowledge comprehension: 96%; College biology mastery: 98%</li>
+    <li>RaceBias: 96%; Anatomy: 95%</li>
+    <li>Achieves 76% on Medec and 84% on PubMedQA</li>
+    <li>Safety &amp; reliability: 96.7% on hallucination detection, inappropriate-content avoidance, and refusal of unethical or illegal requests</li>
+    <li>Fairness &amp; bias: 98% pass rate on name bias, 95% on racial bias detection, and 96% on anchoring-bias resistance</li>
+  </ul>
+
+  <h2 id="section-1">07-23-2026</h2>
+
+  <h3 id="model-updates-1">Model Updates</h3>
 
   <p>We’re excited to announce a major new version of our Medical-Medium-LLM model, representing a significant advancement in AI-powered clinical decision support with enhanced structured medical reasoning capabilities.</p>
 
@@ -769,7 +818,7 @@ function wrapWordInSpan(data, wordToWrap) {
 
 </div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2026-07-23T00:00:00+00:00">Jul 23, 2026</time>
+      <time itemprop="dateModified" datetime="2026-09-14T00:00:00+00:00">Sep 14, 2026</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
