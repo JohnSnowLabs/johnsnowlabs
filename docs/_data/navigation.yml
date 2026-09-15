@@ -387,7 +387,10 @@ sparknlp-healthcare:
         url: /models?edition=Spark+NLP+for+Legal
       - title: Version Compatibility
         url: /docs/en/legal_version_compatibility
-
+  - title: Marketplace Offerings
+    children:
+      - title: Available Pipelines
+        url: /docs/en/available_pipelines_on_cloud_marketplaces
 
 jsl:
   - title: John Snow Labs NLP
