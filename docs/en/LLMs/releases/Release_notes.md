@@ -19,7 +19,7 @@ sidebar:
 
 We're excited to announce an updated version of our Medical-LLM-Medium model, delivering enhanced structured medical reasoning and multimodal capabilities.
 
-- **Medical-LLM-Medium**: This model is an advanced clinical decision-support system built for structured medical reasoning rather than simple knowledge retrieval. It analyzes symptoms, diagnostics, and longitudinal patient histories to guide complex diagnostic and treatment decisions in line with established clinical guidelines. With multimodal vision capabilities, it can also interpret medical images and visual documents alongside text, broadening the range of clinical inputs it can reason over. Now grounded in curated, specialty-specific medical knowledge bases, it anchors conclusions to vetted clinical evidence for greater factual reliability. It delivers transparent, step-aware reasoning, weighs competing hypotheses, and communicates uncertainty to support risk-aware clinical judgment.
+- **Medical-LLM-Medium**: This version of the Medical-LLM-Medium improves the overall OpenMed benchmark average from **94.5% to 95.5%**. The largest comparable gain is in **Anatomy (+2.0 points)**, followed by **anchoring-bias resistance (+1.33 points)** and **safety & reliability (+1.2 points)**. Clinical knowledge comprehension and racial bias detection each improve by 1 point, while already strong performance in medical genetics, professional medicine, PubMedQA, and name bias remains unchanged.
 
 #### Specifications
 
@@ -29,13 +29,22 @@ We're excited to announce an updated version of our Medical-LLM-Medium model, de
 
 #### Benchmark Performance – Medical-LLM-Medium
 
-- Achieves 95.5% average across OpenMed benchmarks
-- Medical genetics: 99%; Professional medicine: 98%
-- Clinical knowledge comprehension: 96%; College biology mastery: 98%
-- RaceBias: 96%; Anatomy: 95%
-- Achieves 76% on Medec and 84% on PubMedQA
-- Safety & reliability: 96.7% on hallucination detection, inappropriate-content avoidance, and refusal of unethical or illegal requests
-- Fairness & bias: 98% pass rate on name bias, 95% on racial bias detection, and 96% on anchoring-bias resistance
+Side by side comparison with previous version
+
+{:.table-model-big}
+| **Metric** | **Previous (07-23-2026)** | **New (09-14-2026)** | **Absolute Change** | **Relative Change** |
+|---|---|---|---|---|
+| **OpenMed average** | 94.5% | 95.5% | **+1.0 pt** | **+1.06%** |
+| Medical genetics | 99% | 99% | No change | 0% |
+| Professional medicine | 98% | 98% | No change | 0% |
+| Clinical knowledge comprehension | 95% | 96% | **+1.0 pt** | **+1.05%** |
+| Anatomy | 93% | 95% | **+2.0 pts** | **+2.15%** |
+| PubMedQA | 84% | 84% | No change | 0% |
+| Safety & reliability | 95.5% | 96.7% | **+1.2 pts** | **+1.26%** |
+| Name bias | 98% | 98% | No change | 0% |
+| Racial bias detection | 94% | 95% | **+1.0 pt** | **+1.06%** |
+| Anchoring-bias resistance | 94.67% | 96% | **+1.33 pts** | **+1.40%** |
+
 
 ## 07-23-2026
 
