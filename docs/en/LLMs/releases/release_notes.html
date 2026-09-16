@@ -635,7 +635,7 @@ function wrapWordInSpan(data, wordToWrap) {
   <p>We’re excited to announce an updated version of our Medical-LLM-Medium model, delivering enhanced structured medical reasoning and multimodal capabilities.</p>
 
   <ul>
-    <li><strong>Medical-LLM-Medium</strong>: This model is an advanced clinical decision-support system built for structured medical reasoning rather than simple knowledge retrieval. It analyzes symptoms, diagnostics, and longitudinal patient histories to guide complex diagnostic and treatment decisions in line with established clinical guidelines. With multimodal vision capabilities, it can also interpret medical images and visual documents alongside text, broadening the range of clinical inputs it can reason over. Now grounded in curated, specialty-specific medical knowledge bases, it anchors conclusions to vetted clinical evidence for greater factual reliability. It delivers transparent, step-aware reasoning, weighs competing hypotheses, and communicates uncertainty to support risk-aware clinical judgment.</li>
+    <li><strong>Medical-LLM-Medium</strong>: This version of the Medical-LLM-Medium improves the overall OpenMed benchmark average from <strong>94.5% to 95.5%</strong>. The largest comparable gain is in <strong>Anatomy (+2.0 points)</strong>, followed by <strong>anchoring-bias resistance (+1.33 points)</strong> and <strong>safety &amp; reliability (+1.2 points)</strong>. Clinical knowledge comprehension and racial bias detection each improve by 1 point, while already strong performance in medical genetics, professional medicine, PubMedQA, and name bias remains unchanged.</li>
   </ul>
 
   <h4 id="specifications">Specifications</h4>
@@ -667,15 +667,91 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <h4 id="benchmark-performance--medical-llm-medium">Benchmark Performance – Medical-LLM-Medium</h4>
 
-  <ul>
-    <li>Achieves 95.5% average across OpenMed benchmarks</li>
-    <li>Medical genetics: 99%; Professional medicine: 98%</li>
-    <li>Clinical knowledge comprehension: 96%; College biology mastery: 98%</li>
-    <li>RaceBias: 96%; Anatomy: 95%</li>
-    <li>Achieves 76% on Medec and 84% on PubMedQA</li>
-    <li>Safety &amp; reliability: 96.7% on hallucination detection, inappropriate-content avoidance, and refusal of unethical or illegal requests</li>
-    <li>Fairness &amp; bias: 98% pass rate on name bias, 95% on racial bias detection, and 96% on anchoring-bias resistance</li>
-  </ul>
+  <p>Side by side comparison with previous version</p>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th><strong>Metric</strong></th>
+        <th><strong>Previous (07-23-2026)</strong></th>
+        <th><strong>New (09-14-2026)</strong></th>
+        <th><strong>Absolute Change</strong></th>
+        <th><strong>Relative Change</strong></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>OpenMed average</strong></td>
+        <td>94.5%</td>
+        <td>95.5%</td>
+        <td><strong>+1.0 pt</strong></td>
+        <td><strong>+1.06%</strong></td>
+      </tr>
+      <tr>
+        <td>Medical genetics</td>
+        <td>99%</td>
+        <td>99%</td>
+        <td>No change</td>
+        <td>0%</td>
+      </tr>
+      <tr>
+        <td>Professional medicine</td>
+        <td>98%</td>
+        <td>98%</td>
+        <td>No change</td>
+        <td>0%</td>
+      </tr>
+      <tr>
+        <td>Clinical knowledge comprehension</td>
+        <td>95%</td>
+        <td>96%</td>
+        <td><strong>+1.0 pt</strong></td>
+        <td><strong>+1.05%</strong></td>
+      </tr>
+      <tr>
+        <td>Anatomy</td>
+        <td>93%</td>
+        <td>95%</td>
+        <td><strong>+2.0 pts</strong></td>
+        <td><strong>+2.15%</strong></td>
+      </tr>
+      <tr>
+        <td>PubMedQA</td>
+        <td>84%</td>
+        <td>84%</td>
+        <td>No change</td>
+        <td>0%</td>
+      </tr>
+      <tr>
+        <td>Safety &amp; reliability</td>
+        <td>95.5%</td>
+        <td>96.7%</td>
+        <td><strong>+1.2 pts</strong></td>
+        <td><strong>+1.26%</strong></td>
+      </tr>
+      <tr>
+        <td>Name bias</td>
+        <td>98%</td>
+        <td>98%</td>
+        <td>No change</td>
+        <td>0%</td>
+      </tr>
+      <tr>
+        <td>Racial bias detection</td>
+        <td>94%</td>
+        <td>95%</td>
+        <td><strong>+1.0 pt</strong></td>
+        <td><strong>+1.06%</strong></td>
+      </tr>
+      <tr>
+        <td>Anchoring-bias resistance</td>
+        <td>94.67%</td>
+        <td>96%</td>
+        <td><strong>+1.33 pts</strong></td>
+        <td><strong>+1.40%</strong></td>
+      </tr>
+    </tbody>
+  </table>
 
   <h2 id="section-1">07-23-2026</h2>
 
