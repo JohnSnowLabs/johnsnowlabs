@@ -130,7 +130,7 @@ The previous card-based layout has been replaced with a compact, two-column tabl
 - **Reduced Vertical Space:** A shared header row replaces repeated field labels, allowing more metadata to be displayed without additional scrolling.
 - **Improved Metadata Organization:** The structured table accommodates larger collections of metadata while maintaining a clean and consistent layout.
 
-![Meta workspace table layout and terminology mode](/assets/images/annotation_lab/8.3.0/Meta_Table_Layout.jpg)
+![Meta workspace table layout and terminology mode](/assets/images/annotation_lab/8.3.0/Meta_Table_Layout.gif)
 
 *<center>The redesigned Meta workspace introduces compact Key-Value tables and a dedicated Terminology mode that displays medical codes alongside their corresponding descriptions.</center>*
 
