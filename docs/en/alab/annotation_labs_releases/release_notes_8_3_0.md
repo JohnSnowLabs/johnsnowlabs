@@ -196,7 +196,7 @@ This safeguard helps prevent incomplete documents from entering the review workf
 
 ## Loading State and Action Control for Validate and Integrate
 
-**What’s Improved**
+### What’s Improved
 
 The **Validate** and **Integrate** actions in the LLM service provider configuration interface now include loading indicators and improved button-state management, providing clearer feedback while API requests are being processed.
 Previously, users could click these buttons multiple times while waiting for a response, potentially triggering duplicate requests. The updated interface displays a loading indicator and temporarily disables both actions while a request is in progress. Once the request completes, whether successfully or unsuccessfully, both buttons become available again.
@@ -220,7 +220,7 @@ Once validation completes, both buttons become available again, allowing the adm
 
 ## Fit DICOM Images to Viewer Screen
 
-**What’s Improved**
+### What’s Improved
 
 DICOM images are now automatically scaled to fit the available viewer area when opened, providing a complete view of the image without requiring manual adjustments.
 Previously, high-resolution DICOM images were displayed at their original resolution, potentially extending beyond the visible viewer area and requiring users to scroll or manually adjust the zoom level.
@@ -249,7 +249,7 @@ The annotator can immediately review the complete image and use the zoom control
 
 ## Updated Medical Terminology Resolution Status Indicators
 
-**What’s Improved**
+### What’s Improved
 The Medical Terminology Resolution status indicators have been updated to provide clearer visibility into pre-annotation results and Medical Terminology Server availability.
 Previously, unsuccessful terminology resolution was indicated in red, without clearly distinguishing between pre-annotation failures and terminology resolution issues. This could cause confusion about whether annotations had been generated successfully.
 The updated indicators use distinct visual states to help users identify whether pre-annotation and medical terminology resolution have completed successfully or whether further attention is required.
