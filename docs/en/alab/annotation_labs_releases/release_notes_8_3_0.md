@@ -1,16 +1,14 @@
 ---
 layout: docs
-comment: no
 header: true
 seotitle: Generative AI Lab | John Snow Labs
-title: Release Notes
-permalink: /docs/en/alab/release_notes
-key: docs-training
-modify_date: "2026-09-23"
-use_language_switcher: "Python-Scala"
+title: Generative AI Lab 8.3
+permalink: /docs/en/alab/annotation_labs_releases/release_notes_8_3_0
+key: docs-licensed-release-notes
+modify_date: 2026-09-23
 show_nav: true
 sidebar:
-  nav: annotation-lab
+    nav: annotation-lab
 ---
 
 <div class="h3-box" markdown="1">
@@ -20,7 +18,7 @@ sidebar:
 ## Enhanced Pre-Annotation Performance, Security, and Stability in Generative AI Lab 8.3
 
 **Generative AI Lab 8.3** focuses on **platform security, stability, and pre-annotation performance**, introducing major infrastructure upgrades and more efficient processing workflows.
-This release **improves pre-annotation throughput by up to 40%** through concurrent pre-annotation and resolver processing, reducing the overall processing time for projects that use medical terminology resolution. Upgrades to **Keycloak 24.0.5** and **Apache Airflow 3.3.0** address known security vulnerabilities while strengthening authentication, workflow orchestration, and platform reliability.
+This release **improves pre-annotation throughput by up to 40%** through concurrent pre-annotation and resolver processing, reducing the overall processing time for projects that use medical terminology resolution. Upgrades to Keycloak 24.0.5 and Apache Airflow 3.3.0 address known security vulnerabilities while strengthening authentication, workflow orchestration, and platform reliability.
 
 The release also introduces a **redesigned Meta workspace**, featuring a space-efficient table layout and a dedicated Terminology mode for managing medical codes and descriptions directly within annotation workflows.
 
@@ -347,40 +345,4 @@ When the Medical Terminology Server is unavailable, pre-annotation can still gen
 
 </div>
 
-<ul class="pagination owl-carousel pagination_big">
-    <li class="active"><a href="annotation_labs_releases/release_notes_8_3_0">8.3.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_8_2_8">8.2.8</a></li>
-    <li><a href="annotation_labs_releases/release_notes_8_2_6">8.2.6</a></li>
-    <li><a href="annotation_labs_releases/release_notes_8_2_5">8.2.5</a></li>
-    <li><a href="annotation_labs_releases/release_notes_8_2_1">8.2.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_8_2_0">8.2.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_8_1_3">8.1.3</a></li>
-    <li><a href="annotation_labs_releases/release_notes_8_1_2">8.1.2</a></li>
-    <li><a href="annotation_labs_releases/release_notes_8_1_1">8.1.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_8_1_0">8.1.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_8_0_1">8.0.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_8_0_0">8.0.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_7_8_2">7.8.2</a></li>
-    <li><a href="annotation_labs_releases/release_notes_7_8_1">7.8.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_7_8">7.8</a></li>
-    <li><a href="annotation_labs_releases/release_notes_7_7">7.7</a></li>
-    <li><a href="annotation_labs_releases/release_notes_7_6_0">7.6.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_7_5_1">7.5.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_7_5_0">7.5.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_7_4_0">7.4.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_7_3_3">7.3.3</a></li>
-    <li><a href="annotation_labs_releases/release_notes_7_3_1">7.3.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_7_3_0">7.3.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_7_2_2">7.2.2</a></li>
-    <li><a href="annotation_labs_releases/release_notes_7_2_1">7.2.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_7_2_0">7.2.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_7_1_0">7.1.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_7_0_1">7.0.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_7_0_0">7.0.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_6_11_3">6.11.3</a></li>
-    <li><a href="annotation_labs_releases/release_notes_6_11_2">6.11.2</a></li>
-    <li><a href="annotation_labs_releases/release_notes_6_11_1">6.11.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_6_11_0">6.11.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_6_10_1">6.10.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_6_10_0">6.10.0</a></li>
-</ul>
+{%- include docs-annotation-pagination.html -%}
