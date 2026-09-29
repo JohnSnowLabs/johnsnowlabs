@@ -630,9 +630,7 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <p>There is overwhelming evidence from both academic research and industry benchmarks that domain-specific, task-optimized large language models consistently outperform general-purpose LLMs in healthcare. At John Snow Labs, we’ve developed a focused pair of Medical LLMs purpose-built for clinical, biomedical, and life sciences applications.</p>
 
-  <p><strong>Medical LLM Medium</strong> and <strong>Medical LLM Small</strong> are healthcare models benchmarked head-to-head against the leading closed frontier systems — GPT 5.5, Claude Opus 4.8, and Gemini 3.5 Flash — across the full spectrum of medical evaluation. Both are multimodal (text + image) and carry a locked John Snow Labs identity. Closed frontier models can’t run on your data — ours can: licensed for on-premise or private-cloud deployment, HIPAA-friendly, without giving up frontier-grade medical accuracy.</p>
-
-  <p>Our models are designed to deliver best-in-class performance across a wide range of medical tasks—from clinical reasoning and diagnostics to medical research comprehension and genetic analysis.</p>
+  <p><strong>Medical LLM Medium</strong> and <strong>Medical LLM Small</strong> are healthcare models benchmarked head-to-head against the leading closed frontier systems — GPT 5.6 Sol, Claude Opus 5, and Gemini 3.8 Flash — across the full spectrum of medical evaluation. Both are multimodal (text + image) and carry a locked John Snow Labs identity. Closed frontier models can’t run on your data — ours can: licensed for on-premise or private-cloud deployment, HIPAA-friendly, without giving up frontier-grade medical accuracy.</p>
 
   <h2 id="medical-llms-offering">Medical LLMs Offering</h2>
 
@@ -674,7 +672,261 @@ function wrapWordInSpan(data, wordToWrap) {
     <li><strong>Medical LLM Medium</strong> — <em>Flagship.</em> Our best model — the #1 MedHELM mean win rate in this comparison, leading frontier closed models on OpenMed.</li>
   </ul>
 
-  <h3 id="medical-small-llms">Medical Small LLMs</h3>
+  <h3 id="introduction">Introduction</h3>
+
+  <p>John Snow Labs’ Medical Large Language Models advance Healthcare AI by setting state-of-the-art accuracy on medical LLM benchmarks while remaining small enough to deploy privately. This advances what’s achievable across real-world use cases including clinical assessment, medical question answering, biomedical research synthesis, and diagnostic decision support.</p>
+
+  <p>What makes this release special is how strongly the models perform relative to their compute footprint. <strong>Medical LLM Medium</strong> posts the highest MedHELM mean win rate of every model tested (77.78) and leads the best closed frontier model on OpenMed (93.99). <strong>Medical LLM Small</strong> clears an OpenMed average of 90.63, making it practical for everyday use in hospitals and clinics where cost, speed, and privacy matter.</p>
+
+  <h3 id="openmed-benchmark-performance">OpenMed Benchmark Performance</h3>
+
+  <p>The OpenMed evaluation framework represents one of the most rigorous testing environments for medical AI models, covering a broad spectrum of medical knowledge and clinical reasoning capabilities. It spans eight medical multiple-choice suites — MedQA, PubMedQA, and six MMLU medical subjects. Medical LLM Medium leads the best frontier model, while Medical LLM Small is remarkably strong for its size.</p>
+
+  <p><img src="/en/LLMs/images/openmed_average.png" alt="OpenMed — average across suites" /></p>
+
+  <p><img src="/en/LLMs/images/openmed_by_suite.png" alt="OpenMed - accuracy across suites" /></p>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Model</th>
+        <th>MedQA</th>
+        <th>PubMedQA</th>
+        <th>Anatomy</th>
+        <th>Clinical Knowledge</th>
+        <th>College Biology</th>
+        <th>College Medicine</th>
+        <th>Medical Genetics</th>
+        <th>Professional Medicine</th>
+        <th>Avg</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Medical LLM Medium</strong></td>
+        <td><strong>96</strong></td>
+        <td><strong>82</strong></td>
+        <td><strong>95</strong></td>
+        <td>98</td>
+        <td>97</td>
+        <td><strong>97</strong></td>
+        <td>98</td>
+        <td><strong>99</strong></td>
+        <td><strong>95.25</strong></td>
+      </tr>
+      <tr>
+        <td><strong>Medical LLM Small</strong></td>
+        <td>92</td>
+        <td>76</td>
+        <td>89</td>
+        <td>93</td>
+        <td>97.8</td>
+        <td>86</td>
+        <td>98</td>
+        <td>94</td>
+        <td>90.73</td>
+      </tr>
+      <tr>
+        <td>GPT 5.6 Sol</td>
+        <td>95.5</td>
+        <td>77</td>
+        <td>92</td>
+        <td><strong>99.5</strong></td>
+        <td><strong>99.3</strong></td>
+        <td>89.4</td>
+        <td><strong>100</strong></td>
+        <td>98</td>
+        <td>93.84</td>
+      </tr>
+      <tr>
+        <td>Claude Opus 5</td>
+        <td>93</td>
+        <td>75</td>
+        <td>94</td>
+        <td>98</td>
+        <td>98.5</td>
+        <td>90.8</td>
+        <td><strong>100</strong></td>
+        <td>99</td>
+        <td>93.54</td>
+      </tr>
+      <tr>
+        <td>Gemini 3.8 Flash</td>
+        <td>95</td>
+        <td>76.5</td>
+        <td>93</td>
+        <td>96.5</td>
+        <td>96</td>
+        <td>89.4</td>
+        <td><strong>100</strong></td>
+        <td>95.5</td>
+        <td>92.74</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <blockquote>
+    <p><strong>Frontier-leading accuracy — private by design.</strong> Medical LLM Medium scores 95.25 on OpenMed — ahead of GPT 5.6 Sol (93.84) and Claude Opus 5 (93.54) — while being licensed for deployment inside your firewall. Medical LLM Small clears 90 while staying compact enough to run on a single commodity GPU.</p>
+  </blockquote>
+
+  <h3 id="medhelm-benchmark-analysis">MedHELM Benchmark Analysis</h3>
+
+  <p>MedHELM spans thirteen clinical tasks across documentation, coding, safety, dialogue, and reasoning. Medical LLM Medium posts the highest mean win rate of every model tested, and records the best score on 12 of the 13 tasks.</p>
+
+  <p><img src="/en/LLMs/images/medhelm_win_rate.png" alt="MedHELM — mean win rate" /></p>
+
+  <p><img src="/en/LLMs/images/medhelm_by_task.png" alt="MedHELM — score across tasks" /></p>
+
+  <p><img src="/en/LLMs/images/medhelm_lead.png" alt="Medical LLM Medium lead over the best frontier model" /></p>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Benchmark</th>
+        <th>Medical LLM Medium</th>
+        <th>Medical LLM Small</th>
+        <th>GPT 5.6 Sol</th>
+        <th>Claude Opus 5</th>
+        <th>Gemini 3.8 Flash</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Mean win rate</strong></td>
+        <td><strong>78.75</strong></td>
+        <td>70.95</td>
+        <td>74.20</td>
+        <td>74.50</td>
+        <td>72.26</td>
+      </tr>
+      <tr>
+        <td>MedCalc</td>
+        <td>41</td>
+        <td>24</td>
+        <td><strong>45</strong></td>
+        <td>36</td>
+        <td>43</td>
+      </tr>
+      <tr>
+        <td>MTSamples Proc.</td>
+        <td><strong>73.5</strong></td>
+        <td>71.8</td>
+        <td>72.6</td>
+        <td><strong>73.5</strong></td>
+        <td>73.4</td>
+      </tr>
+      <tr>
+        <td>Medec EM</td>
+        <td><strong>81</strong></td>
+        <td>60</td>
+        <td>69</td>
+        <td>68</td>
+        <td>74</td>
+      </tr>
+      <tr>
+        <td>HeadQA</td>
+        <td><strong>97.5</strong></td>
+        <td>84.1</td>
+        <td>92.1</td>
+        <td>86.8</td>
+        <td>89.6</td>
+      </tr>
+      <tr>
+        <td>Medbullets</td>
+        <td><strong>94</strong></td>
+        <td>84</td>
+        <td>84</td>
+        <td>85</td>
+        <td>83</td>
+      </tr>
+      <tr>
+        <td>ACI-Bench</td>
+        <td><strong>89</strong></td>
+        <td>83.9</td>
+        <td>82.4</td>
+        <td>85</td>
+        <td>84.6</td>
+      </tr>
+      <tr>
+        <td>MedicationQA</td>
+        <td><strong>81.3</strong></td>
+        <td>73.4</td>
+        <td>71.2</td>
+        <td>72.6</td>
+        <td>72.1</td>
+      </tr>
+      <tr>
+        <td>MedDialog</td>
+        <td><strong>78.3</strong></td>
+        <td>75.1</td>
+        <td>75.9</td>
+        <td>78.1</td>
+        <td>73.2</td>
+      </tr>
+      <tr>
+        <td>PubMedQA</td>
+        <td><strong>86</strong></td>
+        <td>78</td>
+        <td>79</td>
+        <td>77</td>
+        <td>71</td>
+      </tr>
+      <tr>
+        <td>EHRSQL</td>
+        <td><strong>39</strong></td>
+        <td>30</td>
+        <td>31</td>
+        <td>32</td>
+        <td>16</td>
+      </tr>
+      <tr>
+        <td>MediQA</td>
+        <td>82.2</td>
+        <td>77.1</td>
+        <td>76.4</td>
+        <td><strong>85.5</strong></td>
+        <td>78.5</td>
+      </tr>
+      <tr>
+        <td>RaceBias</td>
+        <td>82</td>
+        <td>79</td>
+        <td>91</td>
+        <td><strong>95</strong></td>
+        <td>92</td>
+      </tr>
+      <tr>
+        <td>Med-Hallu</td>
+        <td><strong>99</strong></td>
+        <td>95</td>
+        <td>95</td>
+        <td>94</td>
+        <td>89</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <blockquote>
+    <p>Medical LLM Medium records the best score on 9 of the 13 MedHELM tasks outright (plus a tie with Claude Opus 5 on MTSamples Proc.), with its largest margins on board-style reasoning (Medbullets +9), medication QA (+8.7), and a three-way tie at +7 on clinical error detection (Medec), biomedical research comprehension (PubMedQA), and database reasoning (EHRSQL).</p>
+  </blockquote>
+
+  <h3 id="how-the-models-compare">How the Models Compare</h3>
+
+  <p>Three signals matter for a clinical deployment: how often the model ranks first, whether a John Snow Labs model can match closed frontier systems, and how well it resists hallucination.</p>
+
+  <p><img src="/en/LLMs/images/leadership_task_wins.png" alt="MedHELM tasks where Medical LLM Medium ranks #1" /></p>
+
+  <p><img src="/en/LLMs/images/jsl_vs_closed.png" alt="John Snow Labs models vs closed frontier average" /></p>
+
+  <p><img src="/en/LLMs/images/hallucination_control.png" alt="Hallucination control — Med-Hallu" /></p>
+
+  <p>Medical LLM Medium leads the closed frontier on OpenMed (95.25 vs 93.37 average) while beating it outright on MedHELM (78.75 vs 73.65 average). On hallucination control — the metric that decides whether a model is safe in front of clinicians — Medical LLM Medium leads the full field at 99, with Medical LLM Small tied for second at 95.</p>
+
+  <h3 id="red-teaming-evaluation-results">Red-Teaming Evaluation Results</h3>
+
+  <p>Out of 1000 red-teaming questions across 148 medical categories, Medical LLM Medium passed about 950 (95%), compared to 830 for GPT-5.6 Sol (83%), 940 for Claude Opus 5 (94%), and only 810 for Gemini 3.8 Flash (81%) — making Medical LLM Medium the most robust model in this evaluation and outperforming larger private models despite its smaller size.</p>
+
+  <h2 id="medical-small-llms">Medical Small LLMs</h2>
 
   <p>John Snow Labs offers a curated portfolio of <strong>specialized small language models (1B-10B parameters), alongside larger, more capable models</strong>. Designed for real-world deployment, these models are <strong>quantized for efficiency and can run on standard CPU-based hardware without requiring a GPU</strong>, while also supporting GPU acceleration for improved performance. They integrate seamlessly with the <strong>Healthcare NLP library</strong>, just like any other component, and are fully included under the <strong>Healthcare NLP license</strong>.</p>
 
@@ -807,260 +1059,6 @@ function wrapWordInSpan(data, wordToWrap) {
   </table>
 
   <p><strong>You can explore these models on our</strong> <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/36.0.Loading_Medical_and_Open_Source_LLMs.ipynb" title="https://colab.research.google.com/github/johnsnowlabs/spark-nlp-workshop/blob/master/healthcare-nlp/36.0.loading_medical_and_open_source_llms.ipynb">Colab notebook</a> <strong>and see how these models can enhance your healthcare workflows.</strong></p>
-
-  <h3 id="introduction">Introduction</h3>
-
-  <p>John Snow Labs’ Medical Large Language Models advance Healthcare AI by setting state-of-the-art accuracy on medical LLM benchmarks while remaining small enough to deploy privately. This advances what’s achievable across real-world use cases including clinical assessment, medical question answering, biomedical research synthesis, and diagnostic decision support.</p>
-
-  <p>What makes this release special is how strongly the models perform relative to their compute footprint. <strong>Medical LLM Medium</strong> posts the highest MedHELM mean win rate of every model tested (77.78) and leads the best closed frontier model on OpenMed (93.99). <strong>Medical LLM Small</strong> clears an OpenMed average of 90.63, making it practical for everyday use in hospitals and clinics where cost, speed, and privacy matter.</p>
-
-  <h3 id="openmed-benchmark-performance">OpenMed Benchmark Performance</h3>
-
-  <p>The OpenMed evaluation framework represents one of the most rigorous testing environments for medical AI models, covering a broad spectrum of medical knowledge and clinical reasoning capabilities. It spans eight medical multiple-choice suites — MedQA, PubMedQA, and six MMLU medical subjects. Medical LLM Medium leads the best frontier model, while Medical LLM Small is remarkably strong for its size.</p>
-
-  <p><img src="/en/LLMs/images/openmed_average.png" alt="OpenMed — average across suites" /></p>
-
-  <p><img src="/en/LLMs/images/openmed_by_suite.png" alt="OpenMed - accuracy across suites" /></p>
-
-  <table class="table-model-big">
-    <thead>
-      <tr>
-        <th>Model</th>
-        <th>MedQA</th>
-        <th>PubMedQA</th>
-        <th>Anatomy</th>
-        <th>Clinical Knowledge</th>
-        <th>College Biology</th>
-        <th>College Medicine</th>
-        <th>Medical Genetics</th>
-        <th>Professional Medicine</th>
-        <th>Avg</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong>Medical LLM Medium</strong></td>
-        <td><strong>96.2</strong></td>
-        <td><strong>82</strong></td>
-        <td>93.5</td>
-        <td><strong>97.5</strong></td>
-        <td>94.3</td>
-        <td><strong>93.4</strong></td>
-        <td>99</td>
-        <td>96</td>
-        <td><strong>93.99</strong></td>
-      </tr>
-      <tr>
-        <td><strong>Medical LLM Small</strong></td>
-        <td>92</td>
-        <td>76</td>
-        <td>89</td>
-        <td>93</td>
-        <td>97</td>
-        <td>86</td>
-        <td>98</td>
-        <td>94</td>
-        <td>90.63</td>
-      </tr>
-      <tr>
-        <td>GPT 5.5</td>
-        <td>95</td>
-        <td>74</td>
-        <td>94.01</td>
-        <td>96.5</td>
-        <td><strong>99.3</strong></td>
-        <td>89.4</td>
-        <td><strong>100</strong></td>
-        <td><strong>98</strong></td>
-        <td>93.28</td>
-      </tr>
-      <tr>
-        <td>Claude Opus 4.8</td>
-        <td>93.5</td>
-        <td>74</td>
-        <td><strong>94.1</strong></td>
-        <td>97</td>
-        <td><strong>99.3</strong></td>
-        <td>90.8</td>
-        <td><strong>100</strong></td>
-        <td>97</td>
-        <td>93.21</td>
-      </tr>
-      <tr>
-        <td>Gemini 3.5 Flash</td>
-        <td>95</td>
-        <td>76.5</td>
-        <td>93.3</td>
-        <td>95.5</td>
-        <td><strong>99.3</strong></td>
-        <td>89.4</td>
-        <td><strong>100</strong></td>
-        <td>94.5</td>
-        <td>92.94</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <blockquote>
-    <p><strong>Frontier-leading accuracy — private by design.</strong> Medical LLM Medium scores 93.99 on OpenMed — ahead of GPT 5.5 (93.28) and Claude Opus 4.8 (93.21) — while being licensed for deployment inside your firewall. Medical LLM Small clears 90 while staying compact enough to run on a single commodity GPU.</p>
-  </blockquote>
-
-  <h3 id="jsl-llm-medhelm-benchmark-analysis">JSL-LLM MedHELM Benchmark Analysis</h3>
-
-  <p>MedHELM spans thirteen clinical tasks across documentation, coding, safety, dialogue, and reasoning. Medical LLM Medium posts the highest mean win rate of every model tested, and records the best score on 12 of the 13 tasks.</p>
-
-  <p><img src="/en/LLMs/images/medhelm_win_rate.png" alt="MedHELM — mean win rate" /></p>
-
-  <p><img src="/en/LLMs/images/medhelm_by_task.png" alt="MedHELM — score across tasks" /></p>
-
-  <p><img src="/en/LLMs/images/medhelm_lead.png" alt="Medical LLM Medium lead over the best frontier model" /></p>
-
-  <table class="table-model-big">
-    <thead>
-      <tr>
-        <th>Benchmark</th>
-        <th>Medical LLM Medium</th>
-        <th>Medical LLM Small</th>
-        <th>GPT 5.5</th>
-        <th>Claude Opus 4.8</th>
-        <th>Gemini 3.5 Flash</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong>Mean win rate</strong></td>
-        <td><strong>77.78</strong></td>
-        <td>70.95</td>
-        <td>73.56</td>
-        <td>72.06</td>
-        <td>71.61</td>
-      </tr>
-      <tr>
-        <td>MedCalc</td>
-        <td><strong>48</strong></td>
-        <td>24</td>
-        <td>44</td>
-        <td>34</td>
-        <td>42</td>
-      </tr>
-      <tr>
-        <td>MTSamples Proc.</td>
-        <td><strong>73.8</strong></td>
-        <td>71.8</td>
-        <td>71.6</td>
-        <td>71.5</td>
-        <td>72</td>
-      </tr>
-      <tr>
-        <td>Medec EM</td>
-        <td><strong>85</strong></td>
-        <td>60</td>
-        <td>68</td>
-        <td>67</td>
-        <td>70</td>
-      </tr>
-      <tr>
-        <td>HeadQA</td>
-        <td><strong>93.9</strong></td>
-        <td>84.1</td>
-        <td>90.1</td>
-        <td>89.8</td>
-        <td>91.2</td>
-      </tr>
-      <tr>
-        <td>Medbullets</td>
-        <td><strong>90</strong></td>
-        <td>84</td>
-        <td>89</td>
-        <td>79</td>
-        <td>80</td>
-      </tr>
-      <tr>
-        <td>ACI-Bench</td>
-        <td><strong>85.2</strong></td>
-        <td>83.9</td>
-        <td>83.4</td>
-        <td>83.9</td>
-        <td>81.6</td>
-      </tr>
-      <tr>
-        <td>MedicationQA</td>
-        <td><strong>80.9</strong></td>
-        <td>73.4</td>
-        <td>70.2</td>
-        <td>70.6</td>
-        <td>71.4</td>
-      </tr>
-      <tr>
-        <td>MedDialog</td>
-        <td><strong>76.3</strong></td>
-        <td>75.1</td>
-        <td>75.9</td>
-        <td>76.1</td>
-        <td>76.2</td>
-      </tr>
-      <tr>
-        <td>PubMedQA</td>
-        <td><strong>82</strong></td>
-        <td>78</td>
-        <td>76</td>
-        <td>76</td>
-        <td>75</td>
-      </tr>
-      <tr>
-        <td>EHRSQL</td>
-        <td><strong>34</strong></td>
-        <td>30</td>
-        <td>29</td>
-        <td>29</td>
-        <td>14</td>
-      </tr>
-      <tr>
-        <td>MediQA</td>
-        <td><strong>78.1</strong></td>
-        <td>77.1</td>
-        <td>76.1</td>
-        <td>76.9</td>
-        <td>76.5</td>
-      </tr>
-      <tr>
-        <td>RaceBias</td>
-        <td>88</td>
-        <td>86</td>
-        <td><strong>91</strong></td>
-        <td><strong>91</strong></td>
-        <td><strong>91</strong></td>
-      </tr>
-      <tr>
-        <td>Med-Hallu</td>
-        <td><strong>96</strong></td>
-        <td>95</td>
-        <td>92</td>
-        <td>92</td>
-        <td>90</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <blockquote>
-    <p><strong>Strongest where clinical work is hardest.</strong> Medical LLM Medium records the best score on 12 of the 13 MedHELM tasks, with its largest margins on clinical error detection (Medec +15), medication QA (+9.5), biomedical research comprehension (PubMedQA +6), and hallucination control.</p>
-  </blockquote>
-
-  <h3 id="how-the-models-compare">How the Models Compare</h3>
-
-  <p>Three signals matter for a clinical deployment: how often the model ranks first, whether a John Snow Labs model can match closed frontier systems, and how well it resists hallucination.</p>
-
-  <p><img src="/en/LLMs/images/leadership_task_wins.png" alt="MedHELM tasks where Medical LLM Medium ranks #1" /></p>
-
-  <p><img src="/en/LLMs/images/jsl_vs_closed.png" alt="John Snow Labs models vs closed frontier average" /></p>
-
-  <p><img src="/en/LLMs/images/hallucination_control.png" alt="Hallucination control — Med-Hallu" /></p>
-
-  <p>A John Snow Labs model leads the closed frontier on OpenMed (93.99 vs 93.14 average) while beating it outright on MedHELM (77.78 vs 72.41 average). On hallucination — the metric that decides whether a model is safe in front of clinicians — both John Snow Labs models rank first.</p>
-
-  <h3 id="red-teaming-evaluation-results">Red-Teaming Evaluation Results</h3>
-
-  <p>Out of 1000 red-teaming questions across 148 medical categories, Medical LLM Medium passed about 940 (94%), compared to 850 for GPT-5.5 (85%), 830 for Claude Opus 4.8 (83%), and only 790 for Gemini 3.5 Flash (79%) — making Medical LLM Medium the most robust model in this evaluation and outperforming larger private models despite its smaller size.</p>
 
   <h2 id="vision-ocr">Vision OCR</h2>
 
