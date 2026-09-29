@@ -74,17 +74,17 @@ The OpenMed evaluation framework represents one of the most rigorous testing env
 {:.table-model-big}
 | Model | MedQA | PubMedQA | Anatomy | Clinical Knowledge | College Biology | College Medicine | Medical Genetics | Professional Medicine | Avg |
 |---|---|---|---|---|---|---|---|---|---|
-| **Medical LLM Medium** | **96.2** | **82** | 93.5 | **97.5** | 94.3 | **93.4** | 99 | 96 | **93.99** |
-| **Medical LLM Small** | 92 | 76 | 89 | 93 | 97 | 86 | 98 | 94 | 90.63 |
-| GPT 5.5 | 95 | 74 | 94.01 | 96.5 | **99.3** | 89.4 | **100** | **98** | 93.28 |
-| Claude Opus 4.8 | 93.5 | 74 | **94.1** | 97 | **99.3** | 90.8 | **100** | 97 | 93.21 |
-| Gemini 3.5 Flash | 95 | 76.5 | 93.3 | 95.5 | **99.3** | 89.4 | **100** | 94.5 | 92.94 |
+| **Medical LLM Medium** | **96** | **82** | **95** | 98 | 97 | **97** | 98 | **99** | **95.25** |
+| **Medical LLM Small** | 92 | 76 | 89 | 93 | 97.8 | 86 | 98 | 94 | 90.73 |
+| GPT 5.6 Sol | 95.5 | 77 | 92 | **99.5** | **99.3** | 89.4 | **100** | 98 | 93.84 |
+| Claude Opus 5 | 93 | 75 | 94 | 98 | 98.5 | 90.8 | **100** | 99 | 93.54 |
+| Gemini 3.8 Flash | 95 | 76.5 | 93 | 96.5 | 96 | 89.4 | **100** | 95.5 | 92.74 |
 
 
 > **Frontier-leading accuracy — private by design.** Medical LLM Medium scores 93.99 on OpenMed — ahead of GPT 5.5 (93.28) and Claude Opus 4.8 (93.21) — while being licensed for deployment inside your firewall. Medical LLM Small clears 90 while staying compact enough to run on a single commodity GPU.
 
 
-### JSL-LLM MedHELM Benchmark Analysis
+### MedHELM Benchmark Analysis
 
 MedHELM spans thirteen clinical tasks across documentation, coding, safety, dialogue, and reasoning. Medical LLM Medium posts the highest mean win rate of every model tested, and records the best score on 12 of the 13 tasks.
 
@@ -95,24 +95,24 @@ MedHELM spans thirteen clinical tasks across documentation, coding, safety, dial
 ![Medical LLM Medium lead over the best frontier model](/en/LLMs/images/medhelm_lead.png)
 
 {:.table-model-big}
-| Benchmark | Medical LLM Medium | Medical LLM Small | GPT 5.5 | Claude Opus 4.8 | Gemini 3.5 Flash |
+| Benchmark | Medical LLM Medium | Medical LLM Small | GPT 5.6 Sol | Claude Opus 5 | Gemini 3.8 Flash |
 |---|---|---|---|---|---|
-| **Mean win rate** | **77.78** | 70.95 | 73.56 | 72.06 | 71.61 |
-| MedCalc | **48** | 24 | 44 | 34 | 42 |
-| MTSamples Proc. | **73.8** | 71.8 | 71.6 | 71.5 | 72 |
-| Medec EM | **85** | 60 | 68 | 67 | 70 |
-| HeadQA | **93.9** | 84.1 | 90.1 | 89.8 | 91.2 |
-| Medbullets | **90** | 84 | 89 | 79 | 80 |
-| ACI-Bench | **85.2** | 83.9 | 83.4 | 83.9 | 81.6 |
-| MedicationQA | **80.9** | 73.4 | 70.2 | 70.6 | 71.4 |
-| MedDialog | **76.3** | 75.1 | 75.9 | 76.1 | 76.2 |
-| PubMedQA | **82** | 78 | 76 | 76 | 75 |
-| EHRSQL | **34** | 30 | 29 | 29 | 14 |
-| MediQA | **78.1** | 77.1 | 76.1 | 76.9 | 76.5 |
-| RaceBias | 88 | 86 | **91** | **91** | **91** |
-| Med-Hallu | **96** | 95 | 92 | 92 | 90 |
+| **Mean win rate** | **78.75**          | 70.95             | 74.20       | 74.50         | 72.26            |
+| MedCalc           | 41                 | 24                | **45**      | 36            | 43               |
+| MTSamples Proc.   | **73.5**           | 71.8              | 72.6        | **73.5**      | 73.4             |
+| Medec EM          | **81**             | 60                | 69          | 68            | 74               |
+| HeadQA            | **97.5**           | 84.1              | 92.1        | 86.8          | 89.6             |
+| Medbullets        | **94**             | 84                | 84          | 85            | 83               |
+| ACI-Bench         | **89**             | 83.9              | 82.4        | 85            | 84.6             |
+| MedicationQA      | **81.3**           | 73.4              | 71.2        | 72.6          | 72.1             |
+| MedDialog         | **78.3**           | 75.1              | 75.9        | 78.1          | 73.2             |
+| PubMedQA          | **86**             | 78                | 79          | 77            | 71               |
+| EHRSQL            | **39**             | 30                | 31          | 32            | 16               |
+| MediQA            | 82.2               | 77.1              | 76.4        | **85.5**      | 78.5             |
+| RaceBias          | 82                 | 79                | 91          | **95**        | 92               |
+| Med-Hallu         | **99**             | 95                | 95          | 94            | 89               |
 
-> **Strongest where clinical work is hardest.** Medical LLM Medium records the best score on 12 of the 13 MedHELM tasks, with its largest margins on clinical error detection (Medec +15), medication QA (+9.5), biomedical research comprehension (PubMedQA +6), and hallucination control.
+> Medical LLM Medium records the best score on 9 of the 13 MedHELM tasks outright (plus a tie with Claude Opus 5 on MTSamples Proc.), with its largest margins on board-style reasoning (Medbullets +9), medication QA (+8.7), and a three-way tie at +7 on clinical error detection (Medec), biomedical research comprehension (PubMedQA), and database reasoning (EHRSQL).
 
 ### How the Models Compare
 
@@ -124,11 +124,11 @@ Three signals matter for a clinical deployment: how often the model ranks first,
 
 ![Hallucination control — Med-Hallu](/en/LLMs/images/hallucination_control.png)
 
-A John Snow Labs model leads the closed frontier on OpenMed (93.99 vs 93.14 average) while beating it outright on MedHELM (77.78 vs 72.41 average). On hallucination — the metric that decides whether a model is safe in front of clinicians — both John Snow Labs models rank first.
+Medical LLM Medium leads the closed frontier on OpenMed (95.25 vs 93.37 average) while beating it outright on MedHELM (78.75 vs 73.65 average). On hallucination control — the metric that decides whether a model is safe in front of clinicians — Medical LLM Medium leads the full field at 99, with Medical LLM Small tied for second at 95.
 
 ### Red-Teaming Evaluation Results
 
-Out of 1000 red-teaming questions across 148 medical categories, Medical LLM Medium passed about 940 (94%), compared to 850 for GPT-5.5 (85%), 830 for Claude Opus 4.8 (83%), and only 790 for Gemini 3.5 Flash (79%) — making Medical LLM Medium the most robust model in this evaluation and outperforming larger private models despite its smaller size.
+Out of 1000 red-teaming questions across 148 medical categories, Medical LLM Medium passed about 950 (95%), compared to 830 for GPT-5.6 Sol (83%), 940 for Claude Opus 5 (94%), and only 810 for Gemini 3.8 Flash (81%) — making Medical LLM Medium the most robust model in this evaluation and outperforming larger private models despite its smaller size.
 
 
 ## Vision OCR
