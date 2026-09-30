@@ -15,7 +15,7 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-## Entity Extraction and Pre-Annotation via GPT Prompting
+## Entity Extraction and Pre-Annotation via LLM Prompting
 
 Generative AI Lab supports integration with external and organization-hosted Large Language Models (LLMs), enabling flexible prompt-based pre-annotation workflows across multiple providers.
 
