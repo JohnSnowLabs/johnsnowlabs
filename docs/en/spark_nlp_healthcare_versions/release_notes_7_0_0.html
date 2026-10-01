@@ -9,12 +9,12 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Healthcare NLP v5.1.4 Release Notes</title><meta property="og:title" content="Spark NLP for Healthcare | John Snow Labs"/>
+<!-- End Google Tag Manager --><title>Healthcare NLP v7.0.0 Release Notes</title><meta property="og:title" content="Spark NLP for Healthcare | John Snow Labs"/>
 
 <meta name="description" content="High Performance NLP with Apache Spark
 ">
-<!-- <link rel="canonical" href="/docs/en/spark_nlp_healthcare_versions/release_notes_5_1_4"> -->
-<link rel="canonical" href="/docs/en/spark_nlp_healthcare_versions/release_notes_5_1_4"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<!-- <link rel="canonical" href="/docs/en/spark_nlp_healthcare_versions/release_notes_7_0_0"> -->
+<link rel="canonical" href="/docs/en/spark_nlp_healthcare_versions/release_notes_7_0_0"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -616,390 +616,2309 @@ function wrapWordInSpan(data, wordToWrap) {
 </script><div class="article__header"><div class="header-nav"><div class="main-docs">
   <ul class="breadcrambs">
     <li><a href="/docs">Documentation</a></li>
-    <li>Healthcare NLP v5.1.4 Release Notes</li>
+    <li>Healthcare NLP v7.0.0 Release Notes</li>
   </ul>
 </div></div><header class="main-docs have_subtitle">
-          <h1>Healthcare NLP v5.1.4 Release Notes</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
+          <h1>Healthcare NLP v7.0.0 Release Notes</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
-            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/spark_nlp_healthcare_versions/release_notes_5_1_4.md">
-            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Healthcare NLP v5.1.4 Release Notes"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
+            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/spark_nlp_healthcare_versions/release_notes_7_0_0.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Healthcare NLP v7.0.0 Release Notes"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <h2 id="section">5.1.4</h2>
+  <h2 id="section">7.0.0</h2>
 
   <h4 id="highlights">Highlights</h4>
 
-  <p>We are delighted to announce a suite of remarkable enhancements and updates in our latest release of Spark NLP for Healthcare. <strong>This release comes with the advanced Document Splitter annotator specifically designed for medical context and more flexibility in Deidentification as well as robust exception handling in <code class="language-plaintext highlighter-rouge">MedicalNerModel</code> for corrupted inputs</strong>.</p>
+  <p>We are delighted to announce notable enhancements and updates in Healthcare NLP 7.0.0. This is a <strong>major release</strong>, and the headline addition is <strong>native support for Apache Spark 4.x, delivered alongside the existing Spark 3.x line</strong>. In practice, this means Healthcare NLP now runs on the newest cloud runtimes: you can move to the <strong>latest Databricks runtimes — including 17, 18.1, 18.2, and 19</strong> — and keep using the same John Snow Labs JAR you already know. Spark 3.x users are fully supported as before, so upgrading is a choice you make when your platform is ready, not something forced on you by this release.</p>
+
+  <p>Beyond the Spark 4 milestone, 7.0.0 brings a <strong>new HL7 v2.x de-identification annotator</strong>, several significant <strong>de-identification enhancements</strong> (nationality-aware obfuscation, ID-based obfuscation, encrypted mappings columns, entity-level date-to-year conversion, state-format-aware obfuscation and refreshed faker resources), and a major overhaul of <strong>TensorFlow-based training</strong> that <strong>ships 1,171 ready-to-use training graphs inside the JAR</strong> so classifier, relation extraction and assertion training no longer require a local TensorFlow installation. The release is rounded out by a set of stability and memory-management bug fixes.</p>
+
+  <p>This release also delivers an update of the medical terminology models: 81 updated and 73 new Entity Resolver, ChunkMapper, and pretrained pipeline models across 16 medical coding systems, each trained on the latest official release of its terminology, from SNOMED CT (US Edition 20260901), LOINC 2.83, and ICD-11 (WHO 2026-01) to RxNorm, ICD-10-CM, CPT, HCPCS, HPO, HGNC, MeSH, and NCIt. Updated models of several systems now carry the source release in their names, so a pipeline can stay pinned to the terminology release it was built for.</p>
+
+  <p>Two new benchmarks come with the release. On medical terminology mapping, the resolvers reach 87.3% to 96.4% top-1 accuracy and score highest on all four coding systems tested against five general-purpose LLMs, and a CPU speed benchmark reports end-to-end timings for oncology NER and resolver pipelines on 1,000 clinical documents. New blog posts cover clinical term mapping and the 2026 clinical de-identification benchmarks, where Healthcare NLP reaches 0.96 PHI F1 on expert-annotated clinical notes.</p>
 
   <ul>
-    <li>Introducing the Advanced <code class="language-plaintext highlighter-rouge">Medical Document Splitter</code> annotator with more flexibility and customization for RAG pipelines</li>
-    <li>Enhancing <code class="language-plaintext highlighter-rouge">ChunkFiltererApproach</code> by introducing json-based entity confidence configuration</li>
-    <li>Advanced data privacy with <code class="language-plaintext highlighter-rouge">DeIdentification</code> unleashing custom regex patterns</li>
-    <li>Robust exception handling in <code class="language-plaintext highlighter-rouge">MedicalNerModel</code> for corrupted inputs</li>
-    <li>Various core improvements; bug fixes, enhanced overall robustness and reliability of Spark NLP for Healthcare
+    <li><strong>Apache Spark 4.x support alongside Spark 3.x</strong>, unlocking the latest cloud runtimes (including Databricks 17, 18.1, 18.2, and 19) with automatic artifact selection so <code class="language-plaintext highlighter-rouge">sparknlp_jsl.start()</code> just works</li>
+    <li><strong><code class="language-plaintext highlighter-rouge">Hl7v2DeIdentification</code></strong> — a new, dependency-free annotator for de-identifying HL7 v2.x messages (structured fields and free-text narratives)</li>
+    <li><strong>De-Identification enhancements</strong> — nationality-aware name obfuscation, ID-based obfuscation, encrypted mappings (aux) column, <code class="language-plaintext highlighter-rouge">dateToYearEntities</code>, state-format-aware STATE obfuscation, and cleaned/expanded faker resources</li>
+    <li><strong>Train TensorFlow-based annotators without TensorFlow</strong> — 1,171 embedded training graphs for Classifier, Relation Extraction and Assertion training, selected automatically</li>
+    <li>Updated 81 and Introduced 73 New Entity Resolver, ChunkMapper, and Pretrained Pipeline Models Across 16 Medical Coding Systems</li>
+    <li>Medical Terminology Mapping Benchmark: Healthcare NLP Resolvers vs. General-Purpose LLMs</li>
+    <li>Oncology NER and Entity Resolver Pipelines Speed Benchmark</li>
+    <li>New Blog Posts &amp; Technical Deep Dives</li>
+    <li>Updated Notebooks And Demonstrations For Making Healthcare NLP Easier To Navigate And Understand
       <ul>
-        <li>Enhanced the <code class="language-plaintext highlighter-rouge">ChunkSentenceSplitter</code> annotator and revised documentation</li>
-        <li>Updated the <code class="language-plaintext highlighter-rouge">training_log_parser</code> and its utility script to align with the latest NumPy version</li>
-        <li>Transitioned the SecureRandom algorithm from Spark configuration to the system environment. Please check the previous <a href="https://nlp.johnsnowlabs.com/docs/en/spark_nlp_healthcare_versions/release_notes_5_1_3">Random Seed Algorithm</a> implementation for details.</li>
-        <li>Revised some imports for improved functionality in Deidentification</li>
+        <li>New <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.15.HL7v2_DeIdentification.ipynb">HL7 v2 De-Identification</a> Notebook</li>
       </ul>
     </li>
-    <li>New and updated demos
-      <ul>
-        <li>New <a href="https://demo.johnsnowlabs.com/healthcare/ER_DRUG/">Drug Resolver Demo</a></li>
-        <li>Updated <a href="https://demo.johnsnowlabs.com/healthcare/NER_CLINICAL_MULTI/">Multi Language Clinical NER Demo</a></li>
-        <li>New <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/38.InternalDocumentSplitter.ipynb">Medical Document Splitter Notebook</a></li>
-        <li>Updated <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.Clinical_Named_Entity_Recognition_Model.ipynb">Clinical Named Entity Recognition Notebook</a> with <code class="language-plaintext highlighter-rouge">setDoExceptionHandling</code> information</li>
-        <li>Updated <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.Clinical_DeIdentification.ipynb">Clinical DeIdentification Notebook</a> with <code class="language-plaintext highlighter-rouge">setRegexPatternsDictionaryAsJsonString</code> and <code class="language-plaintext highlighter-rouge">setCombineRegexPatterns</code> examples</li>
-        <li>Updated <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/3.1.Calculate_Medicare_Risk_Adjustment_Score.ipynb">Calculate Medicare Risk Adjustment Score Notebook</a> with the latest improvement</li>
-      </ul>
-    </li>
+    <li><strong>Bug fixes</strong> — memory/temp-file cleanup on model loading, ONNX CUDA preload recovery, batched ZeroShotNer decoding, empty-input handling, and multi-task NER fixes</li>
+    <li>The addition and update of numerous new clinical models and pipelines continue to reinforce our offering in the healthcare domain</li>
   </ul>
 
-  <p>These enhancements will elevate your experience with Spark NLP for Healthcare, enabling more efficient, accurate, and streamlined healthcare-related natural language data analysis.</p>
+  <p>These enhancements will elevate your experience with Healthcare NLP, enabling more efficient, accurate, and streamlined analysis of healthcare-related natural language data.</p>
 
-</div>
-<div class="h3-box">
+  <div class="h3-box">
 
-  <h4 id="introducing-the-advanced-medical-document-splitter-annotator-with-more-flexibility-and-customization-for-rag-pipelines">Introducing the Advanced <code class="language-plaintext highlighter-rouge">Medical Document Splitter</code> Annotator with More Flexibility and Customization for RAG Pipelines</h4>
+    <h4 id="spotlight-apache-spark-4x-support--the-latest-cloud-runtimes">🌟 Spotlight: Apache Spark 4.x Support &amp; the Latest Cloud Runtimes</h4>
 
-  <p>Discover our cutting-edge Internal Document Splitter—an innovative annotator designed to effortlessly break down extensive documents into manageable segments. Empowering users with the ability to define custom separators, this tool seamlessly divides texts, ensuring each chunk adheres to specified length criteria.</p>
+    <p>For a long time, staying on Healthcare NLP meant staying on Apache Spark 3.x. As cloud providers moved their newest runtimes to Spark 4, that gap became a real blocker: teams wanting the newest Databricks runtime had to choose between upgrading their platform and keeping Healthcare NLP.</p>
 
-  <p>InternalDocumentSplitter has a setSplitMode method to decide how to split documents. Default: ‘regex’. It should be one of the following values:</p>
-  <ul>
-    <li><code class="language-plaintext highlighter-rouge">char</code>: Split text based on individual characters.</li>
-    <li><code class="language-plaintext highlighter-rouge">token</code>: Split text based on tokens. You should supply tokens from inputCols.</li>
-    <li><code class="language-plaintext highlighter-rouge">sentence</code>: Split text based on sentences. You should supply sentences from inputCols.</li>
-    <li><code class="language-plaintext highlighter-rouge">recursive</code>: Split text recursively using a specific algorithm.</li>
-    <li><code class="language-plaintext highlighter-rouge">regex</code>: Split text based on a regular expression pattern.</li>
-  </ul>
+    <p><strong>Healthcare NLP 7.0.0 closes that gap.</strong> The library now runs natively on <strong>Apache Spark 4.x</strong> in addition to Spark 3.x, so you can move to the <strong>latest cloud runtimes and keep everything you already have</strong> — the same annotators, the same pretrained models, the same pipelines. Concretely, this means the newest <strong>Databricks runtimes — 17, 18.1, 18.2, and 19 — are now supported</strong>, and the same applies to any Spark 4.x cluster you run yourself.</p>
 
-  <p><em>Example</em>:</p>
+    <p>The best part: <strong>you usually don’t have to think about any of this.</strong> When you install Healthcare NLP with <code class="language-plaintext highlighter-rouge">pip</code> and call <code class="language-plaintext highlighter-rouge">sparknlp_jsl.start()</code>, it detects the Spark version on your cluster and pulls the matching build automatically. Spark 3.x clusters keep getting the Spark 3 build; Spark 4.x clusters get the Spark 4 build. No configuration changes, no manual coordinates.</p>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_splitter</span> <span class="o">=</span> <span class="n">InternalDocumentSplitter</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"splits"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setSplitMode</span><span class="p">(</span><span class="s">"recursive"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setChunkSize</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setChunkOverlap</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setExplodeSplits</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setPatternsAreRegex</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setSplitPatterns</span><span class="p">([</span><span class="s">"</span><span class="se">\n\n</span><span class="s">"</span><span class="p">,</span> <span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="s">" "</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setKeepSeparators</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setTrimWhitespace</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">sparknlp_jsl</span>
 
-<span class="n">text</span> <span class="o">=</span> <span class="p">[(</span> 
-    <span class="s">"The patient is a 28-year-old, who is status post gastric bypass surgery"</span>
-    <span class="s">" nearly one year ago. </span><span class="se">\n</span><span class="s">He has lost about 200 pounds and was otherwise doing well"</span>
-    <span class="s">" until yesterday evening around 7:00-8:00 when he developed nausea and right upper quadrant pain,"</span> 
-    <span class="s">" which apparently wrapped around toward his right side and back. He feels like he was on it"</span>
-    <span class="s">" but has not done so. He has overall malaise and a low-grade temperature of 100.3."</span> 
-    <span class="s">" </span><span class="se">\n\n</span><span class="s">He denies any prior similar or lesser symptoms. His last normal bowel movement was yesterday."</span> 
-    <span class="s">" He denies any outright chills or blood per rectum."</span> 
-<span class="p">)]</span>
-</code></pre></div>  </div>
+<span class="c1"># Works the same on Spark 3.x and Spark 4.x clusters — the right build is chosen for you.
+</span><span class="n">spark</span> <span class="o">=</span> <span class="n">sparknlp_jsl</span><span class="p">.</span><span class="n">start</span><span class="p">(</span><span class="n">secret</span><span class="o">=</span><span class="n">SECRET</span><span class="p">)</span>
+</code></pre></div>    </div>
 
-  <p><em>Result</em>:</p>
+    <p><strong>Choosing a build manually (<code class="language-plaintext highlighter-rouge">spark.jars</code>)</strong></p>
 
-  <table class="table-model-big">
-    <thead>
-      <tr>
-        <th>sentence</th>
-        <th>doc_id</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>The patient is a 28-year-old, who is status post gastric bypass surgery nearly one year ago.</td>
-        <td>0</td>
-      </tr>
-      <tr>
-        <td>He has lost about 200 pounds and was otherwise doing well until yesterday evening around 7:00-8:00</td>
-        <td>1</td>
-      </tr>
-      <tr>
-        <td>when he developed nausea and right upper quadrant pain, which apparently wrapped around toward his</td>
-        <td>2</td>
-      </tr>
-      <tr>
-        <td>his right side and back. He feels like he was on it but has not done so. He has overall malaise and</td>
-        <td>3</td>
-      </tr>
-      <tr>
-        <td>and a low-grade temperature of 100.3.</td>
-        <td>4</td>
-      </tr>
-      <tr>
-        <td>He denies any prior similar or lesser symptoms. His last normal bowel movement was yesterday. He</td>
-        <td>5</td>
-      </tr>
-      <tr>
-        <td>He denies any outright chills or blood per rectum.</td>
-        <td>6</td>
-      </tr>
-    </tbody>
-  </table>
+    <p>If you attach the JAR manually — for example on a cluster where you set <code class="language-plaintext highlighter-rouge">spark.jars</code> yourself — pick the build that matches your runtime:</p>
 
-  <p>Please check <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/38.InternalDocumentSplitter.ipynb">Medical Document Splitter Notebook</a> for more information</p>
+    <table class="table-model-big">
+      <thead>
+        <tr>
+          <th>Your runtime</th>
+          <th>Use this build</th>
+          <th>GPU / Apple Silicon / AArch64</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Spark 3.x (Databricks 13–16)</td>
+          <td><code class="language-plaintext highlighter-rouge">spark-nlp-jsl-7.0.0.jar</code></td>
+          <td>supported, as before</td>
+        </tr>
+        <tr>
+          <td>Spark 4.x — the common case (Databricks 17, 18.1, 18.2, 19 and other Spark 4 clusters)</td>
+          <td><code class="language-plaintext highlighter-rouge">spark-nlp-jsl_2.13-7.0.0.jar</code></td>
+          <td>supported</td>
+        </tr>
+        <tr>
+          <td>Plain, <strong>unpatched</strong> Spark 4.0.0 (a self-managed cluster on the original 4.0.0 build)</td>
+          <td><code class="language-plaintext highlighter-rouge">spark-nlp-jsl-spark400_2.13-7.0.0.jar</code></td>
+          <td>supported</td>
+        </tr>
+      </tbody>
+    </table>
 
-</div>
-<div class="h3-box">
+    <p><strong>A note for Databricks 17+ users:</strong> these runtimes report themselves as Spark <code class="language-plaintext highlighter-rouge">4.0.0</code>, but they already include an important upstream fix, so they use the <strong>regular Spark 4 build</strong> (<code class="language-plaintext highlighter-rouge">spark-nlp-jsl_2.13-...</code>) — <strong>not</strong> the <code class="language-plaintext highlighter-rouge">spark400</code> one. The dedicated <code class="language-plaintext highlighter-rouge">spark400</code> build is only for a plain, unpatched Spark 4.0.0 that you manage yourself. If you ever see a <code class="language-plaintext highlighter-rouge">NoSuchMethodError</code> mentioning Spark’s <code class="language-plaintext highlighter-rouge">Param</code> class, it almost always means the wrong one of these two Spark 4 builds was selected — switch to the regular <code class="language-plaintext highlighter-rouge">_2.13</code> build. When in doubt, let <code class="language-plaintext highlighter-rouge">sparknlp_jsl.start()</code> choose for you.</p>
 
-  <h4 id="enhancing-chunkfiltererapproach-by-introducing-json-based-entity-confidence-configuration">Enhancing <code class="language-plaintext highlighter-rouge">ChunkFiltererApproach</code> by Introducing JSON-Based Entity Confidence Configuration</h4>
+    <p>Your existing Spark 3.x workloads keep working unchanged — Spark 4 support is added next to Spark 3, not on top of it.</p>
 
-  <p>The new <code class="language-plaintext highlighter-rouge">setEntitiesConfidenceResourceAsJsonString</code> method allows users to finely tune entity confidence levels using a JSON configuration.</p>
+  </div>
+  <div class="h3-box">
 
-  <p><em>Example</em>:</p>
+    <h4 id="hl7-v2x-de-identification-with-hl7v2deidentification">HL7 v2.x De-Identification with <code class="language-plaintext highlighter-rouge">Hl7v2DeIdentification</code></h4>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">chunk_filterer</span> <span class="o">=</span> <span class="n">ChunkFiltererApproach</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">,</span><span class="s">"ner_chunk"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"chunk_filtered"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setFilterEntity</span><span class="p">(</span><span class="s">"entity"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setEntitiesConfidenceResourceAsJsonString</span><span class="p">(</span><span class="s">"""{'DURATION':'0.9',
-                                                  'DOSAGE':'0.9',
-                                                  'FREQUENCY':'0.9',
-                                                  'STRENGTH':'0.9',
-                                                  'DRUG':'0.9'}"""</span><span class="p">)</span>
+    <p><code class="language-plaintext highlighter-rouge">Hl7v2DeIdentification</code> is a <strong>new Spark Transformer for de-identifying HL7 v2.x messages</strong> — the classic pipe/hat delimited “vertical bar” format (e.g. <code class="language-plaintext highlighter-rouge">ADT^A01</code>, <code class="language-plaintext highlighter-rouge">ORU^R01</code>). It performs field-level obfuscation using a <strong>lightweight, dependency-free delimiter parser</strong>.</p>
 
-<span class="n">text</span> <span class="o">=</span><span class="s">'The patient was prescribed 1 capsule of Advil for 5 days . He was seen by the endocrinology service and she was discharged on 40 units of insulin glargine at night , 12 units of insulin lispro with meals , metformin 1000 mg two times a day . It was determined that all SGLT2 inhibitors should be discontinued indefinitely fro 3 months .'</span>
-</code></pre></div>  </div>
+    <p><strong>What are HL7 v2 messages?</strong> HL7 v2.x is the messaging standard hospital systems have used for decades to exchange clinical events — patient admissions (<code class="language-plaintext highlighter-rouge">ADT</code>), lab results (<code class="language-plaintext highlighter-rouge">ORU</code>), orders (<code class="language-plaintext highlighter-rouge">ORM</code>/<code class="language-plaintext highlighter-rouge">RDE</code>), and more. A message is a block of text where each line is a <strong>segment</strong> (identified by a 3-letter code such as <code class="language-plaintext highlighter-rouge">MSH</code>, <code class="language-plaintext highlighter-rouge">PID</code>, or <code class="language-plaintext highlighter-rouge">OBX</code>), and every segment is built from <strong>fields</strong> separated by <code class="language-plaintext highlighter-rouge">|</code>, which split further into <strong>components</strong> (<code class="language-plaintext highlighter-rouge">^</code>), <strong>repetitions</strong> (<code class="language-plaintext highlighter-rouge">~</code>) and <strong>subcomponents</strong> (<code class="language-plaintext highlighter-rouge">&amp;</code>). PHI is scattered throughout these fields — a patient’s name in <code class="language-plaintext highlighter-rouge">PID-5</code>, date of birth in <code class="language-plaintext highlighter-rouge">PID-7</code>, phone in <code class="language-plaintext highlighter-rouge">PID-13</code> — and can also sit inside free-text narrative fields such as <code class="language-plaintext highlighter-rouge">OBX-5</code> (observation value) and <code class="language-plaintext highlighter-rouge">NTE-3</code> (notes). Because these messages are still ubiquitous in real hospital integrations, de-identifying them safely — without corrupting the delimiter structure that downstream systems depend on — is a common and demanding requirement.</p>
 
-  <p><em>Without Filtering Results</em>:</p>
+    <p>Because the HL7 v2 wire format (segments, fields, components, repetitions, subcomponents and the escape character declared in <code class="language-plaintext highlighter-rouge">MSH-1</code>/<code class="language-plaintext highlighter-rouge">MSH-2</code>) is identical across all v2.x versions, a single <strong>Terser-style path notation</strong> targets PHI uniformly <strong>from v2.1 through v2.9</strong> without any version-specific structure libraries.</p>
 
-  <table class="table-model-big">
-    <thead>
-      <tr>
-        <th style="text-align: left">chunks</th>
-        <th style="text-align: right">begin</th>
-        <th style="text-align: right">end</th>
-        <th style="text-align: right">sentence_id</th>
-        <th style="text-align: left">entities</th>
-        <th style="text-align: right">confidence</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td style="text-align: left">1 capsule of Advil</td>
-        <td style="text-align: right">27</td>
-        <td style="text-align: right">44</td>
-        <td style="text-align: right">0</td>
-        <td style="text-align: left">DRUG</td>
-        <td style="text-align: right">0.64</td>
-      </tr>
-      <tr>
-        <td style="text-align: left">for 5 days</td>
-        <td style="text-align: right">46</td>
-        <td style="text-align: right">55</td>
-        <td style="text-align: right">0</td>
-        <td style="text-align: left">DURATION</td>
-        <td style="text-align: right">0.55</td>
-      </tr>
-      <tr>
-        <td style="text-align: left">40 units of insulin glargine</td>
-        <td style="text-align: right">126</td>
-        <td style="text-align: right">153</td>
-        <td style="text-align: right">1</td>
-        <td style="text-align: left">DRUG</td>
-        <td style="text-align: right">0.62</td>
-      </tr>
-      <tr>
-        <td style="text-align: left">at night</td>
-        <td style="text-align: right">155</td>
-        <td style="text-align: right">162</td>
-        <td style="text-align: right">1</td>
-        <td style="text-align: left">FREQUENCY</td>
-        <td style="text-align: right">0.74</td>
-      </tr>
-      <tr>
-        <td style="text-align: left">12 units of insulin lispro</td>
-        <td style="text-align: right">166</td>
-        <td style="text-align: right">191</td>
-        <td style="text-align: right">1</td>
-        <td style="text-align: left">DRUG</td>
-        <td style="text-align: right">0.67</td>
-      </tr>
-      <tr>
-        <td style="text-align: left">with meals</td>
-        <td style="text-align: right">193</td>
-        <td style="text-align: right">202</td>
-        <td style="text-align: right">1</td>
-        <td style="text-align: left">FREQUENCY</td>
-        <td style="text-align: right">0.72</td>
-      </tr>
-      <tr>
-        <td style="text-align: left">metformin 1000 mg</td>
-        <td style="text-align: right">206</td>
-        <td style="text-align: right">222</td>
-        <td style="text-align: right">1</td>
-        <td style="text-align: left">DRUG</td>
-        <td style="text-align: right">0.70</td>
-      </tr>
-      <tr>
-        <td style="text-align: left">two times a day</td>
-        <td style="text-align: right">224</td>
-        <td style="text-align: right">238</td>
-        <td style="text-align: right">1</td>
-        <td style="text-align: left">FREQUENCY</td>
-        <td style="text-align: right">0.67</td>
-      </tr>
-      <tr>
-        <td style="text-align: left">SGLT2 inhibitors</td>
-        <td style="text-align: right">269</td>
-        <td style="text-align: right">284</td>
-        <td style="text-align: right">2</td>
-        <td style="text-align: left">DRUG</td>
-        <td style="text-align: right">0.89</td>
-      </tr>
-    </tbody>
-  </table>
+    <p><strong>Path Notation</strong></p>
 
-  <p><em>Filtered Results</em>:</p>
+    <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"PID-5"       -&gt; segment PID, field 5 (all components / repetitions)
+"PID-5-1"     -&gt; field 5, component 1 (family name)
+"PID-5-1-2"   -&gt; field 5, component 1, subcomponent 2
+"PID(2)-5-1"  -&gt; the 2nd PID segment occurrence, field 5, component 1
+</code></pre></div>    </div>
 
-  <table class="table-model-big">
-    <thead>
-      <tr>
-        <th style="text-align: left">chunks</th>
-        <th style="text-align: right">begin</th>
-        <th style="text-align: right">end</th>
-        <th style="text-align: right">sentence_id</th>
-        <th style="text-align: left">entities</th>
-        <th style="text-align: right">confidence</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td style="text-align: left">at night</td>
-        <td style="text-align: right">155</td>
-        <td style="text-align: right">162</td>
-        <td style="text-align: right">1</td>
-        <td style="text-align: left">FREQUENCY</td>
-        <td style="text-align: right">0.74</td>
-      </tr>
-      <tr>
-        <td style="text-align: left">with meals</td>
-        <td style="text-align: right">193</td>
-        <td style="text-align: right">202</td>
-        <td style="text-align: right">1</td>
-        <td style="text-align: left">FREQUENCY</td>
-        <td style="text-align: right">0.72</td>
-      </tr>
-      <tr>
-        <td style="text-align: left">SGLT2 inhibitors</td>
-        <td style="text-align: right">269</td>
-        <td style="text-align: right">284</td>
-        <td style="text-align: right">2</td>
-        <td style="text-align: left">DRUG</td>
-        <td style="text-align: right">0.89</td>
-      </tr>
-    </tbody>
-  </table>
+    <p>Field numbers match the HL7 specification exactly, including the <code class="language-plaintext highlighter-rouge">MSH</code> off-by-one convention (<code class="language-plaintext highlighter-rouge">MSH-1</code> is the field separator, <code class="language-plaintext highlighter-rouge">MSH-2</code> the encoding characters). Obfuscated replacements are sanitized so they can never inject an HL7 delimiter or control character and break the message structure.</p>
 
-</div>
-<div class="h3-box">
+    <p><strong>Pretrained HL7 v2 de-identification models</strong></p>
 
-  <h4 id="advanced-data-privacy-with-deidentification-unleashing-regex-patterns-unleashed">Advanced Data Privacy with DeIdentification Unleashing Regex Patterns Unleashed</h4>
+    <p>Two ready-to-use models ship with this release. Both bake in a comprehensive default PHI map covering HIPAA Safe Harbor identifiers (names, dates, addresses, phones, SSNs, MRN/account/member/license/device IDs and clinician names) across the common HL7 v2 segments (<code class="language-plaintext highlighter-rouge">MSH</code>, <code class="language-plaintext highlighter-rouge">EVN</code>, <code class="language-plaintext highlighter-rouge">PID</code>, <code class="language-plaintext highlighter-rouge">PD1</code>, <code class="language-plaintext highlighter-rouge">MRG</code>, <code class="language-plaintext highlighter-rouge">NK1</code>, <code class="language-plaintext highlighter-rouge">PV1</code>, <code class="language-plaintext highlighter-rouge">PV2</code>, <code class="language-plaintext highlighter-rouge">GT1</code>, <code class="language-plaintext highlighter-rouge">IN1</code>/<code class="language-plaintext highlighter-rouge">IN2</code>, <code class="language-plaintext highlighter-rouge">AL1</code>, <code class="language-plaintext highlighter-rouge">DG1</code>, <code class="language-plaintext highlighter-rouge">PR1</code>, <code class="language-plaintext highlighter-rouge">ROL</code>, <code class="language-plaintext highlighter-rouge">ACC</code>, <code class="language-plaintext highlighter-rouge">UB1</code>/<code class="language-plaintext highlighter-rouge">UB2</code>, <code class="language-plaintext highlighter-rouge">TXA</code>, <code class="language-plaintext highlighter-rouge">SCH</code>/<code class="language-plaintext highlighter-rouge">AIP</code>/<code class="language-plaintext highlighter-rouge">AIS</code>, <code class="language-plaintext highlighter-rouge">ORC</code>, <code class="language-plaintext highlighter-rouge">OBR</code>, <code class="language-plaintext highlighter-rouge">OBX</code>, <code class="language-plaintext highlighter-rouge">SPM</code>, <code class="language-plaintext highlighter-rouge">RXA</code>, <code class="language-plaintext highlighter-rouge">RXE</code>). Segments absent from a message are simply skipped, so the same model works on any HL7 v2 feed.</p>
 
-  <p>The latest update in the DeIdentification library brings advanced data privacy with the introduction of the setRegexPatternsDictionaryAsJsonString method. This powerful feature empowers users to create custom regular expression patterns for masking specific protected entities.</p>
+    <ul>
+      <li><strong><code class="language-plaintext highlighter-rouge">hl7v2_deidentification_base</code></strong> de-identifies only the structured PHI fields and leaves narrative fields untouched.</li>
+      <li><strong><code class="language-plaintext highlighter-rouge">hl7v2_deidentification_free_text</code></strong> applies the same structured map and additionally routes the narrative fields <code class="language-plaintext highlighter-rouge">OBX-5</code> and <code class="language-plaintext highlighter-rouge">NTE-3</code> through a Healthcare NLP de-identification pipeline (set with <code class="language-plaintext highlighter-rouge">setPipeline()</code>), so PHI written in prose is de-identified too.</li>
+    </ul>
 
-  <p><em>Example</em>:</p>
+    <p><strong>Example</strong></p>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">deid</span> <span class="o">=</span> <span class="n">DeIdentification</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner_chunk"</span><span class="p">])</span> \
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"deidentified"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setMode</span><span class="p">(</span><span class="s">"mask"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setRegexPatternsDictionaryAsJsonString</span><span class="p">(</span><span class="s">"{'NUMBER':'\d+'},"</span><span class="o">+</span>
-                                            <span class="s">"{'NUMBER':'(\d+.?\d+.?\d+)'}"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setRegexOverride</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span> <span class="c1"># Prioritizing regex rules
-</span>
-<span class="n">text</span> <span class="o">=</span><span class="s">'''
-Record date : 2093-01-13 , David Hale , M.D . , Name : Hendrickson Ora , MR # 7194334 Date : 01/13/93 . PCP : Oliveira , 25 years-old , Record date : 2079-11-09 . Cocke County Baptist Hospital , Keats Street , ZIP 45662, Phone 55-555-5555 .
-'''</span>
-</code></pre></div>  </div>
+    <p>Take a short, synthetic <code class="language-plaintext highlighter-rouge">ORU^R01</code> lab-result message that carries PHI both in structured fields and in a free-text narrative (<code class="language-plaintext highlighter-rouge">OBX-5</code>, <code class="language-plaintext highlighter-rouge">NTE-3</code>):</p>
 
-  <p><em>Without RegexOverride Results (default regex)</em>:</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hl7_v2_message</span> <span class="o">=</span> <span class="s">"""YOUR_HL7_HERE"""</span>
 
-  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>Record <span class="nb">date</span> : &lt;DATE&gt; , David Hale , M.D ., , Name : Hendrickson Ora ,  Date : &lt;DATE&gt; ., PCP : Oliveira , 25 years-old , Record <span class="nb">date</span> : &lt;DATE&gt; ., Cocke County Baptist Hospital , Keats Street , ZIP 45662, Phone &lt;PHONE&gt; .]
-</code></pre></div>  </div>
+<span class="c1"># The free-text model routes OBX-5 / NTE-3 through a clinical de-identification pipeline,
+# so we load one first. It returns its de-identified text in the "obfuscated" column.
+</span><span class="n">deid_pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span>
+    <span class="s">"clinical_deidentification_docwise_benchmark_optimized_v2"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span>
+<span class="p">)</span>
 
-  <p><em>With RegexOverride Results (custom regex)</em>:</p>
+<span class="n">deid</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">Hl7v2DeIdentification</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"hl7v2_deidentification_free_text"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
+        <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+        <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"deid"</span><span class="p">)</span>
+        <span class="p">.</span><span class="n">setMode</span><span class="p">(</span><span class="s">"obfuscate"</span><span class="p">)</span>
+        <span class="p">.</span><span class="n">setDays</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+        <span class="p">.</span><span class="n">setSeed</span><span class="p">(</span><span class="mi">88</span><span class="p">)</span>
+        <span class="p">.</span><span class="n">setPipeline</span><span class="p">(</span><span class="n">spark</span><span class="p">,</span> <span class="n">deid_pipeline</span><span class="p">,</span> <span class="s">"obfuscated"</span><span class="p">)</span>
+<span class="p">)</span>
 
-  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>Record <span class="nb">date</span> : &lt;NUMBER&gt; , David Hale , M.D ., , Name : Hendrickson Ora ,  Date : &lt;NUMBER&gt; ., PCP : Oliveira , &lt;NUMBER&gt; years-old , Record <span class="nb">date</span> : &lt;NUMBER&gt; ., Cocke County Baptist Hospital , Keats Street , ZIP &lt;NUMBER&gt;, Phone &lt;NUMBER&gt; .]
-</code></pre></div>  </div>
+<span class="n">obfuscated</span> <span class="o">=</span> <span class="n">deid</span><span class="p">.</span><span class="n">deidentify</span><span class="p">(</span><span class="n">hl7_v2_message</span><span class="p">)</span>
+</code></pre></div>    </div>
 
-  <ul>
-    <li>Merging default regex rules and custom user-defined regex with <code class="language-plaintext highlighter-rouge">setCombineRegexPatterns</code></li>
-  </ul>
+    <p>Running this on the message below (<code class="language-plaintext highlighter-rouge">hl7_v2_message</code>):</p>
 
-  <p><em>Example</em>:</p>
+    <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>MSH|^~\&amp;|LAB|GOOD HEALTH LAB|EHR|GOOD HEALTH HOSPITAL|20240108090000||ORU^R01|MSG00002|P|2.4
+PID|1||MRN123456^^^GHH^MR||DOE^JOHN^MICHAEL||19800101|M|||123 Main Street^^Boston^MA^02108^USA||617-555-1122
+OBR|1|ORD123|FILL456|CBC^Complete Blood Count|||20240108083000|||||||||004777^SMITH^ROBERT
+OBX|1|TX|NARR^Narrative||Patient John Doe was seen on 01/08/2024 at Good Health Hospital and reports mild fatigue. He lives at 123 Main Street, Boston and can be reached at 617-555-1122.||||||F
+NTE|1||Follow up with Dr. Robert Smith at 617-555-9000 in two weeks.
+</code></pre></div>    </div>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">deid</span> <span class="o">=</span> <span class="n">DeIdentification</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner_chunk"</span><span class="p">])</span> \
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"deidentified"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setMode</span><span class="p">(</span><span class="s">"mask"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setCombineRegexPatterns</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setRegexPatternsDictionary</span><span class="p">(</span><span class="s">"./custom_regex.txt"</span><span class="p">)</span>
-</code></pre></div>  </div>
+    <p>De-identifying it with the free-text model obfuscates the structured PHI <strong>and</strong> routes the narrative fields through the NLP pipeline, while leaving the message structure, segment codes and clinical content intact:</p>
 
-  <p>Please check: <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.Clinical_DeIdentification.ipynb">Clinical DeIdentification Notebook</a> for more information</p>
+    <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>MSH|^~\&amp;|LAB|GOOD HEALTH LAB|EHR|GOOD HEALTH HOSPITAL|20240128090000||ORU^R01|MSG00002|P|2.4
+PID|1||TMC678901^^^GHH^MR||CEASE^MYLENE^ANOLA||19800121|M|||1011 North Cooper Street^^Allenchester^VA^57653^USA||162-000-6677
+OBR|1|ORD123|FILL456|CBC^Complete Blood Count|||20240128083000|||||||||559222^LITTER^DERREK
+OBX|1|TX|NARR^Narrative||Patient Valerie Ates was seen on 18/09/2024 at Medical Center Of Trinity and reports mild fatigue. He lives at 2001 Ladbrook Drive, Winder and can be reached at 839-777-3344.||||||F
+NTE|1||Follow up with Dr. Elidia Plump at 839-777-1222 in two weeks.
+</code></pre></div>    </div>
 
-</div>
-<div class="h3-box">
+    <p>Notice that the patient name (<code class="language-plaintext highlighter-rouge">PID-5</code>), MRN (<code class="language-plaintext highlighter-rouge">PID-3</code>), date of birth (<code class="language-plaintext highlighter-rouge">PID-7</code>), address (<code class="language-plaintext highlighter-rouge">PID-11</code>), phone (<code class="language-plaintext highlighter-rouge">PID-13</code>), message timestamp (<code class="language-plaintext highlighter-rouge">MSH-7</code>) and ordering physician (<code class="language-plaintext highlighter-rouge">OBR-16</code>) are all obfuscated in the structured fields, while the narrative in <code class="language-plaintext highlighter-rouge">OBX-5</code> and <code class="language-plaintext highlighter-rouge">NTE-3</code> is de-identified as natural language — with dates consistently shifted by the same offset across the whole message.</p>
 
-  <h4 id="robust-exception-handling-in-medicalnermodel-for-corrupted-inputs">Robust Exception Handling in <code class="language-plaintext highlighter-rouge">MedicalNerModel</code> for Corrupted Inputs</h4>
+    <blockquote>
+      <p>For a feed without free text (or where narrative fields are handled elsewhere), use <code class="language-plaintext highlighter-rouge">hl7v2_deidentification_base</code> instead — it needs no pipeline and no <code class="language-plaintext highlighter-rouge">setPipeline()</code> call.</p>
+    </blockquote>
 
-  <p>Enhance the resilience of your Medical Named Entity Recognition (NER) model with the ExceptionHandling feature. When the <code class="language-plaintext highlighter-rouge">setDoExceptionHandling</code> is set to true, the model attempts to compute batch-wise as usual. In the event of an exception within a batch, the system switches to row-wise processing. Any exception during row processing results in the emission of an Error Annotation, ensuring that only the problematic rows are lost rather than the entire batch.</p>
+  </div>
+  <div class="h3-box">
 
-  <p><em>Example</em>:</p>
+    <h4 id="de-identification-enhancements">De-Identification Enhancements</h4>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">clinical_ner</span> <span class="o">=</span> <span class="n">MedicalNerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"ner_oncology"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">])</span> \
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setDoExceptionHandling</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
-</code></pre></div>  </div>
+    <p>This release extends the de-identification family with several new capabilities across the <code class="language-plaintext highlighter-rouge">DeIdentification</code>, <code class="language-plaintext highlighter-rouge">LightDeIdentification</code>, <code class="language-plaintext highlighter-rouge">StructuredDeidentification</code> and <code class="language-plaintext highlighter-rouge">ReIdentification</code> components.</p>
 
-  <p>Please check: <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.Clinical_Named_Entity_Recognition_Model.ipynb">Clinical Named Entity Recognition Notebook</a> for more information</p>
+    <p><strong>Nationality-aware name obfuscation (<code class="language-plaintext highlighter-rouge">setNationalityAwareness</code>)</strong></p>
 
-</div>
-<div class="h3-box">
+    <p>When enabled, the original name’s nationality is detected from embedded, gender-separated nationality name lists (e.g. Arab, French, Spanish, German, Russian, Turkish, and more) and the fake name is generated from the <strong>same nationality and gender</strong>. This preserves the demographic character of the document while still removing the real identity. The feature is supported for <strong>English</strong> (<code class="language-plaintext highlighter-rouge">language == "en"</code>); for other languages it is automatically disabled, and if the nationality cannot be detected the obfuscation falls back to the regular behavior (gender-aware when <code class="language-plaintext highlighter-rouge">genderAwareness</code> is enabled, otherwise the default faker lists).</p>
 
-  <h4 id="various-core-improvements-bug-fixes-enhanced-overall-robustness-and-reliability-of-spark-nlp-for-healthcare">Various Core Improvements: Bug Fixes, Enhanced Overall Robustness, And Reliability Of Spark NLP For Healthcare</h4>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">deid</span><span class="p">.</span><span class="n">setNationalityAwareness</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div>    </div>
 
-  <ul>
-    <li>Enhanced the <code class="language-plaintext highlighter-rouge">ChunkSentenceSplitter</code> annotator and revised documentation</li>
-    <li>Updated the <code class="language-plaintext highlighter-rouge">training_log_parser</code> and its utility script to align with the latest NumPy version</li>
-    <li>Transitioned the SecureRandom algorithm from Spark configuration to the system environment. Please check the previous <a href="https://nlp.johnsnowlabs.com/docs/en/spark_nlp_healthcare_versions/release_notes_5_1_3">Random Seed Algorithm</a> implementation for details.</li>
-    <li>Revised some imports for improved functionality in Deidentification</li>
-  </ul>
+    <p><strong>ID-based obfuscation (<code class="language-plaintext highlighter-rouge">setIdBasedObfuscation</code>)</strong></p>
 
-</div>
-<div class="h3-box">
+    <p>Makes name obfuscation depend on the document ID (read from the <code class="language-plaintext highlighter-rouge">id</code> metadata of the document), for name-related entities (<code class="language-plaintext highlighter-rouge">NAME</code>, <code class="language-plaintext highlighter-rouge">PATIENT</code>, <code class="language-plaintext highlighter-rouge">DOCTOR</code>, <code class="language-plaintext highlighter-rouge">SIGNING_PERSON</code>, <code class="language-plaintext highlighter-rouge">PERSON</code>, <code class="language-plaintext highlighter-rouge">CLIENT</code>, <code class="language-plaintext highlighter-rouge">FIRST_NAME</code>, <code class="language-plaintext highlighter-rouge">LAST_NAME</code>):</p>
 
-  <h4 id="updated-notebooks-and-demonstrations-for-making-spark-nlp-for-healthcare-easier-to-navigate-and-understand">Updated Notebooks And Demonstrations For making Spark NLP For Healthcare Easier To Navigate And Understand</h4>
+    <ul>
+      <li>Same document ID + same name → <strong>same fake</strong> (consistent within a document)</li>
+      <li>Same document ID + different names → different fakes</li>
+      <li>Different document IDs + same name → <strong>different fakes</strong> (a name is obfuscated differently across documents)</li>
+    </ul>
 
-  <ul>
-    <li>New <a href="https://demo.johnsnowlabs.com/healthcare/ER_DRUG/">Drug Resolver Demo</a></li>
-    <li>Updated <a href="https://demo.johnsnowlabs.com/healthcare/NER_CLINICAL_MULTI/">Multi Language Clinical NER Demo</a></li>
-    <li>New <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/38.InternalDocumentSplitter.ipynb">Medical Document Splitter Notebook</a></li>
-    <li>Updated <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.Clinical_Named_Entity_Recognition_Model.ipynb">Clinical Named Entity Recognition Notebook</a> with <code class="language-plaintext highlighter-rouge">setDoExceptionHandling</code> information</li>
-    <li>Updated <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.Clinical_DeIdentification.ipynb">Clinical DeIdentification Notebook</a> with <code class="language-plaintext highlighter-rouge">setRegexPatternsDictionaryAsJsonString</code> and <code class="language-plaintext highlighter-rouge">setCombineRegexPatterns</code> examples</li>
-    <li>Updated <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/3.1.Calculate_Medicare_Risk_Adjustment_Score.ipynb">Calculate Medicare Risk Adjustment Score Notebook</a> with the latest improvement</li>
-  </ul>
+    <p>It works together with <code class="language-plaintext highlighter-rouge">genderAwareness</code> and <code class="language-plaintext highlighter-rouge">nationalityAwareness</code>, and falls back to seed-based selection when no document ID is available.</p>
 
-</div>
-<div class="h3-box">
+    <p><strong>Encrypted mappings (aux) column (<code class="language-plaintext highlighter-rouge">setAuxEncryptionKey</code>)</strong></p>
 
-  <p>For all Spark NLP for Healthcare models, please check: <a href="https://nlp.johnsnowlabs.com/models?edition=Healthcare+NLP">Models Hub Page</a></p>
+    <p>The mappings/aux column carries the original values so that <code class="language-plaintext highlighter-rouge">ReIdentification</code> can restore the original text. Setting an encryption key now encrypts the sensitive fields of that column with <strong>AES-256-GCM</strong>, so it can be stored next to the de-identified data without exposing the originals. The <strong>same key must be set on both sides</strong> — on the de-identification annotator that produces the column and on <code class="language-plaintext highlighter-rouge">ReIdentification</code> that consumes it. The key is never persisted in clear text: it is wrapped before being stored in the annotator, so a saved pipeline never contains the raw passphrase. When no key is set, the mappings column keeps its plain, backward-compatible behavior.</p>
 
-</div>
-<div class="h3-box">
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">de_identification</span> <span class="o">=</span> <span class="n">DeIdentification</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setReturnEntityMappings</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setMappingsColumn</span><span class="p">(</span><span class="s">"aux"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setAuxEncryptionKey</span><span class="p">(</span><span class="s">"my-secret-key"</span><span class="p">)</span>
 
-  <h2 id="versions">Versions</h2>
+<span class="n">re_identification</span> <span class="o">=</span> <span class="n">ReIdentification</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setAuxEncryptionKey</span><span class="p">(</span><span class="s">"my-secret-key"</span><span class="p">)</span>
+</code></pre></div>    </div>
 
-</div>
-<ul class="pagination">
+    <p><strong>Entity-level date-to-year conversion (<code class="language-plaintext highlighter-rouge">setDateToYearEntities</code>)</strong></p>
+
+    <p>Previously the <code class="language-plaintext highlighter-rouge">dateToYear</code> flag governed all date entities globally. The new <code class="language-plaintext highlighter-rouge">dateToYearEntities</code> parameter lets you convert <strong>only specific date entities</strong> (e.g. <code class="language-plaintext highlighter-rouge">DOB</code>) to year-only, while every other date entity keeps the regular format-preserving date displacement. When the list is non-empty it overrides the global <code class="language-plaintext highlighter-rouge">dateToYear</code> flag for the listed entities; when empty (default), the global flag applies.</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">deid</span><span class="p">.</span><span class="n">setDateToYearEntities</span><span class="p">([</span><span class="s">"DOB"</span><span class="p">,</span> <span class="s">"DOD"</span><span class="p">])</span>
+</code></pre></div>    </div>
+
+    <p><strong>State-format-aware STATE obfuscation</strong></p>
+
+    <p>STATE obfuscation is now format aware: a spelled-out state (e.g. “New York”) is replaced by a spelled-out fake, and a two-letter abbreviation (e.g. “NY”) is replaced by a two-letter fake, backed by two mirrored resources (<code class="language-plaintext highlighter-rouge">state/en.txt</code> and <code class="language-plaintext highlighter-rouge">state/abbreviation_en.txt</code>). The check is format-based rather than membership-based, so a two-letter STATE chunk is always replaced by a two-letter value — the obfuscated output never leaks whether the original was a real state — and the two formats interoperate correctly with the geographic-consistency path.</p>
+
+    <p><strong>Refreshed faker resources</strong></p>
+
+    <p>The faker resources were cleaned and expanded: offensive entries were removed from the faker name lists, US state abbreviations were added, and person-name and street/location lists were corrected and broadened across <code class="language-plaintext highlighter-rouge">en</code>, <code class="language-plaintext highlighter-rouge">de</code>, <code class="language-plaintext highlighter-rouge">es</code>, <code class="language-plaintext highlighter-rouge">fr</code>, <code class="language-plaintext highlighter-rouge">ro</code> and <code class="language-plaintext highlighter-rouge">ar</code>.</p>
+
+  </div>
+  <div class="h3-box">
+
+    <h4 id="train-tensorflow-based-annotators-without-tensorflow-embedded-graphs-for-classifier-relation-extraction-and-assertion-training">Train TensorFlow-Based Annotators Without TensorFlow: Embedded Graphs for Classifier, Relation Extraction and Assertion Training</h4>
+
+    <p>Training the TensorFlow-based annotators of Healthcare NLP used to require you to <strong>generate a TensorFlow graph yourself</strong> before calling <code class="language-plaintext highlighter-rouge">fit()</code>:</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp_jsl.training</span> <span class="kn">import</span> <span class="n">tf_graph</span>
+
+<span class="n">tf_graph</span><span class="p">.</span><span class="n">build</span><span class="p">(</span><span class="s">"relation_extraction"</span><span class="p">,</span>
+               <span class="n">build_params</span><span class="o">=</span><span class="p">{</span><span class="s">"input_dim"</span><span class="p">:</span> <span class="mi">1149</span><span class="p">,</span> <span class="s">"output_dim"</span><span class="p">:</span> <span class="mi">13</span><span class="p">,</span> <span class="s">"hidden_layers"</span><span class="p">:</span> <span class="p">[</span><span class="mi">300</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span>
+                             <span class="s">"hidden_act"</span><span class="p">:</span> <span class="s">"relu"</span><span class="p">,</span> <span class="s">"batch_norm"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">"hidden_act_l2"</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+               <span class="n">model_location</span><span class="o">=</span><span class="s">"/dbfs/re_graphs/"</span><span class="p">,</span>
+               <span class="n">model_filename</span><span class="o">=</span><span class="s">"graph_with_re_13_1149.pb"</span><span class="p">)</span>
+
+<span class="n">re_approach</span> <span class="o">=</span> <span class="n">RelationExtractionApproach</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setModelFile</span><span class="p">(</span><span class="s">"/dbfs/re_graphs/graph_with_re_13_1149.pb"</span><span class="p">)</span>   <span class="c1"># was required
+</span></code></pre></div>    </div>
+
+    <p>That graph builder only runs on <code class="language-plaintext highlighter-rouge">tensorflow==2.12.0</code> together with <code class="language-plaintext highlighter-rouge">tensorflow-addons</code>, and <strong>those packages can no longer be installed on current environments</strong>: TensorFlow 2.12 has no wheels for Python 3.12+, and <code class="language-plaintext highlighter-rouge">tensorflow-addons</code> reached its end of life in May 2024. On recent Databricks runtimes and on freshly created Python environments the graph generation step simply failed, which blocked custom training entirely.</p>
+
+    <p>Starting with this release, <strong>1,171 ready-to-use training graphs are shipped inside the Healthcare NLP JAR</strong> and the annotators pick the right one automatically. No TensorFlow installation, no <code class="language-plaintext highlighter-rouge">tf_graph.build</code>, no <code class="language-plaintext highlighter-rouge">setModelFile</code>:</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">re_approach</span> <span class="o">=</span> <span class="n">RelationExtractionApproach</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"embeddings"</span><span class="p">,</span> <span class="s">"pos_tags"</span><span class="p">,</span> <span class="s">"train_ner_chunks"</span><span class="p">,</span> <span class="s">"dependencies"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"relations"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setLabelColumn</span><span class="p">(</span><span class="s">"rel"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setEpochsNumber</span><span class="p">(</span><span class="mi">70</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setBatchSize</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setlearningRate</span><span class="p">(</span><span class="mf">0.001</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setFromEntity</span><span class="p">(</span><span class="s">"begin1i"</span><span class="p">,</span> <span class="s">"end1i"</span><span class="p">,</span> <span class="s">"label1"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setToEntity</span><span class="p">(</span><span class="s">"begin2i"</span><span class="p">,</span> <span class="s">"end2i"</span><span class="p">,</span> <span class="s">"label2"</span><span class="p">)</span>
+
+<span class="c1"># fit() selects a suitable embedded graph on its own
+</span><span class="n">re_model</span> <span class="o">=</span> <span class="n">re_approach</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_data</span><span class="p">)</span>
+</code></pre></div>    </div>
+
+    <p>The selected graph is logged during training, so you always know what was used:</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Selected graph: generic_classifier_dl/gc_1536_13.pb (input_dim: 1536, output_dim: 13) for a dataset with 1149 features and 13 classes.
+</code></pre></div>    </div>
+
+    <p><strong>Supported Annotators</strong></p>
+
+    <p>These annotators now train with the embedded graphs, and their graph parameters became optional:</p>
+
+    <table class="table-model-big">
+      <thead>
+        <tr>
+          <th>Annotator</th>
+          <th>Embedded graph family</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">GenericClassifierApproach</code></td>
+          <td>multi layer perceptron <code class="language-plaintext highlighter-rouge">[300, 200]</code>, relu, softmax, cross entropy</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">RelationExtractionApproach</code></td>
+          <td>same as above</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">FewShotAssertionClassifierApproach</code></td>
+          <td>same as above</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">GenericLogRegClassifierApproach</code></td>
+          <td>logistic regression (no hidden layer), sigmoid, cross entropy</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">FewShotClassifierApproach</code> (including the Finance and Legal variants)</td>
+          <td>same as above</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">GenericSVMClassifierApproach</code></td>
+          <td>linear, sigmoid, hinge loss</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">AssertionDLApproach</code> (including the Finance and Legal variants)</td>
+          <td>3-layer stacked bidirectional LSTM, 34 units</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><code class="language-plaintext highlighter-rouge">MedicalNerApproach</code> and <code class="language-plaintext highlighter-rouge">MedicalNerDLGraphChecker</code> already trained from embedded graphs; this release completes the picture for the remaining TensorFlow-based trainable annotators.</p>
+
+    <p><strong>What Is Shipped</strong></p>
+
+    <table class="table-model-big">
+      <thead>
+        <tr>
+          <th>Graph family</th>
+          <th>Resource folder</th>
+          <th>Graphs</th>
+          <th>Variations</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Generic classifier / Relation extraction / Few-shot assertion</td>
+          <td><code class="language-plaintext highlighter-rouge">generic_classifier_dl</code></td>
+          <td>360</td>
+          <td>15 feature vector sizes x 24 class counts</td>
+        </tr>
+        <tr>
+          <td>Logistic regression / Few-shot classifier</td>
+          <td><code class="language-plaintext highlighter-rouge">logreg_classifier_dl</code></td>
+          <td>360</td>
+          <td>15 feature vector sizes x 24 class counts</td>
+        </tr>
+        <tr>
+          <td>SVM classifier</td>
+          <td><code class="language-plaintext highlighter-rouge">svm_classifier_dl</code></td>
+          <td>360</td>
+          <td>15 feature vector sizes x 24 class counts</td>
+        </tr>
+        <tr>
+          <td>AssertionDL</td>
+          <td><code class="language-plaintext highlighter-rouge">assertion_dl</code></td>
+          <td>91</td>
+          <td>7 embeddings dimensions x 13 class counts</td>
+        </tr>
+        <tr>
+          <td><strong>Total</strong></td>
+          <td> </td>
+          <td><strong>1,171</strong></td>
+          <td> </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <ul>
+      <li><strong>Feature vector sizes</strong> (dense families): 64, 128, 256, 384, 512, 768, 1024, 1536, 2048, 3072, 4096, 6144, 8192, 12288, 16384</li>
+      <li><strong>Class counts</strong> (dense families): every value from 2 to 20, plus 24, 32, 48, 64 and 100</li>
+      <li><strong>Embeddings dimensions</strong> (AssertionDL): 100, 128, 200, 300, 512, 768, 1024</li>
+      <li><strong>Class counts</strong> (AssertionDL): every value from 2 to 12, plus 16 and 20</li>
+    </ul>
+
+    <p>This covers, for example, relation extraction with word embeddings up to 3072 dimensions (a relation feature vector is roughly <code class="language-plaintext highlighter-rouge">5 x embeddings_dim + 149</code>), few-shot classification on any common sentence embeddings model, and assertion status training with <code class="language-plaintext highlighter-rouge">embeddings_clinical</code> (200), GloVe (100 / 300) or BERT-family word embeddings (768 / 1024).</p>
+
+    <p><strong>How the Best Graph Is Selected</strong></p>
+
+    <p>When no graph path is given, the annotator inspects the training data and resolves the graph itself.</p>
+
+    <ul>
+      <li><strong>Dense classifier families.</strong> Feature vectors and one-hot labels are zero padded to the graph dimensions, which is mathematically neutral, so any graph that is <em>large enough</em> trains to the same result. The resolver picks the <strong>smallest graph with <code class="language-plaintext highlighter-rouge">input_dim &gt;= number of features</code> and <code class="language-plaintext highlighter-rouge">output_dim &gt;= number of classes</code></strong>, and always prefers an <strong>exact class count</strong> so the reported metrics are computed on the real classes only.</li>
+      <li><strong>AssertionDL.</strong> Word embeddings and labels are fed with their real dimensions, so the resolver requires an <strong>exact match of both the embeddings dimension and the number of labels</strong>. The embedded graphs accept a <strong>dynamic sequence length</strong>, so a single graph works with any <code class="language-plaintext highlighter-rouge">setMaxSentLen()</code> value.</li>
+      <li><strong>Custom graphs still win.</strong> <code class="language-plaintext highlighter-rouge">setModelFile()</code> (dense families) and <code class="language-plaintext highlighter-rouge">setGraphFile()</code> (AssertionDL) keep overriding everything, so existing training scripts and custom topologies keep working unchanged.</li>
+      <li><strong>New parameter <code class="language-plaintext highlighter-rouge">setGraphFolder()</code></strong> is now available on the generic classifier family as well (it already existed for AssertionDL and MedicalNer). Point it to a folder of your own graphs and the same “smallest suitable graph” logic is applied there.</li>
+    </ul>
+
+    <p>If nothing fits, training fails fast with an actionable message that contains the exact <code class="language-plaintext highlighter-rouge">tf_graph.build</code> call needed to create the missing graph, instead of an obscure TensorFlow error.</p>
+
+    <p><strong>Additional Improvements and Fixes</strong></p>
+
+    <ul>
+      <li><strong><code class="language-plaintext highlighter-rouge">modelFile</code> is optional now</strong> and empty by default; the automatic resolution is used instead. Explicitly set values behave exactly as before.</li>
+      <li><strong>AssertionDL graphs accept a dynamic sequence length</strong>, and the trained <code class="language-plaintext highlighter-rouge">AssertionDLModel</code> now inherits <code class="language-plaintext highlighter-rouge">maxSentLen</code> and <code class="language-plaintext highlighter-rouge">scopeWindow</code> from the approach (fixing a prediction-time mismatch between approach and model defaults, 250 vs 256).</li>
+      <li><strong>AssertionDL graphs are no longer pinned to the CPU</strong>, so assertion training can use a GPU when available.</li>
+      <li><strong>Padded output units can no longer be predicted.</strong> <code class="language-plaintext highlighter-rouge">GenericClassifierModel</code> and <code class="language-plaintext highlighter-rouge">RelationExtractionModel</code> restrict predictions to the trained labels, both for the top label and for <code class="language-plaintext highlighter-rouge">setMultiClass(True)</code> scores.</li>
+      <li><strong><code class="language-plaintext highlighter-rouge">sparknlp_jsl.training.tf_graph</code> fixes</strong> for users who still build custom graphs: <code class="language-plaintext highlighter-rouge">logreg_classifier</code>, <code class="language-plaintext highlighter-rouge">svm_classifier</code> and <code class="language-plaintext highlighter-rouge">fewshot_classifier</code> now carry their complete default parameters, each graph is exported once instead of twice, and <code class="language-plaintext highlighter-rouge">TFGraphBuilder</code> no longer passes an invalid <code class="language-plaintext highlighter-rouge">max_seq_len</code> value for <code class="language-plaintext highlighter-rouge">assertion_dl</code>.</li>
+    </ul>
+
+    <blockquote>
+      <p>The embedded graphs add about 260 MB to the JAR. They contain topologies and initializers only, no trained weights.</p>
+    </blockquote>
+
+  </div>
+  <div class="h3-box">
+
+    <h4 id="updated-81-and-introduced-73-new-entity-resolver-chunkmapper-and-pretrained-pipeline-models-across-16-medical-coding-systems">Updated 81 and Introduced 73 New Entity Resolver, ChunkMapper, and Pretrained Pipeline Models Across 16 Medical Coding Systems</h4>
+
+    <p>This release delivers a comprehensive refresh of the terminology models of Healthcare NLP: <strong>154 models across 16 medical coding systems</strong> — 98 Entity Resolver models, 37 ChunkMapper models and 19 pretrained pipelines, of which <strong>81 are updated and 73 are new</strong>. Each system is trained on its latest official release, from SNOMED CT (US Edition 20260901), LOINC 2.83 and ICD-11 (WHO 2026-01) to RxNorm, NDC, CPT, HCPCS, HPO, HGNC, MeSH and NCIt.</p>
+
+    <ul>
+      <li><strong>Release-versioned model names.</strong> Updated models of several systems now carry the source release in their name (e.g. <code class="language-plaintext highlighter-rouge">_20260901</code>, <code class="language-plaintext highlighter-rouge">_2_83</code>, <code class="language-plaintext highlighter-rouge">_2026</code>, <code class="language-plaintext highlighter-rouge">_202601</code>), so a pipeline can stay pinned to the terminology release it was built for.</li>
+      <li><strong>Mappers for fast exact lookup.</strong> ChunkMapper models map entity text or codes to target codes by dictionary lookup, as a lighter alternative to the resolvers and for crosswalks between coding systems.</li>
+      <li><strong>Pretrained pipelines</strong> package each resolver or mapper with the stages it needs, so it runs as a single <code class="language-plaintext highlighter-rouge">PretrainedPipeline</code> call.</li>
+    </ul>
+
+    <p><strong>SNOMED CT</strong></p>
+
+    <p>Trained on the SNOMED CT US Edition 20260901 release.</p>
+
+    <table class="table-model-big">
+      <thead>
+        <tr>
+          <th>Model Name</th>
+          <th>Type</th>
+          <th>Embeddings</th>
+          <th>Description</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_20260901</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli_onnx</code></td>
+          <td>Maps clinical entities to the full, domain-unrestricted set of active SNOMED CT concepts</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_auxConcepts_20260901</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli_onnx</code></td>
+          <td>Maps clinical entities to SNOMED CT auxiliary/descriptive concept codes</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_bodyStructure_20260901</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli_onnx</code></td>
+          <td>Maps clinical entities to SNOMED CT body structure codes</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_conditions_20260901</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli_onnx</code></td>
+          <td>Maps clinical entities to SNOMED CT condition/disorder codes</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_drug_20260901</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli_onnx</code></td>
+          <td>Maps clinical entities to SNOMED CT drug/substance codes</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_findings_20260901</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli_onnx</code></td>
+          <td>Maps clinical entities to SNOMED CT clinical finding codes</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_no_class_20260901</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli_onnx</code></td>
+          <td>Maps clinical entities to SNOMED CT concepts not assigned to a specific class</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_procedures_measurements_20260901</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli_onnx</code></td>
+          <td>Maps clinical entities to SNOMED CT procedure and measurement codes</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">biolordresolve_snomed_20260901</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">mpnet_embeddings_biolord_2023_c</code></td>
+          <td>Maps clinical entities to the full, domain-unrestricted set of active SNOMED CT concepts</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">biolordresolve_snomed_auxConcepts_20260901</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">mpnet_embeddings_biolord_2023_c</code></td>
+          <td>Maps clinical entities to SNOMED CT auxiliary/descriptive concept codes</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">biolordresolve_snomed_bodyStructure_20260901</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">mpnet_embeddings_biolord_2023_c</code></td>
+          <td>Maps clinical entities to SNOMED CT body structure codes</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">biolordresolve_snomed_conditions_20260901</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">mpnet_embeddings_biolord_2023_c</code></td>
+          <td>Maps clinical entities to SNOMED CT condition/disorder codes</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">biolordresolve_snomed_drug_20260901</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">mpnet_embeddings_biolord_2023_c</code></td>
+          <td>Maps clinical entities to SNOMED CT drug/substance codes</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">biolordresolve_snomed_findings_20260901</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">mpnet_embeddings_biolord_2023_c</code></td>
+          <td>Maps clinical entities to SNOMED CT clinical finding codes</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">biolordresolve_snomed_no_class_20260901</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">mpnet_embeddings_biolord_2023_c</code></td>
+          <td>Maps clinical entities to SNOMED CT concepts not assigned to a specific class</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">biolordresolve_snomed_procedures_measurements_20260901</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">mpnet_embeddings_biolord_2023_c</code></td>
+          <td>Maps clinical entities to SNOMED CT procedure and measurement codes</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">bgeresolve_snomed_20260901</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">bge_base_en_v1_5_onnx</code></td>
+          <td>Maps clinical entities to the full, domain-unrestricted set of active SNOMED CT concepts</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">bgeresolve_snomed_auxConcepts_20260901</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">bge_base_en_v1_5_onnx</code></td>
+          <td>Maps clinical entities to SNOMED CT auxiliary/descriptive concept codes</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">bgeresolve_snomed_bodyStructure_20260901</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">bge_base_en_v1_5_onnx</code></td>
+          <td>Maps clinical entities to SNOMED CT body structure codes</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">bgeresolve_snomed_conditions_20260901</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">bge_base_en_v1_5_onnx</code></td>
+          <td>Maps clinical entities to SNOMED CT condition/disorder codes</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">bgeresolve_snomed_drug_20260901</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">bge_base_en_v1_5_onnx</code></td>
+          <td>Maps clinical entities to SNOMED CT drug/substance codes</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">bgeresolve_snomed_findings_20260901</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">bge_base_en_v1_5_onnx</code></td>
+          <td>Maps clinical entities to SNOMED CT clinical finding codes</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">bgeresolve_snomed_no_class_20260901</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">bge_base_en_v1_5_onnx</code></td>
+          <td>Maps clinical entities to SNOMED CT concepts not assigned to a specific class</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">bgeresolve_snomed_procedures_measurements_20260901</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">bge_base_en_v1_5_onnx</code></td>
+          <td>Maps clinical entities to SNOMED CT procedure and measurement codes</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">icd10cm_snomed_mapper_20260901</code></td>
+          <td>Mapper</td>
+          <td>-</td>
+          <td>Maps ICD-10-CM codes to their corresponding SNOMED CT codes via dictionary lookup</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">icdo_snomed_mapper_20260901</code></td>
+          <td>Mapper</td>
+          <td>-</td>
+          <td>Maps ICD-O codes to their corresponding SNOMED CT codes via dictionary lookup</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">snomed_icd10cm_mapper_20260901</code></td>
+          <td>Mapper</td>
+          <td>-</td>
+          <td>Maps SNOMED CT codes to their corresponding ICD-10-CM codes via dictionary lookup</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">snomed_icdo_mapper_20260901</code></td>
+          <td>Mapper</td>
+          <td>-</td>
+          <td>Maps SNOMED CT codes to their corresponding ICD-O codes via dictionary lookup</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">snomed_mapper_20260901</code></td>
+          <td>Mapper</td>
+          <td>-</td>
+          <td>Maps clinical entities to their corresponding SNOMED CT codes via dictionary lookup</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_auxConcepts_pipeline_20260901</code></td>
+          <td>Pipeline</td>
+          <td>-</td>
+          <td>End-to-end pipeline mapping clinical entities to SNOMED CT auxiliary/descriptive concept codes</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_bodyStructure_pipeline_20260901</code></td>
+          <td>Pipeline</td>
+          <td>-</td>
+          <td>End-to-end pipeline mapping clinical entities to SNOMED CT body structure codes</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_conditions_pipeline_20260901</code></td>
+          <td>Pipeline</td>
+          <td>-</td>
+          <td>End-to-end pipeline mapping clinical entities to SNOMED CT condition/disorder codes</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_drug_pipeline_20260901</code></td>
+          <td>Pipeline</td>
+          <td>-</td>
+          <td>End-to-end pipeline mapping clinical entities to SNOMED CT drug/substance codes</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_findings_pipeline_20260901</code></td>
+          <td>Pipeline</td>
+          <td>-</td>
+          <td>End-to-end pipeline mapping clinical entities to SNOMED CT clinical finding codes</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_no_class_pipeline_20260901</code></td>
+          <td>Pipeline</td>
+          <td>-</td>
+          <td>End-to-end pipeline mapping clinical entities to SNOMED CT concepts not assigned to a specific class</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_pipeline_20260901</code></td>
+          <td>Pipeline</td>
+          <td>-</td>
+          <td>End-to-end pipeline mapping clinical entities to the full, domain-unrestricted set of active SNOMED CT concepts</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_procedures_measurements_pipeline_20260901</code></td>
+          <td>Pipeline</td>
+          <td>-</td>
+          <td>End-to-end pipeline mapping clinical entities to SNOMED CT procedure and measurement codes</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">biolordresolve_snomed_pipeline_20260901</code></td>
+          <td>Pipeline</td>
+          <td>-</td>
+          <td>End-to-end pipeline mapping clinical entities to the full, domain-unrestricted set of active SNOMED CT concepts</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">bgeresolve_snomed_pipeline_20260901</code></td>
+          <td>Pipeline</td>
+          <td>-</td>
+          <td>End-to-end pipeline mapping clinical entities to the full, domain-unrestricted set of active SNOMED CT concepts</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">icd10cm_snomed_mapping_pipeline_20260901</code></td>
+          <td>Pipeline</td>
+          <td>-</td>
+          <td>End-to-end pipeline mapping ICD-10-CM codes to their corresponding SNOMED CT codes</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">icdo_snomed_mapping_pipeline_20260901</code></td>
+          <td>Pipeline</td>
+          <td>-</td>
+          <td>End-to-end pipeline mapping ICD-O codes to their corresponding SNOMED CT codes</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">snomed_icd10cm_mapping_pipeline_20260901</code></td>
+          <td>Pipeline</td>
+          <td>-</td>
+          <td>End-to-end pipeline mapping SNOMED CT codes to their corresponding ICD-10-CM codes</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">snomed_icdo_mapping_pipeline_20260901</code></td>
+          <td>Pipeline</td>
+          <td>-</td>
+          <td>End-to-end pipeline mapping SNOMED CT codes to their corresponding ICD-O codes</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">snomed_mapping_pipeline_20260901</code></td>
+          <td>Pipeline</td>
+          <td>-</td>
+          <td>End-to-end pipeline mapping clinical entities to their corresponding SNOMED CT codes</td>
+          <td>New</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><strong>LOINC</strong></p>
+
+    <p>Trained on the official LOINC 2.83 dataset.</p>
+
+    <table class="table-model-big">
+      <thead>
+        <tr>
+          <th>Model Name</th>
+          <th>Type</th>
+          <th>Embeddings</th>
+          <th>Description</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_loinc_2_83</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli_onnx</code></td>
+          <td>Maps clinical entities to LOINC codes</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_loinc_augmented_2_83</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli_onnx</code></td>
+          <td>Maps clinical entities to LOINC codes, including non-numeric Part/Answer/Panel/Survey codes</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_loinc_numeric_2_83</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli_onnx</code></td>
+          <td>Maps clinical entities to numeric, directly orderable/reportable LOINC codes</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_loinc_numeric_augmented_2_83</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli_onnx</code></td>
+          <td>Maps clinical entities to numeric LOINC codes, augmented training corpus</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">biolordresolve_loinc_2_83</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">mpnet_embeddings_biolord_2023_c</code></td>
+          <td>Maps clinical entities to LOINC codes</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">biolordresolve_loinc_augmented_2_83</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">mpnet_embeddings_biolord_2023_c</code></td>
+          <td>Maps clinical entities to LOINC codes, including non-numeric Part/Answer/Panel/Survey codes</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">biolordresolve_loinc_numeric_2_83</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">mpnet_embeddings_biolord_2023_c</code></td>
+          <td>Maps clinical entities to numeric, directly orderable/reportable LOINC codes</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">biolordresolve_loinc_numeric_augmented_2_83</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">mpnet_embeddings_biolord_2023_c</code></td>
+          <td>Maps clinical entities to numeric LOINC codes, augmented training corpus</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">bgeresolve_loinc_2_83</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">bge_base_en_v1_5_onnx</code></td>
+          <td>Maps clinical entities to LOINC codes</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">bgeresolve_loinc_augmented_2_83</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">bge_base_en_v1_5_onnx</code></td>
+          <td>Maps clinical entities to LOINC codes, including non-numeric Part/Answer/Panel/Survey codes</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">bgeresolve_loinc_numeric_2_83</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">bge_base_en_v1_5_onnx</code></td>
+          <td>Maps clinical entities to numeric, directly orderable/reportable LOINC codes</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">bgeresolve_loinc_numeric_augmented_2_83</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">bge_base_en_v1_5_onnx</code></td>
+          <td>Maps clinical entities to numeric LOINC codes, augmented training corpus</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">loinc_mapper_2_83</code></td>
+          <td>Mapper</td>
+          <td>-</td>
+          <td>Maps clinical entities to LOINC codes via dictionary lookup</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">loinc_numeric_mapper_2_83</code></td>
+          <td>Mapper</td>
+          <td>-</td>
+          <td>Maps clinical entities to numeric LOINC codes via dictionary lookup</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_loinc_augmented_pipeline_2_83</code></td>
+          <td>Pipeline</td>
+          <td>-</td>
+          <td>End-to-end pipeline mapping clinical entities to LOINC codes, including non-numeric Part/Answer/Panel/Survey codes</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_loinc_numeric_augmented_pipeline_2_83</code></td>
+          <td>Pipeline</td>
+          <td>-</td>
+          <td>End-to-end pipeline mapping clinical entities to numeric LOINC codes, augmented training corpus</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_loinc_numeric_pipeline_2_83</code></td>
+          <td>Pipeline</td>
+          <td>-</td>
+          <td>End-to-end pipeline mapping clinical entities to numeric LOINC codes</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_loinc_pipeline_2_83</code></td>
+          <td>Pipeline</td>
+          <td>-</td>
+          <td>End-to-end pipeline mapping clinical entities to LOINC codes</td>
+          <td>New</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><strong>ICD-10-CM</strong></p>
+
+    <p>Trained on the ICD-10-CM 20260401 (FY2026, effective April 1, 2026) code set.</p>
+
+    <table class="table-model-big">
+      <thead>
+        <tr>
+          <th>Model Name</th>
+          <th>Type</th>
+          <th>Embeddings</th>
+          <th>Description</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_icd10cm_augmented</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli_onnx</code></td>
+          <td>Maps clinical entities to ICD-10-CM codes, augmented with synonyms</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_icd10cm_augmented_billable_hcc</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli_onnx</code></td>
+          <td>Maps clinical entities to ICD-10-CM codes, augmented with synonyms, with billable status and HCC score</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_icd10cm_generalised</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli_onnx</code></td>
+          <td>Maps clinical entities to 3-character ICD-10-CM categories</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_icd10cm_generalised_augmented</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli_onnx</code></td>
+          <td>Maps clinical entities to 3-character ICD-10-CM categories, augmented with synonyms</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_icd10cm_slim_billable_hcc</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli_onnx</code></td>
+          <td>Maps clinical entities to ICD-10-CM codes (slim version), with billable status and HCC score</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_icd10cm_slim_normalized</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli_onnx</code></td>
+          <td>Maps clinical entities to ICD-10-CM codes (slim version, normalized)</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbertresolve_icd10cm_augmented</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">sbert_jsl_medium_uncased</code></td>
+          <td>Maps clinical entities to ICD-10-CM codes, augmented with synonyms</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbertresolve_icd10cm_augmented_billable_hcc</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">sbert_jsl_medium_uncased</code></td>
+          <td>Maps clinical entities to ICD-10-CM codes, augmented with synonyms, with billable status and HCC score</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbertresolve_icd10cm_slim_billable_hcc</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">sbert_jsl_medium_uncased</code></td>
+          <td>Maps clinical entities to ICD-10-CM codes (slim version), with billable status and HCC score</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">biolordresolve_icd10cm_augmented_billable_hcc</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">mpnet_embeddings_biolord_2023_c</code></td>
+          <td>Maps clinical entities to ICD-10-CM codes, augmented with synonyms, with billable status and HCC score</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">bgeresolve_icd10cm</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">bge_base_en_v1_5_onnx</code></td>
+          <td>Maps clinical entities to ICD-10-CM codes, augmented with synonyms</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">icd10cm_billable_hcc_mapper</code></td>
+          <td>Mapper</td>
+          <td>-</td>
+          <td>Maps an ICD-10-CM code to its billable status and HCC score</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">icd10cm_generalised_mapper</code></td>
+          <td>Mapper</td>
+          <td>-</td>
+          <td>Maps an ICD-10-CM code to its 3-character generalised category and chapter name</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">icd10cm_mapper</code></td>
+          <td>Mapper</td>
+          <td>-</td>
+          <td>Maps clinical entities to their corresponding ICD-10-CM codes via dictionary lookup</td>
+          <td>Updated</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><strong>ICD-10-PCS</strong></p>
+
+    <p>Trained on the ICD-10-PCS 20260401 (FY2026, effective April 1, 2026) code set.</p>
+
+    <table class="table-model-big">
+      <thead>
+        <tr>
+          <th>Model Name</th>
+          <th>Type</th>
+          <th>Embeddings</th>
+          <th>Description</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_icd10pcs</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli_onnx</code></td>
+          <td>Maps procedure entities to ICD-10-PCS codes</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_icd10pcs_augmented</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli_onnx</code></td>
+          <td>Maps procedure entities to ICD-10-PCS codes, augmented with synonyms</td>
+          <td>Updated</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><strong>CMS-HCC</strong></p>
+
+    <p>Trained on the ICD-10-CM 20260401 release, with CMS-HCC (ESRD V24, 2026 midyear final).</p>
+
+    <table class="table-model-big">
+      <thead>
+        <tr>
+          <th>Model Name</th>
+          <th>Type</th>
+          <th>Embeddings</th>
+          <th>Description</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_hcc_augmented</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli_onnx</code></td>
+          <td>Maps clinical entities to CMS-HCC ESRD V24 risk-adjustment category codes</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbertresolve_hcc_augmented</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">sbert_jsl_medium_uncased</code></td>
+          <td>Maps clinical entities to CMS-HCC ESRD V24 risk-adjustment category codes</td>
+          <td>Updated</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><strong>ICD-11</strong></p>
+
+    <p>Trained on the WHO ICD-11 2026-01 release.</p>
+
+    <table class="table-model-big">
+      <thead>
+        <tr>
+          <th>Model Name</th>
+          <th>Type</th>
+          <th>Embeddings</th>
+          <th>Description</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_icd11_202601</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli_onnx</code></td>
+          <td>Maps clinical entities to ICD-11 codes</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_icd11_augmented_202601</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli_onnx</code></td>
+          <td>Maps clinical entities to ICD-11 codes, synonym-augmented</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">icd10_icd11_mapper_202601</code></td>
+          <td>Mapper</td>
+          <td>-</td>
+          <td>Maps ICD-10 codes to their corresponding ICD-11 code(s) and relation type</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">icd11_icd10_mapper_202601</code></td>
+          <td>Mapper</td>
+          <td>-</td>
+          <td>Maps ICD-11 codes to their corresponding ICD-10 codes</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">icd11_mapper_202601</code></td>
+          <td>Mapper</td>
+          <td>-</td>
+          <td>Maps clinical entities to ICD-11 codes via dictionary lookup</td>
+          <td>New</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><strong>ICD-O</strong></p>
+
+    <p>Trained on the ICD-O-3.2 2026 update dataset.</p>
+
+    <table class="table-model-big">
+      <thead>
+        <tr>
+          <th>Model Name</th>
+          <th>Type</th>
+          <th>Embeddings</th>
+          <th>Description</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_icdo_augmented_2026</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli_onnx</code></td>
+          <td>Maps clinical/oncology entities to ICD-O morphology/topography codes</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">biolordresolve_icdo_augmented_2026</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">mpnet_embeddings_biolord_2023_c</code></td>
+          <td>Maps clinical/oncology entities to ICD-O morphology/topography codes</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">bgeresolve_icdo_augmented_2026</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">bge_base_en_v1_5_onnx</code></td>
+          <td>Maps clinical/oncology entities to ICD-O morphology/topography codes</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">icdo_mapper</code></td>
+          <td>Mapper</td>
+          <td>-</td>
+          <td>Maps oncology entities to ICD-O codes via dictionary lookup</td>
+          <td>New</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><strong>RxNorm</strong></p>
+
+    <p>Trained on the RxNorm 20260601 release.</p>
+
+    <table class="table-model-big">
+      <thead>
+        <tr>
+          <th>Model Name</th>
+          <th>Type</th>
+          <th>Embeddings</th>
+          <th>Description</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_rxnorm_augmented_v2</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli_onnx</code></td>
+          <td>Maps drug entities to RxNorm codes</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">biolordresolve_avg_rxnorm_augmented_v2</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">mpnet_embeddings_biolord_2023</code></td>
+          <td>Maps drug entities to RxNorm codes</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">biolordresolve_rxnorm_augmented_v2</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">mpnet_embeddings_biolord_2023_c</code></td>
+          <td>Maps drug entities to RxNorm codes</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">bgeresolve_rxnorm</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">bge_base_en_v1_5_onnx</code></td>
+          <td>Maps drug entities to RxNorm codes</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">medembed_base_rxnorm_augmented</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">bge_medembed_base_v0_1</code></td>
+          <td>Maps drug entities to RxNorm codes</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">medembed_large_rxnorm_augmented</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">bge_medembed_large_v0_1</code></td>
+          <td>Maps drug entities to RxNorm codes</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">rxnorm_mapper</code></td>
+          <td>Mapper</td>
+          <td>-</td>
+          <td>Maps drug entities to RxNorm codes via dictionary lookup</td>
+          <td>Updated</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><strong>NDC</strong></p>
+
+    <p>Trained on the openFDA NDC Directory (release 2026-07-22).</p>
+
+    <table class="table-model-big">
+      <thead>
+        <tr>
+          <th>Model Name</th>
+          <th>Type</th>
+          <th>Embeddings</th>
+          <th>Description</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_ndc</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli_onnx</code></td>
+          <td>Maps clinical drug entities to NDC codes</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">biolordresolve_ndc</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">mpnet_embeddings_biolord_2023_c</code></td>
+          <td>Maps clinical drug entities to NDC codes</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">bgeresolve_ndc</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">bge_base_en_v1_5_onnx</code></td>
+          <td>Maps clinical drug entities to NDC codes</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">drug_brandname_ndc_mapper</code></td>
+          <td>Mapper</td>
+          <td>-</td>
+          <td>Maps drug brand names to NDC codes</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">hcpcs_ndc_mapper</code></td>
+          <td>Mapper</td>
+          <td>-</td>
+          <td>Maps HCPCS codes to their corresponding NDC codes and brand names</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">ndc_drug_brandname_mapper</code></td>
+          <td>Mapper</td>
+          <td>-</td>
+          <td>Maps NDC codes to their corresponding drug brand names</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">ndc_hcpcs_mapper</code></td>
+          <td>Mapper</td>
+          <td>-</td>
+          <td>Maps NDC codes to their corresponding HCPCS codes and descriptions</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">ndc_mapper</code></td>
+          <td>Mapper</td>
+          <td>-</td>
+          <td>Maps drug entities extracted from clinical text to NDC codes</td>
+          <td>New</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><strong>ATC</strong></p>
+
+    <p>Trained on the WHO ATC-DDD dataset (release 2026-04-25).</p>
+
+    <table class="table-model-big">
+      <thead>
+        <tr>
+          <th>Model Name</th>
+          <th>Type</th>
+          <th>Embeddings</th>
+          <th>Description</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_atc</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli_onnx</code></td>
+          <td>Maps drug entities to ATC codes</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">biolordresolve_atc</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">mpnet_embeddings_biolord_2023_c</code></td>
+          <td>Maps drug entities to ATC codes</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">bgeresolve_atc</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">bge_base_en_v1_5_onnx</code></td>
+          <td>Maps drug entities to ATC codes</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">atc_mapper</code></td>
+          <td>Mapper</td>
+          <td>-</td>
+          <td>Maps drug entities to ATC codes via dictionary lookup</td>
+          <td>New</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><strong>CPT</strong></p>
+
+    <p>Trained on CPT 2026 data, further augmented by John Snow Labs for broader coverage.</p>
+
+    <blockquote>
+      <p>⚠️ CPT models are available only to users with a valid AMA license. Contact support@johnsnowlabs.com for access.</p>
+    </blockquote>
+
+    <table class="table-model-big">
+      <thead>
+        <tr>
+          <th>Model Name</th>
+          <th>Type</th>
+          <th>Embeddings</th>
+          <th>Description</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_cpt_augmented</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli_onnx</code></td>
+          <td>Maps clinical procedure entities to CPT codes</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_cpt_procedures_measurements_augmented</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli_onnx</code></td>
+          <td>Maps clinical procedure and measurement entities to CPT codes</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">biolordresolve_cpt_augmented</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">mpnet_embeddings_biolord_2023_c</code></td>
+          <td>Maps clinical procedure entities to CPT codes</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">biolordresolve_cpt_procedures_measurements_augmented</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">mpnet_embeddings_biolord_2023_c</code></td>
+          <td>Maps clinical procedure and measurement entities to CPT codes</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">bgeresolve_cpt_augmented</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">bge_base_en_v1_5_onnx</code></td>
+          <td>Maps clinical procedure entities to CPT codes</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">bgeresolve_cpt_procedures_measurements_augmented</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">bge_base_en_v1_5_onnx</code></td>
+          <td>Maps clinical procedure and measurement entities to CPT codes</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">cpt_mapper</code></td>
+          <td>Mapper</td>
+          <td>-</td>
+          <td>Maps procedure, test, and treatment entities to CPT codes via exact-match lookup</td>
+          <td>Updated</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><strong>HCPCS</strong></p>
+
+    <p>Trained on the CMS HCPCS Level II Alpha-Numeric master file (release 20260701).</p>
+
+    <table class="table-model-big">
+      <thead>
+        <tr>
+          <th>Model Name</th>
+          <th>Type</th>
+          <th>Embeddings</th>
+          <th>Description</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_hcpcs</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli_onnx</code></td>
+          <td>Maps clinical entities to HCPCS codes</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">biolordresolve_hcpcs</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">mpnet_embeddings_biolord_2023_c</code></td>
+          <td>Maps clinical entities to HCPCS codes</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">bgeresolve_hcpcs</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">bge_base_en_v1_5_onnx</code></td>
+          <td>Maps clinical entities to HCPCS codes</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">hcpcs_mapper</code></td>
+          <td>Mapper</td>
+          <td>-</td>
+          <td>Maps clinical entities to HCPCS codes via dictionary lookup</td>
+          <td>New</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><strong>HPO</strong></p>
+
+    <p>Trained on the Human Phenotype Ontology (HPO) 2026-06-23 release.</p>
+
+    <table class="table-model-big">
+      <thead>
+        <tr>
+          <th>Model Name</th>
+          <th>Type</th>
+          <th>Embeddings</th>
+          <th>Description</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_HPO</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli_onnx</code></td>
+          <td>Maps clinical phenotype entities to HPO codes</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">biolordresolve_HPO</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">mpnet_embeddings_biolord_2023_c</code></td>
+          <td>Maps clinical phenotype entities to HPO codes</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">bgeresolve_HPO</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">bge_base_en_v1_5_onnx</code></td>
+          <td>Maps clinical phenotype entities to HPO codes</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">gene_hpo_code_mapper</code></td>
+          <td>Mapper</td>
+          <td>-</td>
+          <td>Maps genes to their associated HPO code(s)</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">hpo_code_eom_mapper</code></td>
+          <td>Mapper</td>
+          <td>-</td>
+          <td>Maps HPO codes to their associated Elements of Morphology id(s)</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">hpo_code_gene_disease_mapper</code></td>
+          <td>Mapper</td>
+          <td>-</td>
+          <td>Maps HPO codes to associated genes and their related phenotypes</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">hpo_code_gene_mapper</code></td>
+          <td>Mapper</td>
+          <td>-</td>
+          <td>Maps HPO codes to their associated gene(s)</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">hpo_disease_mapper</code></td>
+          <td>Mapper</td>
+          <td>-</td>
+          <td>Maps HPO codes to their associated disease id(s) and name(s) (OMIM, Orphanet, DECIPHER)</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">hpo_mapper</code></td>
+          <td>Mapper</td>
+          <td>-</td>
+          <td>Maps phenotype entities to HPO codes via dictionary lookup</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">hpo_parent_mapper</code></td>
+          <td>Mapper</td>
+          <td>-</td>
+          <td>Maps HPO codes to their full ancestor chain in the HPO hierarchy</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">hpo_synonym_mapper</code></td>
+          <td>Mapper</td>
+          <td>-</td>
+          <td>Maps phenotype entities to their exact, related, broad, and narrow synonyms</td>
+          <td>Updated</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><strong>HGNC</strong></p>
+
+    <p>Trained on the HGNC monthly release dated 2026-08-04.</p>
+
+    <table class="table-model-big">
+      <thead>
+        <tr>
+          <th>Model Name</th>
+          <th>Type</th>
+          <th>Embeddings</th>
+          <th>Description</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_hgnc_2026</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli_onnx</code></td>
+          <td>Maps gene entities to HGNC codes using current approved gene symbols and names</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_hgnc_augmented_2026</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli_onnx</code></td>
+          <td>Maps gene entities to HGNC codes, including alias and previous gene symbols and names</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">biolordresolve_hgnc_2026</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">mpnet_embeddings_biolord_2023_c</code></td>
+          <td>Maps gene entities to HGNC codes using current approved gene symbols and names</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">biolordresolve_hgnc_augmented_2026</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">mpnet_embeddings_biolord_2023_c</code></td>
+          <td>Maps gene entities to HGNC codes, including alias and previous gene symbols and names</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">bgeresolve_hgnc_2026</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">bge_base_en_v1_5_onnx</code></td>
+          <td>Maps gene entities to HGNC codes using current approved gene symbols and names</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">bgeresolve_hgnc_augmented_2026</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">bge_base_en_v1_5_onnx</code></td>
+          <td>Maps gene entities to HGNC codes, including alias and previous gene symbols and names</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">hgnc_code_symbol_mapper_2026</code></td>
+          <td>Mapper</td>
+          <td>-</td>
+          <td>Maps HGNC codes to their current approved gene symbol</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">hgnc_mapper_2026</code></td>
+          <td>Mapper</td>
+          <td>-</td>
+          <td>Maps gene mentions to HGNC codes via dictionary lookup</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">hgnc_mapper_augmented_2026</code></td>
+          <td>Mapper</td>
+          <td>-</td>
+          <td>Maps gene mentions, including alias and previous symbols/names, to HGNC codes</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">hgnc_symbol_code_mapper_2026</code></td>
+          <td>Mapper</td>
+          <td>-</td>
+          <td>Maps current approved gene symbols to their HGNC code</td>
+          <td>New</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><strong>MeSH</strong></p>
+
+    <p>Trained on the MeSH 2026 dataset.</p>
+
+    <table class="table-model-big">
+      <thead>
+        <tr>
+          <th>Model Name</th>
+          <th>Type</th>
+          <th>Embeddings</th>
+          <th>Description</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_mesh_2026</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli_onnx</code></td>
+          <td>Maps clinical/veterinary entities to MeSH codes</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_mesh_augmented_2026</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli_onnx</code></td>
+          <td>Maps clinical/veterinary entities to MeSH codes (Athena-augmented)</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_mesh_veterinary_2026</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli_onnx</code></td>
+          <td>Maps veterinary-focused entities to MeSH codes</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">biolordresolve_mesh_2026</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">mpnet_embeddings_biolord_2023_c</code></td>
+          <td>Maps clinical/veterinary entities to MeSH codes</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">biolordresolve_mesh_augmented_2026</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">mpnet_embeddings_biolord_2023_c</code></td>
+          <td>Maps clinical/veterinary entities to MeSH codes (Athena-augmented)</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">biolordresolve_mesh_veterinary_2026</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">mpnet_embeddings_biolord_2023_c</code></td>
+          <td>Maps veterinary-focused entities to MeSH codes</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">bgeresolve_mesh_2026</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">bge_base_en_v1_5_onnx</code></td>
+          <td>Maps clinical/veterinary entities to MeSH codes</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">bgeresolve_mesh_augmented_2026</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">bge_base_en_v1_5_onnx</code></td>
+          <td>Maps clinical/veterinary entities to MeSH codes (Athena-augmented)</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">bgeresolve_mesh_veterinary_2026</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">bge_base_en_v1_5_onnx</code></td>
+          <td>Maps veterinary-focused entities to MeSH codes</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">mesh_mapper_2026</code></td>
+          <td>Mapper</td>
+          <td>-</td>
+          <td>Maps clinical/veterinary entities to MeSH codes via dictionary lookup</td>
+          <td>New</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><strong>NCIt</strong></p>
+
+    <p>Trained on the NCI Thesaurus dataset (July 28, 2026 release).</p>
+
+    <table class="table-model-big">
+      <thead>
+        <tr>
+          <th>Model Name</th>
+          <th>Type</th>
+          <th>Embeddings</th>
+          <th>Description</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_ncit</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli_onnx</code></td>
+          <td>Maps clinical entities to NCIt codes</td>
+          <td>Updated</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">biolordresolve_ncit</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">mpnet_embeddings_biolord_2023_c</code></td>
+          <td>Maps clinical entities to NCIt codes</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">bgeresolve_ncit</code></td>
+          <td>Resolver</td>
+          <td><code class="language-plaintext highlighter-rouge">bge_base_en_v1_5_onnx</code></td>
+          <td>Maps clinical entities to NCIt codes</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">ncit_mapper</code></td>
+          <td>Mapper</td>
+          <td>-</td>
+          <td>Maps clinical entities to NCIt codes via dictionary lookup</td>
+          <td>New</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><em>Example</em> (entity resolution — <code class="language-plaintext highlighter-rouge">sbiobertresolve_icd11_202601</code>):</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+
+<span class="n">sentenceDetectorDL</span> <span class="o">=</span> <span class="n">SentenceDetectorDLModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sentence_detector_dl_healthcare"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>
+
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
+
+<span class="n">word_embeddings</span> <span class="o">=</span> <span class="n">WordEmbeddingsModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"embeddings_clinical"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"word_embeddings"</span><span class="p">)</span>
+
+<span class="n">ner</span> <span class="o">=</span> <span class="n">MedicalNerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"ner_clinical"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"word_embeddings"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>
+
+<span class="n">ner_converter</span> <span class="o">=</span> <span class="n">NerConverterInternal</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setWhiteList</span><span class="p">([</span><span class="s">"PROBLEM"</span><span class="p">])</span>
+
+<span class="n">c2doc</span> <span class="o">=</span> <span class="n">Chunk2Doc</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk_doc"</span><span class="p">)</span>
+
+<span class="n">sbert_embedder</span> <span class="o">=</span> <span class="n">BertSentenceEmbeddings</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sbiobert_base_cased_mli_onnx"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"ner_chunk_doc"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sbert_embeddings"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setCaseSensitive</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+
+<span class="n">icd11_resolver</span> <span class="o">=</span> <span class="n">SentenceEntityResolverModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sbiobertresolve_icd11_202601"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sbert_embeddings"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"resolution"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setDistanceFunction</span><span class="p">(</span><span class="s">"EUCLIDEAN"</span><span class="p">)</span>
+
+<span class="n">resolver_pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
+    <span class="n">document_assembler</span><span class="p">,</span> <span class="n">sentenceDetectorDL</span><span class="p">,</span> <span class="n">tokenizer</span><span class="p">,</span> <span class="n">word_embeddings</span><span class="p">,</span>
+    <span class="n">ner</span><span class="p">,</span> <span class="n">ner_converter</span><span class="p">,</span> <span class="n">c2doc</span><span class="p">,</span> <span class="n">sbert_embedder</span><span class="p">,</span> <span class="n">icd11_resolver</span>
+<span class="p">])</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span>
+    <span class="s">"The patient has a history of type 2 diabetes mellitus and essential hypertension, "</span>
+    <span class="s">"and was recently diagnosed with Parkinson disease."</span>
+<span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">resolver_pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</code></pre></div>    </div>
+
+    <p><em>Result</em></p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ner_chunk</th>
+          <th>entity</th>
+          <th>icd11_code</th>
+          <th>resolution</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>type 2 diabetes mellitus</td>
+          <td>PROBLEM</td>
+          <td>5A11</td>
+          <td>type 2 diabetes mellitus</td>
+        </tr>
+        <tr>
+          <td>essential hypertension</td>
+          <td>PROBLEM</td>
+          <td>BA00</td>
+          <td>essential hypertension</td>
+        </tr>
+        <tr>
+          <td>Parkinson disease</td>
+          <td>PROBLEM</td>
+          <td>8A00.0</td>
+          <td>parkinson disease</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><em>Example</em> (code-level mapping — <code class="language-plaintext highlighter-rouge">icd11_mapper_202601</code>):</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+
+<span class="n">sentence_detector</span> <span class="o">=</span> <span class="n">SentenceDetectorDLModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sentence_detector_dl_healthcare"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>
+
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
+
+<span class="n">word_embeddings</span> <span class="o">=</span> <span class="n">WordEmbeddingsModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"embeddings_clinical"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"embeddings"</span><span class="p">)</span>
+
+<span class="n">ner_clinical</span> <span class="o">=</span> <span class="n">MedicalNerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"ner_clinical"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>
+
+<span class="n">ner_converter</span> <span class="o">=</span> <span class="n">NerConverterInternal</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setWhiteList</span><span class="p">([</span><span class="s">"PROBLEM"</span><span class="p">])</span>
+
+<span class="n">icd11_mapper</span> <span class="o">=</span> <span class="n">ChunkMapperModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"icd11_mapper_202601"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"ner_chunk"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"mappings"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setRels</span><span class="p">([</span><span class="s">"icd11_code"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setLowerCase</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
+    <span class="n">document_assembler</span><span class="p">,</span> <span class="n">sentence_detector</span><span class="p">,</span> <span class="n">tokenizer</span><span class="p">,</span> <span class="n">word_embeddings</span><span class="p">,</span>
+    <span class="n">ner_clinical</span><span class="p">,</span> <span class="n">ner_converter</span><span class="p">,</span> <span class="n">icd11_mapper</span>
+<span class="p">])</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([</span>
+    <span class="p">[</span><span class="s">"cholera"</span><span class="p">],</span> <span class="p">[</span><span class="s">"parkinson disease"</span><span class="p">],</span> <span class="p">[</span><span class="s">"type 2 diabetes mellitus"</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">"essential hypertension"</span><span class="p">],</span> <span class="p">[</span><span class="s">"actinic keratosis"</span><span class="p">]</span>
+<span class="p">]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</code></pre></div>    </div>
+
+    <p><em>Result</em></p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>text</th>
+          <th>icd11_code</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>cholera</td>
+          <td>1A00</td>
+        </tr>
+        <tr>
+          <td>parkinson disease</td>
+          <td>8A00.0</td>
+        </tr>
+        <tr>
+          <td>type 2 diabetes mellitus</td>
+          <td>5A11</td>
+        </tr>
+        <tr>
+          <td>essential hypertension</td>
+          <td>BA00</td>
+        </tr>
+        <tr>
+          <td>actinic keratosis</td>
+          <td>EK90.0, XH36H6</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><code class="language-plaintext highlighter-rouge">actinic keratosis</code> is a genuine WHO title collision — two different codes (<code class="language-plaintext highlighter-rouge">EK90.0</code>, a skin disease, and <code class="language-plaintext highlighter-rouge">XH36H6</code>, a chapter-X extension code) share the exact same official title, so the model correctly returns both rather than silently picking one.</p>
+
+  </div>
+  <div class="h3-box">
+
+    <h4 id="medical-terminology-mapping-benchmark-healthcare-nlp-resolvers-vs-general-purpose-llms">Medical Terminology Mapping Benchmark: Healthcare NLP Resolvers vs. General-Purpose LLMs</h4>
+
+    <p>Healthcare NLP resolvers were compared with five general-purpose LLMs on mapping clinical phrases to exact codes in SNOMED CT, RxNorm, ICD-10-CM, and ICD-O. Each system has 110 items: 100 terms whose gold codes were confirmed active in the current release, plus 10 currency items (5 codes added in the current release and 5 retired since the prior one). Every tool received the same bare phrase closed-book, with no tools, web search, or database access, and was scored on top-1 exact code match.</p>
+
+    <p>The resolvers under test were <code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_auxConcepts_20260901</code> (SNOMED CT 20260901), <code class="language-plaintext highlighter-rouge">sbiobertresolve_rxnorm_augmented_v2</code> (RxNorm 20260601), <code class="language-plaintext highlighter-rouge">sbiobertresolve_icd10cm_augmented</code> (ICD-10-CM 20260401), and <code class="language-plaintext highlighter-rouge">sbiobertresolve_icdo_augmented_2026</code> (ICD-O 3.2, 2026 update).</p>
+
+    <table class="table-model-big">
+      <thead>
+        <tr>
+          <th>Tool</th>
+          <th>SNOMED CT</th>
+          <th>RxNorm</th>
+          <th>ICD-10-CM</th>
+          <th>ICD-O 3.2</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Healthcare NLP</td>
+          <td>87.3%</td>
+          <td>91.8%</td>
+          <td>95.5%</td>
+          <td>96.4%</td>
+        </tr>
+        <tr>
+          <td>Claude Opus 5</td>
+          <td>76.4%</td>
+          <td>63.6%</td>
+          <td>94.5%</td>
+          <td>93.6%</td>
+        </tr>
+        <tr>
+          <td>Claude Sonnet 5</td>
+          <td>55.5%</td>
+          <td>52.7%</td>
+          <td>87.3%</td>
+          <td>90.9%</td>
+        </tr>
+        <tr>
+          <td>Claude Fable 5</td>
+          <td>80.0%</td>
+          <td>82.7%</td>
+          <td>93.6%</td>
+          <td>92.7%</td>
+        </tr>
+        <tr>
+          <td>GPT-5.6</td>
+          <td>41.8%</td>
+          <td>35.5%</td>
+          <td>92.7%</td>
+          <td>47.3%</td>
+        </tr>
+        <tr>
+          <td>Gemini 3.6 Flash</td>
+          <td>51.8%</td>
+          <td>40.9%</td>
+          <td>90.9%</td>
+          <td>90.9%</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>The resolvers score highest on all four systems. The gap is largest where codes are long numeric identifiers: 7.3 points over the best LLM on SNOMED CT and 9.1 points on RxNorm. On ICD-10-CM and ICD-O, where codes are short and partly mnemonic, the best LLM comes within 1.0 and 2.8 points. The LLM errors fall into three groups: a related concept of the wrong type, codes added after the model’s training cutoff, and codes that do not exist in the vocabulary.</p>
+
+    <p>The full methodology is on the <a href="https://nlp.johnsnowlabs.com/docs/en/benchmark">benchmark page</a>.</p>
+
+  </div>
+  <div class="h3-box">
+
+    <h4 id="oncology-ner-and-entity-resolver-pipelines-speed-benchmark">Oncology NER and Entity Resolver Pipelines Speed Benchmark</h4>
+
+    <p>This benchmark times one clinical NER pipeline and five Sentence Entity Resolver pipelines end to end on the same input: 1,000 rows built from 220 i2b2 de-identification surrogate notes (4,360,197 characters, 780,532 tokens), repartitioned to 128. All runs used a Microsoft Azure Standard D64ds v5 VM (64 vCPUs, 256 GiB RAM, no GPU). The timer wraps the Parquet write, which is the action that runs the full pipeline.</p>
+
+    <table class="table-model-big">
+      <thead>
+        <tr>
+          <th>Pipeline</th>
+          <th>Type</th>
+          <th>Total chunks</th>
+          <th>Elapsed</th>
+          <th>Rows/sec</th>
+          <th>Tokens/sec</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">ner_oncology_wip</code></td>
+          <td>NER</td>
+          <td>53,513</td>
+          <td>57.3 sec</td>
+          <td>17.4</td>
+          <td>13,614.5</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_icdo_base</code></td>
+          <td>Resolver</td>
+          <td>1,792</td>
+          <td>1 min 18.8 sec</td>
+          <td>12.7</td>
+          <td>9,905.4</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_atc</code></td>
+          <td>Resolver</td>
+          <td>13,814</td>
+          <td>1 min 26.3 sec</td>
+          <td>11.6</td>
+          <td>9,049.0</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_findings</code></td>
+          <td>Resolver</td>
+          <td>28,459</td>
+          <td>3 min 43.8 sec</td>
+          <td>4.5</td>
+          <td>3,487.8</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_hgnc_2026</code></td>
+          <td>Resolver</td>
+          <td>17,172</td>
+          <td>6 min 22.3 sec</td>
+          <td>2.6</td>
+          <td>2,041.6</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">sbluebertresolve_loinc_uncased</code></td>
+          <td>Resolver</td>
+          <td>17,172</td>
+          <td>6 min 38.6 sec</td>
+          <td>2.5</td>
+          <td>1,958.4</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>Each resolver pipeline runs the NER pass first and then embeds every extracted chunk before the nearest-neighbor lookup, so the sentence embedding stage accounts for most of the resolver time. The HGNC and LOINC pipelines resolve the same 17,172 chunks, which puts their resolver stages side by side at 382.3 and 398.6 seconds. For faster CPU runs, use the ONNX embeddings (<code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli_onnx</code>); the <a href="https://nlp.johnsnowlabs.com/docs/en/benchmark#cpu-benchmarking">CPU benchmarking</a> results compare the TensorFlow, ONNX, and OpenVINO backends.</p>
+
+  </div>
+  <div class="h3-box">
+
+    <h4 id="new-blog-posts--technical-deep-dives">New Blog Posts &amp; Technical Deep Dives</h4>
+
+    <ul>
+      <li><a href="https://medium.com/john-snow-labs/high-accuracy-clinical-term-mapping-to-standard-medical-terminologies-icd-10-rxnorm-snomed-and-3a0333c95b4c">High-Accuracy Clinical Term Mapping to Standard Medical Terminologies (ICD-10, RxNorm, SNOMED, and 90+ vocabularies) with John Snow Labs’ Medical Language Models</a>: This post compares Healthcare NLP resolvers with Claude Opus 5, Claude Sonnet 5, Claude Fable 5, GPT-5.6, and Gemini 3.6 Flash on 110 closed-book items each for SNOMED CT, RxNorm, ICD-10-CM, and ICD-O. The resolvers reach 87.3%, 91.8%, 95.5%, and 96.4% top-1 accuracy, the highest score on every system. It also explains how the training data behind each resolver is built and how resolvers and their companion mapper models divide the work between free text and known codes.</li>
+      <li><a href="https://www.johnsnowlabs.com/clinical-de-identification-benchmarks-2026-john-snow-labs-against-openai-databricks-presidio-and-llm-apis/">Clinical de-identification benchmarks 2026: John Snow Labs against OpenAI, Databricks, Presidio, and LLM APIs</a>: This post collects the 2026 clinical de-identification comparisons in one place, each with its methodology and reproduction links. On 1,479 expert-annotated PHI chunks, Healthcare NLP reaches 0.96 PHI F1, against 0.91 for Claude Opus 4.8, 0.89 for GPT-5.5, 0.86 for Gemini 3.1 Pro, and 0.71 for Databricks <code class="language-plaintext highlighter-rouge">ai_mask()</code>. The same pipeline reaches 0.98 micro F1 on the official 2014 i2b2 test set, and the post adds published results for Presidio (0.60 to 0.85 F1 in two peer-reviewed studies) and the OpenAI Privacy Filter (0.55 F1).</li>
+      <li><a href="https://www.johnsnowlabs.com/benchmarking-databricks-ai_mask-on-clinical-de-identification-0-71-phi-f1/">Benchmarking Databricks ai_mask on clinical de-identification: 0.71 PHI F1</a>: This post scores the Databricks <code class="language-plaintext highlighter-rouge">ai_mask()</code> SQL function on the same expert-annotated corpus and evaluation code as the comparisons above. It reaches 0.71 PHI F1, with recall ranging from 0.35 on contact identifiers to 0.85 on ID numbers, and requesting the 18 labels of a HIPAA-aligned taxonomy lowers PHI F1 to 0.61. The post also compares output formats, cross-document consistency, and audit records with the Healthcare NLP de-identification pipeline, which runs on the same Databricks cluster through the Databricks Marketplace.</li>
+    </ul>
+
+  </div>
+  <div class="h3-box">
+
+    <h4 id="updated-notebooks-and-demonstrations-for-making-healthcare-nlp-easier-to-navigate-and-understand">Updated Notebooks And Demonstrations For Making Healthcare NLP Easier To Navigate And Understand</h4>
+
+    <ul>
+      <li>New <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.15.HL7v2_DeIdentification.ipynb">HL7 v2 De-Identification</a> Notebook
+This notebook covers the two pretrained <code class="language-plaintext highlighter-rouge">Hl7v2DeIdentification</code> models: <code class="language-plaintext highlighter-rouge">hl7v2_deidentification_base</code> for structured PHI fields, and <code class="language-plaintext highlighter-rouge">hl7v2_deidentification_free_text</code>, which also de-identifies the <code class="language-plaintext highlighter-rouge">OBX-5</code> and <code class="language-plaintext highlighter-rouge">NTE-3</code> narrative fields through a de-identification pipeline. Both models ship with a default PHI map of 280 Terser paths. The examples run both models on synthetic <code class="language-plaintext highlighter-rouge">ADT^A01</code> and <code class="language-plaintext highlighter-rouge">ORU^R01</code> messages and cover obfuscate and mask modes, custom path rules with segment occurrences such as <code class="language-plaintext highlighter-rouge">NK1(2)-2-1</code>, extending the default map, and processing through Spark DataFrames, single messages and message lists. A final section de-identifies 4 real-world HL7 v2 sample files with each model.</li>
+    </ul>
+
+  </div>
+  <div class="h3-box">
+
+    <h4 id="bug-fixes--stability-improvements">Bug Fixes &amp; Stability Improvements</h4>
+
+    <ul>
+      <li><strong>Model-loading temp-file cleanup.</strong> Model loading and archive extraction created temporary files and directories that were not always cleaned up. Previously, loading a 1 GB ONNX model could leave approximately 2 GB of temporary files on disk; ONNX temp files are now removed reliably.</li>
+      <li><strong>ONNX CUDA preload recovery.</strong> ONNX session creation is now delegated to the OS, making GPU/CUDA preload more robust and recovering gracefully from preload issues.</li>
+      <li><strong>Batched ZeroShotNer decoding.</strong> Fixed incorrect decoding of <code class="language-plaintext highlighter-rouge">ZeroShotNer</code> outputs when running in batches.</li>
+      <li><strong><code class="language-plaintext highlighter-rouge">DocumentFiltererByNER</code> empty inputs.</strong> Fixed handling of empty inputs so the annotator no longer fails on documents without matching entities.</li>
+      <li><strong>PretrainedZeroShotMultiTask fixes.</strong> Corrected <code class="language-plaintext highlighter-rouge">begin</code>/<code class="language-plaintext highlighter-rouge">end</code> offsets and added enum support in <code class="language-plaintext highlighter-rouge">PretrainedZeroShotMultiTask</code>, fixed an empty getter/setter, and enabled lazy output typing in <code class="language-plaintext highlighter-rouge">MultiAnnotationSplitter</code>.</li>
+    </ul>
+
+  </div>
+  <div class="h3-box">
+
+    <h4 id="we-have-added-and-updated-a-substantial-number-of-new-clinical-models-and-pipelines-further-solidifying-our-offering-in-the-healthcare-domain">We Have Added And Updated A Substantial Number Of New Clinical Models And Pipelines, Further Solidifying Our Offering In The Healthcare Domain.</h4>
+
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_20260901</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_auxConcepts_20260901</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_bodyStructure_20260901</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_conditions_20260901</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_drug_20260901</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_findings_20260901</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_no_class_20260901</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_procedures_measurements_20260901</code></li>
+      <li><code class="language-plaintext highlighter-rouge">biolordresolve_snomed_20260901</code></li>
+      <li><code class="language-plaintext highlighter-rouge">biolordresolve_snomed_auxConcepts_20260901</code></li>
+      <li><code class="language-plaintext highlighter-rouge">biolordresolve_snomed_bodyStructure_20260901</code></li>
+      <li><code class="language-plaintext highlighter-rouge">biolordresolve_snomed_conditions_20260901</code></li>
+      <li><code class="language-plaintext highlighter-rouge">biolordresolve_snomed_drug_20260901</code></li>
+      <li><code class="language-plaintext highlighter-rouge">biolordresolve_snomed_findings_20260901</code></li>
+      <li><code class="language-plaintext highlighter-rouge">biolordresolve_snomed_no_class_20260901</code></li>
+      <li><code class="language-plaintext highlighter-rouge">biolordresolve_snomed_procedures_measurements_20260901</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bgeresolve_snomed_20260901</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bgeresolve_snomed_auxConcepts_20260901</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bgeresolve_snomed_bodyStructure_20260901</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bgeresolve_snomed_conditions_20260901</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bgeresolve_snomed_drug_20260901</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bgeresolve_snomed_findings_20260901</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bgeresolve_snomed_no_class_20260901</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bgeresolve_snomed_procedures_measurements_20260901</code></li>
+      <li><code class="language-plaintext highlighter-rouge">icd10cm_snomed_mapper_20260901</code></li>
+      <li><code class="language-plaintext highlighter-rouge">icdo_snomed_mapper_20260901</code></li>
+      <li><code class="language-plaintext highlighter-rouge">snomed_icd10cm_mapper_20260901</code></li>
+      <li><code class="language-plaintext highlighter-rouge">snomed_icdo_mapper_20260901</code></li>
+      <li><code class="language-plaintext highlighter-rouge">snomed_mapper_20260901</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_auxConcepts_pipeline_20260901</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_bodyStructure_pipeline_20260901</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_conditions_pipeline_20260901</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_drug_pipeline_20260901</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_findings_pipeline_20260901</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_no_class_pipeline_20260901</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_pipeline_20260901</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_procedures_measurements_pipeline_20260901</code></li>
+      <li><code class="language-plaintext highlighter-rouge">biolordresolve_snomed_pipeline_20260901</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bgeresolve_snomed_pipeline_20260901</code></li>
+      <li><code class="language-plaintext highlighter-rouge">icd10cm_snomed_mapping_pipeline_20260901</code></li>
+      <li><code class="language-plaintext highlighter-rouge">icdo_snomed_mapping_pipeline_20260901</code></li>
+      <li><code class="language-plaintext highlighter-rouge">snomed_icd10cm_mapping_pipeline_20260901</code></li>
+      <li><code class="language-plaintext highlighter-rouge">snomed_icdo_mapping_pipeline_20260901</code></li>
+      <li><code class="language-plaintext highlighter-rouge">snomed_mapping_pipeline_20260901</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_loinc_2_83</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_loinc_augmented_2_83</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_loinc_numeric_2_83</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_loinc_numeric_augmented_2_83</code></li>
+      <li><code class="language-plaintext highlighter-rouge">biolordresolve_loinc_2_83</code></li>
+      <li><code class="language-plaintext highlighter-rouge">biolordresolve_loinc_augmented_2_83</code></li>
+      <li><code class="language-plaintext highlighter-rouge">biolordresolve_loinc_numeric_2_83</code></li>
+      <li><code class="language-plaintext highlighter-rouge">biolordresolve_loinc_numeric_augmented_2_83</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bgeresolve_loinc_2_83</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bgeresolve_loinc_augmented_2_83</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bgeresolve_loinc_numeric_2_83</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bgeresolve_loinc_numeric_augmented_2_83</code></li>
+      <li><code class="language-plaintext highlighter-rouge">loinc_mapper_2_83</code></li>
+      <li><code class="language-plaintext highlighter-rouge">loinc_numeric_mapper_2_83</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_loinc_augmented_pipeline_2_83</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_loinc_numeric_augmented_pipeline_2_83</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_loinc_numeric_pipeline_2_83</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_loinc_pipeline_2_83</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_icd10cm_augmented</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_icd10cm_augmented_billable_hcc</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_icd10cm_generalised</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_icd10cm_generalised_augmented</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_icd10cm_slim_billable_hcc</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_icd10cm_slim_normalized</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbertresolve_icd10cm_augmented</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbertresolve_icd10cm_augmented_billable_hcc</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbertresolve_icd10cm_slim_billable_hcc</code></li>
+      <li><code class="language-plaintext highlighter-rouge">biolordresolve_icd10cm_augmented_billable_hcc</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bgeresolve_icd10cm</code></li>
+      <li><code class="language-plaintext highlighter-rouge">icd10cm_billable_hcc_mapper</code></li>
+      <li><code class="language-plaintext highlighter-rouge">icd10cm_generalised_mapper</code></li>
+      <li><code class="language-plaintext highlighter-rouge">icd10cm_mapper</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_icd10pcs</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_icd10pcs_augmented</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_hcc_augmented</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbertresolve_hcc_augmented</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_icd11_202601</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_icd11_augmented_202601</code></li>
+      <li><code class="language-plaintext highlighter-rouge">icd10_icd11_mapper_202601</code></li>
+      <li><code class="language-plaintext highlighter-rouge">icd11_icd10_mapper_202601</code></li>
+      <li><code class="language-plaintext highlighter-rouge">icd11_mapper_202601</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_icdo_augmented_2026</code></li>
+      <li><code class="language-plaintext highlighter-rouge">biolordresolve_icdo_augmented_2026</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bgeresolve_icdo_augmented_2026</code></li>
+      <li><code class="language-plaintext highlighter-rouge">icdo_mapper</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_rxnorm_augmented_v2</code></li>
+      <li><code class="language-plaintext highlighter-rouge">biolordresolve_avg_rxnorm_augmented_v2</code></li>
+      <li><code class="language-plaintext highlighter-rouge">biolordresolve_rxnorm_augmented_v2</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bgeresolve_rxnorm</code></li>
+      <li><code class="language-plaintext highlighter-rouge">medembed_base_rxnorm_augmented</code></li>
+      <li><code class="language-plaintext highlighter-rouge">medembed_large_rxnorm_augmented</code></li>
+      <li><code class="language-plaintext highlighter-rouge">rxnorm_mapper</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_ndc</code></li>
+      <li><code class="language-plaintext highlighter-rouge">biolordresolve_ndc</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bgeresolve_ndc</code></li>
+      <li><code class="language-plaintext highlighter-rouge">drug_brandname_ndc_mapper</code></li>
+      <li><code class="language-plaintext highlighter-rouge">hcpcs_ndc_mapper</code></li>
+      <li><code class="language-plaintext highlighter-rouge">ndc_drug_brandname_mapper</code></li>
+      <li><code class="language-plaintext highlighter-rouge">ndc_hcpcs_mapper</code></li>
+      <li><code class="language-plaintext highlighter-rouge">ndc_mapper</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_atc</code></li>
+      <li><code class="language-plaintext highlighter-rouge">biolordresolve_atc</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bgeresolve_atc</code></li>
+      <li><code class="language-plaintext highlighter-rouge">atc_mapper</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_cpt_augmented</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_cpt_procedures_measurements_augmented</code></li>
+      <li><code class="language-plaintext highlighter-rouge">biolordresolve_cpt_augmented</code></li>
+      <li><code class="language-plaintext highlighter-rouge">biolordresolve_cpt_procedures_measurements_augmented</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bgeresolve_cpt_augmented</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bgeresolve_cpt_procedures_measurements_augmented</code></li>
+      <li><code class="language-plaintext highlighter-rouge">cpt_mapper</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_hcpcs</code></li>
+      <li><code class="language-plaintext highlighter-rouge">biolordresolve_hcpcs</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bgeresolve_hcpcs</code></li>
+      <li><code class="language-plaintext highlighter-rouge">hcpcs_mapper</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_HPO</code></li>
+      <li><code class="language-plaintext highlighter-rouge">biolordresolve_HPO</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bgeresolve_HPO</code></li>
+      <li><code class="language-plaintext highlighter-rouge">gene_hpo_code_mapper</code></li>
+      <li><code class="language-plaintext highlighter-rouge">hpo_code_eom_mapper</code></li>
+      <li><code class="language-plaintext highlighter-rouge">hpo_code_gene_disease_mapper</code></li>
+      <li><code class="language-plaintext highlighter-rouge">hpo_code_gene_mapper</code></li>
+      <li><code class="language-plaintext highlighter-rouge">hpo_disease_mapper</code></li>
+      <li><code class="language-plaintext highlighter-rouge">hpo_mapper</code></li>
+      <li><code class="language-plaintext highlighter-rouge">hpo_parent_mapper</code></li>
+      <li><code class="language-plaintext highlighter-rouge">hpo_synonym_mapper</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_hgnc_2026</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_hgnc_augmented_2026</code></li>
+      <li><code class="language-plaintext highlighter-rouge">biolordresolve_hgnc_2026</code></li>
+      <li><code class="language-plaintext highlighter-rouge">biolordresolve_hgnc_augmented_2026</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bgeresolve_hgnc_2026</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bgeresolve_hgnc_augmented_2026</code></li>
+      <li><code class="language-plaintext highlighter-rouge">hgnc_code_symbol_mapper_2026</code></li>
+      <li><code class="language-plaintext highlighter-rouge">hgnc_mapper_2026</code></li>
+      <li><code class="language-plaintext highlighter-rouge">hgnc_mapper_augmented_2026</code></li>
+      <li><code class="language-plaintext highlighter-rouge">hgnc_symbol_code_mapper_2026</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_mesh_2026</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_mesh_augmented_2026</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_mesh_veterinary_2026</code></li>
+      <li><code class="language-plaintext highlighter-rouge">biolordresolve_mesh_2026</code></li>
+      <li><code class="language-plaintext highlighter-rouge">biolordresolve_mesh_augmented_2026</code></li>
+      <li><code class="language-plaintext highlighter-rouge">biolordresolve_mesh_veterinary_2026</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bgeresolve_mesh_2026</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bgeresolve_mesh_augmented_2026</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bgeresolve_mesh_veterinary_2026</code></li>
+      <li><code class="language-plaintext highlighter-rouge">mesh_mapper_2026</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_ncit</code></li>
+      <li><code class="language-plaintext highlighter-rouge">biolordresolve_ncit</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bgeresolve_ncit</code></li>
+      <li><code class="language-plaintext highlighter-rouge">ncit_mapper</code></li>
+      <li><code class="language-plaintext highlighter-rouge">city_matcher</code></li>
+      <li><code class="language-plaintext highlighter-rouge">ip_matcher</code></li>
+      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_icd11_mental_health</code></li>
+      <li><code class="language-plaintext highlighter-rouge">zeroshot_ner_jsl_large_assertiondl_pipeline</code></li>
+      <li><code class="language-plaintext highlighter-rouge">zeroshot_ner_jsl_large_fewshotassertion_pipeline</code></li>
+      <li><code class="language-plaintext highlighter-rouge">zeroshot_ner_jsl_large_pipeline</code></li>
+      <li><code class="language-plaintext highlighter-rouge">zeroshot_ner_jsl_medium_assertiondl_pipeline</code></li>
+      <li><code class="language-plaintext highlighter-rouge">zeroshot_ner_jsl_medium_pipeline</code></li>
+      <li><code class="language-plaintext highlighter-rouge">ner_cancer_registry</code></li>
+      <li><code class="language-plaintext highlighter-rouge">ner_cancer_registry_pipeline</code></li>
+      <li><code class="language-plaintext highlighter-rouge">hl7v2_deidentification_base</code></li>
+      <li><code class="language-plaintext highlighter-rouge">hl7v2_deidentification_free_text</code></li>
+    </ul>
+
+  </div>
+  <div class="h3-box">
+
+    <h2 id="versions">Versions</h2>
+
+  </div>
+  <ul class="pagination">
     <li>
         <a href="#">Version <strong id="previosver"></strong></a>
     </li>
@@ -1010,7 +2929,7 @@ Record date : 2093-01-13 , David Hale , M.D . , Name : Hendrickson Ora , MR # 71
         <a href="#">Version <strong id="nextver"></strong></a>
     </li>
 </ul>
-<ul class="pagination owl-carousel pagination_big">
+  <ul class="pagination owl-carousel pagination_big">
     <li><a href="release_notes_7_0_0">7.0.0</a></li>
     <li><a href="release_notes_6_4_1">6.4.1</a></li>
     <li><a href="release_notes_6_4_0">6.4.0</a></li>
@@ -1104,8 +3023,9 @@ Record date : 2093-01-13 , David Hale , M.D . , Name : Hendrickson Ora , MR # 71
     <li><a href="release_notes_2_4_1">2.4.1</a></li>
     <li><a href="release_notes_2_4_0">2.4.0</a></li>
 </ul>
+</div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2023-12-01T00:00:00+00:00">Dec 01, 2023</time>
+      <time itemprop="dateModified" datetime="2026-10-01T00:00:00+00:00">Oct 01, 2026</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
