@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 6.4.1 ScalaDoc  - com.johnsnowlabs.nlp.annotators.ner.ZeroShot2DataProcessor</title>
-          <meta name="description" content="Spark NLP 6.4.1 ScalaDoc - com.johnsnowlabs.nlp.annotators.ner.ZeroShot2DataProcessor" />
-          <meta name="keywords" content="Spark NLP 6.4.1 ScalaDoc com.johnsnowlabs.nlp.annotators.ner.ZeroShot2DataProcessor" />
+          <title>Spark NLP 7.0.0 ScalaDoc  - com.johnsnowlabs.nlp.annotators.ner.ZeroShot2DataProcessor</title>
+          <meta name="description" content="Spark NLP 7.0.0 ScalaDoc - com.johnsnowlabs.nlp.annotators.ner.ZeroShot2DataProcessor" />
+          <meta name="keywords" content="Spark NLP 7.0.0 ScalaDoc com.johnsnowlabs.nlp.annotators.ner.ZeroShot2DataProcessor" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 6.4.1 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 7.0.0 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -601,6 +601,26 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.ner.ZeroShot2DataProcessor#buildClassificationPrefix" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="buildClassificationPrefix(schema:com.johnsnowlabs.nlp.annotators.ner.ZeroShot2Schema):Array[String]"></a><a id="buildClassificationPrefix(ZeroShot2Schema):Array[String]"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/ner/ZeroShot2DataProcessor.html#buildClassificationPrefix(schema:com.johnsnowlabs.nlp.annotators.ner.ZeroShot2Schema):Array[String]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">buildClassificationPrefix</span><span class="params">(<span name="schema">schema: <a href="ZeroShot2Schema.html" class="extype" name="com.johnsnowlabs.nlp.annotators.ner.ZeroShot2Schema">ZeroShot2Schema</a></span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Builds classification prefix tokens from JSON structures with choices.</p><div class="fullcomment"><div class="comment cmt"><p>Builds classification prefix tokens from JSON structures with choices.</p><p>The returned tokens are prepended to the text word-tokens (<code>prefix ++ text</code>) before encoding,
+so choice/enum field extraction must search these same tokens to locate a choice's score
+position. Exposed so <a href="../../../ml/onnx/ZeroShot2.html" class="extype" name="com.johnsnowlabs.ml.onnx.ZeroShot2">com.johnsnowlabs.ml.onnx.ZeroShot2</a> can reproduce the exact prefix at
+extraction time — it depends only on the schema, not on the text.
+</p></div></div>
     </li><li name="scala.AnyRef#clone" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a><a id="clone():AnyRef"></a>
       <span class="permalink">

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Getting Started &#8212; Spark NLP  documentation</title>
+    <title>Getting Started &#8212; Healthcare NLP  documentation</title>
   
   
   
@@ -127,8 +127,8 @@
       
     
     
-    <img src="../static/logo.png" class="logo__image only-light" alt="Spark NLP  documentation - Home"/>
-    <script>document.write(`<img src="../static/logo.png" class="logo__image only-dark" alt="Spark NLP  documentation - Home"/>`);</script>
+    <img src="../static/logo.png" class="logo__image only-light" alt="Healthcare NLP  documentation - Home"/>
+    <script>document.write(`<img src="../static/logo.png" class="logo__image only-dark" alt="Healthcare NLP  documentation - Home"/>`);</script>
   
   
 </a></div>
@@ -350,68 +350,119 @@ document.write(`
                   
   <section id="getting-started">
 <h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this heading">#</a></h1>
-<p>Spark NLP for Healthcare is a commercial extension of Spark NLP for clinical and biomedical text mining. If you don’t have a Spark NLP for Healthcare subscription yet, you can ask for a free trial by clicking on the button below.</p>
-<p>[Try Free](<a class="reference external" href="https://www.johnsnowlabs.com/spark-nlp-try-free/">https://www.johnsnowlabs.com/spark-nlp-try-free/</a>)</p>
-<p>Spark NLP for Healthcare provides healthcare-specific annotators, pipelines, models, and embeddings for:
-- Clinical entity recognition
-- Clinical Entity Linking
-- Entity normalization
-- Assertion Status Detection
-- De-identification
-- Relation Extraction
-- Spell checking &amp; correction
-- Entity Resolver
-- Rule Based Contextual Parser
-- Text Generator
-- Summarizer
-- Risk Adjustment Module</p>
-<p>The library offers access to several clinical and biomedical transformers: JSL-BERT-Clinical, BioBERT, ClinicalBERT, GloVe-Med, GloVe-ICD-O. It also includes over 2000+ pre-trained healthcare models, that can recognize the following entities (and many more):
-- Clinical - support Signs, Symptoms, Treatments, Procedures, Tests, Labs, Sections
-- Drugs - support Name, Dosage, Strength, Route, Duration, Frequency
-- Risk Factors- support Smoking, Obesity, Diabetes, Hypertension, Substance Abuse
-- Anatomy - support Organ, Subdivision, Cell, Structure Organism, Tissue, Gene, Chemical
-- Demographics - support Age, Gender, Height, Weight, Race, Ethnicity, Marital Status, Vital Signs
-- Sensitive Data- support Patient Name, Address, Phone, Email, Dates, Providers, Identifiers</p>
-<p>For more information visit our [models](<a class="reference external" href="https://nlp.johnsnowlabs.com/models/">https://nlp.johnsnowlabs.com/models/</a>) site.</p>
+<p>Healthcare NLP is a commercial extension of Spark NLP for clinical and biomedical
+text mining. If you don’t have a Healthcare NLP subscription yet, you can request a
+free trial by clicking on the button below.</p>
+<p><a class="reference external" href="https://www.johnsnowlabs.com/spark-nlp-try-free/">Try Free</a></p>
+<section id="features">
+<h2>Features<a class="headerlink" href="#features" title="Permalink to this heading">#</a></h2>
+<p>Healthcare NLP provides healthcare-specific annotators, pipelines, models, and
+embeddings for:</p>
+<ul class="simple">
+<li><p><strong>Clinical Named Entity Recognition (NER)</strong> — signs, symptoms, tests, treatments,
+and hundreds of other clinical entities</p></li>
+<li><p><strong>Assertion Status Detection</strong> — present, absent, hypothetical, family history, etc.</p></li>
+<li><p><strong>Relation Extraction</strong> — link entities such as drug–dosage or test–result</p></li>
+<li><p><strong>Entity Resolution &amp; Entity Linking</strong> — map entities to SNOMED, ICD-10, RxNorm,
+LOINC, and other terminologies</p></li>
+<li><p><strong>Entity Normalization</strong></p></li>
+<li><p><strong>De-identification</strong> — detect, mask, and obfuscate protected health information (PHI)</p></li>
+<li><p><strong>Medical LLMs (</strong><code class="docutils literal notranslate"><span class="pre">MedicalLLM</span></code><strong>)</strong> — run generative healthcare language
+models on-premise for question answering, summarization, and reasoning</p></li>
+<li><p><strong>LLM Entity Extractor</strong> — zero-shot / prompt-based extraction of clinical entities</p></li>
+<li><p><strong>Text Matching &amp; Regex Matching</strong> — dictionary- and pattern-based extraction</p></li>
+<li><p><strong>Rule-based Contextual Parsing</strong></p></li>
+<li><p><strong>Spell Checking &amp; Correction</strong></p></li>
+<li><p><strong>Clinical Text Summarization</strong></p></li>
+<li><p><strong>Clinical Text Generation</strong></p></li>
+<li><p><strong>Risk Adjustment (HCC) Module</strong></p></li>
+</ul>
+<p>The library offers access to several clinical and biomedical transformers, such as
+JSL-BERT-Clinical, BioBERT, ClinicalBERT, GloVe-Med, and GloVe-ICD-O. It also includes
+over 2000+ pre-trained healthcare models that can recognize the following entities
+(and many more):</p>
+<ul class="simple">
+<li><p><strong>Clinical</strong> — Signs, Symptoms, Treatments, Procedures, Tests, Labs, Sections</p></li>
+<li><p><strong>Drugs</strong> — Name, Dosage, Strength, Route, Duration, Frequency</p></li>
+<li><p><strong>Risk Factors</strong> — Smoking, Obesity, Diabetes, Hypertension, Substance Abuse</p></li>
+<li><p><strong>Anatomy</strong> — Organ, Subdivision, Cell, Structure, Organism, Tissue, Gene, Chemical</p></li>
+<li><p><strong>Demographics</strong> — Age, Gender, Height, Weight, Race, Ethnicity, Marital Status, Vital Signs</p></li>
+<li><p><strong>Sensitive Data</strong> — Patient Name, Address, Phone, Email, Dates, Providers, Identifiers</p></li>
+</ul>
+<p>For more information, visit our <a class="reference external" href="https://nlp.johnsnowlabs.com/models/">models</a> hub.</p>
+</section>
 <section id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading">#</a></h2>
-<p>Spark NLP is built on top of Apache Spark <cite>3.x.x</cite>. For using Spark NLP you need:</p>
+<p>Healthcare NLP is built on top of Apache Spark and supports both the Spark 3.x
+(Scala 2.12) and the Spark 4.x (Scala 2.13) runtimes. For using Healthcare NLP you
+need:</p>
 <ul class="simple">
-<li><p>Java 8 or Java 11</p></li>
-<li><p>Apache Spark <code class="docutils literal notranslate"><span class="pre">3.x.x</span></code></p></li>
-<li><p>Python <code class="docutils literal notranslate"><span class="pre">3.7.x</span></code>, <code class="docutils literal notranslate"><span class="pre">3.8.x</span></code>, <code class="docutils literal notranslate"><span class="pre">3.9.x</span></code>, and <code class="docutils literal notranslate"><span class="pre">3.10.x</span></code></p></li>
+<li><p><strong>Java</strong></p>
+<ul>
+<li><p>Java 8 or Java 11 for Apache Spark <code class="docutils literal notranslate"><span class="pre">3.x.x</span></code></p></li>
+<li><p>Java 17 (or later) for Apache Spark <code class="docutils literal notranslate"><span class="pre">4.x.x</span></code></p></li>
 </ul>
-<p>It is recommended to have basic knowledge of the framework and a working environment before using Spark NLP.
-Please refer to <a class="reference external" href="https://spark.apache.org/docs/latest/api/python/index.html">Spark documentation</a> to get started with Spark.</p>
+</li>
+<li><p><strong>Apache Spark</strong></p>
+<ul>
+<li><p>Apache Spark <code class="docutils literal notranslate"><span class="pre">3.x.x</span></code> (Scala 2.12)</p></li>
+<li><p>Apache Spark <code class="docutils literal notranslate"><span class="pre">4.x.x</span></code> (Scala 2.13)</p></li>
+</ul>
+</li>
+<li><p><strong>Python</strong> — <code class="docutils literal notranslate"><span class="pre">3.8.x</span></code>, <code class="docutils literal notranslate"><span class="pre">3.9.x</span></code>, <code class="docutils literal notranslate"><span class="pre">3.10.x</span></code>, and <code class="docutils literal notranslate"><span class="pre">3.11.x</span></code></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The correct Scala 2.13 / <code class="docutils literal notranslate"><span class="pre">spark400</span></code> artifacts are selected automatically from
+the installed PySpark version when you use <a class="reference internal" href="../reference/autosummary/sparknlp_jsl/index.html#sparknlp_jsl.start" title="sparknlp_jsl.start"><code class="xref py py-func docutils literal notranslate"><span class="pre">sparknlp_jsl.start()</span></code></a>, so the same
+code works on both Spark 3.x and Spark 4.x without changes.</p>
+</div>
+<p>It is recommended to have basic knowledge of the framework and a working environment
+before using Healthcare NLP. Please refer to the
+<a class="reference external" href="https://spark.apache.org/docs/latest/api/python/index.html">Spark documentation</a>
+to get started with Spark.</p>
+</section>
+<section id="version-compatibility">
+<h2>Version Compatibility<a class="headerlink" href="#version-compatibility" title="Permalink to this heading">#</a></h2>
+<p>Healthcare NLP releases are aligned with specific open-source Spark NLP and Apache
+Spark versions. Before installing, make sure the versions you plan to use are
+compatible with each other by checking the official compatibility chart:</p>
+<p><a class="reference external" href="https://nlp.johnsnowlabs.com/docs/en/licensed_version_compatibility">Spark NLP &amp; Healthcare NLP version compatibility</a></p>
 </section>
 <section id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h2>
-<p>First, let’s make sure the installed java version is Java 8 or 11 (Oracle or OpenJDK):</p>
+<p>First, let’s make sure the installed Java version is compatible with your Spark
+runtime (Oracle or OpenJDK):</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>java<span class="w"> </span>-version
-<span class="c1"># openjdk version &quot;1.8.0_292&quot;</span>
+<span class="c1"># openjdk version &quot;1.8.0_292&quot;   # Java 8/11 for Spark 3.x</span>
+<span class="c1"># openjdk version &quot;17.0.10&quot;     # Java 17 for Spark 4.x</span>
 </pre></div>
 </div>
-<p>You can install the Spark NLP for Healthcare package by using:</p>
+<p>You can install the Healthcare NLP package by using:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>spark-nlp-jsl<span class="o">==</span><span class="si">${</span><span class="nv">version</span><span class="si">}</span><span class="w"> </span>--extra-index-url<span class="w"> </span>https://pypi.johnsnowlabs.com/<span class="si">${</span><span class="nv">secret</span><span class="p">.code</span><span class="si">}</span><span class="w"> </span>--upgrade
 </pre></div>
 </div>
-<p><cite>{version}</cite> is the version part of the <cite>{secret.code}</cite> (<cite>{secret.code}.split(‘-‘)[0]</cite>) (i.e. <cite>2.x.x</cite>)</p>
-<p>The <cite>{secret.code}</cite> is a secret code that is only available to users with valid/trial license. If you did not receive it yet, please contact us at &lt;a href=”<a class="reference external" href="mailto:info&#37;&#52;&#48;johnsnowlabs&#46;com">mailto:info<span>&#64;</span>johnsnowlabs<span>&#46;</span>com</a>”&gt;info&#64;johnsnowlabs.com&lt;/a&gt;.</p>
+<p><code class="docutils literal notranslate"><span class="pre">{version}</span></code> is the version part of the <code class="docutils literal notranslate"><span class="pre">{secret.code}</span></code> (<code class="docutils literal notranslate"><span class="pre">{secret.code}.split('-')[0]</span></code>)
+(i.e. <code class="docutils literal notranslate"><span class="pre">6.x.x</span></code>).</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">{secret.code}</span></code> is a secret code that is only available to users with a
+valid/trial license. If you have not received it yet, please contact us at
+<a class="reference external" href="mailto:info&#37;&#52;&#48;johnsnowlabs&#46;com">info<span>&#64;</span>johnsnowlabs<span>&#46;</span>com</a>.</p>
 </section>
 <section id="starting-a-spark-nlp-session-from-python">
 <h2>Starting a Spark NLP Session from Python<a class="headerlink" href="#starting-a-spark-nlp-session-from-python" title="Permalink to this heading">#</a></h2>
-<p>You can start the spark session with this simple piece of code.</p>
+<p>You can start the Spark session with this simple piece of code. The Scala 2.13 /
+Spark 4 artifacts are resolved automatically from your installed PySpark version:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sparknlp_jsl</span>
-<span class="n">spark</span> <span class="o">=</span> <span class="n">sparknlp_jsl</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">secret</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{secret.code}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">spark</span> <span class="o">=</span> <span class="n">sparknlp_jsl</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">secret</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{secret.code}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Or use the SparkSession module for more flexibility:</p>
+<p>Or use the <code class="docutils literal notranslate"><span class="pre">SparkSession</span></code> module directly for more flexibility:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pyspark.sql</span><span class="w"> </span><span class="kn">import</span> <span class="n">SparkSession</span>
 
 <span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="o">.</span><span class="n">builder</span> \
     <span class="o">.</span><span class="n">appName</span><span class="p">(</span><span class="s2">&quot;Spark NLP Enterprise&quot;</span><span class="p">)</span> \
     <span class="o">.</span><span class="n">master</span><span class="p">(</span><span class="s2">&quot;local[*]&quot;</span><span class="p">)</span> \
-    <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">&quot;spark.driver.memory&quot;</span><span class="p">,</span><span class="s2">&quot;16&quot;</span><span class="p">)</span> \
+    <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">&quot;spark.driver.memory&quot;</span><span class="p">,</span> <span class="s2">&quot;16G&quot;</span><span class="p">)</span> \
     <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">&quot;spark.driver.maxResultSize&quot;</span><span class="p">,</span> <span class="s2">&quot;2G&quot;</span><span class="p">)</span> \
     <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">&quot;spark.serializer&quot;</span><span class="p">,</span> <span class="s2">&quot;org.apache.spark.serializer.KryoSerializer&quot;</span><span class="p">)</span> \
     <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">&quot;spark.kryoserializer.buffer.max&quot;</span><span class="p">,</span> <span class="s2">&quot;2000M&quot;</span><span class="p">)</span> \
@@ -419,6 +470,14 @@ Please refer to <a class="reference external" href="https://spark.apache.org/doc
     <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">&quot;spark.jars&quot;</span><span class="p">,</span> <span class="s2">&quot;https://pypi.johnsnowlabs.com/$</span><span class="si">{secret.code}</span><span class="s2">/spark-nlp-jsl-$</span><span class="si">{version}</span><span class="s2">.jar&quot;</span><span class="p">)</span> \
     <span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The example above targets an Apache Spark 3.x (Scala 2.12) runtime. On Apache
+Spark 4.x (Scala 2.13), use the Scala 2.13 artifacts instead — for example
+<code class="docutils literal notranslate"><span class="pre">com.johnsnowlabs.nlp:spark-nlp_2.13:${version_public}</span></code> and
+<code class="docutils literal notranslate"><span class="pre">spark-nlp-jsl_2.13-${version}.jar</span></code> (or the <code class="docutils literal notranslate"><span class="pre">spark400</span></code> variants on Spark
+4.0.0). Using <a class="reference internal" href="../reference/autosummary/sparknlp_jsl/index.html#sparknlp_jsl.start" title="sparknlp_jsl.start"><code class="xref py py-func docutils literal notranslate"><span class="pre">sparknlp_jsl.start()</span></code></a> handles this selection for you.</p>
 </div>
 </section>
 </section>
@@ -467,7 +526,9 @@ Please refer to <a class="reference external" href="https://spark.apache.org/doc
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#features">Features</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#version-compatibility">Version Compatibility</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#starting-a-spark-nlp-session-from-python">Starting a Spark NLP Session from Python</a></li>
 </ul>
@@ -498,7 +559,7 @@ Please refer to <a class="reference external" href="https://spark.apache.org/doc
 
   <p class="copyright">
     
-      © Copyright 2022, John Snow Labs.
+      © Copyright 2026, John Snow Labs.
       <br/>
     
   </p>
