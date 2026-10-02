@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>sparknlp_jsl.finance.sequence_classification.finance_few_shot_classifier &#8212; Spark NLP  documentation</title>
+    <title>sparknlp_jsl.finance.sequence_classification.finance_few_shot_classifier &#8212; Healthcare NLP  documentation</title>
   
   
   
@@ -125,8 +125,8 @@
       
     
     
-    <img src="../../../../../../static/logo.png" class="logo__image only-light" alt="Spark NLP  documentation - Home"/>
-    <script>document.write(`<img src="../../../../../../static/logo.png" class="logo__image only-dark" alt="Spark NLP  documentation - Home"/>`);</script>
+    <img src="../../../../../../static/logo.png" class="logo__image only-light" alt="Healthcare NLP  documentation - Home"/>
+    <script>document.write(`<img src="../../../../../../static/logo.png" class="logo__image only-dark" alt="Healthcare NLP  documentation - Home"/>`);</script>
   
   
 </a></div>
@@ -485,6 +485,11 @@ between 0 and 1.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_few_shot_classifier.FinanceFewShotClassifierApproach.getter_attrs">
 <span class="sig-name descname"><span class="pre">getter_attrs</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_few_shot_classifier.FinanceFewShotClassifierApproach.getter_attrs" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_few_shot_classifier.FinanceFewShotClassifierApproach.graphFolder">
+<span class="sig-name descname"><span class="pre">graphFolder</span></span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_few_shot_classifier.FinanceFewShotClassifierApproach.graphFolder" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -901,6 +906,19 @@ Processing continues with the next one. This comes with a performance penalty.</
 <dd></dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_few_shot_classifier.FinanceFewShotClassifierApproach.setGraphFolder">
+<span class="sig-name descname"><span class="pre">setGraphFolder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_few_shot_classifier.FinanceFewShotClassifierApproach.setGraphFolder" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets folder path that contains external graph files.</p>
+<p>The graph with the smallest dimensions able to fit the training dataset is selected from
+this folder. It is ignored when setModelFile is used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – Folder path that contains external graph files</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_few_shot_classifier.FinanceFewShotClassifierApproach.setInputCols">
 <span class="sig-name descname"><span class="pre">setInputCols</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_few_shot_classifier.FinanceFewShotClassifierApproach.setInputCols" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets column names of input annotations.</p>
@@ -950,6 +968,8 @@ RecursivePipeline</p>
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_few_shot_classifier.FinanceFewShotClassifierApproach.setModelFile">
 <span class="sig-name descname"><span class="pre">setModelFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_few_shot_classifier.FinanceFewShotClassifierApproach.setModelFile" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets file name to load the mode from”</p>
+<p>When it is not set, a graph with suitable dimensions is selected automatically, either from
+the folder set with setGraphFolder or from the graphs embedded in the library.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>label</strong> (<em>str</em>) – File name to load the mode from”</p>
@@ -1473,6 +1493,7 @@ RecursivePipeline</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_few_shot_classifier.FinanceFewShotClassifierApproach.featureScaling"><code class="docutils literal notranslate"><span class="pre">FinanceFewShotClassifierApproach.featureScaling</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_few_shot_classifier.FinanceFewShotClassifierApproach.fixImbalance"><code class="docutils literal notranslate"><span class="pre">FinanceFewShotClassifierApproach.fixImbalance</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_few_shot_classifier.FinanceFewShotClassifierApproach.getter_attrs"><code class="docutils literal notranslate"><span class="pre">FinanceFewShotClassifierApproach.getter_attrs</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_few_shot_classifier.FinanceFewShotClassifierApproach.graphFolder"><code class="docutils literal notranslate"><span class="pre">FinanceFewShotClassifierApproach.graphFolder</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_few_shot_classifier.FinanceFewShotClassifierApproach.inputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">FinanceFewShotClassifierApproach.inputAnnotatorTypes</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_few_shot_classifier.FinanceFewShotClassifierApproach.inputCols"><code class="docutils literal notranslate"><span class="pre">FinanceFewShotClassifierApproach.inputCols</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_few_shot_classifier.FinanceFewShotClassifierApproach.labelColumn"><code class="docutils literal notranslate"><span class="pre">FinanceFewShotClassifierApproach.labelColumn</span></code></a></li>
@@ -1521,6 +1542,7 @@ RecursivePipeline</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_few_shot_classifier.FinanceFewShotClassifierApproach.setFeatureScaling"><code class="docutils literal notranslate"><span class="pre">FinanceFewShotClassifierApproach.setFeatureScaling()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_few_shot_classifier.FinanceFewShotClassifierApproach.setFixImbalance"><code class="docutils literal notranslate"><span class="pre">FinanceFewShotClassifierApproach.setFixImbalance()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_few_shot_classifier.FinanceFewShotClassifierApproach.setForceInputTypeValidation"><code class="docutils literal notranslate"><span class="pre">FinanceFewShotClassifierApproach.setForceInputTypeValidation()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_few_shot_classifier.FinanceFewShotClassifierApproach.setGraphFolder"><code class="docutils literal notranslate"><span class="pre">FinanceFewShotClassifierApproach.setGraphFolder()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_few_shot_classifier.FinanceFewShotClassifierApproach.setInputCols"><code class="docutils literal notranslate"><span class="pre">FinanceFewShotClassifierApproach.setInputCols()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_few_shot_classifier.FinanceFewShotClassifierApproach.setLabelCol"><code class="docutils literal notranslate"><span class="pre">FinanceFewShotClassifierApproach.setLabelCol()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_few_shot_classifier.FinanceFewShotClassifierApproach.setLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">FinanceFewShotClassifierApproach.setLazyAnnotator()</span></code></a></li>
@@ -1617,7 +1639,7 @@ RecursivePipeline</p>
 
   <p class="copyright">
     
-      © Copyright 2022, John Snow Labs.
+      © Copyright 2026, John Snow Labs.
       <br/>
     
   </p>

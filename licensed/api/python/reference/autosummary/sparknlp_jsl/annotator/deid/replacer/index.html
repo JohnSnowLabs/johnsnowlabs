@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>sparknlp_jsl.annotator.deid.replacer &#8212; Spark NLP  documentation</title>
+    <title>sparknlp_jsl.annotator.deid.replacer &#8212; Healthcare NLP  documentation</title>
   
   
   
@@ -125,8 +125,8 @@
       
     
     
-    <img src="../../../../../../static/logo.png" class="logo__image only-light" alt="Spark NLP  documentation - Home"/>
-    <script>document.write(`<img src="../../../../../../static/logo.png" class="logo__image only-dark" alt="Spark NLP  documentation - Home"/>`);</script>
+    <img src="../../../../../../static/logo.png" class="logo__image only-light" alt="Healthcare NLP  documentation - Home"/>
+    <script>document.write(`<img src="../../../../../../static/logo.png" class="logo__image only-dark" alt="Healthcare NLP  documentation - Home"/>`);</script>
   
   
 </a></div>
@@ -345,6 +345,7 @@ document.write(`
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid</span></code></a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../aux_encryption_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.aux_encryption_params</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../base_deidentification_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.base_deidentification_params</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../deIdentification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.deIdentification</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../deidentication_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.deidentication_params</span></code></a></li>
@@ -374,6 +375,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../../fhir/base_fhir_deidentification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.fhir.base_fhir_deidentification</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fhir/cda_deIdentification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.fhir.cda_deIdentification</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fhir/fhir_deIdentification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.fhir.fhir_deIdentification</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fhir/hl7v2_deIdentification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.fhir.hl7v2_deIdentification</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../generic_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.generic_classifier</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -554,7 +556,7 @@ document.write(`
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.replacer.Replacer">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Replacer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'com.johnsnowlabs.nlp.annotators.deid.Replacer'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">java_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.replacer.Replacer" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.common.AnnotatorModelInternal</span></code></p>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.common.AnnotatorModelInternal</span></code>, <a class="reference internal" href="../aux_encryption_params/index.html#sparknlp_jsl.annotator.deid.aux_encryption_params.AuxEncryptionParams" title="sparknlp_jsl.annotator.deid.aux_encryption_params.AuxEncryptionParams"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.aux_encryption_params.AuxEncryptionParams</span></code></a></p>
 <p>Replaces entities in the original text with new ones.</p>
 <p>This class allows to replace entities in the original text with the ones obtained with,
 for example, :py:class:: <a href="#id7"><span class="problematic" id="id8">`DeIdentificationModel`_</span></a> or :py:class:: <a href="#id9"><span class="problematic" id="id10">`DateNormalizer`_</span></a>.</p>
@@ -709,6 +711,11 @@ for example, :py:class:: <a href="#id7"><span class="problematic" id="id8">`DeId
 </pre></div>
 </div>
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.replacer.Replacer.auxEncryptionKey">
+<span class="sig-name descname"><span class="pre">auxEncryptionKey</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.auxEncryptionKey" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.replacer.Replacer.getter_attrs">
 <span class="sig-name descname"><span class="pre">getter_attrs</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.getter_attrs" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -856,6 +863,13 @@ user-supplied values &lt; extra.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.replacer.Replacer.getAuxEncryptionKey">
+<span class="sig-name descname"><span class="pre">getAuxEncryptionKey</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.getAuxEncryptionKey" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the stored (wrapped) form of the aux encryption key, or an empty string when
+encryption is disabled.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.replacer.Replacer.getInputCols">
 <span class="sig-name descname"><span class="pre">getInputCols</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.getInputCols" title="Permalink to this definition">#</a></dt>
 <dd><p>Gets current column names of input annotations.</p>
@@ -965,6 +979,31 @@ a default value.</p>
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.replacer.Replacer.set">
 <span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.set" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets a parameter in the embedded param map.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.replacer.Replacer.setAuxEncryptionKey">
+<span class="sig-name descname"><span class="pre">setAuxEncryptionKey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.setAuxEncryptionKey" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the key used to encrypt and decrypt the mappings (aux) column.</p>
+<p>When set on a de-identification annotator, the original values carried by the mappings
+column are encrypted. <a class="reference internal" href="../reIdentification/index.html#sparknlp_jsl.annotator.deid.reIdentification.ReIdentification" title="sparknlp_jsl.annotator.deid.reIdentification.ReIdentification"><code class="xref py py-class docutils literal notranslate"><span class="pre">ReIdentification</span></code></a> needs the very same key to restore the
+original text. When left unset, the mappings column is produced in clear text.</p>
+<p>The key is never stored in clear text; it is wrapped before being kept in the annotator, so
+a saved pipeline never contains the raw value.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">de_identification</span> <span class="o">=</span> <span class="n">DeIdentification</span><span class="p">()</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setReturnEntityMappings</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setMappingsColumn</span><span class="p">(</span><span class="s2">&quot;aux&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setAuxEncryptionKey</span><span class="p">(</span><span class="s2">&quot;my-secret-key&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re_identification</span> <span class="o">=</span> <span class="n">ReIdentification</span><span class="p">()</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setAuxEncryptionKey</span><span class="p">(</span><span class="s2">&quot;my-secret-key&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – The key used to encrypt and decrypt the mappings column.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -1200,6 +1239,7 @@ Default is [‘&lt;’, ‘&gt;’]</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.returnEntityMappings"><code class="docutils literal notranslate"><span class="pre">Replacer.returnEntityMappings</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.staticEntityMappingsFallback"><code class="docutils literal notranslate"><span class="pre">Replacer.staticEntityMappingsFallback</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.staticEntityMappings"><code class="docutils literal notranslate"><span class="pre">Replacer.staticEntityMappings</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.auxEncryptionKey"><code class="docutils literal notranslate"><span class="pre">Replacer.auxEncryptionKey</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.getter_attrs"><code class="docutils literal notranslate"><span class="pre">Replacer.getter_attrs</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.inputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">Replacer.inputAnnotatorTypes</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.inputCols"><code class="docutils literal notranslate"><span class="pre">Replacer.inputCols</span></code></a></li>
@@ -1222,6 +1262,7 @@ Default is [‘&lt;’, ‘&gt;’]</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.explainParam"><code class="docutils literal notranslate"><span class="pre">Replacer.explainParam()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.explainParams"><code class="docutils literal notranslate"><span class="pre">Replacer.explainParams()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.extractParamMap"><code class="docutils literal notranslate"><span class="pre">Replacer.extractParamMap()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.getAuxEncryptionKey"><code class="docutils literal notranslate"><span class="pre">Replacer.getAuxEncryptionKey()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.getInputCols"><code class="docutils literal notranslate"><span class="pre">Replacer.getInputCols()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.getLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">Replacer.getLazyAnnotator()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.getOrDefault"><code class="docutils literal notranslate"><span class="pre">Replacer.getOrDefault()</span></code></a></li>
@@ -1239,6 +1280,7 @@ Default is [‘&lt;’, ‘&gt;’]</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.read"><code class="docutils literal notranslate"><span class="pre">Replacer.read()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.save"><code class="docutils literal notranslate"><span class="pre">Replacer.save()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.set"><code class="docutils literal notranslate"><span class="pre">Replacer.set()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.setAuxEncryptionKey"><code class="docutils literal notranslate"><span class="pre">Replacer.setAuxEncryptionKey()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.setForceInputTypeValidation"><code class="docutils literal notranslate"><span class="pre">Replacer.setForceInputTypeValidation()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.setInputCols"><code class="docutils literal notranslate"><span class="pre">Replacer.setInputCols()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.replacer.Replacer.setLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">Replacer.setLazyAnnotator()</span></code></a></li>
@@ -1289,7 +1331,7 @@ Default is [‘&lt;’, ‘&gt;’]</p>
 
   <p class="copyright">
     
-      © Copyright 2022, John Snow Labs.
+      © Copyright 2026, John Snow Labs.
       <br/>
     
   </p>

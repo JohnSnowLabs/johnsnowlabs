@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 6.4.1 ScalaDoc  - com.johnsnowlabs.nlp.annotators.deid.ObfuscatorAnnotatorModel</title>
-          <meta name="description" content="Spark NLP 6.4.1 ScalaDoc - com.johnsnowlabs.nlp.annotators.deid.ObfuscatorAnnotatorModel" />
-          <meta name="keywords" content="Spark NLP 6.4.1 ScalaDoc com.johnsnowlabs.nlp.annotators.deid.ObfuscatorAnnotatorModel" />
+          <title>Spark NLP 7.0.0 ScalaDoc  - com.johnsnowlabs.nlp.annotators.deid.ObfuscatorAnnotatorModel</title>
+          <meta name="description" content="Spark NLP 7.0.0 ScalaDoc - com.johnsnowlabs.nlp.annotators.deid.ObfuscatorAnnotatorModel" />
+          <meta name="keywords" content="Spark NLP 7.0.0 ScalaDoc com.johnsnowlabs.nlp.annotators.deid.ObfuscatorAnnotatorModel" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 6.4.1 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 7.0.0 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -182,6 +182,10 @@
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid">deid</a></dd></dl></div>
     </li><li class="current-entities indented5">
+                        <span class="separator"></span>
+                        <a class="trait" href="AuxEncryptionParams.html" title="Adds the aux (mappings) column encryption key to an annotator."></a>
+                        <a href="AuxEncryptionParams.html" title="Adds the aux (mappings) column encryption key to an annotator.">AuxEncryptionParams</a>
+                      </li><li class="current-entities indented5">
                         <span class="separator"></span>
                         <a class="trait" href="BaseDeidParams.html" title="A trait that contains all the params that are common in DeIdentificationParams and ObfuscatorParams."></a>
                         <a href="BaseDeidParams.html" title="A trait that contains all the params that are common in DeIdentificationParams and ObfuscatorParams.">BaseDeidParams</a>
@@ -970,6 +974,46 @@ Default: false
       <p class="shortcomment cmt">Format of dates to displace
 </p><div class="fullcomment"><div class="comment cmt"><p>Format of dates to displace
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#dateToYear" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
+      <a id="dateToYear:org.apache.spark.ml.param.BooleanParam"></a><a id="dateToYear:BooleanParam"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/ObfuscatorAnnotatorModel.html#dateToYear:org.apache.spark.ml.param.BooleanParam" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">dateToYear</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.BooleanParam">BooleanParam</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">true if dates must be converted to years, false otherwise
+</p><div class="fullcomment"><div class="comment cmt"><p>true if dates must be converted to years, false otherwise
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#dateToYearEntities" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
+      <a id="dateToYearEntities:org.apache.spark.ml.param.StringArrayParam"></a><a id="dateToYearEntities:StringArrayParam"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/ObfuscatorAnnotatorModel.html#dateToYearEntities:org.apache.spark.ml.param.StringArrayParam" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">dateToYearEntities</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.StringArrayParam">StringArrayParam</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">List of date entities that must be converted to year only (e.g.</p><div class="fullcomment"><div class="comment cmt"><p>List of date entities that must be converted to year only (e.g. Array(&quot;DOB&quot;)).
+When this list is non-empty, only the listed date entities are converted to a year, while every
+other date entity is obfuscated with the regular format-preserving date displacement. This
+overrides the global <a href="BaseDeidParams.html#dateToYear:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#dateToYear">dateToYear</a> flag for the listed entities. When the list is empty
+(default), the global <a href="BaseDeidParams.html#dateToYear:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#dateToYear">dateToYear</a> flag governs all date entities as before.
+Only entities that are also present in <a href="BaseDeidParams.html#dateEntities:org.apache.spark.ml.param.StringArrayParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#dateEntities">dateEntities</a> are affected. Default: Array()
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#days" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
       <a id="days:org.apache.spark.ml.param.IntParam"></a><a id="days:IntParam"></a>
       <span class="permalink">
@@ -1037,6 +1081,27 @@ For example, if the markers are set to (&quot;&lt;DEID&gt;&quot;, &quot;&lt;/DEI
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HasSimpleAnnotate</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams#documentAwareNameSeed" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="documentAwareNameSeed(documentID:Option[String]):Int"></a><a id="documentAwareNameSeed(Option[String]):Int"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/ObfuscatorAnnotatorModel.html#documentAwareNameSeed(documentID:Option[String]):Int" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">documentAwareNameSeed</span><span class="params">(<span name="documentID">documentID: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Returns the seed used to select fake names.</p><div class="fullcomment"><div class="comment cmt"><p>Returns the seed used to select fake names. When <a href="BaseDeidParams.html#idBasedObfuscation:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#idBasedObfuscation">BaseDeidParams.idBasedObfuscation</a> is
+enabled and a document ID is available, the seed is derived from the document ID (salted with
+the base seed) so that the fake name selection depends on the document. This makes the same
+name obfuscate consistently within a document but differently across documents. When disabled
+or when no document ID is available, the regular base seed is returned.
+</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="DeidModelParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams">DeidModelParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#enableDefaultObfuscationEquivalents" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
       <a id="enableDefaultObfuscationEquivalents:org.apache.spark.ml.param.BooleanParam"></a><a id="enableDefaultObfuscationEquivalents:BooleanParam"></a>
       <span class="permalink">
@@ -1272,6 +1337,25 @@ Value must be greater than 0. Default is 3.
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams#formatStateAsOriginal" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="formatStateAsOriginal(fakeState:String,originalState:String):String"></a><a id="formatStateAsOriginal(String,String):String"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/ObfuscatorAnnotatorModel.html#formatStateAsOriginal(fakeState:String,originalState:String):String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">formatStateAsOriginal</span><span class="params">(<span name="fakeState">fakeState: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="originalState">originalState: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Renders a fake state in the same format as the chunk it replaces.</p><div class="fullcomment"><div class="comment cmt"><p>Renders a fake state in the same format as the chunk it replaces.</p><p><span class="extype" name="Addresses.state">Addresses.state</span> is always stored as a two letter abbreviation, so a spelled out chunk such
+as &quot;New York&quot; has to be expanded to &quot;California&quot; instead of being replaced by &quot;CA&quot;. Unknown
+abbreviations are returned unchanged.
+</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="DeidModelParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams">DeidModelParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#genderAwareness" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
       <a id="genderAwareness:org.apache.spark.ml.param.BooleanParam"></a><a id="genderAwareness:BooleanParam"></a>
       <span class="permalink">
@@ -1622,6 +1706,40 @@ obfuscation patterns.</p><p>default: false
       <p class="shortcomment cmt">Gets the value of <a href="BaseDeidParams.html#dateFormats:org.apache.spark.ml.param.StringArrayParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#dateFormats">dateFormats</a>
 </p><div class="fullcomment"><div class="comment cmt"><p>Gets the value of <a href="BaseDeidParams.html#dateFormats:org.apache.spark.ml.param.StringArrayParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#dateFormats">dateFormats</a>
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#getDateToYear" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="getParam">
+      <a id="getDateToYear:Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/ObfuscatorAnnotatorModel.html#getDateToYear:Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getDateToYear</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Gets <a href="BaseDeidParams.html#dateToYear:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#dateToYear">dateToYear</a> param.</p><div class="fullcomment"><div class="comment cmt"><p>Gets <a href="BaseDeidParams.html#dateToYear:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#dateToYear">dateToYear</a> param.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#getDateToYearEntities" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="getParam">
+      <a id="getDateToYearEntities:Array[String]"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/ObfuscatorAnnotatorModel.html#getDateToYearEntities:Array[String]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getDateToYearEntities</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Gets <a href="BaseDeidParams.html#dateToYearEntities:org.apache.spark.ml.param.StringArrayParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#dateToYearEntities">dateToYearEntities</a> param.</p><div class="fullcomment"><div class="comment cmt"><p>Gets <a href="BaseDeidParams.html#dateToYearEntities:org.apache.spark.ml.param.StringArrayParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#dateToYearEntities">dateToYearEntities</a> param.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#getDays" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="getParam">
       <a id="getDays:Int"></a>
       <span class="permalink">
@@ -1833,7 +1951,16 @@ obfuscation patterns.</p><p>default: false
         <span class="name">getFakeByHashcode</span><span class="params">(<span name="fakes">fakes: <a href="../../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="wordToReplace">wordToReplace: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="entity">entity: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="seed">seed: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="DeidModelParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams">DeidModelParams</a></dd></dl></div>
+      <p class="shortcomment cmt">Picks a fake from <code>fakes</code> by hashing the original word, so the same word always maps to the same
+fake for a given seed.</p><div class="fullcomment"><div class="comment cmt"><p>Picks a fake from <code>fakes</code> by hashing the original word, so the same word always maps to the same
+fake for a given seed.</p><p>The hash can land on the original word itself, which would silently leave the PHI in place. Small
+pools make this likely enough to matter: a two letter STATE has a 1 in 50 chance. When it happens
+the draw is repeated once with the next seed. The retry is deliberately not forced into a loop and
+the candidate list is never filtered, so the existing selection algorithm and its determinism stay
+intact; if the second draw collides as well the value is returned unchanged.</p><p>Formatted entities (see <a href="BaseDeidParams.html#sameLengthFormattedEntities:org.apache.spark.ml.param.StringArrayParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#sameLengthFormattedEntities">BaseDeidParams.sameLengthFormattedEntities</a>, for example ZIP or SSN) do
+not reach this method, they are obfuscated by <a href="DeidModelParams.html#generateFakeBySameLengthUsingHash(wordToReplace:String,entity:String):String" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams#generateFakeBySameLengthUsingHash">generateFakeBySameLengthUsingHash</a> which already
+guarantees a different value.
+</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="DeidModelParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams">DeidModelParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams#getFakeWithSameSize" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getFakeWithSameSize(fakes:Seq[String],wordToReplace:String,entity:String,lengthDeviation:Int,seed:Int):String"></a><a id="getFakeWithSameSize(Seq[String],String,String,Int,Int):String"></a>
       <span class="permalink">
@@ -1917,6 +2044,23 @@ obfuscation patterns.</p><p>default: false
       </span>
       
       <p class="shortcomment cmt">Gets the value of <a href="BaseDeidParams.html#geoConsistency:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#geoConsistency">geoConsistency</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Gets the value of <a href="BaseDeidParams.html#geoConsistency:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#geoConsistency">geoConsistency</a>.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#getIdBasedObfuscation" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="getParam">
+      <a id="getIdBasedObfuscation:Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/ObfuscatorAnnotatorModel.html#getIdBasedObfuscation:Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getIdBasedObfuscation</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Gets <a href="BaseDeidParams.html#idBasedObfuscation:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#idBasedObfuscation">idBasedObfuscation</a> param.</p><div class="fullcomment"><div class="comment cmt"><p>Gets <a href="BaseDeidParams.html#idBasedObfuscation:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#idBasedObfuscation">idBasedObfuscation</a> param.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.HasInputAnnotationCols#getInputCols" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getInputCols:Array[String]"></a>
@@ -2073,6 +2217,23 @@ obfuscation patterns.</p><p>default: false
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="DeidModelParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams">DeidModelParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#getMinYear" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="getParam">
+      <a id="getMinYear:Int"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/ObfuscatorAnnotatorModel.html#getMinYear:Int" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getMinYear</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Gets <a href="BaseDeidParams.html#minYear:org.apache.spark.ml.param.IntParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#minYear">minYear</a> param.</p><div class="fullcomment"><div class="comment cmt"><p>Gets <a href="BaseDeidParams.html#minYear:org.apache.spark.ml.param.IntParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#minYear">minYear</a> param.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#getMode" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="getParam">
       <a id="getMode:String"></a>
       <span class="permalink">
@@ -2089,6 +2250,23 @@ obfuscation patterns.</p><p>default: false
       </span>
       
       <p class="shortcomment cmt">Gets <a href="BaseDeidParams.html#mode:org.apache.spark.ml.param.Param[String]" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#mode">mode</a> param.</p><div class="fullcomment"><div class="comment cmt"><p>Gets <a href="BaseDeidParams.html#mode:org.apache.spark.ml.param.Param[String]" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#mode">mode</a> param.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#getNationalityAwareness" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="getParam">
+      <a id="getNationalityAwareness:Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/ObfuscatorAnnotatorModel.html#getNationalityAwareness:Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getNationalityAwareness</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Gets <a href="BaseDeidParams.html#nationalityAwareness:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#nationalityAwareness">nationalityAwareness</a> param.</p><div class="fullcomment"><div class="comment cmt"><p>Gets <a href="BaseDeidParams.html#nationalityAwareness:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#nationalityAwareness">nationalityAwareness</a> param.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#getObfuscateDate" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="getParam">
       <a id="getObfuscateDate:Boolean"></a>
       <span class="permalink">
@@ -2566,6 +2744,30 @@ obfuscation patterns.</p><p>default: false
                 <span class="name">@native</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#idBasedObfuscation" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
+      <a id="idBasedObfuscation:org.apache.spark.ml.param.BooleanParam"></a><a id="idBasedObfuscation:BooleanParam"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/ObfuscatorAnnotatorModel.html#idBasedObfuscation:org.apache.spark.ml.param.BooleanParam" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">idBasedObfuscation</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.BooleanParam">BooleanParam</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Whether to make obfuscation depend on the document ID.</p><div class="fullcomment"><div class="comment cmt"><p>Whether to make obfuscation depend on the document ID.
+<b>Currently this param is only valid for name-related entities</b> (NAME, PATIENT, DOCTOR,
+SIGNING_PERSON, PERSON, CLIENT, FIRST_NAME, LAST_NAME). It has no effect on other entities.</p><p>The document ID is read from the <code>id</code> metadata of the document (the same <code>id</code> used for
+consistent date shifting). When enabled and a document ID is available, the fake name selection
+is derived from the combination of the document ID and the original name, which gives the
+following behavior:</p><ul><li>Same document ID + same name  -&gt; same fake (consistent within a document).</li><li>Same document ID + different names -&gt; different fakes.</li><li>Different document IDs + same name -&gt; different fakes (a name is obfuscated differently
+    across documents).</li></ul><p>When disabled, or when no document ID is available, name obfuscation falls back to the regular
+seed-based selection. It works together with <a href="BaseDeidParams.html#genderAwareness:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#genderAwareness">genderAwareness</a> and <a href="BaseDeidParams.html#nationalityAwareness:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#nationalityAwareness">nationalityAwareness</a>.</p><p>Default: False
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
     </li><li name="org.apache.spark.internal.Logging#initializeLogIfNecessary" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="initializeLogIfNecessary(isInterpreter:Boolean,silent:Boolean):Boolean"></a><a id="initializeLogIfNecessary(Boolean,Boolean):Boolean"></a>
       <span class="permalink">
@@ -2630,6 +2832,26 @@ obfuscation patterns.</p><p>default: false
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>HasInputAnnotationCols</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#isDateToYearEntity" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="isDateToYearEntity(entityClass:String):Boolean"></a><a id="isDateToYearEntity(String):Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/ObfuscatorAnnotatorModel.html#isDateToYearEntity(entityClass:String):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isDateToYearEntity</span><span class="params">(<span name="entityClass">entityClass: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Returns true if the given entity class must be converted to year only, based on
+<a href="BaseDeidParams.html#dateToYearEntities:org.apache.spark.ml.param.StringArrayParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#dateToYearEntities">dateToYearEntities</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Returns true if the given entity class must be converted to year only, based on
+<a href="BaseDeidParams.html#dateToYearEntities:org.apache.spark.ml.param.StringArrayParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#dateToYearEntities">dateToYearEntities</a>. This only considers the explicit per-entity list; callers may still
+combine it with the global <a href="BaseDeidParams.html#dateToYear:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#dateToYear">dateToYear</a> flag when the list is empty.
+</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
     </li><li name="org.apache.spark.ml.param.Params#isDefined" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isDefined(param:org.apache.spark.ml.param.Param[_]):Boolean"></a><a id="isDefined(Param[_]):Boolean"></a>
       <span class="permalink">
@@ -2710,6 +2932,42 @@ obfuscation patterns.</p><p>default: false
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams#isNameEntity" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="isNameEntity(entityClass:String):Boolean"></a><a id="isNameEntity(String):Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/ObfuscatorAnnotatorModel.html#isNameEntity(entityClass:String):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isNameEntity</span><span class="params">(<span name="entityClass">entityClass: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">The name-related entities that <a href="BaseDeidParams.html#idBasedObfuscation:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#idBasedObfuscation">BaseDeidParams.idBasedObfuscation</a> applies to.</p><div class="fullcomment"><div class="comment cmt"><p>The name-related entities that <a href="BaseDeidParams.html#idBasedObfuscation:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#idBasedObfuscation">BaseDeidParams.idBasedObfuscation</a> applies to. It extends
+ <a href="DeidModelParams.html#nameEntities:Seq[String]" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams#nameEntities">nameEntities</a> with the first/last name entities.</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="DeidModelParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams">DeidModelParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams#isNationalityAware" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="isNationalityAware:Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/ObfuscatorAnnotatorModel.html#isNationalityAware:Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isNationalityAware</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Nationality awareness is only applied when the <code>nationalityAwareness</code> param is enabled and the
+language is English.</p><div class="fullcomment"><div class="comment cmt"><p>Nationality awareness is only applied when the <code>nationalityAwareness</code> param is enabled and the
+language is English. For any other language it is disabled regardless of the param value.
+</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="DeidModelParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams">DeidModelParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams#isObfuscateDate" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isObfuscateDate(entityClass:String):Boolean"></a><a id="isObfuscateDate(String):Boolean"></a>
       <span class="permalink">
@@ -2747,6 +3005,25 @@ The default value is false.</p><div class="fullcomment"><div class="comment cmt"
 If true use random displacement days in dates entities,if false use the <a href="DeIdentificationParams.html#days:org.apache.spark.ml.param.IntParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams#days">DeIdentificationParams.days</a>
 The default value is false.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams#isSameAsOriginal" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="isSameAsOriginal(fake:String,wordToReplace:String):Boolean"></a><a id="isSameAsOriginal(String,String):Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/ObfuscatorAnnotatorModel.html#isSameAsOriginal(fake:String,wordToReplace:String):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isSameAsOriginal</span><span class="params">(<span name="fake">fake: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="wordToReplace">wordToReplace: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Whether an obfuscated value is indistinguishable from the value it should have replaced.</p><div class="fullcomment"><div class="comment cmt"><p>Whether an obfuscated value is indistinguishable from the value it should have replaced. The
+comparison ignores casing and surrounding spaces because <a href="DeidModelParams.html#handleCasing(originalFake:String,wordToReplace:String):String" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams#handleCasing">handleCasing</a> already aligns the
+fake with the original, so &quot;ny&quot; replaced by &quot;NY&quot; is still a leak.
+</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="DeidModelParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams">DeidModelParams</a></dd></dl></div>
     </li><li name="org.apache.spark.ml.param.Params#isSet" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isSet(param:org.apache.spark.ml.param.Param[_]):Boolean"></a><a id="isSet(Param[_]):Boolean"></a>
       <span class="permalink">
@@ -3098,6 +3375,24 @@ Default:'en'
       <p class="shortcomment cmt">Maximum number of days for random date displacement.</p><div class="fullcomment"><div class="comment cmt"><p>Maximum number of days for random date displacement. Default is 1825 (5 years).
 If <a href="BaseDeidParams.html#isRandomDateDisplacement:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#isRandomDateDisplacement">isRandomDateDisplacement</a> is true, a random number of days between 1 and maxRandomDisplacementDays will be used for date displacement.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#minYear" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
+      <a id="minYear:org.apache.spark.ml.param.IntParam"></a><a id="minYear:IntParam"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/ObfuscatorAnnotatorModel.html#minYear:org.apache.spark.ml.param.IntParam" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">minYear</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.IntParam">IntParam</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Minimum year to use when converting date to year
+</p><div class="fullcomment"><div class="comment cmt"><p>Minimum year to use when converting date to year
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#mode" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
       <a id="mode:org.apache.spark.ml.param.Param[String]"></a><a id="mode:Param[String]"></a>
       <span class="permalink">
@@ -3150,6 +3445,32 @@ If <a href="BaseDeidParams.html#isRandomDateDisplacement:org.apache.spark.ml.par
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="DeidModelParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams">DeidModelParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#nationalityAwareness" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
+      <a id="nationalityAwareness:org.apache.spark.ml.param.BooleanParam"></a><a id="nationalityAwareness:BooleanParam"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/ObfuscatorAnnotatorModel.html#nationalityAwareness:org.apache.spark.ml.param.BooleanParam" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">nationalityAwareness</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.BooleanParam">BooleanParam</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Whether to use nationality-aware names or not during obfuscation.</p><div class="fullcomment"><div class="comment cmt"><p>Whether to use nationality-aware names or not during obfuscation.
+This param affects only names (NAME, PATIENT, DOCTOR, first_name, last_name, ...).
+When enabled, the original name's nationality is detected from the embedded nationality
+name lists (e.g. Arab, French, Spanish, German, Russian, Turkish, ...) and the fake name
+is generated from the very same nationality. Nationality lists are gender-separated, so a
+detected male name is replaced by a male name of the same nationality and vice versa.</p><p>This feature is only supported for the English language (<code>language</code> == &quot;en&quot;). For any other
+language it is automatically disabled regardless of the parameter value. If the nationality of
+the original name cannot be detected, the obfuscation falls back to the regular behavior
+(gender-aware if <a href="BaseDeidParams.html#genderAwareness:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#genderAwareness">genderAwareness</a> is enabled, otherwise the default faker lists).</p><p>If value is true, it might decrease performance.
+Default: False
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a><a id="ne(AnyRef):Boolean"></a>
       <span class="permalink">
@@ -3225,9 +3546,9 @@ needs. If the value is true and obfuscation is failed, then <a href="BaseDeidPar
 activated. When setting to 'false', then the date will be masked to &lt;DATE&gt;. Default: false
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams#obfuscateNameEntity" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="obfuscateNameEntity(originalName:String,keepTextSize:Boolean,lengthDeviation:Int,namePartsMemory:scala.collection.mutable.Map[String,String]):String"></a><a id="obfuscateNameEntity(String,Boolean,Int,Map[String,String]):String"></a>
+      <a id="obfuscateNameEntity(originalName:String,keepTextSize:Boolean,lengthDeviation:Int,namePartsMemory:scala.collection.mutable.Map[String,String],documentID:Option[String]):String"></a><a id="obfuscateNameEntity(String,Boolean,Int,Map[String,String],Option[String]):String"></a>
       <span class="permalink">
-      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/ObfuscatorAnnotatorModel.html#obfuscateNameEntity(originalName:String,keepTextSize:Boolean,lengthDeviation:Int,namePartsMemory:scala.collection.mutable.Map[String,String]):String" title="Permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/ObfuscatorAnnotatorModel.html#obfuscateNameEntity(originalName:String,keepTextSize:Boolean,lengthDeviation:Int,namePartsMemory:scala.collection.mutable.Map[String,String],documentID:Option[String]):String" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -3236,7 +3557,7 @@ activated. When setting to 'false', then the date will be masked to &lt;DATE&gt;
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">obfuscateNameEntity</span><span class="params">(<span name="originalName">originalName: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="keepTextSize">keepTextSize: <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="lengthDeviation">lengthDeviation: <span class="extype" name="scala.Int">Int</span></span>, <span name="namePartsMemory">namePartsMemory: <span class="extype" name="scala.collection.mutable.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+        <span class="name">obfuscateNameEntity</span><span class="params">(<span name="originalName">originalName: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="keepTextSize">keepTextSize: <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="lengthDeviation">lengthDeviation: <span class="extype" name="scala.Int">Int</span></span>, <span name="namePartsMemory">namePartsMemory: <span class="extype" name="scala.collection.mutable.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="documentID">documentID: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol"><span class="name"><a href="../../../../../scala/index.html">None</a></span></span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="DeidModelParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams">DeidModelParams</a></dd></dl></div>
@@ -3550,9 +3871,9 @@ The supported and default formatted entities are:
 with the same output.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams#selectFakeFromAllFakes" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="selectFakeFromAllFakes(wordToReplace:String,entityClass:String,maskedEntity:String,allFakes:Seq[String]):String"></a><a id="selectFakeFromAllFakes(String,String,String,Seq[String]):String"></a>
+      <a id="selectFakeFromAllFakes(wordToReplace:String,entityClass:String,maskedEntity:String,allFakes:Seq[String],documentID:Option[String]):String"></a><a id="selectFakeFromAllFakes(String,String,String,Seq[String],Option[String]):String"></a>
       <span class="permalink">
-      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/ObfuscatorAnnotatorModel.html#selectFakeFromAllFakes(wordToReplace:String,entityClass:String,maskedEntity:String,allFakes:Seq[String]):String" title="Permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/ObfuscatorAnnotatorModel.html#selectFakeFromAllFakes(wordToReplace:String,entityClass:String,maskedEntity:String,allFakes:Seq[String],documentID:Option[String]):String" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -3561,7 +3882,7 @@ with the same output.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">selectFakeFromAllFakes</span><span class="params">(<span name="wordToReplace">wordToReplace: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="entityClass">entityClass: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="maskedEntity">maskedEntity: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="allFakes">allFakes: <a href="../../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+        <span class="name">selectFakeFromAllFakes</span><span class="params">(<span name="wordToReplace">wordToReplace: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="entityClass">entityClass: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="maskedEntity">maskedEntity: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="allFakes">allFakes: <a href="../../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="documentID">documentID: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol"><span class="name"><a href="../../../../../scala/index.html">None</a></span></span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="DeidModelParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams">DeidModelParams</a></dd></dl></div>
@@ -3885,6 +4206,40 @@ Default: false
       <p class="shortcomment cmt">Format of dates to displace
 </p><div class="fullcomment"><div class="comment cmt"><p>Format of dates to displace
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#setDateToYear" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setDateToYear(s:Boolean):BaseDeidParams.this.type"></a><a id="setDateToYear(Boolean):ObfuscatorAnnotatorModel.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/ObfuscatorAnnotatorModel.html#setDateToYear(s:Boolean):BaseDeidParams.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setDateToYear</span><span class="params">(<span name="s">s: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.ObfuscatorAnnotatorModel">ObfuscatorAnnotatorModel</a>.this.type</span>
+      </span>
+      
+      <p class="shortcomment cmt">Sets whether dates must be converted to years.</p><div class="fullcomment"><div class="comment cmt"><p>Sets whether dates must be converted to years.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#setDateToYearEntities" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setDateToYearEntities(value:Array[String]):BaseDeidParams.this.type"></a><a id="setDateToYearEntities(Array[String]):ObfuscatorAnnotatorModel.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/ObfuscatorAnnotatorModel.html#setDateToYearEntities(value:Array[String]):BaseDeidParams.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setDateToYearEntities</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.ObfuscatorAnnotatorModel">ObfuscatorAnnotatorModel</a>.this.type</span>
+      </span>
+      
+      <p class="shortcomment cmt">Sets the value of <a href="BaseDeidParams.html#dateToYearEntities:org.apache.spark.ml.param.StringArrayParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#dateToYearEntities">dateToYearEntities</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Sets the value of <a href="BaseDeidParams.html#dateToYearEntities:org.apache.spark.ml.param.StringArrayParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#dateToYearEntities">dateToYearEntities</a>. Default: Array()
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#setDays" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
       <a id="setDays(k:Int):BaseDeidParams.this.type"></a><a id="setDays(Int):ObfuscatorAnnotatorModel.this.type"></a>
       <span class="permalink">
@@ -4124,6 +4479,25 @@ Default: False
 When set to <code>true</code>, it enables consistent obfuscation across geographical entities
 such as state, city, street, zip, and phone.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#setIdBasedObfuscation" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setIdBasedObfuscation(value:Boolean):BaseDeidParams.this.type"></a><a id="setIdBasedObfuscation(Boolean):ObfuscatorAnnotatorModel.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/ObfuscatorAnnotatorModel.html#setIdBasedObfuscation(value:Boolean):BaseDeidParams.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setIdBasedObfuscation</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.ObfuscatorAnnotatorModel">ObfuscatorAnnotatorModel</a>.this.type</span>
+      </span>
+      
+      <p class="shortcomment cmt">Sets whether to make obfuscation depend on the document ID.</p><div class="fullcomment"><div class="comment cmt"><p>Sets whether to make obfuscation depend on the document ID.
+Currently only valid for name-related entities.
+Default: False
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.HasInputAnnotationCols#setInputCols" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setInputCols(value:String*):HasInputAnnotationCols.this.type"></a><a id="setInputCols(String*):ObfuscatorAnnotatorModel.this.type"></a>
       <span class="permalink">
@@ -4288,6 +4662,23 @@ Default:'en'
       <p class="shortcomment cmt">Sets <a href="BaseDeidParams.html#maxRandomDisplacementDays:org.apache.spark.ml.param.IntParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#maxRandomDisplacementDays">maxRandomDisplacementDays</a> param
 </p><div class="fullcomment"><div class="comment cmt"><p>Sets <a href="BaseDeidParams.html#maxRandomDisplacementDays:org.apache.spark.ml.param.IntParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#maxRandomDisplacementDays">maxRandomDisplacementDays</a> param
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#setMinYear" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setMinYear(s:Int):BaseDeidParams.this.type"></a><a id="setMinYear(Int):ObfuscatorAnnotatorModel.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/ObfuscatorAnnotatorModel.html#setMinYear(s:Int):BaseDeidParams.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setMinYear</span><span class="params">(<span name="s">s: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.ObfuscatorAnnotatorModel">ObfuscatorAnnotatorModel</a>.this.type</span>
+      </span>
+      
+      <p class="shortcomment cmt">Sets the minimum year to use when converting date to year.</p><div class="fullcomment"><div class="comment cmt"><p>Sets the minimum year to use when converting date to year.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.ObfuscatorParams#setMode" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
       <a id="setMode(m:String):ObfuscatorParams.this.type"></a><a id="setMode(String):ObfuscatorAnnotatorModel.this.type"></a>
       <span class="permalink">
@@ -4308,6 +4699,26 @@ Default:'en'
                <ol><li class="cmt"><p>
   Given the following text: &quot;David Hale visited EEUU a couple of years ago&quot;</p><ul><li>Mask mode: &quot;<code>&lt;</code>PERSON<code>&gt;</code> visited <code>&lt;</code>COUNTRY<code>&gt;</code> a couple of years ago&quot;</li><li>Obfuscate mode: &quot;Bryan Johnson visited Japan a couple of years ago&quot;</li></ul></li></ol>
             </div></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#setNationalityAwareness" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setNationalityAwareness(value:Boolean):BaseDeidParams.this.type"></a><a id="setNationalityAwareness(Boolean):ObfuscatorAnnotatorModel.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/ObfuscatorAnnotatorModel.html#setNationalityAwareness(value:Boolean):BaseDeidParams.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setNationalityAwareness</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.ObfuscatorAnnotatorModel">ObfuscatorAnnotatorModel</a>.this.type</span>
+      </span>
+      
+      <p class="shortcomment cmt">Whether to use nationality-aware names or not during obfuscation.</p><div class="fullcomment"><div class="comment cmt"><p>Whether to use nationality-aware names or not during obfuscation.
+This param affects only names. Only supported for the English language.
+If value is true, it might decrease performance.
+Default: False
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#setObfuscateDate" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
       <a id="setObfuscateDate(s:Boolean):BaseDeidParams.this.type"></a><a id="setObfuscateDate(Boolean):ObfuscatorAnnotatorModel.this.type"></a>
       <span class="permalink">

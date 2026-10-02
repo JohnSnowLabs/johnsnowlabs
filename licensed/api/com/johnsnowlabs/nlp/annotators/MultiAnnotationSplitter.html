@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 6.4.1 ScalaDoc  - com.johnsnowlabs.nlp.annotators.MultiAnnotationSplitter</title>
-          <meta name="description" content="Spark NLP 6.4.1 ScalaDoc - com.johnsnowlabs.nlp.annotators.MultiAnnotationSplitter" />
-          <meta name="keywords" content="Spark NLP 6.4.1 ScalaDoc com.johnsnowlabs.nlp.annotators.MultiAnnotationSplitter" />
+          <title>Spark NLP 7.0.0 ScalaDoc  - com.johnsnowlabs.nlp.annotators.MultiAnnotationSplitter</title>
+          <meta name="description" content="Spark NLP 7.0.0 ScalaDoc - com.johnsnowlabs.nlp.annotators.MultiAnnotationSplitter" />
+          <meta name="keywords" content="Spark NLP 7.0.0 ScalaDoc com.johnsnowlabs.nlp.annotators.MultiAnnotationSplitter" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 6.4.1 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 7.0.0 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -290,6 +290,22 @@
       </span>
       <span class="symbol">
         <a title="" href="generic_classifier/index.html"><span class="name">generic_classifier</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="com.johnsnowlabs.nlp.annotators">annotators</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.graph" visbl="pub" class="indented5 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="graph"></a><a id="graph:graph"></a>
+      <span class="permalink">
+      <a href="../../../../com/johnsnowlabs/nlp/annotators/graph/index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="graph/index.html"><span class="name">graph</span></a>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="com.johnsnowlabs.nlp.annotators">annotators</a></dd></dl></div>
@@ -2004,13 +2020,21 @@ which is set by the annotator that produced the category annotations (e.g. <code
     </span>
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">val</span>
+        <span class="kind">lazy val</span>
       </span>
       <span class="symbol">
         <span class="name">outputAnnotatorType</span><span class="result">: <a href="#AnnotatorType=String" class="extmbr" name="com.johnsnowlabs.nlp.annotators.MultiAnnotationSplitter.AnnotatorType">AnnotatorType</a></span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.MultiAnnotationSplitter">MultiAnnotationSplitter</a> → HasOutputAnnotatorType</dd></dl></div>
+      <p class="shortcomment cmt">The output annotator type mirrors <code>splitType</code>, so the produced column is typed as the kind of
+annotation it actually holds (e.g.</p><div class="fullcomment"><div class="comment cmt"><p>The output annotator type mirrors <code>splitType</code>, so the produced column is typed as the kind of
+annotation it actually holds (e.g. <code>category</code> when splitting out classifications/relations).</p><p>This must be a <code>lazy val</code>, not a <code>val</code>: a plain <code>val</code> is evaluated during construction, before
+the user calls <code>setSplitType</code>, and would therefore always be fixed to the default (<code>chunk</code>) —
+leaving <code>category</code>/<code>struct</code> output columns mistyped as <code>chunk</code> and rejected by downstream
+annotators. As a <code>lazy val</code> it is computed on first access (schema resolution / transform),
+after <code>splitType</code> has been set. Mirrors the pattern used by
+<a href="../../annotator/Router.html" class="extype" name="com.johnsnowlabs.annotator.Router">com.johnsnowlabs.annotator.Router</a>.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.MultiAnnotationSplitter">MultiAnnotationSplitter</a> → HasOutputAnnotatorType</dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.HasOutputAnnotationCol#outputCol" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="outputCol:org.apache.spark.ml.param.Param[String]"></a><a id="outputCol:Param[String]"></a>
       <span class="permalink">

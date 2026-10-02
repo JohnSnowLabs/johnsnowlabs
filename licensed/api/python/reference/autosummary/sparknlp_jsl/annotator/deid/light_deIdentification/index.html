@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>sparknlp_jsl.annotator.deid.light_deIdentification &#8212; Spark NLP  documentation</title>
+    <title>sparknlp_jsl.annotator.deid.light_deIdentification &#8212; Healthcare NLP  documentation</title>
   
   
   
@@ -125,8 +125,8 @@
       
     
     
-    <img src="../../../../../../static/logo.png" class="logo__image only-light" alt="Spark NLP  documentation - Home"/>
-    <script>document.write(`<img src="../../../../../../static/logo.png" class="logo__image only-dark" alt="Spark NLP  documentation - Home"/>`);</script>
+    <img src="../../../../../../static/logo.png" class="logo__image only-light" alt="Healthcare NLP  documentation - Home"/>
+    <script>document.write(`<img src="../../../../../../static/logo.png" class="logo__image only-dark" alt="Healthcare NLP  documentation - Home"/>`);</script>
   
   
 </a></div>
@@ -345,6 +345,7 @@ document.write(`
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid</span></code></a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../aux_encryption_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.aux_encryption_params</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../base_deidentification_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.base_deidentification_params</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../deIdentification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.deIdentification</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../deidentication_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.deidentication_params</span></code></a></li>
@@ -374,6 +375,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../../fhir/base_fhir_deidentification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.fhir.base_fhir_deidentification</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fhir/cda_deIdentification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.fhir.cda_deIdentification</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fhir/fhir_deIdentification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.fhir.fhir_deIdentification</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fhir/hl7v2_deIdentification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.fhir.hl7v2_deIdentification</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../generic_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.generic_classifier</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -612,6 +614,11 @@ You can specify the entity and the terms to be used for obfuscation.</p></li>
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.auxEncryptionKey">
+<span class="sig-name descname"><span class="pre">auxEncryptionKey</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.auxEncryptionKey" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.blackListEntities">
 <span class="sig-name descname"><span class="pre">blackListEntities</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.blackListEntities" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -634,6 +641,16 @@ You can specify the entity and the terms to be used for obfuscation.</p></li>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.dateFormats">
 <span class="sig-name descname"><span class="pre">dateFormats</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.dateFormats" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.dateToYear">
+<span class="sig-name descname"><span class="pre">dateToYear</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.dateToYear" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.dateToYearEntities">
+<span class="sig-name descname"><span class="pre">dateToYearEntities</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.dateToYearEntities" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -674,6 +691,11 @@ You can specify the entity and the terms to be used for obfuscation.</p></li>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.getter_attrs">
 <span class="sig-name descname"><span class="pre">getter_attrs</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.getter_attrs" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.idBasedObfuscation">
+<span class="sig-name descname"><span class="pre">idBasedObfuscation</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.idBasedObfuscation" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -732,6 +754,11 @@ You can specify the entity and the terms to be used for obfuscation.</p></li>
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.minYear">
+<span class="sig-name descname"><span class="pre">minYear</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.minYear" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.mode">
 <span class="sig-name descname"><span class="pre">mode</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.mode" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -739,6 +766,11 @@ You can specify the entity and the terms to be used for obfuscation.</p></li>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.name">
 <span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">'LightDeIdentification'</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.name" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.nationalityAwareness">
+<span class="sig-name descname"><span class="pre">nationalityAwareness</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.nationalityAwareness" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -876,6 +908,13 @@ user-supplied values &lt; extra.</p>
 <dd class="field-odd"><p>dict</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.getAuxEncryptionKey">
+<span class="sig-name descname"><span class="pre">getAuxEncryptionKey</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.getAuxEncryptionKey" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the stored (wrapped) form of the aux encryption key, or an empty string when
+encryption is disabled.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -1034,6 +1073,31 @@ If False, <cite>ageRanges</cite> parameter is valid. Default: False.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setAuxEncryptionKey">
+<span class="sig-name descname"><span class="pre">setAuxEncryptionKey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setAuxEncryptionKey" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the key used to encrypt and decrypt the mappings (aux) column.</p>
+<p>When set on a de-identification annotator, the original values carried by the mappings
+column are encrypted. <a class="reference internal" href="../reIdentification/index.html#sparknlp_jsl.annotator.deid.reIdentification.ReIdentification" title="sparknlp_jsl.annotator.deid.reIdentification.ReIdentification"><code class="xref py py-class docutils literal notranslate"><span class="pre">ReIdentification</span></code></a> needs the very same key to restore the
+original text. When left unset, the mappings column is produced in clear text.</p>
+<p>The key is never stored in clear text; it is wrapped before being kept in the annotator, so
+a saved pipeline never contains the raw value.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">de_identification</span> <span class="o">=</span> <span class="n">DeIdentification</span><span class="p">()</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setReturnEntityMappings</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setMappingsColumn</span><span class="p">(</span><span class="s2">&quot;aux&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setAuxEncryptionKey</span><span class="p">(</span><span class="s2">&quot;my-secret-key&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re_identification</span> <span class="o">=</span> <span class="n">ReIdentification</span><span class="p">()</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setAuxEncryptionKey</span><span class="p">(</span><span class="s2">&quot;my-secret-key&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – The key used to encrypt and decrypt the mappings column.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setBlackListEntities">
 <span class="sig-name descname"><span class="pre">setBlackListEntities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setBlackListEntities" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets a list of entities coming from NER or regex rules that will be ignored for masking or obfuscation.
@@ -1123,6 +1187,32 @@ You can specify the entity and the terms to be used for obfuscation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>formats</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of date formats to automatically displace if parsed</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setDateToYear">
+<span class="sig-name descname"><span class="pre">setDateToYear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setDateToYear" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets transform dates into years.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>s</strong> (<em>bool</em>) – True if we want the model to transform dates into years, False otherwise.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setDateToYearEntities">
+<span class="sig-name descname"><span class="pre">setDateToYearEntities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entities</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setDateToYearEntities" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets list of date entities that must be converted to year only.</p>
+<p>When this list is non-empty, only the listed date entities are converted to a year, while
+every other date entity keeps the format-preserving date displacement. This overrides the
+global dateToYear flag for the listed entities. When the list is empty (default), the global
+dateToYear flag governs all date entities. Default: []</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>entities</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of date entities to convert to year only (e.g. [‘DOB’]).</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1291,6 +1381,31 @@ obfuscation patterns.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setIdBasedObfuscation">
+<span class="sig-name descname"><span class="pre">setIdBasedObfuscation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setIdBasedObfuscation" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to make obfuscation depend on the document ID.</p>
+<p>Currently this param is only valid for name-related entities (NAME, PATIENT, DOCTOR,
+SIGNING_PERSON, PERSON, CLIENT, FIRST_NAME, LAST_NAME). It has no effect on other entities.</p>
+<p>The document ID is read from the <code class="docutils literal notranslate"><span class="pre">id</span></code> metadata of the document. When enabled and a document ID
+is available, the fake name selection depends on the combination of the document ID and the
+original name:</p>
+<ul class="simple">
+<li><p>Same document ID + same name -&gt; same fake (consistent within a document).</p></li>
+<li><p>Same document ID + different names -&gt; different fakes.</p></li>
+<li><p>Different document IDs + same name -&gt; different fakes.</p></li>
+</ul>
+<p>When disabled, or when no document ID is available, name obfuscation falls back to the regular
+seed-based selection.
+Default: False</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to make obfuscation depend on the document ID. Currently only valid for
+name-related entities. Default: False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setInputCols">
 <span class="sig-name descname"><span class="pre">setInputCols</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setInputCols" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets column names of input annotations.</p>
@@ -1430,12 +1545,44 @@ Default is 1825.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setMinYear">
+<span class="sig-name descname"><span class="pre">setMinYear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setMinYear" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets minimum year to be used when transforming dates into years. Default: 1929</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>s</strong> (<em>int</em>) – Minimum year to be used when transforming dates into years. Default: 1929</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setMode">
 <span class="sig-name descname"><span class="pre">setMode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setMode" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets mode for Anonymizer [‘mask’|’obfuscate’]</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>mode</strong> (<em>str</em>) – Mode for Anonymizer [‘mask’|’obfuscate’]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setNationalityAwareness">
+<span class="sig-name descname"><span class="pre">setNationalityAwareness</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setNationalityAwareness" title="Permalink to this definition">#</a></dt>
+<dd><p>Set whether to use nationality-aware names or not during obfuscation.
+This param effects only names.</p>
+<p>When enabled, the original name’s nationality is detected from the embedded nationality name lists
+(e.g. Arab, French, Spanish, German, Russian, Turkish, …) and the fake name is generated from the
+same nationality. Nationality lists are gender-separated, so a detected male name is replaced by a
+male name of the same nationality and vice versa.</p>
+<p>This feature is only supported for the English language. For any other language it is automatically
+disabled. If the nationality cannot be detected, the obfuscation falls back to the regular behavior.
+If value is true, it might decrease performance.
+Default: False</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to use nationality-aware names or not during obfuscation. This param effects only names.
+Only supported for English. If value is true, it might decrease performance. Default: False</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1861,11 +2008,14 @@ Options: [mask, obfuscate, skip]. Default: obfuscate.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.additionalDateFormats"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.additionalDateFormats</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.ageRanges"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.ageRanges</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.ageRangesByHipaa"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.ageRangesByHipaa</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.auxEncryptionKey"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.auxEncryptionKey</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.blackListEntities"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.blackListEntities</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.consistentAcrossNameParts"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.consistentAcrossNameParts</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.countryObfuscation"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.countryObfuscation</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.dateEntities"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.dateEntities</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.dateFormats"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.dateFormats</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.dateToYear"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.dateToYear</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.dateToYearEntities"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.dateToYearEntities</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.days"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.days</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.deidMarkers"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.deidMarkers</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.enableDefaultObfuscationEquivalents"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.enableDefaultObfuscationEquivalents</span></code></a></li>
@@ -1874,6 +2024,7 @@ Options: [mask, obfuscate, skip]. Default: obfuscate.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.genderAwareness"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.genderAwareness</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.geoConsistency"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.geoConsistency</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.getter_attrs"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.getter_attrs</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.idBasedObfuscation"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.idBasedObfuscation</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.inputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.inputAnnotatorTypes</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.inputCols"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.inputCols</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.isRandomDateDisplacement"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.isRandomDateDisplacement</span></code></a></li>
@@ -1885,8 +2036,10 @@ Options: [mask, obfuscate, skip]. Default: obfuscate.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.mappingsColumn"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.mappingsColumn</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.maskingPolicy"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.maskingPolicy</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.maxRandomDisplacementDays"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.maxRandomDisplacementDays</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.minYear"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.minYear</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.mode"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.mode</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.name"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.name</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.nationalityAwareness"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.nationalityAwareness</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.obfuscateDate"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.obfuscateDate</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.obfuscateRefSource"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.obfuscateRefSource</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.obfuscateZipByHipaa"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.obfuscateZipByHipaa</span></code></a></li>
@@ -1907,6 +2060,7 @@ Options: [mask, obfuscate, skip]. Default: obfuscate.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.explainParam"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.explainParam()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.explainParams"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.explainParams()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.extractParamMap"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.extractParamMap()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.getAuxEncryptionKey"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.getAuxEncryptionKey()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.getDefaultObfuscationEquivalents"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.getDefaultObfuscationEquivalents()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.getDeidMarkers"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.getDeidMarkers()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.getInputCols"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.getInputCols()</span></code></a></li>
@@ -1928,12 +2082,15 @@ Options: [mask, obfuscate, skip]. Default: obfuscate.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setAdditionalDateFormats"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setAdditionalDateFormats()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setAgeRanges"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setAgeRanges()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setAgeRangesByHipaa"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setAgeRangesByHipaa()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setAuxEncryptionKey"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setAuxEncryptionKey()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setBlackListEntities"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setBlackListEntities()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setConsistentAcrossNameParts"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setConsistentAcrossNameParts()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setCountryObfuscation"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setCountryObfuscation()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setCustomFakers"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setCustomFakers()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setDateEntities"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setDateEntities()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setDateFormats"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setDateFormats()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setDateToYear"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setDateToYear()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setDateToYearEntities"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setDateToYearEntities()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setDays"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setDays()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setDeidMarkers"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setDeidMarkers()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setEnableDefaultObfuscationEquivalents"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setEnableDefaultObfuscationEquivalents()</span></code></a></li>
@@ -1942,6 +2099,7 @@ Options: [mask, obfuscate, skip]. Default: obfuscate.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setForceInputTypeValidation"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setForceInputTypeValidation()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setGenderAwareness"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setGenderAwareness()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setGeoConsistency"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setGeoConsistency()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setIdBasedObfuscation"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setIdBasedObfuscation()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setInputCols"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setInputCols()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setIsRandomDateDisplacement"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setIsRandomDateDisplacement()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setKeepMonth"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setKeepMonth()</span></code></a></li>
@@ -1952,7 +2110,9 @@ Options: [mask, obfuscate, skip]. Default: obfuscate.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setMappingsColumn"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setMappingsColumn()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setMaskingPolicy"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setMaskingPolicy()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setMaxRandomDisplacementDays"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setMaxRandomDisplacementDays()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setMinYear"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setMinYear()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setMode"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setMode()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setNationalityAwareness"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setNationalityAwareness()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setObfuscateDate"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setObfuscateDate()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setObfuscateRefSource"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setObfuscateRefSource()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.light_deIdentification.LightDeIdentification.setObfuscateZipByHipaa"><code class="docutils literal notranslate"><span class="pre">LightDeIdentification.setObfuscateZipByHipaa()</span></code></a></li>
@@ -2006,7 +2166,7 @@ Options: [mask, obfuscate, skip]. Default: obfuscate.</p>
 
   <p class="copyright">
     
-      © Copyright 2022, John Snow Labs.
+      © Copyright 2026, John Snow Labs.
       <br/>
     
   </p>

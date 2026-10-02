@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 6.4.1 ScalaDoc  - com.johnsnowlabs.nlp.annotators.deid.faker.Location</title>
-          <meta name="description" content="Spark NLP 6.4.1 ScalaDoc - com.johnsnowlabs.nlp.annotators.deid.faker.Location" />
-          <meta name="keywords" content="Spark NLP 6.4.1 ScalaDoc com.johnsnowlabs.nlp.annotators.deid.faker.Location" />
+          <title>Spark NLP 7.0.0 ScalaDoc  - com.johnsnowlabs.nlp.annotators.deid.faker.Location</title>
+          <meta name="description" content="Spark NLP 7.0.0 ScalaDoc - com.johnsnowlabs.nlp.annotators.deid.faker.Location" />
+          <meta name="keywords" content="Spark NLP 7.0.0 ScalaDoc com.johnsnowlabs.nlp.annotators.deid.faker.Location" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 6.4.1 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 7.0.0 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -237,6 +237,10 @@
                         <span class="separator"></span>
                         <a class="class" href="URL.html" title=""></a>
                         <a href="URL.html" title="">URL</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="object" href="UsStates$.html" title="Reference data for the 50 US states, used to make STATE obfuscation format aware."></a>
+                        <a href="UsStates$.html" title="Reference data for the 50 US states, used to make STATE obfuscation format aware.">UsStates</a>
                       </li>
               </ul>
             </div>
@@ -550,6 +554,25 @@
       </span>
       
       
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.faker.Location#getStateAbbreviation" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getStateAbbreviation():Seq[String]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/faker/Location.html#getStateAbbreviation():Seq[String]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getStateAbbreviation</span><span class="params">()</span><span class="result">: <a href="../../../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Fake states in abbreviated form, for example &quot;NY&quot;.</p><div class="fullcomment"><div class="comment cmt"><p>Fake states in abbreviated form, for example &quot;NY&quot;. Used when the original STATE chunk is itself
+a two letter abbreviation so that the obfuscated value keeps the same format.</p><p>Only English ships an abbreviation pool; every other language falls back to the spelled out
+state list returned by <a href="#getState():Seq[String]" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.faker.Location#getState">getState</a>.
+</p></div></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.faker.Location#getStreetAddress" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="getStreetAddress():Seq[String]"></a>
       <span class="permalink">
