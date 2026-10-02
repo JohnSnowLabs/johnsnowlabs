@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>sparknlp_jsl.annotator.fhir.cda_deIdentification &#8212; Spark NLP  documentation</title>
+    <title>sparknlp_jsl.annotator.fhir.cda_deIdentification &#8212; Healthcare NLP  documentation</title>
   
   
   
@@ -125,8 +125,8 @@
       
     
     
-    <img src="../../../../../../static/logo.png" class="logo__image only-light" alt="Spark NLP  documentation - Home"/>
-    <script>document.write(`<img src="../../../../../../static/logo.png" class="logo__image only-dark" alt="Spark NLP  documentation - Home"/>`);</script>
+    <img src="../../../../../../static/logo.png" class="logo__image only-light" alt="Healthcare NLP  documentation - Home"/>
+    <script>document.write(`<img src="../../../../../../static/logo.png" class="logo__image only-dark" alt="Healthcare NLP  documentation - Home"/>`);</script>
   
   
 </a></div>
@@ -345,6 +345,7 @@ document.write(`
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../deid/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../deid/aux_encryption_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.aux_encryption_params</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../deid/base_deidentification_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.base_deidentification_params</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../deid/deIdentification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.deIdentification</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../deid/deidentication_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.deidentication_params</span></code></a></li>
@@ -374,6 +375,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../base_fhir_deidentification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.fhir.base_fhir_deidentification</span></code></a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.fhir.cda_deIdentification</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fhir_deIdentification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.fhir.fhir_deIdentification</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hl7v2_deIdentification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.fhir.hl7v2_deIdentification</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../generic_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.generic_classifier</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -644,6 +646,11 @@ recursively to all descendant TEXT_NODEs.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.auxEncryptionKey">
+<span class="sig-name descname"><span class="pre">auxEncryptionKey</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.auxEncryptionKey" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.blackListEntities">
 <span class="sig-name descname"><span class="pre">blackListEntities</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.blackListEntities" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -666,6 +673,16 @@ recursively to all descendant TEXT_NODEs.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.dateFormats">
 <span class="sig-name descname"><span class="pre">dateFormats</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.dateFormats" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.dateToYear">
+<span class="sig-name descname"><span class="pre">dateToYear</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.dateToYear" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.dateToYearEntities">
+<span class="sig-name descname"><span class="pre">dateToYearEntities</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.dateToYearEntities" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -719,6 +736,11 @@ recursively to all descendant TEXT_NODEs.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.idBasedObfuscation">
+<span class="sig-name descname"><span class="pre">idBasedObfuscation</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.idBasedObfuscation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.inputCol">
 <span class="sig-name descname"><span class="pre">inputCol</span></span><em class="property"><span class="w"> </span><span class="pre">:Param[str]</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.inputCol" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -764,6 +786,11 @@ recursively to all descendant TEXT_NODEs.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.minYear">
+<span class="sig-name descname"><span class="pre">minYear</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.minYear" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.mode">
 <span class="sig-name descname"><span class="pre">mode</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.mode" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -771,6 +798,11 @@ recursively to all descendant TEXT_NODEs.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.name">
 <span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">'CdaDeIdentification'</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.name" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.nationalityAwareness">
+<span class="sig-name descname"><span class="pre">nationalityAwareness</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.nationalityAwareness" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -931,6 +963,13 @@ user-supplied values &lt; extra.</p>
 <dd class="field-odd"><p>dict</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.getAuxEncryptionKey">
+<span class="sig-name descname"><span class="pre">getAuxEncryptionKey</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.getAuxEncryptionKey" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the stored (wrapped) form of the aux encryption key, or an empty string when
+encryption is disabled.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -1104,6 +1143,31 @@ If False, <cite>ageRanges</cite> parameter is valid. Default: False.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setAuxEncryptionKey">
+<span class="sig-name descname"><span class="pre">setAuxEncryptionKey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setAuxEncryptionKey" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the key used to encrypt and decrypt the mappings (aux) column.</p>
+<p>When set on a de-identification annotator, the original values carried by the mappings
+column are encrypted. <a class="reference internal" href="../../deid/reIdentification/index.html#sparknlp_jsl.annotator.deid.reIdentification.ReIdentification" title="sparknlp_jsl.annotator.deid.reIdentification.ReIdentification"><code class="xref py py-class docutils literal notranslate"><span class="pre">ReIdentification</span></code></a> needs the very same key to restore the
+original text. When left unset, the mappings column is produced in clear text.</p>
+<p>The key is never stored in clear text; it is wrapped before being kept in the annotator, so
+a saved pipeline never contains the raw value.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">de_identification</span> <span class="o">=</span> <span class="n">DeIdentification</span><span class="p">()</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setReturnEntityMappings</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setMappingsColumn</span><span class="p">(</span><span class="s2">&quot;aux&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setAuxEncryptionKey</span><span class="p">(</span><span class="s2">&quot;my-secret-key&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re_identification</span> <span class="o">=</span> <span class="n">ReIdentification</span><span class="p">()</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setAuxEncryptionKey</span><span class="p">(</span><span class="s2">&quot;my-secret-key&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – The key used to encrypt and decrypt the mappings column.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setBlackListEntities">
 <em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">setBlackListEntities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setBlackListEntities" title="Permalink to this definition">#</a></dt>
 <dd><p>Not supported for FHIR De-Identification.</p>
@@ -1180,6 +1244,32 @@ You can specify the entity and the terms to be used for obfuscation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>formats</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of date formats to automatically displace if parsed</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setDateToYear">
+<span class="sig-name descname"><span class="pre">setDateToYear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setDateToYear" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets transform dates into years.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>s</strong> (<em>bool</em>) – True if we want the model to transform dates into years, False otherwise.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setDateToYearEntities">
+<span class="sig-name descname"><span class="pre">setDateToYearEntities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entities</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setDateToYearEntities" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets list of date entities that must be converted to year only.</p>
+<p>When this list is non-empty, only the listed date entities are converted to a year, while
+every other date entity keeps the format-preserving date displacement. This overrides the
+global dateToYear flag for the listed entities. When the list is empty (default), the global
+dateToYear flag governs all date entities. Default: []</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>entities</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of date entities to convert to year only (e.g. [‘DOB’]).</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1310,6 +1400,31 @@ If value is true, it might decrease performance. Default: False</p>
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setGeoConsistency">
 <em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">setGeoConsistency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setGeoConsistency" title="Permalink to this definition">#</a></dt>
 <dd><p>Not supported for FHIR De-Identification.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setIdBasedObfuscation">
+<span class="sig-name descname"><span class="pre">setIdBasedObfuscation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setIdBasedObfuscation" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to make obfuscation depend on the document ID.</p>
+<p>Currently this param is only valid for name-related entities (NAME, PATIENT, DOCTOR,
+SIGNING_PERSON, PERSON, CLIENT, FIRST_NAME, LAST_NAME). It has no effect on other entities.</p>
+<p>The document ID is read from the <code class="docutils literal notranslate"><span class="pre">id</span></code> metadata of the document. When enabled and a document ID
+is available, the fake name selection depends on the combination of the document ID and the
+original name:</p>
+<ul class="simple">
+<li><p>Same document ID + same name -&gt; same fake (consistent within a document).</p></li>
+<li><p>Same document ID + different names -&gt; different fakes.</p></li>
+<li><p>Different document IDs + same name -&gt; different fakes.</p></li>
+</ul>
+<p>When disabled, or when no document ID is available, name obfuscation falls back to the regular
+seed-based selection.
+Default: False</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to make obfuscation depend on the document ID. Currently only valid for
+name-related entities. Default: False</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -1488,12 +1603,44 @@ Default is 1825.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setMinYear">
+<span class="sig-name descname"><span class="pre">setMinYear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setMinYear" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets minimum year to be used when transforming dates into years. Default: 1929</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>s</strong> (<em>int</em>) – Minimum year to be used when transforming dates into years. Default: 1929</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setMode">
 <span class="sig-name descname"><span class="pre">setMode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setMode" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets mode for Anonymizer [‘mask’|’obfuscate’]</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>mode</strong> (<em>str</em>) – Mode for Anonymizer [‘mask’|’obfuscate’]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setNationalityAwareness">
+<span class="sig-name descname"><span class="pre">setNationalityAwareness</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setNationalityAwareness" title="Permalink to this definition">#</a></dt>
+<dd><p>Set whether to use nationality-aware names or not during obfuscation.
+This param effects only names.</p>
+<p>When enabled, the original name’s nationality is detected from the embedded nationality name lists
+(e.g. Arab, French, Spanish, German, Russian, Turkish, …) and the fake name is generated from the
+same nationality. Nationality lists are gender-separated, so a detected male name is replaced by a
+male name of the same nationality and vice versa.</p>
+<p>This feature is only supported for the English language. For any other language it is automatically
+disabled. If the nationality cannot be detected, the obfuscation falls back to the regular behavior.
+If value is true, it might decrease performance.
+Default: False</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to use nationality-aware names or not during obfuscation. This param effects only names.
+Only supported for English. If value is true, it might decrease performance. Default: False</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1933,11 +2080,14 @@ Options: [mask, obfuscate, skip]. Default: obfuscate.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.additionalDateFormats"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.additionalDateFormats</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.ageRanges"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.ageRanges</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.ageRangesByHipaa"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.ageRangesByHipaa</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.auxEncryptionKey"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.auxEncryptionKey</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.blackListEntities"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.blackListEntities</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.consistentAcrossNameParts"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.consistentAcrossNameParts</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.countryObfuscation"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.countryObfuscation</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.dateEntities"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.dateEntities</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.dateFormats"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.dateFormats</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.dateToYear"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.dateToYear</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.dateToYearEntities"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.dateToYearEntities</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.days"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.days</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.deidMarkers"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.deidMarkers</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.enableDefaultObfuscationEquivalents"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.enableDefaultObfuscationEquivalents</span></code></a></li>
@@ -1948,6 +2098,7 @@ Options: [mask, obfuscate, skip]. Default: obfuscate.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.genderAwareness"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.genderAwareness</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.geoConsistency"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.geoConsistency</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.getter_attrs"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.getter_attrs</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.idBasedObfuscation"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.idBasedObfuscation</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.inputCol"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.inputCol</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.isRandomDateDisplacement"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.isRandomDateDisplacement</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.keepMonth"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.keepMonth</span></code></a></li>
@@ -1957,8 +2108,10 @@ Options: [mask, obfuscate, skip]. Default: obfuscate.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.mappingsColumn"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.mappingsColumn</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.maskingPolicy"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.maskingPolicy</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.maxRandomDisplacementDays"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.maxRandomDisplacementDays</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.minYear"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.minYear</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.mode"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.mode</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.name"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.name</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.nationalityAwareness"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.nationalityAwareness</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.obfuscateDate"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.obfuscateDate</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.obfuscateRefSource"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.obfuscateRefSource</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.obfuscateZipByHipaa"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.obfuscateZipByHipaa</span></code></a></li>
@@ -1981,6 +2134,7 @@ Options: [mask, obfuscate, skip]. Default: obfuscate.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.explainParam"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.explainParam()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.explainParams"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.explainParams()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.extractParamMap"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.extractParamMap()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.getAuxEncryptionKey"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.getAuxEncryptionKey()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.getDefaultObfuscationEquivalents"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.getDefaultObfuscationEquivalents()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.getDeidMarkers"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.getDeidMarkers()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.getInputCol"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.getInputCol()</span></code></a></li>
@@ -2002,12 +2156,15 @@ Options: [mask, obfuscate, skip]. Default: obfuscate.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setAdditionalDateFormats"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.setAdditionalDateFormats()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setAgeRanges"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.setAgeRanges()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setAgeRangesByHipaa"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.setAgeRangesByHipaa()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setAuxEncryptionKey"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.setAuxEncryptionKey()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setBlackListEntities"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.setBlackListEntities()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setConsistentAcrossNameParts"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.setConsistentAcrossNameParts()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setCountryObfuscation"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.setCountryObfuscation()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setCustomFakers"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.setCustomFakers()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setDateEntities"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.setDateEntities()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setDateFormats"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.setDateFormats()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setDateToYear"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.setDateToYear()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setDateToYearEntities"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.setDateToYearEntities()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setDays"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.setDays()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setDeidMarkers"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.setDeidMarkers()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setEnableDefaultObfuscationEquivalents"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.setEnableDefaultObfuscationEquivalents()</span></code></a></li>
@@ -2017,6 +2174,7 @@ Options: [mask, obfuscate, skip]. Default: obfuscate.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setFreeTextPaths"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.setFreeTextPaths()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setGenderAwareness"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.setGenderAwareness()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setGeoConsistency"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.setGeoConsistency()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setIdBasedObfuscation"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.setIdBasedObfuscation()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setInputCol"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.setInputCol()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setIsRandomDateDisplacement"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.setIsRandomDateDisplacement()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setKeepMonth"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.setKeepMonth()</span></code></a></li>
@@ -2027,7 +2185,9 @@ Options: [mask, obfuscate, skip]. Default: obfuscate.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setMappingsColumn"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.setMappingsColumn()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setMaskingPolicy"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.setMaskingPolicy()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setMaxRandomDisplacementDays"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.setMaxRandomDisplacementDays()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setMinYear"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.setMinYear()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setMode"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.setMode()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setNationalityAwareness"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.setNationalityAwareness()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setObfuscateDate"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.setObfuscateDate()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setObfuscateRefSource"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.setObfuscateRefSource()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.fhir.cda_deIdentification.CdaDeIdentification.setObfuscateZipByHipaa"><code class="docutils literal notranslate"><span class="pre">CdaDeIdentification.setObfuscateZipByHipaa()</span></code></a></li>
@@ -2083,7 +2243,7 @@ Options: [mask, obfuscate, skip]. Default: obfuscate.</p>
 
   <p class="copyright">
     
-      © Copyright 2022, John Snow Labs.
+      © Copyright 2026, John Snow Labs.
       <br/>
     
   </p>

@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 6.4.1 ScalaDoc  - com.johnsnowlabs.nlp.annotators.deid.fhir</title>
-          <meta name="description" content="Spark NLP 6.4.1 ScalaDoc - com.johnsnowlabs.nlp.annotators.deid.fhir" />
-          <meta name="keywords" content="Spark NLP 6.4.1 ScalaDoc com.johnsnowlabs.nlp.annotators.deid.fhir" />
+          <title>Spark NLP 7.0.0 ScalaDoc  - com.johnsnowlabs.nlp.annotators.deid.fhir</title>
+          <meta name="description" content="Spark NLP 7.0.0 ScalaDoc - com.johnsnowlabs.nlp.annotators.deid.fhir" />
+          <meta name="keywords" content="Spark NLP 7.0.0 ScalaDoc com.johnsnowlabs.nlp.annotators.deid.fhir" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 6.4.1 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 7.0.0 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -206,6 +206,10 @@
                         <a class="object" href="FhirVersions$.html" title=""></a>
                         <a href="FhirVersions$.html" title="">FhirVersions</a>
                       </li><li class="current-entities indented6">
+                        <a class="object" href="Hl7v2DeIdentification$.html" title="This is the companion object of Hl7v2DeIdentification."></a>
+                        <a class="class" href="Hl7v2DeIdentification.html" title="A Spark Transformer for de-identifying HL7 v2.x messages (the classic pipe / hat delimited &quot;vertical bar&quot; format, e.g."></a>
+                        <a href="Hl7v2DeIdentification.html" title="A Spark Transformer for de-identifying HL7 v2.x messages (the classic pipe / hat delimited &quot;vertical bar&quot; format, e.g.">Hl7v2DeIdentification</a>
+                      </li><li class="current-entities indented6">
                         <span class="separator"></span>
                         <a class="trait" href="PretrainedReadableCdaDeIdentification.html" title=""></a>
                         <a href="PretrainedReadableCdaDeIdentification.html" title="">PretrainedReadableCdaDeIdentification</a>
@@ -213,6 +217,10 @@
                         <span class="separator"></span>
                         <a class="trait" href="PretrainedReadableFhirDeIdentification.html" title=""></a>
                         <a href="PretrainedReadableFhirDeIdentification.html" title="">PretrainedReadableFhirDeIdentification</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="trait" href="PretrainedReadableHl7v2DeIdentification.html" title=""></a>
+                        <a href="PretrainedReadableHl7v2DeIdentification.html" title="">PretrainedReadableHl7v2DeIdentification</a>
                       </li>
               </ul>
             </div>
@@ -398,6 +406,47 @@ Additionally, supports different parser types (JSON, XML) for FHIR resources.
 
 <span class="kw">val</span> pipeline = <span class="kw">new</span> Pipeline().setStages(<span class="std">Array</span>(deid))</pre></li></ol>
             </div><dt>See also</dt><dd><span class="cmt"><p><a href="https://hl7.org/fhir/" target="_blank">FHIR Specification</a></p></span></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.Hl7v2DeIdentification" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="Hl7v2DeIdentificationextendsBaseFhirDeIdentification"></a><a id="Hl7v2DeIdentification:Hl7v2DeIdentification"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/Hl7v2DeIdentification.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a title="A Spark Transformer for de-identifying HL7 v2.x messages (the classic pipe / hat delimited &quot;vertical bar&quot; format, e.g." href="Hl7v2DeIdentification.html"><span class="name">Hl7v2DeIdentification</span></a><span class="result"> extends <a href="BaseFhirDeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification">BaseFhirDeIdentification</a></span>
+      </span>
+      
+      <p class="shortcomment cmt">A Spark Transformer for de-identifying HL7 v2.x messages (the classic pipe / hat delimited
+&quot;vertical bar&quot; format, e.g.</p><div class="fullcomment"><div class="comment cmt"><p>A Spark Transformer for de-identifying HL7 v2.x messages (the classic pipe / hat delimited
+&quot;vertical bar&quot; format, e.g. <code>ADT<sup>A01<code>, </code>ORU</sup>R01</code>).</p><h4>Overview</h4><p>Performs field-level obfuscation on HL7 v2 messages using a lightweight, dependency-free
+delimiter parser. Because the HL7 v2 wire format (segments, fields, components, repetitions,
+subcomponents and the escape character declared in <code>MSH-1</code>/<code>MSH-2</code>) is identical across all
+v2.x versions, a single Terser-style path notation targets PHI uniformly from v2.1 through
+v2.9 without any version-specific structure libraries.</p><h4>Path Notation</h4><pre><span class="lit">"PID-5"</span>       -&gt; segment PID, field <span class="num">5</span> (all components / repetitions)
+<span class="lit">"PID-5-1"</span>     -&gt; field <span class="num">5</span>, component <span class="num">1</span> (family name)
+<span class="lit">"PID-5-1-2"</span>   -&gt; field <span class="num">5</span>, component <span class="num">1</span>, subcomponent <span class="num">2</span>
+<span class="lit">"PID(2)-5-1"</span>  -&gt; the <span class="num">2</span>nd PID segment occurrence, field <span class="num">5</span>, component <span class="num">1</span></pre><p>Field numbers match the HL7 specification exactly, including the <code>MSH</code> off-by-one convention
+(<code>MSH-1</code> is the field separator, <code>MSH-2</code> the encoding characters).</p><h4>Structured Field De-identification</h4><pre><span class="kw">val</span> deid = <span class="kw">new</span> Hl7v2DeIdentification()
+  .setInputCol(<span class="lit">"hl7"</span>)
+  .setOutputCol(<span class="lit">"deidentified"</span>)
+  .setMode(<span class="lit">"obfuscate"</span>)
+  .setMappingRules(<span class="std">Map</span>(
+    <span class="lit">"PID-5-1"</span> -&gt; <span class="lit">"LAST_NAME"</span>,   <span class="cmt">// family name</span>
+    <span class="lit">"PID-5-2"</span> -&gt; <span class="lit">"FIRST_NAME"</span>,   <span class="cmt">// given name</span>
+    <span class="lit">"PID-7"</span>   -&gt; <span class="lit">"DATE"</span>,      <span class="cmt">// date of birth</span>
+    <span class="lit">"PID-11-1"</span> -&gt; <span class="lit">"STREET"</span>,
+    <span class="lit">"PID-13"</span>  -&gt; <span class="lit">"PHONE"</span>
+  ))
+
+<span class="kw">val</span> result = deid.deidentify(hl7MessageString)</pre><h4>Free-text De-identification</h4><p>Narrative fields such as <code>OBX-5</code> (observation value) and <code>NTE-3</code> (comment) can be routed
+through an NLP de-identification pipeline:</p><pre>deid
+  .setFreeTextPaths(<span class="std">Array</span>(<span class="lit">"OBX-5"</span>, <span class="lit">"NTE-3"</span>))
+  .setPipeline(spark, deidPipeline, <span class="lit">"obfuscated"</span>)</pre></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="https://www.hl7.org/implement/standards/product_brief.cfm?product_id=185" target="_blank">HL7 v2 Standard</a></p></span><span class="cmt"><p><a href="BaseFhirDeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.BaseFhirDeIdentification">BaseFhirDeIdentification</a> for the shared de-identification functionality</p></span></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.PretrainedReadableCdaDeIdentification" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="PretrainedReadableCdaDeIdentificationextendsParamsAndFeaturesReadable[com.johnsnowlabs.nlp.annotators.deid.fhir.CdaDeIdentification]withHasPretrained[com.johnsnowlabs.nlp.annotators.deid.fhir.CdaDeIdentification]"></a><a id="PretrainedReadableCdaDeIdentification:PretrainedReadableCdaDeIdentification"></a>
       <span class="permalink">
@@ -427,6 +476,22 @@ Additionally, supports different parser types (JSON, XML) for FHIR resources.
       </span>
       <span class="symbol">
         <a title="" href="PretrainedReadableFhirDeIdentification.html"><span class="name">PretrainedReadableFhirDeIdentification</span></a><span class="result"> extends <span class="extype" name="com.johnsnowlabs.nlp.ParamsAndFeaturesReadable">ParamsAndFeaturesReadable</span>[<a href="FhirDeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification">FhirDeIdentification</a>] with <span class="extype" name="com.johnsnowlabs.nlp.HasPretrained">HasPretrained</span>[<a href="FhirDeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification">FhirDeIdentification</a>]</span>
+      </span>
+      
+      
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.PretrainedReadableHl7v2DeIdentification" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="PretrainedReadableHl7v2DeIdentificationextendsParamsAndFeaturesReadable[com.johnsnowlabs.nlp.annotators.deid.fhir.Hl7v2DeIdentification]withHasPretrained[com.johnsnowlabs.nlp.annotators.deid.fhir.Hl7v2DeIdentification]"></a><a id="PretrainedReadableHl7v2DeIdentification:PretrainedReadableHl7v2DeIdentification"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/PretrainedReadableHl7v2DeIdentification.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="PretrainedReadableHl7v2DeIdentification.html"><span class="name">PretrainedReadableHl7v2DeIdentification</span></a><span class="result"> extends <span class="extype" name="com.johnsnowlabs.nlp.ParamsAndFeaturesReadable">ParamsAndFeaturesReadable</span>[<a href="Hl7v2DeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.Hl7v2DeIdentification">Hl7v2DeIdentification</a>] with <span class="extype" name="com.johnsnowlabs.nlp.HasPretrained">HasPretrained</span>[<a href="Hl7v2DeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.Hl7v2DeIdentification">Hl7v2DeIdentification</a>]</span>
       </span>
       
       
@@ -518,6 +583,22 @@ Additionally, supports different parser types (JSON, XML) for FHIR resources.
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.Hl7v2DeIdentification" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="Hl7v2DeIdentification"></a><a id="Hl7v2DeIdentification:Hl7v2DeIdentification"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/Hl7v2DeIdentification$.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a title="This is the companion object of Hl7v2DeIdentification." href="Hl7v2DeIdentification$.html"><span class="name">Hl7v2DeIdentification</span></a><span class="result"> extends <a href="PretrainedReadableHl7v2DeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.PretrainedReadableHl7v2DeIdentification">PretrainedReadableHl7v2DeIdentification</a> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">This is the companion object of <a href="Hl7v2DeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.Hl7v2DeIdentification">Hl7v2DeIdentification</a>.</p><div class="fullcomment"><div class="comment cmt"><p>This is the companion object of <a href="Hl7v2DeIdentification.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.fhir.Hl7v2DeIdentification">Hl7v2DeIdentification</a>. Please refer to that class for the documentation.</p></div></div>
     </li>
               </ol>
             </div>

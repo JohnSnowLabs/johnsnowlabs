@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>sparknlp_jsl.annotator.re.relation_extraction &#8212; Spark NLP  documentation</title>
+    <title>sparknlp_jsl.annotator.re.relation_extraction &#8212; Healthcare NLP  documentation</title>
   
   
   
@@ -125,8 +125,8 @@
       
     
     
-    <img src="../../../../../../static/logo.png" class="logo__image only-light" alt="Spark NLP  documentation - Home"/>
-    <script>document.write(`<img src="../../../../../../static/logo.png" class="logo__image only-dark" alt="Spark NLP  documentation - Home"/>`);</script>
+    <img src="../../../../../../static/logo.png" class="logo__image only-light" alt="Healthcare NLP  documentation - Home"/>
+    <script>document.write(`<img src="../../../../../../static/logo.png" class="logo__image only-dark" alt="Healthcare NLP  documentation - Home"/>`);</script>
   
   
 </a></div>
@@ -345,6 +345,7 @@ document.write(`
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../deid/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../deid/aux_encryption_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.aux_encryption_params</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../deid/base_deidentification_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.base_deidentification_params</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../deid/deIdentification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.deIdentification</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../deid/deidentication_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.deidentication_params</span></code></a></li>
@@ -374,6 +375,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../../fhir/base_fhir_deidentification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.fhir.base_fhir_deidentification</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fhir/cda_deIdentification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.fhir.cda_deIdentification</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../fhir/fhir_deIdentification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.fhir.fhir_deIdentification</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fhir/hl7v2_deIdentification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.fhir.hl7v2_deIdentification</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../generic_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.generic_classifier</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -1876,6 +1878,11 @@ a distributed file path (HDFS, DBFS), or a cloud storage (S3).</p></li>
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.graphFolder">
+<span class="sig-name descname"><span class="pre">graphFolder</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.graphFolder" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.inputAnnotatorTypes">
 <span class="sig-name descname"><span class="pre">inputAnnotatorTypes</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.inputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -2383,6 +2390,19 @@ Processing continues with the next one. This comes with a performance penalty.</
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.setGraphFolder">
+<span class="sig-name descname"><span class="pre">setGraphFolder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.setGraphFolder" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets folder path that contains external graph files.</p>
+<p>The graph with the smallest dimensions able to fit the training dataset is selected from
+this folder. It is ignored when setModelFile is used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – Folder path that contains external graph files</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.setInputCols">
 <span class="sig-name descname"><span class="pre">setInputCols</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.setInputCols" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets column names of input annotations.</p>
@@ -2443,6 +2463,8 @@ RecursivePipeline</p>
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.setModelFile">
 <span class="sig-name descname"><span class="pre">setModelFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.setModelFile" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets file name to load the mode from”</p>
+<p>When it is not set, a graph with suitable dimensions is selected automatically, either from
+the folder set with setGraphFolder or from the graphs embedded in the library.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>label</strong> (<em>str</em>) – File name to load the mode from”</p>
@@ -3448,6 +3470,7 @@ Increasing this value will increase recall, but also increase the number of fals
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.fromEntityEndCol"><code class="docutils literal notranslate"><span class="pre">RelationExtractionApproach.fromEntityEndCol</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.fromEntityLabelCol"><code class="docutils literal notranslate"><span class="pre">RelationExtractionApproach.fromEntityLabelCol</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.getter_attrs"><code class="docutils literal notranslate"><span class="pre">RelationExtractionApproach.getter_attrs</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.graphFolder"><code class="docutils literal notranslate"><span class="pre">RelationExtractionApproach.graphFolder</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.inputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">RelationExtractionApproach.inputAnnotatorTypes</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.inputCols"><code class="docutils literal notranslate"><span class="pre">RelationExtractionApproach.inputCols</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.labelColumn"><code class="docutils literal notranslate"><span class="pre">RelationExtractionApproach.labelColumn</span></code></a></li>
@@ -3508,6 +3531,7 @@ Increasing this value will increase recall, but also increase the number of fals
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.setFixImbalance"><code class="docutils literal notranslate"><span class="pre">RelationExtractionApproach.setFixImbalance()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.setForceInputTypeValidation"><code class="docutils literal notranslate"><span class="pre">RelationExtractionApproach.setForceInputTypeValidation()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.setFromEntity"><code class="docutils literal notranslate"><span class="pre">RelationExtractionApproach.setFromEntity()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.setGraphFolder"><code class="docutils literal notranslate"><span class="pre">RelationExtractionApproach.setGraphFolder()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.setInputCols"><code class="docutils literal notranslate"><span class="pre">RelationExtractionApproach.setInputCols()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.setLabelCol"><code class="docutils literal notranslate"><span class="pre">RelationExtractionApproach.setLabelCol()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.setLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">RelationExtractionApproach.setLazyAnnotator()</span></code></a></li>
@@ -3629,7 +3653,7 @@ Increasing this value will increase recall, but also increase the number of fals
 
   <p class="copyright">
     
-      © Copyright 2022, John Snow Labs.
+      © Copyright 2026, John Snow Labs.
       <br/>
     
   </p>

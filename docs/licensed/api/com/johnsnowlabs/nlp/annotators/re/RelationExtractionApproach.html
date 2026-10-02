@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 6.4.1 ScalaDoc  - com.johnsnowlabs.nlp.annotators.re.RelationExtractionApproach</title>
-          <meta name="description" content="Spark NLP 6.4.1 ScalaDoc - com.johnsnowlabs.nlp.annotators.re.RelationExtractionApproach" />
-          <meta name="keywords" content="Spark NLP 6.4.1 ScalaDoc com.johnsnowlabs.nlp.annotators.re.RelationExtractionApproach" />
+          <title>Spark NLP 7.0.0 ScalaDoc  - com.johnsnowlabs.nlp.annotators.re.RelationExtractionApproach</title>
+          <meta name="description" content="Spark NLP 7.0.0 ScalaDoc - com.johnsnowlabs.nlp.annotators.re.RelationExtractionApproach" />
+          <meta name="keywords" content="Spark NLP 7.0.0 ScalaDoc com.johnsnowlabs.nlp.annotators.re.RelationExtractionApproach" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 6.4.1 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 7.0.0 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -251,10 +251,11 @@
       </h4>
 
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Trains a TensorFlow model for relation extraction.</p><p>For pretrained models, see the documentation of <a href="RelationExtractionModel.html" class="extype" name="com.johnsnowlabs.nlp.annotators.re.RelationExtractionModel">RelationExtractionModel</a>.</p><p>To train a custom relation extraction model, you need to first create
-a Tensorflow graph using either the <code>TfGraphBuilder</code> annotator or
-the <code>tf_graph</code> module. Then, set the path to the Tensorflow graph
-using the method <a href="#setModelFile(modelFile:String):GenericClassifierParams.this.type" class="extmbr" name="com.johnsnowlabs.nlp.annotators.re.RelationExtractionApproach#setModelFile"><code>setModelFile</code></a>.</p><p>If the parameter <code>relationDirectionCol</code> is set, the model will be
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Trains a TensorFlow model for relation extraction.</p><p>For pretrained models, see the documentation of <a href="RelationExtractionModel.html" class="extype" name="com.johnsnowlabs.nlp.annotators.re.RelationExtractionModel">RelationExtractionModel</a>.</p><p>A suitable Tensorflow graph is selected automatically from the graphs embedded in the library,
+based on the size of the feature vectors and on the number of relation labels of the training
+dataset. A custom graph, created with the <code>TfGraphBuilder</code> annotator or with the <code>tf_graph</code>
+module, can still be used by setting the path of the graph with
+<a href="#setModelFile(modelFile:String):GenericClassifierParams.this.type" class="extmbr" name="com.johnsnowlabs.nlp.annotators.re.RelationExtractionApproach#setModelFile"><code>setModelFile</code></a>, or the folder holding several graphs with <code>setGraphFolder</code>.</p><p>If the parameter <code>relationDirectionCol</code> is set, the model will be
 trained using the direction information (see the parameter decription
 for details). Otherwise, the model won't have direction between the
 relation of the entities. After training a model (using the <code>.fit()</code> method),
@@ -835,8 +836,10 @@ This comes with a performance penalty.
         <span class="name">dropout</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.FloatParam">FloatParam</span></span>
       </span>
       
-      <p class="shortcomment cmt">Dropout coefficient
-</p><div class="fullcomment"><div class="comment cmt"><p>Dropout coefficient
+      <p class="shortcomment cmt">Dropout coefficient.</p><div class="fullcomment"><div class="comment cmt"><p>Dropout coefficient.</p><p>It is applied to the output of the last hidden layer of the graph. Graphs without hidden layer
+(GenericLogRegClassifier, FewShotClassifier, GenericSVMClassifier) apply it directly to the
+input feature vector, so a value greater than 0 drops input features there: set it to 0 for
+those annotators unless input dropout is what you want.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../generic_classifier/GenericClassifierParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams">GenericClassifierParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams#epochsN" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
       <a id="epochsN:org.apache.spark.ml.param.IntParam"></a><a id="epochsN:IntParam"></a>
@@ -1124,8 +1127,9 @@ Model only finds relations that have fewer than the specified number of tokens b
         <span class="name">fixImbalance</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.BooleanParam">BooleanParam</span></span>
       </span>
       
-      <p class="shortcomment cmt">Fix the imbalance in the training set by replicating examples of under represented categories
-</p><div class="fullcomment"><div class="comment cmt"><p>Fix the imbalance in the training set by replicating examples of under represented categories
+      <p class="shortcomment cmt">Fix the imbalance in the training set by replicating examples of under represented categories.</p><div class="fullcomment"><div class="comment cmt"><p>Fix the imbalance in the training set by replicating examples of under represented categories.</p><p>The class weights are only used by the loss of graphs with a <code>softmax</code> output (the
+GenericClassifier/RelationExtraction family). Graphs with a <code>sigmoid</code> output (logistic
+regression, SVM) compute their loss without them, so this parameter has no effect there.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../generic_classifier/GenericClassifierParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams">GenericClassifierParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.re.RelationExtractionApproach#fromEntityBeginCol" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="param">
       <a id="fromEntityBeginCol:org.apache.spark.ml.param.Param[String]"></a><a id="fromEntityBeginCol:Param[String]"></a>
@@ -1403,6 +1407,24 @@ Model only finds relations that have fewer than the specified number of tokens b
       
       <p class="shortcomment cmt">Column for 'from' entity label
 </p>
+    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams#getGraphFolder" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="getParam">
+      <a id="getGraphFolder:String"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/re/RelationExtractionApproach.html#getGraphFolder:String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getGraphFolder</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Folder with the TensorFlow graphs to choose the model graph from
+</p><div class="fullcomment"><div class="comment cmt"><p>Folder with the TensorFlow graphs to choose the model graph from
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../generic_classifier/GenericClassifierParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams">GenericClassifierParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.HasInputAnnotationCols#getInputCols" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getInputCols:Array[String]"></a>
       <span class="permalink">
@@ -1521,8 +1543,8 @@ Model only finds relations that have fewer than the specified number of tokens b
         <span class="name">getModelFile</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       
-      <p class="shortcomment cmt">Model file name
-</p><div class="fullcomment"><div class="comment cmt"><p>Model file name
+      <p class="shortcomment cmt">Path of the TensorFlow graph to train with, empty when it is resolved automatically
+</p><div class="fullcomment"><div class="comment cmt"><p>Path of the TensorFlow graph to train with, empty when it is resolved automatically
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../generic_classifier/GenericClassifierParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams">GenericClassifierParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams#getMultiClass" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="getParam">
       <a id="getMultiClass:Boolean"></a>
@@ -1659,9 +1681,9 @@ Model only finds relations that have fewer than the specified number of tokens b
       <p class="shortcomment cmt">Get scope window
 </p>
     </li><li name="com.johnsnowlabs.nlp.annotators.re.RelationExtractionApproach#getTFWrapper" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getTFWrapper():com.johnsnowlabs.ml.tensorflow.TensorflowWrapper"></a><a id="getTFWrapper():TensorflowWrapper"></a>
+      <a id="getTFWrapper(inputDim:Int,outputDim:Int):com.johnsnowlabs.ml.tensorflow.TensorflowWrapper"></a><a id="getTFWrapper(Int,Int):TensorflowWrapper"></a>
       <span class="permalink">
-      <a href="../../../../../com/johnsnowlabs/nlp/annotators/re/RelationExtractionApproach.html#getTFWrapper():com.johnsnowlabs.ml.tensorflow.TensorflowWrapper" title="Permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/re/RelationExtractionApproach.html#getTFWrapper(inputDim:Int,outputDim:Int):com.johnsnowlabs.ml.tensorflow.TensorflowWrapper" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -1670,7 +1692,7 @@ Model only finds relations that have fewer than the specified number of tokens b
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">getTFWrapper</span><span class="params">()</span><span class="result">: <span class="extype" name="com.johnsnowlabs.ml.tensorflow.TensorflowWrapper">TensorflowWrapper</span></span>
+        <span class="name">getTFWrapper</span><span class="params">(<span name="inputDim">inputDim: <span class="extype" name="scala.Int">Int</span></span>, <span name="outputDim">outputDim: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="com.johnsnowlabs.ml.tensorflow.TensorflowWrapper">TensorflowWrapper</span></span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.re.RelationExtractionApproach">RelationExtractionApproach</a> → <a href="../generic_classifier/GenericClassifierApproach.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierApproach">GenericClassifierApproach</a></dd></dl></div>
@@ -1741,6 +1763,43 @@ Model only finds relations that have fewer than the specified number of tokens b
       </span>
       
       <p class="shortcomment cmt">Choose the proportion of training dataset to be validated against the model on each Epoch.</p><div class="fullcomment"><div class="comment cmt"><p>Choose the proportion of training dataset to be validated against the model on each Epoch. The value should be between 0.0 and 1.0 and by default it is 0.0 and off.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../generic_classifier/GenericClassifierParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams">GenericClassifierParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierApproach#graphFamily" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="graphFamily:com.johnsnowlabs.nlp.annotators.graph.DenseClassifierGraphFamily"></a><a id="graphFamily:DenseClassifierGraphFamily"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/re/RelationExtractionApproach.html#graphFamily:com.johnsnowlabs.nlp.annotators.graph.DenseClassifierGraphFamily" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">graphFamily</span><span class="result">: <a href="../graph/DenseClassifierGraphFamily.html" class="extype" name="com.johnsnowlabs.nlp.annotators.graph.DenseClassifierGraphFamily">DenseClassifierGraphFamily</a></span>
+      </span>
+      
+      <p class="shortcomment cmt">Family of pre-built graphs embedded in the library, used when neither <code>modelFile</code> nor a
+pretrained model is set.</p><div class="fullcomment"><div class="comment cmt"><p>Family of pre-built graphs embedded in the library, used when neither <code>modelFile</code> nor a
+pretrained model is set. Subclasses with another topology override it.
+</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../generic_classifier/GenericClassifierApproach.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierApproach">GenericClassifierApproach</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams#graphFolder" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
+      <a id="graphFolder:org.apache.spark.ml.param.Param[String]"></a><a id="graphFolder:Param[String]"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/re/RelationExtractionApproach.html#graphFolder:org.apache.spark.ml.param.Param[String]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">graphFolder</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.Param">Param</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Folder with TensorFlow graphs to choose the model graph from.</p><div class="fullcomment"><div class="comment cmt"><p>Folder with TensorFlow graphs to choose the model graph from.</p><p>When it is not set, the graphs embedded in the library are used. It is ignored when
+<code>modelFile</code> is set explicitly.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../generic_classifier/GenericClassifierParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams">GenericClassifierParams</a></dd></dl></div>
     </li><li name="org.apache.spark.ml.param.Params#hasDefault" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hasDefault[T](param:org.apache.spark.ml.param.Param[T]):Boolean"></a><a id="hasDefault[T](Param[T]):Boolean"></a>
@@ -2199,8 +2258,9 @@ Model only finds relations that have fewer than the specified number of tokens b
         <span class="name">modelFile</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.Param">Param</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
       </span>
       
-      <p class="shortcomment cmt">Location of file of the model used for classification
-</p><div class="fullcomment"><div class="comment cmt"><p>Location of file of the model used for classification
+      <p class="shortcomment cmt">Path of the TensorFlow graph to train with.</p><div class="fullcomment"><div class="comment cmt"><p>Path of the TensorFlow graph to train with.</p><p>Empty by default: a graph with suitable dimensions is then selected automatically, either from
+<code>graphFolder</code> or from the graphs embedded in the library. Set it to train with one specific
+graph.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../generic_classifier/GenericClassifierParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams">GenericClassifierParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.HasInputAnnotationCols#msgHelper" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="msgHelper(schema:org.apache.spark.sql.types.StructType):String"></a><a id="msgHelper(StructType):String"></a>
@@ -2443,6 +2503,27 @@ a distributed file path (HDFS, DBFS), or a cloud storage (S3).
       
       <p class="shortcomment cmt">Relation direction column (possible values are: &quot;none&quot;, &quot;left&quot; or &quot;right&quot;).</p><div class="fullcomment"><div class="comment cmt"><p>Relation direction column (possible values are: &quot;none&quot;, &quot;left&quot; or &quot;right&quot;).</p><p>If this parameter is not set, the model will not have direction between the relation of the entities.
 </p></div></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierApproach#resolveGraphFile" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="resolveGraphFile(inputDim:Int,outputDim:Int):String"></a><a id="resolveGraphFile(Int,Int):String"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/re/RelationExtractionApproach.html#resolveGraphFile(inputDim:Int,outputDim:Int):String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">resolveGraphFile</span><span class="params">(<span name="inputDim">inputDim: <span class="extype" name="scala.Int">Int</span></span>, <span name="outputDim">outputDim: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Resolves the graph to train with.</p><div class="fullcomment"><div class="comment cmt"><p>Resolves the graph to train with.</p><p><code>modelFile</code> wins when it has been set explicitly, otherwise the best graph of
+<a href="../generic_classifier/GenericClassifierApproach.html#graphFamily:com.johnsnowlabs.nlp.annotators.graph.DenseClassifierGraphFamily" class="extmbr" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierApproach#graphFamily">graphFamily</a> is selected, either from <code>graphFolder</code> or from the graphs embedded in the
+library.
+</p></div><dl class="paramcmts block"><dt class="param">inputDim</dt><dd class="cmt"><p>
+  length of the feature vectors of the training dataset</p></dd><dt class="param">outputDim</dt><dd class="cmt"><p>
+  number of classes of the training dataset</p></dd></dl><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../generic_classifier/GenericClassifierApproach.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierApproach">GenericClassifierApproach</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.re.RelationExtractionApproach#resumeTraining" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="resumeTraining:Boolean"></a>
       <span class="permalink">
@@ -2811,6 +2892,24 @@ Model only finds relations that have fewer than the specified number of tokens b
       
       <p class="shortcomment cmt">Set <code>from</code> entity
 </p>
+    </li><li name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams#setGraphFolder" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setGraphFolder(path:String):GenericClassifierParams.this.type"></a><a id="setGraphFolder(String):RelationExtractionApproach.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/re/RelationExtractionApproach.html#setGraphFolder(path:String):GenericClassifierParams.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setGraphFolder</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.re.RelationExtractionApproach">RelationExtractionApproach</a>.this.type</span>
+      </span>
+      
+      <p class="shortcomment cmt">Set the folder with the TensorFlow graphs to choose the model graph from.</p><div class="fullcomment"><div class="comment cmt"><p>Set the folder with the TensorFlow graphs to choose the model graph from. Ignored when
+<code>modelFile</code> is set.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../generic_classifier/GenericClassifierParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierParams">GenericClassifierParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.HasInputAnnotationCols#setInputCols" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setInputCols(value:String*):HasInputAnnotationCols.this.type"></a><a id="setInputCols(String*):RelationExtractionApproach.this.type"></a>
       <span class="permalink">

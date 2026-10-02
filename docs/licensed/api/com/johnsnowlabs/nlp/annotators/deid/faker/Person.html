@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 6.4.1 ScalaDoc  - com.johnsnowlabs.nlp.annotators.deid.faker.Person</title>
-          <meta name="description" content="Spark NLP 6.4.1 ScalaDoc - com.johnsnowlabs.nlp.annotators.deid.faker.Person" />
-          <meta name="keywords" content="Spark NLP 6.4.1 ScalaDoc com.johnsnowlabs.nlp.annotators.deid.faker.Person" />
+          <title>Spark NLP 7.0.0 ScalaDoc  - com.johnsnowlabs.nlp.annotators.deid.faker.Person</title>
+          <meta name="description" content="Spark NLP 7.0.0 ScalaDoc - com.johnsnowlabs.nlp.annotators.deid.faker.Person" />
+          <meta name="keywords" content="Spark NLP 7.0.0 ScalaDoc com.johnsnowlabs.nlp.annotators.deid.faker.Person" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 6.4.1 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 7.0.0 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -237,6 +237,10 @@
                         <span class="separator"></span>
                         <a class="class" href="URL.html" title=""></a>
                         <a href="URL.html" title="">URL</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="object" href="UsStates$.html" title="Reference data for the 50 US states, used to make STATE obfuscation format aware."></a>
+                        <a href="UsStates$.html" title="Reference data for the 50 US states, used to make STATE obfuscation format aware.">UsStates</a>
                       </li>
               </ul>
             </div>
@@ -483,6 +487,25 @@
       </span>
       
       
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.faker.Person#findNationality" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="findNationality(originalName:String):String"></a><a id="findNationality(String):String"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/faker/Person.html#findNationality(originalName:String):String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">findNationality</span><span class="params">(<span name="originalName">originalName: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Detects the nationality of a name from its first name using the embedded nationality lists.</p><div class="fullcomment"><div class="comment cmt"><p>Detects the nationality of a name from its first name using the embedded nationality lists.
+Returns the nationality key (e.g. &quot;arab&quot;, &quot;french&quot;, ...) or &quot;unknown&quot; when it cannot be detected.
+Nationality detection is only meaningful for the English language.
+</p></div></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <span class="permalink">
@@ -550,6 +573,25 @@
       </span>
       
       
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.faker.Person#getFirstNameByNationality" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getFirstNameByNationality(originalName:String):Seq[String]"></a><a id="getFirstNameByNationality(String):Seq[String]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/faker/Person.html#getFirstNameByNationality(originalName:String):Seq[String]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getFirstNameByNationality</span><span class="params">(<span name="originalName">originalName: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="../../../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Nationality-and-gender aware first names.</p><div class="fullcomment"><div class="comment cmt"><p>Nationality-and-gender aware first names. Detects the nationality and gender of the original
+first name and returns the matching nationality first name list. Returns an empty sequence when
+the nationality cannot be detected, so callers can fall back to the regular behavior.
+</p></div></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.faker.Person#getLastName" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="getLastName:Seq[String]"></a>
       <span class="permalink">
@@ -566,6 +608,24 @@
       </span>
       
       
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.faker.Person#getLastNameByNationality" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getLastNameByNationality(originalName:String):Seq[String]"></a><a id="getLastNameByNationality(String):Seq[String]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/faker/Person.html#getLastNameByNationality(originalName:String):Seq[String]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getLastNameByNationality</span><span class="params">(<span name="originalName">originalName: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="../../../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Nationality-aware surnames, keyed off the detected nationality of the original first name.</p><div class="fullcomment"><div class="comment cmt"><p>Nationality-aware surnames, keyed off the detected nationality of the original first name.
+Returns an empty sequence when the nationality cannot be detected.
+</p></div></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.faker.Person#getName" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="getName():Seq[String]"></a>
       <span class="permalink">
@@ -598,6 +658,24 @@
       </span>
       
       
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.faker.Person#getNameByNationality" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getNameByNationality(originalName:String):Seq[String]"></a><a id="getNameByNationality(String):Seq[String]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/faker/Person.html#getNameByNationality(originalName:String):Seq[String]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getNameByNationality</span><span class="params">(<span name="originalName">originalName: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="../../../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Full nationality-aware names (first name + surname of the same nationality).</p><div class="fullcomment"><div class="comment cmt"><p>Full nationality-aware names (first name + surname of the same nationality). Returns an empty
+sequence when the nationality cannot be detected.
+</p></div></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <span class="permalink">
