@@ -3,9 +3,9 @@ layout: docs
 header: true
 seotitle: Spark OCR | John Snow Labs
 title: Spark OCR release notes
-permalink: /docs/en/spark_ocr_versions/release_notes_7_0_0
+permalink: /docs/en/spark_ocr_versions/ocr_release_notes
 key: docs-ocr-release-notes
-modify_date: "2026-10-07"
+modify_date: "07-10-2026"
 show_nav: true
 sidebar:
     nav: sparknlp-healthcare
