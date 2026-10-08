@@ -31,6 +31,12 @@ class LibVersion:
             self.minor = minor
             self.patch = patch
 
+    def specificity(self: "LibVersion") -> int:
+        """Count concrete (non-wildcard) segments, so 4.0.0 ranks above 4.x.x"""
+        return sum(
+            1 for seg in (self.major, self.minor, self.patch) if seg not in (None, "x")
+        )
+
     def equals(self: "LibVersion", lib2: "LibVersion") -> bool:
         """
         Compare two LibVersions of format A.B.C , consisting of either Digits 0-9 or x .

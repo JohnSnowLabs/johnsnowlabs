@@ -27,7 +27,11 @@ class JvmHardwareTarget(BaseEnum):
 
     @classmethod
     def bool_choice_to_hardware(
-        cls, gpu: bool = False, cpu: bool = False, m1: bool = False
+        cls,
+        gpu: bool = False,
+        cpu: bool = False,
+        m1: bool = False,
+        aarch: bool = False,
     ) -> "JvmHardwareTarget":
         if gpu:
             return cls.gpu
@@ -35,6 +39,8 @@ class JvmHardwareTarget(BaseEnum):
             return cls.cpu
         elif m1:
             return cls.m1
+        elif aarch:
+            return cls.aarch
         else:
             return cls.cpu
 
@@ -68,6 +74,8 @@ class PyInstallTypes(BaseEnum):
 
 class SparkVersion(BaseEnum):
     # Broad versions
+    spark4xx = LibVersion("4.x.x")
+    spark400 = LibVersion("4.0.0")
     spark3xx = LibVersion("3.x.x")
     spark31x = LibVersion("3.1.x")
     spark32x = LibVersion("3.2.x")
