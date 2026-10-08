@@ -66,7 +66,9 @@ def get_db_path(local_info: Union[JvmInstallInfo, PyInstallInfo, str]):
         return f"{settings.dbfs_java_dir}/{local_info.file_name}"
     elif isinstance(local_info, PyInstallInfo):
         # Gotta add the suffix or databricks will not pickup the correct version
-        return f'{settings.dbfs_py_dir}/{local_info.file_name.split(".")[0]}-py2.py3-none-any.whl'
+        stem = local_info.file_name.replace(".tar.gz", "").replace(".whl", "")
+        dist, version = stem.split("-")[:2]
+        return f"{settings.dbfs_py_dir}/{dist}-{version}-py2.py3-none-any.whl"
     elif isinstance(local_info, str):
         if ".py" in local_info:
             return f"{settings.db_py_jobs_dir}/{path_tail(local_info)}"
