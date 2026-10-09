@@ -11,6 +11,15 @@ from johnsnowlabs.utils.enums import JvmHardwareTarget, PyInstallTypes, ProductN
 from johnsnowlabs.utils.enums import SparkVersion
 
 
+def local_file_name_from_url(url: str) -> str:
+    """Local name for a downloaded dependency, qualified for the Spark 4 assemblies."""
+    # Spark 3 and Spark 4 CPU assemblies share a basename; only the scala-2.13/ prefix differs.
+    base = url.split("?")[0].split("/")[-1]
+    if "/scala-2.13/" in url:
+        return f"scala-2.13-{base}"
+    return base
+
+
 class UrlDependency(WritableBaseModel):
     """Representation of a URL"""
 
@@ -23,7 +32,7 @@ class UrlDependency(WritableBaseModel):
 
     def __init__(self, **data: Any):
         super().__init__(**data)
-        self.file_name = self.url.split("/")[-1]
+        self.file_name = local_file_name_from_url(self.url)
 
     def update_url(self, new_url):
         self.url = new_url
@@ -51,7 +60,7 @@ class UrlDependency(WritableBaseModel):
         if not self.validate():
             raise ValueError(f"Trying to download Invalid URL! {self.url}")
         if keep_default_file_name:
-            self.file_name = self.url.split("/")[-1]
+            self.file_name = local_file_name_from_url(self.url)
         save_path = save_path + "/" + self.file_name
 
         print(f"Downloading {name_print_prefix} {self.file_name}")

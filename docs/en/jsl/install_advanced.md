@@ -138,6 +138,7 @@ Use these parameters to configure **where** to install the libraries.
 | `venv_creation_path`                      | Specify path to a folder, in which a fresh venv will be created with all libraries. Using this parameter ignores the `python_exec_path` parameter, since the newly created venv's python executable is used for setup.         |
 | `offline_zip_dir`                         | Specify path to a folder in which 3 sub-folders are created,  `py_installs`, `java_installs` with corrosponding Wheels/Jars/Tars and  `licenses`. It will additionallly be zipped.                                            |
 | `Install to Databricks` with access Token | See [Databricks Documentation](https://docs.databricks.com/dev-tools/api/latest/authentication.html) for  extracting a token which you can provide to databricks access, see [Databricks Install Section](https://nlp.johnsnowlabs.com/docs/en/jsl/install#automatic-databricks-installation) for more details. |
+| `databricks_volume`                       | Specify a Unity Catalog volume, for example `/Volumes/main/default/jsl`, into which Jars and Wheels are uploaded and from which they are installed. **Required on Databricks runtime 15 and above**, which no longer installs libraries from DBFS. Older runtimes keep using `/dbfs/johnsnowlabs`.          |
 
 </div><div class="h3-box" markdown="1">
 
@@ -156,6 +157,7 @@ Use the following parameters to configure **what should** be installed.
 | `hardware_target`     | Specify hardware install type, either `cpu`, `gpu`, `apple_silicon`, or `aarch` . Defaults to `cpu`. If you have a GPU and want to leverage CUDA, set `gpu`. If you are an Apple M1 or Arch user choose the corresponding types. |
 | `py_install_type`      | Specify Python installation type to use, either `tar.gz` or `whl`, defaults to whl.                                                                                                                                   |
 | `refresh_install`      | Delete any cached files before installing by removing John Snow Labs home folder. **This will delete your locally cached licenses**.                                                                                  |
+| `spark_version`        | Specify the Spark version to resolve jars for, for example `4.0.1`. Defaults to the Spark version of the installed pyspark, which selects the matching Scala 2.12 or 2.13 artifact.                                   |
 
 </div><div class="h3-box" markdown="1">
 
@@ -167,6 +169,10 @@ You additionally must use one of the [John Snow Labs License Authorization Flows
 Labs license,which will be installed to your Databricks cluster.        
 A John Snow Labs Home directory is constructed in the distributed Databricks File System`/dbfs/johnsnowlabs` which has
 all Jars, Wheels and License Information to run all features in a Databricks cluster.
+
+Databricks runtime 15 and above no longer installs libraries from DBFS. On those runtimes pass a Unity
+Catalog volume you can write to, and the Jars and Wheels are uploaded and installed from there instead:
+`nlp.install_to_databricks(databricks_volume='/Volumes/main/default/jsl')`
 
 {:.table-model-big}
 | Databricks Auth Flow Method | Description                                                                                                                                                                                                                                                                                           | Python `nlp.install()` usage                                                                                                        | 
@@ -196,7 +202,7 @@ Just set `nlp.install_to_databricks(extra_pip_installs=['langchain','farm-haysta
 | driver_node_type_id        | `i3.xlarge`                                | 
 | spark_env_vars             | `None`                                     | 
 | autotermination_minutes    | `60`                                       | 
-| spark_version              | `10.5.x-scala2.12`                         | 
+| databricks_runtime         | `10.5.x-scala2.12`                         | 
 | spark_conf                 | `None`                                     | 
 | auto_scale                 | `None`                                     | 
 | aws_attributes             | `None`                                     | 

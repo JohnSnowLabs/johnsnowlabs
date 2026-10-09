@@ -7,9 +7,11 @@ from typing import Optional, List
 from johnsnowlabs import settings
 from johnsnowlabs.auto_install.databricks.dbfs import dbfs_rm
 from johnsnowlabs.auto_install.databricks.install_utils import (
+    spark_version_of_db_runtime,
     create_cluster,
     get_db_client_for_token,
     install_jsl_suite_to_cluster,
+    db_runtime_of_cluster,
     install_list_of_pypi_ref_to_cluster,
 )
 from johnsnowlabs.auto_install.emr.install_utils import create_emr_cluster
@@ -75,6 +77,7 @@ def install(
         py_install_type: str = PyInstallTypes.wheel.value,
         only_refresh_credentials: bool = False,
         refresh_install: bool = False,
+        spark_version: Optional[str] = None,
         # -- Databricks Cluster Creation Params --
         block_till_cluster_ready=True,
         num_workers=1,
@@ -83,7 +86,7 @@ def install(
         driver_node_type_id=settings.db_driver_node_type,
         spark_env_vars=None,
         autotermination_minutes=60,
-        spark_version=settings.db_spark_version,
+        databricks_runtime=settings.db_spark_version,
         spark_conf=None,
         auto_scale=None,
         aws_attributes=None,
@@ -97,6 +100,7 @@ def install(
         clean_cluster=True,
         write_db_credentials=True,
         extra_pip_installs: Optional[List[str]] = None,
+        databricks_volume: Optional[str] = None,
 ):
     if refresh_install and os.path.exists(settings.root_dir):
         print("🧹 Cleaning up old JSL Home in ", settings.root_dir)
@@ -155,6 +159,7 @@ def install(
             visual=visual,
             nlp=nlp,
             spark_nlp=spark_nlp,
+            spark_version=spark_version,
         )
 
     # Databricks Install
@@ -176,6 +181,7 @@ def install(
                 medical_nlp=nlp,
                 spark_nlp=spark_nlp,
                 visual=visual,
+                volume_dir=databricks_volume,
             )
             if extra_pip_installs:
                 install_list_of_pypi_ref_to_cluster(
@@ -199,7 +205,7 @@ def install(
                 driver_node_type_id=driver_node_type_id,
                 spark_env_vars=spark_env_vars,
                 autotermination_minutes=autotermination_minutes,
-                spark_version=spark_version,
+                databricks_runtime=databricks_runtime,
                 spark_conf=spark_conf,
                 auto_scale=auto_scale,
                 aws_attributes=aws_attributes,
@@ -212,6 +218,7 @@ def install(
                 headers=headers,
                 write_db_credentials=write_db_credentials,
                 extra_pip_installs=extra_pip_installs,
+                volume_dir=databricks_volume,
             )
 
     # Local Py-Install
@@ -276,7 +283,7 @@ def install_to_databricks(
     driver_node_type_id=settings.db_driver_node_type,
     spark_env_vars=None,
     autotermination_minutes=60,
-    spark_version=settings.db_spark_version,
+    databricks_runtime=settings.db_spark_version,
     spark_conf=None,
     auto_scale=None,
     aws_attributes=None,
@@ -290,6 +297,8 @@ def install_to_databricks(
     clean_cluster=True,
     write_db_credentials=True,
     extra_pip_installs: Optional[List[str]] = None,
+    databricks_volume: Optional[str] = None,
+    spark_version: Optional[str] = None,
 ):
     if refresh_install and os.path.exists(settings.root_dir):
         print("🧹 Cleaning up old JSL Home in ", settings.root_dir)
@@ -326,6 +335,21 @@ def install_to_databricks(
         store_in_jsl_home=store_in_jsl_home,
     )
 
+    # Jars must match the target runtime, not whatever pyspark is on this machine.
+    # An existing cluster carries its own runtime, databricks_runtime only creates new ones.
+    target_runtime_key = databricks_runtime
+    if databricks_cluster_id:
+        target_runtime_key = (
+            db_runtime_of_cluster(
+                get_db_client_for_token(databricks_host, databricks_token),
+                databricks_cluster_id,
+            )
+            or databricks_runtime
+        )
+    target_spark_version = spark_version or spark_version_of_db_runtime(
+        get_db_client_for_token(databricks_host, databricks_token), target_runtime_key
+    )
+
     if store_in_jsl_home:
         # Cache credentials, Wheels and Jars in ~/.johnsnowlabs
         setup_jsl_home(
@@ -336,6 +360,7 @@ def install_to_databricks(
             visual=visual,
             nlp=nlp,
             spark_nlp=spark_nlp,
+            spark_version=target_spark_version,
         )
 
     # Databricks Install
@@ -346,6 +371,7 @@ def install_to_databricks(
         visual=visual,
         nlp=nlp,
         spark_nlp=spark_nlp,
+        spark_version=target_spark_version,
     )
     if databricks_cluster_id:
         # Install to existing cluster
@@ -356,6 +382,7 @@ def install_to_databricks(
             medical_nlp=nlp,
             spark_nlp=spark_nlp,
             visual=visual,
+            volume_dir=databricks_volume,
         )
         if extra_pip_installs:
             install_list_of_pypi_ref_to_cluster(
@@ -381,7 +408,7 @@ def install_to_databricks(
             driver_node_type_id=driver_node_type_id,
             spark_env_vars=spark_env_vars,
             autotermination_minutes=autotermination_minutes,
-            spark_version=spark_version,
+            databricks_runtime=databricks_runtime,
             spark_conf=spark_conf,
             auto_scale=auto_scale,
             aws_attributes=aws_attributes,
@@ -393,6 +420,7 @@ def install_to_databricks(
             instance_pool_id=instance_pool_id,
             headers=headers,
             write_db_credentials=write_db_credentials,
+            volume_dir=databricks_volume,
         )
 
 

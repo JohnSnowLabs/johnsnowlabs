@@ -31,7 +31,28 @@ class HcLibResolver(Py4JJslLibDependencyResolverABC, metaclass=ABCMeta):
                 file_name=product_name.name,
                 dependency_version=lib_version,
             )
-        }
+        },
+        # Naming per spark-ocr _resolve_jar_name().
+        SparkVersion.spark400: {
+            JvmHardwareTarget.cpu: UrlDependency(
+                url="https://pypi.johnsnowlabs.com/{secret}/spark-nlp-jsl-spark400_2.13-{lib_version}.jar",
+                dependency_type=JvmHardwareTarget.cpu,
+                spark_version=SparkVersion.spark400,
+                product_name=product_name,
+                file_name=product_name.name,
+                dependency_version=lib_version,
+            )
+        },
+        SparkVersion.spark4xx: {
+            JvmHardwareTarget.cpu: UrlDependency(
+                url="https://pypi.johnsnowlabs.com/{secret}/spark-nlp-jsl_2.13-{lib_version}.jar",
+                dependency_type=JvmHardwareTarget.cpu,
+                spark_version=SparkVersion.spark4xx,
+                product_name=product_name,
+                file_name=product_name.name,
+                dependency_version=lib_version,
+            )
+        },
     }
 
     compatible_spark_to_py_map = {
@@ -52,5 +73,42 @@ class HcLibResolver(Py4JJslLibDependencyResolverABC, metaclass=ABCMeta):
                 file_name=product_name.name,
                 dependency_version=lib_version,
             ),
-        }
+        },
+        # Same wheel every lane, but the resolver still needs a key per lane.
+        SparkVersion.spark400: {
+            PyInstallTypes.wheel: UrlDependency(
+                url="https://pypi.johnsnowlabs.com/{secret}/spark-nlp-jsl/spark_nlp_jsl-{lib_version}-py3-none-any.whl",
+                dependency_type=PyInstallTypes.wheel,
+                spark_version=SparkVersion.spark400,
+                product_name=product_name,
+                file_name=product_name.name,
+                dependency_version=lib_version,
+            ),
+            PyInstallTypes.tar: UrlDependency(
+                url="https://pypi.johnsnowlabs.com/{secret}/spark-nlp-jsl/spark-nlp-jsl-{lib_version}.tar.gz",
+                dependency_type=PyInstallTypes.tar,
+                spark_version=SparkVersion.spark400,
+                product_name=product_name,
+                file_name=product_name.name,
+                dependency_version=lib_version,
+            ),
+        },
+        SparkVersion.spark4xx: {
+            PyInstallTypes.wheel: UrlDependency(
+                url="https://pypi.johnsnowlabs.com/{secret}/spark-nlp-jsl/spark_nlp_jsl-{lib_version}-py3-none-any.whl",
+                dependency_type=PyInstallTypes.wheel,
+                spark_version=SparkVersion.spark4xx,
+                product_name=product_name,
+                file_name=product_name.name,
+                dependency_version=lib_version,
+            ),
+            PyInstallTypes.tar: UrlDependency(
+                url="https://pypi.johnsnowlabs.com/{secret}/spark-nlp-jsl/spark-nlp-jsl-{lib_version}.tar.gz",
+                dependency_type=PyInstallTypes.tar,
+                spark_version=SparkVersion.spark4xx,
+                product_name=product_name,
+                file_name=product_name.name,
+                dependency_version=lib_version,
+            ),
+        },
     }

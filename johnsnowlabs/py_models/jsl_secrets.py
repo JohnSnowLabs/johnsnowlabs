@@ -610,6 +610,8 @@ class JslSecrets(WritableBaseModel):
             hc_version = secrets["HC_VERSION"] if "HC_VERSION" in secrets else None
 
         nlp_version = secrets["PUBLIC_VERSION"] if "PUBLIC_VERSION" in secrets else None
+        if not nlp_version:
+            nlp_version = secrets["NLP_VERSION"] if "NLP_VERSION" in secrets else None
         aws_access_key_id = (
             secrets["AWS_ACCESS_KEY_ID"] if "AWS_ACCESS_KEY_ID" in secrets else None
         )
@@ -700,11 +702,12 @@ class JslSecrets(WritableBaseModel):
 
     @staticmethod
     def update_outdated_lib_secrets(
-        new_secrets: "JslSecrets",
+        new_secrets: Optional["JslSecrets"] = None,
     ) -> Optional["LicenseInfos"]:
         print("Trying to fix outdated licenses")
-        hc_secrets = new_secrets.HC_SECRET
-        ocr_secret = new_secrets.OCR_SECRET
+        # called without secrets from the load-error path, which only re-normalizes jsl home
+        hc_secrets = new_secrets.HC_SECRET if new_secrets else None
+        ocr_secret = new_secrets.OCR_SECRET if new_secrets else None
         invalid_licenses = []
         for license in os.listdir(settings.license_dir):
             if license == "info.json":
