@@ -805,6 +805,12 @@ See <a href="https://spark.apache.org/docs/latest/configuration.html">Spark Conf
           <td><code class="language-plaintext highlighter-rouge">nlp.start(exclude_ocr=True)</code></td>
         </tr>
         <tr>
+          <td><code class="language-plaintext highlighter-rouge">spark_version</code></td>
+          <td><code class="language-plaintext highlighter-rouge">None</code></td>
+          <td>Spark version to load jars for, for example <code class="language-plaintext highlighter-rouge">4.0.1</code>. Defaults to the version of the installed pyspark, which selects the matching Scala 2.12 or 2.13 jars.</td>
+          <td><code class="language-plaintext highlighter-rouge">nlp.start(spark_version='4.0.1')</code></td>
+        </tr>
+        <tr>
           <td><code class="language-plaintext highlighter-rouge">hardware_target</code></td>
           <td><code class="language-plaintext highlighter-rouge">cpu</code></td>
           <td>Specify for which hardware Jar should be optimized. Valid values are <code class="language-plaintext highlighter-rouge">gpu</code>,<code class="language-plaintext highlighter-rouge">cpu</code>,<code class="language-plaintext highlighter-rouge">m1</code>,<code class="language-plaintext highlighter-rouge">aarch</code></td>

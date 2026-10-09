@@ -840,6 +840,10 @@ Licenses are locally numbered in order they have been provided, for more info se
           <td><code class="language-plaintext highlighter-rouge">Install to Databricks</code> with access Token</td>
           <td>See <a href="https://docs.databricks.com/dev-tools/api/latest/authentication.html">Databricks Documentation</a> for  extracting a token which you can provide to databricks access, see <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/install#automatic-databricks-installation">Databricks Install Section</a> for more details.</td>
         </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">databricks_volume</code></td>
+          <td>Specify a Unity Catalog volume, for example <code class="language-plaintext highlighter-rouge">/Volumes/main/default/jsl</code>, into which Jars and Wheels are uploaded and from which they are installed. <strong>Required on Databricks runtime 15 and above</strong>, which no longer installs libraries from DBFS. Older runtimes keep using <code class="language-plaintext highlighter-rouge">/dbfs/johnsnowlabs</code>.</td>
+        </tr>
       </tbody>
     </table>
 
@@ -890,6 +894,10 @@ Licenses are locally numbered in order they have been provided, for more info se
           <td><code class="language-plaintext highlighter-rouge">refresh_install</code></td>
           <td>Delete any cached files before installing by removing John Snow Labs home folder. <strong>This will delete your locally cached licenses</strong>.</td>
         </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">spark_version</code></td>
+          <td>Specify the Spark version to resolve jars for, for example <code class="language-plaintext highlighter-rouge">4.0.1</code>. Defaults to the Spark version of the installed pyspark, which selects the matching Scala 2.12 or 2.13 artifact.</td>
+        </tr>
       </tbody>
     </table>
 
@@ -904,6 +912,10 @@ You additionally must use one of the <a href="https://nlp.johnsnowlabs.com/docs/
 Labs license,which will be installed to your Databricks cluster.      <br />
 A John Snow Labs Home directory is constructed in the distributed Databricks File System<code class="language-plaintext highlighter-rouge">/dbfs/johnsnowlabs</code> which has
 all Jars, Wheels and License Information to run all features in a Databricks cluster.</p>
+
+    <p>Databricks runtime 15 and above no longer installs libraries from DBFS. On those runtimes pass a Unity
+Catalog volume you can write to, and the Jars and Wheels are uploaded and installed from there instead:
+<code class="language-plaintext highlighter-rouge">nlp.install_to_databricks(databricks_volume='/Volumes/main/default/jsl')</code></p>
 
     <table class="table-model-big">
       <thead>
@@ -976,7 +988,7 @@ Just set <code class="language-plaintext highlighter-rouge">nlp.install_to_datab
           <td><code class="language-plaintext highlighter-rouge">60</code></td>
         </tr>
         <tr>
-          <td>spark_version</td>
+          <td>databricks_runtime</td>
           <td><code class="language-plaintext highlighter-rouge">10.5.x-scala2.12</code></td>
         </tr>
         <tr>
