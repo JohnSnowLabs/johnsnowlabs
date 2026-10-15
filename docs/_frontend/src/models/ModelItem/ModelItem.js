@@ -12,11 +12,12 @@ const MarketplaceIcon = ({ platform, deployLink }) => (
   </div>
 )
 
-const ModelItemMarketplace = ({ snowflake, databricks, sagemaker }) => (
+const ModelItemMarketplace = ({ snowflake, databricks, sagemaker, azure }) => (
   <div className="model-item__footer">
     <MarketplaceIcon platform="sagemaker" deployLink={sagemaker} />
     <MarketplaceIcon platform="snowflake" deployLink={snowflake} />
     <MarketplaceIcon platform="databricks" deployLink={databricks} />
+    <MarketplaceIcon platform="azure" deployLink={azure} />
   </div>
 )
 
