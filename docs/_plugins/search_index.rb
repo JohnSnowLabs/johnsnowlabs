@@ -390,7 +390,7 @@ Jekyll::Hooks.register :posts, :post_render do |post|
       databricks: post.data["deploy"]["databricks_link"],
       sagemaker: post.data["deploy"]["sagemaker_link"],
       snowflake: post.data["deploy"]["snowflake_link"],
-      azure: post.data["deploy"]["azure_link"]
+      azure: post.data["deploy"]["azure_ml_link"]
     }
   end
 
