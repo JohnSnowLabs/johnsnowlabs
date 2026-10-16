@@ -14,6 +14,12 @@ from johnsnowlabs.py_models.install_info import (
 from johnsnowlabs.py_models.lib_version import LibVersion
 from johnsnowlabs.utils.env_utils import is_running_in_databricks_runtime
 from .dbfs import *
+from .uc_volumes import (
+    FIRST_DBR_WITHOUT_DBFS_LIBRARIES,
+    dbr_major_of_cluster,
+    install_py4j_lib_via_volume,
+    is_volume_path,
+)
 
 # https://pypi.org/project/databricks-api/
 from ...utils.enums import DatabricksClusterStates
@@ -129,7 +135,7 @@ def create_cluster(
     driver_node_type_id=settings.db_driver_node_type,
     spark_env_vars=None,
     autotermination_minutes=60,
-    spark_version=settings.db_spark_version,
+    databricks_runtime=settings.db_spark_version,
     spark_conf=None,
     auto_scale=None,
     aws_attributes=None,
@@ -143,6 +149,7 @@ def create_cluster(
     block_till_cluster_ready: bool = True,
     write_db_credentials: bool = True,
     extra_pip_installs: Optional[List[str]] = None,
+    volume_dir: Optional[str] = None,
 ) -> str:
     db = get_db_client_for_token(databricks_host, databricks_token)
 
@@ -161,7 +168,7 @@ def create_cluster(
         num_workers=num_workers,
         autoscale=auto_scale,
         cluster_name=cluster_name,
-        spark_version=spark_version,
+        spark_version=databricks_runtime,
         spark_conf=spark_conf,
         aws_attributes=aws_attributes,
         node_type_id=node_type_id,
@@ -184,6 +191,7 @@ def create_cluster(
         medical_nlp=medical_nlp,
         spark_nlp=spark_nlp,
         visual=visual,
+        volume_dir=volume_dir,
     )
 
     if extra_pip_installs:
@@ -223,6 +231,48 @@ def list_db_runtime_versions(db: DatabricksAPI):
         )
 
 
+def db_runtime_of_cluster(db: DatabricksAPI, cluster_id: str) -> Optional[str]:
+    try:
+        return db.cluster.get_cluster(cluster_id)["spark_version"]
+    except Exception as err:
+        print(f"Warning: could not read the runtime of cluster {cluster_id}: {err}")
+        return None
+
+
+def spark_version_of_db_runtime(db: DatabricksAPI, runtime_key: str):
+    """PySpark version to resolve jars against for a Databricks runtime key.
+
+    Returns None when the runtime cannot be looked up, leaving the caller on its
+    previous behaviour.
+    """
+    try:
+        for version in db.cluster.list_spark_versions()["versions"]:
+            if version.get("key") != runtime_key:
+                continue
+            name = version.get("name", "")
+            found = re.findall(r"Apache Spark (\d+\.\d+\.\d+)", name)
+            if not found:
+                return None
+            spark_version = found[0]
+            scala = re.findall(r"Scala (\d+\.\d+)", name)
+            scala_version = scala[0] if scala else None
+            if spark_version.startswith("3.") and scala_version == "2.13":
+                raise ValueError(
+                    f"Databricks runtime {runtime_key} is Spark {spark_version} on Scala "
+                    f"{scala_version}, which no John Snow Labs artifact is built for. "
+                    f"Spark 3 artifacts are Scala 2.12 and Spark 4 artifacts are Scala 2.13."
+                )
+            # Databricks patches Spark 4.0.0, so it takes the regular 2.13 artifact.
+            if spark_version == "4.0.0":
+                return "4.0.1"
+            return spark_version
+    except ValueError:
+        raise
+    except Exception as e:
+        print(f"Warning: could not determine the Spark version of {runtime_key}: {e}")
+    return None
+
+
 def list_cluster_lib_status(db: DatabricksAPI, cluster_id: str):
     lib_statuses = db.managed_library.cluster_status(cluster_id=cluster_id)
     # lib_statuses = db.managed_library.all_cluster_statuses()
@@ -255,6 +305,7 @@ def install_to_existing_cluster(
         visual,
         write_db_credentials: bool = True,
         extra_pip_installs: Optional[List[str]] = None,
+        volume_dir: Optional[str] = None,
 
 ):
     db = get_db_client_for_token(databricks_host, databricks_token)
@@ -295,6 +346,7 @@ def install_to_existing_cluster(
         medical_nlp=medical_nlp,
         spark_nlp=spark_nlp,
         visual=visual,
+        volume_dir=volume_dir,
     )
 
     if extra_pip_installs:
@@ -305,6 +357,22 @@ def install_to_existing_cluster(
         )
 
 
+def resolve_py4j_install_target(
+    db: DatabricksAPI, cluster_id: str, volume_dir: Optional[str]
+):
+    dbr_major = dbr_major_of_cluster(db, cluster_id)
+    if is_volume_path(volume_dir):
+        return lambda lib: install_py4j_lib_via_volume(db, cluster_id, lib, volume_dir)
+    if dbr_major and dbr_major >= FIRST_DBR_WITHOUT_DBFS_LIBRARIES:
+        raise ValueError(
+            f"Cluster {cluster_id} runs Databricks runtime {dbr_major}, which refuses "
+            f"libraries installed from DBFS. Pass databricks_volume='/Volumes/<catalog>"
+            f"/<schema>/<volume>' pointing at a Unity Catalog volume you can write to, "
+            f"so the jars and wheels can be installed from there instead."
+        )
+    return lambda lib: install_py4j_lib_via_hdfs(db, cluster_id, lib)
+
+
 def install_jsl_suite_to_cluster(
     db: DatabricksAPI,
     cluster_id: str,
@@ -312,7 +380,9 @@ def install_jsl_suite_to_cluster(
     medical_nlp: bool,
     spark_nlp: bool,
     visual: bool,
+    volume_dir: Optional[str] = None,
 ):
+    install_py4j_lib = resolve_py4j_install_target(db, cluster_id, volume_dir)
     py_deps = [
         {"package": Software.nlu.pypi_name, "version": settings.raw_version_nlu},
         {
@@ -330,12 +400,12 @@ def install_jsl_suite_to_cluster(
         and install_suite.hc.get_java_path()
         and medical_nlp
     ):
-        install_py4j_lib_via_hdfs(db, cluster_id, install_suite.hc)
+        install_py4j_lib(install_suite.hc)
         print(
             f"Installed {Software.spark_hc.logo + Software.spark_hc.name} Spark NLP for Healthcare ✅"
         )
     if install_suite.ocr.get_py_path() and install_suite.ocr.get_java_path() and visual:
-        install_py4j_lib_via_hdfs(db, cluster_id, install_suite.ocr)
+        install_py4j_lib(install_suite.ocr)
         print(
             f"Installed {Software.spark_ocr.logo + Software.spark_ocr.name} Spark OCR ✅"
         )
@@ -351,7 +421,7 @@ def install_jsl_suite_to_cluster(
         and install_suite.nlp.get_java_path()
         and spark_nlp
     ):
-        install_py4j_lib_via_hdfs(db, cluster_id, install_suite.nlp)
+        install_py4j_lib(install_suite.nlp)
         print(
             f"{Software.spark_nlp.logo + Software.spark_nlp.name} Installed Spark NLP! ✅"
         )

@@ -1,10 +1,45 @@
 import importlib
 from abc import ABC
-from typing import Dict, Union
+from typing import Dict, Optional, Union
 
+from johnsnowlabs import settings
 from johnsnowlabs.py_models.lib_version import LibVersion
 from johnsnowlabs.py_models.url_dependency import UrlDependency
 from johnsnowlabs.utils.enums import *
+
+
+def detect_scala_binary_version() -> Optional[str]:
+    """Scala binary version of the Spark on this machine, e.g. "2.12" or "2.13".
+
+    Read from the scala-library jar that ships beside Spark, which states it exactly:
+
+      pyspark 3.4.0 -> scala-library-2.12.17
+      pyspark 4.1.3 -> scala-library-2.13.17
+
+    Preferred over inferring it from the Spark major version, because Databricks
+    publishes runtimes such as 16.4.x-scala2.13, which is Spark 3.5.2 on Scala 2.13.
+    Returns None when it cannot be determined, in which case callers should not block.
+    """
+    import glob
+    import os
+    import re
+
+    candidate_dirs = []
+    try:
+        import pyspark
+
+        candidate_dirs.append(os.path.join(os.path.dirname(pyspark.__file__), "jars"))
+    except Exception:
+        pass
+    # Databricks keeps the runtime jars outside the pyspark package
+    candidate_dirs += ["/databricks/jars", "/databricks/spark/jars"]
+    # Databricks names it scala-library_2.12--...__2.12.15.jar, not scala-library-2.12.15.jar.
+    for d in candidate_dirs:
+        for path in glob.glob(os.path.join(d, "*scala-library*.jar")):
+            m = re.search(r"scala-library[-_]+(\d+\.\d+)", os.path.basename(path))
+            if m:
+                return m.group(1)
+    return None
 
 
 def is_spark_version_env(spark_version: str) -> bool:
@@ -43,6 +78,7 @@ class Py4JJslLibDependencyResolverABC(ABC):
     has_gpu_jars: bool = False
     has_cpu_jars: bool = False
     has_m1_jar: bool = False
+    has_aarch_jar: bool = False
     has_py_install: bool = False
     has_secret: bool = False
     lib_version: LibVersion
@@ -96,10 +132,28 @@ class Py4JJslLibDependencyResolverABC(ABC):
             spark_version_to_match
         )
         matching_jsl_spark_release = None
+        best_specificity = -1
         for compatible_spark in compat_map.keys():
             compatible_spark: SparkVersion = compatible_spark
             if compatible_spark.value.equals(spark_version_to_match):
-                matching_jsl_spark_release = compatible_spark
+                specificity = compatible_spark.value.specificity()
+                if specificity > best_specificity:
+                    best_specificity = specificity
+                    matching_jsl_spark_release = compatible_spark
+
+        scala_version = detect_scala_binary_version()
+        if (
+            matching_jsl_spark_release is not None
+            and scala_version == "2.13"
+            and str(spark_version_to_match.major) == "3"
+        ):
+            # DBR sells Spark 3 on Scala 2.13 (16.4.x-scala2.13); no product publishes that artifact.
+            raise Exception(
+                f"{cls.product_name.value} has no artifact for Spark "
+                f"{spark_version_to_match.as_str()} on Scala {scala_version}. "
+                f"Spark 3 artifacts are built for Scala 2.12 and Spark 4 artifacts for "
+                f"Scala 2.13. Use a Scala 2.12 Spark 3 runtime, or a Spark 4 runtime."
+            )
 
         if not matching_jsl_spark_release:
             # Todo make special type of exception and catch?
@@ -173,6 +227,9 @@ class Py4JJslLibDependencyResolverABC(ABC):
         if hardware_target == JvmHardwareTarget.m1 and not cls.has_m1_jar:
             raise Exception(f"{cls.product_name.value} has no M1 Jars!")
 
+        if hardware_target == JvmHardwareTarget.aarch and not cls.has_aarch_jar:
+            raise Exception(f"{cls.product_name.value} has no AArch64 Jars!")
+
         return cls.get_url_from_compat_map(
             compat_map=cls.compatible_spark_to_jar_map,
             install_type=hardware_target,
@@ -231,8 +288,13 @@ class Py4JJslLibDependencyResolverABC(ABC):
         elif try_import_lib("pyspark"):
             import pyspark
 
+            installed_pyspark = pyspark.__version__
+            # DBR 17.3+ reports 4.0.0 but ships the 4.0.1 Param fix, so it needs the plain 2.13 jar.
+            if installed_pyspark == "4.0.0" and settings.on_databricks:
+                # 4.0.1, not the 4.x.x wildcard: that would also match the 4.0.0 key.
+                return LibVersion("4.0.1")
             # TODO check product wide compatibility for pre-installed pyspark --> make helper method for that
-            return LibVersion(pyspark.__version__)
+            return LibVersion(installed_pyspark)
         # 5. Return the latest compatible pyspark if no other method  resolves
         else:
             return LatestCompatibleProductVersion.pyspark.value

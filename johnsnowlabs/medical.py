@@ -108,6 +108,7 @@ try:
             AnnotationConverter,
             MetadataAnnotationConverter,
             CdaDeIdentification,
+            Hl7v2DeIdentification,
             PretrainedZeroShotMultiTask,
             MultiAnnotationSplitter,
         )

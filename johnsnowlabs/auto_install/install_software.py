@@ -180,16 +180,26 @@ def check_and_install_dependencies(
                 download_folder=offline_py_dir,
                 include_dependencies=include_dependencies,
             )
-        if not get_pip_lib_version("pyspark", py_exec=python_exec_path).equals(
-            LatestCompatibleProductVersion.pyspark.value
-        ):
-            # Re-install pyspark incase some other library up/downgraded it while we installed it
+        installed_pyspark = get_pip_lib_version("pyspark", py_exec=python_exec_path)
+        # Replace pyspark only when its major is unsupported; 3.x and 4.x are both lanes.
+        supported_majors = {"3", "4"}
+        pyspark_is_supported = installed_pyspark.major in supported_majors
+        if not pyspark_is_supported:
+            print(
+                f"{Software.pyspark.logo} Installed pyspark=={installed_pyspark.as_str()} is not supported, "
+                f"replacing it with {LatestCompatibleProductVersion.pyspark.value.as_str()}"
+            )
             install_results[Software.pyspark] = Software.pyspark.install(
                 re_install=True,
                 version=LatestCompatibleProductVersion.pyspark.value,
                 py_path=python_exec_path,
                 download_folder=offline_py_dir,
                 include_dependencies=include_dependencies,
+            )
+        elif not installed_pyspark.equals(LatestCompatibleProductVersion.pyspark.value):
+            print(
+                f"{Software.pyspark.logo} Keeping installed pyspark=={installed_pyspark.as_str()} "
+                f"(default is {LatestCompatibleProductVersion.pyspark.value.as_str()})"
             )
 
     # Log The results of installation

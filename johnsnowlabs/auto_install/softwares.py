@@ -1,3 +1,4 @@
+import sys
 from typing import Union
 
 from johnsnowlabs.abstract_base.software_product import AbstractSoftwareProduct
@@ -77,6 +78,32 @@ class PysparkSoftware(AbstractSoftwareProduct):
             return pyspark.__version__
         except:
             return False
+
+    @classmethod
+    def check_installed_correct_version(
+        cls, python_exec_path: str = sys.executable, download_folder: str = None
+    ) -> bool:
+        """Any Spark 3.x or 4.x is correct, not only settings.raw_version_pyspark.
+
+        The base implementation demands an exact match against latest_version, which
+        makes the install DAG replace a perfectly good pyspark with the pinned default.
+        On Spark 4 that uninstalls the user's runtime and leaves the jars, which were
+        resolved for Spark 4, paired with a Spark 3 python package. The artifact lane
+        is chosen from the installed pyspark, so any supported major is fine here.
+        """
+        if python_exec_path != sys.executable or download_folder:
+            return super().check_installed_correct_version(
+                python_exec_path=python_exec_path, download_folder=download_folder
+            )
+        installed = cls.get_installed_version_via_import()
+        if not installed:
+            return False
+        major = str(installed).split(".")[0]
+        if major in ("3", "4"):
+            return True
+        return super().check_installed_correct_version(
+            python_exec_path=python_exec_path, download_folder=download_folder
+        )
 
 
 class SparkNlpSoftware(AbstractSoftwareProduct):

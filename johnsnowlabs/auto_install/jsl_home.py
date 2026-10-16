@@ -228,6 +228,7 @@ def get_install_suite_from_jsl_home(
     leg_license: Optional[str] = None,
     store_in_jsl_home: bool = True,
     log: bool = True,
+    spark_version: Optional[str] = None,
 ) -> InstallSuite:
     """Read all info files from JSL home if exists. If not exists, sets up JSL home"""
     if not jsl_home_exist() and not create_jsl_home_if_missing:
@@ -255,11 +256,11 @@ def get_install_suite_from_jsl_home(
         if not jsl_home_exist():
             # Nothing setup yet, download at least spark nlp jars
             print(f"🤓 Looks like {settings.root_dir} is missing, creating it")
-            setup_jsl_home(only_jars=only_jars, log=False)
+            setup_jsl_home(only_jars=only_jars, log=False, spark_version=spark_version)
 
         if jsl_home_exist() and is_jsl_home_outdated():
             # Nothing setup yet, download at least spark nlp jars
-            setup_jsl_home(only_jars=only_jars, log=False)
+            setup_jsl_home(only_jars=only_jars, log=False, spark_version=spark_version)
 
     java_folder, py_folder = None, None
 

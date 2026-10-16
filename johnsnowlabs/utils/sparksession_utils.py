@@ -74,6 +74,7 @@ def start(
     hardware_target: str = JvmHardwareTarget.cpu.value,
     model_cache_folder: str = None,
     create_jsl_home_if_missing: bool = True,
+    spark_version: Optional[str] = None,
 ) -> "pyspark.sql.SparkSession":
     from pyspark.sql import SparkSession
 
@@ -113,6 +114,7 @@ def start(
         fin_license=fin_license,
         leg_license=leg_license,
         store_in_jsl_home=store_in_jsl_home,
+        spark_version=spark_version,
     )
 
     try:
