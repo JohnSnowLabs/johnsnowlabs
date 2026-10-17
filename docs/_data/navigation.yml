@@ -326,7 +326,7 @@ sparknlp-healthcare:
       - title: Scala API (Scaladoc)
         url: /licensed/api/
       - title: Python API (Sphinx)
-        url: /licensed/api/python
+        url: /licensed/api/python/
       - title: Healthcare NLP Example Notebooks
         url: /docs/en/healthcare-nlp-example-notebooks
       - title: MCP De-identification Server
@@ -354,7 +354,7 @@ sparknlp-healthcare:
       - title: Installation
         url: /docs/en/ocr_install
       - title: Python API (Sphinx)
-        url: /licensed/api_ocr/python
+        url: /licensed/api_ocr/python/
       - title: Version Compatibility
         url: /docs/en/version_compatibility
       - title: Pipeline components
