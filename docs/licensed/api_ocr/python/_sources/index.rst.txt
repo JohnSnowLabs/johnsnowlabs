@@ -23,7 +23,7 @@ Quick Start
    :maxdepth: 1
 
 .. autosummary::
-   :toctree: _autosummary/
+   :toctree: autosummary/
    :caption: Quick Start
 
    sparkocr
