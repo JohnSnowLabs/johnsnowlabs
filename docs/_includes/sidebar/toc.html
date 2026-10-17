@@ -1,3 +1,13 @@
+{%- comment -%}
+  Renders the sidebar from _data/navigation.yml.
+
+  Gotcha: the docs are published by .github/workflows/create_search_index.yml with
+  "jekyll build --incremental", and Jekyll does not treat _data files as dependencies
+  of the pages that read them. Editing navigation.yml therefore regenerates nothing,
+  and the old sidebar stays live. Jekyll does track {% include %} dependencies, so
+  touching this file forces every page that includes it to rebuild. Change both when
+  you change the nav.
+{%- endcomment -%}
 <a title="{%- if site.description -%}{{ site.description }}{%- endif -%}" href="/">
     <!-- {%- include svg/logo.svg -%} -->
 </a>
