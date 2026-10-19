@@ -103,7 +103,7 @@ To see it in action check [SparkOcrLayoutDetectionRtDetr.ipynb](https://github.c
 
 ## New PDF Deidentification Pipeline
 
-We're releasing a new Handwriting-Aware PDF deidentification pipeline, `pdf_deid_multi_model_handwritten_context_pipeline`. This pipeline is an enhancement over our previous `pdf_deid_multi_model_context_pipeline`, which powers our [PDF-deid AWS listing](https://aws.amazon.com/marketplace/pp/prodview-ddhtngof3o6fa) as well.</br>
+We're releasing a new Handwriting-Aware PDF deidentification pipeline, `pdf_deid_multi_model_handwritten_context_pipeline`. This pipeline is an enhancement over our previous `pdf_deid_multi_model_context_pipeline`, which powers our [PDF-deid AWS listing](https://aws.amazon.com/marketplace/pp/prodview-ddhtngof3o6fa) as well.<br/>
 To see this pipeline in action, please check out the [SparkOcrPdfDeIdentificationPipelines.ipynb](https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/SparkOcrPdfDeIdentificationPipelines.ipynb) notebook.
 
 </div><div class="h3-box" markdown="1">
