@@ -19,6 +19,7 @@ deploy:
   sagemaker_link: https://aws.amazon.com/marketplace/pp/prodview-wfezzkzs6y57k
   snowflake_link: https://app.snowflake.com/marketplace/listing/GZTYZ4386LJB5/john-snow-labs-rxnorm-sentence-entity-resolver
   databricks_link: https://marketplace.databricks.com/details/2b8709b8-4a42-406b-bd93-43172eae07b9/John-Snow-Labs_RxNorm-Clinical-Terminology-Mapper
+  azure_ml_link: https://marketplace.microsoft.com/en-us/product/johnsnowlabsinc1646051154808.rxnorm_clinical_terminology_mapper
 
 ---
 

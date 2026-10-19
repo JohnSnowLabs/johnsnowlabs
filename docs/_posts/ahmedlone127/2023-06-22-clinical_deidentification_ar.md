@@ -19,6 +19,7 @@ deploy:
   sagemaker_link: https://aws.amazon.com/marketplace/pp/prodview-fslxwvs65fwuu
   snowflake_link: https://app.snowflake.com/marketplace/listing/GZTYZ4386LJ5J/john-snow-labs-clinical-de-identification-for-arabic
   databricks_link: https://marketplace.databricks.com/details/b3bac611-ed88-4391-b013-08de4e32a503/John-Snow-Labs_Clinical-Deidentification-for-Arabic
+  azure_ml_link: https://marketplace.microsoft.com/en-us/product/azure-application/johnsnowlabsinc1646051154808.clinical_deidentification_ar
 
 ---
 
