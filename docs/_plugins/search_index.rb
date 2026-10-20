@@ -126,6 +126,11 @@ class Extractor
     m ? m[1] : nil
   end
 
+  def size
+    m = /^\|Size:\|(.*?)\|/.match(@content)
+    m ? m[1].strip : nil
+  end
+
   def doc_type
     m = /\|Type:\|(.*?)\|/.match(@content)
     if m
@@ -326,6 +331,7 @@ Jekyll::Hooks.register :posts, :pre_render do |post|
     url: post.url,
     tags: post.data['tags'],
     download_link: extractor.download_link,
+    size: extractor.size,
     predicted_entities: extractor.predicted_entities || [],
     type: doc_type,
     annotator: post.data['annotator'] || "",
