@@ -19,6 +19,7 @@ deploy:
   sagemaker_link: https://aws.amazon.com/marketplace/pp/prodview-hii4kdoyh4kzk
   snowflake_link: https://app.snowflake.com/marketplace/listing/GZTYZ4386LJA4/john-snow-labs-extract-social-determinants-of-health
   databricks_link: https://marketplace.databricks.com/details/c23fe435-9461-4d0e-a829-d64f6fecb659/John-Snow-Labs_Extract-Social-Determinants-of-Health
+  azure_ml_link: https://marketplace.microsoft.com/en-us/product/johnsnowlabsinc1646051154808.extract_social_determinants_of_health
 
 ---
 
