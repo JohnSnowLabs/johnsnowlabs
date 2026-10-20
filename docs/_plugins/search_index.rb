@@ -331,12 +331,13 @@ Jekyll::Hooks.register :posts, :pre_render do |post|
     url: post.url,
     tags: post.data['tags'],
     download_link: extractor.download_link,
-    size: extractor.size,
     predicted_entities: extractor.predicted_entities || [],
     type: doc_type,
     annotator: post.data['annotator'] || "",
     deprecated: !!post.data['deprecated']
   }
+  size = extractor.size
+  models_json[post.url][:size] = size if size
 
   benchmarking_info = extractor.benchmarking_results(post.url)
   if benchmarking_info
