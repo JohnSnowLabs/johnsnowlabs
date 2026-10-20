@@ -19,6 +19,7 @@ deploy:
   sagemaker_link: https://aws.amazon.com/marketplace/pp/prodview-v7nmnswuxgcue
   snowflake_link: https://app.snowflake.com/marketplace/listing/GZTYZ4386LJ7H/john-snow-labs-clinical-text-analysis
   databricks_link: https://marketplace.databricks.com/details/6bf333a0-af4e-4650-b4b2-1595e0df8dcb/John-Snow-Labs_clinical-text-analysis
+  azure_ml_link: https://marketplace.microsoft.com/en-us/product/johnsnowlabsinc1646051154808.explain_clinical_doc_granular_en
 
 ---
 

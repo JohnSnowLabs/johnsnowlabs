@@ -19,6 +19,7 @@ deploy:
   sagemaker_link: https://aws.amazon.com/marketplace/pp/prodview-zjyeemhncdsiu
   snowflake_link: https://app.snowflake.com/marketplace/listing/GZTYZ4386LJ57/john-snow-labs-clinical-de-identification-for-german
   databricks_link: https://marketplace.databricks.com/details/37b22ea9-caf2-429e-ac3c-8b1adb0324cc/John-Snow-Labs_Clinical-Deidentification-for-German
+  azure_ml_link: https://marketplace.microsoft.com/en-us/product/johnsnowlabsinc1646051154808.clinical_deidentification_de
 
 ---
 

@@ -1,9 +1,0 @@
-
-.. INDEX
-
-:py:mod:`sparkocr.internal`
-===========================
-
-.. py:module:: sparkocr.internal
-
-

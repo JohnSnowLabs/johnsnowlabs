@@ -126,6 +126,11 @@ class Extractor
     m ? m[1] : nil
   end
 
+  def size
+    m = /^\|Size:\|(.*?)\|/.match(@content)
+    m ? m[1].strip : nil
+  end
+
   def doc_type
     m = /\|Type:\|(.*?)\|/.match(@content)
     if m
@@ -331,6 +336,8 @@ Jekyll::Hooks.register :posts, :pre_render do |post|
     annotator: post.data['annotator'] || "",
     deprecated: !!post.data['deprecated']
   }
+  size = extractor.size
+  models_json[post.url][:size] = size if size
 
   benchmarking_info = extractor.benchmarking_results(post.url)
   if benchmarking_info

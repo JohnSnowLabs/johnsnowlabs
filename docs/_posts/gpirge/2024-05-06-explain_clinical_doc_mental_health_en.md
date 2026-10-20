@@ -19,6 +19,7 @@ deploy:
   sagemaker_link: https://aws.amazon.com/marketplace/pp/prodview-a7c5q57n2qyq6
   snowflake_link: https://app.snowflake.com/marketplace/listing/GZTYZ4386LJ8A/john-snow-labs-extract-entities-from-mental-health-data
   databricks_link: https://marketplace.databricks.com/details/4562b6eb-90f3-4cf1-9f1d-3a944737d903/John-Snow-Labs_extract-entities-from-mentalhealth-data
+  azure_ml_link: https://marketplace.microsoft.com/en-us/product/johnsnowlabsinc1646051154808.extract_entities_from_mental_health_data
 
 ---
 

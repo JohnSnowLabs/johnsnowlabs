@@ -19,6 +19,7 @@ deploy:
   sagemaker_link: https://aws.amazon.com/marketplace/pp/prodview-u52vwvdx4jrbm
   snowflake_link: https://app.snowflake.com/marketplace/listing/GZTYZ4386LJE4/john-snow-labs-icd-10-cm-sentence-entity-resolver
   databricks_link: https://marketplace.databricks.com/details/80b9ec4d-c7b8-401c-b177-aa388259f422/John-Snow-Labs_ICD10CM-Clinical-Terminology-Mapper
+  azure_ml_link: https://marketplace.microsoft.com/en-us/product/johnsnowlabsinc1646051154808.icd10cm_clinical_terminology_mapper
 
 ---
 

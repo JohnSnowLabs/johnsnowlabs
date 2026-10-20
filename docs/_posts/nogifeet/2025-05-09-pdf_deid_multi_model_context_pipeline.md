@@ -20,6 +20,7 @@ deploy:
   sagemaker_link: https://aws.amazon.com/marketplace/pp/prodview-ddhtngof3o6fa
   snowflake_link: https://app.snowflake.com/marketplace/listing/GZTYZ4386LJAS/john-snow-labs-clinical-de-identification-for-pdf
   databricks_link: https://marketplace.databricks.com/details/1cbdd1fa-87a8-4cdd-ba1c-ae6924998d7e/John-Snow-Labs_clinical-deidentification-for-pdf-en
+  azure_ml_link: https://marketplace.microsoft.com/en-us/product/johnsnowlabsinc1646051154808.clinical_deidentification_for_pdf
 
 ---
 
