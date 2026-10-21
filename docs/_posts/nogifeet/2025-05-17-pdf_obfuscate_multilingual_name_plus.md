@@ -20,6 +20,7 @@ deploy:
   sagemaker_link: https://aws.amazon.com/marketplace/pp/prodview-jju2zifvlabdy
   snowflake_link: https://app.snowflake.com/marketplace/listing/GZTYZ4386LLMY/john-snow-labs-clinical-obfuscation-for-pdf-en
   databricks_link: https://marketplace.databricks.com/details/e231d645-7f92-457e-a576-dfd8704c818d/John-Snow-Labs_Clinical-Obfuscation-for-PDF-EN
+  azure_ml_link: https://marketplace.microsoft.com/en-us/product/johnsnowlabsinc1646051154808.clinical_obfuscation_for_pdf
 
 ---
 
