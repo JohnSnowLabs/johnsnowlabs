@@ -1,25 +1,37 @@
 import React from 'react';
 import ModelItemTag from '../ModelItemTag';
+import Tooltip from '../Tooltip';
 import { addNamingConventions } from './utils';
 import './ModelItem.css';
 
-const MarketplaceIcon = ({ platform, deployLink }) => (
-  <div>
-    {deployLink ? <a target="_blank" href={`${deployLink}`}>
-      <figure><img src={`/assets/images/posts_image/active_${platform}.svg`} alt="" /></figure>
-    </a> : <figure><img src={`/assets/images/posts_image/inactive_${platform}.svg`} alt="" /></figure>
-    }
-  </div>
+const MARKETPLACES = [
+  { key: 'aws', label: 'AWS', icon: 'icon_aws.svg' },
+  { key: 'azure', label: 'Azure', icon: 'icon_azure.svg' },
+  { key: 'databricks', label: 'Databricks', icon: 'icon_databricks.svg' },
+  { key: 'snowflake', label: 'Snowflake', icon: 'active_snowflake.svg' },
+];
+
+const MarketplaceIcon = ({ label, icon, deployLink }) => (
+  <Tooltip label={label} compact>
+    <a target="_blank" rel="noopener noreferrer" href={deployLink}>
+      <figure><img src={`/assets/images/posts_image/${icon}`} alt={label} /></figure>
+    </a>
+  </Tooltip>
 )
 
-const ModelItemMarketplace = ({ snowflake, databricks, sagemaker, azure }) => (
-  <div className="model-item__footer">
-    <MarketplaceIcon platform="sagemaker" deployLink={sagemaker} />
-    <MarketplaceIcon platform="snowflake" deployLink={snowflake} />
-    <MarketplaceIcon platform="databricks" deployLink={databricks} />
-    <MarketplaceIcon platform="azure" deployLink={azure} />
-  </div>
-)
+const ModelItemMarketplace = (marketplace) => {
+  const available = MARKETPLACES.filter(({ key }) => marketplace[key]);
+  if (available.length === 0) {
+    return null;
+  }
+  return (
+    <div className="model-item__footer">
+      {available.map(({ key, label, icon }) => (
+        <MarketplaceIcon key={key} label={label} icon={icon} deployLink={marketplace[key]} />
+      ))}
+    </div>
+  );
+}
 
 const ModelItem = ({
   title,
