@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../../../" >
 
   <head>
     <meta charset="utf-8" />
@@ -14,34 +14,37 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../../static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../../../static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../../../static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../../../../static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../../static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-  
-  <link href="../../../../static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
-
-    <link rel="stylesheet" type="text/css" href="../../../../static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../../static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../../../static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../../static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="../../../../static/graphviz.css?v=fd3f3429" />
     <link rel="stylesheet" type="text/css" href="../../../../static/css/custom.css?v=e1fb877f" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../../../../static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../../static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../../../static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../../../static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../../../static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../../static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script data-url_root="../../../../" id="documentation_options" src="../../../../static/documentation_options.js?v=b3ba4146"></script>
-    <script src="../../../../static/doctools.js?v=888ff710"></script>
-    <script src="../../../../static/sphinx_highlight.js?v=4825356b"></script>
-    <script src="../../../../static/toggleprompt.js?v=670350bf"></script>
+    <script src="../../../../static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../../../static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../static/toggleprompt.js?v=5801b3bb"></script>
     <script src="../../../../static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../../../static/copybutton.js?v=6dbb43f8"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/autosummary/sparkocr/utils/index';</script>
@@ -50,6 +53,7 @@
     <link rel="search" title="Search" href="../../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -57,32 +61,16 @@
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../../../search.html"
       method="get">
@@ -90,7 +78,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search the annotators, functions, and more..."
          aria-label="Search the annotators, functions, and more..."
          autocomplete="off"
@@ -98,20 +85,27 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
-  <label class="sidebar-toggle primary-toggle" for="__primary">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
     <span class="fa-solid fa-bars"></span>
-  </label>
+  </button>
   
   
   <div class="col-lg-3 navbar-header-items__start">
     
       <div class="navbar-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="../../../../index.html">
@@ -126,7 +120,7 @@
     
     
     <img src="../../../../static/logo.png" class="logo__image only-light" alt="Spark OCR  documentation - Home"/>
-    <script>document.write(`<img src="../../../../static/logo.png" class="logo__image only-dark" alt="Spark OCR  documentation - Home"/>`);</script>
+    <img src="../../../../static/logo.png" class="logo__image only-dark pst-js-only" alt="Spark OCR  documentation - Home"/>
   
   
 </a></div>
@@ -138,35 +132,22 @@
     <div class="me-auto navbar-header-items__center">
       
         <div class="navbar-item">
-<nav class="navbar-nav">
-  <p class="sidebar-header-items__title"
-     role="heading"
-     aria-level="1"
-     aria-label="Site Navigation">
-    Site Navigation
-  </p>
+<nav>
   <ul class="bd-navbar-elements navbar-nav">
     
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../../index.html">
-                        API Reference
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../index.html">
+    API Reference
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../../../autosummary/sparkocr.html">
-                        sparkocr
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../../../autosummary/sparkocr.utils.html">
-                        sparkocr.utils
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../autosummary/sparkocr.html">
+    sparkocr
+  </a>
+</li>
+
   </ul>
 </nav></div>
       
@@ -178,29 +159,21 @@
         <div class="navbar-item navbar-persistent--container">
           
 
- <script>
- document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
         </div>
       
       
         <div class="navbar-item">
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
-  </button>
-`);
-</script></div>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
       
     </div>
     
@@ -209,31 +182,31 @@ document.write(`
   
     <div class="navbar-persistent--mobile">
 
- <script>
- document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
     </div>
   
 
   
-    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
       <span class="fa-solid fa-outdent"></span>
-    </label>
+    </button>
   
 </div>
 
-    </nav>
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -242,38 +215,28 @@ document.write(`
     
       <div class="sidebar-header-items__center">
         
-          <div class="navbar-item">
-<nav class="navbar-nav">
-  <p class="sidebar-header-items__title"
-     role="heading"
-     aria-level="1"
-     aria-label="Site Navigation">
-    Site Navigation
-  </p>
+          
+          
+            <div class="navbar-item">
+<nav>
   <ul class="bd-navbar-elements navbar-nav">
     
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../../index.html">
-                        API Reference
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../index.html">
+    API Reference
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../../../autosummary/sparkocr.html">
-                        sparkocr
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../../../autosummary/sparkocr.utils.html">
-                        sparkocr.utils
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../autosummary/sparkocr.html">
+    sparkocr
+  </a>
+</li>
+
   </ul>
 </nav></div>
+          
         
       </div>
     
@@ -283,15 +246,11 @@ document.write(`
         
           <div class="navbar-item">
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
-  </button>
-`);
-</script></div>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
         
       </div>
     
@@ -303,31 +262,31 @@ document.write(`
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="craft/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.utils.craft</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="craft/models/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.utils.craft.models</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3 has-children"><a class="reference internal" href="craft/models/basenet/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.utils.craft.models.basenet</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="craft/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.utils.craft</span></code></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="craft/models/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.utils.craft.models</span></code></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="craft/models/basenet/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.utils.craft.models.basenet</span></code></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="craft/models/basenet/vgg16_bn/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.utils.craft.models.basenet.vgg16_bn</span></code></a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l3"><a class="reference internal" href="craft/models/craftnet/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.utils.craft.models.craftnet</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="craft/models/refinenet/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.utils.craft.models.refinenet</span></code></a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l2"><a class="reference internal" href="craft/craft_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.utils.craft.craft_utils</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="craft/file_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.utils.craft.file_utils</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="craft/image_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.utils.craft.image_utils</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="craft/predict/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.utils.craft.predict</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="craft/torch_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.utils.craft.torch_utils</span></code></a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="svs/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.utils.svs</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="svs/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.utils.svs</span></code></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="svs/phi_cleaning/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.utils.svs.phi_cleaning</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="svs/phi_redaction/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.utils.svs.phi_redaction</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="svs/remove-phi/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.utils.svs.remove-phi</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="svs/tiffparser/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.utils.svs.tiffparser</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="svs/tile_extraction/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.utils.svs.tile_extraction</span></code></a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="compat_pkg/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.utils.compat_pkg</span></code></a></li>
@@ -344,29 +303,32 @@ document.write(`
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
         <div class="header-article-item">
 
-
-
-<nav aria-label="Breadcrumb">
+<nav aria-label="Breadcrumb" class="d-print-none">
   <ul class="bd-breadcrumbs">
     
     <li class="breadcrumb-item breadcrumb-home">
@@ -374,7 +336,7 @@ document.write(`
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page"><code...</li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.utils</span></code></span></li>
   </ul>
 </nav>
 </div>
@@ -389,12 +351,12 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section id="module-sparkocr.utils">
-<span id="sparkocr-utils"></span><h1><a class="reference internal" href="#module-sparkocr.utils" title="sparkocr.utils"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.utils</span></code></a><a class="headerlink" href="#module-sparkocr.utils" title="Permalink to this heading">#</a></h1>
+<span id="sparkocr-utils"></span><h1><a class="reference internal" href="#module-sparkocr.utils" title="sparkocr.utils"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.utils</span></code></a><a class="headerlink" href="#module-sparkocr.utils" title="Link to this heading">#</a></h1>
 <section id="subpackages">
-<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this heading">#</a></h2>
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading">#</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="craft/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.utils.craft</span></code></a><ul>
@@ -418,7 +380,7 @@ document.write(`
 </div>
 </section>
 <section id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">#</a></h2>
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">#</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="compat_pkg/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparkocr.utils.compat_pkg</span></code></a></li>
@@ -432,20 +394,21 @@ document.write(`
 </div>
 </section>
 <section id="package-contents">
-<h2>Package Contents<a class="headerlink" href="#package-contents" title="Permalink to this heading">#</a></h2>
+<h2>Package Contents<a class="headerlink" href="#package-contents" title="Link to this heading">#</a></h2>
 <section id="classes">
-<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">#</a></h3>
-<table class="autosummary longtable table autosummary">
+<h3>Classes<a class="headerlink" href="#classes" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#sparkocr.utils.display_pdf_file" title="sparkocr.utils.display_pdf_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">display_pdf_file</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
 </table>
+</div>
 </section>
 <section id="functions">
-<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">#</a></h3>
-<table class="autosummary longtable table autosummary">
+<h3>Functions<a class="headerlink" href="#functions" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#sparkocr.utils.compare_versions" title="sparkocr.utils.compare_versions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compare_versions</span></code></a>(→ int)</p></td>
 <td><p>Compare two version strings using the packaging module.</p></td>
@@ -480,69 +443,73 @@ document.write(`
 <tr class="row-odd"><td><p><a class="reference internal" href="#sparkocr.utils.ensure_packages_installed" title="sparkocr.utils.ensure_packages_installed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ensure_packages_installed</span></code></a>(packages)</p></td>
 <td><p>Ensure a list of packages (or a single package) is installed.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparkocr.utils.generate_dicom_mapping" title="sparkocr.utils.generate_dicom_mapping"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_dicom_mapping</span></code></a>(df, original_col, final_col)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparkocr.utils.extract_result_from_lp" title="sparkocr.utils.extract_result_from_lp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extract_result_from_lp</span></code></a>(result[, path_col, input_type, ...])</p></td>
+<td><p>Extracts PDF or image files from a layout parser result.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparkocr.utils.generate_dicom_mapping" title="sparkocr.utils.generate_dicom_mapping"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_dicom_mapping</span></code></a>(df, original_col, final_col)</p></td>
 <td><p>Return mapping of old and new dicom identifiers.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparkocr.utils.get_name" title="sparkocr.utils.get_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_name</span></code></a>(path[, keep_subfolder_level])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparkocr.utils.get_name" title="sparkocr.utils.get_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_name</span></code></a>(path[, keep_subfolder_level])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparkocr.utils.get_packbits_func" title="sparkocr.utils.get_packbits_func"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_packbits_func</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparkocr.utils.get_packbits_func" title="sparkocr.utils.get_packbits_func"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_packbits_func</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparkocr.utils.get_pixel_handler_func" title="sparkocr.utils.get_pixel_handler_func"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_pixel_handler_func</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparkocr.utils.get_pixel_handler_func" title="sparkocr.utils.get_pixel_handler_func"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_pixel_handler_func</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparkocr.utils.get_read_dicom_func" title="sparkocr.utils.get_read_dicom_func"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_read_dicom_func</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparkocr.utils.get_read_dicom_func" title="sparkocr.utils.get_read_dicom_func"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_read_dicom_func</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparkocr.utils.get_vocabulary_dict" title="sparkocr.utils.get_vocabulary_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_vocabulary_dict</span></code></a>(filename, delimeter)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparkocr.utils.get_vocabulary_dict" title="sparkocr.utils.get_vocabulary_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_vocabulary_dict</span></code></a>(filename, delimeter)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparkocr.utils.get_xml" title="sparkocr.utils.get_xml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_xml</span></code></a>(df[, table_col, table_index_col, empty_val])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparkocr.utils.get_xml" title="sparkocr.utils.get_xml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_xml</span></code></a>(df[, table_col, table_index_col, empty_val])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparkocr.utils.polygon_mask" title="sparkocr.utils.polygon_mask"><code class="xref py py-obj docutils literal notranslate"><span class="pre">polygon_mask</span></code></a>(shape, polygon)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparkocr.utils.polygon_mask" title="sparkocr.utils.polygon_mask"><code class="xref py py-obj docutils literal notranslate"><span class="pre">polygon_mask</span></code></a>(shape, polygon)</p></td>
 <td><p>Helper function to generate final bbox coordinates and mask for rotated/non-rotated angles.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparkocr.utils.remove_dependency_from_traceback" title="sparkocr.utils.remove_dependency_from_traceback"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_dependency_from_traceback</span></code></a>(exception_string)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparkocr.utils.remove_dependency_from_traceback" title="sparkocr.utils.remove_dependency_from_traceback"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_dependency_from_traceback</span></code></a>(exception_string)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparkocr.utils.remove_large_objects" title="sparkocr.utils.remove_large_objects"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_large_objects</span></code></a>(ar[, max_size, connectivity, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparkocr.utils.remove_large_objects" title="sparkocr.utils.remove_large_objects"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_large_objects</span></code></a>(ar[, max_size, connectivity, ...])</p></td>
 <td><p>Remove objects greater than the specified size.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparkocr.utils.rotate_boxes" title="sparkocr.utils.rotate_boxes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rotate_boxes</span></code></a>(cx, cy, width, height, angle)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparkocr.utils.rotate_boxes" title="sparkocr.utils.rotate_boxes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rotate_boxes</span></code></a>(cx, cy, width, height, angle)</p></td>
 <td><p>Helper function to rotate boxes from ImageTextDetector and ImageTextDetectorV2.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparkocr.utils.save_table_to_csv" title="sparkocr.utils.save_table_to_csv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_table_to_csv</span></code></a>(df, fname)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparkocr.utils.save_table_to_csv" title="sparkocr.utils.save_table_to_csv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_table_to_csv</span></code></a>(df, fname)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparkocr.utils.save_tables_to_csv" title="sparkocr.utils.save_tables_to_csv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_tables_to_csv</span></code></a>(df)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparkocr.utils.save_tables_to_csv" title="sparkocr.utils.save_tables_to_csv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_tables_to_csv</span></code></a>(df)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparkocr.utils.singh_threshold" title="sparkocr.utils.singh_threshold"><code class="xref py py-obj docutils literal notranslate"><span class="pre">singh_threshold</span></code></a>(img[, w_size, k])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparkocr.utils.singh_threshold" title="sparkocr.utils.singh_threshold"><code class="xref py py-obj docutils literal notranslate"><span class="pre">singh_threshold</span></code></a>(img[, w_size, k])</p></td>
 <td><p>Runs the Singh thresholding algorithm</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparkocr.utils.split_bylen" title="sparkocr.utils.split_bylen"><code class="xref py py-obj docutils literal notranslate"><span class="pre">split_bylen</span></code></a>(item, maxlen)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparkocr.utils.split_bylen" title="sparkocr.utils.split_bylen"><code class="xref py py-obj docutils literal notranslate"><span class="pre">split_bylen</span></code></a>(item, maxlen)</p></td>
 <td><p>3</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparkocr.utils.to_opencv_image" title="sparkocr.utils.to_opencv_image"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_opencv_image</span></code></a>(image)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparkocr.utils.to_opencv_image" title="sparkocr.utils.to_opencv_image"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_opencv_image</span></code></a>(image)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparkocr.utils.to_pil_image" title="sparkocr.utils.to_pil_image"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_pil_image</span></code></a>(image, mode)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparkocr.utils.to_pil_image" title="sparkocr.utils.to_pil_image"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_pil_image</span></code></a>(image, mode)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparkocr.utils.to_xml" title="sparkocr.utils.to_xml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_xml</span></code></a>(chunks[, empty_val])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparkocr.utils.to_xml" title="sparkocr.utils.to_xml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_xml</span></code></a>(chunks[, empty_val])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparkocr.utils.wolf_threshold" title="sparkocr.utils.wolf_threshold"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wolf_threshold</span></code></a>(img[, w_size, k])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparkocr.utils.wolf_threshold" title="sparkocr.utils.wolf_threshold"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wolf_threshold</span></code></a>(img[, w_size, k])</p></td>
 <td><p>Runs the Wolf's thresholding algorithm.</p></td>
 </tr>
 </tbody>
 </table>
+</div>
 </section>
 <section id="attributes">
-<h3>Attributes<a class="headerlink" href="#attributes" title="Permalink to this heading">#</a></h3>
-<table class="autosummary longtable table autosummary">
+<h3>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#sparkocr.utils.IMAGE_MODE_DISPLAY_MAP" title="sparkocr.utils.IMAGE_MODE_DISPLAY_MAP"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IMAGE_MODE_DISPLAY_MAP</span></code></a></p></td>
 <td><p></p></td>
@@ -552,25 +519,26 @@ document.write(`
 </tr>
 </tbody>
 </table>
+</div>
 <dl class="py class">
 <dt class="sig sig-object py" id="sparkocr.utils.display_pdf_file">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">display_pdf_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pdf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(600,</span> <span class="pre">500)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.display_pdf_file" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">display_pdf_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pdf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(600,</span> <span class="pre">500)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.display_pdf_file" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparkocr.utils.display_pdf_file.pdf">
-<span class="sig-name descname"><span class="pre">pdf</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">'./tmp/pdf.pdf'</span></em><a class="headerlink" href="#sparkocr.utils.display_pdf_file.pdf" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">pdf</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">'./tmp/pdf.pdf'</span></em><a class="headerlink" href="#sparkocr.utils.display_pdf_file.pdf" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparkocr.utils.display_pdf_file.size">
-<span class="sig-name descname"><span class="pre">size</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">(600,</span> <span class="pre">500)</span></em><a class="headerlink" href="#sparkocr.utils.display_pdf_file.size" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">size</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">(600,</span> <span class="pre">500)</span></em><a class="headerlink" href="#sparkocr.utils.display_pdf_file.size" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="sparkocr.utils.compare_versions">
-<span class="sig-name descname"><span class="pre">compare_versions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">version1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#sparkocr.utils.compare_versions" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">compare_versions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">version1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#sparkocr.utils.compare_versions" title="Link to this definition">#</a></dt>
 <dd><p>Compare two version strings using the packaging module.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -587,42 +555,42 @@ document.write(`
 
 <dl class="py function">
 <dt class="sig sig-object py" id="sparkocr.utils.display_dicom">
-<span class="sig-name descname"><span class="pre">display_dicom</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fields</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'content'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">700</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_meta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">only_meta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">desc_width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">70</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit_frame</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.display_dicom" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">display_dicom</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fields</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'content'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">700</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_meta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">only_meta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">desc_width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">70</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit_frame</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.display_dicom" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="sparkocr.utils.display_image">
-<span class="sig-name descname"><span class="pre">display_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">600</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_meta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.display_image" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">display_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">600</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_meta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.display_image" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="sparkocr.utils.display_images">
-<span class="sig-name descname"><span class="pre">display_images</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'image'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">600</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_meta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.display_images" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">display_images</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'image'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">600</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_meta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.display_images" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="sparkocr.utils.display_images_horizontal">
-<span class="sig-name descname"><span class="pre">display_images_horizontal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fields</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'image'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">700</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_meta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.display_images_horizontal" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">display_images_horizontal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fields</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'image'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">700</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_meta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.display_images_horizontal" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="sparkocr.utils.display_markup">
-<span class="sig-name descname"><span class="pre">display_markup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.display_markup" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">display_markup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.display_markup" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="sparkocr.utils.display_pdf">
-<span class="sig-name descname"><span class="pre">display_pdf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'content'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">700</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_meta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.display_pdf" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">display_pdf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'content'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">700</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_meta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.display_pdf" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="sparkocr.utils.display_table">
-<span class="sig-name descname"><span class="pre">display_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">empty_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Empty'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.display_table" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">display_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">empty_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Empty'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.display_table" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="sparkocr.utils.display_tables">
-<span class="sig-name descname"><span class="pre">display_tables</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'table'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table_index_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">empty_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Empty'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.display_tables" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">display_tables</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'table'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table_index_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">empty_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Empty'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.display_tables" title="Link to this definition">#</a></dt>
 <dd><p>Display table.</p>
 <p>Keyword arguments:
 table_col – name of column with table data
@@ -631,18 +599,40 @@ table_index_col – name of column with table index on that page</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="sparkocr.utils.display_xmls">
-<span class="sig-name descname"><span class="pre">display_xmls</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'table'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table_index_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">empty_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Empty'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.display_xmls" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">display_xmls</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'table'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table_index_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">empty_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Empty'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.display_xmls" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="sparkocr.utils.ensure_packages_installed">
-<span class="sig-name descname"><span class="pre">ensure_packages_installed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">packages</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.ensure_packages_installed" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">ensure_packages_installed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">packages</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.ensure_packages_installed" title="Link to this definition">#</a></dt>
 <dd><p>Ensure a list of packages (or a single package) is installed.</p>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="sparkocr.utils.extract_result_from_lp">
+<span class="sig-name descname"><span class="pre">extract_result_from_lp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'path'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'image'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pagenum_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'pagenum'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'image_with_regions'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_meta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.extract_result_from_lp" title="Link to this definition">#</a></dt>
+<dd><p>Extracts PDF or image files from a layout parser result.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>result</strong> – List of result items from layout parser.</p></li>
+<li><p><strong>input_type</strong> – Either ‘pdf’ or ‘image’.</p></li>
+<li><p><strong>pagenum_col</strong> – Column name for page numbers (image mode only).</p></li>
+<li><p><strong>out_col</strong> – Column name containing the file object.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>{“pdf”: bytes} for PDF mode, or {filename: {pagenum: bytes}} for image mode.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="sparkocr.utils.generate_dicom_mapping">
-<span class="sig-name descname"><span class="pre">generate_dicom_mapping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">original_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">final_col</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.generate_dicom_mapping" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">generate_dicom_mapping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">original_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">final_col</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.generate_dicom_mapping" title="Link to this definition">#</a></dt>
 <dd><p>Return mapping of old and new dicom identifiers.</p>
 <p>:param df : Dataframe containing original and cleaned metadata
 :param original_col : Dataframe column containing original metadata
@@ -652,49 +642,49 @@ table_index_col – name of column with table index on that page</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="sparkocr.utils.get_name">
-<span class="sig-name descname"><span class="pre">get_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_subfolder_level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.get_name" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_subfolder_level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.get_name" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="sparkocr.utils.get_packbits_func">
-<span class="sig-name descname"><span class="pre">get_packbits_func</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.get_packbits_func" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_packbits_func</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.get_packbits_func" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="sparkocr.utils.get_pixel_handler_func">
-<span class="sig-name descname"><span class="pre">get_pixel_handler_func</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.get_pixel_handler_func" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_pixel_handler_func</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.get_pixel_handler_func" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="sparkocr.utils.get_read_dicom_func">
-<span class="sig-name descname"><span class="pre">get_read_dicom_func</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.get_read_dicom_func" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_read_dicom_func</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.get_read_dicom_func" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="sparkocr.utils.get_vocabulary_dict">
-<span class="sig-name descname"><span class="pre">get_vocabulary_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delimeter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.get_vocabulary_dict" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_vocabulary_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delimeter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.get_vocabulary_dict" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="sparkocr.utils.get_xml">
-<span class="sig-name descname"><span class="pre">get_xml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'table'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table_index_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">empty_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Empty'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.get_xml" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_xml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'table'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table_index_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">empty_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Empty'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.get_xml" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="sparkocr.utils.polygon_mask">
-<span class="sig-name descname"><span class="pre">polygon_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">polygon</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.polygon_mask" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">polygon_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">polygon</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.polygon_mask" title="Link to this definition">#</a></dt>
 <dd><p>Helper function to generate final bbox coordinates and mask for rotated/non-rotated angles.
 Applied in DicomDrawRegions after rotate_boxes() function.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="sparkocr.utils.remove_dependency_from_traceback">
-<span class="sig-name descname"><span class="pre">remove_dependency_from_traceback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">exception_string</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.remove_dependency_from_traceback" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">remove_dependency_from_traceback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">exception_string</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.remove_dependency_from_traceback" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="sparkocr.utils.remove_large_objects">
-<span class="sig-name descname"><span class="pre">remove_large_objects</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">connectivity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">in_place</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.remove_large_objects" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">remove_large_objects</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">connectivity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">in_place</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.remove_large_objects" title="Link to this definition">#</a></dt>
 <dd><p>Remove objects greater than the specified size.</p>
 <p>Expects ar to be an array with labeled objects, and removes objects
 largest than max_size. If <cite>ar</cite> is bool, the image is first labeled.
@@ -723,23 +713,23 @@ Otherwise, make a copy.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="sparkocr.utils.rotate_boxes">
-<span class="sig-name descname"><span class="pre">rotate_boxes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.rotate_boxes" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">rotate_boxes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.rotate_boxes" title="Link to this definition">#</a></dt>
 <dd><p>Helper function to rotate boxes from ImageTextDetector and ImageTextDetectorV2.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="sparkocr.utils.save_table_to_csv">
-<span class="sig-name descname"><span class="pre">save_table_to_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fname</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.save_table_to_csv" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">save_table_to_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fname</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.save_table_to_csv" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="sparkocr.utils.save_tables_to_csv">
-<span class="sig-name descname"><span class="pre">save_tables_to_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.save_tables_to_csv" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">save_tables_to_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.save_tables_to_csv" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="sparkocr.utils.singh_threshold">
-<span class="sig-name descname"><span class="pre">singh_threshold</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">img</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">15</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.85</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.singh_threshold" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">singh_threshold</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">img</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">15</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.85</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.singh_threshold" title="Link to this definition">#</a></dt>
 <dd><p>Runs the Singh thresholding algorithm</p>
 <p>Reference:
 Singh, O. I., Sinam, T., James, O., &amp; Singh, T. R. (2012). Local contrast
@@ -767,29 +757,29 @@ Modifications: Using integral images to compute local mean</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="sparkocr.utils.split_bylen">
-<span class="sig-name descname"><span class="pre">split_bylen</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxlen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.split_bylen" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">split_bylen</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxlen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.split_bylen" title="Link to this definition">#</a></dt>
 <dd><p>3
 Requires item to be sliceable (with __getitem__ defined)</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="sparkocr.utils.to_opencv_image">
-<span class="sig-name descname"><span class="pre">to_opencv_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.to_opencv_image" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">to_opencv_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.to_opencv_image" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="sparkocr.utils.to_pil_image">
-<span class="sig-name descname"><span class="pre">to_pil_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.to_pil_image" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">to_pil_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.to_pil_image" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="sparkocr.utils.to_xml">
-<span class="sig-name descname"><span class="pre">to_xml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chunks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">empty_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Empty'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.to_xml" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">to_xml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chunks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">empty_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Empty'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.to_xml" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="sparkocr.utils.wolf_threshold">
-<span class="sig-name descname"><span class="pre">wolf_threshold</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">img</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">15</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.wolf_threshold" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">wolf_threshold</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">img</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">15</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparkocr.utils.wolf_threshold" title="Link to this definition">#</a></dt>
 <dd><p>Runs the Wolf’s thresholding algorithm.
 Reference:
 C. Wolf, J-M. Jolion, “Extraction and Recognition
@@ -812,12 +802,12 @@ standard deviation
 
 <dl class="py data">
 <dt class="sig sig-object py" id="sparkocr.utils.IMAGE_MODE_DISPLAY_MAP">
-<span class="sig-name descname"><span class="pre">IMAGE_MODE_DISPLAY_MAP</span></span><a class="headerlink" href="#sparkocr.utils.IMAGE_MODE_DISPLAY_MAP" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">IMAGE_MODE_DISPLAY_MAP</span></span><a class="headerlink" href="#sparkocr.utils.IMAGE_MODE_DISPLAY_MAP" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="sparkocr.utils.IMAGE_MODE_MAP">
-<span class="sig-name descname"><span class="pre">IMAGE_MODE_MAP</span></span><a class="headerlink" href="#sparkocr.utils.IMAGE_MODE_MAP" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">IMAGE_MODE_MAP</span></span><a class="headerlink" href="#sparkocr.utils.IMAGE_MODE_MAP" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </section>
@@ -831,7 +821,7 @@ standard deviation
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
 </div>
@@ -841,14 +831,17 @@ standard deviation
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
-
-  <div class="page-toc tocsection onthispage">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> On this page
   </div>
-  <nav class="bd-toc-nav page-toc">
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subpackages">Subpackages</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
@@ -872,6 +865,7 @@ standard deviation
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.display_tables"><code class="docutils literal notranslate"><span class="pre">display_tables()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.display_xmls"><code class="docutils literal notranslate"><span class="pre">display_xmls()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.ensure_packages_installed"><code class="docutils literal notranslate"><span class="pre">ensure_packages_installed()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.extract_result_from_lp"><code class="docutils literal notranslate"><span class="pre">extract_result_from_lp()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.generate_dicom_mapping"><code class="docutils literal notranslate"><span class="pre">generate_dicom_mapping()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.get_name"><code class="docutils literal notranslate"><span class="pre">get_name()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparkocr.utils.get_packbits_func"><code class="docutils literal notranslate"><span class="pre">get_packbits_func()</span></code></a></li>
@@ -913,8 +907,8 @@ standard deviation
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../../static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../../../static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script defer src="../../../../static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../../static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -934,7 +928,7 @@ standard deviation
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.1.2.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
     <br/>
   </p>
 </div>
@@ -947,7 +941,8 @@ standard deviation
       
         <div class="footer-item">
 <p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.14.4.
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
 </p></div>
       
     </div>
