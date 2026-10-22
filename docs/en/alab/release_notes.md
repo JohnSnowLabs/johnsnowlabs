@@ -348,6 +348,7 @@ When the Medical Terminology Server is unavailable, pre-annotation can still gen
 </div>
 
 <ul class="pagination owl-carousel pagination_big">
+    <li><a href="annotation_labs_releases/release_notes_8_3_2">8.3.2</a></li>
     <li class="active"><a href="annotation_labs_releases/release_notes_8_3_0">8.3.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_8_2_8">8.2.8</a></li>
     <li><a href="annotation_labs_releases/release_notes_8_2_6">8.2.6</a></li>
