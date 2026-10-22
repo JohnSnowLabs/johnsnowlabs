@@ -70,6 +70,9 @@ Azure Marketplace deployments now include an option to enable audit logging dire
 - **Non-DICOM File Imports Failing Through the Import Server**
 
   The Import Server could process DICOM files while failing to import other supported file types, including PDF documents using Docling-based extraction. Import functionality has been restored for supported non-DICOM files, allowing users to import documents through the Import Server.
+
+
+
 ---
 ## Versions
 
