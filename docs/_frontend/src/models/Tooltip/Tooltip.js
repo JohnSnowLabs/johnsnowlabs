@@ -10,7 +10,7 @@ import {
   autoUpdate,
 } from '@floating-ui/react-dom-interactions';
 
-const Tooltip = ({ label, children }) => {
+const Tooltip = ({ label, children, compact }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { x, y, reference, floating, strategy, context } = useFloating({
     open: isOpen,
@@ -36,7 +36,7 @@ const Tooltip = ({ label, children }) => {
           <div
             {...getFloatingProps({
               ref: floating,
-              className: styles.root,
+              className: compact ? `${styles.root} ${styles.compact}` : styles.root,
               style: {
                 position: strategy,
                 top: y ?? '',

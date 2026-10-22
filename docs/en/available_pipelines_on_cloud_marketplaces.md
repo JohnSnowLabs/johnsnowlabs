@@ -16,7 +16,7 @@ John Snow Labs provides a growing collection of specialized healthcare AI models
 
 
 {:.table-model-big}
-|Model|![Amazon Sagemaker](/assets/images/posts_image/amazon_white.svg)|![Azure ML](/assets/images/posts_image/azure_ml_white.svg)|![Databricks](/assets/images/posts_image/databr_white.svg)|![Snowflake](/assets/images/posts_image/snowflake.svg)|
+|Model|![AWS](/assets/images/posts_image/table_aws.svg){: height="26"}|![Azure](/assets/images/posts_image/table_azure.svg){: height="26"}|![Databricks](/assets/images/posts_image/table_databricks.svg){: height="26"}|![Snowflake](/assets/images/posts_image/snowflake.svg)|
 |---|---|---|---|---|
 |Clinical De-identification (EN)|[View Listing ↗](https://aws.amazon.com/marketplace/pp/prodview-ghf7wfm7o2wva)|[View Listing ↗](https://marketplace.microsoft.com/en-us/product/johnsnowlabsinc1646051154808.clinical_deidentification_en)|[View Listing ↗](https://marketplace.databricks.com/details/cad4df89-187f-47eb-8a37-0ad256068b38/John-Snow-Labs_Clinical-Deidentification-EN)|[View Listing ↗](https://app.snowflake.com/marketplace/listing/GZTYZ4386LJ4Y/john-snow-labs-clinical-deidentification)|
 |Clinical De-identification - Portuguese|[View Listing ↗](https://aws.amazon.com/marketplace/pp/prodview-toznqfuzuf35q)|[View Listing ↗](https://marketplace.microsoft.com/en-us/product/johnsnowlabsinc1646051154808.clinical_deidentification_pt)|[View Listing ↗](https://marketplace.databricks.com/details/8dd5abe1-4df8-41b5-a251-dcf3b161f5c3/John-Snow-Labs_clinical-deidentification--portuguese)|[View Listing ↗](https://app.snowflake.com/marketplace/listing/GZTYZ4386LJ5V/john-snow-labs-clinical-de-identification-for-portuguese)|

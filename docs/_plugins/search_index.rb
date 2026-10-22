@@ -395,7 +395,7 @@ Jekyll::Hooks.register :posts, :post_render do |post|
   unless post.data["deploy"].nil?
     model[:marketplace] = {
       databricks: post.data["deploy"]["databricks_link"],
-      sagemaker: post.data["deploy"]["sagemaker_link"],
+      aws: post.data["deploy"]["sagemaker_link"],
       snowflake: post.data["deploy"]["snowflake_link"],
       azure: post.data["deploy"]["azure_ml_link"]
     }
@@ -540,7 +540,7 @@ unless ENV['ELASTICSEARCH_URL'].to_s.empty?
               "properties": {
                 "databricks": {"type": "keyword"},
                 "snowflake": {"type": "keyword"},
-                "sagemaker": {"type": "keyword" },
+                "aws": {"type": "keyword"},
                 "azure": {"type": "keyword"}
               }
             }

@@ -2789,7 +2789,7 @@ code {
 	display: flex;
 	flex-wrap: wrap;
 	row-gap: 20px;
-	justify-content: space-between;
+	justify-content: center;
 	margin: 0 -15px;
 	padding-bottom: 75px;
 	.disp_platform_item {
@@ -2807,8 +2807,9 @@ code {
 			figure {
 				margin: 0;
 				img {
-					transform: scale(1.4);
-  					transform-origin: center;
+					height: 36px;
+					width: auto;
+					max-width: 100%;
 				}
 			}
 		}
@@ -3382,6 +3383,10 @@ code {
 					min-height: 55px;
 					vertical-align: middle;
 					text-align: left;
+					img {
+						margin-bottom: 0;
+						vertical-align: middle;
+					}
 				}
 			}
 		}

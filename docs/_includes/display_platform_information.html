@@ -1,34 +1,42 @@
 <div class="disp_platform_wrapper">
+    {% if page.deploy.sagemaker_link %}
     <div class="disp_platform_item">
         <div class="dp_top df">
-            <figure><img src="/assets/images/posts_image/amazon.svg" alt=""></figure>
+            <figure><img src="/assets/images/posts_image/logo_aws.svg" alt="AWS"></figure>
         </div>
         <div class="dp_body">
-            <a target="_blank" rel="noopener" {% if !page.deploy.sagemaker_link %} href="{{ page.deploy.sagemaker_link }}" {% else %} disabled {% endif %} class="btn2">Deploy</a>
+            <a target="_blank" rel="noopener" href="{{ page.deploy.sagemaker_link }}" class="btn2">Deploy</a>
         </div>
     </div>
+    {% endif %}
+    {% if page.deploy.azure_ml_link %}
     <div class="disp_platform_item">
         <div class="dp_top df">
-            <figure><img src="/assets/images/posts_image/snowflake.svg" alt=""></figure>
+            <figure><img src="/assets/images/posts_image/logo_azure.svg" alt="Azure"></figure>
         </div>
         <div class="dp_body">
-            <a target="_blank" rel="noopener" {% if !page.deploy.snowflake_link %} href="{{ page.deploy.snowflake_link }}" {% else %} disabled {% endif %} class="btn2">Deploy</a>
+            <a target="_blank" rel="noopener" href="{{ page.deploy.azure_ml_link }}" class="btn2">Deploy</a>
         </div>
     </div>
+    {% endif %}
+    {% if page.deploy.databricks_link %}
     <div class="disp_platform_item">
         <div class="dp_top df">
-            <figure><img src="/assets/images/posts_image/databr.svg" alt=""></figure>
+            <figure><img src="/assets/images/posts_image/logo_databricks.svg" alt="Databricks"></figure>
         </div>
         <div class="dp_body">
-            <a target="_blank" rel="noopener" {% if page.deploy.databricks_link %} href="{{ page.deploy.databricks_link }}" {% else %} disabled {% endif %} class="btn2">Deploy</a>
+            <a target="_blank" rel="noopener" href="{{ page.deploy.databricks_link }}" class="btn2">Deploy</a>
         </div>
     </div>
+    {% endif %}
+    {% if page.deploy.snowflake_link %}
     <div class="disp_platform_item">
         <div class="dp_top df">
-            <figure><img src="/assets/images/posts_image/azure.svg" alt=""></figure>
+            <figure><img src="/assets/images/posts_image/snowflake.svg" alt="Snowflake"></figure>
         </div>
         <div class="dp_body">
-            <a target="_blank" rel="noopener" {% if page.deploy.azure_ml_link %} href="{{ page.deploy.azure_ml_link }}" {% else %} disabled {% endif %} class="btn2">Deploy</a>
+            <a target="_blank" rel="noopener" href="{{ page.deploy.snowflake_link }}" class="btn2">Deploy</a>
         </div>
     </div>
+    {% endif %}
 </div>

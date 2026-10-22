@@ -86,7 +86,7 @@ const Sidebar = ({ meta, params, onSubmit }) => {
       <div className={styles.control}>
         <Combobox
           label="Marketplace"
-          items={["Azure", "Databricks", "Sagemaker", "Snowflake"]}
+          items={["AWS", "Azure", "Databricks", "Snowflake"]}
           initialSelectedItems={params.marketplace || []}
           onChange={(values) => {
             onSubmit({ marketplace: values });
