@@ -15,9 +15,7 @@ sidebar:
 
 
 
-**Generative AI Lab 8.3.2** focuses on improving support for air-gapped environments, strengthening license validation, and addressing deployment and application stability issues.
-
-This release introduces offline Universal License validation, allowing organizations operating in restricted or disconnected environments to validate their licenses without requiring an internet connection. Audit logging is now also supported in Azure Marketplace deployments.
+**Generative AI Lab 8.3.2** focuses on improving support for air-gapped environments, strengthening license validation, and addressing application stability issues. 
 
 Additional bug fixes address Models Hub availability, Universal License recognition, air-gapped deployment stability, and file imports.
 
@@ -34,43 +32,6 @@ Azure Marketplace deployments now include an option to enable audit logging dire
 - Deployment Configuration: A new checkbox in the Azure Marketplace deployment interface allows customers to enable audit logging.
 - Elasticsearch and Kibana Support: The deployment process now supports the Elasticsearch and Kibana components required for audit log management.
 - Simplified Setup: Customers can enable audit logging during deployment without requiring additional manual configuration.
-
-
-### Offline Universal License Validation for Air-Gapped Environments
-
-**What's Improved**
-
-Air-gapped deployments now support offline validation of Universal Licenses, allowing organizations to enforce license validity without requiring an internet connection.
-
-Previously, license validation had to be disabled for air-gapped deployments, allowing the application to operate without enforcing license expiration dates.
-
-With the updated licensing workflow, organizations can validate their Universal License locally, ensuring the application remains operational only while the license is valid.
-
-**Technical Details**
-
-The licensing configuration supports two operating modes:
-
-- Standard License Validation: The application requires a valid application license with one FC to operate.
-- Offline Universal License Validation: Online license checks are disabled, but local validation remains enabled. The application requires a valid Universal License and enforces its validity period without connecting to an external licensing service.
-
-Offline validation is configured using the following settings:
-```
---set configuration.echo.enabled=true \
---set configuration.echo.offline=true
-```
-
-**User Benefits**
-
-- Fully Offline License Validation: Validate Universal Licenses without an internet connection.
-- License Expiration Enforcement: Ensure application access remains aligned with the purchased license validity period.
-- Support for Restricted Environments: Deploy and operate Generative AI Lab in air-gapped environments while maintaining license enforcement.
-- Flexible Licensing Configuration: Support both standard online validation and offline licensing workflows according to deployment requirements.
-
-**Example Use Case**
-
-A healthcare organization deploys Generative AI Lab in an air-gapped environment where external network access is prohibited.
-
-Using offline Universal License validation, the organization can import its license and operate the application without an internet connection. The application validates the license locally and enforces its expiration date according to the purchased license.
 
 
 ## Bug Fixes
