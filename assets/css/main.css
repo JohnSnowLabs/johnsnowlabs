@@ -7393,7 +7393,7 @@ code {
   display: flex;
   flex-wrap: wrap;
   row-gap: 20px;
-  justify-content: space-between;
+  justify-content: center;
   margin: 0 -15px;
   padding-bottom: 75px; }
   .disp_platform_wrapper .disp_platform_item {
@@ -7411,8 +7411,9 @@ code {
       .disp_platform_wrapper .disp_platform_item .dp_top figure {
         margin: 0; }
         .disp_platform_wrapper .disp_platform_item .dp_top figure img {
-          transform: scale(1.4);
-          transform-origin: center; }
+          height: 36px;
+          width: auto;
+          max-width: 100%; }
     .disp_platform_wrapper .disp_platform_item .dp_body {
       text-align: center;
       padding: 18px 10px; }
@@ -7849,6 +7850,9 @@ code {
       min-height: 55px;
       vertical-align: middle;
       text-align: left; }
+      .docs-wrapper .table-model-big thead tr th img {
+        margin-bottom: 0;
+        vertical-align: middle; }
     .docs-wrapper .table-model-big tbody {
       border: 1px solid #fff; }
       .docs-wrapper .table-model-big tbody tr {
