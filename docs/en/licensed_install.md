@@ -1527,12 +1527,14 @@ In NB section, you can create your own NB or load existing NBs.
 
 ## Microsoft Fabric Instructions
 
-### Step 1: Log into MS Fabric
+**Step 1: Log into MS Fabric**
+
 Navigate to [MS Fabric](https://app.fabric.microsoft.com/) and sign in with your MS Fabric Account credentials.
 
 </div><div class="h3-box" markdown="1">
 
-### Step 2: Create a Lakehouse
+**Step 2: Create a Lakehouse**
+
 - Go to the **Data Science** section.
 - Navigate to the **Create** section.
 - Create a new lakehouse, (for instance let us name it `jsl_workspace`.)
@@ -1541,14 +1543,16 @@ Navigate to [MS Fabric](https://app.fabric.microsoft.com/) and sign in with your
 
 </div><div class="h3-box" markdown="1">
 
-### Step 3: Create a Notebook
+**Step 3: Create a Notebook**
+
 - Similarly, create a new notebook ( for instance let us name it `JSL_Notebook`.)
 
 ![Create a Notebook in Fabric](/assets/images/installation/Fabric_2.png)
 
 </div><div class="h3-box" markdown="1">
 
-### Step 4: Attach the Lakehouse
+**Step 4: Attach the Lakehouse**
+
 Attach the newly created lakehouse (`jsl_workspace`) to your notebook.
 
 ![Attach the Lakehouse](/assets/images/installation/355921285-63996c40-4cd6-4aa2-925f-a1ad886914f4.webp)
@@ -1557,7 +1561,8 @@ Attach the newly created lakehouse (`jsl_workspace`) to your notebook.
 
 </div><div class="h3-box" markdown="1">
 
-### Step 5: Upload Files
+**Step 5: Upload Files**
+
 Upload the necessary `.jar` and `.whl` files to the attached lakehouse.
 
 ![Upload Files to Fabric](/assets/images/installation/355921637-a275d80d-768f-4402-bdab-d95864e73690.webp)
@@ -1568,7 +1573,8 @@ After uploading is complete, you can configure and run the notebook.
 
 </div><div class="h3-box" markdown="1">
 
-### Step 6: Configure the Notebook Session
+**Step 6: Configure the Notebook Session**
+
 Configure the session within the notebook as follows:
 
 ```json
@@ -1607,7 +1613,7 @@ Configure the session within the notebook as follows:
 
 </div><div class="h3-box" markdown="1">
 
-### Step 7: Install Spark NLP Libraries
+**Step 7: Install Spark NLP Libraries**
 
 Install the required Spark NLP libraries using pip commands:
 ```bash
@@ -1622,7 +1628,8 @@ Install the required Spark NLP libraries using pip commands:
 
 </div><div class="h3-box" markdown="1">
 
-### Step 8: Make Necessary Imports
+**Step 8: Make Necessary Imports**
+
 Import the necessary Python and Spark libraries:
 ```python
 import functools
@@ -1644,7 +1651,8 @@ from sparknlp_jsl.annotator import *
 
 </div><div class="h3-box" markdown="1">
 
-### Step 9: Explore Available Licensed Models
+**Step 9: Explore Available Licensed Models**
+
 Download and explore the list of available licensed models:
 ```bash
 ! pip install -q boto3
@@ -1661,7 +1669,8 @@ with open("models.json", "r", encoding="utf-8") as f:
 
 </div><div class="h3-box" markdown="1">
 
-### Step 10: Download and Extract Required Models
+**Step 10: Download and Extract Required Models**
+
 Set up AWS credentials and use Boto3 to handle files:
 ```python
 import shutil
@@ -1694,7 +1703,8 @@ except Exception as e:
 
 </div><div class="h3-box" markdown="1">
 
-### Step 11: Load the Model and Make Predictions
+**Step 11: Load the Model and Make Predictions**
+
 Load the model and perform predictions on the desired text:
 ```python
 pipeline = PretrainedPipeline.from_disk("Files/<MODEL-NAME>")
@@ -1708,11 +1718,103 @@ result = pipeline.annotate(text)
 
 ![Load the Model and Make Predictions](/assets/images/installation/355924362-f62b4bc5-96ee-41d5-a80b-887766b252c9.webp)
 
-### Step 12: Run the pipeline with `.pretrained()` method
+**Step 12: Run the pipeline with `.pretrained()` method**
+
 You can also run the pipelines without using the `.load()` or `.from_disk()` methods
 
 ![Run the pipeline with `.pretrained()` method](/assets/images/installation/Fabric_4.png)
 ![Run the pipeline with `.pretrained()` method](/assets/images/installation/Fabric_5.png)
+
+</div><div class="h3-box" markdown="1">
+
+**Fabric Runtime 2.0 (Spark 4)**
+
+Fabric Runtime 2.0 (Spark 4.1, Scala 2.13, Java 21) needs the Scala 2.13 builds of the JARs and one extra JAR, ONNX Runtime 1.23.0. On this runtime, set everything up once in a Fabric **Environment** instead of the `%%configure` cell (Step 6) and `%pip install` (Step 7) above.
+
+Why the extra JAR: Runtime 2.0 ships `onnxruntime_gpu-1.8.1.jar`, which reports a CUDA provider. Spark NLP then takes the CUDA path and ONNX annotators fail with `java.lang.NoSuchMethodError: ... extractCUDA()`. Loading `onnxruntime-1.23.0.jar` (the version Spark NLP is built with) from the JVM boot class path fixes this.
+
+**1. Download the files**
+
+| File | Where to get it |
+|---|---|
+| `spark-nlp-assembly-7.0.0.jar` (Scala 2.13 CPU build, the regular Spark 4 one, not `spark400`) | **FAT JARs** section of the [Spark NLP release notes](https://github.com/JohnSnowLabs/spark-nlp/releases) for your Spark NLP version |
+| `spark-nlp-jsl_2.13-7.0.0.jar` | `https://pypi.johnsnowlabs.com/<SECRET>/spark-nlp-jsl_2.13-7.0.0.jar` |
+| `spark_nlp_jsl-7.0.0-py3-none-any.whl` | `https://pypi.johnsnowlabs.com/<SECRET>/spark-nlp-jsl/spark_nlp_jsl-7.0.0-py3-none-any.whl` |
+| `onnxruntime-1.23.0.jar` | [Maven Central](https://central.sonatype.com/artifact/com.microsoft.onnxruntime/onnxruntime/versions), artifact `onnxruntime` (not `onnxruntime_gpu`), version 1.23.0 |
+
+`<SECRET>` is the `SECRET` value in your license JSON file. Use the Spark NLP version that matches your Healthcare NLP version.
+
+**2. Upload the JARs to the Lakehouse**
+
+1. Open the Lakehouse you created in Step 2.
+2. In the **Explorer**, hover over **Files**, select **...** and then **New subfolder**. Name it `cache_pretrained`. Pretrained models are downloaded here.
+3. Hover over **Files** again, select **...** and then **Upload > Upload files**. In the **Upload files** panel, select the folder icon, pick the three `.jar` files and select **Upload**. The Spark NLP JAR is about 675 MB, so keep the browser tab open until the upload finishes.
+
+![Upload Files to Fabric](/assets/images/installation/355921637-a275d80d-768f-4402-bdab-d95864e73690.webp)
+
+4. Right-click each JAR and the `cache_pretrained` folder (or select its **...**) and choose **Properties**. The panel that opens shows the **ABFS path**; copy it. Paste the paths somewhere, you need them in step 5. They look like `abfss://<workspace>@onelake.dfs.fabric.microsoft.com/<lakehouse>.Lakehouse/Files/spark-nlp-jsl_2.13-7.0.0.jar`.
+
+**3. Create an Environment with Runtime 2.0**
+
+1. Go back to your workspace, select **+ New item**, type `env` in the search box and select **Environment**.
+
+![Create an Environment](/assets/images/installation/ms-fabric-spark-env.png)
+
+2. Enter a name for the Environment (for example `jsl_environment`) and select **Create**.
+3. On the **Home** tab of the Environment, open the **Runtime** dropdown and select **2.0 (Spark 4.1, Delta 4.2)**.
+
+**4. Add the Python libraries**
+
+1. In the left menu, under **Libraries**, select **External repositories** and add the `spark-nlp` package from PyPI with version `7.0.0`.
+2. Under **Libraries**, select **Custom**, select **Upload** and pick `spark_nlp_jsl-7.0.0-py3-none-any.whl`.
+
+**5. Set the Spark properties**
+
+1. In the left menu, under **Spark compute**, select **Spark properties**.
+2. Add one row per property below: select the **Property** box, type the property name, then type the value in the **Value** box. `<files>` stands for `abfss://<workspace>@onelake.dfs.fabric.microsoft.com/<lakehouse>.Lakehouse/Files`; take the names from the ABFS paths you copied. Fill the license and AWS values from your license JSON.
+
+![Spark properties](/assets/images/installation/ms-fabric-spark-properties.png)
+
+```
+spark.jars                                            <files>/spark-nlp-assembly-7.0.0.jar,<files>/spark-nlp-jsl_2.13-7.0.0.jar,<files>/onnxruntime-1.23.0.jar
+spark.driver.extraClassPath                           onnxruntime-1.23.0.jar:spark-nlp-assembly-7.0.0.jar:spark-nlp-jsl_2.13-7.0.0.jar
+spark.executor.extraClassPath                         onnxruntime-1.23.0.jar:spark-nlp-assembly-7.0.0.jar:spark-nlp-jsl_2.13-7.0.0.jar
+spark.driver.extraJavaOptions                         -Xss64m -Xbootclasspath/a:onnxruntime-1.23.0.jar
+spark.executor.extraJavaOptions                       -Xbootclasspath/a:onnxruntime-1.23.0.jar
+spark.yarn.appMasterEnv.SPARK_NLP_LICENSE             <SPARK_NLP_LICENSE>
+spark.executorEnv.SPARK_NLP_LICENSE                   <SPARK_NLP_LICENSE>
+spark.jsl.settings.aws.credentials.access_key_id      <AWS_ACCESS_KEY_ID>
+spark.jsl.settings.aws.credentials.secret_access_key  <AWS_SECRET_ACCESS_KEY>
+spark.jsl.settings.aws.credentials.session_token      <AWS_SESSION_TOKEN>   # only if your license has one
+spark.jsl.settings.pretrained.cache_folder            <files>/cache_pretrained
+spark.extraListeners                                  com.johnsnowlabs.license.LicenseLifeCycleManager
+spark.serializer                                      org.apache.spark.serializer.KryoSerializer
+spark.kryoserializer.buffer.max                       2000M
+spark.driver.maxResultSize                            0
+```
+
+- The JAR names in the class paths have no folder because Fabric copies every `spark.jars` file into the working directory of the driver and the executors.
+- `-Xss64m` gives the driver a larger stack; without it large pretrained pipelines, such as the de-identification pipelines, can fail with `StackOverflowError`.
+- Do not set `spark.driver.userClassPathFirst` / `spark.executor.userClassPathFirst`: on Runtime 2.0 they break logging with a `ClassCastException` (slf4j).
+
+**6. Save and publish the Environment**
+
+1. Select **Save**, then **Publish** in the **Home** tab and confirm with **Publish all**.
+2. Wait for the notification that publishing finished. This takes a few minutes. Every time you change the Environment, publish it again and start a new notebook session.
+
+**7. Attach the Environment to the notebook**
+
+1. Open the notebook you created in Step 3.
+2. In the notebook **Home** tab, open the **Environment** dropdown (it shows **Workspace default**) and select your Environment.
+3. Run this cell to start the session and check the setup. ONNX Runtime must only report the CPU provider:
+
+```python
+import sparknlp, sparknlp_jsl
+print("Spark NLP:", sparknlp.version(), "| Healthcare NLP:", sparknlp_jsl.version())
+print(spark._jvm.ai.onnxruntime.OrtEnvironment.getAvailableProviders())  # must be [CPU]
+```
+
+Then continue with Step 8.
 
 </div><div class="h3-box" markdown="1">
 
