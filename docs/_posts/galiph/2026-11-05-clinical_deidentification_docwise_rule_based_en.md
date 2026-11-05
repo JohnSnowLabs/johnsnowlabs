@@ -25,8 +25,8 @@ The pipeline can mask and obfuscate 'MEDICALRECORD', 'CITY', 'ZIP', 'STATE', 'CO
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_docwise_rule_based_en_7.0.0_3.4_1793888564225.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_docwise_rule_based_en_7.0.0_3.4_1793888564225.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_docwise_rule_based_en_7.0.0_3.4_1793896131220.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_docwise_rule_based_en_7.0.0_3.4_1793896131220.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -95,7 +95,7 @@ The patient, Emma Wilson, is <AGE>, her Contact number: <PHONE> .
 
 Obfuscated
 ------------------------------
-Dr. John Lee, from Royal Medical Clinic in Berea, attended to the patient on 01/06/2024.
+Dr. John Lee, from Royal Medical Clinic in Berea, attended to the patient on 24/06/2024.
 The patient’s medical record number is 78689012.
 The patient, Emma Wilson, is 55 years old, her Contact number: 666-678-9012 .
 
@@ -140,6 +140,7 @@ The patient, Emma Wilson, is 55 years old, her Contact number: 666-678-9012 .
 - ContextualParserModel
 - ContextualParserModel
 - ContextualParserModel
+- RegexMatcherInternalModel
 - RegexMatcherInternalModel
 - RegexMatcherInternalModel
 - RegexMatcherInternalModel
