@@ -227,7 +227,7 @@ Medical DMs are small enough to deploy privately, and the smallest run on a CPU.
 {:.table-model-big}
 | Model Name | Best for | Runs on | Recommended Memory | Max Sequence Length | Supported Platforms |
 |:---|:---|:---|:---|:---|:---|
-| Medical DM Small | Highest average score across the ten task areas | GPU | ~16 GB GPU VRAM | 16K | On-Premise, AWS, Azure, Databricks, Snowflake |
+| Medical DM Small | Highest average score across the nine task areas | GPU | ~16 GB GPU VRAM | 16K | On-Premise, AWS, Azure, Databricks, Snowflake |
 | Medical DM Nano | Compact; runs on a single small GPU or on CPU | GPU or CPU | ~2 GB GPU VRAM | 16K | On-Premise, AWS, Azure, Databricks, Snowflake |
 | PHI Guard v0.6 | Gate de-identified notes | CPU, ONNX | ~1 GB RAM | 8K | Healthcare NLP library, Models Hub |
 | PHI Guard v0.6 Fast | The same gate when speed matters most | CPU, ONNX | ~1 GB RAM | 8K | Healthcare NLP library, Models Hub |
@@ -241,7 +241,7 @@ Note: Recommended memory assumes half-precision (bf16) weights plus working memo
 
 <!-- TODO: link the PHI Guard models to their Models Hub pages (links from Danielo); add the tiny decision models later. -->
 
-**Medical DM Small** is our best-scoring decision model across ten medical task areas, and **Medical DM Nano** is the compact option that runs on a single small GPU or on CPU. The **PHI Guard** family has seven CPU models that detect PHI in raw and de-identified notes, in single-purpose and all-in-one versions.
+**Medical DM Small** is our best-scoring decision model across nine medical task areas, and **Medical DM Nano** is the compact option that runs on a single small GPU or on CPU. The **PHI Guard** family has seven CPU models that detect PHI in raw and de-identified notes, in single-purpose and all-in-one versions.
 
 </div><div class="h3-box" markdown="1">
 
@@ -257,7 +257,6 @@ For PHI leak detection, PHI Guard v0.7 reaches a PR-AUC of **0.986** on de-ident
 | Cancer registry abstraction | Registry fields from a pathology report: organ, tumor type, grade, TNM categories, stage, margins, lymphovascular invasion, receptors. A field the report never states is returned as not stated. |
 | Coding and prior authorization | Whether a diagnosis or a prior-authorization request is supported under a rule written into the question. |
 | Cohort identification | Whether a patient has each condition on a list: present, possible, absent or not documented. |
-| Clinical risk prediction | Probability of in-hospital death, 30-day death, a long stay and 30-day readmission. |
 | Adverse drug events | For one drug and one event: onset, severity, attribution, action taken, and the outcome of stopping and restarting the drug. |
 | General clinical decisions | A set of clinical decision tasks: evidence sufficiency, reconciliation, temporal relevance, reliability, attribution, escalation, causality, trajectory and more. |
 | Quality measure review | Evidence questions on patient charts for adult care-quality measures: eligibility, exclusions, time windows, medicines and tests. |
@@ -272,7 +271,7 @@ For PHI leak detection, PHI Guard v0.7 reaches a PR-AUC of **0.986** on de-ident
 
 ![Medical DMs: score by task area](/en/LLMs/images/dm_by_task.png)
 
-Score on ten task areas: the mean of accuracy and macro precision, recall and F1. Bold is the best score in the row.
+Score on nine task areas: the mean of accuracy and macro precision, recall and F1. Bold is the best score in the row.
 
 {:.table-model-big}
 | Task area | Medical DM Nano | Medical DM Small |
@@ -280,16 +279,15 @@ Score on ten task areas: the mean of accuracy and macro precision, recall and F1
 | Cancer registry abstraction | **0.961** | 0.885 |
 | Coding and prior authorization | 0.888 | **0.930** |
 | Cohort identification | 0.950 | **0.958** |
-| Clinical risk prediction | **0.566** | 0.548 |
 | Adverse drug events | **0.972** | 0.914 |
 | General clinical decisions | 0.860 | **0.963** |
 | Oncology record review | **0.885** | 0.818 |
 | Quality measure review | 0.875 | **0.902** |
 | Clinical note review | 0.935 | **0.955** |
 | Clinical trial eligibility | 0.781 | **0.931** |
-| **Average** | 0.867 | **0.880** |
+| **Average** | 0.901 | **0.917** |
 
-**Medical DM Small is ahead on six of ten task areas, with its largest margin on clinical trial eligibility (0.931 against 0.781). Medical DM Nano is ahead on cancer registry abstraction, clinical risk prediction, adverse drug events and oncology record review.**
+**Medical DM Small is ahead on six of nine task areas, with its largest margin on clinical trial eligibility (0.931 against 0.781). Medical DM Nano is ahead on cancer registry abstraction, adverse drug events and oncology record review.**
 
 ### PHI Guard Models and Modes
 
