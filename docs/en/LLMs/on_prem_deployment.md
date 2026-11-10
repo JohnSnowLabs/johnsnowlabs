@@ -5,7 +5,7 @@ seotitle: Medical LLMs | John Snow Labs
 title: On-premise Deployment
 permalink: /docs/en/LLMs/on_prem_deploy
 key: docs-medical-llm
-modify_date: "2026-05-11"
+modify_date: "2026-11-10"
 show_nav: true
 sidebar:
     nav: medical-llm
@@ -69,8 +69,9 @@ The following models are currently available for on-premise deployments:
 
 | **Model Name** | **Recommended GPU Memory** | **Max Sequence Length** | **Max KV-Cache** | **Tensor Parallel Sizes** | **Available Versions** |
 |----------------------------|--------------------------|----------------|------------------|--------------------------|------------------------|
-| Medical-LLM-Medium     | ~67 GB      | 262K                | 16 GB      | 2, 4, 8            | v1, v2, v3, v4, v5         |
+| Medical-LLM-Medium     | ~67 GB      | 262K                | 16 GB      | 1, 2, 4, 8            | v1, v2, v3, v4, v5         |
 | Medical-LLM-Small      | ~25 GB       | 262K                 |8 GB       | 1, 2, 4, 8      | v1, v2, v3         |
+| Medical-DM-Small      | ~9 GB       | 16K                 | 1 GB       | 1, 2, 4      | v1         |
 | Vision-OCR-LLM | ~6 GB       | 32K                 | 4 GB        | 1, 2, 4        | v1, v2             |
 | Vision-OCR-Structured-LLM | ~32 GB    | 128K                 | 17 GB        | 1, 2, 4         | v1, v2             |
 
@@ -81,7 +82,33 @@ The following models are currently available for on-premise deployments:
 >
 > All specifications shown are based on the latest version of each model.
 >
+> **Medical-DM-Small** is a decision model, not a chat model. It is available in image version `0.33.0` and later. See [Decision Model and PHI Guards](#decision-model-and-phi-guards) below.
+>
 > **Model Code Requirements:** Both `Vision-OCR-LLM` and `Vision-OCR-Structured-LLM` must be run with `trust_remote_code=True` because their model implementations include custom code.
+
+### Decision Model and PHI Guards
+`Medical-DM-Small` does not serve chat or text completions. It answers typed questions about a text. Start it with the `0.33.0` image. Add `--guards all` to also serve the PHI guards (`phi-guard-v7-final` and `phi-guard-v7-fast`):
+
+```bash
+docker run -d \
+--gpus all \
+--env "SPARK_NLP_LICENSE=your_license_key" \
+-p 8080:8080 \
+--ipc=host \
+johnsnowlabs/jsl-llms:0.33.0 \
+--model Medical-DM-Small \
+--guards all \
+--port 8080
+```
+
+The PHI guards available in the image:
+
+| **Guard** | **Use it for** |
+|-----------|----------------|
+| `phi-guard-v7-final` | Best accuracy. |
+| `phi-guard-v7-fast` | The same outputs, about 5 times faster, a little less accurate. |
+
+`--guards` takes `all`, or guard ids separated by commas, for example `--guards phi-guard-v7-fast`. Without it, the guard endpoints are not active.
 
 </div><div class="h3-box" markdown="1">
 
@@ -145,6 +172,58 @@ payload = {
     "prompt": "Provide a detailed explanation of rheumatoid arthritis treatment",
     "temperature": 0.7,
     "max_tokens": 4096
+}
+```
+
+### Decisions
+Use this endpoint with `Medical-DM-Small`. Ask a yes/no (`noul`), choice or score question about a text.
+
+- **Endpoint**: `/v1/decisions`
+- **Method**: POST
+- **Example Request**:
+
+```python
+payload = {
+    "model": "Medical-DM-Small",
+    "state": "Discharge summary. Patient Alder Quill was admitted with chest pain. Troponin normal; discharged home on aspirin.",
+    "questions": {
+        "leak": {
+            "type": "noul",
+            "instructions": "Is any real identifying detail left in this de-identified note?",
+            "criteria": {
+                "true": "A real name, phone number, address, date or record number appears in the text",
+                "false": "Every identifier is a tag such as [NAME] or [DATE], or has been removed"
+            }
+        }
+    }
+}
+```
+
+### PHI Guards
+Available when the container is started with `--guards`. Check whether a de-identified note still leaks PHI. Send masked or raw notes, not obfuscated ones.
+
+- **Endpoint**: `/v1/guards`
+- **Method**: POST
+- **Example Request**:
+
+```python
+payload = {
+    "model": "phi-guard-v7-final",
+    "docs": [{"id": "note-001", "text": "Pt [NAME] seen on [DATE] for chest pain."}]
+}
+```
+
+### Ensemble
+Available when the container is started with `--guards`. Check a note with a guard and with `Medical-DM-Small`, combine the two scores, and route each note to `leak`, `review` or `clean`. As for the guards, send masked or raw notes, not obfuscated ones.
+
+- **Endpoint**: `/v1/guards/ensemble`
+- **Method**: POST
+- **Example Request**:
+
+```python
+payload = {
+    "model": "phi-guard-ensemble",
+    "docs": [{"id": "note-001", "text": "Pt [NAME] seen on [DATE] for chest pain."}]
 }
 ```
 
