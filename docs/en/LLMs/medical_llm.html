@@ -1265,7 +1265,7 @@ Predicted boxes are first IoU-matched to gold regions (0.78 overlap threshold), 
     <tbody>
       <tr>
         <td style="text-align: left">Medical DM Small</td>
-        <td style="text-align: left">Highest average score across the ten task areas</td>
+        <td style="text-align: left">Highest average score across the nine task areas</td>
         <td style="text-align: left">GPU</td>
         <td style="text-align: left">~16 GB GPU VRAM</td>
         <td style="text-align: left">16K</td>
@@ -1342,7 +1342,7 @@ Predicted boxes are first IoU-matched to gold regions (0.78 overlap threshold), 
 
   <!-- TODO: link the PHI Guard models to their Models Hub pages (links from Danielo); add the tiny decision models later. -->
 
-  <p><strong>Medical DM Small</strong> is our best-scoring decision model across ten medical task areas, and <strong>Medical DM Nano</strong> is the compact option that runs on a single small GPU or on CPU. The <strong>PHI Guard</strong> family has seven CPU models that detect PHI in raw and de-identified notes, in single-purpose and all-in-one versions.</p>
+  <p><strong>Medical DM Small</strong> is our best-scoring decision model across nine medical task areas, and <strong>Medical DM Nano</strong> is the compact option that runs on a single small GPU or on CPU. The <strong>PHI Guard</strong> family has seven CPU models that detect PHI in raw and de-identified notes, in single-purpose and all-in-one versions.</p>
 
 </div>
 <div class="h3-box">
@@ -1372,10 +1372,6 @@ Predicted boxes are first IoU-matched to gold regions (0.78 overlap threshold), 
       <tr>
         <td style="text-align: left">Cohort identification</td>
         <td style="text-align: left">Whether a patient has each condition on a list: present, possible, absent or not documented.</td>
-      </tr>
-      <tr>
-        <td style="text-align: left">Clinical risk prediction</td>
-        <td style="text-align: left">Probability of in-hospital death, 30-day death, a long stay and 30-day readmission.</td>
       </tr>
       <tr>
         <td style="text-align: left">Adverse drug events</td>
@@ -1414,7 +1410,7 @@ Predicted boxes are first IoU-matched to gold regions (0.78 overlap threshold), 
 
   <p><img src="/en/LLMs/images/dm_by_task.png" alt="Medical DMs: score by task area" /></p>
 
-  <p>Score on ten task areas: the mean of accuracy and macro precision, recall and F1. Bold is the best score in the row.</p>
+  <p>Score on nine task areas: the mean of accuracy and macro precision, recall and F1. Bold is the best score in the row.</p>
 
   <table class="table-model-big">
     <thead>
@@ -1439,11 +1435,6 @@ Predicted boxes are first IoU-matched to gold regions (0.78 overlap threshold), 
         <td style="text-align: left">Cohort identification</td>
         <td style="text-align: right">0.950</td>
         <td style="text-align: right"><strong>0.958</strong></td>
-      </tr>
-      <tr>
-        <td style="text-align: left">Clinical risk prediction</td>
-        <td style="text-align: right"><strong>0.566</strong></td>
-        <td style="text-align: right">0.548</td>
       </tr>
       <tr>
         <td style="text-align: left">Adverse drug events</td>
@@ -1477,13 +1468,13 @@ Predicted boxes are first IoU-matched to gold regions (0.78 overlap threshold), 
       </tr>
       <tr>
         <td style="text-align: left"><strong>Average</strong></td>
-        <td style="text-align: right">0.867</td>
-        <td style="text-align: right"><strong>0.880</strong></td>
+        <td style="text-align: right">0.901</td>
+        <td style="text-align: right"><strong>0.917</strong></td>
       </tr>
     </tbody>
   </table>
 
-  <p><strong>Medical DM Small is ahead on six of ten task areas, with its largest margin on clinical trial eligibility (0.931 against 0.781). Medical DM Nano is ahead on cancer registry abstraction, clinical risk prediction, adverse drug events and oncology record review.</strong></p>
+  <p><strong>Medical DM Small is ahead on six of nine task areas, with its largest margin on clinical trial eligibility (0.931 against 0.781). Medical DM Nano is ahead on cancer registry abstraction, adverse drug events and oncology record review.</strong></p>
 
   <h3 id="phi-guard-models-and-modes">PHI Guard Models and Modes</h3>
 
