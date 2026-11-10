@@ -1242,6 +1242,723 @@ Predicted boxes are first IoU-matched to gold regions (0.78 overlap threshold), 
 
 </div>
 <div class="h3-box">
+
+  <h2 id="medical-dms">Medical DMs</h2>
+
+  <p>Task-optimized models consistently outperform general-purpose models on focused clinical decisions. At John Snow Labs, we have built Medical Decision Models (DMs): compact models that answer typed questions about clinical text, such as whether a note documents a condition, whether a drug caused an event, or whether a trial accepts a patient. A question can ask the model to pick one option, answer yes or no with a probability, or choose an ordered level.</p>
+
+  <p>Medical DMs are small enough to deploy privately, and the smallest run on a CPU. The question and its options are part of the input, so a new rule or a new threshold needs no retraining.</p>
+
+  <h3 id="medical-dms-offering">Medical DMs Offering</h3>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th style="text-align: left">Model Name</th>
+        <th style="text-align: left">Best for</th>
+        <th style="text-align: left">Runs on</th>
+        <th style="text-align: left">Recommended Memory</th>
+        <th style="text-align: left">Max Sequence Length</th>
+        <th style="text-align: left">Supported Platforms</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: left">Medical DM Small</td>
+        <td style="text-align: left">Highest average score across the ten task areas</td>
+        <td style="text-align: left">GPU</td>
+        <td style="text-align: left">~16 GB GPU VRAM</td>
+        <td style="text-align: left">16K</td>
+        <td style="text-align: left">On-Premise, AWS, Azure, Databricks, Snowflake</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Medical DM Nano</td>
+        <td style="text-align: left">Compact; runs on a single small GPU or on CPU</td>
+        <td style="text-align: left">GPU or CPU</td>
+        <td style="text-align: left">~2 GB GPU VRAM</td>
+        <td style="text-align: left">16K</td>
+        <td style="text-align: left">On-Premise, AWS, Azure, Databricks, Snowflake</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">PHI Guard v0.6</td>
+        <td style="text-align: left">Gate de-identified notes</td>
+        <td style="text-align: left">CPU, ONNX</td>
+        <td style="text-align: left">~1 GB RAM</td>
+        <td style="text-align: left">8K</td>
+        <td style="text-align: left">Healthcare NLP library, Models Hub</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">PHI Guard v0.6 Fast</td>
+        <td style="text-align: left">The same gate when speed matters most</td>
+        <td style="text-align: left">CPU, ONNX</td>
+        <td style="text-align: left">~1 GB RAM</td>
+        <td style="text-align: left">8K</td>
+        <td style="text-align: left">Healthcare NLP library, Models Hub</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">PHI Guard Masked v0.6</td>
+        <td style="text-align: left">De-identified gate with a final fine-tuning step</td>
+        <td style="text-align: left">CPU, ONNX</td>
+        <td style="text-align: left">~1 GB RAM</td>
+        <td style="text-align: left">8K</td>
+        <td style="text-align: left">Healthcare NLP library, Models Hub</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">PHI Guard Raw v0.6</td>
+        <td style="text-align: left">Route or skip PHI-free raw notes</td>
+        <td style="text-align: left">CPU, ONNX</td>
+        <td style="text-align: left">~1 GB RAM</td>
+        <td style="text-align: left">8K</td>
+        <td style="text-align: left">Healthcare NLP library, Models Hub</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">PHI Guard Richness v0.6</td>
+        <td style="text-align: left">How much PHI a note exposes (levels 0 to 6)</td>
+        <td style="text-align: left">CPU, ONNX</td>
+        <td style="text-align: left">~1 GB RAM</td>
+        <td style="text-align: left">8K</td>
+        <td style="text-align: left">Healthcare NLP library, Models Hub</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">PHI Guard v0.7</td>
+        <td style="text-align: left">Leak, harm, richness and raw in one call</td>
+        <td style="text-align: left">CPU, ONNX</td>
+        <td style="text-align: left">~1 GB RAM</td>
+        <td style="text-align: left">8K</td>
+        <td style="text-align: left">Healthcare NLP library, Models Hub</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">PHI Guard v0.7 Fast</td>
+        <td style="text-align: left">The same outputs, about 5x faster</td>
+        <td style="text-align: left">CPU, ONNX</td>
+        <td style="text-align: left">~1 GB RAM</td>
+        <td style="text-align: left">8K</td>
+        <td style="text-align: left">Healthcare NLP library, Models Hub</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Note: Recommended memory assumes half-precision (bf16) weights plus working memory at the maximum sequence length: GPU VRAM for the GPU models and RAM for the CPU models. The PHI Guard models are included in the Healthcare NLP library and run on CPU with ONNX.</p>
+
+  <!-- TODO: link the PHI Guard models to their Models Hub pages (links from Danielo); add the tiny decision models later. -->
+
+  <p><strong>Medical DM Small</strong> is our best-scoring decision model across ten medical task areas, and <strong>Medical DM Nano</strong> is the compact option that runs on a single small GPU or on CPU. The <strong>PHI Guard</strong> family has seven CPU models that detect PHI in raw and de-identified notes, in single-purpose and all-in-one versions.</p>
+
+</div>
+<div class="h3-box">
+
+  <h3 id="introduction-2">Introduction</h3>
+
+  <p>For PHI leak detection, PHI Guard v0.7 reaches a PR-AUC of <strong>0.986</strong> on de-identified clinical notes at <strong>6.4 ms</strong> per note on one CPU thread.</p>
+
+  <h3 id="tasks-covered">Tasks covered</h3>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th style="text-align: left">Task area</th>
+        <th style="text-align: left">What the model decides</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: left">Cancer registry abstraction</td>
+        <td style="text-align: left">Registry fields from a pathology report: organ, tumor type, grade, TNM categories, stage, margins, lymphovascular invasion, receptors. A field the report never states is returned as not stated.</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Coding and prior authorization</td>
+        <td style="text-align: left">Whether a diagnosis or a prior-authorization request is supported under a rule written into the question.</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Cohort identification</td>
+        <td style="text-align: left">Whether a patient has each condition on a list: present, possible, absent or not documented.</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Clinical risk prediction</td>
+        <td style="text-align: left">Probability of in-hospital death, 30-day death, a long stay and 30-day readmission.</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Adverse drug events</td>
+        <td style="text-align: left">For one drug and one event: onset, severity, attribution, action taken, and the outcome of stopping and restarting the drug.</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">General clinical decisions</td>
+        <td style="text-align: left">A set of clinical decision tasks: evidence sufficiency, reconciliation, temporal relevance, reliability, attribution, escalation, causality, trajectory and more.</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Quality measure review</td>
+        <td style="text-align: left">Evidence questions on patient charts for adult care-quality measures: eligibility, exclusions, time windows, medicines and tests.</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Clinical note review</td>
+        <td style="text-align: left">Chart review of a clinical note: note type, age group, tobacco use, allergies, diabetes, kidney function, anticoagulation, cancer status.</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Clinical trial eligibility</td>
+        <td style="text-align: left">Demographic gate, inclusion or exclusion, specialty, numeric thresholds and time windows.</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Oncology record review</td>
+        <td style="text-align: left">Whether a document in an oncology record is relevant to a registry abstract, whether it adds anything new, and which fields it states.</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">PHI leak detection</td>
+        <td style="text-align: left">Whether a de-identified note still leaks protected health information (PHI), whether a raw note holds any, how much a note exposes, and whether a leak is harmful.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 id="task-benchmark-performance">Task Benchmark Performance</h3>
+
+  <p><img src="/en/LLMs/images/dm_average.png" alt="Medical DMs: average score across task areas" /></p>
+
+  <p><img src="/en/LLMs/images/dm_by_task.png" alt="Medical DMs: score by task area" /></p>
+
+  <p>Score on ten task areas: the mean of accuracy and macro precision, recall and F1. Bold is the best score in the row.</p>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th style="text-align: left">Task area</th>
+        <th style="text-align: right">Medical DM Nano</th>
+        <th style="text-align: right">Medical DM Small</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: left">Cancer registry abstraction</td>
+        <td style="text-align: right"><strong>0.961</strong></td>
+        <td style="text-align: right">0.885</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Coding and prior authorization</td>
+        <td style="text-align: right">0.888</td>
+        <td style="text-align: right"><strong>0.930</strong></td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Cohort identification</td>
+        <td style="text-align: right">0.950</td>
+        <td style="text-align: right"><strong>0.958</strong></td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Clinical risk prediction</td>
+        <td style="text-align: right"><strong>0.566</strong></td>
+        <td style="text-align: right">0.548</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Adverse drug events</td>
+        <td style="text-align: right"><strong>0.972</strong></td>
+        <td style="text-align: right">0.914</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">General clinical decisions</td>
+        <td style="text-align: right">0.860</td>
+        <td style="text-align: right"><strong>0.963</strong></td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Oncology record review</td>
+        <td style="text-align: right"><strong>0.885</strong></td>
+        <td style="text-align: right">0.818</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Quality measure review</td>
+        <td style="text-align: right">0.875</td>
+        <td style="text-align: right"><strong>0.902</strong></td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Clinical note review</td>
+        <td style="text-align: right">0.935</td>
+        <td style="text-align: right"><strong>0.955</strong></td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Clinical trial eligibility</td>
+        <td style="text-align: right">0.781</td>
+        <td style="text-align: right"><strong>0.931</strong></td>
+      </tr>
+      <tr>
+        <td style="text-align: left"><strong>Average</strong></td>
+        <td style="text-align: right">0.867</td>
+        <td style="text-align: right"><strong>0.880</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Medical DM Small is ahead on six of ten task areas, with its largest margin on clinical trial eligibility (0.931 against 0.781). Medical DM Nano is ahead on cancer registry abstraction, clinical risk prediction, adverse drug events and oncology record review.</strong></p>
+
+  <h3 id="how-the-models-compare-2">How the Models Compare</h3>
+
+  <p>Average score over nine task areas, and the score on each. Bold is the best score in the column.</p>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th style="text-align: left">Model</th>
+        <th style="text-align: right">Cancer registry</th>
+        <th style="text-align: right">Coding and prior auth.</th>
+        <th style="text-align: right">Cohort</th>
+        <th style="text-align: right">Clinical risk</th>
+        <th style="text-align: right">Drug events</th>
+        <th style="text-align: right">General decisions</th>
+        <th style="text-align: right">Quality measure</th>
+        <th style="text-align: right">Clinical notes</th>
+        <th style="text-align: right">Trial eligibility</th>
+        <th style="text-align: right">Average</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: left">Medical DM Small *</td>
+        <td style="text-align: right">0.885</td>
+        <td style="text-align: right">0.930</td>
+        <td style="text-align: right">0.958</td>
+        <td style="text-align: right">0.548</td>
+        <td style="text-align: right">0.914</td>
+        <td style="text-align: right"><strong>0.963</strong></td>
+        <td style="text-align: right"><strong>0.902</strong></td>
+        <td style="text-align: right">0.955</td>
+        <td style="text-align: right">0.931</td>
+        <td style="text-align: right"><strong>0.887</strong></td>
+      </tr>
+      <tr>
+        <td style="text-align: left">JEV-27B</td>
+        <td style="text-align: right">0.844</td>
+        <td style="text-align: right"><strong>0.953</strong></td>
+        <td style="text-align: right">0.976</td>
+        <td style="text-align: right">0.609</td>
+        <td style="text-align: right">0.907</td>
+        <td style="text-align: right">0.915</td>
+        <td style="text-align: right">0.818</td>
+        <td style="text-align: right"><strong>0.962</strong></td>
+        <td style="text-align: right">0.949</td>
+        <td style="text-align: right">0.881</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">StartLux 35B-A3B</td>
+        <td style="text-align: right">0.873</td>
+        <td style="text-align: right">0.922</td>
+        <td style="text-align: right">0.959</td>
+        <td style="text-align: right">0.609</td>
+        <td style="text-align: right">0.898</td>
+        <td style="text-align: right">0.922</td>
+        <td style="text-align: right">0.798</td>
+        <td style="text-align: right">0.940</td>
+        <td style="text-align: right"><strong>0.950</strong></td>
+        <td style="text-align: right">0.875</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Medical DM Nano *</td>
+        <td style="text-align: right"><strong>0.961</strong></td>
+        <td style="text-align: right">0.888</td>
+        <td style="text-align: right">0.950</td>
+        <td style="text-align: right">0.566</td>
+        <td style="text-align: right"><strong>0.972</strong></td>
+        <td style="text-align: right">0.860</td>
+        <td style="text-align: right">0.875</td>
+        <td style="text-align: right">0.935</td>
+        <td style="text-align: right">0.781</td>
+        <td style="text-align: right">0.865</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">JEV-Gemma4-26B-A4B</td>
+        <td style="text-align: right">0.863</td>
+        <td style="text-align: right">0.950</td>
+        <td style="text-align: right"><strong>0.982</strong></td>
+        <td style="text-align: right"><strong>0.627</strong></td>
+        <td style="text-align: right">0.911</td>
+        <td style="text-align: right">0.898</td>
+        <td style="text-align: right">0.777</td>
+        <td style="text-align: right">0.955</td>
+        <td style="text-align: right">0.799</td>
+        <td style="text-align: right">0.863</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Jev-Omni 12B</td>
+        <td style="text-align: right">0.843</td>
+        <td style="text-align: right">0.917</td>
+        <td style="text-align: right">0.977</td>
+        <td style="text-align: right">0.603</td>
+        <td style="text-align: right">0.916</td>
+        <td style="text-align: right">0.867</td>
+        <td style="text-align: right">0.760</td>
+        <td style="text-align: right">0.946</td>
+        <td style="text-align: right">0.902</td>
+        <td style="text-align: right">0.859</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Kev 4B</td>
+        <td style="text-align: right">0.828</td>
+        <td style="text-align: right">0.909</td>
+        <td style="text-align: right">0.972</td>
+        <td style="text-align: right">0.583</td>
+        <td style="text-align: right">0.831</td>
+        <td style="text-align: right">0.858</td>
+        <td style="text-align: right">0.708</td>
+        <td style="text-align: right">0.926</td>
+        <td style="text-align: right">0.861</td>
+        <td style="text-align: right">0.831</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Kev 9B</td>
+        <td style="text-align: right">0.831</td>
+        <td style="text-align: right">0.866</td>
+        <td style="text-align: right">0.911</td>
+        <td style="text-align: right">0.472</td>
+        <td style="text-align: right">0.822</td>
+        <td style="text-align: right">0.850</td>
+        <td style="text-align: right">0.722</td>
+        <td style="text-align: right">0.916</td>
+        <td style="text-align: right">0.926</td>
+        <td style="text-align: right">0.813</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><img src="/en/LLMs/images/dm_compare.png" alt="Average score over nine task areas" /></p>
+
+  <p>More accuracy for less memory. Medical DM Small averages 0.887 with ~16 GB GPU VRAM, ahead of the other models shown, which are up to nine times larger. Medical DM Nano averages 0.865 with ~2 GB GPU VRAM or on a CPU, level with a 26B model.</p>
+
+  <h3 id="phi-guard-models-and-modes">PHI Guard Models and Modes</h3>
+
+  <p>The PHI Guard family has seven models. Each answers one or more questions about a note: does a de-identified note still leak PHI, does a raw note hold any PHI, how much PHI does a note expose, and is a leak harmful.</p>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th style="text-align: left">Model</th>
+        <th style="text-align: left">Outputs</th>
+        <th style="text-align: left">Use on</th>
+        <th style="text-align: left">What it does</th>
+        <th style="text-align: left">Example</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: left">PHI Guard v0.6</td>
+        <td style="text-align: left">1: a score, the probability that PHI is still readable</td>
+        <td style="text-align: left">De-identified text</td>
+        <td style="text-align: left">Gate de-identified notes before they leave the pipeline.</td>
+        <td style="text-align: left">“Pt Maria Delgado seen on [DATE]…” scores 0.99 (leak); “Pt [NAME] seen on [DATE]…” scores 0.02</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">PHI Guard v0.6 Fast</td>
+        <td style="text-align: left">1: a score</td>
+        <td style="text-align: left">De-identified text</td>
+        <td style="text-align: left">The same gate when speed matters more than precision. It flags many more clean notes.</td>
+        <td style="text-align: left"> </td>
+      </tr>
+      <tr>
+        <td style="text-align: left">PHI Guard Masked v0.6</td>
+        <td style="text-align: left">1: a score</td>
+        <td style="text-align: left">De-identified text</td>
+        <td style="text-align: left">The v0.6 gate with a final fine-tuning step. It scores almost the same as PHI Guard v0.6.</td>
+        <td style="text-align: left"> </td>
+      </tr>
+      <tr>
+        <td style="text-align: left">PHI Guard Raw v0.6</td>
+        <td style="text-align: left">1: a score, the probability that a raw note holds any PHI</td>
+        <td style="text-align: left">Raw text</td>
+        <td style="text-align: left">Skip or route PHI-free notes before de-identification.</td>
+        <td style="text-align: left">“Shortness of breath, lungs clear, continue inhaler.” scores 0.01; “John Miller, 64, seen 2024-02-11…” scores 0.99</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">PHI Guard Richness v0.6</td>
+        <td style="text-align: left">6: the probability that the level is at least 1, 2, up to 6; the level is how many reach 0.5</td>
+        <td style="text-align: left">Raw or de-identified text</td>
+        <td style="text-align: left">How much PHI a note exposes, from level 0 (none) to level 6 (saturated).</td>
+        <td style="text-align: left">A discharge note with a name, date of birth, MRN and phone number gets level 5</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">PHI Guard v0.7</td>
+        <td style="text-align: left">9: leak, harmful, richness (at least 1 to 6) and raw</td>
+        <td style="text-align: left">Both, depending on the output</td>
+        <td style="text-align: left">One call for everything.</td>
+        <td style="text-align: left">“Patient [NAME], DOB 03/14/1956, MRN 4471923…” gets leak 0.99, harmful 0.99, level 3, raw 0.10</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">PHI Guard v0.7 Fast</td>
+        <td style="text-align: left">The same 9 outputs</td>
+        <td style="text-align: left">Both, depending on the output</td>
+        <td style="text-align: left">The same outputs, about 5x faster and a little less exact.</td>
+        <td style="text-align: left"> </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>PHI Guard v0.7 folds the leak, raw and richness models and a new harmful output into one model, with no loss of accuracy on any of them.</p>
+
+  <h3 id="phi-leak-detection">PHI Leak Detection</h3>
+
+  <p>Does a de-identified note still leak PHI? PR-AUC with a leak as the positive class. Public sets are the mean of four public datasets. The last column counts clean notes wrongly flagged at the 0.5 cut-off on the main set; fewer is better. Bold is the best in each column.</p>
+
+  <p><img src="/en/LLMs/images/phi_leak_by_set.png" alt="PHI leak detection: PR-AUC by test set" /></p>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th style="text-align: left">Model</th>
+        <th style="text-align: right">Main</th>
+        <th style="text-align: right">Held-out</th>
+        <th style="text-align: right">Long notes</th>
+        <th style="text-align: right">Public sets</th>
+        <th style="text-align: right">Clean notes flagged, main</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: left">PHI Guard v0.7</td>
+        <td style="text-align: right"><strong>0.986</strong></td>
+        <td style="text-align: right">0.982</td>
+        <td style="text-align: right">0.933</td>
+        <td style="text-align: right"><strong>0.753</strong></td>
+        <td style="text-align: right">91</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">PHI Guard v0.6</td>
+        <td style="text-align: right">0.985</td>
+        <td style="text-align: right">0.982</td>
+        <td style="text-align: right">0.929</td>
+        <td style="text-align: right">0.748</td>
+        <td style="text-align: right">91</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">PHI Guard Masked v0.6</td>
+        <td style="text-align: right">0.985</td>
+        <td style="text-align: right">0.980</td>
+        <td style="text-align: right">0.929</td>
+        <td style="text-align: right">0.748</td>
+        <td style="text-align: right">96</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">PHI Guard v0.7 Fast</td>
+        <td style="text-align: right">0.978</td>
+        <td style="text-align: right">0.970</td>
+        <td style="text-align: right">0.888</td>
+        <td style="text-align: right">0.679</td>
+        <td style="text-align: right">113</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">PHI Guard v0.6 Fast</td>
+        <td style="text-align: right">0.960</td>
+        <td style="text-align: right">0.959</td>
+        <td style="text-align: right">0.893</td>
+        <td style="text-align: right">0.733</td>
+        <td style="text-align: right">384</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Medical DM Small</td>
+        <td style="text-align: right">0.986</td>
+        <td style="text-align: right"><strong>0.986</strong></td>
+        <td style="text-align: right"><strong>0.955</strong></td>
+        <td style="text-align: right">0.752</td>
+        <td style="text-align: right"><strong>39</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>PHI Guard v0.7 matches or slightly beats PHI Guard v0.6 on every set. PHI Guard v0.7 Fast has far fewer false alarms than PHI Guard v0.6 Fast on the main set (113 against 384), but it is weaker on the public sets (0.679 against 0.733).</strong></p>
+
+  <h4 id="harmful-leaks">Harmful leaks</h4>
+
+  <p>Harmful PR-AUC, and the share of harmless-only leaks wrongly flagged at 0.5 on the main set; lower is better. The v0.6 models have no harm output, so the v0.6 leak score stands in.</p>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th style="text-align: left">Model</th>
+        <th style="text-align: right">Main</th>
+        <th style="text-align: right">Held-out</th>
+        <th style="text-align: right">Long notes</th>
+        <th style="text-align: right">Harmless-only leaks flagged, main</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: left">PHI Guard v0.6 (leak score)</td>
+        <td style="text-align: right">0.962</td>
+        <td style="text-align: right">0.779</td>
+        <td style="text-align: right">0.904</td>
+        <td style="text-align: right">70%</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">PHI Guard v0.7</td>
+        <td style="text-align: right"><strong>0.980</strong></td>
+        <td style="text-align: right">0.883</td>
+        <td style="text-align: right">0.928</td>
+        <td style="text-align: right">38%</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">PHI Guard v0.7 Fast</td>
+        <td style="text-align: right">0.977</td>
+        <td style="text-align: right"><strong>0.885</strong></td>
+        <td style="text-align: right"><strong>0.936</strong></td>
+        <td style="text-align: right"><strong>21%</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h4 id="raw-notes">Raw notes</h4>
+
+  <p>Does a raw note contain any PHI? PR-AUC on the test split and on held-out notes, and the notes wrongly flagged or missed at 0.5 on the test split.</p>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th style="text-align: left">Model</th>
+        <th style="text-align: right">Test PR-AUC</th>
+        <th style="text-align: right">False positives</th>
+        <th style="text-align: right">False negatives</th>
+        <th style="text-align: right">Held-out PR-AUC</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: left">PHI Guard Raw v0.6</td>
+        <td style="text-align: right"><strong>0.9993</strong></td>
+        <td style="text-align: right">29</td>
+        <td style="text-align: right"><strong>38</strong></td>
+        <td style="text-align: right">0.9984</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">PHI Guard v0.7</td>
+        <td style="text-align: right">0.9992</td>
+        <td style="text-align: right"><strong>28</strong></td>
+        <td style="text-align: right">42</td>
+        <td style="text-align: right"><strong>0.9986</strong></td>
+      </tr>
+      <tr>
+        <td style="text-align: left">PHI Guard v0.7 Fast</td>
+        <td style="text-align: right"><strong>0.9993</strong></td>
+        <td style="text-align: right">47</td>
+        <td style="text-align: right">42</td>
+        <td style="text-align: right">0.9973</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h4 id="richness">Richness</h4>
+
+  <p>How much PHI a note exposes. Level error (MAE, lower is better) and rank correlation (rho, higher is better) on masked notes; the last two columns are held-out raw notes.</p>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th style="text-align: left">Model</th>
+        <th style="text-align: right">Main MAE</th>
+        <th style="text-align: right">Main rho</th>
+        <th style="text-align: right">Held-out MAE</th>
+        <th style="text-align: right">Held-out rho</th>
+        <th style="text-align: right">Long MAE</th>
+        <th style="text-align: right">Long rho</th>
+        <th style="text-align: right">Raw MAE</th>
+        <th style="text-align: right">Raw rho</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: left">PHI Guard Richness v0.6</td>
+        <td style="text-align: right"><strong>0.137</strong></td>
+        <td style="text-align: right">0.859</td>
+        <td style="text-align: right">0.325</td>
+        <td style="text-align: right">0.902</td>
+        <td style="text-align: right">0.245</td>
+        <td style="text-align: right"><strong>0.773</strong></td>
+        <td style="text-align: right">0.265</td>
+        <td style="text-align: right">0.954</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">PHI Guard v0.7</td>
+        <td style="text-align: right">0.140</td>
+        <td style="text-align: right"><strong>0.866</strong></td>
+        <td style="text-align: right"><strong>0.303</strong></td>
+        <td style="text-align: right"><strong>0.909</strong></td>
+        <td style="text-align: right"><strong>0.238</strong></td>
+        <td style="text-align: right">0.755</td>
+        <td style="text-align: right"><strong>0.238</strong></td>
+        <td style="text-align: right"><strong>0.956</strong></td>
+      </tr>
+      <tr>
+        <td style="text-align: left">PHI Guard v0.7 Fast</td>
+        <td style="text-align: right">0.162</td>
+        <td style="text-align: right">0.850</td>
+        <td style="text-align: right">0.372</td>
+        <td style="text-align: right">0.894</td>
+        <td style="text-align: right">0.271</td>
+        <td style="text-align: right">0.715</td>
+        <td style="text-align: right">0.301</td>
+        <td style="text-align: right">0.949</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h4 id="speed-per-note">Speed per note</h4>
+
+  <p>CPU models: one thread, a 1 KB note. GPU model: batched on a 24 GB GPU.</p>
+
+  <p><img src="/en/LLMs/images/phi_speed.png" alt="PHI leak detection: time per note" /></p>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th style="text-align: left">Model</th>
+        <th style="text-align: left">Runs on</th>
+        <th style="text-align: right">Per note (ms)</th>
+        <th style="text-align: right">One million notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: left">PHI Guard v0.6</td>
+        <td style="text-align: left">CPU, one thread (ONNX)</td>
+        <td style="text-align: right">5.3</td>
+        <td style="text-align: right">1.5 h</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">PHI Guard v0.6 Fast</td>
+        <td style="text-align: left">CPU, one thread (ONNX)</td>
+        <td style="text-align: right">1.2</td>
+        <td style="text-align: right">20 min</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">PHI Guard Masked v0.6</td>
+        <td style="text-align: left">CPU, one thread (ONNX)</td>
+        <td style="text-align: right">5.4</td>
+        <td style="text-align: right">1.5 h</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">PHI Guard Raw v0.6</td>
+        <td style="text-align: left">CPU, one thread (ONNX)</td>
+        <td style="text-align: right">5.4</td>
+        <td style="text-align: right">1.5 h</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">PHI Guard Richness v0.6</td>
+        <td style="text-align: left">CPU, one thread (ONNX)</td>
+        <td style="text-align: right">5.4</td>
+        <td style="text-align: right">1.5 h</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">PHI Guard v0.7</td>
+        <td style="text-align: left">CPU, one thread (ONNX)</td>
+        <td style="text-align: right">6.4</td>
+        <td style="text-align: right">1.8 h</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">PHI Guard v0.7 Fast</td>
+        <td style="text-align: left">CPU, one thread (ONNX)</td>
+        <td style="text-align: right">1.3</td>
+        <td style="text-align: right">21.7 min</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Medical DM Small</td>
+        <td style="text-align: left">GPU (24 GB)</td>
+        <td style="text-align: right">40</td>
+        <td style="text-align: right">~10-12 h</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<div class="h3-box">
   <h2 id="partner-with-us">Partner With Us</h2>
 
   <p>We’re committed to helping you stay at the cutting edge of medical AI. Whether you’re building decision support tools, clinical chatbots, or research platforms — our team is here to help.</p>
@@ -1257,7 +1974,7 @@ Predicted boxes are first IoU-matched to gold regions (0.78 overlap threshold), 
 </div>
 
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2026-05-11T00:00:00+00:00">May 11, 2026</time>
+      <time itemprop="dateModified" datetime="2026-11-10T00:00:00+00:00">Nov 10, 2026</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>

@@ -696,7 +696,7 @@ johnsnowlabs/jsl-llms <span class="se">\</span>
         <td>~67 GB</td>
         <td>262K</td>
         <td>16 GB</td>
-        <td>2, 4, 8</td>
+        <td>1, 2, 4, 8</td>
         <td>v1, v2, v3, v4, v5</td>
       </tr>
       <tr>
@@ -706,6 +706,14 @@ johnsnowlabs/jsl-llms <span class="se">\</span>
         <td>8 GB</td>
         <td>1, 2, 4, 8</td>
         <td>v1, v2, v3</td>
+      </tr>
+      <tr>
+        <td>Medical-DM-Small</td>
+        <td>~9 GB</td>
+        <td>16K</td>
+        <td>1 GB</td>
+        <td>1, 2, 4</td>
+        <td>v1</td>
       </tr>
       <tr>
         <td>Vision-OCR-LLM</td>
@@ -733,8 +741,47 @@ johnsnowlabs/jsl-llms <span class="se">\</span>
 
     <p>All specifications shown are based on the latest version of each model.</p>
 
+    <p><strong>Medical-DM-Small</strong> is a decision model, not a chat model. It is available in image version <code class="language-plaintext highlighter-rouge">0.33.0</code> and later. See <a href="#decision-model-and-phi-guards">Decision Model and PHI Guards</a> below.</p>
+
     <p><strong>Model Code Requirements:</strong> Both <code class="language-plaintext highlighter-rouge">Vision-OCR-LLM</code> and <code class="language-plaintext highlighter-rouge">Vision-OCR-Structured-LLM</code> must be run with <code class="language-plaintext highlighter-rouge">trust_remote_code=True</code> because their model implementations include custom code.</p>
   </blockquote>
+
+  <h3 id="decision-model-and-phi-guards">Decision Model and PHI Guards</h3>
+  <p><code class="language-plaintext highlighter-rouge">Medical-DM-Small</code> does not serve chat or text completions. It answers typed questions about a text. Start it with the <code class="language-plaintext highlighter-rouge">0.33.0</code> image. Add <code class="language-plaintext highlighter-rouge">--guards all</code> to also serve the PHI guards (<code class="language-plaintext highlighter-rouge">phi-guard-v7-final</code> and <code class="language-plaintext highlighter-rouge">phi-guard-v7-fast</code>):</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">-d</span> <span class="se">\</span>
+<span class="nt">--gpus</span> all <span class="se">\</span>
+<span class="nt">--env</span> <span class="s2">"SPARK_NLP_LICENSE=your_license_key"</span> <span class="se">\</span>
+<span class="nt">-p</span> 8080:8080 <span class="se">\</span>
+<span class="nt">--ipc</span><span class="o">=</span>host <span class="se">\</span>
+johnsnowlabs/jsl-llms:0.33.0 <span class="se">\</span>
+<span class="nt">--model</span> Medical-DM-Small <span class="se">\</span>
+<span class="nt">--guards</span> all <span class="se">\</span>
+<span class="nt">--port</span> 8080
+</code></pre></div>  </div>
+
+  <p>The PHI guards available in the image:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th><strong>Guard</strong></th>
+        <th><strong>Use it for</strong></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">phi-guard-v7-final</code></td>
+        <td>Best accuracy.</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">phi-guard-v7-fast</code></td>
+        <td>The same outputs, about 5 times faster, a little less accurate.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><code class="language-plaintext highlighter-rouge">--guards</code> takes <code class="language-plaintext highlighter-rouge">all</code>, or guard ids separated by commas, for example <code class="language-plaintext highlighter-rouge">--guards phi-guard-v7-fast</code>. Without it, the guard endpoints are not active.</p>
 
 </div>
 <div class="h3-box">
@@ -807,6 +854,61 @@ johnsnowlabs/jsl-llms <span class="se">\</span>
 </code></pre></div>      </div>
     </li>
   </ul>
+
+  <h3 id="decisions">Decisions</h3>
+  <p>Use this endpoint with <code class="language-plaintext highlighter-rouge">Medical-DM-Small</code>. Ask a yes/no (<code class="language-plaintext highlighter-rouge">noul</code>), choice or score question about a text.</p>
+
+  <ul>
+    <li><strong>Endpoint</strong>: <code class="language-plaintext highlighter-rouge">/v1/decisions</code></li>
+    <li><strong>Method</strong>: POST</li>
+    <li><strong>Example Request</strong>:</li>
+  </ul>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"model"</span><span class="p">:</span> <span class="s">"Medical-DM-Small"</span><span class="p">,</span>
+    <span class="s">"state"</span><span class="p">:</span> <span class="s">"Discharge summary. Patient Alder Quill was admitted with chest pain. Troponin normal; discharged home on aspirin."</span><span class="p">,</span>
+    <span class="s">"questions"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">"leak"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">"type"</span><span class="p">:</span> <span class="s">"noul"</span><span class="p">,</span>
+            <span class="s">"instructions"</span><span class="p">:</span> <span class="s">"Is any real identifying detail left in this de-identified note?"</span><span class="p">,</span>
+            <span class="s">"criteria"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s">"true"</span><span class="p">:</span> <span class="s">"A real name, phone number, address, date or record number appears in the text"</span><span class="p">,</span>
+                <span class="s">"false"</span><span class="p">:</span> <span class="s">"Every identifier is a tag such as [NAME] or [DATE], or has been removed"</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>  </div>
+
+  <h3 id="phi-guards">PHI Guards</h3>
+  <p>Available when the container is started with <code class="language-plaintext highlighter-rouge">--guards</code>. Check whether a de-identified note still leaks PHI. Send masked or raw notes, not obfuscated ones.</p>
+
+  <ul>
+    <li><strong>Endpoint</strong>: <code class="language-plaintext highlighter-rouge">/v1/guards</code></li>
+    <li><strong>Method</strong>: POST</li>
+    <li><strong>Example Request</strong>:</li>
+  </ul>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"model"</span><span class="p">:</span> <span class="s">"phi-guard-v7-final"</span><span class="p">,</span>
+    <span class="s">"docs"</span><span class="p">:</span> <span class="p">[{</span><span class="s">"id"</span><span class="p">:</span> <span class="s">"note-001"</span><span class="p">,</span> <span class="s">"text"</span><span class="p">:</span> <span class="s">"Pt [NAME] seen on [DATE] for chest pain."</span><span class="p">}]</span>
+<span class="p">}</span>
+</code></pre></div>  </div>
+
+  <h3 id="ensemble">Ensemble</h3>
+  <p>Available when the container is started with <code class="language-plaintext highlighter-rouge">--guards</code>. Check a note with a guard and with <code class="language-plaintext highlighter-rouge">Medical-DM-Small</code>, combine the two scores, and route each note to <code class="language-plaintext highlighter-rouge">leak</code>, <code class="language-plaintext highlighter-rouge">review</code> or <code class="language-plaintext highlighter-rouge">clean</code>. As for the guards, send masked or raw notes, not obfuscated ones.</p>
+
+  <ul>
+    <li><strong>Endpoint</strong>: <code class="language-plaintext highlighter-rouge">/v1/guards/ensemble</code></li>
+    <li><strong>Method</strong>: POST</li>
+    <li><strong>Example Request</strong>:</li>
+  </ul>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"model"</span><span class="p">:</span> <span class="s">"phi-guard-ensemble"</span><span class="p">,</span>
+    <span class="s">"docs"</span><span class="p">:</span> <span class="p">[{</span><span class="s">"id"</span><span class="p">:</span> <span class="s">"note-001"</span><span class="p">,</span> <span class="s">"text"</span><span class="p">:</span> <span class="s">"Pt [NAME] seen on [DATE] for chest pain."</span><span class="p">}]</span>
+<span class="p">}</span>
+</code></pre></div>  </div>
 
 </div>
 <div class="h3-box">
@@ -888,7 +990,7 @@ Think of it like a key in a key cabinet. Your UV license comes with a fixed numb
 
 </div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2026-05-11T00:00:00+00:00">May 11, 2026</time>
+      <time itemprop="dateModified" datetime="2026-11-10T00:00:00+00:00">Nov 10, 2026</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
