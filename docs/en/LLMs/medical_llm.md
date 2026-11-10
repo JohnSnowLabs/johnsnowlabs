@@ -216,13 +216,13 @@ Vision OCR LLM leads on table structure (0.784) and top-tier grounding (0.938, w
 
 </div><div class="h3-box" markdown="1">
 
-## Medical DMs
+## Medical Decision Models (DMs)
 
 Task-optimized models consistently outperform general-purpose models on focused clinical decisions. At John Snow Labs, we have built Medical Decision Models (DMs): compact models that answer typed questions about clinical text, such as whether a note documents a condition, whether a drug caused an event, or whether a trial accepts a patient. A question can ask the model to pick one option, answer yes or no with a probability, or choose an ordered level.
 
 Medical DMs are small enough to deploy privately, and the smallest run on a CPU. The question and its options are part of the input, so a new rule or a new threshold needs no retraining.
 
-### Medical DMs Offering
+### Medical Decision Models (DMs) Offering
 
 {:.table-model-big}
 | Model Name | Best for | Runs on | Recommended Memory | Max Sequence Length | Supported Platforms |
