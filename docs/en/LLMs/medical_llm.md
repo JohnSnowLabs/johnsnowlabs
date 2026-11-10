@@ -291,26 +291,6 @@ Score on ten task areas: the mean of accuracy and macro precision, recall and F1
 
 **Medical DM Small is ahead on six of ten task areas, with its largest margin on clinical trial eligibility (0.931 against 0.781). Medical DM Nano is ahead on cancer registry abstraction, clinical risk prediction, adverse drug events and oncology record review.**
 
-### How the Models Compare
-
-Average score over nine task areas, and the score on each. Bold is the best score in the column.
-
-{:.table-model-big}
-| Model | Cancer registry | Coding and prior auth. | Cohort | Clinical risk | Drug events | General decisions | Quality measure | Clinical notes | Trial eligibility | Average |
-|:---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| Medical DM Small \* | 0.885 | 0.930 | 0.958 | 0.548 | 0.914 | **0.963** | **0.902** | 0.955 | 0.931 | **0.887** |
-| JEV-27B | 0.844 | **0.953** | 0.976 | 0.609 | 0.907 | 0.915 | 0.818 | **0.962** | 0.949 | 0.881 |
-| StartLux 35B-A3B | 0.873 | 0.922 | 0.959 | 0.609 | 0.898 | 0.922 | 0.798 | 0.940 | **0.950** | 0.875 |
-| Medical DM Nano \* | **0.961** | 0.888 | 0.950 | 0.566 | **0.972** | 0.860 | 0.875 | 0.935 | 0.781 | 0.865 |
-| JEV-Gemma4-26B-A4B | 0.863 | 0.950 | **0.982** | **0.627** | 0.911 | 0.898 | 0.777 | 0.955 | 0.799 | 0.863 |
-| Jev-Omni 12B | 0.843 | 0.917 | 0.977 | 0.603 | 0.916 | 0.867 | 0.760 | 0.946 | 0.902 | 0.859 |
-| Kev 4B | 0.828 | 0.909 | 0.972 | 0.583 | 0.831 | 0.858 | 0.708 | 0.926 | 0.861 | 0.831 |
-| Kev 9B | 0.831 | 0.866 | 0.911 | 0.472 | 0.822 | 0.850 | 0.722 | 0.916 | 0.926 | 0.813 |
-
-![Average score over nine task areas](/en/LLMs/images/dm_compare.png)
-
-More accuracy for less memory. Medical DM Small averages 0.887 with ~16 GB GPU VRAM, ahead of the other models shown, which are up to nine times larger. Medical DM Nano averages 0.865 with ~2 GB GPU VRAM or on a CPU, level with a 26B model.
-
 ### PHI Guard Models and Modes
 
 The PHI Guard family has seven models. Each answers one or more questions about a note: does a de-identified note still leak PHI, does a raw note hold any PHI, how much PHI does a note expose, and is a leak harmful.
