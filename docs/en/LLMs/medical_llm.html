@@ -1816,6 +1816,91 @@ Predicted boxes are first IoU-matched to gold regions (0.78 overlap threshold), 
     </tbody>
   </table>
 
+  <h3 id="cost-analysis">Cost Analysis</h3>
+  <p>In addition to processing speed, infrastructure cost is an important consideration when evaluating the operational scalability of Medical Decision Models.</p>
+
+  <p>Based on our benchmark measurements, Medical DM Small processes approximately 40 ms per note, corresponding to an estimated 10–12 hours to process 1 million clinical notes on a GPU with 24 GB memory.</p>
+
+  <h4 id="estimated-infrastructure-cost">Estimated Infrastructure Cost</h4>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th style="text-align: left">Metric</th>
+        <th style="text-align: right">Medical DM Small</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: left">Hardware</td>
+        <td style="text-align: right">GPU (24GB)</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Processing time per note</td>
+        <td style="text-align: right">40ms</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Runtime per 1 million notes</td>
+        <td style="text-align: right">~10 - 12 hours</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Assumed GPU cost per hour</td>
+        <td style="text-align: right">$0.75</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Estimated cost per 1 million notes</td>
+        <td style="text-align: right"><b>$7.50- $9.00</b></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>For cost estimation, we assume an illustrative GPU rental rate of $0.75 per hour.</p>
+
+  <h4 id="cost-projection-by-processing-volume">Cost Projection by Processing Volume</h4>
+
+  <p>Assuming linear scaling of processing time and compute costs:</p>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th style="text-align: left">Number of notes</th>
+        <th style="text-align: right">Estimated runtime</th>
+        <th style="text-align: right">Estimated compute cost</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: left">100,000</td>
+        <td style="text-align: right">1 - 1.2 hours</td>
+        <td style="text-align: right">$0.75 - $0.90</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">1 million</td>
+        <td style="text-align: right">10 -12 hours</td>
+        <td style="text-align: right">$7.50 - $9.00</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">10 million</td>
+        <td style="text-align: right">100 - 120 hours</td>
+        <td style="text-align: right">$75 - $90</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">100 million</td>
+        <td style="text-align: right">1000 - 1200 hours</td>
+        <td style="text-align: right">$750 - $900</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h4 id="calculation-methodology">Calculation Methodology</h4>
+  <p>Estimated compute  cost is calculated using</p>
+
+  <p><strong>Estimated Cost = Runtime (hours) × GPU hourly rate</strong></p>
+
+  <p>These estimates represent GPU compute costs only and exclude storage, networking, orchestration, and other infrastructure expenses. Actual costs will vary depending on the GPU instance, cloud provider, and deployment configuration.</p>
+
+  <p><strong>Note:</strong> The GPU hourly rate of $0.75 is an illustrative pricing assumption and is not an official John Snow Labs price. Runtime and cost estimates are based on the benchmark configuration described above.</p>
+
 </div>
 <div class="h3-box">
   <h2 id="partner-with-us">Partner With Us</h2>
