@@ -375,6 +375,46 @@ CPU models: one thread, a 1 KB note. GPU model: batched on a 24 GB GPU.
 | PHI Guard v0.7 Fast | CPU, one thread (ONNX) | 1.3 | 21.7 min |
 | Medical DM Small | GPU (24 GB) | 40 | ~10-12 h |
 
+
+### Cost Analysis
+In addition to processing speed, infrastructure cost is an important consideration when evaluating the operational scalability of Medical Decision Models.
+
+Based on our benchmark measurements, Medical DM Small processes approximately 40 ms per note, corresponding to an estimated 10–12 hours to process 1 million clinical notes on a GPU with 24 GB memory.
+
+#### Estimated Infrastructure Cost
+
+{:.table-model-big}
+| Metric | Medical DM Small |
+|:---|---:|
+| Hardware | GPU (24GB) |
+| Processing time per note| 40ms |
+| Runtime per 1 million notes | ~10 - 12 hours |
+| Assumed GPU cost per hour | $0.75 |
+| Estimated cost per 1 million notes | <b>$7.50- $9.00</b> |
+
+For cost estimation, we assume an illustrative GPU rental rate of $0.75 per hour.
+
+#### Cost Projection by Processing Volume
+
+Assuming linear scaling of processing time and compute costs:
+
+{:.table-model-big}
+| Number of notes | Estimated runtime | Estimated compute cost |
+|:---|---:|---:|
+| 100,000 | 1 - 1.2 hours | $0.75 - $0.90|
+| 1 million |  10 -12 hours| $7.50 - $9.00 |
+| 10 million | 100 - 120 hours | $75 - $90 |
+| 100 million| 1000 - 1200 hours | $750 - $900 |
+
+#### Calculation Methodology
+Estimated compute  cost is calculated using
+
+**Estimated Cost = Runtime (hours) × GPU hourly rate**
+
+These estimates represent GPU compute costs only and exclude storage, networking, orchestration, and other infrastructure expenses. Actual costs will vary depending on the GPU instance, cloud provider, and deployment configuration.
+
+**Note:** The GPU hourly rate of $0.75 is an illustrative pricing assumption and is not an official John Snow Labs price. Runtime and cost estimates are based on the benchmark configuration described above.
+
 </div><div class="h3-box" markdown="1">
 ## Partner With Us
 
