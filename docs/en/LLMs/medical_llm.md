@@ -389,10 +389,10 @@ Based on our benchmark measurements, Medical DM Small processes approximately 40
 | Hardware | GPU (24GB) |
 | Processing time per note| 40ms |
 | Runtime per 1 million notes | ~10 - 12 hours |
-| Assumed GPU cost per hour | $0.75 |
-| Estimated cost per 1 million notes | <b>$7.50- $9.00</b> |
+| Assumed GPU cost per hour | $1.30 |
+| Estimated cost per 1 million notes | <b>$13.00- $15.60</b> |
 
-For cost estimation, we assume an illustrative GPU rental rate of $0.75 per hour.
+For cost estimation, we assume an illustrative GPU rental rate of $1.30 per hour.
 
 #### Cost Projection by Processing Volume
 
@@ -401,10 +401,10 @@ Assuming linear scaling of processing time and compute costs:
 {:.table-model-big}
 | Number of notes | Estimated runtime | Estimated compute cost |
 |:---|---:|---:|
-| 100,000 | 1 - 1.2 hours | $0.75 - $0.90|
-| 1 million |  10 -12 hours| $7.50 - $9.00 |
-| 10 million | 100 - 120 hours | $75 - $90 |
-| 100 million| 1000 - 1200 hours | $750 - $900 |
+| 100,000 | 1 - 1.2 hours | $1.30 - $1.56|
+| 1 million |  10 -12 hours| $13.00 - $15.60 |
+| 10 million | 100 - 120 hours | $130.00 - $156.00 |
+| 100 million| 1000 - 1200 hours | $1300.00 - $1900.00 |
 
 #### Calculation Methodology
 Estimated compute  cost is calculated using
@@ -413,7 +413,7 @@ Estimated compute  cost is calculated using
 
 These estimates represent GPU compute costs only and exclude storage, networking, orchestration, and other infrastructure expenses. Actual costs will vary depending on the GPU instance, cloud provider, and deployment configuration.
 
-**Note:** The GPU hourly rate of $0.75 is an illustrative pricing assumption and is not an official John Snow Labs price. Runtime and cost estimates are based on the benchmark configuration described above.
+**Note:** The GPU hourly rate of $1.30 is an illustrative pricing assumption and is not an official John Snow Labs price. Runtime and cost estimates are based on the benchmark configuration described above.
 
 </div><div class="h3-box" markdown="1">
 ## Partner With Us
