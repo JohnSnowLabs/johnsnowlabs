@@ -103,6 +103,54 @@ Medical LLM Medium leads the closed frontier on OpenMed (95.25 vs 93.37 average)
 
 Out of 1000 red-teaming questions across 148 medical categories, Medical LLM Medium passed about 950 (95%), compared to 830 for GPT-5.6 Sol (83%), 940 for Claude Opus 5 (94%), and only 810 for Gemini 3.8 Flash (81%) — making Medical LLM Medium the most robust model in this evaluation and outperforming larger private models despite its smaller size.
 
+### Cost Analysis
+
+Running a language model privately means paying for GPU time instead of paying per token. This section compares the estimated cost of processing text with Medical LLM Small and Medical LLM Medium on rented GPUs with the list API prices of the frontier models used in the benchmarks above.
+
+#### Estimated Infrastructure Cost
+
+{:.table-model-big}
+| Metric | Medical LLM Small | Medical LLM Medium |
+|:---|---:|---:|
+| Reference hardware | 1x A100 (40 GB) | 1x H100 (80 GB) |
+| Throughput (64 concurrent requests) | 8,323 tokens/s | 6,685 tokens/s |
+| Assumed GPU cost per hour | $1.99 | $4.20 |
+| Estimated cost per 1 million tokens | ~$0.066 | ~$0.175 |
+
+#### Comparison with Frontier Models
+
+Cost per 1 million tokens for a workload of 1,000 input tokens and 200 output tokens per request (5 parts input to 1 part output). Frontier models are priced at their API list prices.
+
+{:.table-model-big}
+| Model | Input price (per 1M tokens) | Output price (per 1M tokens) | Cost per 1M tokens | Relative to Medical LLM Medium |
+|:---|---:|---:|---:|---:|
+| Medical LLM Small | | | ~$0.066 | ~0.4x |
+| Medical LLM Medium | | | ~$0.175 | 1x |
+| Gemini 3.8 Flash | $0.75 | $3.75 | $1.25 | ~7x |
+| GPT 5.6 Sol | $4.00 | $20.00 | $6.67 | ~38x |
+| Claude Opus 5 | $5.00 | $25.00 | $8.33 | ~48x |
+
+**At a steady workload, Medical LLM Medium costs about 38 times less than GPT 5.6 Sol and about 48 times less than Claude Opus 5 for the same text volume.** 
+
+#### Score and Cost
+
+![Medical LLMs: score against cost](/en/LLMs/images/llm_pareto.png)
+
+Medical LLM Medium scores higher than the three frontier models on both OpenMed and MedHELM, at an estimated cost per token that is 7 to 48 times lower.
+
+#### Cost Projection by Processing Volume
+
+Assuming linear scaling of tokens processed and compute costs:
+
+{:.table-model-big}
+| Number of tokens | Medical LLM Small | Medical LLM Medium | Gemini 3.8 Flash | GPT 5.6 Sol | Claude Opus 5 |
+|---:|---:|---:|---:|---:|---:|
+| 100 million | ~$6.60 | ~$17.50 | $125 | $667 | $833 |
+| 1 billion | ~$66 | ~$175 | $1,250 | $6,667 | $8,333 |
+| 10 billion | ~$660 | ~$1,750 | $12,500 | $66,667 | $83,333 |
+
+Note: The GPU hourly rates of $1.99 and $4.20 are illustrative pricing assumptions and are not official John Snow Labs prices.
+
 
 ## Medical Small LLMs
 
@@ -379,33 +427,45 @@ CPU models: one thread, a 1 KB note. GPU model: batched on a 24 GB GPU.
 ### Cost Analysis
 In addition to processing speed, infrastructure cost is an important consideration when evaluating the operational scalability of Medical Decision Models.
 
-Based on our benchmark measurements, Medical DM Small processes approximately 40 ms per note, corresponding to an estimated 10–12 hours to process 1 million clinical notes on a GPU with 24 GB memory.
+Based on our benchmark measurements, Medical DM Small processes approximately 40 ms per note, corresponding to an estimated 10–12 hours to process 1 million clinical notes on a GPU with 24 GB memory. Medical DM Nano processes approximately 24 ms per note, corresponding to an estimated 6–7 hours.
 
 #### Estimated Infrastructure Cost
 
 {:.table-model-big}
-| Metric | Medical DM Small |
-|:---|---:|
-| Hardware | GPU (24GB) |
-| Processing time per note| 40ms |
-| Runtime per 1 million notes | ~10 - 12 hours |
-| Assumed GPU cost per hour | $1.30 |
-| Estimated cost per 1 million notes | <b>$13.00- $15.60</b> |
+| Metric | Medical DM Nano | Medical DM Small |
+|:---|---:|---:|
+| Hardware | GPU (24GB) | GPU (24GB) |
+| Processing time per note | 24 ms | 40 ms |
+| Runtime per 1 million notes | ~6 - 7 hours | ~10 - 12 hours |
+| Assumed GPU cost per hour | $1.30 | $1.30 |
+| Estimated cost per 1 million notes | $7.85 - $9.42 | $13.00 - $15.60 |
 
 For cost estimation, we assume an illustrative GPU rental rate of $1.30 per hour.
 
-#### Cost Projection by Processing Volume
+#### Comparison with Other Decision Models
 
-Assuming linear scaling of processing time and compute costs:
+Medical DM Small is the reference: 40 ms per note, about 11 hours per 1 million notes. Every other model was measured on the same set of notes, on the smallest GPU it fits on, and is shown at the same scale, so the ratios between models are the measured ratios. The score is the average over eight task areas from the benchmark above.
 
 {:.table-model-big}
-| Number of notes | Estimated runtime | Estimated compute cost |
-|:---|---:|---:|
-| 100,000 | 1 - 1.2 hours | $1.30 - $1.56|
-| 1 million |  10 -12 hours| $13.00 - $15.60 |
-| 10 million | 100 - 120 hours | $130.00 - $156.00 |
-| 100 million| 1000 - 1200 hours | $1300.00 - $1900.00 |
+| Model              | GPU used (price per hour) | Average score | Time per 1 million notes | Cost per 1 million notes |
+| :----------------- | :------------------------ | ------------: | -----------------------: | -----------------------: |
+| Medical DM Nano *  | A10 24 GB ($1.30)         | 0.903         | ~6.6 hours               | ~$8.60                   |
+| JEV-Gemma4-26B-A4B | H100 80 GB ($4.20)        | 0.892         | ~2.4 hours               | ~$10.20                  |
+| Medical DM Small * | A10 24 GB ($1.30)         | 0.930         | ~11 hours                | ~$14.30                  |
+| Kev 9B             | A10 24 GB ($1.30)         | 0.856         | ~23 hours                | ~$29.70                  |
+| JEV-27B            | H100 80 GB ($4.20)        | 0.916         | ~14 hours                | ~$57.80                  |
+| Jev-Omni 12B       | A100 40 GB ($1.99)        | 0.891         | ~42 hours                | ~$83.70                  |
+| StartLux 35B-A3B   | H100 80 GB ($4.20)        | 0.908         | ~20 hours                | ~$85.80                  |
 
+**Medical DM Nano and Medical DM Small run on a 24 GB GPU that costs $1.30 per hour. The models closest to Medical DM Small in score, JEV-27B and StartLux 35B-A3B, need an 80 GB H100 at $4.20 per hour and cost about 4 and 6 times as much per million notes ($57.80 and $85.80 against $14.30).**
+
+#### Score and Cost
+
+![Medical DMs: score against cost](/en/LLMs/images/dm_pareto.png)
+
+Medical DM Small has the highest score of the models compared, and Medical DM Nano has the lowest cost. No other model beats either of them on both score and cost.
+
+Note: The GPU hourly rates of $1.30 (A10, 24 GB), $1.99 (A100, 40 GB) and $4.20 (H100, 80 GB) are illustrative pricing assumptions and are not official John Snow Labs prices. Runtime and cost estimates are based on the benchmark configuration described above.
 #### Calculation Methodology
 Estimated compute  cost is calculated using
 
