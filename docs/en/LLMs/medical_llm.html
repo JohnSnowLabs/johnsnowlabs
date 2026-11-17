@@ -926,6 +926,150 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <p>Out of 1000 red-teaming questions across 148 medical categories, Medical LLM Medium passed about 950 (95%), compared to 830 for GPT-5.6 Sol (83%), 940 for Claude Opus 5 (94%), and only 810 for Gemini 3.8 Flash (81%) — making Medical LLM Medium the most robust model in this evaluation and outperforming larger private models despite its smaller size.</p>
 
+  <h3 id="cost-analysis">Cost Analysis</h3>
+
+  <p>Running a language model privately means paying for GPU time instead of paying per token. This section compares the estimated cost of processing text with Medical LLM Small and Medical LLM Medium on rented GPUs with the list API prices of the frontier models used in the benchmarks above.</p>
+
+  <h4 id="estimated-infrastructure-cost">Estimated Infrastructure Cost</h4>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th style="text-align: left">Metric</th>
+        <th style="text-align: right">Medical LLM Small</th>
+        <th style="text-align: right">Medical LLM Medium</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: left">Reference hardware</td>
+        <td style="text-align: right">1x A100 (40 GB)</td>
+        <td style="text-align: right">1x H100 (80 GB)</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Throughput (64 concurrent requests)</td>
+        <td style="text-align: right">8,323 tokens/s</td>
+        <td style="text-align: right">6,685 tokens/s</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Assumed GPU cost per hour</td>
+        <td style="text-align: right">$1.99</td>
+        <td style="text-align: right">$4.20</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Estimated cost per 1 million tokens</td>
+        <td style="text-align: right">~$0.066</td>
+        <td style="text-align: right">~$0.175</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h4 id="comparison-with-frontier-models">Comparison with Frontier Models</h4>
+
+  <p>Cost per 1 million tokens for a workload of 1,000 input tokens and 200 output tokens per request (5 parts input to 1 part output). Frontier models are priced at their API list prices.</p>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th style="text-align: left">Model</th>
+        <th style="text-align: right">Input price (per 1M tokens)</th>
+        <th style="text-align: right">Output price (per 1M tokens)</th>
+        <th style="text-align: right">Cost per 1M tokens</th>
+        <th style="text-align: right">Relative to Medical LLM Medium</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: left">Medical LLM Small</td>
+        <td style="text-align: right"> </td>
+        <td style="text-align: right"> </td>
+        <td style="text-align: right">~$0.066</td>
+        <td style="text-align: right">~0.4x</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Medical LLM Medium</td>
+        <td style="text-align: right"> </td>
+        <td style="text-align: right"> </td>
+        <td style="text-align: right">~$0.175</td>
+        <td style="text-align: right">1x</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Gemini 3.8 Flash</td>
+        <td style="text-align: right">$0.75</td>
+        <td style="text-align: right">$3.75</td>
+        <td style="text-align: right">$1.25</td>
+        <td style="text-align: right">~7x</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">GPT 5.6 Sol</td>
+        <td style="text-align: right">$4.00</td>
+        <td style="text-align: right">$20.00</td>
+        <td style="text-align: right">$6.67</td>
+        <td style="text-align: right">~38x</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Claude Opus 5</td>
+        <td style="text-align: right">$5.00</td>
+        <td style="text-align: right">$25.00</td>
+        <td style="text-align: right">$8.33</td>
+        <td style="text-align: right">~48x</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>At a steady workload, Medical LLM Medium costs about 38 times less than GPT 5.6 Sol and about 48 times less than Claude Opus 5 for the same text volume.</strong></p>
+
+  <h4 id="score-and-cost">Score and Cost</h4>
+
+  <p><img src="/en/LLMs/images/llm_pareto.png" alt="Medical LLMs: score against cost" /></p>
+
+  <p>Medical LLM Medium scores higher than the three frontier models on both OpenMed and MedHELM, at an estimated cost per token that is 7 to 48 times lower.</p>
+
+  <h4 id="cost-projection-by-processing-volume">Cost Projection by Processing Volume</h4>
+
+  <p>Assuming linear scaling of tokens processed and compute costs:</p>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th style="text-align: right">Number of tokens</th>
+        <th style="text-align: right">Medical LLM Small</th>
+        <th style="text-align: right">Medical LLM Medium</th>
+        <th style="text-align: right">Gemini 3.8 Flash</th>
+        <th style="text-align: right">GPT 5.6 Sol</th>
+        <th style="text-align: right">Claude Opus 5</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: right">100 million</td>
+        <td style="text-align: right">~$6.60</td>
+        <td style="text-align: right">~$17.50</td>
+        <td style="text-align: right">$125</td>
+        <td style="text-align: right">$667</td>
+        <td style="text-align: right">$833</td>
+      </tr>
+      <tr>
+        <td style="text-align: right">1 billion</td>
+        <td style="text-align: right">~$66</td>
+        <td style="text-align: right">~$175</td>
+        <td style="text-align: right">$1,250</td>
+        <td style="text-align: right">$6,667</td>
+        <td style="text-align: right">$8,333</td>
+      </tr>
+      <tr>
+        <td style="text-align: right">10 billion</td>
+        <td style="text-align: right">~$660</td>
+        <td style="text-align: right">~$1,750</td>
+        <td style="text-align: right">$12,500</td>
+        <td style="text-align: right">$66,667</td>
+        <td style="text-align: right">$83,333</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Note: The GPU hourly rates of $1.99 and $4.20 are illustrative pricing assumptions and are not official John Snow Labs prices.</p>
+
   <h2 id="medical-small-llms">Medical Small LLMs</h2>
 
   <p>John Snow Labs offers a curated portfolio of <strong>specialized small language models (1B-10B parameters), alongside larger, more capable models</strong>. Designed for real-world deployment, these models are <strong>quantized for efficiency and can run on standard CPU-based hardware without requiring a GPU</strong>, while also supporting GPU acceleration for improved performance. They integrate seamlessly with the <strong>Healthcare NLP library</strong>, just like any other component, and are fully included under the <strong>Healthcare NLP license</strong>.</p>
@@ -1816,17 +1960,18 @@ Predicted boxes are first IoU-matched to gold regions (0.78 overlap threshold), 
     </tbody>
   </table>
 
-  <h3 id="cost-analysis">Cost Analysis</h3>
+  <h3 id="cost-analysis-1">Cost Analysis</h3>
   <p>In addition to processing speed, infrastructure cost is an important consideration when evaluating the operational scalability of Medical Decision Models.</p>
 
-  <p>Based on our benchmark measurements, Medical DM Small processes approximately 40 ms per note, corresponding to an estimated 10–12 hours to process 1 million clinical notes on a GPU with 24 GB memory.</p>
+  <p>Based on our benchmark measurements, Medical DM Small processes approximately 40 ms per note, corresponding to an estimated 10–12 hours to process 1 million clinical notes on a GPU with 24 GB memory. Medical DM Nano processes approximately 24 ms per note, corresponding to an estimated 6–7 hours.</p>
 
-  <h4 id="estimated-infrastructure-cost">Estimated Infrastructure Cost</h4>
+  <h4 id="estimated-infrastructure-cost-1">Estimated Infrastructure Cost</h4>
 
   <table class="table-model-big">
     <thead>
       <tr>
         <th style="text-align: left">Metric</th>
+        <th style="text-align: right">Medical DM Nano</th>
         <th style="text-align: right">Medical DM Small</th>
       </tr>
     </thead>
@@ -1834,64 +1979,109 @@ Predicted boxes are first IoU-matched to gold regions (0.78 overlap threshold), 
       <tr>
         <td style="text-align: left">Hardware</td>
         <td style="text-align: right">GPU (24GB)</td>
+        <td style="text-align: right">GPU (24GB)</td>
       </tr>
       <tr>
         <td style="text-align: left">Processing time per note</td>
-        <td style="text-align: right">40ms</td>
+        <td style="text-align: right">24 ms</td>
+        <td style="text-align: right">40 ms</td>
       </tr>
       <tr>
         <td style="text-align: left">Runtime per 1 million notes</td>
+        <td style="text-align: right">~6 - 7 hours</td>
         <td style="text-align: right">~10 - 12 hours</td>
       </tr>
       <tr>
         <td style="text-align: left">Assumed GPU cost per hour</td>
         <td style="text-align: right">$1.30</td>
+        <td style="text-align: right">$1.30</td>
       </tr>
       <tr>
         <td style="text-align: left">Estimated cost per 1 million notes</td>
-        <td style="text-align: right"><b>$13.00- $15.60</b></td>
+        <td style="text-align: right">$7.85 - $9.42</td>
+        <td style="text-align: right">$13.00 - $15.60</td>
       </tr>
     </tbody>
   </table>
 
   <p>For cost estimation, we assume an illustrative GPU rental rate of $1.30 per hour.</p>
 
-  <h4 id="cost-projection-by-processing-volume">Cost Projection by Processing Volume</h4>
+  <h4 id="comparison-with-other-decision-models">Comparison with Other Decision Models</h4>
 
-  <p>Assuming linear scaling of processing time and compute costs:</p>
+  <p>Medical DM Small is the reference: 40 ms per note, about 11 hours per 1 million notes. Every other model was measured on the same set of notes, on the smallest GPU it fits on, and is shown at the same scale, so the ratios between models are the measured ratios. The score is the average over eight task areas from the benchmark above.</p>
 
   <table class="table-model-big">
     <thead>
       <tr>
-        <th style="text-align: left">Number of notes</th>
-        <th style="text-align: right">Estimated runtime</th>
-        <th style="text-align: right">Estimated compute cost</th>
+        <th style="text-align: left">Model</th>
+        <th style="text-align: left">GPU used (price per hour)</th>
+        <th style="text-align: right">Average score</th>
+        <th style="text-align: right">Time per 1 million notes</th>
+        <th style="text-align: right">Cost per 1 million notes</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td style="text-align: left">100,000</td>
-        <td style="text-align: right">1 - 1.2 hours</td>
-        <td style="text-align: right">$1.30 - $1.56</td>
+        <td style="text-align: left">Medical DM Nano *</td>
+        <td style="text-align: left">A10 24 GB ($1.30)</td>
+        <td style="text-align: right">0.903</td>
+        <td style="text-align: right">~6.6 hours</td>
+        <td style="text-align: right">~$8.60</td>
       </tr>
       <tr>
-        <td style="text-align: left">1 million</td>
-        <td style="text-align: right">10 -12 hours</td>
-        <td style="text-align: right">$13.00 - $15.60</td>
+        <td style="text-align: left">JEV-Gemma4-26B-A4B</td>
+        <td style="text-align: left">H100 80 GB ($4.20)</td>
+        <td style="text-align: right">0.892</td>
+        <td style="text-align: right">~2.4 hours</td>
+        <td style="text-align: right">~$10.20</td>
       </tr>
       <tr>
-        <td style="text-align: left">10 million</td>
-        <td style="text-align: right">100 - 120 hours</td>
-        <td style="text-align: right">$130.00 - $156.00</td>
+        <td style="text-align: left">Medical DM Small *</td>
+        <td style="text-align: left">A10 24 GB ($1.30)</td>
+        <td style="text-align: right">0.930</td>
+        <td style="text-align: right">~11 hours</td>
+        <td style="text-align: right">~$14.30</td>
       </tr>
       <tr>
-        <td style="text-align: left">100 million</td>
-        <td style="text-align: right">1000 - 1200 hours</td>
-        <td style="text-align: right">$1300.00 - $1900.00</td>
+        <td style="text-align: left">Kev 9B</td>
+        <td style="text-align: left">A10 24 GB ($1.30)</td>
+        <td style="text-align: right">0.856</td>
+        <td style="text-align: right">~23 hours</td>
+        <td style="text-align: right">~$29.70</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">JEV-27B</td>
+        <td style="text-align: left">H100 80 GB ($4.20)</td>
+        <td style="text-align: right">0.916</td>
+        <td style="text-align: right">~14 hours</td>
+        <td style="text-align: right">~$57.80</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Jev-Omni 12B</td>
+        <td style="text-align: left">A100 40 GB ($1.99)</td>
+        <td style="text-align: right">0.891</td>
+        <td style="text-align: right">~42 hours</td>
+        <td style="text-align: right">~$83.70</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">StartLux 35B-A3B</td>
+        <td style="text-align: left">H100 80 GB ($4.20)</td>
+        <td style="text-align: right">0.908</td>
+        <td style="text-align: right">~20 hours</td>
+        <td style="text-align: right">~$85.80</td>
       </tr>
     </tbody>
   </table>
 
+  <p><strong>Medical DM Nano and Medical DM Small run on a 24 GB GPU that costs $1.30 per hour. The models closest to Medical DM Small in score, JEV-27B and StartLux 35B-A3B, need an 80 GB H100 at $4.20 per hour and cost about 4 and 6 times as much per million notes ($57.80 and $85.80 against $14.30).</strong></p>
+
+  <h4 id="score-and-cost-1">Score and Cost</h4>
+
+  <p><img src="/en/LLMs/images/dm_pareto.png" alt="Medical DMs: score against cost" /></p>
+
+  <p>Medical DM Small has the highest score of the models compared, and Medical DM Nano has the lowest cost. No other model beats either of them on both score and cost.</p>
+
+  <p>Note: The GPU hourly rates of $1.30 (A10, 24 GB), $1.99 (A100, 40 GB) and $4.20 (H100, 80 GB) are illustrative pricing assumptions and are not official John Snow Labs prices. Runtime and cost estimates are based on the benchmark configuration described above.</p>
   <h4 id="calculation-methodology">Calculation Methodology</h4>
   <p>Estimated compute  cost is calculated using</p>
 
