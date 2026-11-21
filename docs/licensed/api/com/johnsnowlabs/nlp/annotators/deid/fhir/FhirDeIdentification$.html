@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 7.0.0 ScalaDoc  - com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification</title>
-          <meta name="description" content="Spark NLP 7.0.0 ScalaDoc - com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification" />
-          <meta name="keywords" content="Spark NLP 7.0.0 ScalaDoc com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification" />
+          <title>Spark NLP 7.0.1 ScalaDoc  - com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification</title>
+          <meta name="description" content="Spark NLP 7.0.1 ScalaDoc - com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification" />
+          <meta name="keywords" content="Spark NLP 7.0.1 ScalaDoc com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 7.0.0 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 7.0.1 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -190,6 +190,10 @@
                         <a class="object" href="FhirVersions$.html" title=""></a>
                         <a href="FhirVersions$.html" title="">FhirVersions</a>
                       </li><li class="current-entities indented6">
+                        <a class="object" href="FreeTextSegment$.html" title=""></a>
+                        <a class="class" href="FreeTextSegment.html" title="A part of a free-text field, as it is sent to the de-identification pipeline: an XML / XHTML text node, a line of plain text or markdown, a table cell with its header (&quot;&lt;header&gt; : &lt;value&gt;&quot;) or an HL7 v2 field value."></a>
+                        <a href="FreeTextSegment.html" title="A part of a free-text field, as it is sent to the de-identification pipeline: an XML / XHTML text node, a line of plain text or markdown, a table cell with its header (&quot;&lt;header&gt; : &lt;value&gt;&quot;) or an HL7 v2 field value.">FreeTextSegment</a>
+                      </li><li class="current-entities indented6">
                         <a class="object" href="Hl7v2DeIdentification$.html" title="This is the companion object of Hl7v2DeIdentification."></a>
                         <a class="class" href="Hl7v2DeIdentification.html" title="A Spark Transformer for de-identifying HL7 v2.x messages (the classic pipe / hat delimited &quot;vertical bar&quot; format, e.g."></a>
                         <a href="Hl7v2DeIdentification.html" title="A Spark Transformer for de-identifying HL7 v2.x messages (the classic pipe / hat delimited &quot;vertical bar&quot; format, e.g.">Hl7v2DeIdentification</a>
@@ -340,6 +344,51 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification#StandardCodeSystemPrefixes" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="StandardCodeSystemPrefixes:Seq[String]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification$.html#StandardCodeSystemPrefixes:Seq[String]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">StandardCodeSystemPrefixes</span><span class="result">: <a href="../../../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Prefixes of standard code systems, written as in <a href="#normalizedCodeSystem(system:String):String" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification#normalizedCodeSystem">normalizedCodeSystem</a>: the HL7 terminology and the FHIR code
+systems; the OIDs of HL7 v3 code systems (2.16.840.1.113883.5), of the external code systems registered by HL7
+(2.16.840.1.113883.6: LOINC, SNOMED CT, ICD, CPT, the CDC race and ethnicity codes...), of HL7 v2 tables
+(2.16.840.1.113883.12 and .18) and of FHIR code systems (2.16.840.1.113883.4.642); the OBO ontologies.</p><div class="fullcomment"><div class="comment cmt"><p>Prefixes of standard code systems, written as in <a href="#normalizedCodeSystem(system:String):String" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification#normalizedCodeSystem">normalizedCodeSystem</a>: the HL7 terminology and the FHIR code
+systems; the OIDs of HL7 v3 code systems (2.16.840.1.113883.5), of the external code systems registered by HL7
+(2.16.840.1.113883.6: LOINC, SNOMED CT, ICD, CPT, the CDC race and ethnicity codes...), of HL7 v2 tables
+(2.16.840.1.113883.12 and .18) and of FHIR code systems (2.16.840.1.113883.4.642); the OBO ontologies. Organization
+OIDs (e.g. 2.16.840.1.113883.3, or the OIDs of EHR vendors and health systems) are local.
+</p></div></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification#StandardCodeSystems" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="StandardCodeSystems:Set[String]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification$.html#StandardCodeSystems:Set[String]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">StandardCodeSystems</span><span class="result">: <span class="extype" name="scala.Predef.Set">Set</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">The standard code systems the <code>LOCAL_CODING</code> rules keep as they are, written as in <a href="#normalizedCodeSystem(system:String):String" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification#normalizedCodeSystem">normalizedCodeSystem</a>:
+terminologies (LOINC, SNOMED CT, RxNorm, ICD, CPT, HCPCS, NDC, CVX, UCUM, NUCC), languages and countries, and
+genetics (HGNC, HGVS, ClinVar, dbSNP, Sequence Ontology, HPO, OMIM, Orphanet).</p><div class="fullcomment"><div class="comment cmt"><p>The standard code systems the <code>LOCAL_CODING</code> rules keep as they are, written as in <a href="#normalizedCodeSystem(system:String):String" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification#normalizedCodeSystem">normalizedCodeSystem</a>:
+terminologies (LOINC, SNOMED CT, RxNorm, ICD, CPT, HCPCS, NDC, CVX, UCUM, NUCC), languages and countries, and
+genetics (HGNC, HGVS, ClinVar, dbSNP, Sequence Ontology, HPO, OMIM, Orphanet). See also <a href="#StandardCodeSystemPrefixes:Seq[String]" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification#StandardCodeSystemPrefixes">StandardCodeSystemPrefixes</a>.
+</p></div></div>
     </li><li name="com.johnsnowlabs.nlp.ParamsAndFeaturesReadable#addReader" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="addReader(reader:(T,String,org.apache.spark.sql.SparkSession)=&gt;Unit):Unit"></a><a id="addReader((FhirDeIdentification,String,SparkSession)⇒Unit):Unit"></a>
       <span class="permalink">
@@ -568,6 +617,22 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification#isStandardCodeSystem" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="isStandardCodeSystem(system:String):Boolean"></a><a id="isStandardCodeSystem(String):Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification$.html#isStandardCodeSystem(system:String):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isStandardCodeSystem</span><span class="params">(<span name="system">system: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Whether a code system is standard, see <a href="#StandardCodeSystems:Set[String]" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification#StandardCodeSystems">StandardCodeSystems</a> and <a href="#StandardCodeSystemPrefixes:Seq[String]" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification#StandardCodeSystemPrefixes">StandardCodeSystemPrefixes</a>.</p>
     </li><li name="org.apache.spark.ml.util.MLReadable#load" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="load(path:String):T"></a><a id="load(String):FhirDeIdentification"></a>
       <span class="permalink">
@@ -606,6 +671,23 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.fhir.FhirDeIdentification#normalizedCodeSystem" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="normalizedCodeSystem(system:String):String"></a><a id="normalizedCodeSystem(String):String"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/deid/fhir/FhirDeIdentification$.html#normalizedCodeSystem(system:String):String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">normalizedCodeSystem</span><span class="params">(<span name="system">system: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">A code system as it is compared with the standard ones: lower case, without &quot;urn:oid:&quot;, &quot;https&quot; read as &quot;http&quot;,
+without a trailing slash.</p>
     </li><li name="scala.AnyRef#notify" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notify():Unit"></a>
       <span class="permalink">

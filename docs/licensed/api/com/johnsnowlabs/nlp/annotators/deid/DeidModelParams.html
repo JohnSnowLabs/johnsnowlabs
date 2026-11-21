@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 7.0.0 ScalaDoc  - com.johnsnowlabs.nlp.annotators.deid.DeidModelParams</title>
-          <meta name="description" content="Spark NLP 7.0.0 ScalaDoc - com.johnsnowlabs.nlp.annotators.deid.DeidModelParams" />
-          <meta name="keywords" content="Spark NLP 7.0.0 ScalaDoc com.johnsnowlabs.nlp.annotators.deid.DeidModelParams" />
+          <title>Spark NLP 7.0.1 ScalaDoc  - com.johnsnowlabs.nlp.annotators.deid.DeidModelParams</title>
+          <meta name="description" content="Spark NLP 7.0.1 ScalaDoc - com.johnsnowlabs.nlp.annotators.deid.DeidModelParams" />
+          <meta name="keywords" content="Spark NLP 7.0.1 ScalaDoc com.johnsnowlabs.nlp.annotators.deid.DeidModelParams" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 7.0.0 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 7.0.1 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -1123,6 +1123,27 @@ fake with the original, so &quot;ny&quot; replaced by &quot;NY&quot; is still a 
                 <span class="name">@native</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams#obfuscateKeepingPossessive" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="obfuscateKeepingPossessive(wordToReplace:String,entityClass:String,maskedEntity:String)(obfuscate:String=&gt;String):String"></a><a id="obfuscateKeepingPossessive(String,String,String)((String)⇒String):String"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeidModelParams.html#obfuscateKeepingPossessive(wordToReplace:String,entityClass:String,maskedEntity:String)(obfuscate:String=&gt;String):String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">obfuscateKeepingPossessive</span><span class="params">(<span name="wordToReplace">wordToReplace: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="entityClass">entityClass: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="maskedEntity">maskedEntity: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span name="obfuscate">obfuscate: (<span class="extype" name="scala.Predef.String">String</span>) ⇒ <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Obfuscates a name without its possessive marker and puts the marker back, exactly as it was written, on
+the result.</p><div class="fullcomment"><div class="comment cmt"><p>Obfuscates a name without its possessive marker and puts the marker back, exactly as it was written, on
+the result. &quot;Carter's&quot; therefore shares every lookup of &quot;Carter&quot; (static pairs, entity and name part
+memories, the hash of the fake selection) and becomes the fake of &quot;Carter&quot; followed by &quot;'s&quot;.</p><p>Other entities and names without a marker are obfuscated as they are. A static pair defined for the
+possessive form itself wins over the name without the marker, and a masked result stays a plain mask.
+</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams#obfuscateNameEntity" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="obfuscateNameEntity(originalName:String,keepTextSize:Boolean,lengthDeviation:Int,namePartsMemory:scala.collection.mutable.Map[String,String],documentID:Option[String]):String"></a><a id="obfuscateNameEntity(String,Boolean,Int,Map[String,String],Option[String]):String"></a>
       <span class="permalink">
@@ -1187,6 +1208,22 @@ fake with the original, so &quot;ny&quot; replaced by &quot;NY&quot; is still a 
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams#splitPossessive" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="splitPossessive(name:String):(String,String)"></a><a id="splitPossessive(String):(String,String)"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeidModelParams.html#splitPossessive(name:String):(String,String)" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">splitPossessive</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: (<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>)</span>
+      </span>
+      
+      <p class="shortcomment cmt">Splits a name into the name itself and its possessive marker, which is empty when there is none.</p><div class="fullcomment"><div class="comment cmt"><p>Splits a name into the name itself and its possessive marker, which is empty when there is none.</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">
