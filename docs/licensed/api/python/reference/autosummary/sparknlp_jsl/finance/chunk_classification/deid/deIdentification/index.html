@@ -788,6 +788,11 @@ Default: False.</p></li>
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.minRandomDisplacementDays">
+<span class="sig-name descname"><span class="pre">minRandomDisplacementDays</span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.minRandomDisplacementDays" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.minYear">
 <span class="sig-name descname"><span class="pre">minYear</span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.minYear" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -835,6 +840,11 @@ Default: False.</p></li>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.obfuscateZipKeepDigits">
 <span class="sig-name descname"><span class="pre">obfuscateZipKeepDigits</span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.obfuscateZipKeepDigits" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.obfuscateZipRestrictedPrefixes">
+<span class="sig-name descname"><span class="pre">obfuscateZipRestrictedPrefixes</span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.obfuscateZipRestrictedPrefixes" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -1877,6 +1887,21 @@ Select the following masking policy if you want to return mask form in the metad
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setMinRandomDisplacementDays">
+<span class="sig-name descname"><span class="pre">setMinRandomDisplacementDays</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">days</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setMinRandomDisplacementDays" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets minimum number of days for random date displacement when <cite>isRandomDateDisplacement</cite>
+is set to True: dates are moved by a number of days between <cite>minRandomDisplacementDays</cite> and
+<cite>maxRandomDisplacementDays</cite>, never 0. Negative values move dates backward, e.g. -60 and 60
+move dates up to 60 days in either direction. Must not be greater than
+<cite>maxRandomDisplacementDays</cite>. Default is 1.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>days</strong> (<em>int</em>) – Minimum number of days for random date displacement.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setMinYear">
 <span class="sig-name descname"><span class="pre">setMinYear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setMinYear" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets minimum year to be used when transforming dates into years. Default: 1929</p>
@@ -1992,6 +2017,11 @@ both : Takes the entities from the setCustomFakers function and the faker module
 to the canonical value “000**”.</p></li>
 <li><p>Otherwise, the ZIP is generalized to the first three digits followed by
 “**” (i.e. <cite>XXX**</cite>). The +4 portion will be masked with asterisks if present.</p></li>
+<li><p>Any other value is never replaced by a fake ZIP code: it keeps its first
+<code class="docutils literal notranslate"><span class="pre">obfuscateZipKeepDigits</span></code> digits too (zeros for a restricted prefix), the other digits
+masked (“02115123456” -&gt; “021********”); a ZIP code that lost its leading zeros gets
+them back first (“2115” -&gt; “021**”); a value with letters is masked entirely
+(“K1A0B1” -&gt; “<strong>**</strong>”).</p></li>
 </ol>
 </dd>
 </dl>
@@ -2053,6 +2083,28 @@ remain unmasked, enabling expert-determination–based deidentification flows.</
 </dd>
 </dl>
 </section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setObfuscateZipRestrictedPrefixes">
+<span class="sig-name descname"><span class="pre">setObfuscateZipRestrictedPrefixes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prefixes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setObfuscateZipRestrictedPrefixes" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the 3-digit ZIP code prefixes of areas with 20,000 or fewer people, changed to
+<code class="docutils literal notranslate"><span class="pre">000</span></code> when applying HIPAA-based ZIP code obfuscation.</p>
+<p>This parameter is only effective when <code class="docutils literal notranslate"><span class="pre">obfuscateZipByHipaa</span></code> is enabled.</p>
+<p>Default: the 17 prefixes of the HHS Safe Harbor guidance, based on 2000 Census data
+(036, 059, 063, 102, 203, 556, 692, 790, 821, 823, 830, 831, 878, 879, 884, 890, 893).
+HHS notes that this list should not be relied upon when more current Census data is
+published; set the prefixes computed from current data instead, e.g. the 2020 Census:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">deid</span><span class="o">.</span><span class="n">setObfuscateZipRestrictedPrefixes</span><span class="p">([</span>
+<span class="gp">... </span>    <span class="s2">&quot;036&quot;</span><span class="p">,</span> <span class="s2">&quot;059&quot;</span><span class="p">,</span> <span class="s2">&quot;102&quot;</span><span class="p">,</span> <span class="s2">&quot;202&quot;</span><span class="p">,</span> <span class="s2">&quot;203&quot;</span><span class="p">,</span> <span class="s2">&quot;204&quot;</span><span class="p">,</span> <span class="s2">&quot;205&quot;</span><span class="p">,</span> <span class="s2">&quot;369&quot;</span><span class="p">,</span> <span class="s2">&quot;556&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;692&quot;</span><span class="p">,</span> <span class="s2">&quot;753&quot;</span><span class="p">,</span> <span class="s2">&quot;772&quot;</span><span class="p">,</span> <span class="s2">&quot;821&quot;</span><span class="p">,</span> <span class="s2">&quot;823&quot;</span><span class="p">,</span> <span class="s2">&quot;878&quot;</span><span class="p">,</span> <span class="s2">&quot;879&quot;</span><span class="p">,</span> <span class="s2">&quot;884&quot;</span><span class="p">,</span> <span class="s2">&quot;893&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>prefixes</strong> (<em>list</em>) – 3-digit ZIP code prefixes, as strings.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -2790,6 +2842,11 @@ Default: False.</p></li>
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.minRandomDisplacementDays">
+<span class="sig-name descname"><span class="pre">minRandomDisplacementDays</span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.minRandomDisplacementDays" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.minYear">
 <span class="sig-name descname"><span class="pre">minYear</span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.minYear" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -2832,6 +2889,11 @@ Default: False.</p></li>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.obfuscateZipKeepDigits">
 <span class="sig-name descname"><span class="pre">obfuscateZipKeepDigits</span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.obfuscateZipKeepDigits" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.obfuscateZipRestrictedPrefixes">
+<span class="sig-name descname"><span class="pre">obfuscateZipRestrictedPrefixes</span></span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.obfuscateZipRestrictedPrefixes" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -3779,6 +3841,21 @@ Select the following masking policy if you want to return mask form in the metad
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setMinRandomDisplacementDays">
+<span class="sig-name descname"><span class="pre">setMinRandomDisplacementDays</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">days</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setMinRandomDisplacementDays" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets minimum number of days for random date displacement when <cite>isRandomDateDisplacement</cite>
+is set to True: dates are moved by a number of days between <cite>minRandomDisplacementDays</cite> and
+<cite>maxRandomDisplacementDays</cite>, never 0. Negative values move dates backward, e.g. -60 and 60
+move dates up to 60 days in either direction. Must not be greater than
+<cite>maxRandomDisplacementDays</cite>. Default is 1.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>days</strong> (<em>int</em>) – Minimum number of days for random date displacement.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setMinYear">
 <span class="sig-name descname"><span class="pre">setMinYear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setMinYear" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets minimum year to be used when transforming dates into years. Default: 1929</p>
@@ -3883,6 +3960,11 @@ both : Takes the entities from the setCustomFakers function and the faker module
 to the canonical value “000**”.</p></li>
 <li><p>Otherwise, the ZIP is generalized to the first three digits followed by
 “**” (i.e. <cite>XXX**</cite>). The +4 portion will be masked with asterisks if present.</p></li>
+<li><p>Any other value is never replaced by a fake ZIP code: it keeps its first
+<code class="docutils literal notranslate"><span class="pre">obfuscateZipKeepDigits</span></code> digits too (zeros for a restricted prefix), the other digits
+masked (“02115123456” -&gt; “021********”); a ZIP code that lost its leading zeros gets
+them back first (“2115” -&gt; “021**”); a value with letters is masked entirely
+(“K1A0B1” -&gt; “<strong>**</strong>”).</p></li>
 </ol>
 </dd>
 </dl>
@@ -3944,6 +4026,28 @@ remain unmasked, enabling expert-determination–based deidentification flows.</
 </dd>
 </dl>
 </section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setObfuscateZipRestrictedPrefixes">
+<span class="sig-name descname"><span class="pre">setObfuscateZipRestrictedPrefixes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prefixes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setObfuscateZipRestrictedPrefixes" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the 3-digit ZIP code prefixes of areas with 20,000 or fewer people, changed to
+<code class="docutils literal notranslate"><span class="pre">000</span></code> when applying HIPAA-based ZIP code obfuscation.</p>
+<p>This parameter is only effective when <code class="docutils literal notranslate"><span class="pre">obfuscateZipByHipaa</span></code> is enabled.</p>
+<p>Default: the 17 prefixes of the HHS Safe Harbor guidance, based on 2000 Census data
+(036, 059, 063, 102, 203, 556, 692, 790, 821, 823, 830, 831, 878, 879, 884, 890, 893).
+HHS notes that this list should not be relied upon when more current Census data is
+published; set the prefixes computed from current data instead, e.g. the 2020 Census:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">deid</span><span class="o">.</span><span class="n">setObfuscateZipRestrictedPrefixes</span><span class="p">([</span>
+<span class="gp">... </span>    <span class="s2">&quot;036&quot;</span><span class="p">,</span> <span class="s2">&quot;059&quot;</span><span class="p">,</span> <span class="s2">&quot;102&quot;</span><span class="p">,</span> <span class="s2">&quot;202&quot;</span><span class="p">,</span> <span class="s2">&quot;203&quot;</span><span class="p">,</span> <span class="s2">&quot;204&quot;</span><span class="p">,</span> <span class="s2">&quot;205&quot;</span><span class="p">,</span> <span class="s2">&quot;369&quot;</span><span class="p">,</span> <span class="s2">&quot;556&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;692&quot;</span><span class="p">,</span> <span class="s2">&quot;753&quot;</span><span class="p">,</span> <span class="s2">&quot;772&quot;</span><span class="p">,</span> <span class="s2">&quot;821&quot;</span><span class="p">,</span> <span class="s2">&quot;823&quot;</span><span class="p">,</span> <span class="s2">&quot;878&quot;</span><span class="p">,</span> <span class="s2">&quot;879&quot;</span><span class="p">,</span> <span class="s2">&quot;884&quot;</span><span class="p">,</span> <span class="s2">&quot;893&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>prefixes</strong> (<em>list</em>) – 3-digit ZIP code prefixes, as strings.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -4362,6 +4466,7 @@ Options: [mask, obfuscate, skip]. Default: obfuscate.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.maskingPolicy"><code class="docutils literal notranslate"><span class="pre">DeIdentification.maskingPolicy</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.maxRandomDisplacementDays"><code class="docutils literal notranslate"><span class="pre">DeIdentification.maxRandomDisplacementDays</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.metadataMaskingPolicy"><code class="docutils literal notranslate"><span class="pre">DeIdentification.metadataMaskingPolicy</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.minRandomDisplacementDays"><code class="docutils literal notranslate"><span class="pre">DeIdentification.minRandomDisplacementDays</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.minYear"><code class="docutils literal notranslate"><span class="pre">DeIdentification.minYear</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.mode"><code class="docutils literal notranslate"><span class="pre">DeIdentification.mode</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.name"><code class="docutils literal notranslate"><span class="pre">DeIdentification.name</span></code></a></li>
@@ -4372,6 +4477,7 @@ Options: [mask, obfuscate, skip]. Default: obfuscate.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.obfuscateRefSource"><code class="docutils literal notranslate"><span class="pre">DeIdentification.obfuscateRefSource</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.obfuscateZipByHipaa"><code class="docutils literal notranslate"><span class="pre">DeIdentification.obfuscateZipByHipaa</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.obfuscateZipKeepDigits"><code class="docutils literal notranslate"><span class="pre">DeIdentification.obfuscateZipKeepDigits</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.obfuscateZipRestrictedPrefixes"><code class="docutils literal notranslate"><span class="pre">DeIdentification.obfuscateZipRestrictedPrefixes</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.obfuscationEquivalentsResource"><code class="docutils literal notranslate"><span class="pre">DeIdentification.obfuscationEquivalentsResource</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.obfuscationStrategyOnException"><code class="docutils literal notranslate"><span class="pre">DeIdentification.obfuscationStrategyOnException</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.optionalInputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">DeIdentification.optionalInputAnnotatorTypes</span></code></a></li>
@@ -4465,6 +4571,7 @@ Options: [mask, obfuscate, skip]. Default: obfuscate.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setMaskingPolicy"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setMaskingPolicy()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setMaxRandomDisplacementDays"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setMaxRandomDisplacementDays()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setMetadataMaskingPolicy"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setMetadataMaskingPolicy()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setMinRandomDisplacementDays"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setMinRandomDisplacementDays()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setMinYear"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setMinYear()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setMode"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setMode()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setNationalityAwareness"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setNationalityAwareness()</span></code></a></li>
@@ -4474,6 +4581,7 @@ Options: [mask, obfuscate, skip]. Default: obfuscate.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setObfuscateRefSource"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setObfuscateRefSource()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setObfuscateZipByHipaa"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setObfuscateZipByHipaa()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setObfuscateZipKeepDigits"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setObfuscateZipKeepDigits()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setObfuscateZipRestrictedPrefixes"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setObfuscateZipRestrictedPrefixes()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setObfuscationEquivalents"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setObfuscationEquivalents()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setObfuscationEquivalentsResource"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setObfuscationEquivalentsResource()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentification.setObfuscationStrategyOnException"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setObfuscationStrategyOnException()</span></code></a></li>
@@ -4539,6 +4647,7 @@ Options: [mask, obfuscate, skip]. Default: obfuscate.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.maskingPolicy"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.maskingPolicy</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.maxRandomDisplacementDays"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.maxRandomDisplacementDays</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.metadataMaskingPolicy"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.metadataMaskingPolicy</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.minRandomDisplacementDays"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.minRandomDisplacementDays</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.minYear"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.minYear</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.mode"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.mode</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.name"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.name</span></code></a></li>
@@ -4548,6 +4657,7 @@ Options: [mask, obfuscate, skip]. Default: obfuscate.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.obfuscateRefSource"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.obfuscateRefSource</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.obfuscateZipByHipaa"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.obfuscateZipByHipaa</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.obfuscateZipKeepDigits"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.obfuscateZipKeepDigits</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.obfuscateZipRestrictedPrefixes"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.obfuscateZipRestrictedPrefixes</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.obfuscationStrategyOnException"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.obfuscationStrategyOnException</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.optionalInputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.optionalInputAnnotatorTypes</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.outputAnnotatorType"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.outputAnnotatorType</span></code></a></li>
@@ -4632,6 +4742,7 @@ Options: [mask, obfuscate, skip]. Default: obfuscate.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setMaskingPolicy"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setMaskingPolicy()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setMaxRandomDisplacementDays"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setMaxRandomDisplacementDays()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setMetadataMaskingPolicy"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setMetadataMaskingPolicy()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setMinRandomDisplacementDays"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setMinRandomDisplacementDays()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setMinYear"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setMinYear()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setMode"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setMode()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setNationalityAwareness"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setNationalityAwareness()</span></code></a></li>
@@ -4640,6 +4751,7 @@ Options: [mask, obfuscate, skip]. Default: obfuscate.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setObfuscateRefSource"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setObfuscateRefSource()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setObfuscateZipByHipaa"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setObfuscateZipByHipaa()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setObfuscateZipKeepDigits"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setObfuscateZipKeepDigits()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setObfuscateZipRestrictedPrefixes"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setObfuscateZipRestrictedPrefixes()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setObfuscationEquivalents"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setObfuscationEquivalents()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setObfuscationStrategyOnException"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setObfuscationStrategyOnException()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.setOutputAsDocument"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setOutputAsDocument()</span></code></a></li>

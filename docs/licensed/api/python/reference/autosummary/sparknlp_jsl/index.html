@@ -595,6 +595,7 @@ document.write(`
     <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">&quot;spark.kryoserializer.buffer.max&quot;</span><span class="p">,</span> <span class="s2">&quot;2000M&quot;</span><span class="p">)</span> \
     <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">&quot;spark.driver.maxResultSize&quot;</span><span class="p">,</span> <span class="s2">&quot;0&quot;</span><span class="p">)</span> \
     <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">&quot;spark.extraListeners&quot;</span><span class="p">,</span> <span class="s2">&quot;com.johnsnowlabs.license.LicenseLifeCycleManager&quot;</span><span class="p">)</span> \
+    <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">&quot;spark.jsl.settings.pretrained.download_progress&quot;</span><span class="p">,</span> <span class="s2">&quot;bar&quot;</span><span class="p">)</span> \
     <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">&quot;spark.jars&quot;</span><span class="p">,</span> <span class="s2">&quot;https://pypi.johnsnowlabs.com/&lt;secret&gt;/&lt;licensed jar&gt;&quot;</span><span class="p">)</span> \
     <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">&quot;spark.jars.packages&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;open-source Spark NLP Maven coordinate&gt;&quot;</span><span class="p">)</span> \
     <span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
@@ -623,6 +624,9 @@ Spark NLP for Healthcare. Defaults to <code class="docutils literal notranslate"
 </dl>
 <p class="rubric">Notes</p>
 <p><code class="docutils literal notranslate"><span class="pre">spark.driver.memory</span></code> defaults to the available system memory.</p>
+<p>Pretrained download progress is one line redrawn in place (<code class="docutils literal notranslate"><span class="pre">&quot;bar&quot;</span></code>) by default. Pass
+<code class="docutils literal notranslate"><span class="pre">params={&quot;spark.jsl.settings.pretrained.download_progress&quot;:</span> <span class="pre">&quot;off&quot;}</span></code> (or <code class="docutils literal notranslate"><span class="pre">&quot;lines&quot;</span></code>,
+<code class="docutils literal notranslate"><span class="pre">&quot;auto&quot;</span></code>) to change it.</p>
 <p>The artifacts are resolved from the installed PySpark version:</p>
 <table class="table">
 <thead>

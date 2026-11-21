@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 7.0.0 ScalaDoc  - com.johnsnowlabs.nlp.annotators.deid.Obfuscator</title>
-          <meta name="description" content="Spark NLP 7.0.0 ScalaDoc - com.johnsnowlabs.nlp.annotators.deid.Obfuscator" />
-          <meta name="keywords" content="Spark NLP 7.0.0 ScalaDoc com.johnsnowlabs.nlp.annotators.deid.Obfuscator" />
+          <title>Spark NLP 7.0.1 ScalaDoc  - com.johnsnowlabs.nlp.annotators.deid.Obfuscator</title>
+          <meta name="description" content="Spark NLP 7.0.1 ScalaDoc - com.johnsnowlabs.nlp.annotators.deid.Obfuscator" />
+          <meta name="keywords" content="Spark NLP 7.0.1 ScalaDoc com.johnsnowlabs.nlp.annotators.deid.Obfuscator" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 7.0.0 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 7.0.1 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -562,7 +562,7 @@
       </span>
       
       
-    </li><li name="com.johnsnowlabs.nlp.annotators.deid.Obfuscator#dateToYear" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.Obfuscator#dateToYear" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="dateToYear(oriStr:String,minYear:Int,dateFormats:Array[String],language:String):Option[String]"></a><a id="dateToYear(String,Int,Array[String],String):Option[String]"></a>
       <span class="permalink">
       <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/Obfuscator$.html#dateToYear(oriStr:String,minYear:Int,dateFormats:Array[String],language:String):Option[String]" title="Permalink">
@@ -577,7 +577,10 @@
         <span class="name">dateToYear</span><span class="params">(<span name="oriStr">oriStr: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="minYear">minYear: <span class="extype" name="scala.Int">Int</span></span>, <span name="dateFormats">dateFormats: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol"><span class="name"><a href="#dateFormatsDefault:Array[String]">dateFormatsDefault</a></span></span></span>, <span name="language">language: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol"><span class="name"><a href="Language$.html">Language.English</a></span></span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
       </span>
       
-      
+      <p class="shortcomment cmt">The year of a date, or of the date of a timestamp (see <a href="#splitTimestamp(value:String):Option[(String,String)]" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.Obfuscator#splitTimestamp">splitTimestamp</a>, the time is dropped), as a string; years
+before <code>minYear</code> become <code>minYear</code>.</p><div class="fullcomment"><div class="comment cmt"><p>The year of a date, or of the date of a timestamp (see <a href="#splitTimestamp(value:String):Option[(String,String)]" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.Obfuscator#splitTimestamp">splitTimestamp</a>, the time is dropped), as a string; years
+before <code>minYear</code> become <code>minYear</code>. None when the date cannot be read with the date formats.
+</p></div></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.Obfuscator#defaultUS" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="defaultUS:String"></a>
       <span class="permalink">
@@ -594,7 +597,7 @@
       </span>
       
       
-    </li><li name="com.johnsnowlabs.nlp.annotators.deid.Obfuscator#displaceDate" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.Obfuscator#displaceDate" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="displaceDate(oriStr:String,days:Int,dateFormats:Array[String],language:String,keepYear:Boolean,keepMonth:Boolean):Option[String]"></a><a id="displaceDate(String,Int,Array[String],String,Boolean,Boolean):Option[String]"></a>
       <span class="permalink">
       <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/Obfuscator$.html#displaceDate(oriStr:String,days:Int,dateFormats:Array[String],language:String,keepYear:Boolean,keepMonth:Boolean):Option[String]" title="Permalink">
@@ -609,7 +612,11 @@
         <span class="name">displaceDate</span><span class="params">(<span name="oriStr">oriStr: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="days">days: <span class="extype" name="scala.Int">Int</span></span>, <span name="dateFormats">dateFormats: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol"><span class="name"><a href="#dateFormatsDefault:Array[String]">dateFormatsDefault</a></span></span></span>, <span name="language">language: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol"><span class="name"><a href="Language$.html">Language.English</a></span></span></span>, <span name="keepYear">keepYear: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="keepMonth">keepMonth: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
       </span>
       
-      
+      <p class="shortcomment cmt">Shifts a date by <code>days</code>, written in the format it is read with.</p><div class="fullcomment"><div class="comment cmt"><p>Shifts a date by <code>days</code>, written in the format it is read with. A timestamp (see <a href="#splitTimestamp(value:String):Option[(String,String)]" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.Obfuscator#splitTimestamp">splitTimestamp</a>) has its date
+shifted and its time, separator and time zone kept as they are written, e.g. &quot;2024-03-04T10:30:00Z&quot; + 5 -&gt;
+&quot;2024-03-09T10:30:00Z&quot;, &quot;3/4/2024 9:05 AM&quot; + 5 -&gt; &quot;3/9/2024 9:05 AM&quot;. A value that cannot be read as a date has its
+first one or two digits shifted as a day, if any; None otherwise.
+</p></div></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a><a id="eq(AnyRef):Boolean"></a>
       <span class="permalink">
@@ -916,6 +923,24 @@
       </span>
       
       
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.Obfuscator#splitTimestamp" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="splitTimestamp(value:String):Option[(String,String)]"></a><a id="splitTimestamp(String):Option[(String,String)]"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/Obfuscator$.html#splitTimestamp(value:String):Option[(String,String)]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">splitTimestamp</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[(<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>)]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Splits a timestamp into its date and the rest, the separator and the time as they are written, e.g.</p><div class="fullcomment"><div class="comment cmt"><p>Splits a timestamp into its date and the rest, the separator and the time as they are written, e.g.
+&quot;2024-03-04T10:30:00Z&quot; -&gt; (&quot;2024-03-04&quot;, &quot;T10:30:00Z&quot;). None when the value is not a timestamp.
+</p></div></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">
