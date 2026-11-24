@@ -111,6 +111,7 @@ try:
             Hl7v2DeIdentification,
             PretrainedZeroShotMultiTask,
             MultiAnnotationSplitter,
+            DecisionModel,
         )
         from sparknlp_jsl.structured_deidentification import StructuredDeidentification
         from sparknlp_jsl.text_to_documents_columns import TextToDocumentsColumns

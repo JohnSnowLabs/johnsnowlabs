@@ -10,9 +10,9 @@ from johnsnowlabs.utils.env_utils import (
 
 # These versions are used for auto-installs and version  checks
 
-raw_version_jsl_lib = "7.0.0"
+raw_version_jsl_lib = "7.0.1"
 
-raw_version_nlp = "7.0.0"
+raw_version_nlp = "7.0.1"
 
 raw_version_nlu = "5.4.1"
 
@@ -25,11 +25,11 @@ max_python_hc = "3.13"
 max_python_ocr = "3.12"
 raw_version_nlp_display = "5.0"
 
-raw_version_medical = "7.0.0"
-raw_version_secret_medical = "7.0.0"
+raw_version_medical = "7.0.1"
+raw_version_secret_medical = "7.0.1"
 
-raw_version_secret_ocr = "7.0.0"
-raw_version_ocr = "7.0.0"
+raw_version_secret_ocr = "7.0.1"
+raw_version_ocr = "7.0.1"
 
 raw_version_pydantic = "2"
 
