@@ -5,7 +5,7 @@ seotitle: Spark OCR | John Snow Labs
 title: Spark OCR release notes
 permalink: /docs/en/spark_ocr_versions/ocr_release_notes
 key: docs-ocr-release-notes
-modify_date: "07-10-2026"
+modify_date: "25-11-2026"
 show_nav: true
 sidebar:
     nav: sparknlp-healthcare
@@ -13,127 +13,137 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-## 7.0.0
+## 7.0.1
 
-Release date: 07-10-2026
+Release date: 25-11-2026
 
-## Visual NLP 7.0.0 Release Notes 🕶️
+## Visual NLP 7.0.1 Release Notes 🕶️
 
-**We are glad to announce that Visual NLP 7.0.0 has been released! This is a release with multiple small, but impactful changes. 📢📢📢**
+**We are glad to announce that Visual NLP 7.0.1 has been released! This release brings new fast text detectors, a logo detector, de-identification of digital PDFs, and many improvements in Dicom and SVS processing. 📢📢📢**
 
 </div><div class="h3-box" markdown="1">
 
 ## Main Changes 🔴
 
-* Added support for latest Spark 4.X versions, and continue with our efforts to support Scala 2.13 and Java 17.
-* Dicom Processing improvements, and also improvements in our Pathology (SVS) Processing capabilities.
-* New models and pipelines.
-* A new Infrastructure Stack (Cloudformation) to run SVS and Dicom de-identification in AWS, and new instructions on how to run on Databricks.
+* New `ImageTextDetectorFast` and `ImageTextDetectorLite`: fast OpenVINO text detectors that run on CPU.
+* New `ImageLogoDetector` to find logos in document images.
+* New `PdfDeidentifier`: de-identification of digital PDFs that keeps the output PDF digital.
+* Dicom improvements: wildcard and private tag rules in strategy files, more reliable de-identification of tags, and lower memory usage.
+* Pathology (SVS) improvements: a simpler API, a blanket de-identification mode, and better detection of PHI.
+* A new data loader pipeline and many bug fixes.
+* Support for PySpark up to 4.x.
 
 </div><div class="h3-box" markdown="1">
 
-## Important changes in `start()` function
+## New Text Detectors: ImageTextDetectorFast and ImageTextDetectorLite
 
-Following the guidelines of open source Spark-NLP, JAR artifact selection in `start()` function is now determined by PySpark version, as follows,
+Two new text detectors that use OpenVINO (f32) models. They are a fast alternative to `ImageTextDetectorCraft` in CPU pipelines.
 
-| Spark Version | Scala Version | JAR Artifact |
-|---|---|---|
-| Spark 3.x | Scala 2.12 | spark-ocr 3.x |
-| Spark 4.0.0 | Scala 2.13 | spark-ocr 400 |
-| Other Spark 4.x | Scala 2.13 | spark-ocr 4.0.1+ |
+```python
+text_detector = ImageTextDetectorFast.pretrained("image_text_detector_fast_ov", "en", "clinical/ocr") \
+    .setInputCol("image") \
+    .setOutputCol("text_regions")
+
+# or
+
+text_detector = ImageTextDetectorLite.pretrained("image_text_detector_lite_ov", "en", "clinical/ocr") \
+    .setInputCol("image") \
+    .setOutputCol("text_regions")
+```
+
+* `setWidth()` and `setHeight()` set the input size of the model. The default, 0, keeps the current behavior (`limitSideLength` for Fast, `longSide` for Lite). If you set only one side, the other one keeps the aspect ratio of the image.
+* New `flagRegionsCol` param, also in `ImageTextDetectorCraft`: images with no regions in this column are skipped and return no regions. This replaces the `SQLTransformer` stages used in Dicom flagging pipelines, and saves time when only some images need OCR.
+
+To see them in action check [SparkOcrDicomFlaggingPretrainedPipelines.ipynb](https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/Dicom/SparkOcrDicomFlaggingPretrainedPipelines.ipynb).
+
+</div><div class="h3-box" markdown="1">
+
+## New Logo Detector
+
+New `ImageLogoDetector`, a YOLO ONNX detector that finds logos in images.
+
+```python
+logo_detector = ImageLogoDetector.pretrained("logo_detector_v1", "en", "clinical/ocr") \
+    .setInputCol("image") \
+    .setOutputCol("logo_regions") \
+    .setScoreThreshold(0.55)
+```
+
+You can see this model in action here: [SparkOcrImageLogoDetection.ipynb](https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/SparkOcrImageLogoDetection.ipynb).
+
+</div><div class="h3-box" markdown="1">
+
+## Digital PDF De-identification
+
+New `PdfDeidentifier` replaces the detected entities in the text of digital PDFs, with no need to turn pages into images. The result is still a digital PDF: fonts, layout and the rest of the page stay as they were.
+A few settings worth mentioning,
+
+* `aggregatePages` (default `True`): merges the pages of each document into one de-identified PDF.
+* `fitToWidth`: scales each replacement to the width of the original text.
+* `wholeWords`: replaces matches on word boundaries only.
+* `allOccurrences`: a cursor is kept both in the entities and in the document to track the position at which the input entities are located in the PDF, and by default each input entity replaces one occurrence, the next one in the document. When this setting is `True`, every other whole-word occurrence of the entity text in the PDF is also replaced.
+
+To see it in action check [ObfuscationDigitalPDF.ipynb](https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/deid-and-obfuscation/ObfuscationDigitalPDF.ipynb).
 
 </div><div class="h3-box" markdown="1">
 
 ## Dicom Changes
 
-* Updates the `DicomPretrainedPipeline` to support strategy files used in de-identification of Dicom tags. Also, `DicomPretrainedPipeline` now supports `load()/save()`.
-* New `replaceWithMapping` action in `DicomMetadataDeidentifier`: replaces tag values from an external mapping column (`externalMapping`), with optional nested-tag handling.
-* Overlay extraction off by default (new `extractOverlay` param).
-* Fixes for YBR 8-bit compression, compression ratio calculation, JPEG baseline 12-bit and Monochrome1 white pixels.
-* `DicomDrawRegions` has been fixed for reliability and the dependency on `python-gdcm` has been removed, making setup of the Visual NLP Python package easier.
+* Strategy files now support wildcard and private tag rules. `DicomToMetadata` and `DicomMetadataDeidentifier` share the same rule parser, so both stages always select the same tags:
+  * `(0029, *)`: every element of a group, at any depth. `x` matches any hex digit, for example `(60xx, *)` covers the overlay groups 6000-60FF.
+  * `(PRIVATE)`: every private data element, at any depth.
+  * The VR column of a wildcard rule can be `*` (any VR), `TEXT` (PN, LO, SH, ST, LT, UT, UC), or a list like `LO|LT`.
+  * Wildcard rules support the `cleanTag`, `delete` and `remove` actions. Exact rules always take precedence over wildcards.
+  * Legacy group rules like `"(0020,)",GROUP,...` keep working.
+* `DicomMetadataDeidentifier` now maps NER results to tags by the original position of each document, instead of by order. There's a new `tagTextCol` param to support this new mechanism, with default `tag_text`.
+* New `lazyFrameRead` param in `DicomToImageV3` (default `True`): reads frames one at a time instead of loading all the frames of a multi-frame file into memory during frame extraction.
+* Support for compressed images in `DicomToImageV3`.
+* New utilities to save Dicom files and work with their metadata.
+* Fixes in blanket de-identification and `DicomDrawRegions`.
+* `ImageTableDetector` now supports `useGPU`.
 
 </div><div class="h3-box" markdown="1">
 
 ## Pathology (SVS) files improvement
 
-* Added support for non-square tile grids that enables for processing of a wider variety of files.
-* Improved heuristics in layer selection for image deid to reduce processing times and memory peaks.
-* Supports in-place masking of large SVS files for improved memory management.
-* `remove_phi()` now fails on files with no readable pages to help spot broken input files.
+* Simpler de-identification API, which replaces the previous tile functions:
+  * `svs_to_images()` writes a low-resolution image of the slide and its thumbnail. Run any image de-identification pipeline on them.
+  * `redact_phi_in_svs()` takes the regions the pipeline found and draws them on every pyramid level of the slide and on its thumbnail. It can modify the original file or write a new one.
+  * `get_overlapping_tiles()` lists the tiles that `redact_phi_in_svs()` would rewrite, without changing anything.
+* PHI is detected on an image of the whole slide and on its thumbnail, so words are no longer cut across tiles and text written on the slide, such as pen annotations, is found more reliably.
+* Faster redaction, through threaded tile redrawing and a vectorized JPEG encoder.
+* `remove_phi()` can now write a single slide into an output folder.
 
 </div><div class="h3-box" markdown="1">
 
-## Databricks Cluster Setup Instructions
+## New Pipelines & Models
 
-Updated instructions for Databricks cluster setup according to latest Databricks releases. Check the documentation [here](https://github.com/JohnSnowLabs/visual-nlp-workshop/tree/master/databricks), and related notebook [VisualNLP_DB_Cluster_Setup.ipynb](https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/databricks/VisualNLP_Cluster_Setup.ipynb).
+* `image_text_detector_fast`: a drop-in replacement for our previous text detectors. It is about 5x faster than the fastest one we had before (CRAFT OpenVINO), 6-7x faster end to end in the Dicom de-identification pipelines, and it finds more of the text (89% of the text regions against 82-83%, measured in multiple datasets).
 
-</div><div class="h3-box" markdown="1">
+* `image_text_detector_lite`: a `flagging` model that detects the presence of text with high recall. It is a blazing-fast model (about 12 ms per image with OpenVINO, **on CPU!**) that can be applied at the very beginning of OCR/NLP pipelines to rule out frames/pages without text.
 
-## New Infrastructure Stack for SVS/DICOM
+* `logo_detector_v1`: detects logos (graphic marks and brand wordmarks) in document images, so they can be masked or obfuscated instead of being read as text. On 200 [FATURA](https://arxiv.org/abs/2311.11856) invoices (CC BY 4.0) from templates not used in training, at the default threshold (0.55): precision 1.00, recall 1.00, mAP50-95 0.91. About 70 ms per page **on CPU**.
 
-![New Infrastructure Stack for SVS/DICOM](https://github.com/user-attachments/assets/7b36b372-4f74-4f40-9669-a0b73b28fd93)
+* `dicom_deid_generic_augmented_fast`: a Dicom de-identification pipeline that uses the image_text_detector_fast text detector defined above + the deid_generic_augmented (https://nlp.johnsnowlabs.com/2021/06/30/ner_deid_generic_augmented_en.html) NLP pipeline.
 
-In a nutshell, this architecture works as follows,
+* `dicom_deid_generic_augmented_flagging`: the same as above, but using `image_text_detector_lite` at the very beginning to flag the frames without text and skip them altogether. It pays off on datasets where many frames have no text.
 
-`S3 → EventBridge → Lambda → AWS Batch (EC2, c7a.2xlarge) → container → S3`
-
-* **S3**: stores the data.
-* **EventBridge**: notices that something happened.
-* **Lambda**: decides what should be processed and submits a Batch job.
-* **AWS Batch**: allocates compute and starts your container.
-* **A container**: reads from S3, performs inference, and writes results back to S3.
-
-The DICOM version follows the same infrastructure pattern as the SVS one, targeting DICOM files instead of `.svs` whole-slide images.
-
-Links for both SVS and DICOM versions can be found [here](https://github.com/JohnSnowLabs/visual-nlp-workshop/tree/master/products/awsbatch).
+* `dicom_deid_generic_augmented_flagging_ov`: the same as above with the OpenVINO version of image_text_detector_lite. This is the fastest of the three pipelines.
 
 </div><div class="h3-box" markdown="1">
 
-## New Layout architecture & model
+## Bug Fixes
 
-New `ImageObjectDetectorRtDetr` architecture: RT-DETR / RT-DETRv2 ONNX object detector with COCO labels by default, GPU option and LightPipeline support. It can detect 17 layout classes:
-
-```
-caption, footnote, formula, list_item, page_footer, page_header, picture, section_header, table, text, title, document_index, code, checkbox_selected, checkbox_unselected, form, key_value_region.
-```
-
-To see it in action check [SparkOcrLayoutDetectionRtDetr.ipynb](https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/SparkOcrLayoutDetectionRtDetr.ipynb).
-
-</div><div class="h3-box" markdown="1">
-
-## New PDF Deidentification Pipeline
-
-We're releasing a new Handwriting-Aware PDF deidentification pipeline, `pdf_deid_multi_model_handwritten_context_pipeline`. This pipeline is an enhancement over our previous `pdf_deid_multi_model_context_pipeline`, which powers our [PDF-deid AWS listing](https://aws.amazon.com/marketplace/pp/prodview-ddhtngof3o6fa) as well.<br/>
-To see this pipeline in action, please check out the [SparkOcrPdfDeIdentificationPipelines.ipynb](https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/SparkOcrPdfDeIdentificationPipelines.ipynb) notebook.
-
-</div><div class="h3-box" markdown="1">
-
-
-## Dicom Deidentification Skill
-
-Agentic Pipeline building for Dicom Deidentification is here! The Visual NLP DICOM Skill gives an LLM a grounded way to generate John Snow Labs Visual NLP pipeline examples for specific DICOM de-identification tasks. Check blogpost [here](https://www.johnsnowlabs.com/generate-dicom-de-identification-pipelines-with-the-visual-nlp-dicom-skill/).
-
-</div><div class="h3-box" markdown="1">
-
-## New Pipelines
-
-Added form support through `doc_data_loader_digital_hybrid_tables_forms_vlm1` and `doc_data_loader_digital_hybrid_tables_forms_vlm2`, and the full list of data loader pipelines is:
-
-| Pipeline | Digital PDF | Simple Page | Complex Page | Tables | Forms |
-|------------|-----------------|-------------------|---------------------|-----------|----------|
-| **doc_data_loader_digital_easy** | PdfToText | V4 | V4 | N/A | N/A |
-| **doc_data_loader_digital_hybrid** | PdfToText | V1 | V4 | N/A | N/A |
-| **doc_data_loader_digital_hybrid_tables_vlm1** | PdfToText | V1 | vlm1 | vlm1 | N/A |
-| **doc_data_loader_digital_hybrid_tables_vlm2** | PdfToText | V1 | vlm2 | vlm2 | N/A |
-| **doc_data_loader_digital_hybrid_tables_forms_vlm1** | PdfToText | V1 | vlm1 | vlm1 | vlm1 |
-| **doc_data_loader_digital_hybrid_tables_forms_vlm2** | PdfToText | V1 | vlm2 | vlm2 | vlm2 |
-
-You can see these pipelines in action here: [SparkOcrDocDataLoaderPipelines.ipynb](https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/SparkOcrDocDataLoaderPipelines.ipynb).
+* `ImageToTextV2` returns empty text when the detector finds no regions, in-line with `ImageToTextV3`. Without a regions column it still reads the whole image.
+* `ImageToTextV2`, `ImageToTextV3` and `ImageToTextV4` crop input regions to the image area, and drop regions outside it. This increases the quality of the final output.
+* Saving `ImageTextDetectorCraft` OpenVINO models with refiner has been fixed.
+* Image transformers (`ImageAdaptiveThresholding`, `ImageErosion`, `ImageEnhanceContrast`, `ImageRemoveGlare`, `ImageRemoveObjects`, `ImageSkewCorrector`, `ImageScaler`, binarizers, and others) and `ImageInpainting` now support compressed images at the input.
+* Fixed positions in `DocumentCoordinatesToText`, and a merging issue in `RegionsMerger`.
 
 </div><div class="h3-box" markdown="1">
 
 ## Compatibility:
-Spark-NLP 7.0.0, and Spark-NLP for Healthcare 7.0.0.
+Spark-NLP 7.0.1, and Spark-NLP for Healthcare 7.0.1. PySpark `>=3.0.0,<=4.3.0`.
 
 </div><div class="h3-box" markdown="1">
 
