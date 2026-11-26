@@ -628,13 +628,13 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <h2 id="section">7.0.0</h2>
+  <h2 id="section">7.0.1</h2>
 
-  <p>Release date: 07-10-2026</p>
+  <p>Release date: 25-11-2026</p>
 
-  <h2 id="visual-nlp-700-release-notes-">Visual NLP 7.0.0 Release Notes 🕶️</h2>
+  <h2 id="visual-nlp-701-release-notes-">Visual NLP 7.0.1 Release Notes 🕶️</h2>
 
-  <p><strong>We are glad to announce that Visual NLP 7.0.0 has been released! This is a release with multiple small, but impactful changes. 📢📢📢</strong></p>
+  <p><strong>We are glad to announce that Visual NLP 7.0.1 has been released! This release brings new fast text detectors, a logo detector, de-identification of digital PDFs, and many improvements in Dicom and SVS processing. 📢📢📢</strong></p>
 
 </div>
 <div class="h3-box">
@@ -642,45 +642,71 @@ function wrapWordInSpan(data, wordToWrap) {
   <h2 id="main-changes-">Main Changes 🔴</h2>
 
   <ul>
-    <li>Added support for latest Spark 4.X versions, and continue with our efforts to support Scala 2.13 and Java 17.</li>
-    <li>Dicom Processing improvements, and also improvements in our Pathology (SVS) Processing capabilities.</li>
-    <li>New models and pipelines.</li>
-    <li>A new Infrastructure Stack (Cloudformation) to run SVS and Dicom de-identification in AWS, and new instructions on how to run on Databricks.</li>
+    <li>New <code class="language-plaintext highlighter-rouge">ImageTextDetectorFast</code> and <code class="language-plaintext highlighter-rouge">ImageTextDetectorLite</code>: fast OpenVINO text detectors that run on CPU.</li>
+    <li>New <code class="language-plaintext highlighter-rouge">ImageLogoDetector</code> to find logos in document images.</li>
+    <li>New <code class="language-plaintext highlighter-rouge">PdfDeidentifier</code>: de-identification of digital PDFs that keeps the output PDF digital.</li>
+    <li>Dicom improvements: wildcard and private tag rules in strategy files, more reliable de-identification of tags, and lower memory usage.</li>
+    <li>Pathology (SVS) improvements: a simpler API, a blanket de-identification mode, and better detection of PHI.</li>
+    <li>A new data loader pipeline and many bug fixes.</li>
+    <li>Support for PySpark up to 4.x.</li>
   </ul>
 
 </div>
 <div class="h3-box">
 
-  <h2 id="important-changes-in-start-function">Important changes in <code class="language-plaintext highlighter-rouge">start()</code> function</h2>
+  <h2 id="new-text-detectors-imagetextdetectorfast-and-imagetextdetectorlite">New Text Detectors: ImageTextDetectorFast and ImageTextDetectorLite</h2>
 
-  <p>Following the guidelines of open source Spark-NLP, JAR artifact selection in <code class="language-plaintext highlighter-rouge">start()</code> function is now determined by PySpark version, as follows,</p>
+  <p>Two new text detectors that use OpenVINO (f32) models. They are a fast alternative to <code class="language-plaintext highlighter-rouge">ImageTextDetectorCraft</code> in CPU pipelines.</p>
 
-  <table class="table-model-big">
-    <thead>
-      <tr>
-        <th>Spark Version</th>
-        <th>Scala Version</th>
-        <th>JAR Artifact</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Spark 3.x</td>
-        <td>Scala 2.12</td>
-        <td>spark-ocr 3.x</td>
-      </tr>
-      <tr>
-        <td>Spark 4.0.0</td>
-        <td>Scala 2.13</td>
-        <td>spark-ocr 400</td>
-      </tr>
-      <tr>
-        <td>Other Spark 4.x</td>
-        <td>Scala 2.13</td>
-        <td>spark-ocr 4.0.1+</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">text_detector</span> <span class="o">=</span> <span class="n">ImageTextDetectorFast</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"image_text_detector_fast_ov"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/ocr"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"image"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"text_regions"</span><span class="p">)</span>
+
+<span class="c1"># or
+</span>
+<span class="n">text_detector</span> <span class="o">=</span> <span class="n">ImageTextDetectorLite</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"image_text_detector_lite_ov"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/ocr"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"image"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"text_regions"</span><span class="p">)</span>
+</code></pre></div>  </div>
+
+  <ul>
+    <li><code class="language-plaintext highlighter-rouge">setWidth()</code> and <code class="language-plaintext highlighter-rouge">setHeight()</code> set the input size of the model. The default, 0, keeps the current behavior (<code class="language-plaintext highlighter-rouge">limitSideLength</code> for Fast, <code class="language-plaintext highlighter-rouge">longSide</code> for Lite). If you set only one side, the other one keeps the aspect ratio of the image.</li>
+    <li>New <code class="language-plaintext highlighter-rouge">flagRegionsCol</code> param, also in <code class="language-plaintext highlighter-rouge">ImageTextDetectorCraft</code>: images with no regions in this column are skipped and return no regions. This replaces the <code class="language-plaintext highlighter-rouge">SQLTransformer</code> stages used in Dicom flagging pipelines, and saves time when only some images need OCR.</li>
+  </ul>
+
+  <p>To see them in action check <a href="https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/Dicom/SparkOcrDicomFlaggingPretrainedPipelines.ipynb">SparkOcrDicomFlaggingPretrainedPipelines.ipynb</a>.</p>
+
+</div>
+<div class="h3-box">
+
+  <h2 id="new-logo-detector">New Logo Detector</h2>
+
+  <p>New <code class="language-plaintext highlighter-rouge">ImageLogoDetector</code>, a YOLO ONNX detector that finds logos in images.</p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">logo_detector</span> <span class="o">=</span> <span class="n">ImageLogoDetector</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"logo_detector_v1"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/ocr"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"image"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"logo_regions"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setScoreThreshold</span><span class="p">(</span><span class="mf">0.55</span><span class="p">)</span>
+</code></pre></div>  </div>
+
+  <p>You can see this model in action here: <a href="https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/SparkOcrImageLogoDetection.ipynb">SparkOcrImageLogoDetection.ipynb</a>.</p>
+
+</div>
+<div class="h3-box">
+
+  <h2 id="digital-pdf-de-identification">Digital PDF De-identification</h2>
+
+  <p>New <code class="language-plaintext highlighter-rouge">PdfDeidentifier</code> replaces the detected entities in the text of digital PDFs, with no need to turn pages into images. The result is still a digital PDF: fonts, layout and the rest of the page stay as they were.
+A few settings worth mentioning,</p>
+
+  <ul>
+    <li><code class="language-plaintext highlighter-rouge">aggregatePages</code> (default <code class="language-plaintext highlighter-rouge">True</code>): merges the pages of each document into one de-identified PDF.</li>
+    <li><code class="language-plaintext highlighter-rouge">fitToWidth</code>: scales each replacement to the width of the original text.</li>
+    <li><code class="language-plaintext highlighter-rouge">wholeWords</code>: replaces matches on word boundaries only.</li>
+    <li><code class="language-plaintext highlighter-rouge">allOccurrences</code>: a cursor is kept both in the entities and in the document to track the position at which the input entities are located in the PDF, and by default each input entity replaces one occurrence, the next one in the document. When this setting is <code class="language-plaintext highlighter-rouge">True</code>, every other whole-word occurrence of the entity text in the PDF is also replaced.</li>
+  </ul>
+
+  <p>To see it in action check <a href="https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/deid-and-obfuscation/ObfuscationDigitalPDF.ipynb">ObfuscationDigitalPDF.ipynb</a>.</p>
 
 </div>
 <div class="h3-box">
@@ -688,11 +714,21 @@ function wrapWordInSpan(data, wordToWrap) {
   <h2 id="dicom-changes">Dicom Changes</h2>
 
   <ul>
-    <li>Updates the <code class="language-plaintext highlighter-rouge">DicomPretrainedPipeline</code> to support strategy files used in de-identification of Dicom tags. Also, <code class="language-plaintext highlighter-rouge">DicomPretrainedPipeline</code> now supports <code class="language-plaintext highlighter-rouge">load()/save()</code>.</li>
-    <li>New <code class="language-plaintext highlighter-rouge">replaceWithMapping</code> action in <code class="language-plaintext highlighter-rouge">DicomMetadataDeidentifier</code>: replaces tag values from an external mapping column (<code class="language-plaintext highlighter-rouge">externalMapping</code>), with optional nested-tag handling.</li>
-    <li>Overlay extraction off by default (new <code class="language-plaintext highlighter-rouge">extractOverlay</code> param).</li>
-    <li>Fixes for YBR 8-bit compression, compression ratio calculation, JPEG baseline 12-bit and Monochrome1 white pixels.</li>
-    <li><code class="language-plaintext highlighter-rouge">DicomDrawRegions</code> has been fixed for reliability and the dependency on <code class="language-plaintext highlighter-rouge">python-gdcm</code> has been removed, making setup of the Visual NLP Python package easier.</li>
+    <li>Strategy files now support wildcard and private tag rules. <code class="language-plaintext highlighter-rouge">DicomToMetadata</code> and <code class="language-plaintext highlighter-rouge">DicomMetadataDeidentifier</code> share the same rule parser, so both stages always select the same tags:
+      <ul>
+        <li><code class="language-plaintext highlighter-rouge">(0029, *)</code>: every element of a group, at any depth. <code class="language-plaintext highlighter-rouge">x</code> matches any hex digit, for example <code class="language-plaintext highlighter-rouge">(60xx, *)</code> covers the overlay groups 6000-60FF.</li>
+        <li><code class="language-plaintext highlighter-rouge">(PRIVATE)</code>: every private data element, at any depth.</li>
+        <li>The VR column of a wildcard rule can be <code class="language-plaintext highlighter-rouge">*</code> (any VR), <code class="language-plaintext highlighter-rouge">TEXT</code> (PN, LO, SH, ST, LT, UT, UC), or a list like <code class="language-plaintext highlighter-rouge">LO|LT</code>.</li>
+        <li>Wildcard rules support the <code class="language-plaintext highlighter-rouge">cleanTag</code>, <code class="language-plaintext highlighter-rouge">delete</code> and <code class="language-plaintext highlighter-rouge">remove</code> actions. Exact rules always take precedence over wildcards.</li>
+        <li>Legacy group rules like <code class="language-plaintext highlighter-rouge">"(0020,)",GROUP,...</code> keep working.</li>
+      </ul>
+    </li>
+    <li><code class="language-plaintext highlighter-rouge">DicomMetadataDeidentifier</code> now maps NER results to tags by the original position of each document, instead of by order. There’s a new <code class="language-plaintext highlighter-rouge">tagTextCol</code> param to support this new mechanism, with default <code class="language-plaintext highlighter-rouge">tag_text</code>.</li>
+    <li>New <code class="language-plaintext highlighter-rouge">lazyFrameRead</code> param in <code class="language-plaintext highlighter-rouge">DicomToImageV3</code> (default <code class="language-plaintext highlighter-rouge">True</code>): reads frames one at a time instead of loading all the frames of a multi-frame file into memory during frame extraction.</li>
+    <li>Support for compressed images in <code class="language-plaintext highlighter-rouge">DicomToImageV3</code>.</li>
+    <li>New utilities to save Dicom files and work with their metadata.</li>
+    <li>Fixes in blanket de-identification and <code class="language-plaintext highlighter-rouge">DicomDrawRegions</code>.</li>
+    <li><code class="language-plaintext highlighter-rouge">ImageTableDetector</code> now supports <code class="language-plaintext highlighter-rouge">useGPU</code>.</li>
   </ul>
 
 </div>
@@ -701,146 +737,62 @@ function wrapWordInSpan(data, wordToWrap) {
   <h2 id="pathology-svs-files-improvement">Pathology (SVS) files improvement</h2>
 
   <ul>
-    <li>Added support for non-square tile grids that enables for processing of a wider variety of files.</li>
-    <li>Improved heuristics in layer selection for image deid to reduce processing times and memory peaks.</li>
-    <li>Supports in-place masking of large SVS files for improved memory management.</li>
-    <li><code class="language-plaintext highlighter-rouge">remove_phi()</code> now fails on files with no readable pages to help spot broken input files.</li>
+    <li>Simpler de-identification API, which replaces the previous tile functions:
+      <ul>
+        <li><code class="language-plaintext highlighter-rouge">svs_to_images()</code> writes a low-resolution image of the slide and its thumbnail. Run any image de-identification pipeline on them.</li>
+        <li><code class="language-plaintext highlighter-rouge">redact_phi_in_svs()</code> takes the regions the pipeline found and draws them on every pyramid level of the slide and on its thumbnail. It can modify the original file or write a new one.</li>
+        <li><code class="language-plaintext highlighter-rouge">get_overlapping_tiles()</code> lists the tiles that <code class="language-plaintext highlighter-rouge">redact_phi_in_svs()</code> would rewrite, without changing anything.</li>
+      </ul>
+    </li>
+    <li>PHI is detected on an image of the whole slide and on its thumbnail, so words are no longer cut across tiles and text written on the slide, such as pen annotations, is found more reliably.</li>
+    <li>Faster redaction, through threaded tile redrawing and a vectorized JPEG encoder.</li>
+    <li><code class="language-plaintext highlighter-rouge">remove_phi()</code> can now write a single slide into an output folder.</li>
   </ul>
 
 </div>
 <div class="h3-box">
 
-  <h2 id="databricks-cluster-setup-instructions">Databricks Cluster Setup Instructions</h2>
-
-  <p>Updated instructions for Databricks cluster setup according to latest Databricks releases. Check the documentation <a href="https://github.com/JohnSnowLabs/visual-nlp-workshop/tree/master/databricks">here</a>, and related notebook <a href="https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/databricks/VisualNLP_Cluster_Setup.ipynb">VisualNLP_DB_Cluster_Setup.ipynb</a>.</p>
-
-</div>
-<div class="h3-box">
-
-  <h2 id="new-infrastructure-stack-for-svsdicom">New Infrastructure Stack for SVS/DICOM</h2>
-
-  <p><img src="https://github.com/user-attachments/assets/7b36b372-4f74-4f40-9669-a0b73b28fd93" alt="New Infrastructure Stack for SVS/DICOM" /></p>
-
-  <p>In a nutshell, this architecture works as follows,</p>
-
-  <p><code class="language-plaintext highlighter-rouge">S3 → EventBridge → Lambda → AWS Batch (EC2, c7a.2xlarge) → container → S3</code></p>
+  <h2 id="new-pipelines--models">New Pipelines &amp; Models</h2>
 
   <ul>
-    <li><strong>S3</strong>: stores the data.</li>
-    <li><strong>EventBridge</strong>: notices that something happened.</li>
-    <li><strong>Lambda</strong>: decides what should be processed and submits a Batch job.</li>
-    <li><strong>AWS Batch</strong>: allocates compute and starts your container.</li>
-    <li><strong>A container</strong>: reads from S3, performs inference, and writes results back to S3.</li>
+    <li>
+      <p><code class="language-plaintext highlighter-rouge">image_text_detector_fast</code>: a drop-in replacement for our previous text detectors. It is about 5x faster than the fastest one we had before (CRAFT OpenVINO), 6-7x faster end to end in the Dicom de-identification pipelines, and it finds more of the text (89% of the text regions against 82-83%, measured in multiple datasets).</p>
+    </li>
+    <li>
+      <p><code class="language-plaintext highlighter-rouge">image_text_detector_lite</code>: a <code class="language-plaintext highlighter-rouge">flagging</code> model that detects the presence of text with high recall. It is a blazing-fast model (about 12 ms per image with OpenVINO, <strong>on CPU!</strong>) that can be applied at the very beginning of OCR/NLP pipelines to rule out frames/pages without text.</p>
+    </li>
+    <li>
+      <p><code class="language-plaintext highlighter-rouge">logo_detector_v1</code>: detects logos (graphic marks and brand wordmarks) in document images, so they can be masked or obfuscated instead of being read as text. On 200 <a href="https://arxiv.org/abs/2311.11856">FATURA</a> invoices (CC BY 4.0) from templates not used in training, at the default threshold (0.55): precision 1.00, recall 1.00, mAP50-95 0.91. About 70 ms per page <strong>on CPU</strong>.</p>
+    </li>
+    <li>
+      <p><code class="language-plaintext highlighter-rouge">dicom_deid_generic_augmented_fast</code>: a Dicom de-identification pipeline that uses the image_text_detector_fast text detector defined above + the deid_generic_augmented (https://nlp.johnsnowlabs.com/2021/06/30/ner_deid_generic_augmented_en.html) NLP pipeline.</p>
+    </li>
+    <li>
+      <p><code class="language-plaintext highlighter-rouge">dicom_deid_generic_augmented_flagging</code>: the same as above, but using <code class="language-plaintext highlighter-rouge">image_text_detector_lite</code> at the very beginning to flag the frames without text and skip them altogether. It pays off on datasets where many frames have no text.</p>
+    </li>
+    <li>
+      <p><code class="language-plaintext highlighter-rouge">dicom_deid_generic_augmented_flagging_ov</code>: the same as above with the OpenVINO version of image_text_detector_lite. This is the fastest of the three pipelines.</p>
+    </li>
   </ul>
 
-  <p>The DICOM version follows the same infrastructure pattern as the SVS one, targeting DICOM files instead of <code class="language-plaintext highlighter-rouge">.svs</code> whole-slide images.</p>
-
-  <p>Links for both SVS and DICOM versions can be found <a href="https://github.com/JohnSnowLabs/visual-nlp-workshop/tree/master/products/awsbatch">here</a>.</p>
-
 </div>
 <div class="h3-box">
 
-  <h2 id="new-layout-architecture--model">New Layout architecture &amp; model</h2>
+  <h2 id="bug-fixes">Bug Fixes</h2>
 
-  <p>New <code class="language-plaintext highlighter-rouge">ImageObjectDetectorRtDetr</code> architecture: RT-DETR / RT-DETRv2 ONNX object detector with COCO labels by default, GPU option and LightPipeline support. It can detect 17 layout classes:</p>
-
-  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>caption, footnote, formula, list_item, page_footer, page_header, picture, section_header, table, text, title, document_index, code, checkbox_selected, checkbox_unselected, form, key_value_region.
-</code></pre></div>  </div>
-
-  <p>To see it in action check <a href="https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/SparkOcrLayoutDetectionRtDetr.ipynb">SparkOcrLayoutDetectionRtDetr.ipynb</a>.</p>
-
-</div>
-<div class="h3-box">
-
-  <h2 id="new-pdf-deidentification-pipeline">New PDF Deidentification Pipeline</h2>
-
-  <p>We’re releasing a new Handwriting-Aware PDF deidentification pipeline, <code class="language-plaintext highlighter-rouge">pdf_deid_multi_model_handwritten_context_pipeline</code>. This pipeline is an enhancement over our previous <code class="language-plaintext highlighter-rouge">pdf_deid_multi_model_context_pipeline</code>, which powers our <a href="https://aws.amazon.com/marketplace/pp/prodview-ddhtngof3o6fa">PDF-deid AWS listing</a> as well.<br />
-To see this pipeline in action, please check out the <a href="https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/SparkOcrPdfDeIdentificationPipelines.ipynb">SparkOcrPdfDeIdentificationPipelines.ipynb</a> notebook.</p>
-
-</div>
-<div class="h3-box">
-
-  <h2 id="dicom-deidentification-skill">Dicom Deidentification Skill</h2>
-
-  <p>Agentic Pipeline building for Dicom Deidentification is here! The Visual NLP DICOM Skill gives an LLM a grounded way to generate John Snow Labs Visual NLP pipeline examples for specific DICOM de-identification tasks. Check blogpost <a href="https://www.johnsnowlabs.com/generate-dicom-de-identification-pipelines-with-the-visual-nlp-dicom-skill/">here</a>.</p>
-
-</div>
-<div class="h3-box">
-
-  <h2 id="new-pipelines">New Pipelines</h2>
-
-  <p>Added form support through <code class="language-plaintext highlighter-rouge">doc_data_loader_digital_hybrid_tables_forms_vlm1</code> and <code class="language-plaintext highlighter-rouge">doc_data_loader_digital_hybrid_tables_forms_vlm2</code>, and the full list of data loader pipelines is:</p>
-
-  <table class="table-model-big">
-    <thead>
-      <tr>
-        <th>Pipeline</th>
-        <th>Digital PDF</th>
-        <th>Simple Page</th>
-        <th>Complex Page</th>
-        <th>Tables</th>
-        <th>Forms</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong>doc_data_loader_digital_easy</strong></td>
-        <td>PdfToText</td>
-        <td>V4</td>
-        <td>V4</td>
-        <td>N/A</td>
-        <td>N/A</td>
-      </tr>
-      <tr>
-        <td><strong>doc_data_loader_digital_hybrid</strong></td>
-        <td>PdfToText</td>
-        <td>V1</td>
-        <td>V4</td>
-        <td>N/A</td>
-        <td>N/A</td>
-      </tr>
-      <tr>
-        <td><strong>doc_data_loader_digital_hybrid_tables_vlm1</strong></td>
-        <td>PdfToText</td>
-        <td>V1</td>
-        <td>vlm1</td>
-        <td>vlm1</td>
-        <td>N/A</td>
-      </tr>
-      <tr>
-        <td><strong>doc_data_loader_digital_hybrid_tables_vlm2</strong></td>
-        <td>PdfToText</td>
-        <td>V1</td>
-        <td>vlm2</td>
-        <td>vlm2</td>
-        <td>N/A</td>
-      </tr>
-      <tr>
-        <td><strong>doc_data_loader_digital_hybrid_tables_forms_vlm1</strong></td>
-        <td>PdfToText</td>
-        <td>V1</td>
-        <td>vlm1</td>
-        <td>vlm1</td>
-        <td>vlm1</td>
-      </tr>
-      <tr>
-        <td><strong>doc_data_loader_digital_hybrid_tables_forms_vlm2</strong></td>
-        <td>PdfToText</td>
-        <td>V1</td>
-        <td>vlm2</td>
-        <td>vlm2</td>
-        <td>vlm2</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p>You can see these pipelines in action here: <a href="https://github.com/JohnSnowLabs/visual-nlp-workshop/blob/master/jupyter/SparkOcrDocDataLoaderPipelines.ipynb">SparkOcrDocDataLoaderPipelines.ipynb</a>.</p>
+  <ul>
+    <li><code class="language-plaintext highlighter-rouge">ImageToTextV2</code> returns empty text when the detector finds no regions, in-line with <code class="language-plaintext highlighter-rouge">ImageToTextV3</code>. Without a regions column it still reads the whole image.</li>
+    <li><code class="language-plaintext highlighter-rouge">ImageToTextV2</code>, <code class="language-plaintext highlighter-rouge">ImageToTextV3</code> and <code class="language-plaintext highlighter-rouge">ImageToTextV4</code> crop input regions to the image area, and drop regions outside it. This increases the quality of the final output.</li>
+    <li>Saving <code class="language-plaintext highlighter-rouge">ImageTextDetectorCraft</code> OpenVINO models with refiner has been fixed.</li>
+    <li>Image transformers (<code class="language-plaintext highlighter-rouge">ImageAdaptiveThresholding</code>, <code class="language-plaintext highlighter-rouge">ImageErosion</code>, <code class="language-plaintext highlighter-rouge">ImageEnhanceContrast</code>, <code class="language-plaintext highlighter-rouge">ImageRemoveGlare</code>, <code class="language-plaintext highlighter-rouge">ImageRemoveObjects</code>, <code class="language-plaintext highlighter-rouge">ImageSkewCorrector</code>, <code class="language-plaintext highlighter-rouge">ImageScaler</code>, binarizers, and others) and <code class="language-plaintext highlighter-rouge">ImageInpainting</code> now support compressed images at the input.</li>
+    <li>Fixed positions in <code class="language-plaintext highlighter-rouge">DocumentCoordinatesToText</code>, and a merging issue in <code class="language-plaintext highlighter-rouge">RegionsMerger</code>.</li>
+  </ul>
 
 </div>
 <div class="h3-box">
 
   <h2 id="compatibility">Compatibility:</h2>
-  <p>Spark-NLP 7.0.0, and Spark-NLP for Healthcare 7.0.0.</p>
+  <p>Spark-NLP 7.0.1, and Spark-NLP for Healthcare 7.0.1. PySpark <code class="language-plaintext highlighter-rouge">&gt;=3.0.0,&lt;=4.3.0</code>.</p>
 
 </div>
 <div class="h3-box">
@@ -860,6 +812,7 @@ To see this pipeline in action, please check out the <a href="https://github.com
   </li>
 </ul>
 <ul class="pagination owl-carousel pagination_big">
+   <li><a href="release_notes_7_0_1">7.0.1</a></li>
    <li><a href="release_notes_7_0_0">7.0.0</a></li>
    <li><a href="release_notes_6_4_2">6.4.2</a></li>
    <li><a href="release_notes_6_4_0">6.4.0</a></li>
@@ -923,7 +876,7 @@ To see this pipeline in action, please check out the <a href="https://github.com
     <li><a href="release_notes_1_0_0">1.0.0</a></li>
   </ul>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2026-10-07T00:00:00+00:00">Oct 07, 2026</time>
+      <time itemprop="dateModified" datetime="2026-11-25T00:00:00+00:00">Nov 25, 2026</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
