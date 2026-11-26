@@ -11,6 +11,8 @@ sidebar:
     nav: medical-llm
 ---
 
+<div class="h3-box" markdown="1">
+
 Task-optimized models consistently outperform general-purpose models on focused clinical decisions. At John Snow Labs, we have built Medical Decision Models (DMs): compact models that answer typed questions about clinical text, such as whether a note documents a condition, whether a drug caused an event, or whether a trial accepts a patient. A question can ask the model to pick one option, answer yes or no with a probability, or choose an ordered level.
 
 Medical DMs are small enough to deploy privately, and the smallest run on a CPU. The question and its options are part of the input, so a new rule or a new threshold needs no retraining.
@@ -60,6 +62,8 @@ For PHI leak detection, PHI Guard v0.7 reaches a PR-AUC of **0.986** on de-ident
 | Oncology record review | Whether a document in an oncology record is relevant to a registry abstract, whether it adds anything new, and which fields it states. |
 | PHI leak detection | Whether a de-identified note still leaks protected health information (PHI), whether a raw note holds any, how much a note exposes, and whether a leak is harmful. |
 
+</div><div class="h3-box" markdown="1">
+
 ### Task Benchmark Performance
 
 ![Medical DMs: average score across task areas](/en/LLMs/images/dm_average.png)
@@ -84,6 +88,8 @@ Score on nine task areas: the mean of accuracy and macro precision, recall and F
 
 **Medical DM Small is ahead on six of nine task areas, with its largest margin on clinical trial eligibility (0.931 against 0.781). Medical DM Nano is ahead on cancer registry abstraction, adverse drug events and oncology record review.**
 
+</div><div class="h3-box" markdown="1">
+
 ### PHI Guard Models and Modes
 
 The PHI Guard family has nine models. Each answers one or more questions about a note: does a de-identified note still leak PHI, does a raw note hold any PHI, how much PHI does a note expose, and is a leak harmful.
@@ -102,6 +108,8 @@ The PHI Guard family has nine models. Each answers one or more questions about a
 | PHI Guard Nano | The same 9 outputs | Both, depending on the output | The compact version of PHI Guard Small. Also trained on noisy (OCR-style) text. |  |
 
 PHI Guard v0.7 folds the leak, raw and richness models and a new harmful output into one model, with no loss of accuracy on any of them.
+
+</div><div class="h3-box" markdown="1">
 
 ### PHI Leak Detection
 
@@ -181,6 +189,7 @@ CPU models: one thread, a 1 KB note. GPU models: batched on a 24 GB GPU.
 | PHI Guard Nano | CPU (16 cores) | 198 | 56 h |
 | PHI Guard Nano | GPU (24 GB) | 24 | 6.7 h |
 
+</div><div class="h3-box" markdown="1">
 
 ### Cost Analysis
 In addition to processing speed, infrastructure cost is an important consideration when evaluating the operational scalability of Medical Decision Models.
@@ -224,3 +233,14 @@ Medical DM Small is the reference: 40 ms per note, about 11 hours per 1 million 
 Medical DM Small has the highest score of the models compared, and Medical DM Nano has the lowest cost. No other model beats either of them on both score and cost.
 
 Note: The GPU hourly rates of $1.30 (A10, 24 GB), $1.99 (A100, 40 GB) and $4.20 (H100, 80 GB) are illustrative pricing assumptions and are not official John Snow Labs prices. Runtime and cost estimates are based on the benchmark configuration described above.
+
+#### Calculation Methodology
+Estimated compute  cost is calculated using
+
+**Estimated Cost = Runtime (hours) × GPU hourly rate**
+
+These estimates represent GPU compute costs only and exclude storage, networking, orchestration, and other infrastructure expenses. Actual costs will vary depending on the GPU instance, cloud provider, and deployment configuration.
+
+**Note:** The GPU hourly rate of $1.30 is an illustrative pricing assumption and is not an official John Snow Labs price. Runtime and cost estimates are based on the benchmark configuration described above.
+
+</div>

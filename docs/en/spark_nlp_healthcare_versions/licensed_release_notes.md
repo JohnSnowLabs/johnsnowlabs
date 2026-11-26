@@ -39,7 +39,7 @@ The release also brings a set of **de-identification enhancements** that apply a
 These enhancements will elevate your experience with Healthcare NLP, enabling more efficient, accurate, and streamlined analysis of healthcare-related natural language data.
 
 
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 #### 🌟 Spotlight: `DecisionModel` and PHI Guard — Check Every Document Before It Leaves
 
@@ -180,10 +180,6 @@ deid_with_guard = PipelineModel(stages=list(deid_pipeline.model.stages) + [phi_l
 - **Choose your own cutoff.** The labels use a cutoff of 0.5 on the probability. When your release process needs to catch nearly every leak, apply a lower cutoff to the probability in the metadata (e.g. `phi_leak_prob`), chosen on validation data of your own; the benchmark below shows how precision and recall trade off.
 - **Sentences or chunks.** The input can also be sentences (`SentenceDetector`) or chunks (`InternalDocumentSplitter`); each one then gets its own decision. Combining them into a decision for the whole note is a policy of your own.
 - **A quality signal, not a certificate.** A negative label is a strong signal that helps you decide where to look, not a privacy or release guarantee. Keep it next to your review process, not in place of it.
-
-
-
-
 
 </div><div class="h3-box" markdown="1">
 

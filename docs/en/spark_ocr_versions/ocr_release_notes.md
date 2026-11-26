@@ -36,6 +36,7 @@ Release date: 07-10-2026
 
 Following the guidelines of open source Spark-NLP, JAR artifact selection in `start()` function is now determined by PySpark version, as follows,
 
+{:.table-model-big}
 | Spark Version | Scala Version | JAR Artifact |
 |---|---|---|
 | Spark 3.x | Scala 2.12 | spark-ocr 3.x |
@@ -119,6 +120,7 @@ Agentic Pipeline building for Dicom Deidentification is here! The Visual NLP DIC
 
 Added form support through `doc_data_loader_digital_hybrid_tables_forms_vlm1` and `doc_data_loader_digital_hybrid_tables_forms_vlm2`, and the full list of data loader pipelines is:
 
+{:.table-model-big}
 | Pipeline | Digital PDF | Simple Page | Complex Page | Tables | Forms |
 |------------|-----------------|-------------------|---------------------|-----------|----------|
 | **doc_data_loader_digital_easy** | PdfToText | V4 | V4 | N/A | N/A |

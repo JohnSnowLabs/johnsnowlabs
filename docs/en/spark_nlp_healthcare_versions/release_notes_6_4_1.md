@@ -43,7 +43,7 @@ This release is further complemented by new benchmarking results and applied res
 These enhancements will elevate your experience with Healthcare NLP, enabling more efficient, accurate, and streamlined analysis of healthcare-related natural language data.
 
 
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 #### LLM-Based Structured Clinical Entity Extraction with Constrained Decoding
 
@@ -681,6 +681,7 @@ result = pipeline.fit(data).transform(data)
 
 *Result*
 
+
 | ner_chunk | entity | umls_code | resolution | all_k_results | all_k_distances | all_k_cosine_distances | all_k_resolutions |
 |---|---|---|---|---|---|---|---|
 | systemic lupus erythematosus | Disease_Syndrome_Disorder | C0024141 | systemic lupus erythematosus | C0024141:::C0409974:::C0024137:::C1274838:::C6022675:::C0409977:::C0409976:::C07... | 0.0067:::3.4325:::4.0055:::4.4309:::4.4907:::4.5642:::4.5922:::4.6192:::4.6675::... | 0.0000:::0.0184:::0.0251:::0.0308:::0.0317:::0.0322:::0.0328:::0.0336:::0.0334::... | systemic lupus erythematosus:::lupus erythematosus:::cutaneous lupus erythematos... |
@@ -717,6 +718,7 @@ result = pipeline.fit(data).transform(data)
 
 *Result*
 
+{:.table-model-big}
 | umls_code | rxnorm_code |
 |---|---|
 | C1126248 | 330565 |
@@ -771,6 +773,7 @@ result = pipeline.fit(data).transform(data)
 
 *Result*
 
+{:.table-model-big}
 | ner_chunk | umls_code |
 |---|---|
 | dyspnea | C0013404 |
