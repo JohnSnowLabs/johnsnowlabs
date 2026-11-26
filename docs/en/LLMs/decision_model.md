@@ -243,4 +243,110 @@ These estimates represent GPU compute costs only and exclude storage, networking
 
 **Note:** The GPU hourly rate of $1.30 is an illustrative pricing assumption and is not an official John Snow Labs price. Runtime and cost estimates are based on the benchmark configuration described above.
 
+</div><div class="h3-box" markdown="1">
+
+### Comparison with Frontier API Models
+
+We ran Medical DM Small and Medical DM Nano against the cheapest frontier models on the market, GPT-6 Luna, Claude Haiku 5.5 and Gemini 3.8 Flash, plus Jev 1.14. Same 56 evaluation sets, same 14,587 questions, same documents. The result: the same quality of decision, at a fraction of the cost, running on your own hardware.
+
+- **95.7%**: Medical DM Small, average accuracy over 56 sets. Best API model: 90.3%.
+- **89.0%**: Medical DM Nano, average accuracy over 56 sets. API models range from 84.9% to 90.3%.
+- **$13-16**: Medical DM Small per million notes on one 24 GB GPU. The APIs cost $38 to $934 for the same documents.
+- **0**: notes leave your environment. Both models run on your own hardware.
+
+#### Why This Comparison
+
+Cost per million notes is now one of the first questions health systems ask before they put a model into a pipeline. The cheapest frontier models list at $0.10 per million input tokens, which sounds hard to beat. We wanted to find out whether a small decision model that runs on your own hardware can match them on accuracy, and what each option really costs on a real clinical workload.
+
+A decision model answers typed questions about a document: a yes or no, one choice from a list, or a score. Cancer registry abstraction, payer coding checks, trial eligibility, care-quality measures, drug safety and checking a de-identified note for leftover PHI are all questions of this kind. They are the high-volume, repetitive steps in a clinical pipeline, where cost and speed matter most.
+
+#### Accuracy
+
+Every model got the same document and the same question text. The API models were asked to reply with the chosen option only. Scores are averaged over the datasets in each group.
+
+This accuracy is the share of correct answers. It is a different measure from the score in the Task Benchmark Performance section, which also includes macro precision, recall and F1, and the two sections group the tasks differently.
+
+![Medical DMs and API models: average accuracy over all 56 evaluation sets](/en/LLMs/images/dm_frontier_accuracy.png)
+
+John Snow Labs models are blue, API models are grey.
+
+Accuracy (%) by task group. Bold is the best score in the row. The first two columns are John Snow Labs models. The Overall row is the average over all 56 evaluation sets.
+
+{:.table-model-big}
+| Task group | Medical DM Small | Medical DM Nano | GPT-6 Luna | Claude Haiku 5.5 | Gemini 3.8 Flash | Jev 1.14 |
+|:---|---:|---:|---:|---:|---:|---:|
+| Cancer registry abstraction | **98.8** | 96.8 | 94.3 | 91.3 | 95.3 | 89.9 |
+| Care-quality measure checks | 93.6 | 90.0 | 83.4 | 74.5 | **98.1** | 83.6 |
+| Coding and payer-policy review | **98.3** | 88.5 | 96.3 | 89.4 | 97.6 | 92.9 |
+| Patient cohort selection | 98.7 | 96.9 | **99.1** | 97.0 | **99.1** | 98.0 |
+| Clinical trial eligibility | **97.5** | 85.2 | 94.2 | 92.8 | 95.2 | 94.7 |
+| Clinical note review | **97.8** | 96.5 | 96.4 | 93.7 | 96.9 | 94.4 |
+| Hospital risk prediction | 88.4 | **89.1** | 85.6 | 88.1 | 88.6 | 87.4 |
+| Drug safety | 94.9 | 92.5 | 94.6 | 88.3 | **95.7** | 92.8 |
+| General clinical decision tasks | **96.0** | 85.7 | 88.8 | 87.1 | 87.5 | 89.3 |
+| Finding relevant cancer evidence | **95.3** | 88.9 | 85.3 | 83.3 | 88.6 | 82.6 |
+| PHI detection | **93.8** | 90.1 | 72.4 | 59.3 | 87.1 | 74.7 |
+| Overall | **95.7** | 89.0 | 88.2 | 84.9 | 90.3 | 87.6 |
+
+**Medical DM Small has the highest score in 7 of the 11 task groups. Gemini 3.8 Flash is highest, or tied for highest, in three and Medical DM Nano in one.** Gemini 3.8 Flash is the strongest API model and leads on care-quality measure checks and drug safety, and shares the top score on patient cohort selection. It is also the most expensive, as the next section shows.
+
+#### Cost and Speed
+
+We measured our models on a single 24 GB GPU rented at $1.30 per hour. Medical DM Nano processes about 24 ms per note, which is 6 to 7 hours per million notes, or $7.80 - $9.10. Medical DM Small processes about 40 ms per note, which is 10 to 12 hours per million, or $13.00 - $15.60.
+
+For the API models we used the charges OpenRouter actually billed for the same evaluation documents, at list prices on 26 November 2026. Each document was sent once with all of its questions.
+
+![Medical DMs and API models: cost to process one million notes](/en/LLMs/images/dm_frontier_cost.png)
+
+John Snow Labs models are blue, with the midpoint of the cost range in the table below. API models are grey, with the billed cost.
+
+{:.table-model-big}
+| Model | Where it runs | Speed | Cost per 1M notes |
+|:---|:---|:---|---:|
+| Medical DM Nano | Your GPU (24 GB) | 24 ms per note, 6-7 h per 1M | $7.80 - $9.10 |
+| Medical DM Small | Your GPU (24 GB) | 40 ms per note, 10-12 h per 1M | $13.00 - $15.60 |
+| Jev 1.14 | Cloud API | 0.95 s per request | $38 |
+| GPT-6 Luna | Cloud API | 1.21 s per request | $80 |
+| Claude Haiku 5.5 | Cloud API | 1.11 s per request | $120 |
+| Gemini 3.8 Flash | Cloud API | 3.71 s per request | $934 |
+
+**Medical DM Small costs roughly 3 to 65 times less than the API options for the same notes, and Medical DM Nano roughly 4 to 110 times less.** GPT-6 Luna and Claude Haiku 5.5 list at $0.10 in and $0.50 out per million tokens, and they cost 6 and 8 times as much as Small here because a clinical note plus its questions averages about 797 input tokens per document. Gemini 3.8 Flash lists at $0.825 in and $4.125 out, and it always reasons: 86% of its output tokens were reasoning tokens, which is why it costs the most.
+
+#### Checking De-identified Notes for Leftover PHI
+
+PHI Guard asks one question of a de-identified note: does it still contain a name, ID, contact detail, date or location that should have been removed? We put that question to every model on 1,200 notes (585 with a leak, 615 clean) from the PHI Guard benchmark.
+
+{:.table-model-big}
+| Model | Leaks caught | Clean notes flagged | Precision |
+|:---|---:|---:|---:|
+| Medical DM Small | 555 of 585 (95%) | 32 of 615 (5%) | 95% |
+| Medical DM Nano | 556 of 585 (95%) | 69 of 615 (11%) | 89% |
+| PHI Guard v0.7 | 550 of 585 (94%) | 71 of 615 (12%) | 89% |
+| Gemini 3.8 Flash | 521 of 585 (89%) | 29 of 615 (5%) | 95% |
+| Jev 1.14 | 550 of 585 (94%) | 202 of 615 (33%) | 73% |
+| GPT-6 Luna | 525 of 585 (90%) | 208 of 615 (34%) | 72% |
+| Claude Haiku 5.5 | 572 of 585 (98%) | 471 of 615 (77%) | 55% |
+
+A flagged clean note is a false alarm that a person has to review.
+
+A guard that raises many false alarms costs more in review time than it saves, so precision matters as much as catching leaks. Claude Haiku 5.5 catches the most leaks and flags more than three in four clean notes. Medical DM Small catches 95% of leaks and flags 5% of clean notes. PHI Guard v0.7, the dedicated PHI Guard model that runs on a CPU, catches 94% of leaks and flags 12%. Gemini 3.8 Flash matches the precision of Medical DM Small on this question, at roughly 55 times the cost per note.
+
+![Medical DMs, PHI Guard and API models: cost to check one million notes for leftover PHI](/en/LLMs/images/dm_frontier_phi_cost.png)
+
+John Snow Labs models are blue. API models are grey, with the billed cost.
+
+On one CPU thread PHI Guard v0.7 needs about 1.8 hours per million notes, which is about $0.07 at $0.04 per CPU hour. It returns nine outputs per note in that time, while the API models are priced for the single leak question. The API costs here are the billed charges on these PHI notes, which are shorter than the general documents above, so they are lower than in the earlier cost chart.
+
+**PHI Guard on a CPU.** The dedicated PHI Guard models need no GPU. PHI Guard v0.7 returns nine outputs in 6.4 ms per note on one CPU thread, about 1.8 hours per million notes, and these models run in about 1 GB of RAM.
+
+There is a second reason to run a leak checker locally. An API-based checker has to send every note to a third party, including the ones that still contain the PHI you are trying to catch.
+
+#### What This Means for Clinical Pipelines
+
+- **Cost.** At roughly $8 to $14 per million notes, a decision step can run on every note instead of a sample.
+- **Speed.** 24 ms and 40 ms per note on a single 24 GB GPU, and 6.4 ms per note on one CPU thread for the dedicated PHI Guard models.
+- **Privacy and control.** The models run inside your own environment, so no note is sent to a third party, and the model version stays fixed between runs. This also fits sites that cannot send data outside their network.
+
+Frontier models remain the right tool for open-ended reasoning and writing. For the repetitive, well-defined decisions that make up most of a clinical pipeline, a small model you run yourself matches or beats these API models on accuracy, costs far less per note, and keeps the data where it is.
+
 </div>
