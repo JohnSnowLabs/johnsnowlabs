@@ -11,6 +11,8 @@ sidebar:
     nav: literature-review
 ---
 
+<div class="h3-box" markdown="1">
+
 Systematic literature reviews are slow. Teams spend weeks searching databases, screening abstracts, and hand-copying data into spreadsheets — work that is error-prone and hard to audit. The **Literature Review Agent** is built to change that.
 
 It's a guided workspace that automates the heavy lifting of evidence synthesis. You search trusted medical and academic databases, define what you want to extract in plain language, and let John Snow Labs medical-grade LLMs pull **structured, evidence-backed data** from every article — with inclusion/exclusion screening applied automatically. The whole thing runs from a clean web UI, with no scripting required.
@@ -18,6 +20,8 @@ It's a guided workspace that automates the heavy lifting of evidence synthesis. 
 Literature Review Agent ships as a self-contained **AWS Marketplace AMI**. The entire stack runs in **your own AWS account** via `docker compose`, so your queries, uploaded documents, and extraction results never leave your infrastructure.
 
 ![Literature Review — multi-source search and results](/assets/images/literature_review/step1-search.png)
+
+</div><div class="h3-box" markdown="1">
 
 ## Highlights
 
@@ -30,6 +34,8 @@ Literature Review Agent ships as a self-contained **AWS Marketplace AMI**. The e
 * **Results you can use immediately.** Export the full result set as CSV and take it straight into your existing analysis tools.
 
 ---
+
+</div><div class="h3-box" markdown="1">
 
 ## 5-Step Guided Workflow
 
@@ -77,6 +83,8 @@ With a literature set selected, you can ask questions in plain language and get 
 
 ---
 
+</div><div class="h3-box" markdown="1">
+
 ## Example Use Cases & Target Audience
 
 🎯 **Target audience:** Medical researchers, systematic and scoping review teams, evidence-synthesis and HEOR groups, guideline developers, and meta-analysis authors.
@@ -103,6 +111,8 @@ A regulatory team needs to review a set of proprietary clinical study reports �
 
 ---
 
+</div><div class="h3-box" markdown="1">
+
 ## Architecture
 
 Literature Review Agent runs as a self-contained stack with four services that start automatically on the AMI.
@@ -116,4 +126,4 @@ Literature Review Agent runs as a self-contained stack with four services that s
 
 **DeepLens** serves as both the search provider and the LLM endpoint for search and extraction calls.
 
-
+</div>

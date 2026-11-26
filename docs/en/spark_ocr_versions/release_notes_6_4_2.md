@@ -93,6 +93,7 @@ layout_detector = ImageLayoutDetector.pretrained("image_layout_detector_ov", "en
 
 We are releasing an initial set of 4 pipelines that provide different options to parse document collections containing different complexity levels. These pipelines support all popular image types, scanned PDFs, and digital PDFs, all the routing happens internally and is transparent to the user.
 
+{:.table-model-big}
 | Pipeline | Digital PDF | Simple Page | Complex Page | Tables |
 |------------|-----------------|-------------------|---------------------|-----------|
 | **doc_data_loader_digital_easy** | PdfToText | ImageToTextV4 | ImageToTextV4 | N/A |

@@ -39,7 +39,7 @@ The release also brings a set of **de-identification enhancements** that apply a
 These enhancements will elevate your experience with Healthcare NLP, enabling more efficient, accurate, and streamlined analysis of healthcare-related natural language data.
 
 
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 #### 🌟 Spotlight: `DecisionModel` and PHI Guard — Check Every Document Before It Leaves
 
