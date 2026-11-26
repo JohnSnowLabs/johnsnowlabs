@@ -41,7 +41,7 @@ Two new benchmarks come with the release. On medical terminology mapping, the re
 These enhancements will elevate your experience with Healthcare NLP, enabling more efficient, accurate, and streamlined analysis of healthcare-related natural language data.
 
 
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 #### 🌟 Spotlight: Apache Spark 4.x Support & the Latest Cloud Runtimes
 
@@ -63,7 +63,6 @@ spark = sparknlp_jsl.start(secret=SECRET)
 If you attach the JAR manually — for example on a cluster where you set `spark.jars` yourself — pick the build that matches your runtime:
 
 {:.table-model-big}
-
 | Your runtime | Use this build | GPU / Apple Silicon / AArch64 |
 | --- | --- | --- |
 | Spark 3.x (Databricks 13–16) | `spark-nlp-jsl-7.0.0.jar` | supported, as before |
