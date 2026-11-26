@@ -661,54 +661,55 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <p>These enhancements will elevate your experience with Healthcare NLP, enabling more efficient, accurate, and streamlined analysis of healthcare-related natural language data.</p>
 
-  <div class="h3-box">
+</div>
+<div class="h3-box">
 
-    <h4 id="llm-based-structured-clinical-entity-extraction-with-constrained-decoding">LLM-Based Structured Clinical Entity Extraction with Constrained Decoding</h4>
+  <h4 id="llm-based-structured-clinical-entity-extraction-with-constrained-decoding">LLM-Based Structured Clinical Entity Extraction with Constrained Decoding</h4>
 
-    <p><code class="language-plaintext highlighter-rouge">MedicalLLMEntityExtractor</code> is an end-to-end <strong>LLM-powered entity extraction annotator for healthcare and clinical text</strong>, built on top of the <code class="language-plaintext highlighter-rouge">MedicalLLM</code> models. It leverages <strong>GGUF-format Large Language Models</strong> (via llama.cpp backend) and enforces <strong>strict structured Spark NLP outputs using BNF grammars</strong>, ensuring deterministic and schema-compliant extraction results.</p>
+  <p><code class="language-plaintext highlighter-rouge">MedicalLLMEntityExtractor</code> is an end-to-end <strong>LLM-powered entity extraction annotator for healthcare and clinical text</strong>, built on top of the <code class="language-plaintext highlighter-rouge">MedicalLLM</code> models. It leverages <strong>GGUF-format Large Language Models</strong> (via llama.cpp backend) and enforces <strong>strict structured Spark NLP outputs using BNF grammars</strong>, ensuring deterministic and schema-compliant extraction results.</p>
 
-    <p>The annotator follows:</p>
+  <p>The annotator follows:</p>
 
-    <ul>
-      <li>Few-shot prompting for domain adaptation</li>
-      <li>Constrained decoding via grammar rules (BNF)</li>
-      <li>Post-processing alignment using string matching for accurate character offsets (<code class="language-plaintext highlighter-rouge">begin</code>, <code class="language-plaintext highlighter-rouge">end</code>)</li>
-    </ul>
+  <ul>
+    <li>Few-shot prompting for domain adaptation</li>
+    <li>Constrained decoding via grammar rules (BNF)</li>
+    <li>Post-processing alignment using string matching for accurate character offsets (<code class="language-plaintext highlighter-rouge">begin</code>, <code class="language-plaintext highlighter-rouge">end</code>)</li>
+  </ul>
 
-    <p>This enables reliable extraction of clinically relevant entities such as <strong>DRUG, DOSAGE, ROUTE, FREQUENCY, DURATION</strong>, and other configurable entity types, with precise span alignment back to the source document.</p>
+  <p>This enables reliable extraction of clinically relevant entities such as <strong>DRUG, DOSAGE, ROUTE, FREQUENCY, DURATION</strong>, and other configurable entity types, with precise span alignment back to the source document.</p>
 
-    <p>Unlike traditional NER models, <code class="language-plaintext highlighter-rouge">MedicalLLMEntityExtractor</code> is <strong>model-agnostic within the Medical LLM ecosystem</strong>, meaning it can load and run <strong>any compatible Medical LLM annotator model (GGUF-based)</strong> from the Healthcare NLP model hub. Users can simply select a pretrained model, configure inference parameters, and define extraction schema dynamically.</p>
+  <p>Unlike traditional NER models, <code class="language-plaintext highlighter-rouge">MedicalLLMEntityExtractor</code> is <strong>model-agnostic within the Medical LLM ecosystem</strong>, meaning it can load and run <strong>any compatible Medical LLM annotator model (GGUF-based)</strong> from the Healthcare NLP model hub. Users can simply select a pretrained model, configure inference parameters, and define extraction schema dynamically.</p>
 
-    <p>This makes it suitable for:</p>
+  <p>This makes it suitable for:</p>
 
-    <ul>
-      <li>Rapid prototyping of clinical extraction pipelines</li>
-      <li>Custom entity schema design without retraining</li>
-      <li>Replacement or augmentation of traditional NER pipelines</li>
-    </ul>
+  <ul>
+    <li>Rapid prototyping of clinical extraction pipelines</li>
+    <li>Custom entity schema design without retraining</li>
+    <li>Replacement or augmentation of traditional NER pipelines</li>
+  </ul>
 
-    <p><strong>Pretrained Model Example</strong></p>
+  <p><strong>Pretrained Model Example</strong></p>
 
-    <p>MedicalLLMEntityExtractor can be used with any compatible MedicalLLM model.</p>
+  <p>MedicalLLMEntityExtractor can be used with any compatible MedicalLLM model.</p>
 
-    <table class="table-model-big">
-      <thead>
-        <tr>
-          <th>Model Name</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><a href="https://nlp.johnsnowlabs.com/2025/08/05/jsl_meds_4b_q16_v5_en.html"><code class="language-plaintext highlighter-rouge">jsl_meds_4b_q16_v5</code></a></td>
-          <td>General-purpose medical LLM (4B quantized) optimized for clinical entity extraction, summarization, and structured information retrieval tasks.</td>
-        </tr>
-      </tbody>
-    </table>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Model Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2025/08/05/jsl_meds_4b_q16_v5_en.html"><code class="language-plaintext highlighter-rouge">jsl_meds_4b_q16_v5</code></a></td>
+        <td>General-purpose medical LLM (4B quantized) optimized for clinical entity extraction, summarization, and structured information retrieval tasks.</td>
+      </tr>
+    </tbody>
+  </table>
 
-    <p><strong>Example Pipeline</strong></p>
+  <p><strong>Example Pipeline</strong></p>
 
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span> \
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span> \
     <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span> \
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
 
@@ -724,11 +725,11 @@ function wrapWordInSpan(data, wordToWrap) {
     <span class="p">.</span><span class="n">setBatchSize</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> \
     <span class="p">.</span><span class="n">setTopK</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span> \
     <span class="p">.</span><span class="n">setTopP</span><span class="p">(</span><span class="mf">0.9</span><span class="p">)</span>
-</code></pre></div>    </div>
+</code></pre></div>  </div>
 
-    <p><strong>Few-Shot Configuration Example</strong></p>
+  <p><strong>Few-Shot Configuration Example</strong></p>
 
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">medication_few_shot</span> <span class="o">=</span> <span class="p">[</span>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">medication_few_shot</span> <span class="o">=</span> <span class="p">[</span>
     <span class="p">(</span>
         <span class="s">"Patient prescribed amoxicillin 500mg PO TID for 10 days."</span><span class="p">,</span>
         <span class="s">'{"extractions": [{"entity": "DRUG", "text": "amoxicillin"}, '</span>
@@ -759,22 +760,22 @@ function wrapWordInSpan(data, wordToWrap) {
 <span class="p">]</span>
 
 <span class="n">entity_extractor</span><span class="p">.</span><span class="n">setFewShotExamples</span><span class="p">(</span><span class="n">medication_few_shot</span><span class="p">)</span>
-</code></pre></div>    </div>
+</code></pre></div>  </div>
 
-    <p><strong>Entity Schema Definition</strong></p>
+  <p><strong>Entity Schema Definition</strong></p>
 
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">entity_extractor</span><span class="p">.</span><span class="n">setEntityTypes</span><span class="p">([</span>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">entity_extractor</span><span class="p">.</span><span class="n">setEntityTypes</span><span class="p">([</span>
   <span class="s">"DRUG::The exact medication or drug name as written in the text. Examples: aspirin, metformin, vancomycin."</span><span class="p">,</span>
   <span class="s">"DOSAGE::The exact dose amount including units. Examples: 500mg, 1.25g, 40mg, 0.1 mcg/kg/min."</span><span class="p">,</span>
   <span class="s">"ROUTE::The administration route. Examples: PO, IV, SQ, IM, inhaled, sublingual, topical."</span><span class="p">,</span>
   <span class="s">"FREQUENCY::The dosing schedule or timing. Examples: BID, TID, Q12H, daily, PRN, twice daily."</span><span class="p">,</span>
   <span class="s">"DURATION::The treatment duration. Examples: 7 days, 6 weeks, 3 months, until follow-up."</span><span class="p">,</span>
 <span class="p">])</span> 
-</code></pre></div>    </div>
+</code></pre></div>  </div>
 
-    <p><strong>Result</strong>:</p>
+  <p><strong>Result</strong>:</p>
 
-    <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+-----+-------------+---------+
+  <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+-----+-------------+---------+
 |begin|chunk        |label    |
 +-----+-------------+---------+
 |26   |Metformin    |DRUG     |
@@ -796,94 +797,94 @@ function wrapWordInSpan(data, wordToWrap) {
 |156  |Empagliflozin|DRUG     |
 |170  |10mg         |DOSAGE   |
 +-----+-------------+---------+
-</code></pre></div>    </div>
+</code></pre></div>  </div>
 
-  </div>
-  <div class="h3-box">
+</div>
+<div class="h3-box">
 
-    <h4 id="table-aware-free-text-extended-cda-de-identification-with-improved-phi-accuracy-in-cda-tables">Table-Aware, Free-Text Extended CDA De-Identification with Improved PHI Accuracy in CDA Tables</h4>
-    <p><code class="language-plaintext highlighter-rouge">CDADeIdentification</code> is a <strong>CDA (Clinical Document Architecture) de-identification transformer for Healthcare NLP pipelines</strong>, designed to anonymize both <strong>structured XML nodes and embedded free-text narratives such as <code class="language-plaintext highlighter-rouge">section.text</code></strong> using Healthcare NLP models and pretrained de-identification pipelines.</p>
+  <h4 id="table-aware-free-text-extended-cda-de-identification-with-improved-phi-accuracy-in-cda-tables">Table-Aware, Free-Text Extended CDA De-Identification with Improved PHI Accuracy in CDA Tables</h4>
+  <p><code class="language-plaintext highlighter-rouge">CDADeIdentification</code> is a <strong>CDA (Clinical Document Architecture) de-identification transformer for Healthcare NLP pipelines</strong>, designed to anonymize both <strong>structured XML nodes and embedded free-text narratives such as <code class="language-plaintext highlighter-rouge">section.text</code></strong> using Healthcare NLP models and pretrained de-identification pipelines.</p>
 
-    <p>The new generation of <code class="language-plaintext highlighter-rouge">CDADeIdentification</code> introduces <strong>a context-aware table processing mechanism with header-aware semantics</strong>, where structured elements such as HTML tables and definition lists are no longer treated as isolated text nodes. Instead, cell values are enriched with their corresponding headers (e.g., <code class="language-plaintext highlighter-rouge">"header : value"</code>) before being sent to the de-identification pipeline, enabling significantly better entity recognition in compact clinical fields.</p>
+  <p>The new generation of <code class="language-plaintext highlighter-rouge">CDADeIdentification</code> introduces <strong>a context-aware table processing mechanism with header-aware semantics</strong>, where structured elements such as HTML tables and definition lists are no longer treated as isolated text nodes. Instead, cell values are enriched with their corresponding headers (e.g., <code class="language-plaintext highlighter-rouge">"header : value"</code>) before being sent to the de-identification pipeline, enabling significantly better entity recognition in compact clinical fields.</p>
 
-    <p>This approach substantially improves <strong>PHI detection accuracy in structured clinical tables</strong>, particularly in cases where traditional de-identification methods fail due to the absence of contextual signals in short text cells (e.g., lab values, patient attributes, billing records).</p>
+  <p>This approach substantially improves <strong>PHI detection accuracy in structured clinical tables</strong>, particularly in cases where traditional de-identification methods fail due to the absence of contextual signals in short text cells (e.g., lab values, patient attributes, billing records).</p>
 
-    <p>By combining:</p>
+  <p>By combining:</p>
 
-    <ul>
-      <li>header-aware table parsing</li>
-      <li>structured XML path de-identification</li>
-      <li>free-text NLP pipeline integration</li>
-    </ul>
+  <ul>
+    <li>header-aware table parsing</li>
+    <li>structured XML path de-identification</li>
+    <li>free-text NLP pipeline integration</li>
+  </ul>
 
-    <p><code class="language-plaintext highlighter-rouge">CDADeIdentification</code> achieves <strong>higher recall and more consistent PHI masking across mixed structured and unstructured CDA documents</strong>, while preserving the original clinical document structure and readability.</p>
+  <p><code class="language-plaintext highlighter-rouge">CDADeIdentification</code> achieves <strong>higher recall and more consistent PHI masking across mixed structured and unstructured CDA documents</strong>, while preserving the original clinical document structure and readability.</p>
 
-    <p><strong>New Pretrained Models</strong></p>
+  <p><strong>New Pretrained Models</strong></p>
 
-    <table class="table-model-big">
-      <thead>
-        <tr>
-          <th>Model Name</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">cda_deidentification_patient</code></td>
-          <td>De-identifies patient-related CDA XML paths including identifiers, demographics, and structured patient metadata while preserving CDA schema integrity.</td>
-        </tr>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">cda_deidentification_extend_free_text</code></td>
-          <td>Extends de-identification to CDA free-text sections (e.g., <code class="language-plaintext highlighter-rouge">section.text</code>, narrative blocks) by applying a full Healthcare NLP de-identification pipeline to unstructured clinical content.</td>
-        </tr>
-      </tbody>
-    </table>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Model Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">cda_deidentification_patient</code></td>
+        <td>De-identifies patient-related CDA XML paths including identifiers, demographics, and structured patient metadata while preserving CDA schema integrity.</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">cda_deidentification_extend_free_text</code></td>
+        <td>Extends de-identification to CDA free-text sections (e.g., <code class="language-plaintext highlighter-rouge">section.text</code>, narrative blocks) by applying a full Healthcare NLP de-identification pipeline to unstructured clinical content.</td>
+      </tr>
+    </tbody>
+  </table>
 
-    <p><strong>Table-Aware De-Identification (Major Enhancement)</strong></p>
+  <p><strong>Table-Aware De-Identification (Major Enhancement)</strong></p>
 
-    <p><strong>Table Handling Control</strong></p>
+  <p><strong>Table Handling Control</strong></p>
 
-    <p>With <code class="language-plaintext highlighter-rouge">setTableHandling(True)</code> (default behavior), CDA tables are processed using <strong>semantic header-value pairing</strong> instead of independent node processing.</p>
+  <p>With <code class="language-plaintext highlighter-rouge">setTableHandling(True)</code> (default behavior), CDA tables are processed using <strong>semantic header-value pairing</strong> instead of independent node processing.</p>
 
-    <ul>
-      <li>How it works:</li>
-    </ul>
+  <ul>
+    <li>How it works:</li>
+  </ul>
 
-    <p>Instead of treating each <code class="language-plaintext highlighter-rouge">&lt;td&gt;</code> independently, the system constructs:</p>
+  <p>Instead of treating each <code class="language-plaintext highlighter-rouge">&lt;td&gt;</code> independently, the system constructs:</p>
 
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"&lt;header&gt; : &lt;cell value&gt;"
-</code></pre></div>    </div>
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"&lt;header&gt; : &lt;cell value&gt;"
+</code></pre></div>  </div>
 
-    <p>and sends it through the Healthcare NLP de-identification pipeline.</p>
+  <p>and sends it through the Healthcare NLP de-identification pipeline.</p>
 
-    <p><strong>Free-Text Exclusion Control</strong></p>
+  <p><strong>Free-Text Exclusion Control</strong></p>
 
-    <table>
-      <thead>
-        <tr>
-          <th>Parameter</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">setExcludeFreeTextTags(list)</code></td>
-          <td>Defines XML tags whose subtree is fully excluded from NLP processing (no tokenization or inference). Useful for preserving footnotes, superscripts, or custom clinical metadata blocks.</td>
-        </tr>
-      </tbody>
-    </table>
+  <table>
+    <thead>
+      <tr>
+        <th>Parameter</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">setExcludeFreeTextTags(list)</code></td>
+        <td>Defines XML tags whose subtree is fully excluded from NLP processing (no tokenization or inference). Useful for preserving footnotes, superscripts, or custom clinical metadata blocks.</td>
+      </tr>
+    </tbody>
+  </table>
 
-    <p><strong>Backward Compatibility</strong></p>
-    <ul>
-      <li>Disable table-aware processing:
-        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">.</span><span class="n">setTableHandling</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
-</code></pre></div>        </div>
-      </li>
-    </ul>
+  <p><strong>Backward Compatibility</strong></p>
+  <ul>
+    <li>Disable table-aware processing:
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">.</span><span class="n">setTableHandling</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div>      </div>
+    </li>
+  </ul>
 
-    <p><strong>Pipeline Integration Example</strong></p>
+  <p><strong>Pipeline Integration Example</strong></p>
 
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">deid_pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">deid_pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span>
     <span class="s">"clinical_deidentification_docwise_benchmark_medium_v2"</span><span class="p">,</span>
     <span class="s">"en"</span><span class="p">,</span>
     <span class="s">"clinical/models"</span>
@@ -897,11 +898,11 @@ function wrapWordInSpan(data, wordToWrap) {
     <span class="p">.</span><span class="n">setTableHandling</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
     <span class="p">.</span><span class="n">setPipeline</span><span class="p">(</span><span class="n">spark</span><span class="p">,</span> <span class="n">deid_pipeline</span><span class="p">,</span> <span class="s">"masked"</span><span class="p">)</span>
 <span class="p">)</span>
-</code></pre></div>    </div>
+</code></pre></div>  </div>
 
-    <p><strong>Example Input</strong></p>
+  <p><strong>Example Input</strong></p>
 
-    <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><span class="nt">&lt;ClinicalDocument</span> <span class="na">xmlns=</span><span class="s">"urn:hl7-org:v3"</span> <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span> <span class="na">xsi:schemaLocation=</span><span class="s">"urn:hl7-org:v3 CDA.xsd"</span><span class="nt">&gt;</span>
+  <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><span class="nt">&lt;ClinicalDocument</span> <span class="na">xmlns=</span><span class="s">"urn:hl7-org:v3"</span> <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span> <span class="na">xsi:schemaLocation=</span><span class="s">"urn:hl7-org:v3 CDA.xsd"</span><span class="nt">&gt;</span>
     <span class="c">&lt;!-- ===================== BODY ===================== --&gt;</span>
     <span class="nt">&lt;component&gt;</span>
         <span class="nt">&lt;structuredBody&gt;</span>
@@ -970,11 +971,11 @@ function wrapWordInSpan(data, wordToWrap) {
         <span class="nt">&lt;/structuredBody&gt;</span>
     <span class="nt">&lt;/component&gt;</span>
 <span class="nt">&lt;/ClinicalDocument&gt;</span>"""
-</code></pre></div>    </div>
+</code></pre></div>  </div>
 
-    <p><strong>Result</strong>:</p>
+  <p><strong>Result</strong>:</p>
 
-    <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;</span><span class="nt">&lt;ClinicalDocument</span> <span class="na">xmlns=</span><span class="s">"urn:hl7-org:v3"</span> <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span> <span class="na">xsi:schemaLocation=</span><span class="s">"urn:hl7-org:v3 CDA.xsd"</span><span class="nt">&gt;</span>
+  <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;</span><span class="nt">&lt;ClinicalDocument</span> <span class="na">xmlns=</span><span class="s">"urn:hl7-org:v3"</span> <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span> <span class="na">xsi:schemaLocation=</span><span class="s">"urn:hl7-org:v3 CDA.xsd"</span><span class="nt">&gt;</span>
     <span class="c">&lt;!-- ===================== BODY ===================== --&gt;</span>
     <span class="nt">&lt;component&gt;</span>
         <span class="nt">&lt;structuredBody&gt;</span>
@@ -1043,167 +1044,167 @@ function wrapWordInSpan(data, wordToWrap) {
         <span class="nt">&lt;/structuredBody&gt;</span>
     <span class="nt">&lt;/component&gt;</span>
 <span class="nt">&lt;/ClinicalDocument&gt;</span>
-</code></pre></div>    </div>
+</code></pre></div>  </div>
 
-  </div>
-  <div class="h3-box">
+</div>
+<div class="h3-box">
 
-    <h4 id="pretrained-zero-shot-multi-task-named-entity-recognition-ner-speed-comparison-on-gpu-vs-cpu-benchmark">Pretrained Zero-Shot Multi-Task Named Entity Recognition (NER) Speed Comparison on GPU vs CPU Benchmark</h4>
+  <h4 id="pretrained-zero-shot-multi-task-named-entity-recognition-ner-speed-comparison-on-gpu-vs-cpu-benchmark">Pretrained Zero-Shot Multi-Task Named Entity Recognition (NER) Speed Comparison on GPU vs CPU Benchmark</h4>
 
-    <p>We benchmarked the <strong>PretrainedZeroShotMultiTask</strong> architecture using the <strong>zeroshot_multitask_base</strong> model on a dataset of ~500 tokens per row.</p>
+  <p>We benchmarked the <strong>PretrainedZeroShotMultiTask</strong> architecture using the <strong>zeroshot_multitask_base</strong> model on a dataset of ~500 tokens per row.</p>
 
-    <p><strong>Hardware setup:</strong></p>
+  <p><strong>Hardware setup:</strong></p>
 
-    <ul>
-      <li><strong>CPU</strong>: 8 cores, 52 GB System RAM</li>
-      <li><strong>GPU</strong>: NVIDIA T4, 24 GB VRAM</li>
-    </ul>
+  <ul>
+    <li><strong>CPU</strong>: 8 cores, 52 GB System RAM</li>
+    <li><strong>GPU</strong>: NVIDIA T4, 24 GB VRAM</li>
+  </ul>
 
-    <p>The workload was tested on two dataset sizes (1k rows and 100 rows), each with 48 repartitions.</p>
+  <p>The workload was tested on two dataset sizes (1k rows and 100 rows), each with 48 repartitions.</p>
 
-    <p><strong>Spark NLP Pipeline</strong></p>
+  <p><strong>Spark NLP Pipeline</strong></p>
 
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pipeline = Pipeline(
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pipeline = Pipeline(
     stages = [
         document_assembler,
         sentence_detector,
         pretrained_zeroshot_multitask
 ])
-</code></pre></div>    </div>
+</code></pre></div>  </div>
 
-    <p><strong>Summary</strong></p>
+  <p><strong>Summary</strong></p>
 
-    <ul>
-      <li>The <strong>GPU significantly reduced wall time</strong> compared to CPU.</li>
-      <li>On the 1k dataset, GPU reduced total runtime from <strong>8h 45m → 42m</strong> (~12× faster).</li>
-      <li>On the 100-row dataset, GPU reduced runtime from <strong>51m → 4m</strong> (~12× faster).</li>
-      <li>GPU acceleration scales consistently across dataset sizes.</li>
-    </ul>
+  <ul>
+    <li>The <strong>GPU significantly reduced wall time</strong> compared to CPU.</li>
+    <li>On the 1k dataset, GPU reduced total runtime from <strong>8h 45m → 42m</strong> (~12× faster).</li>
+    <li>On the 100-row dataset, GPU reduced runtime from <strong>51m → 4m</strong> (~12× faster).</li>
+    <li>GPU acceleration scales consistently across dataset sizes.</li>
+  </ul>
 
-    <p><strong>Benchmark Results</strong></p>
+  <p><strong>Benchmark Results</strong></p>
 
-    <table>
-      <thead>
-        <tr>
-          <th>Hardware</th>
-          <th>Dataset Size</th>
-          <th>Repartition</th>
-          <th>CPU Time (user+sys)</th>
-          <th>Wall Time</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>CPU (8 core, 52GB RAM)</td>
-          <td>1k rows (~500 tokens)</td>
-          <td>48</td>
-          <td>5.93 s</td>
-          <td>8h 45m 46s</td>
-        </tr>
-        <tr>
-          <td>CPU (8 core, 52GB RAM)</td>
-          <td>100 rows (~500 tokens)</td>
-          <td>48</td>
-          <td>625 ms</td>
-          <td>51m 43s</td>
-        </tr>
-        <tr>
-          <td>GPU (NVIDIA T4, 24GB)</td>
-          <td>1k rows (~500 tokens)</td>
-          <td>48</td>
-          <td>400 ms</td>
-          <td>42m 35s</td>
-        </tr>
-        <tr>
-          <td>GPU (NVIDIA T4, 24GB)</td>
-          <td>100 rows (~500 tokens)</td>
-          <td>48</td>
-          <td>52 ms</td>
-          <td>4m 12s</td>
-        </tr>
-      </tbody>
-    </table>
+  <table>
+    <thead>
+      <tr>
+        <th>Hardware</th>
+        <th>Dataset Size</th>
+        <th>Repartition</th>
+        <th>CPU Time (user+sys)</th>
+        <th>Wall Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>CPU (8 core, 52GB RAM)</td>
+        <td>1k rows (~500 tokens)</td>
+        <td>48</td>
+        <td>5.93 s</td>
+        <td>8h 45m 46s</td>
+      </tr>
+      <tr>
+        <td>CPU (8 core, 52GB RAM)</td>
+        <td>100 rows (~500 tokens)</td>
+        <td>48</td>
+        <td>625 ms</td>
+        <td>51m 43s</td>
+      </tr>
+      <tr>
+        <td>GPU (NVIDIA T4, 24GB)</td>
+        <td>1k rows (~500 tokens)</td>
+        <td>48</td>
+        <td>400 ms</td>
+        <td>42m 35s</td>
+      </tr>
+      <tr>
+        <td>GPU (NVIDIA T4, 24GB)</td>
+        <td>100 rows (~500 tokens)</td>
+        <td>48</td>
+        <td>52 ms</td>
+        <td>4m 12s</td>
+      </tr>
+    </tbody>
+  </table>
 
-  </div>
-  <div class="h3-box">
+</div>
+<div class="h3-box">
 
-    <h4 id="structureddeidentification--timestamp-support--time-shift-enhancement">StructuredDeIdentification – Timestamp Support &amp; Time Shift Enhancement</h4>
+  <h4 id="structureddeidentification--timestamp-support--time-shift-enhancement">StructuredDeIdentification – Timestamp Support &amp; Time Shift Enhancement</h4>
 
-    <p><strong>Overview</strong></p>
+  <p><strong>Overview</strong></p>
 
-    <p>The <code class="language-plaintext highlighter-rouge">StructuredDeIdentification</code> module has been enhanced to support <strong>timestamp-based de-identification for structured medical tables</strong>, enabling more realistic temporal obfuscation in clinical datasets.</p>
+  <p>The <code class="language-plaintext highlighter-rouge">StructuredDeIdentification</code> module has been enhanced to support <strong>timestamp-based de-identification for structured medical tables</strong>, enabling more realistic temporal obfuscation in clinical datasets.</p>
 
-    <p>This improvement allows clients to safely shift temporal information in structured healthcare data while preserving schema consistency and analytical usability.</p>
+  <p>This improvement allows clients to safely shift temporal information in structured healthcare data while preserving schema consistency and analytical usability.</p>
 
-    <p><strong>Timestamp Entity Support</strong></p>
+  <p><strong>Timestamp Entity Support</strong></p>
 
-    <p><code class="language-plaintext highlighter-rouge">StructuredDeIdentification</code> now supports the following timestamp entity types:</p>
+  <p><code class="language-plaintext highlighter-rouge">StructuredDeIdentification</code> now supports the following timestamp entity types:</p>
 
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">TIMESTAMP</code></li>
-      <li><code class="language-plaintext highlighter-rouge">TIMESTAMP_WITH_TIMEZONE</code></li>
-    </ul>
+  <ul>
+    <li><code class="language-plaintext highlighter-rouge">TIMESTAMP</code></li>
+    <li><code class="language-plaintext highlighter-rouge">TIMESTAMP_WITH_TIMEZONE</code></li>
+  </ul>
 
-    <p>This enables time-based obfuscation for structured medical records such as admissions, lab events, prescriptions, and encounter logs.</p>
+  <p>This enables time-based obfuscation for structured medical records such as admissions, lab events, prescriptions, and encounter logs.</p>
 
-    <p><strong>Time Shifting Capability</strong></p>
+  <p><strong>Time Shifting Capability</strong></p>
 
-    <p>Timestamp values can now be shifted forward or backward in time using a configurable offset.</p>
+  <p>Timestamp values can now be shifted forward or backward in time using a configurable offset.</p>
 
-    <p>This is particularly useful for:</p>
+  <p>This is particularly useful for:</p>
 
-    <ul>
-      <li>De-identifying medical timelines</li>
-      <li>Preserving temporal relationships without exposing real dates</li>
-      <li>Enabling synthetic cohort generation with realistic time progression</li>
-    </ul>
+  <ul>
+    <li>De-identifying medical timelines</li>
+    <li>Preserving temporal relationships without exposing real dates</li>
+    <li>Enabling synthetic cohort generation with realistic time progression</li>
+  </ul>
 
-    <p><strong>New Parameters</strong></p>
+  <p><strong>New Parameters</strong></p>
 
-    <p><strong>timeStampFormats: list[str]</strong></p>
+  <p><strong>timeStampFormats: list[str]</strong></p>
 
-    <p>Optional list of timestamp patterns used to parse string-based <code class="language-plaintext highlighter-rouge">TIMESTAMP</code> or <code class="language-plaintext highlighter-rouge">TIMESTAMP_WITH_TIMEZONE</code> entities.</p>
+  <p>Optional list of timestamp patterns used to parse string-based <code class="language-plaintext highlighter-rouge">TIMESTAMP</code> or <code class="language-plaintext highlighter-rouge">TIMESTAMP_WITH_TIMEZONE</code> entities.</p>
 
-    <ul>
-      <li>If provided, formats are evaluated sequentially in order</li>
-      <li>The first matching format is used for both parsing and formatting</li>
-      <li>If empty, a predefined set of common timestamp formats is applied automatically</li>
-    </ul>
+  <ul>
+    <li>If provided, formats are evaluated sequentially in order</li>
+    <li>The first matching format is used for both parsing and formatting</li>
+    <li>If empty, a predefined set of common timestamp formats is applied automatically</li>
+  </ul>
 
-    <p><strong>Example formats:</strong></p>
+  <p><strong>Example formats:</strong></p>
 
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">"yyyy-MM-dd HH:mm:ss"</code></li>
-      <li><code class="language-plaintext highlighter-rouge">"yyyy-MM-dd'T'HH:mm:ss"</code></li>
-      <li><code class="language-plaintext highlighter-rouge">"yyyy-MM-dd HH:mm:ss.SSS"</code></li>
-    </ul>
+  <ul>
+    <li><code class="language-plaintext highlighter-rouge">"yyyy-MM-dd HH:mm:ss"</code></li>
+    <li><code class="language-plaintext highlighter-rouge">"yyyy-MM-dd'T'HH:mm:ss"</code></li>
+    <li><code class="language-plaintext highlighter-rouge">"yyyy-MM-dd HH:mm:ss.SSS"</code></li>
+  </ul>
 
-    <p><strong>seconds: int</strong></p>
+  <p><strong>seconds: int</strong></p>
 
-    <p>Defines the number of seconds used to shift timestamp entities during obfuscation. Seconds-based offset provides the finest granularity while supporting all larger units via conversion.</p>
+  <p>Defines the number of seconds used to shift timestamp entities during obfuscation. Seconds-based offset provides the finest granularity while supporting all larger units via conversion.</p>
 
-    <ul>
-      <li>Positive values shift timestamps forward in time</li>
-      <li>Negative values shift timestamps backward in time</li>
-      <li>Default value: <code class="language-plaintext highlighter-rouge">0</code> (no shift applied)</li>
-    </ul>
+  <ul>
+    <li>Positive values shift timestamps forward in time</li>
+    <li>Negative values shift timestamps backward in time</li>
+    <li>Default value: <code class="language-plaintext highlighter-rouge">0</code> (no shift applied)</li>
+  </ul>
 
-    <p><strong>Medical Use Case Enhancement</strong></p>
+  <p><strong>Medical Use Case Enhancement</strong></p>
 
-    <p>This feature significantly improves support for <strong>clinical structured tables</strong>, where timestamp fields such as:</p>
+  <p>This feature significantly improves support for <strong>clinical structured tables</strong>, where timestamp fields such as:</p>
 
-    <ul>
-      <li>Admission time</li>
-      <li>Discharge time</li>
-      <li>Medication administration time</li>
-      <li>Lab sampling time</li>
-    </ul>
+  <ul>
+    <li>Admission time</li>
+    <li>Discharge time</li>
+    <li>Medication administration time</li>
+    <li>Lab sampling time</li>
+  </ul>
 
-    <p>must be preserved structurally while being anonymized.</p>
+  <p>must be preserved structurally while being anonymized.</p>
 
-    <p><strong>Example Usage</strong></p>
+  <p><strong>Example Usage</strong></p>
 
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp_jsl.structured_deidentification</span> <span class="kn">import</span> <span class="n">StructuredDeIdentification</span>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp_jsl.structured_deidentification</span> <span class="kn">import</span> <span class="n">StructuredDeIdentification</span>
 
 <span class="n">data</span> <span class="o">=</span> <span class="p">[</span>
     <span class="p">(</span><span class="mi">1001</span><span class="p">,</span> <span class="s">"2026-06-01 08:15:22"</span><span class="p">),</span>
@@ -1231,11 +1232,11 @@ function wrapWordInSpan(data, wordToWrap) {
 <span class="p">)</span>
 
 <span class="n">result</span><span class="p">.</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-</code></pre></div>    </div>
+</code></pre></div>  </div>
 
-    <p><strong>Result</strong>:</p>
+  <p><strong>Result</strong>:</p>
 
-    <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+----------+-------------------+------------------------+
+  <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+----------+-------------------+------------------------+
 |patient_id|admission_timestamp|admission_timestamp_deid|
 +----------+-------------------+------------------------+
 |1001      |2026-06-01 08:15:22|2026-06-01 20:15:22     |
@@ -1244,230 +1245,230 @@ function wrapWordInSpan(data, wordToWrap) {
 |1004      |2026-06-02 18:27:31|2026-06-03 06:27:31     |
 |1005      |2026-06-03 11:58:04|2026-06-03 23:58:04     |
 +----------+-------------------+------------------------+
-</code></pre></div>    </div>
+</code></pre></div>  </div>
 
-  </div>
-  <div class="h3-box">
+</div>
+<div class="h3-box">
 
-    <h4 id="updated-7-umls-entity-resolver-models-and-19-chunkmapper-models-to-the-umls-2026aa-metathesaurus-and-introduced-17-new-chunkmapper-models-covering-8-additional-medical-coding-systems">Updated 7 UMLS Entity Resolver Models and 19 ChunkMapper Models to the UMLS 2026AA Metathesaurus and Introduced 17 New ChunkMapper Models Covering 8 Additional Medical Coding Systems</h4>
+  <h4 id="updated-7-umls-entity-resolver-models-and-19-chunkmapper-models-to-the-umls-2026aa-metathesaurus-and-introduced-17-new-chunkmapper-models-covering-8-additional-medical-coding-systems">Updated 7 UMLS Entity Resolver Models and 19 ChunkMapper Models to the UMLS 2026AA Metathesaurus and Introduced 17 New ChunkMapper Models Covering 8 Additional Medical Coding Systems</h4>
 
-    <p>We are delivering a full refresh of our UMLS model suite, now trained on the <strong>UMLS 2026AA Metathesaurus</strong>. This includes updated versions of all 7 UMLS Entity Resolver models and a significantly expanded ChunkMapper suite — 19 updated models retrained on 2026AA data and 17 new models covering 8 additional medical coding systems.</p>
+  <p>We are delivering a full refresh of our UMLS model suite, now trained on the <strong>UMLS 2026AA Metathesaurus</strong>. This includes updated versions of all 7 UMLS Entity Resolver models and a significantly expanded ChunkMapper suite — 19 updated models retrained on 2026AA data and 17 new models covering 8 additional medical coding systems.</p>
 
-    <p><strong>Updated UMLS 2026AA Entity Resolver Models</strong></p>
+  <p><strong>Updated UMLS 2026AA Entity Resolver Models</strong></p>
 
-    <p>These models map clinical entities to <strong>UMLS Concept Unique Identifiers (CUI)</strong> using <code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli_onnx</code> sentence embeddings (ONNX, CPU-compatible), retrained on the UMLS 2026AA Metathesaurus. The <code class="language-plaintext highlighter-rouge">biolordresolve_umls_general_concepts</code> model uses <code class="language-plaintext highlighter-rouge">mpnet_embeddings_biolord_2023_c</code> embeddings.</p>
+  <p>These models map clinical entities to <strong>UMLS Concept Unique Identifiers (CUI)</strong> using <code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli_onnx</code> sentence embeddings (ONNX, CPU-compatible), retrained on the UMLS 2026AA Metathesaurus. The <code class="language-plaintext highlighter-rouge">biolordresolve_umls_general_concepts</code> model uses <code class="language-plaintext highlighter-rouge">mpnet_embeddings_biolord_2023_c</code> embeddings.</p>
 
-    <table class="table-model-big">
-      <thead>
-        <tr>
-          <th>Model Name</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_umls_findings</code></td>
-          <td>Maps clinical finding entities to their corresponding UMLS CUI codes</td>
-        </tr>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_umls_clinical_drugs</code></td>
-          <td>Maps drug entities to UMLS CUI codes</td>
-        </tr>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_umls_disease_syndrome</code></td>
-          <td>Maps clinical entities (“Disease or Syndrome”) to UMLS CUI codes</td>
-        </tr>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_umls_drug_substance</code></td>
-          <td>Maps drug and substance entities to UMLS CUI codes</td>
-        </tr>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_umls_general_concepts</code></td>
-          <td>Maps clinical entities and concepts to the following 4 UMLS CUI code categories: <code class="language-plaintext highlighter-rouge">Disease</code>, <code class="language-plaintext highlighter-rouge">Symptom</code>, <code class="language-plaintext highlighter-rouge">Medication</code> and <code class="language-plaintext highlighter-rouge">Procedure</code></td>
-        </tr>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_umls_major_concepts</code></td>
-          <td>Maps clinical entities and concepts to 4 major categories of UMLS CUI codes: <code class="language-plaintext highlighter-rouge">Clinical Findings</code>, <code class="language-plaintext highlighter-rouge">Medical Devices</code>, <code class="language-plaintext highlighter-rouge">Anatomical Structures</code>, <code class="language-plaintext highlighter-rouge">Injuries &amp; Poisoning</code> terms</td>
-        </tr>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">biolordresolve_umls_general_concepts</code></td>
-          <td>Maps clinical entities to 4 UMLS CUI code categories using <code class="language-plaintext highlighter-rouge">mpnet_embeddings_biolord_2023_c</code> embeddings: <code class="language-plaintext highlighter-rouge">Disease</code>, <code class="language-plaintext highlighter-rouge">Symptom</code>, <code class="language-plaintext highlighter-rouge">Medication</code>, and <code class="language-plaintext highlighter-rouge">Procedure</code></td>
-        </tr>
-      </tbody>
-    </table>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Model Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_umls_findings</code></td>
+        <td>Maps clinical finding entities to their corresponding UMLS CUI codes</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_umls_clinical_drugs</code></td>
+        <td>Maps drug entities to UMLS CUI codes</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_umls_disease_syndrome</code></td>
+        <td>Maps clinical entities (“Disease or Syndrome”) to UMLS CUI codes</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_umls_drug_substance</code></td>
+        <td>Maps drug and substance entities to UMLS CUI codes</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_umls_general_concepts</code></td>
+        <td>Maps clinical entities and concepts to the following 4 UMLS CUI code categories: <code class="language-plaintext highlighter-rouge">Disease</code>, <code class="language-plaintext highlighter-rouge">Symptom</code>, <code class="language-plaintext highlighter-rouge">Medication</code> and <code class="language-plaintext highlighter-rouge">Procedure</code></td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">sbiobertresolve_umls_major_concepts</code></td>
+        <td>Maps clinical entities and concepts to 4 major categories of UMLS CUI codes: <code class="language-plaintext highlighter-rouge">Clinical Findings</code>, <code class="language-plaintext highlighter-rouge">Medical Devices</code>, <code class="language-plaintext highlighter-rouge">Anatomical Structures</code>, <code class="language-plaintext highlighter-rouge">Injuries &amp; Poisoning</code> terms</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">biolordresolve_umls_general_concepts</code></td>
+        <td>Maps clinical entities to 4 UMLS CUI code categories using <code class="language-plaintext highlighter-rouge">mpnet_embeddings_biolord_2023_c</code> embeddings: <code class="language-plaintext highlighter-rouge">Disease</code>, <code class="language-plaintext highlighter-rouge">Symptom</code>, <code class="language-plaintext highlighter-rouge">Medication</code>, and <code class="language-plaintext highlighter-rouge">Procedure</code></td>
+      </tr>
+    </tbody>
+  </table>
 
-    <p><strong>Updated UMLS 2026AA ChunkMapper Models (19 Models)</strong></p>
+  <p><strong>Updated UMLS 2026AA ChunkMapper Models (19 Models)</strong></p>
 
-    <p>These models are retrained on UMLS 2026AA data. The bidirectional code mappers use a <code class="language-plaintext highlighter-rouge">DocumentAssembler → Doc2Chunk → ChunkMapper</code> pipeline. The NER-based mappers apply a full NER pipeline before mapping.</p>
+  <p>These models are retrained on UMLS 2026AA data. The bidirectional code mappers use a <code class="language-plaintext highlighter-rouge">DocumentAssembler → Doc2Chunk → ChunkMapper</code> pipeline. The NER-based mappers apply a full NER pipeline before mapping.</p>
 
-    <blockquote>
-      <p>⚠️ CPT mapper models are available only to users with a valid AMA license. Contact support@johnsnowlabs.com for access.</p>
-    </blockquote>
+  <blockquote>
+    <p>⚠️ CPT mapper models are available only to users with a valid AMA license. Contact support@johnsnowlabs.com for access.</p>
+  </blockquote>
 
-    <table class="table-model-big">
-      <thead>
-        <tr>
-          <th>UMLS → Code</th>
-          <th>Code → UMLS</th>
-          <th>Coding System</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">umls_rxnorm_mapper</code></td>
-          <td><code class="language-plaintext highlighter-rouge">rxnorm_umls_mapper</code></td>
-          <td>RxNorm</td>
-        </tr>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">umls_snomed_mapper</code></td>
-          <td><code class="language-plaintext highlighter-rouge">snomed_umls_mapper</code></td>
-          <td>SNOMED CT (US Edition)</td>
-        </tr>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">umls_loinc_mapper</code></td>
-          <td><code class="language-plaintext highlighter-rouge">loinc_umls_mapper</code></td>
-          <td>LOINC</td>
-        </tr>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">umls_mesh_mapper</code></td>
-          <td><code class="language-plaintext highlighter-rouge">mesh_umls_mapper</code></td>
-          <td>MeSH</td>
-        </tr>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">umls_icd10cm_mapper</code></td>
-          <td><code class="language-plaintext highlighter-rouge">icd10cm_umls_mapper</code></td>
-          <td>ICD-10-CM</td>
-        </tr>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">umls_hpo_mapper</code></td>
-          <td><code class="language-plaintext highlighter-rouge">hpo_umls_mapper</code></td>
-          <td>Human Phenotype Ontology</td>
-        </tr>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">umls_cpt_mapper</code> ⚠️</td>
-          <td><code class="language-plaintext highlighter-rouge">cpt_umls_mapper</code> ⚠️</td>
-          <td>CPT</td>
-        </tr>
-      </tbody>
-    </table>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>UMLS → Code</th>
+        <th>Code → UMLS</th>
+        <th>Coding System</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">umls_rxnorm_mapper</code></td>
+        <td><code class="language-plaintext highlighter-rouge">rxnorm_umls_mapper</code></td>
+        <td>RxNorm</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">umls_snomed_mapper</code></td>
+        <td><code class="language-plaintext highlighter-rouge">snomed_umls_mapper</code></td>
+        <td>SNOMED CT (US Edition)</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">umls_loinc_mapper</code></td>
+        <td><code class="language-plaintext highlighter-rouge">loinc_umls_mapper</code></td>
+        <td>LOINC</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">umls_mesh_mapper</code></td>
+        <td><code class="language-plaintext highlighter-rouge">mesh_umls_mapper</code></td>
+        <td>MeSH</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">umls_icd10cm_mapper</code></td>
+        <td><code class="language-plaintext highlighter-rouge">icd10cm_umls_mapper</code></td>
+        <td>ICD-10-CM</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">umls_hpo_mapper</code></td>
+        <td><code class="language-plaintext highlighter-rouge">hpo_umls_mapper</code></td>
+        <td>Human Phenotype Ontology</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">umls_cpt_mapper</code> ⚠️</td>
+        <td><code class="language-plaintext highlighter-rouge">cpt_umls_mapper</code> ⚠️</td>
+        <td>CPT</td>
+      </tr>
+    </tbody>
+  </table>
 
-    <table class="table-model-big">
-      <thead>
-        <tr>
-          <th>Model Name</th>
-          <th>NER Model</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">umls_clinical_findings_mapper</code></td>
-          <td><code class="language-plaintext highlighter-rouge">ner_clinical_large</code></td>
-          <td>Maps clinical findings (PROBLEM, TEST, TREATMENT) to UMLS CUI codes</td>
-        </tr>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">umls_disease_syndrome_mapper</code></td>
-          <td><code class="language-plaintext highlighter-rouge">ner_clinical_large</code></td>
-          <td>Maps disease and syndrome entities to UMLS CUI codes</td>
-        </tr>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">umls_drug_substance_mapper</code></td>
-          <td><code class="language-plaintext highlighter-rouge">ner_posology_greedy</code></td>
-          <td>Maps drug substance entities to UMLS CUI codes</td>
-        </tr>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">umls_clinical_drugs_mapper</code></td>
-          <td><code class="language-plaintext highlighter-rouge">ner_posology_greedy</code></td>
-          <td>Maps clinical drug entities to UMLS CUI codes</td>
-        </tr>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">umls_major_concepts_mapper</code></td>
-          <td><code class="language-plaintext highlighter-rouge">ner_medmentions_coarse</code></td>
-          <td>Maps body parts, devices, injuries, and findings to UMLS CUI codes</td>
-        </tr>
-      </tbody>
-    </table>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Model Name</th>
+        <th>NER Model</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">umls_clinical_findings_mapper</code></td>
+        <td><code class="language-plaintext highlighter-rouge">ner_clinical_large</code></td>
+        <td>Maps clinical findings (PROBLEM, TEST, TREATMENT) to UMLS CUI codes</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">umls_disease_syndrome_mapper</code></td>
+        <td><code class="language-plaintext highlighter-rouge">ner_clinical_large</code></td>
+        <td>Maps disease and syndrome entities to UMLS CUI codes</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">umls_drug_substance_mapper</code></td>
+        <td><code class="language-plaintext highlighter-rouge">ner_posology_greedy</code></td>
+        <td>Maps drug substance entities to UMLS CUI codes</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">umls_clinical_drugs_mapper</code></td>
+        <td><code class="language-plaintext highlighter-rouge">ner_posology_greedy</code></td>
+        <td>Maps clinical drug entities to UMLS CUI codes</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">umls_major_concepts_mapper</code></td>
+        <td><code class="language-plaintext highlighter-rouge">ner_medmentions_coarse</code></td>
+        <td>Maps body parts, devices, injuries, and findings to UMLS CUI codes</td>
+      </tr>
+    </tbody>
+  </table>
 
-    <p><strong>New UMLS 2026AA ChunkMapper Models (17 Models)</strong></p>
+  <p><strong>New UMLS 2026AA ChunkMapper Models (17 Models)</strong></p>
 
-    <p>These models are introduced for the first time, covering 8 additional medical coding systems and one new NER-based domain.</p>
+  <p>These models are introduced for the first time, covering 8 additional medical coding systems and one new NER-based domain.</p>
 
-    <blockquote>
-      <p>⚠️ MedDRA mapper models are available only to users with a valid license. Contact support@johnsnowlabs.com for access.</p>
-    </blockquote>
+  <blockquote>
+    <p>⚠️ MedDRA mapper models are available only to users with a valid license. Contact support@johnsnowlabs.com for access.</p>
+  </blockquote>
 
-    <table class="table-model-big">
-      <thead>
-        <tr>
-          <th>UMLS → Code</th>
-          <th>Code → UMLS</th>
-          <th>Coding System</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">umls_icd10pcs_mapper</code></td>
-          <td><code class="language-plaintext highlighter-rouge">icd10pcs_umls_mapper</code></td>
-          <td>ICD-10-PCS</td>
-        </tr>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">umls_nci_mapper</code></td>
-          <td><code class="language-plaintext highlighter-rouge">nci_umls_mapper</code></td>
-          <td>NCI Thesaurus</td>
-        </tr>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">umls_icd9cm_mapper</code></td>
-          <td><code class="language-plaintext highlighter-rouge">icd9cm_umls_mapper</code></td>
-          <td>ICD-9-CM</td>
-        </tr>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">umls_hgnc_mapper</code></td>
-          <td><code class="language-plaintext highlighter-rouge">hgnc_umls_mapper</code></td>
-          <td>HGNC Gene Nomenclature</td>
-        </tr>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">umls_atc_mapper</code></td>
-          <td><code class="language-plaintext highlighter-rouge">atc_umls_mapper</code></td>
-          <td>WHO ATC</td>
-        </tr>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">umls_hcpcs_mapper</code></td>
-          <td><code class="language-plaintext highlighter-rouge">hcpcs_umls_mapper</code></td>
-          <td>HCPCS</td>
-        </tr>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">umls_snomedvet_mapper</code></td>
-          <td><code class="language-plaintext highlighter-rouge">snomedvet_umls_mapper</code></td>
-          <td>SNOMED CT Veterinary</td>
-        </tr>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">umls_meddra_mapper</code> ⚠️</td>
-          <td><code class="language-plaintext highlighter-rouge">meddra_umls_mapper</code> ⚠️</td>
-          <td>MedDRA</td>
-        </tr>
-      </tbody>
-    </table>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>UMLS → Code</th>
+        <th>Code → UMLS</th>
+        <th>Coding System</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">umls_icd10pcs_mapper</code></td>
+        <td><code class="language-plaintext highlighter-rouge">icd10pcs_umls_mapper</code></td>
+        <td>ICD-10-PCS</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">umls_nci_mapper</code></td>
+        <td><code class="language-plaintext highlighter-rouge">nci_umls_mapper</code></td>
+        <td>NCI Thesaurus</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">umls_icd9cm_mapper</code></td>
+        <td><code class="language-plaintext highlighter-rouge">icd9cm_umls_mapper</code></td>
+        <td>ICD-9-CM</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">umls_hgnc_mapper</code></td>
+        <td><code class="language-plaintext highlighter-rouge">hgnc_umls_mapper</code></td>
+        <td>HGNC Gene Nomenclature</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">umls_atc_mapper</code></td>
+        <td><code class="language-plaintext highlighter-rouge">atc_umls_mapper</code></td>
+        <td>WHO ATC</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">umls_hcpcs_mapper</code></td>
+        <td><code class="language-plaintext highlighter-rouge">hcpcs_umls_mapper</code></td>
+        <td>HCPCS</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">umls_snomedvet_mapper</code></td>
+        <td><code class="language-plaintext highlighter-rouge">snomedvet_umls_mapper</code></td>
+        <td>SNOMED CT Veterinary</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">umls_meddra_mapper</code> ⚠️</td>
+        <td><code class="language-plaintext highlighter-rouge">meddra_umls_mapper</code> ⚠️</td>
+        <td>MedDRA</td>
+      </tr>
+    </tbody>
+  </table>
 
-    <table class="table-model-big">
-      <thead>
-        <tr>
-          <th>Model Name</th>
-          <th>NER Model</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">umls_general_concepts_mapper</code></td>
-          <td><code class="language-plaintext highlighter-rouge">ner_clinical</code></td>
-          <td>Maps general clinical concepts (Disease, Symptom, Device, Procedure) to UMLS CUI codes</td>
-        </tr>
-      </tbody>
-    </table>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Model Name</th>
+        <th>NER Model</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">umls_general_concepts_mapper</code></td>
+        <td><code class="language-plaintext highlighter-rouge">ner_clinical</code></td>
+        <td>Maps general clinical concepts (Disease, Symptom, Device, Procedure) to UMLS CUI codes</td>
+      </tr>
+    </tbody>
+  </table>
 
-    <p><em>Example</em> (entity resolution — <code class="language-plaintext highlighter-rouge">sbiobertresolve_umls_disease_syndrome</code>):</p>
+  <p><em>Example</em> (entity resolution — <code class="language-plaintext highlighter-rouge">sbiobertresolve_umls_disease_syndrome</code>):</p>
 
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">documentAssembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span> \
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">documentAssembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span> \
     <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span> \
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
 
@@ -1518,110 +1519,110 @@ function wrapWordInSpan(data, wordToWrap) {
 <span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
 
 <span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-</code></pre></div>    </div>
+</code></pre></div>  </div>
 
-    <p><em>Result</em></p>
+  <p><em>Result</em></p>
 
-    <table>
-      <thead>
-        <tr>
-          <th>ner_chunk</th>
-          <th>entity</th>
-          <th>umls_code</th>
-          <th>resolution</th>
-          <th>all_k_results</th>
-          <th>all_k_distances</th>
-          <th>all_k_cosine_distances</th>
-          <th>all_k_resolutions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>systemic lupus erythematosus</td>
-          <td>Disease_Syndrome_Disorder</td>
-          <td>C0024141</td>
-          <td>systemic lupus erythematosus</td>
-          <td>C0024141:::C0409974:::C0024137:::C1274838:::C6022675:::C0409977:::C0409976:::C07…</td>
-          <td>0.0067:::3.4325:::4.0055:::4.4309:::4.4907:::4.5642:::4.5922:::4.6192:::4.6675::…</td>
-          <td>0.0000:::0.0184:::0.0251:::0.0308:::0.0317:::0.0322:::0.0328:::0.0336:::0.0334::…</td>
-          <td>systemic lupus erythematosus:::lupus erythematosus:::cutaneous lupus erythematos…</td>
-        </tr>
-        <tr>
-          <td>sclerosis</td>
-          <td>Disease_Syndrome_Disorder</td>
-          <td>C0036412</td>
-          <td>sclera disease</td>
-          <td>C0036412:::C0263009:::C0036421:::C0007795:::C0237854:::C0004712:::C0036416:::C00…</td>
-          <td>6.4563:::6.5690:::6.7129:::6.8109:::6.8550:::6.9680:::7.2263:::7.5483:::7.5862::…</td>
-          <td>0.0689:::0.0695:::0.0752:::0.0738:::0.0762:::0.0792:::0.0860:::0.0915:::0.0957::…</td>
-          <td>sclera disease:::sclerosis skin:::system; sclerosis:::diffuse sclerosis:::sclero…</td>
-        </tr>
-        <tr>
-          <td>fibromyalgia</td>
-          <td>Disease_Syndrome_Disorder</td>
-          <td>C0016053</td>
-          <td>fibromyalgia</td>
-          <td>C0016053:::C0751153:::C0751152:::C0015674:::C4703320</td>
-          <td>0.0070:::3.9297:::4.7923:::6.1085:::7.4228</td>
-          <td>0.0000:::0.0242:::0.0364:::0.0572:::0.0843</td>
-          <td>fibromyalgia:::secondary fibromyalgia:::fibromyalgia primary:::chronic fatigue-f…</td>
-        </tr>
-        <tr>
-          <td>sepsis</td>
-          <td>Disease_Syndrome_Disorder</td>
-          <td>C0036690</td>
-          <td>sepsis</td>
-          <td>C0036690:::C3164780:::C0242966:::C0152965:::C1141927:::C0684256:::C1141926:::C17…</td>
-          <td>0.0084:::4.0589:::4.4404:::4.9625:::5.2109:::5.7252:::5.8590:::5.9812:::5.9983::…</td>
-          <td>0.0000:::0.0260:::0.0316:::0.0396:::0.0428:::0.0522:::0.0539:::0.0546:::0.0564::…</td>
-          <td>sepsis:::clinical sepsis:::syndrome sepsis:::staph sepsis:::wound sepsis:::sepsi…</td>
-        </tr>
-        <tr>
-          <td>bacterial pneumonia</td>
-          <td>Disease_Syndrome_Disorder</td>
-          <td>C0004626</td>
-          <td>bacterial pneumonia</td>
-          <td>C0004626:::C0339952:::C0276523:::C0339951:::C1443238:::C0264386:::C0155860:::C05…</td>
-          <td>0.0078:::4.8777:::6.3237:::6.3566:::6.6580:::6.8243:::6.8403:::6.8537:::6.8800::…</td>
-          <td>0.0000:::0.0377:::0.0640:::0.0656:::0.0706:::0.0734:::0.0762:::0.0770:::0.0777::…</td>
-          <td>bacterial pneumonia:::bacterial pneumonia secondary:::aids with bacterial pneumo…</td>
-        </tr>
-        <tr>
-          <td>respiratory distress syndrome</td>
-          <td>Disease_Syndrome_Disorder</td>
-          <td>C0035220</td>
-          <td>respiratory distress syndrome</td>
-          <td>C0035220:::C0852283:::C0035222:::C0158940:::C0877339:::C5420230:::C3810183:::C54…</td>
-          <td>0.0062:::4.0045:::4.1765:::5.1745:::6.0413:::6.2379:::6.2459:::6.4251:::6.4578::…</td>
-          <td>0.0000:::0.0239:::0.0259:::0.0397:::0.0535:::0.0576:::0.0574:::0.0608:::0.0607::…</td>
-          <td>respiratory distress syndrome:::respiratory distress syndromes:::acquired respir…</td>
-        </tr>
-        <tr>
-          <td>pulmonary sarcoidosis</td>
-          <td>Disease_Syndrome_Disorder</td>
-          <td>C0036205</td>
-          <td>pulmonary sarcoidosis</td>
-          <td>C0036205:::C0036202:::C0406396:::C1302844:::C0396073:::C0036206:::C0340201:::C13…</td>
-          <td>0.0074:::4.8495:::5.0965:::5.2098:::5.3056:::5.3212:::5.4128:::5.4719:::5.5281::…</td>
-          <td>0.0000:::0.0373:::0.0412:::0.0433:::0.0452:::0.0452:::0.0470:::0.0479:::0.0488::…</td>
-          <td>pulmonary sarcoidosis:::sarcoidosis:::nodular sarcoidosis:::skin sarcoidosis:::l…</td>
-        </tr>
-        <tr>
-          <td>Crohn’s disease</td>
-          <td>Disease_Syndrome_Disorder</td>
-          <td>C0010346</td>
-          <td>crohn’s disease</td>
-          <td>C0010346:::C0399497:::C0156147:::C1301260:::C0941042:::C1301261:::C5686651:::C60…</td>
-          <td>0.0071:::4.6627:::5.2420:::5.2609:::5.6188:::5.6324:::5.6705:::5.6709:::6.0026</td>
-          <td>0.0000:::0.0340:::0.0424:::0.0428:::0.0487:::0.0486:::0.0508:::0.0501:::0.0560</td>
-          <td>crohn’s disease:::orofacial crohn’s disease:::crohn’s colitis:::gastrointestinal…</td>
-        </tr>
-      </tbody>
-    </table>
+  <table>
+    <thead>
+      <tr>
+        <th>ner_chunk</th>
+        <th>entity</th>
+        <th>umls_code</th>
+        <th>resolution</th>
+        <th>all_k_results</th>
+        <th>all_k_distances</th>
+        <th>all_k_cosine_distances</th>
+        <th>all_k_resolutions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>systemic lupus erythematosus</td>
+        <td>Disease_Syndrome_Disorder</td>
+        <td>C0024141</td>
+        <td>systemic lupus erythematosus</td>
+        <td>C0024141:::C0409974:::C0024137:::C1274838:::C6022675:::C0409977:::C0409976:::C07…</td>
+        <td>0.0067:::3.4325:::4.0055:::4.4309:::4.4907:::4.5642:::4.5922:::4.6192:::4.6675::…</td>
+        <td>0.0000:::0.0184:::0.0251:::0.0308:::0.0317:::0.0322:::0.0328:::0.0336:::0.0334::…</td>
+        <td>systemic lupus erythematosus:::lupus erythematosus:::cutaneous lupus erythematos…</td>
+      </tr>
+      <tr>
+        <td>sclerosis</td>
+        <td>Disease_Syndrome_Disorder</td>
+        <td>C0036412</td>
+        <td>sclera disease</td>
+        <td>C0036412:::C0263009:::C0036421:::C0007795:::C0237854:::C0004712:::C0036416:::C00…</td>
+        <td>6.4563:::6.5690:::6.7129:::6.8109:::6.8550:::6.9680:::7.2263:::7.5483:::7.5862::…</td>
+        <td>0.0689:::0.0695:::0.0752:::0.0738:::0.0762:::0.0792:::0.0860:::0.0915:::0.0957::…</td>
+        <td>sclera disease:::sclerosis skin:::system; sclerosis:::diffuse sclerosis:::sclero…</td>
+      </tr>
+      <tr>
+        <td>fibromyalgia</td>
+        <td>Disease_Syndrome_Disorder</td>
+        <td>C0016053</td>
+        <td>fibromyalgia</td>
+        <td>C0016053:::C0751153:::C0751152:::C0015674:::C4703320</td>
+        <td>0.0070:::3.9297:::4.7923:::6.1085:::7.4228</td>
+        <td>0.0000:::0.0242:::0.0364:::0.0572:::0.0843</td>
+        <td>fibromyalgia:::secondary fibromyalgia:::fibromyalgia primary:::chronic fatigue-f…</td>
+      </tr>
+      <tr>
+        <td>sepsis</td>
+        <td>Disease_Syndrome_Disorder</td>
+        <td>C0036690</td>
+        <td>sepsis</td>
+        <td>C0036690:::C3164780:::C0242966:::C0152965:::C1141927:::C0684256:::C1141926:::C17…</td>
+        <td>0.0084:::4.0589:::4.4404:::4.9625:::5.2109:::5.7252:::5.8590:::5.9812:::5.9983::…</td>
+        <td>0.0000:::0.0260:::0.0316:::0.0396:::0.0428:::0.0522:::0.0539:::0.0546:::0.0564::…</td>
+        <td>sepsis:::clinical sepsis:::syndrome sepsis:::staph sepsis:::wound sepsis:::sepsi…</td>
+      </tr>
+      <tr>
+        <td>bacterial pneumonia</td>
+        <td>Disease_Syndrome_Disorder</td>
+        <td>C0004626</td>
+        <td>bacterial pneumonia</td>
+        <td>C0004626:::C0339952:::C0276523:::C0339951:::C1443238:::C0264386:::C0155860:::C05…</td>
+        <td>0.0078:::4.8777:::6.3237:::6.3566:::6.6580:::6.8243:::6.8403:::6.8537:::6.8800::…</td>
+        <td>0.0000:::0.0377:::0.0640:::0.0656:::0.0706:::0.0734:::0.0762:::0.0770:::0.0777::…</td>
+        <td>bacterial pneumonia:::bacterial pneumonia secondary:::aids with bacterial pneumo…</td>
+      </tr>
+      <tr>
+        <td>respiratory distress syndrome</td>
+        <td>Disease_Syndrome_Disorder</td>
+        <td>C0035220</td>
+        <td>respiratory distress syndrome</td>
+        <td>C0035220:::C0852283:::C0035222:::C0158940:::C0877339:::C5420230:::C3810183:::C54…</td>
+        <td>0.0062:::4.0045:::4.1765:::5.1745:::6.0413:::6.2379:::6.2459:::6.4251:::6.4578::…</td>
+        <td>0.0000:::0.0239:::0.0259:::0.0397:::0.0535:::0.0576:::0.0574:::0.0608:::0.0607::…</td>
+        <td>respiratory distress syndrome:::respiratory distress syndromes:::acquired respir…</td>
+      </tr>
+      <tr>
+        <td>pulmonary sarcoidosis</td>
+        <td>Disease_Syndrome_Disorder</td>
+        <td>C0036205</td>
+        <td>pulmonary sarcoidosis</td>
+        <td>C0036205:::C0036202:::C0406396:::C1302844:::C0396073:::C0036206:::C0340201:::C13…</td>
+        <td>0.0074:::4.8495:::5.0965:::5.2098:::5.3056:::5.3212:::5.4128:::5.4719:::5.5281::…</td>
+        <td>0.0000:::0.0373:::0.0412:::0.0433:::0.0452:::0.0452:::0.0470:::0.0479:::0.0488::…</td>
+        <td>pulmonary sarcoidosis:::sarcoidosis:::nodular sarcoidosis:::skin sarcoidosis:::l…</td>
+      </tr>
+      <tr>
+        <td>Crohn’s disease</td>
+        <td>Disease_Syndrome_Disorder</td>
+        <td>C0010346</td>
+        <td>crohn’s disease</td>
+        <td>C0010346:::C0399497:::C0156147:::C1301260:::C0941042:::C1301261:::C5686651:::C60…</td>
+        <td>0.0071:::4.6627:::5.2420:::5.2609:::5.6188:::5.6324:::5.6705:::5.6709:::6.0026</td>
+        <td>0.0000:::0.0340:::0.0424:::0.0428:::0.0487:::0.0486:::0.0508:::0.0501:::0.0560</td>
+        <td>crohn’s disease:::orofacial crohn’s disease:::crohn’s colitis:::gastrointestinal…</td>
+      </tr>
+    </tbody>
+  </table>
 
-    <p><em>Example</em> (code-level mapping — <code class="language-plaintext highlighter-rouge">umls_rxnorm_mapper</code>):</p>
+  <p><em>Example</em> (code-level mapping — <code class="language-plaintext highlighter-rouge">umls_rxnorm_mapper</code>):</p>
 
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span> \
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span> \
     <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span> \
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"doc"</span><span class="p">)</span>
 
@@ -1638,36 +1639,36 @@ function wrapWordInSpan(data, wordToWrap) {
 <span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"C1126248"</span><span class="p">],</span> <span class="p">[</span><span class="s">"C0978482"</span><span class="p">],</span> <span class="p">[</span><span class="s">"C0691677"</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
 
 <span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-</code></pre></div>    </div>
+</code></pre></div>  </div>
 
-    <p><em>Result</em></p>
+  <p><em>Result</em></p>
 
-    <table>
-      <thead>
-        <tr>
-          <th>umls_code</th>
-          <th>rxnorm_code</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>C1126248</td>
-          <td>330565</td>
-        </tr>
-        <tr>
-          <td>C0978482</td>
-          <td>861004</td>
-        </tr>
-        <tr>
-          <td>C0691677</td>
-          <td>198776</td>
-        </tr>
-      </tbody>
-    </table>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>umls_code</th>
+        <th>rxnorm_code</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>C1126248</td>
+        <td>330565</td>
+      </tr>
+      <tr>
+        <td>C0978482</td>
+        <td>861004</td>
+      </tr>
+      <tr>
+        <td>C0691677</td>
+        <td>198776</td>
+      </tr>
+    </tbody>
+  </table>
 
-    <p><em>Example</em> (NER-based mapping — <code class="language-plaintext highlighter-rouge">umls_general_concepts_mapper</code>):</p>
+  <p><em>Example</em> (NER-based mapping — <code class="language-plaintext highlighter-rouge">umls_general_concepts_mapper</code>):</p>
 
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span> \
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span> \
     <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span> \
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
 
@@ -1708,165 +1709,165 @@ function wrapWordInSpan(data, wordToWrap) {
 <span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
 
 <span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-</code></pre></div>    </div>
+</code></pre></div>  </div>
 
-    <p><em>Result</em></p>
+  <p><em>Result</em></p>
 
-    <table>
-      <thead>
-        <tr>
-          <th>ner_chunk</th>
-          <th>umls_code</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>dyspnea</td>
-          <td>C0013404</td>
-        </tr>
-        <tr>
-          <td>fever</td>
-          <td>C0015967</td>
-        </tr>
-        <tr>
-          <td>pneumonia</td>
-          <td>C0032285</td>
-        </tr>
-        <tr>
-          <td>bronchoscopy</td>
-          <td>C5979970</td>
-        </tr>
-        <tr>
-          <td>catheter placement</td>
-          <td>C0883301</td>
-        </tr>
-        <tr>
-          <td>chemotherapy</td>
-          <td>C0013216</td>
-        </tr>
-      </tbody>
-    </table>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>ner_chunk</th>
+        <th>umls_code</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>dyspnea</td>
+        <td>C0013404</td>
+      </tr>
+      <tr>
+        <td>fever</td>
+        <td>C0015967</td>
+      </tr>
+      <tr>
+        <td>pneumonia</td>
+        <td>C0032285</td>
+      </tr>
+      <tr>
+        <td>bronchoscopy</td>
+        <td>C5979970</td>
+      </tr>
+      <tr>
+        <td>catheter placement</td>
+        <td>C0883301</td>
+      </tr>
+      <tr>
+        <td>chemotherapy</td>
+        <td>C0013216</td>
+      </tr>
+    </tbody>
+  </table>
 
-  </div>
-  <div class="h3-box">
+</div>
+<div class="h3-box">
 
-    <h4 id="new-blog-posts--technical-deep-dives">New Blog Posts &amp; Technical Deep Dives</h4>
+  <h4 id="new-blog-posts--technical-deep-dives">New Blog Posts &amp; Technical Deep Dives</h4>
 
-    <ul>
-      <li><a href="https://medium.com/john-snow-labs/john-snow-labs-detects-54-more-clinical-phi-than-openais-privacy-filter-at-5-8-the-speed-on-cpu-d460df795eb1">John Snow Labs detects 54% more clinical PHI than OpenAI’s Privacy Filter, at 5.8× the speed on CPU</a> : This blog post benchmarks the OpenAI Privacy Filter against a healthcare-specific de-identification pipeline from John Snow Labs on nearly 382K tokens of real clinical text. It explains how the John Snow Labs pipeline achieved substantially higher PHI detection accuracy (0.95 F1 vs. 0.55) while also running 5.8× faster on CPU, highlighting the importance of domain-specific clinical NLP over general-purpose PII detection. The article also covers strict label-mapping methodology, benchmark design, CPU-optimized deployment pipelines, and practical challenges in healthcare de-identification such as identifying hospital names, medical IDs, and clinical abbreviations in real-world notes.</li>
-    </ul>
+  <ul>
+    <li><a href="https://medium.com/john-snow-labs/john-snow-labs-detects-54-more-clinical-phi-than-openais-privacy-filter-at-5-8-the-speed-on-cpu-d460df795eb1">John Snow Labs detects 54% more clinical PHI than OpenAI’s Privacy Filter, at 5.8× the speed on CPU</a> : This blog post benchmarks the OpenAI Privacy Filter against a healthcare-specific de-identification pipeline from John Snow Labs on nearly 382K tokens of real clinical text. It explains how the John Snow Labs pipeline achieved substantially higher PHI detection accuracy (0.95 F1 vs. 0.55) while also running 5.8× faster on CPU, highlighting the importance of domain-specific clinical NLP over general-purpose PII detection. The article also covers strict label-mapping methodology, benchmark design, CPU-optimized deployment pipelines, and practical challenges in healthcare de-identification such as identifying hospital names, medical IDs, and clinical abbreviations in real-world notes.</li>
+  </ul>
 
-  </div>
-  <div class="h3-box">
+</div>
+<div class="h3-box">
 
-    <h4 id="updated-notebooks-and-demonstrations-for-making-healthcare-nlp-easier-to-navigate-and-understand">Updated Notebooks And Demonstrations For Making Healthcare NLP Easier To Navigate And Understand</h4>
+  <h4 id="updated-notebooks-and-demonstrations-for-making-healthcare-nlp-easier-to-navigate-and-understand">Updated Notebooks And Demonstrations For Making Healthcare NLP Easier To Navigate And Understand</h4>
 
-    <ul>
-      <li>
-        <p>New <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/46.2.MedicalLLMEntityExtractor.ipynb">MedicalLLMEntityExtractor</a> Notebook
+  <ul>
+    <li>
+      <p>New <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/46.2.MedicalLLMEntityExtractor.ipynb">MedicalLLMEntityExtractor</a> Notebook
 This notebook introduces JSL’s LLM-based clinical NER annotator with grammar-enforced JSON, runtime-defined entity types, and CHUNK outputs with character offsets. Five end-to-end examples: default clinical NER, medication fields, PHI de-identification, oncology few-shot, and custom ADR prompts. Requires Spark NLP Healthcare license and supported JSL MedS/MedM GGUF models.</p>
-      </li>
-      <li>New <a href="https://dbc-f4eb4bcb-4ef3.cloud.databricks.com/marketplace/provider/listings/99415605-a24c-4bd8-b4da-892a70b71769?o=5522619299734643">Benchmarking John Snow Labs Healthcare NLP Pipelines for Optimal Spark Config at Million-Doc Scale</a> Databricks Solution Accelerator Notebook
-        <ul>
-          <li>This accelerator benchmarks five pretrained John Snow Labs Healthcare NLP pipelines to identify the most efficient Apache Spark configurations for large-scale document processing.</li>
-          <li>The notebook performs million-document throughput testing across multiple Healthcare NLP pipelines, evaluating how different Spark settings impact performance, scalability, and resource utilization.</li>
-          <li>By comparing execution times, parallelism strategies, and cluster tuning parameters, this benchmark helps users determine the optimal Spark configuration for maximum NLP throughput in enterprise-scale healthcare and clinical text processing workloads.</li>
-          <li>Utilizing a Medallion architecture (Bronze, Silver, Gold layers) and crash-safe checkpoints, the accelerator demonstrates how to efficiently fine-tune key Spark parameters across various complex clinical NLP tasks. Its main benefit is enabling data teams to significantly reduce processing times and compute costs when deploying healthcare NLP models on Databricks clusters.</li>
-          <li>Use cases
-            <ul>
-              <li>Optimizing Apache Spark configurations (shuffle_partitions, default_parallelism, and repartition_count) for high-throughput clinical NLP processing.</li>
-              <li>Benchmarking the performance, execution time, and stability of John Snow Labs Healthcare NLP pipelines at varying data scales (10 to 1,000,000 rows).</li>
-              <li>Fast and balanced Protected Health Information (PHI) de-identification for massive volumes of medical documents.</li>
-              <li>Granular clinical Named Entity Recognition (NER) and specialized oncology entity extraction from clinical text.</li>
-              <li>High-volume, large-scale ICD-10-CM code resolution from raw medical transcriptions.</li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-      <li>New <a href="https://dbc-f4eb4bcb-4ef3.cloud.databricks.com/marketplace/provider/listings/8711812a-c05d-4246-bd90-dabc7f7a0073?o=5522619299734643">LLM-Based Oncology Entity Extraction</a> Databricks Solution Accelerator Notebook
-        <ul>
-          <li>This solution accelerator demonstrates an end-to-end LLM-based oncology entity extraction pipeline built on the Databricks Lakehouse using Spark NLP Healthcare by John Snow Labs.</li>
-          <li>It ingests raw clinical oncology notes, extracts 43 structured entity types using a locally running LLM (qwen3_4b), resolves extracted entities to ICD-O codes via biomedical sentence embeddings, and publishes curated Delta tables following the Medallion architecture (Bronze → Silver → Gold).</li>
-          <li>All inference runs on-cluster with no external API calls, ensuring full data privacy and HIPAA-aligned processing.</li>
-          <li>Use cases
-            <ul>
-              <li>Automated cancer registry abstraction from unstructured clinical notes</li>
-              <li>Structured oncology entity extraction (diagnoses, treatments, biomarkers, staging, tumor findings) for downstream analytics</li>
-              <li>ICD-O code assignment to free-text oncology concepts using semantic similarity</li>
-              <li>PHI-safe clinical NLP pipeline with optional de-identification before LLM processing</li>
-              <li>Foundation for real-world evidence (RWE) generation from electronic health records</li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-    </ul>
+    </li>
+    <li>New <a href="https://dbc-f4eb4bcb-4ef3.cloud.databricks.com/marketplace/provider/listings/99415605-a24c-4bd8-b4da-892a70b71769?o=5522619299734643">Benchmarking John Snow Labs Healthcare NLP Pipelines for Optimal Spark Config at Million-Doc Scale</a> Databricks Solution Accelerator Notebook
+      <ul>
+        <li>This accelerator benchmarks five pretrained John Snow Labs Healthcare NLP pipelines to identify the most efficient Apache Spark configurations for large-scale document processing.</li>
+        <li>The notebook performs million-document throughput testing across multiple Healthcare NLP pipelines, evaluating how different Spark settings impact performance, scalability, and resource utilization.</li>
+        <li>By comparing execution times, parallelism strategies, and cluster tuning parameters, this benchmark helps users determine the optimal Spark configuration for maximum NLP throughput in enterprise-scale healthcare and clinical text processing workloads.</li>
+        <li>Utilizing a Medallion architecture (Bronze, Silver, Gold layers) and crash-safe checkpoints, the accelerator demonstrates how to efficiently fine-tune key Spark parameters across various complex clinical NLP tasks. Its main benefit is enabling data teams to significantly reduce processing times and compute costs when deploying healthcare NLP models on Databricks clusters.</li>
+        <li>Use cases
+          <ul>
+            <li>Optimizing Apache Spark configurations (shuffle_partitions, default_parallelism, and repartition_count) for high-throughput clinical NLP processing.</li>
+            <li>Benchmarking the performance, execution time, and stability of John Snow Labs Healthcare NLP pipelines at varying data scales (10 to 1,000,000 rows).</li>
+            <li>Fast and balanced Protected Health Information (PHI) de-identification for massive volumes of medical documents.</li>
+            <li>Granular clinical Named Entity Recognition (NER) and specialized oncology entity extraction from clinical text.</li>
+            <li>High-volume, large-scale ICD-10-CM code resolution from raw medical transcriptions.</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>New <a href="https://dbc-f4eb4bcb-4ef3.cloud.databricks.com/marketplace/provider/listings/8711812a-c05d-4246-bd90-dabc7f7a0073?o=5522619299734643">LLM-Based Oncology Entity Extraction</a> Databricks Solution Accelerator Notebook
+      <ul>
+        <li>This solution accelerator demonstrates an end-to-end LLM-based oncology entity extraction pipeline built on the Databricks Lakehouse using Spark NLP Healthcare by John Snow Labs.</li>
+        <li>It ingests raw clinical oncology notes, extracts 43 structured entity types using a locally running LLM (qwen3_4b), resolves extracted entities to ICD-O codes via biomedical sentence embeddings, and publishes curated Delta tables following the Medallion architecture (Bronze → Silver → Gold).</li>
+        <li>All inference runs on-cluster with no external API calls, ensuring full data privacy and HIPAA-aligned processing.</li>
+        <li>Use cases
+          <ul>
+            <li>Automated cancer registry abstraction from unstructured clinical notes</li>
+            <li>Structured oncology entity extraction (diagnoses, treatments, biomarkers, staging, tumor findings) for downstream analytics</li>
+            <li>ICD-O code assignment to free-text oncology concepts using semantic similarity</li>
+            <li>PHI-safe clinical NLP pipeline with optional de-identification before LLM processing</li>
+            <li>Foundation for real-world evidence (RWE) generation from electronic health records</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
 
-  </div>
-  <div class="h3-box">
+</div>
+<div class="h3-box">
 
-    <h4 id="we-have-added-and-updated-a-substantial-number-of-new-clinical-models-and-pipelines-further-solidifying-our-offering-in-the-healthcare-domain">We Have Added And Updated A Substantial Number Of New Clinical Models And Pipelines, Further Solidifying Our Offering In The Healthcare Domain.</h4>
+  <h4 id="we-have-added-and-updated-a-substantial-number-of-new-clinical-models-and-pipelines-further-solidifying-our-offering-in-the-healthcare-domain">We Have Added And Updated A Substantial Number Of New Clinical Models And Pipelines, Further Solidifying Our Offering In The Healthcare Domain.</h4>
 
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">clinical_deidentification_docwise_benchmark_multitask</code></li>
-      <li><code class="language-plaintext highlighter-rouge">clinical_deidentification_subentity_optimized_scala3</code></li>
-      <li><code class="language-plaintext highlighter-rouge">zeroshot_multitask_oncology</code></li>
-      <li><code class="language-plaintext highlighter-rouge">zeroshot_multitask_oncology_generic</code></li>
-      <li><code class="language-plaintext highlighter-rouge">cda_deidentification_extend_free_text</code></li>
-      <li><code class="language-plaintext highlighter-rouge">cda_deidentification_patient</code></li>
-      <li><code class="language-plaintext highlighter-rouge">zeroshot_multitask_deid_cda</code></li>
-      <li><code class="language-plaintext highlighter-rouge">zeroshot_multitask_deid_cda_large</code></li>
-      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_umls_findings</code></li>
-      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_umls_clinical_drugs</code></li>
-      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_umls_disease_syndrome</code></li>
-      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_umls_drug_substance</code></li>
-      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_umls_general_concepts</code></li>
-      <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_umls_major_concepts</code></li>
-      <li><code class="language-plaintext highlighter-rouge">biolordresolve_umls_general_concepts</code></li>
-      <li><code class="language-plaintext highlighter-rouge">umls_rxnorm_mapper</code></li>
-      <li><code class="language-plaintext highlighter-rouge">rxnorm_umls_mapper</code></li>
-      <li><code class="language-plaintext highlighter-rouge">umls_snomed_mapper</code></li>
-      <li><code class="language-plaintext highlighter-rouge">snomed_umls_mapper</code></li>
-      <li><code class="language-plaintext highlighter-rouge">umls_snomedvet_mapper</code></li>
-      <li><code class="language-plaintext highlighter-rouge">snomedvet_umls_mapper</code></li>
-      <li><code class="language-plaintext highlighter-rouge">umls_loinc_mapper</code></li>
-      <li><code class="language-plaintext highlighter-rouge">loinc_umls_mapper</code></li>
-      <li><code class="language-plaintext highlighter-rouge">umls_mesh_mapper</code></li>
-      <li><code class="language-plaintext highlighter-rouge">mesh_umls_mapper</code></li>
-      <li><code class="language-plaintext highlighter-rouge">umls_icd10cm_mapper</code></li>
-      <li><code class="language-plaintext highlighter-rouge">icd10cm_umls_mapper</code></li>
-      <li><code class="language-plaintext highlighter-rouge">umls_icd10pcs_mapper</code></li>
-      <li><code class="language-plaintext highlighter-rouge">icd10pcs_umls_mapper</code></li>
-      <li><code class="language-plaintext highlighter-rouge">umls_icd9cm_mapper</code></li>
-      <li><code class="language-plaintext highlighter-rouge">icd9cm_umls_mapper</code></li>
-      <li><code class="language-plaintext highlighter-rouge">umls_nci_mapper</code></li>
-      <li><code class="language-plaintext highlighter-rouge">nci_umls_mapper</code></li>
-      <li><code class="language-plaintext highlighter-rouge">umls_hpo_mapper</code></li>
-      <li><code class="language-plaintext highlighter-rouge">hpo_umls_mapper</code></li>
-      <li><code class="language-plaintext highlighter-rouge">umls_hgnc_mapper</code></li>
-      <li><code class="language-plaintext highlighter-rouge">hgnc_umls_mapper</code></li>
-      <li><code class="language-plaintext highlighter-rouge">umls_atc_mapper</code></li>
-      <li><code class="language-plaintext highlighter-rouge">atc_umls_mapper</code></li>
-      <li><code class="language-plaintext highlighter-rouge">umls_hcpcs_mapper</code></li>
-      <li><code class="language-plaintext highlighter-rouge">hcpcs_umls_mapper</code></li>
-      <li><code class="language-plaintext highlighter-rouge">umls_cpt_mapper</code></li>
-      <li><code class="language-plaintext highlighter-rouge">cpt_umls_mapper</code></li>
-      <li><code class="language-plaintext highlighter-rouge">umls_meddra_mapper</code></li>
-      <li><code class="language-plaintext highlighter-rouge">meddra_umls_mapper</code></li>
-      <li><code class="language-plaintext highlighter-rouge">umls_clinical_findings_mapper</code></li>
-      <li><code class="language-plaintext highlighter-rouge">umls_disease_syndrome_mapper</code></li>
-      <li><code class="language-plaintext highlighter-rouge">umls_drug_substance_mapper</code></li>
-      <li><code class="language-plaintext highlighter-rouge">umls_clinical_drugs_mapper</code></li>
-      <li><code class="language-plaintext highlighter-rouge">umls_major_concepts_mapper</code></li>
-      <li><code class="language-plaintext highlighter-rouge">umls_general_concepts_mapper</code></li>
-    </ul>
+  <ul>
+    <li><code class="language-plaintext highlighter-rouge">clinical_deidentification_docwise_benchmark_multitask</code></li>
+    <li><code class="language-plaintext highlighter-rouge">clinical_deidentification_subentity_optimized_scala3</code></li>
+    <li><code class="language-plaintext highlighter-rouge">zeroshot_multitask_oncology</code></li>
+    <li><code class="language-plaintext highlighter-rouge">zeroshot_multitask_oncology_generic</code></li>
+    <li><code class="language-plaintext highlighter-rouge">cda_deidentification_extend_free_text</code></li>
+    <li><code class="language-plaintext highlighter-rouge">cda_deidentification_patient</code></li>
+    <li><code class="language-plaintext highlighter-rouge">zeroshot_multitask_deid_cda</code></li>
+    <li><code class="language-plaintext highlighter-rouge">zeroshot_multitask_deid_cda_large</code></li>
+    <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_umls_findings</code></li>
+    <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_umls_clinical_drugs</code></li>
+    <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_umls_disease_syndrome</code></li>
+    <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_umls_drug_substance</code></li>
+    <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_umls_general_concepts</code></li>
+    <li><code class="language-plaintext highlighter-rouge">sbiobertresolve_umls_major_concepts</code></li>
+    <li><code class="language-plaintext highlighter-rouge">biolordresolve_umls_general_concepts</code></li>
+    <li><code class="language-plaintext highlighter-rouge">umls_rxnorm_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">rxnorm_umls_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">umls_snomed_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">snomed_umls_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">umls_snomedvet_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">snomedvet_umls_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">umls_loinc_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">loinc_umls_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">umls_mesh_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">mesh_umls_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">umls_icd10cm_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">icd10cm_umls_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">umls_icd10pcs_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">icd10pcs_umls_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">umls_icd9cm_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">icd9cm_umls_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">umls_nci_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">nci_umls_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">umls_hpo_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">hpo_umls_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">umls_hgnc_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">hgnc_umls_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">umls_atc_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">atc_umls_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">umls_hcpcs_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">hcpcs_umls_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">umls_cpt_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">cpt_umls_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">umls_meddra_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">meddra_umls_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">umls_clinical_findings_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">umls_disease_syndrome_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">umls_drug_substance_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">umls_clinical_drugs_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">umls_major_concepts_mapper</code></li>
+    <li><code class="language-plaintext highlighter-rouge">umls_general_concepts_mapper</code></li>
+  </ul>
 
-  </div>
-  <div class="h3-box">
+</div>
+<div class="h3-box">
 
-    <h2 id="versions">Versions</h2>
+  <h2 id="versions">Versions</h2>
 
-  </div>
-  <ul class="pagination">
+</div>
+<ul class="pagination">
     <li>
         <a href="#">Version <strong id="previosver"></strong></a>
     </li>
@@ -1877,7 +1878,7 @@ This notebook introduces JSL’s LLM-based clinical NER annotator with grammar-e
         <a href="#">Version <strong id="nextver"></strong></a>
     </li>
 </ul>
-  <ul class="pagination owl-carousel pagination_big">
+<ul class="pagination owl-carousel pagination_big">
     <li><a href="release_notes_7_0_1">7.0.1</a></li>
     <li><a href="release_notes_7_0_0">7.0.0</a></li>
     <li><a href="release_notes_6_4_1">6.4.1</a></li>
@@ -1972,7 +1973,6 @@ This notebook introduces JSL’s LLM-based clinical NER annotator with grammar-e
     <li><a href="release_notes_2_4_1">2.4.1</a></li>
     <li><a href="release_notes_2_4_0">2.4.0</a></li>
 </ul>
-</div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
       <time itemprop="dateModified" datetime="2026-06-26T00:00:00+00:00">Jun 26, 2026</time>
     </span><!-- start custom article footer snippet -->

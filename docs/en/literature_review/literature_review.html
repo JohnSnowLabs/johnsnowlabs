@@ -626,133 +626,148 @@ function wrapWordInSpan(data, wordToWrap) {
             <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Literature Review Agent"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
-<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><p>Systematic literature reviews are slow. Teams spend weeks searching databases, screening abstracts, and hand-copying data into spreadsheets — work that is error-prone and hard to audit. The <strong>Literature Review Agent</strong> is built to change that.</p>
+<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-<p>It’s a guided workspace that automates the heavy lifting of evidence synthesis. You search trusted medical and academic databases, define what you want to extract in plain language, and let John Snow Labs medical-grade LLMs pull <strong>structured, evidence-backed data</strong> from every article — with inclusion/exclusion screening applied automatically. The whole thing runs from a clean web UI, with no scripting required.</p>
+  <p>Systematic literature reviews are slow. Teams spend weeks searching databases, screening abstracts, and hand-copying data into spreadsheets — work that is error-prone and hard to audit. The <strong>Literature Review Agent</strong> is built to change that.</p>
 
-<p>Literature Review Agent ships as a self-contained <strong>AWS Marketplace AMI</strong>. The entire stack runs in <strong>your own AWS account</strong> via <code class="language-plaintext highlighter-rouge">docker compose</code>, so your queries, uploaded documents, and extraction results never leave your infrastructure.</p>
+  <p>It’s a guided workspace that automates the heavy lifting of evidence synthesis. You search trusted medical and academic databases, define what you want to extract in plain language, and let John Snow Labs medical-grade LLMs pull <strong>structured, evidence-backed data</strong> from every article — with inclusion/exclusion screening applied automatically. The whole thing runs from a clean web UI, with no scripting required.</p>
 
-<p><img src="/assets/images/literature_review/step1-search.png" alt="Literature Review — multi-source search and results" /></p>
+  <p>Literature Review Agent ships as a self-contained <strong>AWS Marketplace AMI</strong>. The entire stack runs in <strong>your own AWS account</strong> via <code class="language-plaintext highlighter-rouge">docker compose</code>, so your queries, uploaded documents, and extraction results never leave your infrastructure.</p>
 
-<h2 id="highlights">Highlights</h2>
+  <p><img src="/assets/images/literature_review/step1-search.png" alt="Literature Review — multi-source search and results" /></p>
 
-<ul>
-  <li><strong>Hours, not weeks.</strong> Automated search, screening, and extraction collapse the most time-consuming phases of a systematic review into a single afternoon.</li>
-  <li><strong>Medical-grade understanding.</strong> Powered by John Snow Labs medical LLMs specifically tuned for clinical and biomedical text. Models run on Amazon SageMaker in your own account, or you can access them through the DeepLens API (<code class="language-plaintext highlighter-rouge">api.deeplens.health</code>).</li>
-  <li><strong>Everything in one query.</strong> Search medical knowledge bases, <strong>PubMed (NCBI)</strong>, <strong>Semantic Scholar</strong>, <strong>Europe PMC</strong>, and <strong>OpenAlex</strong> (250 M+ scholarly works) simultaneously — or bring your <strong>own documents</strong> via ZIP upload or S3 prefix.</li>
-  <li><strong>Rigour you can audit.</strong> Every extracted value comes with the supporting sentence from the source article. Inclusion and exclusion decisions are applied consistently to every paper, not just the ones you happen to re-read.</li>
-  <li><strong>Reproducible by design.</strong> Save, clone, and delta-update runs. When new evidence is published, a single delta refresh brings your review current — no starting from scratch.</li>
-  <li><strong>Your data stays yours.</strong> Single-tenant, deployed inside your VPC. The workspace is password-gated and nothing leaves your environment.</li>
-  <li><strong>Results you can use immediately.</strong> Export the full result set as CSV and take it straight into your existing analysis tools.</li>
-</ul>
+</div>
+<div class="h3-box">
 
-<hr />
+  <h2 id="highlights">Highlights</h2>
 
-<h2 id="5-step-guided-workflow">5-Step Guided Workflow</h2>
+  <ul>
+    <li><strong>Hours, not weeks.</strong> Automated search, screening, and extraction collapse the most time-consuming phases of a systematic review into a single afternoon.</li>
+    <li><strong>Medical-grade understanding.</strong> Powered by John Snow Labs medical LLMs specifically tuned for clinical and biomedical text. Models run on Amazon SageMaker in your own account, or you can access them through the DeepLens API (<code class="language-plaintext highlighter-rouge">api.deeplens.health</code>).</li>
+    <li><strong>Everything in one query.</strong> Search medical knowledge bases, <strong>PubMed (NCBI)</strong>, <strong>Semantic Scholar</strong>, <strong>Europe PMC</strong>, and <strong>OpenAlex</strong> (250 M+ scholarly works) simultaneously — or bring your <strong>own documents</strong> via ZIP upload or S3 prefix.</li>
+    <li><strong>Rigour you can audit.</strong> Every extracted value comes with the supporting sentence from the source article. Inclusion and exclusion decisions are applied consistently to every paper, not just the ones you happen to re-read.</li>
+    <li><strong>Reproducible by design.</strong> Save, clone, and delta-update runs. When new evidence is published, a single delta refresh brings your review current — no starting from scratch.</li>
+    <li><strong>Your data stays yours.</strong> Single-tenant, deployed inside your VPC. The workspace is password-gated and nothing leaves your environment.</li>
+    <li><strong>Results you can use immediately.</strong> Export the full result set as CSV and take it straight into your existing analysis tools.</li>
+  </ul>
 
-<p>Literature Review Agent walks you through a clear, repeatable pipeline. Steps 1–3 are the core review. Steps 4–5 are optional, but useful when you want to go beyond extraction and actually interrogate your evidence set.</p>
+  <hr />
 
-<h3 id="step-1--search-articles">Step 1 — Search Articles</h3>
+</div>
+<div class="h3-box">
 
-<p>Everything starts with a search. You can query multiple sources at once — medical knowledge bases, PubMed, Semantic Scholar, Europe PMC, OpenAlex — and narrow the result set with rich filters before any extraction begins. Keeping that initial result set focused saves time and LLM cost downstream.</p>
+  <h2 id="step-guided-workflow">5-Step Guided Workflow</h2>
 
-<p>Search modes include keyword, semantic, and document-ID lookup. MeSH query expansion is available when searching PubMed or DeepLens knowledge bases, so papers indexed under controlled vocabulary terms don’t fall through the cracks. You can also upload your own documents as a ZIP archive or point to an S3 prefix if you’re working with proprietary material.</p>
+  <p>Literature Review Agent walks you through a clear, repeatable pipeline. Steps 1–3 are the core review. Steps 4–5 are optional, but useful when you want to go beyond extraction and actually interrogate your evidence set.</p>
 
-<p><img src="/assets/images/literature_review/step1-search.png" alt="Step 1 — multi-source search and filters" /></p>
+  <h3 id="step-1--search-articles">Step 1 — Search Articles</h3>
 
-<h3 id="step-2--data-points--criteria">Step 2 — Data Points &amp; Criteria</h3>
+  <p>Everything starts with a search. You can query multiple sources at once — medical knowledge bases, PubMed, Semantic Scholar, Europe PMC, OpenAlex — and narrow the result set with rich filters before any extraction begins. Keeping that initial result set focused saves time and LLM cost downstream.</p>
 
-<p>This is where you tell the agent what to look for. Data points are simple: a short label (like <code class="language-plaintext highlighter-rouge">sample_size</code>) and a plain-language description of what to extract (like “The number of participants enrolled in the study”). No rigid schemas, no fixed templates — just describe it the way you’d ask a colleague.</p>
+  <p>Search modes include keyword, semantic, and document-ID lookup. MeSH query expansion is available when searching PubMed or DeepLens knowledge bases, so papers indexed under controlled vocabulary terms don’t fall through the cracks. You can also upload your own documents as a ZIP archive or point to an S3 prefix if you’re working with proprietary material.</p>
 
-<p>You also define inclusion and exclusion rules the same way. Each rule is a label plus a plain sentence: “The study must be a randomised controlled trial.” The LLM applies those rules to every article and records a verdict.</p>
+  <p><img src="/assets/images/literature_review/step1-search.png" alt="Step 1 — multi-source search and filters" /></p>
 
-<p>Not sure where to start? Use <strong>Generate with AI</strong>. Describe your review topic in a single sentence and the agent will draft a set of data points and criteria for you to review and edit.</p>
+  <h3 id="step-2--data-points--criteria">Step 2 — Data Points &amp; Criteria</h3>
 
-<p><img src="/assets/images/literature_review/step2-criteria.png" alt="Step 2 — define data points and AI-generated criteria" /></p>
+  <p>This is where you tell the agent what to look for. Data points are simple: a short label (like <code class="language-plaintext highlighter-rouge">sample_size</code>) and a plain-language description of what to extract (like “The number of participants enrolled in the study”). No rigid schemas, no fixed templates — just describe it the way you’d ask a colleague.</p>
 
-<h3 id="step-3--run--monitor">Step 3 — Run &amp; Monitor</h3>
+  <p>You also define inclusion and exclusion rules the same way. Each rule is a label plus a plain sentence: “The study must be a randomised controlled trial.” The LLM applies those rules to every article and records a verdict.</p>
 
-<p>Once you’re happy with the setup, kick off extraction. The run is distributed across background workers, so even large result sets move quickly. A live dashboard shows you exactly where things stand — how many articles have been processed, how many succeeded, and how many hit an error.</p>
+  <p>Not sure where to start? Use <strong>Generate with AI</strong>. Describe your review topic in a single sentence and the agent will draft a set of data points and criteria for you to review and edit.</p>
 
-<p>Each article gets structured extraction with supporting evidence and a per-rule inclusion/exclusion verdict. If new papers appear after your initial run, <strong>delta processing</strong> lets you add them without re-extracting what’s already done. You can also copy a run’s configuration into a new project, or flip between previous runs using the run-history sidebar.</p>
+  <p><img src="/assets/images/literature_review/step2-criteria.png" alt="Step 2 — define data points and AI-generated criteria" /></p>
 
-<p><img src="/assets/images/literature_review/step3-run-monitor.png" alt="Step 3 — run monitor with live progress" /></p>
+  <h3 id="step-3--run--monitor">Step 3 — Run &amp; Monitor</h3>
 
-<p>Click into any article to see the full detail view: extracted values, evidence sentences, verdicts, and all the metadata and quality indicators for that paper.</p>
+  <p>Once you’re happy with the setup, kick off extraction. The run is distributed across background workers, so even large result sets move quickly. A live dashboard shows you exactly where things stand — how many articles have been processed, how many succeeded, and how many hit an error.</p>
 
-<p><img src="/assets/images/literature_review/article-detail.png" alt="Article detail — extracted data points with evidence" /></p>
+  <p>Each article gets structured extraction with supporting evidence and a per-rule inclusion/exclusion verdict. If new papers appear after your initial run, <strong>delta processing</strong> lets you add them without re-extracting what’s already done. You can also copy a run’s configuration into a new project, or flip between previous runs using the run-history sidebar.</p>
 
-<h3 id="step-4--select-literatures-optional">Step 4 — Select Literatures <em>(optional)</em></h3>
+  <p><img src="/assets/images/literature_review/step3-run-monitor.png" alt="Step 3 — run monitor with live progress" /></p>
 
-<p>After extraction, you can hand-pick the articles most relevant to your questions and group them into a focused set for Q&amp;A. Think of it as curating your evidence base before you start asking questions.</p>
+  <p>Click into any article to see the full detail view: extracted values, evidence sentences, verdicts, and all the metadata and quality indicators for that paper.</p>
 
-<p><img src="/assets/images/literature_review/step4-select.png" alt="Step 4 — select literatures" /></p>
+  <p><img src="/assets/images/literature_review/article-detail.png" alt="Article detail — extracted data points with evidence" /></p>
 
-<h3 id="step-5--literature-qa-optional">Step 5 — Literature QA <em>(optional)</em></h3>
+  <h3 id="step-4--select-literatures-optional">Step 4 — Select Literatures <em>(optional)</em></h3>
 
-<p>With a literature set selected, you can ask questions in plain language and get answers grounded in those specific articles. It’s useful for summarising findings, spotting patterns, or quickly checking whether any paper in your set addresses a particular point.</p>
+  <p>After extraction, you can hand-pick the articles most relevant to your questions and group them into a focused set for Q&amp;A. Think of it as curating your evidence base before you start asking questions.</p>
 
-<hr />
+  <p><img src="/assets/images/literature_review/step4-select.png" alt="Step 4 — select literatures" /></p>
 
-<h2 id="example-use-cases--target-audience">Example Use Cases &amp; Target Audience</h2>
+  <h3 id="step-5--literature-qa-optional">Step 5 — Literature QA <em>(optional)</em></h3>
 
-<p>🎯 <strong>Target audience:</strong> Medical researchers, systematic and scoping review teams, evidence-synthesis and HEOR groups, guideline developers, and meta-analysis authors.</p>
+  <p>With a literature set selected, you can ask questions in plain language and get answers grounded in those specific articles. It’s useful for summarising findings, spotting patterns, or quickly checking whether any paper in your set addresses a particular point.</p>
 
-<hr />
+  <hr />
 
-<p>🧑‍🔬 <strong>Use Case 1: Guideline Update — SGLT2 Inhibitors</strong></p>
+</div>
+<div class="h3-box">
 
-<p>An evidence team is updating a heart-failure guideline — their last review is two years old and a lot has been published since. They search PubMed, Europe PMC, and medical knowledge bases in a single pass: a MeSH-expanded query filtered to randomised trials from the past 24 months. They describe the review in one sentence; the agent drafts the data points (sample size, primary endpoint, follow-up, funding) and inclusion rules. A few edits and they’re ready.</p>
+  <h2 id="example-use-cases--target-audience">Example Use Cases &amp; Target Audience</h2>
 
-<p>From there, the agent does the grind. It screens every abstract, extracts each data point with the exact supporting sentence, and flags anything uncertain. The analyst skims only the borderline papers. No re-reading 300 abstracts. No copy-pasting into spreadsheets. By that afternoon the team exports a clean CSV — every included study, every field, every citation — ready for meta-analysis.</p>
+  <p>🎯 <strong>Target audience:</strong> Medical researchers, systematic and scoping review teams, evidence-synthesis and HEOR groups, guideline developers, and meta-analysis authors.</p>
 
-<hr />
+  <hr />
 
-<p>🧑‍🔬 <strong>Use Case 2: Pharmacovigilance Signal Detection</strong></p>
+  <p>🧑‍🔬 <strong>Use Case 1: Guideline Update — SGLT2 Inhibitors</strong></p>
 
-<p>Researchers monitoring adverse-event signals run a Literature Review Agent project over PubMed case reports. They define data points for drug name, adverse event term, reported severity, and causality assessment. Semantic search picks up informal descriptions and misspellings that a keyword search would miss. Delta runs keep the signal database current as new reports are published — without reprocessing what’s already been extracted.</p>
+  <p>An evidence team is updating a heart-failure guideline — their last review is two years old and a lot has been published since. They search PubMed, Europe PMC, and medical knowledge bases in a single pass: a MeSH-expanded query filtered to randomised trials from the past 24 months. They describe the review in one sentence; the agent drafts the data points (sample size, primary endpoint, follow-up, funding) and inclusion rules. A few edits and they’re ready.</p>
 
-<hr />
+  <p>From there, the agent does the grind. It screens every abstract, extracts each data point with the exact supporting sentence, and flags anything uncertain. The analyst skims only the borderline papers. No re-reading 300 abstracts. No copy-pasting into spreadsheets. By that afternoon the team exports a clean CSV — every included study, every field, every citation — ready for meta-analysis.</p>
 
-<p>🧑‍🔬 <strong>Use Case 3: Scoping Review from Proprietary Documents</strong></p>
+  <hr />
 
-<p>A regulatory team needs to review a set of proprietary clinical study reports — documents that aren’t in any public database. They upload them as a ZIP. No external API is touched; ingestion, indexing, and extraction all happen inside the appliance. They define extraction points aligned with their submission template, run the project, and export. The same configuration gets reused across the next submission package with minimal setup.</p>
+  <p>🧑‍🔬 <strong>Use Case 2: Pharmacovigilance Signal Detection</strong></p>
 
-<hr />
+  <p>Researchers monitoring adverse-event signals run a Literature Review Agent project over PubMed case reports. They define data points for drug name, adverse event term, reported severity, and causality assessment. Semantic search picks up informal descriptions and misspellings that a keyword search would miss. Delta runs keep the signal database current as new reports are published — without reprocessing what’s already been extracted.</p>
 
-<h2 id="architecture">Architecture</h2>
+  <hr />
 
-<p>Literature Review Agent runs as a self-contained stack with four services that start automatically on the AMI.</p>
+  <p>🧑‍🔬 <strong>Use Case 3: Scoping Review from Proprietary Documents</strong></p>
 
-<table>
-  <thead>
-    <tr>
-      <th>Service</th>
-      <th>Role</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>API</td>
-      <td>REST API and web UI</td>
-    </tr>
-    <tr>
-      <td>Worker</td>
-      <td>Background extraction and document ingestion</td>
-    </tr>
-    <tr>
-      <td>Database</td>
-      <td>Jobs, reports, and configuration</td>
-    </tr>
-    <tr>
-      <td>Queue</td>
-      <td>Task broker</td>
-    </tr>
-  </tbody>
-</table>
+  <p>A regulatory team needs to review a set of proprietary clinical study reports — documents that aren’t in any public database. They upload them as a ZIP. No external API is touched; ingestion, indexing, and extraction all happen inside the appliance. They define extraction points aligned with their submission template, run the project, and export. The same configuration gets reused across the next submission package with minimal setup.</p>
 
-<p><strong>DeepLens</strong> serves as both the search provider and the LLM endpoint for search and extraction calls.</p>
+  <hr />
 
+</div>
+<div class="h3-box">
+
+  <h2 id="architecture">Architecture</h2>
+
+  <p>Literature Review Agent runs as a self-contained stack with four services that start automatically on the AMI.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Service</th>
+        <th>Role</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>API</td>
+        <td>REST API and web UI</td>
+      </tr>
+      <tr>
+        <td>Worker</td>
+        <td>Background extraction and document ingestion</td>
+      </tr>
+      <tr>
+        <td>Database</td>
+        <td>Jobs, reports, and configuration</td>
+      </tr>
+      <tr>
+        <td>Queue</td>
+        <td>Task broker</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>DeepLens</strong> serves as both the search provider and the LLM endpoint for search and extraction calls.</p>
+
+</div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
       <time itemprop="dateModified" datetime="2026-06-04T00:00:00+00:00">Jun 04, 2026</time>
     </span><!-- start custom article footer snippet -->

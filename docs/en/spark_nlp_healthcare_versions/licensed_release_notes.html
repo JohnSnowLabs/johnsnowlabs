@@ -658,219 +658,220 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <p>These enhancements will elevate your experience with Healthcare NLP, enabling more efficient, accurate, and streamlined analysis of healthcare-related natural language data.</p>
 
-  <div class="h3-box">
+</div>
+<div class="h3-box">
 
-    <h4 id="spotlight-decisionmodel-and-phi-guard--check-every-document-before-it-leaves">🌟 Spotlight: <code class="language-plaintext highlighter-rouge">DecisionModel</code> and PHI Guard — Check Every Document Before It Leaves</h4>
+  <h4 id="spotlight-decisionmodel-and-phi-guard--check-every-document-before-it-leaves">🌟 Spotlight: <code class="language-plaintext highlighter-rouge">DecisionModel</code> and PHI Guard — Check Every Document Before It Leaves</h4>
 
-    <p>De-identification pipelines are highly accurate, but no automated de-identification is perfect, and the teams that release de-identified data are the ones who have to answer for the exceptions. Until now, finding the few documents that still carry PHI meant reviewing samples by hand or running a second extraction pass and interpreting its output.</p>
+  <p>De-identification pipelines are highly accurate, but no automated de-identification is perfect, and the teams that release de-identified data are the ones who have to answer for the exceptions. Until now, finding the few documents that still carry PHI meant reviewing samples by hand or running a second extraction pass and interpreting its output.</p>
 
-    <p><strong><code class="language-plaintext highlighter-rouge">DecisionModel</code> closes that gap.</strong> It is a new Healthcare NLP annotator that reads the de-identified (masked) output of your de-identification pipeline and returns a single classification for each document: does it still leak PHI, is the leak harmful, and how much PHI does it expose — with the probability in the metadata. The same models can also classify the original notes before de-identification, to tell which ones hold any PHI at all. <code class="language-plaintext highlighter-rouge">DecisionModel</code> runs natively in your Spark NLP pipelines, with batching, and is saved and loaded with the pipeline like any other stage.</p>
+  <p><strong><code class="language-plaintext highlighter-rouge">DecisionModel</code> closes that gap.</strong> It is a new Healthcare NLP annotator that reads the de-identified (masked) output of your de-identification pipeline and returns a single classification for each document: does it still leak PHI, is the leak harmful, and how much PHI does it expose — with the probability in the metadata. The same models can also classify the original notes before de-identification, to tell which ones hold any PHI at all. <code class="language-plaintext highlighter-rouge">DecisionModel</code> runs natively in your Spark NLP pipelines, with batching, and is saved and loaded with the pipeline like any other stage.</p>
 
-    <p><code class="language-plaintext highlighter-rouge">DecisionModel</code> is built for John Snow Labs’ <strong>Medical Decision Models (DMs)</strong>: compact, task-optimized models that answer typed questions about clinical text — pick one option, answer yes or no with a probability, or choose an ordered level. Task-optimized models consistently outperform general-purpose models on focused clinical decisions, and they are small enough to deploy privately.</p>
+  <p><code class="language-plaintext highlighter-rouge">DecisionModel</code> is built for John Snow Labs’ <strong>Medical Decision Models (DMs)</strong>: compact, task-optimized models that answer typed questions about clinical text — pick one option, answer yes or no with a probability, or choose an ordered level. Task-optimized models consistently outperform general-purpose models on focused clinical decisions, and they are small enough to deploy privately.</p>
 
-    <p>In this release, <code class="language-plaintext highlighter-rouge">DecisionModel</code> runs the <strong>PHI Guard</strong> family (<code class="language-plaintext highlighter-rouge">getModelType()</code> returns <code class="language-plaintext highlighter-rouge">phi-guard</code>): seven models that detect PHI in de-identified and raw notes, in single-purpose and all-in-one versions. All of them run on CPU with ONNX and need about 1 GB of RAM. For PHI leak detection, PHI Guard v0.7 reaches a PR-AUC of <strong>0.986</strong> on de-identified clinical notes at <strong>6.4 ms</strong> per note on one CPU thread. The family is bound to the model you download, so a loaded model always runs the graph it was built for and cannot be switched to another family by a parameter.</p>
+  <p>In this release, <code class="language-plaintext highlighter-rouge">DecisionModel</code> runs the <strong>PHI Guard</strong> family (<code class="language-plaintext highlighter-rouge">getModelType()</code> returns <code class="language-plaintext highlighter-rouge">phi-guard</code>): seven models that detect PHI in de-identified and raw notes, in single-purpose and all-in-one versions. All of them run on CPU with ONNX and need about 1 GB of RAM. For PHI leak detection, PHI Guard v0.7 reaches a PR-AUC of <strong>0.986</strong> on de-identified clinical notes at <strong>6.4 ms</strong> per note on one CPU thread. The family is bound to the model you download, so a loaded model always runs the graph it was built for and cannot be switched to another family by a parameter.</p>
 
-    <p>Please see <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/51.DecisionModel.ipynb">DecisionModel</a> notebook</p>
+  <p>Please see <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/51.DecisionModel.ipynb">DecisionModel</a> notebook</p>
 
-    <p>PHI Guard covers four questions, called <em>modes</em>:</p>
+  <p>PHI Guard covers four questions, called <em>modes</em>:</p>
 
-    <table class="table-model-big">
-      <thead>
-        <tr>
-          <th>Mode</th>
-          <th>Question it answers</th>
-          <th>Score it on</th>
-          <th>Labels</th>
-          <th>Score in metadata</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">leak</code></td>
-          <td>Is any PHI left after de-identification?</td>
-          <td>the de-identified document</td>
-          <td><code class="language-plaintext highlighter-rouge">PHI_LEAK</code>, <code class="language-plaintext highlighter-rouge">NO_PHI_LEAK</code></td>
-          <td><code class="language-plaintext highlighter-rouge">phi_leak_prob</code></td>
-        </tr>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">harmful</code></td>
-          <td>Is a remaining leak a harmful one?</td>
-          <td>the de-identified document</td>
-          <td><code class="language-plaintext highlighter-rouge">HARMFUL_PHI_LEAK</code>, <code class="language-plaintext highlighter-rouge">NO_HARMFUL_PHI_LEAK</code></td>
-          <td><code class="language-plaintext highlighter-rouge">harmful_leak_prob</code></td>
-        </tr>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">richness</code></td>
-          <td>How much PHI does the note expose?</td>
-          <td>the de-identified document (or the original note)</td>
-          <td><code class="language-plaintext highlighter-rouge">NONE</code>, <code class="language-plaintext highlighter-rouge">TRACE</code>, <code class="language-plaintext highlighter-rouge">LOW</code>, <code class="language-plaintext highlighter-rouge">MODERATE</code>, <code class="language-plaintext highlighter-rouge">HIGH</code>, <code class="language-plaintext highlighter-rouge">VERY_HIGH</code>, <code class="language-plaintext highlighter-rouge">SATURATED</code> (levels 0 to 6)</td>
-          <td><code class="language-plaintext highlighter-rouge">level</code>, <code class="language-plaintext highlighter-rouge">score_1</code> … <code class="language-plaintext highlighter-rouge">score_6</code></td>
-        </tr>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">raw</code></td>
-          <td>Does the original note contain PHI?</td>
-          <td>the original note, before de-identification</td>
-          <td><code class="language-plaintext highlighter-rouge">PHI_PRESENT</code>, <code class="language-plaintext highlighter-rouge">NO_PHI_PRESENT</code></td>
-          <td><code class="language-plaintext highlighter-rouge">phi_present_prob</code></td>
-        </tr>
-      </tbody>
-    </table>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Mode</th>
+        <th>Question it answers</th>
+        <th>Score it on</th>
+        <th>Labels</th>
+        <th>Score in metadata</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">leak</code></td>
+        <td>Is any PHI left after de-identification?</td>
+        <td>the de-identified document</td>
+        <td><code class="language-plaintext highlighter-rouge">PHI_LEAK</code>, <code class="language-plaintext highlighter-rouge">NO_PHI_LEAK</code></td>
+        <td><code class="language-plaintext highlighter-rouge">phi_leak_prob</code></td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">harmful</code></td>
+        <td>Is a remaining leak a harmful one?</td>
+        <td>the de-identified document</td>
+        <td><code class="language-plaintext highlighter-rouge">HARMFUL_PHI_LEAK</code>, <code class="language-plaintext highlighter-rouge">NO_HARMFUL_PHI_LEAK</code></td>
+        <td><code class="language-plaintext highlighter-rouge">harmful_leak_prob</code></td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">richness</code></td>
+        <td>How much PHI does the note expose?</td>
+        <td>the de-identified document (or the original note)</td>
+        <td><code class="language-plaintext highlighter-rouge">NONE</code>, <code class="language-plaintext highlighter-rouge">TRACE</code>, <code class="language-plaintext highlighter-rouge">LOW</code>, <code class="language-plaintext highlighter-rouge">MODERATE</code>, <code class="language-plaintext highlighter-rouge">HIGH</code>, <code class="language-plaintext highlighter-rouge">VERY_HIGH</code>, <code class="language-plaintext highlighter-rouge">SATURATED</code> (levels 0 to 6)</td>
+        <td><code class="language-plaintext highlighter-rouge">level</code>, <code class="language-plaintext highlighter-rouge">score_1</code> … <code class="language-plaintext highlighter-rouge">score_6</code></td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">raw</code></td>
+        <td>Does the original note contain PHI?</td>
+        <td>the original note, before de-identification</td>
+        <td><code class="language-plaintext highlighter-rouge">PHI_PRESENT</code>, <code class="language-plaintext highlighter-rouge">NO_PHI_PRESENT</code></td>
+        <td><code class="language-plaintext highlighter-rouge">phi_present_prob</code></td>
+      </tr>
+    </tbody>
+  </table>
 
-    <p>A harmful leak is always a leak too: <code class="language-plaintext highlighter-rouge">harmful_leak_prob</code> never exceeds the leak probability of the same document. In <code class="language-plaintext highlighter-rouge">richness</code> mode, <code class="language-plaintext highlighter-rouge">score_1</code> … <code class="language-plaintext highlighter-rouge">score_6</code> are the probabilities that the document reaches at least each of the six levels above <code class="language-plaintext highlighter-rouge">NONE</code>; they never increase from one level to the next, and <code class="language-plaintext highlighter-rouge">level</code> is the number of them that are 0.5 or higher, which gives the label.</p>
+  <p>A harmful leak is always a leak too: <code class="language-plaintext highlighter-rouge">harmful_leak_prob</code> never exceeds the leak probability of the same document. In <code class="language-plaintext highlighter-rouge">richness</code> mode, <code class="language-plaintext highlighter-rouge">score_1</code> … <code class="language-plaintext highlighter-rouge">score_6</code> are the probabilities that the document reaches at least each of the six levels above <code class="language-plaintext highlighter-rouge">NONE</code>; they never increase from one level to the next, and <code class="language-plaintext highlighter-rouge">level</code> is the number of them that are 0.5 or higher, which gives the label.</p>
 
-    <p>This turns PHI checks into a regular pipeline step. Typical uses are:</p>
+  <p>This turns PHI checks into a regular pipeline step. Typical uses are:</p>
 
-    <ul>
-      <li><strong>A quality gate after de-identification</strong> — add <code class="language-plaintext highlighter-rouge">leak</code> (and <code class="language-plaintext highlighter-rouge">harmful</code>) at the end of your de-identification pipeline, release the documents that pass, and route the rest to human review.</li>
-      <li><strong>Monitoring</strong> — track <code class="language-plaintext highlighter-rouge">richness</code> over batches to see how much PHI information is left in your de-identified output, and whether a change in the source data or in the pipeline moved it.</li>
-      <li><strong>Triage before de-identification</strong> — use <code class="language-plaintext highlighter-rouge">raw</code> on the original notes to find the documents that need de-identification at all, or to prioritize them.</li>
-    </ul>
+  <ul>
+    <li><strong>A quality gate after de-identification</strong> — add <code class="language-plaintext highlighter-rouge">leak</code> (and <code class="language-plaintext highlighter-rouge">harmful</code>) at the end of your de-identification pipeline, release the documents that pass, and route the rest to human review.</li>
+    <li><strong>Monitoring</strong> — track <code class="language-plaintext highlighter-rouge">richness</code> over batches to see how much PHI information is left in your de-identified output, and whether a change in the source data or in the pipeline moved it.</li>
+    <li><strong>Triage before de-identification</strong> — use <code class="language-plaintext highlighter-rouge">raw</code> on the original notes to find the documents that need de-identification at all, or to prioritize them.</li>
+  </ul>
 
-    <p><strong>Pretrained PHI Guard models</strong></p>
+  <p><strong>Pretrained PHI Guard models</strong></p>
 
-    <table class="table-model-big">
-      <thead>
-        <tr>
-          <th>Model Name</th>
-          <th>Model</th>
-          <th>Mode</th>
-          <th>Best for</th>
-          <th>Parameters</th>
-          <th>Size</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><a href="https://nlp.johnsnowlabs.com/2026/11/13/phi_guard_3m_v0.7_en.html"><code class="language-plaintext highlighter-rouge">phi_guard_3m_v0.7</code></a></td>
-          <td>PHI Guard v0.7</td>
-          <td><code class="language-plaintext highlighter-rouge">raw</code>, <code class="language-plaintext highlighter-rouge">leak</code>, <code class="language-plaintext highlighter-rouge">harmful</code>, <code class="language-plaintext highlighter-rouge">richness</code></td>
-          <td>Leak, harm, richness and raw in one model; the default of <code class="language-plaintext highlighter-rouge">DecisionModel.pretrained()</code></td>
-          <td>about 3 million</td>
-          <td>14.1 MB</td>
-        </tr>
-        <tr>
-          <td><a href="https://nlp.johnsnowlabs.com/2026/11/13/phi_guard_870k_v0.7_fast_en.html"><code class="language-plaintext highlighter-rouge">phi_guard_870k_v0.7_fast</code></a></td>
-          <td>PHI Guard v0.7 Fast</td>
-          <td><code class="language-plaintext highlighter-rouge">raw</code>, <code class="language-plaintext highlighter-rouge">leak</code>, <code class="language-plaintext highlighter-rouge">harmful</code>, <code class="language-plaintext highlighter-rouge">richness</code></td>
-          <td>The same four modes, about 5x faster</td>
-          <td>about 870 thousand</td>
-          <td>3.6 MB</td>
-        </tr>
-        <tr>
-          <td><a href="https://nlp.johnsnowlabs.com/2026/11/13/phi_guard_3m_v0.6_en.html"><code class="language-plaintext highlighter-rouge">phi_guard_3m_v0.6</code></a></td>
-          <td>PHI Guard v0.6</td>
-          <td><code class="language-plaintext highlighter-rouge">leak</code></td>
-          <td>Gate de-identified notes</td>
-          <td>about 3 million</td>
-          <td>12.0 MB</td>
-        </tr>
-        <tr>
-          <td><a href="https://nlp.johnsnowlabs.com/2026/11/13/phi_guard_850k_v0.6_fast_en.html"><code class="language-plaintext highlighter-rouge">phi_guard_850k_v0.6_fast</code></a></td>
-          <td>PHI Guard v0.6 Fast</td>
-          <td><code class="language-plaintext highlighter-rouge">leak</code></td>
-          <td>The same gate when speed matters most</td>
-          <td>about 850 thousand</td>
-          <td>3.5 MB</td>
-        </tr>
-        <tr>
-          <td><a href="https://nlp.johnsnowlabs.com/2026/11/13/phi_guard_3m_v0.6_masked_en.html"><code class="language-plaintext highlighter-rouge">phi_guard_3m_v0.6_masked</code></a></td>
-          <td>PHI Guard Masked v0.6</td>
-          <td><code class="language-plaintext highlighter-rouge">leak</code></td>
-          <td>De-identified gate with a final fine-tuning step</td>
-          <td>about 3 million</td>
-          <td>12.0 MB</td>
-        </tr>
-        <tr>
-          <td><a href="https://nlp.johnsnowlabs.com/2026/11/13/phi_guard_3m_v0.6_raw_en.html"><code class="language-plaintext highlighter-rouge">phi_guard_3m_v0.6_raw</code></a></td>
-          <td>PHI Guard Raw v0.6</td>
-          <td><code class="language-plaintext highlighter-rouge">raw</code></td>
-          <td>Route or skip PHI-free raw notes</td>
-          <td>about 3 million</td>
-          <td>12.0 MB</td>
-        </tr>
-        <tr>
-          <td><a href="https://nlp.johnsnowlabs.com/2026/11/13/phi_guard_3m_v0.6_richness_en.html"><code class="language-plaintext highlighter-rouge">phi_guard_3m_v0.6_richness</code></a></td>
-          <td>PHI Guard Richness v0.6</td>
-          <td><code class="language-plaintext highlighter-rouge">richness</code></td>
-          <td>How much PHI a note exposes (levels 0 to 6)</td>
-          <td>about 3 million</td>
-          <td>12.0 MB</td>
-        </tr>
-      </tbody>
-    </table>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Model Name</th>
+        <th>Model</th>
+        <th>Mode</th>
+        <th>Best for</th>
+        <th>Parameters</th>
+        <th>Size</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2026/11/13/phi_guard_3m_v0.7_en.html"><code class="language-plaintext highlighter-rouge">phi_guard_3m_v0.7</code></a></td>
+        <td>PHI Guard v0.7</td>
+        <td><code class="language-plaintext highlighter-rouge">raw</code>, <code class="language-plaintext highlighter-rouge">leak</code>, <code class="language-plaintext highlighter-rouge">harmful</code>, <code class="language-plaintext highlighter-rouge">richness</code></td>
+        <td>Leak, harm, richness and raw in one model; the default of <code class="language-plaintext highlighter-rouge">DecisionModel.pretrained()</code></td>
+        <td>about 3 million</td>
+        <td>14.1 MB</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2026/11/13/phi_guard_870k_v0.7_fast_en.html"><code class="language-plaintext highlighter-rouge">phi_guard_870k_v0.7_fast</code></a></td>
+        <td>PHI Guard v0.7 Fast</td>
+        <td><code class="language-plaintext highlighter-rouge">raw</code>, <code class="language-plaintext highlighter-rouge">leak</code>, <code class="language-plaintext highlighter-rouge">harmful</code>, <code class="language-plaintext highlighter-rouge">richness</code></td>
+        <td>The same four modes, about 5x faster</td>
+        <td>about 870 thousand</td>
+        <td>3.6 MB</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2026/11/13/phi_guard_3m_v0.6_en.html"><code class="language-plaintext highlighter-rouge">phi_guard_3m_v0.6</code></a></td>
+        <td>PHI Guard v0.6</td>
+        <td><code class="language-plaintext highlighter-rouge">leak</code></td>
+        <td>Gate de-identified notes</td>
+        <td>about 3 million</td>
+        <td>12.0 MB</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2026/11/13/phi_guard_850k_v0.6_fast_en.html"><code class="language-plaintext highlighter-rouge">phi_guard_850k_v0.6_fast</code></a></td>
+        <td>PHI Guard v0.6 Fast</td>
+        <td><code class="language-plaintext highlighter-rouge">leak</code></td>
+        <td>The same gate when speed matters most</td>
+        <td>about 850 thousand</td>
+        <td>3.5 MB</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2026/11/13/phi_guard_3m_v0.6_masked_en.html"><code class="language-plaintext highlighter-rouge">phi_guard_3m_v0.6_masked</code></a></td>
+        <td>PHI Guard Masked v0.6</td>
+        <td><code class="language-plaintext highlighter-rouge">leak</code></td>
+        <td>De-identified gate with a final fine-tuning step</td>
+        <td>about 3 million</td>
+        <td>12.0 MB</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2026/11/13/phi_guard_3m_v0.6_raw_en.html"><code class="language-plaintext highlighter-rouge">phi_guard_3m_v0.6_raw</code></a></td>
+        <td>PHI Guard Raw v0.6</td>
+        <td><code class="language-plaintext highlighter-rouge">raw</code></td>
+        <td>Route or skip PHI-free raw notes</td>
+        <td>about 3 million</td>
+        <td>12.0 MB</td>
+      </tr>
+      <tr>
+        <td><a href="https://nlp.johnsnowlabs.com/2026/11/13/phi_guard_3m_v0.6_richness_en.html"><code class="language-plaintext highlighter-rouge">phi_guard_3m_v0.6_richness</code></a></td>
+        <td>PHI Guard Richness v0.6</td>
+        <td><code class="language-plaintext highlighter-rouge">richness</code></td>
+        <td>How much PHI a note exposes (levels 0 to 6)</td>
+        <td>about 3 million</td>
+        <td>12.0 MB</td>
+      </tr>
+    </tbody>
+  </table>
 
-    <p>A multi-task (v0.7) model holds all four tasks, and one stage scores one of them: select it with <code class="language-plaintext highlighter-rouge">setMode()</code> before scoring, and copy the stage for every task you need, each with its own output column. A single-task (v0.6) model scores its own task and needs no <code class="language-plaintext highlighter-rouge">setMode()</code>. <code class="language-plaintext highlighter-rouge">getClasses()</code> returns the labels of the selected mode. In the model names, <code class="language-plaintext highlighter-rouge">3m</code>, <code class="language-plaintext highlighter-rouge">870k</code> and <code class="language-plaintext highlighter-rouge">850k</code> give the rounded number of parameters; the <code class="language-plaintext highlighter-rouge">fast</code> variants are about 4 to 5 times faster per note (see the speed benchmark below).</p>
+  <p>A multi-task (v0.7) model holds all four tasks, and one stage scores one of them: select it with <code class="language-plaintext highlighter-rouge">setMode()</code> before scoring, and copy the stage for every task you need, each with its own output column. A single-task (v0.6) model scores its own task and needs no <code class="language-plaintext highlighter-rouge">setMode()</code>. <code class="language-plaintext highlighter-rouge">getClasses()</code> returns the labels of the selected mode. In the model names, <code class="language-plaintext highlighter-rouge">3m</code>, <code class="language-plaintext highlighter-rouge">870k</code> and <code class="language-plaintext highlighter-rouge">850k</code> give the rounded number of parameters; the <code class="language-plaintext highlighter-rouge">fast</code> variants are about 4 to 5 times faster per note (see the speed benchmark below).</p>
 
-    <p><strong>What the models do</strong></p>
+  <p><strong>What the models do</strong></p>
 
-    <table class="table-model-big">
-      <thead>
-        <tr>
-          <th>Model</th>
-          <th>Scores</th>
-          <th>Use on</th>
-          <th>What it does</th>
-          <th>Example</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>PHI Guard v0.6</td>
-          <td>1: the probability that PHI is still readable</td>
-          <td>De-identified text</td>
-          <td>Gate de-identified notes before they leave the pipeline.</td>
-          <td>“Pt Maria Delgado seen on [DATE]…” scores 0.99 (leak); “Pt [NAME] seen on [DATE]…” scores 0.02</td>
-        </tr>
-        <tr>
-          <td>PHI Guard v0.6 Fast</td>
-          <td>1: the same score</td>
-          <td>De-identified text</td>
-          <td>The same gate when speed matters more than precision. It flags many more clean notes.</td>
-          <td> </td>
-        </tr>
-        <tr>
-          <td>PHI Guard Masked v0.6</td>
-          <td>1: the same score</td>
-          <td>De-identified text</td>
-          <td>The v0.6 gate with a final fine-tuning step. It scores almost the same as PHI Guard v0.6.</td>
-          <td> </td>
-        </tr>
-        <tr>
-          <td>PHI Guard Raw v0.6</td>
-          <td>1: the probability that a raw note holds any PHI</td>
-          <td>Raw text</td>
-          <td>Skip or route PHI-free notes before de-identification.</td>
-          <td>“Shortness of breath, lungs clear, continue inhaler.” scores 0.01; “John Miller, 64, seen 2024-02-11…” scores 0.99</td>
-        </tr>
-        <tr>
-          <td>PHI Guard Richness v0.6</td>
-          <td>6: the probability that the level is at least 1, 2, up to 6; the level is how many reach 0.5</td>
-          <td>Raw or de-identified text</td>
-          <td>How much PHI a note exposes, from level 0 (none) to level 6 (saturated).</td>
-          <td>A discharge note with a name, date of birth, MRN and phone number gets level 5</td>
-        </tr>
-        <tr>
-          <td>PHI Guard v0.7</td>
-          <td>9: leak, harmful, richness (at least 1 to 6) and raw; a stage returns the scores of its mode</td>
-          <td>Both, depending on the mode</td>
-          <td>All four modes in one model.</td>
-          <td>“Patient [NAME], DOB 03/14/1956, MRN 4471923…” gets leak 0.99, harmful 0.99, richness level 3 and raw 0.10</td>
-        </tr>
-        <tr>
-          <td>PHI Guard v0.7 Fast</td>
-          <td>The same 9 scores</td>
-          <td>Both, depending on the mode</td>
-          <td>The same modes, about 5x faster and a little less exact.</td>
-          <td> </td>
-        </tr>
-      </tbody>
-    </table>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Model</th>
+        <th>Scores</th>
+        <th>Use on</th>
+        <th>What it does</th>
+        <th>Example</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>PHI Guard v0.6</td>
+        <td>1: the probability that PHI is still readable</td>
+        <td>De-identified text</td>
+        <td>Gate de-identified notes before they leave the pipeline.</td>
+        <td>“Pt Maria Delgado seen on [DATE]…” scores 0.99 (leak); “Pt [NAME] seen on [DATE]…” scores 0.02</td>
+      </tr>
+      <tr>
+        <td>PHI Guard v0.6 Fast</td>
+        <td>1: the same score</td>
+        <td>De-identified text</td>
+        <td>The same gate when speed matters more than precision. It flags many more clean notes.</td>
+        <td> </td>
+      </tr>
+      <tr>
+        <td>PHI Guard Masked v0.6</td>
+        <td>1: the same score</td>
+        <td>De-identified text</td>
+        <td>The v0.6 gate with a final fine-tuning step. It scores almost the same as PHI Guard v0.6.</td>
+        <td> </td>
+      </tr>
+      <tr>
+        <td>PHI Guard Raw v0.6</td>
+        <td>1: the probability that a raw note holds any PHI</td>
+        <td>Raw text</td>
+        <td>Skip or route PHI-free notes before de-identification.</td>
+        <td>“Shortness of breath, lungs clear, continue inhaler.” scores 0.01; “John Miller, 64, seen 2024-02-11…” scores 0.99</td>
+      </tr>
+      <tr>
+        <td>PHI Guard Richness v0.6</td>
+        <td>6: the probability that the level is at least 1, 2, up to 6; the level is how many reach 0.5</td>
+        <td>Raw or de-identified text</td>
+        <td>How much PHI a note exposes, from level 0 (none) to level 6 (saturated).</td>
+        <td>A discharge note with a name, date of birth, MRN and phone number gets level 5</td>
+      </tr>
+      <tr>
+        <td>PHI Guard v0.7</td>
+        <td>9: leak, harmful, richness (at least 1 to 6) and raw; a stage returns the scores of its mode</td>
+        <td>Both, depending on the mode</td>
+        <td>All four modes in one model.</td>
+        <td>“Patient [NAME], DOB 03/14/1956, MRN 4471923…” gets leak 0.99, harmful 0.99, richness level 3 and raw 0.10</td>
+      </tr>
+      <tr>
+        <td>PHI Guard v0.7 Fast</td>
+        <td>The same 9 scores</td>
+        <td>Both, depending on the mode</td>
+        <td>The same modes, about 5x faster and a little less exact.</td>
+        <td> </td>
+      </tr>
+    </tbody>
+  </table>
 
-    <p>PHI Guard v0.7 folds the leak, raw and richness models and a new harmful output into one model, with no loss of accuracy on any of them (see the benchmarks below).</p>
+  <p>PHI Guard v0.7 folds the leak, raw and richness models and a new harmful output into one model, with no loss of accuracy on any of them (see the benchmarks below).</p>
 
-    <p><strong>Example: score a de-identified note and a note with a leak</strong></p>
+  <p><strong>Example: score a de-identified note and a note with a leak</strong></p>
 
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span> \
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span> \
     <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span> \
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
 
@@ -878,11 +879,11 @@ function wrapWordInSpan(data, wordToWrap) {
     <span class="p">.</span><span class="n">setMode</span><span class="p">(</span><span class="s">"leak"</span><span class="p">)</span> \
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span> \
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"phi_leak"</span><span class="p">)</span>
-</code></pre></div>    </div>
+</code></pre></div>  </div>
 
-    <p><em>Result</em></p>
+  <p><em>Result</em></p>
 
-    <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+---------------------------------------------------------------------------+--------------+
+  <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+---------------------------------------------------------------------------+--------------+
 |text                                                                       |label         |
 +---------------------------------------------------------------------------+--------------+
 |Example fictional note: Alex Rivera visited Riverside Clinic on 2024-01-15.|PHI_PRESENT   |
@@ -895,13 +896,13 @@ function wrapWordInSpan(data, wordToWrap) {
 |Name : Hendrickson, Ora, Record date: 2093-01-13, Age: 25, # 719435.       |PHI_PRESENT   |
 |My name is &lt;NAME&gt; living in &lt;LOCATION&gt;.                                    |NO_PHI_PRESENT|
 +---------------------------------------------------------------------------+--------------+
-</code></pre></div>    </div>
+</code></pre></div>  </div>
 
-    <p>With <code class="language-plaintext highlighter-rouge">phi_guard_3m_v0.6_richness</code>, the same two notes get the levels <code class="language-plaintext highlighter-rouge">NONE</code> (<code class="language-plaintext highlighter-rouge">level</code> 0) and <code class="language-plaintext highlighter-rouge">HIGH</code> (<code class="language-plaintext highlighter-rouge">level</code> 4).</p>
+  <p>With <code class="language-plaintext highlighter-rouge">phi_guard_3m_v0.6_richness</code>, the same two notes get the levels <code class="language-plaintext highlighter-rouge">NONE</code> (<code class="language-plaintext highlighter-rouge">level</code> 0) and <code class="language-plaintext highlighter-rouge">HIGH</code> (<code class="language-plaintext highlighter-rouge">level</code> 4).</p>
 
-    <p><strong>Example: find the notes that contain PHI</strong></p>
+  <p><strong>Example: find the notes that contain PHI</strong></p>
 
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">phi_guard</span> <span class="o">=</span> <span class="n">DecisionModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"phi_guard_3m_v0.7"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">phi_guard</span> <span class="o">=</span> <span class="n">DecisionModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"phi_guard_3m_v0.7"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
 
 <span class="n">phi_presence</span> <span class="o">=</span> <span class="n">phi_guard</span><span class="p">.</span><span class="n">copy</span><span class="p">()</span> \
     <span class="p">.</span><span class="n">setMode</span><span class="p">(</span><span class="s">"raw"</span><span class="p">)</span> \
@@ -910,13 +911,13 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <span class="n">phi_presence</span><span class="p">.</span><span class="n">getClasses</span><span class="p">()</span>
 <span class="c1"># ['PHI_PRESENT', 'NO_PHI_PRESENT']
-</span></code></pre></div>    </div>
+</span></code></pre></div>  </div>
 
-    <p><strong>Example: add a leak check to a de-identification pipeline also filter out leaked docs</strong></p>
+  <p><strong>Example: add a leak check to a de-identification pipeline also filter out leaked docs</strong></p>
 
-    <p>The <code class="language-plaintext highlighter-rouge">leak</code> mode must score the <strong>de-identified</strong> document, so it reads the output column of the de-identification stage (here <code class="language-plaintext highlighter-rouge">masked</code>), not the original note:</p>
+  <p>The <code class="language-plaintext highlighter-rouge">leak</code> mode must score the <strong>de-identified</strong> document, so it reads the output column of the de-identification stage (here <code class="language-plaintext highlighter-rouge">masked</code>), not the original note:</p>
 
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">deid_pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"clinical_deidentification_docwise_benchmark_optimized_v2"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">deid_pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"clinical_deidentification_docwise_benchmark_optimized_v2"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
 
 <span class="n">phi_leak</span> <span class="o">=</span> <span class="n">phi_guard</span><span class="p">.</span><span class="n">copy</span><span class="p">()</span> \
     <span class="p">.</span><span class="n">setMode</span><span class="p">(</span><span class="s">"leak"</span><span class="p">)</span> \
@@ -931,174 +932,174 @@ function wrapWordInSpan(data, wordToWrap) {
     <span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">scored</span><span class="p">)</span>
 
 <span class="n">deid_with_guard</span> <span class="o">=</span> <span class="n">PipelineModel</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">deid_pipeline</span><span class="p">.</span><span class="n">model</span><span class="p">.</span><span class="n">stages</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="n">phi_leak</span> <span class="o">+</span> <span class="n">doc_filterer</span><span class="p">])</span>
-</code></pre></div>    </div>
+</code></pre></div>  </div>
 
-    <p><strong>Good to know</strong></p>
+  <p><strong>Good to know</strong></p>
 
-    <ul>
-      <li><strong>Long documents.</strong> PHI Guard reads a document in overlapping windows and combines them into one decision for the whole document; <code class="language-plaintext highlighter-rouge">n_windows</code> in the metadata tells how many windows were read. Documents up to 2,000,000 UTF-8 bytes are scored.</li>
-      <li><strong>Check the <code class="language-plaintext highlighter-rouge">status</code>.</strong> Every result carries <code class="language-plaintext highlighter-rouge">status</code> in its metadata: <code class="language-plaintext highlighter-rouge">scored</code> for a model decision, <code class="language-plaintext highlighter-rouge">empty</code> for an empty document (a negative label without running the model; <code class="language-plaintext highlighter-rouge">UNKNOWN</code> in <code class="language-plaintext highlighter-rouge">richness</code> mode), and <code class="language-plaintext highlighter-rouge">overlength</code> for a document above the size limit, which gets <code class="language-plaintext highlighter-rouge">REVIEW_REQUIRED</code> and no probability. Filter on <code class="language-plaintext highlighter-rouge">status == "scored"</code> before letting documents through on a negative label.</li>
-      <li><strong>Choose your own cutoff.</strong> The labels use a cutoff of 0.5 on the probability. When your release process needs to catch nearly every leak, apply a lower cutoff to the probability in the metadata (e.g. <code class="language-plaintext highlighter-rouge">phi_leak_prob</code>), chosen on validation data of your own; the benchmark below shows how precision and recall trade off.</li>
-      <li><strong>Sentences or chunks.</strong> The input can also be sentences (<code class="language-plaintext highlighter-rouge">SentenceDetector</code>) or chunks (<code class="language-plaintext highlighter-rouge">InternalDocumentSplitter</code>); each one then gets its own decision. Combining them into a decision for the whole note is a policy of your own.</li>
-      <li><strong>A quality signal, not a certificate.</strong> A negative label is a strong signal that helps you decide where to look, not a privacy or release guarantee. Keep it next to your review process, not in place of it.</li>
-    </ul>
+  <ul>
+    <li><strong>Long documents.</strong> PHI Guard reads a document in overlapping windows and combines them into one decision for the whole document; <code class="language-plaintext highlighter-rouge">n_windows</code> in the metadata tells how many windows were read. Documents up to 2,000,000 UTF-8 bytes are scored.</li>
+    <li><strong>Check the <code class="language-plaintext highlighter-rouge">status</code>.</strong> Every result carries <code class="language-plaintext highlighter-rouge">status</code> in its metadata: <code class="language-plaintext highlighter-rouge">scored</code> for a model decision, <code class="language-plaintext highlighter-rouge">empty</code> for an empty document (a negative label without running the model; <code class="language-plaintext highlighter-rouge">UNKNOWN</code> in <code class="language-plaintext highlighter-rouge">richness</code> mode), and <code class="language-plaintext highlighter-rouge">overlength</code> for a document above the size limit, which gets <code class="language-plaintext highlighter-rouge">REVIEW_REQUIRED</code> and no probability. Filter on <code class="language-plaintext highlighter-rouge">status == "scored"</code> before letting documents through on a negative label.</li>
+    <li><strong>Choose your own cutoff.</strong> The labels use a cutoff of 0.5 on the probability. When your release process needs to catch nearly every leak, apply a lower cutoff to the probability in the metadata (e.g. <code class="language-plaintext highlighter-rouge">phi_leak_prob</code>), chosen on validation data of your own; the benchmark below shows how precision and recall trade off.</li>
+    <li><strong>Sentences or chunks.</strong> The input can also be sentences (<code class="language-plaintext highlighter-rouge">SentenceDetector</code>) or chunks (<code class="language-plaintext highlighter-rouge">InternalDocumentSplitter</code>); each one then gets its own decision. Combining them into a decision for the whole note is a policy of your own.</li>
+    <li><strong>A quality signal, not a certificate.</strong> A negative label is a strong signal that helps you decide where to look, not a privacy or release guarantee. Keep it next to your review process, not in place of it.</li>
+  </ul>
 
-  </div>
-  <div class="h3-box">
+</div>
+<div class="h3-box">
 
-    <h4 id="de-identification-enhancements">De-Identification Enhancements</h4>
+  <h4 id="de-identification-enhancements">De-Identification Enhancements</h4>
 
-    <p>These improvements apply across the de-identification family (<code class="language-plaintext highlighter-rouge">DeIdentification</code>, <code class="language-plaintext highlighter-rouge">LightDeIdentification</code>, <code class="language-plaintext highlighter-rouge">StructuredDeidentification</code> and the FHIR, CDA and HL7 v2 de-identification annotators).</p>
+  <p>These improvements apply across the de-identification family (<code class="language-plaintext highlighter-rouge">DeIdentification</code>, <code class="language-plaintext highlighter-rouge">LightDeIdentification</code>, <code class="language-plaintext highlighter-rouge">StructuredDeidentification</code> and the FHIR, CDA and HL7 v2 de-identification annotators).</p>
 
-    <p><strong>Consistent fakes for possessive names</strong></p>
+  <p><strong>Consistent fakes for possessive names</strong></p>
 
-    <p>A name and its possessive form used to be obfuscated as two different words, so “Carter” and “Carter’s” could get two unrelated fakes, and the reader of the de-identified text would see two different people. Now the possessive marker (<code class="language-plaintext highlighter-rouge">'s</code>, <code class="language-plaintext highlighter-rouge">'</code>, <code class="language-plaintext highlighter-rouge">’s</code>, <code class="language-plaintext highlighter-rouge">’</code>) is separated from the name, the name is obfuscated as the name, and the marker is put back exactly as it was written:</p>
+  <p>A name and its possessive form used to be obfuscated as two different words, so “Carter” and “Carter’s” could get two unrelated fakes, and the reader of the de-identified text would see two different people. Now the possessive marker (<code class="language-plaintext highlighter-rouge">'s</code>, <code class="language-plaintext highlighter-rouge">'</code>, <code class="language-plaintext highlighter-rouge">’s</code>, <code class="language-plaintext highlighter-rouge">’</code>) is separated from the name, the name is obfuscated as the name, and the marker is put back exactly as it was written:</p>
 
-    <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Original:      Mr. Carter was admitted on Monday. Carter's daughter was informed.
+  <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Original:      Mr. Carter was admitted on Monday. Carter's daughter was informed.
 De-identified: Mr. Ellison was admitted on Monday. Ellison's daughter was informed.
-</code></pre></div>    </div>
+</code></pre></div>  </div>
 
-    <p>An apostrophe that belongs to the name (e.g. “O’Neil”) is not treated as a marker. The feature works with every name entity, with static obfuscation pairs, custom fakers, obfuscation equivalents and the name-part consistency options, and a masked name stays a plain mask.</p>
+  <p>An apostrophe that belongs to the name (e.g. “O’Neil”) is not treated as a marker. The feature works with every name entity, with static obfuscation pairs, custom fakers, obfuscation equivalents and the name-part consistency options, and a masked name stays a plain mask.</p>
 
-    <p><strong>Timestamps keep their time when dates are shifted</strong></p>
+  <p><strong>Timestamps keep their time when dates are shifted</strong></p>
 
-    <p>Date shifting now recognizes timestamps: the date part is shifted and the time, separator and time zone are kept exactly as they were written.</p>
+  <p>Date shifting now recognizes timestamps: the date part is shifted and the time, separator and time zone are kept exactly as they were written.</p>
 
-    <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2024-03-04T10:30:00Z      + 5 days  -&gt;  2024-03-09T10:30:00Z
+  <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2024-03-04T10:30:00Z      + 5 days  -&gt;  2024-03-09T10:30:00Z
 3/4/2024 9:05 AM          + 5 days  -&gt;  3/9/2024 9:05 AM
-</code></pre></div>    </div>
+</code></pre></div>  </div>
 
-    <p>This covers ISO 8601 timestamps (as in FHIR <code class="language-plaintext highlighter-rouge">dateTime</code> and <code class="language-plaintext highlighter-rouge">instant</code>, with fractions of a second and time zone offsets) and a date followed by a space, a comma or “at” and a time, on a 12- or 24-hour clock.</p>
+  <p>This covers ISO 8601 timestamps (as in FHIR <code class="language-plaintext highlighter-rouge">dateTime</code> and <code class="language-plaintext highlighter-rouge">instant</code>, with fractions of a second and time zone offsets) and a date followed by a space, a comma or “at” and a time, on a 12- or 24-hour clock.</p>
 
-    <p><strong>Shift dates in both directions (<code class="language-plaintext highlighter-rouge">setMinRandomDisplacementDays</code>)</strong></p>
+  <p><strong>Shift dates in both directions (<code class="language-plaintext highlighter-rouge">setMinRandomDisplacementDays</code>)</strong></p>
 
-    <p>With <code class="language-plaintext highlighter-rouge">setIsRandomDateDisplacement(True)</code>, dates used to move forward only, by 1 to <code class="language-plaintext highlighter-rouge">maxRandomDisplacementDays</code> days. The new <code class="language-plaintext highlighter-rouge">minRandomDisplacementDays</code> parameter sets the lower bound, which may be negative, so dates can move in both directions; 0 is never used. The default (1) keeps the previous behavior, and the outputs of existing pipelines do not change.</p>
+  <p>With <code class="language-plaintext highlighter-rouge">setIsRandomDateDisplacement(True)</code>, dates used to move forward only, by 1 to <code class="language-plaintext highlighter-rouge">maxRandomDisplacementDays</code> days. The new <code class="language-plaintext highlighter-rouge">minRandomDisplacementDays</code> parameter sets the lower bound, which may be negative, so dates can move in both directions; 0 is never used. The default (1) keeps the previous behavior, and the outputs of existing pipelines do not change.</p>
 
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">deid</span><span class="p">.</span><span class="n">setIsRandomDateDisplacement</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span> \
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">deid</span><span class="p">.</span><span class="n">setIsRandomDateDisplacement</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span> \
     <span class="p">.</span><span class="n">setMinRandomDisplacementDays</span><span class="p">(</span><span class="o">-</span><span class="mi">30</span><span class="p">)</span> \
     <span class="p">.</span><span class="n">setMaxRandomDisplacementDays</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
-</code></pre></div>    </div>
+</code></pre></div>  </div>
 
-    <p><strong>Configurable restricted ZIP code prefixes (<code class="language-plaintext highlighter-rouge">setObfuscateZipRestrictedPrefixes</code>)</strong></p>
+  <p><strong>Configurable restricted ZIP code prefixes (<code class="language-plaintext highlighter-rouge">setObfuscateZipRestrictedPrefixes</code>)</strong></p>
 
-    <p>Under HIPAA Safe Harbor, the first three digits of a ZIP code may be kept only when the area they cover has more than 20,000 people; otherwise they become <code class="language-plaintext highlighter-rouge">000</code>. The embedded list is the 17 prefixes of the HHS guidance, based on 2000 Census data, and HHS notes that it should be updated when more current Census data is published. The list is now configurable, so you can use prefixes computed from current data:</p>
+  <p>Under HIPAA Safe Harbor, the first three digits of a ZIP code may be kept only when the area they cover has more than 20,000 people; otherwise they become <code class="language-plaintext highlighter-rouge">000</code>. The embedded list is the 17 prefixes of the HHS guidance, based on 2000 Census data, and HHS notes that it should be updated when more current Census data is published. The list is now configurable, so you can use prefixes computed from current data:</p>
 
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">deid</span><span class="p">.</span><span class="n">setObfuscateZipByHipaa</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span> \
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">deid</span><span class="p">.</span><span class="n">setObfuscateZipByHipaa</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span> \
     <span class="p">.</span><span class="n">setObfuscateZipRestrictedPrefixes</span><span class="p">([</span>
         <span class="s">"036"</span><span class="p">,</span> <span class="s">"059"</span><span class="p">,</span> <span class="s">"102"</span><span class="p">,</span> <span class="s">"202"</span><span class="p">,</span> <span class="s">"203"</span><span class="p">,</span> <span class="s">"204"</span><span class="p">,</span> <span class="s">"205"</span><span class="p">,</span> <span class="s">"369"</span><span class="p">,</span> <span class="s">"556"</span><span class="p">,</span>
         <span class="s">"692"</span><span class="p">,</span> <span class="s">"753"</span><span class="p">,</span> <span class="s">"772"</span><span class="p">,</span> <span class="s">"821"</span><span class="p">,</span> <span class="s">"823"</span><span class="p">,</span> <span class="s">"878"</span><span class="p">,</span> <span class="s">"879"</span><span class="p">,</span> <span class="s">"884"</span><span class="p">,</span> <span class="s">"893"</span><span class="p">,</span>
     <span class="p">])</span>  <span class="c1"># e.g. computed from the 2020 Census
-</span></code></pre></div>    </div>
+</span></code></pre></div>  </div>
 
-    <p><strong>Safer handling of unusual ZIP values</strong></p>
+  <p><strong>Safer handling of unusual ZIP values</strong></p>
 
-    <p>With <code class="language-plaintext highlighter-rouge">obfuscateZipByHipaa</code>, a value that is not a plain 5- or 9-digit ZIP code is <strong>never replaced by a realistic fake ZIP code</strong> anymore. It keeps its first digits (zeros for a restricted prefix) and the rest is masked; a ZIP code that lost its leading zero gets it back first, and a value with letters is masked entirely:</p>
+  <p>With <code class="language-plaintext highlighter-rouge">obfuscateZipByHipaa</code>, a value that is not a plain 5- or 9-digit ZIP code is <strong>never replaced by a realistic fake ZIP code</strong> anymore. It keeps its first digits (zeros for a restricted prefix) and the rest is masked; a ZIP code that lost its leading zero gets it back first, and a value with letters is masked entirely:</p>
 
-    <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2115          -&gt;  021**
+  <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2115          -&gt;  021**
 02115123456   -&gt;  021********
 K1A0B1        -&gt;  ******
-</code></pre></div>    </div>
+</code></pre></div>  </div>
 
-  </div>
-  <div class="h3-box">
+</div>
+<div class="h3-box">
 
-    <h4 id="fhir-de-identification-for-real-world-fhir-data">FHIR De-Identification for Real-World FHIR Data</h4>
+  <h4 id="fhir-de-identification-for-real-world-fhir-data">FHIR De-Identification for Real-World FHIR Data</h4>
 
-    <p><code class="language-plaintext highlighter-rouge">FhirDeIdentification</code> de-identifies FHIR resources and Bundles by rules. Real FHIR exports are more than a set of well-known fields: PHI sits in narratives and notes, in vendor extensions, in deeply nested elements, and in references that tie hundreds of resources to the same patient. This release extends <code class="language-plaintext highlighter-rouge">FhirDeIdentification</code> with what such data needs.</p>
+  <p><code class="language-plaintext highlighter-rouge">FhirDeIdentification</code> de-identifies FHIR resources and Bundles by rules. Real FHIR exports are more than a set of well-known fields: PHI sits in narratives and notes, in vendor extensions, in deeply nested elements, and in references that tie hundreds of resources to the same patient. This release extends <code class="language-plaintext highlighter-rouge">FhirDeIdentification</code> with what such data needs.</p>
 
-    <blockquote>
-      <p>FHIR de-identification is part of the FHIR build of Healthcare NLP. Start it with <code class="language-plaintext highlighter-rouge">sparknlp_jsl.start(secret=SECRET, fhir_deid=True)</code>.</p>
-    </blockquote>
+  <blockquote>
+    <p>FHIR de-identification is part of the FHIR build of Healthcare NLP. Start it with <code class="language-plaintext highlighter-rouge">sparknlp_jsl.start(secret=SECRET, fhir_deid=True)</code>.</p>
+  </blockquote>
 
-    <p><strong>Free text inside resources</strong></p>
+  <p><strong>Free text inside resources</strong></p>
 
-    <p>Narratives (<code class="language-plaintext highlighter-rouge">text.div</code>), notes (<code class="language-plaintext highlighter-rouge">Observation.note.text</code>, <code class="language-plaintext highlighter-rouge">Annotation.text</code>), descriptions and string values are now de-identified with a Healthcare NLP de-identification pipeline set via <code class="language-plaintext highlighter-rouge">setPipeline()</code>:</p>
+  <p>Narratives (<code class="language-plaintext highlighter-rouge">text.div</code>), notes (<code class="language-plaintext highlighter-rouge">Observation.note.text</code>, <code class="language-plaintext highlighter-rouge">Annotation.text</code>), descriptions and string values are now de-identified with a Healthcare NLP de-identification pipeline set via <code class="language-plaintext highlighter-rouge">setPipeline()</code>:</p>
 
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">setFreeTextPaths()</code> selects free-text fields by path; a path without a resource type (e.g. <code class="language-plaintext highlighter-rouge">text.div</code>) applies to every resource, including Bundle entries and contained resources.</li>
-      <li><code class="language-plaintext highlighter-rouge">setFreeTextDataTypes()</code> selects free text by FHIR data type wherever it appears (e.g. <code class="language-plaintext highlighter-rouge">Annotation.text</code>, <code class="language-plaintext highlighter-rouge">Extension.valueMarkdown</code>).</li>
-      <li>XHTML narratives are de-identified node by node, so the markup survives; plain text and markdown are de-identified line by line, keeping list, heading and quote markers.</li>
-      <li>With <code class="language-plaintext highlighter-rouge">setTableHandling(True)</code> (default), every table cell is sent with its column header as context (<code class="language-plaintext highlighter-rouge">"&lt;header&gt; : &lt;cell value&gt;"</code>), so the model can tell a name from a date in a table; the header cells are then de-identified on their own, as they may hold PHI too.</li>
-      <li><code class="language-plaintext highlighter-rouge">setExcludeFreeTextTags()</code> skips the XHTML elements you name.</li>
-    </ul>
+  <ul>
+    <li><code class="language-plaintext highlighter-rouge">setFreeTextPaths()</code> selects free-text fields by path; a path without a resource type (e.g. <code class="language-plaintext highlighter-rouge">text.div</code>) applies to every resource, including Bundle entries and contained resources.</li>
+    <li><code class="language-plaintext highlighter-rouge">setFreeTextDataTypes()</code> selects free text by FHIR data type wherever it appears (e.g. <code class="language-plaintext highlighter-rouge">Annotation.text</code>, <code class="language-plaintext highlighter-rouge">Extension.valueMarkdown</code>).</li>
+    <li>XHTML narratives are de-identified node by node, so the markup survives; plain text and markdown are de-identified line by line, keeping list, heading and quote markers.</li>
+    <li>With <code class="language-plaintext highlighter-rouge">setTableHandling(True)</code> (default), every table cell is sent with its column header as context (<code class="language-plaintext highlighter-rouge">"&lt;header&gt; : &lt;cell value&gt;"</code>), so the model can tell a name from a date in a table; the header cells are then de-identified on their own, as they may hold PHI too.</li>
+    <li><code class="language-plaintext highlighter-rouge">setExcludeFreeTextTags()</code> skips the XHTML elements you name.</li>
+  </ul>
 
-    <p><strong>Rules that follow the data type, not just the path (<code class="language-plaintext highlighter-rouge">setDataTypeRules</code>)</strong></p>
+  <p><strong>Rules that follow the data type, not just the path (<code class="language-plaintext highlighter-rouge">setDataTypeRules</code>)</strong></p>
 
-    <p>Path rules (<code class="language-plaintext highlighter-rouge">setMappingRules</code>) work well for the fields you know. Data type rules catch the rest: a rule such as <code class="language-plaintext highlighter-rouge">"HumanName.family": "LAST_NAME"</code> or <code class="language-plaintext highlighter-rouge">"dateTime": "DATE"</code> applies wherever that type appears — in any resource, at any depth, inside extensions, in contained resources and in Bundle entries. Every value is de-identified only once, and a path rule always takes precedence over a data type rule.</p>
+  <p>Path rules (<code class="language-plaintext highlighter-rouge">setMappingRules</code>) work well for the fields you know. Data type rules catch the rest: a rule such as <code class="language-plaintext highlighter-rouge">"HumanName.family": "LAST_NAME"</code> or <code class="language-plaintext highlighter-rouge">"dateTime": "DATE"</code> applies wherever that type appears — in any resource, at any depth, inside extensions, in contained resources and in Bundle entries. Every value is de-identified only once, and a path rule always takes precedence over a data type rule.</p>
 
-    <p><strong>Remove, keep or pseudonymize: new rule actions</strong></p>
+  <p><strong>Remove, keep or pseudonymize: new rule actions</strong></p>
 
-    <table class="table-model-big">
-      <thead>
-        <tr>
-          <th>Rule value</th>
-          <th>What it does</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">REMOVE</code></td>
-          <td>Removes the matched elements, primitive or complex (e.g. <code class="language-plaintext highlighter-rouge">Patient.photo</code>, <code class="language-plaintext highlighter-rouge">meta.source</code>, an extension). A resource type alone (e.g. <code class="language-plaintext highlighter-rouge">"AuditEvent": "REMOVE"</code>) drops every resource of that type and every reference to one.</td>
-        </tr>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">REMOVE_BASE64</code></td>
-          <td>Removes only the values that are embedded files (base64 payloads of more than 100 characters) and keeps the other values at the same path.</td>
-        </tr>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">KEEP</code></td>
-          <td>Keeps the matched values as they are, e.g. <code class="language-plaintext highlighter-rouge">"Immunization.expirationDate": "KEEP"</code> keeps vaccine expiration dates while a <code class="language-plaintext highlighter-rouge">date</code> data type rule shifts every other date.</td>
-        </tr>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">LOCAL_CODING</code></td>
-          <td>Keeps standard code systems (LOINC, SNOMED CT, ICD, RxNorm, HL7 terminologies, …) as they are and replaces local code systems with a consistent pseudonym (<code class="language-plaintext highlighter-rouge">urn:oid:2.25.&lt;number&gt;</code>); local display texts go to the free-text pipeline.</td>
-        </tr>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">LOCAL_URI</code></td>
-          <td>Applies the same logic to uri, url, oid, uuid and canonical values.</td>
-        </tr>
-      </tbody>
-    </table>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Rule value</th>
+        <th>What it does</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">REMOVE</code></td>
+        <td>Removes the matched elements, primitive or complex (e.g. <code class="language-plaintext highlighter-rouge">Patient.photo</code>, <code class="language-plaintext highlighter-rouge">meta.source</code>, an extension). A resource type alone (e.g. <code class="language-plaintext highlighter-rouge">"AuditEvent": "REMOVE"</code>) drops every resource of that type and every reference to one.</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">REMOVE_BASE64</code></td>
+        <td>Removes only the values that are embedded files (base64 payloads of more than 100 characters) and keeps the other values at the same path.</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">KEEP</code></td>
+        <td>Keeps the matched values as they are, e.g. <code class="language-plaintext highlighter-rouge">"Immunization.expirationDate": "KEEP"</code> keeps vaccine expiration dates while a <code class="language-plaintext highlighter-rouge">date</code> data type rule shifts every other date.</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">LOCAL_CODING</code></td>
+        <td>Keeps standard code systems (LOINC, SNOMED CT, ICD, RxNorm, HL7 terminologies, …) as they are and replaces local code systems with a consistent pseudonym (<code class="language-plaintext highlighter-rouge">urn:oid:2.25.&lt;number&gt;</code>); local display texts go to the free-text pipeline.</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">LOCAL_URI</code></td>
+        <td>Applies the same logic to uri, url, oid, uuid and canonical values.</td>
+      </tr>
+    </tbody>
+  </table>
 
-    <p>Every rule can select elements by the value of a child with <code class="language-plaintext highlighter-rouge">where(child='value')</code>, e.g. <code class="language-plaintext highlighter-rouge">"Patient.telecom.where(system='email')": "REMOVE"</code> removes the email addresses of a patient and leaves the phone numbers to the other rules. After the rules, extensions left without a value are removed, so the output stays valid FHIR (invariant <code class="language-plaintext highlighter-rouge">ext-1</code>).</p>
+  <p>Every rule can select elements by the value of a child with <code class="language-plaintext highlighter-rouge">where(child='value')</code>, e.g. <code class="language-plaintext highlighter-rouge">"Patient.telecom.where(system='email')": "REMOVE"</code> removes the email addresses of a patient and leaves the phone numbers to the other rules. After the rules, extensions left without a value are removed, so the output stays valid FHIR (invariant <code class="language-plaintext highlighter-rouge">ext-1</code>).</p>
 
-    <p><strong>One date shift per patient</strong></p>
+  <p><strong>One date shift per patient</strong></p>
 
-    <p>With <code class="language-plaintext highlighter-rouge">setIsRandomDateDisplacement(True)</code>, all dates of a patient move by the same number of days — in every resource, in every document and in every run with the same seed — so intervals between events are preserved. The patient of each resource is found from its references, its container or the Patient of the document, and <code class="language-plaintext highlighter-rouge">getDateShiftForPatient()</code> returns the offset. When the documents of one subject hold several Patient records or resources without a patient, <code class="language-plaintext highlighter-rouge">deidentify_list(documents, ids, date_shift_keys)</code> shifts every document of the subject by one offset. Free text gets the same offset when the free-text pipeline uses <code class="language-plaintext highlighter-rouge">DocumentHashCoder</code> and <code class="language-plaintext highlighter-rouge">setUseShiftDays(True)</code>. Partial dates (<code class="language-plaintext highlighter-rouge">2020</code>, <code class="language-plaintext highlighter-rouge">2020-03</code>) are shifted and kept at their original precision, and placeholder dates such as <code class="language-plaintext highlighter-rouge">0001-01-01</code> are kept as they are.</p>
+  <p>With <code class="language-plaintext highlighter-rouge">setIsRandomDateDisplacement(True)</code>, all dates of a patient move by the same number of days — in every resource, in every document and in every run with the same seed — so intervals between events are preserved. The patient of each resource is found from its references, its container or the Patient of the document, and <code class="language-plaintext highlighter-rouge">getDateShiftForPatient()</code> returns the offset. When the documents of one subject hold several Patient records or resources without a patient, <code class="language-plaintext highlighter-rouge">deidentify_list(documents, ids, date_shift_keys)</code> shifts every document of the subject by one offset. Free text gets the same offset when the free-text pipeline uses <code class="language-plaintext highlighter-rouge">DocumentHashCoder</code> and <code class="language-plaintext highlighter-rouge">setUseShiftDays(True)</code>. Partial dates (<code class="language-plaintext highlighter-rouge">2020</code>, <code class="language-plaintext highlighter-rouge">2020-03</code>) are shifted and kept at their original precision, and placeholder dates such as <code class="language-plaintext highlighter-rouge">0001-01-01</code> are kept as they are.</p>
 
-    <p><strong>HIPAA age and birth date rules</strong></p>
+  <p><strong>HIPAA age and birth date rules</strong></p>
 
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">setAgeReferenceDate()</code> applies the 90+ rule: a birth date that makes the person 90 or older at the reference date becomes the year that makes them 90, so all these patients fall into one group while the output stays a valid date.</li>
-      <li><code class="language-plaintext highlighter-rouge">setDateToYearEntities(["DOB"])</code> keeps birth dates as years only, while every other date is shifted.</li>
-      <li><code class="language-plaintext highlighter-rouge">setBirthYearDatesToYear(True)</code> writes the dates that fall in a newborn’s birth year as that year, so that a shifted test date cannot narrow down the birth date.</li>
-    </ul>
+  <ul>
+    <li><code class="language-plaintext highlighter-rouge">setAgeReferenceDate()</code> applies the 90+ rule: a birth date that makes the person 90 or older at the reference date becomes the year that makes them 90, so all these patients fall into one group while the output stays a valid date.</li>
+    <li><code class="language-plaintext highlighter-rouge">setDateToYearEntities(["DOB"])</code> keeps birth dates as years only, while every other date is shifted.</li>
+    <li><code class="language-plaintext highlighter-rouge">setBirthYearDatesToYear(True)</code> writes the dates that fall in a newborn’s birth year as that year, so that a shifted test date cannot narrow down the birth date.</li>
+  </ul>
 
-    <p><strong>Identifiers and references stay consistent</strong></p>
+  <p><strong>Identifiers and references stay consistent</strong></p>
 
-    <p>UUID ids become valid, consistent pseudonymous UUIDs, and references follow them, so the links between resources survive de-identification. <code class="language-plaintext highlighter-rouge">setPatientIdentifierSystem()</code> adds one pseudonymous identifier to every Patient. Name titles (<code class="language-plaintext highlighter-rouge">Dr.</code>) and prefixes such as <code class="language-plaintext highlighter-rouge">tel:</code>, <code class="language-plaintext highlighter-rouge">mailto:</code> and <code class="language-plaintext highlighter-rouge">urn:uuid:</code> are kept while the value behind them is de-identified.</p>
+  <p>UUID ids become valid, consistent pseudonymous UUIDs, and references follow them, so the links between resources survive de-identification. <code class="language-plaintext highlighter-rouge">setPatientIdentifierSystem()</code> adds one pseudonymous identifier to every Patient. Name titles (<code class="language-plaintext highlighter-rouge">Dr.</code>) and prefixes such as <code class="language-plaintext highlighter-rouge">tel:</code>, <code class="language-plaintext highlighter-rouge">mailto:</code> and <code class="language-plaintext highlighter-rouge">urn:uuid:</code> are kept while the value behind them is de-identified.</p>
 
-    <p><strong>Real-world data that is not perfectly valid (<code class="language-plaintext highlighter-rouge">setErrorOnInvalidValue</code>)</strong></p>
+  <p><strong>Real-world data that is not perfectly valid (<code class="language-plaintext highlighter-rouge">setErrorOnInvalidValue</code>)</strong></p>
 
-    <p>Exports often contain values that strict FHIR parsing rejects, such as codes in the wrong case (<code class="language-plaintext highlighter-rouge">"PHONE"</code> instead of <code class="language-plaintext highlighter-rouge">"phone"</code>). With <code class="language-plaintext highlighter-rouge">setErrorOnInvalidValue(False)</code> these codes are repaired and other invalid values are kept and still de-identified, instead of the whole document failing. In <code class="language-plaintext highlighter-rouge">deidentify_list</code>, a document that cannot be de-identified does not stop the others: its output is <code class="language-plaintext highlighter-rouge">None</code>, and the error is logged. Invalid values are never written to the application log, as they may be PHI.</p>
+  <p>Exports often contain values that strict FHIR parsing rejects, such as codes in the wrong case (<code class="language-plaintext highlighter-rouge">"PHONE"</code> instead of <code class="language-plaintext highlighter-rouge">"phone"</code>). With <code class="language-plaintext highlighter-rouge">setErrorOnInvalidValue(False)</code> these codes are repaired and other invalid values are kept and still de-identified, instead of the whole document failing. In <code class="language-plaintext highlighter-rouge">deidentify_list</code>, a document that cannot be de-identified does not stop the others: its output is <code class="language-plaintext highlighter-rouge">None</code>, and the error is logged. Invalid values are never written to the application log, as they may be PHI.</p>
 
-    <p><strong>Audit logs and traceability tags</strong></p>
+  <p><strong>Audit logs and traceability tags</strong></p>
 
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">setEnableOutputLogs(True)</code> and <code class="language-plaintext highlighter-rouge">setOutputLogsPath()</code> (local, HDFS, DBFS or S3) write a summary per run with counts by entity, action, rule, resource type and free-text field — without any original value. With <code class="language-plaintext highlighter-rouge">setReturnEntityMappings(True)</code>, a detailed record per de-identified value and document is written too; it holds the original values, so keep it apart from the de-identified data, with restricted access.</li>
-      <li><code class="language-plaintext highlighter-rouge">setOutputMetaTags()</code> adds your own tags (e.g. a project or release name) to <code class="language-plaintext highlighter-rouge">meta.tag</code> of every output document, and <code class="language-plaintext highlighter-rouge">setAddProcessingMetaTags(True)</code> adds the Healthcare NLP version and the processing time.</li>
-    </ul>
+  <ul>
+    <li><code class="language-plaintext highlighter-rouge">setEnableOutputLogs(True)</code> and <code class="language-plaintext highlighter-rouge">setOutputLogsPath()</code> (local, HDFS, DBFS or S3) write a summary per run with counts by entity, action, rule, resource type and free-text field — without any original value. With <code class="language-plaintext highlighter-rouge">setReturnEntityMappings(True)</code>, a detailed record per de-identified value and document is written too; it holds the original values, so keep it apart from the de-identified data, with restricted access.</li>
+    <li><code class="language-plaintext highlighter-rouge">setOutputMetaTags()</code> adds your own tags (e.g. a project or release name) to <code class="language-plaintext highlighter-rouge">meta.tag</code> of every output document, and <code class="language-plaintext highlighter-rouge">setAddProcessingMetaTags(True)</code> adds the Healthcare NLP version and the processing time.</li>
+  </ul>
 
-    <p><strong>Extract free text for annotation (<code class="language-plaintext highlighter-rouge">extract_free_text</code>)</strong></p>
+  <p><strong>Extract free text for annotation (<code class="language-plaintext highlighter-rouge">extract_free_text</code>)</strong></p>
 
-    <p><code class="language-plaintext highlighter-rouge">extract_free_text()</code> and <code class="language-plaintext highlighter-rouge">extract_free_text_list()</code> return the free text of documents split exactly as the pipeline receives it — narrative nodes, table cells with their headers, lines — with the resource, path and position of every segment, without de-identifying it. This makes it easy to annotate your own data, train or fine-tune the NER models of the free-text pipeline (see <code class="language-plaintext highlighter-rouge">Annotation2Training</code> below), and evaluate them on the texts they will really see. The same methods are available in <code class="language-plaintext highlighter-rouge">CdaDeIdentification</code> and <code class="language-plaintext highlighter-rouge">Hl7v2DeIdentification</code>.</p>
+  <p><code class="language-plaintext highlighter-rouge">extract_free_text()</code> and <code class="language-plaintext highlighter-rouge">extract_free_text_list()</code> return the free text of documents split exactly as the pipeline receives it — narrative nodes, table cells with their headers, lines — with the resource, path and position of every segment, without de-identifying it. This makes it easy to annotate your own data, train or fine-tune the NER models of the free-text pipeline (see <code class="language-plaintext highlighter-rouge">Annotation2Training</code> below), and evaluate them on the texts they will really see. The same methods are available in <code class="language-plaintext highlighter-rouge">CdaDeIdentification</code> and <code class="language-plaintext highlighter-rouge">Hl7v2DeIdentification</code>.</p>
 
-    <p><strong>Throughput</strong></p>
+  <p><strong>Throughput</strong></p>
 
-    <p><code class="language-plaintext highlighter-rouge">deidentify_list()</code> processes documents in parallel and keeps their order; the free-text parts of a document are sent to the pipeline in parallel (<code class="language-plaintext highlighter-rouge">setParallelFreeText</code>, on by default), and <code class="language-plaintext highlighter-rouge">setFreeTextCacheSize()</code> reuses the result of texts that repeat across documents.</p>
+  <p><code class="language-plaintext highlighter-rouge">deidentify_list()</code> processes documents in parallel and keeps their order; the free-text parts of a document are sent to the pipeline in parallel (<code class="language-plaintext highlighter-rouge">setParallelFreeText</code>, on by default), and <code class="language-plaintext highlighter-rouge">setFreeTextCacheSize()</code> reuses the result of texts that repeat across documents.</p>
 
-    <p><strong>Example</strong></p>
+  <p><strong>Example</strong></p>
 
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">sparknlp_jsl</span>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">sparknlp_jsl</span>
 <span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
 <span class="kn">from</span> <span class="nn">sparknlp_jsl.annotator</span> <span class="kn">import</span> <span class="n">FhirDeIdentification</span>
 
@@ -1143,40 +1144,40 @@ K1A0B1        -&gt;  ******
     <span class="p">.</span><span class="n">setOutputMetaTags</span><span class="p">({</span><span class="s">"project"</span><span class="p">:</span> <span class="s">"readmission_study"</span><span class="p">,</span> <span class="s">"release"</span><span class="p">:</span> <span class="s">"r3"</span><span class="p">})</span>
 
 <span class="n">deidentified</span> <span class="o">=</span> <span class="n">fhir_deid</span><span class="p">.</span><span class="n">deidentify_list</span><span class="p">(</span><span class="n">fhir_documents</span><span class="p">,</span> <span class="n">ids</span><span class="o">=</span><span class="n">file_names</span><span class="p">)</span>
-</code></pre></div>    </div>
+</code></pre></div>  </div>
 
-    <blockquote>
-      <p>Free text is de-identified by <code class="language-plaintext highlighter-rouge">deidentify()</code> and <code class="language-plaintext highlighter-rouge">deidentify_list()</code>, which run the pipeline on the driver. <code class="language-plaintext highlighter-rouge">transform()</code> keeps working for structured rules, and fails with a clear message when free-text paths are set.</p>
-    </blockquote>
+  <blockquote>
+    <p>Free text is de-identified by <code class="language-plaintext highlighter-rouge">deidentify()</code> and <code class="language-plaintext highlighter-rouge">deidentify_list()</code>, which run the pipeline on the driver. <code class="language-plaintext highlighter-rouge">transform()</code> keeps working for structured rules, and fails with a clear message when free-text paths are set.</p>
+  </blockquote>
 
-  </div>
-  <div class="h3-box">
+</div>
+<div class="h3-box">
 
-    <h4 id="cda-and-hl7-v2-de-identification-improvements">CDA and HL7 v2 De-Identification Improvements</h4>
+  <h4 id="cda-and-hl7-v2-de-identification-improvements">CDA and HL7 v2 De-Identification Improvements</h4>
 
-    <p><code class="language-plaintext highlighter-rouge">CdaDeIdentification</code> and <code class="language-plaintext highlighter-rouge">Hl7v2DeIdentification</code> share the new rule engine with FHIR, so most of the options above work for them too:</p>
+  <p><code class="language-plaintext highlighter-rouge">CdaDeIdentification</code> and <code class="language-plaintext highlighter-rouge">Hl7v2DeIdentification</code> share the new rule engine with FHIR, so most of the options above work for them too:</p>
 
-    <ul>
-      <li><strong>Header-aware tables in CDA narratives.</strong> Header cells give their column as context to the data cells, a table without a header row uses its first row as the header (and still de-identifies it), and the header cells are then de-identified on their own, as they may hold PHI too.</li>
-      <li><strong>CDA contact values resolved from their shape.</strong> A telecom value is de-identified as a phone or an email depending on its content, and URI schemes such as <code class="language-plaintext highlighter-rouge">tel:</code> and <code class="language-plaintext highlighter-rouge">mailto:</code> are kept.</li>
-      <li><strong><code class="language-plaintext highlighter-rouge">REMOVE</code> and <code class="language-plaintext highlighter-rouge">REMOVE_BASE64</code>.</strong> <code class="language-plaintext highlighter-rouge">REMOVE</code> clears the value of the matched node or field, and <code class="language-plaintext highlighter-rouge">REMOVE_BASE64</code> clears only embedded base64 payloads.</li>
-      <li><strong>Year-only dates and age rules.</strong> <code class="language-plaintext highlighter-rouge">setDateToYear</code>, <code class="language-plaintext highlighter-rouge">setDateToYearEntities</code> and <code class="language-plaintext highlighter-rouge">setAgeReferenceDate</code> now apply to CDA and HL7 v2 as well.</li>
-      <li><strong>Random date shift range.</strong> <code class="language-plaintext highlighter-rouge">setMinRandomDisplacementDays</code> and <code class="language-plaintext highlighter-rouge">setMaxRandomDisplacementDays</code> work as in the other de-identification annotators.</li>
-      <li><strong>Possessive names</strong> keep their marker on the fake in HL7 v2 messages as well.</li>
-      <li><strong>Free-text extraction</strong> with <code class="language-plaintext highlighter-rouge">extract_free_text()</code> / <code class="language-plaintext highlighter-rouge">extract_free_text_list()</code> returns the narrative texts and free-text fields as the pipeline receives them.</li>
-      <li><strong>Document-level logs</strong> with <code class="language-plaintext highlighter-rouge">setEnableOutputLogs(True)</code>.</li>
-    </ul>
+  <ul>
+    <li><strong>Header-aware tables in CDA narratives.</strong> Header cells give their column as context to the data cells, a table without a header row uses its first row as the header (and still de-identifies it), and the header cells are then de-identified on their own, as they may hold PHI too.</li>
+    <li><strong>CDA contact values resolved from their shape.</strong> A telecom value is de-identified as a phone or an email depending on its content, and URI schemes such as <code class="language-plaintext highlighter-rouge">tel:</code> and <code class="language-plaintext highlighter-rouge">mailto:</code> are kept.</li>
+    <li><strong><code class="language-plaintext highlighter-rouge">REMOVE</code> and <code class="language-plaintext highlighter-rouge">REMOVE_BASE64</code>.</strong> <code class="language-plaintext highlighter-rouge">REMOVE</code> clears the value of the matched node or field, and <code class="language-plaintext highlighter-rouge">REMOVE_BASE64</code> clears only embedded base64 payloads.</li>
+    <li><strong>Year-only dates and age rules.</strong> <code class="language-plaintext highlighter-rouge">setDateToYear</code>, <code class="language-plaintext highlighter-rouge">setDateToYearEntities</code> and <code class="language-plaintext highlighter-rouge">setAgeReferenceDate</code> now apply to CDA and HL7 v2 as well.</li>
+    <li><strong>Random date shift range.</strong> <code class="language-plaintext highlighter-rouge">setMinRandomDisplacementDays</code> and <code class="language-plaintext highlighter-rouge">setMaxRandomDisplacementDays</code> work as in the other de-identification annotators.</li>
+    <li><strong>Possessive names</strong> keep their marker on the fake in HL7 v2 messages as well.</li>
+    <li><strong>Free-text extraction</strong> with <code class="language-plaintext highlighter-rouge">extract_free_text()</code> / <code class="language-plaintext highlighter-rouge">extract_free_text_list()</code> returns the narrative texts and free-text fields as the pipeline receives them.</li>
+    <li><strong>Document-level logs</strong> with <code class="language-plaintext highlighter-rouge">setEnableOutputLogs(True)</code>.</li>
+  </ul>
 
-  </div>
-  <div class="h3-box">
+</div>
+<div class="h3-box">
 
-    <h4 id="keep-the-annotated-chunks-when-converting-generative-ai-lab-exports-to-ner-training-data">Keep the Annotated Chunks When Converting Generative AI Lab Exports to NER Training Data</h4>
+  <h4 id="keep-the-annotated-chunks-when-converting-generative-ai-lab-exports-to-ner-training-data">Keep the Annotated Chunks When Converting Generative AI Lab Exports to NER Training Data</h4>
 
-    <p><code class="language-plaintext highlighter-rouge">Annotation2Training</code> converts Generative AI Lab exports (JSON and CSV) into a DataFrame ready for <code class="language-plaintext highlighter-rouge">MedicalNerApproach</code>. The annotations were turned into token-level IOB labels and the original entity spans were then dropped, so they could not be checked against the labels or reused for evaluation.</p>
+  <p><code class="language-plaintext highlighter-rouge">Annotation2Training</code> converts Generative AI Lab exports (JSON and CSV) into a DataFrame ready for <code class="language-plaintext highlighter-rouge">MedicalNerApproach</code>. The annotations were turned into token-level IOB labels and the original entity spans were then dropped, so they could not be checked against the labels or reused for evaluation.</p>
 
-    <p><code class="language-plaintext highlighter-rouge">convertJson2NerDF</code> and <code class="language-plaintext highlighter-rouge">convertCsv2NerDF</code> now accept <code class="language-plaintext highlighter-rouge">chunk_output_col</code>. When it is set, the annotated chunks are kept in the result as a regular Spark NLP <code class="language-plaintext highlighter-rouge">chunk</code> column, with <code class="language-plaintext highlighter-rouge">white_list</code>, <code class="language-plaintext highlighter-rouge">black_list</code> and <code class="language-plaintext highlighter-rouge">replace_labels</code> already applied:</p>
+  <p><code class="language-plaintext highlighter-rouge">convertJson2NerDF</code> and <code class="language-plaintext highlighter-rouge">convertCsv2NerDF</code> now accept <code class="language-plaintext highlighter-rouge">chunk_output_col</code>. When it is set, the annotated chunks are kept in the result as a regular Spark NLP <code class="language-plaintext highlighter-rouge">chunk</code> column, with <code class="language-plaintext highlighter-rouge">white_list</code>, <code class="language-plaintext highlighter-rouge">black_list</code> and <code class="language-plaintext highlighter-rouge">replace_labels</code> already applied:</p>
 
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp_jsl.training</span> <span class="kn">import</span> <span class="n">Annotation2Training</span>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp_jsl.training</span> <span class="kn">import</span> <span class="n">Annotation2Training</span>
 
 <span class="n">annotation2training</span> <span class="o">=</span> <span class="n">Annotation2Training</span><span class="p">(</span><span class="n">spark</span><span class="p">)</span>
 
@@ -1190,18 +1191,18 @@ K1A0B1        -&gt;  ******
 
 <span class="n">training_df</span><span class="p">.</span><span class="n">columns</span>
 <span class="c1"># ['text', 'id', 'document', 'sentence', 'token', 'label', 'ner_chunk']
-</span></code></pre></div>    </div>
+</span></code></pre></div>  </div>
 
-    <p>This makes it easy to compare the annotations with the generated IOB labels, compute entity statistics of a training set, or keep the gold chunks for a later evaluation. The parameter is off by default, so existing scripts return the same columns as before, and a name that clashes with an existing column is rejected instead of overwriting it.</p>
+  <p>This makes it easy to compare the annotations with the generated IOB labels, compute entity statistics of a training set, or keep the gold chunks for a later evaluation. The parameter is off by default, so existing scripts return the same columns as before, and a name that clashes with an existing column is rejected instead of overwriting it.</p>
 
-  </div>
-  <div class="h3-box">
+</div>
+<div class="h3-box">
 
-    <h4 id="pipelinetracer-supports-pretrainedzeroshotmultitask-and-multiannotationsplitter"><code class="language-plaintext highlighter-rouge">PipelineTracer</code> Supports <code class="language-plaintext highlighter-rouge">PretrainedZeroShotMultiTask</code> and <code class="language-plaintext highlighter-rouge">MultiAnnotationSplitter</code></h4>
+  <h4 id="pipelinetracer-supports-pretrainedzeroshotmultitask-and-multiannotationsplitter"><code class="language-plaintext highlighter-rouge">PipelineTracer</code> Supports <code class="language-plaintext highlighter-rouge">PretrainedZeroShotMultiTask</code> and <code class="language-plaintext highlighter-rouge">MultiAnnotationSplitter</code></h4>
 
-    <p><code class="language-plaintext highlighter-rouge">PipelineTracer</code> reports which entities, relations and assertions a pipeline can produce, and in which output columns. It now understands <code class="language-plaintext highlighter-rouge">PretrainedZeroShotMultiTask</code> and follows its output through <code class="language-plaintext highlighter-rouge">MultiAnnotationSplitter</code>:</p>
+  <p><code class="language-plaintext highlighter-rouge">PipelineTracer</code> reports which entities, relations and assertions a pipeline can produce, and in which output columns. It now understands <code class="language-plaintext highlighter-rouge">PretrainedZeroShotMultiTask</code> and follows its output through <code class="language-plaintext highlighter-rouge">MultiAnnotationSplitter</code>:</p>
 
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp_jsl.pipeline_tracer</span> <span class="kn">import</span> <span class="n">PipelineTracer</span>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp_jsl.pipeline_tracer</span> <span class="kn">import</span> <span class="n">PipelineTracer</span>
 
 <span class="n">multi_task</span> <span class="o">=</span> <span class="n">PretrainedZeroShotMultiTask</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"zeroshot_multitask_base"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span> \
@@ -1227,732 +1228,732 @@ K1A0B1        -&gt;  ******
 </span>
 <span class="n">tracer</span><span class="p">.</span><span class="n">createParserDictionary</span><span class="p">()[</span><span class="s">"entities"</span><span class="p">]</span>
 <span class="c1"># ['ner_chunk']
-</span></code></pre></div>    </div>
+</span></code></pre></div>  </div>
 
-    <p>The tracer reports clean names — data types and descriptions in the entity and relation specs never appear as labels — and narrows them when a later stage filters the chunks, e.g. a <code class="language-plaintext highlighter-rouge">ChunkFilterer</code> with a white list. It only reads the stage parameters and never runs the model, so tracing stays fast even for large pipelines.</p>
+  <p>The tracer reports clean names — data types and descriptions in the entity and relation specs never appear as labels — and narrows them when a later stage filters the chunks, e.g. a <code class="language-plaintext highlighter-rouge">ChunkFilterer</code> with a white list. It only reads the stage parameters and never runs the model, so tracing stays fast even for large pipelines.</p>
 
-  </div>
-  <div class="h3-box">
+</div>
+<div class="h3-box">
 
-    <h4 id="faster-pretrained-model-downloads">Faster Pretrained Model Downloads</h4>
+  <h4 id="faster-pretrained-model-downloads">Faster Pretrained Model Downloads</h4>
 
-    <p>Healthcare NLP 7.0.1 is built on Spark NLP 7.0.1, which downloads pretrained models and pipelines <strong>in parallel</strong>: a model is fetched over several connections at once instead of a single one, which shortens the wait for large models such as embeddings and de-identification pipelines. The download now also shows <strong>byte-accurate progress</strong> (percentage and MB) instead of a spinner: a progress bar in a terminal, and one line per percent in notebooks, CI logs and redirected output. Licensed Healthcare NLP models use the same mechanism.</p>
+  <p>Healthcare NLP 7.0.1 is built on Spark NLP 7.0.1, which downloads pretrained models and pipelines <strong>in parallel</strong>: a model is fetched over several connections at once instead of a single one, which shortens the wait for large models such as embeddings and de-identification pipelines. The download now also shows <strong>byte-accurate progress</strong> (percentage and MB) instead of a spinner: a progress bar in a terminal, and one line per percent in notebooks, CI logs and redirected output. Licensed Healthcare NLP models use the same mechanism.</p>
 
-    <p>The behavior can be tuned with Spark configuration:</p>
+  <p>The behavior can be tuned with Spark configuration:</p>
 
-    <table class="table-model-big">
-      <thead>
-        <tr>
-          <th>Setting</th>
-          <th>Default</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">spark.jsl.settings.pretrained.download_threads</code></td>
-          <td><code class="language-plaintext highlighter-rouge">10</code></td>
-          <td>Maximum number of parallel connections per download; <code class="language-plaintext highlighter-rouge">1</code> restores the single-connection download</td>
-        </tr>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">spark.jsl.settings.pretrained.download_progress</code></td>
-          <td><code class="language-plaintext highlighter-rouge">auto</code></td>
-          <td><code class="language-plaintext highlighter-rouge">bar</code>, <code class="language-plaintext highlighter-rouge">lines</code> or <code class="language-plaintext highlighter-rouge">off</code>; <code class="language-plaintext highlighter-rouge">auto</code> picks <code class="language-plaintext highlighter-rouge">bar</code> in a terminal and <code class="language-plaintext highlighter-rouge">lines</code> elsewhere</td>
-        </tr>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">spark.jsl.settings.pretrained.s3_socket_timeout</code></td>
-          <td><code class="language-plaintext highlighter-rouge">900000</code> (15 min)</td>
-          <td>How long, in milliseconds, a download may wait for the next bytes before it fails; not a cap on the total download time</td>
-        </tr>
-      </tbody>
-    </table>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Setting</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">spark.jsl.settings.pretrained.download_threads</code></td>
+        <td><code class="language-plaintext highlighter-rouge">10</code></td>
+        <td>Maximum number of parallel connections per download; <code class="language-plaintext highlighter-rouge">1</code> restores the single-connection download</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">spark.jsl.settings.pretrained.download_progress</code></td>
+        <td><code class="language-plaintext highlighter-rouge">auto</code></td>
+        <td><code class="language-plaintext highlighter-rouge">bar</code>, <code class="language-plaintext highlighter-rouge">lines</code> or <code class="language-plaintext highlighter-rouge">off</code>; <code class="language-plaintext highlighter-rouge">auto</code> picks <code class="language-plaintext highlighter-rouge">bar</code> in a terminal and <code class="language-plaintext highlighter-rouge">lines</code> elsewhere</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">spark.jsl.settings.pretrained.s3_socket_timeout</code></td>
+        <td><code class="language-plaintext highlighter-rouge">900000</code> (15 min)</td>
+        <td>How long, in milliseconds, a download may wait for the next bytes before it fails; not a cap on the total download time</td>
+      </tr>
+    </tbody>
+  </table>
 
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">spark</span> <span class="o">=</span> <span class="n">sparknlp_jsl</span><span class="p">.</span><span class="n">start</span><span class="p">(</span><span class="n">secret</span><span class="o">=</span><span class="n">SECRET</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">spark</span> <span class="o">=</span> <span class="n">sparknlp_jsl</span><span class="p">.</span><span class="n">start</span><span class="p">(</span><span class="n">secret</span><span class="o">=</span><span class="n">SECRET</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
     <span class="s">"spark.jsl.settings.pretrained.download_threads"</span><span class="p">:</span> <span class="s">"16"</span><span class="p">,</span>
 <span class="p">})</span>
-</code></pre></div>    </div>
+</code></pre></div>  </div>
 
-  </div>
-  <div class="h3-box">
+</div>
+<div class="h3-box">
 
-    <h4 id="bug-fixes--stability-improvements">Bug Fixes &amp; Stability Improvements</h4>
+  <h4 id="bug-fixes--stability-improvements">Bug Fixes &amp; Stability Improvements</h4>
 
-    <ul>
-      <li><strong>FHIR <code class="language-plaintext highlighter-rouge">transform</code> after <code class="language-plaintext highlighter-rouge">deidentify</code>.</strong> Calling <code class="language-plaintext highlighter-rouge">transform</code> on an instance that had already run <code class="language-plaintext highlighter-rouge">deidentify</code> failed with a <code class="language-plaintext highlighter-rouge">Task not serializable</code> error; both now work on the same instance.</li>
-      <li><strong>FHIR choice-type paths.</strong> A rule on a choice-type element (e.g. <code class="language-plaintext highlighter-rouge">Observation.valueCodeableConcept.text</code>) no longer fails the documents in which the element has another type (e.g. <code class="language-plaintext highlighter-rouge">valueQuantity</code>).</li>
-      <li><strong>Rule precedence.</strong> A path rule now always takes precedence over a data type <code class="language-plaintext highlighter-rouge">REMOVE</code> rule for the same value.</li>
-      <li><strong>Nested narrative tables.</strong> Rows of nested tables in XHTML and CDA narratives are no longer processed twice, which used to shift their dates twice.</li>
-      <li><strong>Placeholder dates.</strong> Dates of the year 1 (e.g. <code class="language-plaintext highlighter-rouge">0001-01-01</code>), used by some systems as placeholders, are kept instead of being shifted into invalid dates.</li>
-    </ul>
+  <ul>
+    <li><strong>FHIR <code class="language-plaintext highlighter-rouge">transform</code> after <code class="language-plaintext highlighter-rouge">deidentify</code>.</strong> Calling <code class="language-plaintext highlighter-rouge">transform</code> on an instance that had already run <code class="language-plaintext highlighter-rouge">deidentify</code> failed with a <code class="language-plaintext highlighter-rouge">Task not serializable</code> error; both now work on the same instance.</li>
+    <li><strong>FHIR choice-type paths.</strong> A rule on a choice-type element (e.g. <code class="language-plaintext highlighter-rouge">Observation.valueCodeableConcept.text</code>) no longer fails the documents in which the element has another type (e.g. <code class="language-plaintext highlighter-rouge">valueQuantity</code>).</li>
+    <li><strong>Rule precedence.</strong> A path rule now always takes precedence over a data type <code class="language-plaintext highlighter-rouge">REMOVE</code> rule for the same value.</li>
+    <li><strong>Nested narrative tables.</strong> Rows of nested tables in XHTML and CDA narratives are no longer processed twice, which used to shift their dates twice.</li>
+    <li><strong>Placeholder dates.</strong> Dates of the year 1 (e.g. <code class="language-plaintext highlighter-rouge">0001-01-01</code>), used by some systems as placeholders, are kept instead of being shifted into invalid dates.</li>
+  </ul>
 
-  </div>
-  <div class="h3-box">
+</div>
+<div class="h3-box">
 
-    <h4 id="phi-guard-benchmarks-leak-harmful-leak-raw-note-richness-and-speed">PHI Guard Benchmarks: Leak, Harmful Leak, Raw Note, Richness and Speed</h4>
+  <h4 id="phi-guard-benchmarks-leak-harmful-leak-raw-note-richness-and-speed">PHI Guard Benchmarks: Leak, Harmful Leak, Raw Note, Richness and Speed</h4>
 
-    <p>The PHI Guard family has seven models. Each answers one or more questions about a note: does a de-identified note still leak PHI (<code class="language-plaintext highlighter-rouge">leak</code>), does a raw note hold any PHI (<code class="language-plaintext highlighter-rouge">raw</code>), how much PHI does a note expose (<code class="language-plaintext highlighter-rouge">richness</code>), and is a leak harmful (<code class="language-plaintext highlighter-rouge">harmful</code>). The results below compare them on each question; the model names map to the pretrained models as listed in the <code class="language-plaintext highlighter-rouge">DecisionModel</code> section above. Medical DM Small, a larger John Snow Labs decision model that runs on a GPU and is offered separately from the Healthcare NLP library, is included as a reference.</p>
+  <p>The PHI Guard family has seven models. Each answers one or more questions about a note: does a de-identified note still leak PHI (<code class="language-plaintext highlighter-rouge">leak</code>), does a raw note hold any PHI (<code class="language-plaintext highlighter-rouge">raw</code>), how much PHI does a note expose (<code class="language-plaintext highlighter-rouge">richness</code>), and is a leak harmful (<code class="language-plaintext highlighter-rouge">harmful</code>). The results below compare them on each question; the model names map to the pretrained models as listed in the <code class="language-plaintext highlighter-rouge">DecisionModel</code> section above. Medical DM Small, a larger John Snow Labs decision model that runs on a GPU and is offered separately from the Healthcare NLP library, is included as a reference.</p>
 
-    <p><strong>PHI Leak Detection</strong></p>
+  <p><strong>PHI Leak Detection</strong></p>
 
-    <p>Does a de-identified note still leak PHI? PR-AUC with a leak as the positive class. Public sets are the mean of four public datasets. The last column counts clean notes wrongly flagged at the 0.5 cut-off on the main set; fewer is better. Bold is the best in each column.</p>
+  <p>Does a de-identified note still leak PHI? PR-AUC with a leak as the positive class. Public sets are the mean of four public datasets. The last column counts clean notes wrongly flagged at the 0.5 cut-off on the main set; fewer is better. Bold is the best in each column.</p>
 
-    <p><img src="https://nlp.johnsnowlabs.com/en/LLMs/images/phi_leak_by_set.png" alt="PHI leak detection: PR-AUC by test set" /></p>
+  <p><img src="https://nlp.johnsnowlabs.com/en/LLMs/images/phi_leak_by_set.png" alt="PHI leak detection: PR-AUC by test set" /></p>
 
-    <table class="table-model-big">
-      <thead>
-        <tr>
-          <th style="text-align: left">Model</th>
-          <th style="text-align: right">Main</th>
-          <th style="text-align: right">Held-out</th>
-          <th style="text-align: right">Long notes</th>
-          <th style="text-align: right">Public sets</th>
-          <th style="text-align: right">Clean notes flagged, main</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td style="text-align: left">PHI Guard v0.7</td>
-          <td style="text-align: right"><strong>0.986</strong></td>
-          <td style="text-align: right">0.982</td>
-          <td style="text-align: right">0.933</td>
-          <td style="text-align: right"><strong>0.753</strong></td>
-          <td style="text-align: right">91</td>
-        </tr>
-        <tr>
-          <td style="text-align: left">PHI Guard v0.6</td>
-          <td style="text-align: right">0.985</td>
-          <td style="text-align: right">0.982</td>
-          <td style="text-align: right">0.929</td>
-          <td style="text-align: right">0.748</td>
-          <td style="text-align: right">91</td>
-        </tr>
-        <tr>
-          <td style="text-align: left">PHI Guard Masked v0.6</td>
-          <td style="text-align: right">0.985</td>
-          <td style="text-align: right">0.980</td>
-          <td style="text-align: right">0.929</td>
-          <td style="text-align: right">0.748</td>
-          <td style="text-align: right">96</td>
-        </tr>
-        <tr>
-          <td style="text-align: left">PHI Guard v0.7 Fast</td>
-          <td style="text-align: right">0.978</td>
-          <td style="text-align: right">0.970</td>
-          <td style="text-align: right">0.888</td>
-          <td style="text-align: right">0.679</td>
-          <td style="text-align: right">113</td>
-        </tr>
-        <tr>
-          <td style="text-align: left">PHI Guard v0.6 Fast</td>
-          <td style="text-align: right">0.960</td>
-          <td style="text-align: right">0.959</td>
-          <td style="text-align: right">0.893</td>
-          <td style="text-align: right">0.733</td>
-          <td style="text-align: right">384</td>
-        </tr>
-        <tr>
-          <td style="text-align: left">Medical DM Small</td>
-          <td style="text-align: right">0.986</td>
-          <td style="text-align: right"><strong>0.986</strong></td>
-          <td style="text-align: right"><strong>0.955</strong></td>
-          <td style="text-align: right">0.752</td>
-          <td style="text-align: right"><strong>39</strong></td>
-        </tr>
-      </tbody>
-    </table>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th style="text-align: left">Model</th>
+        <th style="text-align: right">Main</th>
+        <th style="text-align: right">Held-out</th>
+        <th style="text-align: right">Long notes</th>
+        <th style="text-align: right">Public sets</th>
+        <th style="text-align: right">Clean notes flagged, main</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: left">PHI Guard v0.7</td>
+        <td style="text-align: right"><strong>0.986</strong></td>
+        <td style="text-align: right">0.982</td>
+        <td style="text-align: right">0.933</td>
+        <td style="text-align: right"><strong>0.753</strong></td>
+        <td style="text-align: right">91</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">PHI Guard v0.6</td>
+        <td style="text-align: right">0.985</td>
+        <td style="text-align: right">0.982</td>
+        <td style="text-align: right">0.929</td>
+        <td style="text-align: right">0.748</td>
+        <td style="text-align: right">91</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">PHI Guard Masked v0.6</td>
+        <td style="text-align: right">0.985</td>
+        <td style="text-align: right">0.980</td>
+        <td style="text-align: right">0.929</td>
+        <td style="text-align: right">0.748</td>
+        <td style="text-align: right">96</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">PHI Guard v0.7 Fast</td>
+        <td style="text-align: right">0.978</td>
+        <td style="text-align: right">0.970</td>
+        <td style="text-align: right">0.888</td>
+        <td style="text-align: right">0.679</td>
+        <td style="text-align: right">113</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">PHI Guard v0.6 Fast</td>
+        <td style="text-align: right">0.960</td>
+        <td style="text-align: right">0.959</td>
+        <td style="text-align: right">0.893</td>
+        <td style="text-align: right">0.733</td>
+        <td style="text-align: right">384</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Medical DM Small</td>
+        <td style="text-align: right">0.986</td>
+        <td style="text-align: right"><strong>0.986</strong></td>
+        <td style="text-align: right"><strong>0.955</strong></td>
+        <td style="text-align: right">0.752</td>
+        <td style="text-align: right"><strong>39</strong></td>
+      </tr>
+    </tbody>
+  </table>
 
-    <p><strong>PHI Guard v0.7 matches or slightly beats PHI Guard v0.6 on every set. PHI Guard v0.7 Fast has far fewer false alarms than PHI Guard v0.6 Fast on the main set (113 against 384), but it is weaker on the public sets (0.679 against 0.733).</strong></p>
+  <p><strong>PHI Guard v0.7 matches or slightly beats PHI Guard v0.6 on every set. PHI Guard v0.7 Fast has far fewer false alarms than PHI Guard v0.6 Fast on the main set (113 against 384), but it is weaker on the public sets (0.679 against 0.733).</strong></p>
 
-    <p><strong>Harmful Leaks</strong></p>
+  <p><strong>Harmful Leaks</strong></p>
 
-    <p>Harmful PR-AUC, and the share of harmless-only leaks wrongly flagged at 0.5 on the main set; lower is better. The v0.6 models have no <code class="language-plaintext highlighter-rouge">harmful</code> mode, so the v0.6 leak score stands in.</p>
+  <p>Harmful PR-AUC, and the share of harmless-only leaks wrongly flagged at 0.5 on the main set; lower is better. The v0.6 models have no <code class="language-plaintext highlighter-rouge">harmful</code> mode, so the v0.6 leak score stands in.</p>
 
-    <table class="table-model-big">
-      <thead>
-        <tr>
-          <th style="text-align: left">Model</th>
-          <th style="text-align: right">Main</th>
-          <th style="text-align: right">Held-out</th>
-          <th style="text-align: right">Long notes</th>
-          <th style="text-align: right">Harmless-only leaks flagged, main</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td style="text-align: left">PHI Guard v0.6 (leak score)</td>
-          <td style="text-align: right">0.962</td>
-          <td style="text-align: right">0.779</td>
-          <td style="text-align: right">0.904</td>
-          <td style="text-align: right">70%</td>
-        </tr>
-        <tr>
-          <td style="text-align: left">PHI Guard v0.7</td>
-          <td style="text-align: right"><strong>0.980</strong></td>
-          <td style="text-align: right">0.883</td>
-          <td style="text-align: right">0.928</td>
-          <td style="text-align: right">38%</td>
-        </tr>
-        <tr>
-          <td style="text-align: left">PHI Guard v0.7 Fast</td>
-          <td style="text-align: right">0.977</td>
-          <td style="text-align: right"><strong>0.885</strong></td>
-          <td style="text-align: right"><strong>0.936</strong></td>
-          <td style="text-align: right"><strong>21%</strong></td>
-        </tr>
-      </tbody>
-    </table>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th style="text-align: left">Model</th>
+        <th style="text-align: right">Main</th>
+        <th style="text-align: right">Held-out</th>
+        <th style="text-align: right">Long notes</th>
+        <th style="text-align: right">Harmless-only leaks flagged, main</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: left">PHI Guard v0.6 (leak score)</td>
+        <td style="text-align: right">0.962</td>
+        <td style="text-align: right">0.779</td>
+        <td style="text-align: right">0.904</td>
+        <td style="text-align: right">70%</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">PHI Guard v0.7</td>
+        <td style="text-align: right"><strong>0.980</strong></td>
+        <td style="text-align: right">0.883</td>
+        <td style="text-align: right">0.928</td>
+        <td style="text-align: right">38%</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">PHI Guard v0.7 Fast</td>
+        <td style="text-align: right">0.977</td>
+        <td style="text-align: right"><strong>0.885</strong></td>
+        <td style="text-align: right"><strong>0.936</strong></td>
+        <td style="text-align: right"><strong>21%</strong></td>
+      </tr>
+    </tbody>
+  </table>
 
-    <p><strong>Raw Notes</strong></p>
+  <p><strong>Raw Notes</strong></p>
 
-    <p>Does a raw note contain any PHI? PR-AUC on the test split and on held-out notes, and the notes wrongly flagged or missed at 0.5 on the test split.</p>
+  <p>Does a raw note contain any PHI? PR-AUC on the test split and on held-out notes, and the notes wrongly flagged or missed at 0.5 on the test split.</p>
 
-    <table class="table-model-big">
-      <thead>
-        <tr>
-          <th style="text-align: left">Model</th>
-          <th style="text-align: right">Test PR-AUC</th>
-          <th style="text-align: right">False positives</th>
-          <th style="text-align: right">False negatives</th>
-          <th style="text-align: right">Held-out PR-AUC</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td style="text-align: left">PHI Guard Raw v0.6</td>
-          <td style="text-align: right"><strong>0.9993</strong></td>
-          <td style="text-align: right">29</td>
-          <td style="text-align: right"><strong>38</strong></td>
-          <td style="text-align: right">0.9984</td>
-        </tr>
-        <tr>
-          <td style="text-align: left">PHI Guard v0.7</td>
-          <td style="text-align: right">0.9992</td>
-          <td style="text-align: right"><strong>28</strong></td>
-          <td style="text-align: right">42</td>
-          <td style="text-align: right"><strong>0.9986</strong></td>
-        </tr>
-        <tr>
-          <td style="text-align: left">PHI Guard v0.7 Fast</td>
-          <td style="text-align: right"><strong>0.9993</strong></td>
-          <td style="text-align: right">47</td>
-          <td style="text-align: right">42</td>
-          <td style="text-align: right">0.9973</td>
-        </tr>
-      </tbody>
-    </table>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th style="text-align: left">Model</th>
+        <th style="text-align: right">Test PR-AUC</th>
+        <th style="text-align: right">False positives</th>
+        <th style="text-align: right">False negatives</th>
+        <th style="text-align: right">Held-out PR-AUC</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: left">PHI Guard Raw v0.6</td>
+        <td style="text-align: right"><strong>0.9993</strong></td>
+        <td style="text-align: right">29</td>
+        <td style="text-align: right"><strong>38</strong></td>
+        <td style="text-align: right">0.9984</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">PHI Guard v0.7</td>
+        <td style="text-align: right">0.9992</td>
+        <td style="text-align: right"><strong>28</strong></td>
+        <td style="text-align: right">42</td>
+        <td style="text-align: right"><strong>0.9986</strong></td>
+      </tr>
+      <tr>
+        <td style="text-align: left">PHI Guard v0.7 Fast</td>
+        <td style="text-align: right"><strong>0.9993</strong></td>
+        <td style="text-align: right">47</td>
+        <td style="text-align: right">42</td>
+        <td style="text-align: right">0.9973</td>
+      </tr>
+    </tbody>
+  </table>
 
-    <p><strong>Richness</strong></p>
+  <p><strong>Richness</strong></p>
 
-    <p>How much PHI a note exposes. Level error (MAE, lower is better) and rank correlation (rho, higher is better) on masked notes; the last two columns are held-out raw notes.</p>
+  <p>How much PHI a note exposes. Level error (MAE, lower is better) and rank correlation (rho, higher is better) on masked notes; the last two columns are held-out raw notes.</p>
 
-    <table class="table-model-big">
-      <thead>
-        <tr>
-          <th style="text-align: left">Model</th>
-          <th style="text-align: right">Main MAE</th>
-          <th style="text-align: right">Main rho</th>
-          <th style="text-align: right">Held-out MAE</th>
-          <th style="text-align: right">Held-out rho</th>
-          <th style="text-align: right">Long MAE</th>
-          <th style="text-align: right">Long rho</th>
-          <th style="text-align: right">Raw MAE</th>
-          <th style="text-align: right">Raw rho</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td style="text-align: left">PHI Guard Richness v0.6</td>
-          <td style="text-align: right"><strong>0.137</strong></td>
-          <td style="text-align: right">0.859</td>
-          <td style="text-align: right">0.325</td>
-          <td style="text-align: right">0.902</td>
-          <td style="text-align: right">0.245</td>
-          <td style="text-align: right"><strong>0.773</strong></td>
-          <td style="text-align: right">0.265</td>
-          <td style="text-align: right">0.954</td>
-        </tr>
-        <tr>
-          <td style="text-align: left">PHI Guard v0.7</td>
-          <td style="text-align: right">0.140</td>
-          <td style="text-align: right"><strong>0.866</strong></td>
-          <td style="text-align: right"><strong>0.303</strong></td>
-          <td style="text-align: right"><strong>0.909</strong></td>
-          <td style="text-align: right"><strong>0.238</strong></td>
-          <td style="text-align: right">0.755</td>
-          <td style="text-align: right"><strong>0.238</strong></td>
-          <td style="text-align: right"><strong>0.956</strong></td>
-        </tr>
-        <tr>
-          <td style="text-align: left">PHI Guard v0.7 Fast</td>
-          <td style="text-align: right">0.162</td>
-          <td style="text-align: right">0.850</td>
-          <td style="text-align: right">0.372</td>
-          <td style="text-align: right">0.894</td>
-          <td style="text-align: right">0.271</td>
-          <td style="text-align: right">0.715</td>
-          <td style="text-align: right">0.301</td>
-          <td style="text-align: right">0.949</td>
-        </tr>
-      </tbody>
-    </table>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th style="text-align: left">Model</th>
+        <th style="text-align: right">Main MAE</th>
+        <th style="text-align: right">Main rho</th>
+        <th style="text-align: right">Held-out MAE</th>
+        <th style="text-align: right">Held-out rho</th>
+        <th style="text-align: right">Long MAE</th>
+        <th style="text-align: right">Long rho</th>
+        <th style="text-align: right">Raw MAE</th>
+        <th style="text-align: right">Raw rho</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: left">PHI Guard Richness v0.6</td>
+        <td style="text-align: right"><strong>0.137</strong></td>
+        <td style="text-align: right">0.859</td>
+        <td style="text-align: right">0.325</td>
+        <td style="text-align: right">0.902</td>
+        <td style="text-align: right">0.245</td>
+        <td style="text-align: right"><strong>0.773</strong></td>
+        <td style="text-align: right">0.265</td>
+        <td style="text-align: right">0.954</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">PHI Guard v0.7</td>
+        <td style="text-align: right">0.140</td>
+        <td style="text-align: right"><strong>0.866</strong></td>
+        <td style="text-align: right"><strong>0.303</strong></td>
+        <td style="text-align: right"><strong>0.909</strong></td>
+        <td style="text-align: right"><strong>0.238</strong></td>
+        <td style="text-align: right">0.755</td>
+        <td style="text-align: right"><strong>0.238</strong></td>
+        <td style="text-align: right"><strong>0.956</strong></td>
+      </tr>
+      <tr>
+        <td style="text-align: left">PHI Guard v0.7 Fast</td>
+        <td style="text-align: right">0.162</td>
+        <td style="text-align: right">0.850</td>
+        <td style="text-align: right">0.372</td>
+        <td style="text-align: right">0.894</td>
+        <td style="text-align: right">0.271</td>
+        <td style="text-align: right">0.715</td>
+        <td style="text-align: right">0.301</td>
+        <td style="text-align: right">0.949</td>
+      </tr>
+    </tbody>
+  </table>
 
-    <p><strong>Speed per Note</strong></p>
+  <p><strong>Speed per Note</strong></p>
 
-    <p>CPU models: one thread, a 1 KB note. GPU model: batched on a 24 GB GPU.</p>
+  <p>CPU models: one thread, a 1 KB note. GPU model: batched on a 24 GB GPU.</p>
 
-    <p><img src="https://nlp.johnsnowlabs.com/en/LLMs/images/phi_speed.png" alt="PHI leak detection: time per note" /></p>
+  <p><img src="https://nlp.johnsnowlabs.com/en/LLMs/images/phi_speed.png" alt="PHI leak detection: time per note" /></p>
 
-    <table class="table-model-big">
-      <thead>
-        <tr>
-          <th style="text-align: left">Model</th>
-          <th style="text-align: left">Runs on</th>
-          <th style="text-align: right">Per note (ms)</th>
-          <th style="text-align: right">One million notes</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td style="text-align: left">PHI Guard v0.6</td>
-          <td style="text-align: left">CPU, one thread (ONNX)</td>
-          <td style="text-align: right">5.3</td>
-          <td style="text-align: right">1.5 h</td>
-        </tr>
-        <tr>
-          <td style="text-align: left">PHI Guard v0.6 Fast</td>
-          <td style="text-align: left">CPU, one thread (ONNX)</td>
-          <td style="text-align: right">1.2</td>
-          <td style="text-align: right">20 min</td>
-        </tr>
-        <tr>
-          <td style="text-align: left">PHI Guard Masked v0.6</td>
-          <td style="text-align: left">CPU, one thread (ONNX)</td>
-          <td style="text-align: right">5.4</td>
-          <td style="text-align: right">1.5 h</td>
-        </tr>
-        <tr>
-          <td style="text-align: left">PHI Guard Raw v0.6</td>
-          <td style="text-align: left">CPU, one thread (ONNX)</td>
-          <td style="text-align: right">5.4</td>
-          <td style="text-align: right">1.5 h</td>
-        </tr>
-        <tr>
-          <td style="text-align: left">PHI Guard Richness v0.6</td>
-          <td style="text-align: left">CPU, one thread (ONNX)</td>
-          <td style="text-align: right">5.4</td>
-          <td style="text-align: right">1.5 h</td>
-        </tr>
-        <tr>
-          <td style="text-align: left">PHI Guard v0.7</td>
-          <td style="text-align: left">CPU, one thread (ONNX)</td>
-          <td style="text-align: right">6.4</td>
-          <td style="text-align: right">1.8 h</td>
-        </tr>
-        <tr>
-          <td style="text-align: left">PHI Guard v0.7 Fast</td>
-          <td style="text-align: left">CPU, one thread (ONNX)</td>
-          <td style="text-align: right">1.3</td>
-          <td style="text-align: right">21.7 min</td>
-        </tr>
-        <tr>
-          <td style="text-align: left">Medical DM Small</td>
-          <td style="text-align: left">GPU (24 GB)</td>
-          <td style="text-align: right">40</td>
-          <td style="text-align: right">~10-12 h</td>
-        </tr>
-      </tbody>
-    </table>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th style="text-align: left">Model</th>
+        <th style="text-align: left">Runs on</th>
+        <th style="text-align: right">Per note (ms)</th>
+        <th style="text-align: right">One million notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: left">PHI Guard v0.6</td>
+        <td style="text-align: left">CPU, one thread (ONNX)</td>
+        <td style="text-align: right">5.3</td>
+        <td style="text-align: right">1.5 h</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">PHI Guard v0.6 Fast</td>
+        <td style="text-align: left">CPU, one thread (ONNX)</td>
+        <td style="text-align: right">1.2</td>
+        <td style="text-align: right">20 min</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">PHI Guard Masked v0.6</td>
+        <td style="text-align: left">CPU, one thread (ONNX)</td>
+        <td style="text-align: right">5.4</td>
+        <td style="text-align: right">1.5 h</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">PHI Guard Raw v0.6</td>
+        <td style="text-align: left">CPU, one thread (ONNX)</td>
+        <td style="text-align: right">5.4</td>
+        <td style="text-align: right">1.5 h</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">PHI Guard Richness v0.6</td>
+        <td style="text-align: left">CPU, one thread (ONNX)</td>
+        <td style="text-align: right">5.4</td>
+        <td style="text-align: right">1.5 h</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">PHI Guard v0.7</td>
+        <td style="text-align: left">CPU, one thread (ONNX)</td>
+        <td style="text-align: right">6.4</td>
+        <td style="text-align: right">1.8 h</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">PHI Guard v0.7 Fast</td>
+        <td style="text-align: left">CPU, one thread (ONNX)</td>
+        <td style="text-align: right">1.3</td>
+        <td style="text-align: right">21.7 min</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Medical DM Small</td>
+        <td style="text-align: left">GPU (24 GB)</td>
+        <td style="text-align: right">40</td>
+        <td style="text-align: right">~10-12 h</td>
+      </tr>
+    </tbody>
+  </table>
 
-    <p>The timings are for one CPU thread. In a Spark pipeline, <code class="language-plaintext highlighter-rouge">DecisionModel</code> scores the partitions of a DataFrame in parallel, so a cluster scores many notes at the same time.</p>
+  <p>The timings are for one CPU thread. In a Spark pipeline, <code class="language-plaintext highlighter-rouge">DecisionModel</code> scores the partitions of a DataFrame in parallel, so a cluster scores many notes at the same time.</p>
 
-  </div>
-  <div class="h3-box">
+</div>
+<div class="h3-box">
 
-    <h4 id="phi-guard-v06-on-the-public-meddeid-synthetic-benchmark">PHI Guard v0.6 on the Public MedDeID Synthetic Benchmark</h4>
+  <h4 id="phi-guard-v06-on-the-public-meddeid-synthetic-benchmark">PHI Guard v0.6 on the Public MedDeID Synthetic Benchmark</h4>
 
-    <p>How reliably does PHI Guard spot a de-identified note that still carries PHI? The <code class="language-plaintext highlighter-rouge">leak</code> mode of PHI Guard v0.6 and PHI Guard v0.6 Fast was evaluated on the test split of the public <a href="https://huggingface.co/datasets/stighellemans/meddeid-english-synthetic-benchmark">MedDeID English synthetic benchmark</a> (CC BY 4.0, revision <code class="language-plaintext highlighter-rouge">288c5718e5112e75c857ddf511a30e6eb6b32cdb</code>). Its 300 source notes give 600 examples: in 300 of them every PHI span is masked (clean notes), in the other 300 exactly one PHI span is left in (a single leak) — the hard case of one leaked value in an otherwise fully masked note. The notes were scored through the saved <code class="language-plaintext highlighter-rouge">DecisionModel</code> Spark stage, whose probabilities matched the reference ONNX scoring within 2.2e-7.</p>
+  <p>How reliably does PHI Guard spot a de-identified note that still carries PHI? The <code class="language-plaintext highlighter-rouge">leak</code> mode of PHI Guard v0.6 and PHI Guard v0.6 Fast was evaluated on the test split of the public <a href="https://huggingface.co/datasets/stighellemans/meddeid-english-synthetic-benchmark">MedDeID English synthetic benchmark</a> (CC BY 4.0, revision <code class="language-plaintext highlighter-rouge">288c5718e5112e75c857ddf511a30e6eb6b32cdb</code>). Its 300 source notes give 600 examples: in 300 of them every PHI span is masked (clean notes), in the other 300 exactly one PHI span is left in (a single leak) — the hard case of one leaked value in an otherwise fully masked note. The notes were scored through the saved <code class="language-plaintext highlighter-rouge">DecisionModel</code> Spark stage, whose probabilities matched the reference ONNX scoring within 2.2e-7.</p>
 
-    <p>A quality gate has to catch nearly every leak, so the results are reported at a fixed recall: at the cutoff that catches 95% or 98% of the leaks, how precise the flags are, and how many clean notes are flagged for review (false alarms).</p>
+  <p>A quality gate has to catch nearly every leak, so the results are reported at a fixed recall: at the cutoff that catches 95% or 98% of the leaks, how precise the flags are, and how many clean notes are flagged for review (false alarms).</p>
 
-    <table class="table-model-big">
-      <thead>
-        <tr>
-          <th>Model</th>
-          <th>Precision at 95% recall</th>
-          <th>Precision at 98% recall</th>
-          <th>False alarms at 98% recall (of 300 clean notes)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>PHI Guard v0.6 (<code class="language-plaintext highlighter-rouge">phi_guard_3m_v0.6</code>)</td>
-          <td>0.743</td>
-          <td>0.649</td>
-          <td>159</td>
-        </tr>
-        <tr>
-          <td>PHI Guard v0.6 Fast (<code class="language-plaintext highlighter-rouge">phi_guard_850k_v0.6_fast</code>)</td>
-          <td>0.604</td>
-          <td>0.546</td>
-          <td>244</td>
-        </tr>
-      </tbody>
-    </table>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Model</th>
+        <th>Precision at 95% recall</th>
+        <th>Precision at 98% recall</th>
+        <th>False alarms at 98% recall (of 300 clean notes)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>PHI Guard v0.6 (<code class="language-plaintext highlighter-rouge">phi_guard_3m_v0.6</code>)</td>
+        <td>0.743</td>
+        <td>0.649</td>
+        <td>159</td>
+      </tr>
+      <tr>
+        <td>PHI Guard v0.6 Fast (<code class="language-plaintext highlighter-rouge">phi_guard_850k_v0.6_fast</code>)</td>
+        <td>0.604</td>
+        <td>0.546</td>
+        <td>244</td>
+      </tr>
+    </tbody>
+  </table>
 
-    <p>At 98% recall, PHI Guard v0.6 catches 294 of the 300 leaks and flags 159 of the 300 clean notes for review; PHI Guard v0.6 Fast reaches the same recall with 244 false alarms.</p>
+  <p>At 98% recall, PHI Guard v0.6 catches 294 of the 300 leaks and flags 159 of the 300 clean notes for review; PHI Guard v0.6 Fast reaches the same recall with 244 false alarms.</p>
 
-    <table class="table-model-big">
-      <thead>
-        <tr>
-          <th>Model</th>
-          <th>Target recall</th>
-          <th>Precision</th>
-          <th>Achieved recall</th>
-          <th>TP</th>
-          <th>FP</th>
-          <th>FN</th>
-          <th>TN</th>
-          <th>Cutoff</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>PHI Guard v0.6</td>
-          <td>95%</td>
-          <td>0.743</td>
-          <td>0.953</td>
-          <td>286</td>
-          <td>99</td>
-          <td>14</td>
-          <td>201</td>
-          <td>0.033407</td>
-        </tr>
-        <tr>
-          <td>PHI Guard v0.6</td>
-          <td>98%</td>
-          <td>0.649</td>
-          <td>0.980</td>
-          <td>294</td>
-          <td>159</td>
-          <td>6</td>
-          <td>141</td>
-          <td>0.009149</td>
-        </tr>
-        <tr>
-          <td>PHI Guard v0.6 Fast</td>
-          <td>95%</td>
-          <td>0.604</td>
-          <td>0.950</td>
-          <td>285</td>
-          <td>187</td>
-          <td>15</td>
-          <td>113</td>
-          <td>0.079184</td>
-        </tr>
-        <tr>
-          <td>PHI Guard v0.6 Fast</td>
-          <td>98%</td>
-          <td>0.546</td>
-          <td>0.980</td>
-          <td>294</td>
-          <td>244</td>
-          <td>6</td>
-          <td>56</td>
-          <td>0.040668</td>
-        </tr>
-      </tbody>
-    </table>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th>Model</th>
+        <th>Target recall</th>
+        <th>Precision</th>
+        <th>Achieved recall</th>
+        <th>TP</th>
+        <th>FP</th>
+        <th>FN</th>
+        <th>TN</th>
+        <th>Cutoff</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>PHI Guard v0.6</td>
+        <td>95%</td>
+        <td>0.743</td>
+        <td>0.953</td>
+        <td>286</td>
+        <td>99</td>
+        <td>14</td>
+        <td>201</td>
+        <td>0.033407</td>
+      </tr>
+      <tr>
+        <td>PHI Guard v0.6</td>
+        <td>98%</td>
+        <td>0.649</td>
+        <td>0.980</td>
+        <td>294</td>
+        <td>159</td>
+        <td>6</td>
+        <td>141</td>
+        <td>0.009149</td>
+      </tr>
+      <tr>
+        <td>PHI Guard v0.6 Fast</td>
+        <td>95%</td>
+        <td>0.604</td>
+        <td>0.950</td>
+        <td>285</td>
+        <td>187</td>
+        <td>15</td>
+        <td>113</td>
+        <td>0.079184</td>
+      </tr>
+      <tr>
+        <td>PHI Guard v0.6 Fast</td>
+        <td>98%</td>
+        <td>0.546</td>
+        <td>0.980</td>
+        <td>294</td>
+        <td>244</td>
+        <td>6</td>
+        <td>56</td>
+        <td>0.040668</td>
+      </tr>
+    </tbody>
+  </table>
 
-    <blockquote>
-      <p>The masking in this benchmark is idealized: the gold PHI spans were masked directly, without running NER or a de-identification pipeline, so results on the output of a real pipeline will differ. The cutoffs were chosen on this test set after scoring; they illustrate the trade-off and are not recommended thresholds. Choose yours on validation data of your own.</p>
-    </blockquote>
+  <blockquote>
+    <p>The masking in this benchmark is idealized: the gold PHI spans were masked directly, without running NER or a de-identification pipeline, so results on the output of a real pipeline will differ. The cutoffs were chosen on this test set after scoring; they illustrate the trade-off and are not recommended thresholds. Choose yours on validation data of your own.</p>
+  </blockquote>
 
-  </div>
-  <div class="h3-box">
+</div>
+<div class="h3-box">
 
-    <h4 id="medical-decision-models-dms-task-benchmark-performance-and-cost">Medical Decision Models (DMs): Task Benchmark Performance and Cost</h4>
+  <h4 id="medical-decision-models-dms-task-benchmark-performance-and-cost">Medical Decision Models (DMs): Task Benchmark Performance and Cost</h4>
 
-    <p>PHI Guard is one family of John Snow Labs’ Medical Decision Models (DMs): compact models that answer typed questions about clinical text, such as whether a note documents a condition, whether a drug caused an event, or whether a trial accepts a patient. A question can ask the model to pick one option, answer yes or no with a probability, or choose an ordered level. Medical DMs are small enough to deploy privately, and the smallest run on a CPU. The question and its options are part of the input, so a new rule or a new threshold needs no retraining.</p>
+  <p>PHI Guard is one family of John Snow Labs’ Medical Decision Models (DMs): compact models that answer typed questions about clinical text, such as whether a note documents a condition, whether a drug caused an event, or whether a trial accepts a patient. A question can ask the model to pick one option, answer yes or no with a probability, or choose an ordered level. Medical DMs are small enough to deploy privately, and the smallest run on a CPU. The question and its options are part of the input, so a new rule or a new threshold needs no retraining.</p>
 
-    <p><strong>Medical DM Small</strong> is the best-scoring decision model across nine medical task areas, and <strong>Medical DM Nano</strong> is the compact option that runs on a single small GPU or on CPU. Both are offered for private deployment (On-Premise, AWS, Azure, Databricks, Snowflake), separately from the Healthcare NLP library.</p>
+  <p><strong>Medical DM Small</strong> is the best-scoring decision model across nine medical task areas, and <strong>Medical DM Nano</strong> is the compact option that runs on a single small GPU or on CPU. Both are offered for private deployment (On-Premise, AWS, Azure, Databricks, Snowflake), separately from the Healthcare NLP library.</p>
 
-    <table class="table-model-big">
-      <thead>
-        <tr>
-          <th style="text-align: left">Model Name</th>
-          <th style="text-align: left">Best for</th>
-          <th style="text-align: left">Runs on</th>
-          <th style="text-align: left">Recommended Memory</th>
-          <th style="text-align: left">Max Sequence Length</th>
-          <th style="text-align: left">Supported Platforms</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td style="text-align: left">Medical DM Small</td>
-          <td style="text-align: left">Highest average score across the nine task areas</td>
-          <td style="text-align: left">GPU</td>
-          <td style="text-align: left">~16 GB GPU VRAM</td>
-          <td style="text-align: left">16K</td>
-          <td style="text-align: left">On-Premise, AWS, Azure, Databricks, Snowflake</td>
-        </tr>
-        <tr>
-          <td style="text-align: left">Medical DM Nano</td>
-          <td style="text-align: left">Compact; runs on a single small GPU or on CPU</td>
-          <td style="text-align: left">GPU or CPU</td>
-          <td style="text-align: left">~2 GB GPU VRAM</td>
-          <td style="text-align: left">16K</td>
-          <td style="text-align: left">On-Premise, AWS, Azure, Databricks, Snowflake</td>
-        </tr>
-      </tbody>
-    </table>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th style="text-align: left">Model Name</th>
+        <th style="text-align: left">Best for</th>
+        <th style="text-align: left">Runs on</th>
+        <th style="text-align: left">Recommended Memory</th>
+        <th style="text-align: left">Max Sequence Length</th>
+        <th style="text-align: left">Supported Platforms</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: left">Medical DM Small</td>
+        <td style="text-align: left">Highest average score across the nine task areas</td>
+        <td style="text-align: left">GPU</td>
+        <td style="text-align: left">~16 GB GPU VRAM</td>
+        <td style="text-align: left">16K</td>
+        <td style="text-align: left">On-Premise, AWS, Azure, Databricks, Snowflake</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Medical DM Nano</td>
+        <td style="text-align: left">Compact; runs on a single small GPU or on CPU</td>
+        <td style="text-align: left">GPU or CPU</td>
+        <td style="text-align: left">~2 GB GPU VRAM</td>
+        <td style="text-align: left">16K</td>
+        <td style="text-align: left">On-Premise, AWS, Azure, Databricks, Snowflake</td>
+      </tr>
+    </tbody>
+  </table>
 
-    <p>Note: Recommended memory assumes half-precision (bf16) weights plus working memory at the maximum sequence length.</p>
+  <p>Note: Recommended memory assumes half-precision (bf16) weights plus working memory at the maximum sequence length.</p>
 
-    <p><strong>Tasks covered</strong></p>
+  <p><strong>Tasks covered</strong></p>
 
-    <table class="table-model-big">
-      <thead>
-        <tr>
-          <th style="text-align: left">Task area</th>
-          <th style="text-align: left">What the model decides</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td style="text-align: left">Cancer registry abstraction</td>
-          <td style="text-align: left">Registry fields from a pathology report: organ, tumor type, grade, TNM categories, stage, margins, lymphovascular invasion, receptors. A field the report never states is returned as not stated.</td>
-        </tr>
-        <tr>
-          <td style="text-align: left">Coding and prior authorization</td>
-          <td style="text-align: left">Whether a diagnosis or a prior-authorization request is supported under a rule written into the question.</td>
-        </tr>
-        <tr>
-          <td style="text-align: left">Cohort identification</td>
-          <td style="text-align: left">Whether a patient has each condition on a list: present, possible, absent or not documented.</td>
-        </tr>
-        <tr>
-          <td style="text-align: left">Adverse drug events</td>
-          <td style="text-align: left">For one drug and one event: onset, severity, attribution, action taken, and the outcome of stopping and restarting the drug.</td>
-        </tr>
-        <tr>
-          <td style="text-align: left">General clinical decisions</td>
-          <td style="text-align: left">A set of clinical decision tasks: evidence sufficiency, reconciliation, temporal relevance, reliability, attribution, escalation, causality, trajectory and more.</td>
-        </tr>
-        <tr>
-          <td style="text-align: left">Quality measure review</td>
-          <td style="text-align: left">Evidence questions on patient charts for adult care-quality measures: eligibility, exclusions, time windows, medicines and tests.</td>
-        </tr>
-        <tr>
-          <td style="text-align: left">Clinical note review</td>
-          <td style="text-align: left">Chart review of a clinical note: note type, age group, tobacco use, allergies, diabetes, kidney function, anticoagulation, cancer status.</td>
-        </tr>
-        <tr>
-          <td style="text-align: left">Clinical trial eligibility</td>
-          <td style="text-align: left">Demographic gate, inclusion or exclusion, specialty, numeric thresholds and time windows.</td>
-        </tr>
-        <tr>
-          <td style="text-align: left">Oncology record review</td>
-          <td style="text-align: left">Whether a document in an oncology record is relevant to a registry abstract, whether it adds anything new, and which fields it states.</td>
-        </tr>
-        <tr>
-          <td style="text-align: left">PHI leak detection</td>
-          <td style="text-align: left">Whether a de-identified note still leaks protected health information (PHI), whether a raw note holds any, how much a note exposes, and whether a leak is harmful.</td>
-        </tr>
-      </tbody>
-    </table>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th style="text-align: left">Task area</th>
+        <th style="text-align: left">What the model decides</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: left">Cancer registry abstraction</td>
+        <td style="text-align: left">Registry fields from a pathology report: organ, tumor type, grade, TNM categories, stage, margins, lymphovascular invasion, receptors. A field the report never states is returned as not stated.</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Coding and prior authorization</td>
+        <td style="text-align: left">Whether a diagnosis or a prior-authorization request is supported under a rule written into the question.</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Cohort identification</td>
+        <td style="text-align: left">Whether a patient has each condition on a list: present, possible, absent or not documented.</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Adverse drug events</td>
+        <td style="text-align: left">For one drug and one event: onset, severity, attribution, action taken, and the outcome of stopping and restarting the drug.</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">General clinical decisions</td>
+        <td style="text-align: left">A set of clinical decision tasks: evidence sufficiency, reconciliation, temporal relevance, reliability, attribution, escalation, causality, trajectory and more.</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Quality measure review</td>
+        <td style="text-align: left">Evidence questions on patient charts for adult care-quality measures: eligibility, exclusions, time windows, medicines and tests.</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Clinical note review</td>
+        <td style="text-align: left">Chart review of a clinical note: note type, age group, tobacco use, allergies, diabetes, kidney function, anticoagulation, cancer status.</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Clinical trial eligibility</td>
+        <td style="text-align: left">Demographic gate, inclusion or exclusion, specialty, numeric thresholds and time windows.</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Oncology record review</td>
+        <td style="text-align: left">Whether a document in an oncology record is relevant to a registry abstract, whether it adds anything new, and which fields it states.</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">PHI leak detection</td>
+        <td style="text-align: left">Whether a de-identified note still leaks protected health information (PHI), whether a raw note holds any, how much a note exposes, and whether a leak is harmful.</td>
+      </tr>
+    </tbody>
+  </table>
 
-    <p><strong>Task Benchmark Performance</strong></p>
+  <p><strong>Task Benchmark Performance</strong></p>
 
-    <p><img src="https://nlp.johnsnowlabs.com/en/LLMs/images/dm_average.png" alt="Medical DMs: average score across task areas" /></p>
+  <p><img src="https://nlp.johnsnowlabs.com/en/LLMs/images/dm_average.png" alt="Medical DMs: average score across task areas" /></p>
 
-    <p><img src="https://nlp.johnsnowlabs.com/en/LLMs/images/dm_by_task.png" alt="Medical DMs: score by task area" /></p>
+  <p><img src="https://nlp.johnsnowlabs.com/en/LLMs/images/dm_by_task.png" alt="Medical DMs: score by task area" /></p>
 
-    <p>Score on nine task areas: the mean of accuracy and macro precision, recall and F1. Bold is the best score in the row.</p>
+  <p>Score on nine task areas: the mean of accuracy and macro precision, recall and F1. Bold is the best score in the row.</p>
 
-    <table class="table-model-big">
-      <thead>
-        <tr>
-          <th style="text-align: left">Task area</th>
-          <th style="text-align: right">Medical DM Nano</th>
-          <th style="text-align: right">Medical DM Small</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td style="text-align: left">Cancer registry abstraction</td>
-          <td style="text-align: right"><strong>0.961</strong></td>
-          <td style="text-align: right">0.885</td>
-        </tr>
-        <tr>
-          <td style="text-align: left">Coding and prior authorization</td>
-          <td style="text-align: right">0.888</td>
-          <td style="text-align: right"><strong>0.930</strong></td>
-        </tr>
-        <tr>
-          <td style="text-align: left">Cohort identification</td>
-          <td style="text-align: right">0.950</td>
-          <td style="text-align: right"><strong>0.958</strong></td>
-        </tr>
-        <tr>
-          <td style="text-align: left">Adverse drug events</td>
-          <td style="text-align: right"><strong>0.972</strong></td>
-          <td style="text-align: right">0.914</td>
-        </tr>
-        <tr>
-          <td style="text-align: left">General clinical decisions</td>
-          <td style="text-align: right">0.860</td>
-          <td style="text-align: right"><strong>0.963</strong></td>
-        </tr>
-        <tr>
-          <td style="text-align: left">Oncology record review</td>
-          <td style="text-align: right"><strong>0.885</strong></td>
-          <td style="text-align: right">0.818</td>
-        </tr>
-        <tr>
-          <td style="text-align: left">Quality measure review</td>
-          <td style="text-align: right">0.875</td>
-          <td style="text-align: right"><strong>0.902</strong></td>
-        </tr>
-        <tr>
-          <td style="text-align: left">Clinical note review</td>
-          <td style="text-align: right">0.935</td>
-          <td style="text-align: right"><strong>0.955</strong></td>
-        </tr>
-        <tr>
-          <td style="text-align: left">Clinical trial eligibility</td>
-          <td style="text-align: right">0.781</td>
-          <td style="text-align: right"><strong>0.931</strong></td>
-        </tr>
-        <tr>
-          <td style="text-align: left"><strong>Average</strong></td>
-          <td style="text-align: right">0.901</td>
-          <td style="text-align: right"><strong>0.917</strong></td>
-        </tr>
-      </tbody>
-    </table>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th style="text-align: left">Task area</th>
+        <th style="text-align: right">Medical DM Nano</th>
+        <th style="text-align: right">Medical DM Small</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: left">Cancer registry abstraction</td>
+        <td style="text-align: right"><strong>0.961</strong></td>
+        <td style="text-align: right">0.885</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Coding and prior authorization</td>
+        <td style="text-align: right">0.888</td>
+        <td style="text-align: right"><strong>0.930</strong></td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Cohort identification</td>
+        <td style="text-align: right">0.950</td>
+        <td style="text-align: right"><strong>0.958</strong></td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Adverse drug events</td>
+        <td style="text-align: right"><strong>0.972</strong></td>
+        <td style="text-align: right">0.914</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">General clinical decisions</td>
+        <td style="text-align: right">0.860</td>
+        <td style="text-align: right"><strong>0.963</strong></td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Oncology record review</td>
+        <td style="text-align: right"><strong>0.885</strong></td>
+        <td style="text-align: right">0.818</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Quality measure review</td>
+        <td style="text-align: right">0.875</td>
+        <td style="text-align: right"><strong>0.902</strong></td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Clinical note review</td>
+        <td style="text-align: right">0.935</td>
+        <td style="text-align: right"><strong>0.955</strong></td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Clinical trial eligibility</td>
+        <td style="text-align: right">0.781</td>
+        <td style="text-align: right"><strong>0.931</strong></td>
+      </tr>
+      <tr>
+        <td style="text-align: left"><strong>Average</strong></td>
+        <td style="text-align: right">0.901</td>
+        <td style="text-align: right"><strong>0.917</strong></td>
+      </tr>
+    </tbody>
+  </table>
 
-    <p><strong>Medical DM Small is ahead on six of nine task areas, with its largest margin on clinical trial eligibility (0.931 against 0.781). Medical DM Nano is ahead on cancer registry abstraction, adverse drug events and oncology record review.</strong></p>
+  <p><strong>Medical DM Small is ahead on six of nine task areas, with its largest margin on clinical trial eligibility (0.931 against 0.781). Medical DM Nano is ahead on cancer registry abstraction, adverse drug events and oncology record review.</strong></p>
 
-    <p><strong>Cost Analysis</strong></p>
+  <p><strong>Cost Analysis</strong></p>
 
-    <p>In addition to processing speed, infrastructure cost is an important consideration when evaluating the operational scalability of Medical Decision Models. Based on our benchmark measurements, Medical DM Small processes approximately 40 ms per note, corresponding to an estimated 10–12 hours to process 1 million clinical notes on a GPU with 24 GB memory.</p>
+  <p>In addition to processing speed, infrastructure cost is an important consideration when evaluating the operational scalability of Medical Decision Models. Based on our benchmark measurements, Medical DM Small processes approximately 40 ms per note, corresponding to an estimated 10–12 hours to process 1 million clinical notes on a GPU with 24 GB memory.</p>
 
-    <table class="table-model-big">
-      <thead>
-        <tr>
-          <th style="text-align: left">Metric</th>
-          <th style="text-align: right">Medical DM Small</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td style="text-align: left">Hardware</td>
-          <td style="text-align: right">GPU (24 GB)</td>
-        </tr>
-        <tr>
-          <td style="text-align: left">Processing time per note</td>
-          <td style="text-align: right">40 ms</td>
-        </tr>
-        <tr>
-          <td style="text-align: left">Runtime per 1 million notes</td>
-          <td style="text-align: right">~10–12 hours</td>
-        </tr>
-        <tr>
-          <td style="text-align: left">Assumed GPU cost per hour</td>
-          <td style="text-align: right">$1.30</td>
-        </tr>
-        <tr>
-          <td style="text-align: left">Estimated cost per 1 million notes</td>
-          <td style="text-align: right"><strong>$13.00–$15.60</strong></td>
-        </tr>
-      </tbody>
-    </table>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th style="text-align: left">Metric</th>
+        <th style="text-align: right">Medical DM Small</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: left">Hardware</td>
+        <td style="text-align: right">GPU (24 GB)</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Processing time per note</td>
+        <td style="text-align: right">40 ms</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Runtime per 1 million notes</td>
+        <td style="text-align: right">~10–12 hours</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Assumed GPU cost per hour</td>
+        <td style="text-align: right">$1.30</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Estimated cost per 1 million notes</td>
+        <td style="text-align: right"><strong>$13.00–$15.60</strong></td>
+      </tr>
+    </tbody>
+  </table>
 
-    <p>Assuming linear scaling of processing time and compute costs:</p>
+  <p>Assuming linear scaling of processing time and compute costs:</p>
 
-    <table class="table-model-big">
-      <thead>
-        <tr>
-          <th style="text-align: left">Number of notes</th>
-          <th style="text-align: right">Estimated runtime</th>
-          <th style="text-align: right">Estimated compute cost</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td style="text-align: left">100,000</td>
-          <td style="text-align: right">1–1.2 hours</td>
-          <td style="text-align: right">$1.30–$1.56</td>
-        </tr>
-        <tr>
-          <td style="text-align: left">1 million</td>
-          <td style="text-align: right">10–12 hours</td>
-          <td style="text-align: right">$13.00–$15.60</td>
-        </tr>
-        <tr>
-          <td style="text-align: left">10 million</td>
-          <td style="text-align: right">100–120 hours</td>
-          <td style="text-align: right">$130.00–$156.00</td>
-        </tr>
-        <tr>
-          <td style="text-align: left">100 million</td>
-          <td style="text-align: right">1,000–1,200 hours</td>
-          <td style="text-align: right">$1,300.00–$1,560.00</td>
-        </tr>
-      </tbody>
-    </table>
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th style="text-align: left">Number of notes</th>
+        <th style="text-align: right">Estimated runtime</th>
+        <th style="text-align: right">Estimated compute cost</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: left">100,000</td>
+        <td style="text-align: right">1–1.2 hours</td>
+        <td style="text-align: right">$1.30–$1.56</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">1 million</td>
+        <td style="text-align: right">10–12 hours</td>
+        <td style="text-align: right">$13.00–$15.60</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">10 million</td>
+        <td style="text-align: right">100–120 hours</td>
+        <td style="text-align: right">$130.00–$156.00</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">100 million</td>
+        <td style="text-align: right">1,000–1,200 hours</td>
+        <td style="text-align: right">$1,300.00–$1,560.00</td>
+      </tr>
+    </tbody>
+  </table>
 
-    <p>The estimated compute cost is calculated as <strong>Runtime (hours) × GPU hourly rate</strong>. These estimates represent GPU compute costs only and exclude storage, networking, orchestration, and other infrastructure expenses. Actual costs will vary depending on the GPU instance, cloud provider, and deployment configuration.</p>
+  <p>The estimated compute cost is calculated as <strong>Runtime (hours) × GPU hourly rate</strong>. These estimates represent GPU compute costs only and exclude storage, networking, orchestration, and other infrastructure expenses. Actual costs will vary depending on the GPU instance, cloud provider, and deployment configuration.</p>
 
-    <blockquote>
-      <p>The GPU hourly rate of $1.30 is an illustrative pricing assumption and is not an official John Snow Labs price. Runtime and cost estimates are based on the benchmark configuration described above. For comparison, the PHI Guard models in Healthcare NLP run on CPU, at 1.2 to 6.4 ms per note on one thread.</p>
-    </blockquote>
+  <blockquote>
+    <p>The GPU hourly rate of $1.30 is an illustrative pricing assumption and is not an official John Snow Labs price. Runtime and cost estimates are based on the benchmark configuration described above. For comparison, the PHI Guard models in Healthcare NLP run on CPU, at 1.2 to 6.4 ms per note on one thread.</p>
+  </blockquote>
 
-  </div>
-  <div class="h3-box">
+</div>
+<div class="h3-box">
 
-    <h4 id="new-blog-posts--technical-deep-dives">New Blog Posts &amp; Technical Deep Dives</h4>
+  <h4 id="new-blog-posts--technical-deep-dives">New Blog Posts &amp; Technical Deep Dives</h4>
 
-    <ul>
-      <li><a href="https://medium.com/john-snow-labs/john-snow-labs-introduces-three-medical-decision-model-families-for-clinical-text-39e5cb69df79">John Snow Labs introduces three Medical Decision Model families for clinical text</a>: Introduces Medical DM Small, Medical DM Nano and PHI Guard, compact models that answer typed questions about clinical text with probabilities. Medical DM Small averages 0.917 across nine task areas on a 16 GB GPU, Medical DM Nano averages 0.901 in about 2 GB on a GPU or CPU, and PHI Guard checks a 1 KB de-identified note in 6.4 ms on one CPU thread.</li>
-      <li><a href="https://medium.com/john-snow-labs/phi-guard-finds-leftover-phi-in-de-identified-notes-at-0-986-pr-auc-59d29ec02de4">PHI Guard finds leftover PHI in de-identified notes at 0.986 PR-AUC</a>: Covers the seven CPU PHI Guard models that score de-identified notes for leftover and harmful PHI leaks and PHI exposure, and raw notes for PHI presence. The all-in-one <code class="language-plaintext highlighter-rouge">phi_guard_3m_v0.7</code> reaches 0.986 PR-AUC for leak detection and checks a 1 KB note in 6.4 ms on one CPU thread; the fast variants are about five times faster.</li>
-      <li><a href="https://www.johnsnowlabs.com/de-identification-doesnt-end-at-deployment-how-to-know-what-is-safe-to-release/">De-identification Doesn’t End at Deployment: How to Know What Is Safe to Release</a>: This post describes how to keep measuring a de-identification pipeline after deployment with drift checks on every new batch, PHI Guard screening of every output document, and a random audit that gives a bound on the leak rate. On notes written after the models were trained, the share of leaks caught fell from 93% to 84% and false alarms rose from 13% to 33%. A general judge model caught 5% of real leaks against 79% to 86% for purpose-built document classifiers, and 299 clean random documents support a 95% confidence claim that fewer than 1% of a release leaks.</li>
-      <li><a href="https://www.johnsnowlabs.com/why-mapping-clinical-notes-to-icd-10-cpt-loinc-and-snomed-codes-takes-more-than-entity-recognition/">Why Mapping Clinical Notes to ICD-10, CPT, LOINC, and SNOMED Codes Takes More than Entity Recognition</a>: This post explains why code mapping depends on assertion status, experiencer attribution and temporal anchoring, and how Healthcare NLP extracts entities and applies assertion detection before the Terminology Server maps them to ICD-10, CPT, LOINC or SNOMED CT. It cites a CPT coding study (Pandian et al., 2025) in which a model trained at one hospital reached 92.5% accuracy on its own data and lost about 22.4 points at another hospital, and an assertion comparison (Kocaman et al., 2025) in which the John Snow Labs clinical model reached 0.962 combined accuracy against 0.901 for GPT-4o.</li>
-    </ul>
+  <ul>
+    <li><a href="https://medium.com/john-snow-labs/john-snow-labs-introduces-three-medical-decision-model-families-for-clinical-text-39e5cb69df79">John Snow Labs introduces three Medical Decision Model families for clinical text</a>: Introduces Medical DM Small, Medical DM Nano and PHI Guard, compact models that answer typed questions about clinical text with probabilities. Medical DM Small averages 0.917 across nine task areas on a 16 GB GPU, Medical DM Nano averages 0.901 in about 2 GB on a GPU or CPU, and PHI Guard checks a 1 KB de-identified note in 6.4 ms on one CPU thread.</li>
+    <li><a href="https://medium.com/john-snow-labs/phi-guard-finds-leftover-phi-in-de-identified-notes-at-0-986-pr-auc-59d29ec02de4">PHI Guard finds leftover PHI in de-identified notes at 0.986 PR-AUC</a>: Covers the seven CPU PHI Guard models that score de-identified notes for leftover and harmful PHI leaks and PHI exposure, and raw notes for PHI presence. The all-in-one <code class="language-plaintext highlighter-rouge">phi_guard_3m_v0.7</code> reaches 0.986 PR-AUC for leak detection and checks a 1 KB note in 6.4 ms on one CPU thread; the fast variants are about five times faster.</li>
+    <li><a href="https://www.johnsnowlabs.com/de-identification-doesnt-end-at-deployment-how-to-know-what-is-safe-to-release/">De-identification Doesn’t End at Deployment: How to Know What Is Safe to Release</a>: This post describes how to keep measuring a de-identification pipeline after deployment with drift checks on every new batch, PHI Guard screening of every output document, and a random audit that gives a bound on the leak rate. On notes written after the models were trained, the share of leaks caught fell from 93% to 84% and false alarms rose from 13% to 33%. A general judge model caught 5% of real leaks against 79% to 86% for purpose-built document classifiers, and 299 clean random documents support a 95% confidence claim that fewer than 1% of a release leaks.</li>
+    <li><a href="https://www.johnsnowlabs.com/why-mapping-clinical-notes-to-icd-10-cpt-loinc-and-snomed-codes-takes-more-than-entity-recognition/">Why Mapping Clinical Notes to ICD-10, CPT, LOINC, and SNOMED Codes Takes More than Entity Recognition</a>: This post explains why code mapping depends on assertion status, experiencer attribution and temporal anchoring, and how Healthcare NLP extracts entities and applies assertion detection before the Terminology Server maps them to ICD-10, CPT, LOINC or SNOMED CT. It cites a CPT coding study (Pandian et al., 2025) in which a model trained at one hospital reached 92.5% accuracy on its own data and lost about 22.4 points at another hospital, and an assertion comparison (Kocaman et al., 2025) in which the John Snow Labs clinical model reached 0.962 combined accuracy against 0.901 for GPT-4o.</li>
+  </ul>
 
-  </div>
-  <div class="h3-box">
+</div>
+<div class="h3-box">
 
-    <h4 id="updated-notebooks-and-demonstrations-for-making-healthcare-nlp-easier-to-navigate-and-understand">Updated Notebooks And Demonstrations For Making Healthcare NLP Easier To Navigate And Understand</h4>
+  <h4 id="updated-notebooks-and-demonstrations-for-making-healthcare-nlp-easier-to-navigate-and-understand">Updated Notebooks And Demonstrations For Making Healthcare NLP Easier To Navigate And Understand</h4>
 
-    <ul>
-      <li>New <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/51.DecisionModel.ipynb">DecisionModel</a> Notebook
+  <ul>
+    <li>New <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/51.DecisionModel.ipynb">DecisionModel</a> Notebook
 This notebook covers the <code class="language-plaintext highlighter-rouge">DecisionModel</code> annotator and the PHI Guard models for checking clinical documents for PHI. It includes scoring original notes for PHI presence, selecting the <code class="language-plaintext highlighter-rouge">raw</code>, <code class="language-plaintext highlighter-rouge">leak</code>, <code class="language-plaintext highlighter-rouge">harmful</code> and <code class="language-plaintext highlighter-rouge">richness</code> tasks of <code class="language-plaintext highlighter-rouge">phi_guard_3m_v0.7</code>, adding a leak check to a document-wise de-identification pipeline, and filtering de-identified documents by their PHI Guard label before release.</li>
-    </ul>
+  </ul>
 
-  </div>
-  <div class="h3-box">
+</div>
+<div class="h3-box">
 
-    <h4 id="we-have-added-and-updated-a-substantial-number-of-new-clinical-models-and-pipelines-further-solidifying-our-offering-in-the-healthcare-domain">We Have Added And Updated A Substantial Number Of New Clinical Models And Pipelines, Further Solidifying Our Offering In The Healthcare Domain.</h4>
+  <h4 id="we-have-added-and-updated-a-substantial-number-of-new-clinical-models-and-pipelines-further-solidifying-our-offering-in-the-healthcare-domain">We Have Added And Updated A Substantial Number Of New Clinical Models And Pipelines, Further Solidifying Our Offering In The Healthcare Domain.</h4>
 
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">phi_guard_3m_v0.7</code></li>
-      <li><code class="language-plaintext highlighter-rouge">phi_guard_870k_v0.7_fast</code></li>
-      <li><code class="language-plaintext highlighter-rouge">phi_guard_3m_v0.6</code></li>
-      <li><code class="language-plaintext highlighter-rouge">phi_guard_3m_v0.6_masked</code></li>
-      <li><code class="language-plaintext highlighter-rouge">phi_guard_850k_v0.6_fast</code></li>
-      <li><code class="language-plaintext highlighter-rouge">phi_guard_3m_v0.6_raw</code></li>
-      <li><code class="language-plaintext highlighter-rouge">phi_guard_3m_v0.6_richness</code></li>
-    </ul>
+  <ul>
+    <li><code class="language-plaintext highlighter-rouge">phi_guard_3m_v0.7</code></li>
+    <li><code class="language-plaintext highlighter-rouge">phi_guard_870k_v0.7_fast</code></li>
+    <li><code class="language-plaintext highlighter-rouge">phi_guard_3m_v0.6</code></li>
+    <li><code class="language-plaintext highlighter-rouge">phi_guard_3m_v0.6_masked</code></li>
+    <li><code class="language-plaintext highlighter-rouge">phi_guard_850k_v0.6_fast</code></li>
+    <li><code class="language-plaintext highlighter-rouge">phi_guard_3m_v0.6_raw</code></li>
+    <li><code class="language-plaintext highlighter-rouge">phi_guard_3m_v0.6_richness</code></li>
+  </ul>
 
-  </div>
-  <div class="h3-box">
+</div>
+<div class="h3-box">
 
-    <h2 id="previous-versions">Previous versions</h2>
+  <h2 id="previous-versions">Previous versions</h2>
 
-  </div>
-  <ul class="pagination">
+</div>
+<ul class="pagination">
     <li>
         <a href="#">Version <strong id="previosver"></strong></a>
     </li>
@@ -1963,7 +1964,7 @@ This notebook covers the <code class="language-plaintext highlighter-rouge">Deci
         <a href="#">Version <strong id="nextver"></strong></a>
     </li>
 </ul>
-  <ul class="pagination owl-carousel pagination_big">
+<ul class="pagination owl-carousel pagination_big">
     <li><a href="release_notes_7_0_1">7.0.1</a></li>
     <li><a href="release_notes_7_0_0">7.0.0</a></li>
     <li><a href="release_notes_6_4_1">6.4.1</a></li>
@@ -2058,7 +2059,6 @@ This notebook covers the <code class="language-plaintext highlighter-rouge">Deci
     <li><a href="release_notes_2_4_1">2.4.1</a></li>
     <li><a href="release_notes_2_4_0">2.4.0</a></li>
 </ul>
-</div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
       <time itemprop="dateModified" datetime="2026-11-19T00:00:00+00:00">Nov 19, 2026</time>
     </span><!-- start custom article footer snippet -->
