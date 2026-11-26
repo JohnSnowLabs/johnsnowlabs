@@ -657,7 +657,7 @@ function wrapWordInSpan(data, wordToWrap) {
       <td style="text-align: left">Compact; runs on a single small GPU or on CPU</td>
       <td style="text-align: left">GPU or CPU</td>
       <td style="text-align: left">~2 GB GPU VRAM</td>
-      <td style="text-align: left">16K</td>
+      <td style="text-align: left">8K</td>
       <td style="text-align: left">On-Premise, AWS, Azure, Databricks, Snowflake</td>
     </tr>
     <tr>
@@ -716,14 +716,30 @@ function wrapWordInSpan(data, wordToWrap) {
       <td style="text-align: left">8K</td>
       <td style="text-align: left">Healthcare NLP library, Models Hub</td>
     </tr>
+    <tr>
+      <td style="text-align: left">PHI Guard Small</td>
+      <td style="text-align: left">Highest accuracy PHI gate: leak, harm, richness and raw</td>
+      <td style="text-align: left">GPU</td>
+      <td style="text-align: left">~16 GB GPU VRAM</td>
+      <td style="text-align: left">16K</td>
+      <td style="text-align: left">On-Premise, AWS, Azure, Databricks, Snowflake</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">PHI Guard Nano</td>
+      <td style="text-align: left">Compact PHI gate; runs on a small GPU or on CPU</td>
+      <td style="text-align: left">GPU or CPU</td>
+      <td style="text-align: left">~2 GB GPU VRAM</td>
+      <td style="text-align: left">8K</td>
+      <td style="text-align: left">On-Premise, AWS, Azure, Databricks, Snowflake</td>
+    </tr>
   </tbody>
 </table>
 
-<p>Note: Recommended memory assumes half-precision (bf16) weights plus working memory at the maximum sequence length: GPU VRAM for the GPU models and RAM for the CPU models. The PHI Guard models are included in the Healthcare NLP library and run on CPU with ONNX.</p>
+<p>Note: Recommended memory assumes half-precision (bf16) weights plus working memory at the maximum sequence length: GPU VRAM for the GPU models and RAM for the CPU models. The seven ONNX PHI Guard models (v0.6 and v0.7) are included in the Healthcare NLP library and run on CPU. PHI Guard Small and PHI Guard Nano are deployed like the Medical DMs.</p>
 
 <!-- TODO: link the PHI Guard models to their Models Hub pages (links from Danielo); add the tiny decision models later. -->
 
-<p><strong>Medical DM Small</strong> is our best-scoring decision model across nine medical task areas, and <strong>Medical DM Nano</strong> is the compact option that runs on a single small GPU or on CPU. The <strong>PHI Guard</strong> family has seven CPU models that detect PHI in raw and de-identified notes, in single-purpose and all-in-one versions.</p>
+<p><strong>Medical DM Small</strong> is our best-scoring decision model across nine medical task areas, and <strong>Medical DM Nano</strong> is the compact option that runs on a single small GPU or on CPU. The <strong>PHI Guard</strong> family has nine models that detect PHI in raw and de-identified notes, in single-purpose and all-in-one versions: seven CPU models, and <strong>PHI Guard Small</strong> and <strong>PHI Guard Nano</strong>, which run on a GPU (Nano also on CPU).</p>
 
 <p>&lt;/div&gt;&lt;div class="h3-box" markdown="1"&gt;</p>
 
@@ -858,7 +874,7 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <h3 id="phi-guard-models-and-modes">PHI Guard Models and Modes</h3>
 
-<p>The PHI Guard family has seven models. Each answers one or more questions about a note: does a de-identified note still leak PHI, does a raw note hold any PHI, how much PHI does a note expose, and is a leak harmful.</p>
+<p>The PHI Guard family has nine models. Each answers one or more questions about a note: does a de-identified note still leak PHI, does a raw note hold any PHI, how much PHI does a note expose, and is a leak harmful.</p>
 
 <table class="table-model-big">
   <thead>
@@ -920,6 +936,20 @@ function wrapWordInSpan(data, wordToWrap) {
       <td style="text-align: left">The same outputs, about 5x faster and a little less exact.</td>
       <td style="text-align: left"> </td>
     </tr>
+    <tr>
+      <td style="text-align: left">PHI Guard Small</td>
+      <td style="text-align: left">9: leak, harmful, richness (at least 1 to 6) and raw, from four questions</td>
+      <td style="text-align: left">Both, depending on the output</td>
+      <td style="text-align: left">The most accurate PHI gate. One model for leak, harm, richness and raw.</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">PHI Guard Nano</td>
+      <td style="text-align: left">The same 9 outputs</td>
+      <td style="text-align: left">Both, depending on the output</td>
+      <td style="text-align: left">The compact version of PHI Guard Small. Also trained on noisy (OCR-style) text.</td>
+      <td style="text-align: left"> </td>
+    </tr>
   </tbody>
 </table>
 
@@ -945,10 +975,10 @@ function wrapWordInSpan(data, wordToWrap) {
   <tbody>
     <tr>
       <td style="text-align: left">PHI Guard v0.7</td>
-      <td style="text-align: right"><strong>0.986</strong></td>
+      <td style="text-align: right">0.986</td>
       <td style="text-align: right">0.982</td>
       <td style="text-align: right">0.933</td>
-      <td style="text-align: right"><strong>0.753</strong></td>
+      <td style="text-align: right">0.753</td>
       <td style="text-align: right">91</td>
     </tr>
     <tr>
@@ -984,12 +1014,20 @@ function wrapWordInSpan(data, wordToWrap) {
       <td style="text-align: right">384</td>
     </tr>
     <tr>
-      <td style="text-align: left">Medical DM Small</td>
-      <td style="text-align: right">0.986</td>
-      <td style="text-align: right"><strong>0.986</strong></td>
-      <td style="text-align: right"><strong>0.955</strong></td>
-      <td style="text-align: right">0.752</td>
-      <td style="text-align: right"><strong>39</strong></td>
+      <td style="text-align: left">PHI Guard Small</td>
+      <td style="text-align: right"><strong>0.994</strong></td>
+      <td style="text-align: right"><strong>0.992</strong></td>
+      <td style="text-align: right">0.965</td>
+      <td style="text-align: right"><strong>0.811</strong></td>
+      <td style="text-align: right"><strong>26</strong></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">PHI Guard Nano</td>
+      <td style="text-align: right">0.992</td>
+      <td style="text-align: right">0.981</td>
+      <td style="text-align: right"><strong>0.966</strong></td>
+      <td style="text-align: right">0.809</td>
+      <td style="text-align: right">41</td>
     </tr>
   </tbody>
 </table>
@@ -1028,9 +1066,23 @@ function wrapWordInSpan(data, wordToWrap) {
     <tr>
       <td style="text-align: left">PHI Guard v0.7 Fast</td>
       <td style="text-align: right">0.977</td>
-      <td style="text-align: right"><strong>0.885</strong></td>
+      <td style="text-align: right">0.885</td>
       <td style="text-align: right"><strong>0.936</strong></td>
-      <td style="text-align: right"><strong>21%</strong></td>
+      <td style="text-align: right">21%</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">PHI Guard Small</td>
+      <td style="text-align: right">0.977</td>
+      <td style="text-align: right"><strong>0.892</strong></td>
+      <td style="text-align: right">0.855</td>
+      <td style="text-align: right">3.9%</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">PHI Guard Nano</td>
+      <td style="text-align: right">0.970</td>
+      <td style="text-align: right">0.880</td>
+      <td style="text-align: right">0.883</td>
+      <td style="text-align: right"><strong>0.5%</strong></td>
     </tr>
   </tbody>
 </table>
@@ -1052,24 +1104,38 @@ function wrapWordInSpan(data, wordToWrap) {
   <tbody>
     <tr>
       <td style="text-align: left">PHI Guard Raw v0.6</td>
-      <td style="text-align: right"><strong>0.9993</strong></td>
+      <td style="text-align: right">0.9993</td>
       <td style="text-align: right">29</td>
-      <td style="text-align: right"><strong>38</strong></td>
+      <td style="text-align: right">38</td>
       <td style="text-align: right">0.9984</td>
     </tr>
     <tr>
       <td style="text-align: left">PHI Guard v0.7</td>
       <td style="text-align: right">0.9992</td>
-      <td style="text-align: right"><strong>28</strong></td>
+      <td style="text-align: right">28</td>
       <td style="text-align: right">42</td>
-      <td style="text-align: right"><strong>0.9986</strong></td>
+      <td style="text-align: right">0.9986</td>
     </tr>
     <tr>
       <td style="text-align: left">PHI Guard v0.7 Fast</td>
-      <td style="text-align: right"><strong>0.9993</strong></td>
+      <td style="text-align: right">0.9993</td>
       <td style="text-align: right">47</td>
       <td style="text-align: right">42</td>
       <td style="text-align: right">0.9973</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">PHI Guard Small</td>
+      <td style="text-align: right"><strong>0.9997</strong></td>
+      <td style="text-align: right"><strong>15</strong></td>
+      <td style="text-align: right">39</td>
+      <td style="text-align: right"><strong>0.9998</strong></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">PHI Guard Nano</td>
+      <td style="text-align: right"><strong>0.9997</strong></td>
+      <td style="text-align: right">21</td>
+      <td style="text-align: right"><strong>17</strong></td>
+      <td style="text-align: right">0.9996</td>
     </tr>
   </tbody>
 </table>
@@ -1095,25 +1161,25 @@ function wrapWordInSpan(data, wordToWrap) {
   <tbody>
     <tr>
       <td style="text-align: left">PHI Guard Richness v0.6</td>
-      <td style="text-align: right"><strong>0.137</strong></td>
+      <td style="text-align: right">0.137</td>
       <td style="text-align: right">0.859</td>
       <td style="text-align: right">0.325</td>
       <td style="text-align: right">0.902</td>
       <td style="text-align: right">0.245</td>
-      <td style="text-align: right"><strong>0.773</strong></td>
+      <td style="text-align: right">0.773</td>
       <td style="text-align: right">0.265</td>
       <td style="text-align: right">0.954</td>
     </tr>
     <tr>
       <td style="text-align: left">PHI Guard v0.7</td>
       <td style="text-align: right">0.140</td>
-      <td style="text-align: right"><strong>0.866</strong></td>
-      <td style="text-align: right"><strong>0.303</strong></td>
-      <td style="text-align: right"><strong>0.909</strong></td>
-      <td style="text-align: right"><strong>0.238</strong></td>
+      <td style="text-align: right">0.866</td>
+      <td style="text-align: right">0.303</td>
+      <td style="text-align: right">0.909</td>
+      <td style="text-align: right">0.238</td>
       <td style="text-align: right">0.755</td>
-      <td style="text-align: right"><strong>0.238</strong></td>
-      <td style="text-align: right"><strong>0.956</strong></td>
+      <td style="text-align: right">0.238</td>
+      <td style="text-align: right">0.956</td>
     </tr>
     <tr>
       <td style="text-align: left">PHI Guard v0.7 Fast</td>
@@ -1126,12 +1192,34 @@ function wrapWordInSpan(data, wordToWrap) {
       <td style="text-align: right">0.301</td>
       <td style="text-align: right">0.949</td>
     </tr>
+    <tr>
+      <td style="text-align: left">PHI Guard Small</td>
+      <td style="text-align: right"><strong>0.084</strong></td>
+      <td style="text-align: right"><strong>0.887</strong></td>
+      <td style="text-align: right"><strong>0.130</strong></td>
+      <td style="text-align: right"><strong>0.952</strong></td>
+      <td style="text-align: right"><strong>0.141</strong></td>
+      <td style="text-align: right"><strong>0.826</strong></td>
+      <td style="text-align: right">0.146</td>
+      <td style="text-align: right"><strong>0.965</strong></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">PHI Guard Nano</td>
+      <td style="text-align: right">0.097</td>
+      <td style="text-align: right">0.871</td>
+      <td style="text-align: right">0.161</td>
+      <td style="text-align: right">0.942</td>
+      <td style="text-align: right">0.158</td>
+      <td style="text-align: right">0.792</td>
+      <td style="text-align: right"><strong>0.117</strong></td>
+      <td style="text-align: right">0.964</td>
+    </tr>
   </tbody>
 </table>
 
 <h4 id="speed-per-note">Speed per note</h4>
 
-<p>CPU models: one thread, a 1 KB note. GPU model: batched on a 24 GB GPU.</p>
+<p>CPU models: one thread, a 1 KB note. GPU models: batched on a 24 GB GPU.</p>
 
 <p><img src="/en/LLMs/images/phi_speed.png" alt="PHI leak detection: time per note" /></p>
 
@@ -1188,10 +1276,22 @@ function wrapWordInSpan(data, wordToWrap) {
       <td style="text-align: right">21.7 min</td>
     </tr>
     <tr>
-      <td style="text-align: left">Medical DM Small</td>
+      <td style="text-align: left">PHI Guard Small</td>
       <td style="text-align: left">GPU (24 GB)</td>
       <td style="text-align: right">40</td>
       <td style="text-align: right">~10-12 h</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">PHI Guard Nano</td>
+      <td style="text-align: left">CPU (16 cores)</td>
+      <td style="text-align: right">198</td>
+      <td style="text-align: right">56 h</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">PHI Guard Nano</td>
+      <td style="text-align: left">GPU (24 GB)</td>
+      <td style="text-align: right">24</td>
+      <td style="text-align: right">6.7 h</td>
     </tr>
   </tbody>
 </table>
@@ -1234,7 +1334,7 @@ function wrapWordInSpan(data, wordToWrap) {
     </tr>
     <tr>
       <td style="text-align: left">Estimated cost per 1 million notes</td>
-      <td style="text-align: right">$7.85 - $9.42</td>
+      <td style="text-align: right">$7.80 - $9.10</td>
       <td style="text-align: right">$13.00 - $15.60</td>
     </tr>
   </tbody>
@@ -1244,7 +1344,7 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <h4 id="comparison-with-other-decision-models">Comparison with Other Decision Models</h4>
 
-<p>Medical DM Small is the reference: 40 ms per note, about 11 hours per 1 million notes. Every other model was measured on the same set of notes, on the smallest GPU it fits on, and is shown at the same scale, so the ratios between models are the measured ratios. The score is the average over eight task areas from the benchmark above.</p>
+<p>Medical DM Small is the reference: 40 ms per note, about 11 hours per 1 million notes. Every other model was measured on the same set of notes, on the smallest GPU it fits on, and is shown at the same scale, so the ratios between models are the measured ratios. The score is the average over nine task areas from the benchmark above.</p>
 
 <table class="table-model-big">
   <thead>
@@ -1260,56 +1360,56 @@ function wrapWordInSpan(data, wordToWrap) {
     <tr>
       <td style="text-align: left">Medical DM Nano *</td>
       <td style="text-align: left">A10 24 GB ($1.30)</td>
-      <td style="text-align: right">0.903</td>
+      <td style="text-align: right">0.901</td>
       <td style="text-align: right">~6.6 hours</td>
       <td style="text-align: right">~$8.60</td>
     </tr>
     <tr>
       <td style="text-align: left">JEV-Gemma4-26B-A4B</td>
       <td style="text-align: left">H100 80 GB ($4.20)</td>
-      <td style="text-align: right">0.892</td>
+      <td style="text-align: right">0.898</td>
       <td style="text-align: right">~2.4 hours</td>
       <td style="text-align: right">~$10.20</td>
     </tr>
     <tr>
       <td style="text-align: left">Medical DM Small *</td>
       <td style="text-align: left">A10 24 GB ($1.30)</td>
-      <td style="text-align: right">0.930</td>
+      <td style="text-align: right">0.917</td>
       <td style="text-align: right">~11 hours</td>
       <td style="text-align: right">~$14.30</td>
     </tr>
     <tr>
       <td style="text-align: left">Kev 9B</td>
       <td style="text-align: left">A10 24 GB ($1.30)</td>
-      <td style="text-align: right">0.856</td>
+      <td style="text-align: right">0.842</td>
       <td style="text-align: right">~23 hours</td>
       <td style="text-align: right">~$29.70</td>
     </tr>
     <tr>
       <td style="text-align: left">JEV-27B</td>
       <td style="text-align: left">H100 80 GB ($4.20)</td>
-      <td style="text-align: right">0.916</td>
+      <td style="text-align: right">0.904</td>
       <td style="text-align: right">~14 hours</td>
       <td style="text-align: right">~$57.80</td>
     </tr>
     <tr>
       <td style="text-align: left">Jev-Omni 12B</td>
       <td style="text-align: left">A100 40 GB ($1.99)</td>
-      <td style="text-align: right">0.891</td>
+      <td style="text-align: right">0.862</td>
       <td style="text-align: right">~42 hours</td>
       <td style="text-align: right">~$83.70</td>
     </tr>
     <tr>
       <td style="text-align: left">StartLux 35B-A3B</td>
       <td style="text-align: left">H100 80 GB ($4.20)</td>
-      <td style="text-align: right">0.908</td>
+      <td style="text-align: right">0.895</td>
       <td style="text-align: right">~20 hours</td>
       <td style="text-align: right">~$85.80</td>
     </tr>
   </tbody>
 </table>
 
-<p><strong>Medical DM Nano and Medical DM Small run on a 24 GB GPU that costs $1.30 per hour. The models closest to Medical DM Small in score, JEV-27B and StartLux 35B-A3B, need an 80 GB H100 at $4.20 per hour and cost about 4 and 6 times as much per million notes ($57.80 and $85.80 against $14.30).</strong></p>
+<p><strong>Medical DM Nano and Medical DM Small run on a 24 GB GPU that costs $1.30 per hour. JEV-27B, the next-highest scoring model, needs an 80 GB H100 at $4.20 per hour and costs about 4 times as much per million notes ($57.80 against $14.30). StartLux 35B-A3B costs about 6 times as much ($85.80).</strong></p>
 
 <h4 id="score-and-cost">Score and Cost</h4>
 
@@ -1318,16 +1418,6 @@ function wrapWordInSpan(data, wordToWrap) {
 <p>Medical DM Small has the highest score of the models compared, and Medical DM Nano has the lowest cost. No other model beats either of them on both score and cost.</p>
 
 <p>Note: The GPU hourly rates of $1.30 (A10, 24 GB), $1.99 (A100, 40 GB) and $4.20 (H100, 80 GB) are illustrative pricing assumptions and are not official John Snow Labs prices. Runtime and cost estimates are based on the benchmark configuration described above.</p>
-
-<h4 id="calculation-methodology">Calculation Methodology</h4>
-<p>Estimated compute  cost is calculated using</p>
-
-<p><strong>Estimated Cost = Runtime (hours) × GPU hourly rate</strong></p>
-
-<p>These estimates represent GPU compute costs only and exclude storage, networking, orchestration, and other infrastructure expenses. Actual costs will vary depending on the GPU instance, cloud provider, and deployment configuration.</p>
-
-<p><strong>Note:</strong> The GPU hourly rate of $1.30 is an illustrative pricing assumption and is not an official John Snow Labs price. Runtime and cost estimates are based on the benchmark configuration described above.</p>
-
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
       <time itemprop="dateModified" datetime="2026-11-19T00:00:00+00:00">Nov 19, 2026</time>
     </span><!-- start custom article footer snippet -->
