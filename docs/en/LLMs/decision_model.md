@@ -29,12 +29,14 @@ Medical DMs are small enough to deploy privately, and the smallest run on a CPU.
 | PHI Guard Richness v0.6 | How much PHI a note exposes (levels 0 to 6) | CPU, ONNX | ~1 GB RAM | 8K | Healthcare NLP library, Models Hub |
 | PHI Guard v0.7 | Leak, harm, richness and raw in one call | CPU, ONNX | ~1 GB RAM | 8K | Healthcare NLP library, Models Hub |
 | PHI Guard v0.7 Fast | The same outputs, about 5x faster | CPU, ONNX | ~1 GB RAM | 8K | Healthcare NLP library, Models Hub |
+| PHI Guard Small | Highest accuracy PHI gate: leak, harm, richness and raw | GPU | ~16 GB GPU VRAM | 16K | On-Premise, AWS, Azure, Databricks, Snowflake |
+| PHI Guard Nano | Compact PHI gate; runs on a small GPU or on CPU | GPU or CPU | ~2 GB GPU VRAM | 8K | On-Premise, AWS, Azure, Databricks, Snowflake |
 
-Note: Recommended memory assumes half-precision (bf16) weights plus working memory at the maximum sequence length: GPU VRAM for the GPU models and RAM for the CPU models. The PHI Guard models are included in the Healthcare NLP library and run on CPU with ONNX.
+Note: Recommended memory assumes half-precision (bf16) weights plus working memory at the maximum sequence length: GPU VRAM for the GPU models and RAM for the CPU models. The seven ONNX PHI Guard models (v0.6 and v0.7) are included in the Healthcare NLP library and run on CPU. PHI Guard Small and PHI Guard Nano are deployed like the Medical DMs.
 
 <!-- TODO: link the PHI Guard models to their Models Hub pages (links from Danielo); add the tiny decision models later. -->
 
-**Medical DM Small** is our best-scoring decision model across nine medical task areas, and **Medical DM Nano** is the compact option that runs on a single small GPU or on CPU. The **PHI Guard** family has seven CPU models that detect PHI in raw and de-identified notes, in single-purpose and all-in-one versions.
+**Medical DM Small** is our best-scoring decision model across nine medical task areas, and **Medical DM Nano** is the compact option that runs on a single small GPU or on CPU. The **PHI Guard** family has nine models that detect PHI in raw and de-identified notes, in single-purpose and all-in-one versions: seven CPU models, and **PHI Guard Small** and **PHI Guard Nano**, which run on a GPU (Nano also on CPU).
 
 </div><div class="h3-box" markdown="1">
 
@@ -84,7 +86,7 @@ Score on nine task areas: the mean of accuracy and macro precision, recall and F
 
 ### PHI Guard Models and Modes
 
-The PHI Guard family has seven models. Each answers one or more questions about a note: does a de-identified note still leak PHI, does a raw note hold any PHI, how much PHI does a note expose, and is a leak harmful.
+The PHI Guard family has nine models. Each answers one or more questions about a note: does a de-identified note still leak PHI, does a raw note hold any PHI, how much PHI does a note expose, and is a leak harmful.
 
 {:.table-model-big}
 | Model | Outputs | Use on | What it does | Example |
@@ -96,6 +98,8 @@ The PHI Guard family has seven models. Each answers one or more questions about 
 | PHI Guard Richness v0.6 | 6: the probability that the level is at least 1, 2, up to 6; the level is how many reach 0.5 | Raw or de-identified text | How much PHI a note exposes, from level 0 (none) to level 6 (saturated). | A discharge note with a name, date of birth, MRN and phone number gets level 5 |
 | PHI Guard v0.7 | 9: leak, harmful, richness (at least 1 to 6) and raw | Both, depending on the output | One call for everything. | "Patient [NAME], DOB 03/14/1956, MRN 4471923..." gets leak 0.99, harmful 0.99, level 3, raw 0.10 |
 | PHI Guard v0.7 Fast | The same 9 outputs | Both, depending on the output | The same outputs, about 5x faster and a little less exact. |  |
+| PHI Guard Small | 9: leak, harmful, richness (at least 1 to 6) and raw, from four questions | Both, depending on the output | The most accurate PHI gate. One model for leak, harm, richness and raw. |  |
+| PHI Guard Nano | The same 9 outputs | Both, depending on the output | The compact version of PHI Guard Small. Also trained on noisy (OCR-style) text. |  |
 
 PHI Guard v0.7 folds the leak, raw and richness models and a new harmful output into one model, with no loss of accuracy on any of them.
 
@@ -108,12 +112,13 @@ Does a de-identified note still leak PHI? PR-AUC with a leak as the positive cla
 {:.table-model-big}
 | Model | Main | Held-out | Long notes | Public sets | Clean notes flagged, main |
 |:---|---:|---:|---:|---:|---:|
-| PHI Guard v0.7 | **0.986** | 0.982 | 0.933 | **0.753** | 91 |
+| PHI Guard v0.7 | 0.986 | 0.982 | 0.933 | 0.753 | 91 |
 | PHI Guard v0.6 | 0.985 | 0.982 | 0.929 | 0.748 | 91 |
 | PHI Guard Masked v0.6 | 0.985 | 0.980 | 0.929 | 0.748 | 96 |
 | PHI Guard v0.7 Fast | 0.978 | 0.970 | 0.888 | 0.679 | 113 |
 | PHI Guard v0.6 Fast | 0.960 | 0.959 | 0.893 | 0.733 | 384 |
-| Medical DM Small | 0.986 | **0.986** | **0.955** | 0.752 | **39** |
+| PHI Guard Small | **0.994** | **0.992** | 0.965 | **0.811** | **26** |
+| PHI Guard Nano | 0.992 | 0.981 | **0.966** | 0.809 | 41 |
 
 **PHI Guard v0.7 matches or slightly beats PHI Guard v0.6 on every set. PHI Guard v0.7 Fast has far fewer false alarms than PHI Guard v0.6 Fast on the main set (113 against 384), but it is weaker on the public sets (0.679 against 0.733).**
 
@@ -126,7 +131,9 @@ Harmful PR-AUC, and the share of harmless-only leaks wrongly flagged at 0.5 on t
 |:---|---:|---:|---:|---:|
 | PHI Guard v0.6 (leak score) | 0.962 | 0.779 | 0.904 | 70% |
 | PHI Guard v0.7 | **0.980** | 0.883 | 0.928 | 38% |
-| PHI Guard v0.7 Fast | 0.977 | **0.885** | **0.936** | **21%** |
+| PHI Guard v0.7 Fast | 0.977 | 0.885 | **0.936** | 21% |
+| PHI Guard Small | 0.977 | **0.892** | 0.855 | 3.9% |
+| PHI Guard Nano | 0.970 | 0.880 | 0.883 | **0.5%** |
 
 #### Raw notes
 
@@ -135,9 +142,11 @@ Does a raw note contain any PHI? PR-AUC on the test split and on held-out notes,
 {:.table-model-big}
 | Model | Test PR-AUC | False positives | False negatives | Held-out PR-AUC |
 |:---|---:|---:|---:|---:|
-| PHI Guard Raw v0.6 | **0.9993** | 29 | **38** | 0.9984 |
-| PHI Guard v0.7 | 0.9992 | **28** | 42 | **0.9986** |
-| PHI Guard v0.7 Fast | **0.9993** | 47 | 42 | 0.9973 |
+| PHI Guard Raw v0.6 | 0.9993 | 29 | 38 | 0.9984 |
+| PHI Guard v0.7 | 0.9992 | 28 | 42 | 0.9986 |
+| PHI Guard v0.7 Fast | 0.9993 | 47 | 42 | 0.9973 |
+| PHI Guard Small | **0.9997** | **15** | 39 | **0.9998** |
+| PHI Guard Nano | **0.9997** | 21 | **17** | 0.9996 |
 
 #### Richness
 
@@ -146,13 +155,15 @@ How much PHI a note exposes. Level error (MAE, lower is better) and rank correla
 {:.table-model-big}
 | Model | Main MAE | Main rho | Held-out MAE | Held-out rho | Long MAE | Long rho | Raw MAE | Raw rho |
 |:---|---:|---:|---:|---:|---:|---:|---:|---:|
-| PHI Guard Richness v0.6 | **0.137** | 0.859 | 0.325 | 0.902 | 0.245 | **0.773** | 0.265 | 0.954 |
-| PHI Guard v0.7 | 0.140 | **0.866** | **0.303** | **0.909** | **0.238** | 0.755 | **0.238** | **0.956** |
+| PHI Guard Richness v0.6 | 0.137 | 0.859 | 0.325 | 0.902 | 0.245 | 0.773 | 0.265 | 0.954 |
+| PHI Guard v0.7 | 0.140 | 0.866 | 0.303 | 0.909 | 0.238 | 0.755 | 0.238 | 0.956 |
 | PHI Guard v0.7 Fast | 0.162 | 0.850 | 0.372 | 0.894 | 0.271 | 0.715 | 0.301 | 0.949 |
+| PHI Guard Small | **0.084** | **0.887** | **0.130** | **0.952** | **0.141** | **0.826** | 0.146 | **0.965** |
+| PHI Guard Nano | 0.097 | 0.871 | 0.161 | 0.942 | 0.158 | 0.792 | **0.117** | 0.964 |
 
 #### Speed per note
 
-CPU models: one thread, a 1 KB note. GPU model: batched on a 24 GB GPU.
+CPU models: one thread, a 1 KB note. GPU models: batched on a 24 GB GPU.
 
 ![PHI leak detection: time per note](/en/LLMs/images/phi_speed.png)
 
@@ -166,7 +177,9 @@ CPU models: one thread, a 1 KB note. GPU model: batched on a 24 GB GPU.
 | PHI Guard Richness v0.6 | CPU, one thread (ONNX) | 5.4 | 1.5 h |
 | PHI Guard v0.7 | CPU, one thread (ONNX) | 6.4 | 1.8 h |
 | PHI Guard v0.7 Fast | CPU, one thread (ONNX) | 1.3 | 21.7 min |
-| Medical DM Small | GPU (24 GB) | 40 | ~10-12 h |
+| PHI Guard Small | GPU (24 GB) | 40 | ~10-12 h |
+| PHI Guard Nano | CPU (16 cores) | 198 | 56 h |
+| PHI Guard Nano | GPU (24 GB) | 24 | 6.7 h |
 
 
 ### Cost Analysis
@@ -183,26 +196,26 @@ Based on our benchmark measurements, Medical DM Small processes approximately 40
 | Processing time per note | 24 ms | 40 ms |
 | Runtime per 1 million notes | ~6 - 7 hours | ~10 - 12 hours |
 | Assumed GPU cost per hour | $1.30 | $1.30 |
-| Estimated cost per 1 million notes | $7.85 - $9.42 | $13.00 - $15.60 |
+| Estimated cost per 1 million notes | $7.80 - $9.10 | $13.00 - $15.60 |
 
 For cost estimation, we assume an illustrative GPU rental rate of $1.30 per hour.
 
 #### Comparison with Other Decision Models
 
-Medical DM Small is the reference: 40 ms per note, about 11 hours per 1 million notes. Every other model was measured on the same set of notes, on the smallest GPU it fits on, and is shown at the same scale, so the ratios between models are the measured ratios. The score is the average over eight task areas from the benchmark above.
+Medical DM Small is the reference: 40 ms per note, about 11 hours per 1 million notes. Every other model was measured on the same set of notes, on the smallest GPU it fits on, and is shown at the same scale, so the ratios between models are the measured ratios. The score is the average over nine task areas from the benchmark above.
 
 {:.table-model-big}
 | Model              | GPU used (price per hour) | Average score | Time per 1 million notes | Cost per 1 million notes |
 | :----------------- | :------------------------ | ------------: | -----------------------: | -----------------------: |
-| Medical DM Nano *  | A10 24 GB ($1.30)         | 0.903         | ~6.6 hours               | ~$8.60                   |
-| JEV-Gemma4-26B-A4B | H100 80 GB ($4.20)        | 0.892         | ~2.4 hours               | ~$10.20                  |
-| Medical DM Small * | A10 24 GB ($1.30)         | 0.930         | ~11 hours                | ~$14.30                  |
-| Kev 9B             | A10 24 GB ($1.30)         | 0.856         | ~23 hours                | ~$29.70                  |
-| JEV-27B            | H100 80 GB ($4.20)        | 0.916         | ~14 hours                | ~$57.80                  |
-| Jev-Omni 12B       | A100 40 GB ($1.99)        | 0.891         | ~42 hours                | ~$83.70                  |
-| StartLux 35B-A3B   | H100 80 GB ($4.20)        | 0.908         | ~20 hours                | ~$85.80                  |
+| Medical DM Nano *  | A10 24 GB ($1.30)         | 0.901         | ~6.6 hours               | ~$8.60                   |
+| JEV-Gemma4-26B-A4B | H100 80 GB ($4.20)        | 0.898         | ~2.4 hours               | ~$10.20                  |
+| Medical DM Small * | A10 24 GB ($1.30)         | 0.917         | ~11 hours                | ~$14.30                  |
+| Kev 9B             | A10 24 GB ($1.30)         | 0.842         | ~23 hours                | ~$29.70                  |
+| JEV-27B            | H100 80 GB ($4.20)        | 0.904         | ~14 hours                | ~$57.80                  |
+| Jev-Omni 12B       | A100 40 GB ($1.99)        | 0.862         | ~42 hours                | ~$83.70                  |
+| StartLux 35B-A3B   | H100 80 GB ($4.20)        | 0.895         | ~20 hours                | ~$85.80                  |
 
-**Medical DM Nano and Medical DM Small run on a 24 GB GPU that costs $1.30 per hour. The models closest to Medical DM Small in score, JEV-27B and StartLux 35B-A3B, need an 80 GB H100 at $4.20 per hour and cost about 4 and 6 times as much per million notes ($57.80 and $85.80 against $14.30).**
+**Medical DM Nano and Medical DM Small run on a 24 GB GPU that costs $1.30 per hour. JEV-27B, the next-highest scoring model, needs an 80 GB H100 at $4.20 per hour and costs about 4 times as much per million notes ($57.80 against $14.30). StartLux 35B-A3B costs about 6 times as much ($85.80).**
 
 #### Score and Cost
 
@@ -211,13 +224,3 @@ Medical DM Small is the reference: 40 ms per note, about 11 hours per 1 million 
 Medical DM Small has the highest score of the models compared, and Medical DM Nano has the lowest cost. No other model beats either of them on both score and cost.
 
 Note: The GPU hourly rates of $1.30 (A10, 24 GB), $1.99 (A100, 40 GB) and $4.20 (H100, 80 GB) are illustrative pricing assumptions and are not official John Snow Labs prices. Runtime and cost estimates are based on the benchmark configuration described above.
-
-#### Calculation Methodology
-Estimated compute  cost is calculated using
-
-**Estimated Cost = Runtime (hours) × GPU hourly rate**
-
-These estimates represent GPU compute costs only and exclude storage, networking, orchestration, and other infrastructure expenses. Actual costs will vary depending on the GPU instance, cloud provider, and deployment configuration.
-
-**Note:** The GPU hourly rate of $1.30 is an illustrative pricing assumption and is not an official John Snow Labs price. Runtime and cost estimates are based on the benchmark configuration described above.
-
