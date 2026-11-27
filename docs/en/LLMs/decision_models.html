@@ -648,7 +648,7 @@ function wrapWordInSpan(data, wordToWrap) {
     <tbody>
       <tr>
         <td style="text-align: left">Medical DM Small</td>
-        <td style="text-align: left">Highest average score across the nine task areas</td>
+        <td style="text-align: left">Highest average accuracy across the eleven task groups</td>
         <td style="text-align: left">GPU</td>
         <td style="text-align: left">~16 GB GPU VRAM</td>
         <td style="text-align: left">16K</td>
@@ -741,7 +741,7 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <!-- TODO: link the PHI Guard models to their Models Hub pages (links from Danielo); add the tiny decision models later. -->
 
-  <p><strong>Medical DM Small</strong> is our best-scoring decision model across nine medical task areas, and <strong>Medical DM Nano</strong> is the compact option that runs on a single small GPU or on CPU. The <strong>PHI Guard</strong> family has nine models that detect PHI in raw and de-identified notes, in single-purpose and all-in-one versions: seven CPU models, and <strong>PHI Guard Small</strong> and <strong>PHI Guard Nano</strong>, which run on a GPU (Nano also on CPU).</p>
+  <p><strong>Medical DM Small</strong> is our highest-accuracy decision model, on average across eleven medical task groups, and <strong>Medical DM Nano</strong> is the compact option that runs on a single small GPU or on CPU. The <strong>PHI Guard</strong> family has nine models that detect PHI in raw and de-identified notes, in single-purpose and all-in-one versions: seven CPU models, and <strong>PHI Guard Small</strong> and <strong>PHI Guard Nano</strong>, which run on a GPU (Nano also on CPU).</p>
 
 </div>
 <div class="h3-box">
@@ -755,7 +755,7 @@ function wrapWordInSpan(data, wordToWrap) {
   <table class="table-model-big">
     <thead>
       <tr>
-        <th style="text-align: left">Task area</th>
+        <th style="text-align: left">Task group</th>
         <th style="text-align: left">What the model decides</th>
       </tr>
     </thead>
@@ -765,39 +765,43 @@ function wrapWordInSpan(data, wordToWrap) {
         <td style="text-align: left">Registry fields from a pathology report: organ, tumor type, grade, TNM categories, stage, margins, lymphovascular invasion, receptors. A field the report never states is returned as not stated.</td>
       </tr>
       <tr>
-        <td style="text-align: left">Coding and prior authorization</td>
-        <td style="text-align: left">Whether a diagnosis or a prior-authorization request is supported under a rule written into the question.</td>
-      </tr>
-      <tr>
-        <td style="text-align: left">Cohort identification</td>
-        <td style="text-align: left">Whether a patient has each condition on a list: present, possible, absent or not documented.</td>
-      </tr>
-      <tr>
-        <td style="text-align: left">Adverse drug events</td>
-        <td style="text-align: left">For one drug and one event: onset, severity, attribution, action taken, and the outcome of stopping and restarting the drug.</td>
-      </tr>
-      <tr>
-        <td style="text-align: left">General clinical decisions</td>
-        <td style="text-align: left">A set of clinical decision tasks: evidence sufficiency, reconciliation, temporal relevance, reliability, attribution, escalation, causality, trajectory and more.</td>
-      </tr>
-      <tr>
-        <td style="text-align: left">Quality measure review</td>
+        <td style="text-align: left">Care-quality measure checks</td>
         <td style="text-align: left">Evidence questions on patient charts for adult care-quality measures: eligibility, exclusions, time windows, medicines and tests.</td>
       </tr>
       <tr>
-        <td style="text-align: left">Clinical note review</td>
-        <td style="text-align: left">Chart review of a clinical note: note type, age group, tobacco use, allergies, diabetes, kidney function, anticoagulation, cancer status.</td>
+        <td style="text-align: left">Coding and payer-policy review</td>
+        <td style="text-align: left">Whether a diagnosis or a prior-authorization request is supported under a rule written into the question.</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Patient cohort selection</td>
+        <td style="text-align: left">Whether a patient has each condition on a list: present, possible, absent or not documented.</td>
       </tr>
       <tr>
         <td style="text-align: left">Clinical trial eligibility</td>
         <td style="text-align: left">Demographic gate, inclusion or exclusion, specialty, numeric thresholds and time windows.</td>
       </tr>
       <tr>
-        <td style="text-align: left">Oncology record review</td>
-        <td style="text-align: left">Whether a document in an oncology record is relevant to a registry abstract, whether it adds anything new, and which fields it states.</td>
+        <td style="text-align: left">Clinical note review</td>
+        <td style="text-align: left">Chart review of a clinical note: note type, age group, tobacco use, allergies, diabetes, kidney function, anticoagulation, cancer status.</td>
       </tr>
       <tr>
-        <td style="text-align: left">PHI leak detection</td>
+        <td style="text-align: left">Hospital risk prediction</td>
+        <td style="text-align: left">Readmission and ICU outcome questions.</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Drug safety</td>
+        <td style="text-align: left">For one drug and one event: onset, severity, attribution, action taken, and the outcome of stopping and restarting the drug.</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">General clinical decision tasks</td>
+        <td style="text-align: left">A set of clinical decision tasks: evidence sufficiency, reconciliation, temporal relevance, reliability, attribution, escalation, causality, trajectory and more.</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Finding relevant cancer evidence</td>
+        <td style="text-align: left">Whether a document or passage in an oncology record is relevant to a registry abstract, whether it adds anything new, and which fields it states.</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">PHI detection</td>
         <td style="text-align: left">Whether a de-identified note still leaks protected health information (PHI), whether a raw note holds any, how much a note exposes, and whether a leak is harmful.</td>
       </tr>
     </tbody>
@@ -808,75 +812,201 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <h3 id="task-benchmark-performance">Task Benchmark Performance</h3>
 
-  <p><img src="/en/LLMs/images/dm_average.png" alt="Medical DMs: average score across task areas" /></p>
+  <p>We ran Medical DM Small and Medical DM Nano against the cheapest frontier API models on the market, GPT-6 Luna, Claude Haiku 5.5 and Gemini 3.8 Flash, plus Jev 1.14. Every model answered the same questions about the same documents: 56 evaluation sets in 11 task groups, with 9,526 documents and 14,587 questions in total.</p>
 
-  <p><img src="/en/LLMs/images/dm_by_task.png" alt="Medical DMs: score by task area" /></p>
+  <ul>
+    <li><strong>95.7%</strong>: Medical DM Small, average accuracy over the 56 sets. The best API model scores 90.3%.</li>
+    <li><strong>89.0%</strong>: Medical DM Nano, average accuracy over the 56 sets. The API models range from 84.9% to 90.3%.</li>
+  </ul>
 
-  <p>Score on nine task areas: the mean of accuracy and macro precision, recall and F1. Bold is the best score in the row.</p>
+  <h4 id="how-we-tested">How we tested</h4>
 
   <table class="table-model-big">
     <thead>
       <tr>
-        <th style="text-align: left">Task area</th>
-        <th style="text-align: right">Medical DM Nano</th>
-        <th style="text-align: right">Medical DM Small</th>
+        <th style="text-align: left"> </th>
+        <th style="text-align: left"> </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: left">Datasets</td>
+        <td style="text-align: left">56, in 11 task groups</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Documents</td>
+        <td style="text-align: left">9,526</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Questions</td>
+        <td style="text-align: left">14,587</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Question types</td>
+        <td style="text-align: left">Yes or no 6,677 (46%), pick one option 6,195 (42%), score 1,715 (12%)</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Document length</td>
+        <td style="text-align: left">1,296 words on average</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Size of one request</td>
+        <td style="text-align: left">about 1,400 words on average, including the question text and options</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>A decision model answers typed questions about a document. The three question types are:</p>
+
+  <ul>
+    <li>Yes or no: the model decides whether the statement is true for the document.</li>
+    <li>Pick one option: the model chooses one label from a short list. Every label is defined in the question.</li>
+    <li>Score: the model chooses a level from an ordered list, for example unlikely, possible, probable or certain.</li>
+  </ul>
+
+  <p>How each model was run:</p>
+
+  <ul>
+    <li>Each API model received the document and all of its questions in one request, with the options spelled out, and replied with the chosen option only. Temperature was 0. GPT-6 Luna and Claude Haiku 5.5 ran with reasoning off. Gemini 3.8 Flash always reasons, so it ran at low effort.</li>
+    <li>The Medical DM models read the same document and question and score every option directly. Yes or no questions use a 0.5 cut-off, and other questions take the highest-scoring option.</li>
+    <li>Accuracy is the share of questions answered correctly in each dataset, averaged within each task group. The Overall row is the average over all 56 datasets.</li>
+  </ul>
+
+  <h4 id="accuracy">Accuracy</h4>
+
+  <p><img src="/en/LLMs/images/dm_by_task.png" alt="Medical DMs: accuracy by task group" /></p>
+
+  <p><img src="/en/LLMs/images/dm_frontier_accuracy.png" alt="Medical DMs and API models: average accuracy over all 56 evaluation sets" /></p>
+
+  <p>John Snow Labs models are blue, API models are grey.</p>
+
+  <p>Accuracy (%) by task group. Bold is the best score in the row. The first two columns are John Snow Labs models (*).</p>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th style="text-align: left">Task group</th>
+        <th style="text-align: right">Medical DM Small *</th>
+        <th style="text-align: right">Medical DM Nano *</th>
+        <th style="text-align: right">GPT-6 Luna</th>
+        <th style="text-align: right">Claude Haiku 5.5</th>
+        <th style="text-align: right">Gemini 3.8 Flash</th>
+        <th style="text-align: right">Jev 1.14</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td style="text-align: left">Cancer registry abstraction</td>
-        <td style="text-align: right"><strong>0.961</strong></td>
-        <td style="text-align: right">0.885</td>
+        <td style="text-align: right"><strong>98.8</strong></td>
+        <td style="text-align: right">96.8</td>
+        <td style="text-align: right">94.3</td>
+        <td style="text-align: right">91.3</td>
+        <td style="text-align: right">95.3</td>
+        <td style="text-align: right">89.9</td>
       </tr>
       <tr>
-        <td style="text-align: left">Coding and prior authorization</td>
-        <td style="text-align: right">0.888</td>
-        <td style="text-align: right"><strong>0.930</strong></td>
+        <td style="text-align: left">Care-quality measure checks</td>
+        <td style="text-align: right">93.6</td>
+        <td style="text-align: right">90.0</td>
+        <td style="text-align: right">83.4</td>
+        <td style="text-align: right">74.5</td>
+        <td style="text-align: right"><strong>98.1</strong></td>
+        <td style="text-align: right">83.6</td>
       </tr>
       <tr>
-        <td style="text-align: left">Cohort identification</td>
-        <td style="text-align: right">0.950</td>
-        <td style="text-align: right"><strong>0.958</strong></td>
+        <td style="text-align: left">Coding and payer-policy review</td>
+        <td style="text-align: right"><strong>98.3</strong></td>
+        <td style="text-align: right">88.5</td>
+        <td style="text-align: right">96.3</td>
+        <td style="text-align: right">89.4</td>
+        <td style="text-align: right">97.6</td>
+        <td style="text-align: right">92.9</td>
       </tr>
       <tr>
-        <td style="text-align: left">Adverse drug events</td>
-        <td style="text-align: right"><strong>0.972</strong></td>
-        <td style="text-align: right">0.914</td>
-      </tr>
-      <tr>
-        <td style="text-align: left">General clinical decisions</td>
-        <td style="text-align: right">0.860</td>
-        <td style="text-align: right"><strong>0.963</strong></td>
-      </tr>
-      <tr>
-        <td style="text-align: left">Oncology record review</td>
-        <td style="text-align: right"><strong>0.885</strong></td>
-        <td style="text-align: right">0.818</td>
-      </tr>
-      <tr>
-        <td style="text-align: left">Quality measure review</td>
-        <td style="text-align: right">0.875</td>
-        <td style="text-align: right"><strong>0.902</strong></td>
-      </tr>
-      <tr>
-        <td style="text-align: left">Clinical note review</td>
-        <td style="text-align: right">0.935</td>
-        <td style="text-align: right"><strong>0.955</strong></td>
+        <td style="text-align: left">Patient cohort selection</td>
+        <td style="text-align: right">98.7</td>
+        <td style="text-align: right">96.9</td>
+        <td style="text-align: right"><strong>99.1</strong></td>
+        <td style="text-align: right">97.0</td>
+        <td style="text-align: right"><strong>99.1</strong></td>
+        <td style="text-align: right">98.0</td>
       </tr>
       <tr>
         <td style="text-align: left">Clinical trial eligibility</td>
-        <td style="text-align: right">0.781</td>
-        <td style="text-align: right"><strong>0.931</strong></td>
+        <td style="text-align: right"><strong>97.5</strong></td>
+        <td style="text-align: right">85.2</td>
+        <td style="text-align: right">94.2</td>
+        <td style="text-align: right">92.8</td>
+        <td style="text-align: right">95.2</td>
+        <td style="text-align: right">94.7</td>
       </tr>
       <tr>
-        <td style="text-align: left"><strong>Average</strong></td>
-        <td style="text-align: right">0.901</td>
-        <td style="text-align: right"><strong>0.917</strong></td>
+        <td style="text-align: left">Clinical note review</td>
+        <td style="text-align: right"><strong>97.8</strong></td>
+        <td style="text-align: right">96.5</td>
+        <td style="text-align: right">96.4</td>
+        <td style="text-align: right">93.7</td>
+        <td style="text-align: right">96.9</td>
+        <td style="text-align: right">94.4</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Hospital risk prediction</td>
+        <td style="text-align: right">88.4</td>
+        <td style="text-align: right"><strong>89.1</strong></td>
+        <td style="text-align: right">85.6</td>
+        <td style="text-align: right">88.1</td>
+        <td style="text-align: right">88.6</td>
+        <td style="text-align: right">87.4</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Drug safety</td>
+        <td style="text-align: right">94.9</td>
+        <td style="text-align: right">92.5</td>
+        <td style="text-align: right">94.6</td>
+        <td style="text-align: right">88.3</td>
+        <td style="text-align: right"><strong>95.7</strong></td>
+        <td style="text-align: right">92.8</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">General clinical decision tasks</td>
+        <td style="text-align: right"><strong>96.0</strong></td>
+        <td style="text-align: right">85.7</td>
+        <td style="text-align: right">88.8</td>
+        <td style="text-align: right">87.1</td>
+        <td style="text-align: right">87.5</td>
+        <td style="text-align: right">89.3</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Finding relevant cancer evidence</td>
+        <td style="text-align: right"><strong>95.3</strong></td>
+        <td style="text-align: right">88.9</td>
+        <td style="text-align: right">85.3</td>
+        <td style="text-align: right">83.3</td>
+        <td style="text-align: right">88.6</td>
+        <td style="text-align: right">82.6</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">PHI detection</td>
+        <td style="text-align: right"><strong>93.8</strong></td>
+        <td style="text-align: right">90.1</td>
+        <td style="text-align: right">72.4</td>
+        <td style="text-align: right">59.3</td>
+        <td style="text-align: right">87.1</td>
+        <td style="text-align: right">74.7</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Overall (56 sets)</td>
+        <td style="text-align: right"><strong>95.7</strong></td>
+        <td style="text-align: right">89.0</td>
+        <td style="text-align: right">88.2</td>
+        <td style="text-align: right">84.9</td>
+        <td style="text-align: right">90.3</td>
+        <td style="text-align: right">87.6</td>
       </tr>
     </tbody>
   </table>
 
-  <p><strong>Medical DM Small is ahead on six of nine task areas, with its largest margin on clinical trial eligibility (0.931 against 0.781). Medical DM Nano is ahead on cancer registry abstraction, adverse drug events and oncology record review.</strong></p>
+  <p>Medical DM Small has the highest score in 7 of the 11 task groups. Gemini 3.8 Flash is highest, or tied for highest, in three and Medical DM Nano in one. Gemini 3.8 Flash is the strongest API model and leads on care-quality measure checks and drug safety, and shares the top score on patient cohort selection. It is also the most expensive, as the Cost Analysis below shows.</p>
 
 </div>
 <div class="h3-box">
@@ -1359,14 +1489,14 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <h4 id="comparison-with-other-decision-models">Comparison with Other Decision Models</h4>
 
-  <p>Medical DM Small is the reference: 40 ms per note, about 11 hours per 1 million notes. Every other model was measured on the same set of notes, on the smallest GPU it fits on, and is shown at the same scale, so the ratios between models are the measured ratios. The score is the average over nine task areas from the benchmark above.</p>
+  <p>Medical DM Small is the reference: 40 ms per note, about 11 hours per 1 million notes. Every other model was measured on the same set of notes, on the smallest GPU it fits on, and is shown at the same scale, so the ratios between models are the measured ratios. The accuracy is the average over the evaluation sets from the benchmark above.</p>
 
   <table class="table-model-big">
     <thead>
       <tr>
         <th style="text-align: left">Model</th>
         <th style="text-align: left">GPU used (price per hour)</th>
-        <th style="text-align: right">Average score</th>
+        <th style="text-align: right">Average accuracy (%)</th>
         <th style="text-align: right">Time per 1 million notes</th>
         <th style="text-align: right">Cost per 1 million notes</th>
       </tr>
@@ -1375,64 +1505,202 @@ function wrapWordInSpan(data, wordToWrap) {
       <tr>
         <td style="text-align: left">Medical DM Nano *</td>
         <td style="text-align: left">A10 24 GB ($1.30)</td>
-        <td style="text-align: right">0.901</td>
-        <td style="text-align: right">~6.6 hours</td>
-        <td style="text-align: right">~$8.60</td>
+        <td style="text-align: right">89.0</td>
+        <td style="text-align: right">~6.5 hours</td>
+        <td style="text-align: right">~$8.45</td>
       </tr>
       <tr>
         <td style="text-align: left">JEV-Gemma4-26B-A4B</td>
         <td style="text-align: left">H100 80 GB ($4.20)</td>
-        <td style="text-align: right">0.898</td>
+        <td style="text-align: right">87.9</td>
         <td style="text-align: right">~2.4 hours</td>
         <td style="text-align: right">~$10.20</td>
       </tr>
       <tr>
         <td style="text-align: left">Medical DM Small *</td>
         <td style="text-align: left">A10 24 GB ($1.30)</td>
-        <td style="text-align: right">0.917</td>
+        <td style="text-align: right">95.7</td>
         <td style="text-align: right">~11 hours</td>
         <td style="text-align: right">~$14.30</td>
       </tr>
       <tr>
         <td style="text-align: left">Kev 9B</td>
         <td style="text-align: left">A10 24 GB ($1.30)</td>
-        <td style="text-align: right">0.842</td>
+        <td style="text-align: right">85.8</td>
         <td style="text-align: right">~23 hours</td>
         <td style="text-align: right">~$29.70</td>
       </tr>
       <tr>
         <td style="text-align: left">JEV-27B</td>
         <td style="text-align: left">H100 80 GB ($4.20)</td>
-        <td style="text-align: right">0.904</td>
+        <td style="text-align: right">93.1</td>
         <td style="text-align: right">~14 hours</td>
         <td style="text-align: right">~$57.80</td>
       </tr>
       <tr>
         <td style="text-align: left">Jev-Omni 12B</td>
         <td style="text-align: left">A100 40 GB ($1.99)</td>
-        <td style="text-align: right">0.862</td>
+        <td style="text-align: right">87.1</td>
         <td style="text-align: right">~42 hours</td>
         <td style="text-align: right">~$83.70</td>
       </tr>
       <tr>
         <td style="text-align: left">StartLux 35B-A3B</td>
         <td style="text-align: left">H100 80 GB ($4.20)</td>
-        <td style="text-align: right">0.895</td>
+        <td style="text-align: right">88.2</td>
         <td style="text-align: right">~20 hours</td>
         <td style="text-align: right">~$85.80</td>
       </tr>
     </tbody>
   </table>
 
-  <p><strong>Medical DM Nano and Medical DM Small run on a 24 GB GPU that costs $1.30 per hour. JEV-27B, the next-highest scoring model, needs an 80 GB H100 at $4.20 per hour and costs about 4 times as much per million notes ($57.80 against $14.30). StartLux 35B-A3B costs about 6 times as much ($85.80).</strong></p>
+  <p>Medical DM Nano and Medical DM Small run on a 24 GB GPU that costs $1.30 per hour. JEV-27B, the next-highest scoring model, needs an 80 GB H100 at $4.20 per hour and costs about 4 times as much per million notes ($57.80 against $14.30). StartLux 35B-A3B costs about 6 times as much ($85.80).</p>
 
   <h4 id="score-and-cost">Score and Cost</h4>
 
-  <p><img src="/en/LLMs/images/dm_pareto.png" alt="Medical DMs: score against cost" /></p>
+  <p><img src="/en/LLMs/images/dm_pareto.png" alt="Medical DMs: accuracy against cost" /></p>
 
-  <p>Medical DM Small has the highest score of the models compared, and Medical DM Nano has the lowest cost. No other model beats either of them on both score and cost.</p>
+  <p>Medical DM Small has the highest accuracy of the models compared, and Medical DM Nano has the lowest cost. No other model beats either of them on both accuracy and cost.</p>
 
   <p>Note: The GPU hourly rates of $1.30 (A10, 24 GB), $1.99 (A100, 40 GB) and $4.20 (H100, 80 GB) are illustrative pricing assumptions and are not official John Snow Labs prices. Runtime and cost estimates are based on the benchmark configuration described above.</p>
+
+  <h4 id="comparison-with-frontier-api-models">Comparison with Frontier API Models</h4>
+
+  <p>For the API models we used the charges OpenRouter actually billed for the same evaluation documents, at list prices on 26 November 2026. Each document was sent once with all of its questions. The cost of our models is the figure in the table above: 24 ms and 40 ms per note on a 24 GB GPU at $1.30 per hour.</p>
+
+  <p><img src="/en/LLMs/images/dm_frontier_cost.png" alt="Medical DMs and API models: cost to process one million notes" /></p>
+
+  <p>John Snow Labs models are blue, with the midpoint of the cost range in the table below. API models are grey, with the billed cost.</p>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th style="text-align: left">Model</th>
+        <th style="text-align: left">Where it runs</th>
+        <th style="text-align: left">Speed</th>
+        <th style="text-align: right">Cost per 1M notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: left">Medical DM Nano *</td>
+        <td style="text-align: left">Your GPU (24 GB)</td>
+        <td style="text-align: left">24 ms per note, 6-7 h per 1M</td>
+        <td style="text-align: right">$7.80 - $9.10</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Medical DM Small *</td>
+        <td style="text-align: left">Your GPU (24 GB)</td>
+        <td style="text-align: left">40 ms per note, 10-12 h per 1M</td>
+        <td style="text-align: right">$13.00 - $15.60</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Jev 1.14</td>
+        <td style="text-align: left">Cloud API</td>
+        <td style="text-align: left">0.95 s per request</td>
+        <td style="text-align: right">$38</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">GPT-6 Luna</td>
+        <td style="text-align: left">Cloud API</td>
+        <td style="text-align: left">1.21 s per request</td>
+        <td style="text-align: right">$80</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Claude Haiku 5.5</td>
+        <td style="text-align: left">Cloud API</td>
+        <td style="text-align: left">1.11 s per request</td>
+        <td style="text-align: right">$120</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Gemini 3.8 Flash</td>
+        <td style="text-align: left">Cloud API</td>
+        <td style="text-align: left">3.71 s per request</td>
+        <td style="text-align: right">$934</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Medical DM Small costs roughly 3 to 65 times less than the API options for the same notes, and Medical DM Nano roughly 4 to 110 times less. GPT-6 Luna and Claude Haiku 5.5 list at $0.10 in and $0.50 out per million tokens, and they cost 6 and 8 times as much as Small here because a clinical note plus its questions averages about 1,400 words per document. Gemini 3.8 Flash lists at $0.825 in and $4.125 out, and it always reasons: 86% of its output tokens were reasoning tokens, which is why it costs the most.</p>
+
+  <h4 id="checking-de-identified-notes-for-leftover-phi">Checking De-identified Notes for Leftover PHI</h4>
+
+  <p>PHI Guard asks one question of a de-identified note: does it still contain a name, ID, contact detail, date or location that should have been removed? We put that question to every model on 1,200 notes (585 with a leak, 615 clean) from the PHI Guard benchmark.</p>
+
+  <table class="table-model-big">
+    <thead>
+      <tr>
+        <th style="text-align: left">Model</th>
+        <th style="text-align: right">Leaks caught</th>
+        <th style="text-align: right">Clean notes flagged</th>
+        <th style="text-align: right">Precision</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: left">Medical DM Small *</td>
+        <td style="text-align: right">555 of 585 (95%)</td>
+        <td style="text-align: right">32 of 615 (5%)</td>
+        <td style="text-align: right">95%</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Medical DM Nano *</td>
+        <td style="text-align: right">556 of 585 (95%)</td>
+        <td style="text-align: right">69 of 615 (11%)</td>
+        <td style="text-align: right">89%</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">PHI Guard v0.7 *</td>
+        <td style="text-align: right">550 of 585 (94%)</td>
+        <td style="text-align: right">71 of 615 (12%)</td>
+        <td style="text-align: right">89%</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Gemini 3.8 Flash</td>
+        <td style="text-align: right">521 of 585 (89%)</td>
+        <td style="text-align: right">29 of 615 (5%)</td>
+        <td style="text-align: right">95%</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Jev 1.14</td>
+        <td style="text-align: right">550 of 585 (94%)</td>
+        <td style="text-align: right">202 of 615 (33%)</td>
+        <td style="text-align: right">73%</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">GPT-6 Luna</td>
+        <td style="text-align: right">525 of 585 (90%)</td>
+        <td style="text-align: right">208 of 615 (34%)</td>
+        <td style="text-align: right">72%</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Claude Haiku 5.5</td>
+        <td style="text-align: right">572 of 585 (98%)</td>
+        <td style="text-align: right">471 of 615 (77%)</td>
+        <td style="text-align: right">55%</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>A flagged clean note is a false alarm that a person has to review. A guard that raises many false alarms costs more in review time than it saves, so precision matters as much as catching leaks. Claude Haiku 5.5 catches the most leaks and flags more than three in four clean notes. Medical DM Small catches 95% of leaks and flags 5% of clean notes. PHI Guard v0.7, the dedicated PHI Guard model that runs on a CPU, catches 94% of leaks and flags 12%. Gemini 3.8 Flash matches the precision of Medical DM Small on this question, at roughly 55 times the cost per note.</p>
+
+  <p><img src="/en/LLMs/images/dm_frontier_phi_cost.png" alt="Medical DMs, PHI Guard and API models: cost to check one million notes for leftover PHI" /></p>
+
+  <p>John Snow Labs models are blue. API models are grey, with the billed cost.</p>
+
+  <p>On one CPU thread PHI Guard v0.7 needs about 1.8 hours per million notes, which is about $0.07 at $0.04 per CPU hour. It returns nine outputs per note in that time, while the API models are priced for the single leak question. The API costs here are the billed charges on these PHI notes, which are shorter than the general documents above.</p>
+
+  <p>The dedicated PHI Guard models need no GPU. PHI Guard v0.7 returns nine outputs in 6.4 ms per note on one CPU thread, and these models run in about 1 GB of RAM. There is a second reason to run a leak checker locally: an API-based checker has to send every note to a third party, including the ones that still contain the PHI you are trying to catch.</p>
+
+  <h4 id="what-this-means-for-clinical-pipelines">What This Means for Clinical Pipelines</h4>
+
+  <ul>
+    <li><strong>Cost.</strong> At roughly $8 to $14 per million notes, a decision step can run on every note instead of a sample.</li>
+    <li><strong>Speed.</strong> 24 ms and 40 ms per note on a single 24 GB GPU, and 6.4 ms per note on one CPU thread for the dedicated PHI Guard models.</li>
+    <li><strong>Privacy and control.</strong> The models run inside your own environment, so no note is sent to a third party, and the model version stays fixed between runs. This also fits sites that cannot send data outside their network.</li>
+  </ul>
+
+  <p>Frontier models remain the right tool for open-ended reasoning and writing. For the repetitive, well-defined decisions that make up most of a clinical pipeline, a small model you run yourself matches or beats these API models on accuracy, costs far less per note, and keeps the data where it is.</p>
 
   <h4 id="calculation-methodology">Calculation Methodology</h4>
   <p>Estimated compute  cost is calculated using</p>
@@ -1445,7 +1713,7 @@ function wrapWordInSpan(data, wordToWrap) {
 
 </div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2026-11-19T00:00:00+00:00">Nov 19, 2026</time>
+      <time itemprop="dateModified" datetime="2026-11-27T00:00:00+00:00">Nov 27, 2026</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
