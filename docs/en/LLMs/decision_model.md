@@ -5,7 +5,7 @@ seotitle: Decision Models| John Snow Labs
 title: Decision Models
 permalink: /docs/en/LLMs/decision_models
 key: docs-medical-llm
-modify_date: "2026-11-19"
+modify_date: "2026-11-27"
 show_nav: true
 sidebar:
     nav: medical-llm
@@ -22,7 +22,7 @@ Medical DMs are small enough to deploy privately, and the smallest run on a CPU.
 {:.table-model-big}
 | Model Name | Best for | Runs on | Recommended Memory | Max Sequence Length | Supported Platforms |
 |:---|:---|:---|:---|:---|:---|
-| Medical DM Small | Highest average score across the nine task areas | GPU | ~16 GB GPU VRAM | 16K | On-Premise, AWS, Azure, Databricks, Snowflake |
+| Medical DM Small | Highest average accuracy across the eleven task groups | GPU | ~16 GB GPU VRAM | 16K | On-Premise, AWS, Azure, Databricks, Snowflake |
 | Medical DM Nano | Compact; runs on a single small GPU or on CPU | GPU or CPU | ~2 GB GPU VRAM | 8K | On-Premise, AWS, Azure, Databricks, Snowflake |
 | PHI Guard v0.6 | Gate de-identified notes | CPU, ONNX | ~1 GB RAM | 8K | Healthcare NLP library, Models Hub |
 | PHI Guard v0.6 Fast | The same gate when speed matters most | CPU, ONNX | ~1 GB RAM | 8K | Healthcare NLP library, Models Hub |
@@ -38,7 +38,7 @@ Note: Recommended memory assumes half-precision (bf16) weights plus working memo
 
 <!-- TODO: link the PHI Guard models to their Models Hub pages (links from Danielo); add the tiny decision models later. -->
 
-**Medical DM Small** is our best-scoring decision model across nine medical task areas, and **Medical DM Nano** is the compact option that runs on a single small GPU or on CPU. The **PHI Guard** family has nine models that detect PHI in raw and de-identified notes, in single-purpose and all-in-one versions: seven CPU models, and **PHI Guard Small** and **PHI Guard Nano**, which run on a GPU (Nano also on CPU).
+**Medical DM Small** is our highest-accuracy decision model, on average across eleven medical task groups, and **Medical DM Nano** is the compact option that runs on a single small GPU or on CPU. The **PHI Guard** family has nine models that detect PHI in raw and de-identified notes, in single-purpose and all-in-one versions: seven CPU models, and **PHI Guard Small** and **PHI Guard Nano**, which run on a GPU (Nano also on CPU).
 
 </div><div class="h3-box" markdown="1">
 
@@ -49,44 +49,80 @@ For PHI leak detection, PHI Guard v0.7 reaches a PR-AUC of **0.986** on de-ident
 ### Tasks covered
 
 {:.table-model-big}
-| Task area | What the model decides |
+| Task group | What the model decides |
 |:---|:---|
 | Cancer registry abstraction | Registry fields from a pathology report: organ, tumor type, grade, TNM categories, stage, margins, lymphovascular invasion, receptors. A field the report never states is returned as not stated. |
-| Coding and prior authorization | Whether a diagnosis or a prior-authorization request is supported under a rule written into the question. |
-| Cohort identification | Whether a patient has each condition on a list: present, possible, absent or not documented. |
-| Adverse drug events | For one drug and one event: onset, severity, attribution, action taken, and the outcome of stopping and restarting the drug. |
-| General clinical decisions | A set of clinical decision tasks: evidence sufficiency, reconciliation, temporal relevance, reliability, attribution, escalation, causality, trajectory and more. |
-| Quality measure review | Evidence questions on patient charts for adult care-quality measures: eligibility, exclusions, time windows, medicines and tests. |
-| Clinical note review | Chart review of a clinical note: note type, age group, tobacco use, allergies, diabetes, kidney function, anticoagulation, cancer status. |
+| Care-quality measure checks | Evidence questions on patient charts for adult care-quality measures: eligibility, exclusions, time windows, medicines and tests. |
+| Coding and payer-policy review | Whether a diagnosis or a prior-authorization request is supported under a rule written into the question. |
+| Patient cohort selection | Whether a patient has each condition on a list: present, possible, absent or not documented. |
 | Clinical trial eligibility | Demographic gate, inclusion or exclusion, specialty, numeric thresholds and time windows. |
-| Oncology record review | Whether a document in an oncology record is relevant to a registry abstract, whether it adds anything new, and which fields it states. |
-| PHI leak detection | Whether a de-identified note still leaks protected health information (PHI), whether a raw note holds any, how much a note exposes, and whether a leak is harmful. |
+| Clinical note review | Chart review of a clinical note: note type, age group, tobacco use, allergies, diabetes, kidney function, anticoagulation, cancer status. |
+| Hospital risk prediction | Readmission and ICU outcome questions. |
+| Drug safety | For one drug and one event: onset, severity, attribution, action taken, and the outcome of stopping and restarting the drug. |
+| General clinical decision tasks | A set of clinical decision tasks: evidence sufficiency, reconciliation, temporal relevance, reliability, attribution, escalation, causality, trajectory and more. |
+| Finding relevant cancer evidence | Whether a document or passage in an oncology record is relevant to a registry abstract, whether it adds anything new, and which fields it states. |
+| PHI detection | Whether a de-identified note still leaks protected health information (PHI), whether a raw note holds any, how much a note exposes, and whether a leak is harmful. |
 
 </div><div class="h3-box" markdown="1">
 
 ### Task Benchmark Performance
 
-![Medical DMs: average score across task areas](/en/LLMs/images/dm_average.png)
+We ran Medical DM Small and Medical DM Nano against the cheapest frontier API models on the market, GPT-6 Luna, Claude Haiku 5.5 and Gemini 3.8 Flash, plus Jev 1.14. Every model answered the same questions about the same documents: 56 evaluation sets in 11 task groups, with 9,526 documents and 14,587 questions in total.
 
-![Medical DMs: score by task area](/en/LLMs/images/dm_by_task.png)
+- **95.7%**: Medical DM Small, average accuracy over the 56 sets. The best API model scores 90.3%.
+- **89.0%**: Medical DM Nano, average accuracy over the 56 sets. The API models range from 84.9% to 90.3%.
 
-Score on nine task areas: the mean of accuracy and macro precision, recall and F1. Bold is the best score in the row.
+#### How we tested
 
 {:.table-model-big}
-| Task area | Medical DM Nano | Medical DM Small |
-|:---|---:|---:|
-| Cancer registry abstraction | **0.961** | 0.885 |
-| Coding and prior authorization | 0.888 | **0.930** |
-| Cohort identification | 0.950 | **0.958** |
-| Adverse drug events | **0.972** | 0.914 |
-| General clinical decisions | 0.860 | **0.963** |
-| Oncology record review | **0.885** | 0.818 |
-| Quality measure review | 0.875 | **0.902** |
-| Clinical note review | 0.935 | **0.955** |
-| Clinical trial eligibility | 0.781 | **0.931** |
-| **Average** | 0.901 | **0.917** |
+| | |
+|:---|:---|
+| Datasets | 56, in 11 task groups |
+| Documents | 9,526 |
+| Questions | 14,587 |
+| Question types | Yes or no 6,677 (46%), pick one option 6,195 (42%), score 1,715 (12%) |
+| Document length | 1,296 words on average |
+| Size of one request | about 1,400 words on average, including the question text and options |
 
-**Medical DM Small is ahead on six of nine task areas, with its largest margin on clinical trial eligibility (0.931 against 0.781). Medical DM Nano is ahead on cancer registry abstraction, adverse drug events and oncology record review.**
+A decision model answers typed questions about a document. The three question types are:
+
+- Yes or no: the model decides whether the statement is true for the document.
+- Pick one option: the model chooses one label from a short list. Every label is defined in the question.
+- Score: the model chooses a level from an ordered list, for example unlikely, possible, probable or certain.
+
+How each model was run:
+
+- Each API model received the document and all of its questions in one request, with the options spelled out, and replied with the chosen option only. Temperature was 0. GPT-6 Luna and Claude Haiku 5.5 ran with reasoning off. Gemini 3.8 Flash always reasons, so it ran at low effort.
+- The Medical DM models read the same document and question and score every option directly. Yes or no questions use a 0.5 cut-off, and other questions take the highest-scoring option.
+- Accuracy is the share of questions answered correctly in each dataset, averaged within each task group. The Overall row is the average over all 56 datasets.
+
+#### Accuracy
+
+![Medical DMs: accuracy by task group](/en/LLMs/images/dm_by_task.png)
+
+![Medical DMs and API models: average accuracy over all 56 evaluation sets](/en/LLMs/images/dm_frontier_accuracy.png)
+
+John Snow Labs models are blue, API models are grey.
+
+Accuracy (%) by task group. Bold is the best score in the row. The first two columns are John Snow Labs models (*).
+
+{:.table-model-big}
+| Task group | Medical DM Small * | Medical DM Nano * | GPT-6 Luna | Claude Haiku 5.5 | Gemini 3.8 Flash | Jev 1.14 |
+|:---|---:|---:|---:|---:|---:|---:|
+| Cancer registry abstraction | **98.8** | 96.8 | 94.3 | 91.3 | 95.3 | 89.9 |
+| Care-quality measure checks | 93.6 | 90.0 | 83.4 | 74.5 | **98.1** | 83.6 |
+| Coding and payer-policy review | **98.3** | 88.5 | 96.3 | 89.4 | 97.6 | 92.9 |
+| Patient cohort selection | 98.7 | 96.9 | **99.1** | 97.0 | **99.1** | 98.0 |
+| Clinical trial eligibility | **97.5** | 85.2 | 94.2 | 92.8 | 95.2 | 94.7 |
+| Clinical note review | **97.8** | 96.5 | 96.4 | 93.7 | 96.9 | 94.4 |
+| Hospital risk prediction | 88.4 | **89.1** | 85.6 | 88.1 | 88.6 | 87.4 |
+| Drug safety | 94.9 | 92.5 | 94.6 | 88.3 | **95.7** | 92.8 |
+| General clinical decision tasks | **96.0** | 85.7 | 88.8 | 87.1 | 87.5 | 89.3 |
+| Finding relevant cancer evidence | **95.3** | 88.9 | 85.3 | 83.3 | 88.6 | 82.6 |
+| PHI detection | **93.8** | 90.1 | 72.4 | 59.3 | 87.1 | 74.7 |
+| Overall (56 sets) | **95.7** | 89.0 | 88.2 | 84.9 | 90.3 | 87.6 |
+
+Medical DM Small has the highest score in 7 of the 11 task groups. Gemini 3.8 Flash is highest, or tied for highest, in three and Medical DM Nano in one. Gemini 3.8 Flash is the strongest API model and leads on care-quality measure checks and drug safety, and shares the top score on patient cohort selection. It is also the most expensive, as the Cost Analysis below shows.
 
 </div><div class="h3-box" markdown="1">
 
@@ -211,28 +247,82 @@ For cost estimation, we assume an illustrative GPU rental rate of $1.30 per hour
 
 #### Comparison with Other Decision Models
 
-Medical DM Small is the reference: 40 ms per note, about 11 hours per 1 million notes. Every other model was measured on the same set of notes, on the smallest GPU it fits on, and is shown at the same scale, so the ratios between models are the measured ratios. The score is the average over nine task areas from the benchmark above.
+Medical DM Small is the reference: 40 ms per note, about 11 hours per 1 million notes. Every other model was measured on the same set of notes, on the smallest GPU it fits on, and is shown at the same scale, so the ratios between models are the measured ratios. The accuracy is the average over the evaluation sets from the benchmark above.
 
 {:.table-model-big}
-| Model              | GPU used (price per hour) | Average score | Time per 1 million notes | Cost per 1 million notes |
-| :----------------- | :------------------------ | ------------: | -----------------------: | -----------------------: |
-| Medical DM Nano *  | A10 24 GB ($1.30)         | 0.901         | ~6.6 hours               | ~$8.60                   |
-| JEV-Gemma4-26B-A4B | H100 80 GB ($4.20)        | 0.898         | ~2.4 hours               | ~$10.20                  |
-| Medical DM Small * | A10 24 GB ($1.30)         | 0.917         | ~11 hours                | ~$14.30                  |
-| Kev 9B             | A10 24 GB ($1.30)         | 0.842         | ~23 hours                | ~$29.70                  |
-| JEV-27B            | H100 80 GB ($4.20)        | 0.904         | ~14 hours                | ~$57.80                  |
-| Jev-Omni 12B       | A100 40 GB ($1.99)        | 0.862         | ~42 hours                | ~$83.70                  |
-| StartLux 35B-A3B   | H100 80 GB ($4.20)        | 0.895         | ~20 hours                | ~$85.80                  |
+| Model | GPU used (price per hour) | Average accuracy (%) | Time per 1 million notes | Cost per 1 million notes |
+| :--- | :--- | ---: | ---: | ---: |
+| Medical DM Nano * | A10 24 GB ($1.30) | 89.0 | ~6.5 hours | ~$8.45 |
+| JEV-Gemma4-26B-A4B | H100 80 GB ($4.20) | 87.9 | ~2.4 hours | ~$10.20 |
+| Medical DM Small * | A10 24 GB ($1.30) | 95.7 | ~11 hours | ~$14.30 |
+| Kev 9B | A10 24 GB ($1.30) | 85.8 | ~23 hours | ~$29.70 |
+| JEV-27B | H100 80 GB ($4.20) | 93.1 | ~14 hours | ~$57.80 |
+| Jev-Omni 12B | A100 40 GB ($1.99) | 87.1 | ~42 hours | ~$83.70 |
+| StartLux 35B-A3B | H100 80 GB ($4.20) | 88.2 | ~20 hours | ~$85.80 |
 
-**Medical DM Nano and Medical DM Small run on a 24 GB GPU that costs $1.30 per hour. JEV-27B, the next-highest scoring model, needs an 80 GB H100 at $4.20 per hour and costs about 4 times as much per million notes ($57.80 against $14.30). StartLux 35B-A3B costs about 6 times as much ($85.80).**
+Medical DM Nano and Medical DM Small run on a 24 GB GPU that costs $1.30 per hour. JEV-27B, the next-highest scoring model, needs an 80 GB H100 at $4.20 per hour and costs about 4 times as much per million notes ($57.80 against $14.30). StartLux 35B-A3B costs about 6 times as much ($85.80).
 
 #### Score and Cost
 
-![Medical DMs: score against cost](/en/LLMs/images/dm_pareto.png)
+![Medical DMs: accuracy against cost](/en/LLMs/images/dm_pareto.png)
 
-Medical DM Small has the highest score of the models compared, and Medical DM Nano has the lowest cost. No other model beats either of them on both score and cost.
+Medical DM Small has the highest accuracy of the models compared, and Medical DM Nano has the lowest cost. No other model beats either of them on both accuracy and cost.
 
 Note: The GPU hourly rates of $1.30 (A10, 24 GB), $1.99 (A100, 40 GB) and $4.20 (H100, 80 GB) are illustrative pricing assumptions and are not official John Snow Labs prices. Runtime and cost estimates are based on the benchmark configuration described above.
+
+#### Comparison with Frontier API Models
+
+For the API models we used the charges OpenRouter actually billed for the same evaluation documents, at list prices on 26 November 2026. Each document was sent once with all of its questions. The cost of our models is the figure in the table above: 24 ms and 40 ms per note on a 24 GB GPU at $1.30 per hour.
+
+![Medical DMs and API models: cost to process one million notes](/en/LLMs/images/dm_frontier_cost.png)
+
+John Snow Labs models are blue, with the midpoint of the cost range in the table below. API models are grey, with the billed cost.
+
+{:.table-model-big}
+| Model | Where it runs | Speed | Cost per 1M notes |
+|:---|:---|:---|---:|
+| Medical DM Nano * | Your GPU (24 GB) | 24 ms per note, 6-7 h per 1M | $7.80 - $9.10 |
+| Medical DM Small * | Your GPU (24 GB) | 40 ms per note, 10-12 h per 1M | $13.00 - $15.60 |
+| Jev 1.14 | Cloud API | 0.95 s per request | $38 |
+| GPT-6 Luna | Cloud API | 1.21 s per request | $80 |
+| Claude Haiku 5.5 | Cloud API | 1.11 s per request | $120 |
+| Gemini 3.8 Flash | Cloud API | 3.71 s per request | $934 |
+
+Medical DM Small costs roughly 3 to 65 times less than the API options for the same notes, and Medical DM Nano roughly 4 to 110 times less. GPT-6 Luna and Claude Haiku 5.5 list at $0.10 in and $0.50 out per million tokens, and they cost 6 and 8 times as much as Small here because a clinical note plus its questions averages about 1,400 words per document. Gemini 3.8 Flash lists at $0.825 in and $4.125 out, and it always reasons: 86% of its output tokens were reasoning tokens, which is why it costs the most.
+
+#### Checking De-identified Notes for Leftover PHI
+
+PHI Guard asks one question of a de-identified note: does it still contain a name, ID, contact detail, date or location that should have been removed? We put that question to every model on 1,200 notes (585 with a leak, 615 clean) from the PHI Guard benchmark.
+
+{:.table-model-big}
+| Model | Leaks caught | Clean notes flagged | Precision |
+|:---|---:|---:|---:|
+| Medical DM Small * | 555 of 585 (95%) | 32 of 615 (5%) | 95% |
+| Medical DM Nano * | 556 of 585 (95%) | 69 of 615 (11%) | 89% |
+| PHI Guard v0.7 * | 550 of 585 (94%) | 71 of 615 (12%) | 89% |
+| Gemini 3.8 Flash | 521 of 585 (89%) | 29 of 615 (5%) | 95% |
+| Jev 1.14 | 550 of 585 (94%) | 202 of 615 (33%) | 73% |
+| GPT-6 Luna | 525 of 585 (90%) | 208 of 615 (34%) | 72% |
+| Claude Haiku 5.5 | 572 of 585 (98%) | 471 of 615 (77%) | 55% |
+
+A flagged clean note is a false alarm that a person has to review. A guard that raises many false alarms costs more in review time than it saves, so precision matters as much as catching leaks. Claude Haiku 5.5 catches the most leaks and flags more than three in four clean notes. Medical DM Small catches 95% of leaks and flags 5% of clean notes. PHI Guard v0.7, the dedicated PHI Guard model that runs on a CPU, catches 94% of leaks and flags 12%. Gemini 3.8 Flash matches the precision of Medical DM Small on this question, at roughly 55 times the cost per note.
+
+![Medical DMs, PHI Guard and API models: cost to check one million notes for leftover PHI](/en/LLMs/images/dm_frontier_phi_cost.png)
+
+John Snow Labs models are blue. API models are grey, with the billed cost.
+
+On one CPU thread PHI Guard v0.7 needs about 1.8 hours per million notes, which is about $0.07 at $0.04 per CPU hour. It returns nine outputs per note in that time, while the API models are priced for the single leak question. The API costs here are the billed charges on these PHI notes, which are shorter than the general documents above.
+
+The dedicated PHI Guard models need no GPU. PHI Guard v0.7 returns nine outputs in 6.4 ms per note on one CPU thread, and these models run in about 1 GB of RAM. There is a second reason to run a leak checker locally: an API-based checker has to send every note to a third party, including the ones that still contain the PHI you are trying to catch.
+
+#### What This Means for Clinical Pipelines
+
+- **Cost.** At roughly $8 to $14 per million notes, a decision step can run on every note instead of a sample.
+- **Speed.** 24 ms and 40 ms per note on a single 24 GB GPU, and 6.4 ms per note on one CPU thread for the dedicated PHI Guard models.
+- **Privacy and control.** The models run inside your own environment, so no note is sent to a third party, and the model version stays fixed between runs. This also fits sites that cannot send data outside their network.
+
+Frontier models remain the right tool for open-ended reasoning and writing. For the repetitive, well-defined decisions that make up most of a clinical pipeline, a small model you run yourself matches or beats these API models on accuracy, costs far less per note, and keeps the data where it is.
+
 
 #### Calculation Methodology
 Estimated compute  cost is calculated using
